@@ -442,3 +442,158 @@ func InhibitModem(ctx context.Context) (func(ctx context.Context) error, error) 
 	}
 	return uninhibit, nil
 }
+
+// SetPrimarySimSlot switches primary SIM slot to a given slot
+func SetPrimarySimSlot(ctx context.Context, primary uint32) error {
+	modem, err := NewModem(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create modem")
+	}
+	if c := modem.Call(ctx, "SetPrimarySimSlot", primary); c.Err != nil {
+		return errors.Wrapf(c.Err, "failed while switching the primary sim slot to: %d", primary)
+	}
+	if _, err = PollModem(ctx, modem.String()); err != nil {
+		return errors.Wrapf(err, "could not find modem after switching the primary slot to: %d", primary)
+	}
+	return nil
+}
+
+// SwitchSlot switches from current slot to new slot on dual sim duts, returns new primary slot.
+func SwitchSlot(ctx context.Context) (uint32, error) {
+
+	modem, err := NewModem(ctx)
+	if err != nil {
+		return 100, errors.Wrap(err, "failed to create modem")
+	}
+	props, err := modem.GetProperties(ctx)
+	if err != nil {
+		return 100, errors.Wrap(err, "failed to call getproperties on modem")
+	}
+	_, err = props.GetObjectPath(mmconst.ModemPropertySim)
+	if err != nil {
+		return 100, errors.Wrap(err, "missing sim property")
+	}
+	simSlots, err := props.GetObjectPaths(mmconst.ModemPropertySimSlots)
+	if err != nil {
+		return 100, errors.Wrap(err, "failed to get simslots property")
+	}
+	primary, err := props.GetUint32(mmconst.ModemPropertyPrimarySimSlot)
+	if err != nil {
+		return 100, errors.Wrap(err, "missing primarysimglot property")
+	}
+	numSlots := len(simSlots)
+	testing.ContextLogf(ctx, "Number of slots on dut: %d", numSlots)
+	if numSlots < 2 {
+		return primary, nil
+	}
+
+	modemManu, err := props.GetString(mmconst.ModemPropertyManufacturer)
+	if err != nil {
+		return 100, errors.Wrap(err, "missing manufacturer property")
+	}
+	setSlot := 1
+	if modemManu == mmconst.ModemQualcomm {
+		if primary == 1 {
+			setSlot = 2
+		}
+	} else if modemManu == mmconst.ModemFibocom {
+		setSlot = 0
+		if primary == 0 {
+			setSlot = 1
+		}
+	}
+	SetPrimarySimSlot(ctx, uint32(setSlot))
+
+	return uint32(setSlot), nil
+}
+
+// GetEid gets current modem sim eid, return eid if esim is active.
+func (m *Modem) GetEid(ctx context.Context) (string, error) {
+	modemProps, err := m.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call getproperties on modem")
+	}
+	simPath, err := modemProps.GetObjectPath(mmconst.ModemPropertySim)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get modem sim property")
+	}
+	testing.ContextLogf(ctx, "SIM path =%s", simPath)
+	simProps, err := m.GetSimProperties(ctx, simPath)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read sim properties")
+	}
+	simEid, err := simProps.GetString(mmconst.SimPropertySimEid)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get sim eid property")
+	}
+
+	return simEid, nil
+}
+
+// GetActiveSimPuk gets puk for psim iccid, sets primary slot to psim.
+func (m *Modem) GetActiveSimPuk(ctx context.Context) (string, error) {
+
+	if simEid, err := m.GetEid(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to get sim eid property")
+	} else if simEid != "" {
+		// Switch slot to get to active psim.
+		SwitchSlot(ctx)
+	}
+
+	m, err := NewModem(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get modem after slot switch")
+	}
+
+	if simEid, err := m.GetEid(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to get sim eid property")
+	} else if simEid != "" {
+		return "", errors.New("could not get active psim to get known puks")
+	}
+
+	// Get ICCID to get puk.
+	modemProps, err := m.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call getproperties on modem")
+	}
+
+	simPath, err := modemProps.GetObjectPath(mmconst.ModemPropertySim)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get modem sim property")
+	}
+
+	testing.ContextLogf(ctx, "SIM path =%s", simPath)
+	simProps, err := m.GetSimProperties(ctx, simPath)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read sim properties")
+	}
+
+	simICCID, err := simProps.GetString(mmconst.SimPropertySimIdentifier)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get sim simIdentifier property")
+	}
+
+	puk, err := GetPuk(ctx, simICCID)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get puk code")
+	}
+
+	return puk, nil
+}
+
+// GetPuk gets puk code for given sim iccid from known iccid, puk pairs/list.
+func GetPuk(ctx context.Context, iccid string) (string, error) {
+	// Map of ICCID and corresponding PUK codes in multisim dut pool.
+	pukCodes := map[string]string{
+		"8901260153779127425":  "67308773",
+		"8901260153779127706":  "31224207",
+		"89012804320036371960": "44604241", // ATT
+		"89148000004796350513": "47183865"} // Verizon
+
+	pukVal := ""
+	if _, ok := pukCodes[iccid]; ok {
+		pukVal = pukCodes[iccid]
+	}
+
+	return pukVal, nil
+}
