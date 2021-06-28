@@ -1,0 +1,36 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ScreenLockService provides ability to lock the screen.
+service ScreenLockService {
+
+  // ReuseChrome passes an Option to New to make Chrome reuse the existing login session
+  // from same user. Session will be re-used when Chrome configurations are compatible
+  // between two sessions. For noLogin and deferLogin modes, session will not be re-used.
+  // If the existing session cannot be re-used, a new Chrome session will be restarted.
+  // CloseChrome must be called later to clean up the associated resources.
+  rpc ReuseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // NewChrome logs into a Chrome session as a fake user. CloseChrome must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CloseChrome releases the resources obtained by NewChrome.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Lock performs the operation to lock the screen. Implementing Lock
+  // would be equivalent to pressing "Search+L" on DUT, and useful for tests
+  // that are required to be done at locked screen. For example, in ECTabletMode,
+  // DUT is triggered by Lock into the locked screen condition, under which
+  // a series of power button actions are tested and verified.
+  rpc Lock (google.protobuf.Empty) returns (google.protobuf.Empty);
+}
