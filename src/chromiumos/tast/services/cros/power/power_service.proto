@@ -1,0 +1,34 @@
+syntax="proto3";
+package tast.cros.power;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/power";
+
+// PowerService provides RPC methods to ensure DUT within a certain battery percentages.
+service PowerService {
+    rpc BatteryStatus(google.protobuf.Empty) returns (BatteryStatusResponse) {};
+
+    rpc BatteryCharge(BatteryChargeRequest) returns (google.protobuf.Empty) {};
+
+    rpc BatteryDrain(BatteryDrainRequest) returns (google.protobuf.Empty) {};
+}
+
+enum PowerStatus {
+    ON_AC_AND_CHARGING = 0;
+    ON_AC_AND_NOT_CHARGING = 1;
+    NOT_ON_AC_AND_NOT_CHARGING = 2;
+}
+
+message BatteryStatusResponse {
+    double percentage = 1;
+    PowerStatus status = 2;    
+}
+
+message BatteryChargeRequest {
+    double percentage = 1;
+}
+
+message BatteryDrainRequest {
+    double percentage = 1;
+}
