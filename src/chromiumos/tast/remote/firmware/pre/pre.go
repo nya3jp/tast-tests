@@ -75,6 +75,11 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if i.v.Helper == nil {
 		s.Log("Creating a new firmware Helper instance for Precondition: ", i.String())
 		i.initHelper(ctx, s)
+	} else {
+		// Close the servo to reset pd role, watchdogs, etc.
+		i.v.Helper.CloseServo(ctx)
+		// Close the RPC client in case the DUT rebooted at some point, and it doesn't recover well.
+		i.v.Helper.CloseRPCConnection(ctx)
 	}
 
 	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
@@ -101,6 +106,10 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 	}()
 
 	i.initHelper(ctx, s)
+	// Close the servo to reset pd role, watchdogs, etc.
+	i.v.Helper.CloseServo(ctx)
+	// Close the RPC client in case the DUT rebooted at some point, and it doesn't recover well.
+	i.v.Helper.CloseRPCConnection(ctx)
 
 	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
 		s.Fatal("DUT is offline after test end: ", err)

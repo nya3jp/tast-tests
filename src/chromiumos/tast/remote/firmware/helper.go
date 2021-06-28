@@ -121,6 +121,10 @@ func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort 
 // Generally, tests should defer Close() immediately after initializing a Helper.
 func (h *Helper) Close(ctx context.Context) error {
 	var firstErr error
+	defer func() {
+		h.ServoProxy = nil
+		h.Servo = nil
+	}()
 	if h.ServoProxy != nil {
 		h.ServoProxy.Close(ctx)
 	}
@@ -307,6 +311,17 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 	h.ServoProxy = pxy
 	h.Servo = pxy.Servo()
 	return nil
+}
+
+// CloseServo closes the connection to the servo, use RequireServo to open it again.
+func (h *Helper) CloseServo(ctx context.Context) {
+	defer func() {
+		h.ServoProxy = nil
+		h.Servo = nil
+	}()
+	if h.ServoProxy != nil {
+		h.ServoProxy.Close(ctx)
+	}
 }
 
 const (
