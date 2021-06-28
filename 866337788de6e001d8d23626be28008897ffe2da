@@ -16,6 +16,23 @@
       "message": "Xiangdong - ping! 😊",
       "revId": "866337788de6e001d8d23626be28008897ffe2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadf655a_1125e7c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-06-28T21:37:35Z",
+      "side": 1,
+      "message": "Thanks, Xiangdong!",
+      "revId": "866337788de6e001d8d23626be28008897ffe2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
