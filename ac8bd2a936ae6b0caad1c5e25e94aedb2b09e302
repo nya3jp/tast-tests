@@ -16,6 +16,46 @@
       "message": "Thanks for the change!",
       "revId": "ac8bd2a936ae6b0caad1c5e25e94aedb2b09e302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "894fe1eb_ca9b4b18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-28T01:27:35Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "ac8bd2a936ae6b0caad1c5e25e94aedb2b09e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1817b117_cc7fceda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-06-28T01:27:35Z",
+      "side": 1,
+      "message": "nit: Package names should be short and all lowercase, not mixed caps or under_scores.\nhttps://github.com/golang/go/wiki/CodeReviewComments#package-names.\nhttps://blog.golang.org/package-names#TOC_2.\n\nWhat about \"uiconsts\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "ac8bd2a936ae6b0caad1c5e25e94aedb2b09e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
