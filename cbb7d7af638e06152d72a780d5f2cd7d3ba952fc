@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcc4268_0142c1a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-06-28T08:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da066a61_e721fc87",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02a4bc85_7e8dcb34",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cef628_671803af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-06-28T08:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a4bc85_7e8dcb34",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c472ed2e_33a66738",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-06-24T09:42:39Z",
       "side": 1,
       "message": "nit: default timeout is 15 seconds.",
+      "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c148a86f_4f887f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-06-28T08:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c472ed2e_33a66738",
       "revId": "cbb7d7af638e06152d72a780d5f2cd7d3ba952fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
