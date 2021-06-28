@@ -45,10 +45,10 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *VirtualKeyboardConte
 var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
 
 // NodeFinder returns a finder of node on virtual keyboard.
-var NodeFinder = nodewith.Ancestor(vkRootFinder)
+var NodeFinder = nodewith.Ancestor(vkRootFinder).Onscreen()
 
 // KeyFinder returns a finder of keys on virtual keyboard.
-var KeyFinder = NodeFinder.Role(role.Button)
+var KeyFinder = NodeFinder.Role(role.Button).Onscreen()
 
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
@@ -361,7 +361,7 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 	return uiauto.Combine("tap voice button and close privacy dialogue",
 		// Do nothing if it is already in the voice layout.
 		vkbCtx.ui.IfSuccessThen(
-			vkbCtx.ui.Gone(voiceActiveNode),
+			vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilGone(voiceActiveNode),
 			callSwitchAPI,
 		),
 		vkbCtx.ui.WaitUntilExists(voiceActiveNode),
@@ -370,7 +370,9 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 
 // switchToHandwriting changes to handwriting layout and returns a handwriting context.
 func (vkbCtx *VirtualKeyboardContext) switchToHandwriting(ctx context.Context) (*HandwritingContext, error) {
-	if err := vkbCtx.ui.LeftClick(KeyFinder.NameStartingWith("switch to handwriting"))(ctx); err != nil {
+	switchKey := KeyFinder.NameStartingWith("switch to handwriting")
+	// Click button to switch to handwriting mode if it is not in the mode yet.
+	if err := vkbCtx.leftClickIfExist(switchKey)(ctx); err != nil {
 		return nil, err
 	}
 
@@ -422,4 +424,59 @@ func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string)
 	return uiauto.Combine("wait for suggestion and select",
 		ac.WaitUntilExists(suggestionFinder),
 		ac.LeftClick(suggestionFinder))
+}
+
+// leftClickIfExist returns an action that checks the existence of a node, then clicks
+// it if it exists and does nothing if not.
+func (vkbCtx *VirtualKeyboardContext) leftClickIfExist(finder *nodewith.Finder) uiauto.Action {
+	return vkbCtx.ui.IfSuccessThen(
+		vkbCtx.ui.Exists(finder),
+		vkbCtx.ui.LeftClick(finder))
+}
+
+// SwitchToFloatingMode returns an action switching the VK to floating mode if it is not in that mode.
+func (vkbCtx *VirtualKeyboardContext) SwitchToFloatingMode() uiauto.Action {
+	switchKey := KeyFinder.Name("make virtual keyboard movable")
+	return vkbCtx.leftClickIfExist(switchKey)
+}
+
+// SwitchToFullMode returns an action switching the VK to full-width mode if it is not in that mode.
+func (vkbCtx *VirtualKeyboardContext) SwitchToFullMode() uiauto.Action {
+	switchKey := KeyFinder.Name("dock virtual keyboard")
+	return vkbCtx.leftClickIfExist(switchKey)
+}
+
+// SwitchFromVoiceToTyping returns an action switching the VK from voice layout to typing layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchFromVoiceToTyping() uiauto.Action {
+	switchKey := NodeFinder.HasClass("voice-mic-img")
+	return vkbCtx.leftClickIfExist(switchKey)
+}
+
+// SwitchFromHandwritingToTyping returns an action switching the VK from handwriting layout
+// to typing layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchFromHandwritingToTyping() uiauto.Action {
+	return uiauto.Combine("switch from handwriting to typing layout",
+		vkbCtx.leftClickIfExist(KeyFinder.Name("Show access points")),
+		vkbCtx.ui.WaitUntilExists(KeyFinder.Name("Hide access points")),
+		vkbCtx.leftClickIfExist(KeyFinder.Name("Back")),
+	)
+}
+
+// ClearInputField returns an action clearing input field by tapping backspace.
+// It switches from voice input to typing mode to show the backspace key if it
+// is in voie layout.
+func (vkbCtx *VirtualKeyboardContext) ClearInputField(inputField *nodewith.Finder) uiauto.Action {
+	return vkbCtx.ui.WithInterval(200*time.Millisecond).LeftClickUntil(
+		KeyFinder.Name("backspace"),
+		func(ctx context.Context) error {
+			nodeInfo, err := vkbCtx.ui.Info(ctx, inputField)
+			if err != nil {
+				return err
+			}
+			if nodeInfo.Value != "" {
+				return errors.New("input field is not empty")
+			}
+			return nil
+		},
+	)
 }

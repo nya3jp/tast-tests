@@ -25,3 +25,21 @@ const (
 	INPUTMETHOD_CANGJIE87_CHINESE_TRADITIONAL InputMethodCode = "zh-hant-t-i0-cangjie-1987" // NOLINT: Chinese Cangjie input method
 	INPUTMETHOD_HANGUL_KOREAN                 InputMethodCode = "ko-t-i0-und"               // NOLINT: Korean input method
 )
+
+// LanguageCode represents a language.
+type LanguageCode string
+
+// List of languages.
+const (
+	EN            LanguageCode = "English"
+	CN_SIMPLIFIED LanguageCode = "Simplified Chinese"
+	JP            LanguageCode = "Japanese"
+)
+
+// LanguageCodeOfIME matches an input method to a language.
+var LanguageCodeOfIME = map[InputMethodCode]LanguageCode{
+	INPUTMETHOD_XKB_US_ENG:                EN,
+	INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED: CN_SIMPLIFIED,
+	INPUTMETHOD_NACL_MOZC_JP:              JP,
+	INPUTMETHOD_NACL_MOZC_US:              JP,
+}
