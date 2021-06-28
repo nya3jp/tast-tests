@@ -46,6 +46,53 @@
       },
       "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d190e3d0_9f051361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-28T13:33:32Z",
+      "side": 1,
+      "message": "Do you expect to add more options to StartWireGuardServer() ? If yes, adding a config struct could definitely clarify things.\n\nThe usual idiom in other language would be to put the name of the arg in between /* */, but not sure if this is acceptable in Go.",
+      "parentUuid": "a597d744_48aa398c",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 61
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ebb705_9362f1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-06-28T13:33:32Z",
+      "side": 1,
+      "message": "This could maybe be a parameter as well (to check ping issued by a user falling into the SYSTEM category for example).",
+      "range": {
+        "startLine": 235,
+        "startChar": 57,
+        "endLine": 235,
+        "endChar": 66
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
