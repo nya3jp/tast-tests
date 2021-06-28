@@ -181,6 +181,7 @@ func (h *Helper) RequireRPCClient(ctx context.Context) error {
 	if h.rpcHint == nil {
 		return errors.New("cannot create RPC client connection without rpcHint")
 	}
+	testing.ContextLog(ctx, "Opening RPCClient connection")
 	var cl *rpc.Client
 	const rpcConnectTimeout = 5 * time.Minute
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -225,6 +226,7 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 		h.RPCClient, h.RPCUtils, h.BiosServiceClient = nil, nil, nil
 	}()
 	if h.RPCClient != nil {
+		testing.ContextLog(ctx, "Closing RPCClient connection")
 		if err := h.RPCClient.Close(ctx); err != nil {
 			return errors.Wrap(err, "closing rpc client")
 		}
