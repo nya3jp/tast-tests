@@ -46,6 +46,30 @@
       },
       "revId": "dd22e609763662f4c0e900f1cdabc5b9126c80d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa21fc2c_891e118d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-28T07:30:23Z",
+      "side": 1,
+      "message": "Hmm it\u0027s indeed quite long, and it could be hard to read it in the reason field on Tastboard or Testmon. which is expected to be something like a one-line summary IIRC.\n\nIMO dumping all stdout/stderr is too much for the error, and could also confuse the clustering algorithm with many non-related logs. Here is an example log for broken cros-camera-algo process https://paste.googleplex.com/5203567016148992, and it\u0027s much longer then I would expect from an \"error\" in Tast, or even in Tast logging output.\n\nI would lean to wrap it with a short message and optionally maybe grep the first ERROR line from the log if you want to differentiate init errors.\n\nNot meant to block this CL so keep my CR+2 here, defer the final decision to Tast Owner.",
+      "parentUuid": "bd229d6e_f2c02df3",
+      "range": {
+        "startLine": 209,
+        "startChar": 26,
+        "endLine": 209,
+        "endChar": 37
+      },
+      "revId": "dd22e609763662f4c0e900f1cdabc5b9126c80d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
