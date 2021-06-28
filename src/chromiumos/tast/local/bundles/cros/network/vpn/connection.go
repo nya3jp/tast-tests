@@ -49,6 +49,9 @@ type Config struct {
 	// ranges, see createWireGuardProperties()); if false, the default route
 	// ("0.0.0.0/0") to this unique peer will be used.
 	WGTwoPeers bool
+	// WGAutoGenKey indicates whether letting shill generate the private key for
+	// the client side.
+	WGAutoGenKey bool
 }
 
 // VPN types.
@@ -213,10 +216,16 @@ func (c *Connection) startServer(ctx context.Context) error {
 	case TypeOpenVPN:
 		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
 	case TypeWireGuard:
-		c.Server, err = StartWireGuardServer(ctx, c.config.AuthType == AuthTypePSK, false)
+		clientKey := wgClientPublicKey
+		if c.config.WGAutoGenKey {
+			if clientKey, err = c.generateWireGuardKey(ctx); err != nil {
+				return errors.Wrap(err, "failed to get public key")
+			}
+		}
+		c.Server, err = StartWireGuardServer(ctx, clientKey, c.config.AuthType == AuthTypePSK, false)
 		if err == nil && c.config.WGTwoPeers {
 			// Always sets preshared key for the second peer.
-			c.SecondServer, err = StartWireGuardServer(ctx, true, true)
+			c.SecondServer, err = StartWireGuardServer(ctx, clientKey, true, true)
 		}
 	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
@@ -240,6 +249,33 @@ func (c *Connection) configureService(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// generateWireGuardKey calls configureService() to create an "empty" WireGuard
+// service in shill, and then reads and returns the generated public key from
+// the service properties. The service created in the profile in this step will
+// be overwritten with the full properties after the server is created.
+func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
+	if err := c.configureService(ctx); err != nil {
+		return "", err
+	}
+	properties, err := c.service.GetProperties(ctx)
+	if err != nil {
+		return "", err
+	}
+	provider, err := properties.Get(shillconst.ServicePropertyProvider)
+	if err != nil {
+		return "", err
+	}
+	providerMap, ok := provider.(map[string]interface{})
+	if !ok {
+		return "", errors.New("failed to read Porvider property as map")
+	}
+	publicKey, ok := providerMap["WireGuard.PublicKey"].(string)
+	if !ok {
+		return "", errors.New("failed to read WireGuard.PublicKey property as string")
+	}
+	return publicKey, nil
 }
 
 func (c *Connection) createProperties() (map[string]interface{}, error) {
@@ -350,21 +386,23 @@ func (c *Connection) createOpenVPNProperties() (map[string]interface{}, error) {
 
 func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	var peers []map[string]string
-	peer := map[string]string{
-		"PublicKey":  wgServerPublicKey,
-		"Endpoint":   c.Server.UnderlayIP + ":" + wgServerListenPort,
-		"AllowedIPs": "0.0.0.0/0",
+	if c.Server != nil {
+		peer := map[string]string{
+			"PublicKey":  wgServerPublicKey,
+			"Endpoint":   c.Server.UnderlayIP + ":" + wgServerListenPort,
+			"AllowedIPs": "0.0.0.0/0",
+		}
+		if c.config.AuthType == AuthTypePSK {
+			peer["PresharedKey"] = wgPresharedKey
+		}
+		if c.config.WGTwoPeers {
+			// Do not set "default route" if we have two peers.
+			peer["AllowedIPs"] = wgServerAllowedIPs
+		}
+		peers = append(peers, peer)
 	}
-	if c.config.AuthType == AuthTypePSK {
-		peer["PresharedKey"] = wgPresharedKey
-	}
-	if c.config.WGTwoPeers {
-		// Do not set "default route" if we have two peers.
-		peer["AllowedIPs"] = wgServerAllowedIPs
-	}
-	peers = append(peers, peer)
 
-	if c.config.WGTwoPeers {
+	if c.SecondServer != nil {
 		peers = append(peers, map[string]string{
 			"PublicKey":    wgSecondServerPublicKey,
 			"Endpoint":     c.SecondServer.UnderlayIP + ":" + wgSecondServerListenPort,
@@ -376,16 +414,19 @@ func (c *Connection) createWireGuardProperties() map[string]interface{} {
 	staticIPConfig := map[string]interface{}{
 		"Address": wgClientOverlayIP,
 	}
-	return map[string]interface{}{
-		"Name":                 "test-vpn-wg",
-		"Provider.Host":        "wireguard",
-		"Provider.Type":        "wireguard",
-		"Type":                 "vpn",
-		"WireGuard.PrivateKey": wgClientPrivateKey,
-		"WireGuard.Peers":      peers,
-		"StaticIPConfig":       staticIPConfig,
-		"SaveCredentials":      true, // Not required, just to avoid a WARNING log in shill
+	properties := map[string]interface{}{
+		"Name":            "test-vpn-wg",
+		"Provider.Host":   "wireguard",
+		"Provider.Type":   "wireguard",
+		"Type":            "vpn",
+		"WireGuard.Peers": peers,
+		"StaticIPConfig":  staticIPConfig,
+		"SaveCredentials": true, // Not required, just to avoid a WARNING log in shill
 	}
+	if !c.config.WGAutoGenKey {
+		properties["WireGuard.PrivateKey"] = wgClientPrivateKey
+	}
+	return properties
 }
 
 func (c *Connection) connectService(ctx context.Context) (bool, error) {

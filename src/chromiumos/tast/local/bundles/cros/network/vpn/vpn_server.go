@@ -362,7 +362,7 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 }
 
 // StartWireGuardServer starts a WireGuard server.
-func StartWireGuardServer(ctx context.Context, usePSK, isSecondServer bool) (*Server, error) {
+func StartWireGuardServer(ctx context.Context, clientPublicKey string, usePSK, isSecondServer bool) (*Server, error) {
 	chro := chroot.NewNetworkChroot()
 	server := &Server{
 		netChroot:    chro,
@@ -372,7 +372,7 @@ func StartWireGuardServer(ctx context.Context, usePSK, isSecondServer bool) (*Se
 	}
 
 	configValues := map[string]interface{}{
-		"client_public_key": wgClientPublicKey,
+		"client_public_key": clientPublicKey,
 		"client_ip":         wgClientOverlayIP,
 		"client_ip_prefix":  wgClientOverlayIPPrefix,
 	}
