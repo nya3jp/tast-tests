@@ -41,6 +41,14 @@ type Config struct {
 	OpenVPNCertVeirfyWrongSubject bool
 	OpenVPNCertVerifyWrongCN      bool
 	OpenVPNCertVerifyCNOnly       bool
+
+	// Parameters for a WireGuard connection.
+	// WGTwoPeers indicates whether the connection will use one peer or two
+	// peers. If true, two peers will be created in two separate network
+	// namespace, and the service will use a split routing (for the subnet
+	// ranges, see createWireGuardProperties()); if false, the default route
+	// ("0.0.0.0/0") to this unique peer will be used.
+	WGTwoPeers bool
 }
 
 // VPN types.
@@ -58,7 +66,8 @@ const (
 
 // Connection represents a VPN connection can be used in the test.
 type Connection struct {
-	Server *Server
+	Server       *Server
+	SecondServer *Server
 
 	config    Config
 	manager   *shill.Manager
@@ -204,7 +213,11 @@ func (c *Connection) startServer(ctx context.Context) error {
 	case TypeOpenVPN:
 		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
 	case TypeWireGuard:
-		c.Server, err = StartWireGuardServer(ctx, c.config.AuthType == AuthTypePSK)
+		c.Server, err = StartWireGuardServer(ctx, c.config.AuthType == AuthTypePSK, false)
+		if err == nil && c.config.WGTwoPeers {
+			// Always sets preshared key for the second peer.
+			c.SecondServer, err = StartWireGuardServer(ctx, true, true)
+		}
 	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
 	}
@@ -230,6 +243,19 @@ func (c *Connection) configureService(ctx context.Context) error {
 }
 
 func (c *Connection) createProperties() (map[string]interface{}, error) {
+	switch c.config.Type {
+	case TypeL2TPIPsec:
+		return c.createL2TPIPsecProperties()
+	case TypeOpenVPN:
+		return c.createOpenVPNProperties()
+	case TypeWireGuard:
+		return c.createWireGuardProperties(), nil
+	default:
+		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
+	}
+}
+
+func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error) {
 	var serverAddress string
 	if c.config.UnderlayIPIsOverlayIP {
 		serverAddress = c.Server.OverlayIP
@@ -237,19 +263,6 @@ func (c *Connection) createProperties() (map[string]interface{}, error) {
 		serverAddress = c.Server.UnderlayIP
 	}
 
-	switch c.config.Type {
-	case TypeL2TPIPsec:
-		return c.createL2TPIPsecProperties(serverAddress)
-	case TypeOpenVPN:
-		return c.createOpenVPNProperties(serverAddress)
-	case TypeWireGuard:
-		return c.createWireGuardProperties(serverAddress), nil
-	default:
-		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
-	}
-}
-
-func (c *Connection) createL2TPIPsecProperties(serverAddress string) (map[string]interface{}, error) {
 	properties := map[string]interface{}{
 		"Provider.Host":      serverAddress,
 		"Provider.Type":      "l2tpipsec",
@@ -284,10 +297,10 @@ func (c *Connection) createL2TPIPsecProperties(serverAddress string) (map[string
 	return properties, nil
 }
 
-func (c *Connection) createOpenVPNProperties(serverAddress string) (map[string]interface{}, error) {
+func (c *Connection) createOpenVPNProperties() (map[string]interface{}, error) {
 	properties := map[string]interface{}{
 		"Name":                  "test-vpn-openvpn",
-		"Provider.Host":         serverAddress,
+		"Provider.Host":         c.Server.UnderlayIP,
 		"Provider.Type":         "openvpn",
 		"Type":                  "vpn",
 		"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
@@ -335,15 +348,31 @@ func (c *Connection) createOpenVPNProperties(serverAddress string) (map[string]i
 	return properties, nil
 }
 
-func (c *Connection) createWireGuardProperties(serverAddress string) map[string]interface{} {
+func (c *Connection) createWireGuardProperties() map[string]interface{} {
+	var peers []map[string]string
 	peer := map[string]string{
 		"PublicKey":  wgServerPublicKey,
-		"Endpoint":   serverAddress + ":" + wgServerListenPort,
+		"Endpoint":   c.Server.UnderlayIP + ":" + wgServerListenPort,
 		"AllowedIPs": "0.0.0.0/0",
 	}
 	if c.config.AuthType == AuthTypePSK {
 		peer["PresharedKey"] = wgPresharedKey
 	}
+	if c.config.WGTwoPeers {
+		// Do not set "default route" if we have two peers.
+		peer["AllowedIPs"] = wgServerAllowedIPs
+	}
+	peers = append(peers, peer)
+
+	if c.config.WGTwoPeers {
+		peers = append(peers, map[string]string{
+			"PublicKey":    wgSecondServerPublicKey,
+			"Endpoint":     c.SecondServer.UnderlayIP + ":" + wgSecondServerListenPort,
+			"AllowedIPs":   wgSecondServerAllowedIPs,
+			"PresharedKey": wgPresharedKey,
+		})
+	}
+
 	staticIPConfig := map[string]interface{}{
 		"Address": wgClientOverlayIP,
 	}
@@ -353,7 +382,7 @@ func (c *Connection) createWireGuardProperties(serverAddress string) map[string]
 		"Provider.Type":        "wireguard",
 		"Type":                 "vpn",
 		"WireGuard.PrivateKey": wgClientPrivateKey,
-		"WireGuard.Peers":      []map[string]string{peer},
+		"WireGuard.Peers":      peers,
 		"StaticIPConfig":       staticIPConfig,
 		"SaveCredentials":      true, // Not required, just to avoid a WARNING log in shill
 	}
