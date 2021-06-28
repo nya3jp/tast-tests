@@ -66,6 +66,8 @@ func toggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
 	return ret
 }
 
+// ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
+// Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	dut := s.DUT()
 	servoSpec, _ := s.Var("servo")
@@ -85,25 +87,16 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("Programmer is %s", h.Config.APFlashCCDProgrammer)
 
-	if ccd, err := h.Servo.EnableCCD(ctx); err != nil {
-		s.Fatal("Failed to enable CCD: ", err)
-	} else if !ccd {
-		s.Fatal("Servo with CCD required")
+	if err := h.Servo.RequireCCD(ctx); err != nil {
+		s.Fatal("Servo does not have CCD: ", err)
 	}
 
-	var ccdSerial string
-	if serials, err := h.Servo.GetServoSerials(ctx); err != nil {
+	ccdSerial, err := h.Servo.GetCCDSerial(ctx)
+	if err != nil {
 		s.Fatal("Failed to get servo serials: ", err)
-	} else {
-		var ok bool
-		ccdSerial, ok = serials["ccd"]
-		if !ok {
-			s.Fatal("Could not get ccd serial number in ", serials)
-		}
-		s.Logf("Servo serials: %+v", serials)
 	}
 
-	if err := h.RequireBiosServiceClient(ctx); err != nil {
+	if err = h.RequireBiosServiceClient(ctx); err != nil {
 		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
 
