@@ -31,6 +31,17 @@ func Capture(ctx context.Context, path string) error {
 	return nil
 }
 
+// CaptureWithStderr differs from Capture in that it returns the stderr when
+// capturing a screenshot fails. This is useful for verification on whether turning display
+// on/off is successful by matching with the message, "CRTC not found. Is the screen on?".
+func CaptureWithStderr(ctx context.Context, path string) error {
+	_, stderr, err := testexec.CommandContext(ctx, "screenshot", path).SeparatedOutput()
+	if err != nil {
+		return errors.Wrapf(err, "failed running %q", stderr)
+	}
+	return nil
+}
+
 // CaptureChrome takes a screenshot of the primary display and saves it as a PNG
 // image to the specified file path. It will use Chrome to perform the screen capture.
 func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
