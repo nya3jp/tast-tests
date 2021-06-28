@@ -6,7 +6,6 @@ package firmware
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -24,7 +23,7 @@ func init() {
 		Contacts:     []string{"hc.tsai@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Vars:         []string{"servo", "firmware.hibernate_time"},
-		SoftwareDeps: []string{"crossystem"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Data:         []string{firmware.ConfigFile},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
 		Timeout:      260 * time.Minute, // 4hrs 20mins
@@ -33,8 +32,31 @@ func init() {
 	})
 }
 
+// DeepSleep has been tested to pass with Servo V4, Servo V4 + ServoMicro, Servo V4 + ServoMicro in dual V4 mode.
+// Verified fail on SuzyQ because it charges the battery during the test.
 func DeepSleep(ctx context.Context, s *testing.State) {
+	// requiredBatteryLife is the number of days the battery must last when in hibernate mode.
 	const requiredBatteryLife = 100 * 24 * time.Hour
+	// hibernateDelay is the time after the EC hibernate command where it still writes output.
+	const hibernateDelay = 1 * time.Second
+	// pdRoleDelay is the time from setting the PD role until the battery can see that the charger is attached or detached.
+	const pdRoleDelay = 2 * time.Second
+	// g3PollOptions is the time to wait for the DUT to reach G3 after power off.
+	g3PollOptions := testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 3 * time.Second,
+	}
+	// postWakePollOptions is the time to wait for the battery after waking up from hibernate.
+	postWakePollOptions := testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 250 * time.Millisecond,
+	}
+	// getChargerPollOptions is the time to retry the GetChargerAttached command. Unexpected EC uart logging can make it fail.
+	getChargerPollOptions := testing.PollOptions{
+		Timeout:  2 * time.Second,
+		Interval: 250 * time.Millisecond,
+	}
+
 	h := s.PreValue().(*pre.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
@@ -54,16 +76,42 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	s.Log("Stopping power supply from servo")
-	if err := h.Servo.SetPDRole(ctx, servo.PDRoleSnk); err != nil {
-		s.Fatal("Failed to set servo role: ", err)
+	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
+	if err != nil {
+		s.Fatal("PreferDebugHeader: ", err)
+	}
+
+	hasPDRole, err := h.Servo.HasControl(ctx, string(servo.PDRole))
+	if err != nil {
+		s.Fatal("Could not get pd role: ", err)
+	}
+
+	if hasPDRole {
+		s.Log("Stopping power supply from servo")
+		if err := h.Servo.SetPDRole(ctx, servo.PDRoleSnk); err != nil {
+			s.Fatal("Failed to set servo role: ", err)
+		}
+		testing.Sleep(ctx, pdRoleDelay)
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if attached, err := h.Servo.GetChargerAttached(ctx); err != nil {
+			return err
+		} else if attached {
+			return testing.PollBreak(errors.New("charger is still attached - use Servo V4"))
+		}
+		return nil
+	}, &getChargerPollOptions); err != nil {
+		s.Fatal("Check for charger failed: ", err)
 	}
 
 	s.Log("Pressing power button to make DUT into deep sleep mode")
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 		s.Fatal("Failed to set a KeypressControl by servo: ", err)
 	}
-	h.DUT.Disconnect(ctx)
+	h.DisconnectDUT(ctx)
+	// DUT will probably still booting at end of test.
+	// pre.NormalMode().Close() will cause an extra reboot here if we don't wait.
+	defer h.DUT.WaitConnect(ctx)
 
 	s.Log("Waiting until power state is G3")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -75,10 +123,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 			return errors.New("power state is " + state)
 		}
 		return nil
-	}, &testing.PollOptions{
-		Timeout:  time.Minute,
-		Interval: 3 * time.Second,
-	}); err != nil {
+	}, &g3PollOptions); err != nil {
 		s.Fatal("Failed to wait power state to be G3: ", err)
 	}
 
@@ -96,17 +141,8 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	s.Logf("Battery charge: %dmAh", mahStart)
 
 	s.Log("Hibernating")
-	if err = h.Servo.RunECCommand(ctx, "hibernate"); err != nil {
+	if err = h.Servo.ECHibernate(ctx); err != nil {
 		s.Fatal("Failed to run EC command: ", err)
-	}
-
-	if out, err := h.Servo.RunECCommandGetOutput(ctx, "version", []string{".+"}); err == nil {
-		s.Logf("Got %v expected error", out)
-		s.Fatal("EC is still active after hibernate")
-	} else {
-		if !strings.Contains(err.Error(), "No data was sent from the pty") {
-			s.Fatal("Unexpected EC error: ", err)
-		}
 	}
 
 	s.Log("Sleeping for ", sleep)
@@ -114,14 +150,29 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	s.Log("Waking up DUT with short power key press")
-	if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-		s.Fatal("Failed to press power key: ", err)
+	if hasMicroOrC2D2 {
+		s.Log("Waking up DUT with short power key press")
+		if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			s.Fatal("Failed to press power key: ", err)
+		}
+	} else {
+		// When using CCD, the power_key is emulated with an EC command, which won't work when we are in hibernate.
+		// Cold reset works, because it uses CR50 cmd `ecrst`.
+		s.Log("Resetting power state")
+		if err := h.Servo.SetOnOff(ctx, "cold_reset", servo.On); err != nil {
+			s.Fatal("Failed to enable cold reset: ", err)
+		}
+		if err := h.Servo.SetOnOff(ctx, "cold_reset", servo.Off); err != nil {
+			s.Fatal("Failed to disable cold reset: ", err)
+		}
 	}
 
-	mahEnd, err := h.Servo.GetBatteryChargeMAH(ctx)
-	if err != nil {
-		s.Fatal("Failed to get charge mAh: ", err)
+	mahEnd := 0
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		mahEnd, err = h.Servo.GetBatteryChargeMAH(ctx)
+		return err
+	}, &postWakePollOptions); err != nil {
+		s.Fatal("GetBatteryChargeMAH failed after retries, is DUT off?: ", err)
 	}
 	s.Logf("Battery charge: %dmAh", mahEnd)
 
