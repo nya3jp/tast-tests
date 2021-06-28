@@ -7,6 +7,7 @@ package firmware
 import (
 	"context"
 	"fmt"
+	"sort"
 	"strings"
 	"time"
 
@@ -16,6 +17,7 @@ import (
 	commonbios "chromiumos/tast/common/firmware/bios"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/bios"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
@@ -23,14 +25,16 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        ServoGBBFlags,
-		Desc:        "Verifies GBB flags state can be obtained and manipulated via the servo interface",
-		Timeout:     8 * time.Minute,
-		Contacts:    []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
-		Data:        []string{firmware.ConfigFile},
-		Attr:        []string{"group:firmware", "firmware_experimental"},
-		Vars:        []string{"servo"},
-		ServiceDeps: []string{"tast.cros.firmware.BiosService"},
+		Func:         ServoGBBFlags,
+		Desc:         "Verifies GBB flags state can be obtained and manipulated via the servo interface",
+		Timeout:      8 * time.Minute,
+		Contacts:     []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
+		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Data:         []string{firmware.ConfigFile},
+		Pre:          pre.NormalMode(),
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		Vars:         []string{"servo"},
 	})
 }
 
@@ -40,11 +44,11 @@ func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, command
 		parts := strings.SplitN(cmd, ":", 2)
 		if len(parts) == 1 {
 			if _, err := svo.GetString(ctx, servo.StringControl(cmd)); err != nil {
-				s.Fatalf("Could not read servo string %s: %v", cmd, err)
+				s.Errorf("Could not read servo string %s: %v", cmd, err)
 			}
 		} else {
 			if err := svo.SetString(ctx, servo.StringControl(parts[0]), parts[1]); err != nil {
-				s.Fatalf("Could not read servo string %s: %v", cmd, err)
+				s.Errorf("Could not set servo string %s: %v", cmd, err)
 			}
 		}
 	}
@@ -69,10 +73,7 @@ func toggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
 // ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
-	dut := s.DUT()
-	servoSpec, _ := s.Var("servo")
-	h := firmware.NewHelper(dut, s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
-	defer h.Close(ctx)
+	h := s.PreValue().(*pre.Value).Helper
 
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to create firmware config: ", err)
@@ -107,13 +108,23 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Current GBB flags: ", old.Set)
 
+	testing.Sleep(ctx, 1)
+	s.Log("Reading fw image over CCD")
+	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPreCommands)
 	programmer := fmt.Sprintf(h.Config.APFlashCCDProgrammer, ccdSerial)
 	img, err := bios.NewRemoteImage(ctx, h.ServoProxy, programmer, commonbios.GBBImageSection)
 	if err != nil {
-		s.Fatal("Could not read firmware: ", err)
+		img, err = bios.NewRemoteImage(ctx, h.ServoProxy, programmer, commonbios.GBBImageSection)
+		if err != nil {
+			s.Error("Could not read firmware: ", err)
+		}
 	}
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPostCommands)
+	if s.HasError() {
+		return
+	}
+
 	cf, sf, err := img.GetGBBFlags()
 	if err != nil {
 		s.Fatal("Could not get GBB flags: ", err)
@@ -121,13 +132,17 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	ret := pb.GBBFlagsState{Clear: cf, Set: sf}
 	s.Log("CDD GBB flags: ", ret.Set)
 
-	if !cmp.Equal(old.Set, ret.Set) {
-		s.Fatal("GBB flags from CDD do not match SSH'd GBB flags ", cmp.Diff(old.Set, ret.Set))
+	sortSlice := cmp.Transformer("Sort", func(in []pb.GBBFlag) []pb.GBBFlag {
+		out := append([]pb.GBBFlag(nil), in...)
+		sort.Slice(out, func(i, j int) bool { return out[i] < out[j] })
+		return out
+	})
+	if !cmp.Equal(old.Set, ret.Set, sortSlice) {
+		s.Fatal("GBB flags from CDD do not match SSH'd GBB flags ", cmp.Diff(old.Set, ret.Set, sortSlice))
 	}
 	// Flashrom restarts the dut, so wait for it to boot
-	h.CloseRPCConnection(ctx)
 	s.Log("Waiting for reboot")
-	if err := dut.WaitConnect(ctx); err != nil {
+	if err := h.DUT.WaitConnect(ctx); err != nil {
 		s.Fatalf("Failed to connect to DUT: %s", err)
 	}
 
@@ -138,15 +153,22 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	if err := img.ClearAndSetGBBFlags(cf, sf); err != nil {
 		s.Fatal("Failed to toggle GBB flag in image: ", err)
 	}
+
+	s.Log("Writing fw image over CCD")
+	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPreCommands)
+	testing.Sleep(ctx, 1)
 	if err = bios.WriteRemoteFlashrom(ctx, h.ServoProxy, programmer, img, commonbios.GBBImageSection); err != nil {
-		s.Fatal("count not write flashrom: ", err)
+		s.Error("count not write flashrom: ", err)
 	}
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPostCommands)
+	if s.HasError() {
+		return
+	}
+
 	// Flashrom restarts the dut, so wait for it to boot
-	h.CloseRPCConnection(ctx)
 	s.Log("Waiting for reboot")
-	if err := dut.WaitConnect(ctx); err != nil {
+	if err := h.DUT.WaitConnect(ctx); err != nil {
 		s.Fatalf("Failed to connect to DUT: %s", err)
 	}
 
@@ -161,7 +183,7 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Updated GBB flags: ", newFlags.Set)
 	expected := pb.GBBFlagsState{Clear: cf, Set: sf}
-	if !cmp.Equal(expected.Set, newFlags.Set) {
-		s.Fatal("Updated GBB flags do not match SSH'd GBB flags ", cmp.Diff(expected.Set, newFlags.Set))
+	if !cmp.Equal(expected.Set, newFlags.Set, sortSlice) {
+		s.Fatal("Updated GBB flags do not match SSH'd GBB flags ", cmp.Diff(expected.Set, newFlags.Set, sortSlice))
 	}
 }
