@@ -194,19 +194,25 @@ var (
 	}
 )
 
-// Constants that used by WireGuard server
+// Constants that used by WireGuard server. Keys are generated randomly using
+// wireguard-tools, only for test usages.
 const (
-	// Keys are generated randomly using wireguard-tools, only for test usages.
-	wgClientPrivateKey      = "8Ez9VkVl2JL+OhrLZvV2FXsRJTqtBpykhErNef5dzns="
-	wgClientPublicKey       = "dN8f5XplOXpNDP1m9b1V3/AVuOogbw+HckGisfEAphA="
-	wgServerPrivateKey      = "kKhUZZYELpnWFXZmHKvze5kMJ4UfViHo0aacwx9VSXo="
-	wgServerPublicKey       = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
-	wgPresharedKey          = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
-	wgServerOverlayIP       = "10.12.14.1"
-	wgServerListenPort      = "12345"
-	wgClientOverlayIP       = "10.12.14.2"
-	wgClientOverlayIPPrefix = "32"
-	wgConfigFile            = "tmp/wg.conf"
+	wgClientPrivateKey       = "8Ez9VkVl2JL+OhrLZvV2FXsRJTqtBpykhErNef5dzns="
+	wgClientPublicKey        = "dN8f5XplOXpNDP1m9b1V3/AVuOogbw+HckGisfEAphA="
+	wgClientOverlayIP        = "10.12.14.2"
+	wgClientOverlayIPPrefix  = "32"
+	wgServerPrivateKey       = "kKhUZZYELpnWFXZmHKvze5kMJ4UfViHo0aacwx9VSXo="
+	wgServerPublicKey        = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
+	wgServerOverlayIP        = "10.12.14.1"
+	wgServerAllowedIPs       = "10.12.0.0/16"
+	wgServerListenPort       = "12345"
+	wgSecondServerPrivateKey = "MKLi0UPHP09PwZDH0EPVd2mMTeGi98NDR8dfkzPuQHs="
+	wgSecondServerPublicKey  = "wJXMGS2jhLPy4x75yev7oh92OwjHFcSWio4U/pWLYzg="
+	wgSecondServerOverlayIP  = "192.168.100.1"
+	wgSecondServerAllowedIPs = "192.168.100.0/24"
+	wgSecondServerListenPort = "54321"
+	wgPresharedKey           = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
+	wgConfigFile             = "tmp/wg.conf"
 )
 
 var (
@@ -356,7 +362,7 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 }
 
 // StartWireGuardServer starts a WireGuard server.
-func StartWireGuardServer(ctx context.Context, usePSK bool) (*Server, error) {
+func StartWireGuardServer(ctx context.Context, usePSK, isSecondServer bool) (*Server, error) {
 	chro := chroot.NewNetworkChroot()
 	server := &Server{
 		netChroot:    chro,
@@ -365,30 +371,35 @@ func StartWireGuardServer(ctx context.Context, usePSK bool) (*Server, error) {
 		logFiles:     []string{}, // No log for WireGuard server.
 	}
 
-	chro.AddConfigTemplates(wgConfigs)
 	configValues := map[string]interface{}{
-		"server_private_key": wgServerPrivateKey,
-		"server_listen_port": wgServerListenPort,
-		"client_public_key":  wgClientPublicKey,
-		"client_ip":          wgClientOverlayIP,
-		"client_ip_prefix":   wgClientOverlayIPPrefix,
+		"client_public_key": wgClientPublicKey,
+		"client_ip":         wgClientOverlayIP,
+		"client_ip_prefix":  wgClientOverlayIPPrefix,
 	}
 	if usePSK {
 		configValues["preshared_key"] = wgPresharedKey
 	}
+	if isSecondServer {
+		configValues["server_private_key"] = wgSecondServerPrivateKey
+		configValues["server_listen_port"] = wgSecondServerListenPort
+		server.OverlayIP = wgSecondServerOverlayIP
+	} else {
+		configValues["server_private_key"] = wgServerPrivateKey
+		configValues["server_listen_port"] = wgServerListenPort
+		server.OverlayIP = wgServerOverlayIP
+	}
 
+	chro.AddConfigTemplates(wgConfigs)
 	chro.AddConfigValues(configValues)
 	chro.AddStartupCommand("ip link add wg1 type wireguard")
 	chro.AddStartupCommand("wg setconf wg1 /" + wgConfigFile)
-	chro.AddStartupCommand("ip addr add dev wg1 " + wgServerOverlayIP)
+	chro.AddStartupCommand("ip addr add dev wg1 " + server.OverlayIP)
 	chro.AddStartupCommand("ip link set dev wg1 up")
 
-	underlayIP, err := chro.Startup(ctx)
-	if err != nil {
+	var err error
+	if server.UnderlayIP, err = chro.Startup(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start WireGuard server")
 	}
-	server.UnderlayIP = underlayIP
-	server.OverlayIP = wgServerOverlayIP
 	return server, nil
 }
 
