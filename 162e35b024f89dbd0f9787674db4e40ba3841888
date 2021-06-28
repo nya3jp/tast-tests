@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad8fc42_215fca38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-28T03:33:45Z",
+      "side": 1,
+      "message": "IIRC it\u0027s expected to use GTest.Run() to run gtest in Tast, which will parse the test results. Can we use it and still get an error message that can be\nrecognized by testmon?",
+      "revId": "162e35b024f89dbd0f9787674db4e40ba3841888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ab9b2e_19b5dc2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-06-28T03:33:45Z",
+      "side": 1,
+      "message": "nit: merge this with next line |if err :\u003d ...; err !\u003d nil {|",
+      "revId": "162e35b024f89dbd0f9787674db4e40ba3841888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
