@@ -75,3 +75,29 @@ func TurnOnDisplay(ctx context.Context) error {
 	}
 	return nil
 }
+
+// CurrentBrightness returns current screen brightness by calling PowerManager.GetScreenBrightnessPercent D-Bus method.
+func (m *PowerManager) CurrentBrightness(ctx context.Context) (float64, error) {
+	call := m.obj.CallWithContext(ctx, dbusInterface+".GetScreenBrightnessPercent", 0)
+	if call.Err != nil {
+		return 0.0, errors.Wrap(call.Err, "failed to call dbus method GetScreenBrightnessPercent")
+	}
+
+	var brightness float64
+	if err := call.Store(&brightness); err != nil {
+		return 0.0, errors.Wrap(err, "failed to store dbus method call response into float64 pointer")
+	}
+	return brightness, nil
+}
+
+// SetBrightness updates the screen brightness to the specified percentage by calling
+// PowerManager.SetScreenBrightness D-Bus method.
+func (m *PowerManager) SetBrightness(ctx context.Context, percentage float64) error {
+	if err := dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".SetScreenBrightness",
+		&pmpb.SetBacklightBrightnessRequest{
+			Percent: &percentage,
+		}, nil); err != nil {
+		return errors.Wrapf(err, "failed to set screen brightness to %.2f %%", percentage)
+	}
+	return nil
+}
