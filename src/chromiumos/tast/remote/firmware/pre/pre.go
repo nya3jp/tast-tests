@@ -103,7 +103,7 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 	i.initHelper(ctx, s)
 
 	if err := i.v.Helper.EnsureDUTBooted(ctx); err != nil {
-		s.Fatal("DUT is offline before test start: ", err)
+		s.Fatal("DUT is offline after test end: ", err)
 	}
 
 	if err := i.restoreGBBFlags(ctx); err != nil {
@@ -229,6 +229,7 @@ func (i *impl) setupGBBFlags(ctx context.Context) error {
 		return errors.Wrap(err, "failed to require BiosServiceClient")
 	}
 
+	testing.ContextLog(ctx, "Get current GBB flags")
 	curr, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "getting current GBB Flags failed")
@@ -236,7 +237,7 @@ func (i *impl) setupGBBFlags(ctx context.Context) error {
 
 	// This is the first Prepare invocation, save the starting GBB flags.
 	if i.origGBBFlags == nil {
-		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this precondition", *curr)
+		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this precondition", curr.Set)
 		i.origGBBFlags = curr
 	}
 
@@ -266,6 +267,7 @@ func (i *impl) restoreGBBFlags(ctx context.Context) error {
 		return errors.Wrap(err, "failed to require BiosServiceClient")
 	}
 
+	testing.ContextLog(ctx, "Get current GBB flags")
 	curr, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "getting current GBB Flags failed")
@@ -310,6 +312,7 @@ func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) erro
 		if err != nil {
 			return err
 		}
+		testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
 		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
 			return err
 		}
