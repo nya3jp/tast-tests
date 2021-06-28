@@ -50,6 +50,23 @@
       "message": "+2 for Tast Review",
       "revId": "80bc9503bf5dd92e2437c7d37039935aa8460e37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22793e5_7472d279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-06-28T01:56:34Z",
+      "side": 1,
+      "message": "Thank you for the reviews!",
+      "revId": "80bc9503bf5dd92e2437c7d37039935aa8460e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
