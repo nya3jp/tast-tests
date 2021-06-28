@@ -139,7 +139,12 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 
 func worker(ctx context.Context, d *dut.DUT, binDir, repro string) error {
 	localPath := filepath.Join(binDir, repro)
-	remotePath := filepath.Join("/usr/local/tmp", repro)
+	remoteDir := filepath.Join("/usr/local/tmp", repro)
+	if err := syzutils.MkdirRemote(ctx, d, remoteDir); err != nil {
+		return errors.Wrapf(err, "unable to create temp repro dir for %v", repro)
+	}
+	defer syzutils.RmdirRemote(ctx, d, remoteDir)
+	remotePath := filepath.Join(remoteDir, repro)
 	if err := syzutils.CopyRepro(ctx, d, localPath, remotePath); err != nil {
 		return errors.Wrapf(err, "failed to copy repro %v", repro)
 	}
