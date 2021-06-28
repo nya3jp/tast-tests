@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06150cb0_56c7f615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-06-28T22:34:22Z",
+      "side": 1,
+      "message": "Hi Shuhei and Nicholas! Please take a look and tell me what you think. I verified that the test passes against both a reven image and a betty image.\n\nJoe",
+      "revId": "233c40ff99b659b9c54fc28c6aceb2d8d580c042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
