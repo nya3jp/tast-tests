@@ -1,0 +1,30 @@
+syntax="proto3";
+package tast.cros.power;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/power";
+
+// PowerService provides RPC methods to charge and drain DUT as per the requirements.
+service PowerService {
+    rpc BatteryCharge(BatteryChargeRequest) returns (google.protobuf.Empty) {};
+
+    rpc BatteryDrain(BatteryDrainRequest) returns (google.protobuf.Empty) {};
+}
+
+message BatteryChargeRequest {
+    int32 timeout = 1;
+    // Final target percentage
+    float percent_target_charge = 2;
+    // Percentage charge to add additional to current capacity
+    float percent_charge_to_add = 3;
+    // If set, use charge_full_design rather than charge_full for calculations. charge_full
+    // considers wear-state of battery while charge_full_design representing ideal design state.
+    bool  use_design_charge_capacity = 4;
+}
+
+message BatteryDrainRequest {
+    int32 timeout = 1;
+    // Final DUT battery percentage after battery drain
+    float drain_to_percent = 2;
+}
