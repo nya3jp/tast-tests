@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d544cd_0621bbff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-06-28T20:27:33Z",
+      "side": 1,
+      "message": "Hi Kamil, since mukai@ has been recently removed from owner\u0027s list, can you help providing owner approval for this? ",
+      "revId": "bab491f3a88e8b03ab3f918504356b15e25e7eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
