@@ -16,6 +16,24 @@
       "message": "Hello Jeremy and Greg,\n\nPer one of the earlier discussions, I\u0027ve uploaded this test script as a --wip CL, as we\u0027re continuing to search for the correct API to detect power menu at the sign-in page.\n\nWe\u0027ve been looking into using chrome.LoadSigninProfileExtension(), as demonstrated in \"platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go\". However, it seems that to use this extension, we\u0027d need a manifest key. We saw a link for this key in CL 2172687, but were led to an empty page. Could you kindly suggest whether our approach is on the right track?\n\nAlong with the test script, two additional GRPC services were created to run screen-capture and screen-lock. We\u0027d welcome further discussion on potential improvements and modifications to meet the test\u0027s standards. ",
       "revId": "31fc159bc7d9006ad2bb33db71b9c9f179c4de16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73be6814_e1640469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-28T19:07:28Z",
+      "side": 1,
+      "message": "I think to get access to that key, you need a google.com account and to be in the group chrome-tvc-autogroup in http://groupman, which should be possible, but I don\u0027t know the process.",
+      "parentUuid": "16458ef0_e7a83336",
+      "revId": "31fc159bc7d9006ad2bb33db71b9c9f179c4de16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
