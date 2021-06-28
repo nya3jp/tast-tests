@@ -44,6 +44,16 @@ const (
 	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
 	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
 	DevicePropertyCellularSIMSlotInfo        = "Cellular.SIMSlotInfo"
+	DevicePropertyCellularSIMLockStatus      = "Cellular.SIMLockStatus"
+
+	// Keys into the dictionaries exposed as properties
+	DevicePropertyCellularSIMLockStatusLockType    = "LockType"
+	DevicePropertyCellularSIMLockStatusLockEnabled = "LockEnabled"
+	DevicePropertyCellularSIMLockStatusRetriesLeft = "RetriesLeft"
+
+	// Valid values taken by properties exposed by shill.
+	DevicePropertyValueSIMLockTypePIN = "sim-pin"
+	DevicePropertyValueSIMLockTypePUK = "sim-puk"
 
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
@@ -271,4 +281,6 @@ const (
 const (
 	ErrorMatchingServiceNotFound = "Matching service was not found"
 	ErrorModemNotStarted         = "Modem not started"
+	ErrorIncorrectPin            = "IncorrectPin"
+	ErrorPinBlocked              = "PinBlocked"
 )

@@ -7,14 +7,18 @@ package cellular
 
 import (
 	"context"
+	"math/rand"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -56,7 +60,10 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 			return nil, errors.Wrap(err, "unable to enable Cellular")
 		}
 	}
-
+	// Disable pin lock with default pin and puk with dut puk if locked.
+	if err := helper.ClearSIMLock(ctx, mmconst.DefaultSimPin, ""); err != nil {
+		return nil, errors.Wrap(err, "failed to unlock dut with default pin")
+	}
 	if err := helper.CaptureDBusLogs(ctx); err != nil {
 		return nil, errors.Wrap(err, "unable to start DBus log capture")
 	}
@@ -411,4 +418,305 @@ func (h *Helper) CaptureDBusLogs(ctx context.Context) error {
 	}()
 
 	return nil
+}
+
+// ResetModem calls Device.ResetModem(cellular) and returns true if the reset succeeded, or an error otherwise.
+func (h *Helper) ResetModem(ctx context.Context) (time.Duration, error) {
+	ctx, st := timing.Start(ctx, "Helper.Enable")
+	defer st.End()
+
+	start := time.Now()
+
+	if err := h.Device.Reset(ctx); err != nil {
+		return time.Since(start), errors.Wrap(err, "reset modem failed")
+	}
+
+	testing.ContextLog(ctx, "Reset modem called")
+
+	if err := h.WaitForEnabledState(ctx, true); err != nil {
+		return time.Since(start), err
+	}
+	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
+		return time.Since(start), errors.Wrap(err, "expected powered to become true, got false")
+	}
+	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout); err != nil {
+		return time.Since(start), errors.Wrap(err, "expected scanning to become false, got true")
+	}
+
+	return time.Since(start), nil
+}
+
+// IsSimLockEnabled returns lockenabled value.
+func (h *Helper) IsSimLockEnabled(ctx context.Context) bool {
+	lockStatus, _ := h.GetCellularSIMLockStatus(ctx)
+	lockEnabled := lockStatus[shillconst.DevicePropertyCellularSIMLockStatusLockEnabled]
+	testing.ContextLog(ctx, "lock enabled status: ", lockEnabled)
+	return lockEnabled.(bool)
+}
+
+// IsSimPinLocked returns true if locktype value is 'sim-pin'
+// locktype value is 'sim-pin2' for QC and 'none' when not locked.
+func (h *Helper) IsSimPinLocked(ctx context.Context) bool {
+	lockStatus, err := h.GetCellularSIMLockStatus(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "getcellularsimlockstatus -pin: ", err.Error())
+	}
+
+	lockType := lockStatus[shillconst.DevicePropertyCellularSIMLockStatusLockType]
+	lock := ""
+	if lockType != nil {
+		testing.ContextLog(ctx, "lock type value: ", lockType.(string))
+		lock = lockType.(string)
+	}
+
+	return lock == shillconst.DevicePropertyValueSIMLockTypePIN
+}
+
+// IsSimPukLocked returns true if locktype value is 'sim-puk'
+// locktype value is 'sim-pin2' for QC and value 'none' when not locked.
+func (h *Helper) IsSimPukLocked(ctx context.Context) bool {
+	lockStatus, err := h.GetCellularSIMLockStatus(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "getcellularsimlockstatus -puk: ", err.Error())
+	}
+
+	lockType := lockStatus[shillconst.DevicePropertyCellularSIMLockStatusLockType]
+	lock := ""
+	if lockType != nil {
+		testing.ContextLog(ctx, "puk locktype: ", lockType.(string))
+		lock = lockType.(string)
+	}
+
+	return lock == shillconst.DevicePropertyValueSIMLockTypePUK
+}
+
+// GetRetriesLeft helps to get modem property UnlockRetries value.
+func (h *Helper) GetRetriesLeft(ctx context.Context) (int32, error) {
+	lockStatus, err := h.GetCellularSIMLockStatus(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "getcellularsimlockstatus failed reading retriesleft")
+	}
+
+	retriesLeft := lockStatus[shillconst.DevicePropertyCellularSIMLockStatusRetriesLeft]
+	if retriesLeft == nil {
+		return 0, errors.New("failed to get retriesLeft")
+	}
+	if retriesLeft.(int32) < 0 {
+		return 0, errors.New("malformed retriesLeft property")
+	}
+	testing.ContextLog(ctx, "retriesleft value : ", retriesLeft)
+
+	return retriesLeft.(int32), nil
+}
+
+// In the case of [service].Error.PinError, the error message gives details:
+// [interface].PinRequired
+// [interface].PinBlocked
+// [interface].IncorrectPin
+
+// UnlockDut is to unlock sim pin before every test.
+func (h *Helper) UnlockDut(ctx context.Context, currentPin, currentPuk string) error {
+	// Check if pin enabled and locked/set.
+	if h.IsSimLockEnabled(ctx) || h.IsSimPinLocked(ctx) {
+		// Disable pin.
+		if err := h.Device.RequirePin(ctx, currentPin, false); err != nil {
+			return errors.Wrap(err, "failed to disable lock")
+		}
+	}
+
+	return nil
+}
+
+// ClearSIMLock clears puk, pin lock if any of them enabled and locked.
+func (h *Helper) ClearSIMLock(ctx context.Context, pin, puk string) error {
+
+	if !h.IsSimLockEnabled(ctx) {
+		return nil
+	}
+
+	// Clear puk lock if puk locked which is unusual.
+	if h.IsSimPukLocked(ctx) {
+		if len(puk) == 0 {
+			modem, err := modemmanager.NewModemWithSim(ctx)
+			if err != nil {
+				return errors.Wrap(err, "could not find mm dbus object with a valid sim")
+			}
+			puk, err = modem.GetActiveSimPuk(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get active sim puk in clearsimlock")
+			}
+		}
+		if err := h.Device.UnblockPUK(ctx, puk, pin); err != nil {
+			return errors.Wrap(err, "failed to UnblockPUK")
+		}
+	}
+
+	// Clear pin lock, this can also happen after puk unlocked.
+	if h.IsSimPinLocked(ctx) {
+		errStr := ""
+		if err := h.Device.EnterPin(ctx, pin); err != nil {
+			errStr = err.Error()
+		}
+		if !strings.Contains(errStr, shillconst.ErrorIncorrectPin) {
+			// Do max unlock tries and do puk unlock.
+			if err := h.PukLockSim(ctx, pin); err != nil {
+				return errors.Wrap(err, "failed to PukLockSim with pin in ClearSIMLock")
+			}
+			if err := h.Device.UnblockPUK(ctx, puk, pin); err != nil {
+				return errors.Wrap(err, "failed to clear with UnblockPUK")
+			}
+			if err := h.Device.EnterPin(ctx, pin); err != nil {
+				return errors.Wrap(err, "failed to clear pin lock with EnterPin")
+			}
+		}
+	}
+
+	// Disable sim lock.
+	if err := h.Device.RequirePin(ctx, pin, false); err != nil {
+		return errors.Wrap(err, "failed to clear pin lock with RequirePin")
+	}
+
+	testing.ContextLog(ctx, "clearsimlock disabled pin is: ", pin)
+	h.ResetModem(ctx)
+	testing.ContextLog(ctx, "reset modem after clearing sim pin or puk lock")
+
+	return nil
+}
+
+// GetCellularSIMLockStatus dict gets Cellular.SIMLockStatus dictionary from shill properties.
+func (h *Helper) GetCellularSIMLockStatus(ctx context.Context) (map[string]interface{}, error) {
+	// Gather Shill Device properties.
+	deviceProps, err := h.Device.GetShillProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device properties")
+	}
+
+	// Verify Device.SimSlots.
+	info, err := deviceProps.Get(shillconst.DevicePropertyCellularSIMLockStatus)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device cellularsimlockstatus property")
+	}
+
+	simLockStatus := make(map[string]interface{})
+	simLockStatus, ok := info.(map[string]interface{})
+	if !ok {
+		return nil, errors.Wrap(err, "invalid format for device cellularsimlockstatus")
+	}
+
+	testing.ContextLog(ctx, "simlockstatus: ", simLockStatus)
+
+	return simLockStatus, nil
+}
+
+// Helper functions for SIM lock/unlock.
+
+// random generates a random integer in given range to get 4 digit pin.
+func random(min, max int) int {
+	return rand.Intn(max-min) + min
+}
+
+// BadPin obtains a pin that does not match the valid sim-pin.
+func (h *Helper) BadPin(ctx context.Context, currentPin string) (string, error) {
+	randomPin := random(1000, 9999)
+	pin, _ := strconv.Atoi(currentPin)
+	if randomPin == pin {
+		randomPin++
+	}
+
+	return strconv.Itoa(randomPin), nil
+}
+
+// BadPuk obtains a puk that does not match the valid sim-puk.
+func (h *Helper) BadPuk(ctx context.Context, currentPuk string) (string, error) {
+	randomPuk := random(10000000, 99999999)
+	puk, _ := strconv.Atoi(currentPuk)
+	if randomPuk == puk {
+		randomPuk++
+	}
+
+	return strconv.Itoa(randomPuk), nil
+}
+
+// PinLockSim is a helper method to pin-lock a sim, assuming nothing bad happens.
+func (h *Helper) PinLockSim(ctx context.Context, newPin string) error {
+	if h.IsSimPinLocked(ctx) {
+		return nil
+	}
+	if err := h.Device.RequirePin(ctx, newPin, true); err != nil {
+		return errors.Wrap(err, "failed to enable lock with new pin")
+	}
+
+	return nil
+}
+
+// PukLockSim is a helper method to puk-lock a SIM, assuming nothing bad happens.
+func (h *Helper) PukLockSim(ctx context.Context, currentPin string) error {
+	if err := h.PinLockSim(ctx, currentPin); err != nil {
+		return errors.Wrap(err, "failed at pinlocksim")
+	}
+
+	// Reset modem to reflect if puk locked.
+	if _, err := h.ResetModem(ctx); err != nil {
+		return errors.Wrap(err, "reset modem failed after pin lock set")
+	}
+
+	locked := h.IsSimPinLocked(ctx)
+	if locked == true {
+		testing.ContextLog(ctx, "pinlocked with: ", currentPin)
+	}
+	locked = false
+	retriesCnt := 0
+	for retriesCnt < 4 {
+		err := h.EnterIncorrectPin(ctx, currentPin)
+		if err.Error() == "PIN Blocked Error" {
+			return errors.Wrap(err, "sim could not get blocked")
+		}
+		retriesCnt++
+	}
+
+	locked = h.IsSimPukLocked(ctx)
+	if !locked {
+		return errors.New("expected sim to be puk-locked")
+	}
+
+	return nil
+}
+
+// EnterIncorrectPin gets incorrect pin and tries to unlock.
+func (h *Helper) EnterIncorrectPin(ctx context.Context, currentPin string) error {
+	badPin, err := h.BadPin(ctx, currentPin)
+	testing.ContextLog(ctx, "Created badpin is: ", badPin)
+	if err != nil {
+		return errors.Wrap(err, "failed to generate bad pin")
+	}
+
+	if err = h.Device.EnterPin(ctx, badPin); err == nil {
+		return errors.Wrap(err, "failed to send bad pin: "+badPin)
+	}
+
+	errorIncorrectPin := errors.New("org.freedesktop.ModemManager1.Sim.Error.IncorrectPin")
+	if errors.Is(err, errorIncorrectPin) {
+		return nil
+	}
+
+	return errors.Wrap(err, "unusual pin error")
+}
+
+// EnterIncorrectPuk generates bad puk and tries to unlock.
+func (h *Helper) EnterIncorrectPuk(ctx context.Context, currentPuk string) error {
+	badPuk, err := h.BadPuk(ctx, currentPuk)
+	if err != nil {
+		return errors.Wrap(err, "failed to generate bad puk")
+	}
+
+	if err = h.Device.UnblockPUK(ctx, badPuk, mmconst.DefaultSimPin); err == nil {
+		return errors.Wrap(err, "failed to send bad puk: "+badPuk)
+	}
+
+	errorIncorrectPuk := errors.New("org.freedesktop.ModemManager1.Sim.Error.IncorrectPuk")
+	if errors.Is(err, errorIncorrectPuk) {
+		return nil
+	}
+
+	return errors.Wrap(err, "unusual puk error")
 }
