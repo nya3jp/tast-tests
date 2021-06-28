@@ -138,6 +138,24 @@ func (c *Cmd) Output(opts ...RunOption) ([]byte, error) {
 	return buf.Bytes(), err
 }
 
+// OutputStderr runs an external command, waits for its completion and returns
+// stderr output of the command.
+func (c *Cmd) OutputStderr(opts ...RunOption) ([]byte, error) {
+	if c.Stderr != nil {
+		return nil, errStderrSet
+	}
+
+	var buf bytes.Buffer
+	c.Stderr = &buf
+
+	if err := c.Start(); err != nil {
+		return nil, err
+	}
+
+	err := c.Wait(opts...)
+	return buf.Bytes(), err
+}
+
 // CombinedOutput runs an external command, waits for its completion and
 // returns stdout/stderr output of the command.
 //

@@ -1,0 +1,35 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// PowerMenuService provides the ability to check if the power menu is present.
+service PowerMenuService {
+  // NewChrome starts a Chrome session and processes the sign-in request.
+  // CloseChrome must be called later to clean up the associated resources.
+  rpc NewChrome (NewChromeRequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // IsPowerMenuPresent returns a bool indicating the presence of the power menu.
+  rpc IsPowerMenuPresent (google.protobuf.Empty) returns (IsPowerMenuPresentResponse) {}
+}
+
+message NewChromeRequest {
+  // If login is false, a session starts without logging in.
+  bool login = 1;
+  // If non-empty, the key is used to load sign-in profile extension.
+  string key = 2;
+}
+
+message IsPowerMenuPresentResponse {
+  bool is_menu_present = 1;
+}
