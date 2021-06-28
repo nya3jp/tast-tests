@@ -54,6 +54,32 @@ func (m *PowerManager) HandleWakeNotification(ctx context.Context) error {
 	return dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".HandleWakeNotification", nil, nil)
 }
 
+// GetScreenBrightnessPercent returns current screen brightness by calling PowerManager.GetScreenBrightnessPercent D-Bus method.
+func (m *PowerManager) GetScreenBrightnessPercent(ctx context.Context) (float64, error) {
+	call := m.obj.CallWithContext(ctx, dbusInterface+".GetScreenBrightnessPercent", 0)
+	if call.Err != nil {
+		return 0.0, errors.Wrap(call.Err, "failed to call GetScreenBrightnessPercent D-Bus method")
+	}
+
+	var brightness float64
+	if err := call.Store(&brightness); err != nil {
+		return 0.0, errors.Wrap(err, "failed to store GetScreenBrightnessPercent D-Bus method call response into float64 pointer")
+	}
+	return brightness, nil
+}
+
+// SetScreenBrightness updates the screen brightness to the specified percentage by calling
+// PowerManager.SetScreenBrightness D-Bus method.
+func (m *PowerManager) SetScreenBrightness(ctx context.Context, percentage float64) error {
+	if err := dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".SetScreenBrightness",
+		&pmpb.SetBacklightBrightnessRequest{
+			Percent: &percentage,
+		}, nil); err != nil {
+		return errors.Wrap(err, "failed to call SetScreenBrightness D-Bus method")
+	}
+	return nil
+}
+
 // TurnOnDisplay turns on a display by sending a HandleWakeNotification to PowerManager
 // to light up the display.
 func TurnOnDisplay(ctx context.Context) error {
