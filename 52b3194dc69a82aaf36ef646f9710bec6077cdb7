@@ -41,6 +41,52 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f832e805_05224d23",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-28T22:35:19Z",
+      "side": 1,
+      "message": "is \"scrim\" unique enough? Could you scope the class name search to be within our VK? I can imagine other pieces of UI having a scrim as well.",
+      "range": {
+        "startLine": 405,
+        "startChar": 50,
+        "endLine": 405,
+        "endChar": 55
+      },
+      "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab7c36c_bb287a30",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-06-28T22:35:19Z",
+      "side": 1,
+      "message": "nit: should this be moved into a constant so it can be reused?",
+      "range": {
+        "startLine": 410,
+        "startChar": 15,
+        "endLine": 410,
+        "endChar": 44
+      },
+      "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "23cab7ae_9081d89f",
