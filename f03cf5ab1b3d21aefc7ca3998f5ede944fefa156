@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8820e93d_17f90dec",
+        "filename": "src/chromiumos/tast/common/global/vars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-28T09:54:55Z",
+      "side": 1,
+      "message": "I\u0027d like you to be more aware of layering structure of Tast, or in other words, what to provide in the framework (platform/tast) vs. non-framework (platform/tast-tests).\n\nIn a nutshell,\n\n- If a feature can be applied for all OSes, it should be provided in the framework.\n- If a feature can be applied for all Chrome OS tests but not other OSes, it should be provided in the bundlemain package (common to all CrOS test bundles).\n\nType safety is useful for all OSes, so it should be provided by the framework.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "f03cf5ab1b3d21aefc7ca3998f5ede944fefa156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
