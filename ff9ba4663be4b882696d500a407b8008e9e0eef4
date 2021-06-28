@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2018adf9_c6eb7e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-28T22:58:07Z",
+      "side": 1,
+      "message": "I think these are all related to the parameterization: new files for test data and refactoring these four tests to provide examples of using them as shown in the design doc.\n\nProbably vkb.go can be separated out, but there isn\u0027t much there.\n\nDo you have any idea to split them?",
+      "parentUuid": "f25f2b7d_16d409b1",
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "444835e5_79b34a33",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-28T11:31:01Z",
       "side": 1,
       "message": "US en and UK en can be different language. I am not quite sure.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ce736b_63f7d5eb",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-28T22:58:07Z",
+      "side": 1,
+      "message": "This language code is for handwriting and voice indexing. See `language-based handwriting` and `language-based voice dictation` in this spreadsheet: (https://docs.google.com/spreadsheets/d/1PMA4GExxDo-B5LOqFDJqCV1gh-eZKT1JNFardnj35xA/edit?resourcekey\u003d0-kMei1mB1pLIW8LybAj2jzA#gid\u003d0) referred by Bao-Duy.",
+      "parentUuid": "444835e5_79b34a33",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86e18be1_2eced5ad",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-28T22:58:07Z",
+      "side": 1,
+      "message": "Added a comment to it. This function does not constantly check the existence of a node. It simple does nothing is the node doesn\u0027t exist. \n\nLeftClick also doesn\u0027t wait for a node to appear, it only waits for a node to be stable. If a node doesn\u0027t exist from the beginning, it raises an error.\n\nBoth functions click a node if it exists, but if it doesn\u0027t, LeftClick returns an error and leftClickIfExist returns nil.",
+      "parentUuid": "d31a711a_ff0ae250",
+      "range": {
+        "startLine": 429,
+        "startChar": 38,
+        "endLine": 429,
+        "endChar": 54
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add36b55_9de8531c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 3
@@ -77,6 +143,30 @@
       "writtenOn": "2021-06-28T11:31:01Z",
       "side": 1,
       "message": "If the text is \u0027hello world\u0027, then it takes 2s+ to clear the input field. I still do not think use backspace is not a nice way to clear field. Btw, this function only works on keyboard and handwriting panel.",
+      "range": {
+        "startLine": 457,
+        "startChar": 31,
+        "endLine": 457,
+        "endChar": 34
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59bf380_2d8692ab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-28T22:58:07Z",
+      "side": 1,
+      "message": "Clearing the input field using js code can introduce flakiness. Using this function in voice tests, it requires to switch back to keyboard layout before calling it (commented). Unless we have a resetState function for VK, this is not many other ways to do it. Comparing to the time on retries to reduce flakiness in some other scenarios, I think the time overhead here should be fine.",
+      "parentUuid": "add36b55_9de8531c",
       "range": {
         "startLine": 457,
         "startChar": 31,
