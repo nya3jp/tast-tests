@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05f7745_b0df90ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-29T07:19:18Z",
+      "side": 1,
+      "message": "I create a CL for add a conversion layer from |req *cameraboxpb.RunTestRequest| to |hal3.TestConfig| as crrev.com/c/2993943.\nInstead of judge test type and run per test conversion here, can you move this part into |hal3_service_test_config.go| and create a face detection test specific |ServiceTestConfigGenerator| for it.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "98e09ea7ddc3b034694f062db02b323c1f7277a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
