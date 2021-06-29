@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83c9f85_7e816546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T01:49:37Z",
+      "side": 1,
+      "message": "Personally I do not suggest to use First(). It is better to find an unique identifier.",
+      "range": {
+        "startLine": 115,
+        "startChar": 57,
+        "endLine": 115,
+        "endChar": 62
+      },
+      "revId": "38b7dd36609dd667e09df768864fc5c6a5448b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
