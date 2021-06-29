@@ -39,6 +39,52 @@
       },
       "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18c4925_0f5ca5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T02:17:43Z",
+      "side": 1,
+      "message": "I wonder this is a general arc++ dump function, it should be moved to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/ or http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/\n\n@nya do you want to suggest a location for this function? It is a good function though.",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac610345_3ecbdfe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T02:17:43Z",
+      "side": 1,
+      "message": "To call this function, an ARC should be already running. So it is better to pass in arc instance instead of New inside the function.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
