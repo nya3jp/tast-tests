@@ -16,6 +16,24 @@
       "message": "What is the reason to short this?",
       "revId": "364106e282db6bed861991fc4e679fc6e5ef5b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4984822b_93abc38b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-29T16:17:53Z",
+      "side": 1,
+      "message": "Now I have edited the commit message to explain.",
+      "parentUuid": "22f318e6_5ffdc3c0",
+      "revId": "364106e282db6bed861991fc4e679fc6e5ef5b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
