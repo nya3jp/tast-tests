@@ -159,6 +159,24 @@
       "parentUuid": "562c0e54_55c9048b",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41479b79_44b24d1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-29T18:15:05Z",
+      "side": 1,
+      "message": "Tried \"no_arc_x86\": \"!(amd64 \u0026\u0026 cheets_user)\" in  local_test_runner/main.go file.\nStill it isn\u0027t skipping test on Caroline and Nasher360. I think it better to use hwdep.SkipOnModel to skip on these two devices, \"caroline\", \"nasher360.",
+      "parentUuid": "a8a212b7_b42ef638",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
