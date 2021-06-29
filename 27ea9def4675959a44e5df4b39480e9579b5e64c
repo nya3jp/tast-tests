@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "161b69df_60561b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-29T18:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cdfc500_45e9861d",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "27ea9def4675959a44e5df4b39480e9579b5e64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d6e585_0eadefca",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-25T14:57:30Z",
       "side": 1,
       "message": "micro nit: why not just time.Minute?",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "27ea9def4675959a44e5df4b39480e9579b5e64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888674e9_dbb849fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-06-29T18:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d6e585_0eadefca",
       "range": {
         "startLine": 205,
         "startChar": 17,
