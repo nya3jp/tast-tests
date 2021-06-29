@@ -60,15 +60,9 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that the counter is 0 right after resetting.
-	info, err := tpmManager.GetDAInfo(ctx)
+	err = hwseclocal.CheckDAIsZero(ctx, tpmManager)
 	if err != nil {
-		s.Fatal("Failed to get dictionary attack info: ", err)
-	}
-	if info.Counter != 0 {
-		s.Fatalf("Incorrect counter, got %d expect 0", info.Counter)
-	}
-	if info.InEffect {
-		s.Fatal("Lockout in effect after reset")
+		s.Fatal("Failed to check DA counter is zero: ", err)
 	}
 
 	const testNVRAMIndex = "0xADF00D"
@@ -103,14 +97,8 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter, should be 0, and lockout shouldn't be in effect.
-	info, err = tpmManager.GetDAInfo(ctx)
+	err = hwseclocal.CheckDAIsZero(ctx, tpmManager)
 	if err != nil {
-		s.Fatal("Failed to get dictionary attack info: ", err)
-	}
-	if info.Counter != 0 {
-		s.Fatalf("Incorrect counter, got %d expect 0", info.Counter)
-	}
-	if info.InEffect {
-		s.Fatal("Lockout in effect after reset")
+		s.Fatal("Failed to check DA counter is zero: ", err)
 	}
 }
