@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8315a781_36ecbe36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "My first round of comments. Will PTAL once mine and others\u0027 first-round comments have been addressed. Only reviewing from e14s viewpoint. No scrutiny of Tast-specific and Go-specific stuff, as I\u0027m afraid I don\u0027t have the expertise.",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973c8529_2cd438f0",
@@ -43,6 +60,122 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5fdb6ae_80edabba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "- Language code is \"zh\", not \"cn\".\n- Prefer ISO codes \"en-US\",  \"zh-Hans\", \"zh-CN\", \"zh-Hans-CN\", etc.\n\n(btw, this \"hello\" happens to be the same Simplified vs Traditional! -- so [nit, for future] need a test case that distinguish Simplified vs Traditional... maybe our handwriting accept both concurrently, maybe not)",
+      "parentUuid": "973c8529_2cd438f0",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3dc8bf_75e93f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "language code is \"ja\" not \"jp\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68fa396e_47b18671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "nit, for \"future\": better with a test case that has a mix of hiragana, katakana and kanji.",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa33f8e_bae4e801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/inputs_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "rename this to reflect \"character-based\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e8413d_07d0ae43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/inputs_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "nit: \"LocationKeySeq\" -- \"key\" is still an important thing to mention; this isn\u0027t just any random locations, but discretised into \"keys\".",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b53bf81_1c7fe5a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 6
@@ -60,6 +193,23 @@
         "endLine": 24,
         "endChar": 61
       },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251d5530_72103f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "many of these should all have LocationSeq, here and all below. If data not ready, should still have entries but with TODOs.",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0da949cf_c3e27c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "This is a known issue (https://crbug.com/1160527) but low-pri. Only kinda aesthetic issue from product viewpoint. This character never ends up in final Korean text.\n\nAgree with John. Printable characters shouldn\u0027t need to go through escape sequence. They\u0027re both printable, just different characters.",
+      "parentUuid": "77f0b1f8_34489de3",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "430458fc_3ff3539a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 6
@@ -160,6 +334,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0207d23f_2484e5cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vioce_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "typo in file name \"voice\"",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c5791f2_a60c2f2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vioce_message.go",
         "patchSetId": 6
@@ -171,6 +362,30 @@
       "writtenOn": "2021-06-29T01:30:45Z",
       "side": 1,
       "message": "nit: I think we were having an issue around Cantonese / Mandarin using the wrong voice model at some point - not sure if that is fixed @tranbaoduy  may know more",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8727e9c2_ce29f6c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vioce_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "Not fixed yet. Parked at PM. This test data is Mandarin for a Mandarin-based input method, I think, so unrelated.",
+      "parentUuid": "8c5791f2_a60c2f2a",
       "range": {
         "startLine": 32,
         "startChar": 5,
@@ -268,6 +483,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddc2fe89_d6353214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "nit: This name is misleading. The input method supports both Hangeul (aka. Hangul) and Hanja (that\u0027s not Hangul).",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea80e0ea_f47cfcb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 6
@@ -296,6 +534,52 @@
       "writtenOn": "2021-06-29T01:16:47Z",
       "side": 1,
       "message": "Language is probably a better name for this. A language code is generally a two-letter code (en, de, es, etc.), but I see you\u0027re using full names for the go representation.",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e95acd_90e8d52d",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "Use ISO codes. Chinese language isn\u0027t \"CN\" but \"zh\". Japanese language isn\u0027t \"JP\" but \"ja\". \"Simplified\" is the script \"Hans\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4d1fea_44ee7b58",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "This mapping only makes total sense for handwriting and voice, and only makes partial sense for keyboard-related stuff (PK, VK).",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 43
+      },
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -348,6 +632,29 @@
       "writtenOn": "2021-06-29T01:14:12Z",
       "side": 1,
       "message": "If you\u0027re defining a variable and only using it once, and it\u0027s simple like this, I\u0027d just inline the variable. Same for the two methods below",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecef4df0_4d5a1aab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-06-29T02:22:51Z",
+      "side": 1,
+      "message": "this is called \"Docked\" mode (as opposed to \"Floating\")",
+      "range": {
+        "startLine": 444,
+        "startChar": 38,
+        "endLine": 444,
+        "endChar": 54
+      },
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
