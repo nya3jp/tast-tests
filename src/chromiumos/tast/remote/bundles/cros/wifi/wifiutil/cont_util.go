@@ -24,7 +24,7 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/legacyrouter"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -41,7 +41,7 @@ type ContParam struct {
 // ContTest hods all varibles to be accessible for the whole continuity test.
 type ContTest struct {
 	tf          *wificell.TestFixture
-	r           router.Legacy
+	r           legacyrouter.Legacy
 	clientMAC   string
 	br          [2]string
 	veth        [2]string
@@ -399,6 +399,6 @@ func (ct *ContTest) ContinuityRound(ctx context.Context, s *testing.State, round
 }
 
 // Router returns current router object.
-func (ct *ContTest) Router() router.Legacy {
+func (ct *ContTest) Router() legacyrouter.Legacy {
 	return ct.r
 }
