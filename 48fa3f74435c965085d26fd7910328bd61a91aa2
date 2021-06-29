@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7393bb86_b08a8973",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/integrated_u2f.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T22:40:35Z",
+      "side": 1,
+      "message": "firmware_smoke is really for testing FAFT on TAST infrastructure, like the servo or boot mode switcher. Partners don\u0027t run the firmware_smoke tests.\n\nWhy would you run this in both firmware_cr50 and firmware_smoke?",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "48fa3f74435c965085d26fd7910328bd61a91aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
