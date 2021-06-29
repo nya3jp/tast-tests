@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa780d8c_2bcfae27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-06-29T17:26:53Z",
+      "side": 1,
+      "message": "Thanks for the quick turn around, Greg!",
+      "revId": "16e9f95ac4062c12b3ad566169c707b6eb109316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
