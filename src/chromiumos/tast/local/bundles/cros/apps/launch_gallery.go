@@ -42,7 +42,9 @@ func init() {
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
-				Name:              "stable",
+				Name: "stable",
+				// Test is flaking on betty-release b/190742769.
+				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
