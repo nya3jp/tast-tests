@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40be1c05_2c21ca1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-06-29T03:32:10Z",
+      "side": 1,
+      "message": "nit: could you remove the empty line?",
+      "revId": "998566923c6626541890a645d3a31b8dfcc4c850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6dee36e_7e565b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-06-29T03:32:10Z",
+      "side": 1,
+      "message": "nit: how about inlining it?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "998566923c6626541890a645d3a31b8dfcc4c850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
