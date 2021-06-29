@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ab96fe5_16592e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-29T02:52:18Z",
+      "side": 1,
+      "message": "\u003e Do you expect to add more options to StartWireGuardServer()?\nCurrently no, the next patch is the last one to change the interface if StartWireGuardServer() in my plan.\nI did a quick search in the code base for tast and it seems that \"two bools in the arguments of a function\" is not rare, so maybe we can leave it as-is if no one has a strong opinion?",
+      "parentUuid": "d190e3d0_9f051361",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 61
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61ebb705_9362f1d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "writtenOn": "2021-06-28T13:33:32Z",
       "side": 1,
       "message": "This could maybe be a parameter as well (to check ping issued by a user falling into the SYSTEM category for example).",
+      "range": {
+        "startLine": 235,
+        "startChar": 57,
+        "endLine": 235,
+        "endChar": 66
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d612238a_f1b7ec48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-29T02:52:18Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I think we might need to add more tests for vpn (or the routing systems) by generating traffic with different users (and/or different protocols). I will think about it a bit more. For now I\u0027d like to keep it as-is since we don\u0027t need to change this parameter now.",
+      "parentUuid": "61ebb705_9362f1d4",
       "range": {
         "startLine": 235,
         "startChar": 57,
