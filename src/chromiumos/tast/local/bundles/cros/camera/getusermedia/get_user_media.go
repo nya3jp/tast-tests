@@ -145,7 +145,8 @@ func RunGetUserMedia(ctx context.Context, s *testing.State, cr ChromeInterface,
 	}
 
 	var results cameraResults
-	RunTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
+	var logs []string
+	RunTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results, &logs)
 
 	s.Logf("Results: %+v", results)
 
@@ -165,6 +166,12 @@ func RunGetUserMedia(ctx context.Context, s *testing.State, cr ChromeInterface,
 			if err := result.FrameStats.CheckBrokenFrames(); err != nil {
 				s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
 			}
+		}
+	}
+
+	if s.HasError() {
+		for _, log := range logs {
+			s.Log(log)
 		}
 	}
 

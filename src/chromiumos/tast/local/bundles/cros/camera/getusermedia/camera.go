@@ -20,7 +20,7 @@ import (
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
 func RunTest(ctx context.Context, s *testing.State, cr ChromeInterface,
-	htmlName, entryPoint string, results interface{}) {
+	htmlName, entryPoint string, results, logs interface{}) {
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -65,6 +65,10 @@ func RunTest(ctx context.Context, s *testing.State, cr ChromeInterface,
 
 	if err := conn.Eval(ctx, "getResults()", results); err != nil {
 		s.Fatal("Failed to get results from JS: ", err)
+	}
+
+	if err := conn.Eval(ctx, "getLogs()", logs); err != nil {
+		s.Fatal("Failed to get logs from JS: ", err)
 	}
 }
 
