@@ -46,7 +46,7 @@ func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanu
 	defer reader.Close()
 
 	// Restart to trigger cleanup.
-	if err := upstart.RestartJob(ctx, "cryptohomed", "VMODULE_ARG=*=1", "CRYPTOHOMED_ARGS="+cleanupThresholdsArgs); err != nil {
+	if err := upstart.RestartJob(ctx, "cryptohomed", upstart.WithArg("VMODULE_ARG", "*=1"), upstart.WithArg("CRYPTOHOMED_ARGS", cleanupThresholdsArgs)); err != nil {
 		return errors.Wrap(err, "failed to restart cryptohomed")
 	}
 

@@ -106,7 +106,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 				ss.Fatal("Failed to restart anomaly detector: ", err)
 			}
 
-			if err := upstart.StartJob(sctx, failingServiceName, fmt.Sprintf("%s=1", tt.envVar)); err != nil {
+			if err := upstart.StartJob(sctx, failingServiceName, upstart.WithArg(tt.envVar, "1")); err != nil {
 				// Ignore error; it's expected.
 				// (upstart exits nonzero if a job fails in pre-start)
 			}
