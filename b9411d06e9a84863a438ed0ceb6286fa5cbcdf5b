@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e84a28_241641a6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-29T08:43:50Z",
+      "side": 1,
+      "message": "I think it\u0027s easier to read by merging targetFilter and isTargetExcepted. Just like:\n\n func shouldCloseOnReset(t *Target) bool {\n   // Chrome OS Virtual Keyboard is permanently cached in Chrome Session to speed up loading.\n   if t.Type \u003d\u003d \"other\" \u0026\u0026 t.Title \u003d\u003d \"Chrome OS Virtual Keyboard\" {\n     return false\n   }\n   return t.Type \u003d\u003d \"page\" || t.Type \u003d\u003d \"app\" || t.Type \u003d\u003d \"other\"\n }",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 13
+      },
+      "revId": "b9411d06e9a84863a438ed0ceb6286fa5cbcdf5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
