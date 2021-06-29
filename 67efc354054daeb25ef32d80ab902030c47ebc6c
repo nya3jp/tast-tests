@@ -16,6 +16,621 @@
       "message": "LGTM",
       "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c765d9_95d9b844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I did a first pass.\n\nI think we need to involve Frank to discuss logistics of actually running this in the typec lab (what is a CSwitch, how many do we need to get, how do they need to be set up etc.). Frank may have more questions beyond this.",
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f627542_ed3263fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "nit: This seems extraneous. You can instead change L37 to:\n\"TbtHotplugUnplug performs the following: ...\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 105
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632fd4ae_d604e7aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Capitalize to be consistent with other comments.",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ae7eca_17f904c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a comment here, the function name is self-explanatory.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31de90db_bcad9d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Ditto from L86",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "601b564f_0b88242a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731ae5e3_7ece8e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7159a26c_dba0055b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56863c3f_987865fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 37
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d54efdf_1e35ed08",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Please add a comment explaining what a \"cswitch\" is, any documentation, URLs etc.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3878211_f0a018b3",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e7bd55_bfd0d2f6",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I think the code makes this self-evident, so the comment can be dropped.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129293fa_89ae7dc8",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Perhaps better worded as:\n\"CloseSession closes the created session and on success it returns nil\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 86
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a389e78_23b9dd56",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 12
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ceb07e_3a8f26f9",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8897e30_112a11be",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to mention this in the function documentation.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 60
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea388f3_05dddc49",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 120,
+        "startChar": 44,
+        "endLine": 120,
+        "endChar": 45
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977c0cd1_d5f1787a",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "here and elsewhere, I would suggest camelcase for parameter names.",
+      "range": {
+        "startLine": 124,
+        "startChar": 37,
+        "endLine": 124,
+        "endChar": 47
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39339c84_2627c9c6",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Please declare this closer to where it\u0027s actually being used.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc806b6d_d1d10d0a",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Here and elsewhere, no caps when wrapping error strings.",
+      "range": {
+        "startLine": 139,
+        "startChar": 32,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c03c76_2cd0e8c5",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I think this is used often enough that you can factor it out into a separate function.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 49
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62683e95_e59633c7",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I think this is all a lot more complex than it needs to be:\n- ExecCommand and RunCommand can likely be combined into 1 function if you follow the above statement and just extract the result-status directly.\n- Don\u0027t export ExecCommand if it\u0027s not being used outside of this file.",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 16
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f87e4a_6a10c02d",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Can\u0027t we make the function signatures similar? Why does enable need a \"cswitch\" argument, but for DisableCSwitchPort it is hard coded to 0?\n\nOne can also just combine the two into 1 function:\n\n func ToggleCSwitchPort(ctx context.Context, sessionId string, CSwitch string, domain string, on bool) error {\n ....\n or something similar",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 1
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f7323c_14920f48",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "I think it is better to just return the tx and rx speed and let the caller do the comparisons.",
+      "range": {
+        "startLine": 284,
+        "startChar": 42,
+        "endLine": 284,
+        "endChar": 65
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4283d1f_321a3b98",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "same here: let the caller do the comparisons. this function should just return the version string.",
+      "range": {
+        "startLine": 316,
+        "startChar": 44,
+        "endLine": 316,
+        "endChar": 65
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c656f755_b8a6c9a9",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "This should return bool, error. I think that would be clearly than trying to overload error with the result.",
+      "range": {
+        "startLine": 336,
+        "startChar": 66,
+        "endLine": 336,
+        "endChar": 71
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93530fdc_0f43e326",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T00:24:11Z",
+      "side": 1,
+      "message": "Same as elsewhere: just return the generation string and let the caller do the comparisons.",
+      "range": {
+        "startLine": 361,
+        "startChar": 43,
+        "endLine": 361,
+        "endChar": 63
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
