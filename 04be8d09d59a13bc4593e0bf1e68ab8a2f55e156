@@ -20,6 +20,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "973c8529_2cd438f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-29T01:30:45Z",
+      "side": 1,
+      "message": "nit: add simplified to filename",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b53bf81_1c7fe5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-29T01:30:45Z",
+      "side": 1,
+      "message": "nit: maybe a comment about why not all tests have locationSeq",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5899c72e_9014c91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-29T01:30:45Z",
+      "side": 1,
+      "message": "super nit: can we avoid mix of unicode char literals and \\uNNNN - use a common style?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430458fc_3ff3539a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-29T01:30:45Z",
+      "side": 1,
+      "message": "I think this should just use the number input method above? no need for duplicate",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 87
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5791f2_a60c2f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vioce_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-06-29T01:30:45Z",
+      "side": 1,
+      "message": "nit: I think we were having an issue around Cantonese / Mandarin using the wrong voice model at some point - not sure if that is fixed @tranbaoduy  may know more",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72fe4cdf_abf4ebeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 6
