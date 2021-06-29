@@ -16,6 +16,23 @@
       "message": "Hi David, this CL is ready for review.",
       "revId": "12cdd71a5ad6ee82845f8e94e52595de921914ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcc7c0b_ec2cafb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-29T20:51:08Z",
+      "side": 1,
+      "message": "Hi Tast Owners, this CL is ready for review.",
+      "revId": "12cdd71a5ad6ee82845f8e94e52595de921914ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
