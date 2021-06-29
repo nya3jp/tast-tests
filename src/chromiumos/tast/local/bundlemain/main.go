@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -197,6 +198,18 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 	}
 }
 
+func runHookLocal(ctx context.Context) (func(context.Context) error, error) {
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+
+	// Set the upstart log priority to info, which enables upstart job state
+	// transition logs.
+	if err := upstart.SetLogPriority(ctx, "info"); err != nil {
+		return nil, err
+	}
+	return nil, nil
+}
+
 // beforeDownload is called before download external data files.
 func beforeDownload(ctx context.Context) {
 	ctx, cancel := context.WithTimeout(ctx, 15*time.Second)
@@ -213,6 +226,7 @@ func RunLocal() {
 	os.Exit(bundle.LocalDefault(bundle.Delegate{
 		Ready:          ready.Wait,
 		TestHook:       testHookLocal,
+		RunHook:        runHookLocal,
 		BeforeDownload: beforeDownload,
 	}))
 }
