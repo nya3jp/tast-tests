@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca12f58b_b95a34c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Nothing Great. Just a repository kind of thing to collect all the closers and close it during cleanup with a shortened context. Instead of playing with 2 ctx objects.\nIf you suggest, I am totally fine without it.",
+      "parentUuid": "aef70c3a_8ad88994",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "306288ab_7569feab",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "hm... you actually trying to stop \"powerd\" which you will use next in the code to get power status updates. How did it work for you when you test it?",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a052183_5cba46c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "I got this suggestions from here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/client/cros/service_stopper.py;l\u003d36",
+      "parentUuid": "306288ab_7569feab",
       "range": {
         "startLine": 53,
         "startChar": 31,
@@ -158,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2be86783_dabb57c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Definitely. Extra 32 bit over the wire doesn\u0027t matter in 5G era:)",
+      "parentUuid": "85db1cfc_d8126d6a",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "234bba6e_44afa9d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -169,6 +241,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "nit: i think it\u0027s good for debugging, but IMO it adds too much info to the logs",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 126
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "680d390b_3cb20d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "234bba6e_44afa9d4",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -271,6 +367,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f05f9a70_ce0bbb3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01e7088c_6a8a41bb",
+      "range": {
+        "startLine": 154,
+        "startChar": 7,
+        "endLine": 154,
+        "endChar": 17
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb2cf4fc_454de518",
@@ -284,6 +404,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "Do we actually need methods to drain and charge or we just need to have battery at some target level? Also how do you know which method to call, I mean is there a way to get current battery charge level?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8051559_d3d92025",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Yes, Instead of waiting for the response of an extra rpc to query the battery level. We could just expose a single rpc and 2 local methods BatteryCharge and Battery Drain.",
+      "parentUuid": "bb2cf4fc_454de518",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -317,6 +461,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fb89a8_727240eb",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aac55325_531a048e",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e00d97c3_6a13976f",
@@ -330,6 +498,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "Probably if you want to use this field you need somehow to know current battery charge level, which is not available IIUC.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbabc49e_2c15d499",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-06-29T12:29:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e00d97c3_6a13976f",
       "range": {
         "startLine": 20,
         "startChar": 10,
