@@ -16,6 +16,29 @@
       "message": "Could you launch Lacros from Shelf?",
       "revId": "4bedfd16a1827cb661b403f3099ee3d820d7dcc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc751c7_a0dc0f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_lacros_downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-06-29T00:42:47Z",
+      "side": 1,
+      "message": "FYI this may be now fixed on M93. reference: b/187795035",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 122
+      },
+      "revId": "4bedfd16a1827cb661b403f3099ee3d820d7dcc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
