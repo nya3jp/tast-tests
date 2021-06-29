@@ -49,7 +49,7 @@ func ModemmanagerSlotSwitch(ctx context.Context, s *testing.State) {
 	if err = setPrimarySimSlot(ctx, newslot); err != nil {
 		s.Fatal("Switch failed in 1st run: ", err)
 	}
-	if err = pollModem(ctx, modem.String()); err != nil {
+	if _, err = modemmanager.PollModem(ctx, modem.String()); err != nil {
 		s.Fatal("Poll failed 1st run: ", err)
 	}
 	slot, modem, err := checkModemSimProperties(ctx)
@@ -65,7 +65,7 @@ func ModemmanagerSlotSwitch(ctx context.Context, s *testing.State) {
 	if err = setPrimarySimSlot(ctx, primary); err != nil {
 		s.Fatal("Switch failed in 2nd run: ", err)
 	}
-	if err = pollModem(ctx, modem.String()); err != nil {
+	if _, err = modemmanager.PollModem(ctx, modem.String()); err != nil {
 		s.Fatal("Poll failed in 2nd run: ", err)
 	}
 	slot, modem, err = checkModemSimProperties(ctx)
@@ -86,26 +86,8 @@ func setPrimarySimSlot(ctx context.Context, primary uint32) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create Modem")
 	}
-	if modem.Call(ctx, "SetPrimarySimSlot", primary); err != nil {
-		return errors.Wrap(err, "failed at primary SIM Slot switch")
-	}
-	return nil
-}
-
-// pollModem waits for modem to load after every slot switch operation
-func pollModem(ctx context.Context, oldModem string) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newModem, err := modemmanager.NewModem(ctx)
-		if err != nil {
-			return err
-		}
-		if oldModem == newModem.String() {
-			return errors.New("Old modem still exists")
-		}
-		testing.ContextLogf(ctx, "Modem paths are Old: %s, New: %s ", oldModem, newModem)
-		return nil
-	}, &testing.PollOptions{Timeout: mmconst.ModemPollTime}); err != nil {
-		return errors.Wrap(err, "modem or its properties not up after switching SIM slot")
+	if c := modem.Call(ctx, "SetPrimarySimSlot", primary); c.Err != nil {
+		return errors.Wrap(c.Err, "failed while switching primary slots")
 	}
 	return nil
 }
