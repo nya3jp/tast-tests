@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1b59ae_6311298a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T02:08:17Z",
+      "side": 1,
+      "message": "@Yu-Hsuan, can you please review cras changes?",
+      "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a6417f_057b1504",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T02:08:17Z",
+      "side": 1,
+      "message": "Can you attach this function to (c *Cras)? \n(c *Cras)WaitForDeviceUntil(ctx context.Context, condition func(*CrasNode) bool)\n\nAlso WaitForDevice can be refactored to use this condition check.\n\n@Yu-Hsuan your thought?",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
