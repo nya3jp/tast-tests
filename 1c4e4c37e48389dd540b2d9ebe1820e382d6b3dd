@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9ef1eb6_3d782ba4",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-29T06:53:38Z",
+      "side": 1,
+      "message": "I chatted with Hidehiko offline. To summarize our points:\n\n- I don\u0027t want mixture of string-style API and key/value-style API\n- Hidehiko doesn\u0027t want string-style API\n\nSo we decided to rewrite existing API (StartJob/RestartJob) with key/value-style API (b/192321435). Xinglong, I will create a CL so could you please rebase your CL on top of it? I\u0027m sorry but I will try my best to deliver it at earliest time.",
+      "parentUuid": "18de3c87_081b08d3",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de5270f7_a4db13b9",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 4
