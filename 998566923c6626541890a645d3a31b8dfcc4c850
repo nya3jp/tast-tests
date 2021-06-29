@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc9caca_8adb9ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-06-29T07:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40be1c05_2c21ca1d",
+      "revId": "998566923c6626541890a645d3a31b8dfcc4c850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6dee36e_7e565b8c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-29T03:32:10Z",
       "side": 1,
       "message": "nit: how about inlining it?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "998566923c6626541890a645d3a31b8dfcc4c850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558b2315_b12b70ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-06-29T07:22:46Z",
+      "side": 1,
+      "message": "Do you mean moving it to inside the if?\n\nI think it would look a bit ugly. Mind to much if I leave it as it is?",
+      "parentUuid": "b6dee36e_7e565b8c",
       "range": {
         "startLine": 242,
         "startChar": 1,
