@@ -161,7 +161,7 @@ func (h *APIface) Stop(ctx context.Context) error {
 	defer st.End()
 	r, ok := h.router.(router.LegacyOpenWrtShared)
 	if !ok {
-		return errors.Errorf("router device of type %v does not have legacy/openwrt support", h.router.GetRouterType())
+		return errors.Errorf("router device of type %v does not have legacy/openwrt support", h.router.RouterType())
 	}
 	if h.stopped {
 		return nil
@@ -193,7 +193,7 @@ func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) er
 func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	r, ok := h.router.(router.SupportDHCP)
 	if !ok {
-		return errors.Errorf("router device of type %v does not have dhcpcd support", h.router.GetRouterType())
+		return errors.Errorf("router device of type %v does not have dhcpcd support", h.router.RouterType())
 	}
 	if h.dhcpd != nil {
 		if err := r.StopDHCP(ctx, h.dhcpd); err != nil {
