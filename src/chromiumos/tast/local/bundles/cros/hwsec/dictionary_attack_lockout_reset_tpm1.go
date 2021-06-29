@@ -34,10 +34,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm1"},
-		// Note that this test is currently disabled.
-		// TODO(b/181291715): Determine if we still want this test, or we want a more accurate measure of the effectiveness
-		// of reactive trigger of DA reset, for the AUTH2FAIL error is not tested here, and it strongly rely the knowledge
-		// of what error of a failed auth command results in.
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
