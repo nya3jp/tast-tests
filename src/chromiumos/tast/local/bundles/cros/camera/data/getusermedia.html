@@ -12,8 +12,15 @@ let isTestDone = false;
 let enumerateDevicesError = '';
 const globalErrors = [];
 const results = [];
+const logs = [];
+
+function addLog(msg) {
+  const curTime = new Date().toISOString();
+  logs.push(`[${curTime}] ${msg}`);
+}
 
 function testNextResolution(durationSec) {
+  addLog('testNextResolution');
   const nextResolution = resolutions.shift();
   if (nextResolution === undefined) {
     reportTestDone();
@@ -32,6 +39,10 @@ function getResults() {
   return results;
 }
 
+function getLogs() {
+  return logs;
+}
+
 function resolutionMatchesIndependentOfRotation(aWidth, aHeight,
     bWidth, bHeight) {
   return (aWidth === bWidth && aHeight === bHeight) ||
@@ -44,6 +55,7 @@ function saveResult(resolution, verdict) {
 
 // Check if a video input exists
 function checkVideoInput() {
+  addLog('checkVideoInput');
   navigator.mediaDevices.enumerateDevices()
       .then(findVideoInput)
       .catch(gotEnumerateDevicesError);
@@ -51,6 +63,7 @@ function checkVideoInput() {
 }
 
 function findVideoInput(devices) {
+  addLog('findVideoInput');
   isVideoInputFound = devices.some((dev) => dev.kind == 'videoinput');
 }
 
@@ -95,6 +108,7 @@ function CameraTest(resolution, durationSec) {
 CameraTest.prototype = {
 
   start: function() {
+    addLog(`CameraTest.start: ${this.resolution[0]}x${this.resolution[1]}`);
     this.localVideo.addEventListener('play',
         this.startCheckingVideoFrames.bind(this), false);
 
@@ -104,6 +118,7 @@ CameraTest.prototype = {
   },
 
   gotLocalStream: function(stream) {
+    addLog('CameraTest.gotLocalStream');
     this.localStream = stream;
     this.localVideo.srcObject = stream;
     setTimeout(() => {
@@ -118,6 +133,7 @@ CameraTest.prototype = {
   },
 
   startCheckingVideoFrames: function() {
+    addLog('CameraTest.startCheckingVideoFrames');
     if (!resolutionMatchesIndependentOfRotation(this.localVideo.videoWidth,
         this.localVideo.videoHeight, this.resolution[0], this.resolution[1])) {
       this.results.errors.push('resolution', 'Got ' +
@@ -149,6 +165,7 @@ CameraTest.prototype = {
   },
 
   stop: function() {
+    addLog('CameraTest.start');
     clearInterval(this.videoFrameChecker);
     saveResult(this.resolution, this.results);
     this.localStream.getTracks().forEach((track) => track.stop());
