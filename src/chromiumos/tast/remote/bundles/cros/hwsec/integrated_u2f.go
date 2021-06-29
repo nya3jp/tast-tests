@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/example"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -48,6 +49,32 @@ func init() {
 		}, {
 			Name:      "firmware_smoke",
 			ExtraAttr: []string{"firmware_smoke"},
+			ExtraHardwareDeps: hwdep.D(
+				// This test is only available with servo micro.
+				// Please refer to doc https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/docs/faft-how-to-run-doc.md
+				hwdep.Model(
+					"arcada",
+					"blacktiplte",
+					"careena",
+					"ekko",
+					"eve",
+					"garg360",
+					"kasumi",
+					"kasumi360",
+					"kench",
+					"leona",
+					"nautilus",
+					"nautiluslte",
+					"sand",
+					"snappy",
+					"sparky",
+					"syndra",
+					"teemo",
+					"treeya",
+					"treeya360",
+					"vorticon",
+				),
+			),
 		}},
 	})
 }
