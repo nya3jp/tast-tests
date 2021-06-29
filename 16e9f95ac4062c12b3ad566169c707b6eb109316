@@ -16,6 +16,23 @@
       "message": "Thanks for the quick turn around, Greg!",
       "revId": "16e9f95ac4062c12b3ad566169c707b6eb109316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f40c3e_567ff073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-06-29T18:02:49Z",
+      "side": 1,
+      "message": "PTAL.\n\nThanks,\n\nGreg ",
+      "revId": "16e9f95ac4062c12b3ad566169c707b6eb109316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
