@@ -16,6 +16,24 @@
       "message": "nit: I guess we should remove the /tmp/keyblob after the test finished.",
       "revId": "ed53ccf4a425dea07c17a96d8b064a6077060f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4155f787_df72bdb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/ecdh_short_key.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-06-29T11:47:32Z",
+      "side": 1,
+      "message": "Done. but probably makes sense to have it even earlier aw what we have in the updated patchset (#3).",
+      "parentUuid": "bb1dcec2_84377972",
+      "revId": "ed53ccf4a425dea07c17a96d8b064a6077060f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
