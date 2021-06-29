@@ -16,6 +16,24 @@
       "message": "Instead of introducing an invalid value here, could you introduce another field representing whether Chrome is used?\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
       "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96893c35_7871b494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-29T17:00:57Z",
+      "side": 1,
+      "message": "There is already a field representing whether Chrome is used. It is called arc. When arc is true, Chrome is not used, and the value of chromeType is ignored.\n\nMy primary motivation for this invalid value is what might happen when ChromeOS Chrome is phased out and the corresponding tests are removed. There will be many tests to remove, and therefore maybe not much time to look closely at each one. I am trying to forestall any misunderstanding that could lead to the ARC++ fast ink tests being removed.\n\nAs someone removes the ChromeOS Chrome tests in bulk, what might they think about the ARC++ fast ink tests if they have \"chromeType: lacros.ChromeTypeChromeOS\"? I suppose this person will be less likely to remove the tests if they have \"chromeType: lacros.ChromeTypeLacros\". Even better, \"chromeType: chromeTypeNotApplicable\" leaves no room for confusion.\n\nI would argue that what I am doing here is actually consistent with the \"In-Band Errors\" guidance, because my code never actually checks for the value chromeTypeNotApplicable; it just checks the boolean value of arc. Referring to the part that says \"return values like -1 or null to signal errors or missing results,\" while chromeTypeNotApplicable is a value like -1 or null, it is not used to \"signal\" anything when the code does not check for it. Likewise, what I have done is consistent with the part that says \"Instead of requiring clients to check for...\"\n\nFurthermore, I would argue that what I am doing here is consistent with how the existing tast-tests code follows the \"In-Band Errors\" guidance. A function reports an error by returning a null pointer and an error, just like how my ARC++ fast ink tests have chromeTypeNotApplicable and arc\u003dtrue. For example, look at this:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;drc\u003da908be2fd6ddc34cb65169b96b22c637f4ef99d5;l\u003d181",
+      "parentUuid": "cab28212_f5eabe06",
+      "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
