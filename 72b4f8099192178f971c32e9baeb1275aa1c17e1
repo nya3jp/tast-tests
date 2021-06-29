@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d6c2c5_f552108f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T00:46:21Z",
+      "side": 1,
+      "message": "\u003e \"reseting\" is a possible misspelling of \"resetting\".\n\nPlease fix.",
+      "parentUuid": "ef9213ac_4f737913",
+      "range": {
+        "startLine": 336,
+        "startChar": 65,
+        "endLine": 336,
+        "endChar": 73
+      },
+      "revId": "72b4f8099192178f971c32e9baeb1275aa1c17e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
