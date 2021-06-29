@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -120,7 +121,16 @@ func RunRepro(ctx context.Context, d *dut.DUT, remotePath string, timeout time.D
 
 	// Run the remote command with a timeout of `timeout`. KILL signal will also be
 	// sent after `timeout`.
-	cmd := d.Conn().Command("timeout", "-k", "2", fmt.Sprintf("%v", timeout.Seconds()), filepath.Join(remotePath))
+	cmd := d.Conn().Command(
+		"/bin/sh", "-c",
+		fmt.Sprintf(
+			"cd %v && timeout -k 2 %v %v",
+			shutil.Escape(filepath.Dir(remotePath)),
+			timeout.Seconds(),
+			shutil.Escape(remotePath),
+		),
+	)
+
 	// The repro might exit with a non-zero exit code and this is expected. The repro
 	// might also run indefinitely, and be terminated by the context timeout.
 	if out, err := cmd.CombinedOutput(ctx); err != nil {
