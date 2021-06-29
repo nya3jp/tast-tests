@@ -51,6 +51,49 @@ func IncreaseDAForTpm1(ctx context.Context, tpmManager *hwsec.TPMManagerClient) 
 	return nil
 }
 
+// IncreaseDAWithCheckVault uses cryptohome_client to increase the dictionary attack counter, and should be only used on TPMv1.2 devices.
+// This is currently used for generating a well-known auth failure.
+func IncreaseDAWithCheckVault(ctx context.Context, cryptohome *hwsec.CryptohomeClient, mountInfo *hwsec.CryptohomeMountInfo) error {
+	const (
+		user              = "somebody@somewhere.com"
+		password          = "good"
+		badPassword       = "bad"
+		label             = "label"
+		mountFailExitCode = 3
+	)
+
+	// Ensure that the user directory is unmounted and does not exist.
+	if err := mountInfo.CleanUpMount(ctx, user); err != nil {
+		return errors.Wrap(err, "failed to cleanup mount")
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+	defer func(ctx context.Context) {
+		// Ensure we remove the user account after the test.
+		if err := mountInfo.CleanUpMount(ctx, user); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup mount: ", err)
+		}
+	}(cleanupCtx)
+
+	// Mount the test user account, which ensures that the vault is created, and that the mount succeeds.
+	if err := cryptohome.MountVault(ctx, user, password, label, true, hwsec.NewVaultConfig()); err != nil {
+		return errors.Wrap(err, "failed to mount vault")
+	}
+
+	// Increase DA with incorrect password.
+	_, err := cryptohome.CheckVault(ctx, user, badPassword, label)
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		return errors.Wrap(err, "should deny access the vault with the invalid credentials while mounted")
+	}
+	if exitErr.ExitCode != mountFailExitCode {
+		return errors.Errorf("unexpected mount exit code: got %d; want %d", exitErr.ExitCode, mountFailExitCode)
+	}
+	return nil
+}
+
 // CheckDAIsZero uses tpm_manager_client to check if the dictionary attack counter is zero.
 func CheckDAIsZero(ctx context.Context, tpmManager *hwsec.TPMManagerClient) error {
 	info, err := tpmManager.GetDAInfo(ctx)
