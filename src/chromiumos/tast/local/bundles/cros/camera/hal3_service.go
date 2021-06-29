@@ -28,27 +28,12 @@ type HAL3Service struct {
 	s *testing.ServiceState
 }
 
-type getTestConfig = func() hal3.TestConfig
-
-var getTestConfigMap = map[cameraboxpb.HAL3CameraTest]getTestConfig{
-	cameraboxpb.HAL3CameraTest_DEVICE:        hal3.DeviceTestConfig,
-	cameraboxpb.HAL3CameraTest_FRAME:         hal3.FrameTestConfig,
-	cameraboxpb.HAL3CameraTest_JDA:           hal3.JDATestConfig,
-	cameraboxpb.HAL3CameraTest_JEA:           hal3.JEATestConfig,
-	cameraboxpb.HAL3CameraTest_MODULE:        hal3.ModuleTestConfig,
-	cameraboxpb.HAL3CameraTest_PERF:          hal3.PerfTestConfig,
-	cameraboxpb.HAL3CameraTest_PREVIEW:       hal3.PreviewTestConfig,
-	cameraboxpb.HAL3CameraTest_RECORDING:     hal3.RecordingTestConfig,
-	cameraboxpb.HAL3CameraTest_STILL_CAPTURE: hal3.StillCaptureTestConfig,
-	cameraboxpb.HAL3CameraTest_STREAM:        hal3.StreamTestConfig,
-}
-
 func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestRequest) (_ *cameraboxpb.RunTestResponse, retErr error) {
-	getTestConfig, ok := getTestConfigMap[req.Test]
+	generator, ok := hal3.ServiceTestConfigGenerators[req.Test]
 	if !ok {
 		return nil, errors.Errorf("failed to run unknown test %v", req.Test)
 	}
-	cfg := getTestConfig()
+	cfg := generator.TestConfig(req)
 	switch req.Facing {
 	case cameraboxpb.Facing_FACING_BACK:
 		cfg.CameraFacing = "back"
