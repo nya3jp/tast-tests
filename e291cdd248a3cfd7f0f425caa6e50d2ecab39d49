@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70795d95_943936e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T21:23:23Z",
+      "side": 1,
+      "message": "Where do these magic numbers come from? Maybe a comment is appropriate.",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
