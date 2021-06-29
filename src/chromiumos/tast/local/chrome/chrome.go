@@ -333,6 +333,12 @@ func (c *Chrome) Close(ctx context.Context) error {
 	return firstErr
 }
 
+// isTargetExcepted checks if the target should be remained when resetting state.
+func isTargetExcepted(t *Target) bool {
+	// Chrome OS Virtual Keyboard is permanently cached in Chrome Session to speed up loading.
+	return t.Type == "other" && t.Title == "Chrome OS Virtual Keyboard"
+}
+
 // ResetState attempts to reset Chrome's state (e.g. by closing all pages).
 // Tests typically do not need to call this; it is exposed primarily for other packages.
 func (c *Chrome) ResetState(ctx context.Context) error {
@@ -342,7 +348,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 
 	// Try to close all "normal" pages, apps and dialog boxes.
 	targetFilter := func(t *Target) bool {
-		return t.Type == "page" || t.Type == "app" || t.Type == "other"
+		return !isTargetExcepted(t) && (t.Type == "page" || t.Type == "app" || t.Type == "other")
 	}
 	targets, err := c.FindTargets(ctx, targetFilter)
 	if err != nil {
@@ -396,11 +402,6 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		if _, err := c.sess.StopTracing(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
-	}
-
-	tconn, err := c.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get test API connection")
 	}
 
 	// Free all remote JS objects in the test extension.
