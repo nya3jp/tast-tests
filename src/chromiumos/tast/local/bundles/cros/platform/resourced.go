@@ -30,7 +30,7 @@ func init() {
 			},
 		}, {
 			Name:      "baseline",
-			ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline"},
 			Val: resourcedTestParams{
 				isBaseline: true,
 			},
