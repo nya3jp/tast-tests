@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cbba885_4456bbfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-29T08:47:07Z",
+      "side": 1,
+      "message": "Yes I agree this function is nice to have in chromiumos/tast/local/arc.",
+      "parentUuid": "a18c4925_0f5ca5f4",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac610345_3ecbdfe3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2021-06-29T02:17:43Z",
       "side": 1,
       "message": "To call this function, an ARC should be already running. So it is better to pass in arc instance instead of New inside the function.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "222e819186a8365bc7af21f650e61f36bc3b9ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835d7779_dfec9166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-29T08:47:07Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ac610345_3ecbdfe3",
       "range": {
         "startLine": 74,
         "startChar": 5,
