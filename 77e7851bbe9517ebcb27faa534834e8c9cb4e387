@@ -80,6 +80,30 @@
       },
       "revId": "77e7851bbe9517ebcb27faa534834e8c9cb4e387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ee5a19_14eb4a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-29T00:45:17Z",
+      "side": 1,
+      "message": "Thanks. Could you please get an approval from a team member?",
+      "parentUuid": "46568c00_3872995d",
+      "range": {
+        "startLine": 56,
+        "startChar": 38,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "77e7851bbe9517ebcb27faa534834e8c9cb4e387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
