@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18de3c87_081b08d3",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T06:08:33Z",
+      "side": 1,
+      "message": "\u003e I assume Hidehiko meant 3.\n\nSorry for confusion. Yes, I meant 3.\n\n\u003e \n\u003e Please let me remind that we already have `args ...string` style API in RestartJob and StartJob. I believe we all agree that it\u0027s not an option to introduce new key/value pair API (which Xinglong explained as 3) in JobStatus, CheckJob, etc. while keeping `args ...string` API in RestartJob and StartJob.\n\u003e \n\nWell, I\u0027m ok to keep RestartJob as is now, while JobStatus starts to use key-value pair struct, as long as we could agree that eventually RestartJob/StartJob should use the struct and can leave TODO for the short term. Note that I agree changing RestartJob/StartJob is out of scope of this CL.\n\nSo question here is:\n- Is using any string arguments designed usage? Or, should it be *always* KEY\u003dVALUE?\n\nIf we expect KEY\u003dVALUE always (regardelss of JobStatus/RestartJob etc), I\u0027d recommend to define a struct.\nIf we expect any format of string as arguments, of course I\u0027m fine to keep string, but the better documentation should be provided, e.g. what can be passed concretely, and how it works. Current \"extra parameters\" sounds ambiguous as the requirement of the argument. If it needs to refer other piece of documents, then the reference should be put. IMO.\n\nI hope this comment unblocks you.\n\n\u003e So there are two orthogonal tasks we\u0027re discussing here:\n\u003e \n\u003e A. Introducing extra args to JobStatus, CheckJob, etc.\n\u003e B. Replacing `args ...string` API with proper key/value API\n\u003e \n\u003e Current patch does A, but not B. The question to ask is, is B a blocker for A?\n\u003e \n\u003e My opinion is no.\n\u003e \n\u003e - Passing string key/value pairs as ...string is not a very bad API IMHO. In fact standard library has API of the same style at os/exec.Cmd.Env: https://pkg.go.dev/os/exec#Cmd\n\nDisagree. Whether it is in standard lib or not, and whether the API is good, should be independent. (Let me stop this discussing here to avoid bikeshedding. I can talk to you offline, nya-san, if you\u0027d like :-).\n\n\u003e - Even if we don\u0027t like ...string style API, it is not this patch that introduces this API (there are existing functions using this style like RestartJob/StartJob), so it sounds not right to make B a blocker for A.\n\nActually, this does, or it expands, so if we could agree that we should have properly typed APIs instead of string (not sure if we can, though), then this could be considered as \"regression\".\n\n\u003e \n\u003e Hidehiko, WDYT?",
+      "parentUuid": "91637ebe_f8622d00",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de5270f7_a4db13b9",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 4
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "No, it\u0027s not always \"Unknown job\".\n\nCan you explain a little bit more about allow-list style? An example code would be perfect, thanks!",
       "parentUuid": "f6d05fb2_460fb3ae",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 75
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7a9c8a_09e2d410",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T06:08:33Z",
+      "side": 1,
+      "message": "Question back to you.\nCould you share the error messages you consider a \"job\" exists?\nThen, can you list it here (or using regex if you need patter matching) to \"return true\" below?\n\nif err !\u003d nil \u0026\u0026 !strings.HasPrefix(..., \"initctl: .../*message for exiting job*/...\") ... {\n  return false;\n}",
+      "parentUuid": "494312d3_55f766c7",
       "range": {
         "startLine": 137,
         "startChar": 4,
