@@ -107,7 +107,7 @@ func SetUp(ctx context.Context) error {
 	}
 
 	// Restart avahi in the network namespace and wait to be ready.
-	if err := upstart.RestartJob(ctx, "avahi", "NETNS="+NSName); err != nil {
+	if err := upstart.RestartJob(ctx, "avahi", upstart.WithArg("NETNS", NSName)); err != nil {
 		return errors.Wrap(err, "failed to restart avahi")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {

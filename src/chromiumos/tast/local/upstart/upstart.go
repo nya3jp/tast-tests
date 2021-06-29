@@ -7,6 +7,7 @@ package upstart
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -54,6 +55,17 @@ func init() {
 		upstart.PostStopState} {
 		allStates[s] = struct{}{}
 	}
+}
+
+// Arg represents an extra argument passed to an upstart job.
+type Arg struct {
+	key, value string
+}
+
+// WithArg can be passed to job-related functions to specify an extra argument
+// passed to a job.
+func WithArg(key, value string) Arg {
+	return Arg{key: key, value: value}
 }
 
 // JobStatus returns the current status of job.
@@ -131,7 +143,7 @@ func JobExists(ctx context.Context, job string) bool {
 // Note that the job is reloaded if it is already running; this differs from the
 // "initctl restart" behavior as described in Section 10.1.2, "restart", in the Upstart Cookbook.
 // args is passed to the job as extra parameters.
-func RestartJob(ctx context.Context, job string, args ...string) error {
+func RestartJob(ctx context.Context, job string, args ...Arg) error {
 	// Make sure that the job isn't running and then try to start it.
 	if err := StopJob(ctx, job); err != nil {
 		return errors.Wrapf(err, "stopping %q failed", job)
@@ -235,8 +247,13 @@ func EnsureJobRunning(ctx context.Context, job string) error {
 
 // StartJob starts job. If it is already running, this returns an error.
 // args is passed to the job as extra parameters.
-func StartJob(ctx context.Context, job string, args ...string) error {
-	cmd := testexec.CommandContext(ctx, "initctl", append([]string{"start", job}, args...)...)
+func StartJob(ctx context.Context, job string, args ...Arg) error {
+	cmdArgs := []string{"start", job}
+	for _, arg := range args {
+		cmdArgs = append(cmdArgs, fmt.Sprintf("%s=%s", arg.key, arg.value))
+	}
+
+	cmd := testexec.CommandContext(ctx, "initctl", cmdArgs...)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return err
