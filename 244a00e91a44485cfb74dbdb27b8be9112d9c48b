@@ -22,6 +22,30 @@
       },
       "revId": "244a00e91a44485cfb74dbdb27b8be9112d9c48b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e01315_428ccf75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/nnapi_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2021-06-29T03:57:26Z",
+      "side": 1,
+      "message": "Have reworded the comment to a TODO",
+      "parentUuid": "ee5ad5fe_b6519d36",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "244a00e91a44485cfb74dbdb27b8be9112d9c48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
