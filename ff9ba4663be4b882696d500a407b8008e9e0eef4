@@ -361,6 +361,30 @@
       },
       "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68495e7b_5901018f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-06-29T01:45:50Z",
+      "side": 1,
+      "message": "How about hold left click on the field, click the \"...\", then click \"select all\", then hit backspace once",
+      "parentUuid": "4437a29e_5762c0ab",
+      "range": {
+        "startLine": 457,
+        "startChar": 31,
+        "endLine": 457,
+        "endChar": 34
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
