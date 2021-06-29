@@ -18,16 +18,16 @@ import (
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // tryReuseSession checks if the exiting chrome session can be reuse, and returns a
 // Chrome instance if reuse criteria is met.
 func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retErr error) {
-	testing.ContextLog(ctx, "Trying to reuse existing chrome session")
+	ctx, st := timing.Start(ctx, "try_reuse_session")
+	defer st.End()
 
-	if !cfg.TryReuseSession() {
-		return nil, errors.New("TryReuseSession option is not set")
-	}
+	testing.ContextLog(ctx, "Trying to reuse existing chrome session")
 
 	agg := jslog.NewAggregator()
 	defer func() {

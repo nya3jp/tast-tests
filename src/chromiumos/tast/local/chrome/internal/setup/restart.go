@@ -161,6 +161,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			"BREAKPAD_DUMP_LOCATION=/home/chronos/crash") // Write crash dumps outside cryptohome.
 	}
 
+	ctx, st = timing.Start(ctx, "enable_chrome_testing")
+	defer st.End()
+
 	_, err = sm.EnableChromeTestingAndWait(ctx, true, args, envVars)
 	return err
 }
@@ -168,67 +171,81 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 // restartSession stops the "ui" job, clears policy files and the user's cryptohome if requested,
 // and restarts the job.
 func restartSession(ctx context.Context, cfg *config.Config) error {
-	testing.ContextLog(ctx, "Restarting ui job")
 	ctx, st := timing.Start(ctx, "restart_ui")
 	defer st.End()
 
 	ctx, cancel := context.WithTimeout(ctx, upstart.UIRestartTimeout)
 	defer cancel()
 
+	testing.ContextLog(ctx, "Stopping ui job")
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		return err
 	}
 
-	if !cfg.KeepState() {
-		const chronosDir = "/home/chronos"
-		const shadowDir = "/home/.shadow"
+	if err := clearUserData(ctx, cfg); err != nil {
+		return err
+	}
 
-		if !cfg.KeepOwnership() {
-			// This always fails because /home/chronos is a mount point, but all files
-			// under the directory should be removed.
-			os.RemoveAll(chronosDir)
-			fis, err := ioutil.ReadDir(chronosDir)
-			if err != nil {
-				return err
-			}
-			// Retry cleanup of remaining files. Don't fail if removal reports an error.
-			for _, left := range fis {
-				if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
-					testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
-				} else {
-					testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
-				}
-			}
-		}
+	testing.ContextLog(ctx, "Starting ui job")
+	return upstart.EnsureJobRunning(ctx, "ui")
+}
 
-		// Delete files from shadow directory.
-		shadowFiles, err := ioutil.ReadDir(shadowDir)
+func clearUserData(ctx context.Context, cfg *config.Config) error {
+	if cfg.KeepState() {
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Clearing user data")
+	ctx, st := timing.Start(ctx, "clear_user_data")
+	defer st.End()
+
+	const chronosDir = "/home/chronos"
+	const shadowDir = "/home/.shadow"
+
+	if !cfg.KeepOwnership() {
+		// This always fails because /home/chronos is a mount point, but all files
+		// under the directory should be removed.
+		os.RemoveAll(chronosDir)
+		fis, err := ioutil.ReadDir(chronosDir)
 		if err != nil {
-			return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+			return err
 		}
-		for _, file := range shadowFiles {
-			if !file.IsDir() {
-				continue
-			}
-			// Only look for chronos file with names matching u-*.
-			chronosName := filepath.Join(chronosDir, "u-"+file.Name())
-			shadowName := filepath.Join(shadowDir, file.Name())
-			// Remove the shadow directory if it does not have a corresponding chronos directory.
-			if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
-				if err := os.RemoveAll(shadowName); err != nil {
-					testing.ContextLogf(ctx, "Failed to remove %q: %v", shadowName, err)
-				}
-			}
-		}
-
-		if !cfg.KeepOwnership() {
-			// Delete policy files to clear the device's ownership state since the account
-			// whose cryptohome we'll delete may be the owner: http://crbug.com/897278
-			if err := session.ClearDeviceOwnership(ctx); err != nil {
-				return err
+		// Retry cleanup of remaining files. Don't fail if removal reports an error.
+		for _, left := range fis {
+			if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
+				testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
+			} else {
+				testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
 			}
 		}
 	}
 
-	return upstart.EnsureJobRunning(ctx, "ui")
+	// Delete files from shadow directory.
+	shadowFiles, err := ioutil.ReadDir(shadowDir)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read directory %q", shadowDir)
+	}
+	for _, file := range shadowFiles {
+		if !file.IsDir() {
+			continue
+		}
+		// Only look for chronos file with names matching u-*.
+		chronosName := filepath.Join(chronosDir, "u-"+file.Name())
+		shadowName := filepath.Join(shadowDir, file.Name())
+		// Remove the shadow directory if it does not have a corresponding chronos directory.
+		if _, err := os.Stat(chronosName); err != nil && os.IsNotExist(err) {
+			if err := os.RemoveAll(shadowName); err != nil {
+				testing.ContextLogf(ctx, "Failed to remove %q: %v", shadowName, err)
+			}
+		}
+	}
+
+	if !cfg.KeepOwnership() {
+		// Delete policy files to clear the device's ownership state since the account
+		// whose cryptohome we'll delete may be the owner: http://crbug.com/897278
+		if err := session.ClearDeviceOwnership(ctx); err != nil {
+			return err
+		}
+	}
+	return nil
 }
