@@ -914,6 +914,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78a8dcbc_4b3eae95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T09:03:34Z",
+      "side": 1,
+      "message": "If you don\u0027t use it and don\u0027t need it, you should ignore it using \"_\":\n\n```\n_, err :\u003d quicksettings.SliderValue(ctx, tconn, quicksettings.SliderTypeMicGain)\n```",
+      "parentUuid": "d532c89c_bd528439",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6128aae8_19c0e00c",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 12
