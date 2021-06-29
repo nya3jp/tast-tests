@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d255f63_aaeda5ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-29T16:13:32Z",
+      "side": 1,
+      "message": "lgtm! Just a few nits.\n\n+deanliao@ for a Tast owner (yenlinlai@ is OOO).\n\n",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b853df_2ca8c822",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-29T16:13:32Z",
+      "side": 1,
+      "message": "nit: We could probably remove this logging now. (But I\u0027m fine with keeping it also).",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577c87cc_fdcaadf5",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-29T16:13:32Z",
+      "side": 1,
+      "message": "nit: DUTs, \"one SIM is available\" (since the SIM could be a builtin eSIM with an active profile).",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d52881_f0c4bebc",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-29T16:13:32Z",
+      "side": 1,
+      "message": "nit: active SIM",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
