@@ -148,7 +148,7 @@ func worker(ctx context.Context, d *dut.DUT, binDir, repro string) error {
 	if err := syzutils.CopyRepro(ctx, d, localPath, remotePath); err != nil {
 		return errors.Wrapf(err, "failed to copy repro %v", repro)
 	}
-	if out, err := syzutils.RunRepro(ctx, d, remotePath, 5*time.Second); err != nil {
+	if out, err := syzutils.RunRepro(ctx, d, remotePath, remoteDir, 5*time.Second); err != nil {
 		testing.ContextLogf(ctx, "RunRepro returned %v: with combined output: %v", err, string(out))
 	}
 	return nil
