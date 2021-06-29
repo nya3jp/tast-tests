@@ -42,8 +42,9 @@ func init() {
 				Name: "print_from_chrome_menu",
 				Val:  testPrintingFromThreeDotMenu,
 			}, {
-				Name: "print_with_hotkey",
-				Val:  testPrintingWithHotkey,
+				Name:      "print_with_hotkey",
+				Val:       testPrintingWithHotkey,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "print_from_context_menu",
