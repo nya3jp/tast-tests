@@ -39,6 +39,30 @@
       },
       "revId": "694906b02cdb84b2b734d746e8cf019b9985901d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a91e57_8f9c5d2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-29T02:13:12Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! But it may redeclare and shadow the `contents` outside, so I refactored this part a little bit (also avoid writing `string(contents)` twice)",
+      "parentUuid": "80f71049_8f9faa3e",
+      "range": {
+        "startLine": 365,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 13
+      },
+      "revId": "694906b02cdb84b2b734d746e8cf019b9985901d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
