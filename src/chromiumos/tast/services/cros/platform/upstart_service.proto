@@ -46,7 +46,8 @@ message JobStatusResponse {
 
 message StartJobRequest {
   string job_name = 1;
-  repeated string args = 2;
+  reserved 2;
+  repeated Arg args = 3;
 }
 
 message StopJobRequest {
@@ -67,4 +68,9 @@ message IsJobEnabledRequest {
 
 message IsJobEnabledResponse {
   bool enabled = 1;
+}
+
+message Arg {
+  string key = 1;
+  string value = 2;
 }
