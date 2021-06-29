@@ -90,6 +90,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f3aed8a_9eb7eba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-29T20:43:44Z",
+      "side": 1,
+      "message": "```\nif err :\u003d hwsec.IncreaseDAForTpm1(ctx, tpmManager); err !\u003d nil {\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "3e47ac6627ca3de58b3632de10170e05a1733aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "603e1c8d_06963a0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
         "patchSetId": 2
