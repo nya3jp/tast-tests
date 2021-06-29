@@ -7,11 +7,47 @@ package platform
 import (
 	"context"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
 )
+
+func ctsExclusions() []string {
+	return []string{
+		"TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*", // b/182264329
+		"TestGenerated/*svdf_bias_present*",                          // b/189803299
+		// Intel exclusions follow
+		"*fully_connected_quant8_signed",                             // b/192301242
+		"*fully_connected_quant8_signed_2",                           // b/192301242
+		"*fully_connected_quant8_signed_all_inputs_as_internal_2",    // b/192301242
+		"*DynamicOutputShapeTest*",                                   // b/192301246
+		"*QuantizationCouplingTest*",                                 // b/192301071
+		"*DeviceMemory*",                                             // b/192301073
+		"TestRandomGraph/SingleOperationTest.FULLY_CONNECTED_V1_3/7", // b/192301247
+		"*RandomGraphTest.LargeGraph_TENSOR_FLOAT32_Rank3/35",        // b/192301075
+		"*TestRandomGraph/RandomGraphTest.LargeGraph*",               // b/192301250
+		"*TestRandomGraph/RandomGraphTest.Small*",                    // b/192301077
+	}
+}
+
+func vtsExclusions() []string {
+	return []string{
+		"TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*", // b/182264329
+		"TestGenerated/*svdf_bias_present*",                          // b/189803299
+		// Intel exclusions follow
+		"*fully_connected_quant8_signed",                           // b/192301242
+		"*fully_connected_quant8_signed_2",                         // b/192301242
+		"*fully_connected_quant8_signed_all_inputs_as_internal_2",  // b/192301242
+		"*DynamicOutputShapeTest*",                                 // b/192301246
+		"*QuantizationCouplingTest*",                               // b/192301071
+		"*Test/cros_default_quantize_quant8_signed_quant8_signed*", // b/192301078
+		"*MemoryDomain*",                                           // b/192301169
+		"*Fenced*",                                                 // b/192301255
+		"*quantize*",                                               // b/192301256
+	}
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -27,35 +63,32 @@ func init() {
 			"group:mainline",
 		},
 		SoftwareDeps: []string{"nnapi"},
-		Params: []testing.Param{{
-			Name: "cts",
-			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			// b/189803299: Investigate / fix test failures with Tensorflow 2.5.0
-			Val:               []string{"cros_nnapi_cts", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*:TestGenerated/*svdf_bias_present*:"},
-			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
-		}, {
-			Name: "vts_1_0",
-			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			// b/189803299: Investigate / fix test failures with Tensorflow 2.5.0
-			Val: []string{"cros_nnapi_vts_1_0", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*:TestGenerated/*svdf_bias_present*:"},
-		}, {
-			Name: "vts_1_1",
-			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			// b/189803299: Investigate / fix test failures with Tensorflow 2.5.0
-			Val: []string{"cros_nnapi_vts_1_1", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*:TestGenerated/*svdf_bias_present*:"},
-		}, {
-			Name: "vts_1_2",
-			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			// b/189803299: Investigate / fix test failures with Tensorflow 2.5.0
-			Val:               []string{"cros_nnapi_vts_1_2", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*:TestGenerated/*svdf_bias_present*:"},
-			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
-		}, {
-			Name: "vts_1_3",
-			// b/182264329: Fix SingleOperationTest.RESIZE_BILINEAR_V1_3
-			// b/189803299: Investigate / fix test failures with Tensorflow 2.5.0
-			Val:               []string{"cros_nnapi_vts_1_3", "--gtest_filter=-TestRandomGraph/SingleOperationTest.RESIZE_BILINEAR_V1_3/*:TestGenerated/*svdf_bias_present*:"},
-			ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
-		}},
+		Params: []testing.Param{
+			{
+				Name:              "cts",
+				Val:               []string{"cros_nnapi_cts", "--gtest_filter=-" + strings.Join(ctsExclusions(), ":")},
+				ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
+			},
+			{
+				Name:              "vts_1_3",
+				Val:               []string{"cros_nnapi_vts_1_3", "--gtest_filter=-" + strings.Join(vtsExclusions(), ":")},
+				ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
+			}},
+		/*
+			VTS < 3 is currently disabled as not supported by Intel.
+			b/192302431
+			{
+				Name: "vts_1_0",
+				Val: []string{"cros_nnapi_vts_1_0", "--gtest_filter=-" + strings.Join(vtsExclusions(), ":")},
+			}, {
+				Name: "vts_1_1",
+				Val: []string{"cros_nnapi_vts_1_1", "--gtest_filter=-" + strings.Join(vtsExclusions(), ":")},
+			}, {
+				Name: "vts_1_2",
+				Val:               []string{"cros_nnapi_vts_1_2", "--gtest_filter=-" + strings.Join(vtsExclusions(), ":")},
+				ExtraSoftwareDeps: []string{"nnapi_vendor_driver"},
+			},
+		*/
 	})
 }
 
