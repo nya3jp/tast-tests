@@ -50,6 +50,24 @@
       "message": "optional style nit: I would add some line breaks to improve readability.",
       "revId": "4fb1013628428dda8cb13d2183487bf38ef3237e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ba54db_133524dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-29T18:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5c551a_b180251d",
+      "revId": "4fb1013628428dda8cb13d2183487bf38ef3237e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
