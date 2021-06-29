@@ -255,6 +255,13 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 		u2fTestPath = "/usr/local/bin/U2FTest"
 		trigger     = "Touch device and hit enter."
 	)
+
+	serials, err := svo.GetServoSerials(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the serials of servo")
+	}
+	_, useMicro := serials["servo_micro"]
+
 	cmd := dut.Command("stdbuf", "-o0", u2fTestPath, device)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
@@ -273,7 +280,7 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 		if err := cmd.Wait(ctx); err != nil {
 			if retErr != nil {
 				testing.ContextLog(ctx, "Failed to wait U2fTest: ", err)
-			} else {
+			} else if useMicro {
 				retErr = errors.Wrap(err, "failed to wait U2fTest")
 			}
 		}
@@ -297,8 +304,10 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 		line := scanner.Text()
 		if strings.Contains(line, trigger) {
 			testing.ContextLog(ctx, "Clicking power key")
-			if err := svo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-				return errors.Wrap(err, "failed to press the power key")
+			if useMicro {
+				if err := svo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+					return errors.Wrap(err, "failed to press the power key")
+				}
 			}
 			if _, err := stdin.Write([]byte("\n")); err != nil {
 				return errors.Wrap(err, "failed to pipe the enter")
