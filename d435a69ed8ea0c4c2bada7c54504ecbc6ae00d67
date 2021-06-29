@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7279970c_00a0429c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-29T00:44:11Z",
+      "side": 1,
+      "message": "You are right. However, the timeout for cleanup is taken from the timeout for the test case. Longer timeout for cleanup means shorter timeout for testing case itself.",
+      "parentUuid": "4da8dd37_50fbeb2f",
+      "revId": "d435a69ed8ea0c4c2bada7c54504ecbc6ae00d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9022d1b_1150e749",
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "cleanupCtx is used for many things, including the call to StopTracing. I timed StopTracing while running the tests over SSH tunneling, and here are my results:\n17.084 seconds in big\n14.857 seconds in big_blend\n13.954 seconds in small\n13.818 seconds in small_blend\n14.685 seconds in big_blend_lacros\n13.922 seconds in big_lacros\n14.323 seconds in small_blend_lacros\n13.744 seconds in small_lacros\nI guess that StopTracing transfers the tracing data from the DUT to the host, and so its performance in the ChromeOS lab may vary widely with network configuration and network traffic. Therefore I think it is reasonable to reserve one minute for StopTracing plus all the other things cleanupCtx is used for.\n\nNotice that my rationale is not about the lacros port. As this CL is for the lacros port, please consider approving it even if you have more to say about how much time should be reserved for cleanup.",
       "parentUuid": "b9022d1b_1150e749",
+      "range": {
+        "startLine": 97,
+        "startChar": 42,
+        "endLine": 97,
+        "endChar": 48
+      },
+      "revId": "d435a69ed8ea0c4c2bada7c54504ecbc6ae00d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d8d72d_0714d8cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-06-29T00:44:11Z",
+      "side": 1,
+      "message": "I guess you are right. This CL does not change the cleanup timeout. I\u0027d like suggest to reconsider the timeout in another cl.",
+      "parentUuid": "ea1816a9_b05acbb8",
       "range": {
         "startLine": 97,
         "startChar": 42,
