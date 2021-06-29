@@ -16,6 +16,24 @@
       "message": "I think the desire is to eventually get rid of vgem, as per:\n\nhttps://buganizer.corp.google.com/issues/167236452",
       "revId": "f7a37a0ef370635ea6624d7484c39b70c9abec5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e260f10_bb387c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-06-29T00:22:33Z",
+      "side": 1,
+      "message": "Ack. In the meantime, to re-green this test does this change sound reasonable in the interim? Or should we disable/remove the test? It looks like work on replacing the test coverage is still in progress.",
+      "parentUuid": "69f22160_d3bc0181",
+      "revId": "f7a37a0ef370635ea6624d7484c39b70c9abec5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
