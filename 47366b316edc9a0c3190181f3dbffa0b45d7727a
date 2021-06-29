@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f914d099_c39f2305",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-29T21:47:57Z",
+      "side": 1,
+      "message": "Should make the g3Timeout (and others) const a g3PollOptions const so that the timeout and interval are kept together.  Alternatively, calculate the Interval as g3Timeout/10.",
+      "revId": "47366b316edc9a0c3190181f3dbffa0b45d7727a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e01fb7_85b35d4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-06-29T21:47:57Z",
+      "side": 1,
+      "message": "Should move this to after the h.DisconnectDUT() call as a defer.",
+      "revId": "47366b316edc9a0c3190181f3dbffa0b45d7727a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
