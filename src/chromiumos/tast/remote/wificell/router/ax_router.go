@@ -99,6 +99,6 @@ func (r *axRouterStruct) SaveConfiguration(ctx context.Context) error {
 // RestoreConfiguration takes a saved router configuration file and loads it into the ram and updates the router.
 func (r *axRouterStruct) RestoreConfiguration(ctx context.Context) error {
 	defer r.restartWirelessService(ctx)
-	cmd := fmt.Sprintf("while read in; do nvram set '$in'; done < %s", savedConfigLocation)
+	cmd := fmt.Sprintf("while read in; do nvram set $in; done < %s", savedConfigLocation)
 	return r.host.Command("/bin/bash", "-c", cmd).Run(ctx)
 }
