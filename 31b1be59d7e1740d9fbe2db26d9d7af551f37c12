@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd762f01_a424ded6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-06-29T10:43:59Z",
+      "side": 1,
+      "message": "Hello,\nI merged a regression fix that (most likely) is blocking your CL. Could you please rebase  and re-run CQ?",
+      "revId": "31b1be59d7e1740d9fbe2db26d9d7af551f37c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
