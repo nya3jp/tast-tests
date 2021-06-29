@@ -98,9 +98,19 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	switch s.Param().(ime.InputMethodCode) {
 	case ime.INPUTMETHOD_XKB_US_ENG:
 		subTests = []testData{
-			// TODO(b/177777412): Enable VK typing tests on auto-cap fields.
-			// TODO(b/182960492): Enable vk typing test on '*' char on number input field.
 			{
+				inputField:   testserver.TextAreaInputField,
+				keySeq:       strings.Split("hello", ""),
+				expectedText: "hello",
+			}, {
+				inputField:   testserver.TextInputField,
+				keySeq:       strings.Split("hello", ""),
+				expectedText: "hello",
+			}, {
+				inputField:   testserver.SearchInputField,
+				keySeq:       strings.Split("hello", ""),
+				expectedText: "hello",
+			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("hello", ""),
 				expectedText: "hello",
