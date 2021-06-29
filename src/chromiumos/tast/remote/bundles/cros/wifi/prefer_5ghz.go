@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
@@ -96,7 +97,7 @@ func Prefer5Ghz(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to expect a service with two WiFi frequencies: ", err)
 	}
 	s.Log("Verified. Asserting the connection")
-	if _, err := tf.ConnectWifi(ctx, ssid, wificell.ConnHidden(false)); err != nil {
+	if _, err := tf.ConnectWifi(ctx, ssid, dutcfg.ConnHidden(false)); err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
 	defer func(ctx context.Context) {
