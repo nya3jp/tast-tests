@@ -26,3 +26,8 @@ const (
 const (
 	ModemPollTime = 1 * time.Minute
 )
+
+// Dbus path for empty sim slots
+const (
+	EmptySlotPath = "/"
+)
