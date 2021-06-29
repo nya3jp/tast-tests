@@ -26,7 +26,7 @@ func init() {
 
 func ShillCellularSim(ctx context.Context, s *testing.State) {
 	// Gather ModemManager properties
-	modem, err := modemmanager.NewModem(ctx)
+	modem, err := modemmanager.NewModemWithSim(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Modem: ", err)
 	}
