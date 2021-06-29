@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f8a79d_3af2a098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "Hi Bisakh,\n\nThanks for your CL! I have some comments! Also it will be good to see how this service is used in real test, so we can figure out the right design for it.",
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef70c3a_8ad88994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "What benefits do we have using testing.Closers?",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306288ab_7569feab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "hm... you actually trying to stop \"powerd\" which you will use next in the code to get power status updates. How did it work for you when you test it?",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21cbe1d_0cf945c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "If we don\u0027t stop them, how much longer we will charge the DUT?\n\nEven though it might speed up charging, this RPC performs some unexpected things. What if some test will use in parallel another RPCs which relies on UI or other services?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35d2d9e_52a9fb1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "i\u0027d be less aggressive and keep some brightness because it might affect other tests if we fail to reset brightness after the test",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9789cd0e_ed2e8786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "nit: why not fail here? Of course, we can live with higher brightness, but this should never fail.\n\nIf we just ignore it (even though we log it), some bug might be there for a long time.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85db1cfc_d8126d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "nit: can\u0027t we just use double in the proto to don\u0027t convert it to float64?",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234bba6e_44afa9d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "nit: i think it\u0027s good for debugging, but IMO it adds too much info to the logs",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 126
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f601f290_e875aad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "I\u0027d decrease interval to 1 second. We can use fast charging which gives really a lot of power to the DUT: it might charge from 0 to 100 in something like 1 hour (don\u0027t remember exact numbers).",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c1a2d3_0a9f532d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "I think you should use powerd instead:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/system_api/dbus/power_manager/backlight.proto;l\u003d21",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d76792_3308f810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "I think you got errors and just ignored them, but we should never ignore errors. I think in your cases it indicates some problems with that method.\n\nIt looks like this method you are trying to use is using some \"backlight_tool\" executable which is not present on drallion and sarien devices: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/power/setup/setup_screen_backlight.go;l\u003d51?q\u003dsetup.SetBacklightLux",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 78
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e7088c_6a8a41bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "Please also call CloseTarget to actually close that tab. If you call only Close(), you just drop connection between Tast and Chrome tab, but Chrome tab still remains open.",
+      "range": {
+        "startLine": 154,
+        "startChar": 7,
+        "endLine": 154,
+        "endChar": 17
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2cf4fc_454de518",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "Do we actually need methods to drain and charge or we just need to have battery at some target level? Also how do you know which method to call, I mean is there a way to get current battery charge level?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac55325_531a048e",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "We already have some sort of timeout in the RPC context, not sure we need to introduce another one.",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00d97c3_6a13976f",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "Probably if you want to use this field you need somehow to know current battery charge level, which is not available IIUC.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2bec3a_05d2a0c5",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-06-29T10:38:40Z",
+      "side": 1,
+      "message": "We should rely on \"battery_percent\" proto field for our policies, instead of other parameters:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/power_manager/powerd/system/power_supply.cc;l\u003d237\n\n\n\"battery_percent\" is the battery charge percent visible to the user and policy implementation relies on this value even though real battery percentage is slightly different.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
