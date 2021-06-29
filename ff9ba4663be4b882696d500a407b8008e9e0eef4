@@ -385,6 +385,30 @@
       },
       "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16aa3c78_19c8070e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T01:52:45Z",
+      "side": 1,
+      "message": "Should not we investigate why a space submitted in next test? This kind of cache does not make sense if VK is hidden.",
+      "parentUuid": "68495e7b_5901018f",
+      "range": {
+        "startLine": 457,
+        "startChar": 31,
+        "endLine": 457,
+        "endChar": 34
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
