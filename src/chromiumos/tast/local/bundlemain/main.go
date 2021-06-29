@@ -210,7 +210,7 @@ func beforeDownload(ctx context.Context) {
 
 // RunLocal is an entry point function for local bundles.
 func RunLocal() {
-	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
+	os.Exit(bundle.LocalDefault(bundle.Delegate{
 		Ready:          ready.Wait,
 		TestHook:       testHookLocal,
 		BeforeDownload: beforeDownload,
