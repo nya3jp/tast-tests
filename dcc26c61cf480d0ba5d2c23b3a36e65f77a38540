@@ -16,6 +16,24 @@
       "message": "This seems like it would make sense in the lorgnette package.  Does this work if you move the file into lorgnette, or does that run into tast style guide rules?",
       "revId": "dcc26c61cf480d0ba5d2c23b3a36e65f77a38540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10749bdb_4ab734b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/performscan/runScan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-29T20:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65b2291_9ec4c847",
+      "revId": "dcc26c61cf480d0ba5d2c23b3a36e65f77a38540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
