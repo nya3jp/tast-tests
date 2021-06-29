@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package router
+package legacyrouter
 
 import (
 	"context"
@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
@@ -35,7 +36,7 @@ import (
 
 // legacyRouterStruct is used to control the legacy wireless router and stores state of the router.
 type legacyRouterStruct struct {
-	BaseRouterStruct
+	common.BaseRouterStruct
 	board         string
 	phys          map[int]*iw.Phy       // map from phy idx to iw.Phy.
 	availIfaces   map[string]*iw.NetDev // map from interface name to iw.NetDev.
@@ -48,15 +49,15 @@ type legacyRouterStruct struct {
 	logCollectors map[string]*log.Collector // map from log path to its collector.
 }
 
-// newLegacyRouter prepares initial test AP state (e.g., initializing wiphy/wdev).
+// NewLegacyRouter prepares initial test AP state (e.g., initializing wiphy/wdev).
 // ctx is the deadline for the step and daemonCtx is the lifetime for background
 // daemons.
-func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (Legacy, error) {
+func NewLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*legacyRouterStruct, error) {
 	r := &legacyRouterStruct{
-		BaseRouterStruct: BaseRouterStruct{
-			host:  host,
-			name:  name,
-			rtype: LegacyT,
+		BaseRouterStruct: common.BaseRouterStruct{
+			Host:  host,
+			Name:  name,
+			Rtype: common.LegacyT,
 		},
 		phys:          make(map[int]*iw.Phy),
 		availIfaces:   make(map[string]*iw.NetDev),
@@ -65,13 +66,13 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		ipr:           remote_ip.NewRemoteRunner(host),
 		logCollectors: make(map[string]*log.Collector),
 	}
-	shortCtx, cancel := ReserveForRouterClose(ctx)
+	shortCtx, cancel := common.ReserveForRouterClose(ctx)
 	defer cancel()
 
 	ctx, st := timing.Start(shortCtx, "initialize")
 	defer st.End()
 
-	board, err := hostBoard(shortCtx, r.host)
+	board, err := hostBoard(shortCtx, r.Host)
 	if err != nil {
 		r.Close(shortCtx)
 		return nil, err
@@ -80,17 +81,17 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 
 	// Clean up Autotest working dir, in case we're out of space.
 	// NB: we need 'sh' to handle the glob.
-	if err := r.host.Command("sh", "-c", strings.Join([]string{"rm", "-rf", autotestWorkdirGlob}, " ")).Run(shortCtx); err != nil {
+	if err := r.Host.Command("sh", "-c", strings.Join([]string{"rm", "-rf", common.AutotestWorkdirGlob}, " ")).Run(shortCtx); err != nil {
 		r.Close(shortCtx)
-		return nil, errors.Wrapf(err, "failed to remove workdir %q", autotestWorkdirGlob)
+		return nil, errors.Wrapf(err, "failed to remove workdir %q", common.AutotestWorkdirGlob)
 	}
 
 	// Set up working dir.
-	if err := r.host.Command("rm", "-rf", r.workDir()).Run(shortCtx); err != nil {
+	if err := r.Host.Command("rm", "-rf", r.workDir()).Run(shortCtx); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrapf(err, "failed to remove workdir %q", r.workDir())
 	}
-	if err := r.host.Command("mkdir", "-p", r.workDir()).Run(shortCtx); err != nil {
+	if err := r.Host.Command("mkdir", "-p", r.workDir()).Run(shortCtx); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrapf(err, "failed to create workdir %q", r.workDir())
 	}
@@ -106,12 +107,12 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		r.Close(shortCtx)
 		return nil, err
 	}
-	if err := r.removeDevicesWithPrefix(shortCtx, bridgePrefix); err != nil {
+	if err := r.removeDevicesWithPrefix(shortCtx, common.BridgePrefix); err != nil {
 		r.Close(shortCtx)
 		return nil, err
 	}
 	// Note that we only need to remove one side of each veth pair.
-	if err := r.removeDevicesWithPrefix(shortCtx, vethPrefix); err != nil {
+	if err := r.removeDevicesWithPrefix(shortCtx, common.VethPrefix); err != nil {
 		r.Close(shortCtx)
 		return nil, err
 	}
@@ -121,15 +122,15 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		defer st.End()
 
 		// Kill remaining hostapd/dnsmasq.
-		hostapd.KillAll(shortCtx, r.host)
-		dhcp.KillAll(shortCtx, r.host)
+		hostapd.KillAll(shortCtx, r.Host)
+		dhcp.KillAll(shortCtx, r.Host)
 	}
 	killHostapdDhcp()
 
 	// TODO(crbug.com/839164): Current CrOS on router haven't got the fix in crrev.com/c/1979112.
 	// Let's keep the truncate and remove it after we have router updated.
 	const umaEventsPath = "/var/lib/metrics/uma-events"
-	if err := r.host.Command("truncate", "-s", "0", "-c", umaEventsPath).Run(shortCtx); err != nil {
+	if err := r.Host.Command("truncate", "-s", "0", "-c", umaEventsPath).Run(shortCtx); err != nil {
 		// Don't return error here, as it might not bother the test as long as it does not
 		// fill the whole partition.
 		testing.ContextLogf(shortCtx, "Failed to truncate %s: %v", umaEventsPath, err)
@@ -145,9 +146,9 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		defer st.End()
 
 		// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
-		r.host.Command("stop", "wpasupplicant").Run(shortCtx)
+		r.Host.Command("stop", "wpasupplicant").Run(shortCtx)
 		// Stop avahi if available as it just causes unnecessary network traffic.
-		r.host.Command("stop", "avahi").Run(shortCtx)
+		r.Host.Command("stop", "avahi").Run(shortCtx)
 	}
 	stopDaemon()
 
@@ -160,14 +161,14 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 	return r, nil
 }
 
-// GetRouterType returns the router's type
-func (r *legacyRouterStruct) GetRouterType() Type {
-	return r.rtype
+// RouterType returns the router's type
+func (r *legacyRouterStruct) RouterType() common.Type {
+	return r.Rtype
 }
 
 // removeWifiIface removes iface with iw command.
 func (r *legacyRouterStruct) removeWifiIface(ctx context.Context, iface string) error {
-	testing.ContextLogf(ctx, "Deleting wdev %s on %s", iface, r.name)
+	testing.ContextLogf(ctx, "Deleting wdev %s on %s", iface, r.Name)
 	return r.iwr.RemoveInterface(ctx, iface)
 }
 
@@ -214,7 +215,7 @@ func (r *legacyRouterStruct) setupWifiPhys(ctx context.Context) error {
 				return errors.Wrapf(err, "failed to set bitmap for %s", p.Name)
 			}
 		}
-		phyIDBytes, err := r.host.Command("cat", fmt.Sprintf("/sys/class/ieee80211/%s/index", p.Name)).Output(ctx)
+		phyIDBytes, err := r.Host.Command("cat", fmt.Sprintf("/sys/class/ieee80211/%s/index", p.Name)).Output(ctx)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get phy idx for %s", p.Name)
 		}
@@ -251,7 +252,7 @@ func (r *legacyRouterStruct) configureRNG(ctx context.Context) error {
 	const rngCurrentPath = "/sys/class/misc/hw_random/rng_current"
 	const wantRng = "tpm-rng"
 
-	out, err := r.host.Command("cat", rngCurrentPath).Output(ctx)
+	out, err := r.Host.Command("cat", rngCurrentPath).Output(ctx)
 	if err != nil {
 		// The system might not support hw_random, skip the configuration.
 		return nil
@@ -261,7 +262,7 @@ func (r *legacyRouterStruct) configureRNG(ctx context.Context) error {
 		return nil
 	}
 
-	out, err = r.host.Command("cat", rngAvailPath).Output(ctx)
+	out, err = r.Host.Command("cat", rngAvailPath).Output(ctx)
 	if err != nil {
 		return err
 	}
@@ -278,7 +279,7 @@ func (r *legacyRouterStruct) configureRNG(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Switching RNGs: %s -> %s", current, wantRng)
-	if err := linuxssh.WriteFile(ctx, r.host, rngCurrentPath, []byte(wantRng), 0644); err != nil {
+	if err := linuxssh.WriteFile(ctx, r.Host, rngCurrentPath, []byte(wantRng), 0644); err != nil {
 		return err
 	}
 	return nil
@@ -304,11 +305,11 @@ func (r *legacyRouterStruct) Close(ctx context.Context) error {
 		}
 	}
 
-	if err := r.removeDevicesWithPrefix(ctx, bridgePrefix); err != nil {
+	if err := r.removeDevicesWithPrefix(ctx, common.BridgePrefix); err != nil {
 		return err
 	}
 	// Note that we only need to remove one side of each veth pair.
-	if err := r.removeDevicesWithPrefix(ctx, vethPrefix); err != nil {
+	if err := r.removeDevicesWithPrefix(ctx, common.VethPrefix); err != nil {
 		return err
 	}
 
@@ -320,7 +321,7 @@ func (r *legacyRouterStruct) Close(ctx context.Context) error {
 	if err := r.stopLogCollectors(ctx); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
 	}
-	if err := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
+	if err := r.Host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
 	}
 	return firstErr
@@ -409,7 +410,7 @@ func (r *legacyRouterStruct) StartHostapd(ctx context.Context, name string, conf
 	ctx, st := timing.Start(ctx, "router.StartHostapd")
 	defer st.End()
 
-	if err := conf.SecurityConfig.InstallRouterCredentials(ctx, r.host, r.workDir()); err != nil {
+	if err := conf.SecurityConfig.InstallRouterCredentials(ctx, r.Host, r.workDir()); err != nil {
 		return nil, errors.Wrap(err, "failed to install router credentials")
 	}
 
@@ -431,7 +432,7 @@ func (r *legacyRouterStruct) startHostapdOnIface(ctx context.Context, iface, nam
 	ctx, st := timing.Start(ctx, "router.startHostapdOnIface")
 	defer st.End()
 
-	hs, err := hostapd.StartServer(ctx, r.host, name, iface, r.workDir(), conf)
+	hs, err := hostapd.StartServer(ctx, r.Host, name, iface, r.workDir(), conf)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start hostapd server")
 	}
@@ -500,7 +501,7 @@ func (r *legacyRouterStruct) StartDHCP(ctx context.Context, name, iface string, 
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
-	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	ds, err := dhcp.StartServer(ctx, r.Host, name, iface, r.workDir(), ipStart, ipEnd)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}
@@ -565,7 +566,7 @@ func (r *legacyRouterStruct) StartCapture(ctx context.Context, name string, ch i
 		testing.ContextLogf(ctx, "Skip configuring of the shared interface %s", iface)
 	}
 
-	c, err := pcap.StartCapturer(ctx, r.host, name, iface, r.workDir(), pcapOps...)
+	c, err := pcap.StartCapturer(ctx, r.Host, name, iface, r.workDir(), pcapOps...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start a packet capturer")
 	}
@@ -600,7 +601,7 @@ func (r *legacyRouterStruct) StopCapture(ctx context.Context, capturer *pcap.Cap
 // This function is useful for the tests that don't care the 802.11 frames but the behavior
 // of upper layer traffic and tests can capture packets directly on AP's interface.
 func (r *legacyRouterStruct) StartRawCapturer(ctx context.Context, name, iface string, ops ...pcap.Option) (*pcap.Capturer, error) {
-	return pcap.StartCapturer(ctx, r.host, name, iface, r.workDir(), ops...)
+	return pcap.StartCapturer(ctx, r.Host, name, iface, r.workDir(), ops...)
 }
 
 // ReserveForStopRawCapturer returns a shortened ctx with cancel function.
@@ -633,7 +634,7 @@ func (r *legacyRouterStruct) NewFrameSender(ctx context.Context, iface string) (
 	if err := r.ipr.SetLinkUp(ctx, nd.IfName); err != nil {
 		return nil, err
 	}
-	return framesender.New(r.host, nd.IfName, r.workDir()), nil
+	return framesender.New(r.Host, nd.IfName, r.workDir()), nil
 }
 
 // ReserveForCloseFrameSender returns a shortened ctx with cancel function.
@@ -653,12 +654,12 @@ func (r *legacyRouterStruct) CloseFrameSender(ctx context.Context, s *framesende
 
 // workDir returns the directory to place temporary files on router.
 func (r *legacyRouterStruct) workDir() string {
-	return workingDir
+	return common.WorkingDir
 }
 
 // NewBridge returns a bridge name for tests to use. Note that the caller is responsible to call ReleaseBridge.
 func (r *legacyRouterStruct) NewBridge(ctx context.Context) (_ string, retErr error) {
-	br := fmt.Sprintf("%s%d", bridgePrefix, r.bridgeID)
+	br := fmt.Sprintf("%s%d", common.BridgePrefix, r.bridgeID)
 	r.bridgeID++
 	if err := r.ipr.AddLink(ctx, br, "bridge"); err != nil {
 		return "", err
@@ -687,8 +688,8 @@ func (r *legacyRouterStruct) ReleaseBridge(ctx context.Context, br string) error
 
 // NewVethPair returns a veth pair for tests to use. Note that the caller is responsible to call ReleaseVethPair.
 func (r *legacyRouterStruct) NewVethPair(ctx context.Context) (_, _ string, retErr error) {
-	veth := fmt.Sprintf("%s%d", vethPrefix, r.vethID)
-	vethPeer := fmt.Sprintf("%s%d", vethPeerPrefix, r.vethID)
+	veth := fmt.Sprintf("%s%d", common.VethPrefix, r.vethID)
+	vethPeer := fmt.Sprintf("%s%d", common.VethPeerPrefix, r.vethID)
 	r.vethID++
 	if err := r.ipr.AddLink(ctx, veth, "veth", "peer", "name", vethPeer); err != nil {
 		return "", "", err
@@ -713,10 +714,10 @@ func (r *legacyRouterStruct) NewVethPair(ctx context.Context) (_, _ string, retE
 // Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
 func (r *legacyRouterStruct) ReleaseVethPair(ctx context.Context, veth string) error {
 	// If it is a peer side veth name, change it to another side.
-	if strings.HasPrefix(veth, vethPeerPrefix) {
-		veth = vethPrefix + veth[len(vethPeerPrefix):]
+	if strings.HasPrefix(veth, common.VethPeerPrefix) {
+		veth = common.VethPrefix + veth[len(common.VethPeerPrefix):]
 	}
-	vethPeer := vethPeerPrefix + veth[len(vethPrefix):]
+	vethPeer := common.VethPeerPrefix + veth[len(common.VethPrefix):]
 
 	var firstErr error
 	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, veth))
@@ -800,7 +801,7 @@ func (r *legacyRouterStruct) devicePowered(ctx context.Context, dev string) (boo
 	// The dbus call may fail if shill has not yet noticed and registered the device.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		b, err = r.host.Command("gdbus", "call", "--system",
+		b, err = r.Host.Command("gdbus", "call", "--system",
 			"--dest", "org.chromium.flimflam",
 			"--object-path", fmt.Sprintf("/device/%s", dev),
 			"--method", "org.chromium.flimflam.Device.GetProperties",
@@ -850,7 +851,7 @@ func (r *legacyRouterStruct) claimBridge(ctx context.Context, br string) error {
 		}
 
 		// Disable the bridge to prevent shill from spawning dhcpcd on it.
-		if err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
+		if err := r.Host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
 			"--dest=org.chromium.flimflam", fmt.Sprintf("/device/%s", br), "org.chromium.flimflam.Device.Disable",
 		).Run(ctx, ssh.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "failed to set bridge %s down", br)
@@ -927,7 +928,7 @@ var logsToCollect = []string{
 // startLogCollectors starts log collectors.
 func (r *legacyRouterStruct) startLogCollectors(ctx context.Context) error {
 	for _, p := range logsToCollect {
-		logger, err := log.StartCollector(ctx, r.host, p)
+		logger, err := log.StartCollector(ctx, r.Host, p)
 		if err != nil {
 			return errors.Wrap(err, "failed to start log collector")
 		}
@@ -936,13 +937,13 @@ func (r *legacyRouterStruct) startLogCollectors(ctx context.Context) error {
 	return nil
 }
 
-// collectLogs downloads log files from router to $OutDir/debug/$r.name with suffix
+// collectLogs downloads log files from router to $OutDir/debug/$r.Name with suffix
 // appended to the filenames.
 func (r *legacyRouterStruct) collectLogs(ctx context.Context, suffix string) error {
 	ctx, st := timing.Start(ctx, "collectLogs")
 	defer st.End()
 
-	baseDir := filepath.Join("debug", r.name)
+	baseDir := filepath.Join("debug", r.Name)
 
 	for _, src := range logsToCollect {
 		dst := filepath.Join(baseDir, filepath.Base(src)+suffix)

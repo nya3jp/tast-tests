@@ -7,42 +7,35 @@ package router
 import (
 	"context"
 	"net"
-	"time"
 
 	"chromiumos/tast/common/network/iw"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/ssh"
-	"chromiumos/tast/timing"
-)
-
-// Type is an enum indicating what type of router style a router is.
-type Type int
-
-const (
-	// LegacyT is the legacy router type.
-	LegacyT Type = iota
-	// AxT is the ax router type.
-	AxT
-	// OpenWrtT is the openwrt router type.
-	OpenWrtT
+	"chromiumos/tast/remote/wificell/router/axrouter"
+	"chromiumos/tast/remote/wificell/router/common"
 )
 
 // Base contains the basic methods implemented across all routers.
 type Base interface {
 	// Close cleans the resource used by Router.
 	Close(ctx context.Context) error
-	// GetRouterType
-	GetRouterType() Type
+	// RouterType returns the router type.
+	RouterType() common.Type
 }
 
 // Ax contains the funcionality that the ax testbed router should support.
 type Ax interface {
 	Base
+	// RouterIP gets the router's IP address.
+	RouterIP(ctx context.Context) (string, error)
+	// ApplyRouterSettings takes in the router config parameters, stages them, and then restarts the wireless service to have the changes realized on the router.
+	ApplyRouterSettings(ctx context.Context, cfg *axrouter.Config) error
+	// SaveConfiguration snapshots the router's configuration from the RAM from the stdout of "nvram show" into a string.
+	SaveConfiguration(ctx context.Context) (string, error)
+	// RestoreConfiguration takes a saved router configuration map, loads it into the RAM and updates the router.
+	RestoreConfiguration(ctx context.Context, recoveryMap map[string]axrouter.ConfigParam) error
 }
 
 // Legacy contains the functionality the legacy WiFi testing router should support.
@@ -152,47 +145,4 @@ type SupportVeth interface {
 	NewVethPair(ctx context.Context) (string, string, error)
 	// ReleaseVethPair release the veth pair.
 	ReleaseVethPair(ctx context.Context, veth string) error
-}
-
-const (
-	// Autotest may be used on these routers too, and if it failed to clean up, we may be out of space in /tmp.
-	autotestWorkdirGlob = "/tmp/autotest-*"
-	workingDir          = "/tmp/tast-test/"
-)
-
-const (
-	// NOTE: shill does not manage (i.e., run a dhcpcd on) the device with prefix "veth".
-	// See kIgnoredDeviceNamePrefixes in http://cs/chromeos_public/src/platform2/shill/device_info.cc
-	vethPrefix     = "vethA"
-	vethPeerPrefix = "vethB"
-	bridgePrefix   = "tastbr"
-)
-
-// BaseRouterStruct contains the basic router variables.
-type BaseRouterStruct struct {
-	host  *ssh.Conn
-	name  string
-	rtype Type
-}
-
-// ReserveForRouterClose returns a shortened ctx with cancel function.
-// The shortened ctx is used for running things before r.Close() to reserve time for it to run.
-func ReserveForRouterClose(ctx context.Context) (context.Context, context.CancelFunc) {
-	return ctxutil.Shorten(ctx, 5*time.Second)
-}
-
-// NewRouter connects to and initializes the router via SSH then returns the Router object.
-// This method takes two context: ctx and daemonCtx, the first is the context for the New
-// method and daemonCtx is for the spawned background daemons.
-// After getting a Server instance, d, the caller should call r.Close() at the end, and use the
-// shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
-func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtype Type) (Base, error) {
-	ctx, st := timing.Start(ctx, "NewRouter")
-	defer st.End()
-	switch rtype {
-	case LegacyT:
-		return newLegacyRouter(ctx, daemonCtx, host, name)
-	default:
-		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
-	}
 }

@@ -35,6 +35,9 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/axrouter"
+	"chromiumos/tast/remote/wificell/router/common"
+	"chromiumos/tast/remote/wificell/router/legacyrouter"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -124,14 +127,14 @@ func TFLogLevel(level int) TFOption {
 }
 
 // TFRouterType sets the router type used in the test fixture.
-func TFRouterType(rtype router.Type) TFOption {
+func TFRouterType(rtype common.Type) TFOption {
 	return func(tf *TestFixture) {
 		tf.routerType = rtype
 	}
 }
 
 // TFPcapType sets the router type of the pcap capturing device. The pcap device in our testbeds is a router.
-func TFPcapType(rtype router.Type) TFOption {
+func TFPcapType(rtype common.Type) TFOption {
 	return func(tf *TestFixture) {
 		tf.pcapType = rtype
 	}
@@ -153,8 +156,8 @@ type TestFixture struct {
 	wifiClient *WifiClient
 
 	routers    []routerData
-	routerType router.Type
-	pcapType   router.Type
+	routerType common.Type
+	pcapType   common.Type
 
 	pcapTarget string
 	pcapHost   *ssh.Conn
@@ -195,6 +198,10 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 	sopt.ConnectTimeout = 10 * time.Second
 
 	var conn *ssh.Conn
+
+	if tf.routerType == common.AxT {
+		sopt.User = "admin"
+	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		var dnsErr *net.DNSError
@@ -210,6 +217,7 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 	}); err != nil {
 		return nil, err
 	}
+
 	return conn, nil
 }
 
@@ -259,9 +267,9 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		capturers: make(map[*APIface]*pcap.Capturer),
 		aps:       make(map[*APIface]struct{}),
 		// Set the router's default router type.
-		routerType: router.LegacyT,
+		routerType: common.LegacyT,
 		// Set the pcap capture device's default router type.
-		pcapType: router.LegacyT,
+		pcapType: common.LegacyT,
 		// Set the debug values on the DUT by default.
 		setLogging: true,
 		// Default log level used in WiFi tests.
@@ -326,7 +334,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 			return nil, errors.Wrapf(err, "failed to connect to the router %s", rt.target)
 		}
 		rt.host = routerHost
-		routerObj, err := router.NewRouter(ctx, daemonCtx, rt.host,
+		routerObj, err := newRouter(ctx, daemonCtx, rt.host,
 			strings.ReplaceAll(rt.target, ":", "_"), tf.routerType)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a router object")
@@ -387,7 +395,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 				return nil, errors.Wrap(err, "failed to connect to pcap")
 			}
 		} else {
-			tf.pcap, err = router.NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap", tf.pcapType)
+			tf.pcap, err = newRouter(ctx, daemonCtx, tf.pcapHost, "pcap", tf.pcapType)
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to create a router object for pcap")
 			}
@@ -545,7 +553,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	defer st.End()
 	r, ok := tf.routers[idx].object.(router.LegacyOpenWrtShared)
 	if !ok {
-		return nil, errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[idx].object.GetRouterType())
+		return nil, errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[idx].object.RouterType())
 	}
 
 	name := tf.getUniqueAPName()
@@ -575,7 +583,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}
 		p, ok := tf.pcap.(router.SupportCapture)
 		if !ok {
-			return nil, errors.Errorf("pcap device of type %v does not have log capture support", tf.pcap.GetRouterType())
+			return nil, errors.Errorf("pcap device of type %v does not have log capture support", tf.pcap.RouterType())
 		}
 		capturer, err = p.StartCapture(ctx, name, config.Channel, freqOps)
 		if err != nil {
@@ -639,7 +647,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	defer st.End()
 	p, ok := tf.pcap.(router.SupportCapture)
 	if !ok {
-		return errors.Errorf("pcap device of type %v does not have log capture support", tf.pcap.GetRouterType())
+		return errors.Errorf("pcap device of type %v does not have log capture support", tf.pcap.RouterType())
 	}
 	var firstErr error
 
@@ -980,6 +988,16 @@ func (tf *TestFixture) LegacyRouter() (router.Legacy, error) {
 
 }
 
+// AxRouter returns Router 0 object in the fixture.
+func (tf *TestFixture) AxRouter() (router.Ax, error) {
+	r, ok := tf.RouterByID(0).(router.Ax)
+	if !ok {
+		return nil, errors.New("router is not an ax router")
+	}
+	return r, nil
+
+}
+
 // Router returns Router 0 object in the fixture.
 func (tf *TestFixture) Router() router.Base {
 	return tf.RouterByID(0)
@@ -1097,7 +1115,7 @@ func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *AP
 	ctxForCloseFrameSender := ctx
 	r, ok := tf.Router().(router.SupportFrameSender)
 	if !ok {
-		return errors.Errorf("router device of type %v does not have management frame support", tf.Router().GetRouterType())
+		return errors.Errorf("router device of type %v does not have management frame support", tf.Router().RouterType())
 	}
 	ctx, cancel := r.ReserveForCloseFrameSender(ctx)
 	defer cancel()
@@ -1192,4 +1210,28 @@ func (tf *TestFixture) getLoggingConfig(ctx context.Context) (int, []string, err
 		return 0, nil, err
 	}
 	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
+}
+
+// SetWakeOnWifi sets properties related to wake on WiFi.
+// DEPRECATED: Use tf.WifiClient().SetWakeOnWifi instead.
+func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOption) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
+	return tf.WifiClient().SetWakeOnWifi(ctx, ops...)
+}
+
+// newRouter connects to and initializes the router via SSH then returns the Router object.
+// This method takes two context: ctx and daemonCtx, the first is the context for the New
+// method and daemonCtx is for the spawned background daemons.
+// After getting a Server instance, d, the caller should call r.Close() at the end, and use the
+// shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
+func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtype common.Type) (router.Base, error) {
+	ctx, st := timing.Start(ctx, "NewRouter")
+	defer st.End()
+	switch rtype {
+	case common.LegacyT:
+		return legacyrouter.NewLegacyRouter(ctx, daemonCtx, host, name)
+	case common.AxT:
+		return axrouter.NewAxRouter(ctx, daemonCtx, host, name)
+	default:
+		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
+	}
 }
