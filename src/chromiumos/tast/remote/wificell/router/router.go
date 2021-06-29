@@ -11,43 +11,19 @@ import (
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/timing"
-)
-
-// Type is an enum indicating what type of router style a router is.
-type Type int
-
-const (
-	// LegacyT is the legacy router type.
-	LegacyT Type = iota
-	// AxT is the ax router type.
-	AxT
-	// OpenWrtT is the openwrt router type.
-	OpenWrtT
 )
 
 // Base contains the basic methods implemented across all routers.
 type Base interface {
 	// Close cleans the resource used by Router.
 	Close(ctx context.Context) error
-	// GetRouterType
-	GetRouterType() Type
-}
-
-// Ax contains the funcionality that the ax testbed router should support.
-type Ax interface {
-	Base
-}
-
-// Legacy contains the functionality the legacy WiFi testing router should support.
-type Legacy interface {
-	LegacyOpenWrtShared
+	// RouterType returns the router type.
+	RouterType() Type
 }
 
 // OpenWrt contains the functionality that the future OpenWrt testbed shall support.
@@ -154,45 +130,51 @@ type SupportVeth interface {
 	ReleaseVethPair(ctx context.Context, veth string) error
 }
 
+// Type is an enum indicating what type of router style a router is.
+type Type int
+
+const (
+	// LegacyT is the legacy router type.
+	LegacyT Type = iota
+	// AxT is the ax router type.
+	AxT
+	// OpenWrtT is the openwrt router type.
+	OpenWrtT
+)
+
 const (
 	// Autotest may be used on these routers too, and if it failed to clean up, we may be out of space in /tmp.
-	autotestWorkdirGlob = "/tmp/autotest-*"
-	workingDir          = "/tmp/tast-test/"
+
+	// AutotestWorkdirGlob is the path that grabs all autotest outputs.
+	AutotestWorkdirGlob = "/tmp/autotest-*"
+	// WorkingDir is the tast-test's working directory.
+	WorkingDir = "/tmp/tast-test/"
 )
 
 const (
 	// NOTE: shill does not manage (i.e., run a dhcpcd on) the device with prefix "veth".
 	// See kIgnoredDeviceNamePrefixes in http://cs/chromeos_public/src/platform2/shill/device_info.cc
-	vethPrefix     = "vethA"
-	vethPeerPrefix = "vethB"
-	bridgePrefix   = "tastbr"
+
+	// VethPrefix is the prefix for the veth interface.
+	VethPrefix = "vethA"
+	// VethPeerPrefix is the prefix for the peer's veth interface.
+	VethPeerPrefix = "vethB"
+	// BridgePrefix is the prefix for the bridge interface.
+	BridgePrefix = "tastbr"
 )
 
 // BaseRouterStruct contains the basic router variables.
 type BaseRouterStruct struct {
-	host  *ssh.Conn
-	name  string
-	rtype Type
+	// Host is the ssh connection to the router.
+	Host *ssh.Conn
+	// Name is the name of the Router
+	Name string
+	// Rtype is the router's type
+	Rtype Type
 }
 
 // ReserveForRouterClose returns a shortened ctx with cancel function.
 // The shortened ctx is used for running things before r.Close() to reserve time for it to run.
 func ReserveForRouterClose(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 5*time.Second)
-}
-
-// NewRouter connects to and initializes the router via SSH then returns the Router object.
-// This method takes two context: ctx and daemonCtx, the first is the context for the New
-// method and daemonCtx is for the spawned background daemons.
-// After getting a Server instance, d, the caller should call r.Close() at the end, and use the
-// shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
-func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtype Type) (Base, error) {
-	ctx, st := timing.Start(ctx, "NewRouter")
-	defer st.End()
-	switch rtype {
-	case LegacyT:
-		return newLegacyRouter(ctx, daemonCtx, host, name)
-	default:
-		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
-	}
 }
