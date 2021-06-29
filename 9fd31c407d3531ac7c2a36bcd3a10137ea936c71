@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29238e10_69053ae6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-06-29T17:59:21Z",
+      "side": 1,
+      "message": "This CL is to fix the flakiness of the test (esp. in betty-arc-s). PTAL. Thanks!",
+      "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
