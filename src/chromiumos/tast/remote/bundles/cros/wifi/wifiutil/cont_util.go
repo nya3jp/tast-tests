@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dhcp"
+	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/services/cros/wifi"
@@ -276,7 +277,7 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 		}
 	})
 
-	connResp, err := tf.ConnectWifi(ctx, ct.ap[0].Config().SSID, wificell.ConnSecurity(ct.ap[0].Config().SecurityConfig))
+	connResp, err := tf.ConnectWifi(ctx, ct.ap[0].Config().SSID, dutcfg.ConnSecurity(ct.ap[0].Config().SecurityConfig))
 	if err != nil {
 		s.Fatal("Failed to connect to the AP: ", err)
 	}
