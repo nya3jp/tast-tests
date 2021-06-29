@@ -195,6 +195,10 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 	sopt.ConnectTimeout = 10 * time.Second
 
 	var conn *ssh.Conn
+
+	if tf.routerType == router.AxT {
+		sopt.User = "admin"
+	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		var dnsErr *net.DNSError
@@ -210,6 +214,7 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 	}); err != nil {
 		return nil, err
 	}
+
 	return conn, nil
 }
 
@@ -980,6 +985,16 @@ func (tf *TestFixture) LegacyRouter() (router.Legacy, error) {
 
 }
 
+// AxRouter returns Router 0 object in the fixture.
+func (tf *TestFixture) AxRouter() (router.Ax, error) {
+	r, ok := tf.RouterByID(0).(router.Ax)
+	if !ok {
+		return nil, errors.New("router is not an ax router")
+	}
+	return r, nil
+
+}
+
 // Router returns Router 0 object in the fixture.
 func (tf *TestFixture) Router() router.Base {
 	return tf.RouterByID(0)
@@ -1192,4 +1207,19 @@ func (tf *TestFixture) getLoggingConfig(ctx context.Context) (int, []string, err
 		return 0, nil, err
 	}
 	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
+}
+
+// SetWakeOnWifi sets properties related to wake on WiFi.
+// DEPRECATED: Use tf.WifiClient().SetWakeOnWifi instead.
+func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOption) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
+	return tf.WifiClient().SetWakeOnWifi(ctx, ops...)
+}
+
+// GetAxRouterIPAddress gets the ax router's LAN IP address.
+func (tf *TestFixture) GetAxRouterIPAddress(ctx context.Context) (string, error) {
+	r, ok := tf.routers[0].object.(router.Ax)
+	if !ok {
+		return "", errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[0].object.GetRouterType())
+	}
+	return r.GetRouterIP(ctx)
 }

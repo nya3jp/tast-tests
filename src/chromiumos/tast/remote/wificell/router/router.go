@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/router/axrouter"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/timing"
 )
@@ -36,13 +37,21 @@ const (
 type Base interface {
 	// Close cleans the resource used by Router.
 	Close(ctx context.Context) error
-	// GetRouterType
+	// GetRouterType returns the router type.
 	GetRouterType() Type
 }
 
 // Ax contains the funcionality that the ax testbed router should support.
 type Ax interface {
 	Base
+	// GetRouterIP gets the router's ip address.
+	GetRouterIP(ctx context.Context) (string, error)
+	// ApplyRouterSettings will take in the router config parameters, stage them, and then restart the wireless service to have the changes realized on the router.
+	ApplyRouterSettings(ctx context.Context, cfg *axrouter.Config) error
+	// SaveConfiguration snapshots the router's configuration in ram into a string.
+	SaveConfiguration(ctx context.Context) (string, error)
+	// RestoreConfiguration takes a saved router configuration map, loads it into the ram and updates the router.
+	RestoreConfiguration(ctx context.Context, recoveryMap map[string]axrouter.ConfigParam) error
 }
 
 // Legacy contains the functionality the legacy WiFi testing router should support.
@@ -192,6 +201,8 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	switch rtype {
 	case LegacyT:
 		return newLegacyRouter(ctx, daemonCtx, host, name)
+	case AxT:
+		return newAxRouter(ctx, daemonCtx, host, name)
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
