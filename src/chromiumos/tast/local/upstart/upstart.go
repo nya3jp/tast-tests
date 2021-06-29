@@ -7,6 +7,7 @@ package upstart
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -21,6 +22,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -132,6 +134,9 @@ func JobExists(ctx context.Context, job string) bool {
 // "initctl restart" behavior as described in Section 10.1.2, "restart", in the Upstart Cookbook.
 // args is passed to the job as extra parameters.
 func RestartJob(ctx context.Context, job string, args ...string) error {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_restart_%s", job))
+	defer st.End()
+
 	// Make sure that the job isn't running and then try to start it.
 	if err := StopJob(ctx, job); err != nil {
 		return errors.Wrapf(err, "stopping %q failed", job)
@@ -148,6 +153,9 @@ func RestartJob(ctx context.Context, job string, args ...string) error {
 // job when session_manager exits. To work around this, when job is "ui", this function first
 // waits for the job to reach a stable state. See https://crbug.com/891594.
 func StopJob(ctx context.Context, job string) error {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_stop_%s", job))
+	defer st.End()
+
 	if job == uiJob {
 		// The ui and ui-respawn jobs go through the following sequence of statuses
 		// when the session_manager job exits with a nonzero status:
@@ -188,6 +196,9 @@ func StopJob(ctx context.Context, job string) error {
 // job to either have a "start" goal or reach "stop/waiting" while the ui-respawn job
 // is in "stop/waiting".
 func waitUIJobStabilized(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "upstart_wait_ui_stabilize")
+	defer st.End()
+
 	const (
 		respawnJob = "ui-respawn"
 		timeout    = 30 * time.Second
@@ -222,6 +233,9 @@ func DumpJobs(ctx context.Context, path string) error {
 // EnsureJobRunning starts job if it isn't currently running.
 // If it is already running, this is a no-op.
 func EnsureJobRunning(ctx context.Context, job string) error {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_ensure_%s", job))
+	defer st.End()
+
 	// If the job already has a "start" goal, wait for it to enter the "running" state.
 	// This will return nil immediately if it's already start/running, and will return
 	// an error immediately if the job has a "stop" goal.
@@ -236,6 +250,9 @@ func EnsureJobRunning(ctx context.Context, job string) error {
 // StartJob starts job. If it is already running, this returns an error.
 // args is passed to the job as extra parameters.
 func StartJob(ctx context.Context, job string, args ...string) error {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_start_%s", job))
+	defer st.End()
+
 	cmd := testexec.CommandContext(ctx, "initctl", append([]string{"start", job}, args...)...)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
@@ -260,8 +277,10 @@ const (
 // WaitForJobStatus waits for job to have the status described by goal/state.
 // gp controls the function's behavior if the job's goal doesn't match the requested one.
 // If timeout is non-zero, it limits the amount of time to wait.
-func WaitForJobStatus(ctx context.Context, job string, goal upstart.Goal, state upstart.State, gp GoalPolicy,
-	timeout time.Duration) error {
+func WaitForJobStatus(ctx context.Context, job string, goal upstart.Goal, state upstart.State, gp GoalPolicy, timeout time.Duration) error {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_wait_%s", job))
+	defer st.End()
+
 	// Used to report an out-of-band error if we fail to get the status or see a different goal.
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		g, s, _, err := JobStatus(ctx, job)
