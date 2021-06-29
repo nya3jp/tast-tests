@@ -33,6 +33,23 @@
       "message": "https://tastboard.corp.google.com/test/crash.KernelAth10kError shows recent failures, e.g. on krane, that do not appear to be infra-related. IIRC, tast guidelines normally stipulate that there should be 20+ consecutive successful runs (aside from infra issues) before promoting to critical.",
       "revId": "e5cc44d8a2f80a7d35f8c2c1a2cb86f454bb7fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68dd9f3_7a0136a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-29T00:28:28Z",
+      "side": 1,
+      "message": "mukai@ left the team. When you need a review from Tast reviewers please add tast-owners@ again.",
+      "revId": "e5cc44d8a2f80a7d35f8c2c1a2cb86f454bb7fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
