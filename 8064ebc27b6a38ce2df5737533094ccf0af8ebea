@@ -39,6 +39,30 @@
       },
       "revId": "8064ebc27b6a38ce2df5737533094ccf0af8ebea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c129c451_f5002642",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-06-29T18:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ce382e_fce86f55",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "8064ebc27b6a38ce2df5737533094ccf0af8ebea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
