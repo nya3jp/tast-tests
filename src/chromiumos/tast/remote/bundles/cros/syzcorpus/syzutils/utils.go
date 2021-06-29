@@ -113,14 +113,18 @@ func CopyRepro(ctx context.Context, d *dut.DUT, localPath, remotePath string) er
 }
 
 // RunRepro runs the repro present at remotePath on the DUT with a specified timeout.
-func RunRepro(ctx context.Context, d *dut.DUT, remotePath string, timeout time.Duration) ([]byte, error) {
+func RunRepro(ctx context.Context, d *dut.DUT, remotePath, remoteDir string, timeout time.Duration) ([]byte, error) {
 	testing.ContextLog(ctx, "Going to run repro")
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	// Run the remote command with a timeout of `timeout`. KILL signal will also be
 	// sent after `timeout`.
-	cmd := d.Conn().Command("timeout", "-k", "2", fmt.Sprintf("%v", timeout.Seconds()), filepath.Join(remotePath))
+	cmd := d.Conn().Command(
+		"/bin/sh", "-c",
+		fmt.Sprintf("cd %v && timeout -k 2 %v %v", remoteDir, timeout.Seconds(), filepath.Join(remotePath)),
+	)
+
 	// The repro might exit with a non-zero exit code and this is expected. The repro
 	// might also run indefinitely, and be terminated by the context timeout.
 	if out, err := cmd.CombinedOutput(ctx); err != nil {
