@@ -6,13 +6,13 @@ package hwsec
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
-	"path/filepath"
+	"io"
+	"regexp"
 	"time"
 
-	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/common/testexec"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -50,81 +50,70 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	}
 	tpmManager := helper.TPMManagerClient()
 
-	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.
-	// Reset DA Lockout => Check DA Counter => Read NVRAM Index with incorrect password =>
-	// Check DA Counter => Reset DA Lockout => Check DA Counter.
+	// In this test, we want to check if DA counter will be reset when it increases.
+	// Check DA Counter => Read NVRAM Index with incorrect password => Check DA Counter
 	// Read NVRAM Index with incorrect password is used to trigger an increase in DA counter.
 
-	// Reset DA at the start of the test.
-	if _, err := tpmManager.ResetDALock(ctx); err != nil {
-		s.Fatal("Failed to reset dictionary attack lockout: ", err)
-	}
-
-	// Check that the counter is 0 right after resetting.
-	info, err := tpmManager.GetDAInfo(ctx)
+	// Check if the DA is not locked out before we increase the DA counter.
+	err = hwseclocal.CheckDAIsZero(ctx, tpmManager)
 	if err != nil {
-		s.Fatal("Failed to get dictionary attack info: ", err)
-	}
-	if info.Counter != 0 {
-		s.Fatalf("Incorrect counter: got %d, want 0", info.Counter)
-	}
-	if info.InEffect {
-		s.Fatal("Lockout in effect after reset")
+		s.Fatal("Failed to check DA counter is zero: ", err)
 	}
 
-	const testNVRAMIndex = "0x1000F000" // Endorsement cert in TPMv1.2, it's permanent.
-	const testIncorrectPassword = "4321"
-
-	// Prepare a test file.
-	testFile, err := ioutil.TempFile("", "dictionary_attack_test")
+	err = hwseclocal.IncreaseDAForTpm1(ctx, tpmManager)
 	if err != nil {
-		s.Fatal("Failed to create temp file: ", err)
+		s.Fatal("Failed to increase dictionary attcack counter: ", err)
 	}
-	ctx, _ = ctxutil.Shorten(ctx, time.Second) // Give it a second for cleanup.
-	defer func() {
-		// We setup the cleanup earlier than the read operation because if the read operation succeed and
-		// the test fails, we still need to cleanup the file.
-		if err := os.Remove(testFile.Name()); err != nil {
-			s.Error("Failed to remove tmp file: ", err)
+
+	// Check if the DA counter is reset properly.
+	err = hwseclocal.CheckDAIsZero(ctx, tpmManager)
+	if err != nil {
+		s.Fatal("Failed to check DA counter is zero: ", err)
+	}
+
+	logReader, err := syslog.NewReader(ctx)
+	if err != nil {
+		s.Fatal("Failed to create log reader: ", err)
+	}
+
+	// restart tcsd to generate auth failure log
+	_, err = testexec.CommandContext(ctx, "restart", "tcsd").Output()
+	if err != nil {
+		s.Fatal("Failed to restart tcsd: ", err)
+	}
+	// Restart tpm_managerd to avoid tpm_managerd crashing when receiving next command, see b/192034446.
+	// TODO(b/192034446): remove this once the problem is resolved.
+	_, err = testexec.CommandContext(ctx, "restart", "tpm_managerd").Output()
+	if err != nil {
+		s.Fatal("Failed to restart tpm_managerd: ", err)
+	}
+
+	// Sleep a while to ensure that log has beed generated.
+	testing.Sleep(ctx, 5*time.Second)
+
+	authFailureRegexp := regexp.MustCompile(`Found auth failure in the last life cycle. \(0x.*\)`)
+	anomalyRegexp := regexp.MustCompile(`(anomaly_detector invoking crash_reporter with --auth_failure)|(Ignoring auth_failure 0x.*)`)
+	foundAuthFailure := false
+	foundAnomaly := false
+	for {
+		entry, err := logReader.Read()
+		if err == io.EOF {
+			break
 		}
-	}()
-	testFilePath, err := filepath.Abs(testFile.Name())
-	if err != nil {
-		s.Fatal("Failed to get absolute path of temp file: ", err)
+		if err != nil {
+			s.Fatal("Failed to read log: ", err)
+		}
+		if authFailureRegexp.Match([]byte(entry.Content)) {
+			foundAuthFailure = true
+		}
+		if anomalyRegexp.Match([]byte(entry.Content)) {
+			foundAnomaly = true
+		}
 	}
-	if err := testFile.Close(); err != nil {
-		s.Fatal("Failed to close the temp file: ", err)
+	if !foundAuthFailure {
+		s.Fatalf("Failed to find auth_failure in %s", syslog.MessageFile)
 	}
-
-	// Try to write the NVRAM space with incorrect password to increase the counter.
-	if _, err := tpmManager.ReadSpaceToFile(ctx, testNVRAMIndex, testFilePath, testIncorrectPassword); err == nil {
-		s.Fatal("Reading NVRAM Space should not succeed with incorrect password")
-	}
-
-	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
-	// TODO(b/181291715): Change it to the right expectation before re-enabling the test, if we ever want to keep this test.
-	info, err = tpmManager.GetDAInfo(ctx)
-	if err != nil {
-		s.Fatal("Failed to get dictionary attack info: ", err)
-	}
-	if info.Counter != 1 {
-		s.Fatalf("Incorrect counter: got %d, want 1", info.Counter)
-	}
-
-	// Now try to reset the dictionary attack lockout counter.
-	if _, err := tpmManager.ResetDALock(ctx); err != nil {
-		s.Fatal("Failed to reset dictionary attack lockout: ", err)
-	}
-
-	// Check counter again, should be 0, and lockout shouldn't be in effect.
-	info, err = tpmManager.GetDAInfo(ctx)
-	if err != nil {
-		s.Fatal("Failed to get dictionary attack info: ", err)
-	}
-	if info.Counter != 0 {
-		s.Fatalf("Incorrect counter: got %d, want 0", info.Counter)
-	}
-	if info.InEffect {
-		s.Fatal("Lockout in effect after reset")
+	if !foundAnomaly {
+		s.Fatal("Failed to trigger anomaly detector")
 	}
 }
