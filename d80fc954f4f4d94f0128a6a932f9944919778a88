@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c27a53c_e61bb1f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-29T21:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a922c67e_b96b03ab",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3e343fc_bc9aeff9",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af74837_d857e8d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-29T21:53:44Z",
+      "side": 1,
+      "message": "Done. I created a new fixture in an upstream CL (not linked here).",
+      "parentUuid": "e3e343fc_bc9aeff9",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57085d72_e68f075c",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-25T21:04:49Z",
       "side": 1,
       "message": "defer quicksettings.Hide",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "d80fc954f4f4d94f0128a6a932f9944919778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f74fe4c_1d3cb68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-06-29T21:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57085d72_e68f075c",
       "range": {
         "startLine": 71,
         "startChar": 1,
