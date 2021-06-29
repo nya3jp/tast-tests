@@ -36,13 +36,21 @@ const (
 type Base interface {
 	// Close cleans the resource used by Router.
 	Close(ctx context.Context) error
-	// GetRouterType
+	// GetRouterType returns the router type.
 	GetRouterType() Type
 }
 
 // Ax contains the funcionality that the ax testbed router should support.
 type Ax interface {
 	Base
+	// GetRouterIP gets the router's ip address.
+	GetRouterIP(ctx context.Context) (string, error)
+	// ApplyRouterSettings will take in the router config parameters, stage them, and then restart the wireless service to have the changes realized on the router.
+	ApplyRouterSettings(ctx context.Context, settings []AxRouterConfigParam) error
+	// SaveConfiguration snapshots the router's configuration in ram into a file.
+	SaveConfiguration(ctx context.Context) error
+	// RestoreConfiguration takes a saved router configuration file and loads it into the ram and updates the router.
+	RestoreConfiguration(ctx context.Context) error
 }
 
 // Legacy contains the functionality the legacy WiFi testing router should support.
@@ -192,6 +200,8 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	switch rtype {
 	case LegacyT:
 		return newLegacyRouter(ctx, daemonCtx, host, name)
+	case AxT:
+		return newAxRouter(ctx, daemonCtx, host, name)
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
