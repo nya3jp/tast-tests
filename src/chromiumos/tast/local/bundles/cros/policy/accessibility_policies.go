@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
@@ -271,6 +272,7 @@ func init() {
 			{
 				Name:      "spoken_feedback",
 				ExtraAttr: []string{"group:mainline", "informational"},
+				Timeout:   3 * time.Minute,
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -319,6 +321,7 @@ func init() {
 			{
 				Name:      "virtual_keyboard",
 				ExtraAttr: []string{"group:mainline", "informational"},
+				Timeout:   3 * time.Minute,
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
