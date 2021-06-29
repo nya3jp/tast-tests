@@ -13,6 +13,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -119,6 +120,36 @@ func unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error
 	return nil
 }
 
+// waitForARCVolumeMount waits for the volume to be mounted in ARC using the sm
+// command. Just checking mountinfo is not sufficient here since it takes some
+// time for the FUSE layer in Android R+ to be ready after /storage/<UUID> has
+// become a mountpoint.
+func waitForARCVolumeMount(ctx context.Context, a *arc.ARC) error {
+	// Regular expression that matches the output line for the mounted
+	// volume. Each output line of the sm command is of the form:
+	// <volume id><space(s)><mount status><space(s)><volume UUID>.
+	// Examples:
+	//   1821167369 mounted 00000000000000000000000000000000DEADBEEF
+	//   stub:18446744073709551614 mounted 00000000000000000000000000000000DEADBEEF
+	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+mounted\s+` + fakeUUID + `$`)
+
+	testing.ContextLog(ctx, "Waiting for the volume to be mounted in ARC")
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "sm command failed"))
+		}
+		lines := bytes.Split(out, []byte("\n"))
+		for _, line := range lines {
+			if re.Find(bytes.TrimSpace(line)) != nil {
+				return nil
+			}
+		}
+		return errors.New("the volume is not yet mounted")
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
+}
+
 // RunTest executes the testing scenario of arc.RemovableMedia.
 func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string) {
 	const (
@@ -164,6 +195,10 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 			s.Error("Failed to unmount VFAT image: ", err)
 		}
 	}()
+
+	if err := waitForARCVolumeMount(ctx, a); err != nil {
+		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
+	}
 
 	// Create a picture in the removable media.
 	tpath := filepath.Join(mountDir, testFile)
