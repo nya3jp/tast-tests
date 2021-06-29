@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0550acd9_f266505e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T01:29:41Z",
+      "side": 1,
+      "message": "This change makes the node locator more explicit, but actually unnecessary. Honestly I would not make this change if there is no clear benefit from it. An important principle of programming: do not touch anything if they are working.",
+      "parentUuid": "36171f63_2f66e721",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9833c6a8_0b086f1d",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 6
