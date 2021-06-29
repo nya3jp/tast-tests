@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8b2b69_4dc93a22",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e2706e_430314b3",
+      "range": {
+        "startLine": 343,
+        "startChar": 28,
+        "endLine": 343,
+        "endChar": 33
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10b22506_20b5503c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-24T08:35:56Z",
       "side": 1,
       "message": "style: mount\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 346,
+        "startChar": 28,
+        "endLine": 346,
+        "endChar": 33
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "451f72b2_9b00b89a",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b22506_20b5503c",
       "range": {
         "startLine": 346,
         "startChar": 28,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be429df5_a6bc7974",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "DONE, but the extra function makes it a little ugly. The umount needs to happen before the `cros flash` command below.",
+      "parentUuid": "f0f7fc79_dff2c43c",
+      "range": {
+        "startLine": 354,
+        "startChar": 9,
+        "endLine": 354,
+        "endChar": 16
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1deedc0_1f46def7",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da700257_6cf16008",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1deedc0_1f46def7",
+      "range": {
+        "startLine": 358,
+        "startChar": 28,
+        "endLine": 358,
+        "endChar": 35
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aee7febf_4b9ba112",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-06-24T08:35:56Z",
       "side": 1,
       "message": "nit\u0026optional: I recommend early returns to reduce nesting.\n\n if releaseBuilderPath \u003d\u003d dutBuilderPath {\n   return nil\n }",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 42
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed7ceb1_ddc8e6ca",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee7febf_4b9ba112",
       "range": {
         "startLine": 370,
         "startChar": 1,
@@ -276,6 +396,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3df4e0_80ed85fe",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f665f38_805fb172",
+      "range": {
+        "startLine": 373,
+        "startChar": 18,
+        "endLine": 373,
+        "endChar": 50
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d8b110e_fb632545",
@@ -299,6 +443,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd384b9_310b2711",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d8b110e_fb632545",
+      "range": {
+        "startLine": 387,
+        "startChar": 62,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5f537a9_c36bc106",
@@ -312,6 +480,30 @@
       "writtenOn": "2021-06-24T22:31:53Z",
       "side": 1,
       "message": "style: \"USB\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "e5475783d3028bfe07b593707c9d7730b4f37c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6c118c_cb06a208",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T20:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5f537a9_c36bc106",
       "range": {
         "startLine": 29,
         "startChar": 6,
