@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b02952_e688458e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T22:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f914d099_c39f2305",
+      "revId": "47366b316edc9a0c3190181f3dbffa0b45d7727a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e01fb7_85b35d4b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-29T21:47:57Z",
       "side": 1,
       "message": "Should move this to after the h.DisconnectDUT() call as a defer.",
+      "revId": "47366b316edc9a0c3190181f3dbffa0b45d7727a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7c44a5_2aa9c3ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-29T22:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e01fb7_85b35d4b",
       "revId": "47366b316edc9a0c3190181f3dbffa0b45d7727a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
