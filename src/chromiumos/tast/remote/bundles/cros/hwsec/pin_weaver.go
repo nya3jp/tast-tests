@@ -144,6 +144,13 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 	if err := cryptohomeHelper.MountVault(ctx, user1, testPassword, "default", false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user: ", err)
 	}
+	output, err := cryptohomeHelper.GetKeyData(ctx, user1, keyLabel1)
+	if err != nil {
+		s.Fatal("Failed to get key data: ", err)
+	}
+	if !strings.Contains(output, "auth_locked: false") {
+		s.Fatal("Reset PIN credential is auth locked")
+	}
 	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmountAll: ", err)
 	}
