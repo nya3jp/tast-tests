@@ -37,40 +37,37 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Fixture:      "networkDiagnostics",
 		Params: []testing.Param{{
-			Name:      "lan_connectivity",
-			Val:       newNetDiagParams(diagcommon.RoutineLanConnectivity),
+			Name: "lan_connectivity",
+			Val:  newNetDiagParams(diagcommon.RoutineLanConnectivity),
+		}, {
+			Name: "dns_resolver_present",
+			Val:  newNetDiagParams(diagcommon.RoutineDNSResolverPresent),
+		}, {
+			Name: "dns_resolution",
+			Val:  newNetDiagParams(diagcommon.RoutineDNSResolution),
+		}, {
+			Name: "dns_latency",
+			Val:  newNetDiagParams(diagcommon.RoutineDNSLatency),
+			// TODO(crbug/1203776): Promote test when stable.
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:      "dns_resolver_present",
-			Val:       newNetDiagParams(diagcommon.RoutineDNSResolverPresent),
+			Name: "http_firewall",
+			Val:  newNetDiagParams(diagcommon.RoutineHTTPFirewall),
+		}, {
+			Name: "https_firewall",
+			Val:  newNetDiagParams(diagcommon.RoutineHTTPSFirewall),
+		}, {
+			Name: "https_latency",
+			Val:  newNetDiagParams(diagcommon.RoutineHTTPSLatency),
+			// TODO(crbug/1203776): Promote test when stable.
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:      "dns_resolution",
-			Val:       newNetDiagParams(diagcommon.RoutineDNSResolution),
-			ExtraAttr: []string{"informational"},
+			Name: "captive_portal",
+			Val:  newNetDiagParams(diagcommon.RoutineCaptivePortal),
 		}, {
-			Name:      "dns_latency",
-			Val:       newNetDiagParams(diagcommon.RoutineDNSLatency),
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "http_firewall",
-			Val:       newNetDiagParams(diagcommon.RoutineHTTPFirewall),
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "https_firewall",
-			Val:       newNetDiagParams(diagcommon.RoutineHTTPSFirewall),
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "https_latency",
-			Val:       newNetDiagParams(diagcommon.RoutineHTTPSLatency),
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "captive_portal",
-			Val:       newNetDiagParams(diagcommon.RoutineCaptivePortal),
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "video_conferencing",
-			Val:       newNetDiagParams(diagcommon.RoutineVideoConferencing),
+			Name: "video_conferencing",
+			Val:  newNetDiagParams(diagcommon.RoutineVideoConferencing),
+			// TODO(crbug/1178896): Promote test when stable.
 			ExtraAttr: []string{"informational"},
 			Timeout:   10 * time.Minute,
 		}},
