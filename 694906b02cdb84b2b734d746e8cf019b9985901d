@@ -16,6 +16,29 @@
       "message": "Thanks for the reviews! \n+tast-owners for approval.",
       "revId": "694906b02cdb84b2b734d746e8cf019b9985901d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f71049_8f9faa3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-06-29T00:33:21Z",
+      "side": 1,
+      "message": "nit: I think this would be a little clearer as:\n```\ncontents, err :\u003d testexec.CommandContext().Output()\nif err !\u003d nil {...}\n```",
+      "range": {
+        "startLine": 365,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 13
+      },
+      "revId": "694906b02cdb84b2b734d746e8cf019b9985901d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
