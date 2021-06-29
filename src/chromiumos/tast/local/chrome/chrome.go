@@ -333,6 +333,16 @@ func (c *Chrome) Close(ctx context.Context) error {
 	return firstErr
 }
 
+// shouldCloseOnReset filters out targets should be closed in resetting Chrome state.
+// it tries to close all "normal" pages, apps and dialog boxes and exclude exemptions.
+func shouldCloseOnReset(t *Target) bool {
+	// Chrome OS Virtual Keyboard is permanently cached in Chrome Session to speed up loading.
+	if t.Type == "other" && t.Title == "Chrome OS Virtual Keyboard" {
+		return false
+	}
+	return t.Type == "page" || t.Type == "app" || t.Type == "other"
+}
+
 // ResetState attempts to reset Chrome's state (e.g. by closing all pages).
 // Tests typically do not need to call this; it is exposed primarily for other packages.
 func (c *Chrome) ResetState(ctx context.Context) error {
@@ -340,11 +350,12 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "reset_chrome")
 	defer st.End()
 
-	// Try to close all "normal" pages, apps and dialog boxes.
-	targetFilter := func(t *Target) bool {
-		return t.Type == "page" || t.Type == "app" || t.Type == "other"
+	tconn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
 	}
-	targets, err := c.FindTargets(ctx, targetFilter)
+
+	targets, err := c.FindTargets(ctx, shouldCloseOnReset)
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
@@ -362,7 +373,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}
 	// Wait for the targets to finish closing
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		targets, err := c.FindTargets(ctx, targetFilter)
+		targets, err := c.FindTargets(ctx, shouldCloseOnReset)
 		if err != nil {
 			return errors.Wrap(err, "failed to get targets")
 		}
@@ -396,11 +407,6 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		if _, err := c.sess.StopTracing(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
-	}
-
-	tconn, err := c.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get test API connection")
 	}
 
 	// Free all remote JS objects in the test extension.
