@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"strconv"
 	"time"
 
 	"github.com/mdlayher/vsock"
@@ -73,8 +74,8 @@ func StartVM(ctx context.Context, config *VMConfig) error {
 		return errors.Wrap(err, "unable to start listening server")
 	}
 
-	startEnv := fmt.Sprintf("STARTUP_PROCESSES=%t", config.StartProcesses)
-	dbusEnv := fmt.Sprintf("TEST_DBUS_CONFIG=%t", config.TestDBusConfig)
+	startEnv := upstart.WithArg("STARTUP_PROCESSES", strconv.FormatBool(config.StartProcesses))
+	dbusEnv := upstart.WithArg("TEST_DBUS_CONFIG", strconv.FormatBool(config.TestDBusConfig))
 	if err := upstart.RestartJob(ctx, wilcoVMJob, startEnv, dbusEnv); err != nil {
 		return errors.Wrap(err, "unable to start wilco_dtc service")
 	}

@@ -40,7 +40,7 @@ func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error 
 	// And now start it...
 	var err error
 	if sendAll {
-		err = upstart.StartJob(ctx, "anomaly-detector", "TESTONLY_SEND_ALL=--testonly_send_all")
+		err = upstart.StartJob(ctx, "anomaly-detector", upstart.WithArg("TESTONLY_SEND_ALL", "--testonly_send_all"))
 	} else {
 		err = upstart.StartJob(ctx, "anomaly-detector")
 	}

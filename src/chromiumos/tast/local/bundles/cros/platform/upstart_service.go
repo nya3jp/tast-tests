@@ -47,7 +47,11 @@ func (*UpstartService) JobStatus(ctx context.Context, request *platform.JobStatu
 
 // StartJob starts job. If it is already running, this returns an error.
 func (*UpstartService) StartJob(ctx context.Context, request *platform.StartJobRequest) (*empty.Empty, error) {
-	return &empty.Empty{}, upstart.StartJob(ctx, request.JobName, request.Args...)
+	var args []upstart.Arg
+	for _, arg := range request.GetArgs() {
+		args = append(args, upstart.WithArg(arg.GetKey(), arg.GetValue()))
+	}
+	return &empty.Empty{}, upstart.StartJob(ctx, request.JobName, args...)
 }
 
 // StopJob stops job. If it is not currently running, this is a no-op.

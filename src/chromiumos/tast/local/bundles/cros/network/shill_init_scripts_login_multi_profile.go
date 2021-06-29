@@ -97,8 +97,7 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 
 // login simulates the login process.
 func login(ctx context.Context, user string) error {
-	chromeUser := "CHROMEOS_USER=" + user
-	if err := upstart.StartJob(ctx, "shill-start-user-session", chromeUser); err != nil {
+	if err := upstart.StartJob(ctx, "shill-start-user-session", upstart.WithArg("CHROMEOS_USER", user)); err != nil {
 		return err
 	}
 	return nil
