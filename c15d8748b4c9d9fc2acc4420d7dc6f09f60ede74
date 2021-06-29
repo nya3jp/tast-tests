@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9bd3dc_0aa524aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-29T02:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60cf547f_3639a956",
+      "range": {
+        "startLine": 272,
+        "startChar": 40,
+        "endLine": 272,
+        "endChar": 43
+      },
+      "revId": "c15d8748b4c9d9fc2acc4420d7dc6f09f60ede74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028ca58d_1aec0251",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-28T13:43:55Z",
       "side": 1,
       "message": "Should we do some minimal validation on the key size ?",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 22
+      },
+      "revId": "c15d8748b4c9d9fc2acc4420d7dc6f09f60ede74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dffd7c41_761d155d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-06-29T02:52:53Z",
+      "side": 1,
+      "message": "Good suggestion! Done.",
+      "parentUuid": "028ca58d_1aec0251",
       "range": {
         "startLine": 278,
         "startChar": 1,
