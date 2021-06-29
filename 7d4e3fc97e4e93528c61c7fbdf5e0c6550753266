@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "557a4188_9070b47a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-29T17:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907eb733_15139b56",
+      "range": {
+        "startLine": 92,
+        "startChar": 24,
+        "endLine": 92,
+        "endChar": 81
+      },
+      "revId": "7d4e3fc97e4e93528c61c7fbdf5e0c6550753266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1507321_70282bb1",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-06-25T21:36:39Z",
       "side": 1,
       "message": "Nothing sets printer to nil below, so I don\u0027t think this check is needed.",
+      "revId": "7d4e3fc97e4e93528c61c7fbdf5e0c6550753266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88176b3a_66495dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-29T17:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1507321_70282bb1",
       "revId": "7d4e3fc97e4e93528c61c7fbdf5e0c6550753266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9914b0_0b5de946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-29T17:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "182c1b96_8482872a",
+      "revId": "7d4e3fc97e4e93528c61c7fbdf5e0c6550753266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36d10b85_409f1380",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-06-25T21:36:39Z",
       "side": 1,
       "message": "Instead of decoding into a string and then taking it apart by hand, it would be cleaner to define a struct with the fields of interest.  Then you can let the json.Unmarshal call dig around in the structure and pull out just the parts that need to be verified.  https://blog.golang.org/json has a nice intro to how the decoder works.",
+      "revId": "7d4e3fc97e4e93528c61c7fbdf5e0c6550753266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28769ad_d11839b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-06-29T17:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36d10b85_409f1380",
       "revId": "7d4e3fc97e4e93528c61c7fbdf5e0c6550753266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
