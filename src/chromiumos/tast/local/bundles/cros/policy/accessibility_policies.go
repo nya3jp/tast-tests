@@ -270,7 +270,7 @@ func init() {
 			},
 			{
 				Name:      "spoken_feedback",
-				ExtraAttr: []string{"group:mainline"},
+				ExtraAttr: []string{"group:mainline", "informational"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -318,7 +318,7 @@ func init() {
 			},
 			{
 				Name:      "virtual_keyboard",
-				ExtraAttr: []string{"group:mainline"},
+				ExtraAttr: []string{"group:mainline", "informational"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
