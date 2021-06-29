@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95fb233_120941eb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-29T01:30:54Z",
+      "side": 1,
+      "message": "IIUC, this NodeFinder is restricting search within our VK according to the code\nNodeFinder \u003d nodewith.Ancestor(vkRootFinder)",
+      "parentUuid": "f832e805_05224d23",
+      "range": {
+        "startLine": 405,
+        "startChar": 50,
+        "endLine": 405,
+        "endChar": 55
+      },
+      "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cab7c36c_bb287a30",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-06-28T22:35:19Z",
       "side": 1,
       "message": "nit: should this be moved into a constant so it can be reused?",
+      "range": {
+        "startLine": 410,
+        "startChar": 15,
+        "endLine": 410,
+        "endChar": 44
+      },
+      "revId": "52b3194dc69a82aaf36ef646f9710bec6077cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c1f8e7_93941458",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-06-29T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cab7c36c_bb287a30",
       "range": {
         "startLine": 410,
         "startChar": 15,
