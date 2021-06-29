@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "122002ec_d1bfae53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T13:53:52Z",
+      "side": 1,
+      "message": "LGTM with recommendation.",
+      "revId": "99d856cfea1a2e83acd46dcc99e697abc43d32bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c85691_21f40413",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T13:53:52Z",
+      "side": 1,
+      "message": "optional: because this is fixed set, I\u0027d recommend to introduce a typed constants.\n\ntype LogPriority string\nconst (\n  DEBUG LogPriority \u003d \"debug\"\n  INFO  \u003d \"info\"\n  ...\n)\nfunc SetLogPriority(..., priority LogPriority) error {\n  ...",
+      "range": {
+        "startLine": 314,
+        "startChar": 53,
+        "endLine": 315,
+        "endChar": 37
+      },
+      "revId": "99d856cfea1a2e83acd46dcc99e697abc43d32bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
