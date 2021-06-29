@@ -35,20 +35,13 @@ func init() {
 			"yich@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "gsc", "reboot"},
-		Attr:         []string{"group:firmware"},
+		Attr:         []string{"group:firmware", "firmware_cr50"},
 		VarDeps:      []string{"servo"},
 		ServiceDeps: []string{
 			"tast.cros.example.ChromeService",
 			"tast.cros.hwsec.AttestationDBusService",
 		},
 		Timeout: 10 * time.Minute,
-		Params: []testing.Param{{
-			Name:      "firmware_cr50",
-			ExtraAttr: []string{"firmware_cr50"},
-		}, {
-			Name:      "firmware_smoke",
-			ExtraAttr: []string{"firmware_smoke"},
-		}},
 	})
 }
 
