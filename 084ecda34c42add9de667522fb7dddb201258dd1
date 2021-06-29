@@ -22,6 +22,30 @@
       },
       "revId": "084ecda34c42add9de667522fb7dddb201258dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3606ea9_d489f7b5",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-29T13:22:39Z",
+      "side": 1,
+      "message": "Thanks for pointing it out, removing the condition doesn\u0027t change the behavior because we check cfg.TryReuseSession() just before calling tryReuseSession(). I removed the check just because it was confusing as if we may record try_reuse_session timing for an empty operation, which never happens.",
+      "parentUuid": "4909771e_d200db07",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 67
+      },
+      "revId": "084ecda34c42add9de667522fb7dddb201258dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
