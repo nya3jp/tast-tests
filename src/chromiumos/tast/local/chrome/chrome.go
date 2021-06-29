@@ -198,14 +198,17 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 
 	// In case chrome.New fails for a deadline error, which might be caused
 	// by a browser hang, take minidump snapshots for diagnosis.
-	defer func() {
-		if retErr != nil && ctx.Err() != nil && origCtx.Err() == nil {
-			testing.ContextLog(ctx, "Taking minidump snapshots to diagnose possible browser hang")
-			if err := saveMinidumpsWithoutCrash(origCtx); err != nil {
-				testing.ContextLog(ctx, "Failed to take minidump snapshots: ", err)
-			}
+	defer func(ctx context.Context) {
+		if retErr == nil || ctx.Err() == nil || origCtx.Err() != nil {
+			return
 		}
-	}()
+		ctx, st := timing.Start(ctx, "save_minidumps")
+		defer st.End()
+		testing.ContextLog(ctx, "Taking minidump snapshots to diagnose possible browser hang")
+		if err := saveMinidumpsWithoutCrash(origCtx); err != nil {
+			testing.ContextLog(ctx, "Failed to take minidump snapshots: ", err)
+		}
+	}(ctx)
 
 	if err := setup.PreflightCheck(ctx, cfg); err != nil {
 		return nil, errors.Wrap(err, "pre-flight check failed")

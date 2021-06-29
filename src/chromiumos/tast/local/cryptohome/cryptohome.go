@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -222,6 +223,9 @@ func validateGuestPartition(p *disk.PartitionStat) error {
 
 // WaitForUserMount waits for user's encrypted home directory to be mounted.
 func WaitForUserMount(ctx context.Context, user string) error {
+	ctx, st := timing.Start(ctx, "wait_for_user_mount")
+	defer st.End()
+
 	mounter := cryptohomedExe
 	validatePartition := validatePermanentPartition
 
