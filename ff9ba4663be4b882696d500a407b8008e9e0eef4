@@ -222,6 +222,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2348c05_23c2bf9f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T01:29:41Z",
+      "side": 1,
+      "message": "Since this action is on VK. And ShowVK or related functions already ensure that VK is on screen, so this function should be fine. As I mentioned it is still different from normal implementation, so suggested to have a comment on it.",
+      "parentUuid": "a6fdbb1e_e043afe4",
+      "range": {
+        "startLine": 429,
+        "startChar": 38,
+        "endLine": 429,
+        "endChar": 54
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add36b55_9de8531c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 3
@@ -305,6 +329,30 @@
       "side": 1,
       "message": "Why don\u0027t we do control-A, then backspace?",
       "parentUuid": "4d893027_49b80c0b",
+      "range": {
+        "startLine": 457,
+        "startChar": 31,
+        "endLine": 457,
+        "endChar": 34
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4437a29e_5762c0ab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T01:29:41Z",
+      "side": 1,
+      "message": "Mix use PK and VK is not encouraged which is strongly suggested by E14s team.",
+      "parentUuid": "0563d0b1_e0f60c77",
       "range": {
         "startLine": 457,
         "startChar": 31,
