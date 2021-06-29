@@ -326,3 +326,50 @@ func EnableJob(job string) error {
 	newJobPath := filepath.Join(upstartJobDir, jobFile)
 	return fsutil.MoveFile(currentJobPath, newJobPath)
 }
+
+// LogPriority represents a logging priority of upstart.
+// The system default is info.
+// http://upstart.ubuntu.com/cookbook/#initctl-log-priority
+type LogPriority int
+
+const (
+	// LogPriorityDebug is "debug" priority.
+	LogPriorityDebug LogPriority = iota
+	// LogPriorityInfo is "info" priority.
+	LogPriorityInfo
+	// LogPriorityMessage is "message" priority.
+	LogPriorityMessage
+	// LogPriorityWarn is "warn" priority.
+	LogPriorityWarn
+	// LogPriorityError is "error" priority.
+	LogPriorityError
+	// LogPriorityFatal is "fatal" priority.
+	LogPriorityFatal
+)
+
+func (p LogPriority) String() string {
+	switch p {
+	case LogPriorityDebug:
+		return "debug"
+	case LogPriorityInfo:
+		return "info"
+	case LogPriorityMessage:
+		return "message"
+	case LogPriorityWarn:
+		return "warn"
+	case LogPriorityError:
+		return "error"
+	case LogPriorityFatal:
+		return "fatal"
+	default:
+		panic(fmt.Sprintf("upstart: Unknown log-priority: %d", int(p)))
+	}
+}
+
+// SetLogPriority sets the log priority of Upstart.
+func SetLogPriority(ctx context.Context, p LogPriority) error {
+	if err := testexec.CommandContext(ctx, "initctl", "log-priority", p.String()).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set upstart log priority")
+	}
+	return nil
+}
