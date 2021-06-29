@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // Session allows interacting with a locally running Chrome.
@@ -46,6 +47,9 @@ type Session struct {
 
 // NewSession connects to a local Chrome process and creates a new Session.
 func NewSession(ctx context.Context, debuggingPortPath string, portWait cdputil.PortWaitOption, agg *jslog.Aggregator) (cr *Session, retErr error) {
+	ctx, st := timing.Start(ctx, "connect")
+	defer st.End()
+
 	watcher, err := browserwatcher.NewWatcher(ctx)
 	if err != nil {
 		return nil, err

@@ -51,6 +51,8 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 	}
 
 	if cfg.SkipOOBEAfterLogin() {
+		ctx, st := timing.Start(ctx, "wait_for_oobe_dismiss")
+		defer st.End()
 		testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
 		if err = testing.Poll(ctx, func(ctx context.Context) error {
 			if t, err := getFirstOOBETarget(ctx, sess); err != nil {

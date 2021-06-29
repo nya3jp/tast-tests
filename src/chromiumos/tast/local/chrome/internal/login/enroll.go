@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 //  domainRe is a regex used to obtain the domain (without top level domain) out of an email string.
@@ -140,6 +141,9 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 
 // performEnrollment will perform enrollment and wait for it to complete.
 func performEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	ctx, st := timing.Start(ctx, "enroll")
+	defer st.End()
+
 	conn, err := WaitForOOBEConnection(ctx, sess)
 	if err != nil {
 		return errors.Wrap(err, "could not find OOBE connection for enrollment")
