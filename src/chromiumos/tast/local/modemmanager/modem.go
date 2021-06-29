@@ -102,3 +102,57 @@ func (m *Modem) GetSimSlots(ctx context.Context) (simProps []*dbusutil.Propertie
 
 	return simProps, primary, nil
 }
+
+// PollModem polls for a new modem to appear on D-Bus. oldModem is the D-Bus path of the modem that should disappear.
+func PollModem(ctx context.Context, oldModem string) (*Modem, error) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newModem, err := NewModem(ctx)
+		if err != nil {
+			return err
+		}
+		if oldModem == newModem.String() {
+			return errors.New("old modem still exists")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: mmconst.ModemPollTime}); err != nil {
+		return nil, errors.Wrap(err, "modem or its properties not up after switching SIM slot")
+	}
+	return NewModem(ctx)
+}
+
+// NewModemWithSim returns a Modem where the primary SIM slot is not empty.
+// Useful on dual SIM DUTs where only one SIM is available, and we want to
+// select the slot with the active SIM.
+func NewModemWithSim(ctx context.Context) (*Modem, error) {
+	modem, err := NewModem(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create modem")
+	}
+	props, err := modem.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	sim, err := props.GetObjectPath(mmconst.ModemPropertySim)
+	if err != nil {
+		return nil, errors.Wrap(err, "missing sim property")
+	}
+	if sim != mmconst.EmptySlotPath {
+		return modem, nil
+	}
+
+	simSlots, err := props.GetObjectPaths(mmconst.ModemPropertySimSlots)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get simslots property")
+	}
+	for slotIndex, path := range simSlots {
+		if path == mmconst.EmptySlotPath {
+			continue
+		}
+		testing.ContextLogf(ctx, "Primary slot doesn't have a SIM, switching to slot %d", slotIndex+1)
+		if c := modem.Call(ctx, "SetPrimarySimSlot", uint32(slotIndex+1)); c.Err != nil {
+			return nil, errors.Wrap(c.Err, "failed to set primary SIM slot")
+		}
+		return PollModem(ctx, modem.String())
+	}
+	return nil, errors.New("failed to create modem: modemmanager D-Bus object has no valid SIM's")
+}
