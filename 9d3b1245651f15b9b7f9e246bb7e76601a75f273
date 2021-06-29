@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e5a388_5435acbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-29T01:47:54Z",
+      "side": 1,
+      "message": "Move the arguments into hal3.go. It is parsed in the test.",
+      "parentUuid": "47abddee_c7355931",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "9d3b1245651f15b9b7f9e246bb7e76601a75f273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4bcb4a8_5790190d",
