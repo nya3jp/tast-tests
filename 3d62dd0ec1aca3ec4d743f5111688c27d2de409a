@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be4d7cf_40ea6554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2021-06-29T01:00:19Z",
+      "side": 1,
+      "message": "Even though these are informational, they\u0027re showing up on the stainless failure report, so need to get these exclusions in.",
+      "revId": "3d62dd0ec1aca3ec4d743f5111688c27d2de409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
