@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d497bf6_fef15d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 0,
+      "message": "all switch windows related logics moved to switchWindow() function",
+      "revId": "52d1b19908c049a46176afd86d599435e06591d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

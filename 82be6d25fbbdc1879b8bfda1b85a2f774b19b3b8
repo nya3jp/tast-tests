@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7593d63f_5127f6ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "move all switch windows logic to the new function switchWindows() so this Run() function is more easier to maintain and read.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 62
+      },
+      "revId": "82be6d25fbbdc1879b8bfda1b85a2f774b19b3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a581d0f7_42715703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "all switch windows tests are moved here.",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 18
+      },
+      "revId": "82be6d25fbbdc1879b8bfda1b85a2f774b19b3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

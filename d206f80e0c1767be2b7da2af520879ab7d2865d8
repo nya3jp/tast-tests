@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd33f78_b2e71299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "Thank you! Using strings is not robust. Define the errTimeout to be a type of ErrorTimeout and use type assertion in the new IsTimeout() function in android/ui",
+      "parentUuid": "8006c8b8_d0e43074",
+      "range": {
+        "startLine": 58,
+        "startChar": 38,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "d206f80e0c1767be2b7da2af520879ab7d2865d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d3d30e0_46de97f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-29T10:50:01Z",
       "side": 1,
       "message": "you can return obj.Click(ctx) since the error message does not provide extra information.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "d206f80e0c1767be2b7da2af520879ab7d2865d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3fdaf2_fb4e013e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/androidui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3d30e0_46de97f3",
       "range": {
         "startLine": 63,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9187c5ef_9d07c805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "Thanks Jun. Now we grouped the parameters into RunParams struct so the parameters can be managed and passed easily.",
+      "parentUuid": "e8a274c3_38080c9b",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "d206f80e0c1767be2b7da2af520879ab7d2865d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4bfdbe4_98fcc010",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97b2bcb_8ed3faf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4bfdbe4_98fcc010",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 1
+      },
+      "revId": "d206f80e0c1767be2b7da2af520879ab7d2865d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b44a911f_e5212e94",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-29T10:50:01Z",
       "side": 1,
       "message": "ditto. 11 parameters",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 22
+      },
+      "revId": "d206f80e0c1767be2b7da2af520879ab7d2865d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8035243_33482ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-29T19:27:03Z",
+      "side": 1,
+      "message": "Grouped all test resources into runResources struct so they can be managed and passed easily.",
+      "parentUuid": "b44a911f_e5212e94",
       "range": {
         "startLine": 290,
         "startChar": 5,
