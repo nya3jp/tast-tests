@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab28212_f5eabe06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T05:38:27Z",
+      "side": 1,
+      "message": "Instead of introducing an invalid value here, could you introduce another field representing whether Chrome is used?\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
