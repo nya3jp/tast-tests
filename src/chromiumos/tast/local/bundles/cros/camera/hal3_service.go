@@ -44,11 +44,11 @@ var getTestConfigMap = map[cameraboxpb.HAL3CameraTest]getTestConfig{
 }
 
 func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestRequest) (_ *cameraboxpb.RunTestResponse, retErr error) {
-	getTestConfig, ok := getTestConfigMap[req.Test]
+	generator, ok := hal3.ServiceTestConfigGenerators[req.Test]
 	if !ok {
 		return nil, errors.Errorf("failed to run unknown test %v", req.Test)
 	}
-	cfg := getTestConfig()
+	cfg := generator.TestConfig(req)
 	switch req.Facing {
 	case cameraboxpb.Facing_FACING_BACK:
 		cfg.CameraFacing = "back"
