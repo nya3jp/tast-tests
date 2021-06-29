@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b101dcf7_7fd20f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-29T20:40:12Z",
+      "side": 1,
+      "message": "```\nif err :\u003d hwseclocal.CheckDAIsZero(ctx, tpmManager); err !\u003d nil {\n```\nditto to other places.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76823bb_f0001111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-29T20:40:12Z",
+      "side": 1,
+      "message": "How about using the DaemonController:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/daemon_control.go\n\nExample: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115950ef_f61f816f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-06-29T20:40:12Z",
+      "side": 1,
+      "message": "Could we use a testing.Poll to ensure that log has beed generated?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
