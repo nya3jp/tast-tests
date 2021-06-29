@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67071094_95780e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T09:24:23Z",
+      "side": 1,
+      "message": "LGTM with one recommendation.",
+      "revId": "e40e79920c2645ae657c66821f4e147eb4422091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b5a4ab_401c34f8",
+        "filename": "src/chromiumos/tast/services/cros/platform/upstart_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-29T09:24:23Z",
+      "side": 1,
+      "message": "don\u0027t you need backward compatibility?\neven for deprecation of the old stuff, It\u0027s safer to use another tag, IMO.\n\nreserved 2;\nrepeated Arg args \u003d 3;",
+      "revId": "e40e79920c2645ae657c66821f4e147eb4422091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
