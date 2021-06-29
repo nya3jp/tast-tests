@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9be56f1_464bb3f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-29T00:38:49Z",
+      "side": 1,
+      "message": "FYI: This cl causes virtual keyboard tests to fail when using precondition to share Chrome instance. virtual keyboard inputview.html is an `other` target, permanently persist(cached) inside the session to speed up loading. \nI have raised a fix at https://crrev.com/c/2993509\n",
+      "revId": "72555264a15d34a64565956fa04187e49d6b5f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
