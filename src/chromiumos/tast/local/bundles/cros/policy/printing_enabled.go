@@ -45,6 +45,7 @@ func init() {
 				Name:      "print_with_hotkey",
 				Val:       testPrintingWithHotkey,
 				ExtraAttr: []string{"informational"},
+				Timeout:   3 * time.Minute,
 			},
 			{
 				Name: "print_from_context_menu",
