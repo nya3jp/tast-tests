@@ -81,6 +81,24 @@
       "parentUuid": "c6ed8566_26cbaa0c",
       "revId": "32c75057f63561b898075d2ad000fadddd816d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6e19e8_05482cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-30T14:25:23Z",
+      "side": 1,
+      "message": "question? do you need to check callback, too?\nOr, onEvent is called always even if the callback has error?",
+      "parentUuid": "aad8fe76_a477b8da",
+      "revId": "32c75057f63561b898075d2ad000fadddd816d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
