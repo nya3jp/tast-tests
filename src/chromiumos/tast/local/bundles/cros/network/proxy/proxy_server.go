@@ -14,10 +14,12 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	patchpanel "chromiumos/tast/local/network/patchpanel_client"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -195,12 +197,7 @@ func (s *Server) configureNetwork(ctx context.Context, port int, pidPath string)
 		return errors.Wrap(err, "failed to create patchpanel client")
 	}
 
-	dat, err := ioutil.ReadFile(pidPath)
-	if err != nil {
-		return errors.Wrap(err, "failed to read proxy process pid")
-	}
-
-	pid, err := strconv.Atoi(strings.TrimSpace(string(dat)))
+	pid, err := s.getPidFromPath(ctx, pidPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to get proxy process pid")
 	}
@@ -217,4 +214,27 @@ func (s *Server) configureNetwork(ctx context.Context, port int, pidPath string)
 	s.HostAndPort = fmt.Sprintf("%s:%d", ip.String(), port)
 
 	return nil
+}
+
+// getPidFromPath reads the pid of the tinyproxy process from `pidPath`. The pid is required by
+// patchpanel to setup an isolated network namespace for the proxy server with it's own network
+// address.
+func (s *Server) getPidFromPath(ctx context.Context, pidPath string) (int, error) {
+	var pid int
+	// Wait for the tinyproxy service to write the PID at `pidPath`.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		dat, err := ioutil.ReadFile(pidPath)
+		if err != nil {
+			return errors.Wrap(err, "failed to read proxy process pid")
+		}
+		pid, err = strconv.Atoi(strings.TrimSpace(string(dat)))
+		if err != nil {
+			return errors.Wrap(err, "failed to parse process pid")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return 0, err
+	}
+
+	return pid, nil
 }
