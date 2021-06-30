@@ -39,6 +39,30 @@
       },
       "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c8cfb67_df30fdc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-06-30T04:35:10Z",
+      "side": 1,
+      "message": "There are two cases where the labels will be empty:\n1. labels doesn\u0027t contain battery labels indeed.\n2. labels doesn\u0027t contain any battery labels which are in the probe config on the DUT.\n\nThe second case is more complicated because the probe config (derived from AVL) are changed over CrOS versions yet the labels are on the ToT.  We added a dbus call to handle the inconsistency between DUT labels and the probe config on DUT in CL:2793908.\n\nWith this CL, we could run tests on dev and beta channels.",
+      "parentUuid": "fa76e3fe_423981a7",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
