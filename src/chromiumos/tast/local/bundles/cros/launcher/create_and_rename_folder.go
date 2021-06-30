@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -30,7 +31,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -110,21 +111,53 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 // createFolder is a helper function to create a folder by dragging the first icon on top of the second icon.
 func createFolder(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
 	// Create a folder in launcher by dragging the first icon on top of the second icon.
-	srcIcon := nodewith.ClassName(launcher.ExpandedItemsClass).First()
-	targetIcon := nodewith.ClassName(launcher.ExpandedItemsClass).Nth(1)
-
-	start, err := ui.Location(ctx, srcIcon)
-	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for first icon")
-	}
-	end, err := ui.Location(ctx, targetIcon)
-	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for second icon")
-	}
-
 	folder := nodewith.Name("Folder Unnamed").ClassName(launcher.ExpandedItemsClass)
 
-	return ui.Retry(3, uiauto.Combine("createFolder",
-		mouse.Drag(tconn, start.CenterPoint(), end.CenterPoint(), time.Second*2),
-		ui.WaitUntilExists(folder)))(ctx)
+	return ui.Retry(
+		2, uiauto.Combine("createFolder",
+			dragIconToIcon(ctx, tconn, ui),
+			ui.WaitUntilExists(folder)))(ctx)
+}
+
+// dragIconToIcon drags from one icon to another icon.
+// We cannot use simple mouse.Drag because this CL https://crrev.com/c/2937656 changes the default UI behavior
+// which causes the location of icons after a mouse press on an icon.
+// This function will delay the calculation of the coordation of the destination until after mouse press.
+func dragIconToIcon(pctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) func(ctx context.Context) error {
+	const duration = time.Second * 2
+	return func(ctx context.Context) error {
+		src := nodewith.ClassName(launcher.ExpandedItemsClass).First()
+		start, err := ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get locaton for first icon")
+		}
+		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// get destination location after mouse press.
+		dest := nodewith.ClassName(launcher.ExpandedItemsClass).Nth(1)
+		end, err := ui.Location(ctx, dest)
+		if err != nil {
+			return errors.Wrap(err, "failed to get locaton for second icon")
+		}
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{1, 1}), duration)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+
+		// Get destination location again after auncher-app-paging is done.
+		dest = nodewith.ClassName(launcher.ExpandedItemsClass).Nth(1)
+		end, err = ui.Location(ctx, dest)
+		if err != nil {
+			return errors.Wrap(err, "failed to get locaton for second icon")
+		}
+		if err := mouse.Move(tconn, end.CenterPoint(), duration)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+		return mouse.Release(tconn, mouse.LeftButton)(ctx)
+	}
 }
