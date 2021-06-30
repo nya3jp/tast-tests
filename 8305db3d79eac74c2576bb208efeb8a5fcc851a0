@@ -51,6 +51,24 @@
       "parentUuid": "1ec88f59_e7cbba0a",
       "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf04335_a2e8f985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-30T03:34:25Z",
+      "side": 1,
+      "message": "Sorry, that I forget to remove the old way mapping test to test config getter.\nPTAL thanks.",
+      "parentUuid": "3a1ecc8f_68b47ee5",
+      "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
