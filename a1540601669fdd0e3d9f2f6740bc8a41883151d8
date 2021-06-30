@@ -39,6 +39,30 @@
       },
       "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ca610f_e7889bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-06-30T23:52:11Z",
+      "side": 1,
+      "message": "Hi Jun, the closeArcUIDevice function here makes sure that if the test fails before we reaching the dump function, it can still be called to close the UI device.\n\nBut if we have reached the dump function, the dump function will close the UI device and dump UI. So this function ensures device won\u0027t be closed twice.\n\nIf we just call the d.Close(ctx) inside the dump function, the device will be kept open if error happens before reaching the dump function.\n\nOr do I miss your point?",
+      "parentUuid": "ae90760a_f9ba24f0",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
