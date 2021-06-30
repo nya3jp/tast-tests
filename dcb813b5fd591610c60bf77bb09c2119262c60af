@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29c0f87_80083a8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-30T23:19:52Z",
+      "side": 1,
+      "message": "This seems to be a blocker for this change. We can implement a custom function to convert a ui.Node into a uiauto.NodeInfo, but I\u0027m not sure how to do this since there are some type mismatches. Thoughts on how to cleanly approach this problem?",
+      "revId": "dcb813b5fd591610c60bf77bb09c2119262c60af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
