@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea7581f0_8e90b230",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox/camerabox.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:38:52Z",
+      "side": 1,
+      "message": "Use filepath for files, path is for urls.",
+      "range": {
+        "startLine": 65,
+        "startChar": 53,
+        "endLine": 65,
+        "endChar": 57
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
