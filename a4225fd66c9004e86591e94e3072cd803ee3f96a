@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e84b60_dd7b49ba",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T16:41:17Z",
+      "side": 1,
+      "message": "Does it need pcap var?",
+      "range": {
+        "startLine": 40,
+        "startChar": 39,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "a4225fd66c9004e86591e94e3072cd803ee3f96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
