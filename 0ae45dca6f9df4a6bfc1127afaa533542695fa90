@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7658c5_b8fb5f5f",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-30T09:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06744960_7fa1c1ad",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cdbbc3_59c4f95c",
@@ -107,6 +131,30 @@
       "writtenOn": "2021-06-30T00:01:35Z",
       "side": 1,
       "message": "The former is in the Tast framework, the latter is for Wificell fixture.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c3e2c96_f8b569e0",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-30T09:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19cdbbc3_59c4f95c",
       "range": {
         "startLine": 46,
         "startChar": 3,
@@ -136,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54cb8af9_7e5df1fa",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-30T09:10:39Z",
+      "side": 1,
+      "message": "I plan to move the shared codes in fixture_util.go to fixture.go after pre.go is removed. This way, we can reduce one code jump + some logic could be refined to fit the Tast Fixture design.\n\nHaving this method wrap could simplify the move a little bit. I\u0027m also OK with calling shared recoverUnhealthyDUT directly for now. WDYT?",
+      "parentUuid": "72c2ff98_c01b5cc1",
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "128cf49c_770c1dd5",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 2
@@ -147,6 +213,24 @@
       "writtenOn": "2021-06-30T00:01:35Z",
       "side": 1,
       "message": "Just for my understanding, is the goal to eventually deprecate this?",
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08c17c9_0d4736b4",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-30T09:10:39Z",
+      "side": 1,
+      "message": "Yes, Tast will also deprecate Precondition support after Fixture is completed.",
+      "parentUuid": "128cf49c_770c1dd5",
       "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
