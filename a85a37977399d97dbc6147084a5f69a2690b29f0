@@ -52,6 +52,24 @@
       "parentUuid": "96893c35_7871b494",
       "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc32a55_3f79acff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-06-30T16:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a66b8a80_c24f2560",
+      "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
