@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4f6578_48a4daa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-30T07:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e20fc32_7170d91a",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 28
+      },
+      "revId": "64bf366f71d310723823cabfffc19a2823ddeb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1afcc72_8dbc6890",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-30T05:28:05Z",
       "side": 1,
       "message": "Remove it. Just use 3 in the test body for the fixed chart.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 126
+      },
+      "revId": "64bf366f71d310723823cabfffc19a2823ddeb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b22259_56ee732b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-30T07:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1afcc72_8dbc6890",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5270aa_e55d1486",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-30T07:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd1e2f68_b815984f",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "64bf366f71d310723823cabfffc19a2823ddeb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02259f15_879d8c72",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-30T05:28:05Z",
       "side": 1,
       "message": "Remove it.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 127
+      },
+      "revId": "64bf366f71d310723823cabfffc19a2823ddeb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3332fecb_d3efa683",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-30T07:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02259f15_879d8c72",
       "range": {
         "startLine": 41,
         "startChar": 0,
