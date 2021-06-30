@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a157f98c_a9a02566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-06-30T06:42:41Z",
+      "side": 1,
+      "message": "A small update:\n\nWe are trying to land a \"brokenbefore\" config to CQ. There is, apparently, a file that overwrites CQ\u0027s \"lock on chromeos release\" policy and tells it that revisions ABC are broken and should not be used by the builders.\n\nI\u0027ll keep en eye on your CL, and can take over the \"hit +2\" duty, so that you don\u0027t have to do it yourself.",
+      "revId": "8049a1b9bc93e04ae51f1fcb75a075a7bb1e1924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
