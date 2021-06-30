@@ -195,6 +195,24 @@
       "parentUuid": "41479b79_44b24d1d",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c571ec8b_17abda41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-06-30T23:53:50Z",
+      "side": 1,
+      "message": "\u003e\u003e Could you check the content of /usr/local/etc/tast_use_flags.txt and see if \"amd64\" and \"cheets_user\" is included in the list?\nI can find \"amd64\" on my \"tast_use_flags.txt\" files. But I couldn\u0027t find \"cheets_user\". I build the packages for eve, caroline and scarlet boards on my linux desktop https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#build-the-packages-for-your-board. Still I couldn\u0027t find \"cheets_user\" in any of the devices \"tast_use_flags.txt\" files. Please let me know if I am missing any.",
+      "parentUuid": "7a534c85_f11419f2",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
