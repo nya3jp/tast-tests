@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e790750b_c7b22a35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-06-30T03:26:00Z",
+      "side": 1,
+      "message": "Hello tast-owners,\n\nAbout this section, we want to detect if the DUT supports face detection by a runtime program(media_v4l2_test).\nIs there a way to put it in the testing params, so we can skip the DUT without the feature?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "356356dd658e56620a9074526fc3d48dfa951592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
