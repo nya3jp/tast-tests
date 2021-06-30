@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/scanapp/adf_simplex_jpg_grayscale_a4_150_dpi_20210222.jpg",
-  "size": 16589,
-  "sha256sum": "7d713b7b61f3dffab430fc99c0402b33c7d9ba83f453981c41542cebe433cefb"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/scanapp/adf_simplex_jpg_grayscale_a4_150_dpi_20210629.jpg",
+  "size": 12094,
+  "sha256sum": "5c4c6e49f7b40871bef8f1595a363bd2319f79d7521e664ed459609832d3df6f"
 }
