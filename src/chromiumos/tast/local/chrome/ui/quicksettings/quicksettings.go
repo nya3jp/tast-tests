@@ -365,22 +365,28 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	defer cleanup(ctx)
 
 	audioParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}
+	audioDetailedView := ui.FindParams{ClassName: "AudioDetailedView"}
 
-	if exists, err := ui.Exists(ctx, tconn, audioParams); err != nil {
-		return errors.Wrap(err, "failed to check if audio settings button exists")
-	} else if exists {
-		audioBtn, err := ui.Find(ctx, tconn, audioParams)
-		if err != nil {
-			errors.Wrap(err, "failed to find audio settings button")
-		}
-		defer audioBtn.Release(ctx)
-
-		if err := audioBtn.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click audio settings button")
-		}
+	// If audio settings view is open, just return.
+	exist, err := ui.Exists(ctx, tconn, audioDetailedView)
+	if err != nil {
+		return errors.Wrap(err, "failed to check audio detailed view")
+	}
+	if exist {
+		return nil
 	}
 
-	return ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "AudioDetailedView"}, uiTimeout)
+	audioBtn, err := ui.FindWithTimeout(ctx, tconn, audioParams, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find audio settings button")
+	}
+	defer audioBtn.Release(ctx)
+
+	if err := audioBtn.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click audio settings button")
+	}
+
+	return ui.WaitUntilExists(ctx, tconn, audioDetailedView, uiTimeout)
 }
 
 // SliderValue returns the slider value as an integer.
