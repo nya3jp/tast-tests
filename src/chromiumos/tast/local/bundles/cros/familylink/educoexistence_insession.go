@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EducoexistenceInsession,
 		Desc:         "Checks if in-session EDU Coexistence flow is working",
-		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng@google.com"},
+		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
