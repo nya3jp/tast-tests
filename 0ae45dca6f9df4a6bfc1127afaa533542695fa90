@@ -200,6 +200,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5095bd00_37b23f21",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-30T14:09:36Z",
+      "side": 1,
+      "message": "Ah okay, sgtm.",
+      "parentUuid": "54cb8af9_7e5df1fa",
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "128cf49c_770c1dd5",
@@ -231,6 +249,24 @@
       "side": 1,
       "message": "Yes, Tast will also deprecate Precondition support after Fixture is completed.",
       "parentUuid": "128cf49c_770c1dd5",
+      "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d828cf_fa9c505a",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-06-30T14:09:36Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "f08c17c9_0d4736b4",
       "revId": "0ae45dca6f9df4a6bfc1127afaa533542695fa90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
