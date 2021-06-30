@@ -35,16 +35,17 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Attr:         []string{"group:firmware"},
-		Pre:          pre.NormalMode(),
 		Timeout:      15 * time.Minute, // Enough time to download test image from CloudStorage if necessary
 		Params: []testing.Param{{
 			Name: "normal",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeNormal,
 			},
 			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "normal_warm",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeNormal,
 				resetAfterBoot: true,
@@ -53,6 +54,7 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "normal_cold",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeNormal,
 				resetAfterBoot: true,
@@ -61,12 +63,14 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "rec",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "rec_warm",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeRecovery,
 				resetAfterBoot: true,
@@ -75,6 +79,7 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "rec_cold",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeRecovery,
 				resetAfterBoot: true,
@@ -83,12 +88,14 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 		}, {
 			Name: "dev",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeDev,
 			},
 			ExtraAttr: []string{"firmware_experimental"},
 		}, {
 			Name: "dev_warm",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeDev,
 				resetAfterBoot: true,
@@ -97,12 +104,27 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental"},
 		}, {
 			Name: "dev_cold",
+			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeDev,
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
 			ExtraAttr: []string{"firmware_experimental"},
+		}, {
+			Name: "dev_to_rec",
+			Pre:  pre.DevMode(),
+			Val: bootModeTestParams{
+				bootToMode: fwCommon.BootModeRecovery,
+			},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
+		}, {
+			Name: "rec_to_dev",
+			Pre:  pre.RecMode(),
+			Val: bootModeTestParams{
+				bootToMode: fwCommon.BootModeDev,
+			},
+			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
 		}},
 		Vars: []string{"servo"},
 	})
@@ -132,13 +154,13 @@ func BootMode(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Double-check that DUT starts in normal mode.
+	// Double-check that DUT starts in the right mode.
 	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
 		s.Fatal("Checking boot mode at beginning of test: ", err)
-	} else if curr != fwCommon.BootModeNormal {
-		s.Logf("DUT started in boot mode %s. Setting up normal mode", curr)
-		if err = ms.RebootToMode(ctx, fwCommon.BootModeNormal); err != nil {
-			s.Fatal("Failed to set up normal mode: ", err)
+	} else if curr != pv.BootMode {
+		s.Logf("DUT started in boot mode %s. Setting up %s", curr, pv.BootMode)
+		if err = ms.RebootToMode(ctx, pv.BootMode); err != nil {
+			s.Fatalf("Failed to set up %s mode: %s", pv.BootMode, err)
 		}
 	}
 
