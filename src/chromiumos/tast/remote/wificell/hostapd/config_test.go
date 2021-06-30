@@ -439,6 +439,27 @@ func TestNewConfig(t *testing.T) {
 			},
 			shouldFail: false,
 		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
+				Mode(Mode80211a),
+				Channel(36),
+				BasicRates(6),
+				SupportedRates(6, 11),
+			},
+			expected: &Config{
+				SSID:           "ssid",
+				BSSID:          "00:11:22:33:44:55",
+				Mode:           Mode80211a,
+				Channel:        36,
+				HTCaps:         0,
+				SecurityConfig: &base.Config{},
+				BasicRates:     []float32{6.0},
+				SupportedRates: []float32{6.0, 11.0},
+			},
+			shouldFail: false,
+		},
 	}
 
 	for i, tc := range testcases {
@@ -795,6 +816,21 @@ func TestConfigFormat(t *testing.T) {
 					"ssid":  "ssid2",
 					"bssid": "55:44:33:22:11:00",
 				},
+			},
+		},
+		// Check basic/supported rates.
+		{
+			conf: &Config{
+				SSID:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				BasicRates:     []float32{6.0},
+				SupportedRates: []float32{6.0, 11.0, 24.0},
+			},
+			verify: map[string]string{
+				"basic_rates":     "60",
+				"supported_rates": "60 110 240",
 			},
 		},
 	}

@@ -297,6 +297,20 @@ func AdditionalBSSs(bssids ...AdditionalBSS) Option {
 	}
 }
 
+// SupportedRates returns an Option which sets the supported rates in hostapd config.
+func SupportedRates(r ...float32) Option {
+	return func(c *Config) {
+		c.SupportedRates = append([]float32(nil), r...)
+	}
+}
+
+// BasicRates returns an Option which sets the basic rates in hostapd config.
+func BasicRates(r ...float32) Option {
+	return func(c *Config) {
+		c.BasicRates = append([]float32(nil), r...)
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -353,6 +367,8 @@ type Config struct {
 	MBO                bool
 	RRMBeaconReport    bool
 	AdditionalBSSs     []AdditionalBSS
+	SupportedRates     []float32
+	BasicRates         []float32
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -480,6 +496,24 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure("bss", bssid.IfaceName)
 		configure("ssid", bssid.SSID)
 		configure("bssid", bssid.BSSID)
+	}
+
+	if len(c.SupportedRates) != 0 {
+		// Convert from Mbps to 100Kbps.
+		rates := make([]string, len(c.SupportedRates))
+		for i, r := range c.SupportedRates {
+			rates[i] = fmt.Sprintf("%d", int(r*10))
+		}
+		configure("supported_rates", strings.Join(rates, " "))
+	}
+
+	if len(c.BasicRates) != 0 {
+		// Convert from Mbps to 100Kbps.
+		rates := make([]string, len(c.BasicRates))
+		for i, r := range c.BasicRates {
+			rates[i] = fmt.Sprintf("%d", int(r*10))
+		}
+		configure("basic_rates", strings.Join(rates, " "))
 	}
 
 	return builder.String(), nil
