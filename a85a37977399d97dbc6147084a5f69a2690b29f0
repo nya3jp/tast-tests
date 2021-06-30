@@ -34,6 +34,24 @@
       "parentUuid": "cab28212_f5eabe06",
       "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66b8a80_c24f2560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-30T01:39:12Z",
+      "side": 1,
+      "message": "ok, thank you for sharing your thoughts.\nThen you can drop the field, instead, to leave it zero value. E.g.\n\nVal: fastInkTestParams{\n\t\t\t\tarc:        true,\n\t\t\t\ttablet:     false,\n\t\t\t\tdisplayRotations: []display.RotationAngle{\n\t\t\t\t\tdisplay.Rotate0,\n\t\t\t\t\tdisplay.Rotate180,\n\t\t\t\t},\n\t\t\t\twStates: []ash.WindowStateType{\n\t\t\t\t\tash.WindowStateNormal,\n\t\t\t\t\tash.WindowStateLeftSnapped,\n\t\t\t\t\tash.WindowStateRightSnapped,\n\t\t\t\t\tash.WindowStateMaximized,\n\t\t\t\t\tash.WindowStateFullscreen,\n\t\t\t\t}},",
+      "parentUuid": "96893c35_7871b494",
+      "revId": "a85a37977399d97dbc6147084a5f69a2690b29f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
