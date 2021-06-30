@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29081652_c48725d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-30T23:23:45Z",
+      "side": 1,
+      "message": "Tastboard points me to this: http://shortn/_WBKF9P3Vqy\n\n\"Probe request IEs missing: MBO-OCE IE missing\"\n\nIs that a legit bug? Otherwise, yes, seems stable.",
+      "revId": "05c78e5f9c153e418a25d90968b4c69a1acc4af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c0aa30_e04d55df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-06-30T23:23:45Z",
+      "side": 1,
+      "message": "not a requirement, but I was dropping individual owners once we agree it\u0027s stable enough for champs to watch. Champs can still track down individuals if they want.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "05c78e5f9c153e418a25d90968b4c69a1acc4af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
