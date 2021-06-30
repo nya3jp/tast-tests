@@ -23,5 +23,25 @@ const (
 	INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED     InputMethodCode = "zh-t-i0-pinyin"            // NOLINT: Chinese Pinyin input method
 	INPUTMETHOD_CANTONESE_CHINESE_TRADITIONAL InputMethodCode = "yue-hant-t-i0-und"         // NOLINT: Chinese Cantonese input method
 	INPUTMETHOD_CANGJIE87_CHINESE_TRADITIONAL InputMethodCode = "zh-hant-t-i0-cangjie-1987" // NOLINT: Chinese Cangjie input method
-	INPUTMETHOD_HANGUL_KOREAN                 InputMethodCode = "ko-t-i0-und"               // NOLINT: Korean input method
+	INPUTMETHOD_HANGEUL_HANJA_KOREAN          InputMethodCode = "ko-t-i0-und"               // NOLINT: Korean input method
 )
+
+// Language represents a language.
+type Language string
+
+// List of languages.
+const (
+	EN      Language = "English"
+	ZH_HANS Language = "Simplified Chinese"
+	JA      Language = "Japanese"
+)
+
+// LanguageOfIME matches an input method to a language. This mapping is
+// intentionaly for language-based handwriting and voice. Use with care
+// for other scenarios, as this mapping may not be suitable.
+var LanguageOfIME = map[InputMethodCode]Language{
+	INPUTMETHOD_XKB_US_ENG:                EN,
+	INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED: ZH_HANS,
+	INPUTMETHOD_NACL_MOZC_JP:              JA,
+	INPUTMETHOD_NACL_MOZC_US:              JA,
+}
