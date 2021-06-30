@@ -244,6 +244,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e9a3bf_6c778304",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Commented it, thanks.\n\nSee other CLs in the CL chain.",
+      "parentUuid": "e2348c05_23c2bf9f",
+      "range": {
+        "startLine": 429,
+        "startChar": 38,
+        "endLine": 429,
+        "endChar": 54
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "add36b55_9de8531c",
@@ -425,6 +449,30 @@
       "side": 1,
       "message": "BTW, for Jun\u0027s question, as a user I normally only use backspace to clear the input fields, and the situation \"A user use voice to input Hello and hide virtual keyboard, then pop up vk in another field to input with keyboard, it has an extra space as a result. \" never happens.\n\nThe reason why the input method still inserts a space in the test is that the input method doesn\u0027t know the input filed is clear after it is cleared via clear(). In another word, the input field is unchanged to the input method. \n\nFor inputField.clear() to work, it must properly notify the input method that the filed has been cleared.",
       "parentUuid": "0563d0b1_e0f60c77",
+      "range": {
+        "startLine": 457,
+        "startChar": 31,
+        "endLine": 457,
+        "endChar": 34
+      },
+      "revId": "ff9ba4663be4b882696d500a407b8008e9e0eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ef94da_4e89f83d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Removed this function and will work with the inputs team to investigate more on this issue.",
+      "parentUuid": "e2454224_62899e19",
       "range": {
         "startLine": 457,
         "startChar": 31,
