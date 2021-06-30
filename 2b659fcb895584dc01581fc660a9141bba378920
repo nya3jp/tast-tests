@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a3dac4_1a66e4ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-30T22:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db62d43_36484bee",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32405248_b445f838",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-30T13:18:31Z",
       "side": 1,
       "message": "Is this needed?",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0bc343a_fcaf96d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-30T22:38:58Z",
+      "side": 1,
+      "message": "This is to actually paste the content, I can remove the comment if required",
+      "parentUuid": "32405248_b445f838",
       "range": {
         "startLine": 165,
         "startChar": 3,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7917f10e_3af6b791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-30T22:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db3f415_bb19f75b",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 6
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2394e04b_852a5947",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-06-30T13:18:31Z",
       "side": 1,
       "message": "How is this string used?",
+      "range": {
+        "startLine": 217,
+        "startChar": 77,
+        "endLine": 217,
+        "endChar": 83
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce48d18a_49d4f5dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-30T22:38:58Z",
+      "side": 1,
+      "message": "content string is converted to words and then checked in ui if the node exsists, That should only happen with non confidential content",
+      "parentUuid": "2394e04b_852a5947",
       "range": {
         "startLine": 217,
         "startChar": 77,
