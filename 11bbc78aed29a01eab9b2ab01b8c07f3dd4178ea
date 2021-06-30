@@ -16,6 +16,24 @@
       "message": "Is it still failing? This doesn\u0027t make sense.\n\n\nhttps://stainless.corp.google.com/search?test\u003d%5Etast%5C.arc%5C.\u0026exclude_cts\u003dtrue\u0026exclude_non_release\u003dtrue\u0026view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2021-06-24\u0026last_date\u003d2021-06-30\n\nI just flashed 93 14058.0.2021_06_30_1124 to a 2 CPU dedede device\n\narc.Boot.vm  [ PASS ]\narc.IMEBlockingVK.vm  [ PASS ]\narc.RemovableMedia.vm  [ PASS ]",
       "revId": "11bbc78aed29a01eab9b2ab01b8c07f3dd4178ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5177a92_c52121db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-06-30T03:11:56Z",
+      "side": 1,
+      "message": "Yeah looks like it still picked up the old version 😞 14050.0.0",
+      "parentUuid": "7bf0d8a9_a54caeac",
+      "revId": "11bbc78aed29a01eab9b2ab01b8c07f3dd4178ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
