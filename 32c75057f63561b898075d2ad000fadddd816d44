@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c90ef3_ea8363ec",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-30T07:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4711a951_28cba45b",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "32c75057f63561b898075d2ad000fadddd816d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ed8566_26cbaa0c",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-29T06:11:01Z",
       "side": 1,
       "message": "the test may be stuck if, END event is not accidentally delivered, but callback is called without lastError?",
+      "revId": "32c75057f63561b898075d2ad000fadddd816d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad8fe76_a477b8da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-06-30T07:23:24Z",
+      "side": 1,
+      "message": "does this new patch set address your concern?",
+      "parentUuid": "c6ed8566_26cbaa0c",
       "revId": "32c75057f63561b898075d2ad000fadddd816d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
