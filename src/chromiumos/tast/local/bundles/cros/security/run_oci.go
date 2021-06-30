@@ -137,8 +137,8 @@ func RunOCI(ctx context.Context, s *testing.State) {
 				cfg.Process.Args = []string{"/bin/date", "-u", "--set", "010101"}
 				cfg.Linux.AltSyscall = "third_party"
 			},
-			expStdout: "Mon Jan  1 00:00:00 UTC 2001\n",
-			expStderr: "date: cannot set date: Function not implemented\n",
+			expStdout: "",
+			expStderr: "/usr/bin/coreutils: error while loading shared libraries: /lib64/librt.so.1: file not located on exec mount\n",
 			expFail:   true,
 		},
 		{
