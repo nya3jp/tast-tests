@@ -16,6 +16,29 @@
       "message": "LGTM tast shadow reviewer",
       "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa76e3fe_423981a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T00:19:33Z",
+      "side": 1,
+      "message": "I do recommend avoiding runtime skips as far as possible - it is confusing since it appears to be passing while the test doesn\u0027t exercise anything actually.\n\nIIUC, in case we have typos in hostInfoLabels data, we\u0027ll end up with empty labels here and the test is silently skipped?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
