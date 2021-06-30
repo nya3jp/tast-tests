@@ -46,10 +46,12 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *VirtualKeyboardConte
 var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
 
 // NodeFinder returns a finder of node on virtual keyboard.
-var NodeFinder = nodewith.Ancestor(vkRootFinder)
+// Onscreen is useful when there are cached keyboards in ui trees.
+var NodeFinder = nodewith.Ancestor(vkRootFinder).Onscreen()
 
 // KeyFinder returns a finder of keys on virtual keyboard.
-var KeyFinder = NodeFinder.Role(role.Button)
+// Onscreen is useful when there are cached keyboards in ui trees.
+var KeyFinder = NodeFinder.Role(role.Button).Onscreen()
 
 // MultipasteItemFinder returns a finder of multipaste item on virtual keyboard.
 var MultipasteItemFinder = NodeFinder.ClassName("scrim")
@@ -374,7 +376,11 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 
 // switchToHandwriting changes to handwriting layout and returns a handwriting context.
 func (vkbCtx *VirtualKeyboardContext) switchToHandwriting(ctx context.Context) (*HandwritingContext, error) {
-	if err := vkbCtx.ui.LeftClick(KeyFinder.NameStartingWith("switch to handwriting"))(ctx); err != nil {
+	// Click button to switch to handwriting mode if it is not in the mode yet.
+	if err := uiauto.Combine("switch to handwriting layout",
+		vkbCtx.showAccessPoints(),
+		vkbCtx.leftClickIfExist((KeyFinder.NameStartingWith("switch to handwriting"))),
+	)(ctx); err != nil {
 		return nil, err
 	}
 
@@ -435,4 +441,54 @@ func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string)
 	return uiauto.Combine("wait for suggestion and select",
 		ac.WaitUntilExists(suggestionFinder),
 		ac.LeftClick(suggestionFinder))
+}
+
+// leftClickIfExist returns an action that checks the existence of a node within a short timeout,
+// then clicks it if it exists and does nothing if not.
+func (vkbCtx *VirtualKeyboardContext) leftClickIfExist(finder *nodewith.Finder) uiauto.Action {
+	return vkbCtx.ui.IfSuccessThen(
+		vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(finder),
+		vkbCtx.ui.LeftClick(finder))
+}
+
+// SwitchToFloatingMode returns an action switching the VK to floating mode if it is not in that mode.
+func (vkbCtx *VirtualKeyboardContext) SwitchToFloatingMode() uiauto.Action {
+	return uiauto.Combine("switch to floating mode",
+		vkbCtx.showAccessPoints(),
+		vkbCtx.leftClickIfExist((KeyFinder.Name("make virtual keyboard movable"))),
+		vkbCtx.WaitLocationStable(),
+	)
+}
+
+// SwitchToDockedMode returns an action switching the VK to docked mode if it is not in that mode.
+func (vkbCtx *VirtualKeyboardContext) SwitchToDockedMode() uiauto.Action {
+	return uiauto.Combine("switch to docked mode",
+		vkbCtx.showAccessPoints(),
+		vkbCtx.leftClickIfExist(KeyFinder.Name("dock virtual keyboard")),
+		vkbCtx.WaitLocationStable(),
+	)
+}
+
+// SwitchFromVoiceToTyping returns an action switching the VK from voice layout to typing layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchFromVoiceToTyping() uiauto.Action {
+	return vkbCtx.leftClickIfExist(NodeFinder.HasClass("voice-mic-img"))
+}
+
+// SwitchFromHandwritingToTyping returns an action switching the VK from handwriting layout
+// to typing layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchFromHandwritingToTyping() uiauto.Action {
+	return uiauto.Combine("switch from handwriting to typing layout",
+		vkbCtx.showAccessPoints(),
+		vkbCtx.leftClickIfExist(KeyFinder.Name("Back")),
+	)
+}
+
+// showAccessPoints shows access points panel if it is hidden by suggestion bar.
+// This may be needed before click buttons in the access points panel, i.e.,
+// when switching IMEs, the new keyboard is shown with zero state suggestion
+// bar where access points are not available.
+func (vkbCtx *VirtualKeyboardContext) showAccessPoints() uiauto.Action {
+	return uiauto.Combine("show access points",
+		vkbCtx.leftClickIfExist(KeyFinder.Name("Show access points")),
+		vkbCtx.ui.WaitUntilExists(KeyFinder.Name("Hide access points")))
 }
