@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58794df_b50234d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T16:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce60d9a_27360629",
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5233c1c2_4cf2f18c",
@@ -202,6 +220,30 @@
       "side": 1,
       "message": "ExtraPolicies -\u003e got it.\n\nPublicAccountPolicies -\u003e I would say so, it should be and array. The option would be like:\nAddPublicAccountPolicies(accountId, []policy.Policy)",
       "parentUuid": "b9ac0a86_e0439b4b",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e07310f0ae59042559217b51856eb93cc19e7b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7aedd99_6e5942e8",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T16:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f21942_ea4aa850",
       "range": {
         "startLine": 24,
         "startChar": 1,
