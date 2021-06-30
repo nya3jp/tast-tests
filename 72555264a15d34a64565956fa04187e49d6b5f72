@@ -16,6 +16,23 @@
       "message": "FYI: This cl causes virtual keyboard tests to fail when using precondition to share Chrome instance. virtual keyboard inputview.html is an `other` target, permanently persist(cached) inside the session to speed up loading. \nI have raised a fix at https://crrev.com/c/2993509\n",
       "revId": "72555264a15d34a64565956fa04187e49d6b5f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b951e40_a35a6dae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-30T01:02:22Z",
+      "side": 1,
+      "message": "FYI @Shuhei, @Seewai,\n\nLooks like \u0027Other\u0027 targets involve a lot of things. I would suggest not to close `other` targets by default, but add necessary targets case by case. WDYT\n\nI can see some other failures in closing targets between tests. \ne.g.\n\"Failed to close https://meet.google.com/download/webapp?usp\u003dchrome_default: context deadline exceeded; last error follows: failed to wait for target closed within time\"\n\"Failed to close https://mail.google.com/chat/download?usp\u003dchrome_default\"\n\"Failed to close https://canvas.apps.chrome/install/: context deadline exceeded\"\n\"Failed to close wsConn: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF\"\n\"Failed to close chrome://print/: context deadline exceeded\"\n\"\"\n\nThis causes long time delay(10s on my test) in resetChrome and potentially trigger internal errors. ",
+      "revId": "72555264a15d34a64565956fa04187e49d6b5f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
