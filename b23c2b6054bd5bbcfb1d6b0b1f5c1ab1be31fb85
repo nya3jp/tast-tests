@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f80f17a_5aaa2018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T16:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed1b5ae5_c9c2f661",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b50e343_415d01dd",
@@ -82,6 +100,30 @@
       "writtenOn": "2021-06-30T14:44:59Z",
       "side": 1,
       "message": "micro nit: \"primary slot\"?",
+      "range": {
+        "startLine": 90,
+        "startChar": 60,
+        "endLine": 90,
+        "endChar": 65
+      },
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbca2b7_c8db32f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T16:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b50e343_415d01dd",
       "range": {
         "startLine": 90,
         "startChar": 60,
@@ -109,6 +151,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82df70f3_634a9bf9",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T16:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b853df_2ca8c822",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "577c87cc_fdcaadf5",
@@ -126,6 +186,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f2ca53_10bf11dc",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T16:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "577c87cc_fdcaadf5",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d52881_f0c4bebc",
@@ -139,6 +217,24 @@
       "writtenOn": "2021-06-29T16:13:32Z",
       "side": 1,
       "message": "nit: active SIM",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9bb650_ea3f5af1",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T16:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d52881_f0c4bebc",
       "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
