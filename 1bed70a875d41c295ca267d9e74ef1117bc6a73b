@@ -177,6 +177,24 @@
       "parentUuid": "a8a212b7_b42ef638",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a534c85_f11419f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T09:16:31Z",
+      "side": 1,
+      "message": "Hard-coding models is easier but not better; hard-coded lists often get stale without noticing.\n\nIn this case I\u0027m pretty sure software deps is the right way to go. We need to debug why it doesn\u0027t work.\n\nCould you check the content of /usr/local/etc/tast_use_flags.txt and see if \"amd64\" and \"cheets_user\" is included in the list?\n\nPlease note that you need to deploy a change to tast-use-flags-9999.ebuild to the DUT in order for the change to take effect.\n\n\u003e Before a new USE flag can be used in an expression, it must be added to IUSE in the tast-use-flags package. Local changes to the tast-use-flags ebuild have to be pushed to the DUT manually to take effect:\n\n\u003e cros_workon-$BOARD start chromeos-base/tast-use-flags\n\u003e emerge-$BOARD chromeos-base/tast-use-flags\n\u003e cros deploy --root\u003d/usr/local $HOST chromeos-base/tast-use-flags\n\n\u003e When submitting changes to add new USE flags to the tast-use-flags package, please use Cq-Depend in your commit messages to ensure that changes land in the correct order.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#new-features",
+      "parentUuid": "41479b79_44b24d1d",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
