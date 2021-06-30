@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7d5613_4a589e3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b4a8d5_364505cc",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fed38727_45ab7886",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-29T23:39:19Z",
       "side": 1,
       "message": "nit: comment should finish in full stop.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 90
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a22c89db_95aff9b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed38727_45ab7886",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c5d908_e0afcf1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a15c50ff_7959bfc9",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 90
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba94b8bf_8450655d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-29T23:39:19Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 119
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8d27eb_88156ff9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba94b8bf_8450655d",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ae065c_bc490aec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a4f2645_9a968621",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 77
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016bfbe5_694354c1",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-29T23:39:19Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 90
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e928483b_07c47a2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016bfbe5_694354c1",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fda37ac_35de2c12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f6fdb4_991c00c3",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 54
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0fb81b_88921946",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-06-29T23:39:19Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 108
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc77c6d_44351852",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0fb81b_88921946",
       "range": {
         "startLine": 159,
         "startChar": 2,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6341c7fe_679920b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1032b527_99810a51",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 55
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b51bc6_0cb4ae4f",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-06-29T23:39:19Z",
       "side": 1,
       "message": "nit: this log might distract the debugging on failures. Nice to mention the retries.",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 45
+      },
+      "revId": "9c30840a35236424e94c48e87718e1a41c399190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90304ea9_2f4ed4d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b51bc6_0cb4ae4f",
       "range": {
         "startLine": 174,
         "startChar": 3,
