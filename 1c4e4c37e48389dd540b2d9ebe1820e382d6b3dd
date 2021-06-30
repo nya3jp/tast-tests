@@ -226,6 +226,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf5e2a4_1701ef44",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T09:27:26Z",
+      "side": 1,
+      "message": "Thanks for rebasing!",
+      "parentUuid": "1d91b889_75950c5c",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de5270f7_a4db13b9",
