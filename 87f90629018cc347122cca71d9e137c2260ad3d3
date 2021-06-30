@@ -16,6 +16,23 @@
       "message": "frkoenig@ as talked offline, PTAL",
       "revId": "87f90629018cc347122cca71d9e137c2260ad3d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7930b447_4715c840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-06-30T19:57:23Z",
+      "side": 1,
+      "message": "tast-owners@ PTAL",
+      "revId": "87f90629018cc347122cca71d9e137c2260ad3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
