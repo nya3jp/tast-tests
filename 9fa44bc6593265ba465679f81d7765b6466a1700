@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3901d11_b4e9adef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-30T05:55:37Z",
+      "side": 1,
+      "message": "Thanks Oleh for approving!",
+      "parentUuid": "ecc654e5_490e6056",
+      "revId": "9fa44bc6593265ba465679f81d7765b6466a1700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c00df7e_45757edf",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-29T09:03:34Z",
       "side": 1,
       "message": "nit: please remove Get from function name\nhttps://golang.org/doc/effective_go#Getters\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 99,
+        "startChar": 34,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "9fa44bc6593265ba465679f81d7765b6466a1700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea0cf94_a7be46a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-30T05:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c00df7e_45757edf",
       "range": {
         "startLine": 99,
         "startChar": 34,
