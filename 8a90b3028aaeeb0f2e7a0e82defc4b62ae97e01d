@@ -16,6 +16,75 @@
       "message": "PTAL",
       "revId": "8a90b3028aaeeb0f2e7a0e82defc4b62ae97e01d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765863c5_73b39c5c",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T09:27:26Z",
+      "side": 1,
+      "message": "Since this operation appears several times, could you introduce a utility function?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "8a90b3028aaeeb0f2e7a0e82defc4b62ae97e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061aee05_f716830f",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T09:27:26Z",
+      "side": 1,
+      "message": "Since we expect this function to be called for a job that might not exist, it might be a bit confusing to dump logs when a job doesn\u0027t exist.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "8a90b3028aaeeb0f2e7a0e82defc4b62ae97e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e020972b_46d14040",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T09:27:26Z",
+      "side": 1,
+      "message": "What\u0027s the reason of the change here? I think the intention of the original code was to avoid dumping error logs when StopJob is called for a stopped job.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 7
+      },
+      "revId": "8a90b3028aaeeb0f2e7a0e82defc4b62ae97e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
