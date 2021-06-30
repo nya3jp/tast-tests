@@ -19,8 +19,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -170,10 +171,8 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{Conn: cvconn.Conn}, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
-				if err = cvconn.WaitForFocusedNode(ctx, tconn, &ui.FindParams{
-					Name: activity.Title,
-					Role: ui.RoleTypeApplication,
-				}, 10*time.Second); err != nil {
+				application := nodewith.Name(activity.Title).Role(role.Application)
+				if err = cvconn.WaitForFocusedNode(ctx, tconn, application, 10*time.Second); err != nil {
 					return errors.Wrap(err, "failed to wait for initial ChromeVox focus")
 				}
 
