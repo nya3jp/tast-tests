@@ -34,7 +34,7 @@ func init() {
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
-		VarDeps:      []string{"servo"},
+		Vars:         []string{"servo"},
 	})
 }
 
