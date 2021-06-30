@@ -63,6 +63,30 @@
       },
       "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a97186_f5a72f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-06-30T05:49:40Z",
+      "side": 1,
+      "message": "The hostInfoLabels with prefix \"hwid_component:\" are generated with the probe config, so they should be matched.  That is, there should be no typo but other cases like Kevin mentioned.  Since the manufacturing that generates DUT labels has no branches (canary, dev, beta), we have to skip those DUTs with legacy component names.",
+      "parentUuid": "3c8cfb67_df30fdc3",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
