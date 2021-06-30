@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TODO(b/190773660): Migrate this file from chrome/ui to chrome/uiauto.
 type axEventTestStep struct {
 	keys      string        // a sequence of keys to invoke.
 	focus     ui.FindParams // expected params of focused node after the event.
@@ -51,11 +52,6 @@ func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.
 	// Send a key event.
 	if err := ew.Accel(ctx, step.keys); err != nil {
 		return errors.Wrapf(err, "Accel(%s) returned error", step.keys)
-	}
-
-	// Wait for the focused element to match the expected.
-	if err := cvconn.WaitForFocusedNode(ctx, tconn, &step.focus, 10*time.Second); err != nil {
-		return err
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
