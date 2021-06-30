@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a54b4ac_120f48b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-06-30T16:43:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d26a5c_7c83d344",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "0cdd62c79191ef20057be43bf31bb06222c0fade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "818da289_a1e95098",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-30T15:36:06Z",
       "side": 1,
       "message": "maybe chromeos-security@ to indicate it\u0027s a mailing list.",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "0cdd62c79191ef20057be43bf31bb06222c0fade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb97d1d2_6467b9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-06-30T16:43:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "818da289_a1e95098",
       "range": {
         "startLine": 51,
         "startChar": 26,
