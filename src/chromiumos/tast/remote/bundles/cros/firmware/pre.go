@@ -34,6 +34,7 @@ func init() {
 			Val:  common.BootModeDev,
 			Pre:  pre.DevMode(),
 			// TODO(aluo): Re-enable when b/169704069 is resolved.
+			ExtraAttr: []string{"firmware_experimental"},
 		}, {
 			Name:      "rec",
 			Val:       common.BootModeRecovery,

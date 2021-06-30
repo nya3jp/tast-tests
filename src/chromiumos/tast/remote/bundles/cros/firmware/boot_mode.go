@@ -94,6 +94,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
+			ExtraAttr: []string{"firmware_experimental"},
 		}, {
 			Name: "dev_cold",
 			Val: bootModeTestParams{
@@ -101,6 +102,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
+			ExtraAttr: []string{"firmware_experimental"},
 		}},
 		Vars: []string{"servo"},
 	})
