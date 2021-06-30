@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f32c2a8_9a8bb9f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-06-30T18:48:33Z",
+      "side": 1,
+      "message": "Hi Ana:\n\nPlease take a look and let me know if I can find the new location.\n\nI can think of two possible solutions:\n1. Turn off app-paging for this test.\n2. Get the new coordinate after the mouse press.\n\nThis CL is trying to do 2 but fails.\n\nPlease advise. \n\nThanks.\n\n",
+      "revId": "7353fdc8a3979f6b7406b0e5a4026f9b9e557f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
