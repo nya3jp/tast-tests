@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57b0e959_e67dabd3",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-30T14:57:37Z",
+      "side": 1,
+      "message": "could you update the document?\nDItto for all below.",
+      "revId": "8a90b3028aaeeb0f2e7a0e82defc4b62ae97e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "765863c5_73b39c5c",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 6
@@ -54,6 +71,30 @@
       "writtenOn": "2021-06-30T09:27:26Z",
       "side": 1,
       "message": "Since we expect this function to be called for a job that might not exist, it might be a bit confusing to dump logs when a job doesn\u0027t exist.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "8a90b3028aaeeb0f2e7a0e82defc4b62ae97e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ec366f_a72c369c",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-30T14:57:37Z",
+      "side": 1,
+      "message": "Also, this would do nothing, because you already consumed stdout/stderr by SeparatedOutput, IIUC.",
+      "parentUuid": "061aee05_f716830f",
       "range": {
         "startLine": 166,
         "startChar": 2,
