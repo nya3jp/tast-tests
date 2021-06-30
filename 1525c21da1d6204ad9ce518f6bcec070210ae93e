@@ -50,6 +50,23 @@
       "message": "Moving folks to cc for new reviewers.",
       "revId": "1525c21da1d6204ad9ce518f6bcec070210ae93e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e09abd0_107932e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-06-30T22:59:25Z",
+      "side": 1,
+      "message": "Couple of questions out of curiosity, is their any feature we are developing on top of beacon requests and the beacon response that we get ?\nUnder what circumstances the beacon response might differ, and is the response dependent on the DUT as well ?",
+      "revId": "1525c21da1d6204ad9ce518f6bcec070210ae93e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
