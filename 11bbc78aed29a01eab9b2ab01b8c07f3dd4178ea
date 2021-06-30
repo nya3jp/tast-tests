@@ -34,6 +34,24 @@
       "parentUuid": "7bf0d8a9_a54caeac",
       "revId": "11bbc78aed29a01eab9b2ab01b8c07f3dd4178ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5228a899_f6c5857d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-06-30T03:27:26Z",
+      "side": 1,
+      "message": "This is a rather surprising CQ behavior. I wonder how does it figure out merge conflicts then.\n\nI\u0027m sorry for all this mess I have created.",
+      "parentUuid": "f5177a92_c52121db",
+      "revId": "11bbc78aed29a01eab9b2ab01b8c07f3dd4178ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
