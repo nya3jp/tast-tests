@@ -102,7 +102,7 @@ func init() {
 				resetType:      firmware.ColdReset,
 			},
 		}},
-		VarDeps: []string{"servo"},
+		Vars: []string{"servo"},
 	})
 }
 

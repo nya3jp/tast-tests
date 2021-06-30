@@ -36,7 +36,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Model("drallion360")),
 		// TODO(mwiitala): Restore attributes after fixing http://b/149035007
 		// Attr: []string{ "group:mainline", "informational"},
-		VarDeps: []string{"servo"},
+		Vars: []string{"servo"},
 	})
 }
 

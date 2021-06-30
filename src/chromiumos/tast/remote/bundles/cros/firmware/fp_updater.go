@@ -47,7 +47,7 @@ func init() {
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService", dutfs.ServiceName},
-		VarDeps:      []string{"servo"},
+		Vars:         []string{"servo"},
 		Data: []string{"nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin",
 			"nami_fp_v2.0.3266-99b5e2c98_20201214.bin",
 			"bloonchipper_v2.0.4277-9f652bb3_20210401.bin",
