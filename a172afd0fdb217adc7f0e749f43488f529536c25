@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed98d2d4_6b03934e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-06-30T03:05:52Z",
+      "side": 1,
+      "message": "should we handle the data race for TPM1.2?\nfor tpm2.0 the da is just disabled and never increased.\nfor tpm1.2 it is possible that the DA reset request is on the way to the tcsd but not finished.",
+      "range": {
+        "startLine": 58,
+        "startChar": 18,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b101dcf7_7fd20f80",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 1
