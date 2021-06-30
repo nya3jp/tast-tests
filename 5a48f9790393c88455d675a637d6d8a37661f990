@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb315c3_6c0db257",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T15:28:02Z",
+      "side": 1,
+      "message": "I was thinking, that if test will do some actions with UI in Kiosk app then reset would make sense to:\n- restore Kiosk configuration and \n- restart Chrome\n\nThat would actually restore Kiosk to the initial state.\n\nWDYT?",
+      "revId": "5a48f9790393c88455d675a637d6d8a37661f990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
