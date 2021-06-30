@@ -210,14 +210,7 @@ func NonPrefChan(ctx context.Context, s *testing.State) {
 	s.Log("Start analyzing assoc requests")
 	filters := []pcap.Filter{
 		pcap.Dot11FCSValid(),
-		pcap.TypeFilter(
-			layers.LayerTypeDot11,
-			func(layer gopacket.Layer) bool {
-				dot11 := layer.(*layers.Dot11)
-				// Filter sender == MAC of DUT.
-				return bytes.Equal(dot11.Address2, mac)
-			},
-		),
+		pcap.TransmitterAddress(mac),
 	}
 	assocPackets, err := pcap.ReadPackets(pcapPath, append(filters, pcap.TypeFilter(layers.LayerTypeDot11MgmtAssociationReq, nil))...)
 	if err != nil {

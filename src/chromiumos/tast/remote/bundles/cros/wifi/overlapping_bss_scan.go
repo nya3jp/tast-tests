@@ -5,7 +5,6 @@
 package wifi
 
 import (
-	"bytes"
 	"context"
 	"time"
 
@@ -222,14 +221,7 @@ func OverlappingBSSScan(ctx context.Context, s *testing.State) {
 	// Filtering coexistence management frame.
 	filters := []pcap.Filter{
 		pcap.Dot11FCSValid(),
-		pcap.TypeFilter(
-			layers.LayerTypeDot11,
-			func(layer gopacket.Layer) bool {
-				dot11 := layer.(*layers.Dot11)
-				// Filter sender == MAC of DUT.
-				return bytes.Equal(dot11.Address2, mac)
-			},
-		),
+		pcap.TransmitterAddress(mac),
 		pcap.TypeFilter(layers.LayerTypeDot11MgmtAction,
 			func(layer gopacket.Layer) bool {
 				contents := layer.LayerContents()
