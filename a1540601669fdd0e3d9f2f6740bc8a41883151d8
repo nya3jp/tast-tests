@@ -16,6 +16,29 @@
       "message": "Moving myself to cc.\n",
       "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae90760a_f9ba24f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-30T22:44:12Z",
+      "side": 1,
+      "message": "if closing UI is a dependency to dump UI hierarchy, why do not you move it into the dump function? Also the function name should be changed to something like CloseARCAndDumpUI, so it is self explained.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
