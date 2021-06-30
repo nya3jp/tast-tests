@@ -90,10 +90,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/shill"), chk.Users("shill"), chk.Groups("shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/timezone"), chk.Users("chronos", "root"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/tpm"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("policy-readers"), chk.Mode(0750)),      // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),              // children
-		chk.NewPattern(chk.Path("encrypted/var/lib/devicesettings"), chk.Users("root"), chk.Groups("policy-readers"), chk.Mode(0750)), // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/lib/devicesettings"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),         // children
+		chk.NewPattern(chk.Path("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("policy-readers"), chk.Mode(0750)), // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),         // children
 		chk.NewPattern(chk.Tree("encrypted/var/lib"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Tree("encrypted/var/log/asan"), chk.Users("root"), chk.Groups("root"), chk.Mode(0777|os.ModeSticky)),
