@@ -16,6 +16,86 @@
       "message": "Hi Tast Owners, this CL is ready for review.",
       "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d7407c0_33a5db3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:13:04Z",
+      "side": 1,
+      "message": "Looks good, just some nits about log verbosity mostly",
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d913b6b9_6e55a8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:13:04Z",
+      "side": 1,
+      "message": "nit: maybe \" %q\" instead of \"\u003d%s\" here",
+      "range": {
+        "startLine": 57,
+        "startChar": 38,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b2fc7e0_3651a904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:13:04Z",
+      "side": 1,
+      "message": "Does this get logged anywhere? If so, do we need the log line on L55?",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5115f971_a08e1d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:13:04Z",
+      "side": 1,
+      "message": "Not sure we need this one: either it exists, or we\u0027re about to fail the test.",
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
