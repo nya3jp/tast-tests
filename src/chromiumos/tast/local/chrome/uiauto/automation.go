@@ -26,6 +26,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// JavaScript code that will return a NodeInfo.
+const (
+	ReturnNodeInfoJS = `return {
+				checked: node.checked,
+				className: node.className,
+				htmlAttributes: node.htmlAttributes,
+				location: node.location,
+				name: node.name,
+				restriction: node.restriction,
+				role: node.role,
+				state: node.state,
+				value: node.value,
+			};`
+)
+
 // Context is the context used when interacting with chrome.automation.
 // Each individual UI interaction is limited by the pollOpts such that it will return an error when the pollOpts timeout.
 type Context struct {
@@ -139,19 +154,9 @@ func (ac *Context) Info(ctx context.Context, finder *nodewith.Finder) (*NodeInfo
 	query := fmt.Sprintf(`
 		(async () => {
 			%s
-			return {
-				checked: node.checked,
-				className: node.className,
-				htmlAttributes: node.htmlAttributes,
-				location: node.location,
-				name: node.name,
-				restriction: node.restriction,
-				role: node.role,
-				state: node.state,
-				value: node.value,
-			}
+			%s
 		})()
-	`, q)
+	`, q, ReturnNodeInfoJS)
 	var out NodeInfo
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		return ac.tconn.Eval(ctx, query, &out)
@@ -191,6 +196,71 @@ func (ac *Context) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]No
 		return ac.tconn.Eval(ctx, query, &out)
 	}, &ac.pollOpts)
 	return out, err
+}
+
+// Matches returns whether the NodeInfo matches the Finder. Iterates through
+// each of the finder's properties, instead of performing a deep equals comparison.
+// This allows us to specify a subset of information in finder without having to
+// list every property and value that we are looking for.
+func (ac *Context) Matches(ctx context.Context, actual *NodeInfo, finder *nodewith.Finder) error {
+	expected, err := ac.Info(ctx, finder)
+	if err != nil {
+		return errors.Wrap(err, "failed to convert finder into a NodeInfo")
+	}
+
+	if expected.Name != "" && expected.Name != actual.Name {
+		return errors.Errorf("expected name: %s, but got: %s", expected.Name, actual.Name)
+	}
+
+	if expected.Role != "" && expected.Role != actual.Role {
+		return errors.Errorf("expected role: %s, but got: %s", expected.Role, actual.Role)
+	}
+
+	if expected.Value != "" && expected.Value != actual.Value {
+		return errors.Errorf("expected value: %s, but got: %s", expected.Value, actual.Value)
+	}
+
+	if expected.ClassName != "" && expected.ClassName != actual.ClassName {
+		return errors.Errorf("expected class name: %s, but got: %s", expected.ClassName, actual.ClassName)
+	}
+
+	if expected.Checked != "" && expected.Checked != actual.Checked {
+		return errors.Errorf("expected checked: %s, but got: %s", expected.Checked, actual.Checked)
+	}
+
+	if expected.Location != actual.Location {
+		return errors.Errorf("expected Location: %q, but got: %q", expected.Location, actual.Location)
+	}
+
+	compareState := func(expected, actual map[state.State]bool) error {
+		for key, value := range expected {
+			if value != actual[key] {
+				return errors.New("Difference in state")
+			}
+		}
+
+		return nil
+	}
+
+	compareHTMLAttributes := func(expected, actual map[string]string) error {
+		for key, value := range expected {
+			if value != actual[key] {
+				return errors.New("Difference in HTML attributes")
+			}
+		}
+
+		return nil
+	}
+
+	if err := compareState(expected.State, actual.State); err != nil {
+		return errors.Errorf("expected State: %q, but got: %q", expected.State, actual.State)
+	}
+
+	if err := compareHTMLAttributes(expected.HTMLAttributes, actual.HTMLAttributes); err != nil {
+		return errors.Errorf("expected HTML attributes: %q, but got: %q", expected.HTMLAttributes, actual.HTMLAttributes)
+	}
+
+	return nil
 }
 
 // Location returns the location of the node found by the input finder.

@@ -15,7 +15,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -94,30 +95,32 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 }
 
 // focusedNode returns the currently focused node of ChromeVox.
-// The returned node should be release by the caller.
-func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	obj := &chrome.JSObject{}
-	if err := cv.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
-		return nil, err
+func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
+	var info uiauto.NodeInfo
+	script := fmt.Sprintf(`(() => {
+		const node = ChromeVoxState.instance.currentRange.start.node;
+		%s
+	})()`, uiauto.ReturnNodeInfoJS)
+
+	if err := cv.Eval(ctx, script, &info); err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve the currently focused ChromeVox node")
 	}
-	return ui.NewNode(ctx, tconn, obj)
+	return &info, nil
 }
 
-// WaitForFocusedNode polls until the properties of the focused node matches the given params.
+// WaitForFocusedNode polls until the properties of the focused node matches the finder.
 // timeout specifies the timeout to use when polling.
-func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
-	// Wait for focusClassName to receive focus.
+func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+	ui := uiauto.New(tconn)
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := cv.focusedNode(ctx, tconn)
+		focusedNode, err := cv.focusedNode(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		defer focused.Release(ctx)
 
-		if match, err := focused.Matches(ctx, *params); err != nil {
-			return testing.PollBreak(err)
-		} else if !match {
-			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, params)
+		if err := ui.Matches(ctx, focusedNode, finder); err != nil {
+			return errors.Errorf("focused node is incorrect: got %v, want %s", focusedNode, finder.Pretty())
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
