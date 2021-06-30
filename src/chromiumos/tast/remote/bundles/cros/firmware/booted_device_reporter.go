@@ -35,6 +35,7 @@ func init() {
 			Pre:  pre.DevMode(),
 			// TODO(gredelston): Reenable when b/183044117 is resolved
 			// ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_experimental"},
 		}},
 	})
 }
