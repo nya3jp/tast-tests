@@ -53,7 +53,7 @@ func CreateAPIClient(ctx context.Context, cr *chrome.Chrome, oauthCredentials st
 	defer conn.CloseTarget(ctx)
 
 	// Wait for the profile element on oauth consent screen and click current user.
-	if err := waitAndClickElement(ctx, conn, "document.querySelector('div[id=\"profileIdentifier\"]')"); err != nil {
+	if err := waitAndClickElement(ctx, conn, "document.querySelector('div[data-authuser=\"0\"]')"); err != nil {
 		return nil, err
 	}
 
