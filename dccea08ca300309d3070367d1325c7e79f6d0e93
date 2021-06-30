@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd9e5578_f04f7a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-30T03:03:08Z",
+      "side": 1,
+      "message": "You can check the log like:\nRunning (via SSH) \u0027/usr/local/tmp/autoserv-DyCIa6/bin/autotestd_monitor /usr/local/tmp/autoserv-nFShfV 0 0 --py_version\u003d2\u0027 from \u0027run|_do_run|execute_control|execute_section|_execute_daemon|run\u0027\n\nin the `autoserv.DEBUG`.\nNot sure if it\u0027s the root cause of the bug, may need to check the result after this CL get merged.",
+      "parentUuid": "c71decce_a6eeec61",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6278640_993580e0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-23T05:33:37Z",
       "side": 1,
       "message": "qq: Can ITS find opencv after this CL?",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f3cbd1_d15c400e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-30T03:03:08Z",
+      "side": 1,
+      "message": "I don\u0027t know how to run with Tauto locally. So we may not know result, until this CL merged.",
+      "parentUuid": "f6278640_993580e0",
       "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +154,24 @@
       "writtenOn": "2021-06-23T05:33:37Z",
       "side": 1,
       "message": "nit: Let\u0027s keep the formatting as is without reformatting like this in the patch files to make it minimal and easier to spot the difference.\n\n(The patches might not needed in this CL though if we can provide extra Env when running ITS script as said in the other comment, but that\u0027s the general preferred guideline imo to minimize the divergence from upstream.)",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf46936_01b5334e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/x86/patch/core.patch",
+        "patchSetId": 2
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-30T03:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fad998c_7b017959",
       "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
