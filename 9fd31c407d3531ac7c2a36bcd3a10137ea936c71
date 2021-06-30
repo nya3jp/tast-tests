@@ -16,6 +16,23 @@
       "message": "This CL is to fix the flakiness of the test (esp. in betty-arc-s). PTAL. Thanks!",
       "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b6acd7_ae07d6f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-06-30T06:38:46Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
