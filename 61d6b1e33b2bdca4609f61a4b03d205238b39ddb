@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecac65b9_06ebac72",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T16:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a417fbad_a2edfc76",
+      "range": {
+        "startLine": 144,
+        "startChar": 32,
+        "endLine": 144,
+        "endChar": 62
+      },
+      "revId": "61d6b1e33b2bdca4609f61a4b03d205238b39ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062b5f23_e087ef5d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-24T08:23:40Z",
       "side": 1,
       "message": "This step is skipped if ServeAndRefresh() fails.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "61d6b1e33b2bdca4609f61a4b03d205238b39ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79285403_1c3b7abf",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T16:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062b5f23_e087ef5d",
       "range": {
         "startLine": 174,
         "startChar": 0,
