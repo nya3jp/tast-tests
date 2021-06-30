@@ -161,6 +161,7 @@ func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface
 	}
 	p.dir = tempDir
 	p.oldEnvPath = os.Getenv("PATH")
+	// TODO(b/189714985): Set PATH in CommandContext instead of overriding it here.
 	os.Setenv("PATH", p.dir+":"+p.oldEnvPath)
 
 	// Prepare ADB downloaded from fixed url without versioning (Same
@@ -239,7 +240,7 @@ func (h *ITSHelper) TestCmd(ctx context.Context, scene, camera int) *testexec.Cm
 	scriptPath := path.Join("tools", "run_all_tests.py")
 	cmdStr := fmt.Sprintf(`cd %s
 	source %s
-	python %s device=%s scenes=%d camera=%d skip_scene_validation`,
+	python3 %s device=%s scenes=%d camera=%d skip_scene_validation`,
 		h.p.itsRoot(), setupPath, scriptPath, h.p.hostname, scene, camera)
 	cmd := testexec.CommandContext(ctx, "bash", "-c", cmdStr)
 	cmd.Env = append(os.Environ(), "PYTHONUNBUFFERED=y")

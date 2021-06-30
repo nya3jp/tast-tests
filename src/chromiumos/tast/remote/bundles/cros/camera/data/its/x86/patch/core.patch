@@ -1026,7 +1026,7 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
  
      # Sanity Check for devices
      device_bfp = its.device.get_device_fingerprint(device_id)
-@@ -266,15 +266,15 @@ def main():
+@@ -266,17 +266,17 @@ def main():
          with its.device.ItsSession() as cam:
              camera_ids = cam.get_camera_ids()
  
@@ -1043,8 +1043,11 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
 -            print 'Waking up chart screen: ', chart_host_id
 +            print('Waking up chart screen: ', chart_host_id)
              screen_id_arg = ('screen=%s' % chart_host_id)
-             cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+-            cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
++            cmd = ['python3', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
                                            'wake_up_screen.py'), screen_id_arg]
+             wake_code = subprocess.call(cmd)
+             assert wake_code == 0
 @@ -285,7 +285,7 @@ def main():
          camera_fov = calc_camera_fov(camera_id)
          # Loop capturing images until user confirm test scene is correct
@@ -1054,6 +1057,24 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
  
          os.mkdir(os.path.join(topdir, camera_id))
          for d in scenes:
+@@ -321,7 +321,7 @@ def main():
+                             (merge_result_switch and camera_ids[0] == '0')):
+                         scene_arg = 'scene=' + scene
+                         fov_arg = 'fov=' + camera_fov
+-                        cmd = ['python',
++                        cmd = ['python3',
+                                os.path.join(os.getcwd(), 'tools/load_scene.py'),
+                                scene_arg, chart_dist_arg, fov_arg, screen_id_arg]
+                     else:
+@@ -331,7 +331,7 @@ def main():
+                     if validate_switch and not merge_result_switch:
+                         scene_arg = 'scene=' + scene_req[scene]
+                         extra_args = scene_extra_args.get(scene, [])
+-                        cmd = ['python',
++                        cmd = ['python3',
+                                os.path.join(os.getcwd(),
+                                             'tools/validate_scene.py'),
+                                camera_id_arg, out_arg,
 @@ -339,7 +339,7 @@ def main():
                  if cmd is not None:
                      valid_scene_code = subprocess.call(cmd, cwd=topdir)
@@ -1063,13 +1084,14 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
              # Extract chart from scene for scene3 once up front
              chart_loc_arg = ''
              chart_height = CHART_HEIGHT
-@@ -375,12 +375,12 @@ def main():
+@@ -375,16 +375,16 @@ def main():
                      if scene == 'sensor_fusion':
                          if skip_code is not SKIP_RET_CODE:
                              if rot_rig_id:
 -                                print 'Rotating phone w/ rig %s' % rot_rig_id
+-                                rig = ('python tools/rotation_rig.py rotator=%s' %
 +                                print('Rotating phone w/ rig %s' % rot_rig_id)
-                                 rig = ('python tools/rotation_rig.py rotator=%s' %
++                                rig = ('python3 tools/rotation_rig.py rotator=%s' %
                                         rot_rig_id)
                                  subprocess.Popen(rig.split())
                              else:
@@ -1078,6 +1100,11 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
                          else:
                              test_code = skip_code
                      if skip_code is not SKIP_RET_CODE:
+-                        cmd = ['python', os.path.join(os.getcwd(), testpath)]
++                        cmd = ['python3', os.path.join(os.getcwd(), testpath)]
+                         cmd += sys.argv[1:] + [camera_id_arg] + [chart_loc_arg]
+                         cmd += [chart_dist_arg]
+                         with open(outpath, 'w') as fout, open(errpath, 'w') as ferr:
 @@ -396,7 +396,7 @@ def main():
                          socket_fail = evaluate_socket_failure(errpath)
                          if socket_fail:
@@ -1129,7 +1156,8 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
 -            print 'Shutting down chart screen: ', chart_host_id
 +            print('Shutting down chart screen: ', chart_host_id)
              screen_id_arg = ('screen=%s' % chart_host_id)
-             cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+-            cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
++            cmd = ['python3', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
                                            'turn_off_screen.py'), screen_id_arg]
              screen_off_code = subprocess.call(cmd)
              assert screen_off_code == 0
@@ -1137,7 +1165,8 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
 -            print 'Shutting down DUT screen: ', device_id
 +            print('Shutting down DUT screen: ', device_id)
              screen_id_arg = ('screen=%s' % device_id)
-             cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+-            cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
++            cmd = ['python3', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
                                            'turn_off_screen.py'), screen_id_arg]
              screen_off_code = subprocess.call(cmd)
              assert screen_off_code == 0
@@ -1147,3 +1176,39 @@ diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
  
  if __name__ == '__main__':
      main()
+diff --git a/CameraITS/tools/run_parallel_tests.py b/CameraITS/tools/run_parallel_tests.py
+--- a/CameraITS/tools/run_parallel_tests.py
++++ b/CameraITS/tools/run_parallel_tests.py
+@@ -89,7 +89,7 @@ def build_cmd(device_id, chart_host_id, result_device_id, camera_id, scene_id):
+     """ Create a cmd list for run_all_tests.py
+     Return a list of cmd & parameters
+     """
+-    cmd = ['python',
++    cmd = ['python3',
+             os.path.join(os.getcwd(),'tools/run_all_tests.py'),
+             'device=%s' % device_id,
+             'result=%s' % result_device_id,
+@@ -120,7 +120,7 @@ def shut_down_device_screen(device_id):
+ 
+     print 'Shutting down chart screen: ', device_id
+     screen_id_arg = ('screen=%s' % device_id)
+-    cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
++    cmd = ['python3', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+                                   'turn_off_screen.py'), screen_id_arg]
+     retcode = subprocess.call(cmd)
+     assert retcode == 0
+diff --git a/CameraITS/tools/run_sensor_fusion_box.py b/CameraITS/tools/run_sensor_fusion_box.py
+--- a/CameraITS/tools/run_sensor_fusion_box.py
++++ b/CameraITS/tools/run_sensor_fusion_box.py
+@@ -119,9 +119,9 @@ def main():
+     shift_list = []
+     for i in range(num_runs):
+         os.mkdir(os.path.join(tmpdir, camera_id, SCENE_NAME+'_'+str(i)))
+-        cmd = 'python tools/rotation_rig.py rotator=%s' % rotator_ids
++        cmd = 'python3 tools/rotation_rig.py rotator=%s' % rotator_ids
+         subprocess.Popen(cmd.split())
+-        cmd = ['python', os.path.join(TEST_DIR, TEST_NAME+'.py'),
++        cmd = ['python3', os.path.join(TEST_DIR, TEST_NAME+'.py'),
+                device_id_arg, camera_id_arg, rotator_id_arg, img_size_arg,
+                fps_arg, test_length_arg]
+         outdir = os.path.join(tmpdir, camera_id, SCENE_NAME+'_'+str(i))
