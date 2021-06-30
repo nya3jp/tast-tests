@@ -16,6 +16,23 @@
       "message": "+ejcaruso@ for OWNER",
       "revId": "64859e0282e157465269d3b3cc476a3ee30ee15e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0baee8_cc5cd78b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:47:05Z",
+      "side": 1,
+      "message": "In the future, you can make use of the tast-owners@ list to randomly assign a reviewer. It should also respect if people are out, I think? If not, you can add it again to get another randomly assigned one.",
+      "revId": "64859e0282e157465269d3b3cc476a3ee30ee15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
