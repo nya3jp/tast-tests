@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
@@ -51,7 +52,7 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Installing %s", apk)
-	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk), adb.InstallOptionGrantPermissions); err != nil {
 		s.Fatalf("Failed to install %s: %v", apk, err)
 	}
 
