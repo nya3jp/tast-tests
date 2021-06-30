@@ -35,7 +35,7 @@ func init() {
 		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		Timeout:      10 * time.Minute,
-		VarDeps:      []string{"servo"},
+		Vars:         []string{"servo"},
 	})
 }
 

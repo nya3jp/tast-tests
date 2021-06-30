@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"crossystem"},
 		Attr:         []string{"group:firmware", "firmware_smoke"},
-		VarDeps:      []string{"servo"},
+		Vars:         []string{"servo"},
 	})
 }
 
