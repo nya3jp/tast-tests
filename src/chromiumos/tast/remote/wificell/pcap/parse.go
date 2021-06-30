@@ -5,7 +5,9 @@
 package pcap
 
 import (
+	"bytes"
 	"io"
+	"net"
 	"os"
 
 	"github.com/google/gopacket"
@@ -51,6 +53,16 @@ func Dot11FCSValid() Filter {
 		func(layer gopacket.Layer) bool {
 			dot11 := layer.(*layers.Dot11)
 			return dot11.ChecksumValid()
+		})
+}
+
+// TransmitterAddress returns a Filter which ensures the Transmitter Address
+// matches the given MAC address.
+func TransmitterAddress(mac net.HardwareAddr) Filter {
+	return TypeFilter(layers.LayerTypeDot11,
+		func(layer gopacket.Layer) bool {
+			dot11 := layer.(*layers.Dot11)
+			return bytes.Equal(dot11.Address2, mac)
 		})
 }
 
