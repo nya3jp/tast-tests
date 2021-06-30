@@ -22,7 +22,7 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_smoke"},
 		Data:         []string{firmware.ConfigFile},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		VarDeps:      []string{"servo"},
+		Vars:         []string{"servo"},
 		Params: []testing.Param{{
 			Pre:       pre.NormalMode(),
 			ExtraAttr: []string{"firmware_smoke"},
