@@ -9,6 +9,7 @@ package uiauto
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"strings"
 	"time"
 
@@ -24,6 +25,21 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
+)
+
+// Populates an object that matches the shape of NodeInfo.
+const (
+	NodeInfoJS = `{
+				checked: node.checked,
+				className: node.className,
+				htmlAttributes: node.htmlAttributes,
+				location: node.location,
+				name: node.name,
+				restriction: node.restriction,
+				role: node.role,
+				state: node.state,
+				value: node.value,
+			}`
 )
 
 // Context is the context used when interacting with chrome.automation.
@@ -139,19 +155,9 @@ func (ac *Context) Info(ctx context.Context, finder *nodewith.Finder) (*NodeInfo
 	query := fmt.Sprintf(`
 		(async () => {
 			%s
-			return {
-				checked: node.checked,
-				className: node.className,
-				htmlAttributes: node.htmlAttributes,
-				location: node.location,
-				name: node.name,
-				restriction: node.restriction,
-				role: node.role,
-				state: node.state,
-				value: node.value,
-			}
+			return %s;
 		})()
-	`, q)
+	`, q, NodeInfoJS)
 	var out NodeInfo
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		return ac.tconn.Eval(ctx, query, &out)
@@ -170,27 +176,37 @@ func (ac *Context) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]No
 		(async () => {
 			%s
 			var result = [];
-			nodes.forEach(function(nd) {
-				result.push({
-					checked: nd.checked,
-				    	className: nd.className,
-				    	htmlAttributes: nd.htmlAttributes,
-				    	location: nd.location,
-				    	name: nd.name,
-				    	restriction: nd.restriction,
-				    	role: nd.role,
-				    	state: nd.state,
-				    	value: nd.value,
-				});
+			nodes.forEach(function(node) {
+				result.push(%s);
 			});
 			return result
 		})()
-	`, q)
+	`, q, NodeInfoJS)
 	var out []NodeInfo
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		return ac.tconn.Eval(ctx, query, &out)
 	}, &ac.pollOpts)
 	return out, err
+}
+
+// Finds returns whether |finder| can be used to find |actual|. Another way of
+// saying this is "does |finder| map to |actual|?" or "are the properties listed
+// in |finder| present in |actual|?". To determine this, we take all NodeInfos
+// found by |finder| and compare each one to |actual|.
+func (ac *Context) Finds(ctx context.Context, finder *nodewith.Finder, actual *NodeInfo) (bool, error) {
+	candidates, err := ac.NodesInfo(ctx, finder)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to find NodeInfos")
+	}
+
+	for _, candidate := range candidates {
+		// Ensure types match when performing a DeepEqual.
+		if reflect.DeepEqual(candidate, *actual) {
+			return true, nil
+		}
+	}
+
+	return false, nil
 }
 
 // Location returns the location of the node found by the input finder.
