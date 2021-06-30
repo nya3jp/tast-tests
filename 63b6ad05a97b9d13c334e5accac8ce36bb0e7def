@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7594cb37_d4884b06",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-06-30T04:14:16Z",
+      "side": 1,
+      "message": "Is it changing the function behaviour?\nHow about splitting the CL into two parts, one for adding logs and one for changing behavior?",
+      "range": {
+        "startLine": 150,
+        "startChar": 10,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "63b6ad05a97b9d13c334e5accac8ce36bb0e7def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
