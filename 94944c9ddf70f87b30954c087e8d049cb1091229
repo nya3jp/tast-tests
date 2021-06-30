@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a9b3b1_3faaacf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa68c45e_c542c873",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "861353f9_d51fdb81",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7f3eb94_d88d9a6a",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Will check that after applying the other comments and trying using that Fixture for a multiple sample tests.",
+      "parentUuid": "861353f9_d51fdb81",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba136f2f_7e3ebf31",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
         "patchSetId": 1
@@ -65,6 +101,30 @@
       "writtenOn": "2021-06-21T13:08:16Z",
       "side": 1,
       "message": "Maybe kioskLoggedIn ? It\u0027s more descriptive of the state of the system.",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e73f13_eea5f7dd",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba136f2f_7e3ebf31",
       "range": {
         "startLine": 25,
         "startChar": 13,
@@ -122,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca71301_34842393",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c6ada4_091677b0",
+      "range": {
+        "startLine": 27,
+        "startChar": 48,
+        "endLine": 27,
+        "endChar": 88
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bf1c5ff_dadcb3e3",
@@ -135,6 +219,24 @@
       "writtenOn": "2021-06-21T13:08:16Z",
       "side": 1,
       "message": "You can leave this out. A nil slice should work well enough.",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c778bb13_76ff5849",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bf1c5ff_dadcb3e3",
       "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e76ab9_a5af4882",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287fcdb2_64602568",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a006e311_24dda5dc",
@@ -169,6 +289,30 @@
       "writtenOn": "2021-06-21T15:07:51Z",
       "side": 1,
       "message": "Does it work if you put this into an anonymous function, and close chrome in a defer like I suggested in the comment below?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd68df1_09aa33cd",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "I enclosed this part into an anonymous function with deferred closing of the first instance.",
+      "parentUuid": "a006e311_24dda5dc",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -204,6 +348,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f52863df_c182ea87",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "In case Kiosk mode fails to launch I added closing Chrome before calling Fatal.",
+      "parentUuid": "454c1593_a04fa928",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9c9c76_fb114c20",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
         "patchSetId": 1
@@ -215,6 +383,58 @@
       "writtenOn": "2021-06-21T13:08:16Z",
       "side": 1,
       "message": "This is not true 😊 hopefully.",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7fc7c4_3ebdbdff",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa9c9c76_fb114c20",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a8f9f5_191ae26a",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "I see that is causing problems when multiple tests are run with the fixture:\n\n\"Fixture failed to reset: failed to clear policies: cdp.Runtime: Evaluate: rpcc: the connection is closing; recovering\"",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60d606f_1cf943c9",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "When multiple tests use that fixture Reset does not work. It fails with:\n2021-06-30T12:37:52.713586Z [12:37:52.128] Closing 3 target(s)\n2021-06-30T12:37:52.799798Z [12:37:52.230] Failed to close https://www.google.com/: failed to find targets: cdp.Target: GetTargets: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF\n2021-06-30T12:37:52.799883Z [12:37:52.230] Failed to close https://www.google.com/: cdp.Target: CloseTarget: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF\n2021-06-30T12:37:52.799912Z [12:37:52.230] Failed to close chrome://oobe/app-launch-splash: cdp.Target: CloseTarget: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF\n2021-06-30T12:38:07.669524Z [12:38:07.107] Not all targets finished closing: context deadline exceeded; last error follows: failed to get targets: cdp.Target: GetTargets: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF",
       "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -232,6 +452,24 @@
       "writtenOn": "2021-06-21T13:08:16Z",
       "side": 1,
       "message": "Is there a simple check that can be performed to ensure that kiosk is still running?",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c20377a_d081dd52",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-06-30T12:58:44Z",
+      "side": 1,
+      "message": "From what I learned is that we could check the PID of Chrome before and after the Reset logic - it should be the same. If Kiosk had started before it should be still up and running.",
+      "parentUuid": "d01c18e5_7c2a963f",
       "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
