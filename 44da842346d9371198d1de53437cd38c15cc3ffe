@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc86df8_643d592e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T16:26:07Z",
+      "side": 0,
+      "message": "Shall we keep the reason why we run the test three times?",
+      "revId": "44da842346d9371198d1de53437cd38c15cc3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006b81ba_2fcfa5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T16:26:07Z",
+      "side": 0,
+      "message": "I thought that the CL inlines helper.Disable with verbose logging to see which part is the source of flakiness. Why this CL removes the check of expecting failure of helper.ConnectToDefault() and helper.Disconnect() after Disable()?",
+      "revId": "44da842346d9371198d1de53437cd38c15cc3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
