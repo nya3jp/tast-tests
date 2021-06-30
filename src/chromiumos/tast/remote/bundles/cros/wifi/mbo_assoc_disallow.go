@@ -25,10 +25,9 @@ func init() {
 		Func: MBOAssocDisallow,
 		Desc: "Verifies that a DUT won't connect to an AP with the assoc disallow bit set",
 		Contacts: []string{
-			"matthewmwang@google.com",
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:         []string{"group:wificell", "wificell_func"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		Pre:          wificell.TestFixturePre(),
 		Vars:         []string{"router", "pcap"},
