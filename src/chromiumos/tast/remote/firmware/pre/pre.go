@@ -86,12 +86,62 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		s.Fatal("DUT is offline before test start: ", err)
 	}
 
-	if err := i.setupBootMode(ctx, s.CloudStorage()); err != nil {
-		s.Fatal("Could not setup BootMode: ", err)
+	// The GBB flags might prevent booting into the correct mode, so check the boot mode,
+	// then save the GBB flags, then set the GBB flags, and finally reboot into the right mode.
+	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get current boot mode")
 	}
 
-	if err := i.setupGBBFlags(ctx); err != nil {
-		s.Fatal("Could not setup GBB flags: ", err)
+	// If this is the first Prepare invocation, save the starting boot mode.
+	if i.origBootMode == nil {
+		testing.ContextLogf(ctx, "Saving boot mode %q for restoration upon completion of all tests under this precondition", mode)
+		i.origBootMode = &mode
+	}
+
+	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
+		return errors.Wrap(err, "failed to require BiosServiceClient")
+	}
+
+	testing.ContextLog(ctx, "Get current GBB flags")
+	curr, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "getting current GBB Flags failed")
+	}
+
+	// If this is the first Prepare invocation, save the starting GBB flags.
+	if i.origGBBFlags == nil {
+		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this precondition", curr.Set)
+		i.origGBBFlags = curr
+	}
+
+	rebootRequired := false
+	if common.GBBFlagsStatesEqual(i.v.GBBFlags, *curr) {
+		testing.ContextLog(ctx, "GBBFlags are already proper")
+	} else {
+		if err := i.setAndCheckGBBFlags(ctx, i.v.GBBFlags); err != nil {
+			return errors.Wrap(err, "setAndCheckGBBFlags failed")
+		}
+		if common.GBBFlagsChanged(*curr, i.v.GBBFlags, common.RebootRequiredGBBFlags()) {
+			testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
+			rebootRequired = true
+		}
+	}
+
+	if mode != i.v.BootMode {
+		testing.ContextLogf(ctx, "Current boot mode is %q, rebooting to %q to satisfy precondition", mode, i.v.BootMode)
+		rebootRequired = true
+	}
+
+	if rebootRequired {
+		if i.v.BootMode == common.BootModeRecovery {
+			if err := i.v.Helper.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
+				return errors.Wrap(err, "USBKey not working")
+			}
+		}
+		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
+			return errors.Wrapf(err, "failed to reboot to mode %q", i.v.BootMode)
+		}
 	}
 
 	return i.v
@@ -169,35 +219,6 @@ func (i *impl) destroyHelper(ctx context.Context, s *testing.PreState) {
 	i.v.Helper = nil
 }
 
-// setupBootMode the DUT to the correct mode if it's in a different one, saving the original one.
-func (i *impl) setupBootMode(ctx context.Context, cloudStorage *testing.CloudStorage) error {
-	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get current boot mode")
-	}
-
-	// This is the first Prepare invocation, save the starting boot mode.
-	if i.origBootMode == nil {
-		testing.ContextLogf(ctx, "Saving boot mode %q for restoration upon completion of all tests under this precondition", mode)
-		i.origBootMode = &mode
-	}
-
-	if mode != i.v.BootMode {
-		if i.v.BootMode == common.BootModeRecovery {
-			if err := i.v.Helper.SetupUSBKey(ctx, cloudStorage); err != nil {
-				return errors.Wrap(err, "USBKey not working")
-			}
-
-		}
-		testing.ContextLogf(ctx, "Current boot mode is %q, rebooting to %q to satisfy precondition", mode, i.v.BootMode)
-		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
-			return errors.Wrapf(err, "failed to reboot to mode %q", i.v.BootMode)
-		}
-	}
-
-	return nil
-}
-
 // restoreBootMode restores DUT's boot mode.
 func (i *impl) restoreBootMode(ctx context.Context) error {
 	// Can't Restore the boot mode if unknown.
@@ -232,41 +253,7 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode) error {
 	return nil
 }
 
-// setupGBBFlags sets and clears GBB Flags for firmware testing.
-func (i *impl) setupGBBFlags(ctx context.Context) error {
-	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
-		return errors.Wrap(err, "failed to require BiosServiceClient")
-	}
-
-	testing.ContextLog(ctx, "Get current GBB flags")
-	curr, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "getting current GBB Flags failed")
-	}
-
-	// This is the first Prepare invocation, save the starting GBB flags.
-	if i.origGBBFlags == nil {
-		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this precondition", curr.Set)
-		i.origGBBFlags = curr
-	}
-
-	if common.GBBFlagsStatesEqual(i.v.GBBFlags, *curr) {
-		testing.ContextLog(ctx, "GBBFlags are already proper")
-		return nil
-	}
-
-	if err := i.setAndCheckGBBFlags(ctx, i.v.GBBFlags); err != nil {
-		return errors.Wrap(err, "setAndCheckGBBFlags failed")
-	}
-
-	if err := i.rebootIfRequired(ctx, *curr, i.v.GBBFlags); err != nil {
-		return errors.Wrap(err, "rebooting after required flags changed failed")
-	}
-
-	return nil
-}
-
-// restoreGBBFlags restores GBB Flags as it was prior to setupGBBFlags.
+// restoreGBBFlags restores GBB Flags as it was prior to the precondition starting.
 func (i *impl) restoreGBBFlags(ctx context.Context) error {
 	if i.origGBBFlags == nil {
 		return nil
