@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/json"
 	"regexp"
+	"sort"
 	"strings"
 
 	"github.com/godbus/dbus"
@@ -27,6 +28,10 @@ type Component interface {
 	GetName() string
 	GetInformation() *rppb.Information
 }
+
+// GetComponentsFunc represents the function to get specific category of
+// components from rppb.ProbeResult.
+type GetComponentsFunc func(*rppb.ProbeResult, string) ([]Component, error)
 
 // Skip the known concurrent D-Bus call at boot.
 const defaultTryCount = 2
@@ -72,18 +77,18 @@ func dbusCallWithRetry(ctx context.Context, method string, in, out proto.Message
 	return errors.Wrapf(err, "retry failed for %d times", tryCount)
 }
 
-// Probe uses D-Bus call to get result from runtime_probe with given request.
+// probe uses D-Bus call to get result from runtime_probe with given request.
 // Currently only users chronos and debugd are allowed to call this D-Bus function.
-func Probe(ctx context.Context, request *rppb.ProbeRequest) (*rppb.ProbeResult, error) {
+func probe(ctx context.Context, request *rppb.ProbeRequest) (*rppb.ProbeResult, error) {
 	result := &rppb.ProbeResult{}
 	err := dbusCallWithRetry(ctx, "ProbeCategories", request, result, defaultTryCount)
 	return result, err
 }
 
-// GetHostInfoLabels get host info labels for tast tests.  If the tast variable
-// is not found or is an invalid JSON string, GetHostInfoLabels returns an
+// getHostInfoLabels get host info labels for tast tests.  If the tast variable
+// is not found or is an invalid JSON string, this function returns an
 // error.
-func GetHostInfoLabels(s *testing.State) ([]string, error) {
+func getHostInfoLabels(s *testing.State) ([]string, error) {
 	labelsStr, ok := s.Var("autotest_host_info_labels")
 	if !ok {
 		return nil, errors.New("no labels")
@@ -94,6 +99,19 @@ func GetHostInfoLabels(s *testing.State) ([]string, error) {
 		return nil, err
 	}
 	return labels, nil
+}
+
+// getModelName returns the model name from |labels|.
+func getModelName(labels []string) (string, error) {
+	const modelPrefix = "model:"
+
+	for _, label := range labels {
+		if strings.HasPrefix(label, modelPrefix) {
+			model := strings.TrimPrefix(label, modelPrefix)
+			return model, nil
+		}
+	}
+	return "", errors.New("no model label found")
 }
 
 // categoryAliases returns the aliases of given category.  The category
@@ -123,9 +141,9 @@ func tryTrimQid(model, category, compName string) string {
 	return compName
 }
 
-// GetKnownComponents uses D-Bus call to get known components with category
+// getKnownComponents uses D-Bus call to get known components with category
 // |category|.
-func GetKnownComponents(ctx context.Context, model, category string, tryCount int) (map[string]struct{}, error) {
+func getKnownComponents(ctx context.Context, model, category string, tryCount int) (map[string]struct{}, error) {
 	categoryValue, found := rppb.ProbeRequest_SupportCategory_value[category]
 	if !found {
 		return nil, errors.Errorf("invalid category %q", category)
@@ -146,57 +164,32 @@ func GetKnownComponents(ctx context.Context, model, category string, tryCount in
 	return components, nil
 }
 
-// GetComponentCount extracts the model name and component labels from given
-// list of cros-labels and groups them by their categories.  After collecting
-// component labels, this function will return a counter counting each component
-// label.
-func GetComponentCount(ctx context.Context, labels, categories []string) (map[string]map[string]int, string, error) {
-	const modelPrefix = "model:"
-
-	// Find the model name of this DUT.
-	var model string
-	for _, label := range labels {
-		if strings.HasPrefix(label, modelPrefix) {
-			model = strings.TrimPrefix(label, modelPrefix)
-			break
-		}
-	}
-	if len(model) == 0 {
-		return nil, "", errors.New("no model found")
-	}
-
-	mapping := make(map[string]map[string]int)
-	for _, category := range categories {
-		mapping[category] = make(map[string]int)
-	}
+// getComponentCount returns a counter counting each component label which is
+// available on device |model|.
+func getComponentCount(labels []string, category, model string, knownComponents map[string]struct{}) map[string]int {
+	count := make(map[string]int)
 	// Filter labels with prefix "hwid_component:<component type>/" and trim them.
-	for _, category := range categories {
-		knownComponents, err := GetKnownComponents(ctx, model, category, defaultTryCount)
-		if err != nil {
-			return nil, "", err
-		}
-		for _, alias := range categoryAliases(category) {
-			categoryPrefix := "hwid_component:" + alias + "/"
-			for _, label := range labels {
-				if !strings.HasPrefix(label, categoryPrefix) {
-					continue
-				}
-				label := strings.TrimPrefix(label, categoryPrefix)
-				key := tryTrimQid(model, category, model+"_"+label)
-				if _, found := knownComponents[key]; found {
-					mapping[category][key]++
-				}
+	for _, alias := range categoryAliases(category) {
+		categoryPrefix := "hwid_component:" + alias + "/"
+		for _, label := range labels {
+			if !strings.HasPrefix(label, categoryPrefix) {
+				continue
+			}
+			label := strings.TrimPrefix(label, categoryPrefix)
+			key := tryTrimQid(model, category, model+"_"+label)
+			if _, found := knownComponents[key]; found {
+				count[key]++
 			}
 		}
 	}
-	return mapping, model, nil
+	return count
 }
 
-// DecreaseComponentCount decreases the count of given component by 1.  If the
+// decreaseComponentCount decreases the count of given component by 1.  If the
 // count of given component is decreased to 0, it will be removed from |count|.
 // The first returned value will be false on failure.  The second returned
 // value is the display name of |component|.
-func DecreaseComponentCount(count map[string]int, model, category string, component Component) (bool, string) {
+func decreaseComponentCount(count map[string]int, model, category string, component Component) (bool, string) {
 	name := component.GetName()
 	info := component.GetInformation()
 	if info != nil {
@@ -216,4 +209,94 @@ func DecreaseComponentCount(count map[string]int, model, category string, compon
 		delete(count, trimmedName)
 	}
 	return true, name
+}
+
+// GenericTest probes components with category |categories| on a device using
+// Runtime Probe D-Bus call and checks if the result matches the host info
+// labels.
+// If there is not a valid component label, the test will be skipped (passed).
+// If a valid component in the host info labels is not probed, the test will be
+// failed.  If a probed component is not in the host info labels, the test will
+// be failed if |allowExtraComponents| is false.  Otherwire, the test will be
+// passed.
+func GenericTest(ctx context.Context, s *testing.State, categories []string, getCategoryComps GetComponentsFunc, allowExtraComponents bool) {
+	hostInfoLabels, err := getHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("getHostInfoLabels failed: ", err)
+	}
+
+	model, err := getModelName(hostInfoLabels)
+	if err != nil {
+		s.Fatal("getModelName failed: ", err)
+	}
+
+	mapping := make(map[string]map[string]int)
+	var requestCategories []rppb.ProbeRequest_SupportCategory
+	for _, category := range categories {
+		categoryValue, found := rppb.ProbeRequest_SupportCategory_value[category]
+		if !found {
+			s.Fatalf("Invalid category %q", category)
+		}
+
+		knownComponents, err := getKnownComponents(ctx, model, category, defaultTryCount)
+		if err != nil {
+			s.Fatal("getKnownComponents failed: ", err)
+		}
+		if len(knownComponents) == 0 {
+			s.Logf("Components %q are not found in the probe config. Skipped", category)
+			continue
+		}
+
+		count := getComponentCount(hostInfoLabels, category, model, knownComponents)
+		if len(count) == 0 {
+			s.Logf("No %q labels or known components. Skipped", category)
+		} else {
+			mapping[category] = count
+			requestCategories = append(requestCategories, rppb.ProbeRequest_SupportCategory(categoryValue))
+		}
+	}
+
+	request := &rppb.ProbeRequest{
+		Categories: requestCategories,
+	}
+	result, err := probe(ctx, request)
+	if err != nil {
+		s.Fatal("probe failed: ", err)
+	}
+
+	for category, compCounts := range mapping {
+		probedComponents, err := getCategoryComps(result, category)
+		var extraComponents []string
+		if err != nil {
+			s.Error("getCategoryComps failed: ", err)
+			continue
+		}
+		for _, component := range probedComponents {
+			result, name := decreaseComponentCount(compCounts, model, category, component)
+			s.Logf("Probed %s component: %s", category, name)
+			if !result {
+				if name != "generic" {
+					extraComponents = append(extraComponents, category+"/"+name)
+				}
+			}
+		}
+
+		var unprobedComponents []string
+		for name := range compCounts {
+			unprobedComponents = append(unprobedComponents, category+"/"+name)
+		}
+		if len(unprobedComponents) > 0 {
+			sort.Strings(unprobedComponents)
+			s.Fatalf("Some expected %s components are not probed: %v", category, unprobedComponents)
+		}
+
+		if len(extraComponents) > 0 {
+			sort.Strings(extraComponents)
+			if allowExtraComponents {
+				s.Logf("Some extra %s components are probed: %v", category, extraComponents)
+			} else {
+				s.Fatalf("Some extra %s components are probed: %v", category, extraComponents)
+			}
+		}
+	}
 }

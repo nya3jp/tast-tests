@@ -6,7 +6,6 @@ package platform
 
 import (
 	"context"
-	"sort"
 
 	rppb "chromiumos/system_api/runtime_probe_proto"
 	"chromiumos/tast/errors"
@@ -31,67 +30,24 @@ func init() {
 // CrosRuntimeProbeInputDevice checks if the input_device names in cros-label
 // are consistent with probed names from runtime_probe.
 func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
-	var inputDeviceTypes = []string{"stylus", "touchpad", "touchscreen"}
-	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
-	if err != nil {
-		s.Fatal("GetHostInfoLabels failed: ", err)
-	}
-
-	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, inputDeviceTypes)
-	if err != nil {
-		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
-	}
-
-	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_stylus,
-			rppb.ProbeRequest_touchpad,
-			rppb.ProbeRequest_touchscreen,
-		},
-	}
-	result, err := runtimeprobe.Probe(ctx, request)
-	if err != nil {
-		s.Fatal("Cannot get input_device components: ", err)
-	}
-
-	getInputDeviceByType := func(result *rppb.ProbeResult, inputDeviceType string) ([]*rppb.InputDevice, error) {
-		switch inputDeviceType {
+	categories := []string{"stylus", "touchpad", "touchscreen"}
+	getCategoryComps := func(result *rppb.ProbeResult, category string) ([]runtimeprobe.Component, error) {
+		var comps []runtimeprobe.Component
+		var rppbComps []*rppb.InputDevice
+		switch category {
 		case "stylus":
-			return result.GetStylus(), nil
+			rppbComps = result.GetStylus()
 		case "touchpad":
-			return result.GetTouchpad(), nil
+			rppbComps = result.GetTouchpad()
 		case "touchscreen":
-			return result.GetTouchscreen(), nil
+			rppbComps = result.GetTouchscreen()
+		default:
+			return nil, errors.Errorf("unknown category %s", category)
 		}
-		return nil, errors.Errorf("unknown device_type %s", inputDeviceType)
-	}
-
-	for _, inputDeviceType := range inputDeviceTypes {
-		probedInputDeviceComponents, err := getInputDeviceByType(result, inputDeviceType)
-		if err != nil {
-			s.Error("Cannot get input_device: ", err)
-			continue
+		for _, comp := range rppbComps {
+			comps = append(comps, comp)
 		}
-		for _, component := range probedInputDeviceComponents {
-			result, name := runtimeprobe.DecreaseComponentCount(mapping[inputDeviceType], model, inputDeviceType, component)
-			s.Logf("Probed %s: %s", inputDeviceType, name)
-			if !result {
-				if name == "generic" {
-					s.Logf("Skip known generic %s probe result", inputDeviceType)
-				} else {
-					s.Logf("Extra inputDevice component %q of type %s is probed", name, inputDeviceType)
-				}
-			}
-		}
+		return comps, nil
 	}
-	var unprobedInputDevices []string
-	for inputDeviceType, inputDeviceNames := range mapping {
-		for name := range inputDeviceNames {
-			unprobedInputDevices = append(unprobedInputDevices, inputDeviceType+"/"+name)
-		}
-	}
-	if len(unprobedInputDevices) > 0 {
-		sort.Strings(unprobedInputDevices)
-		s.Fatal("Some expected input_device components are not probed: ", unprobedInputDevices)
-	}
+	runtimeprobe.GenericTest(ctx, s, categories, getCategoryComps, true)
 }
