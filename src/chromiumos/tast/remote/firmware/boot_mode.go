@@ -101,7 +101,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
 		}
-		if fromMode == fwCommon.BootModeDev {
+		if fromMode != fwCommon.BootModeNormal {
 			if err := ms.fwScreenToNormalMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to normal mode")
 			}
@@ -113,14 +113,32 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return err
 		}
 	case fwCommon.BootModeDev:
-		// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
-		// 2. From the firmware screen that appears, press keys to transition to dev mode.
-		//    The specific keypresses will depend on the DUT's ModeSwitcherType.
-		if err := ms.enableRecMode(ctx, servo.USBMuxHost); err != nil {
-			return err
+		transitionToDev := true
+		// Recovery -> Dev sometimes gets stuck on the recovery screen. Try a normal reboot first.
+		// Even if it doesn't get us back to Dev, rebooting from Normal -> Dev is less flaky.
+		if fromMode == fwCommon.BootModeRecovery {
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+				return err
+			}
+			if err := h.DUT.WaitConnect(ctx); err == nil {
+				newMode, err := h.Reporter.CurrentBootMode(ctx)
+				if err != nil {
+					return errors.Wrap(err, "determining boot mode after simple reboot")
+				}
+				testing.ContextLogf(ctx, "Warm reset finished, DUT in %s", newMode)
+				transitionToDev = newMode != fwCommon.BootModeDev
+			}
 		}
-		if err := ms.fwScreenToDevMode(ctx); err != nil {
-			return errors.Wrap(err, "moving from firmware screen to dev mode")
+		if transitionToDev {
+			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
+			// 2. From the firmware screen that appears, press keys to transition to dev mode.
+			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
+			if err := ms.enableRecMode(ctx, servo.USBMuxHost); err != nil {
+				return err
+			}
+			if err := ms.fwScreenToDevMode(ctx); err != nil {
+				return errors.Wrap(err, "moving from firmware screen to dev mode")
+			}
 		}
 	default:
 		return errors.Errorf("unsupported firmware boot mode: %s", toMode)
@@ -128,9 +146,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	// Reconnect to the DUT.
 	testing.ContextLog(ctx, "Reestablishing connection to DUT")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return h.DUT.WaitConnect(ctx)
-	}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
+	if err := h.DUT.WaitConnect(ctx); err != nil {
 		return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 	}
 
@@ -349,7 +365,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 
 // fwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
 // This should be called immediately after powering on.
-// The actual behvior depends on the ModeSwitcherType.
+// The actual behavior depends on the ModeSwitcherType.
 func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
