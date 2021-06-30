@@ -202,6 +202,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d91b889_75950c5c",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-30T05:09:10Z",
+      "side": 1,
+      "message": "Thanks! Will do!",
+      "parentUuid": "8469e10d_44710b2a",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de5270f7_a4db13b9",
@@ -215,6 +239,30 @@
       "writtenOn": "2021-06-25T09:07:46Z",
       "side": 1,
       "message": "testexec.DumpLogOnError will write something to logs whenever it sees an abnormal process exit. Since an abnormal process exit is okay in the case of \"initctl: Unknown instance\", I think it\u0027s better to not use this option.",
+      "range": {
+        "startLine": 66,
+        "startChar": 125,
+        "endLine": 66,
+        "endChar": 148
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2b3298_3369454f",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-30T05:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5270f7_a4db13b9",
       "range": {
         "startLine": 66,
         "startChar": 125,
@@ -296,6 +344,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f316756_694ded2b",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-30T05:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c7a9c8a_09e2d410",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 75
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da30d9c0_221a1cb8",
@@ -309,6 +381,30 @@
       "writtenOn": "2021-06-25T09:07:46Z",
       "side": 1,
       "message": "nit: Now that this is a slice of strings, I think there\u0027s a formatting easier to read. For example:\n\n errors.Wrapf(err, \"stopping %s failed\", strings.Join(..., \" \"))\n errors.Wrapf(err, \"stopping %s failed\", shutil.EscapeSlice(...))",
+      "range": {
+        "startLine": 152,
+        "startChar": 37,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "1c4e4c37e48389dd540b2d9ebe1820e382d6b3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ee6551_b21f41b0",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-06-30T05:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da30d9c0_221a1cb8",
       "range": {
         "startLine": 152,
         "startChar": 37,
