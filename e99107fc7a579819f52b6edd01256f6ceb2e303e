@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40033ebb_bc61cc8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-06-30T01:17:05Z",
+      "side": 1,
+      "message": "A bit frustrating as it only happens on betty CI, and I could not reproduce it locally.\n\nhttps://tastboard.corp.google.com/test/apps.LaunchGallery.stable\n\nBut yes, let\u0027s demote it to unblock CQ first.",
+      "revId": "e99107fc7a579819f52b6edd01256f6ceb2e303e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
