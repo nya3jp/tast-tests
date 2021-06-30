@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7dc3520_b8199bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-06-30T23:19:52Z",
+      "side": 1,
+      "message": "Hi Hiroki,\n\nI am trying to work on this change as we discussed over email. However, I am running into conflicts with ui.Node vs. uiauto.NodeInfo. I left a question, so let me know what you think.\n\nThanks!",
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
