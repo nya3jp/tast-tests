@@ -269,11 +269,9 @@ func hwWriteProtect(ctx context.Context, on bool) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to enable control of write protect")
 	}
-	// The WP gpio on the dev board is inverted: b/182499499.
-	// force_on will actually turn the WP gpio off.
-	wpArg := "force_on"
+	wpArg := "force_off"
 	if on {
-		wpArg = "force_off"
+		wpArg = "force_on"
 	}
 	err = testexec.CommandContext(ctx, "dut-control", fmt.Sprintf("fw_wp_state:%s", wpArg)).Run()
 	if err != nil {
