@@ -155,7 +155,7 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 		return nil
 	}
 	if err := h.RequireServo(ctx); err != nil {
-		return nil
+		return errors.Wrap(err, "could not connect to servo")
 	}
 	if hasEC, err := h.Servo.HasControl(ctx, string(servo.ECSystemPowerState)); err != nil {
 		testing.ContextLog(ctx, "Error checking for chrome ec: ", err)
