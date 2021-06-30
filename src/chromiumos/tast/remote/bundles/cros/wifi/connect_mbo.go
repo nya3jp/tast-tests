@@ -25,10 +25,9 @@ func init() {
 		Func: ConnectMBO,
 		Desc: "Verifies that the MBO IE and other MBO-related capability bits are set",
 		Contacts: []string{
-			"matthewmwang@google.com",
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:         []string{"group:wificell", "wificell_func"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		Pre:          wificell.TestFixturePreWithFeatures(wificell.TFFeaturesCapture | wificell.TFFeaturesRouterAsCapture),
 		Vars:         []string{"router", "pcap"},
