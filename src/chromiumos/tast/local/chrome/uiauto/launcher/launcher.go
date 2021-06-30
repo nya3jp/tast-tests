@@ -167,7 +167,7 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 	return uiauto.Combine(fmt.Sprintf("RenameFolder(%s, %s)", from, to),
 		OpenExpandedView(tconn),
 		ui.LeftClick(fromFolder),
-		ui.LeftClick(nodewith.Name(from).ClassName("Label")),
+		ui.FocusAndWait(nodewith.Name(from).ClassName("Textfield")),
 		func(ctx context.Context) error {
 			return kb.Type(ctx, to+"\n")
 		},
