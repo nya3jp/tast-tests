@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6820b628_9dd3677f",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-30T14:25:23Z",
+      "side": 1,
+      "message": "could you log errors for future debugging purpose?",
+      "revId": "3dc24c6e1b854f556bbfdf7e543699ec088c9223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fb2a00_ef328154",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-06-30T14:25:23Z",
+      "side": 1,
+      "message": "this is also called on error case.\nI think it is not expected?\n\nnit/style: could you fix indent?",
+      "revId": "3dc24c6e1b854f556bbfdf7e543699ec088c9223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
