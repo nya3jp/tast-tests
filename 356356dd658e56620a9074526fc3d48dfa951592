@@ -22,6 +22,30 @@
       },
       "revId": "356356dd658e56620a9074526fc3d48dfa951592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d898db05_0f206915",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-30T17:38:52Z",
+      "side": 1,
+      "message": "This feels like a HwDep. go/tast-deps\n\nThere is a place in go/src/go.chromium.org/chromiumos/config/proto/chromiumos/config/api/topology.proto for camera flags, but ROI support isn\u0027t in there, so the infra team would need to add it.",
+      "parentUuid": "e790750b_c7b22a35",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "356356dd658e56620a9074526fc3d48dfa951592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
