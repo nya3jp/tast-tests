@@ -129,14 +129,7 @@ func (s *Spotify) Play(ctx context.Context) error {
 		return errors.Wrap(err, "failed to login into Spotify")
 	}
 
-	testing.ContextLog(ctx, "Clearing prompts")
-	dismiss := s.d.Object(ui.Text("DISMISS"))
-	promp := s.d.Object(ui.Text("NO, THANKS"))
-	// TODO(b:192660031): Optimize this logic.
-	if err := uiauto.Combine("clear prompt",
-		cuj.ClickIfExist(dismiss, shortUITimeout),
-		cuj.ClickIfExist(promp, shortUITimeout),
-	)(ctx); err != nil {
+	if err := s.clearPrompts(ctx); err != nil {
 		return err
 	}
 
@@ -187,6 +180,63 @@ func (s *Spotify) login(ctx context.Context) error {
 		s.firstLogin = true
 	}
 
+	return nil
+}
+
+func (s *Spotify) clearPrompts(ctx context.Context) error {
+	testing.ContextLog(ctx, "Clearing prompts")
+
+	prompts := []struct {
+		obj     *ui.Object
+		name    string
+		cleared bool
+	}{
+		{s.d.Object(ui.Text("DISMISS")), "DISMISS", false},
+		{s.d.Object(ui.Text("NO, THANKS")), "NO, THANKS", false},
+		{s.d.Object(ui.ID(spotifyIDPrefix + "app_rater_dialog_button_dismiss")), "FREE TRIAL", false},
+	}
+
+	// The occuring of the prompts is random. Instead of waiting a longer time for each
+	// prompt, we repeatedly check the prompts with short wait time but high frequency.
+	// The total check time is controlled under 30 seconds.
+	totalClearTime := 30 * time.Second
+	totalCleared := 0
+	clearFail := false // Indicate if there are UI error when clearing prompts.
+	err := testing.Poll(ctx, func(c context.Context) error {
+		for _, prompt := range prompts {
+			if prompt.cleared {
+				continue
+			}
+
+			if err := prompt.obj.WaitForExists(ctx, 2*time.Second); err != nil {
+				if ui.IsTimeout(err) {
+					continue
+				}
+				clearFail = true
+				return testing.PollBreak(errors.Wrap(err, "failed to wait for the target object"))
+			}
+			if err := prompt.obj.Click(ctx); err != nil {
+				clearFail = true
+				return testing.PollBreak(errors.Wrap(err, "failed to click ui object to clear prompts"))
+			}
+
+			prompt.cleared = true
+			totalCleared++
+			testing.ContextLogf(ctx, "Prompt %q has been cleared", prompt.name)
+		}
+
+		if totalCleared >= len(prompts) {
+			return nil
+		}
+		return errors.New("not all prompts have been cleared")
+	}, &testing.PollOptions{Timeout: totalClearTime, Interval: time.Second})
+
+	testing.ContextLogf(ctx, "Total %d prompt(s) have been cleared", totalCleared)
+
+	if err != nil && clearFail {
+		return errors.Wrap(err, "failed to clear prompts")
+	}
+	// All prompts have been cleared, or timed out to wait for prompts to occure.
 	return nil
 }
 
