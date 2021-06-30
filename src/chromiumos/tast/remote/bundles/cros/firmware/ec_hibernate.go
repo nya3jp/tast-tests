@@ -20,7 +20,7 @@ func init() {
 		Func:         ECHibernate,
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_smoke"},
+		Attr:         []string{"group:firmware", "firmware_experimental"},
 		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
