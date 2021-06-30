@@ -16,6 +16,115 @@
       "message": "Hello,\nNew clipboard misc file contains test case from 1-6 from the clipboard test case file\n\nPTAL and kindly review it,\nThanks 😊",
       "revId": "2b659fcb895584dc01581fc660a9141bba378920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e242592b_2ba8f153",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-30T13:18:31Z",
+      "side": 1,
+      "message": "Thanks Vishal!",
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db62d43_36484bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-30T13:18:31Z",
+      "side": 1,
+      "message": "probably rename to getPastedData?",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32405248_b445f838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-30T13:18:31Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db3f415_bb19f75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-30T13:18:31Z",
+      "side": 1,
+      "message": "could you rename it please to e.g. pastedString?",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 6
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2394e04b_852a5947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-06-30T13:18:31Z",
+      "side": 1,
+      "message": "How is this string used?",
+      "range": {
+        "startLine": 217,
+        "startChar": 77,
+        "endLine": 217,
+        "endChar": 83
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
