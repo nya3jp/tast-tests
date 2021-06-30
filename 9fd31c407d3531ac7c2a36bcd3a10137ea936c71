@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4514ab_ad1f83ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-06-30T20:22:54Z",
+      "side": 1,
+      "message": "Done. Thanks for pointing that out!",
+      "parentUuid": "84daa151_258c102b",
+      "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56c14f1_83aba8dd",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-06-30T14:16:26Z",
       "side": 1,
       "message": "Under what circumstances will we hit this? (i.e. if sm fails once, do we expect it to ever work again? should this be a TestBreak?)",
+      "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc01ebca_aabc2d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-06-30T20:22:54Z",
+      "side": 1,
+      "message": "That\u0027s a good point! The circumstances I can think of are 1) sm executable is missing, 2) ADB (Android Debug Bridge) server is not started, or 3) Android\u0027s StorageManagerService is not started. Since the arcBooted fixture guarantees that none of them should happen at this point (or it\u0027s not likely that they would be recovered just by waiting), I made the failure a poll breaker.",
+      "parentUuid": "e56c14f1_83aba8dd",
       "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
