@@ -35,6 +35,63 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ed1c6e_695c42b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:44:59Z",
+      "side": 1,
+      "message": "You can add tast-owners@google.com to get a Tast owner randomly assigned to your change. This helps keep things load balanced among the Tast reviewers.",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1b5ae5_c9c2f661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:44:59Z",
+      "side": 1,
+      "message": "Any reason not to call modemmanager.PollModem at the end of this function? Seems like we always do it after a slot switch.",
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b50e343_415d01dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:44:59Z",
+      "side": 1,
+      "message": "micro nit: \"primary slot\"?",
+      "range": {
+        "startLine": 90,
+        "startChar": 60,
+        "endLine": 90,
+        "endChar": 65
+      },
+      "revId": "b23c2b6054bd5bbcfb1d6b0b1f5c1ab1be31fb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33b853df_2ca8c822",
