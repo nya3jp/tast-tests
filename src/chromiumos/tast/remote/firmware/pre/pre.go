@@ -94,7 +94,7 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	// then save the GBB flags, then set the GBB flags, and finally reboot into the right mode.
 	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
 	if err != nil {
-		return errors.Wrap(err, "could not get current boot mode")
+		s.Fatal("Could not get current boot mode: ", err)
 	}
 
 	// If this is the first Prepare invocation, save the starting boot mode.
@@ -104,13 +104,13 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	}
 
 	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
-		return errors.Wrap(err, "failed to require BiosServiceClient")
+		s.Fatal("Failed to require BiosServiceClient: ", err)
 	}
 
 	testing.ContextLog(ctx, "Get current GBB flags")
 	curr, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
 	if err != nil {
-		return errors.Wrap(err, "getting current GBB Flags failed")
+		s.Fatal("Getting current GBB Flags failed: ", err)
 	}
 
 	// If this is the first Prepare invocation, save the starting GBB flags.
@@ -124,7 +124,7 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		testing.ContextLog(ctx, "GBBFlags are already proper")
 	} else {
 		if err := i.setAndCheckGBBFlags(ctx, i.v.GBBFlags); err != nil {
-			return errors.Wrap(err, "setAndCheckGBBFlags failed")
+			s.Fatal("SetAndCheckGBBFlags failed: ", err)
 		}
 		if common.GBBFlagsChanged(*curr, i.v.GBBFlags, common.RebootRequiredGBBFlags()) {
 			testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
@@ -141,12 +141,12 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		// If rebooting to recovery mode, verify the usb key, but only once, because it's slow and unlikely to break in the middle of tests.
 		if i.v.BootMode == common.BootModeRecovery && !i.usbKeyVerified {
 			if err := i.v.Helper.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
-				return errors.Wrap(err, "USBKey not working")
+				s.Fatal("USBKey not working: ", err)
 			}
 			i.usbKeyVerified = true
 		}
 		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
-			return errors.Wrapf(err, "failed to reboot to mode %q", i.v.BootMode)
+			s.Fatalf("Failed to reboot to mode %q: %s", i.v.BootMode, err)
 		}
 	}
 
