@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27ea5054_11b3a4d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-06-30T09:08:46Z",
+      "side": 1,
+      "message": "Hmm..., then the title will be the same for the following commits. (replacing different preconditions)\n\nDo you think it\u0027s better to squash them all?",
+      "parentUuid": "d7b82008_40a419ef",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "f3cb33d07ab38580bf2c0815060f5c713ba54bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "819ef28e_6f8d2ded",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
