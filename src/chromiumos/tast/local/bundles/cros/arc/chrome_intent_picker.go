@@ -12,9 +12,10 @@ import (
 	"chromiumos/tast/errors"
 	arcui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -81,22 +82,15 @@ func ChromeIntentPicker(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 
 	// Locate and left click on the Intent Picker button in Chrome omnibox.
-	params := chromeui.FindParams{
-		ClassName: "IntentPickerView",
-		Role:      chromeui.RoleTypeButton,
-	}
-	intentPicker, err := chromeui.FindWithTimeout(ctx, tconn, params, arcChromeIntentPickerUITimeout)
-	if err != nil {
-		s.Fatal("Failed to find intent picker button: ", err)
-	}
-	defer intentPicker.Release(cleanupCtx)
-
-	if err := intentPicker.LeftClick(ctx); err != nil {
+	intentPicker := nodewith.ClassName("IntentPickerView").Role(role.Button)
+	appLabel := nodewith.Name(appName).Role(role.Button)
+	openButton := nodewith.Name("Open").Role(role.Button)
+	ui := uiauto.New(tconn).WithInterval(arcChromeIntentPickerPollInterval)
+	if err := uiauto.Combine("",
+		ui.LeftClick(intentPicker),
+		ui.LeftClick(appLabel),
+		ui.LeftClick(openButton))(ctx); err != nil {
 		s.Fatal("Failed to click intent picker button: ", err)
-	}
-
-	if err := waitAndClickAppOnStableIntentView(ctx, cleanupCtx, tconn, appName); err != nil {
-		s.Fatal("Failed clicking on app: ", err)
 	}
 
 	// Wait for the android intent to show in the Android test app.
@@ -104,69 +98,6 @@ func ChromeIntentPicker(ctx context.Context, s *testing.State) {
 	if err := intentActionField.WaitForExists(ctx, arcChromeIntentPickerUITimeout); err != nil {
 		s.Fatalf("Failed waiting for intent action %q to appear in ARC window: %v", expectedAction, err)
 	}
-}
-
-func waitAndClickAppOnStableIntentView(ctx, cleanupCtx context.Context, tconn *chrome.TestConn, appName string) error {
-	pollOpts := testing.PollOptions{Interval: arcChromeIntentPickerPollInterval, Timeout: arcChromeIntentPickerUITimeout}
-
-	// Get the Intent Picker popover.
-	params := chromeui.FindParams{
-		ClassName: "IntentPickerBubbleView",
-		Name:      "Open with",
-		Role:      chromeui.RoleTypeWindow,
-	}
-	intentPickerPopover, err := chromeui.FindWithTimeout(ctx, tconn, params, arcChromeIntentPickerUITimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed finding intent picker popover")
-	}
-	defer intentPickerPopover.Release(cleanupCtx)
-
-	// Setup a watcher to wait for the apps list in Intent Picker to stabilize.
-	ew, err := chromeui.NewWatcher(ctx, intentPickerPopover, chromeui.EventTypeActiveDescendantChanged)
-	if err != nil {
-		return errors.Wrap(err, "failed getting a watcher for the intent picker popover")
-	}
-	defer ew.Release(cleanupCtx)
-
-	// Check the Intent Picker popover for any Activedescendantchanged events occurring in a 2 second interval.
-	// If any events are found continue polling until 10s is reached.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return ew.EnsureNoEvents(ctx, arcChromeIntentPickerPollInterval)
-	}, &pollOpts); err != nil {
-		return errors.Wrapf(err, "failed waiting %v for intent picker popover to stabilize", pollOpts.Timeout)
-	}
-
-	// Find the appName button in the Intent Picker popover and left click it.
-	params = chromeui.FindParams{
-		Role: chromeui.RoleTypeButton,
-		Name: appName,
-	}
-	appLabel, err := chromeui.FindWithTimeout(ctx, tconn, params, arcChromeIntentPickerUITimeout)
-	if err != nil {
-		return errors.Wrapf(err, "failed finding app intent picker label %q", appName)
-	}
-	defer appLabel.Release(cleanupCtx)
-
-	if err := appLabel.LeftClick(ctx); err != nil {
-		return errors.Wrapf(err, "failed clicking app %q button", appName)
-	}
-
-	// Left click the Open button in the Intent Picker popover.
-	params = chromeui.FindParams{
-		Role: chromeui.RoleTypeButton,
-		Name: "Open",
-	}
-	openButton, err := chromeui.FindWithTimeout(ctx, tconn, params, arcChromeIntentPickerUITimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed finding open intent picker button")
-	}
-	defer openButton.Release(cleanupCtx)
-
-	if err := openButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed clicking open button on intent picker")
-	}
-
-	return nil
 }
 
 // setUpARCForChromeIntentPicker starts an ARC device and starts UI automator.
