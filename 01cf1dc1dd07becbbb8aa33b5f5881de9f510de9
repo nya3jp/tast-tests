@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e22314e_c0cf8fe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "SIM\n\nAlso update comments in this CL.",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b00ef6d8_9998bbbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "DUTs",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04143c1e_dab2e794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "Sorry for late review. Some nits on the comments and CL description.",
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91e6a13_c97ad448",
+        "filename": "src/chromiumos/tast/common/mmconst/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "D-Bus \n\nPlease update other comments in this CL as well.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7c91d4_25abc964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "to the primary SIM",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 59
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e469a31_db465bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "switching the primary slot to: %d",
+      "range": {
+        "startLine": 87,
+        "startChar": 54,
+        "endLine": 87,
+        "endChar": 65
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5cfcd2_4d1260f7",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "We don\u0027t capitalize the error message: old",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac8b8bb_d41d3476",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "SIM DUTs",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65f1c86_89fc9655",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T17:01:51Z",
+      "side": 1,
+      "message": "No need. Wrap adds it for you.",
+      "range": {
+        "startLine": 129,
+        "startChar": 54,
+        "endLine": 129,
+        "endChar": 56
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
