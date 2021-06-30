@@ -65,7 +65,7 @@ func RunAccelVideoSmokeTest(ctx context.Context, s *testing.State, filename stri
 			s.DataPath(filename),
 			s.DataPath(filename+".json"),
 			"--output_folder="+s.OutDir(),
-			"--disable_validator"),
+			"--validator_type=none"),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
 		// The test binary should run without crashing, but we expect the tests
