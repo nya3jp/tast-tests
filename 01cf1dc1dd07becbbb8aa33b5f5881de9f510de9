@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59353224_f34af5ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e22314e_c0cf8fe9",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b00ef6d8_9998bbbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-30T17:01:51Z",
       "side": 1,
       "message": "DUTs",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "959ee5b5_9ea41b58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00ef6d8_9998bbbe",
       "range": {
         "startLine": 9,
         "startChar": 12,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c9a5c3_69b03285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b7c91d4_25abc964",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 59
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e469a31_db465bb6",
@@ -123,6 +195,30 @@
       "writtenOn": "2021-06-30T17:01:51Z",
       "side": 1,
       "message": "switching the primary slot to: %d",
+      "range": {
+        "startLine": 87,
+        "startChar": 54,
+        "endLine": 87,
+        "endChar": 65
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed59249c_ef2fa23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e469a31_db465bb6",
       "range": {
         "startLine": 87,
         "startChar": 54,
@@ -156,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0ecfd4_d09e2841",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf5cfcd2_4d1260f7",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ac8b8bb_d41d3476",
@@ -179,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08eb9889_64265774",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac8b8bb_d41d3476",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b65f1c86_89fc9655",
@@ -192,6 +336,30 @@
       "writtenOn": "2021-06-30T17:01:51Z",
       "side": 1,
       "message": "No need. Wrap adds it for you.",
+      "range": {
+        "startLine": 129,
+        "startChar": 54,
+        "endLine": 129,
+        "endChar": 56
+      },
+      "revId": "01cf1dc1dd07becbbb8aa33b5f5881de9f510de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f430b576_21785267",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-06-30T17:39:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65f1c86_89fc9655",
       "range": {
         "startLine": 129,
         "startChar": 54,
