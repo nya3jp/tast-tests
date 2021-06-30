@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5323b2f_02c702f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T16:39:50Z",
+      "side": 1,
+      "message": "A nit. As the first line is a subject of the CL, we often don\u0027t add a period. Please remove the ending period here and the following CLs.",
+      "revId": "20e999896c329621712f6f75ee7eab911f92981b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
