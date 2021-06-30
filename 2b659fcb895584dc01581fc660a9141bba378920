@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671f4361_6606f0c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-06-30T06:25:16Z",
+      "side": 1,
+      "message": "Hello,\nNew clipboard misc file contains test case from 1-6 from the clipboard test case file\n\nPTAL and kindly review it,\nThanks 😊",
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
