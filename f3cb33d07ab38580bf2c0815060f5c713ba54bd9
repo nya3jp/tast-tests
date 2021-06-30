@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "287b5c81_3e09ef1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T16:36:32Z",
+      "side": 1,
+      "message": "The second CL could be\ntast-test: wifi: Use Fixture instead of Precondition (part 2)\n\nI\u0027m not the fan to squash two CLs involves many files.",
+      "parentUuid": "27ea5054_11b3a4d6",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "f3cb33d07ab38580bf2c0815060f5c713ba54bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "819ef28e_6f8d2ded",
@@ -61,6 +85,24 @@
       "writtenOn": "2021-06-25T09:29:55Z",
       "side": 1,
       "message": "Replace the Precondition, TestFixturePreWithCapture, with the Fixture, wificellFixtWithCapture.",
+      "revId": "f3cb33d07ab38580bf2c0815060f5c713ba54bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95405165_d15c21ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-06-30T16:36:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "819ef28e_6f8d2ded",
       "revId": "f3cb33d07ab38580bf2c0815060f5c713ba54bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
