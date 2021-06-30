@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45897317_a1b487d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-30T17:30:28Z",
+      "side": 0,
+      "message": "Good point. Done.",
+      "parentUuid": "fcc86df8_643d592e",
+      "revId": "44da842346d9371198d1de53437cd38c15cc3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "006b81ba_2fcfa5c4",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-30T16:26:07Z",
       "side": 0,
       "message": "I thought that the CL inlines helper.Disable with verbose logging to see which part is the source of flakiness. Why this CL removes the check of expecting failure of helper.ConnectToDefault() and helper.Disconnect() after Disable()?",
+      "revId": "44da842346d9371198d1de53437cd38c15cc3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6bda03_5d696f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-06-30T17:30:28Z",
+      "side": 0,
+      "message": "Ah, thank you, I merged a few changes and forgot to document this one.\n\nI suspect that trying to connect while disabled may be causing problems so I want to move that to a separate test.",
+      "parentUuid": "006b81ba_2fcfa5c4",
       "revId": "44da842346d9371198d1de53437cd38c15cc3ffe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
