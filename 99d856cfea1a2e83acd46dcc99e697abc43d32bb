@@ -39,6 +39,30 @@
       },
       "revId": "99d856cfea1a2e83acd46dcc99e697abc43d32bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6e3e38_d08fde9b",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-06-30T01:02:40Z",
+      "side": 1,
+      "message": "Sure, let me do that.",
+      "parentUuid": "59c85691_21f40413",
+      "range": {
+        "startLine": 314,
+        "startChar": 53,
+        "endLine": 315,
+        "endChar": 37
+      },
+      "revId": "99d856cfea1a2e83acd46dcc99e697abc43d32bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
