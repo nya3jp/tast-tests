@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0917a75_ce1aba8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-30T09:50:17Z",
+      "side": 1,
+      "message": "Would you mind describing why it was okay in R but was failing on P instead? It would be helpful to understand the problem.\n\nWe already specify the permission in the manifest file, but actually it was not granted, right?\nIIUC, from Android Q, the scoped strage permission is granted by default. Before that version, there\u0027s only more priviledged permission and it need to be explicitly granted.",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "704f50c396ce9117fbd3a61759ae5e8a7fe33038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a59d6484_8ca29648",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-06-30T07:23:54Z",
       "side": 1,
       "message": "PTAL\n",
+      "revId": "704f50c396ce9117fbd3a61759ae5e8a7fe33038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cadb744_e794cdaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-06-30T09:50:17Z",
+      "side": 1,
+      "message": "Thanks!",
       "revId": "704f50c396ce9117fbd3a61759ae5e8a7fe33038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
