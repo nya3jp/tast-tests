@@ -33,6 +33,24 @@
       "message": "Tast code LGTM. Defer to camera owners.\nBTW, what is the goal of this CL?",
       "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1ecc8f_68b47ee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-06-30T03:22:58Z",
+      "side": 1,
+      "message": "It\u0027s preparing for the CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2951469\n\nwhich will add customized |TestConfig| from |*cameraboxpb.RunTestRequest|.",
+      "parentUuid": "1ec88f59_e7cbba0a",
+      "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
