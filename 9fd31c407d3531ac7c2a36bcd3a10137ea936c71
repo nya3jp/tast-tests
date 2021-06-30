@@ -33,6 +33,40 @@
       "message": "Thanks!",
       "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84daa151_258c102b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:16:26Z",
+      "side": 1,
+      "message": "maybe we should post an example line to make this a bit more clear?",
+      "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56c14f1_83aba8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-06-30T14:16:26Z",
+      "side": 1,
+      "message": "Under what circumstances will we hit this? (i.e. if sm fails once, do we expect it to ever work again? should this be a TestBreak?)",
+      "revId": "9fd31c407d3531ac7c2a36bcd3a10137ea936c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
