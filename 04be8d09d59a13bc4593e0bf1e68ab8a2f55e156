@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8402e2_fe012f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "revised to \"zh_hans\".\n\nSure, that will be addressed when importing new data like Goodbye message where Simplified vs Traditional Chinese are different.",
+      "parentUuid": "b5fdb6ae_80edabba",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e3dc8bf_75e93f3f",
@@ -95,6 +119,30 @@
       "writtenOn": "2021-06-29T02:22:51Z",
       "side": 1,
       "message": "language code is \"ja\" not \"jp\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cd3412_6911439e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e3dc8bf_75e93f3f",
       "range": {
         "startLine": 37,
         "startChar": 32,
@@ -128,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "984d93d0_79ccb950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68fa396e_47b18671",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fa33f8e_bae4e801",
@@ -141,6 +213,30 @@
       "writtenOn": "2021-06-29T02:22:51Z",
       "side": 1,
       "message": "rename this to reflect \"character-based\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a9e6e0_bbd92f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/inputs_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa33f8e_bae4e801",
       "range": {
         "startLine": 16,
         "startChar": 1,
@@ -174,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ccd255_3f68025d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/inputs_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e8413d_07d0ae43",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b53bf81_1c7fe5a0",
@@ -197,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa20717_f76fb32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Thanks for pointing out. Currently these data are extracted from existing tests, and the location based key sequences are not well defined yet. Add a TODO to this.",
+      "parentUuid": "0b53bf81_1c7fe5a0",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "251d5530_72103f34",
@@ -210,6 +354,24 @@
       "writtenOn": "2021-06-29T02:22:51Z",
       "side": 1,
       "message": "many of these should all have LocationSeq, here and all below. If data not ready, should still have entries but with TODOs.",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db1a2e8_4a4ca3a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done. Thanks. Importing new test data is not considered in this CL, and there will be a separate one to address this.",
+      "parentUuid": "251d5530_72103f34",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -309,6 +471,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2a2c39_c2f339a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done,and confirmed that \"ᅡ \" works.",
+      "parentUuid": "0da949cf_c3e27c0e",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "430458fc_3ff3539a",
@@ -332,6 +518,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495754ae_2bf1688d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "430458fc_3ff3539a",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 87
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0207d23f_2484e5cd",
@@ -345,6 +555,24 @@
       "writtenOn": "2021-06-29T02:22:51Z",
       "side": 1,
       "message": "typo in file name \"voice\"",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84efa15d_2b694306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vioce_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0207d23f_2484e5cd",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -398,6 +626,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "914ff4ff_439a969a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/vioce_message.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "We haven\u0027t got any issue running the test using this data so far. \n\nBTW, the file name using \"cn\" has been revised to \"zh_hans\"",
+      "parentUuid": "8727e9c2_ce29f6c9",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72fe4cdf_abf4ebeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 6
@@ -409,6 +661,24 @@
       "writtenOn": "2021-06-29T01:14:12Z",
       "side": 1,
       "message": "defer",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90a1c049_e9738a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "not needed as discussed offline.",
+      "parentUuid": "72fe4cdf_abf4ebeb",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -432,6 +702,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c036aa4_c6fc118f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "That\u0027s actually a good idea. Revised it, thanks.",
+      "parentUuid": "c6f67ed3_e2a827ef",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fd2ea09_2f7b4202",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 6
@@ -443,6 +731,24 @@
       "writtenOn": "2021-06-29T01:14:12Z",
       "side": 1,
       "message": "defer",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354a17a4_aa278c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "no need as discussed offline.",
+      "parentUuid": "0fd2ea09_2f7b4202",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -464,6 +770,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bd753a5_9a76c395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "cannot directly use inputData.VoiceFile. It results error \"Test runner failed: runner.go:134: rpc error: code \u003d Unknown desc \u003d cros: rpc error: code \u003d Unavailable desc \u003d transport is closing\"\n\nAdded a comment to explain this.\n\nSee other CLs in the CL chain.",
+      "parentUuid": "87c95d83_3c7e6eaa",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c1a97f4_85c96b8f",
@@ -477,6 +801,24 @@
       "writtenOn": "2021-06-29T01:14:12Z",
       "side": 1,
       "message": "defer",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccde4ff6_76e6fb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "not needed as discussed offline.",
+      "parentUuid": "2c1a97f4_85c96b8f",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -506,6 +848,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d30894c_cc3cc29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "revised to INPUTMETHOD_HANGEUL_HANJA_KOREAN",
+      "parentUuid": "ddc2fe89_d6353214",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea80e0ea_f47cfcb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 6
@@ -517,6 +883,24 @@
       "writtenOn": "2021-06-29T01:14:12Z",
       "side": 1,
       "message": "defer this. This will never do anything, since s.HasError will evaluate to false at the moment.",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e5e00c_5a5f5b7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "not needed, as discussed offline.",
+      "parentUuid": "ea80e0ea_f47cfcb4",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -534,6 +918,24 @@
       "writtenOn": "2021-06-29T01:16:47Z",
       "side": 1,
       "message": "Language is probably a better name for this. A language code is generally a two-letter code (en, de, es, etc.), but I see you\u0027re using full names for the go representation.",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e220458e_c479da05",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd9dd1a0_f280318a",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -561,6 +963,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59546ce5_766cea31",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47e95acd_90e8d52d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae4d1fea_44ee7b58",
@@ -574,6 +1000,30 @@
       "writtenOn": "2021-06-29T02:22:51Z",
       "side": 1,
       "message": "This mapping only makes total sense for handwriting and voice, and only makes partial sense for keyboard-related stuff (PK, VK).",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40276d0_78965f0a",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "This mapping is intentionally for handwriting and voice indexing purpose to enable reuse of language-based data. Add comments to explain more details.",
+      "parentUuid": "ae4d1fea_44ee7b58",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -621,6 +1071,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04fc8bdc_b98ad216",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "I added this when I encounter an issue when switching IMEs. There may actually be more than one keyboard that exists in the ui tree. (an example ui tree here: https://paste.googleplex.com/5767582926766080, i.e., search for space key or canvas, there are two versions there, one is {offscreen:true}). Curtis mentioned that this is intentional for caching.\n\nSee other CLs in the CL chain.",
+      "parentUuid": "0550acd9_f266505e",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9833c6a8_0b086f1d",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 6
@@ -632,6 +1100,24 @@
       "writtenOn": "2021-06-29T01:14:12Z",
       "side": 1,
       "message": "If you\u0027re defining a variable and only using it once, and it\u0027s simple like this, I\u0027d just inline the variable. Same for the two methods below",
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099a0f79_8da9f870",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9833c6a8_0b086f1d",
       "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -649,6 +1135,30 @@
       "writtenOn": "2021-06-29T02:22:51Z",
       "side": 1,
       "message": "this is called \"Docked\" mode (as opposed to \"Floating\")",
+      "range": {
+        "startLine": 444,
+        "startChar": 38,
+        "endLine": 444,
+        "endChar": 54
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5412f33_a1458e27",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-06-30T09:24:45Z",
+      "side": 1,
+      "message": "Done. See other CLs in the CL chain.",
+      "parentUuid": "ecef4df0_4d5a1aab",
       "range": {
         "startLine": 444,
         "startChar": 38,
