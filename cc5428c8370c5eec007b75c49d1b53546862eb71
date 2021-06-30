@@ -930,6 +930,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9153cdbd_a42a9d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1465838
+      },
+      "writtenOn": "2021-06-30T05:55:37Z",
+      "side": 1,
+      "message": "Updated as per your comments.",
+      "parentUuid": "78a8dcbc_4b3eae95",
+      "revId": "cc5428c8370c5eec007b75c49d1b53546862eb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6128aae8_19c0e00c",
