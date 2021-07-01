@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5900449d_09c1b27d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-01T16:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70795d95_943936e2",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0ce9ef0_971167c0",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-30T02:11:07Z",
       "side": 1,
       "message": "Could you define a struct to be decoded with json annotations?",
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb9afb8_8ea8d7fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-01T16:48:42Z",
+      "side": 1,
+      "message": "I tried to define a struct to be decoded, but it fails to properly decode (it always sets the values equal to nil or 0 or skips them entirely). Is it ok to leave as a map or is it important to implement the struct format? Do you have any recommendations if the struct is the only way to go?",
+      "parentUuid": "b0ce9ef0_971167c0",
       "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98cd8f3_d34c8a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-01T16:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d47bdbf_c7805a8a",
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0dd0528_97c7c7eb",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-06-30T02:11:07Z",
       "side": 1,
       "message": "nit: could you use the common style of value output? E.g.\n\nUnexpected offset: got %d; want %d",
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1225acd7_323307c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-01T16:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0dd0528_97c7c7eb",
       "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8db7cf_1d8febb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/lorgnette/runScan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-01T16:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "851907ef_d7b3bafb",
+      "range": {
+        "startLine": 19,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66387e1c_5d895302",
@@ -111,6 +213,30 @@
       "writtenOn": "2021-06-30T02:11:07Z",
       "side": 1,
       "message": "could you close?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac79e76b_18ed3ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/lorgnette/runScan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-01T16:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66387e1c_5d895302",
       "range": {
         "startLine": 48,
         "startChar": 1,
