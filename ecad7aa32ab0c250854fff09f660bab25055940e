@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a137ec01_907c9fc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2021-07-01T00:20:40Z",
+      "side": 1,
+      "message": "Hi Jorge,\n\nHere is a small fix regarding the RunOCI failure. Please let me know if this is acceptable, or if more changes are necessary (I\u0027m afraid I don\u0027t know Go currently, but this seems pretty easy of a change from my end).\n\nThanks,\n~Jordan",
+      "revId": "ecad7aa32ab0c250854fff09f660bab25055940e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
