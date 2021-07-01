@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f21889_c81b0500",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-01T02:29:14Z",
+      "side": 1,
+      "message": "tbegin@: This change is a little awkward. It will change the Vars to []string{\"router\", \"pcap\"}, which is more common for wificell tests but it will not be aligned with DiagSignalStrength.\n\nOne alternative is:\nStill create a new Fixture with only TFFeaturesRouters feature for this test to keep the Vars. Also modify Tauto wrapper to pass \"routers\" so it could properly run with suites in Tauto.\n\nWDYT?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
