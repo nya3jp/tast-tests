@@ -106,9 +106,12 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		"^/media$": true,
 		// This is used to mount downloaded disk images.
 		"^/run/imageloader$": true,
-		// /run/netns is created implicitly by the ip netns command which is used
-		// for network namespaces for ARC and for the proxy DNS service
+		// These are created implicitly by the ip netns command which is used
+		// for network namespaces for ARC and for the proxy DNS service.
 		"^/run/netns$": true,
+		// These namespaces specifically are for the system and default network DNS proxy processes.
+		"^/run/netns/connected_netns_0$": true,
+		"^/run/netns/connected_netns_1$": true,
 	}
 
 	// ARCExpectedSharedMountsCommon contains the paths of all mountpoints that
