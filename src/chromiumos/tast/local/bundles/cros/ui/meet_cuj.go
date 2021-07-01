@@ -199,17 +199,17 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Determines the meet call duration. Use the meet duration specified in
-	// test param if there is one. Otherwise, default to 30 seconds for the base
-	// calls, 1 min for calls with doc or jamboard, or 3 min for power tests.
-	meetTimeout := 30 * time.Second
+	// test param if there is one. Otherwise, default to 2 minutes for the base
+	// calls, 3 min for calls with doc or jamboard, or 5 min for power tests.
+	meetTimeout := 2 * time.Minute
 	if meet.duration != 0 {
 		meetTimeout = meet.duration
 	} else {
 		if meet.docs || meet.jamboard {
-			meetTimeout = 1 * time.Minute
+			meetTimeout = 3 * time.Minute
 		}
 		if meet.power {
-			meetTimeout = 3 * time.Minute
+			meetTimeout = 5 * time.Minute
 		}
 	}
 	s.Log("Run meeting for ", meetTimeout)
