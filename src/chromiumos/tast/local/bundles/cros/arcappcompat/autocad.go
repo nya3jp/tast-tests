@@ -85,7 +85,7 @@ func init() {
 func Autocad(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.autodesk.autocadws"
-		appActivity = ".view.activities.StartupActivity"
+		appActivity = ".legacy.activities.StartupActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -96,6 +96,7 @@ func Autocad(ctx context.Context, s *testing.State) {
 func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		laterText        = "Later"
+		loginPackageName = "org.chromium.arc.applauncher"
 		signInText       = "Sign in"
 		enterEmailID     = "userName"
 		nextText         = "Next button"
@@ -108,21 +109,21 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		plusID           = "com.autodesk.autocadws:id/fabButton"
 	)
 
-	// Skip later dialog.
-	laterButton := d.Object(ui.Text(laterText))
-	if err := laterButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
-		d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0)
-	} else if err := laterButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on later button: ", err)
-	}
-
 	// Click on sign in button.
 	signInButton := d.Object(ui.Text(signInText))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("sign in button doesn't exist: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign in button: ", err)
+	}
+
+	// Check for login page.
+	checkForloginPage := d.Object(ui.PackageName(loginPackageName))
+	if err := checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForloginPage does not exist: ", err)
+	} else {
+		s.Log("checkForloginPage is in web page view does exist")
+		return
 	}
 
 	// Enter email address.
