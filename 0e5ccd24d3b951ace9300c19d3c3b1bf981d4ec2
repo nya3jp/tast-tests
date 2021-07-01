@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922b2839_b2296b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2021-07-01T05:57:57Z",
+      "side": 1,
+      "message": "Not sure if this is sufficient but after running the test a bunch of times I did observe it require 3 retries to succeed so it should at least reduce flakiness somewhat. I think there is also a separate issue where the dialog actually disappears but tast doesn\u0027t realise this, will try to edit the test code so I can debug this.",
+      "revId": "0e5ccd24d3b951ace9300c19d3c3b1bf981d4ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
