@@ -386,11 +386,14 @@ func switchWindows(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 					}
 				}
 				winName := "Chrome"
+				switchFunc := resources.uiHandler.SwitchToAppWindowByIndex(winName, wIdx)
 				if strings.Contains(ws[i].Title, SpotifyAppName) {
 					winName = SpotifyAppName
+					// Spotify has only one window, use SwitchToAppWindow() function.
+					switchFunc = resources.uiHandler.SwitchToAppWindow(winName)
 				}
 				testing.ContextLogf(ctx, "Switching window to %q", ws[i].Title)
-				return resources.uiHandler.SwitchToAppWindowByIndex(winName, wIdx)(ctx)
+				return switchFunc(ctx)
 			},
 		}
 		switchWindowTests = append(switchWindowTests, switchWindowByHotseatTest)
