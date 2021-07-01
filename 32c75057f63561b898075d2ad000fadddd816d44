@@ -117,6 +117,24 @@
       "parentUuid": "4c6e19e8_05482cd5",
       "revId": "32c75057f63561b898075d2ad000fadddd816d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f89c4c88_0acae10b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-01T17:10:06Z",
+      "side": 1,
+      "message": "I wouldn\u0027t recommend to the environment dirtier.\nAlso, if the goal is just a polling (maybe with timeout), then, you can use ctx with timeout instead.\n\nTo me, the question is:\n- What are expected event sequences?\n\nAll the cases should be covered, including success and on *any types of* errors. What is guaranteed by APIs? What is expected error handling flow for the tts APIs? Can we follow the design?",
+      "parentUuid": "2e4b6aef_c473b164",
+      "revId": "32c75057f63561b898075d2ad000fadddd816d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
