@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc71163a_cb2cf586",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox/camerabox.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-01T19:46:42Z",
+      "side": 1,
+      "message": "This can just be replaced with\n\n if err :\u003d upstart.StopJob(\"cros-camera\"); err !\u003d nil {\n   ...\n }\n defer upstart.RestartJob(\"cros-camera\")\n \nafter importing upstart from \"chromiumos/tast/local/upstart\"",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "20230e1b9715d5aad113cefde2f8fc913bcb4ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
