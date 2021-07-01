@@ -17,8 +17,9 @@ import (
 
 // ChromeOptions describe how to run chrome.New.
 type ChromeOptions struct {
-	ExtraArgs []string // passed to Chrome on initialization
-	Timeout   time.Duration
+	EnableFeatures []string // extra Chrome features to enable
+	ExtraArgs      []string // passed to Chrome on initialization
+	Timeout        time.Duration
 }
 
 // VMOptions describes how to start a VM.
@@ -163,7 +164,7 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 		defer cancel()
 
 		var opts []chrome.Option
-		opts = append(opts, chrome.ExtraArgs(s.crOptions.ExtraArgs...))
+		opts = append(opts, chrome.EnableFeatures(s.crOptions.EnableFeatures...), chrome.ExtraArgs(s.crOptions.ExtraArgs...))
 		for _, v := range s.vmOptions {
 			opts = append(opts, v.ChromeOpts()...)
 		}
