@@ -21,20 +21,21 @@ type StringControl string
 
 // These are the Servo controls which can be get/set with a string value.
 const (
-	ActiveChgPort         StringControl = "active_chg_port"
-	ActiveDUTController   StringControl = "active_dut_controller"
-	DownloadImageToUSBDev StringControl = "download_image_to_usb_dev"
-	DUTVoltageMV          StringControl = "dut_voltage_mv"
-	FWWPState             StringControl = "fw_wp_state"
-	ImageUSBKeyDirection  StringControl = "image_usbkey_direction"
-	ImageUSBKeyPwr        StringControl = "image_usbkey_pwr"
-	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
-	PowerState            StringControl = "power_state"
-	Type                  StringControl = "servo_type"
-	UARTCmd               StringControl = "servo_v4_uart_cmd"
-	Watchdog              StringControl = "watchdog"
-	WatchdogAdd           StringControl = "watchdog_add"
-	WatchdogRemove        StringControl = "watchdog_remove"
+	ActiveChgPort             StringControl = "active_chg_port"
+	ActiveDUTController       StringControl = "active_dut_controller"
+	DownloadImageToUSBDev     StringControl = "download_image_to_usb_dev"
+	DUTVoltageMV              StringControl = "dut_voltage_mv"
+	FWWPState                 StringControl = "fw_wp_state"
+	ImageUSBKeyDirection      StringControl = "image_usbkey_direction"
+	ImageUSBKeyPwr            StringControl = "image_usbkey_pwr"
+	ImageUSBKeyDev            StringControl = "image_usbkey_dev"
+	PowerState                StringControl = "power_state"
+	Type                      StringControl = "servo_type"
+	UARTCmd                   StringControl = "servo_v4_uart_cmd"
+	Watchdog                  StringControl = "watchdog"
+	WatchdogAdd               StringControl = "watchdog_add"
+	WatchdogRemove            StringControl = "watchdog_remove"
+	BatteryTemperatureCelsius StringControl = "battery_tempc"
 
 	// DUTConnectionType was previously known as V4Type ("servo_v4_type")
 	DUTConnectionType StringControl = "root.dut_connection_type"
@@ -58,6 +59,7 @@ type IntControl string
 const (
 	BatteryChargeMAH     IntControl = "battery_charge_mah"
 	BatteryFullChargeMAH IntControl = "battery_full_charge_mah"
+	BatteryVoltageMV     IntControl = "ppvar_vbat_mv"
 	VolumeDownHold       IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
 	VolumeUpHold         IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
 	VolumeUpDownHold     IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
