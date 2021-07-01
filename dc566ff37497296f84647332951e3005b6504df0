@@ -33,6 +33,24 @@
       "message": "So the test is basically just a smoke test that the fixture properly sets up the environment?",
       "revId": "dc566ff37497296f84647332951e3005b6504df0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b716be74_c9ead47a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-01T20:24:01Z",
+      "side": 1,
+      "message": "Basically yes.\n\nThis test is for verifying that the Add Person flow works for Unicorn users. It just so happens that the fixture does almost all of the heavy lifting (similar to these tests [1] and [2]). The fixture is recycled for other tests, like crrev/c/2986225 which you\u0027re also reviewing.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go?q\u003df:familylink%2Funicorn_login.go\n[2] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/geller_login.go",
+      "parentUuid": "d1e2367e_08b802dc",
+      "revId": "dc566ff37497296f84647332951e3005b6504df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
