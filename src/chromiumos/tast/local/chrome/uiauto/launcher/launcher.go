@@ -15,8 +15,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 )
 
@@ -173,4 +175,146 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 		},
 		ui.WaitUntilExists(toFolder),
 	)
+}
+
+// CreateFolder is a helper function to create a folder by dragging the first icon on top of the second icon.
+func CreateFolder(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) uiauto.Action {
+	// Create a folder in launcher by dragging the first icon on top of the second icon.
+	folder := nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
+
+	return uiauto.Combine("createFolder",
+		DragIconToIcon(ctx, tconn, ui),
+		ui.WaitUntilExists(folder),
+	)
+}
+
+// DragIconToIcon drags from one icon to another icon.
+// We cannot use simple mouse.Drag because this CL https://crrev.com/c/2937656 changes the default UI behavior
+// which causes the location of icons to change after a mouse press on an icon.
+// This function will delay the calculation of the coordation of the destination until after mouse press.
+func DragIconToIcon(pctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) func(ctx context.Context) error {
+	const duration = time.Second
+	return func(ctx context.Context) error {
+		src := nodewith.ClassName(ExpandedItemsClass).Nth(1)
+		start, err := ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for first icon")
+		}
+		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 1, Y: 1}), duration)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+
+		// Get destination location during drag.
+		dest := nodewith.ClassName(ExpandedItemsClass).Nth(0)
+		end, err := ui.Location(ctx, dest)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for second icon")
+		}
+		if err := mouse.Move(tconn, end.CenterPoint(), 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+		return mouse.Release(tconn, mouse.LeftButton)(ctx)
+	}
+}
+
+// RemoveIconFromFolder opens a folder and drags an icon out of the folder.
+func RemoveIconFromFolder(tconn *chrome.TestConn) uiauto.Action {
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn)
+		src := nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
+		folderLocation, err := ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for first icon")
+		}
+
+		// Click to open the folder.
+		if err := mouse.Click(tconn, folderLocation.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to Click the folder")
+		}
+
+		// Get the location for the first item in the folder.
+		folderItems := nodewith.ClassName(ExpandedItemsClass).Ancestor(nodewith.ClassName("AppListFolderView"))
+		start, err := ui.Location(ctx, folderItems.Nth(0))
+		if err != nil {
+			return errors.Wrap(err, "failed to get the location of the first folder item")
+		}
+
+		// Get a point outside of the folder view.
+		folderView := nodewith.ClassName("AppListFolderView")
+		folderViewLocation, err := ui.Location(ctx, folderView)
+		if err != nil {
+			return errors.Wrap(err, "failed to get folderViewLocation")
+		}
+		pointOutsideFolder := coords.NewPoint(folderViewLocation.Right()+50, folderViewLocation.CenterY()+50)
+
+		// Drag the first folder item outside of the folder.
+		mouse.Move(tconn, start.CenterPoint(), 0)(ctx)
+		mouse.Press(tconn, mouse.LeftButton)(ctx)
+		mouse.Move(tconn, pointOutsideFolder, time.Second)(ctx)
+
+		// Get the location of the folder during the drag.
+		folderLocation, err = ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for folder")
+		}
+
+		// Drag and release the app to the right of the folder.
+		mouse.Move(tconn, folderLocation.CenterPoint().Add(coords.Point{X: folderLocation.Width, Y: 0}), time.Second)(ctx)
+		return mouse.Release(tconn, mouse.LeftButton)(ctx)
+
+	}
+}
+
+// DragIconToNextPage drags an icon to the next page of the app list.
+func DragIconToNextPage(tconn *chrome.TestConn) uiauto.Action {
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn)
+		src := nodewith.ClassName(ExpandedItemsClass).Nth(0)
+		start, err := ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for first icon")
+		}
+		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 1, Y: 1}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+
+		// Get destination location during drag.
+		end, err := ui.Location(ctx, nodewith.ClassName("AppsGridView"))
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for AppsGridView")
+		}
+		endPoint := coords.NewPoint(end.CenterPoint().X, end.Bottom())
+
+		// Drag icon to the bottom of the AppsGridView.
+		if err := mouse.Move(tconn, endPoint, 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+
+		// Move a little bit first to trigger page change.
+		if err := mouse.Move(tconn, endPoint.Add(coords.Point{X: 1, Y: 0}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag")
+		}
+
+		// Move icon back to the starting position and release on the next page.
+		if err := mouse.Move(tconn, start.CenterPoint(), 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		return mouse.Release(tconn, mouse.LeftButton)(ctx)
+	}
 }
