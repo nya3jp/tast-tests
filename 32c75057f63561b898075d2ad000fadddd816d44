@@ -99,6 +99,24 @@
       "parentUuid": "aad8fe76_a477b8da",
       "revId": "32c75057f63561b898075d2ad000fadddd816d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4b6aef_c473b164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-01T01:29:42Z",
+      "side": 1,
+      "message": "Regarding to the case where \"END event is not accidentally delivered\", I wonder if the current PS is addressing this. Many modules involve this event delivery.\n\nInstead of the current implementation, how about doing something like blow:\n\nWhen we query to speak,we can resolve the promise quickly and accumulate callbacks to the array:\n```\nval ttsEvents \u003d [];\nawait tast.promisify(chrome.tts.speak)(%q, {\n  ...,\n  onEvent: function(event) {\n    ttsEvents.push(event);\n  }\n})\n````\n\nAnd then from tast, poll ttsEvents and check it.\n\nThis approach also gives us flexibility to check more types of events in the future (if we want)",
+      "parentUuid": "4c6e19e8_05482cd5",
+      "revId": "32c75057f63561b898075d2ad000fadddd816d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
