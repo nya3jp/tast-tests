@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdead20_8e2fc188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-01T14:23:50Z",
+      "side": 1,
+      "message": "micro nit/YMMV: Should this be contains rather than exactly equal?",
+      "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf8a0ab_e6fee7f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-01T14:23:50Z",
+      "side": 1,
+      "message": "same re: if the iface/protocol/etc. change (are those that relevant?)",
+      "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
