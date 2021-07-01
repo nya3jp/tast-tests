@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba3d5c0_002b1272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_service_test_config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-01T05:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6b54ae_e38d0031",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea7581f0_8e90b230",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-30T17:38:52Z",
       "side": 1,
       "message": "Use filepath for files, path is for urls.",
+      "range": {
+        "startLine": 65,
+        "startChar": 53,
+        "endLine": 65,
+        "endChar": 57
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b13be3_66e5aa42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox/camerabox.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-01T05:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7581f0_8e90b230",
       "range": {
         "startLine": 65,
         "startChar": 53,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0816b867_52fc3082",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-01T05:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c271a1ed_99319c0d",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23bb7ce7_25762d51",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-01T00:24:15Z",
       "side": 1,
       "message": "Remove this line for the default timeout is 2 mins.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbde205_afda913a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-01T05:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23bb7ce7_25762d51",
       "range": {
         "startLine": 42,
         "startChar": 4,

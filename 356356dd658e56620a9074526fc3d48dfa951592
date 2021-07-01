@@ -46,6 +46,30 @@
       },
       "revId": "356356dd658e56620a9074526fc3d48dfa951592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c6e12ad_a18d8c26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-01T05:26:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "d898db05_0f206915",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "356356dd658e56620a9074526fc3d48dfa951592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
