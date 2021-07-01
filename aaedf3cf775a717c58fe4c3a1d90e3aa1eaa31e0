@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f28977_faceedc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-01T21:16:30Z",
+      "side": 1,
+      "message": "Done thanks",
+      "parentUuid": "44337efc_1f8db8df",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "aaedf3cf775a717c58fe4c3a1d90e3aa1eaa31e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a6a0c8d_66ea10d7",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-01T09:12:08Z",
       "side": 1,
       "message": "There are empty slices that are not nil, so this should be:\n\n len(warning) \u003e 0",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 26
+      },
+      "revId": "aaedf3cf775a717c58fe4c3a1d90e3aa1eaa31e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec9ca46_cabf627d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-01T21:16:30Z",
+      "side": 1,
+      "message": "Thanks, fixed",
+      "parentUuid": "1a6a0c8d_66ea10d7",
       "range": {
         "startLine": 111,
         "startChar": 12,
