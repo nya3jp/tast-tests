@@ -421,7 +421,11 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 		testing.ContextLog(ctx, "Change background to ", background)
 		return uiauto.Combine("change background",
 			ui.LeftClick(moreOptions),
-			ui.LeftClick(changeBackground), // Open "Background" panel.
+			// The "more" option menu will expand to its full size with animation. Low end DUTs will
+			// see lagging for this animation. Use a longer interval to wait for the changeBackground menuitem
+			// to be stable to accomodate UI lagging. Otherwise it might click in the middle of
+			// the animation on wrong coordinates.
+			ui.WithInterval(time.Second).LeftClick(changeBackground), // Open "Background" panel.
 			ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
 			ui.LeftClick(closeButton), // Close "Background" panel.
 			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
