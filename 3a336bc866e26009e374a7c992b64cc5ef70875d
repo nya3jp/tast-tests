@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "914984b7_0698beae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-07-01T23:09:57Z",
+      "side": 1,
+      "message": "It looks like this is just testing that avahi is getting called and failing, correct? Are we able to run a positive test, i.e. one where avahi succeeds, also?",
+      "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2d698c_670686e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-07-01T23:09:57Z",
+      "side": 1,
+      "message": "Should this maybe be in cros/printer instead, given that we are running it in the paper-io group? IIUC, \u0027gethostip\u0027 and \u0027avahi\u0027 are kernel processes. We\u0027re not really testing them, just that they are behaving as expected (presumably for printer functionality?)",
+      "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bdead20_8e2fc188",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
         "patchSetId": 2
