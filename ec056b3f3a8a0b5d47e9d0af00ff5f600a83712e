@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aeeb20c_c215d5a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-01T12:07:35Z",
+      "side": 1,
+      "message": "Good catch. Checked the documentation and picked that defer are executed in LIFO. Thanks",
+      "parentUuid": "85873fe6_4d19dd72",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "ec056b3f3a8a0b5d47e9d0af00ff5f600a83712e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b657c9a3_de093849",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddec84ad_7bfde6a7",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-01T12:07:35Z",
+      "side": 1,
+      "message": "Done - didn\u0027t include the recent changes int the Patchset 3.",
+      "parentUuid": "b657c9a3_de093849",
+      "range": {
+        "startLine": 142,
+        "startChar": 27,
+        "endLine": 142,
+        "endChar": 32
+      },
+      "revId": "ec056b3f3a8a0b5d47e9d0af00ff5f600a83712e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fe99433_d475a900",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-07-01T11:15:10Z",
       "side": 1,
       "message": "(( )) -\u003e ( )",
+      "revId": "ec056b3f3a8a0b5d47e9d0af00ff5f600a83712e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6972d7_9cdb316a",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-01T12:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fe99433_d475a900",
       "revId": "ec056b3f3a8a0b5d47e9d0af00ff5f600a83712e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
