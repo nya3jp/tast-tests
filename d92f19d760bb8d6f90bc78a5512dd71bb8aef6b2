@@ -33,6 +33,24 @@
       "message": "on error, could you restore the state?\nDitto for below.",
       "revId": "d92f19d760bb8d6f90bc78a5512dd71bb8aef6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146b14f1_ba44546e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-01T17:42:57Z",
+      "side": 1,
+      "message": "Same as previous comment, would having this responsibility to the caller be okay?\n\nThis is also because the function can delete rules (which does not have any clear restoration steps).",
+      "parentUuid": "1bde75a4_27a953f1",
+      "revId": "d92f19d760bb8d6f90bc78a5512dd71bb8aef6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
