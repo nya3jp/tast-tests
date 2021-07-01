@@ -87,6 +87,30 @@
       },
       "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795c9eb2_f877bfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-01T10:05:38Z",
+      "side": 1,
+      "message": "Thanks, honestly I\u0027m afraid I don\u0027t have enough knowledge to fully understand your explanations, but I trust you that we have little chance of typos.\n\nBut my concern is runtime skips in general. I really want to avoid them... but I think it\u0027s okay if it is due to explicit waivers. According to the CL description, this is a waiver case? If so, could you put explanation in code comments and log messages to clarify that?",
+      "parentUuid": "23a97186_f5a72f1a",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "4b129e8f924af9918cd5ffceaf1b9c9f5c661784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
