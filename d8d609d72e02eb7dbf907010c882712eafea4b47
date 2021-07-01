@@ -22,6 +22,30 @@
       },
       "revId": "d8d609d72e02eb7dbf907010c882712eafea4b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6df5cc3_126f4051",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-01T18:03:19Z",
+      "side": 1,
+      "message": "My goal is to be able to use `tast run $DUT firmware.TestName` when running locally. The servo class already defaults to localhost:9999, so it is redundant to specify servo as a required var.\n\nI was not aware that b/187795463 was trying to use VarDeps as some sort of HwDep.\n\nAdding oka@ as reviewer to see if this is going to break things.",
+      "parentUuid": "ab4bc63f_7644ab83",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "d8d609d72e02eb7dbf907010c882712eafea4b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
