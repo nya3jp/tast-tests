@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7a577c5d_118a60f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-01T02:48:49Z",
+      "side": 1,
+      "message": "\u003e the info is there, but buried under compression\n\nAh, thanks for the pointer. I took a look at the pcap and there actually is an MBO-OCE IE in the first probe request, but the device sends a second one pretty soon after with a botched MBO-OCE IE (all the bytes are the same, except the first two bytes of the OUI are wrong - 0x9c699a instead of 0x506f9a). I\u0027m guessing this is some weird kernel/firmware race or something.\n\nI\u0027ll probably just push this in for now since it seems like it doesn\u0027t really occur that often, but I\u0027ll file a bug if it happens again.",
+      "parentUuid": "87be00da_b7c5027e",
+      "revId": "05c78e5f9c153e418a25d90968b4c69a1acc4af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b4c0aa30_e04d55df",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
         "patchSetId": 1
