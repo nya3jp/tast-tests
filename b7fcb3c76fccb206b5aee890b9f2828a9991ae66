@@ -33,6 +33,75 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "b7fcb3c76fccb206b5aee890b9f2828a9991ae66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007f89d2_42487631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-07-01T18:58:05Z",
+      "side": 1,
+      "message": "to confirm it is false by default.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "b7fcb3c76fccb206b5aee890b9f2828a9991ae66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e0568d_f0b0cb86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-07-01T18:58:05Z",
+      "side": 1,
+      "message": "I think this is not needed. We have nice separation in crosbolt per test name. This came from very old times when we needed such separation. For tast tests it is unwanted.",
+      "range": {
+        "startLine": 86,
+        "startChar": 24,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "b7fcb3c76fccb206b5aee890b9f2828a9991ae66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc49ee1_4857d60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-07-01T18:58:05Z",
+      "side": 1,
+      "message": "is any chance we could share this code?",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 3
+      },
+      "revId": "b7fcb3c76fccb206b5aee890b9f2828a9991ae66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
