@@ -79,6 +79,20 @@ func CrostiniStarted() testing.Precondition {
 	return crostiniStartedPre
 }
 
+var arcCrostiniStartedWithDNSProxyPre = NewMultiVMPrecondition(
+	"multivm_arc_crostini_dns_proxy",
+	NewStateManager(
+		ChromeOptions{EnableFeatures: []string{"EnableDnsProxy", "DnsProxyEnableDOH"}, Timeout: chrome.LoginTimeout},
+		DefaultARCOptions,
+		DefaultCrostiniOptions,
+	))
+
+// ArcCrostiniStartedWithDNSProxy returns a Precondition that logs into Chrome with DNS proxy
+// enabled and starts ARC and Crostini.
+func ArcCrostiniStartedWithDNSProxy() testing.Precondition {
+	return arcCrostiniStartedWithDNSProxyPre
+}
+
 type preImpl struct {
 	// Configuration.
 	name    string // testing.Precondition.String
