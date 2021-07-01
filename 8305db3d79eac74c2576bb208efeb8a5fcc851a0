@@ -69,6 +69,24 @@
       "parentUuid": "3a1ecc8f_68b47ee5",
       "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb06d4e4_01d5ecca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-01T04:35:40Z",
+      "side": 1,
+      "message": "Could you add some commit messages to mention the goal there as well?\nThanks!",
+      "parentUuid": "ddf04335_a2e8f985",
+      "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
