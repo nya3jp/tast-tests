@@ -22,6 +22,30 @@
       },
       "revId": "ce66f6ac19d2d4b93643d53244ead98d9edb6266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "102eb6bc_1c814d3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-01T21:26:11Z",
+      "side": 1,
+      "message": "it does, thanks!",
+      "parentUuid": "3b087cfe_95405941",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "ce66f6ac19d2d4b93643d53244ead98d9edb6266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
