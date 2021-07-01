@@ -128,6 +128,75 @@
       "parentUuid": "76d1b0c4_d3bce2d3",
       "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056b259c_aa588bb1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T23:56:30Z",
+      "side": 1,
+      "message": "This implementation is not ideal as normally it will never return an error, but let the test continue and fail somewhere else.\n\nI would like each user action is self confirmed.",
+      "range": {
+        "startLine": 379,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 21
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed64d1d1_ca815a4e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T23:56:30Z",
+      "side": 1,
+      "message": "same as mentioned above, this function never fails.",
+      "range": {
+        "startLine": 473,
+        "startChar": 38,
+        "endLine": 473,
+        "endChar": 61
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00839a07_a38354c8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T23:56:30Z",
+      "side": 1,
+      "message": "This function does not work on voice input panel.",
+      "range": {
+        "startLine": 490,
+        "startChar": 38,
+        "endLine": 490,
+        "endChar": 54
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
