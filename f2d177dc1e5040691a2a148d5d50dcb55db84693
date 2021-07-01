@@ -16,6 +16,24 @@
       "message": "I\u0027ll wait for crrev.com/c/2995486 - this patch will change after adopting errgroup.",
       "revId": "f2d177dc1e5040691a2a148d5d50dcb55db84693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e619c4_5c7abbff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-01T21:31:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36f79cf7_f3a0247c",
+      "revId": "f2d177dc1e5040691a2a148d5d50dcb55db84693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
