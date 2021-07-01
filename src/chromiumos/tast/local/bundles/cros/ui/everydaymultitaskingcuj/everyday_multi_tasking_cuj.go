@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
@@ -154,7 +155,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		// The screenshot and ui tree dump must been taken before tabs are closed.
 		faillog.SaveScreenshotOnError(ctx, cr, params.outDir, func() bool { return retErr != nil })
 		faillog.DumpUITreeOnError(ctx, params.outDir, func() bool { return retErr != nil }, tconn)
-		cuj.CloseBrowserTabs(ctx, tconn)
+		apps.Close(ctx, tconn, apps.Chrome.ID)
 	}(faillogCtx)
 
 	var appStartTime int64
@@ -268,13 +269,8 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 			}
 
 			if params.appName == YoutubeMusicAppName && url == youtubeMusicURL {
-				shuffleButton := nodewith.Name("Shuffle").Role(role.Button)
-				pauseButton := nodewith.Name("Pause").Role(role.Button)
-
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
-					return uiauto.Combine("play youtube music", resources.uiHandler.Click(shuffleButton), resources.ui.WaitUntilExists(pauseButton))(ctx)
-				}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
-					return err
+				if err := playYoutubeMusic(ctx, resources); err != nil {
+					return errors.Wrap(err, "failed to play Youtube Music")
 				}
 			}
 		}
@@ -353,6 +349,7 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 	}); err != nil {
 		return errors.Wrap(err, "failed to run the open tabs and switch tabs scenario")
 	}
+
 	return nil
 }
 
@@ -491,4 +488,16 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	}
 
 	return nil
+}
+
+func playYoutubeMusic(ctx context.Context, resources *runResources) error {
+	shuffleButton := nodewith.Name("Shuffle").Role(role.Button)
+	pauseButton := nodewith.Name("Pause").Role(role.Button)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		return uiauto.Combine("play youtube music",
+			resources.uiHandler.Click(shuffleButton),
+			resources.ui.WaitUntilExists(pauseButton),
+		)(ctx)
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
 }
