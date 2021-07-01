@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4bc63f_7644ab83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-07-01T17:38:54Z",
+      "side": 1,
+      "message": "Looks like this bug was duplicated into another bug - which contains the Var to VarDeps change you\u0027re undoing with this CL.  (post migration, b/187787716 -\u003e b/187795463)\n\nCan you please file a bug to track this work (and update the reference) if using VarDeps here doesn\u0027t actually fix the problem?",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "d8d609d72e02eb7dbf907010c882712eafea4b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
