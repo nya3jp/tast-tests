@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e77519_3636ae8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-07-01T04:54:52Z",
+      "side": 1,
+      "message": "I think you can do it with \"test_that\", and you have added the control file [1] for camerabox tests? IIUCs lightly tweaking the test_exprs in control file should be able to run ITS tast test only with test_that. I would prefer only merge this when it\u0027s verified to work.\n\n[1] http://cs/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.camerabox-facing-back",
+      "parentUuid": "c7f3cbd1_d15c400e",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74087a6f_48611162",
