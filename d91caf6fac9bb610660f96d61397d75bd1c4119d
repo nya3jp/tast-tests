@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76aeea4_537640d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T06:18:58Z",
+      "side": 1,
+      "message": "Got it! Thanks for the clarification. It is clear now.\n\nAdd a TODO for this, and will address it when importing and refining new test data.",
+      "parentUuid": "73e49aaf_a41fa2fc",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b32a1fd_e72eaae3",
@@ -357,6 +381,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b925303_7850b328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T06:18:58Z",
+      "side": 1,
+      "message": "I see. Add comments to explain this. For the current test data, it is extracted directly from the existing tests and no new data is added yet. I am thinking to leave it there since it has been used in existing tests before this CL. \n\nIn Q3, I will work on importing new test data, we can refine the test data for better coverage there. WDYT?",
+      "parentUuid": "d3b05304_359a3e9d",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c2d29f1_8872147d",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
@@ -416,6 +464,30 @@
       "side": 1,
       "message": "as above",
       "parentUuid": "c1e8228d_314e073e",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 51
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa862267_1047239a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T06:18:58Z",
+      "side": 1,
+      "message": "duplicated discussion.",
+      "parentUuid": "2734d9c1_c015d353",
       "range": {
         "startLine": 151,
         "startChar": 0,
