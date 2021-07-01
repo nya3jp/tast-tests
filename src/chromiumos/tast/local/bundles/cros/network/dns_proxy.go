@@ -12,12 +12,9 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/dns"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
-	crostiniui "chromiumos/tast/local/crostini/ui"
-	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/testing"
 )
 
@@ -33,6 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host", "arc", "dlc"},
 		Data:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+		Pre:          multivm.ArcCrostiniStartedWithDNSProxy(),
 		HardwareDeps: crostini.CrostiniStable,
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{{
@@ -71,48 +69,16 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("EnableDnsProxy", "DnsProxyEnableDOH"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to get test API connection: ", err)
-	}
-
-	// Install Crostini.
-	opts := crostini.GetInstallerOptions(s, vm.DebianBuster, false /*largeContainer*/, cr.NormalizedUser())
-	if _, err := crostiniui.InstallCrostini(ctx, tconn, cr, opts); err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	defer func() {
-		if err := vm.UnmountComponent(cleanupCtx); err != nil {
-			s.Log("Error unmounting component: ", err)
-		}
-		if err := vm.DeleteImages(); err != nil {
-			s.Log("Error deleting images: ", err)
-		}
-	}()
-
-	// Get the container.
-	cont, err := vm.DefaultContainer(ctx, opts.UserName)
-	if err != nil {
-		s.Fatal("Failed to connect to container: ", err)
-	}
+	pre := s.PreValue().(*multivm.PreData)
+	cr := pre.Chrome
+	tconn := pre.TestAPIConn
+	a := multivm.ARCFromPre(pre)
+	cont := multivm.CrostiniFromPre(pre)
 
 	// Install dig in container.
 	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
 		s.Fatal("Failed to install dig in container: ", err)
 	}
-
-	// Start ARC.
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(cleanupCtx)
 
 	// Toggle plain-text DNS or secureDNS depending on test parameter.
 	params := s.Param().(dnsProxyTestParams)
