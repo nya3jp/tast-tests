@@ -16,6 +16,24 @@
       "message": "A nit. As the first line is a subject of the CL, we often don\u0027t add a period. Please remove the ending period here and the following CLs.",
       "revId": "20e999896c329621712f6f75ee7eab911f92981b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18e989f_fdf6c281",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-01T04:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5323b2f_02c702f6",
+      "revId": "20e999896c329621712f6f75ee7eab911f92981b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
