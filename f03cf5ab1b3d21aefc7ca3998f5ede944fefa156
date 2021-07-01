@@ -22,6 +22,30 @@
       },
       "revId": "f03cf5ab1b3d21aefc7ca3998f5ede944fefa156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec57a31_90678cff",
+        "filename": "src/chromiumos/tast/common/global/vars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-01T02:13:19Z",
+      "side": 1,
+      "message": "I have reorganized the data structures. Please take a look. Thanks.",
+      "parentUuid": "8820e93d_17f90dec",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "f03cf5ab1b3d21aefc7ca3998f5ede944fefa156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
