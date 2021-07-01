@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85873fe6_4d19dd72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-01T11:03:58Z",
+      "side": 1,
+      "message": "The order should be the opposite. Now chrome is closed, and policyutil tries to use chrome while cleaning the policies.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "ec056b3f3a8a0b5d47e9d0af00ff5f600a83712e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
