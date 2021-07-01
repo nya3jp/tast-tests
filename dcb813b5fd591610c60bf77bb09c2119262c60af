@@ -34,6 +34,24 @@
       "parentUuid": "e29c0f87_80083a8d",
       "revId": "dcb813b5fd591610c60bf77bb09c2119262c60af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3d41c9_9a0ad1cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-01T19:46:33Z",
+      "side": 1,
+      "message": "Sounds good, I removed cvconn.WaitForFocusedNode and added a todo. Thanks!",
+      "parentUuid": "e71db7fe_e87a8c6b",
+      "revId": "dcb813b5fd591610c60bf77bb09c2119262c60af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
