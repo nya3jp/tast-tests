@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"math"
 	"os"
 	"path/filepath"
@@ -32,8 +33,8 @@ type testParam struct {
 	password string
 	// maxErrorBootCount is the number of maximum allowed boot errors.
 	maxErrorBootCount int
-	resultSuffix      string
 	chromeArgs        []string
+	dropCaches        bool
 }
 
 var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
@@ -56,30 +57,35 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				maxErrorBootCount: 1,
-				resultSuffix:      "",
 			},
 		}, {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				maxErrorBootCount: 3,
-				resultSuffix:      "",
 			},
 		}, {
 			Name:              "unmanaged_no_guest_readahead_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(8000)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
 			Val: testParam{
 				maxErrorBootCount: 3,
-				resultSuffix:      "_no_guest_readahead",
 				chromeArgs:        []string{"--arcvm-ureadahead-mode=disabled"},
+				dropCaches:        true,
+			},
+		}, {
+			Name:              "unmanaged_guest_readahead_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
+			Val: testParam{
+				maxErrorBootCount: 3,
+				dropCaches:        true,
 			},
 		}, {
 			Name:              "unmanaged_rt_vcpu_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				maxErrorBootCount: 3,
-				resultSuffix:      "_rt_vcpu",
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
@@ -87,7 +93,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				maxErrorBootCount: 3,
-				resultSuffix:      "",
 				chromeArgs:        []string{"--arcvm-use-hugepages"},
 			},
 		}, {
@@ -97,7 +102,6 @@ func init() {
 				username:          "arc.AuthPerf.managed_username",
 				password:          "arc.AuthPerf.managed_password",
 				maxErrorBootCount: 1,
-				resultSuffix:      "_managed",
 			},
 		}, {
 			Name:              "managed_vm",
@@ -106,7 +110,6 @@ func init() {
 				username:          "arc.AuthPerf.managed_username",
 				password:          "arc.AuthPerf.managed_password",
 				maxErrorBootCount: 3,
-				resultSuffix:      "_managed",
 			},
 		}},
 		VarDeps: []string{
@@ -228,8 +231,6 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	resultForLog = append(resultForLog, version, strconv.Itoa(len(playStoreShownTimes)))
 
 	reportResult := func(name string, samples []float64) {
-		name = name + param.resultSuffix
-
 		for _, x := range samples {
 			perfValues.Append(perf.Metric{
 				Name:      name,
@@ -309,6 +310,17 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	s.Log("Waiting for ARC to stop")
 	if err := waitForARCStopped(ctx); err != nil {
 		return v, err
+	}
+
+	// Drop host OS caches if test config requires it for predictable results.
+	if s.Param().(testParam).dropCaches {
+		testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
+		if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
+			return v, errors.Wrap(err, "failed to flush buffers")
+		}
+		if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
+			return v, errors.Wrap(err, "failed to clear caches")
+		}
 	}
 
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
