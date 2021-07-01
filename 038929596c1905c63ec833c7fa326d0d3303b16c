@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12c1000_ffbec8af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-01T17:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d533429f_ffd25d22",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c480067_4c9e1327",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-06-25T05:32:25Z",
       "side": 1,
       "message": "style:\n\nif err :\u003d modify...(...) {\n  return ...\n}\ndefer modifyPlaintextDNSDropRule(...)\ndnsBlockedTC \u003d ...\n\nditto for DoHAlwaysOn.",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b085c9cd_880ac2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-01T17:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c480067_4c9e1327",
       "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c865c3_05fd8572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-01T17:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2a5d75_1dfb560e",
+      "range": {
+        "startLine": 155,
+        "startChar": 91,
+        "endLine": 155,
+        "endChar": 93
+      },
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46d9ad9a_5a4e10f1",
@@ -105,6 +165,24 @@
       "writtenOn": "2021-06-25T05:32:25Z",
       "side": 1,
       "message": "In case of failure, can (possibly half-baked) state be reverted? Ditto for below.",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e93b16_d144f3a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-01T17:42:43Z",
+      "side": 1,
+      "message": "Would it be okay to ask the caller to be responsible to revert the state? (e.g. calling this func again with the opposite operation)\n\nCurrently, the defer on L131 does that.",
+      "parentUuid": "46d9ad9a_5a4e10f1",
       "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
