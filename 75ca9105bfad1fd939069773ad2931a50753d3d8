@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd4ff45_75efba21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-01T01:20:58Z",
+      "side": 1,
+      "message": "Love the line size reduction. Thanks for the port jinrongwu@",
+      "revId": "75ca9105bfad1fd939069773ad2931a50753d3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cc8cc61_6bee5b6f",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-07-01T00:47:03Z",
       "side": 1,
       "message": "I used this to replace the whole waitAndClickAppOnStableIntentView because I think the reason of waitAndClickAppOnStableIntentView is that the old ui library is not very stable. Please correct me if I misunderstood it.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "75ca9105bfad1fd939069773ad2931a50753d3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c049f165_a0797f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-01T01:20:58Z",
+      "side": 1,
+      "message": "Yup agree. The purpose of that function was to work around the stability issues but obviously wasn\u0027t doing a great job. The new library should have this built in.",
+      "parentUuid": "7cc8cc61_6bee5b6f",
       "range": {
         "startLine": 91,
         "startChar": 2,
