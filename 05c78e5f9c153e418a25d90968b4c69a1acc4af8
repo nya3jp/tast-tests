@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1ed8f450_ae209848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-01T00:39:42Z",
+      "side": 1,
+      "message": "Hm that\u0027s interesting, that doesn\u0027t show up on stainless: https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2021-06-24\u0026last_date\u003d2021-06-30\u0026test\u003d%5Etast%5C.wifi%5C.ConnectMBO%24\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nI also can\u0027t find any logs/pcaps for that run, so I can\u0027t tell what happened there. I leased the same DUT and ran the test 20-30 times and didn\u0027t get a single failure so I\u0027m going to say it\u0027s probably just a random flake. I\u0027m fine with proceeding with this change and filing a bug if this occurs again. How does that sound?",
+      "parentUuid": "29081652_c48725d2",
+      "revId": "05c78e5f9c153e418a25d90968b4c69a1acc4af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b4c0aa30_e04d55df",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-30T23:23:45Z",
       "side": 1,
       "message": "not a requirement, but I was dropping individual owners once we agree it\u0027s stable enough for champs to watch. Champs can still track down individuals if they want.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "05c78e5f9c153e418a25d90968b4c69a1acc4af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7a38b4_848b2e5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-01T00:39:42Z",
+      "side": 1,
+      "message": "dropped",
+      "parentUuid": "b4c0aa30_e04d55df",
       "range": {
         "startLine": 28,
         "startChar": 0,
