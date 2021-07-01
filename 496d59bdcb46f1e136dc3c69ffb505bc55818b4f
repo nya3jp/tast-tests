@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d3433a_eb3c8618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-07-01T23:26:20Z",
+      "side": 1,
+      "message": "ok from tast point of view, please get team member review for technical content",
+      "revId": "496d59bdcb46f1e136dc3c69ffb505bc55818b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
