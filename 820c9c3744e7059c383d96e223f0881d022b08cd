@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547dacef_fe706f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-01T02:19:30Z",
+      "side": 1,
+      "message": "Removed the extension test no -6, Because it exceeded the context time. I will add it in different suitable place",
+      "revId": "820c9c3744e7059c383d96e223f0881d022b08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
