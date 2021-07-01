@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857ef6e3_72a9aaab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-07-01T08:39:52Z",
+      "side": 1,
+      "message": "Hey folks,\n\nUploaded the change from crrev.com/c/2987728 to here.\n\nI had made some changes to the tast fixture that was meant to be a follow up CL but when I amended the commit message to get a new change ID it commited the follow up changes as well 😐 (I wish repo was a squash uploader instead of a per commit uploader). \n\nPlease take a look.\n\nThanks,\nJeevan",
+      "revId": "e83c755792f66de7d584e0f2d7b71fffe18ef31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
