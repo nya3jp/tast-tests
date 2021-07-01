@@ -107,18 +107,4 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
 		s.Fatal("Failed to render Gallery: ", err)
 	}
-
-	s.Log("Delete opened media file and assert zero state")
-	gc := galleryapp.NewContext(cr, tconn)
-	if err := uiauto.Combine("delete file in app and verify it is removed from local drive",
-		gc.DeleteAndConfirm(),
-		gc.AssertZeroState(),
-		// CloseApp is a necessary step before checking file gone.
-		// files.WaitUntilFileGone checks files A11y tree.
-		// However fileApp A11y tree will not update until it is brought to front.
-		gc.CloseApp(),
-		files.WaitUntilFileGone(testFile),
-	)(ctx); err != nil {
-		s.Fatal("Failed to remove media file in app: ", err)
-	}
 }
