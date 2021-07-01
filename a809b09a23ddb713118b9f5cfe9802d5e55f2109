@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd5aa4e_b6717340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-01T12:15:21Z",
+      "side": 1,
+      "message": "Looks good with nits. Thanks for the patch.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd6d52c_8a977f70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-01T12:15:21Z",
+      "side": 1,
+      "message": "We don\u0027t have lmkd on CrOS. This config contains lots of data sources not available on CrOS.\nDoes this config come from the perfetto source tree? We need to add comments of where the configs come from in the beginning. It\u0027s OK to have leave it as-is. Just put comments about where they come from and that they some data sources are android-only and have no effect on CrOS.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e62ec7_d65cd2e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-01T12:15:21Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to deref |pc|. Just use pc.GeneratePerfettoTrace(). Golang knows that this is a pointer and deref it for you.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d6db7de_3744e031",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-01T12:15:21Z",
+      "side": 1,
+      "message": "nit: this should be in the const. You may use a const block in this function if it\u0027s used in this function only.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4488571_ff9dfea0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-01T12:15:21Z",
+      "side": 1,
+      "message": "nit: Same for tbm_raw.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
