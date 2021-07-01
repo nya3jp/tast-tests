@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"math"
 	"os"
 	"path/filepath"
@@ -34,6 +35,7 @@ type testParam struct {
 	maxErrorBootCount int
 	resultSuffix      string
 	chromeArgs        []string
+	dropCaches        bool
 }
 
 var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
@@ -68,11 +70,21 @@ func init() {
 		}, {
 			Name:              "unmanaged_no_guest_readahead_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(8000)),
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
 			Val: testParam{
 				maxErrorBootCount: 3,
 				resultSuffix:      "_no_guest_readahead",
 				chromeArgs:        []string{"--arcvm-ureadahead-mode=disabled"},
+				dropCaches:        true,
+			},
+		}, {
+			Name:              "unmanaged_guest_readahead_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
+			Val: testParam{
+				maxErrorBootCount: 3,
+				resultSuffix:      "_guest_readahead",
+				dropCaches:        true,
 			},
 		}, {
 			Name:              "unmanaged_rt_vcpu_vm",
@@ -309,6 +321,17 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	s.Log("Waiting for ARC to stop")
 	if err := waitForARCStopped(ctx); err != nil {
 		return v, err
+	}
+
+	// Drop host OS caches if test config requires it for predictable results.
+	if s.Param().(testParam).dropCaches {
+		testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
+		if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
+			return v, errors.Wrap(err, "failed to flush buffers")
+		}
+		if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
+			return v, errors.Wrap(err, "failed to clear caches")
+		}
 	}
 
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
