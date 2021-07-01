@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43ff2d57_5bd98b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-07-01T21:34:38Z",
+      "side": 1,
+      "message": "I think it should be okay as is - in the rare event the gethostip output format changes it should be straightforward to update this test. Even with contains there\u0027s a risk the test might fail depending on how drastic the gethostip output format change is.",
+      "parentUuid": "4bdead20_8e2fc188",
+      "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaf8a0ab_e6fee7f3",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-01T14:23:50Z",
       "side": 1,
       "message": "same re: if the iface/protocol/etc. change (are those that relevant?)",
+      "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc58fea_f530e9c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-07-01T21:34:38Z",
+      "side": 1,
+      "message": "It\u0027s good practice to make sure avahi is querying all network interfaces (-1) and all protocols (-1) for an IPv4 address for the given hostname.",
+      "parentUuid": "aaf8a0ab_e6fee7f3",
       "revId": "3a336bc866e26009e374a7c992b64cc5ef70875d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
