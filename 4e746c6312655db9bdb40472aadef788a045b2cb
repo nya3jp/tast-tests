@@ -45,6 +45,54 @@
       },
       "revId": "4e746c6312655db9bdb40472aadef788a045b2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfac187d_7c5f6586",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-01T21:31:12Z",
+      "side": 1,
+      "message": "done thanks",
+      "parentUuid": "60a368a2_d1df5125",
+      "range": {
+        "startLine": 125,
+        "startChar": 75,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "4e746c6312655db9bdb40472aadef788a045b2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24c1ed0_a9942768",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-01T21:31:12Z",
+      "side": 1,
+      "message": "done thanks",
+      "parentUuid": "a660c455_c928be9f",
+      "range": {
+        "startLine": 125,
+        "startChar": 45,
+        "endLine": 125,
+        "endChar": 54
+      },
+      "revId": "4e746c6312655db9bdb40472aadef788a045b2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
