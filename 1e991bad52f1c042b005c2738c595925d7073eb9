@@ -16,6 +16,24 @@
       "message": "This feels unnecessary unless we want to also check Files app\u0027s functionality. \n\nMaybe something like HasScreenshots to check file system directly ?\n  https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/screenshot/files.go;l\u003d42",
       "revId": "1e991bad52f1c042b005c2738c595925d7073eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb5b66e_e01e3687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-01T22:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60b8de6_e5dba020",
+      "revId": "1e991bad52f1c042b005c2738c595925d7073eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
