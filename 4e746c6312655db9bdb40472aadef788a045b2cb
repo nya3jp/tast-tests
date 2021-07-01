@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a660c455_c928be9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-01T09:25:22Z",
+      "side": 1,
+      "message": "remoteDir and remotePath need to be escaped with shutil.Escape.",
+      "range": {
+        "startLine": 125,
+        "startChar": 45,
+        "endLine": 125,
+        "endChar": 54
+      },
+      "revId": "4e746c6312655db9bdb40472aadef788a045b2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a368a2_d1df5125",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-01T09:25:22Z",
+      "side": 1,
+      "message": "I overlooked this earlier but filepath.join is not necessary.",
+      "range": {
+        "startLine": 125,
+        "startChar": 75,
+        "endLine": 125,
+        "endChar": 88
+      },
+      "revId": "4e746c6312655db9bdb40472aadef788a045b2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
