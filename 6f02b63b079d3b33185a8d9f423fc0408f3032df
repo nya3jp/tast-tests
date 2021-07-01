@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d269394_0f2dc972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-07-01T20:50:06Z",
+      "side": 1,
+      "message": "This test was created for the GT-AX11000 AP. I tested this in an AX92u and the tests don\u0027t quite work a second time after an initial test as the default control channel goes to 0, indicating some configuration error. I will have to redo some of the mappings.",
+      "revId": "6f02b63b079d3b33185a8d9f423fc0408f3032df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
