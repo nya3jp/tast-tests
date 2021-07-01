@@ -16,6 +16,24 @@
       "message": "You\u0027re kidding me. It thinks",
       "revId": "2958935bc8dc26892d920726e27baeeeca7c7418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff5045a_f41801d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-07-01T08:25:53Z",
+      "side": 1,
+      "message": "Oh god... it still uses \"broken\" 14050.0.0 build... I don\u0027t know how to help CQ, we landed the regression fix almost a week ago, but CQ is such a die hard thing.\n\nWill you hate me even more if I suggest to abandon this change, maybe, generate new ChangeID and `repo upload` it? So that we will have new builders and new cros dependency.\n\nOr chump it in?",
+      "parentUuid": "5edce556_af009629",
+      "revId": "2958935bc8dc26892d920726e27baeeeca7c7418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
