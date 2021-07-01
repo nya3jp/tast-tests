@@ -35,6 +35,10 @@ type GoogleMeetConference struct {
 	password   string
 }
 
+// animationUIInterval is used by uiauto functions to operate on UI elements shown with animation.
+// This number is tuned to work on low-end DUT models to accomodate UI lagging.
+const animationUIInterval = 2 * time.Second
+
 // Join joins a new conference room.
 func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	tconn := conf.tconn
@@ -387,7 +391,7 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 				// will see lagging for this animation. Use a longer interval to wait for the changeLayoutButton
 				// to be stable to accomodate UI lagging. Otherwise it might click in the middle of
 				// the animation on wrong coordinates.
-				ui.WithInterval(time.Second).LeftClick(changeLayoutButton),
+				ui.WithInterval(animationUIInterval).LeftClick(changeLayoutButton),
 				ui.LeftClick(modeNode),
 			)(ctx)
 		}
@@ -421,7 +425,11 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 		testing.ContextLog(ctx, "Change background to ", background)
 		return uiauto.Combine("change background",
 			ui.LeftClick(moreOptions),
-			ui.LeftClick(changeBackground), // Open "Background" panel.
+			// The "more" option menu will expand to its full size with animation. Low end DUTs will
+			// see lagging for this animation. Use a longer interval to wait for the changeBackground menuitem
+			// to be stable to accomodate UI lagging. Otherwise it might click in the middle of
+			// the animation on wrong coordinates.
+			ui.WithInterval(animationUIInterval).LeftClick(changeBackground), // Open "Background" panel.
 			ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
 			ui.LeftClick(closeButton), // Close "Background" panel.
 			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
