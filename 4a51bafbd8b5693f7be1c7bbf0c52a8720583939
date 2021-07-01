@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4057a067_3be9decf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-01T12:51:22Z",
+      "side": 1,
+      "message": "I needed to mimic what Chrome does to pass the key to the chrome.New() that happens in the case when Autolaunch is not set.\n\nVictor, we discussed in the dd the need for kioskmode.NoLogin(). Maybe \"NoLogin\" would be better name for that option. What is your opinion? \n\nDo you both see that could be done in a different way?",
+      "revId": "4a51bafbd8b5693f7be1c7bbf0c52a8720583939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
