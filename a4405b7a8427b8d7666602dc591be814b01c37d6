@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0109acce_7e80b945",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-01T15:52:05Z",
+      "side": 1,
+      "message": "The sleeps and the retry of NewRemoteImage were trying to do the same thing, which was solve random failures of the flashrom utility with servo v4 dual mode on volteer. Since these sleeps are for 1 ns, they are clearly not doing anything useful.\n\nI think the real problem was the commands fixed in crrev/c/3001254, so I\u0027ll remove these misguided attempts working around the problems.",
+      "parentUuid": "1184da7a_a5cc3af8",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "a4405b7a8427b8d7666602dc591be814b01c37d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4525e47f_546cdf7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-01T15:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ca9c5c_f80070c3",
+      "range": {
+        "startLine": 111,
+        "startChar": 20,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "a4405b7a8427b8d7666602dc591be814b01c37d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7823be85_ea7cc541",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-01T03:23:22Z",
       "side": 1,
       "message": "Why is it doing the same thing twice?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 91
+      },
+      "revId": "a4405b7a8427b8d7666602dc591be814b01c37d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca59604_80def9a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-01T15:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7823be85_ea7cc541",
       "range": {
         "startLine": 118,
         "startChar": 0,
