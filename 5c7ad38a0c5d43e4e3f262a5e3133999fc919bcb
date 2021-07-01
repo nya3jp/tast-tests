@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e08608_2e642963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T22:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5846fe2d_1468e8f5",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07ee02ae_88828e06",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe64d8f_ba21bb83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T22:58:40Z",
+      "side": 1,
+      "message": "That makes perfect sense. Revised, thanks.",
+      "parentUuid": "07ee02ae_88828e06",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76d1b0c4_d3bce2d3",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-07-01T11:50:22Z",
       "side": 1,
       "message": "nit: remove the empty line.",
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7935984_a81d5d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T22:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d1b0c4_d3bce2d3",
       "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
