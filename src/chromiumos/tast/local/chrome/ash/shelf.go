@@ -8,6 +8,7 @@ package ash
 import (
 	"context"
 	"fmt"
+	"sort"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -73,8 +74,123 @@ func WaitForShelf(ctx context.Context, tconn *chrome.TestConn, timeout time.Dura
 }
 
 // PinApp pins the shelf icon for the app specified by appID.
+// Deprecated. Use PinApps() instead.
 func PinApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
-	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.pinShelfIcon)", appID)
+	return PinApps(ctx, tconn, []string{appID})
+}
+
+// ShelfIconPinUpdateParam is defined in autotest_private.idl.
+type ShelfIconPinUpdateParam struct {
+	AppID     string `json:"appId"`
+	ShouldPin bool   `json:"pinned"`
+}
+
+// GetPinnedAppIds returns the ids of the pinned apps. Note that the browser shortcut is not among the return value because it is always pinned to shelf.
+func GetPinnedAppIds(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
+	shelfItems, err := ShelfItems(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get pinned app ids")
+	}
+
+	var pinnedApps []string
+	for _, shelfItem := range shelfItems {
+		if shelfItem.Type == ShelfItemTypePinnedApp {
+			pinnedApps = append(pinnedApps, shelfItem.AppID)
+		}
+	}
+
+	return pinnedApps, nil
+}
+
+// ResetShelfPinState returns a callback to reset shelf app pin states to default. The callback should be run before the test ends. This function should be called before any change in shelf pin states.
+func ResetShelfPinState(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.Context) error, error) {
+	defaultPinnedApps, err := GetPinnedAppIds(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get default pinned apps")
+	}
+
+	return func(ctx context.Context) error {
+		currentPinnedApps, err := GetPinnedAppIds(ctx, tconn)
+
+		if err != nil {
+			return errors.Wrap(err, "failed to get current pinned apps")
+		}
+
+		// Indicates the apps which were pinned initially but are unpinned now. We are going to pin these apps.
+		var toPinApps []string
+
+		// Indicates the apps which were unpinned initially but are pinned now. We are going to unpin these apps.
+		var toUnpinApps []string
+
+		// Calculate the apps to pin and unpin by searching pairs in sorted arrays.
+		sort.Strings(defaultPinnedApps)
+		sort.Strings(currentPinnedApps)
+		defaultArrayIdx := 0
+		currentArrayIdx := 0
+		for defaultArrayIdx < len(defaultPinnedApps) && currentArrayIdx < len(currentPinnedApps) {
+			defaultApp := defaultPinnedApps[defaultArrayIdx]
+			currentApp := currentPinnedApps[currentArrayIdx]
+			if defaultApp == currentApp {
+				// Find a pair.
+				defaultArrayIdx++
+				currentArrayIdx++
+			} else if defaultApp < currentApp {
+				// |defaultApp| cannot be found among |currentPinnedApps| so it should be pinned.
+				toPinApps = append(toPinApps, defaultApp)
+				defaultArrayIdx++
+			} else {
+				// |currentApp| cannot be found among |defaultPinnedApps| so it should be unpinned.
+				toUnpinApps = append(toUnpinApps, currentApp)
+				currentArrayIdx++
+			}
+		}
+
+		// Pin the remaining apps in |defaultPinnedApps|.
+		for defaultArrayIdx < len(defaultPinnedApps) {
+			toPinApps = append(toPinApps, defaultPinnedApps[defaultArrayIdx])
+			defaultArrayIdx++
+		}
+
+		// Unpin the remaining apps in |currentPinnedApps|.
+		for currentArrayIdx < len(currentPinnedApps) {
+			toUnpinApps = append(toUnpinApps, currentPinnedApps[currentArrayIdx])
+			currentArrayIdx++
+		}
+
+		if err := PinAndUnpinApps(ctx, tconn, toPinApps, toUnpinApps); err != nil {
+			return err
+		}
+
+		return nil
+	}, nil
+}
+
+func setPinState(ctx context.Context, tconn *chrome.TestConn, updateParams []ShelfIconPinUpdateParam) error {
+	err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setShelfIconPin)", updateParams)
+	return err
+}
+
+// PinAndUnpinApps pins and unpins the apps specified by appIDs to shelf.
+func PinAndUnpinApps(ctx context.Context, tconn *chrome.TestConn, appIDsToPin, appIDsToUnpin []string) error {
+	var params []ShelfIconPinUpdateParam
+	for _, appID := range appIDsToPin {
+		params = append(params, ShelfIconPinUpdateParam{appID, true})
+	}
+	for _, appID := range appIDsToUnpin {
+		params = append(params, ShelfIconPinUpdateParam{appID, false})
+	}
+
+	return setPinState(ctx, tconn, params)
+}
+
+// PinApps pins the apps specified by appIDs to shelf.
+func PinApps(ctx context.Context, tconn *chrome.TestConn, appIDs []string) error {
+	return PinAndUnpinApps(ctx, tconn, appIDs, []string{})
+}
+
+// UnpinApps unpins the apps specified by appIDs to shelf.
+func UnpinApps(ctx context.Context, tconn *chrome.TestConn, appIDs []string) error {
+	return PinAndUnpinApps(ctx, tconn, []string{}, appIDs)
 }
 
 // ShelfAlignment represents the different Chrome OS shelf alignments.
@@ -157,6 +273,7 @@ type ScrollableShelfInfoClass struct {
 	LeftArrowBounds        coords.Rect    `json:"leftArrowBounds"`
 	RightArrowBounds       coords.Rect    `json:"rightArrowBounds"`
 	IsAnimating            bool           `json:"isAnimating"`
+	IconsUnderAnimation    bool           `json:"iconsUnderAnimation"`
 	IsOverflow             bool           `json:"isOverflow"`
 	IsShelfWidgetAnimating bool           `json:"isShelfWidgetAnimating"`
 	IconsBoundsInScreen    []*coords.Rect `json:"iconsBoundsInScreen"`
@@ -325,6 +442,24 @@ func FetchHotseatInfo(ctx context.Context, c *chrome.TestConn) (*HotseatInfoClas
 	return &shelfInfo.HotseatInfo, nil
 }
 
+// WaitUntilShelfIconAnimationFinish waits for the shelf icon animation to finish.
+func WaitUntilShelfIconAnimationFinish(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch scrollable shelf's information")
+		}
+		if info.IconsUnderAnimation {
+			return errors.New("unexpected shelf icon animation status: got true; want false")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait shelf icon animation to be idle")
+	}
+
+	return nil
+}
+
 // ScrollShelfAndWaitUntilFinish triggers the scroll animation by mouse click then waits the animation to finish.
 func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) error {
 	// Before pressing the arrow button, wait scrollable shelf to be idle.
@@ -394,6 +529,23 @@ func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// VerifyShelfIconIndices checks whether the apps are ordered as expected.
+func VerifyShelfIconIndices(ctx context.Context, tconn *chrome.TestConn, expectedApps []string) error {
+	items, err := ShelfItems(ctx, tconn)
+
+	if err != nil {
+		return errors.Wrap(err, "failed to get shelf items")
+	}
+
+	for index, item := range items {
+		if expectedApps[index] != item.AppID {
+			return errors.Errorf("unexpected icon at the index(%d) on the shelf: got %s; want %s", index, item.AppID, expectedApps[index])
+		}
+	}
+
+	return nil
 }
 
 // WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
