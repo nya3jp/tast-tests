@@ -147,6 +147,23 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	// So make it the first deferred function to use cleanupCtx.
 	defer setBatteryNormal(cleanupCtx)
 
+	var ytMusicConn *chrome.Conn
+	closeAllTabs := func(ctx context.Context) {
+		// If YT Music is still playing, the chrome tab cannot be closed. (b:192651882).
+		// Stop YT Music playing first.
+		if err := stopYoutubeMusic(ctx, ytMusicConn); err != nil {
+			// Log the error only.
+			testing.ContextLog(ctx, "Failed to stop YouTube Music playing: ", err)
+		}
+		// If failed to stop YoutubeMusic, the YoutubeMusic page might still playing,
+		// which will causes wait forever on CloseBrowserTabs,
+		// so use a context with timeout to close all tabs to prevent forever waiting.
+		closeTabCtx := ctx
+		ctx, cancel = context.WithTimeout(ctx, time.Minute)
+		defer cancel()
+		cuj.CloseBrowserTabs(closeTabCtx, tconn)
+	}
+
 	faillogCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -154,7 +171,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		// The screenshot and ui tree dump must been taken before tabs are closed.
 		faillog.SaveScreenshotOnError(ctx, cr, params.outDir, func() bool { return retErr != nil })
 		faillog.DumpUITreeOnError(ctx, params.outDir, func() bool { return retErr != nil }, tconn)
-		cuj.CloseBrowserTabs(ctx, tconn)
+		closeAllTabs(ctx)
 	}(faillogCtx)
 
 	var appStartTime int64
@@ -182,7 +199,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 
 	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder}
 
-	if err := openAndSwitchTabs(ctx, cr, tconn, params, resources); err != nil {
+	if ytMusicConn, err = openAndSwitchTabs(ctx, cr, tconn, params, resources); err != nil {
 		return errors.Wrap(err, "failed to open and switch chrome tabs")
 	}
 
@@ -223,7 +240,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	return nil
 }
 
-func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
+func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, params *RunParams, resources *runResources) (*chrome.Conn, error) {
 	const (
 		gmailURL        = "https://mail.google.com"
 		calendarURL     = "https://calendar.google.com/"
@@ -254,28 +271,36 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 		pageList = append(pageList, thirdWindowURLList, fourthWindowURLList)
 	}
 
-	openBrowserWithTabs := func(urlList []string) error {
+	// ytMusicConn is the chrome connection to YouTube Music page. It will be assigned
+	// only when YouTube Music page is opened and the music is playing.
+	var ytMusicConn *chrome.Conn
+
+	// openBrowserWithTabs open all URLs in browser tabs, and assigns the YT Music Web connection for
+	// further YT Music control.
+	openBrowserWithTabs := func(urlList []string) (retErr error) {
 		for idx, url := range urlList {
+			ytMusic := params.appName == YoutubeMusicAppName && url == youtubeMusicURL
 			conn, err := resources.uiHandler.NewChromeTab(ctx, cr, url, idx == 0)
 			if err != nil {
 				return errors.Wrapf(err, "failed to open %s", url)
 			}
-			// We don't need to keep the connection, so close it before leaving this function.
-			defer conn.Close()
+			// We only need the connection of YoutubeMusic page when there are no errors.
+			// Close all other connections before leaving this function.
+			defer func() {
+				if !ytMusic || retErr != nil {
+					conn.Close()
+				}
+			}()
 
 			if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
 				return errors.Wrap(err, "failed to wait for page to finish loading")
 			}
 
-			if params.appName == YoutubeMusicAppName && url == youtubeMusicURL {
-				shuffleButton := nodewith.Name("Shuffle").Role(role.Button)
-				pauseButton := nodewith.Name("Pause").Role(role.Button)
-
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
-					return uiauto.Combine("play youtube music", resources.uiHandler.Click(shuffleButton), resources.ui.WaitUntilExists(pauseButton))(ctx)
-				}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
-					return err
+			if ytMusic {
+				if err := playYoutubeMusic(ctx, resources); err != nil {
+					return errors.Wrap(err, "failed to play YoutubeMusic")
 				}
+				ytMusicConn = conn
 			}
 		}
 		return nil
@@ -351,9 +376,10 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "failed to run the open tabs and switch tabs scenario")
+		return ytMusicConn, errors.Wrap(err, "failed to run the open tabs and switch tabs scenario")
 	}
-	return nil
+
+	return ytMusicConn, nil
 }
 
 func switchWindows(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
@@ -490,5 +516,30 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 		return errors.Wrap(err, "shutter is not ended")
 	}
 
+	return nil
+}
+
+func playYoutubeMusic(ctx context.Context, resources *runResources) error {
+	shuffleButton := nodewith.Name("Shuffle").Role(role.Button)
+	pauseButton := nodewith.Name("Pause").Role(role.Button)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		return uiauto.Combine("play youtube music", resources.uiHandler.Click(shuffleButton), resources.ui.WaitUntilExists(pauseButton))(ctx)
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
+}
+
+// stopYoutubeMusic stops music playing in Youtube Music page. It uses JavaScript to stop it
+// instead of doing it from UI. It also close the chrome connection to the Youtube Music page.
+func stopYoutubeMusic(ctx context.Context, conn *chrome.Conn) error {
+	if conn == nil {
+		return nil
+	}
+	defer conn.Close()
+
+	// Since this function is used at cleanup stage, and stop playing isn't involved with any UMAs,
+	// we'll simply call a JS statement to do so.
+	if err := conn.Eval(ctx, `document.querySelector('[title="Pause"]').click();`, nil); err != nil {
+		return errors.Wrap(err, "failed to click Youtube Music Pause button")
+	}
 	return nil
 }
