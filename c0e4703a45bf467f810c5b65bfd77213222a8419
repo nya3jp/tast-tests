@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ffdcfb_15174be5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-01T03:28:10Z",
+      "side": 1,
+      "message": "nit: it would be great if it has sha hash for future reference, otherwise line number or file location is easily changed. e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d501;drc\u003d8379909dc26b1014dc9f3098f3f530a35f5cb638\n\nAlso URL can be oneline so that we can copy-paste it and Gerrit labels anchor link correctly",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f7dc3520_b8199bd3",
@@ -14,6 +37,69 @@
       "writtenOn": "2021-06-30T23:19:52Z",
       "side": 1,
       "message": "Hi Hiroki,\n\nI am trying to work on this change as we discussed over email. However, I am running into conflicts with ui.Node vs. uiauto.NodeInfo. I left a question, so let me know what you think.\n\nThanks!",
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb2e7ba_f644e886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-01T03:28:10Z",
+      "side": 1,
+      "message": "Thanks for working on this!",
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c27d4d5_3839d1d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-01T03:28:10Z",
+      "side": 1,
+      "message": "I think this part also needs to use the same template.",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 25
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f38f8c_bc73e572",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-01T03:28:10Z",
+      "side": 1,
+      "message": "This actually finds a node that matches to the finder from the desktop tree. And below is comparing the given NodeInfo and grabbed NodeInfo. Is this what we want to do here?\n\nIf so, can you update the comment? Also you can use reflect.DeepEqual to check the equality automatically and recursively.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

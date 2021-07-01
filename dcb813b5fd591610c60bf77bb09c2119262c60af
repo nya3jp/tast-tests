@@ -16,6 +16,24 @@
       "message": "This seems to be a blocker for this change. We can implement a custom function to convert a ui.Node into a uiauto.NodeInfo, but I\u0027m not sure how to do this since there are some type mismatches. Thoughts on how to cleanly approach this problem?",
       "revId": "dcb813b5fd591610c60bf77bb09c2119262c60af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71db7fe_e87a8c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-01T03:28:10Z",
+      "side": 1,
+      "message": "Thank you for trying to convert this file to uiauto, but to unblock migration of other files, deferring this file is one practical approach I think.\n\nNow that we don\u0027t need to waitForFocsedNode in this test because we also wait for event just after that and waiting for event is what we want to verify in this test.\nSo we just delete lines around cvconn.WaitForFocusedNode and leave others as it is, adding a TODO comment refering to my bug b/190773660.",
+      "parentUuid": "e29c0f87_80083a8d",
+      "revId": "dcb813b5fd591610c60bf77bb09c2119262c60af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
