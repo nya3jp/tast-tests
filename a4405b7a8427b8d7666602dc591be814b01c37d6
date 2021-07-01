@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1184da7a_a5cc3af8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-07-01T03:23:22Z",
+      "side": 1,
+      "message": "Could you comment the intention of sleeping ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "a4405b7a8427b8d7666602dc591be814b01c37d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ca9c5c_f80070c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-07-01T03:23:22Z",
+      "side": 1,
+      "message": "Is it 1 * time.Second ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 20,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "a4405b7a8427b8d7666602dc591be814b01c37d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7823be85_ea7cc541",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-07-01T03:23:22Z",
+      "side": 1,
+      "message": "Why is it doing the same thing twice?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 91
+      },
+      "revId": "a4405b7a8427b8d7666602dc591be814b01c37d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
