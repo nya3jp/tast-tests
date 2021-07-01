@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5846fe2d_1468e8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T11:50:22Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ee02ae_88828e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T11:50:22Z",
+      "side": 1,
+      "message": "For voice input testing, is it a bit different from vk typing test which largely for tablet users. Laptop users can also use voice input from the opt-in menu. \n\nSo I suggest using pre.VKEnabled as precondition. It uses the device\u0027s natural mode, and the current stable board list covers both modes.",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d1b0c4_d3bce2d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T11:50:22Z",
+      "side": 1,
+      "message": "nit: remove the empty line.",
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
