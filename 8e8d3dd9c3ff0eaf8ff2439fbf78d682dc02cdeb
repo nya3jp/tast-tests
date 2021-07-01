@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a0242e_4fa70a26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-01T20:42:04Z",
+      "side": 1,
+      "message": "Do we know approximately what the failure rate is for this? Just wondering if this is something we need to keep our eyes out for.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "8e8d3dd9c3ff0eaf8ff2439fbf78d682dc02cdeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4a92ff_674f1cae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-01T20:42:04Z",
+      "side": 1,
+      "message": "Why do we check against minRate here instead of checking that it\u0027s in the supported rates list?",
+      "revId": "8e8d3dd9c3ff0eaf8ff2439fbf78d682dc02cdeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
