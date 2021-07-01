@@ -77,6 +77,108 @@ func PinApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.pinShelfIcon)", appID)
 }
 
+// PinUpdateResultType indicates the result of the update in an app's pin state.
+type PinUpdateResultType string
+
+// As defined in PinUpdateResult in autotest_private.idl.
+const (
+	PinSuccess   PinUpdateResultType = "PinSuccess"
+	PinNoOp      PinUpdateResultType = "PinNoOp"
+	PinFailure   PinUpdateResultType = "PinFailure"
+	UnpinSuccess PinUpdateResultType = "UnpinSuccess"
+	UnpinNoOp    PinUpdateResultType = "UnpinNoOp"
+	UnpinFailure PinUpdateResultType = "UnpinFailure"
+)
+
+// ShelfIconPinUpdateResult is defined in autotest_private.idl.
+type ShelfIconPinUpdateResult struct {
+	AppID string              `json:"appId"`
+	Type  PinUpdateResultType `json:"type"`
+}
+
+// ShelfIconPinUpdateParam is defined in autotest_private.idl.
+type ShelfIconPinUpdateParam struct {
+	AppID     string `json:"appId"`
+	ShouldPin bool   `json:"shouldPin"`
+}
+
+func setPinState(ctx context.Context, tconn *chrome.TestConn, updateParams []ShelfIconPinUpdateParam) ([]ShelfIconPinUpdateResult, error) {
+	var results []ShelfIconPinUpdateResult
+	err := tconn.Call(ctx, &results, "tast.promisify(chrome.autotestPrivate.setShelfIconPin)", updateParams)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if len(updateParams) != len(results) {
+		err = errors.Errorf("unexpected number of update results: got %v; want %v", len(results), len(updateParams))
+		return nil, err
+	}
+
+	for _, result := range results {
+		if result.Type == PinFailure || result.Type == UnpinFailure {
+			op := "pin"
+			if result.Type == UnpinFailure {
+				op = "unpin"
+			}
+			err = errors.Errorf("failed to %s the app(%s)", op, result.AppID)
+			return nil, err
+		}
+	}
+
+	return results, nil
+}
+
+// EnsureAppsPinState sets the apps' pin states and returns a function to revert to
+// the original pin states.
+//
+// Typically, this will be used like:
+//   cleanup, err := ash.EnsureAppsPinState(ctx, c, updateParams)
+//   if err != nil {
+//     s.Fatal("Failed to ensure app states: ", err)
+//   }
+//   defer cleanup(ctx)
+func EnsureAppsPinState(ctx context.Context, tconn *chrome.TestConn, updateParams []ShelfIconPinUpdateParam) (func(ctx context.Context) error, error) {
+	results, err := setPinState(ctx, tconn, updateParams)
+	if err != nil {
+		return nil, err
+	}
+
+	var resetParams []ShelfIconPinUpdateParam
+	for _, result := range results {
+		if result.Type == PinSuccess {
+			resetParams = append(resetParams, ShelfIconPinUpdateParam{result.AppID,
+				false})
+		} else if result.Type == UnpinSuccess {
+			resetParams = append(resetParams, ShelfIconPinUpdateParam{result.AppID,
+				true})
+		}
+	}
+
+	return func(ctx context.Context) error {
+		_, err := setPinState(ctx, tconn, resetParams)
+		return err
+	}, nil
+}
+
+// UnpinApps unpins the shelf icon for the apps specified by appIDs and returns
+// a function to revert to the original pin states.
+//
+// Typically, this will be used like:
+//   cleanup, err := ash.UnpinApps(ctx, c, appIDs)
+//   if err != nil {
+//     s.Fatal("Failed to unpin apps: ", err)
+//   }
+//   defer cleanup(ctx)
+func UnpinApps(ctx context.Context, tconn *chrome.TestConn, appIDs []string) (func(ctx context.Context) error, error) {
+	var params []ShelfIconPinUpdateParam
+	for _, appID := range appIDs {
+		params = append(params, ShelfIconPinUpdateParam{appID, false})
+	}
+
+	return EnsureAppsPinState(ctx, tconn, params)
+}
+
 // ShelfAlignment represents the different Chrome OS shelf alignments.
 type ShelfAlignment string
 
@@ -394,6 +496,30 @@ func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// VerifyShelfIconIndices checks whether the apps specified by appIDs have the expected shelf indices.
+func VerifyShelfIconIndices(ctx context.Context, tconn *chrome.TestConn, appIDs []string, expectedIndices []int) error {
+	if len(appIDs) != len(expectedIndices) {
+		return errors.Errorf("the size of appIDs is %d, different from the length of expectedIndices which is %d", len(appIDs), len(expectedIndices))
+	}
+
+	items, err := ShelfItems(ctx, tconn)
+
+	if err != nil {
+		return errors.Wrap(err, "failed to get shelf items")
+	}
+
+	for index, element := range expectedIndices {
+		actualAppID := items[element].AppID
+		expectedAppID := appIDs[index]
+		if actualAppID != expectedAppID {
+			return errors.Errorf("the number %d icon on the shelf is expected to be %s but the actual app icon is %s",
+				expectedIndices[index], expectedAppID, actualAppID)
+		}
+	}
+
+	return nil
 }
 
 // WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
