@@ -213,6 +213,24 @@
       "parentUuid": "7a534c85_f11419f2",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55f9195_8b316fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-01T10:14:18Z",
+      "side": 1,
+      "message": "Did you make a change to tast-use-flags-9999.ebuild, run cros_workon-$BOARD, emerge-$BOARD, cros deploy?\n\nAfter running emerge-$BOARD, can you check /build/$BOARD/etc/tast_use_flags.txt contains cheets_user? I could confirm this locally with BOARD\u003dcaroline.",
+      "parentUuid": "c571ec8b_17abda41",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
