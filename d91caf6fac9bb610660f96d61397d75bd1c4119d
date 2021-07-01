@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0240f44f_55b32c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "sg, revised.",
+      "parentUuid": "b39faa85_8e890bec",
+      "range": {
+        "startLine": 29,
+        "startChar": 40,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3a6820_614f2235",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9919f066_70a521e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/inputs_data.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Revised to raise panic if there is no input data found, which is should be avoided when declaring messages and input methods in specific tests. Cannot explicitly log here since there is no context involved.",
+      "parentUuid": "4e3a6820_614f2235",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d082574_a076b442",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-30T23:57:46Z",
       "side": 1,
       "message": "nit: can you do this in one line in go? (not an expert at all so it might not be possible)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8184081_a821f6d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "Cannot do this in Go. The default value of map[key] is a single value, thus it has to be explicitly told to return two values.",
+      "parentUuid": "8d082574_a076b442",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56b7e930_a9de4b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "do you mean the location-based keys on PK? If so, the TODO has been added above.",
+      "parentUuid": "aa70bf48_0390291e",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b32a1fd_e72eaae3",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-30T23:57:46Z",
       "side": 1,
       "message": "super-nit: include ref to bug about Korean labels since this is the \"wrong\" character",
+      "range": {
+        "startLine": 90,
+        "startChar": 35,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0e5ce39_70a8bf40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b32a1fd_e72eaae3",
       "range": {
         "startLine": 90,
         "startChar": 35,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ff616e3_eeea8d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "What do you mean by \"the layout for this field\"? since I don\u0027t see any layout change on this field at least on CJK keyboards and some others.\n\nIs there any specific text you want to test in this field?",
+      "parentUuid": "857b8704_56f48096",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c2d29f1_8872147d",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
@@ -152,6 +296,30 @@
       "writtenOn": "2021-06-30T23:57:46Z",
       "side": 1,
       "message": "super-nit: make this different to the normal field test to ensure we actually have the layout for this field",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 51
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e8228d_314e073e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-01T02:45:30Z",
+      "side": 1,
+      "message": "same question in the email field.",
+      "parentUuid": "8c2d29f1_8872147d",
       "range": {
         "startLine": 151,
         "startChar": 0,
