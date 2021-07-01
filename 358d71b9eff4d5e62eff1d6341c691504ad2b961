@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad6b54ae_e38d0031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_service_test_config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-01T00:24:15Z",
+      "side": 1,
+      "message": "Remove this field and inline logic in |FaceDetectionTestConfig| directly in |TestConfig|.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea7581f0_8e90b230",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox/camerabox.go",
         "patchSetId": 13
@@ -19,6 +42,52 @@
         "startChar": 53,
         "endLine": 65,
         "endChar": 57
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c271a1ed_99319c0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-01T00:24:15Z",
+      "side": 1,
+      "message": "Remove this line for the default timeout is 2 mins.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bb7ce7_25762d51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-01T00:24:15Z",
+      "side": 1,
+      "message": "Remove this line for the default timeout is 2 mins.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 31
       },
       "revId": "358d71b9eff4d5e62eff1d6341c691504ad2b961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
