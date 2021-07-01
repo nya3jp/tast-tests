@@ -438,6 +438,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6793ce34_56ee7f44",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-01T11:27:32Z",
+      "side": 1,
+      "message": "I like the other pattern more (with the ok check).\nVictor, any preference on your part?",
+      "parentUuid": "f1952fb1_cfd70a19",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9c9c76_fb114c20",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
         "patchSetId": 1
