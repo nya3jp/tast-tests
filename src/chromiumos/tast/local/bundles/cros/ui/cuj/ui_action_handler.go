@@ -275,9 +275,12 @@ func (t *TabletActionHandler) SwitchWindow() action.Action {
 }
 
 // SwitchToAppWindow returns a function which switches to the window of the given app.
-// If the APP has multiple windows, it will switch to the first window.
+// It is used when the APP has only one window.
 func (t *TabletActionHandler) SwitchToAppWindow(appName string) action.Action {
-	return t.SwitchToAppWindowByIndex(appName, 0)
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Switching to app %s window", appName)
+		return t.switchToWindowThroughHotseat(ctx, appName, nil)
+	}
 }
 
 // SwitchToAppWindowByIndex returns a function which switches to
@@ -285,7 +288,7 @@ func (t *TabletActionHandler) SwitchToAppWindow(appName string) action.Action {
 // It is used when the APP has multiple windows.
 func (t *TabletActionHandler) SwitchToAppWindowByIndex(appName string, targetIdx int) action.Action {
 	return func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Switching to app window, by index (%d)", targetIdx)
+		testing.ContextLogf(ctx, "Switching to app %s window, by index (%d)", appName, targetIdx)
 		// The first one (which is the name of the app) should be skipped.
 		menuItem := nodewith.ClassName("MenuItemView").Nth(targetIdx + 1)
 		return t.switchToWindowThroughHotseat(ctx, appName, menuItem)
@@ -304,30 +307,47 @@ func (t *TabletActionHandler) SwitchToAppWindowByName(appName, targetName string
 }
 
 // switchToWindowThroughHotseat switch current focus window to another through hotseat.
+// It shows the hot seat, clicks the app icon to show the window menu,
+// and then select one of the windows based on the given menuItemFinder.
+// If menuItemFinder is nil, which is used when there is only one window for the app,
+// it will just tap the app icon to do the switch.
 func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
 	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc); err != nil {
 		return errors.Wrap(err, "failed to show hotseat")
 	}
 
+	// clickIcon is the action to click the APP on the hot seat.
+	var clickIcon func(ctx context.Context) error
 	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
-		if _, err := t.clickChromeOnHotseat(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Chrome app icon on hotseat")
+		clickIcon = func(ctx context.Context) error {
+			if _, err := t.clickChromeOnHotseat(ctx); err != nil {
+				return errors.Wrap(err, "failed to click Chrome app icon on hotseat")
+			}
+			return nil
 		}
 	} else {
 		icon, _, err := openedAppIconFinder(ctx, t.tconn, appName)
 		if err != nil {
 			return errors.Wrap(err, "failed to find app icon")
 		}
-		if err := t.tc.Tap(icon)(ctx); err != nil {
-			return errors.Wrap(err, "failed to tap app icon on hotseat")
+		clickIcon = func(ctx context.Context) error {
+			if err := t.tc.Tap(icon)(ctx); err != nil {
+				return errors.Wrap(err, "failed to tap app icon on hotseat")
+			}
+			return nil
 		}
 	}
 
-	if err := t.ui.Exists(nodewith.ClassName("MenuItemView").First())(ctx); err != nil {
-		// Node (any menu item) does not exist.
-		// In this case, there is only one window for target app, and the window is already switched after tap the icon,
-		// so no need to further tap the menu item.
-		return nil
+	// This indicates that the app has only one window, and the switch action does not require menu item view.
+	if menuItemFinder == nil {
+		return clickIcon(ctx)
+	}
+
+	menuItemViewAppear := t.ui.WithTimeout(10 * time.Second).WaitUntilExists(nodewith.ClassName("MenuItemView").First())
+	// Sometimes the autotest API has been called but UI does not respond.
+	// Use polling to ensure menu item view does appear.
+	if err := t.ui.RetryUntil(clickIcon, menuItemViewAppear)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to make menu item view appear, %s might not has multiple windows", appName)
 	}
 
 	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfExtended); err != nil {
