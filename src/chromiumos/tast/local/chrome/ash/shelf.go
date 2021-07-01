@@ -73,8 +73,90 @@ func WaitForShelf(ctx context.Context, tconn *chrome.TestConn, timeout time.Dura
 }
 
 // PinApp pins the shelf icon for the app specified by appID.
+// Deprecated. Use PinAppAndReset() instead.
 func PinApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.pinShelfIcon)", appID)
+}
+
+// ShelfIconPinUpdateParam is defined in autotest_private.idl.
+type ShelfIconPinUpdateParam struct {
+	AppID     string `json:"appId"`
+	ShouldPin bool   `json:"pinned"`
+}
+
+func setPinState(ctx context.Context, tconn *chrome.TestConn, updateParams []ShelfIconPinUpdateParam) ([]string, error) {
+	var updatedApps []string
+	err := tconn.Call(ctx, &updatedApps, "tast.promisify(chrome.autotestPrivate.setShelfIconPin)", updateParams)
+	return updatedApps, err
+}
+
+// EnsureAppsPinState sets the apps' pin states and returns a function to revert to
+// the original pin states.
+//
+// Typically, this will be used like:
+//   cleanup, err := ash.EnsureAppsPinState(ctx, c, updateParams)
+//   if err != nil {
+//     s.Fatal("Failed to ensure app states: ", err)
+//   }
+//   defer cleanup(ctx)
+func EnsureAppsPinState(ctx context.Context, tconn *chrome.TestConn, updateParams []ShelfIconPinUpdateParam) (func(ctx context.Context) error, error) {
+	updatedApps, err := setPinState(ctx, tconn, updateParams)
+	if err != nil {
+		return nil, err
+	}
+
+	// Construct the mappings between app ids and target pin states.
+	appPinMappings := make(map[string]bool)
+	for _, updateParam := range updateParams {
+		appPinMappings[updateParam.AppID] = updateParam.ShouldPin
+	}
+
+	// Calculates the params to reset pin states.
+	var resetParams []ShelfIconPinUpdateParam
+	for _, update := range updatedApps {
+		resetParams = append(resetParams, ShelfIconPinUpdateParam{update, !appPinMappings[update]})
+	}
+
+	return func(ctx context.Context) error {
+		_, err := setPinState(ctx, tconn, resetParams)
+		return err
+	}, nil
+}
+
+// PinAppsAndReset pins the shelf icon for the apps specified by appIDs and returns
+// a function to revert to the original pin states.
+//
+// Typically, this will be used like:
+//   cleanup, err := ash.PinAppsAndReset(ctx, c, appIDs)
+//   if err != nil {
+//     s.Fatal("Failed to pin apps: ", err)
+//   }
+//   defer cleanup(ctx)
+func PinAppsAndReset(ctx context.Context, tconn *chrome.TestConn, appIDs []string) (func(ctx context.Context) error, error) {
+	var params []ShelfIconPinUpdateParam
+	for _, appID := range appIDs {
+		params = append(params, ShelfIconPinUpdateParam{appID, true})
+	}
+
+	return EnsureAppsPinState(ctx, tconn, params)
+}
+
+// UnpinAppsAndReset unpins the shelf icon for the apps specified by appIDs and returns
+// a function to revert to the original pin states.
+//
+// Typically, this will be used like:
+//   cleanup, err := ash.UnpinAppsAndReset(ctx, c, appIDs)
+//   if err != nil {
+//     s.Fatal("Failed to unpin apps: ", err)
+//   }
+//   defer cleanup(ctx)
+func UnpinAppsAndReset(ctx context.Context, tconn *chrome.TestConn, appIDs []string) (func(ctx context.Context) error, error) {
+	var params []ShelfIconPinUpdateParam
+	for _, appID := range appIDs {
+		params = append(params, ShelfIconPinUpdateParam{appID, false})
+	}
+
+	return EnsureAppsPinState(ctx, tconn, params)
 }
 
 // ShelfAlignment represents the different Chrome OS shelf alignments.
@@ -157,6 +239,7 @@ type ScrollableShelfInfoClass struct {
 	LeftArrowBounds        coords.Rect    `json:"leftArrowBounds"`
 	RightArrowBounds       coords.Rect    `json:"rightArrowBounds"`
 	IsAnimating            bool           `json:"isAnimating"`
+	IconsUnderAnimation    bool           `json:"iconsUnderAnimation"`
 	IsOverflow             bool           `json:"isOverflow"`
 	IsShelfWidgetAnimating bool           `json:"isShelfWidgetAnimating"`
 	IconsBoundsInScreen    []*coords.Rect `json:"iconsBoundsInScreen"`
@@ -325,6 +408,24 @@ func FetchHotseatInfo(ctx context.Context, c *chrome.TestConn) (*HotseatInfoClas
 	return &shelfInfo.HotseatInfo, nil
 }
 
+// WaitUntilShelfIconAnimationFinish waits for the shelf icon animation to finish.
+func WaitUntilShelfIconAnimationFinish(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch scrollable shelf's information")
+		}
+		if info.IconsUnderAnimation {
+			return errors.New("unexpected shelf icon animation status: got true; want false")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait shelf icon animation to be idle")
+	}
+
+	return nil
+}
+
 // ScrollShelfAndWaitUntilFinish triggers the scroll animation by mouse click then waits the animation to finish.
 func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) error {
 	// Before pressing the arrow button, wait scrollable shelf to be idle.
@@ -394,6 +495,29 @@ func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// VerifyShelfIconIndices checks whether the apps specified by appIDs have the expected shelf indices.
+func VerifyShelfIconIndices(ctx context.Context, tconn *chrome.TestConn, appIDs []string, expectedIndices []int) error {
+	if len(appIDs) != len(expectedIndices) {
+		return errors.Errorf("unexpected size of appIDs: got %d; want %v", len(appIDs), len(expectedIndices))
+	}
+
+	items, err := ShelfItems(ctx, tconn)
+
+	if err != nil {
+		return errors.Wrap(err, "failed to get shelf items")
+	}
+
+	for index, element := range expectedIndices {
+		actualAppID := items[element].AppID
+		expectedAppID := appIDs[index]
+		if actualAppID != expectedAppID {
+			return errors.Errorf("unexpected icon at the index(%d) on the shelf: got %s; want %s", index, actualAppID, expectedAppID)
+		}
+	}
+
+	return nil
 }
 
 // WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
