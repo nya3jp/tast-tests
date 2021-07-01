@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "afc12498_b7b4af19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-01T19:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55ffdcfb_15174be5",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f7dc3520_b8199bd3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16cbb28_1a651568",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-01T19:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c27d4d5_3839d1d4",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 25
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9f38f8c_bc73e572",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-07-01T03:28:10Z",
       "side": 1,
       "message": "This actually finds a node that matches to the finder from the desktop tree. And below is comparing the given NodeInfo and grabbed NodeInfo. Is this what we want to do here?\n\nIf so, can you update the comment? Also you can use reflect.DeepEqual to check the equality automatically and recursively.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa35d211_0ef1f519",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-01T19:46:33Z",
+      "side": 1,
+      "message": "Updated the comment. I also updated this function to iterate through all NodeInfos that match the finder, then compare using DeepEquals. Hopefully this approach is more accurate and cleaner.",
+      "parentUuid": "b9f38f8c_bc73e572",
       "range": {
         "startLine": 206,
         "startChar": 1,
