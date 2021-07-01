@@ -58,6 +58,7 @@ type IntControl string
 const (
 	BatteryChargeMAH     IntControl = "battery_charge_mah"
 	BatteryFullChargeMAH IntControl = "battery_full_charge_mah"
+	BatteryVoltageMV     IntControl = "ppvar_vbat_mv"
 	VolumeDownHold       IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
 	VolumeUpHold         IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
 	VolumeUpDownHold     IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
