@@ -63,6 +63,30 @@
       },
       "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afd018f_e5213d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-01T00:08:19Z",
+      "side": 1,
+      "message": "IIUC, you just need to do below:\n\nd, err :\u003d a.NewUIDevice(ctx)\nif err !\u003d nil {\n    ..\n}\ndefer closeArcUIAndDumpOnError(cleanCtx, func(){ return retErr !\u003d nil})\n\n// arc ui package\nfunc closeArcUIAndDumpOnError(d, hasError func() bool){\n    d.Close(ctx)\n    d \u003d nil\n    a.DumpUIHierarchyOnError(ctx, outDir, hasError)\n}",
+      "parentUuid": "71ca610f_e7889bc7",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
