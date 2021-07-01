@@ -191,6 +191,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73e49aaf_a41fa2fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-07-01T04:36:27Z",
+      "side": 1,
+      "message": "No - US-intl allows for typing say e-acute by typing \"\u0027\" then \"e\". So a good test here would actually exercise that feature.\n\nBasically, I want to avoid the case where for some reason the test runs with US_ENG and passes and verify we are actually using the IME under test",
+      "parentUuid": "56b7e930_a9de4b90",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72bbed5e_2b674b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-07-01T04:36:27Z",
+      "side": 1,
+      "message": "No - what I am getting at is say try to type \"café\" on us-intl since that will fail on us eng which doesn\u0027t have deadkeys.",
+      "parentUuid": "56b7e930_a9de4b90",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b32a1fd_e72eaae3",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
@@ -285,6 +333,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3b05304_359a3e9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-07-01T04:36:27Z",
+      "side": 1,
+      "message": "Hm, seems that layout for JP is the same for email and non email.\n\nCreated a bug for PM at b/192515491\n\nSince the layout is the same here, I would consider dropping the test.",
+      "parentUuid": "6ff616e3_eeea8d6b",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c2d29f1_8872147d",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
@@ -320,6 +392,30 @@
       "side": 1,
       "message": "same question in the email field.",
       "parentUuid": "8c2d29f1_8872147d",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 51
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2734d9c1_c015d353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-07-01T04:36:27Z",
+      "side": 1,
+      "message": "as above",
+      "parentUuid": "c1e8228d_314e073e",
       "range": {
         "startLine": 151,
         "startChar": 0,
