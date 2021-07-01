@@ -52,6 +52,24 @@
       "parentUuid": "cff5045a_f41801d6",
       "revId": "2958935bc8dc26892d920726e27baeeeca7c7418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a288d0e5_17765279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-07-01T08:36:42Z",
+      "side": 1,
+      "message": "Disallow-Recycled-Builds: test-failures\n\ncould also be a solution, maybe.",
+      "parentUuid": "593d41cc_f180829a",
+      "revId": "2958935bc8dc26892d920726e27baeeeca7c7418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
