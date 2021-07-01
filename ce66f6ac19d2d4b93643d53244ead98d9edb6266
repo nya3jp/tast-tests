@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b087cfe_95405941",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-01T09:21:54Z",
+      "side": 1,
+      "message": "I highly recommend golang.org/x/sync/errgroup. I believe it fits your purpose!\nhttps://pkg.go.dev/golang.org/x/sync/errgroup",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "ce66f6ac19d2d4b93643d53244ead98d9edb6266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
