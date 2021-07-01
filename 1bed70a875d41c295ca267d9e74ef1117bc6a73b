@@ -249,6 +249,24 @@
       "parentUuid": "b55f9195_8b316fa0",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0e2f37_15377c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-01T19:18:09Z",
+      "side": 1,
+      "message": "yes, after running, cros_workon-$BOARD start chromeos-base/tast-use-flags\nemerge-$BOARD chromeos-base/tast-use-flags. \nI am able to see \"cheets_user\" on \"tast_use_flags.txt\" files for caroline and coral boards. \nWhen I run the command, \"cros deploy --root\u003d/usr/local mthiyagarajan.svl.corp.google.com chromeos-base/tast-use-flags\". \nI am getting this error, https://paste.googleplex.com/5526640596615168. (Note: Test is not skipping on Caroline and nasher360)",
+      "parentUuid": "b8368296_50a712bb",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
