@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc8cc61_6bee5b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-01T00:47:03Z",
+      "side": 1,
+      "message": "I used this to replace the whole waitAndClickAppOnStableIntentView because I think the reason of waitAndClickAppOnStableIntentView is that the old ui library is not very stable. Please correct me if I misunderstood it.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "75ca9105bfad1fd939069773ad2931a50753d3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
