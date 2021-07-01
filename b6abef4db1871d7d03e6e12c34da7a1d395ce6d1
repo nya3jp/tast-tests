@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f4860b_f1aedf2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-01T17:42:50Z",
+      "side": 1,
+      "message": "Added a new PS for this. Unfortunately, launching Crostini requires Data which is currently not supported by fixture. Shared Chrome, ARC, and Crostini through precondition in the new PS.\n\nPTAL at the new PS, thanks! (Marking as resolved)",
+      "parentUuid": "ba8208a9_0ce65860",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8301bb42_1e2cc122",
