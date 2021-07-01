@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f430c048_a33ed7a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-01T18:07:44Z",
+      "side": 1,
+      "message": "Hi Eric, this CL is ready for review. This CL is an upstream dependency to crrev/c/2986225.",
+      "revId": "dc566ff37497296f84647332951e3005b6504df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
