@@ -66,20 +66,37 @@ type VideoApp interface {
 
 // videoSrc struct defines video src for testing.
 type videoSrc struct {
-	url string
+	url   string
+	title string
 	// quality is the string that test will look for in youtube
 	// "Settings / Quality" menu to change video playback quality.
 	quality string
 }
 
 var basicVideoSrc = []videoSrc{
-	{"https://www.youtube.com/watch?v=suWsd372pQE", "1080p"},
-	{"https://www.youtube.com/watch?v=b3wcQqINmE4", "720p60"},
-	{"https://www.youtube.com/watch?v=b3wcQqINmE4", "1080p60"},
+	{
+		"https://www.youtube.com/watch?v=suWsd372pQE",
+		`"Go Beyond" 4K Ultra HD Time Lapse`,
+		"1080p",
+	},
+	{
+		"https://www.youtube.com/watch?v=b3wcQqINmE4",
+		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
+		"720p60",
+	},
+	{
+		"https://www.youtube.com/watch?v=b3wcQqINmE4",
+		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
+		"1080p60",
+	},
 }
 
 var plusVideoSrc = []videoSrc{
-	{"https://www.youtube.com/watch?v=b3wcQqINmE4", "2160p60"},
+	{
+		"https://www.youtube.com/watch?v=b3wcQqINmE4",
+		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
+		"2160p60",
+	},
 }
 
 // Run runs the VideoCUJ test.
@@ -230,10 +247,11 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 			defer gConn.Close()
 			defer gConn.CloseTarget(cleanupCtx)
 
-			if appName == YoutubeApp {
-				ytApp := videoApp.(*YtApp)
+			ytApp, ok := videoApp.(*YtApp)
+			// Only do PiP testing for YT APP and when logged in as premium user.
+			if ok && ytApp.isPremiumAccount() {
 				if err = ytApp.checkYoutubeAppPIP(ctx); err != nil {
-					return errors.Wrap(err, "youtube App smaller video preview window is not shows up")
+					return errors.Wrap(err, "youtube app smaller video preview window is not shown")
 				}
 			}
 
@@ -251,7 +269,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 				}
 			}
 
-			// Pause and reuse video playback.
+			// Pause and resume video playback.
 			if err := videoApp.PauseAndPlayVideo(ctx); err != nil {
 				return errors.Wrap(err, "failed to pause and play video")
 			}
