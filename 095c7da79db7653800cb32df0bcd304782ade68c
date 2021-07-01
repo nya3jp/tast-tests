@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18228cb2_c718008d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-01T13:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0b295b_d1b8e851",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1717427_94f21d76",
@@ -60,6 +84,42 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b5363278_b3b111bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-01T13:26:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e1717427_94f21d76",
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94919f04_1073753e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-01T13:26:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6eed76f8_94c6898f",
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "84bb13a0_22fc4739",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
         "patchSetId": 4
@@ -83,6 +143,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cd26ac3a_40011dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-01T13:26:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "84bb13a0_22fc4739",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7a4f5125_c4c5d30a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
         "patchSetId": 4
@@ -94,6 +178,24 @@
       "writtenOn": "2021-06-17T16:42:53Z",
       "side": 1,
       "message": "nit: Maybe it is worthwhile to check if a video file is stored in Download folder?",
+      "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0cb04d_77a56ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-01T13:26:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7a4f5125_c4c5d30a",
       "revId": "095c7da79db7653800cb32df0bcd304782ade68c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
