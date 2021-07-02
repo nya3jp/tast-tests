@@ -68,6 +68,10 @@ func inputsPreCondition(name string, dm deviceMode, vkEnabled, reset bool, opts 
 // It uses --enable-virtual-keyboard to force enable virtual keyboard regardless of device ui mode.
 var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced, true, false)
 
+// VKEnabledReset is the same setup as VKEnabled.
+// It restarts Chrome session and logs in as new user for each test.
+var VKEnabledReset = inputsPreCondition("virtual_keyboard_enabled_pre", notForced, true, true)
+
 // VKEnabledInGuest creates a new precondition the same as VKEnabled in Guest mode.
 var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, true, false, chrome.GuestLogin())
 
