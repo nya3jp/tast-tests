@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d4ad6d_2396a158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-07-02T03:41:36Z",
+      "side": 1,
+      "message": "Thanks for reviewing Yen-lin! ",
+      "revId": "9aafbbf8ba7ad6abfb4b34a23948fb4d7adf6667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
