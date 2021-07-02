@@ -57,6 +57,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	if !cfg.EnableRestoreTabs() {
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
 	}
+	if cfg.HideCrashRestoreBubble() {
+		args = append(args, "--hide-crash-restore-bubble") // Do not show "Chrome did not shut down correctly" bubble
+	}
 
 	if cfg.SkipOOBEAfterLogin() {
 		args = append(args, "--oobe-skip-postlogin")
@@ -68,6 +71,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 
 	if cfg.VKEnabled() {
 		args = append(args, "--enable-virtual-keyboard")
+	}
+	if cfg.ForceLaunchBrowser() {
+		args = append(args, "--force-launch-browser")
 	}
 
 	// Enable verbose logging on some enrollment related files.
