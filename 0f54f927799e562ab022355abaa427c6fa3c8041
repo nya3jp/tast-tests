@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "496a51af_e732138b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T04:41:09Z",
+      "side": 1,
+      "message": "I just noticed that the upstream CL is in the Chromium repo, while this CL is in the ChromiumOS repo, so it\u0027s not possible to chain them together. Never mind!",
+      "parentUuid": "3d3f0bac_ec2231bd",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18636248_8a870836",
