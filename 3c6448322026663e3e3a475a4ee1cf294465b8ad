@@ -22,6 +22,30 @@
       },
       "revId": "3c6448322026663e3e3a475a4ee1cf294465b8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ce3574_f538447d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-07-02T18:07:36Z",
+      "side": 0,
+      "message": "sync is also expected here.",
+      "parentUuid": "fabc556b_2f448a5d",
+      "range": {
+        "startLine": 151,
+        "startChar": 42,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "3c6448322026663e3e3a475a4ee1cf294465b8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
