@@ -16,6 +16,69 @@
       "message": "added HW and SP write protect re-enable after flash",
       "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1bb3cb_a5bdd3a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-02T23:46:57Z",
+      "side": 1,
+      "message": "Adding Greg for Tast Owner review.",
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b0cac3_4d016520",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-02T23:46:57Z",
+      "side": 1,
+      "message": "These have been downgraded to not required. So, s.Var(\"servo\"), I think.\n\nhttps://crrev.com/c/2940796",
+      "range": {
+        "startLine": 39,
+        "startChar": 55,
+        "endLine": 39,
+        "endChar": 66
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64fce57f_64963789",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-02T23:46:57Z",
+      "side": 1,
+      "message": "Overall, this test layout seems fine, but it would be better to ensure  that we don\u0027t flash the FPMCU in the NewFirmwareTest.\n\nSomewhat unrelated, but fixes to the NewFirmwareTest will be making initial flashing happen more often, thus we kinda need some bypass in the NewFirmwareTest function to ensure that it does not flash for this test.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 115
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
