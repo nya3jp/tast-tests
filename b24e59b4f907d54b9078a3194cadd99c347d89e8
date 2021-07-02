@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0883f83_57be34cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-07-02T03:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e38f6319_daa23676",
+      "range": {
+        "startLine": 280,
+        "startChar": 48,
+        "endLine": 280,
+        "endChar": 49
+      },
+      "revId": "b24e59b4f907d54b9078a3194cadd99c347d89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "433b5f32_0bf7d3e4",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-07-02T02:46:15Z",
       "side": 1,
       "message": "nit: maybe it\u0027s more readable to define constants for these?",
+      "revId": "b24e59b4f907d54b9078a3194cadd99c347d89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d123c73_443517a9",
+        "filename": "src/chromiumos/tast/local/disk/drop_caches.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-07-02T03:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "433b5f32_0bf7d3e4",
       "revId": "b24e59b4f907d54b9078a3194cadd99c347d89e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
