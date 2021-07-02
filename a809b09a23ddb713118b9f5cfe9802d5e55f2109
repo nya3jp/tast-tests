@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1be0d6f9_b72890be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2021-07-02T10:27:53Z",
+      "side": 1,
+      "message": "you can remove this because packages-list is not existing on android.\nBut then remember to -1 all the target_buffer below, because otherwise they will be off by one",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ada1b22_9eaa5cc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2021-07-02T10:27:53Z",
+      "side": 1,
+      "message": "this one is only relevant on android, remove",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fd6d52c_8a977f70",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
         "patchSetId": 9
@@ -31,6 +77,52 @@
       "writtenOn": "2021-07-01T12:15:21Z",
       "side": 1,
       "message": "We don\u0027t have lmkd on CrOS. This config contains lots of data sources not available on CrOS.\nDoes this config come from the perfetto source tree? We need to add comments of where the configs come from in the beginning. It\u0027s OK to have leave it as-is. Just put comments about where they come from and that they some data sources are android-only and have no effect on CrOS.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915facd2_7694943a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2021-07-02T10:27:53Z",
+      "side": 1,
+      "message": "all this should go, it\u0027s useless and irrelevant on non-android",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 66
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b66d06_f0f74fbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2021-07-02T10:27:53Z",
+      "side": 1,
+      "message": "same here, this realy works on Android",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
       "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
