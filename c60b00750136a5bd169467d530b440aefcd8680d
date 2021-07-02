@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa14ef48_ff1dc1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-07-02T10:11:26Z",
+      "side": 1,
+      "message": "will fail.",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 9
+      },
+      "revId": "c60b00750136a5bd169467d530b440aefcd8680d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7980de_50b8d8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-07-02T10:11:26Z",
+      "side": 1,
+      "message": "Otherwise",
+      "range": {
+        "startLine": 220,
+        "startChar": 50,
+        "endLine": 220,
+        "endChar": 59
+      },
+      "revId": "c60b00750136a5bd169467d530b440aefcd8680d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc71859_1c5505b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-07-02T10:11:26Z",
+      "side": 1,
+      "message": "components?",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 23
+      },
+      "revId": "c60b00750136a5bd169467d530b440aefcd8680d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
