@@ -40,7 +40,8 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 		apk           = "ArcTtsTest.apk"
 		enginePackage = "org.chromium.arc.testapp.tts"
 		speakText     = "hello world"
-		voiceName     = "Android org.chromium.arc.testapp.tts.ArcTtsService en"
+		voiceName     = "Android org.chromium.arc.testapp.tts.ArcTtsTestService en"
+		volume        = 0.0
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome

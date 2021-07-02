@@ -21,7 +21,7 @@ import java.nio.file.Paths;
  * A text to speech engine that outputs the generated speech to a file called "ttsoutput.txt" under
  * Downloads. {@link android.speech.tts.TextToSpeechService}.
  */
-public class ArcTtsService extends TextToSpeechService {
+public class ArcTtsTestService extends TextToSpeechService {
     final static String OUTPUT_FILENAME = "ttsoutput.txt";
 
     @Override
