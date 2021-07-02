@@ -33,6 +33,23 @@
       "message": "Swapping Aga as reviewer since David is OOO.",
       "revId": "b79ebf536d3b8e688ed252d6953646e73c8ec20e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e8325c_bb5b1d87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2021-07-02T19:18:16Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "b79ebf536d3b8e688ed252d6953646e73c8ec20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
