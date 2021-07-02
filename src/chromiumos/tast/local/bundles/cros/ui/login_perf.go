@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
 
@@ -58,6 +59,8 @@ func loginPerfStartToLoginScreen(ctx context.Context, s *testing.State, arcOpt [
 		chrome.EnableRestoreTabs(),
 		chrome.SkipForceOnlineSignInForTesting(),
 		chrome.EnableWebAppInstall(),
+		chrome.HideCrashRestoreBubble(),
+		chrome.ForceLaunchBrowser(),
 	}
 	cr, err := chrome.New(
 		ctx,
@@ -151,6 +154,22 @@ func loginPerfCreateWindows(ctx context.Context, cr *chrome.Chrome, url string, 
 	return nil
 }
 
+// countVisibleWindows is a proxy to ash.CountVisibleWindows(...)
+func countVisibleWindows(ctx context.Context, cr *chrome.Chrome) (int, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to connect to test api")
+	}
+	defer tconn.Close()
+
+	var visible int
+	visible, err = ash.CountVisibleWindows(ctx, tconn)
+	if err != nil {
+		err = errors.Wrap(err, "failed to count browser windows")
+	}
+	return visible, err
+}
+
 // maxHistogramValue calculates the estimated maximum of the histogram values.
 // At is an error when there are no data points.
 func maxHistogramValue(h *metrics.Histogram) (float64, error) {
@@ -164,6 +183,39 @@ func maxHistogramValue(h *metrics.Histogram) (float64, error) {
 		}
 	}
 	return float64(max), nil
+}
+
+// logout is a proxy to chrome.autotestPrivate.logout
+func logout(ctx context.Context, cr *chrome.Chrome, s *testing.State) error {
+	s.Log("Sign out: started")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to test api")
+	}
+	defer tconn.Close()
+
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return err
+	}
+	sw, err := sm.WatchSessionStateChanged(ctx, "stopped")
+	if err != nil {
+		s.Fatal("Failed to watch for D-Bus signals: ", err)
+	}
+
+	if err := tconn.Call(ctx, nil, "chrome.autotestPrivate.logout"); err != nil {
+		return errors.Wrap(err, "failed to run chrome.autotestPrivate.logout()")
+	}
+
+	s.Log("Waiting for SessionStateChanged \"stopped\" D-Bus signal from session_manager")
+	select {
+	case <-sw.Signals:
+		s.Log("Got SessionStateChanged signal")
+	case <-ctx.Done():
+		s.Fatal("Didn't get SessionStateChanged signal: ", ctx.Err())
+	}
+	s.Log("Sign out: done")
+	return nil
 }
 
 func LoginPerf(ctx context.Context, s *testing.State) {
@@ -204,12 +256,14 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 			}
 			s.Log("Opt in finished")
 			// Wait for ARC++ aps to download and initialize.
-			s.Log("Initialiize: let session fully initialize. Sleeping for 400 seconds... ")
+			s.Log("Initialize: let session fully initialize. Sleeping for 400 seconds... ")
 			testing.Sleep(ctx, 400*time.Second)
 		} else {
 			s.Log("ARC++ is not supported. Run test without ARC")
+			s.Log("Initialiize: let session fully initialize. Sleeping for 100 seconds... ")
+			testing.Sleep(ctx, 100*time.Second)
 		}
-		return creds, nil
+		return creds, logout(ctx, cr, s)
 	}()
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
@@ -266,7 +320,9 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 					if err := loginPerfCreateWindows(ctx, cr, url, windows-currentWindows); err != nil {
 						return err
 					}
-					return nil
+					s.Log("Sign out: sleep for 20 seconds to let session settle")
+					testing.Sleep(ctx, 20*time.Second)
+					return logout(ctx, cr, s)
 				}()
 				if err != nil {
 					s.Fatal("Failed to create new browser windows: ", err)
@@ -327,13 +383,24 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 							}
 							return nil
 						}
-						return metrics.RunAndWaitAll(
+						histograms, err := metrics.RunAndWaitAll(
 							ctx,
 							tLoginConn,
 							time.Minute,
 							testFunc,
 							allHistograms...,
 						)
+						if err != nil {
+							return histograms, err
+						}
+						visible := 0
+						if visible, err = countVisibleWindows(ctx, cr); err != nil {
+							return histograms, err
+						}
+						if visible != currentWindows && visible != currentWindows+1 {
+							err = errors.Errorf("unexpected number of visible windows: expected %d, found %d", currentWindows, visible)
+						}
+						return histograms, err
 					},
 					func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
 						defer cr.Close(ctx)
@@ -363,7 +430,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 								return errors.Errorf("unknown histogram %q", hist.Name)
 							}
 						}
-						return nil
+						return logout(ctx, cr, s)
 					},
 				)
 

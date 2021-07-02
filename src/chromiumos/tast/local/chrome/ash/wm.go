@@ -531,19 +531,26 @@ type ConnSource interface {
 	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
 }
 
+// CountVisibleWindows returns number of visible windows
+func CountVisibleWindows(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+	visible := 0
+	err := ForEachWindow(ctx, tconn, func(w *Window) error {
+		if w.IsVisible {
+			visible++
+		}
+		return nil
+	})
+	return visible, err
+}
+
 // CreateWindows create n browser windows with specified URL and wait for them to become visible.
 // It will fail and return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
 func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) error {
-	prevvis := 0
-	if err := ForEachWindow(ctx, tconn, func(w *Window) error {
-		if w.IsVisible {
-			prevvis++
-		}
-		return nil
-	}); err != nil {
+	prevvis, err := CountVisibleWindows(ctx, tconn)
+	if err != nil {
 		return err
 	}
 
@@ -575,13 +582,8 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 
 	// N.B. This assumes that no existing windows will be closed during the duration of this function (CreateWindows).
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		nowvis := 0
-		if err := ForEachWindow(ctx, tconn, func(w *Window) error {
-			if !w.IsAnimating && w.IsVisible {
-				nowvis++
-			}
-			return nil
-		}); err != nil {
+		nowvis, err := CountVisibleWindows(ctx, tconn)
+		if err != nil {
 			return testing.PollBreak(err)
 		}
 
