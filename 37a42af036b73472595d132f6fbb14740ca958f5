@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f036216_ed36d86f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-02T04:21:17Z",
+      "side": 1,
+      "message": "wrong commit id",
+      "revId": "37a42af036b73472595d132f6fbb14740ca958f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
