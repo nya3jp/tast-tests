@@ -87,6 +87,30 @@
       },
       "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4506a1c_a731f3a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-02T21:37:21Z",
+      "side": 1,
+      "message": "I\u0027ve moved the arc UI tree dump into spotify, and the arc device \"d\" is managed by spotify, too. This is similar with what you proposed to have a closeArcUIAndDumpOnError() function, but just do it in spotify.Close().\n\nThe reason to let spotify.Close to manage it is - we need to follow this procedure so potify UI can be dumped:\n- d.Close\n- dump UI\n- close Spotify.\n\nWith this in spotify.Close(), we just defer spotify.Close() in the main logic, which is clean.",
+      "parentUuid": "6afd018f_e5213d4e",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "a1540601669fdd0e3d9f2f6740bc8a41883151d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
