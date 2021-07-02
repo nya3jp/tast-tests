@@ -30,7 +30,7 @@ func init() {
 		Desc:         "Test Visual Studio Code in Terminal window",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"keepState"},
+		Vars:         []string{"keepState", screenshot.GoldServiceAccountKeyVar},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},
 		Params: []testing.Param{
@@ -102,24 +102,26 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 	)
 
 	ui := uiauto.New(tconn)
-	appWindow := nodewith.Name(fmt.Sprintf("%s - Visual Studio Code", testFile)).Role(role.Window).First()
+	appWindowUnsaved := nodewith.Name(fmt.Sprintf("● %s - Visual Studio Code", testFile)).Role(role.Window).First()
+	appWindowSaved := nodewith.Name(fmt.Sprintf("%s - Visual Studio Code", testFile)).Role(role.Window).First()
 
 	if err := uiauto.Combine("Create file with VSCode",
 		// Launch Visual Studio Code.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("code %s", testFile)),
 		// Left click the app window and type string.
-		ui.LeftClick(appWindow),
+		ui.LeftClick(appWindowUnsaved),
+		keyboard.TypeAction(testString),
 		// Get rid of up to two notification bubbles for consistent screendiffs.
 		keyboard.AccelAction("esc"),
 		keyboard.AccelAction("esc"),
-		keyboard.TypeAction(testString),
 		// Press ctrl+S to save the file.
 		keyboard.AccelAction("ctrl+S"),
+		ui.WaitUntilExists(appWindowSaved),
 		d.DiffWindow(ctx, "vscode"),
 		// Press ctrl+W twice to exit window.
 		keyboard.AccelAction("ctrl+W"),
 		keyboard.AccelAction("ctrl+W"),
-		ui.WaitUntilGone(appWindow))(ctx); err != nil {
+		ui.WaitUntilGone(appWindowSaved))(ctx); err != nil {
 		return err
 	}
 
