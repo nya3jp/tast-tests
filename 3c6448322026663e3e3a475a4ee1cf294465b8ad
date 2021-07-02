@@ -16,6 +16,29 @@
       "message": "LGTM for tast style",
       "revId": "3c6448322026663e3e3a475a4ee1cf294465b8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5c91eb_91b0b01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-02T17:28:15Z",
+      "side": 1,
+      "message": "nit: add todo with b/? optional once re-running CQ may take a time.",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 75
+      },
+      "revId": "3c6448322026663e3e3a475a4ee1cf294465b8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
