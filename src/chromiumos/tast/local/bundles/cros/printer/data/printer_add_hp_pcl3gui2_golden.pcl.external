@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_pcl3gui2_golden_20210707.pcl",
+  "size": 1298509,
+  "sha256sum": "b7544ea47d1b288da84ce5a86f3215f2b3107ea9ba987cf55193265ed7d805c4"
+}
