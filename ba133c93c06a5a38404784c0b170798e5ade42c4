@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd9f373_d8952e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-02T01:01:01Z",
+      "side": 1,
+      "message": "Suggest to define the node inadvance to make it more readable.",
+      "range": {
+        "startLine": 129,
+        "startChar": 48,
+        "endLine": 129,
+        "endChar": 79
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5ae46e_f1ed631b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/a11y.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-02T01:01:01Z",
+      "side": 1,
+      "message": "Suggest to define the node inadvance to make it more readable.",
+      "range": {
+        "startLine": 174,
+        "startChar": 51,
+        "endLine": 174,
+        "endChar": 103
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a9a9e4_fab7e743",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-02T01:01:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this since node is preused: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d173",
+      "range": {
+        "startLine": 179,
+        "startChar": 26,
+        "endLine": 179,
+        "endChar": 30
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32572a3_8a63f6cb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-02T01:01:01Z",
+      "side": 1,
+      "message": "I do no have much knowledge about a11y. It is usually recommended to be more specific about what is expected from the finder. Therefore, suggest to use ac.Info.",
+      "range": {
+        "startLine": 195,
+        "startChar": 23,
+        "endLine": 195,
+        "endChar": 32
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
