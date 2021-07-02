@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad980b1_e29370f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-02T03:14:31Z",
+      "side": 1,
+      "message": "Hi,\nAdded a way to check if frame exists in the track. This allows to actually check if DLP have stopped the frame or not.\n\nKindly review it.\nThanks 😊\n",
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
