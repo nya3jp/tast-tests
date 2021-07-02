@@ -1,0 +1,27 @@
+; Copyright 2021 The Chromium OS Authors. All rights reserved.
+; Use of this source code is governed by a BSD-style license that can be
+; found in the LICENSE file.
+;
+; A simulation of disk traffic from a light web surfing load with frequent
+; pauses (using thinktime) as well as idle time at the start.
+; This test should allow the device to perform recovery operations.
+;
+
+[recovery]
+filename=${FILENAME}
+size=${FILESIZE}
+
+time_based
+runtime=10m
+startdelay=180s
+thinktime=100ms
+
+ioengine=libaio
+iodepth=4
+direct=1
+
+readwrite=randrw
+rwmixwrite=80
+
+bssplit=4k/78:8k/5:16k/5:128k/12,4k/57:8k/13:16k/6:64k/20:512k/4
+norandommap
