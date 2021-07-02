@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b9c77c_500fea08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-02T02:51:05Z",
+      "side": 1,
+      "message": "LGTM % minor comments, thanks!",
+      "revId": "f13194b798f7ac7cbf1b006fd28571488717327b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1141d5b6_97a46ffe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-02T02:51:05Z",
+      "side": 1,
+      "message": "Let\u0027s include err in the message for debugging.",
+      "range": {
+        "startLine": 92,
+        "startChar": 41,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "f13194b798f7ac7cbf1b006fd28571488717327b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e767d2_70702c6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-02T02:51:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 48
+      },
+      "revId": "f13194b798f7ac7cbf1b006fd28571488717327b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
