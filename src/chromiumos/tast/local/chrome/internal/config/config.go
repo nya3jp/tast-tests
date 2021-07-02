@@ -175,6 +175,12 @@ func (c *Config) PolicyEnabled() bool { return c.m.PolicyEnabled }
 // DMSAddr returns the address of a device management server.
 func (c *Config) DMSAddr() string { return c.m.DMSAddr }
 
+// RealtimeReportingAddr returns the address of a realtime reporting endpoint.
+func (c *Config) RealtimeReportingAddr() string { return c.m.RealtimeReportingAddr }
+
+// EncryptedReportingAddr returns the address of a encrypted reporting endpoint.
+func (c *Config) EncryptedReportingAddr() string { return c.m.EncryptedReportingAddr }
+
 // Enroll returns whether to enroll the device.
 func (c *Config) Enroll() bool { return c.m.Enroll }
 
@@ -252,6 +258,8 @@ type MutableConfig struct {
 	Region                          string    `reuse_match:"true"`
 	PolicyEnabled                   bool      `reuse_match:"true"`
 	DMSAddr                         string    `reuse_match:"true"`
+	RealtimeReportingAddr           string    `reuse_match:"true"`
+	EncryptedReportingAddr          string    `reuse_match:"true"`
 	Enroll                          bool      `reuse_match:"true"`
 	EnrollmentCreds                 Creds     `reuse_match:"true"`
 	DisablePolicyKeyVerification    bool      `reuse_match:"true"`
