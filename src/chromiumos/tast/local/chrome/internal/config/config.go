@@ -224,6 +224,9 @@ func (c *Config) SkipForceOnlineSignInForTesting() bool { return c.m.SkipForceOn
 // RemoveNotification returns true if to remove all notiviations after restarting.
 func (c *Config) RemoveNotification() bool { return c.m.RemoveNotification }
 
+// HideCrashRestoreBubble returns true if to skip "Chrome did not shut down correctly" bubble
+func (c *Config) HideCrashRestoreBubble() bool { return c.m.HideCrashRestoreBubble }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -267,6 +270,7 @@ type MutableConfig struct {
 	SigninExtKey                    string    `reuse_match:"customized"`
 	SkipForceOnlineSignInForTesting bool      `reuse_match:"true"`
 	RemoveNotification              bool      `reuse_match:"true"`
+	HideCrashRestoreBubble          bool      `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -296,6 +300,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EnableRestoreTabs:               false,
 			SkipForceOnlineSignInForTesting: false,
 			RemoveNotification:              true,
+			HideCrashRestoreBubble:          false,
 		},
 	}
 	for _, opt := range opts {

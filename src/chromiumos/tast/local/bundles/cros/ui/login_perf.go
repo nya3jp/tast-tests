@@ -58,6 +58,7 @@ func loginPerfStartToLoginScreen(ctx context.Context, s *testing.State, arcOpt [
 		chrome.EnableRestoreTabs(),
 		chrome.SkipForceOnlineSignInForTesting(),
 		chrome.EnableWebAppInstall(),
+		chrome.HideCrashRestoreBubble(),
 	}
 	cr, err := chrome.New(
 		ctx,
@@ -151,6 +152,22 @@ func loginPerfCreateWindows(ctx context.Context, cr *chrome.Chrome, url string, 
 	return nil
 }
 
+// countVisibleWindows is a proxy to ash.CountVisibleWindows(...)
+func countVisibleWindows(ctx context.Context, cr *chrome.Chrome) (int, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to connect to test api")
+	}
+	defer tconn.Close()
+
+	var visible int
+	visible, err = ash.CountVisibleWindows(ctx, tconn)
+	if err != nil {
+		err = errors.Wrap(err, "failed to count browser windows")
+	}
+	return visible, err
+}
+
 // maxHistogramValue calculates the estimated maximum of the histogram values.
 // At is an error when there are no data points.
 func maxHistogramValue(h *metrics.Histogram) (float64, error) {
@@ -208,6 +225,8 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 			testing.Sleep(ctx, 400*time.Second)
 		} else {
 			s.Log("ARC++ is not supported. Run test without ARC")
+			s.Log("Initialiize: let session fully initialize. Sleeping for 100 seconds... ")
+			testing.Sleep(ctx, 100*time.Second)
 		}
 		return creds, nil
 	}()
@@ -327,13 +346,24 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 							}
 							return nil
 						}
-						return metrics.RunAndWaitAll(
+						histograms, err := metrics.RunAndWaitAll(
 							ctx,
 							tLoginConn,
 							time.Minute,
 							testFunc,
 							allHistograms...,
 						)
+						if err != nil {
+							return histograms, err
+						}
+						visible := 0
+						if visible, err = countVisibleWindows(ctx, cr); err != nil {
+							return histograms, err
+						}
+						if visible != currentWindows && visible != currentWindows+1 {
+							err = errors.Errorf("unexpected number of visible windows: expected %d, found %d", currentWindows, visible)
+						}
+						return histograms, err
 					},
 					func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
 						defer cr.Close(ctx)

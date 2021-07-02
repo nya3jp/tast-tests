@@ -361,3 +361,12 @@ func RemoveNotification(remove bool) Option {
 		return nil
 	}
 }
+
+// HideCrashRestoreBubble returns an Option that can be passed to New to make Chrome to
+// to skip "Chrome did not shut down correctly" bubble
+func HideCrashRestoreBubble() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.HideCrashRestoreBubble = true
+		return nil
+	}
+}
