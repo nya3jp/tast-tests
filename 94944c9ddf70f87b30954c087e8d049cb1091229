@@ -484,6 +484,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12b0c36_0e549ea5",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-02T11:14:11Z",
+      "side": 1,
+      "message": "Added the \u0027ok check\u0027 for starting Kiosk.",
+      "parentUuid": "fc6ecd72_5346c913",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa9c9c76_fb114c20",
@@ -571,6 +595,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "029d0dac_e5e8f3f9",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-02T11:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60d606f_1cf943c9",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d01c18e5_7c2a963f",
@@ -620,6 +662,24 @@
       "side": 1,
       "message": "I checked what happened when Chrome restarts being in Kiosk mode. Reset fails at:\n\"Fixture failed to reset: existing Chrome connection is unusable: cdp.Runtime: Evaluate: rpcc: the connection is closing: session: detach failed for session 13DD4C6B29F31CA8E55BB1D77563AAF6: cdp.Target: DetachFromTarget: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF; recovering\"\n\nNot sure if we need PID checks.",
       "parentUuid": "0c20377a_d081dd52",
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958b8937_97b18ae8",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-02T11:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f655ab5f_e53e0a75",
       "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
