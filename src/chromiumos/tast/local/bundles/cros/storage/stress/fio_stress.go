@@ -29,6 +29,7 @@ var (
 	// Configs lists all supported fio configurations.
 	Configs = []string{
 		"surfing",
+		"recovery",
 		"seq_write",
 		"seq_read",
 		"4k_write",
