@@ -6,6 +6,8 @@
 
 package org.chromium.arc.testapp.camerafps;
 
+import android.util.Log;
+
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
 import android.hardware.camera2.CaptureRequest;
@@ -19,6 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 class CaptureCallbackHistogram extends CaptureCallback {
+
+    private static final String TAG = "CaptureCallbackHistogram";
 
     // Maximum duration between two frames.
     private static final int HISTOGRAM_MAX = 1024;
@@ -146,13 +150,18 @@ class CaptureCallbackHistogram extends CaptureCallback {
         if (mLastTimeStampSensor == 0) {
             mLastTimeStampSensor = timeStampSensor;
         } else {
+            if (timeStampSensor < mLastTimeStampSensor) {
+                Log.e(TAG, "Out-of-order sensor timestamps: " + timeStampSensor + ", last recorded "
+                        + "timestamp = " + mLastTimeStampSensor);
+                return;
+            }
             // Convert nanoseconds to milliseconds.
-            int duration = (int) (timeStampSensor - mLastTimeStampSensor) / 1000000;
+            long duration = (timeStampSensor - mLastTimeStampSensor) / 1000000L;
             mLastTimeStampSensor = timeStampSensor;
 
             synchronized(mHistogramSensor) {
                 if (duration < HISTOGRAM_MAX - 1) {
-                    mHistogramSensor[duration]++;
+                    mHistogramSensor[(int) duration]++;
                 } else {
                     mHistogramSensor[HISTOGRAM_MAX - 1]++;
                 }
