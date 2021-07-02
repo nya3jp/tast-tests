@@ -6,15 +6,14 @@ package arc
 
 import (
 	"context"
-	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -171,11 +170,9 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 		return 0, 0, errors.New("invalid cache mode")
 	}
 
-	// Drop file caches if any
-	if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to sync caches")
-	}
-	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
+	// Drop file caches if any.
+	s.Log("Clearing caches, system buffer, dentries and inodes")
+	if err := disk.DropCaches(ctx, 3); err != nil {
 		return 0, 0, errors.Wrap(err, "failed to drop caches")
 	}
 
