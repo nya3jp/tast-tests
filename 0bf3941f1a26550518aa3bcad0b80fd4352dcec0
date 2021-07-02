@@ -16,6 +16,115 @@
       "message": "Hi,\nAdded a way to check if frame exists in the track. This allows to actually check if DLP have stopped the frame or not.\n\nKindly review it.\nThanks 😊\n",
       "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ef9a00_205c32ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-02T11:56:25Z",
+      "side": 1,
+      "message": "Generally looks good, thanks!",
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac985113_eeaa88eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-02T11:56:25Z",
+      "side": 1,
+      "message": "nit: Was it a copy from another place - maybe rename to something related to DLP?",
+      "range": {
+        "startLine": 86,
+        "startChar": 92,
+        "endLine": 86,
+        "endChar": 106
+      },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5028edea_beea5d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-02T11:56:25Z",
+      "side": 1,
+      "message": "I think there is not much value in have 3 tests with the same expectations that only differs in the URL. \nHaving only a case where opening restricted page pauses the recording and a case where opening non-restricted page doesn\u0027t pause the recording, should be enough.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d19b1c2_4e0bc2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-02T11:56:25Z",
+      "side": 1,
+      "message": "Let\u0027s not close the notification, but check that it\u0027s auto-closed when \"resumed\" notification is shown below - i.e.that we don\u0027t show both \"paused\" and \"resumed\" notifications at the same moment.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 4
+      },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a87f7b7_5ce857ac",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-02T11:56:25Z",
+      "side": 1,
+      "message": "Please update the message",
+      "range": {
+        "startLine": 200,
+        "startChar": 31,
+        "endLine": 200,
+        "endChar": 62
+      },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
