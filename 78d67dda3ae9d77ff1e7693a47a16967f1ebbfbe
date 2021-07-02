@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "666c91ae_3744f48f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T21:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d913b6b9_6e55a8c5",
+      "range": {
+        "startLine": 57,
+        "startChar": 38,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b2fc7e0_3651a904",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdc61aa_34ed100d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T21:01:24Z",
+      "side": 1,
+      "message": "No, this line does not get logged (unless an error occurs during the combination), so we should keep the logging on L55 to keep track of progress.",
+      "parentUuid": "5b2fc7e0_3651a904",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5115f971_a08e1d16",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-06-30T14:13:04Z",
       "side": 1,
       "message": "Not sure we need this one: either it exists, or we\u0027re about to fail the test.",
+      "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea161108_ff278397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T21:01:24Z",
+      "side": 1,
+      "message": "I think we should keep this log message.\n\nAccording to [1], \"We‘re using s.Log to communicate what we’re going to do before doing it, which is helpful both for people reading the code (i.e. these messages can take the place of comments) and for people looking at test logs. It\u0027s especially useful to log before performing an operation that could take a while to complete, as these messages are essential for investigating timeouts.\"\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#finishing-the-test",
+      "parentUuid": "5115f971_a08e1d16",
       "revId": "78d67dda3ae9d77ff1e7693a47a16967f1ebbfbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
