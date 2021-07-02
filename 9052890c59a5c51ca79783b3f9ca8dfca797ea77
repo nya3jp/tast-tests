@@ -16,6 +16,24 @@
       "message": "minor nit: this empty line is not needed here.",
       "revId": "9052890c59a5c51ca79783b3f9ca8dfca797ea77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f2413c_a35429b4",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-02T14:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be4b95c_9d88aedf",
+      "revId": "9052890c59a5c51ca79783b3f9ca8dfca797ea77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
