@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "936cb732_ac88afe1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-02T01:55:04Z",
+      "side": 1,
+      "message": "As discussed, removed the changes in vkg.go.",
+      "parentUuid": "056b259c_aa588bb1",
+      "range": {
+        "startLine": 379,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 21
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed64d1d1_ca815a4e",
@@ -176,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7341bdf_a285485d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-02T01:55:04Z",
+      "side": 1,
+      "message": "As discussed, removed the changes in vkg.go.",
+      "parentUuid": "ed64d1d1_ca815a4e",
+      "range": {
+        "startLine": 473,
+        "startChar": 38,
+        "endLine": 473,
+        "endChar": 61
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00839a07_a38354c8",
@@ -189,6 +237,30 @@
       "writtenOn": "2021-07-01T23:56:30Z",
       "side": 1,
       "message": "This function does not work on voice input panel.",
+      "range": {
+        "startLine": 490,
+        "startChar": 38,
+        "endLine": 490,
+        "endChar": 54
+      },
+      "revId": "5c7ad38a0c5d43e4e3f262a5e3133999fc919bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f4e851_b9677122",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-02T01:55:04Z",
+      "side": 1,
+      "message": "As discussed, removed the changes in vkg.go.",
+      "parentUuid": "00839a07_a38354c8",
       "range": {
         "startLine": 490,
         "startChar": 38,
