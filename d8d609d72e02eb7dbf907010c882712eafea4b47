@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711edf68_ca4f1462",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-02T15:05:16Z",
+      "side": 1,
+      "message": "VarDeps doesn\u0027t make the tests skip though, it makes them fail because a required var is missing. I think the DEPENDENCIES \u003d \u0027servo_state:WORKING\u0027 in the control files is what actually skips the tests.",
+      "parentUuid": "9e724883_9ce1d2ff",
+      "revId": "d8d609d72e02eb7dbf907010c882712eafea4b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab4bc63f_7644ab83",
