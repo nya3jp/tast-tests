@@ -50,6 +50,24 @@
       "message": "could make the directry structure match the package name?\n\ni.e., move this file under ArcTtsTest/src/org/chromium/arc/testapp/tts/",
       "revId": "32d1bf142540169d088511057dcac5f3cbfa62fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6049a4c9_b0e51139",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-02T09:10:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc73d93_ea8c4401",
+      "revId": "32d1bf142540169d088511057dcac5f3cbfa62fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
