@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -90,11 +91,8 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	testing.ContextLogf(ctx, "Running test: %s", testName)
 
 	testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
-	if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
-		return 0, errors.Wrap(err, "failed to flush buffers")
-	}
-	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
-		return 0, errors.Wrap(err, "failed to clear caches")
+	if err := disk.DropCaches(ctx, disk.ClearAllCaches); err != nil {
+		return 0, errors.Wrap(err, "failed to drop caches")
 	}
 
 	/*
