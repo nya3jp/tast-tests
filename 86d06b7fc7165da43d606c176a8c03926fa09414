@@ -22,6 +22,30 @@
       },
       "revId": "86d06b7fc7165da43d606c176a8c03926fa09414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8e8ed4_8afac4af",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T03:28:21Z",
+      "side": 1,
+      "message": "Ack. Golang has its own formatting rules. I hope your text editor has auto-formatting so you\u0027re not doing this manually! You can also run gofmt.",
+      "parentUuid": "4c2a9a2c_7562caf6",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "86d06b7fc7165da43d606c176a8c03926fa09414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
