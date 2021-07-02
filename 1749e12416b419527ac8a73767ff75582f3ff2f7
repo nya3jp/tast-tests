@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2057ae03_87668b2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-07-02T04:17:43Z",
+      "side": 1,
+      "message": "I would prefer to keep it. The index line is not about a specific git repo. It\u0027s the hash generated from the content of the file, and is expected to change when the content change.",
+      "parentUuid": "745d3c9e_a52f54c6",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "1749e12416b419527ac8a73767ff75582f3ff2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "34f9a4ec_b005e1bf",
