@@ -32,6 +32,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/testing"
 )
 
@@ -275,12 +276,8 @@ func handleClient(ctx context.Context, conn net.Conn) {
 }
 
 func handleDropCaches(ctx context.Context) string {
-	if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
-		testing.ContextLogf(ctx, "Failed to flush buffers: %s", err)
-		return failedResponse
-	}
-	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
-		testing.ContextLogf(ctx, "Failed to drop caches: %s", err)
+	if err := disk.DropCaches(ctx, disk.ClearAllCaches); err != nil {
+		testing.ContextLog(ctx, "Failed to drop caches with error: ", err)
 		return failedResponse
 	}
 	return okResponse
