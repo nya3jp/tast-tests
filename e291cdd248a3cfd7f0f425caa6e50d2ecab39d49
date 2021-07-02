@@ -137,6 +137,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bca8a82_566f33bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-02T15:51:01Z",
+      "side": 1,
+      "message": "Oh wonderful! Thanks :)",
+      "parentUuid": "7549a197_f755d5a7",
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d47bdbf_c7805a8a",
