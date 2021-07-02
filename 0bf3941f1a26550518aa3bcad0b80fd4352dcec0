@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75da6ec3_baa5bd3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-07-02T20:20:40Z",
+      "side": 1,
+      "message": "will this function do something weird if screenRecorder is nil (in the case of an error in the line above)",
+      "range": {
+        "startLine": 86,
+        "startChar": 49,
+        "endLine": 86,
+        "endChar": 63
+      },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5028edea_beea5d92",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
         "patchSetId": 7
@@ -77,6 +100,46 @@
         "endLine": 110,
         "endChar": 36
       },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20b86b5_30026ce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-07-02T20:20:40Z",
+      "side": 1,
+      "message": "you don\u0027t stop the test if screenRecorder is nil - does this call (or the ones below) error out in that case?  If so, you might as well fail the test when you set screenRecorder instead",
+      "range": {
+        "startLine": 119,
+        "startChar": 18,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbc4c53_3ac4cc49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-07-02T20:20:40Z",
+      "side": 1,
+      "message": "I would remove the empty line here and the one four below this to make one logical block of things that go together; [definition + if err + if status]\n\nDitto for the similar sections below",
       "revId": "0bf3941f1a26550518aa3bcad0b80fd4352dcec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
