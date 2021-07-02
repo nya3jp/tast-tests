@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "13156104_d4e80f20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-07-02T02:51:43Z",
+      "side": 1,
+      "message": "[optional] I suggest adding few words or a sentence here for describing the reason why we do this, just like mentioned in the bug.",
+      "revId": "42bedd16697ef9a0e59f59a11544ad0bfbb978cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4bf03288_4d28d94c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
