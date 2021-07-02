@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f2643b_a1ac18d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "You an use Cq-Depend, but it\u0027s not an ideal solution. We need to wait until Chrome is upreved in ChromeOS. It does help the reviewers and improves the git log 😊.",
+      "parentUuid": "496a51af_e732138b",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18636248_8a870836",
@@ -73,6 +91,47 @@
         "endLine": 85,
         "endChar": 107
       },
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ae6eb5_1ed144d0",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "It\u0027s not required by the go guidelines.",
+      "parentUuid": "18636248_8a870836",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 107
+      },
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf19d07_5de26a79",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "Not sure that this is required. Tests can simply update the PolicyUser after NewPolicyBlob().",
       "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -102,6 +161,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a701b64_02ecd405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "Not sure if these checks are useful, the fixture value is part of it\u0027s API. I\u0027d remove them and have the test segfault if something goes wrong.",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d92685e2_1e91d664",
         "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
         "patchSetId": 4
@@ -113,6 +189,74 @@
       "writtenOn": "2021-07-02T03:28:21Z",
       "side": 1,
       "message": "This CL (crrev/c/2994336) is going through the CQ and about to land within the next hour or so. It\u0027s probably going to cause merge conflicts, so please fix!",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca908d7_b5b72932",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "nit: add an option in Chrome to set DisablePolicyKeyVerification (it\u0027s already part of the Chrome config in tast).\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/setup/restart.go;l\u003d105\n\nOptions live here:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/option.go",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b284550_b331827c",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "Maybe use policyutil.ResetChrome here (it also calls cr.ResetState).\n\nRefreshChromePolicies does not clear the exiting policies, but that should have been handled by the FakeDMS fixture.",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e4dbe7_a91d6a4c",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "nit: also add yourself to this fixture as a contact.",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21f3072_b33816a6",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T05:48:04Z",
+      "side": 1,
+      "message": "nit: Add a bit more details on why this has been added.",
       "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
