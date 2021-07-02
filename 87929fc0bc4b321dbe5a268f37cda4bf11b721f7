@@ -22,6 +22,30 @@
       },
       "revId": "87929fc0bc4b321dbe5a268f37cda4bf11b721f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59ca5aa_6eae3b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-02T01:44:46Z",
+      "side": 1,
+      "message": "Ack and I moved the cr and a out of the RunParams, also moved the tconn out of test resources because it\u0027s common to pass cr, a, and tconn around.",
+      "parentUuid": "a729d7bf_7c9a54bc",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "87929fc0bc4b321dbe5a268f37cda4bf11b721f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
