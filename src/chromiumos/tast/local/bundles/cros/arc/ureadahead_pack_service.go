@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/upstart"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"
@@ -148,8 +149,9 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	testing.ContextLog(ctx, "Reset file caches")
 
-	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
-		return nil, errors.Wrap(err, "failed to clear caches")
+	testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
+	if err := disk.DropCaches(ctx, 3); err != nil {
+		return nil, errors.Wrap(err, "failed to drop caches")
 	}
 
 	testing.ContextLog(ctx, "Start ureadahead tracing")
