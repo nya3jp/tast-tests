@@ -105,6 +105,24 @@
       "parentUuid": "eb06d4e4_01d5ecca",
       "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef010be_bcdb1d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-02T08:02:55Z",
+      "side": 1,
+      "message": "Yeah, but it will be great to mention that it is for which CL in the commit message since there is no bug linked to understand the context either. It is less instinct to me that I\u0027ll need to check the dependent CLs in the relation chain to understand the information about this CL.",
+      "parentUuid": "4118a5a5_335e4e76",
+      "revId": "8305db3d79eac74c2576bb208efeb8a5fcc851a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
