@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a99265e_a78a2592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-07-02T18:11:04Z",
+      "side": 1,
+      "message": "Thanks all for reviewing!",
+      "revId": "3c6448322026663e3e3a475a4ee1cf294465b8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb5c91eb_91b0b01a",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-07-02T17:28:15Z",
       "side": 1,
       "message": "nit: add todo with b/? optional once re-running CQ may take a time.",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 75
+      },
+      "revId": "3c6448322026663e3e3a475a4ee1cf294465b8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f93ca73_c62c7df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-07-02T18:11:04Z",
+      "side": 1,
+      "message": "Discussed and TODO not needed with https://crrev.com/c/3002453",
+      "parentUuid": "fb5c91eb_91b0b01a",
       "range": {
         "startLine": 315,
         "startChar": 1,
