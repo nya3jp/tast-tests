@@ -108,6 +108,8 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	}
 	if cfg.DMSAddr() != "" {
 		args = append(args, "--device-management-url="+cfg.DMSAddr())
+		args = append(args, "--realtime-reporting-url=http://localhost:54321/")
+		args = append(args, "--encrypted-reporting-url=http://localhost:54321/")
 	}
 	if cfg.DisablePolicyKeyVerification() {
 		args = append(args, "--disable-policy-key-verification")
