@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8c4f88_7f52dff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-07-02T05:34:22Z",
+      "side": 1,
+      "message": "Maybe use a name regex rather than two finders?\n\nespecially one with an un-typable character.",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "c139ab2164fa7b3010e001052366c1edb6f030db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
