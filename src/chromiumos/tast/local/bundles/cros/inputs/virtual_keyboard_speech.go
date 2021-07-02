@@ -22,11 +22,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	audioFileEN = "voice_en_hello_20201021.wav"
-	audioFileCN = "voice_cn_hello_20201021.wav"
-)
-
 // Struct to contain the virtual keyboard speech test parameters.
 type speechTestParams struct {
 	audioFile    string
