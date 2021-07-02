@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6548ff81_c765f085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-02T21:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd9f373_d8952e22",
+      "range": {
+        "startLine": 129,
+        "startChar": 48,
+        "endLine": 129,
+        "endChar": 79
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab5ae46e_f1ed631b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-02T01:01:01Z",
       "side": 1,
       "message": "Suggest to define the node inadvance to make it more readable.",
+      "range": {
+        "startLine": 174,
+        "startChar": 51,
+        "endLine": 174,
+        "endChar": 103
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252a0411_9c01e58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/a11y.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-02T21:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5ae46e_f1ed631b",
       "range": {
         "startLine": 174,
         "startChar": 51,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1719ceec_e43b66e7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-02T21:37:52Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a problem because the variable is recreated within the scope of the inner function. See the following example below:\n\nconst test \u003d () \u003d\u003e {\n    const pet \u003d \"Dog\";\n    console.log(pet);\n    let pets \u003d [\"Cat\", \"Fish\", \"Bird\"];\n    pets.forEach(function(pet) {\n        console.log(pet);\n    });\n};\n\ntest();\n\nThe following logs:\n\nDog\nCat\nFish\nBird",
+      "parentUuid": "93a9a9e4_fab7e743",
+      "range": {
+        "startLine": 179,
+        "startChar": 26,
+        "endLine": 179,
+        "endChar": 30
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c32572a3_8a63f6cb",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-02T01:01:01Z",
       "side": 1,
       "message": "I do no have much knowledge about a11y. It is usually recommended to be more specific about what is expected from the finder. Therefore, suggest to use ac.Info.",
+      "range": {
+        "startLine": 195,
+        "startChar": 23,
+        "endLine": 195,
+        "endChar": 32
+      },
+      "revId": "ba133c93c06a5a38404784c0b170798e5ade42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a737c08_4cb965ef",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-02T21:37:52Z",
+      "side": 1,
+      "message": "I changed the function name and comments to better reflect the behavior of this function. We still want to get a list of all nodes, then compare each one to |actual|. Please see my more detailed response to Hiroki\u0027s comment for more details.\n\nThanks!",
+      "parentUuid": "c32572a3_8a63f6cb",
       "range": {
         "startLine": 195,
         "startChar": 23,
