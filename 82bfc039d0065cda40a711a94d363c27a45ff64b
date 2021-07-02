@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd4eb1f3_c77df00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-07-02T08:39:59Z",
+      "side": 1,
+      "message": "Done. Thanks for the link and suggestion!",
+      "parentUuid": "7b79bfd6_6d05c899",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 61
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61ebb705_9362f1d4",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "Thanks for the suggestion! I think we might need to add more tests for vpn (or the routing systems) by generating traffic with different users (and/or different protocols). I will think about it a bit more. For now I\u0027d like to keep it as-is since we don\u0027t need to change this parameter now.",
       "parentUuid": "61ebb705_9362f1d4",
+      "range": {
+        "startLine": 235,
+        "startChar": 57,
+        "endLine": 235,
+        "endChar": 66
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9250a903_059c8de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-07-02T08:39:59Z",
+      "side": 1,
+      "message": "(Marked as resolved)",
+      "parentUuid": "d612238a_f1b7ec48",
       "range": {
         "startLine": 235,
         "startChar": 57,
