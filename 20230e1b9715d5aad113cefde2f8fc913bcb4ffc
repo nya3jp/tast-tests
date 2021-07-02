@@ -140,6 +140,30 @@
       },
       "revId": "20230e1b9715d5aad113cefde2f8fc913bcb4ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e291c96d_55f52187",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox/camerabox.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-02T20:18:36Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right. It does seem a little unfortunate that we\u0027re parsing these strings directly from the command result instead of farming this out to a gRPC service but I guess it is what it is.\n\nI\u0027ll see if we can\u0027t get such a service going so we can clean this up later.",
+      "parentUuid": "d49c6ecb_3467d73c",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "20230e1b9715d5aad113cefde2f8fc913bcb4ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
