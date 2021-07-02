@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59a556b_82df1720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-02T17:58:35Z",
+      "side": 1,
+      "message": "dos this imply chromeLoggedIn?",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "d385730e34ef8e5d6319c794f862d9ccae9fbc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec75848_5e707460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-02T17:58:35Z",
+      "side": 1,
+      "message": "do we need switch here? you\u0027re handling all cases the same way",
+      "revId": "d385730e34ef8e5d6319c794f862d9ccae9fbc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
