@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8c70c9_6bee0062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-02T11:14:34Z",
+      "side": 1,
+      "message": "Hi Shuhei,\nChinglin and I are wondering if you have cycles to review the architecture and design of this tast test (with design doc: )",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1be0d6f9_b72890be",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-07-02T10:27:53Z",
       "side": 1,
       "message": "you can remove this because packages-list is not existing on android.\nBut then remember to -1 all the target_buffer below, because otherwise they will be off by one",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7f54d0_4fc0cd0c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-02T11:14:34Z",
+      "side": 1,
+      "message": "Not sure why, but it seems that android_cpu metric couldn\u0027t get anything without this buffer...?",
+      "parentUuid": "1be0d6f9_b72890be",
       "range": {
         "startLine": 1,
         "startChar": 0,
