@@ -38,7 +38,6 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_oobe_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Val: testParameters{
 					tabletMode: false,
