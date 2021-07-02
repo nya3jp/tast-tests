@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd74aeb2_4735911a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-07-02T20:50:04Z",
+      "side": 1,
+      "message": "This broke a partner that I\u0027ve been trying to get to run this test for 8 months:\n   https://buganizer.corp.google.com/issues/169242756\n   \nCan you please put a flag in front of enforcing \"developer mode\" so the lab can enforce this policy and the rest of the world can maybe see a warning a most?\n\nSetting GBB flags to 0x39 works reasonably well for running bootperf as publicly documented:\n   http://www.chromium.org/chromium-os/how-tos-and-troubleshooting/measuring-boot-time-performance",
+      "revId": "b8b4700b0a6caa57f6b532f20f47a9885348fbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
