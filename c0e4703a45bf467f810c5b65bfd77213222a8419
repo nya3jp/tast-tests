@@ -198,6 +198,30 @@
       },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a53d8d_5d59b9bc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-02T21:37:52Z",
+      "side": 1,
+      "message": "Hmm, maybe I should revise the comment or the function name to more accurately describe the behavior, but I still think the underlying implementation is accurate.\n\nWhat we want to do is to check if |finder| can be used to find |actual|. Another way of saying this is \"can |finder| be mapped to |actual|?\", or \"are the properties listed in |finder| present in |actual|?\".\n\nSince we cannot compare them directly, we find all possible NodeInfos that |finder| maps to. Then we compare each of the candidates to |actual|; one of the candidates should be deeply-equal to |actual| in the case that we return true.\n\nIn the case where |finder| has no role, it is possible for some of the candidates to have a different role than |actual|. However, if |finder| truly maps to |actual|, then one of the candidates will have a role that matches. Let\u0027s use the following example:\n\nactual :\u003d NodeInfo {\n    Name: \"This is a test\",\n    Role\" \"Button\",\n    ...\n}\n\nfinder :\u003d nodewith.Name(\"This is a test\")\n\n// Let\u0027s imagine that we get the following candidates\ncandidates :\u003d NodeInfo[]{\n    NodeInfo{Name: \"This is a test\", Role: \"Paragraph\", ...},\n    NodeInfo{Name: \"This is a test\", Role: \"Heading\", ...},\n    NodeInfo{Name: \"This is a test\", Role: \"Button\", ...}\n}\n\nIn the above example, we should return true because |finder| can be mapped to |actual| via the third candidate.\n\nAs a side note, we want to allow |finder| to be less specific than |actual|. For the above example, simply specifying the name should be enough for the function to return true. What we don\u0027t want is to require that |finder| have all properties of |actual|. We want to avoid the following:\n\nactual: NodeInfo {\n    Name: \"Test:,\n    Role\" \"Button\",\n    ...\n}\n\nfinder :\u003d nodewith.Name(\"Test\").Role(\"Button\").State(...).Checked(...)...\n\n|finder| should not have to list all properties for this function to return true; this function should return true if the properties listed in |finder| are also present in |actual|.\n\nDoes that all make sense? Sorry for the long description, but I just wanted to be as clear as possible. I updated the function name and comment for clarity, but I still think the implementation is correct.\n\nLet me know what you think.",
+      "parentUuid": "9db774fd_f3b915b5",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
