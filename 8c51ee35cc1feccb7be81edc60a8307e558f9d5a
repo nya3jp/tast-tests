@@ -46,6 +46,30 @@
       },
       "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2cef85_7896e1c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-02T01:19:41Z",
+      "side": 1,
+      "message": "Sorry, I should provide more context about this.\n\n\u003e  If I understand correctly the basic wificellFixt will not provide access to the router?\n\nThey both provide access to the router. The differences between the default Fixture/Precondition and the one with \u0027TFFeaturesRouters\u0027 are:\n- The former has a single router and the latter can have multiple.\n- The former reads a router hostname from \"router\" variable and the latter reads router hostnames from \"routers\" variable. (\"pcap\" is used by both)\n\nHowever, as the test code didn\u0027t use ConfigureAPOnRouterID, I think it doesn\u0027t need TFFeaturesRouters so the only difference caused by this change is the variables.\n\nAlso, some problems with \u0027TFFeaturesRouters\u0027:\n- We don\u0027t yet have a multi-router setup. It will use router + pcap as two routers for now.\n- \"routers\" variable is not set by the current wificell wrapping in Tauto as it is not for multi-router setup. It could be a problem when the test is reached with  `test_that --args\u003d\"router_addr\u003d$ROUTER_IP pcap_addr\u003d$PCAP_IP\" $DUT_IP tast.wificell-func-unstable`",
+      "parentUuid": "68e73d56_a6ae2a9d",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
