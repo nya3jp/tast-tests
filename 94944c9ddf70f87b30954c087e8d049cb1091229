@@ -462,6 +462,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc6ecd72_5346c913",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T06:04:46Z",
+      "side": 1,
+      "message": "In this case I\u0027d also prefer the ok check, there are multiple steps that could fail.",
+      "parentUuid": "6793ce34_56ee7f44",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "94944c9ddf70f87b30954c087e8d049cb1091229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9c9c76_fb114c20",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/kiosk.go",
         "patchSetId": 1
