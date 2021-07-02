@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2250319_f2997176",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-02T17:22:39Z",
+      "side": 1,
+      "message": "Done. This is a pattern borrowed from other tests, so fixing those in the next CL.",
+      "parentUuid": "1141d5b6_97a46ffe",
+      "range": {
+        "startLine": 92,
+        "startChar": 41,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "f13194b798f7ac7cbf1b006fd28571488717327b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e767d2_70702c6a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-02T02:51:05Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 48
+      },
+      "revId": "f13194b798f7ac7cbf1b006fd28571488717327b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80876318_1ab8b2f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-02T17:22:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e767d2_70702c6a",
       "range": {
         "startLine": 97,
         "startChar": 40,
