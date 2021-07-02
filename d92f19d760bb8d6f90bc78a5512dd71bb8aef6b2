@@ -51,6 +51,24 @@
       "parentUuid": "1bde75a4_27a953f1",
       "revId": "d92f19d760bb8d6f90bc78a5512dd71bb8aef6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c7ab54_9b873acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-02T14:30:39Z",
+      "side": 1,
+      "message": "ditto for the prev CL :-).\n\n\u003e This is also because the function can delete rules (which does not have any clear restoration steps).\n\nI\u0027m wondering if this could cause any mysterious errors in tests run later, because the testing environment would be kept used. Any thoughts? If it\u0027s safer, could you document so?",
+      "parentUuid": "146b14f1_ba44546e",
+      "revId": "d92f19d760bb8d6f90bc78a5512dd71bb8aef6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
