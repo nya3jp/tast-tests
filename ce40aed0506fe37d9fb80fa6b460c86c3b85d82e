@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb67143_1c1450dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-07-02T04:17:43Z",
+      "side": 1,
+      "message": "IIUC, the index line will only change if the content is different. You can get the same hash used in index line with `cat file | git hash-object --stdin`, even if the file is not in any git repo.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "ce40aed0506fe37d9fb80fa6b460c86c3b85d82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c32b5cbc_25c9b997",
