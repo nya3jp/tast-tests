@@ -267,6 +267,24 @@
       "parentUuid": "b8368296_50a712bb",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3d7aa4_f38758a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-02T02:35:10Z",
+      "side": 1,
+      "message": "Is mthiyagarajan.svl.corp.google.com a Chrome OS DUT?",
+      "parentUuid": "6b0e2f37_15377c83",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
