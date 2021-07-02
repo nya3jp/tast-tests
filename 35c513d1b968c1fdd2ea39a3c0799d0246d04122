@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3191c61_3b506d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-07-02T18:51:24Z",
+      "side": 1,
+      "message": "nit: Just found we have multiple logging that differ from test to test\nMight be good to unify logging and probably move to disk.DropCaches?\nWDYT?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "35c513d1b968c1fdd2ea39a3c0799d0246d04122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
