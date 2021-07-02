@@ -16,6 +16,87 @@
       "message": "Hi,\nPlease help to review this CL.\nThis CL depends on [1] and will not submit before [1] get merged.\nThank you!\n\n[1] crrev.com/c/2986909 \n",
       "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3f0bac_ec2231bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T03:28:21Z",
+      "side": 1,
+      "message": "Ack. So apparently it is possible to chain dependent CLs together in ChromiumOS, but I couldn\u0027t figure it out either. See crrev/c/2980442 for a successful example of chaining dependent CLs.",
+      "parentUuid": "084f0f6f_ce34f458",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18636248_8a870836",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T03:28:21Z",
+      "side": 1,
+      "message": "Clip comments at 72 characters per line.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 107
+      },
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c11370a_baa88be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T03:28:21Z",
+      "side": 1,
+      "message": "Use cros-families-eng+test, here and below.",
+      "range": {
+        "startLine": 23,
+        "startChar": 51,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92685e2_1e91d664",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-02T03:28:21Z",
+      "side": 1,
+      "message": "This CL (crrev/c/2994336) is going through the CQ and about to land within the next hour or so. It\u0027s probably going to cause merge conflicts, so please fix!",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
