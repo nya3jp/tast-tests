@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b2b8594_7ec7b9ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-02T14:28:43Z",
+      "side": 1,
+      "message": "the latest PS does not even have precondition...?\nCould you double check the latest version, or share some links I should take a look?",
+      "parentUuid": "59f4860b_f1aedf2e",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b6abef4db1871d7d03e6e12c34da7a1d395ce6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8301bb42_1e2cc122",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
         "patchSetId": 5
