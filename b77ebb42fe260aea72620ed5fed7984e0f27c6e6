@@ -34,6 +34,24 @@
       "parentUuid": "17f6e9a0_db97788e",
       "revId": "b77ebb42fe260aea72620ed5fed7984e0f27c6e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d869609c_c0f02a7d",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-02T09:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98ab53d1_976ebaed",
+      "revId": "b77ebb42fe260aea72620ed5fed7984e0f27c6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
