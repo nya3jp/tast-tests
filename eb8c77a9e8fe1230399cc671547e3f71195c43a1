@@ -22,6 +22,30 @@
       },
       "revId": "eb8c77a9e8fe1230399cc671547e3f71195c43a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2296d4_dbf145be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-07-02T10:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f34f602_c234a96a",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 24
+      },
+      "revId": "eb8c77a9e8fe1230399cc671547e3f71195c43a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
