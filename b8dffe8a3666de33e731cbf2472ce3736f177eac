@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c7600d_fc86c449",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T06:04:46Z",
+      "side": 1,
+      "message": "Do we want to share the existing FixtData from the policy fixtures? It would allow policy tests to run with both kiosk and normal users.",
+      "revId": "b8dffe8a3666de33e731cbf2472ce3736f177eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a393300_5e7df0e2",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T06:04:46Z",
+      "side": 1,
+      "message": "nit: use inline",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "b8dffe8a3666de33e731cbf2472ce3736f177eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddfcfc67_63ebbb17",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T06:04:46Z",
+      "side": 1,
+      "message": "Move this after chrome.New (the prefious Fatal could leave and unclosed Chrome.",
+      "revId": "b8dffe8a3666de33e731cbf2472ce3736f177eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
