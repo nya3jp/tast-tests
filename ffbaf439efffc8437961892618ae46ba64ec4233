@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fabb03_cf710507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/voice_message.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-02T04:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea13a2d7_849138d6",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "ffbaf439efffc8437961892618ae46ba64ec4233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0edf2b4a_eb69cc2e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a54090b_6a973c04",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-02T04:33:30Z",
+      "side": 1,
+      "message": "changed to ime.LANGUAGE_XX",
+      "parentUuid": "0edf2b4a_eb69cc2e",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "ffbaf439efffc8437961892618ae46ba64ec4233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f82c8c8_9f0ad16f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-02T04:14:10Z",
       "side": 1,
       "message": "It is important to distinguish tast/local and tast/local/cros/bundle\n\nThe first package is for general features. And the second is test related functions. If these constants are only related to voice \u0026 hw testing, you should move them to cros/bundles/inputs/constants.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "ffbaf439efffc8437961892618ae46ba64ec4233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb048ec2_78af78e4",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-02T04:33:30Z",
+      "side": 1,
+      "message": "moved this to the input data",
+      "parentUuid": "3f82c8c8_9f0ad16f",
       "range": {
         "startLine": 39,
         "startChar": 0,
