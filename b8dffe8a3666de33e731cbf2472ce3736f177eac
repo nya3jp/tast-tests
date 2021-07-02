@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36376299_14428f4f",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-02T11:22:55Z",
+      "side": 1,
+      "message": "We can have the existing tests as good examples. That\u0027s how the current structure of the policy tests got widespread 😊.",
+      "parentUuid": "dd5aee53_08baff1c",
+      "revId": "b8dffe8a3666de33e731cbf2472ce3736f177eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a393300_5e7df0e2",
         "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
         "patchSetId": 4
