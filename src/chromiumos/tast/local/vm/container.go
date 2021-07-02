@@ -491,6 +491,9 @@ func (c *Container) CheckFileContent(ctx context.Context, filePath, testString s
 
 // WriteFile creates a file in the container using echo.
 func (c *Container) WriteFile(ctx context.Context, filePath, fileContent string) error {
+	if err := c.Command(ctx, "mkdir", "-p", filepath.Dir(filePath)).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to create the directory containing the file %v in container", filePath)
+	}
 	if err := c.Command(ctx, "sh", "-c", fmt.Sprintf("echo -n %s > %s", shutil.Escape(fileContent), filePath)).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to write file %v in container", filePath)
 	}
