@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2579a480_b45fe83d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-02T02:24:16Z",
+      "side": 1,
+      "message": "This is probably designed for tear down. If the test fails due to timeout, this function will be executed. The normal practice is to shorten the ctx a few seconds to reserve time for cleanup.\n\ncleanupCtx :\u003d ctx\n// Use a shortened context for test operations to reserve time for cleanup.\nctx, shortCancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer shortCancel()\n\ndefer func(ctx context.Context){cleanup...}(cleanupCtx)",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "b5157536fb9891dc7ae9fb289303c74fa1c1bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19a2aa7_3361519c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-02T02:24:16Z",
+      "side": 1,
+      "message": "This function should not be in teardown but setup. \n\nFor example, clear(inputField) -\u003e ClickFieldUntilVKShown",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "b5157536fb9891dc7ae9fb289303c74fa1c1bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390381ba_2e2c4467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-02T02:24:16Z",
+      "side": 1,
+      "message": "dump should happen immediately after the failure. In this case, the input field is already cleared.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 93
+      },
+      "revId": "b5157536fb9891dc7ae9fb289303c74fa1c1bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
