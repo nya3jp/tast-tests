@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -89,23 +90,6 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 	testing.ContextLogf(ctx, "Running test: %s", testName)
 
-	testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
-	if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
-		return 0, errors.Wrap(err, "failed to flush buffers")
-	}
-	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
-		return 0, errors.Wrap(err, "failed to clear caches")
-	}
-
-	/*
-		TODO(b/153866893): Currently not supported in CrOS
-
-		testing.ContextLog(ctx, "Clearing swap space")
-		if err := testexec.CommandContext(ctx, "swapoff -a && swapon -a").Run(testexec.DumpLogOnError); err != nil {
-			return 0, errors.New("failed to clear swap space")
-		}
-	*/
-
 	testing.ContextLog(ctx, "Starting setup")
 
 	// Shorten the test context so that even if the test times out
@@ -146,6 +130,11 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		return 0, errors.Wrap(err, "failed to build metrics")
 	}
 	testing.ContextLog(ctx, "Finished setup")
+
+	// Drop caches before starting test,
+	if err := disk.DropCaches(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to drop caches")
+	}
 
 	testing.ContextLog(ctx, "Waiting until CPU is idle")
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
