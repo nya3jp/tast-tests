@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c13426_1ba88e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-02T00:29:05Z",
+      "side": 1,
+      "message": "Ack. Thanks for clarifying!",
+      "parentUuid": "4501dcd5_cb5d8a5b",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "165b47094d3ac5c4a56c59c75ca4678e0788f5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "302731a3_b413d076",
