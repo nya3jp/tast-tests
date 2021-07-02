@@ -374,7 +374,7 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 
 // switchToHandwriting changes to handwriting layout and returns a handwriting context.
 func (vkbCtx *VirtualKeyboardContext) switchToHandwriting(ctx context.Context) (*HandwritingContext, error) {
-	if err := vkbCtx.ui.LeftClick(KeyFinder.NameStartingWith("switch to handwriting"))(ctx); err != nil {
+	if err := vkbCtx.leftClickIfExist(KeyFinder.NameStartingWith("switch to handwriting"))(ctx); err != nil {
 		return nil, err
 	}
 
@@ -435,4 +435,12 @@ func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string)
 	return uiauto.Combine("wait for suggestion and select",
 		ac.WaitUntilExists(suggestionFinder),
 		ac.LeftClick(suggestionFinder))
+}
+
+// leftClickIfExist returns an action that checks the existence of a node within a short timeout,
+// then clicks it if it exists and does nothing if not.
+func (vkbCtx *VirtualKeyboardContext) leftClickIfExist(finder *nodewith.Finder) uiauto.Action {
+	return vkbCtx.ui.IfSuccessThen(
+		vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(finder),
+		vkbCtx.ui.LeftClick(finder))
 }

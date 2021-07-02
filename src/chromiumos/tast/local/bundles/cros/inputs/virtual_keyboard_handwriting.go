@@ -6,9 +6,11 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
@@ -22,19 +24,15 @@ import (
 
 // Documentation on file format can be found in go/tast-handwriting-svg-parsing.
 const (
-	handwritingWarmupFile  = "handwriting_digit_3_20210510.svg"
+	handwritingWarmupFile  = "handwriting_digit_3.svg"
 	handwritingWarmupDigit = "3"
-	handwritingFileEN      = "handwriting_en_hello_20210129.svg"
-	handwritingFileCN      = "handwriting_cn_hello_20210129.svg"
-	handwritingFileJP      = "handwriting_jp_hello_20210129.svg"
 )
 
-// Struct to contain the virtual keyboard handwriting test parameters.
-type handwritingTestParams struct {
-	handwritingFile string
-	expectedText    string
-	imeID           ime.InputMethodCode
-	testFloat       bool
+var hwTestMessages = []data.Message{data.HandwritingMessageHello}
+var hwTestIMEs = []ime.InputMethodCode{
+	ime.INPUTMETHOD_NACL_MOZC_JP,
+	ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+	ime.INPUTMETHOD_XKB_US_ENG,
 }
 
 func init() {
@@ -44,76 +42,34 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
-		Data:         []string{handwritingWarmupFile},
+		Data:         append(data.ExtractExternalFiles(hwTestMessages, hwTestIMEs), handwritingWarmupFile),
+		Timeout:      time.Duration(len(hwTestIMEs)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		// kevin64 board doesn't support nacl, thus IMEs using nacl for handwriting canvas fail.
 		// Have to exclude entire kevin model as no distinguish between kevin and kevin64.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kevin1")),
 		Params: []testing.Param{
 			{
-				Name:      "hello_jp",
-				ExtraData: []string{handwritingFileJP},
-				Val: handwritingTestParams{
-					handwritingFile: handwritingFileJP,
-					expectedText:    "こんにちは",
-					imeID:           ime.INPUTMETHOD_NACL_MOZC_JP,
-				},
-			}, {
-				Name:      "hello_jp_float",
-				ExtraData: []string{handwritingFileJP},
-				Val: handwritingTestParams{
-					handwritingFile: handwritingFileJP,
-					expectedText:    "こんにちは",
-					imeID:           ime.INPUTMETHOD_NACL_MOZC_JP,
-					testFloat:       true,
-				},
-			}, {
-				Name:      "hello_cn",
-				ExtraData: []string{handwritingFileCN},
-				Val: handwritingTestParams{
-					handwritingFile: handwritingFileCN,
-					expectedText:    "你好",
-					imeID:           ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				},
-			}, {
-				Name:      "hello_cn_float",
-				ExtraData: []string{handwritingFileCN},
-				Val: handwritingTestParams{
-					handwritingFile: handwritingFileCN,
-					expectedText:    "你好",
-					imeID:           ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-					testFloat:       true,
-				},
-			}, {
-				Name:      "hello_en",
-				ExtraData: []string{handwritingFileEN},
-				Val: handwritingTestParams{
-					handwritingFile: handwritingFileEN,
-					expectedText:    "hello",
-					imeID:           ime.INPUTMETHOD_XKB_US_ENG,
-				},
-			}, {
-				Name:      "hello_en_float",
-				ExtraData: []string{handwritingFileEN},
-				Val: handwritingTestParams{
-					handwritingFile: handwritingFileEN,
-					expectedText:    "hello",
-					imeID:           ime.INPUTMETHOD_XKB_US_ENG,
-					testFloat:       true,
-				},
+				Name: "docked",
+				// false for docked-mode VK
+				Val: false,
+			},
+			{
+				Name: "floating",
+				// true for floating-mode VK
+				Val: true,
 			},
 		},
 	})
 }
 
 func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
+
 	cleanupCtx := ctx
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Variable to contain the test parameters that are specific to the current test case.
-	params := s.Param().(handwritingTestParams)
-
+	isFloating := s.Param().(bool)
 	// Options containing preconditions.
 	opts := []chrome.Option{
 		chrome.VKEnabled(),
@@ -121,7 +77,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	}
 
 	// Add precondition of requiring a floating keyboard if testing for floating handwriting input.
-	if params.testFloat {
+	if isFloating {
 		opts = append(opts, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"))
 	}
 
@@ -139,14 +95,6 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// IME code of the language currently being tested.
-	testIME := ime.IMEPrefix + string(params.imeID)
-
-	// Add and set the required ime for the test case.
-	if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {
-		s.Fatalf("Failed to set input method to %s: %v", testIME, err)
-	}
-
 	// Launch inputs test web server.
 	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
@@ -158,29 +106,50 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	// Show VK.
-	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
-		s.Fatal("Failed to show VK: ", err)
-	}
+	// Creates subtest that runs the test logic using inputData.
+	subtest := func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State) {
+		return func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
+			// Use a shortened context for test operations to reserve time for cleanup.
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
 
-	// Switch to handwriting layout.
-	hwCtx, err := vkbCtx.SwitchToHandwritingAndCloseInfoDialogue(ctx)
-	if err != nil {
-		s.Fatal("Failed to switch to handwriting: ", err)
-	}
+			defer func(ctx context.Context) {
+				outDir := filepath.Join(s.OutDir(), testName)
+				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_tree_"+testName)
 
-	// Warm-up steps to check handwriting engine ready.
-	checkEngineReady := uiauto.Combine("Wait for handwriting engine to be ready",
-		hwCtx.DrawStrokesFromFile(s.DataPath(handwritingWarmupFile)),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), handwritingWarmupDigit),
-		hwCtx.ClearHandwritingCanvas(),
-		its.Clear(inputField))
+				if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
+					s.Log("Failed to hide virtual keyboard: ", err)
+				}
+			}(cleanupCtx)
 
-	if err := uiauto.Combine("Test handwriting on virtual keyboard",
-		hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
-		hwCtx.DrawStrokesFromFile(s.DataPath(params.handwritingFile)),
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), params.expectedText),
-	)(ctx); err != nil {
-		s.Fatal("Failed to verify handwriting input: ", err)
+			if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
+				s.Fatal("Failed to show VK: ", err)
+			}
+
+			// Switch to handwriting layout.
+			hwCtx, err := vkbCtx.SwitchToHandwritingAndCloseInfoDialogue(ctx)
+			if err != nil {
+				s.Fatal("Failed to switch to handwriting: ", err)
+			}
+
+			// Warm-up steps to check handwriting engine ready.
+			checkEngineReady := uiauto.Combine("Wait for handwriting engine to be ready",
+				its.Clear(inputField),
+				hwCtx.DrawStrokesFromFile(s.DataPath(handwritingWarmupFile)),
+				util.WaitForFieldTextToBe(tconn, inputField.Finder(), handwritingWarmupDigit),
+				hwCtx.ClearHandwritingCanvas(),
+				its.Clear(inputField))
+
+			if err := uiauto.Combine("Test handwriting on virtual keyboard",
+				hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
+				hwCtx.DrawStrokesFromFile(s.DataPath(inputData.HandwritingFile)),
+				util.WaitForFieldTextToBe(tconn, inputField.Finder(), inputData.ExpectedText),
+			)(ctx); err != nil {
+				s.Fatal("Failed to verify handwriting input: ", err)
+			}
+		}
 	}
+	// Run defined subtest per input method and message combination.
+	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, hwTestIMEs, hwTestMessages, subtest)
 }
