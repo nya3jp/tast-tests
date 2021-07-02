@@ -207,7 +207,7 @@ func OverlappingBSSScan(ctx context.Context, s *testing.State) {
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
 	mac, err := ipr.MAC(ctx, clientIface)
 	if err != nil {
-		s.Fatal("Failed to get MAC of WiFi interface")
+		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
 	pcapPath, err := capturer.PacketPath(ctx)

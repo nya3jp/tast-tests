@@ -90,12 +90,12 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 	// Get DUT interface name and MAC address.
 	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
-		s.Fatal("Failed to get client interface")
+		s.Fatal("Failed to get client interface: ", err)
 	}
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
 	mac, err := ipr.MAC(ctx, iface)
 	if err != nil {
-		s.Fatal("Failed to get MAC of WiFi interface")
+		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
 	// Start the background sender of malformed probe response.
