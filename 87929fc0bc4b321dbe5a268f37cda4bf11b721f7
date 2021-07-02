@@ -46,6 +46,30 @@
       },
       "revId": "87929fc0bc4b321dbe5a268f37cda4bf11b721f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd56a8dd_ecbe0981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-02T01:48:30Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "b59ca5aa_6eae3b5b",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "87929fc0bc4b321dbe5a268f37cda4bf11b721f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
