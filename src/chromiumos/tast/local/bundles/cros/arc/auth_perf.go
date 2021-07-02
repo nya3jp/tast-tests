@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"math"
 	"os"
 	"path/filepath"
@@ -22,6 +21,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
@@ -314,12 +314,8 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 
 	// Drop host OS caches if test config requires it for predictable results.
 	if s.Param().(testParam).dropCaches {
-		testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
-		if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
-			return v, errors.Wrap(err, "failed to flush buffers")
-		}
-		if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
-			return v, errors.Wrap(err, "failed to clear caches")
+		if err := disk.DropCaches(ctx); err != nil {
+			return v, errors.Wrap(err, "failed to drop caches")
 		}
 	}
 
