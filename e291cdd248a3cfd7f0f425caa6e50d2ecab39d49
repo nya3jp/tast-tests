@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fe34c12_e088573a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-02T14:01:34Z",
+      "side": 1,
+      "message": "Here\u0027s the code of my attempt:\nhttps://paste.googleplex.com/5616588284755968\n\nHere\u0027s the output I get when I log the value of `loggedSettings`:\n{0   [] 300 0}\nIt\u0027s the same value across left and center justified (test fails before making it to right justified)\n\nHere\u0027s the example json data for the left-justified adf case: (the only difference between the three justifications is the xoffset value)\nhttps://paste.googleplex.com/5018669210927104",
+      "parentUuid": "85d91059_1b14b87e",
+      "revId": "e291cdd248a3cfd7f0f425caa6e50d2ecab39d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d47bdbf_c7805a8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
         "patchSetId": 3
