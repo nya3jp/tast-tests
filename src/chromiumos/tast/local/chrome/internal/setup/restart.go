@@ -99,8 +99,24 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	} else {
 		args = append(args, "--profile-requires-policy=false")
 	}
+	if cfg.RealtimeReportingAddr() != "" {
+		args = append(args, "--realtime-reporting-url="+cfg.RealtimeReportingAddr())
+	}
+	if cfg.EncryptedReportingAddr() == "" {
+		args = append(args, "--encrypted-reporting-url="+cfg.EncryptedReportingAddr())
+	}
 	if cfg.DMSAddr() != "" {
 		args = append(args, "--device-management-url="+cfg.DMSAddr())
+
+		// crbug.com/1225937
+		// When using a fake DMServer, the tokens provided to the device are not
+		// valid for reporting and trigger errors on the reporting server.
+		if cfg.RealtimeReportingAddr() == "" {
+			args = append(args, "--realtime-reporting-url=http://invalid.domain.name:54321/")
+		}
+		if cfg.EncryptedReportingAddr() == "" {
+			args = append(args, "--encrypted-reporting-url=http://invalid.domain.name:54321/")
+		}
 	}
 	if cfg.DisablePolicyKeyVerification() {
 		args = append(args, "--disable-policy-key-verification")
