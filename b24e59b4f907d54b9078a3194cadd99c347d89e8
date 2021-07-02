@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d25176_428d85fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-02T02:46:15Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "b24e59b4f907d54b9078a3194cadd99c347d89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38f6319_daa23676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-02T02:46:15Z",
+      "side": 1,
+      "message": "nit: maybe also print err here?",
+      "range": {
+        "startLine": 280,
+        "startChar": 48,
+        "endLine": 280,
+        "endChar": 49
+      },
+      "revId": "b24e59b4f907d54b9078a3194cadd99c347d89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433b5f32_0bf7d3e4",
+        "filename": "src/chromiumos/tast/local/disk/drop_caches.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-02T02:46:15Z",
+      "side": 1,
+      "message": "nit: maybe it\u0027s more readable to define constants for these?",
+      "revId": "b24e59b4f907d54b9078a3194cadd99c347d89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
