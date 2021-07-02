@@ -150,6 +150,7 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 
 // soakTestBlock runs long, write-intensive storage stresses.
 func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
+	// Not clear why we have this maths on each block... Probably cut this out before final commit
 	singleTestDuration := testParam.soakBlockTimeout / 2
 
 	testConfigNoVerify := &stress.TestConfig{
@@ -164,13 +165,13 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 	stressTasks := []func(context.Context){
 		func(ctx context.Context) {
 			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("64k_stress"))
-			// 25% of required "surfing" stress duration.
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(singleTestDuration/4))
-			if err := testing.Sleep(ctx, 5*time.Minute); errors.Is(err, context.DeadlineExceeded) {
+			// NoVerify surf block to exercise device
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(5*time.Minute))
+			if err := testing.Sleep(ctx, 3*time.Minute); errors.Is(err, context.DeadlineExceeded) {
 				return
 			}
-			// 75% of required "surfing" stress duration.
-			runFioStress(ctx, s, testConfigVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(singleTestDuration/4*3))
+			// Verify surfing block for performance evaluation
+			runFioStress(ctx, s, testConfigVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(10*time.Minute))
 		},
 	}
 
