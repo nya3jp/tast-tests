@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2a9a2c_7562caf6",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-02T03:09:04Z",
+      "side": 1,
+      "message": "Sorry I know it\u0027s confused to add those space. \nThe Preupload check\nchromiumos/platform/tast-tests: _check_gofmt\nwill fail without adding those spaces.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "86d06b7fc7165da43d606c176a8c03926fa09414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

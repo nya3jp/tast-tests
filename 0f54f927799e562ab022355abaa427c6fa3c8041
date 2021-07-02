@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084f0f6f_ce34f458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-02T03:09:04Z",
+      "side": 1,
+      "message": "Hi,\nPlease help to review this CL.\nThis CL depends on [1] and will not submit before [1] get merged.\nThank you!\n\n[1] crrev.com/c/2986909 \n",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
