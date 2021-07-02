@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/test_doc_fourpages_20210707.pdf",
+  "size": 96247,
+  "sha256sum": "6783efe4ca0a41a0d63dd9fd3c76dae274a3c8ace1f1d5318bbcf95d26122b04"
+}

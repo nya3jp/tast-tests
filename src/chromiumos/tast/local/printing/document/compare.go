@@ -61,6 +61,8 @@ var cleanRegex = regexp.MustCompile(
 		`|@PJL DMINFO ASCIIHEX=".*` +
 		// For Ricoh jobs, the SET DATE/TIME values are time-specific.
 		`|@PJL SET DATE=".*` +
+		`|@PJL COMMENT=".*` +
+		`|@PJL SET TIMESTAMP=[0-9]*` +
 		`|@PJL SET TIME=".*)[\r\n])` +
 		// For Ricoh jobs, "usercode (\d+)" contains the date
 		// and time of the print job.
