@@ -150,35 +150,36 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 
 // soakTestBlock runs long, write-intensive storage stresses.
 func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
-	singleTestDuration := testParam.soakBlockTimeout / 2
+	slcTestDuration := testParam.soakBlockTimeout / 2
+	noVerifySurfingDuration := 5 * time.Minute
+	sleepDuration := 3 * time.Minute
+	surfingDuration := 10 * time.Minute
+	stressTestDuration := testParam.soakBlockTimeout - (noVerifySurfingDuration + sleepDuration + surfingDuration)
 
-	testConfigNoVerify := &stress.TestConfig{
-		Duration: singleTestDuration,
-	}
+	testConfigNoVerify := &stress.TestConfig{}
 	testConfigVerify := &stress.TestConfig{
 		VerifyOnly:   true,
 		ResultWriter: rw,
-		Duration:     singleTestDuration,
 	}
 
 	stressTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("64k_stress"))
-			// 25% of required "surfing" stress duration.
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(singleTestDuration/4))
-			if err := testing.Sleep(ctx, 5*time.Minute); errors.Is(err, context.DeadlineExceeded) {
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("64k_stress").WithDuration(stressTestDuration))
+			// NoVerify surf block to exercise device
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(noVerifySurfingDuration))
+			if err := testing.Sleep(ctx, sleepDuration); errors.Is(err, context.DeadlineExceeded) {
 				return
 			}
-			// 75% of required "surfing" stress duration.
-			runFioStress(ctx, s, testConfigVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(singleTestDuration/4*3))
+			// Verify surfing block for performance evaluation
+			runFioStress(ctx, s, testConfigVerify.WithPath(stress.BootDeviceFioPath).WithJob("surfing").WithDuration(surfingDuration))
 		},
 	}
 
 	if testParam.isSlcEnabled {
 		stressTasks = append(stressTasks,
 			func(ctx context.Context) {
-				runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.slcDevice).WithJob("4k_write"))
-				runFioStress(ctx, s, testConfigVerify.WithPath(testParam.slcDevice).WithJob("4k_write"))
+				runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.slcDevice).WithJob("4k_write").WithDuration(slcTestDuration))
+				runFioStress(ctx, s, testConfigVerify.WithPath(testParam.slcDevice).WithJob("4k_write").WithDuration(slcTestDuration))
 			})
 	}
 
