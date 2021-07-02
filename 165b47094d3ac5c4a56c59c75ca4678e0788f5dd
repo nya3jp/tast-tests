@@ -139,6 +139,24 @@
       "parentUuid": "302731a3_b413d076",
       "revId": "165b47094d3ac5c4a56c59c75ca4678e0788f5dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a21508c_107bad4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-07-02T22:15:45Z",
+      "side": 1,
+      "message": "Interesting, didn\u0027t realize that. Thanks for doing it anyways.",
+      "parentUuid": "08a68899_7ee6d697",
+      "revId": "165b47094d3ac5c4a56c59c75ca4678e0788f5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
