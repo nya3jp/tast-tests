@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "745d3c9e_a52f54c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-02T01:26:41Z",
+      "side": 1,
+      "message": "No, but index line will keep changing every time we update the patch. It\u0027s a meanless change due to each \"git init\". So I prefer to remove all index line.",
+      "parentUuid": "b95e1a24_fcaeb70e",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "1749e12416b419527ac8a73767ff75582f3ff2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "34f9a4ec_b005e1bf",
