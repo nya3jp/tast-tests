@@ -58,12 +58,12 @@ func ConnectMBO(ctx context.Context, s *testing.State) {
 	// Get the MAC address of WiFi interface.
 	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
-		s.Fatal("Failed to get WiFi interface of DUT")
+		s.Fatal("Failed to get WiFi interface of DUT: ", err)
 	}
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
 	mac, err := ipr.MAC(ctx, iface)
 	if err != nil {
-		s.Fatal("Failed to get MAC of WiFi interface")
+		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
 	apOps := []hostapd.Option{
