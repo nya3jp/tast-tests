@@ -174,6 +174,30 @@
       },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db774fd_f3b915b5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-02T02:01:08Z",
+      "side": 1,
+      "message": "I still think the current one is confusing.\n\nIt says \"whether the NodeInfo matches the Finder\". But what the implementation does is a bit different. For example, even when given finder has no role, the found nodes can have some role that is different from the |actual| one, resulting that it returns false due to mismatch of the role.\n\nRandom alternative approaches I came up with are:\n- finder.bytes() generates the string representation of FindParams. Make the function public and use it from a11y. Or,\n- Instead of getting a Finder as a parameter, get a |NodeInfo| as a parameter, and run compare equality with go-cmp package (https://pkg.go.dev/github.com/google/go-cmp/cmp#Equal). It allows us to skip comparing empty value (see an example in the Options section in the doc)\n\nWhat do you think?",
+      "parentUuid": "fa35d211_0ef1f519",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
