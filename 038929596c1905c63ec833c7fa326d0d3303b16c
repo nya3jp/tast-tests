@@ -185,6 +185,24 @@
       "parentUuid": "46d9ad9a_5a4e10f1",
       "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50188720_a6540c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-02T14:23:55Z",
+      "side": 1,
+      "message": "1) I prefer keeping it is done within each function.\n2) this is private method, so as long as the teardown method is idempotent and it is document clearly, I\u0027m ok to let caller to teardown on error, too.",
+      "parentUuid": "34e93b16_d144f3a4",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
