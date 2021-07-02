@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b79bfd6_6d05c899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-02T05:03:33Z",
+      "side": 1,
+      "message": "Seems to be a few examples of putting the arg name between /* */ to help clarify what it\u0027s for:\nhttps://source.corp.google.com/search?q\u003d%2F%5C*.*%5C*%2F%20language:go\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F\n\nSo I think that would be a good option to help clarify the args.",
+      "parentUuid": "3ab96fe5_16592e8e",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 61
+      },
+      "revId": "82bfc039d0065cda40a711a94d363c27a45ff64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61ebb705_9362f1d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 1
