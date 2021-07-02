@@ -50,6 +50,23 @@
       "message": "oops, sorry I overlooked that there is a shadow reviewer.",
       "revId": "42bedd16697ef9a0e59f59a11544ad0bfbb978cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c72632f_1b2000ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-07-02T02:53:58Z",
+      "side": 1,
+      "message": "lgtm with a comment inline.",
+      "revId": "42bedd16697ef9a0e59f59a11544ad0bfbb978cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
