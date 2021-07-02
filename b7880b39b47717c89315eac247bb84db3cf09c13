@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a63d84b_c8c862e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-02T14:28:43Z",
+      "side": 1,
+      "message": "optional: do you want to have testexec.DumpLogOnError here for debuggability?",
+      "revId": "b7880b39b47717c89315eac247bb84db3cf09c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51403d4d_da6653a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-02T14:28:43Z",
+      "side": 1,
+      "message": "how long would |o| be? If it\u0027d be multi-line, it is recommeneded to output into a file to log the error, instead.\n\nAre you intended to return stdout on error? If so could you document explicitly?",
+      "range": {
+        "startLine": 276,
+        "startChar": 77,
+        "endLine": 276,
+        "endChar": 78
+      },
+      "revId": "b7880b39b47717c89315eac247bb84db3cf09c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
