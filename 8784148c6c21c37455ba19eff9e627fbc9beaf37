@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1b0cbf_ce081be6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-03T00:40:28Z",
+      "side": 1,
+      "message": "This CL handle the change of drag-and-drop behavior after enable-launcer-app-paging became default.",
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
