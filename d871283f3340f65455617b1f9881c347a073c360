@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7112722d_c26d6280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "ca12f58b_b95a34c3",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306288ab_7569feab",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2480ae3_51055299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Hey I looked into it, turns out powerd is a daemon that initiates dimming the screen, suspending the system, etc. Doesn\u0027t look that much important to me now. What do you think!\n\nQuerying power status after stopping it works fine.",
+      "parentUuid": "6a052183_5cba46c4",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c21cbe1d_0cf945c6",
@@ -125,6 +173,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "If we don\u0027t stop them, how much longer we will charge the DUT?\n\nEven though it might speed up charging, this RPC performs some unexpected things. What if some test will use in parallel another RPCs which relies on UI or other services?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565b8385_b30d8812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "I have removed \"ui\" from the list of services.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/client/cros/service_stopper.py;l\u003d36\nAccording to this, the rest three should be stopped during running power tests.\nPlease share your views. Thanks.",
+      "parentUuid": "c21cbe1d_0cf945c6",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -158,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab762c24_b2b18842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Yeah, you are right. I found 40% is default in chromebooks. So i am going with 10/20 percent.",
+      "parentUuid": "f35d2d9e_52a9fb1a",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9789cd0e_ed2e8786",
@@ -171,6 +267,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "nit: why not fail here? Of course, we can live with higher brightness, but this should never fail.\n\nIf we just ignore it (even though we log it), some bug might be there for a long time.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fda301_eb00cb41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Actually, my intention was what if the DUT is connected to an external monitor or has no screen (in a grid, something like that). It\u0027s no hard requirement that\u0027s why I was skipping it.",
+      "parentUuid": "9789cd0e_ed2e8786",
       "range": {
         "startLine": 64,
         "startChar": 2,
@@ -228,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "696b6456_1d02c1fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be86783_dabb57c9",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "234bba6e_44afa9d4",
@@ -275,6 +419,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c27c27e_b9459893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "I have added a periodicLog function that runs on a goroutine and prints some log periodically to avoid a complete blank terminal while running these tests as they are long running in nature.\nIt\u0027s not required though. If you think it\u0027s not useful, do let me know. I\u0027ll remove it.",
+      "parentUuid": "680d390b_3cb20d05",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 126
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f601f290_e875aad3",
@@ -288,6 +456,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "I\u0027d decrease interval to 1 second. We can use fast charging which gives really a lot of power to the DUT: it might charge from 0 to 100 in something like 1 hour (don\u0027t remember exact numbers).",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b516e60_968f46cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f601f290_e875aad3",
       "range": {
         "startLine": 109,
         "startChar": 2,
@@ -321,6 +513,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ba9f49_91b7c4fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Wrote functions to tackle these.Turns out backlight-tool also supports percentage scheme.",
+      "parentUuid": "58c1a2d3_0a9f532d",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6d76792_3308f810",
@@ -334,6 +550,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "I think you got errors and just ignored them, but we should never ignore errors. I think in your cases it indicates some problems with that method.\n\nIt looks like this method you are trying to use is using some \"backlight_tool\" executable which is not present on drallion and sarien devices: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/power/setup/setup_screen_backlight.go;l\u003d51?q\u003dsetup.SetBacklightLux",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 78
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ba986c_db892a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Now I have updated it with percentage.",
+      "parentUuid": "f6d76792_3308f810",
       "range": {
         "startLine": 132,
         "startChar": 0,
@@ -428,6 +668,30 @@
       "side": 1,
       "message": "Yes, Instead of waiting for the response of an extra rpc to query the battery level. We could just expose a single rpc and 2 local methods BatteryCharge and Battery Drain.",
       "parentUuid": "bb2cf4fc_454de518",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ba736b_ef2fbbc1",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Added a remote method EnsureBatteryPercentage for the same.\nSingle RPC isn\u0027t sufficient for this case, as here servo is an external factor that need to be operated based on charge/drain.\nI intentionally skipped grpc streaming as it lacks acknowledgement.",
+      "parentUuid": "a8051559_d3d92025",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -545,6 +809,30 @@
       "writtenOn": "2021-06-29T10:38:40Z",
       "side": 1,
       "message": "We should rely on \"battery_percent\" proto field for our policies, instead of other parameters:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/power_manager/powerd/system/power_supply.cc;l\u003d237\n\n\n\"battery_percent\" is the battery charge percent visible to the user and policy implementation relies on this value even though real battery percentage is slightly different.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb43664_6dfddb07",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-03T22:47:54Z",
+      "side": 1,
+      "message": "Thanks for notifying. Yes, each messages has only one proto field now i.e. \"percentage\" that is sufficient and internally they makes comparison with DisplayPercentage.",
+      "parentUuid": "3b2bec3a_05d2a0c5",
       "range": {
         "startLine": 21,
         "startChar": 0,
