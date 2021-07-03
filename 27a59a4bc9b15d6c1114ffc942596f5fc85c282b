@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d719d2_266b602e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-07-03T06:29:50Z",
+      "side": 1,
+      "message": "only commmit message was updated since Sherry verified. Carry her V+1 forward.",
+      "revId": "27a59a4bc9b15d6c1114ffc942596f5fc85c282b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
