@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176a7c5a_5d9f99d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-03T19:50:32Z",
+      "side": 1,
+      "message": "I made the variable registration to be done when variable is created to avoid tast_lint rule of allowing only AddTest in init.",
+      "revId": "f42f9b6ceeebb7254f7dd1c13e46d065507684a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
