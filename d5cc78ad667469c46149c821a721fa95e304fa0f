@@ -33,6 +33,24 @@
       "message": "nit: Let\u0027s stop Walk since we only need to know one recording file exist.\n\nIt seems we could do that via returning io.EOF.\n\nSee https://stackoverflow.com/questions/36713248/how-to-terminate-early-in-golang-walk",
       "revId": "d5cc78ad667469c46149c821a721fa95e304fa0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d57c82_58fe75e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-03T02:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5069184_cb02d5d1",
+      "revId": "d5cc78ad667469c46149c821a721fa95e304fa0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
