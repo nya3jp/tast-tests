@@ -11,10 +11,13 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
+	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wilco/routines"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/wilco"
 	wpb "chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"
@@ -394,4 +397,44 @@ func (c *WilcoService) WaitForHandleMessageFromUi(ctx context.Context, req *empt
 	return &wpb.WaitForHandleMessageFromUiResponse{
 		JsonMessage: msg.JsonMessage,
 	}, nil
+}
+
+// Upstart job that keeps the RTC EC in sync with the local time of the DUT.
+const wilcoSyncRTCJob = "wilco_sync_ec_rtc"
+
+func (c *WilcoService) SetRTC(ctx context.Context, req *timestamp.Timestamp) (*empty.Empty, error) {
+	if err := upstart.StopJob(ctx, wilcoSyncRTCJob); err != nil {
+		return nil, errors.Wrapf(err, "failed to stop %q job that syncs EC RTC", wilcoSyncRTCJob)
+	}
+
+	cleanUp := true
+	defer func(ctx context.Context) {
+		if !cleanUp {
+			return
+		}
+		if _, err := c.ResetRTC(ctx, &empty.Empty{}); err != nil {
+			testing.ContextLog(ctx, "Failed to reset RTC: ", err)
+		}
+	}(ctx)
+
+	// For more information about time format, please consult https://cs.opensource.google/go/go/+/refs/tags/go1.16.6:src/time/format.go;l=92.
+	datetime := time.Unix(req.Seconds, 0).UTC().Format("1/2/06 03:04:05")
+
+	if err := testexec.CommandContext(ctx, "/sbin/hwclock", "--set", "--date",
+		datetime, "--localtime", "--rtc=/dev/rtc1", "--noadjfile").Run(); err != nil {
+		return nil, errors.Wrapf(err, "failed to update hwclock to mock datetime %q", datetime)
+	}
+	cleanUp = false
+	return &empty.Empty{}, nil
+}
+
+func (c *WilcoService) ResetRTC(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	if err := upstart.RestartJob(ctx, wilcoSyncRTCJob); err != nil {
+		return nil, errors.Wrapf(err, "failed to restart %q job to sync EC RTC", wilcoSyncRTCJob)
+	}
+
+	if err := testexec.CommandContext(ctx, "/sbin/hwclock", "--systohc", "--localtime", "--rtc=/dev/rtc1", "--noadjfile").Run(); err != nil {
+		return nil, errors.Wrap(err, "failed to update hwclock to system clock")
+	}
+	return &empty.Empty{}, nil
 }
