@@ -7,6 +7,7 @@ syntax = "proto3";
 package tast.cros.wilco;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "chromiumos/tast/services/cros/wilco";
 
@@ -48,6 +49,15 @@ service WilcoService {
     returns (google.protobuf.Empty) {}
   rpc WaitForHandleMessageFromUi(google.protobuf.Empty)
     returns (WaitForHandleMessageFromUiResponse) {}
+
+  // SetRTC sets Embedded Contoller's Real Time Clock to the specified mock time.
+  // It also disable upstart job to debar rtc from syncing. Only available to Wilco Devices. 
+  rpc SetRTC(google.protobuf.Timestamp)
+    returns (google.protobuf.Empty) {}
+
+  // ResetRTC reset EC's RTC back to original.
+  rpc ResetRTC(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
 }
 
 message GetStatusResponse {

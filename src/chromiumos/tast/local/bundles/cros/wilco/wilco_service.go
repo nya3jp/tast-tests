@@ -11,10 +11,13 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
+	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wilco/routines"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/wilco"
 	wpb "chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"
@@ -394,4 +397,31 @@ func (c *WilcoService) WaitForHandleMessageFromUi(ctx context.Context, req *empt
 	return &wpb.WaitForHandleMessageFromUiResponse{
 		JsonMessage: msg.JsonMessage,
 	}, nil
+}
+
+// Upstart job that keeps the EC's RTC in sync with the local time of the DUT.
+const wilcoSyncRTCJob = "wilco_sync_ec_rtc"
+
+func (c *WilcoService) SetRTC(ctx context.Context, ts *timestamp.Timestamp) (*empty.Empty, error) {
+	if err := upstart.StopJob(ctx, wilcoSyncRTCJob); err != nil {
+		return nil, errors.Wrap(err, "failed to stop job that syncs ec's real time clock")
+	}
+
+	if err := testexec.CommandContext(ctx, "/sbin/hwclock", "--set", "--date",
+		time.Unix(ts.Seconds, int64(ts.Nanos)).UTC().Format(time.RFC3339), "--localtime",
+		"--rtc=/dev/rtc1", "--noadjfile").Run(); err != nil {
+		return nil, errors.Wrap(err, "failed to update hwclock to mock time")
+	}
+	return &empty.Empty{}, nil
+}
+
+func (c *WilcoService) ResetRTC(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	if err := upstart.RestartJob(ctx, wilcoSyncRTCJob); err != nil {
+		return nil, errors.Wrap(err, "failed to restart job that syncs ec's real time clock")
+	}
+
+	if err := testexec.CommandContext(ctx, "/sbin/hwclock", "--systohc", "--localtime", "--rtc=/dev/rtc1", "--noadjfile").Run(); err != nil {
+		return nil, errors.Wrap(err, "failed to update hwclock to system clock")
+	}
+	return &empty.Empty{}, nil
 }
