@@ -26,6 +26,10 @@ func init() {
 }
 
 func MLServiceBootstrap(ctx context.Context, s *testing.State) {
+	const (
+		instanceParameter = "TASK"
+		instance          = "mojo_service"
+	)
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -35,12 +39,12 @@ func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 	const job = "ml-service"
 
 	s.Log("Stopping ML Service daemon if it is running")
-	if err = upstart.StopJob(ctx, job); err != nil {
+	if err = upstart.StopJob(ctx, job, upstart.WithArg(instanceParameter, instance)); err != nil {
 		s.Fatalf("Failed to stop %s: %v", job, err)
 	}
 
 	s.Log("Waiting for ML Service daemon to fully stop")
-	if err := upstart.WaitForJobStatus(ctx, job, upstartcommon.StopGoal, upstartcommon.WaitingState, upstart.RejectWrongGoal, 15*time.Second); err != nil {
+	if err := upstart.WaitForJobStatus(ctx, job, upstartcommon.StopGoal, upstartcommon.WaitingState, upstart.RejectWrongGoal, 15*time.Second, upstart.WithArg(instanceParameter, instance)); err != nil {
 		s.Fatalf("Failed waiting for %v to stop: %v", job, err)
 	}
 
@@ -50,7 +54,7 @@ func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking ML Service is running")
-	if err := upstart.WaitForJobStatus(ctx, job, upstartcommon.StartGoal, upstartcommon.RunningState, upstart.RejectWrongGoal, 15*time.Second); err != nil {
+	if err := upstart.WaitForJobStatus(ctx, job, upstartcommon.StartGoal, upstartcommon.RunningState, upstart.RejectWrongGoal, 15*time.Second, upstart.WithArg(instanceParameter, instance)); err != nil {
 		s.Fatalf("Failed waiting for %v to start: %v", job, err)
 	}
 }
