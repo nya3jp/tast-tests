@@ -44,6 +44,11 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	start := time.Now()
 	d := s.DUT()
 
+	// TODO: remove this
+	if err := d.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
+	}
+
 	arch, err := syzutils.FindDUTArch(ctx, d)
 	if err != nil {
 		s.Fatal("Unable to find syzkaller arch: ", err)
@@ -94,7 +99,7 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	}
 
 	count := 1
-	windowSize := 5
+	windowSize := 1
 	for start := 0; start < len(repros); start += windowSize {
 		// Take windowSize number of repros at a time.
 		end := start + windowSize
