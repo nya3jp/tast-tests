@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2666b3c_37bd6eee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "You should not stop powerd daemon for this test, because powerd daemon writes policy to the EC driver. Without this service running, there is no way to test policy properly.\n\nI\u0027d just ignore that stop services logic unless you prove we have to stop something.",
+      "parentUuid": "565b8385_b30d8812",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f35d2d9e_52a9fb1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -256,6 +280,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3626e5e6_f518a288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "How much faster test will be running if we \"play\" with brightness?",
+      "parentUuid": "ab762c24_b2b18842",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9789cd0e_ed2e8786",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -291,6 +339,30 @@
       "side": 1,
       "message": "Actually, my intention was what if the DUT is connected to an external monitor or has no screen (in a grid, something like that). It\u0027s no hard requirement that\u0027s why I was skipping it.",
       "parentUuid": "9789cd0e_ed2e8786",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03eb89b_09f41677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "There is no such requirement at the moment. If we had such requirement we should not even call this method for DUT without monitor and fail on error for DUT with monitor 😊",
+      "parentUuid": "f9fda301_eb00cb41",
       "range": {
         "startLine": 64,
         "startChar": 2,
@@ -539,6 +611,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3566b842_aa51714a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "adding one more tool to the test/service will complicate it IMO.\n\nAlso you don\u0027t need to do any parsing if you work with proto.",
+      "parentUuid": "c7ba9f49_91b7c4fc",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6d76792_3308f810",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -692,6 +788,30 @@
       "side": 1,
       "message": "Added a remote method EnsureBatteryPercentage for the same.\nSingle RPC isn\u0027t sufficient for this case, as here servo is an external factor that need to be operated based on charge/drain.\nI intentionally skipped grpc streaming as it lacks acknowledgement.",
       "parentUuid": "a8051559_d3d92025",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e48cca6_e59eb7ac",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "Why not have just one EnsureBatteryPercentage RPC method? Logic looks more complicated if you do some part of work locally and some part remote. Let\u0027s do everything locally for simplicity. WDYT?",
+      "parentUuid": "b9ba736b_ef2fbbc1",
       "range": {
         "startLine": 10,
         "startChar": 0,
