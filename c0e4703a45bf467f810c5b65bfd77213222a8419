@@ -294,6 +294,30 @@
       },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5230d597_3249414b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-05T03:18:17Z",
+      "side": 1,
+      "message": "One of the ideas of the new ui library is to make the find more specific. E.g, it does not return the first node if multiple nodes are found by the finder, but it return an error instead unless First is set.\n\nIn addition, there are multiple nodes with the same name but different role/classname in the accessibility tree, e.g, there are three \"Set up Linux development environment\" here:\n node id\u003d487 role\u003dwindow state\u003d{} parentID\u003d408 childIds\u003d[488,479] name\u003dSet up Linux development environment className\u003dWebDialogView\n              node id\u003d488 role\u003dwindow state\u003d{} parentID\u003d487 childIds\u003d[489] className\u003dNativeViewHostAuraClip\n                node id\u003d489 role\u003dwindow state\u003d{} parentID\u003d488 childIds\u003d[490] name\u003dSet up Linux development environment className\u003dWebContentsViewAura\n                  node id\u003d490 role\u003dwindow state\u003d{} parentID\u003d489 childIds\u003d[] name\u003dSet up Linux development environment className\u003dRenderWidgetHostViewAura\n                  \nIt is a bit waste to compare all of them.",
+      "parentUuid": "98effabd_1589ed54",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
