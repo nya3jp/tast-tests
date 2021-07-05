@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d201338_319132df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-05T10:01:24Z",
+      "side": 1,
+      "message": "It\u0027s nice to add a comment describing why we need this, preferably with a pointer to a bug. Then others can tell when we can actually remove this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "1bb8e0c4f8748d63433ac3e691df74c450306584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
