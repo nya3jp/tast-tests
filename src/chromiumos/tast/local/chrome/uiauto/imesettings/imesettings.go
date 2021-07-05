@@ -28,6 +28,7 @@ var defaultPollOpts = testing.PollOptions{Timeout: 10 * time.Second, Interval: 1
 var addInputMethodButton = nodewith.Name("Add input methods").Role(role.Button)
 var searchInputMethodField = nodewith.Name("Search by language or input name").Role(role.SearchBox)
 var showInputOptionsInShelfButton = nodewith.Name("Show input options in the shelf").Role(role.ToggleButton)
+var autocap = nodewith.Name("Auto-capitalization").Role(role.ToggleButton)
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
 type IMESettings struct {
@@ -98,6 +99,18 @@ func (i *IMESettings) OpenInputMethodSetting(tconn *chrome.TestConn, im ime.Inpu
 // ToggleShowInputOptionsInShelf clicks the 'Show input options in the shelf' toggle button.
 func (i *IMESettings) ToggleShowInputOptionsInShelf() uiauto.Action {
 	return i.settings.LeftClick(showInputOptionsInShelfButton)
+}
+
+// ClickAutoCap clicks the autocap setting for an ime.
+func (i *IMESettings) ClickAutoCap() uiauto.Action {
+	return i.settings.LeftClick(autocap)
+}
+
+// Close closes the settings app.
+func (i *IMESettings) Close() uiauto.Action {
+	return func(ctx context.Context) error {
+		return i.settings.Close(ctx)
+	}
 }
 
 // ShowInputOptionsInShelfShouldBe verifies the 'Show input options in the shelf' option.
