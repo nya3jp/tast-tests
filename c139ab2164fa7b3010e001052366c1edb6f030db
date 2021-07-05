@@ -22,6 +22,30 @@
       },
       "revId": "c139ab2164fa7b3010e001052366c1edb6f030db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c389e1b_d3876e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-07-05T01:12:31Z",
+      "side": 1,
+      "message": "I think in this case we need the untypable character. The untypable character is the indicator that the file hasn\u0027t been saved.\n\nI could replace it with a . to match any character to turn it into a regex, but I don\u0027t think that makes it better code, since this way it\u0027s slightly clearer what we\u0027re looking for.",
+      "parentUuid": "3a8c4f88_7f52dff2",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "c139ab2164fa7b3010e001052366c1edb6f030db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
