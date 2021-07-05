@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -28,7 +29,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
@@ -44,7 +45,7 @@ func init() {
 				chrome.ExtraArgs(DisableSyncFlags()...),
 			}, nil
 		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
@@ -81,7 +82,7 @@ func init() {
 				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"),
 			}, nil
 		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
@@ -99,7 +100,7 @@ func init() {
 					"*/media/gpu/v4l2/*=2",
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
 		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
@@ -109,6 +110,7 @@ func init() {
 type bootedFixture struct {
 	cr   *chrome.Chrome
 	arc  *ARC
+	d    *ui.Device
 	init *Snapshot
 
 	playStoreOptin bool // Opt into PlayStore.
@@ -194,6 +196,11 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 		}
 	}()
 
+	d, err := arc.NewUIDevice(s.FixtContext())
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+
 	init, err := NewSnapshot(ctx, arc)
 	if err != nil {
 		s.Fatal("Failed to take ARC state snapshot: ", err)
@@ -206,15 +213,22 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 
 	f.cr = cr
 	f.arc = arc
+	f.d = d
 	f.init = init
 	success = true
 	return &PreData{
-		Chrome: cr,
-		ARC:    arc,
+		Chrome:   cr,
+		ARC:      arc,
+		UIDevice: d,
 	}
 }
 
 func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	if err := f.d.Close(ctx); err != nil {
+		s.Log("Failed to close UI Automator: ", err)
+	}
+	f.d = nil
+
 	Unlock()
 	if err := f.arc.Close(ctx); err != nil {
 		s.Log("Failed to close ARC: ", err)

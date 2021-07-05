@@ -45,6 +45,7 @@ func Notification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	const (
 		apk = "ArcNotificationTest.apk"
@@ -88,12 +89,6 @@ func Notification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	s.Log("Setup is done, and running the test scenario")
 

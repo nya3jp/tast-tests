@@ -38,17 +38,12 @@ func init() {
 func GamepadPerf(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Could not initialize UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	s.Log("Creating a virtual gamepad device")
 	gp, err := input.Gamepad(ctx)
