@@ -2300,6 +2300,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		//    The third one is a mechanism to collect firmware debug dumps, that
 		//    effectively causes a restart, but we'll leave it aside for now.
 		iwlwifiFormat = "/sys/kernel/debug/iwlwifi/%s/iwlmvm/fw_restart"
+		mt76Format    = "/sys/kernel/debug/ieee80211/%s/mt76/chip_reset"
 
 		// The path is used to check for wcn399x device.
 		ath10kDeviceFormat = "/sys/class/net/%s/device/of_node/compatible"
@@ -2455,6 +2456,25 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		}
 		return nil
 	}
+	mt76ResetPath := func(ctx context.Context, iface string) (string, error) {
+		phy, err := network_iface.NewInterface(iface).PhyName(ctx)
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to get the phy name of the WiFi interface (%s)", iface)
+		}
+		resetPath := fmt.Sprintf(mt76Format, phy)
+		if !fileExists(resetPath) {
+			return "", errors.Errorf("mt76 reset path %q does not exist", resetPath)
+		}
+		return resetPath, nil
+	}
+	mt76Reset := func(ctx context.Context, resetPath string) error {
+		return assertIdleAndConnect(ctx, func(ctx context.Context) error {
+			if err := writeStringToFile(resetPath, "1"); err != nil {
+				return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
+			}
+			return nil
+		})
+	}
 
 	ctx, cancel := reserveForReturn(ctx)
 	defer cancel()
@@ -2481,6 +2501,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		{ath10kWCN3990Reset, ath10kWCN3990ResetPath},
 		{ath10kReset, ath10kResetPath},
 		{iwlwifiReset, iwlwifiResetPath},
+		{mt76Reset, mt76ResetPath},
 	} {
 		rp, err := v.resetPath(ctx, iface)
 		if err == nil {
