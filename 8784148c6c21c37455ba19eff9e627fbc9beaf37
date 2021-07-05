@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e94145_3278ecc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-05T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8d58b4_4ac28ef9",
+      "range": {
+        "startLine": 123,
+        "startChar": 37,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a8b6404_f0f07619",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-05T08:17:41Z",
       "side": 1,
       "message": "nit location",
+      "range": {
+        "startLine": 131,
+        "startChar": 42,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b9aff5_20b8bc6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-05T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a8b6404_f0f07619",
       "range": {
         "startLine": 131,
         "startChar": 42,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bbeb9c_0be46515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-05T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20d08da_e7d3dd38",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 8
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a977bcbc_9ff3a9e0",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-07-05T08:17:41Z",
       "side": 1,
       "message": "nit: location",
+      "range": {
+        "startLine": 144,
+        "startChar": 42,
+        "endLine": 144,
+        "endChar": 49
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78efcba_b92ca950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-05T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a977bcbc_9ff3a9e0",
       "range": {
         "startLine": 144,
         "startChar": 42,
