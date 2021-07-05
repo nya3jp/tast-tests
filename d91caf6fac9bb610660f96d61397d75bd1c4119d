@@ -429,6 +429,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d3aec42_524e5737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-05T01:24:42Z",
+      "side": 1,
+      "message": "That\u0027s definitly a valid point, but as mentioned, the current data is extracted from existing tests (I tried not to remove or add any test data to introduce inconsistency with this CL). Also, refining test data is not considered in this CL and will be addressed separately later.",
+      "parentUuid": "e7759c79_d8b9e904",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c2d29f1_8872147d",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
