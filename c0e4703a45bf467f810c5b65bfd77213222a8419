@@ -270,6 +270,30 @@
       },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98effabd_1589ed54",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-05T02:02:33Z",
+      "side": 1,
+      "message": "Oh, I\u0027m sorry I\u0027ve noticed that I wrongly understood the implementation. Please ignore my comment above.\n\nIn my (not strong) opinion, as long as we want to \"allow |finder| to be less specific than |actual|\", I support using NodesInfo rather than Info. This is similar to the automationNode.find API.",
+      "parentUuid": "8fd30546_9f1c874f",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
