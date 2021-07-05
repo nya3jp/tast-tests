@@ -16,6 +16,138 @@
       "message": "This CL handle the change of drag-and-drop behavior after enable-launcer-app-paging became default.",
       "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719cc061_a4f5e681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-05T08:17:41Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8d58b4_4ac28ef9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-05T08:17:41Z",
+      "side": 1,
+      "message": "nit: there seems to be missing what happens to the location in this sentence.\nmaybe \"which causes the location of icons to change after a mouse press\" if that\u0027s what\u0027s happening.",
+      "range": {
+        "startLine": 123,
+        "startChar": 37,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8b6404_f0f07619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-05T08:17:41Z",
+      "side": 1,
+      "message": "nit location",
+      "range": {
+        "startLine": 131,
+        "startChar": 42,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20d08da_e7d3dd38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-05T08:17:41Z",
+      "side": 1,
+      "message": "nit: Get",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 8
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a977bcbc_9ff3a9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-05T08:17:41Z",
+      "side": 1,
+      "message": "nit: location",
+      "range": {
+        "startLine": 144,
+        "startChar": 42,
+        "endLine": 144,
+        "endChar": 49
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77983ce4_8e628572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-05T08:17:41Z",
+      "side": 1,
+      "message": "nit: location",
+      "range": {
+        "startLine": 155,
+        "startChar": 42,
+        "endLine": 155,
+        "endChar": 49
+      },
+      "revId": "8784148c6c21c37455ba19eff9e627fbc9beaf37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
