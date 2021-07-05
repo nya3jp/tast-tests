@@ -405,6 +405,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7759c79_d8b9e904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-07-05T00:57:15Z",
+      "side": 1,
+      "message": "I guess the theory is - since the email layout and normal layout are identical for JP, then there is no point adding this test (unless there is some error you think we could see with this).  I think just remove this test then add something in after the bug is fixed",
+      "parentUuid": "2b925303_7850b328",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "d91caf6fac9bb610660f96d61397d75bd1c4119d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c2d29f1_8872147d",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 9
