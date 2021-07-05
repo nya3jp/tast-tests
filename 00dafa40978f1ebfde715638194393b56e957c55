@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eea3179_b81c1a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-05T02:07:35Z",
+      "side": 1,
+      "message": "This is same. Should be deferred when browser tab opens.",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 34
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "224b5fda_2cc9095a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-05T02:07:35Z",
+      "side": 1,
+      "message": "Do not know why you made this change. Hope I did not give a bad comment.\nFrom my understanding, NewSpotify is more like a struct which does not need to be closed. \n\nAll closable devices should have an immediate defer cleanup function.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea68baa0_8518e54e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-05T02:07:35Z",
+      "side": 1,
+      "message": "Like I commented above, s.Close() should only close spotify app. It is right after s.Launch().",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
