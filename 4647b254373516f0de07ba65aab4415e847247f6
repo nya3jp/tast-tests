@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a2d8f4_3c72390c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-07-05T07:58:17Z",
+      "side": 1,
+      "message": "LGTM. I think we still need another reviewer.\nAlso I don\u0027t know how the self-approvement-checking bot work, but if you face any problem, try to remove my CR+1.",
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
