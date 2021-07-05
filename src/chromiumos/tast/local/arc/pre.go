@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -26,6 +27,9 @@ type PreData struct {
 	// ARC enables interaction with an already-started ARC environment.
 	// It cannot be closed by tests.
 	ARC *ARC
+	// UIDevice is a UI Automator device object.
+	// It cannot be closed by tests.
+	UIDevice *ui.Device
 }
 
 // Booted returns a precondition that ARC Container has already booted when a test is run.
@@ -114,7 +118,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.arc.resetOutDir(ctx, s.OutDir()); err != nil {
 				return nil, errors.Wrap(err, "failed to reset outDir field of ARC object")
 			}
-			return PreData{p.cr, p.arc}, nil
+			return PreData{Chrome: p.cr, ARC: p.arc}, nil
 		}()
 		if err == nil {
 			s.Log("Reusing existing ARC session")
@@ -184,7 +188,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	chrome.Lock()
 
 	shouldClose = false
-	return PreData{p.cr, p.arc}
+	return PreData{Chrome: p.cr, ARC: p.arc}
 }
 
 // Close is called by the test framework after the last test that uses this precondition.
