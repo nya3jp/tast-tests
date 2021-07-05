@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea2c954_83bad6e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2021-07-05T08:56:09Z",
+      "side": 1,
+      "message": "Ah another thing I forgot.\nIf this is for benchmarks, you very likely might want to use long-tracing mode here.\n\nSee https://perfetto.dev/docs/concepts/config#long-traces for more docs, but essentially it boils down to adding:\n\n# Enable periodic flushing of the trace buffer into the output file.\nwrite_into_file: true\n\n# Writes the userspace buffer into the file every 2.5 seconds.\nfile_write_period_ms: 2500\n\n# We need to guarantee that events stay within some defined sorting window (for the importer).\nflush_period_ms: 30000\n",
+      "revId": "c30cbc4fa036011d526ea55624a9f3578d6119df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e02d18_ff6ef7d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2021-07-05T08:56:09Z",
+      "side": 1,
+      "message": "I think nothing is using this buffer now. Maybe remove and move everything by 1?\nMight be more future-proof to reorder them as\n\n#0 -\u003e 28608  (ftrace and anything else in future)\n#1 -\u003e 128KB  (slower things like meminfo and sys stats)\n\nand then change linux.ftrace to be target_buffer: 0",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "c30cbc4fa036011d526ea55624a9f3578d6119df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
