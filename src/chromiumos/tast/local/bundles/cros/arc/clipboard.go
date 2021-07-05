@@ -151,6 +151,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	d := p.UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -172,11 +173,6 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	defer act.Stop(ctx, tconn)
 
 	s.Log("Waiting for App showing up")
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 	if err := d.Object(ui.ID(titleID), ui.Text(title)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to wait for the app shown: ", err)
 	}

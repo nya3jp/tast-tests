@@ -51,17 +51,12 @@ func IMEBlockingVK(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	d := p.UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	const (
 		apk = "ArcImeBlockingTest.apk"

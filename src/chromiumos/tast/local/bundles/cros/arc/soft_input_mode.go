@@ -39,6 +39,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	d := p.UIDevice
 
 	isVMEnabled, err := arc.VMEnabled()
 	if err != nil {
@@ -49,12 +50,6 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	s.Log("Installing app")
 	const apk = "ArcSoftInputModeTest.apk"

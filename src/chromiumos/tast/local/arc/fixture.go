@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -83,6 +84,7 @@ func init() {
 type bootedFixture struct {
 	cr   *chrome.Chrome
 	arc  *ARC
+	d    *ui.Device
 	init *Snapshot
 
 	playStoreOptin bool // Opt into PlayStore.
@@ -168,6 +170,11 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 		}
 	}()
 
+	d, err := arc.NewUIDevice(s.FixtContext())
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+
 	init, err := NewSnapshot(ctx, arc)
 	if err != nil {
 		s.Fatal("Failed to take ARC state snapshot: ", err)
@@ -180,15 +187,22 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 
 	f.cr = cr
 	f.arc = arc
+	f.d = d
 	f.init = init
 	success = true
 	return &PreData{
-		Chrome: cr,
-		ARC:    arc,
+		Chrome:   cr,
+		ARC:      arc,
+		UIDevice: d,
 	}
 }
 
 func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	if err := f.d.Close(ctx); err != nil {
+		s.Log("Failed to close UI Automator: ", err)
+	}
+	f.d = nil
+
 	Unlock()
 	if err := f.arc.Close(ctx); err != nil {
 		s.Log("Failed to close ARC: ", err)

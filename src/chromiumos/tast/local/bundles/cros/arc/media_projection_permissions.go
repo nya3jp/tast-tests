@@ -51,6 +51,7 @@ func init() {
 
 func MediaProjectionPermissions(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -60,12 +61,6 @@ func MediaProjectionPermissions(ctx context.Context, s *testing.State) {
 	if err := setupMediaProjection(ctx, tconn, a, s.DataPath(mediaProjAPK)); err != nil {
 		s.Fatal("Failed to set up media projection: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	// Open media projection dialog, but cancel it immediately.
 	if err := openMediaProjectionDialog(ctx, tconn, d, "Cancel", "cancelled"); err != nil {
