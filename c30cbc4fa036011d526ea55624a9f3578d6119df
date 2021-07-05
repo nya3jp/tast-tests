@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21707ae2_6d37de30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T09:19:57Z",
+      "side": 1,
+      "message": "Thanks! Done.\nNote that I\u0027m using \"duration_ms: 5000\" now.",
+      "parentUuid": "4ea2c954_83bad6e2",
+      "revId": "c30cbc4fa036011d526ea55624a9f3578d6119df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9e02d18_ff6ef7d3",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-05T08:56:09Z",
       "side": 1,
       "message": "I think nothing is using this buffer now. Maybe remove and move everything by 1?\nMight be more future-proof to reorder them as\n\n#0 -\u003e 28608  (ftrace and anything else in future)\n#1 -\u003e 128KB  (slower things like meminfo and sys stats)\n\nand then change linux.ftrace to be target_buffer: 0",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "c30cbc4fa036011d526ea55624a9f3578d6119df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a417e0a9_11161303",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T09:19:57Z",
+      "side": 1,
+      "message": "Wait, in the last patchset I accidentally removed a data source using \"linux.process_stats\", which use this buffer. Sorry :p\nTherefore, I think we should still keep this buffer. \n\nLet me know how you\u0027d like to re-order the buffers.",
+      "parentUuid": "e9e02d18_ff6ef7d3",
       "range": {
         "startLine": 3,
         "startChar": 0,
