@@ -6,13 +6,13 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -37,41 +37,28 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
-	// Connect to Test API to use it with the UI library.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
-	// Open a keyboard device.
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to open keyboard device: ", err)
-	}
-	defer keyboard.Close()
-
 	for _, param := range []struct {
 		name            string
-		wantRestriction ui.RestrictionState               // wantRestriction is the wanted restriction state of the checkboxes in Browsing history.
-		wantChecked     ui.CheckedState                   // wantChecked is the wanted checked state of the checkboxes in Browsing history.
+		wantRestriction restriction.Restriction           // wantRestriction is the wanted restriction state of the checkboxes in Browsing history.
+		wantChecked     checked.Checked                   // wantChecked is the wanted checked state of the checkboxes in Browsing history.
 		value           *policy.ChromeOsLockOnIdleSuspend // value is the value of the policy.
 	}{
 		{
 			name:            "forced",
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: restriction.Disabled,
+			wantChecked:     checked.True,
 			value:           &policy.ChromeOsLockOnIdleSuspend{Val: true},
 		},
 		{
 			name:            "disabled",
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: restriction.Disabled,
+			wantChecked:     checked.False,
 			value:           &policy.ChromeOsLockOnIdleSuspend{Val: false},
 		},
 		{
 			name:            "unset",
-			wantRestriction: ui.RestrictionNone,
-			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: restriction.None,
+			wantChecked:     checked.False,
 			value:           &policy.ChromeOsLockOnIdleSuspend{Stat: policy.StatusUnset},
 		},
 	} {
@@ -89,35 +76,14 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the Security and sign-in page where the affected toggle button can be found.
-			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osPrivacy/lockScreen")
-			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
-			}
-			defer conn.Close()
-
-			// The Security and sign-in page is password protected. It asks for the password in a dialog.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Confirm your password"}, 15*time.Second); err != nil {
-				s.Fatal("Waiting for password dialog failed: ", err)
-			}
-
-			// Type the password to unlock the lock screen settings page.
-			if err := keyboard.Type(ctx, fixtures.Password+"\n"); err != nil {
-				s.Fatal("Failed to type password: ", err)
-			}
-
-			if err := policyutil.VerifySettingsNode(ctx, tconn,
-				ui.FindParams{
-					Role: ui.RoleTypeToggleButton,
-					Name: "Show lock screen when waking from sleep",
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-						"checked":     param.wantChecked,
-					},
-				},
-			); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			if err := policyutil.UnlockOSSettingsPage(ctx, cr, "osPrivacy/lockScreen", fixtures.Password).
+				SelectNode(ctx, nodewith.
+					Role(role.ToggleButton).
+					Name("Show lock screen when waking from sleep")).
+				Restriction(param.wantRestriction).
+				Checked(param.wantChecked).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
 			}
 		})
 	}
