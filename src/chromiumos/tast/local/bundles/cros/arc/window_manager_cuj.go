@@ -96,17 +96,12 @@ func init() {
 func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	for _, apk := range []string{wm.APKNameArcWMTestApp23, wm.APKNameArcWMTestApp24} {
 		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {

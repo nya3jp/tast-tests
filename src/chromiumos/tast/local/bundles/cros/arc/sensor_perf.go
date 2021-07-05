@@ -53,11 +53,7 @@ func SensorPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not open Test API connection: ", err)
 	}
 	a := s.FixtValue().(*arc.PreData).ARC
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Could not initialize UI Automator: ", err)
-	}
-	defer d.Close(ctx)
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	const (
 		apkName      = "ArcSensorLatencyTest.apk"

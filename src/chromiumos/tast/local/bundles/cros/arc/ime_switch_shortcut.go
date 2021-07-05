@@ -49,12 +49,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.FixtValue().(*arc.PreData).ARC
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	s.Log("Starting app")
 

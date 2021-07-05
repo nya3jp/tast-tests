@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	arcui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -48,6 +47,7 @@ const (
 func ChromeIntentPicker(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	arcDevice := s.FixtValue().(*arc.PreData).ARC
+	uiAutomator := s.FixtValue().(*arc.PreData).UIDevice
 
 	const (
 		appName        = "Intent Picker Test App"
@@ -67,12 +67,14 @@ func ChromeIntentPicker(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// Setup ARC, UI Automator and Installs APK.
-	uiAutomator, err := setUpARCForChromeIntentPicker(ctx, arcDevice, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed setting up ARC: ", err)
+	// Setup ARC and Installs APK.
+	if err := arcDevice.WaitIntentHelper(ctx); err != nil {
+		s.Fatal("Failed waiting for intent helper: ", err)
 	}
-	defer uiAutomator.Close(cleanupCtx)
+
+	if err := arcDevice.Install(ctx, arc.APKPath("ArcChromeIntentPickerTest.apk")); err != nil {
+		s.Fatal("Failed installing the APK: ", err)
+	}
 
 	// Navigate to URL which ArcChromeIntentPickerTest app has associated an intent.
 	conn, err := cr.NewConn(ctx, "https://www.google.com")
@@ -98,23 +100,4 @@ func ChromeIntentPicker(ctx context.Context, s *testing.State) {
 	if err := intentActionField.WaitForExists(ctx, arcChromeIntentPickerUITimeout); err != nil {
 		s.Fatalf("Failed waiting for intent action %q to appear in ARC window: %v", expectedAction, err)
 	}
-}
-
-// setUpARCForChromeIntentPicker starts an ARC device and starts UI automator.
-func setUpARCForChromeIntentPicker(ctx context.Context, arcDevice *arc.ARC, outDir string) (*arcui.Device, error) {
-	// Start up UI automator.
-	uiAutomator, err := arcDevice.NewUIDevice(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed initializing UI automator")
-	}
-
-	if err := arcDevice.WaitIntentHelper(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed waiting for intent helper")
-	}
-
-	if err := arcDevice.Install(ctx, arc.APKPath("ArcChromeIntentPickerTest.apk")); err != nil {
-		return nil, errors.Wrap(err, "failed installing the APK")
-	}
-
-	return uiAutomator, nil
 }

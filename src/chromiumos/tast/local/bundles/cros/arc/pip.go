@@ -125,6 +125,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.FixtValue().(*arc.PreData).ARC
+	dev := s.FixtValue().(*arc.PreData).UIDevice
 
 	const apkName = "ArcPipTest.apk"
 	s.Log("Installing ", apkName)
@@ -143,12 +144,6 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create multi activity PIP base activity: ", err)
 	}
 	defer maPIPBaseAct.Close()
-
-	dev, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer dev.Close(ctx)
 
 	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
