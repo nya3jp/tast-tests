@@ -9,9 +9,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -42,35 +47,33 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	// Open a keyboard device.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer kb.Close()
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+	defer quicksettings.Hide(cleanupCtx, tconn)
 
 	for _, param := range []struct {
 		name            string
-		wantChecked     ui.CheckedState     // wantChecked is the expected existence of the a11y button.
-		wantRestriction ui.RestrictionState // wantRestriction is the wanted restriction state of the toggle button for the "Always show accessibility options in the system menu" option.
+		wantChecked     checked.Checked         // wantChecked is the expected existence of the a11y button.
+		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the toggle button for the "Always show accessibility options in the system menu" option.
 		policy          *policy.ShowAccessibilityOptionsInSystemTrayMenu
 	}{
 		{
 			name:            "unset",
-			wantChecked:     ui.CheckedStateFalse,
-			wantRestriction: ui.RestrictionNone,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.None,
 			policy:          &policy.ShowAccessibilityOptionsInSystemTrayMenu{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "false",
-			wantChecked:     ui.CheckedStateFalse,
-			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.Disabled,
 			policy:          &policy.ShowAccessibilityOptionsInSystemTrayMenu{Val: false},
 		},
 		{
 			name:            "true",
-			wantChecked:     ui.CheckedStateTrue,
-			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.Disabled,
 			policy:          &policy.ShowAccessibilityOptionsInSystemTrayMenu{Val: true},
 		},
 	} {
@@ -88,32 +91,37 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			}
 
 			// Open OS Settings page where the affected toggle button can be found.
-			if err := policyutil.VerifyOSSettingsState(ctx, cr, "chrome://os-settings/osAccessibility",
-				ui.FindParams{
-					Role: ui.RoleTypeToggleButton,
-					Name: "Always show accessibility options in the system menu",
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-						"checked":     param.wantChecked,
-					},
-				},
-			); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			if err := policyutil.OSSettingsPage(ctx, cr, "osAccessibility").
+				SelectNode(ctx, nodewith.
+					Role(role.ToggleButton).
+					Name("Always show accessibility options in the system menu")).
+				Restriction(param.wantRestriction).
+				Checked(param.wantChecked).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
 			}
 
 			// Open system tray.
-			if err := kb.Accel(ctx, "Alt+Shift+s"); err != nil {
-				s.Fatal("Failed to press Alt+Shift+s to open system tray: ", err)
+			if err := quicksettings.Show(ctx, tconn); err != nil {
+				s.Fatal("Failed to open the system tray: ", err)
+			}
+
+			uia := uiauto.New(tconn)
+			systemTrayContainer := nodewith.ClassName("SystemTrayContainer")
+			podIcons, err := uia.NodesInfo(ctx, nodewith.ClassName("FeaturePodIconButton").Ancestor(systemTrayContainer))
+			if err != nil {
+				s.Fatal("Failed to get a list of feature pod icons: ", err)
 			}
 
 			// Look for the a11y button in the system tray.
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Show accessibility settings",
-			}, param.wantChecked == ui.CheckedStateTrue, 15*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Accessibility button: ", err)
+			found := false
+			for _, icon := range podIcons {
+				if icon.Name == "Show accessibility settings" {
+					found = true
+				}
+			}
+			if wantFound := param.wantChecked == checked.True; wantFound != found {
+				s.Errorf("Unexpected accessibility button presence; got %t, want %t", found, wantFound)
 			}
 		})
 	}
