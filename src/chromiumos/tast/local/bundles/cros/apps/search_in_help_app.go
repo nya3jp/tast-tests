@@ -52,8 +52,7 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
-		chrome.EnableFeatures("HelpAppSearchServiceIntegration"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
