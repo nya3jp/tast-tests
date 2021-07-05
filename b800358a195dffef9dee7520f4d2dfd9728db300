@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59a0e1f_00cae866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-05T07:05:02Z",
+      "side": 1,
+      "message": "Overall this looks good, but I don\u0027t know enough to fully review the DNS part.\n\nI can complain about naming though ;)",
+      "revId": "b800358a195dffef9dee7520f4d2dfd9728db300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fbc4815_045bd646",
@@ -31,6 +48,23 @@
       "writtenOn": "2021-07-05T06:35:56Z",
       "side": 1,
       "message": "can this be a part of precondition, too?",
+      "revId": "b800358a195dffef9dee7520f4d2dfd9728db300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2352c0_657f001e",
+        "filename": "src/chromiumos/tast/local/multivm/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-05T07:05:02Z",
+      "side": 1,
+      "message": "Maybe call it ArcCrostiniStartedWithDNSProxy()?\n\nWill we ever want a different combination of VMs started with a DNS proxy?",
       "revId": "b800358a195dffef9dee7520f4d2dfd9728db300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
