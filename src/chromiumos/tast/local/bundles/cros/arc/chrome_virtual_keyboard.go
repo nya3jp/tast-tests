@@ -50,7 +50,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBootedInTabletMode",
+		Fixture:      "arcBootedInTabletModeWithUIAutomator",
 		Params: []testing.Param{{
 			Val:               stableVkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -648,17 +648,12 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	a := p.ARC
 	cr := p.Chrome
+	d := p.UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	const apk = "ArcKeyboardTest.apk"
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {

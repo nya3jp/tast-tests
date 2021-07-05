@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -88,6 +89,28 @@ func init() {
 			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcEnableWebAppShare")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "arcBootedWithUIAutomator",
+		Desc:            "ARC is booted with UI Automator server",
+		Parent:          "arcBooted",
+		Impl:            &uiAutomatorFixture{},
+		SetUpTimeout:    resetTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "arcBootedInTabletModeWithUIAutomator",
+		Desc:            "ARC is booted in tablet mode with UI Automator server",
+		Parent:          "arcBootedInTabletMode",
+		Impl:            &uiAutomatorFixture{},
+		SetUpTimeout:    resetTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -263,4 +286,37 @@ func saveProcessList(ctx context.Context, a *ARC, outDir string) error {
 	cmd := a.Command(ctx, "ps", "-AfZ")
 	cmd.Stdout = file
 	return cmd.Run()
+}
+
+type uiAutomatorFixture struct {
+	d *ui.Device
+}
+
+func (f *uiAutomatorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	preData := s.ParentValue().(*PreData)
+	var err error
+	if f.d, err = preData.ARC.NewUIDevice(context.Background()); err != nil { // NOLINT
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	preData.UIDevice = f.d
+	return preData
+}
+
+func (f *uiAutomatorFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	preData := s.ParentValue().(*PreData)
+	preData.UIDevice = nil
+	if err := f.d.Close(ctx); err != nil {
+		s.Log("Failed to close UI Automator: ", err)
+	}
+	f.d = nil
+}
+
+func (f *uiAutomatorFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *uiAutomatorFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *uiAutomatorFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }

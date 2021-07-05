@@ -49,7 +49,7 @@ func init() {
 		Desc:         "Checks physical keyboard works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
+		Fixture:      "arcBootedWithUIAutomator",
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
@@ -301,6 +301,7 @@ func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestStat
 func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -311,12 +312,6 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		apk = "ArcKeyboardTest.apk"
 		pkg = "org.chromium.arc.testapp.keyboard"
 	)
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
