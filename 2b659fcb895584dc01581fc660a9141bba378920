@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4a4941b_45b3522b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-05T13:24:09Z",
+      "side": 1,
+      "message": "Why do we need this while we have getPastedData which executes paste command?",
+      "parentUuid": "e0bc343a_fcaf96d4",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8db3f415_bb19f75b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
         "patchSetId": 13
@@ -213,6 +237,30 @@
       "side": 1,
       "message": "content string is converted to words and then checked in ui if the node exsists, That should only happen with non confidential content",
       "parentUuid": "2394e04b_852a5947",
+      "range": {
+        "startLine": 217,
+        "startChar": 77,
+        "endLine": 217,
+        "endChar": 83
+      },
+      "revId": "2b659fcb895584dc01581fc660a9141bba378920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b531efb4_9edad830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-05T13:24:09Z",
+      "side": 1,
+      "message": "Why do we need to check that the node exists while we already got `content` from an event listener to paste command? What we can do instead is to validate that the pasted content is the same as the copied content, isn\u0027t there a way to do so?",
+      "parentUuid": "ce48d18a_49d4f5dc",
       "range": {
         "startLine": 217,
         "startChar": 77,
