@@ -349,35 +349,6 @@ ScopedDrmFD DrmOpen() {
   return {};
 }
 
-base::ScopedFD DrmOpenVgem() {
-  for (int i = 0; i < 16; ++i) {
-    struct stat st;
-    auto sys_card_path =
-        base::StringPrintf("/sys/bus/platform/devices/vgem/drm/card%d", i);
-    if (stat(sys_card_path.c_str(), &st) == 0) {
-      auto dev_card_path = base::StringPrintf("/dev/dri/card%d", i);
-      return base::ScopedFD(HANDLE_EINTR(open(dev_card_path.c_str(), O_RDWR)));
-    }
-  }
-
-  return {};
-}
-
-int CreateVgemBo(int fd, size_t size, uint32_t* handle) {
-  struct drm_mode_create_dumb create = {};
-  create.height = size;
-  create.width = 1;
-  create.bpp = 8;
-
-  int ret = drmIoctl(fd, DRM_IOCTL_MODE_CREATE_DUMB, &create);
-  if (ret)
-    return ret;
-
-  CHECK_GE(create.size, size);
-  *handle = create.handle;
-  return 0;
-}
-
 class GraphicsGbmTest : public testing::Test {
  public:
   GraphicsGbmTest() : fd_(DrmOpen()), gbm_(gbm_create_device(fd_.get())) {}
@@ -517,33 +488,6 @@ TEST_F(GraphicsGbmTest, Export) {
 
   base::ScopedFD prime_fd(gbm_bo_get_fd(bo.get()));
   EXPECT_TRUE(prime_fd.is_valid());
-}
-
-// Tests prime import using VGEM sharing buffer.
-TEST_F(GraphicsGbmTest, ImportVgem) {
-  constexpr uint32_t kWidth = 123;
-  constexpr uint32_t kHeight = 456;
-
-  base::ScopedFD vgem_fd = DrmOpenVgem();
-  ASSERT_TRUE(vgem_fd.is_valid());
-  struct drm_prime_handle prime_handle;
-  ASSERT_EQ(0, CreateVgemBo(vgem_fd.get(), kWidth * kHeight * kBytesPerPixel,
-                            &prime_handle.handle));
-  prime_handle.flags = DRM_CLOEXEC;
-  ASSERT_EQ(0, drmIoctl(vgem_fd.get(), DRM_IOCTL_PRIME_HANDLE_TO_FD,
-                        &prime_handle));
-  base::ScopedFD prime_fd(prime_handle.fd);
-
-  struct gbm_import_fd_data fd_data;
-  fd_data.fd = prime_fd.get();
-  fd_data.width = kWidth;
-  fd_data.height = kHeight;
-  fd_data.stride = kWidth * kBytesPerPixel;
-  fd_data.format = GBM_FORMAT_XRGB8888;
-
-  ScopedGbmBo bo(gbm_bo_import(
-      gbm_.get(), GBM_BO_IMPORT_FD, &fd_data, GBM_BO_USE_RENDERING));
-  EXPECT_BO(bo.get());
 }
 
 // Tests prime import using dma-buf API.
