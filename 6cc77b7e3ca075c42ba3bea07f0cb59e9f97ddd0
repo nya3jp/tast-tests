@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cf1076c_cf91f2c8",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-05T05:41:53Z",
+      "side": 1,
+      "message": "I think no, since you have said that this is for json parser, the user should know the usage. Furthermore, users can find examples in \"tast-tests\" repo easily.",
+      "parentUuid": "28a04448_6f37be10",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83ebb2ce_4051d2c9",
         "filename": "src/chromiumos/tast/local/jsontypes/types.go",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "writtenOn": "2021-07-05T04:59:35Z",
       "side": 1,
       "message": "Remove this line.",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "761f38e3_1d611e14",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-05T05:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ebb2ce_4051d2c9",
       "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1f283e_c2c4e36b",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-05T05:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d0c149_477f831b",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e4c3cf9_ec14f0ad",
@@ -122,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb374a32_91c9b33a",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-05T05:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e4c3cf9_ec14f0ad",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa7c4ac_561b1cee",
@@ -135,6 +207,30 @@
       "writtenOn": "2021-07-05T04:59:35Z",
       "side": 1,
       "message": "Remove these functions.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b234308_9642401e",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-05T05:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa7c4ac_561b1cee",
       "range": {
         "startLine": 76,
         "startChar": 0,
