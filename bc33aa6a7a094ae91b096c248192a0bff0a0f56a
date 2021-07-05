@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f88d5b9_c33ce73d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "Hi Bisakh!\n\nThanks for your CL!\n\nI had a brief look on it and have some comments.",
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400cef05_48d120b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "No need to add it since we have \"wilco\" in SoftwareDeps",
+      "range": {
+        "startLine": 32,
+        "startChar": 77,
+        "endLine": 32,
+        "endChar": 120
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1105a7a9_f8382c42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "nit: please be more specific what exactly do you test, e.g. what policy.",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f31d42e_31aab982",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "nit: waitCtx",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661e1b0e_a36d95b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "this should be stable, so I think there is no need for waitCtx",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 85
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938dcc94_e4949d1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "is it really needed?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226b9caf_8de09db1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "with what range, please add details?",
+      "range": {
+        "startLine": 86,
+        "startChar": 54,
+        "endLine": 86,
+        "endChar": 59
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1bcbd1_95c6d8c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "it\u0027s better to introduce a separate cleanupCtx at the beginning of the test and reserve time for cleanup before running any commands. You might have unexpected behaviour with current implementation.\n\nYou use the same context to perform many other operations and there is no guarantee that you will have enough time for proper cleanup.",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 6
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b27894a_eaa71b65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "I think it makes sense to reset RTC only when we successfully called SetRTC. If SetRTC failed, there is no need to reset it.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 7
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9fc188_96580589",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "I think it makes sense to name a separate constant for time we want to set and log it in case of error",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38b4af7_ce429a10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "nit: set",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dee235c_aefaf9c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "nit: just use policy.Policy[] instead of 3 fields",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763ee894_fc366686",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "for \"not set\" use case, policy.Policy[] will be empty :)",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97aa33f_7245d4f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "I think it will be easier to understand if we have just 2 bool values to indicate state:\n\nbool on_ac\nbool charging",
+      "range": {
+        "startLine": 185,
+        "startChar": 17,
+        "endLine": 185,
+        "endChar": 55
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f856b5_b7349d27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "There is no need to call EnrollUsingChrome each time because it\u0027s pretty long operaton. Instead we should use UpdatePolicies\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/policy/policy.proto;l\u003d16?q\u003dEnrollUsingChrome%20file:proto",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 0
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12a87f9_a84b311a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "Why do you need new power service client each time? :)",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 45
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe199261_6a3bec6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "Oh this RPC call might be useful.\n\nAlso interesting that policy might now work immediately, but is it stable for you?",
+      "range": {
+        "startLine": 263,
+        "startChar": 18,
+        "endLine": 263,
+        "endChar": 36
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881c7102_a7cbb79a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "nit: please add more details to the log message, e.g. what is actually expected?",
+      "range": {
+        "startLine": 269,
+        "startChar": 14,
+        "endLine": 269,
+        "endChar": 40
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9672b3d0_79c84fab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:53:59Z",
+      "side": 1,
+      "message": "nit: we usually use \"want\" / \"got\" instead of \"expected\" / \"received\"",
+      "range": {
+        "startLine": 269,
+        "startChar": 14,
+        "endLine": 269,
+        "endChar": 36
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
