@@ -25,6 +25,7 @@ const (
 	CrossystemParamKernkeyVfy CrossystemParam = "kernkey_vfy"
 	CrossystemParamMainfwAct  CrossystemParam = "mainfw_act"
 	CrossystemParamMainfwType CrossystemParam = "mainfw_type"
+	CrossystemParamWpswCur    CrossystemParam = "wpsw_cur"
 )
 
 var (
@@ -37,6 +38,7 @@ var (
 		CrossystemParamKernkeyVfy,
 		CrossystemParamMainfwAct,
 		CrossystemParamMainfwType,
+		CrossystemParamWpswCur,
 	}
 	rCrossystemLine = regexp.MustCompile(`^([^ =]*) *= *(.*[^ ]) *# [^#]*$`)
 )
