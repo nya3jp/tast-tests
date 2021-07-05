@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d96bc3_30ec4602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-05T03:07:51Z",
+      "side": 1,
+      "message": "This is based on original CL sequence. This CL introduced the resource close logic, but next CL introduces arc DUMP. Ideally we can review these CLs one by one. How about one finish this one first and then move to next one? For changes on this CL we\u0027ll adjust in next CL so you don\u0027t have to review things that is not approved.",
+      "parentUuid": "e33f9e38_88abcc2f",
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eea3179_b81c1a1c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-05T02:07:35Z",
       "side": 1,
       "message": "This is same. Should be deferred when browser tab opens.",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 34
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05b08d9_fc98714d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-05T03:07:51Z",
+      "side": 1,
+      "message": "We want to dump UI first before close browser. So CloseBrowserTabs is not called immediately after open.",
+      "parentUuid": "8eea3179_b81c1a1c",
       "range": {
         "startLine": 215,
         "startChar": 2,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceec7fc5_7dd5d318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-05T03:07:51Z",
+      "side": 1,
+      "message": "Sorry for the confusion. I think as you commented before, we have difficulty to manage arc device d, spotify, and ARC dump (introduced next CL) in the everydaymutltitasking Run() logic because\n- they are opened in one sequence (d first and then spotify)\n- but during cleanup, they need to follow this sequence: close d, dump UI, and then close spotify.\n\nSo it\u0027s not applicable to defer the Close() function of spotify after right it\u0027s launch ( we need to wait for d to be closed, UI dumped, and then close it)\n\nTo make these resource well managed, we decide to move arc device d into spotify and managed by Spotify. So the main everydaymutltitasking Run() function just need to call NewSpotify, and then immediacy Close() it.\n\nAll the dependencies will be managed by Spotify itself. The Run() logic will be very clean.",
+      "parentUuid": "224b5fda_2cc9095a",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea68baa0_8518e54e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
         "patchSetId": 8
@@ -77,6 +143,30 @@
       "writtenOn": "2021-07-05T02:07:35Z",
       "side": 1,
       "message": "Like I commented above, s.Close() should only close spotify app. It is right after s.Launch().",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb0a827_8fc6431e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-05T03:07:51Z",
+      "side": 1,
+      "message": "I hope I explained it clear for comments #59. We want to dump the spotify UI first before close it. But in order to dump UI, we need to close d. So we manage all the resources in the spotify Close() function.",
+      "parentUuid": "ea68baa0_8518e54e",
       "range": {
         "startLine": 101,
         "startChar": 3,
