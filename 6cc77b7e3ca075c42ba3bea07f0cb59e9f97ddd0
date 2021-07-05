@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9849ad7b_b4ab8d36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-05T01:24:16Z",
+      "side": 1,
+      "message": "I fix it and it can be used in CL:2975182. I just noticed that there are `int8`, `uint8` in cros_healthd. What do you think about this? Using `int` or `string` for these two types?",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
