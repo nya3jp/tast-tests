@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6317779d_ab7bfa82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "nit: this is not self descriptive name, it does not tell whether it\u0027s longer or shorter, etc. We usually use fullCtx or cleanupCtx",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0aeabb_f2aa84e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "this looks like a random magic constant :)\n\nWe should always respect only context and noting else.",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df8f9c5_2877ca48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "Why it\u0027s not enough to just use \"ctx\"?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b0f3bf_c2da28ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "I don\u0027t think this helps a lot draining the battery.",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0611b88d_0d2dd60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "These must be in reverse order to be able to close target (tab) before closing connection to it.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ec13e0_fc313ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-05T20:20:31Z",
+      "side": 1,
+      "message": "Instead of doing this, I think it makes sense to just have one log message to say that battery it draining/charging and it takes time. For debugging, you can add more logs, but remove them/",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 56
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
