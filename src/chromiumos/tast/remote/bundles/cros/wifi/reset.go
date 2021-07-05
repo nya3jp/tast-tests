@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,9 +28,9 @@ func init() {
 		// For some Marvell DUT, this test may take more than 25 minutes.
 		// For WCN3990 device, this test may take more than 39 minutes.
 		Timeout: time.Minute * 45,
-		// We only support reset on Intel/Marvell/QCA WiFi (iwlwifi/mwifiex/ath10k).
-		// TODO(chromium:1070299): These models are chosen manually by finding the models that are always failing with NA-error on Autotest network_WiFi_Reset. Replace them with more proper hwdep in the future.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("barla", "blooglet", "dirinboz", "ezkinil", "vilboz")),
+		// We only support reset on Intel/Marvell/QCA/RTK/MTK WiFi (iwlwifi/mwifiex/ath10k/rtw88/mt76).
+		// TODO(chromium:1070299): Currently we might need to exclude the unsupported devices with hwdep.SkipOnModel.
+		// Replace them with more proper hwdep in the future.
 		Params: []testing.Param{
 			{
 				// Default AP settings ported from Autotest.
