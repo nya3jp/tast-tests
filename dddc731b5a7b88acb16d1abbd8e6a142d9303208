@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c71c12_6f969755",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-05T15:48:47Z",
+      "side": 1,
+      "message": "Hi!\n\nThis is implementation of tast test which can be used to validate write protect signal on FPMCU.",
+      "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
