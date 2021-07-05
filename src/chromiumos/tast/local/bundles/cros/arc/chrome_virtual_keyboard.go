@@ -648,17 +648,12 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	a := p.ARC
 	cr := p.Chrome
+	d := p.UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	const apk = "ArcKeyboardTest.apk"
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {

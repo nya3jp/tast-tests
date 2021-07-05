@@ -58,6 +58,7 @@ func DownloadManager(ctx context.Context, s *testing.State) {
 	sourcePath := s.DataPath(filename)
 
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	// Create and start a local HTTP server that serves the test file data.
@@ -76,7 +77,7 @@ func DownloadManager(ctx context.Context, s *testing.State) {
 
 	// Download the test file with an Android app from the local server.
 	const targetPath = "/storage/emulated/0/Download/" + filename
-	if err := downloadFileWithApp(ctx, cr, a, localServerPort, sourcePath, targetPath); err != nil {
+	if err := downloadFileWithApp(ctx, cr, a, d, localServerPort, sourcePath, targetPath); err != nil {
 		s.Fatal("Failed to download the test file with Android app: ", err)
 	}
 	defer func(ctx context.Context) {
@@ -165,7 +166,7 @@ func waitForServerStart(ctx context.Context, localServerPort int) error {
 // It first sets up reverse port forwarding to connect the local server to an
 // Android port, triggers the download from the connected Android port, and then
 // returns when the download is completed.
-func downloadFileWithApp(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, localServerPort int, sourcePath, targetPath string) error {
+func downloadFileWithApp(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, d *androidui.Device, localServerPort int, sourcePath, targetPath string) error {
 	// Shorten the context to make room for cleanup jobs.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -191,7 +192,7 @@ func downloadFileWithApp(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, loc
 	}
 	defer cleanupFunc(cleanupCtx)
 
-	return waitForDownloadComplete(ctx, a)
+	return waitForDownloadComplete(ctx, a, d)
 }
 
 // setUpAndroidPort sets up an Android port to which a specified host port is
@@ -270,22 +271,11 @@ func startDownloadFileWithApp(ctx context.Context, a *arc.ARC, tconn *chrome.Tes
 // waitForDownloadComplete waits for a download session triggered by
 // downloadFileWithApp to be completed. It checks the app's status field and
 // returns when the "Finished" message appears on the field.
-func waitForDownloadComplete(ctx context.Context, a *arc.ARC) error {
+func waitForDownloadComplete(ctx context.Context, a *arc.ARC, d *androidui.Device) error {
 	const (
 		appStatusFieldID  = "org.chromium.arc.testapp.downloadmanager:id/status"
 		appStatusFinished = "Finished"
 	)
-
-	// Shorten the context to make room for cleanup jobs.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to initialize UI Automator")
-	}
-	defer d.Close(cleanupCtx)
 
 	obj := d.Object(androidui.ID(appStatusFieldID))
 	if err := obj.WaitForExists(ctx, 10*time.Second); err != nil {

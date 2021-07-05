@@ -38,18 +38,13 @@ func TouchInput(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	d := p.UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 	defer tconn.Close()
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	if err := a.Install(ctx, arc.APKPath(motioninput.APK)); err != nil {
 		s.Fatal("Failed installing ", motioninput.APK, ": ", err)
