@@ -203,6 +203,24 @@
       "parentUuid": "34e93b16_d144f3a4",
       "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0058fdff_e2fc838c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-05T16:10:56Z",
+      "side": 1,
+      "message": "Ack, thanks! Added a comment and moved the defer line.\n\nThe defer line:\n`defer modifyPlaintextDNSDropRule(ctx, \"-D\" /*op*/, nss, physIfs)`\nis idempotent and should be safe even if there is a failure.",
+      "parentUuid": "50188720_a6540c17",
+      "revId": "038929596c1905c63ec833c7fa326d0d3303b16c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
