@@ -1036,6 +1036,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "556fab94_1125d225",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-07-05T07:37:38Z",
+      "side": 1,
+      "message": "Can we instead make \"input method\" a struct with various attributes incl. handwriting and voice languages? Data can be sourced directly from the \"CrOS input methods at product level\" spreadsheet.",
+      "parentUuid": "e40276d0_78965f0a",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "04be8d09d59a13bc4593e0bf1e68ab8a2f55e156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36171f63_2f66e721",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 6
