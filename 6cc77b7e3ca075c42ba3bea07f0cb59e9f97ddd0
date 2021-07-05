@@ -34,6 +34,98 @@
       "parentUuid": "9849ad7b_b4ab8d36",
       "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6d470f_f49332a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-07-05T04:59:35Z",
+      "side": 1,
+      "message": "We can use int directly. If the value is out of range, unmarshal will fail.",
+      "parentUuid": "a17ec2cb_2b125208",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ebb2ce_4051d2c9",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-07-05T04:59:35Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d0c149_477f831b",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-07-05T04:59:35Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4c3cf9_ec14f0ad",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-07-05T04:59:35Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa7c4ac_561b1cee",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-07-05T04:59:35Z",
+      "side": 1,
+      "message": "Remove these functions.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "6cc77b7e3ca075c42ba3bea07f0cb59e9f97ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
