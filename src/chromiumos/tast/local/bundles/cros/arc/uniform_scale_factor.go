@@ -42,6 +42,7 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	if err := perappdensity.ToggleUniformScaleFactor(ctx, a, perappdensity.Enabled); err != nil {
 		s.Fatal("Failed to set developer option: ", err)
@@ -88,12 +89,6 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close(cleanupCtx)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {

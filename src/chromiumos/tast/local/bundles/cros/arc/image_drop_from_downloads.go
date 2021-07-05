@@ -35,6 +35,7 @@ func init() {
 func ImageDropFromDownloads(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	const (
 		filename = "capybara.jpg"
@@ -68,12 +69,6 @@ func ImageDropFromDownloads(ctx context.Context, s *testing.State) {
 		fieldID      = pkg + ":id/input_field"
 		counterID    = pkg + ":id/counter"
 	)
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed to install the app: ", err)

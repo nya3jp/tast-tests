@@ -141,15 +141,10 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to get device: ", err)
-	}
-	defer d.Close(ctx)
 
 	// Using HTTP server to provide image for wallpaper setting, because this chrome API don't support local file and gs file.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))

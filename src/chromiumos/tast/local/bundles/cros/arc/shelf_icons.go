@@ -68,19 +68,13 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	d := p.UIDevice
 
 	s.Log("Creating Test API connection")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	s.Log("Initializing UI Automator")
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	s.Log("Installing app")
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {

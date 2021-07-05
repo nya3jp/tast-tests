@@ -61,17 +61,12 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+	dev := p.UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	dev, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer dev.Close(ctx)
 
 	s.Log("Installing IME service")
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
