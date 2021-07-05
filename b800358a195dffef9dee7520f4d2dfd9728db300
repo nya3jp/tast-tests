@@ -16,6 +16,23 @@
       "message": "PTAL, thanks! Also, thanks for the earlier reviews!\n\nAdded tbegin@ and hidehiko@ from previous PSs (also PTAL for the other patches in the chain).\nAlso added cwd@ from commit history of multivm.",
       "revId": "b800358a195dffef9dee7520f4d2dfd9728db300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fbc4815_045bd646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-05T06:35:56Z",
+      "side": 1,
+      "message": "can this be a part of precondition, too?",
+      "revId": "b800358a195dffef9dee7520f4d2dfd9728db300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
