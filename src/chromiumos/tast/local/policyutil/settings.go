@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // nodeChecker is used in checking different properties of a node while collecting the error messages.
@@ -61,6 +63,48 @@ func OSSettingsPage(ctx context.Context, cr *chrome.Chrome, shortLink string) *o
 		return page
 	}
 	defer conn.Close()
+
+	return page
+}
+
+// OSSettingsPageWithPassword open the OS settings page with given link (e.g. "osAccessibility" -> "chrome://os-settings/osAccessibility").
+// If the opened settings page is password protected, try to authenticate with the given password.
+// The returned openedPage value can be used to select a node from the node tree (not just from the page).
+func OSSettingsPageWithPassword(ctx context.Context, cr *chrome.Chrome, shortLink, password string) *openedPage {
+	page := &openedPage{
+		cr: cr,
+	}
+
+	conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/"+shortLink)
+	if err != nil {
+		page.err = errors.Wrap(err, "failed to launch OS Settings")
+		return page
+	}
+	defer conn.Close()
+
+	tconn, err := page.cr.TestAPIConn(ctx)
+	if err != nil {
+		page.err = errors.Wrap(err, "failed to create Test API connection")
+		return page
+	}
+
+	uia := uiauto.New(tconn)
+	if err := uia.WaitUntilExists(nodewith.Name("Confirm your password").First())(ctx); err != nil {
+		testing.ContextLog(ctx, "Could not find password dialog: ", err)
+		return page
+	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		page.err = errors.Wrap(err, "failed to open keyboard device")
+		return page
+	}
+	defer keyboard.Close()
+
+	if err := keyboard.Type(ctx, password+"\n"); err != nil {
+		page.err = errors.Wrap(err, "failed to type password")
+		return page
+	}
 
 	return page
 }
