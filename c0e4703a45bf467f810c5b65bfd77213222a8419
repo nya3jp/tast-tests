@@ -246,6 +246,30 @@
       },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd30546_9f1c874f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-05T01:43:49Z",
+      "side": 1,
+      "message": "Thank you for the detailed explanation.\nI don\u0027t want to block you, but I still have a concern.\n\nLet\u0027s say that there\u0027s a UI tree like below:\n root\n - containerA\n   - button (checked)\n - containerB\n   - button (not checked)\n\nand, we have a NodeInfo of the first button. This NodeInfo matches a finder whose checked state is either ture or false, unless the finder explicitly specifies the parent node.\ni.e., a finder with a \"not checked\" attribute cannot be mapped to a nodeInfo of the first button, and this function returns true.\n\nThat is a very simplified example, but this false-positive is what I\u0027m wondering if appropriate.\n\nI understand it\u0027s okay under the current usage of this method. But putting this method under uiauto means that any ui test may use this method.",
+      "parentUuid": "a5a53d8d_5d59b9bc",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
