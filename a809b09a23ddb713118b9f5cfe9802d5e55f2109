@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6575f9_12dbfe6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a72db5ff_1bd2aafb",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fd6d52c_8a977f70",
@@ -194,6 +218,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b5c5ef_6be7158c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "5fd6d52c_8a977f70",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915facd2_7694943a",
@@ -207,6 +249,30 @@
       "writtenOn": "2021-07-02T10:27:53Z",
       "side": 1,
       "message": "all this should go, it\u0027s useless and irrelevant on non-android",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 66
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2882e7_5c9cbc39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915facd2_7694943a",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -240,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9b9809_0b80ebb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/perfetto/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b66d06_f0f74fbc",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e62ec7_d65cd2e1",
@@ -253,6 +343,24 @@
       "writtenOn": "2021-07-01T12:15:21Z",
       "side": 1,
       "message": "nit: you don\u0027t need to deref |pc|. Just use pc.GeneratePerfettoTrace(). Golang knows that this is a pointer and deref it for you.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17bd893_b4354e0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Discussed offline and we still need the deref.",
+      "parentUuid": "c6e62ec7_d65cd2e1",
       "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -274,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f1bc63_a9a7d5af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Use mktemp.",
+      "parentUuid": "6d6db7de_3744e031",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4488571_ff9dfea0",
@@ -287,6 +413,24 @@
       "writtenOn": "2021-07-01T12:15:21Z",
       "side": 1,
       "message": "nit: Same for tbm_raw.",
+      "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1425edef_0f0229e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T08:22:09Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d4488571_ff9dfea0",
       "revId": "a809b09a23ddb713118b9f5cfe9802d5e55f2109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
