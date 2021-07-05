@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "056e3c03_5e7de282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-05T10:18:40Z",
+      "side": 1,
+      "message": "We could also keep these settings here in case other developers want to extend the duration but don\u0027t know they should use the long-tracing mode.\nI\u0027m ok with both. WDYT?",
+      "parentUuid": "bdd4ee16_b1c99ded",
+      "revId": "c30cbc4fa036011d526ea55624a9f3578d6119df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9e02d18_ff6ef7d3",
