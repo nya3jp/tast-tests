@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e002b235_2a93f786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-05T14:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77a080c_5f828f15",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "05413fc32256f12033d4e061f21cd1fe1e3f3d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "462687f1_b137af2d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a9cc30_3fe82cd7",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-05T14:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c0be9c5_6a7643e9",
+      "revId": "05413fc32256f12033d4e061f21cd1fe1e3f3d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1368a44a_7a1d53f4",
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4739445f_137aea37",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-05T14:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1368a44a_7a1d53f4",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "05413fc32256f12033d4e061f21cd1fe1e3f3d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c8b359e_f92e45ea",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-07-05T13:41:31Z",
       "side": 1,
       "message": "Does it make sense to type the \\n separately for a very short delay?",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 44
+      },
+      "revId": "05413fc32256f12033d4e061f21cd1fe1e3f3d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b1e5e8_3efd7a9c",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-05T14:32:56Z",
+      "side": 1,
+      "message": "It worked well till now. We can change it is it starts to fail.",
+      "parentUuid": "3c8b359e_f92e45ea",
       "range": {
         "startLine": 104,
         "startChar": 11,
