@@ -222,6 +222,30 @@
       },
       "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9befa3_587b9bee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-05T01:41:23Z",
+      "side": 1,
+      "message": "I think the original name \"Matches\" makes more sense to me. \n\nAs for matching, I still think that when looking for nodes, the finder should be more specific than less. Take the example you used: \n\nactual :\u003d NodeInfo {\n\n    Name: \"This is a test\",\n    Role\" \"Button\",\n    ...\n}\n\nThe finder should be finder :\u003d nodewith.Name(\"This is a test\").Role(role.Button). \nThe reason is that we should know what is expected. \nTherefore, I suggest to use Info instead of NodesInfo here.",
+      "parentUuid": "a5a53d8d_5d59b9bc",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "c0e4703a45bf467f810c5b65bfd77213222a8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
