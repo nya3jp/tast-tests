@@ -39,6 +39,30 @@
       },
       "revId": "46d4717b16785da45d3bd9b610944f35e2501685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293e8812_3882f8d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-07-05T22:20:42Z",
+      "side": 1,
+      "message": "\u003e Does it help if we gracefully log out from a session?\n\nIt would be nice to try to gracefully log out, but I don\u0027t know API for this.\nCould you suggest how to do it?\n\nNevertheless, I think this option is still relevant, as we do not test logout itself. But graceful log out should be very helpful indeed.",
+      "parentUuid": "cfe61e9a_918c5f88",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "46d4717b16785da45d3bd9b610944f35e2501685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
