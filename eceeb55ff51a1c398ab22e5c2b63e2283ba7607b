@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2779e75a_89e4f914",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T07:13:00Z",
+      "side": 1,
+      "message": "Do we have a canonical invalid domain name/invalid url?",
+      "range": {
+        "startLine": 115,
+        "startChar": 56,
+        "endLine": 115,
+        "endChar": 75
+      },
+      "revId": "eceeb55ff51a1c398ab22e5c2b63e2283ba7607b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
