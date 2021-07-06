@@ -63,6 +63,30 @@
       },
       "revId": "46d4717b16785da45d3bd9b610944f35e2501685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e14699_fe830b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-06T05:10:48Z",
+      "side": 1,
+      "message": "I guess we can call autotestPrivate.logout():\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/common/extensions/api/autotest_private.idl;l\u003d603\n\nI think a test should gracefully logout from a session if it intends to log in with the same account again and expect some states to be persisted from a last session; by forcibly restarting Chrome, Chrome may not have a chance to persist states.",
+      "parentUuid": "293e8812_3882f8d1",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "46d4717b16785da45d3bd9b610944f35e2501685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
