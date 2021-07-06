@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e1a827_0f25d3f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-06T04:26:55Z",
+      "side": 1,
+      "message": "Make sure we have a proper way to schedule test on supported DUT.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "2f07270a8545dae0f4a1b8c473b6069b739709b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
