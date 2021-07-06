@@ -16,6 +16,23 @@
       "message": "I have reorganized the data structure and removed every variable type except string type. Please take a look. I will work on the document tomorrow before the meeting. Thanks.",
       "revId": "9ebff526c582df8dfe8c68113e632d45c9302bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bd9bda2_34971e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-06T05:23:36Z",
+      "side": 1,
+      "message": "For the record, we had a meeting last Friday and we expect many changes to the approach.\n",
+      "revId": "9ebff526c582df8dfe8c68113e632d45c9302bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
