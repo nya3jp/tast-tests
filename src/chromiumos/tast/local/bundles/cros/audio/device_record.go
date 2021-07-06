@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/audio/device"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -19,7 +20,7 @@ func init() {
 			"cychiang@chromium.org", // Media team
 			"nya@chromium.org",      // Tast port author
 		},
-		SoftwareDeps: []string{"audio_record"},
+		HardwareDeps: hwdep.D(hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
