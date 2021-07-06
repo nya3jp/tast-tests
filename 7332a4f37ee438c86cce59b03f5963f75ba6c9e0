@@ -1,0 +1,272 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a39c1eb_cb23b7e2",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Can you split getting the schema and generating to go code? I would like to have the schema checked in as well for reference.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f3d7d3_f6ad403d",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: note that this is getting the data from the TAPE server.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1839bb26_2aa2950f",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: space",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0bec223_b88dc460",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: space",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7172f7e_ded392a5",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Why not simply export the value and avoid needing a setter here?",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685d4f98_eaaf32a4",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Why Link? Does Name() make more sense?",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e657c80d_b51f21a7",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Why UpdateString? Could you just implement a custom JSON marshaller here instead?",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69fa61af_1925d794",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: use a struct and marshall JSON instead of using Sprintf. It will reduce duplication and make it clear what is different.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fae47d5_9193d286",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Is there any instance where this is different?",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e54bc45_1f21b652",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: document members. Names are not descriptive.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b01c94_0d656efa",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: avoid make (stop word) -\u003e restCall",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199336ee_b536fbf2",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Use time.Duration and convert it to the correct unit below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e7c69e3_d843b83f",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "nit: maybe RegeneratePassword? You don\u0027t get to decide what it is.",
+      "range": {
+        "startLine": 94,
+        "startChar": 20,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfa461f_8e393d0b",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-06T13:15:18Z",
+      "side": 1,
+      "message": "Does this also clean up?",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
