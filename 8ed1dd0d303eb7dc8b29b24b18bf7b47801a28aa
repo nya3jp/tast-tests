@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a69c7d_e73e747f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-07-06T22:27:09Z",
+      "side": 1,
+      "message": "I also added ForceLaunchBrowser to make FullRestore service happy.\n\nPTAL.",
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
