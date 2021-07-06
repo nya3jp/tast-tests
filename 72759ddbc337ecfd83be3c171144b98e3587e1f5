@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f355a5_2b83c6e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6317779d_ab7bfa82",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec0aeabb_f2aa84e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-05T20:20:31Z",
       "side": 1,
       "message": "this looks like a random magic constant :)\n\nWe should always respect only context and noting else.",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f1c770_958e8d96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "This branch is very unlikely to occur as inside tast, we define timeout at the very beginning while registering the test.\nWhat if context is not set with a deadline/timeout. then ctx.Deadline() returns false. Only then, it uses 1 hour/random interval to wait for charging. Again this is just for the sake of completeness of rpc method as they can be called from any prog. language.",
+      "parentUuid": "ec0aeabb_f2aa84e2",
       "range": {
         "startLine": 106,
         "startChar": 13,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "285c6bb8_33da9565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "in context of tast it\u0027s enough. that\u0027s why i am taking the available time of ctx through ctx.Deadline().",
+      "parentUuid": "7df8f9c5_2877ca48",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79b0f3bf_c2da28ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-05T20:20:31Z",
       "side": 1,
       "message": "I don\u0027t think this helps a lot draining the battery.",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6282fd3_df6b2154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "Yeah, not a lot but if it contributes something that should be enough, ig : )\nFor, long duration draining I think it would be helpful.\n \nActually I\u0027ve tested it takes slightly\nless than 2 mins to drain 1% \nmore the 2 mins to charge 1%\n\nwith this set of combos and the charging docks that we have.\nWould you prefer to remove it?",
+      "parentUuid": "79b0f3bf_c2da28ec",
       "range": {
         "startLine": 159,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a469467_b42201c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0611b88d_0d2dd60e",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ec13e0_fc313ad9",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-05T20:20:31Z",
       "side": 1,
       "message": "Instead of doing this, I think it makes sense to just have one log message to say that battery it draining/charging and it takes time. For debugging, you can add more logs, but remove them/",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 56
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c258b19c_c2125ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6ec13e0_fc313ad9",
       "range": {
         "startLine": 232,
         "startChar": 0,

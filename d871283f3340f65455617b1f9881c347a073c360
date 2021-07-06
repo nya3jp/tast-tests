@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "696e4d73_b08a1c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "One thing, is powerd responsible for controlling the rate at which DUT is filling it\u0027s battery?\n\nAs in regular life I notice, charging from 10 to 60 is extremely fast, 60 to 90 medium, and 90 to 100 (OMG) it super slow (ig some sort of trickle charging goes on to prevent battery wear out). We need to kill that service.\nAfter killing these three, I haven\u0027t faced such scenarios.\n\nIg, what you are asking is what if some concurrent testing is going on while battery is being charged, right?",
+      "parentUuid": "a2666b3c_37bd6eee",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f35d2d9e_52a9fb1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -292,6 +316,30 @@
       "side": 1,
       "message": "How much faster test will be running if we \"play\" with brightness?",
       "parentUuid": "ab762c24_b2b18842",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e0b23f7_1d02e3b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "Okay I\u0027ll share a report with you.\nIt\u0027s more like a precaution, what if last test failed to revert the brightness to original.",
+      "parentUuid": "3626e5e6_f518a288",
       "range": {
         "startLine": 62,
         "startChar": 39,
@@ -812,6 +860,30 @@
       "side": 1,
       "message": "Why not have just one EnsureBatteryPercentage RPC method? Logic looks more complicated if you do some part of work locally and some part remote. Let\u0027s do everything locally for simplicity. WDYT?",
       "parentUuid": "b9ba736b_ef2fbbc1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c812739_c5d9e387",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-06T05:56:31Z",
+      "side": 1,
+      "message": "Hi thanks for asking. I guess we can\u0027t do it, can we. As we need to operate servo alongside depending upon the current battery percentage. At present, if it above threshold, I\u0027m putting servo power delivery to snk and makes a call to BatteryDrain else servo to src and BatteryCharge.\nAlso if you are suggesting to one rpc we could use BiDi but we\u0027d lose acknowledgement. Unary seems to be best way to tackle this.",
+      "parentUuid": "5e48cca6_e59eb7ac",
       "range": {
         "startLine": 10,
         "startChar": 0,
