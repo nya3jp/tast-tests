@@ -468,26 +468,10 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
 		return errors.Wrap(err, "failed to switch to video mode")
 	}
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		return errors.Wrap(err, "preview is inactive after switch to video mode")
-	}
 
-	testing.ContextLog(ctx, "Click shutter to start video recording")
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click shutter")
-	}
-
-	// Keep video recording for some time.
-	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to sleep")
-	}
-
-	testing.ContextLog(ctx, "Click shutter to stop video recording")
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click shutter")
-	}
-	if err := app.WaitForState(ctx, "taking", false); err != nil {
-		return errors.Wrap(err, "shutter is not ended")
+	testing.ContextLog(ctx, "Start to record video")
+	if _, err := app.RecordVideo(ctx, cca.TimerOn, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to record video")
 	}
 
 	return nil
