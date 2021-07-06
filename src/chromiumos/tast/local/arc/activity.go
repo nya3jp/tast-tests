@@ -653,6 +653,11 @@ func (ac *Activity) PackageName() string {
 	return ac.pkgName
 }
 
+// ActivityName returns the activity name.
+func (ac *Activity) ActivityName() string {
+	return ac.activityName
+}
+
 // Resizable returns the window resizability.
 func (ac *Activity) Resizable(ctx context.Context) (bool, error) {
 	task, err := ac.getTaskInfo(ctx)
