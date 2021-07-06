@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c9eeee_09b88f31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed98d2d4_6b03934e",
+      "range": {
+        "startLine": 58,
+        "startChar": 18,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b101dcf7_7fd20f80",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-29T20:40:12Z",
       "side": 1,
       "message": "```\nif err :\u003d hwseclocal.CheckDAIsZero(ctx, tpmManager); err !\u003d nil {\n```\nditto to other places.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d7dc1e_7754cdef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b101dcf7_7fd20f80",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da22e1a_5f811ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f76823bb_f0001111",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "115950ef_f61f816f",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-29T20:40:12Z",
       "side": 1,
       "message": "Could we use a testing.Poll to ensure that log has beed generated?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "a172afd0fdb217adc7f0e749f43488f529536c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12505497_691e44e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:35:16Z",
+      "side": 1,
+      "message": "Seems like logReader.Wait() is more suitable for this.\nDone",
+      "parentUuid": "115950ef_f61f816f",
       "range": {
         "startLine": 91,
         "startChar": 1,
