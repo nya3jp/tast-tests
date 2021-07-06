@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/inputs/handwriting_zh_hans_hello_20210129.svg",
+  "size": 3343,
+  "sha256sum": "2ab19d07e093484d60b5cce926ce06c540e36ee093ff5d8e36609dc89b10440a"
+}

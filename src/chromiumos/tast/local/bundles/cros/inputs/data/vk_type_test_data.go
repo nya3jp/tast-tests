@@ -70,7 +70,7 @@ var VKInputMap = map[ime.InputMethodCode]vkInputData{
 		SubmitFromSuggestion: true,
 		ExpectedText:         "我",
 	},
-	ime.INPUTMETHOD_HANGUL_KOREAN: {
+	ime.INPUTMETHOD_HANGEUL_HANJA_KOREAN: {
 		TapKeySeq:    []string{"ㅎ", "\u1161", "ㄴ"}, // ㅎㅏㄴ
 		ExpectedText: "한",
 	},
