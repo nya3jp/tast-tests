@@ -22,6 +22,30 @@
       },
       "revId": "db724a55435fbdc335a1f99d28759092610cb626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c545a7fa_580790b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-06T20:01:28Z",
+      "side": 1,
+      "message": "Thank you for reviewing, Judy.\n\nIf ok is false, it means it is not YtApp, but a YbWeb instance. This logic only applies to YtApp, so it\u0027s okay to skip the !ok logic.\n\nAdded comments to indicate this is only for YT App.",
+      "parentUuid": "08714674_e665487a",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 36
+      },
+      "revId": "db724a55435fbdc335a1f99d28759092610cb626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
