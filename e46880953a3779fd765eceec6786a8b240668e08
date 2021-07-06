@@ -16,6 +16,57 @@
       "message": "please review patchset 10",
       "revId": "e46880953a3779fd765eceec6786a8b240668e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e77e974a_18c9764f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-06T09:34:39Z",
+      "side": 1,
+      "message": "LGTM with minor comments.",
+      "revId": "e46880953a3779fd765eceec6786a8b240668e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9416cf77_e491ad05",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-06T09:34:39Z",
+      "side": 1,
+      "message": "nit: let\u0027s remove this empty line. The L57 and L59 should be a group of an operation.",
+      "revId": "e46880953a3779fd765eceec6786a8b240668e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b557396_660a7bc7",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-06T09:34:39Z",
+      "side": 1,
+      "message": "nit/style: pls fix indent.",
+      "revId": "e46880953a3779fd765eceec6786a8b240668e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
