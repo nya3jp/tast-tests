@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f95546_fec65040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-06T10:57:24Z",
+      "side": 1,
+      "message": "Moved the files to appropriate dlp folder and added correct way to get clipboard content.\nThanks for the review. PTAL",
+      "revId": "3034a249ce4bd6250209c080498801875db5a055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
