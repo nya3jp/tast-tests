@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72ec6c90_0f08cc22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:59:32Z",
+      "side": 1,
+      "message": "Short one.",
+      "parentUuid": "8ef41775_fe783524",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f31d42e_31aab982",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
         "patchSetId": 2
@@ -430,6 +454,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1efc83e7_d639b99a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:59:32Z",
+      "side": 1,
+      "message": "If setRTC fails in the middle, it\u0027s responsible for reseting RTC. Think about it as a \"transaction\".",
+      "parentUuid": "a75fb667_b3d7c959",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 7
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db9fc188_96580589",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
         "patchSetId": 2
@@ -665,6 +713,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19b19701_77ac7ab2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:59:32Z",
+      "side": 1,
+      "message": "If there will be such state, our test will fail.",
+      "parentUuid": "4b6c87b7_10122234",
+      "range": {
+        "startLine": 185,
+        "startChar": 17,
+        "endLine": 185,
+        "endChar": 55
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09f856b5_b7349d27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
         "patchSetId": 2
@@ -794,6 +866,30 @@
       "side": 1,
       "message": "Sorry I didn\u0027t get you",
       "parentUuid": "fe199261_6a3bec6c",
+      "range": {
+        "startLine": 263,
+        "startChar": 18,
+        "endLine": 263,
+        "endChar": 36
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b98114_64dd208d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:59:32Z",
+      "side": 1,
+      "message": "In the previous CL I suggested to have only 1 RPC call, now it makes sense to BatteryStatus call as well.",
+      "parentUuid": "d8df29fe_20d9e07c",
       "range": {
         "startLine": 263,
         "startChar": 18,
