@@ -33,6 +33,24 @@
       "message": "Can you try to click on any command/button in files app?",
       "revId": "3b4527ddceccb0677accbc63825fb2470db9b213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee3e203_7085bc91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-06T10:37:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29de2454_c654a187",
+      "revId": "3b4527ddceccb0677accbc63825fb2470db9b213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
