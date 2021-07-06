@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08861286_92395f22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-06T10:30:05Z",
+      "side": 1,
+      "message": "Adding nit comments. Feel free to submit without addressing them.",
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41bb556f_dbd8aab0",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-06T10:30:05Z",
+      "side": 1,
+      "message": "nit: ArcTtsTestService",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046e271a_55f6a596",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-06T10:30:05Z",
+      "side": 1,
+      "message": "nit: fix indent (or can you run google-java-format?)",
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25dfc60_d27a67bd",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-06T10:30:05Z",
+      "side": 1,
+      "message": "nit: fix indent",
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da61839_b1fb3b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-06T10:30:05Z",
+      "side": 1,
+      "message": "optional: I prefer having error check like patchset 8. I guess that would help us to understand error easily.",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 6
+      },
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
