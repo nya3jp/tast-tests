@@ -564,6 +564,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a4a164c_d1054877",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-06T14:05:03Z",
+      "side": 1,
+      "message": "We bind Account structure with what can be done upon it. Should Account know how to change/regenerate password, apply policy to itself and release remote resources? Or it should be handled by Tape client.\nI am thinking how that will be used int he code:\n\nerr :\u003d account.ChangePassword()\nvs. \naccount, err :\u003d tape.ChangePassword(account)\n\nWDYT?",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcfa461f_8e393d0b",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 2
