@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36208742_3253aff1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "Initial feedback mostly about the style.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a39c1eb_cb23b7e2",
@@ -20,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86963d7b_2f81b8a7",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "Line length shouldn\u0027t be over 80 characters. More details:\nhttp://go/pystyle#s3.2-line-length",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01f3d7d3_f6ad403d",
         "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
         "patchSetId": 2
@@ -31,6 +65,29 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "nit: note that this is getting the data from the TAPE server.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8da65a4_33c5b0f9",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "For string delimiters pick either \" or \u0027, and use that as the default.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 80
+      },
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +122,121 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "nit: space",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72672fab_a8026913",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "There is no policy object.",
+      "range": {
+        "startLine": 61,
+        "startChar": 53,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9a2b2df_e01162eb",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "If you need to put \" into a string, instead of escaping it, use \u0027 as a string delimiter.",
+      "range": {
+        "startLine": 132,
+        "startChar": 18,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0a2a74_d6c434f4",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "f strings provide a shorter way to do it: f\u0027\"{self.types[0]}\"\u0027",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44b87ce_0239c113",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "update_string\nCamel case should not be used for variables.",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 16
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa644bc_f43a66bc",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "Use f strings instead of format (aside from the templates).",
+      "range": {
+        "startLine": 144,
+        "startChar": 60,
+        "endLine": 144,
+        "endChar": 66
+      },
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -168,6 +340,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02b9d20e_bc18aa25",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "Add ldap (or bug).",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e54bc45_1f21b652",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 2
@@ -208,6 +403,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d2464be_59023253",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "I think REST is an implementation detail, and should not be in the function name.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba15df2b_1f17b77f",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "I would recommend https://golang.org/pkg/net/http/#NewRequestWithContext instead.\nThese calls might take some time, and it is nice to respect the ctx timeouts.",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "199336ee_b536fbf2",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 2
@@ -231,6 +472,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bd76e59_d636ff12",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "It might be nice to store in the Account struct.\nAlso is there a way to extend the timeout, or if the remaining time is not enough, the account should be released, and a new one should be requested?",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c54637_8bf83ec9",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "Get should not be in function name.\nRequestAccount maybe?",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e7c69e3_d843b83f",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 2
@@ -242,6 +529,29 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "nit: maybe RegeneratePassword? You don\u0027t get to decide what it is.",
+      "range": {
+        "startLine": 94,
+        "startChar": 20,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d737578_af514cee",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-06T13:17:33Z",
+      "side": 1,
+      "message": "Is there a need for the tests to be able to request a new password?",
       "range": {
         "startLine": 94,
         "startChar": 20,
