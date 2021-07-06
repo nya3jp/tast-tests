@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5fb12fd_3cf87995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:53:26Z",
+      "side": 1,
+      "message": "IIUC, EC and battery itself are responsible for controlling that.\n\nPowerd sends configurations to the EC. So if you stop powerd, there is no way for EC to get new policy value.\n\nBattery charging behaviour does not depend on any services running on Chrome OS. Of course, they might slow down charging, but I don\u0027t think it will be dramatically. We need to measure if really want to stop some of them, otherwise we should not do that.",
+      "parentUuid": "696e4d73_b08a1c8e",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f35d2d9e_52a9fb1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 1
@@ -884,6 +908,30 @@
       "side": 1,
       "message": "Hi thanks for asking. I guess we can\u0027t do it, can we. As we need to operate servo alongside depending upon the current battery percentage. At present, if it above threshold, I\u0027m putting servo power delivery to snk and makes a call to BatteryDrain else servo to src and BatteryCharge.\nAlso if you are suggesting to one rpc we could use BiDi but we\u0027d lose acknowledgement. Unary seems to be best way to tackle this.",
       "parentUuid": "5e48cca6_e59eb7ac",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd7da58_336a4a07",
+        "filename": "src/chromiumos/tast/services/cros/power/power_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:53:26Z",
+      "side": 1,
+      "message": "Ack. Thanks for explaining!",
+      "parentUuid": "9c812739_c5d9e387",
       "range": {
         "startLine": 10,
         "startChar": 0,
