@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a34f6c_a50c48f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-06T21:00:51Z",
+      "side": 1,
+      "message": "I think we should wait here for the CL:2983498 stack to be merged first.",
+      "revId": "90216b0f6047df11acbef41a7166b5409f67678a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
