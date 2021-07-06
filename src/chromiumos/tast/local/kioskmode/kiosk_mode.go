@@ -22,16 +22,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	kioskStarting        = "Starting kiosk mode"
-	kioskLaunchSucceeded = "Kiosk launch succeeded"
-
-	// logScanTimeout is a timeout for log messages indicating Kiosk startup
-	// and successful launch to be present. It is set to over a minute as Kiosk
-	// mode launch varies depending on device. crbug.com/1222136
-	logScanTimeout = 90 * time.Second
-)
-
 var (
 	// WebKioskAccountID identifier of the web Kiosk application.
 	WebKioskAccountID   = "arbitrary_id_web_kiosk_1"
@@ -109,6 +99,18 @@ func SetAutolaunch(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome
 // only.
 func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 	// Check that Kiosk starts successfully.
+	testing.ContextLog(ctx, "Waiting for Kiosk mode start")
+
+	const (
+		kioskStarting        = "Starting kiosk mode"
+		kioskLaunchSucceeded = "Kiosk launch succeeded"
+
+		// logScanTimeout is a timeout for log messages indicating Kiosk startup
+		// and successful launch to be present. It is set to over a minute as Kiosk
+		// mode launch varies depending on device. crbug.com/1222136
+		logScanTimeout = 90 * time.Second
+	)
+
 	if _, err := reader.Wait(ctx, logScanTimeout,
 		func(e *syslog.Entry) bool {
 			return strings.Contains(e.Content, kioskStarting)
@@ -117,6 +119,7 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 		return errors.Wrap(err, "failed to verify starting of Kiosk mode")
 	}
 
+	testing.ContextLog(ctx, "Waiting for successful Kiosk mode launch")
 	if _, err := reader.Wait(ctx, logScanTimeout,
 		func(e *syslog.Entry) bool {
 			return strings.Contains(e.Content, kioskLaunchSucceeded)
@@ -174,10 +177,17 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*chrome.Ch
 			policies = append(policies, cfg.m.ExtraPolicies...)
 		}
 
-		// TODO: handle public account policies
+		pb := fakedms.NewPolicyBlob()
+		pb.AddPolicies(policies)
+		// Handle public account policies.
+		if cfg.m.PublicAccountPolicies != nil {
+			for accountID, policies := range cfg.m.PublicAccountPolicies {
+				pb.AddPublicAccountPolicies(accountID, policies)
+			}
+		}
 
 		// Update policies.
-		if err := policyutil.ServeAndRefresh(ctx, fdms, cr, policies); err != nil {
+		if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 			return errors.Wrap(err, "failed to serve and refresh policies")
 		}
 

@@ -24,14 +24,9 @@ type MutableConfig struct {
 	DeviceLocalAccounts *policy.DeviceLocalAccounts
 	// ExtraPolicies holds extra policies that will be applied.
 	ExtraPolicies []policy.Policy
-	// TODO: kamilszarek add support for the public account policies together
-	// with a test.
-	// PublicAccountID is an id of the account to which PublicAccountPolicies
-	// will be applied.
-	PublicAccountID *string
-	// PublicAccountPolicies are policies that will be applied to the account
-	// with PublicAccountID id.
-	PublicAccountPolicies []policy.Policy
+	// PublicAccountPolicies holds public accounts' IDs with associated polices
+	// that will be applied to the them.
+	PublicAccountPolicies map[string][]policy.Policy
 	// AutoLaunch determines whether to set Kiosk mode to autolaunch. When true
 	// AutoLaunchKioskAppID id is set to autolaunch.
 	AutoLaunch bool
