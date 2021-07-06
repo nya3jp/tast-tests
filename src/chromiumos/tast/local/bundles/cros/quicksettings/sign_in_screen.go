@@ -45,7 +45,7 @@ func init() {
 					Battery:     false,
 					AudioRecord: true,
 				},
-				ExtraSoftwareDeps: []string{"audio_record"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Microphone()),
 			},
 			{
 				Name: "noaudio_nobattery",

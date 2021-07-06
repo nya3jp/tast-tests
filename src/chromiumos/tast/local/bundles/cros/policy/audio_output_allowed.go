@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,7 +26,8 @@ func init() {
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "audio_play"},
+		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.Speaker()),
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
