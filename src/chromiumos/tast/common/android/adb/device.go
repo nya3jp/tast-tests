@@ -224,6 +224,7 @@ const (
 	InstallOptionAllowVersionDowngrade InstallOption = "-d"
 	InstallOptionGrantPermissions      InstallOption = "-g"
 	InstallOptionEphemeralInstall      InstallOption = "--instant"
+	InstallOptionFromPlayStore         InstallOption = "-i com.android.vending"
 )
 
 var showAPKPathWarningOnce sync.Once
@@ -249,7 +250,9 @@ func (d *Device) install(ctx context.Context, adbCommand string, apks []string, 
 	installOptions = append(installOptions, InstallOptionAllowVersionDowngrade)
 	commandArgs := []string{adbCommand}
 	for _, installOption := range installOptions {
-		commandArgs = append(commandArgs, string(installOption))
+		for _, option := range strings.Split(string(installOption), " ") {
+			commandArgs = append(commandArgs, option)
+		}
 	}
 	commandArgs = append(commandArgs, apks...)
 	out, err := d.Command(ctx, commandArgs...).Output(testexec.DumpLogOnError)
