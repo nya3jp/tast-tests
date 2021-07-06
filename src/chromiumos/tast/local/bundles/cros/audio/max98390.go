@@ -22,8 +22,7 @@ func init() {
 		Func:         Max98390,
 		Desc:         "Verifies sound_card_init max98390 boot time calibration at the first boot time",
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
-		SoftwareDeps: []string{"audio_play"},
-		HardwareDeps: hwdep.D(hwdep.Model("nightfury")),
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Model("nightfury")),
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      1 * time.Minute,
 		Params: []testing.Param{
