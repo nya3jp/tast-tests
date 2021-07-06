@@ -152,6 +152,18 @@ func (pb *PolicyBlob) AddPublicAccountPolicy(accountID string, p policy.Policy) 
 	return addValue(p, policies.MandatoryPM)
 }
 
+// AddPublicAccountPolicies adds public policies to the public account policies
+// associated with the accountID. The account ID should match one of the
+// accounts set in the DeviceLocalAccounts policy.
+func (pb *PolicyBlob) AddPublicAccountPolicies(accountID string, policies []policy.Policy) error {
+	for _, p := range policies {
+		if err := pb.AddPublicAccountPolicy(accountID, p); err != nil {
+			return errors.Wrapf(err, "could not add policy to the account %s", accountID)
+		}
+	}
+	return nil
+}
+
 // AddLegacyDevicePolicy adds a given one to many legacy device policy to the PolicyBlob.
 func (pb *PolicyBlob) AddLegacyDevicePolicy(field string, value interface{}) error {
 	if pb.DevicePM == nil {
