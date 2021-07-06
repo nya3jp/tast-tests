@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // TestParameters contains all the data needed to run a single test iteration.
@@ -38,7 +39,7 @@ func init() {
 					Playback: true,
 					Capture:  false,
 				},
-				ExtraSoftwareDeps: []string{"audio_play"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Speaker()),
 			},
 			{
 				Name: "capture",
@@ -46,7 +47,7 @@ func init() {
 					Playback: false,
 					Capture:  true,
 				},
-				ExtraSoftwareDeps: []string{"audio_record"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Microphone()),
 			},
 			{
 				Name: "playback_capture",
@@ -54,7 +55,7 @@ func init() {
 					Playback: true,
 					Capture:  true,
 				},
-				ExtraSoftwareDeps: []string{"audio_play", "audio_record"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Microphone(), hwdep.Speaker()),
 			},
 		},
 	})

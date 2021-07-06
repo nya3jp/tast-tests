@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -21,7 +22,7 @@ func init() {
 		Func:         CrasPlay,
 		Desc:         "Verifies CRAS playback function works correctly",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
-		SoftwareDeps: []string{"audio_play"},
+		HardwareDeps: hwdep.D(hwdep.Speaker()),
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }

@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -20,7 +21,7 @@ func init() {
 		Func:         CrasRecordQuality,
 		Desc:         "Verifies recorded samples from CRAS are correct",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
-		SoftwareDeps: []string{"audio_record"},
+		HardwareDeps: hwdep.D(hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }

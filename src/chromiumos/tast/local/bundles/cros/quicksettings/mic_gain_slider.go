@@ -24,11 +24,11 @@ func init() {
 			"amehfooz@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "audio_record"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 		// kakadu audio is currently broken: https://crbug.com/1153016
 		// atlas is flaky: b/189732223
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kakadu", "atlas")),
+		HardwareDeps: hwdep.D(hwdep.Microphone(), hwdep.SkipOnModel("kakadu", "atlas")),
 	})
 }
 

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,7 +24,8 @@ func init() {
 		Desc:         "Tests setting and increasing volume actions via Assistant",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "chrome_internal", "audio_play"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		HardwareDeps: hwdep.D(hwdep.Speaker()),
 		Pre:          assistant.VerboseLoggingEnabled(),
 	})
 }

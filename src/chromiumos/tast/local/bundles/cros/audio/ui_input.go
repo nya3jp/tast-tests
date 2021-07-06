@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testControl int
@@ -38,7 +39,8 @@ func init() {
 		Func:         UIInput,
 		Desc:         "Tests that the input is controllable by UI API",
 		Contacts:     []string{"johnylin@chromium.org", "cychiang@chromium.org"},
-		SoftwareDeps: []string{"chrome", "audio_play", "audio_record"},
+		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{

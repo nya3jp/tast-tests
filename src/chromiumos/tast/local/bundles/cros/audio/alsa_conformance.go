@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,7 +28,7 @@ func init() {
 		Desc:         "Runs alsa_conformance_test to test basic functions of ALSA",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"audio_play", "audio_record"},
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
 		Timeout:      10 * time.Minute,
 	})
 }
