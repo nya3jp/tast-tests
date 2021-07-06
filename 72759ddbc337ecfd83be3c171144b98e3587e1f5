@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c409a20f_eb3afe21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:53:26Z",
+      "side": 1,
+      "message": "There is absolutely no need for that branch. Any gRPC call has some timeout/context/deadline (or whatever it\u0027s called) regardless of client. On top of that each server/service might apply their own restrictions to timeouts. That\u0027s why we should respect context we receive from caller and don\u0027t introduce some custom logic on top of it which might lead to unexpected behaviour (what if I want to run this RPC for 2 hours?).",
+      "parentUuid": "e3f1c770_958e8d96",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7df8f9c5_2877ca48",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 4
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39169638_3462c33a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:53:26Z",
+      "side": 1,
+      "message": "If you don\u0027t specify timeout in PollOptions, it will rely only ctx pass to testing.Poll",
+      "parentUuid": "285c6bb8_33da9565",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79b0f3bf_c2da28ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
         "patchSetId": 4
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Yeah, not a lot but if it contributes something that should be enough, ig : )\nFor, long duration draining I think it would be helpful.\n \nActually I\u0027ve tested it takes slightly\nless than 2 mins to drain 1% \nmore the 2 mins to charge 1%\n\nwith this set of combos and the charging docks that we have.\nWould you prefer to remove it?",
       "parentUuid": "79b0f3bf_c2da28ec",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "72759ddbc337ecfd83be3c171144b98e3587e1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95988e14_6203766c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-06T11:53:26Z",
+      "side": 1,
+      "message": "I\u0027d prefer to include some logic only when it\u0027s absolutely necessary or might speed up a lot.",
+      "parentUuid": "a6282fd3_df6b2154",
       "range": {
         "startLine": 159,
         "startChar": 12,
