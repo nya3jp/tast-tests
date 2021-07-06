@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "974205c2_755b4ec4",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-06T03:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90eac93_a78b9460",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "219acecb1b736e061338b2f9ec73078cae2be89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d66bcce_13ef5aa7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-02T09:43:24Z",
       "side": 1,
       "message": ". Each pcap has Capturer configured",
+      "range": {
+        "startLine": 44,
+        "startChar": 56,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "219acecb1b736e061338b2f9ec73078cae2be89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22290ea5_77577cfd",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-06T03:06:55Z",
+      "side": 1,
+      "message": "In fact, Capturer is spawned per AP. Description updated to avoid \"pcap\" ambiguity. PTAL.",
+      "parentUuid": "0d66bcce_13ef5aa7",
       "range": {
         "startLine": 44,
         "startChar": 56,
