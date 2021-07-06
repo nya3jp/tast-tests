@@ -153,6 +153,24 @@
       "parentUuid": "f89c4c88_0acae10b",
       "revId": "32c75057f63561b898075d2ad000fadddd816d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efc6dcc_9f24b7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-06T10:21:41Z",
+      "side": 1,
+      "message": "Done, resolving comment",
+      "parentUuid": "79ec2030_96c18972",
+      "revId": "32c75057f63561b898075d2ad000fadddd816d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

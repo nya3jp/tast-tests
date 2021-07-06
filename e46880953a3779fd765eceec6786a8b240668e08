@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "702eeb7a_42245fc4",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-06T10:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9416cf77_e491ad05",
+      "revId": "e46880953a3779fd765eceec6786a8b240668e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b557396_660a7bc7",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-07-06T09:34:39Z",
       "side": 1,
       "message": "nit/style: pls fix indent.",
+      "revId": "e46880953a3779fd765eceec6786a8b240668e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccf1686_d2ca8a19",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/ttsengine/ArcTtsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-06T10:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b557396_660a7bc7",
       "revId": "e46880953a3779fd765eceec6786a8b240668e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
