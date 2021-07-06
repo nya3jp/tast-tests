@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1fbe2dc_99df7b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c443056_9720a5a8",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "3e47ac6627ca3de58b3632de10170e05a1733aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f920faf3_c7ba74f4",
@@ -114,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa3f3cc8_9efba404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:37:07Z",
+      "side": 1,
+      "message": "Looks like I actually don\u0027t need to restart anomay detector in this situation. Right?",
+      "parentUuid": "f920faf3_c7ba74f4",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "3e47ac6627ca3de58b3632de10170e05a1733aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f3aed8a_9eb7eba9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
         "patchSetId": 2
@@ -125,6 +173,30 @@
       "writtenOn": "2021-06-29T20:43:44Z",
       "side": 1,
       "message": "```\nif err :\u003d hwsec.IncreaseDAForTpm1(ctx, tpmManager); err !\u003d nil {\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "3e47ac6627ca3de58b3632de10170e05a1733aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed48ceb_add78b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3aed8a_9eb7eba9",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -172,6 +244,30 @@
       "side": 1,
       "message": "Note: hwsec have another library to control the TPM related daemons.\n\nPlease ref: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/daemon_control.go\n\nExample usage:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
       "parentUuid": "603e1c8d_06963a0a",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "3e47ac6627ca3de58b3632de10170e05a1733aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c79062_dbaa9bd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-06T19:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64faa9ed_9424be6a",
       "range": {
         "startLine": 77,
         "startChar": 0,
