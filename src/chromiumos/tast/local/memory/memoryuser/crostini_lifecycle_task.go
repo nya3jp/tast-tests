@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CrostiniLifecycleTask launches a process in Crostini which allocates memory.
-type CrostiniLifecycleTask struct {
+// CrostiniLifecycleUnit launches a process in Crostini which allocates memory.
+type CrostiniLifecycleUnit struct {
 	cont        *vm.Container
 	id          int
 	allocateMiB int64
@@ -28,14 +28,8 @@ type CrostiniLifecycleTask struct {
 	cmd         *testexec.Cmd
 }
 
-// CrostiniLifecycleTask is a MemoryTask.
-var _ MemoryTask = (*CrostiniLifecycleTask)(nil)
-
-// CrostiniLifecycleTask is a KillableTask.
-var _ KillableTask = (*CrostiniLifecycleTask)(nil)
-
-// Run starts the CrostiniLifecycleTask process, and uses it to allocate memory.
-func (t *CrostiniLifecycleTask) Run(ctx context.Context, testEnv *TestEnv) error {
+// Run starts the CrostiniLifecycleUnit process, and uses it to allocate memory.
+func (t *CrostiniLifecycleUnit) Run(ctx context.Context) error {
 	if t.cmd != nil {
 		return errors.New("lifecycle already running")
 	}
@@ -83,13 +77,92 @@ func (t *CrostiniLifecycleTask) Run(ctx context.Context, testEnv *TestEnv) error
 	return nil
 }
 
-// Close kills the CrostiniLifecycleTask process.
-func (t *CrostiniLifecycleTask) Close(ctx context.Context, testEnv *TestEnv) {
+// Close kills the CrostiniLifecycleUnit process.
+func (t *CrostiniLifecycleUnit) Close(ctx context.Context) error {
 	if t.cmd == nil {
-		return
+		return nil
 	}
-	t.cmd.Kill()
-	t.cmd.Wait(testexec.DumpLogOnError)
+	if err := t.cmd.Kill(); err != nil {
+		return errors.Wrap(err, "failed to kill Crostini lifecycle unit")
+	}
+	if err := t.cmd.Wait(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to wait for Crostini lifecycle unit after kill")
+	}
+	return nil
+}
+
+// StillAlive looks in /proc to see if the process is still running.
+func (t *CrostiniLifecycleUnit) StillAlive(ctx context.Context) bool {
+	if t.cmd == nil {
+		return false
+	}
+	// ProcessState is set within the Wait() call in the goroutine started just
+	// after we started the lifecycle process.
+	return t.cmd.ProcessState == nil
+}
+
+// NewCrostiniLifecycleUnit foo.
+func NewCrostiniLifecycleUnit(cont *vm.Container, id int, allocateMiB int64, ratio float64, limit memory.Limit) *CrostiniLifecycleUnit {
+	var cmd *testexec.Cmd
+	return &CrostiniLifecycleUnit{cont, id, allocateMiB, ratio, limit, cmd}
+}
+
+func FillCrostiniMemory(ctx context.Context, cont *vm.Container, unitMiB int64, ratio float64) (func(context.Context) error, error) {
+	var units []*CrostiniLifecycleUnit
+	cleanup := func(ctx context.Context) error {
+		var res error
+		for _, unit := range units {
+			if err := unit.Close(ctx); err != nil {
+				testing.ContextLogf(ctx, "Failed to close CrostiniLifecycleUnit: %s", err)
+				if res == nil {
+					res = err
+				}
+			}
+		}
+		if err := UninstallCrostiniLifecycle(ctx, cont); err != nil {
+			testing.ContextLog(ctx, "Failed to clean up CrostiniLifecycleUnit: ", err)
+			if res == nil {
+				res = err
+			}
+		}
+		return res
+	}
+	if err := InstallCrostiniLifecycle(ctx, cont); err != nil {
+		return cleanup, err
+	}
+	for i := 0; ; i++ {
+		unit := NewCrostiniLifecycleUnit(cont, i, unitMiB, ratio, nil)
+		units = append(units, unit)
+		if err := unit.Run(ctx); err != nil {
+			return cleanup, errors.Wrapf(err, "failed to run CrostiniLifecycleUnit %d", unit.id)
+		}
+		for _, unit := range units {
+			if !unit.StillAlive(ctx) {
+				testing.ContextLogf(ctx, "FillChromeOSMemory started %d units of %d MiB before first kill", len(units), unitMiB)
+				return cleanup, nil
+			}
+		}
+	}
+}
+
+type CrostiniLifecycleTask struct{ CrostiniLifecycleUnit }
+
+// CrostiniLifecycleTask is a MemoryTask.
+var _ MemoryTask = (*CrostiniLifecycleTask)(nil)
+
+// CrostiniLifecycleTask is a KillableTask.
+var _ KillableTask = (*CrostiniLifecycleTask)(nil)
+
+func (t *CrostiniLifecycleTask) Run(ctx context.Context, testEnv *TestEnv) error {
+	return t.CrostiniLifecycleUnit.Run(ctx)
+}
+
+func (t *CrostiniLifecycleTask) Close(ctx context.Context, testEnv *TestEnv) {
+	t.CrostiniLifecycleUnit.Close(ctx)
+}
+
+func (t *CrostiniLifecycleTask) StillAlive(ctx context.Context, testEnv *TestEnv) bool {
+	return t.CrostiniLifecycleUnit.StillAlive(ctx)
 }
 
 // String returns a friendly name for the task.
@@ -103,20 +176,9 @@ func (t *CrostiniLifecycleTask) NeedVM() bool {
 	return false
 }
 
-// StillAlive looks in /proc to see if the process is still running.
-func (t *CrostiniLifecycleTask) StillAlive(ctx context.Context, testEnv *TestEnv) bool {
-	if t.cmd == nil {
-		return false
-	}
-	// ProcessState is set within the Wait() call in the goroutine started just
-	// after we started the lifecycle process.
-	return t.cmd.ProcessState == nil
-}
-
 // NewCrostiniLifecycleTask foo.
 func NewCrostiniLifecycleTask(cont *vm.Container, id int, allocateMiB int64, ratio float64, limit memory.Limit) *CrostiniLifecycleTask {
-	var cmd *testexec.Cmd
-	return &CrostiniLifecycleTask{cont, id, allocateMiB, ratio, limit, cmd}
+	return &CrostiniLifecycleTask{*NewCrostiniLifecycleUnit(cont, id, allocateMiB, ratio, limit)}
 }
 
 // NB: this name should be under 15 characters so that killall is able to be
