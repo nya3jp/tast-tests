@@ -4,9 +4,11 @@
 
 package kioskmode
 
-import "chromiumos/tast/common/policy"
+import (
+	"chromiumos/tast/common/policy"
+)
 
-// ExtraPolicies adds device policies to be applied with Kiosk app.
+// ExtraPolicies adds extra policies to be applied with Kiosk app.
 func ExtraPolicies(p []policy.Policy) Option {
 	return func(cfg *MutableConfig) error {
 		cfg.ExtraPolicies = p
@@ -40,6 +42,17 @@ func AutoLaunch(accountID string) Option {
 	return func(cfg *MutableConfig) error {
 		cfg.AutoLaunch = true
 		cfg.AutoLaunchKioskAppID = &accountID
+		return nil
+	}
+}
+
+// PublicAccountPolicies adds policies that will be applied to the account.
+func PublicAccountPolicies(accountID string, p []policy.Policy) Option {
+	return func(cfg *MutableConfig) error {
+		if cfg.PublicAccountPolicies == nil {
+			cfg.PublicAccountPolicies = make(map[string][]policy.Policy)
+		}
+		cfg.PublicAccountPolicies[accountID] = append(cfg.PublicAccountPolicies[accountID], p...)
 		return nil
 	}
 }
