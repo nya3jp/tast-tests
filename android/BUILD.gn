@@ -15,6 +15,7 @@ group("all") {
     "ArcClipboardTest:ArcClipboardTest",
     "ArcConfigChangesTest:ArcConfigChangesTest",
     "ArcChromeSharesheetTest:ArcChromeSharesheetTest",
+    "ArcChromeWebApkTest:ArcChromeWebApkTest",
     "ArcConnectivityTest:ArcConnectivityTest",
     "ArcDownloadManagerTest:ArcDownloadManagerTest",
     "ArcDragTargetTest:ArcDragTargetTest",
