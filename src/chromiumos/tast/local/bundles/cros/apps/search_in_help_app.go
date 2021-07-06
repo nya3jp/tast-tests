@@ -87,6 +87,8 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 		responseStatus := -1
 		err := trustedHelpAppConn.Eval(ctx,
 			`(async () => {
+				const indexRemote = chromeos.localSearchService
+					.mojom.Index.getRemote();
 				return (await indexRemote.find(toString16('foo'))).status;
 			})()`, &responseStatus)
 		if err != nil {
