@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b24f3a_87603ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-06T11:13:27Z",
+      "side": 1,
+      "message": "You should get the copied text after pressing Crl+C, line #112",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 54
+      },
+      "revId": "7966b03fb68455509ca8710fbda6b9426b4ef194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
