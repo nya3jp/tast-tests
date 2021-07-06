@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "824cf447_39c0a6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-06T01:31:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b05b08d9_fc98714d",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 34
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "224b5fda_2cc9095a",
@@ -130,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfa53a6_af79f41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-06T01:31:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ceec7fc5_7dd5d318",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea68baa0_8518e54e",
@@ -167,6 +215,30 @@
       "side": 1,
       "message": "I hope I explained it clear for comments #59. We want to dump the spotify UI first before close it. But in order to dump UI, we need to close d. So we manage all the resources in the spotify Close() function.",
       "parentUuid": "ea68baa0_8518e54e",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "00dafa40978f1ebfde715638194393b56e957c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0939ecc5_403b495b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-06T01:31:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cb0a827_8fc6431e",
       "range": {
         "startLine": 101,
         "startChar": 3,
