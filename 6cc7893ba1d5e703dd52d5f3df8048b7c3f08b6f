@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9937f950_99418936",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-07T05:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41bb556f_dbd8aab0",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046e271a_55f6a596",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-07-06T10:30:05Z",
       "side": 1,
       "message": "nit: fix indent (or can you run google-java-format?)",
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18eed110_70ffdfe8",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-07T05:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046e271a_55f6a596",
       "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6bc5b7_821be2db",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-07T05:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25dfc60_d27a67bd",
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da61839_b1fb3b0a",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-07-06T10:30:05Z",
       "side": 1,
       "message": "optional: I prefer having error check like patchset 8. I guess that would help us to understand error easily.",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 6
+      },
+      "revId": "6cc7893ba1d5e703dd52d5f3df8048b7c3f08b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e5b886_debd9365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-07T05:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da61839_b1fb3b0a",
       "range": {
         "startLine": 98,
         "startChar": 4,
