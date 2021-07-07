@@ -16,6 +16,41 @@
       "message": "Hi Ben,\n\nDue to this CL, I also modified other CLs to change the type from \"string\" to \"jsontypes.xxx\", please also help to take a look on that, thanks!",
       "revId": "328b5100a497dcfbfc13df311fc95fe178dc7184",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b77d1d_b029859a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-07T05:11:43Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "328b5100a497dcfbfc13df311fc95fe178dc7184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24e46a7_6a4a117a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-07T05:11:43Z",
+      "side": 1,
+      "message": "Just saw all those, I\u0027ll work my way through them 😊",
+      "parentUuid": "ede73815_376d87a1",
+      "revId": "328b5100a497dcfbfc13df311fc95fe178dc7184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
