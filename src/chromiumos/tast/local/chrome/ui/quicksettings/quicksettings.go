@@ -364,6 +364,7 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer cleanup(ctx)
 
+	expandMenu := ui.FindParams{Role: ui.RoleTypeButton, Name: "Expand menu"}
 	audioParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}
 	audioDetailedView := ui.FindParams{ClassName: "AudioDetailedView"}
 
@@ -376,17 +377,46 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 		return nil
 	}
 
+	// If quick settings menu is collapsed, expand it.
+	exist, err = ui.Exists(ctx, tconn, expandMenu)
+	if err != nil {
+		return errors.Wrap(err, "failed to check expand menu button")
+	}
+	if exist {
+		expandMenuBtn, err := ui.FindWithTimeout(ctx, tconn, expandMenu, uiTimeout)
+		if err != nil {
+			return err
+		}
+		defer expandMenuBtn.Release(ctx)
+
+		if err := expandMenuBtn.LeftClickUntil(ctx, func(ctx context.Context) (bool, error) {
+			if err := ui.WaitUntilExists(ctx, tconn, audioParams, 1*time.Second); err != nil {
+				return false, nil
+			}
+			return true, nil
+		}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
+			return errors.Wrap(err, "failed to click expand menu button and wait for audio settings button")
+		}
+	}
+
 	audioBtn, err := ui.FindWithTimeout(ctx, tconn, audioParams, uiTimeout)
 	if err != nil {
 		return errors.Wrap(err, "failed to find audio settings button")
 	}
 	defer audioBtn.Release(ctx)
 
-	if err := audioBtn.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click audio settings button")
+	// It worth noting that LeftClickUntil will check the condition before doing the first
+	// left click. This actually gives time for the UI to be stable before clicking.
+	if err := audioBtn.LeftClickUntil(ctx, func(ctx context.Context) (bool, error) {
+		if err := ui.WaitUntilExists(ctx, tconn, audioDetailedView, 1*time.Second); err != nil {
+			return false, nil
+		}
+		return true, nil
+	}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
+		return errors.Wrap(err, "failed to click audio settings button to show audio detailed view")
 	}
 
-	return ui.WaitUntilExists(ctx, tconn, audioDetailedView, uiTimeout)
+	return nil
 }
 
 // SliderValue returns the slider value as an integer.

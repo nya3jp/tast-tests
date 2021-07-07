@@ -74,11 +74,11 @@ func activateAloopNodes(ctx context.Context, tconn *chrome.TestConn) error {
 	defer quicksettings.Hide(cleanupCtx, tconn)
 
 	if err := selectAudioOption(ctx, tconn, "Loopback Playback"); err != nil {
-		return errors.Wrap(err, "failed to select ALSA loopback output: ")
+		return errors.Wrap(err, "failed to select ALSA loopback output")
 	}
 
 	if err := selectAudioOption(ctx, tconn, "Loopback Capture"); err != nil {
-		return errors.Wrap(err, "failed to select ALSA loopback input: ")
+		return errors.Wrap(err, "failed to select ALSA loopback input")
 	}
 
 	return nil
