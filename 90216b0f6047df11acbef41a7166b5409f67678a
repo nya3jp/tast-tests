@@ -16,6 +16,24 @@
       "message": "I think we should wait here for the CL:2983498 stack to be merged first.",
       "revId": "90216b0f6047df11acbef41a7166b5409f67678a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ffc3ce_a410063b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-07T02:47:19Z",
+      "side": 1,
+      "message": "Sure. Add it explicitly with Cq-Depend.",
+      "parentUuid": "13a34f6c_a50c48f9",
+      "revId": "90216b0f6047df11acbef41a7166b5409f67678a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
