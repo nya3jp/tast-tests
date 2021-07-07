@@ -22,6 +22,30 @@
       },
       "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56dfb6f_9a6e5bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-07T19:59:05Z",
+      "side": 1,
+      "message": "Agreed. However, it need further refactoring. I\u0027m up to the test owner to decide which way is best for their team.",
+      "parentUuid": "a691db20_4a44497a",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
