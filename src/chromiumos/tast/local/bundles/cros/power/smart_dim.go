@@ -10,9 +10,10 @@ import (
 
 	"github.com/godbus/dbus"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -23,6 +24,16 @@ func init() {
 		Contacts:     []string{"alanlxl@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},
+		Params: []testing.Param{{
+			Val:     lacros.ChromeTypeChromeOS,
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Fixture:           "lacrosStartedByData",
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -32,18 +43,29 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		dbusPath            = dbus.ObjectPath("/org/chromium/MlDecisionService")
 		dbusInterfaceMethod = "org.chromium.MlDecisionService.ShouldDeferScreenDim"
 
-		histogramName = "MachineLearningService.SmartDimModel.ExecuteResult.Event"
-		timeout       = 10 * time.Second
+		eventHistogramName  = "MachineLearningService.SmartDimModel.ExecuteResult.Event"
+		sourceHistogramName = "PowerML.SmartDimFeature.WebPageInfoSource"
+		timeout             = 60 * time.Second
 	)
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--external-metrics-collection-interval=1"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	var artifactPath string
+	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+		artifactPath = s.DataPath(launcher.DataArtifact)
 	}
-	defer cr.Close(ctx)
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(ctx, l)
 
 	_, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
 		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
 	}
 
 	call := func() {
@@ -56,28 +78,43 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+	waitForHistogram := func(name string, base *metrics.Histogram) *metrics.Histogram {
+		s.Logf("Waiting for %v histogram", name)
+		var histogram *metrics.Histogram
+		var err error
+		if base == nil {
+			histogram, err = metrics.WaitForHistogram(ctx, tconn, name, timeout)
+		} else {
+			histogram, err = metrics.WaitForHistogramUpdate(ctx, tconn, name, base, timeout)
+		}
+
+		if err != nil {
+			s.Fatalf("Failed to get histogram %q: %v", name, err)
+		}
+		s.Logf("Got histogram %q: %v", name, histogram)
+		return histogram
 	}
 
 	call()
-	s.Logf("Waiting for %v histogram", histogramName)
-	h1, err := metrics.WaitForHistogram(ctx, tconn, histogramName, timeout)
-	if err != nil {
-		s.Fatal("Failed to get histogram: ", err)
-	}
-	s.Log("Got histogram: ", h1)
+	eventHistogramBase := waitForHistogram(eventHistogramName, nil)
+	sourceHistogramBase := waitForHistogram(sourceHistogramName, nil)
 
 	call()
-	s.Logf("Waiting for %v histogram update", histogramName)
-	h2, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, h1, timeout)
-	if err != nil {
-		s.Fatal("Failed to get histogram update: ", err)
+	eventHistogramUpdate := waitForHistogram(eventHistogramName, eventHistogramBase)
+	sourceHistogramUpdate := waitForHistogram(sourceHistogramName, sourceHistogramBase)
+
+	expectedEventBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
+	if len(eventHistogramUpdate.Buckets) != 1 || eventHistogramUpdate.Buckets[0] != expectedEventBucket {
+		s.Errorf("Unexpected event histogram update: want %+v, got %+v", expectedEventBucket, eventHistogramUpdate)
 	}
-	s.Log("Got histogram update: ", h2)
-	expectedBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
-	if len(h2.Buckets) != 1 || h2.Buckets[0] != expectedBucket {
-		s.Fatal("h2 expected value [[0,1):1], but get ", h2)
+
+	var expectedSourceBucket metrics.HistogramBucket
+	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+		expectedSourceBucket = metrics.HistogramBucket{Min: 1, Max: 2, Count: 1}
+	} else {
+		expectedSourceBucket = metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
+	}
+	if len(sourceHistogramUpdate.Buckets) != 1 || sourceHistogramUpdate.Buckets[0] != expectedSourceBucket {
+		s.Fatalf("Unexpected source histogram update: want %+v, got %+v", expectedSourceBucket, sourceHistogramUpdate)
 	}
 }
