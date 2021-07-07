@@ -16,6 +16,144 @@
       "message": "I also added ForceLaunchBrowser to make FullRestore service happy.\n\nPTAL.",
       "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98e667f_878b60a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-07T09:06:12Z",
+      "side": 1,
+      "message": "Do we still need this option with graceful logout?",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403ab42e_adbeb0c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-07T09:06:12Z",
+      "side": 1,
+      "message": "I know it\u0027s tricky, but TestAPIConn should not be closed.\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git@v0.0.0-20210707072139-df186bebc97f/src/chromiumos/tast/local/chrome#Chrome.TestAPIConn",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c29906_1c3a67ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-07T09:06:12Z",
+      "side": 1,
+      "message": "nit:\n\n visible, err :\u003d ...\n\n:\u003d works when at least one of variables on LHS is undefined.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f35167_d4ab4381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-07T09:06:12Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 20
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650bd128_82223854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-07T09:06:12Z",
+      "side": 1,
+      "message": "We have to close sw when we\u0027re done with it:\n\n defer sw.Close(ctx)",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841f1bf0_b729133a",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-07T09:06:12Z",
+      "side": 1,
+      "message": "I guess you copied this from ash_switches.cc, but it\u0027s not very useful description here since Tast tests are not telemetry tests.\n\nHow about saying something like, it forces starting a browser on login?",
+      "range": {
+        "startLine": 374,
+        "startChar": 89,
+        "endLine": 374,
+        "endChar": 109
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
