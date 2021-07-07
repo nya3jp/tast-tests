@@ -41,6 +41,8 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		// Skip on blocked models.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(blockedModels...)),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForSlack,
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -77,6 +79,22 @@ func init() {
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password",
 			"arcappcompat.Slack.emailid", "arcappcompat.Slack.password", "arcappcompat.Slack.workspace"},
 	})
+}
+
+// List of blocked models.
+var blockedModels = []string{
+	"eve",
+	"nasher360",
+	"careena",
+	"caroline",
+	"helios",
+	"kohaku",
+	"kevin",
+	"bluebird",
+	"soraka",
+	"lazor",
+	"elemi",
+	"berknip",
 }
 
 // Slack test uses library for opting into the playstore and installing app.
