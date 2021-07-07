@@ -92,9 +92,11 @@ func EnlightFacetune(ctx context.Context, s *testing.State) {
 // launchAppForEnlightFacetune verifies EnlightFacetune reached main activity page of the app.
 func launchAppForEnlightFacetune(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		closeID           = "com.lightricks.facetune.free:id/subscribe_skip"
-		getStartedText    = "Get Started"
-		shortTimeInterval = 300 * time.Millisecond
+		loginWithGoogleButtonText = "Sign in with Google"
+		closeID                   = "com.lightricks.facetune.free:id/subscribe_skip"
+		emailAddressID            = "com.google.android.gms:id/container"
+		getStartedText            = "Get Started"
+		shortTimeInterval         = 300 * time.Millisecond
 	)
 
 	// Press KEYCODE_DPAD_RIGHT to swipe until getStarted button exist.
@@ -111,6 +113,26 @@ func launchAppForEnlightFacetune(ctx context.Context, s *testing.State, tconn *c
 		s.Log("getStartedButton doesn't exist: ", err)
 	} else if err := getStartedButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on startButton: ", err)
+	}
+
+	loginWithGoogleButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(loginWithGoogleButtonText))
+	emailAddress := d.Object(ui.ID(emailAddressID))
+	// Click on sign in with Google Button until email address exist.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := emailAddress.Exists(ctx); err != nil {
+			loginWithGoogleButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Log("Email address doesn't exist: ", err)
+	}
+
+	// Click on email address.
+	if err := emailAddress.Exists(ctx); err != nil {
+		s.Log("EmailAddress doesn't exist: ", err)
+	} else if err := emailAddress.Click(ctx); err != nil {
+		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
 
 	// Click on close button to skip subscription.
