@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "3eebe706f08159429f8e234be07c7f18ed7997d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218cd490_9e347644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-07T14:29:44Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "3eebe706f08159429f8e234be07c7f18ed7997d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf7d09c_6dd2e91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-07T14:29:44Z",
+      "side": 1,
+      "message": "nit: Error",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "3eebe706f08159429f8e234be07c7f18ed7997d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
