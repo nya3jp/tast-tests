@@ -16,6 +16,161 @@
       "message": "PTAL!",
       "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e03de1f_cd16e043",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "Thank you for working on this :)\nBehaviors and expectations LGTM with some nits.\nLet me hand over to tast-owner for common Go/Tast things.",
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88407e2f_e2005c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "optional: In continuous tast bot, we run many tests sequentially *without* refreshing the user profile. So if any AMAC-e app is launched more than twice prior to this test, we won\u0027t see splash here.\nI think there\u0027s no test launching AMAC-e app now (because neither side-loaded apps or most of top apps are AMAC-e) so it\u0027s okay for now, but if it\u0027s easy to enforce refreshing the profile, it\u0027d be nice so that we can prevents the potential failures.",
+      "range": {
+        "startLine": 256,
+        "startChar": 93,
+        "endLine": 256,
+        "endChar": 108
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ff660e_538404a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "nit: phone",
+      "range": {
+        "startLine": 285,
+        "startChar": 90,
+        "endLine": 285,
+        "endChar": 94
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f5ddc6_06016b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "nit: wrong explanation?",
+      "range": {
+        "startLine": 409,
+        "startChar": 30,
+        "endLine": 409,
+        "endChar": 86
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c877d0b1_1aef7c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "we should probably claim that the test app is installed via Play Store.\nwe can add \"-i com.android.vending\" to \"adb install\" options below\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/android/adb/device.go;l\u003d227;drc\u003d178616743e90eee8c78531b8238fe40d71e46682",
+      "range": {
+        "startLine": 492,
+        "startChar": 13,
+        "endLine": 492,
+        "endChar": 20
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fca672_5967c29e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "nit: menu?",
+      "range": {
+        "startLine": 514,
+        "startChar": 62,
+        "endLine": 514,
+        "endChar": 68
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af76f31_7dc72fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T01:22:17Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 515,
+        "startChar": 75,
+        "endLine": 515,
+        "endChar": 81
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
