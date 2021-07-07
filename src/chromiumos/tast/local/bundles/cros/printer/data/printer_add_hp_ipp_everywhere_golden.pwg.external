@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_ipp_everywhere_golden_20210226.pwg",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_ipp_everywhere_golden_20201209.pwg",
   "size": 22267,
-  "sha256sum": "8b758c03527a49cb53f829319686ca8b114b56429b4b43b3694b5c5877ff16b4"
+  "sha256sum": "76544e020a9585d436d5e0f2f7c81ca31f3988258275ab437b5e67d8f1243add"
 }
