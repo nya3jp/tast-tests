@@ -22,6 +22,30 @@
       },
       "revId": "0c507b5123b5989c82bf73c67d23db1dd9c8ea25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91069bb5_038648ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-07T20:26:09Z",
+      "side": 1,
+      "message": "It works by closing the Chrome App! Thanks Jun, you make the life easier! :-)",
+      "parentUuid": "46b7ac34_a4509696",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "0c507b5123b5989c82bf73c67d23db1dd9c8ea25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
