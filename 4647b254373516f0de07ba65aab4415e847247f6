@@ -16,6 +16,69 @@
       "message": "LGTM. I think we still need another reviewer.\nAlso I don\u0027t know how the self-approvement-checking bot work, but if you face any problem, try to remove my CR+1.",
       "revId": "4647b254373516f0de07ba65aab4415e847247f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c660465f_2a1606db",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-07T03:56:32Z",
+      "side": 1,
+      "message": "Can you add some tests for these as well?\n\nSee https://source.chromium.org/search?q\u003dfilepath:_test.go$\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F for how to test helper code.",
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93ad35e_164b63f4",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-07T03:56:32Z",
+      "side": 1,
+      "message": "Just noticed that bitSize is only ever 64 for parseInt, should you rename it to parseInt64 and remove the bs parameter?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804da7ce_5e0739b4",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-07T03:56:32Z",
+      "side": 1,
+      "message": "nit: Make this bitSize to align with go implementation\n\nhttps://golang.org/pkg/strconv/#ParseInt",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
