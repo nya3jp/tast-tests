@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8477daf_317db2a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-07T14:55:58Z",
+      "side": 1,
+      "message": "ping. Inker will you attempt to run the CL and verify it locally?",
+      "parentUuid": "62e77519_3636ae8c",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74087a6f_48611162",
