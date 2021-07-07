@@ -98,9 +98,10 @@ func Snapchat(ctx context.Context, s *testing.State) {
 func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		allowButtonText             = "ALLOW"
+		continueBtnID               = "com.snapchat.android:id/continue_button"
 		cameraID                    = "com.snapchat.android:id/ngs_camera_icon_container"
 		enterEmailAddressID         = "com.snapchat.android:id/username_or_email_field"
-		loginButtonClassName        = "android.widget.TextView"
+		textViewClassName           = "android.widget.TextView"
 		loginText                   = "Log In"
 		slideIconID                 = "com.snapchat.android:id/subscreen_top_left"
 		signInID                    = "com.snapchat.android:id/nav_button"
@@ -109,12 +110,13 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		profileID                   = "com.snapchat.android:id/neon_header_avatar_container"
 		turnonText                  = "TURN ON"
 		userNameOrEmailID           = "com.snapchat.android:id/login_username_hint"
+		verifiyCodeText             = "Enter Verification Code"
 		homeID                      = "com.bydeluxe.d3.android.program.Snapchat:id/action_home"
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 	)
 
 	// Check for login button.
-	loginButton := d.Object(ui.ClassName(loginButtonClassName), ui.TextMatches("(?i)"+loginText))
+	loginButton := d.Object(ui.ClassName(textViewClassName), ui.TextMatches("(?i)"+loginText))
 	if err := loginButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("LoginButton doesn't exist: ", err)
 	}
@@ -155,6 +157,23 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Log("turnonButton doesn't exists: ", err)
 	} else if err := turnonButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on turnonButton: ", err)
+	}
+
+	// Click on continue button.
+	continueButton := d.Object(ui.ID(continueBtnID))
+	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("continueButton doesn't exist: ", err)
+	} else if err := continueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueButton: ", err)
+	}
+
+	// Check for enter verification code.
+	checkForVerifyCode := d.Object(ui.ClassName(textViewClassName), ui.TextMatches("(?i)"+verifiyCodeText))
+	if err := checkForVerifyCode.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForVerifyCode doesn't exist: ", err)
+	} else {
+		s.Log("checkForVerifyCode does exist")
+		return
 	}
 
 	// Click on allow button for accessing files.
