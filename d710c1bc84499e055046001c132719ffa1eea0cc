@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79558399_d054a925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-07T05:06:09Z",
+      "side": 1,
+      "message": "Yes, the counter is in the persisted preference in the user profile.\n\nAnd I\u0027ve just found that the KeepState is false by default and we do chrome.New at the beginning of this test so the profile pref could be correctly deleted?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d290;drc\u003dfa74a70036b76a85d0732aee714df2c87d7f6cd4",
+      "parentUuid": "ec16d7fc_0b413b6c",
+      "range": {
+        "startLine": 256,
+        "startChar": 93,
+        "endLine": 256,
+        "endChar": 108
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63ff660e_538404a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 1
