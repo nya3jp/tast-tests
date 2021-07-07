@@ -409,9 +409,13 @@ func trackWakeupDuration(ctx context.Context) (chan time.Duration, error) {
 			regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: Timekeeping suspended for .* seconds`),
 			regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: resume from suspend-to-idle`),
 		}
+		// If none of the above start messages are found, try to find the timestamp of the "noirq resume" log as
+		// the resume start time, and extract the used time of this step as extra time added to the wakeup time.
+		msgNoirqResume := regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: noirq resume of devices complete after ([\.\d]+) msecs`)
+		// Find wakeup exit time from the timestamp of following log.
 		msgSuspendExist := regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: suspend exit`)
 
-		var resumeStart, resumeExit float64
+		var resumeStart, resumeExit, extraWakeupTime float64
 		scanner := bufio.NewScanner(out)
 
 		// Scan output util it returns false, or matched pattern is found.
@@ -430,6 +434,22 @@ func trackWakeupDuration(ctx context.Context) (chan time.Duration, error) {
 					}
 				}
 			}
+			// If no start messages are found, try to find "noirq resume" message.
+			if resumeStart == 0 {
+				if ss := msgNoirqResume.FindStringSubmatch(text); ss != nil {
+					resumeStart, err = strconv.ParseFloat(ss[1], 64)
+					if err != nil {
+						testing.ContextLogf(ctx, "Failed to get wakeup start timestamp from %q: %v", text, err)
+						return
+					}
+					extraWakeupTime, err = strconv.ParseFloat(ss[2], 64)
+					if err != nil {
+						testing.ContextLogf(ctx, "Failed to get used time from %q: %v", text, err)
+						return
+					}
+					testing.ContextLogf(ctx, "Wakeup start timestamp: %f, extra wakeup time: %f", resumeStart, extraWakeupTime)
+				}
+			}
 			if ss := msgSuspendExist.FindStringSubmatch(text); ss != nil {
 				resumeExit, err = strconv.ParseFloat(ss[1], 64)
 				if err != nil {
@@ -438,11 +458,11 @@ func trackWakeupDuration(ctx context.Context) (chan time.Duration, error) {
 				}
 				testing.ContextLog(ctx, "Wakeup exit timestamp: ", resumeExit)
 				if resumeStart == 0 {
-					testing.ContextLog(ctx, "Got the wakeup exit timestamp but didn't get wakeup start timestamp")
-					return
+					testing.ContextLog(ctx, "Got the wakeup exit timestamp but didn't get wakeup start timestamp. Suspend might have failed and wait for its retry")
+					continue
 				}
 				if resumeStart > 0 && resumeExit > 0 {
-					ch <- time.Duration(math.Round((resumeExit-resumeStart)*1000)) * time.Millisecond
+					ch <- time.Duration(math.Round((resumeExit-resumeStart)*1000+extraWakeupTime)) * time.Millisecond
 					break
 				}
 			}
