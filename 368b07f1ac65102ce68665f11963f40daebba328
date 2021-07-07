@@ -50,6 +50,23 @@
       "message": "Tast LGTM.",
       "revId": "368b07f1ac65102ce68665f11963f40daebba328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d9fb18_987221a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-07T16:59:26Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM",
+      "revId": "368b07f1ac65102ce68665f11963f40daebba328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
