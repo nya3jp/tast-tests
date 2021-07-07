@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ff3f235_17a3bfce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-07-07T18:26:26Z",
+      "side": 1,
+      "message": "I believe that\u0027s correct; we only need to restart it to clear its cache of \"recently seen\" failures, but the auth failure anomaly detector doesn\u0027t use such a cache.",
+      "parentUuid": "aa3f3cc8_9efba404",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "3e47ac6627ca3de58b3632de10170e05a1733aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f3aed8a_9eb7eba9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
         "patchSetId": 2
