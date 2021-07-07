@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d49bf6a_f10dba42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-07T08:35:34Z",
+      "side": 1,
+      "message": "Patchset #3 fixes the behavior on R",
+      "revId": "f2619c6c9c1e33f90ded1ad0230d38cfa5a9a91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
