@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9e8fe9_cb42a8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-07-07T05:29:50Z",
+      "side": 1,
+      "message": "super-nit: Redundant comment",
+      "range": {
+        "startLine": 92,
+        "startChar": 44,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "d623be6d8fb1ec06840b5e6b274a44d814a2dc4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
