@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fa3372_06ba2e73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-07T16:44:57Z",
+      "side": 1,
+      "message": "# Move myself to R. Also removed from attention list temporarily. When ready, please feel free to re-add me to it, so that this CL will be shown in my review queue.",
+      "revId": "0fe169731b2d46c81dc84c67abaceab59398e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
