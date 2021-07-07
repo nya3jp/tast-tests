@@ -41,6 +41,7 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("careena")),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForMyscriptNebo,
 			ExtraSoftwareDeps: []string{"android_p"},
