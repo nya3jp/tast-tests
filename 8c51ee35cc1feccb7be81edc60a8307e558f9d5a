@@ -70,6 +70,30 @@
       },
       "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3c3568_da03587d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-07T16:13:22Z",
+      "side": 1,
+      "message": "I\u0027m not actually modifying the variables when testing. So if network.DiagSecureWifi runs correctly when changing the vars to  []string{\"router\", \"pcap\"}, that\u0027s fine with me. I don\u0027t think either test needs multiple routers and using `routers` might have been a mistake. (However the network.DiagSignalStrength test needs the attenuator, which I believe the setup has multiple routers)\n\nPlease let me know if I missed something 😊",
+      "parentUuid": "8b2cef85_7896e1c9",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
