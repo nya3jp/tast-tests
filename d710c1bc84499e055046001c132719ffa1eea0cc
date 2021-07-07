@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b981627c_c3069a0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-07-07T02:24:20Z",
+      "side": 1,
+      "message": "lgtm if the concerns in Toshiki\u0027s comments are addressed.",
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88407e2f_e2005c51",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-07-07T01:22:17Z",
       "side": 1,
       "message": "optional: In continuous tast bot, we run many tests sequentially *without* refreshing the user profile. So if any AMAC-e app is launched more than twice prior to this test, we won\u0027t see splash here.\nI think there\u0027s no test launching AMAC-e app now (because neither side-loaded apps or most of top apps are AMAC-e) so it\u0027s okay for now, but if it\u0027s easy to enforce refreshing the profile, it\u0027d be nice so that we can prevents the potential failures.",
+      "range": {
+        "startLine": 256,
+        "startChar": 93,
+        "endLine": 256,
+        "endChar": 108
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec16d7fc_0b413b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-07-07T02:24:20Z",
+      "side": 1,
+      "message": "+1.\nIs it based on something reset by reinstallation of the apk or persisted profile?",
+      "parentUuid": "88407e2f_e2005c51",
       "range": {
         "startLine": 256,
         "startChar": 93,
