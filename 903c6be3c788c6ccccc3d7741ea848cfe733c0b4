@@ -16,6 +16,23 @@
       "message": "Hi Josiah,\n\nHere\u0027s a small tast change, PTAL? Also adding tast owners for official approval. Thanks!",
       "revId": "903c6be3c788c6ccccc3d7741ea848cfe733c0b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325ebf16_b2ea8cbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-07-07T22:34:48Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "903c6be3c788c6ccccc3d7741ea848cfe733c0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
