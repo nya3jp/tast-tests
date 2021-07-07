@@ -81,6 +81,30 @@
       },
       "revId": "b7880b39b47717c89315eac247bb84db3cf09c13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bebddad_473d6bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-07T16:48:21Z",
+      "side": 1,
+      "message": "sure. If it is not touched, it is out of scope of this CL.",
+      "parentUuid": "8af04637_781bd397",
+      "range": {
+        "startLine": 276,
+        "startChar": 77,
+        "endLine": 276,
+        "endChar": 78
+      },
+      "revId": "b7880b39b47717c89315eac247bb84db3cf09c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
