@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cffba065_2bd0c171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2021-07-07T13:52:33Z",
+      "side": 1,
+      "message": "Looks great. Thanks!",
+      "revId": "57495ba82bf4be1d6580a0918e09a98b97825926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911d5228_d3f315ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2021-07-07T13:52:33Z",
+      "side": 1,
+      "message": "I think it would be great to give an example of cras_bench json output here, it will also help explain why we need to do strings.Replace for \u0027/\u0027.",
+      "revId": "57495ba82bf4be1d6580a0918e09a98b97825926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
