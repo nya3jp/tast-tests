@@ -472,20 +472,21 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return errors.Wrapf(err, "failed to download test image %s", dutBuilderPath)
 	}
 	defer reader.Close()
-	tempname, err := h.ServoProxy.OutputCommand(ctx, false, "tempfile", "-m", "0644")
+	tempnameBytes, err := h.ServoProxy.OutputCommand(ctx, false, "tempfile", "-m", "0644")
 	if err != nil {
 		return errors.Wrap(err, "failed to create tmp file on servo host")
 	}
-	defer h.ServoProxy.RunCommand(ctx, false, "rm", string(tempname))
+	tempname := strings.TrimSuffix(string(tempnameBytes), "\n")
+	defer h.ServoProxy.RunCommand(ctx, false, "rm", tempname)
 	// Copy to the servo host and untar
 	if err = h.ServoProxy.InputCommand(ctx, false, reader, "tar", "-Jxvf", "-",
 		"-C", filepath.Dir(string(tempname)),
-		fmt.Sprintf("--transform=s/chromiumos_test_image.bin/%s/", filepath.Base(string(tempname))),
+		fmt.Sprintf("--transform=s/chromiumos_test_image.bin/%s/", filepath.Base(tempname)),
 		"chromiumos_test_image.bin"); err != nil {
 		return errors.Wrap(err, "failed to copy os image to servo host")
 	}
 	testing.ContextLog(ctx, "Flashing test OS image to USB")
-	if err = h.ServoProxy.RunCommand(ctx, false, "cros", "flash", "usb://"+usbdev, string(tempname)); err != nil {
+	if err = h.ServoProxy.RunCommand(ctx, false, "cros", "flash", "usb://"+usbdev, tempname); err != nil {
 		return errors.Wrap(err, "failed to flash os image to usb")
 	}
 
