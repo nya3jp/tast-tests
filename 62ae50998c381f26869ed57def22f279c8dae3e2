@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d8ba67_f58ea792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-07T17:59:00Z",
+      "side": 1,
+      "message": "I\u0027ve recently switched teams to ChromeOS Infra, and have removed myself from the tast-owners rotation. I\u0027m removing myself from reviewers, and adding tast-owners@ directly.",
+      "parentUuid": "7e1bb3cb_a5bdd3a3",
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69b0cac3_4d016520",
