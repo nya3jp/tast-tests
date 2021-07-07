@@ -16,6 +16,23 @@
       "message": "Hi Kamil, since mukai@ has been recently removed from owner\u0027s list, can you help providing owner approval for this? ",
       "revId": "bab491f3a88e8b03ab3f918504356b15e25e7eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5541e206_91f7b3bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-07T16:43:53Z",
+      "side": 1,
+      "message": "LGTM % please mark if the change was verified (ran locally)",
+      "revId": "bab491f3a88e8b03ab3f918504356b15e25e7eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
