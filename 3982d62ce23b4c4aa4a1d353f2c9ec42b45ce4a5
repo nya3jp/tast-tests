@@ -22,6 +22,30 @@
       },
       "revId": "3982d62ce23b4c4aa4a1d353f2c9ec42b45ce4a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfe3029_4121db5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-07T02:25:24Z",
+      "side": 1,
+      "message": "Done. Thanks, I didn\u0027t know there is a function for this :)",
+      "parentUuid": "279aa815_da070fd0",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 6
+      },
+      "revId": "3982d62ce23b4c4aa4a1d353f2c9ec42b45ce4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
