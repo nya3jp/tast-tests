@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b7ac34_a4509696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-07T01:44:31Z",
+      "side": 1,
+      "message": "Does this work? apps.Chrome.Close()\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go?l\u003d344",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "0c507b5123b5989c82bf73c67d23db1dd9c8ea25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
