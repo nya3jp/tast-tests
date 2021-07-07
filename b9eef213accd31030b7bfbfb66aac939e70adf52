@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "850a2a85_db5eb1dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-07-07T17:23:20Z",
+      "side": 1,
+      "message": "LGTM: optional nit",
+      "revId": "b9eef213accd31030b7bfbfb66aac939e70adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03077125_abebb9af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-07-07T17:23:20Z",
+      "side": 1,
+      "message": "Optional nit: please add a comment why tlsdated should be stopped.",
+      "revId": "b9eef213accd31030b7bfbfb66aac939e70adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
