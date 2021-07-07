@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a691db20_4a44497a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-07T16:54:33Z",
+      "side": 1,
+      "message": "This still feels like it would be better suited as two separate tests with shared library functions. Each test method seems to be the whole test, with only startActivityWithBounds shared.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
