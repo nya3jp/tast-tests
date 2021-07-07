@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db02d627_54d948d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-07T16:53:34Z",
+      "side": 1,
+      "message": "\u003e Sure! Is it possible to inherit a precondition?\n\u003e **(From what I\u0027ve read I think its currently not possible for pre but possible for fixture)\n\nUnfortunately, no, as you mentioned. Fixture is needed.\n\n\n\u003e \n\u003e It does not really make sense to have this for multivm, since the package does not have anything to do with DNS. Would it be better to rewrite a new precondition for DNS proxy?\n\u003e \n\u003e Also, the install command with skip the installation if \u0027dig\u0027 is installed, so currently, it will be skipped with the current precondition.\n\nok, got it.\nMaybe nice to have a TODO to do so on switching to fixture?",
+      "parentUuid": "627c45f4_7c790b33",
+      "revId": "b800358a195dffef9dee7520f4d2dfd9728db300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c2352c0_657f001e",
         "filename": "src/chromiumos/tast/local/multivm/pre.go",
         "patchSetId": 2
