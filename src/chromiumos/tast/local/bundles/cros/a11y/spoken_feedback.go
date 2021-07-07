@@ -8,7 +8,6 @@ package a11y
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
@@ -127,7 +126,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 
 	// Wait for ChromeVox to focus the root web area.
 	rootWebArea := nodewith.Role(role.RootWebArea).First()
-	if err = cvconn.WaitForFocusedNode(ctx, tconn, rootWebArea, 10*time.Second); err != nil {
+	if err = cvconn.WaitForFocusedNode(ctx, tconn, rootWebArea); err != nil {
 		s.Error("Failed to wait for initial ChromeVox focus: ", err)
 	}
 
