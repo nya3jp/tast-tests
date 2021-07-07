@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bb943ed_902df4db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-07T14:33:07Z",
+      "side": 1,
+      "message": "I am wondering if it would be beneficial for kioskmode.New() to return with a kiosk structure that contains cr, and some information on the kiosk instance.\n\u003e  defer cr.Close(ctx)\n\u003e  defer policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{})\ncould be made into\n\u003e defer kiosk.Close(ctx)\nbut you would need a\n\u003e  cr :\u003d kiosk.cr\nline.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "3eebe706f08159429f8e234be07c7f18ed7997d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcf7d09c_6dd2e91f",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled.go",
         "patchSetId": 1
