@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b743dd0_a9ea067f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-07-07T08:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d37ac17b_cca860b8",
+      "range": {
+        "startLine": 34,
+        "startChar": 47,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "b4370d5b7e2ee2cc5ec30a9441b8fba61926103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0ecb46_bfbfcac5",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-07-05T09:51:01Z",
       "side": 1,
       "message": "nit: How about using the same style as len(knownComponents) \u003d\u003d 0 case?\n\n if len(count) \u003d\u003d 0 {\n   s.Logf(...)\n   continue\n }\n \n mapping[category] \u003d ...",
+      "range": {
+        "startLine": 258,
+        "startChar": 3,
+        "endLine": 258,
+        "endChar": 78
+      },
+      "revId": "b4370d5b7e2ee2cc5ec30a9441b8fba61926103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2aaf7e8_f7028695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-07-07T08:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0ecb46_bfbfcac5",
       "range": {
         "startLine": 258,
         "startChar": 3,
