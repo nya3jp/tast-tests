@@ -110,7 +110,7 @@ func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn
 
 // WaitForFocusedNode polls until the properties of the focused node matches the finder.
 // timeout specifies the timeout to use when polling.
-func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder) error {
 	ui := uiauto.New(tconn)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -125,7 +125,7 @@ func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.T
 			return errors.Errorf("focused node is incorrect: got %v, want %s", focused, finder.Pretty())
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to get current focus")
 	}
 	return nil
