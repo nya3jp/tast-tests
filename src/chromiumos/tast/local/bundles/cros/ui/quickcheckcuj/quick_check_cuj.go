@@ -5,12 +5,13 @@
 package quickcheckcuj
 
 import (
-	"bufio"
 	"context"
 	"fmt"
-	"math"
+	"io/ioutil"
+	"os"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -107,45 +108,27 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	// Execute Suspend function outside of recorder at the beginning because suspend will pause the
 	// execution of the program and recorder and chrome needs to be reset.
 	if pauseMode == Suspend {
-		suspendSeconds := 40 // Tast runner might time out if suspend more than 60 seconds.
-		// Use a shorter context to track wakeup duration.
-		sCtx, sCancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer sCancel()
+		// sleepTime is the actual sleep time. The whole suspend procedure takes more time.
+		sleepTime := 15
+		earliestResumeEndTime := time.Now().Add(time.Duration(sleepTime) * time.Second)
 
-		ch, err := trackWakeupDuration(sCtx)
-		if err != nil {
-			s.Fatal("Failed to tract wakeup time: ", err)
-		}
-
-		suspendStartTime := time.Now().UnixNano()
-		if err = SuspendAndResume(ctx, cr, suspendSeconds); err != nil {
+		if err := suspendAndResume(ctx, cr, sleepTime); err != nil {
 			s.Fatal("Failed to suspend the DUT: ", err)
 		}
-		select {
-		case d, ok := <-ch:
-			if !ok {
-				s.Fatal("Wakeup time tracking returns no value")
-			}
-			s.Log("DUT wakeup time: ", d)
-			pv.Set(perf.Metric{
-				Name:      "QuickCheckCUJ.WakeUpTime",
-				Unit:      "ms",
-				Direction: perf.SmallerIsBetter,
-			}, float64(d.Milliseconds()))
 
-			resumeEndTime := time.Now().UnixNano()
-			// Use unix nanoseconds to avoide monotonic clock of time.Since().
-			sleepSeconds := float64(resumeEndTime-suspendStartTime) / 1e9
-			s.Logf("DUT finished suspend and resume after %v seconds", sleepSeconds)
-			if sleepSeconds > float64(suspendSeconds+3) {
-				// Noticeable longer sleep time.
-				s.Errorf("Suspend/resume is expected to finish in about %d seconds, but took %v seconds", suspendSeconds, sleepSeconds)
-			}
-		case <-ctx.Done():
-			// This case should not happen because the trackWakeupDuration() uses
-			// a shorter timeout value and the channel should have been closed already.
-			s.Fatal("Failed to wait for wakeup time to be returned")
+		wakeupDuration, err := readWakeupDuration(ctx, earliestResumeEndTime)
+		if err != nil {
+			s.Fatal("Failed to read wakeup time: ", err)
 		}
+
+		d := time.Duration(wakeupDuration*1000) * time.Millisecond
+		s.Log("DUT wakeup time: ", d)
+		pv.Set(perf.Metric{
+			Name:      "QuickCheckCUJ.WakeUpTime",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(d.Milliseconds()))
+
 		// After suspend/resume, all connections associated with the chrome.Chrome instance are invalid.
 		// Reconnect to test API
 		if tconn, err = cr.TestAPIConn(ctx); err != nil {
@@ -348,123 +331,115 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	return pv
 }
 
-// trackWakeupDuration reads dmesg, looking for the device resume complete message, and captures the
-// time used to wake up the device.
-// It returns a channel of time duration, which will send the resume time found from the log.
-func trackWakeupDuration(ctx context.Context) (chan time.Duration, error) {
-	cmd := testexec.CommandContext(ctx, "dmesg", "--clear")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, `failed to clear log buffer with "dmesg --clear"`)
+// suspendAndResume calls powerd_dbus_suspend command to suspend the system and lets it
+// stay sleep for the given duration and then wake up.
+func suspendAndResume(ctx context.Context, cr *chrome.Chrome, sleepTime int) error {
+	// The actual time used to suspend and weekup the system is:
+	// 		(time to suspend the system) + (sleep time) + (time to wakeup the system)
+	// Tast runner might time out if DUT is inaccessible for more than 60 seconds.
+	// We allow 30-second maximum sleep time, trying to keep the total suspend/wakeup time
+	// under 1 minute.
+
+	const maxSleepTime = 30
+	if sleepTime > maxSleepTime {
+		return errors.Errorf("suspend time should less than %d seconds", maxSleepTime)
 	}
 
-	cmd = testexec.CommandContext(ctx, "dmesg", "--follow")
-	out, err := cmd.StdoutPipe()
+	// timeout, according to powerd_dbus_suspend help page, defines how long to wait for
+	// a resume signal in seconds. We add 20 seconds to maxSleepTime to ensure the command
+	// will exit if the whole suspend/wakeup procedure couldn't trigger a resume signal for
+	// any reason within this time.
+	timeout := maxSleepTime + 20
+
+	// Read wakeup count here to prevent suspend retries, which happens without user input.
+	wakeupCount, err := ioutil.ReadFile("/sys/power/wakeup_count")
 	if err != nil {
-		return nil, err
+		return errors.Wrap(err, "failed to read wakeup count before suspend")
 	}
 
-	if err := cmd.Start(); err != nil {
-		return nil, errors.Wrap(err, `failed to start "dmesg --follow" command`)
-	}
+	cmd := testexec.CommandContext(
+		ctx,
+		"powerd_dbus_suspend",
+		"--disable_dark_resume=true",
+		fmt.Sprintf("--timeout=%d", timeout),
+		fmt.Sprintf("--wakeup_count=%s", strings.Trim(string(wakeupCount), "\n")),
+		fmt.Sprintf("--suspend_for_sec=%d", sleepTime),
+	)
+	testing.ContextLogf(ctx, "Start a DUT suspend of %d seconds: %s", sleepTime, cmd.Args)
 
-	ch := make(chan time.Duration, 1)
-	go func() {
-		defer func() {
-			// Release cmd resources.
-			out.Close()
-			cmd.Kill()
-			cmd.Wait()
-
-			close(ch)
-		}()
-
-		// The Suspend/Resume procedure will have these steps:
-		// 1. Trigger suspend with powerd_dbus_suspend command.
-		// 2. Expect the following logs in sequence:
-		//		2.1 NOTICE powerd_suspend[21209]: Finalizing suspend
-		//		2.2 INFO kernel: [ 1362.975945] PM: suspend entry (deep)
-		//		2.3 INFO kernel: [ 1362.975955] PM: Syncing filesystems ...
-		// 		2.4 DEBUG kernel: [ 1363.520587] PM: Preparing system for sleep (deep)
-		// 		2.5 DEBUG kernel: [ 1363.608433] PM: Suspending system (deep)
-		//		2.6 DEBUG kernel: [ 1363.737905] PM: suspend of devices complete after 128.995 msecs
-		// 		2.7 DEBUG kernel: [ 1363.740330] PM: late suspend of devices complete after 2.419 msecs
-		// 		2.8 DEBUG kernel: [ 1363.765000] PM: noirq suspend of devices complete after 24.615 msecs
-		//		Optional 2.9.1 INFO kernel: [ 1363.766674] PM: Saving platform NVS memory
-		//		Optional 2.9.2 PM: suspend-to-idle
-		//		Optional 2.10 INFO kernel: [ 1363.774959] PM: Restoring platform NVS memory
-		//		2.11 DEBUG kernel: [ 1363.775205] PM: Timekeeping suspended for 39.208 seconds
-		//		Optional 2.11.2: PM: resume from suspend-to-idle
-		//		2.12 DEBUG kernel: [ 1363.831897] PM: noirq resume of devices complete after 25.953 msecs
-		//		2.13 DEBUG kernel: [ 1363.858700] PM: early resume of devices complete after 26.677 msecs
-		//		2.14 DEBUG kernel: [ 1364.116961] PM: resume of devices complete after 258.257 msecs
-		//		2.15 DEBUG kernel: [ 1364.117403] PM: Finishing wakeup.
-		//		2.16 INFO kernel: [ 1364.130740] PM: suspend exit
-		//		2.17 NOTICE powerd_suspend[21209]: wake source: PM1_STS: WAK RTC BMSTATUS
-		//		2.18 NOTICE powerd_suspend[21209]: Resume finished
-
-		// Find the timestamp of the first message shown from the following slice (step 2.10, 2.11, 2.11.2)
-		// as the wakeup start time.
-		msgStart := []*regexp.Regexp{
-			regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: Restoring platform NVS memory`),
-			regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: Timekeeping suspended for .* seconds`),
-			regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: resume from suspend-to-idle`),
-		}
-		msgSuspendExist := regexp.MustCompile(`\[\s*(\d+\.\d+)\] PM: suspend exit`)
-
-		var resumeStart, resumeExit float64
-		scanner := bufio.NewScanner(out)
-
-		// Scan output util it returns false, or matched pattern is found.
-		for scanner.Scan() {
-			text := scanner.Text()
-			if resumeStart == 0.0 {
-				for _, msg := range msgStart {
-					if ss := msg.FindStringSubmatch(text); ss != nil {
-						resumeStart, err = strconv.ParseFloat(ss[1], 64)
-						if err != nil {
-							testing.ContextLogf(ctx, "Failed to get wakeup start timestamp from %q: %v", text, err)
-							return
-						}
-						testing.ContextLog(ctx, "Wakeup start timestamp: ", resumeStart)
-						break
-					}
-				}
-			}
-			if ss := msgSuspendExist.FindStringSubmatch(text); ss != nil {
-				resumeExit, err = strconv.ParseFloat(ss[1], 64)
-				if err != nil {
-					testing.ContextLogf(ctx, "Failed to get wakeup exit timestamp from %q: %v", text, err)
-					return
-				}
-				testing.ContextLog(ctx, "Wakeup exit timestamp: ", resumeExit)
-				if resumeStart == 0 {
-					testing.ContextLog(ctx, "Got the wakeup exit timestamp but didn't get wakeup start timestamp")
-					return
-				}
-				if resumeStart > 0 && resumeExit > 0 {
-					ch <- time.Duration(math.Round((resumeExit-resumeStart)*1000)) * time.Millisecond
-					break
-				}
-			}
-		}
-	}()
-
-	return ch, nil
-}
-
-// SuspendAndResume suspends the ChromeOS and then wakes it up.
-// After calling this method, all connections associated with the current browser session are no longer valid and
-// need to be re-established.
-func SuspendAndResume(ctx context.Context, cr *chrome.Chrome, suspendSeconds int) error {
-	testing.ContextLogf(ctx, "Start a DUT suspend of %d seconds", suspendSeconds)
-	cmd := testexec.CommandContext(ctx, "powerd_dbus_suspend", fmt.Sprintf("--wakeup_timeout=%d", suspendSeconds))
 	if err := cmd.Run(); err != nil {
-		return err
+		return errors.Wrap(err, "powerd_dbus_suspend failed to properly suspend")
 	}
 
 	testing.ContextLog(ctx, "DUT resumes from suspend")
-	// After resume from suspend, the connection to browser session needs to be re-established.
 	return cr.Reconnect(ctx)
+}
+
+// readWakeupDuration reads and calculates the wakeup duration from last_resume_timings file.
+// The file's modification time must be newer than the earliestModTime to ensure the file has been updated
+// by a successful suspend/wakeup.
+func readWakeupDuration(ctx context.Context, earliestModTime time.Time) (float64, error) {
+	const (
+		lastResumeTimingsFile = "/run/power_manager/root/last_resume_timings"
+
+		// suspendTotalTime is the time used to wait for suspend procedure to generate the
+		// last_resume_timings file. In case of suspending failure, the DUT might retry
+		// multiple times until it succeeds.
+		suspendTotalTime = 2 * time.Minute
+	)
+
+	// Wait until the suspend procedure successfully generates the last_resume_timings with a
+	// newer timestamp.
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		fState, err := os.Stat(lastResumeTimingsFile)
+		if err != nil {
+			if os.IsNotExist(err) {
+				return errors.New("file doesn't exist")
+			}
+			return testing.PollBreak(errors.Wrap(err, "failed to check file state"))
+		}
+		if !fState.ModTime().After(earliestModTime) {
+			return errors.New("last_resume_timings file hasn't been updated")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: suspendTotalTime, Interval: time.Second}); err != nil {
+		return 0.0, errors.Wrap(err, "failed to check existence of a new last_resume_timings file")
+	}
+
+	b, err := ioutil.ReadFile(lastResumeTimingsFile)
+	if err != nil {
+		return 0.0, errors.Wrap(err, "failed to read last_resume_timings file")
+	}
+
+	// The content of /run/power_manager/root/last_resume_timings should be as follows:
+	// start_suspend_time = 183.825542
+	// end_suspend_time = 184.213222
+	// start_resume_time = 184.248745
+	// end_resume_time = 185.480335
+	// cpu_ready_time = 184.837355
+	//
+	// We'll use `start_resume_time` and `end_resume_time` to get the wakeup duration.
+	lines := []*regexp.Regexp{
+		regexp.MustCompile(`start_resume_time\s*=\s*(\d+\.\d+)`),
+		regexp.MustCompile(`end_resume_time\s*=\s*(\d+\.\d+)`),
+	}
+	timestamps := []float64{0.0, 0.0} // start and end timestamp extracted from the file.
+	for i, line := range lines {
+		if ss := line.FindStringSubmatch(string(b)); ss != nil {
+			timestamp, err := strconv.ParseFloat(ss[1], 64)
+			if err != nil {
+				return 0.0, errors.Wrapf(err, "failed to get timestamp for %v", line)
+			}
+			timestamps[i] = timestamp
+		}
+	}
+
+	testing.ContextLog(ctx, "Resume start and end timestamps: ", timestamps)
+
+	if timestamps[0] == 0.0 || timestamps[1] == 0.0 {
+		return 0.0, errors.New("failed to find resume start or end timestamps")
+	}
+	return timestamps[1] - timestamps[0], nil
 }
 
 // LockScreen locks the screen.
