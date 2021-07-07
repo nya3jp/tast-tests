@@ -96,9 +96,18 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 
 // focusedNode returns the currently focused node of ChromeVox.
 func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
+	rangeIsValid := false
+	if err := cv.Eval(ctx, "!!ChromeVoxState.instance.getCurrentRange()", &rangeIsValid); err != nil {
+		return nil, errors.Wrap(err, "failed to check for current range")
+	}
+
+	if !rangeIsValid {
+		return nil, nil
+	}
+
 	var info uiauto.NodeInfo
 	script := fmt.Sprintf(`(() => {
-		const node = ChromeVoxState.instance.currentRange.start.node;
+		const node = ChromeVoxState.instance.getCurrentRange().start.node;
 		return %s;
 	})()`, uiauto.NodeInfoJS)
 
@@ -117,6 +126,10 @@ func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.T
 		focused, err := cv.focusedNode(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
+		}
+
+		if focused == nil {
+			return errors.New("no current ChromeVox focus")
 		}
 
 		if match, err := ui.Matches(ctx, finder, focused); err != nil {
