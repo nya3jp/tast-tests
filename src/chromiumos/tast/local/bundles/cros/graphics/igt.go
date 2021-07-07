@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -386,6 +387,11 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, exePath)
 	cmd.Stdout = f
 	cmd.Stderr = f
+	// tlsdated holds a file descriptor to /dev/rtc, which keeps hwclock from working,
+	// so stop tlsdate while running those tests.
+	if err := upstart.StopJob(ctx, "tlsdated"); err != nil {
+		s.Fatal("Failed to stop tlsdated: ", err)
+	}
 	err = cmd.Run()
 	exitErr, isExitErr := err.(*exec.ExitError)
 
