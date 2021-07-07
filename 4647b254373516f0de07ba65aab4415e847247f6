@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c17fd63_7c999d37",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-07T04:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c660465f_2a1606db",
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a93ad35e_164b63f4",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a664ec80_74b858a0",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-07T04:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a93ad35e_164b63f4",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "804da7ce_5e0739b4",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-07-07T03:56:32Z",
       "side": 1,
       "message": "nit: Make this bitSize to align with go implementation\n\nhttps://golang.org/pkg/strconv/#ParseInt",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "4647b254373516f0de07ba65aab4415e847247f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e41f54_74c73d96",
+        "filename": "src/chromiumos/tast/local/jsontypes/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-07T04:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804da7ce_5e0739b4",
       "range": {
         "startLine": 32,
         "startChar": 25,
