@@ -16,6 +16,138 @@
       "message": "slgtm",
       "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "835b7f9a_ac7a32ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:28:31Z",
+      "side": 1,
+      "message": "LGTM, I have minor comments only.\n",
+      "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f11384a_35b2c830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:28:31Z",
+      "side": 1,
+      "message": "Let us include err in the message.",
+      "range": {
+        "startLine": 102,
+        "startChar": 58,
+        "endLine": 102,
+        "endChar": 61
+      },
+      "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1f084e_578b2fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:28:31Z",
+      "side": 1,
+      "message": "nit: !has",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 17
+      },
+      "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9605131d_fc066977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:28:31Z",
+      "side": 1,
+      "message": "err is nil here, so we can drop it.",
+      "range": {
+        "startLine": 105,
+        "startChar": 60,
+        "endLine": 105,
+        "endChar": 66
+      },
+      "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d3edd0_8beae447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:28:31Z",
+      "side": 1,
+      "message": "I believe this check is not needed; if the dir doesn\u0027t exist, filepath.Walk returns an error, and we should be prepared for it.\n\nAlternatively, you can return (false, nil) if we don\u0027t want to report an error when Downloads does not exist.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e4a47d_9289e924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_full_screen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:28:31Z",
+      "side": 1,
+      "message": "nit: re.MatchString(info.Name())",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "bbd034bb52b8af02a8747dcec1bf2dbe4f592b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
