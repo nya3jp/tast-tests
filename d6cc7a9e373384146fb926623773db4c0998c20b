@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4288f5f_550903d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-08T18:19:15Z",
+      "side": 1,
+      "message": "Hi Jun,\n\nI uploaded a new patch to change the interval timeout value from 1 second to 2 seconds\n\nui.WithInterval(animationUIInterval), where animationUIInterval is 2 seconds.\n\nThis is to make animated UI element clicking more stable on low-end DUTs like maple/hana, Dirinbox/zok. Changes has been verified in the lab.\n\nCould you review this patch?\n\nThanks!\nXibin\n",
+      "revId": "d6cc7a9e373384146fb926623773db4c0998c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
