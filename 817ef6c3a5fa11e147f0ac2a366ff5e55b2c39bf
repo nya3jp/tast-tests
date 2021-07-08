@@ -16,6 +16,23 @@
       "message": "Hey folks, please review",
       "revId": "817ef6c3a5fa11e147f0ac2a366ff5e55b2c39bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e008076_84af087b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T12:56:35Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "817ef6c3a5fa11e147f0ac2a366ff5e55b2c39bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
