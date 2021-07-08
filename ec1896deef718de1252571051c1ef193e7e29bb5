@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54d9c7f_95890d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-07-08T07:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e940e63_807cb099",
+      "range": {
+        "startLine": 21,
+        "startChar": 50,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "117ca9db_3a3ffd66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-07-08T07:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1ccfff_edb4f3e5",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9881c9a6_8ab5ff7e",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d324128_da83d8d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-07-08T07:01:23Z",
+      "side": 1,
+      "message": "Add cychiang@chromium.org instead.",
+      "parentUuid": "9881c9a6_8ab5ff7e",
+      "range": {
+        "startLine": 28,
+        "startChar": 47,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be513308_6f915c30",
@@ -100,6 +172,24 @@
       "writtenOn": "2021-07-08T06:57:01Z",
       "side": 1,
       "message": "An output example (in JSON format) of `cras_bench`.",
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16461af8_6698e3a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-07-08T07:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be513308_6f915c30",
       "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
