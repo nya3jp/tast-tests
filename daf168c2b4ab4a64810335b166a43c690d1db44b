@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a233d2_5542e415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-08T18:42:47Z",
+      "side": 1,
+      "message": "Please ignore the above revert. I initially created the revert because I thought my change broke arc.Accessibility* tests. I ran them 10 times in succession and they worked as expected, so I deleted the revert.\n\nSorry for any confusion.",
+      "revId": "daf168c2b4ab4a64810335b166a43c690d1db44b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
