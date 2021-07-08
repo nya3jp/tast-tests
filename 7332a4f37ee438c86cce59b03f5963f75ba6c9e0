@@ -52,6 +52,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "697524b2_db4e6d14",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86963d7b_2f81b8a7",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a636101_bc135370",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a39c1eb_cb23b7e2",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01f3d7d3_f6ad403d",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "nit: note that this is getting the data from the TAPE server.",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98d570e_24eddce7",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f3d7d3_f6ad403d",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1c4dae_c0f0007c",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8da65a4_33c5b0f9",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 80
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1839bb26_2aa2950f",
@@ -105,6 +183,24 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "nit: space",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31322a3_a99b170f",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1839bb26_2aa2950f",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +222,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a056eee3_00c279e0",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0bec223_b88dc460",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72672fab_a8026913",
@@ -139,6 +253,30 @@
       "writtenOn": "2021-07-06T13:17:33Z",
       "side": 1,
       "message": "There is no policy object.",
+      "range": {
+        "startLine": 61,
+        "startChar": 53,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3185e9ec_07591c1f",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72672fab_a8026913",
       "range": {
         "startLine": 61,
         "startChar": 53,
@@ -172,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a12c352_4f1a4392",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a2b2df_e01162eb",
+      "range": {
+        "startLine": 132,
+        "startChar": 18,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0a2a74_d6c434f4",
@@ -185,6 +347,30 @@
       "writtenOn": "2021-07-06T13:17:33Z",
       "side": 1,
       "message": "f strings provide a shorter way to do it: f\u0027\"{self.types[0]}\"\u0027",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a6e5c8_1bc3ecd6",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0a2a74_d6c434f4",
       "range": {
         "startLine": 133,
         "startChar": 15,
@@ -218,6 +404,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a3333dd_aac1d06b",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c44b87ce_0239c113",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 16
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa644bc_f43a66bc",
@@ -231,6 +441,30 @@
       "writtenOn": "2021-07-06T13:17:33Z",
       "side": 1,
       "message": "Use f strings instead of format (aside from the templates).",
+      "range": {
+        "startLine": 144,
+        "startChar": 60,
+        "endLine": 144,
+        "endChar": 66
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5f681e_ea171e79",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_policy_schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa644bc_f43a66bc",
       "range": {
         "startLine": 144,
         "startChar": 60,
@@ -258,6 +492,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38fa7ac_7786dbf5",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7172f7e_ded392a5",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "685d4f98_eaaf32a4",
@@ -271,6 +523,30 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "Why Link? Does Name() make more sense?",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10791d0e_cd66eb6e",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "685d4f98_eaaf32a4",
       "range": {
         "startLine": 29,
         "startChar": 24,
@@ -304,6 +580,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5585ca_025bc5dd",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Good point, that makes the code a lot cleaner too.",
+      "parentUuid": "e657c80d_b51f21a7",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69fa61af_1925d794",
@@ -321,6 +621,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b135d2f3_3ad2e484",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69fa61af_1925d794",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fae47d5_9193d286",
@@ -334,6 +652,24 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "Is there any instance where this is different?",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432fafec_7ce33886",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Yes, the orgunit depends on the used account so it will always change with the account a test is using.",
+      "parentUuid": "6fae47d5_9193d286",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -361,6 +697,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ed61f7_6ae2c6ed",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b9d20e_bc18aa25",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e54bc45_1f21b652",
@@ -378,6 +738,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b01d264_7d66a3f2",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e54bc45_1f21b652",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b01c94_0d656efa",
@@ -391,6 +769,30 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "nit: avoid make (stop word) -\u003e restCall",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80032c18_02ff9abe",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4b01c94_0d656efa",
       "range": {
         "startLine": 36,
         "startChar": 3,
@@ -424,6 +826,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bdc58c_26ce7b71",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2464be_59023253",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba15df2b_1f17b77f",
@@ -437,6 +863,30 @@
       "writtenOn": "2021-07-06T13:17:33Z",
       "side": 1,
       "message": "I would recommend https://golang.org/pkg/net/http/#NewRequestWithContext instead.\nThese calls might take some time, and it is nice to respect the ctx timeouts.",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c409926d_d5a2357d",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba15df2b_1f17b77f",
       "range": {
         "startLine": 39,
         "startChar": 18,
@@ -511,6 +961,78 @@
         "startChar": 5,
         "endLine": 64,
         "endChar": 15
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a72499_6c58a372",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199336ee_b536fbf2",
+      "range": {
+        "startLine": 64,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db945477_0fc064b6",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c54637_8bf83ec9",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c711dabf_87ed23d8",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be a way to increase the timeout in the AccountProviderService which provides us with the test account.\nI could try to find a work around within TAPE, but I\u0027d postpone that for now if that\u0027s ok with you.",
+      "parentUuid": "4bd76e59_d636ff12",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 23
       },
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -609,6 +1131,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18396be_ec5b6c06",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e7c69e3_d843b83f",
+      "range": {
+        "startLine": 94,
+        "startChar": 20,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567b34ef_783a816e",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "It seems a bit cleaner to me to request an Account object on which you then perform the actions and you also don\u0027t need to pass the Account around for all function calls.",
+      "parentUuid": "f4c1a8e4_81020914",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40889414_c22e4cd6",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "I don\u0027t have a use case for it from the top of my head but I think we should provide the option in case someone needs it.",
+      "parentUuid": "7d737578_af514cee",
+      "range": {
+        "startLine": 94,
+        "startChar": 20,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcfa461f_8e393d0b",
@@ -622,6 +1216,24 @@
       "writtenOn": "2021-07-06T13:15:18Z",
       "side": 1,
       "message": "Does this also clean up?",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df64462_3165fc50",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-08T09:37:44Z",
+      "side": 1,
+      "message": "No, clean up is done when an account is requested or when it is manually triggered by the CleanUp() call above.\nThe reason for that is that accounts might not get released and will then time out. Cleaning those up would make things very complicated so the easiest solution is to clean an account when it is requested.",
+      "parentUuid": "dcfa461f_8e393d0b",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
