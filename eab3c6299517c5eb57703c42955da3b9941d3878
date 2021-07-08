@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fa5ec5_109671e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-08T04:59:47Z",
+      "side": 1,
+      "message": "Thanks for reviewing!\n\nWe might use different accounts for tast-test(ie. \"arc.childUser\" and \"unicorn.ChildUser\"). Maybe adding the variable PolicyUser to policy_blob.go would be cleaner.",
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92330554_da297e58",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-08T04:59:47Z",
+      "side": 1,
+      "message": "Not used anywhere. I will update it in the next patch.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b30653_476deb38",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-08T04:59:47Z",
+      "side": 1,
+      "message": "Is there any way to pass this variable from it\u0027s descendant fixture (in this case, familyLinkUnicornPolicyLogin) so that we don\u0027t have to create another fixture when using a different account?\n\nunfortunately I couldn\u0027t find any. Do you know anything?",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
