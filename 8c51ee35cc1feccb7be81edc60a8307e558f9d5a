@@ -118,6 +118,30 @@
       },
       "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eef0cb1_503f6531",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-08T15:20:21Z",
+      "side": 1,
+      "message": "Sounds good to me. Thanks!",
+      "parentUuid": "4635d510_b3e70fae",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
