@@ -395,3 +395,13 @@ func (s *Server) StartChannelSwitch(ctx context.Context, csCount, csChannel int,
 
 	return nil
 }
+
+// ListSTA lists the MAC addresses of connected STAs.
+func (s *Server) ListSTA(ctx context.Context) ([]string, error) {
+	payload, err := s.hostapdCLI(ctx, "list_sta")
+	if err != nil {
+		return nil, err
+	}
+
+	return strings.Fields(payload), nil
+}
