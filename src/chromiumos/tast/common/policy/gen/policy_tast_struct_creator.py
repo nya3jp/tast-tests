@@ -457,6 +457,50 @@ type ArcPolicyValue struct {
 """ + attr_structs
   return attr_type, attr_structs
 
+def parse_override_usage_time_limit(p, refs):
+  value_name = 'UsageTimeLimitValue'
+  attr_type = '*' + value_name
+  attr_structs = """
+type UsageTimeLimitValue struct {
+\tOverrides\t[]*UsageTimeLimitValueOverrides\t`json:"overrides,omitempty"`
+\tTimeUsageLimit\t*UsageTimeLimitValueTimeUsageLimit\t`json:"time_usage_limit,omitempty"`
+\tTimeWindowLimit *UsageTimeLimitValueTimeWindowLimit\t`json:"time_window_limit,omitempty"`
+}
+
+type UsageTimeLimitValueTimeWindowLimit struct {
+\tEntries\t[]*UsageTimeLimitValueTimeWindowLimitEntries\t`json:"entries"`
+}
+
+type UsageTimeLimitValueTimeWindowLimitEntries struct {
+\tEffectiveDay\tstring\t`json:"effective_day"`
+\tEndsAt\t*RefTime\t`json:"ends_at"`
+\tLastUpdatedMillis\tstring\t`json:"last_updated_millis"`
+\tStartsAt\t*RefTime\t`json:"starts_at"`
+}
+
+type UsageTimeLimitValueTimeUsageLimit struct {
+\tFriday\t*RefTimeUsageLimitEntry\t`json:"friday"`
+\tMonday\t*RefTimeUsageLimitEntry\t`json:"monday"`
+\tResetAt\t*RefTime\t`json:"reset_at"`
+\tSaturday\t*RefTimeUsageLimitEntry\t`json:"saturday"`
+\tSunday\t*RefTimeUsageLimitEntry\t`json:"sunday"`
+\tThursday\t*RefTimeUsageLimitEntry\t`json:"thursday"`
+\tTuesday\t*RefTimeUsageLimitEntry\t`json:"tuesday"`
+\tWednesday\t*RefTimeUsageLimitEntry\t`json:"wednesday"`
+}
+
+type UsageTimeLimitValueOverrides struct {
+\tAction\tstring\t`json:"action"`
+\tActionSpecificData\t*UsageTimeLimitValueOverridesActionSpecificData\t`json:"action_specific_data"`
+\tCreatedAtMillis\tstring\t`json:"created_at_millis"`
+}
+
+type UsageTimeLimitValueOverridesActionSpecificData struct {
+\tDurationMins\tint\t`json:"duration_mins"`
+}
+"""
+  return attr_type, attr_structs
+
 def parse_override_device_local_accounts(p, refs):
   value_name = 'DeviceLocalAccountInfo'
   attr_type = '[]' + value_name
@@ -516,7 +560,8 @@ type RefBookmarkType struct {
 PARSE_OVERRIDES = {
     'ExtensionSettings': parse_override_extension_settings,
     'ArcPolicy': parse_override_arc_policy,
-    'DeviceLocalAccounts': parse_override_device_local_accounts
+    'DeviceLocalAccounts': parse_override_device_local_accounts,
+    'UsageTimeLimit': parse_override_usage_time_limit,
 }
 
 # Functions to use for reference objects when the default way won't work.
