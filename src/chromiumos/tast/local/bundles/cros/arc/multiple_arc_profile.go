@@ -129,9 +129,16 @@ func switchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device,
 	}
 
 	avatarIcon := arcDevice.Object(androidui.ClassName("android.widget.FrameLayout"),
-		androidui.DescriptionContains("Open account menu"))
+		androidui.DescriptionContains("Account and settings"))
 	if err := avatarIcon.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Avatar Icon")
+	}
+
+	expandAccountButton := arcDevice.Object(androidui.ClassName("android.view.ViewGroup"), androidui.Clickable(true))
+	if err := expandAccountButton.WaitForExists(ctx, 10*time.Second); err != nil {
+		s.Log("Expand account button doesn't exists: ", err)
+	} else if err := expandAccountButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click expand account button")
 	}
 
 	accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
