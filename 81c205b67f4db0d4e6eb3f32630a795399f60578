@@ -50,6 +50,29 @@
       "message": "Hi Nhu, this is just a WIP example that I do not intend to submit. If you need assistance with anything, you can file a bug at bugs.chromium.org. Thanks",
       "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a00f65_bf344066",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-07-08T06:58:14Z",
+      "side": 1,
+      "message": "Should we use s.FixtContext() here?\nctx will have the same lifetime as SetUp.",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 39
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
