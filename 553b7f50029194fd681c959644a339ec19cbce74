@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7a82a5_de483a73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-08T04:56:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "25c7c181_57a9a246",
+      "revId": "553b7f50029194fd681c959644a339ec19cbce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "752ef59a_fb8478e8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-08T01:46:08Z",
       "side": 1,
       "message": "This icon is not necessary for functional testing. Can you remove it to reduce the image size?",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "553b7f50029194fd681c959644a339ec19cbce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53fd3295_4651c3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/data/webshare_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-08T04:56:47Z",
+      "side": 1,
+      "message": "This particular line of HTML is not necessary, but the icon is referenced from the manifest.json, and that is necessary for the app to count as \"installable\".\n\nAfter optimisation the icon is 9KB, let me know if it should be moved to GS too.",
+      "parentUuid": "752ef59a_fb8478e8",
       "range": {
         "startLine": 8,
         "startChar": 13,
