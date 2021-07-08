@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f54051_5cb78d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-08T07:53:42Z",
+      "side": 1,
+      "message": "Tested on chromeos1-row1-rack7-host5 with ChromeOS R93-14077.0.0",
+      "revId": "f2fe9d3539cc21bbbc63160b5e8ffbe296b4f3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
