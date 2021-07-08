@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddbb6950_cd765847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:16:50Z",
+      "side": 1,
+      "message": "Thanks for explanation. The reason of this option is not obvious to readers, so could you put explanations as inline comments?",
+      "parentUuid": "fc47b916_5d2c332b",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "403ab42e_adbeb0c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 3
@@ -290,6 +314,30 @@
       "side": 1,
       "message": "In my understanding it actually forces session restore, but the flag description says differently. Let\u0027s just remove the incorrect part.",
       "parentUuid": "841f1bf0_b729133a",
+      "range": {
+        "startLine": 374,
+        "startChar": 89,
+        "endLine": 374,
+        "endChar": 109
+      },
+      "revId": "8ed1dd0d303eb7dc8b29b24b18bf7b47801a28aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb44a631_b8051424",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-08T09:16:50Z",
+      "side": 1,
+      "message": "Thanks, new description looks good.",
+      "parentUuid": "d51434dc_010f881a",
       "range": {
         "startLine": 374,
         "startChar": 89,
