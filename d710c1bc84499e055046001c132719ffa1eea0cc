@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bf1d50_52b4a519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-07-08T04:22:20Z",
+      "side": 1,
+      "message": "Looks correct.",
+      "parentUuid": "79558399_d054a925",
+      "range": {
+        "startLine": 256,
+        "startChar": 93,
+        "endLine": 256,
+        "endChar": 108
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ff660e_538404a0",
