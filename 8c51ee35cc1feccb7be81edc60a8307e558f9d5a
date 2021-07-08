@@ -94,6 +94,30 @@
       },
       "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4635d510_b3e70fae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/diag_secure_wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-08T03:31:04Z",
+      "side": 1,
+      "message": "Thanks for your reply.\n\nAs to network.DiagSecureWifi, yes, it can pass after this change. If the vars change doesn\u0027t cause problems in your manual runs, I believe this change should be safe. Mark this comment as resolved.\n\nAs to network.DiagSignalStrength, I think currently wificell_roam is the only group that is expected to have attenuator, so it\u0027s OK to keep \"wificellFixtRoaming\" here for now (consistent with other tests in the group). We can also change it after we have more suitable group/fixture for the test.",
+      "parentUuid": "7d3c3568_da03587d",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "8c51ee35cc1feccb7be81edc60a8307e558f9d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
