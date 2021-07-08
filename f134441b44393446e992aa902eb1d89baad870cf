@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca0679c4_1b961e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-08T06:36:28Z",
+      "side": 1,
+      "message": "Thansk for pointing this out, I think default timout should be enough.",
+      "parentUuid": "173ecdd0_f83d915a",
+      "range": {
+        "startLine": 93,
+        "startChar": 104,
+        "endLine": 93,
+        "endChar": 134
+      },
+      "revId": "f134441b44393446e992aa902eb1d89baad870cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0fa9847_c0547514",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f2f36e_7a816a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-08T06:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0fa9847_c0547514",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "f134441b44393446e992aa902eb1d89baad870cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f213e64_a61bf3c5",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-07-07T18:34:35Z",
       "side": 1,
       "message": "nit: This two calls are repeated from earlier in the test method; can we pull them out into a helper function?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "f134441b44393446e992aa902eb1d89baad870cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944f3337_4f186998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-07-08T06:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f213e64_a61bf3c5",
       "range": {
         "startLine": 105,
         "startChar": 0,
