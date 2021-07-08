@@ -16,6 +16,46 @@
       "message": "Toshiki-san PTAL again! (Needs +2 from the framework team too)",
       "revId": "214cefe67a5349bef1bf06a00893f1b508a7ff65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8402e68c_a0057801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-08T05:23:55Z",
+      "side": 1,
+      "message": "LGTM with a nit :)",
+      "revId": "214cefe67a5349bef1bf06a00893f1b508a7ff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abe603c_6e68a65e",
+        "filename": "src/chromiumos/tast/common/android/adb/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-08T05:23:55Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 254,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 34
+      },
+      "revId": "214cefe67a5349bef1bf06a00893f1b508a7ff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
