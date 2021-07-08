@@ -70,6 +70,30 @@
       },
       "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6176a9e4_386a3694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-08T15:33:23Z",
+      "side": 1,
+      "message": "Yeah there are pros and cons to both approaches. What I would like to avoid would be to have to update three different conditional blocks when the test changes in some way. \n\nI think we can keep one test if we try to factor out some of the shared code they use. For instance, it looks like starting chrome, getting the test connection, starting arc, and getting the UI automator are the same, except for the flags passed to chrome. In the same way, performing the drag, focusing on the activity and checking the expected result are the same. \n\nThe test should mostly shared one body of code that is tweaked and modified by the different conditionals by setting variables. WDYT?",
+      "parentUuid": "0aa88a12_de7b2f24",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
