@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -59,64 +58,11 @@ func SSIDSwitchBack(ctx context.Context, s *testing.State) {
 		hostapd.HTCaps(hostapd.HTCapHT20),
 	}
 
-	// tryConnect asks DUT to connect to an AP with the given ops.
-	// Then deconfig the AP and wait for disconnection without
-	// explicit disconnect call. The object path of connected
-	// service is returned.
-	tryConnect := func(ctx context.Context, ops []hostapd.Option) (retPath string, retErr error) {
-		collectErr := func(err error) {
-			if err == nil {
-				return
-			}
-			if retErr == nil {
-				retErr = err
-			}
-			retPath = ""
-			s.Log("tryConnect err: ", err)
-		}
-
-		var servicePath string
-		defer func(ctx context.Context) {
-			if servicePath == "" {
-				// Not connected, just return.
-			}
-			if err := wifiutil.WaitServiceIdle(ctx, tf, servicePath); err != nil {
-				collectErr(errors.Wrap(err, "failed to wait for DUT leaving the AP"))
-			}
-		}(ctx)
-		ctx, cancel := wifiutil.ReserveForWaitServiceIdle(ctx)
-		defer cancel()
-
-		ap, err := tf.ConfigureAP(ctx, ops, nil)
-		if err != nil {
-			return "", errors.Wrap(err, "failed to configure the AP")
-		}
-		defer func(ctx context.Context) {
-			if err := tf.DeconfigAP(ctx, ap); err != nil {
-				collectErr(errors.Wrap(err, "failed to deconfig the AP"))
-			}
-		}(ctx)
-		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
-		defer cancel()
-
-		resp, err := tf.ConnectWifiAP(ctx, ap)
-		if err != nil {
-			return "", errors.Wrap(err, "failed to connect to the AP")
-		}
-		servicePath = resp.ServicePath
-
-		if err := tf.VerifyConnection(ctx, ap); err != nil {
-			return "", errors.Wrap(err, "failed to verify connection to the AP")
-		}
-
-		return servicePath, nil
-	}
-
-	servicePath, err := tryConnect(ctx, apOps1)
+	servicePath, err := wifiutil.TryConnect(ctx, tf, apOps1)
 	if err != nil {
 		s.Fatal("Failed to connect to AP1: ", err)
 	}
-	if _, err := tryConnect(ctx, apOps2); err != nil {
+	if _, err := wifiutil.TryConnect(ctx, tf, apOps2); err != nil {
 		s.Fatal("Failed to connect to AP2: ", err)
 	}
 
