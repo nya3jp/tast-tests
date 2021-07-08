@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9e4ada_280655bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-08T06:57:01Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1ccfff_edb4f3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-08T06:57:01Z",
+      "side": 1,
+      "message": "If the result",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e940e63_807cb099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-08T06:57:01Z",
+      "side": 1,
+      "message": "FPS",
+      "range": {
+        "startLine": 21,
+        "startChar": 50,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9881c9a6_8ab5ff7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-08T06:57:01Z",
+      "side": 1,
+      "message": "Why contact tast-owners?",
+      "range": {
+        "startLine": 28,
+        "startChar": 47,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be513308_6f915c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-08T06:57:01Z",
+      "side": 1,
+      "message": "An output example (in JSON format) of `cras_bench`.",
+      "revId": "ec1896deef718de1252571051c1ef193e7e29bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
