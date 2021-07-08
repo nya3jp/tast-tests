@@ -170,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "496b8516_9b6fe926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-08T05:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63ff660e_538404a0",
+      "range": {
+        "startLine": 285,
+        "startChar": 90,
+        "endLine": 285,
+        "endChar": 94
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28f5ddc6_06016b24",
@@ -183,6 +207,30 @@
       "writtenOn": "2021-07-07T01:22:17Z",
       "side": 1,
       "message": "nit: wrong explanation?",
+      "range": {
+        "startLine": 409,
+        "startChar": 30,
+        "endLine": 409,
+        "endChar": 86
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4256be36_e6a56605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-08T05:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28f5ddc6_06016b24",
       "range": {
         "startLine": 409,
         "startChar": 30,
@@ -216,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ea389f_a3daeb28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-08T05:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c877d0b1_1aef7c8e",
+      "range": {
+        "startLine": 492,
+        "startChar": 13,
+        "endLine": 492,
+        "endChar": 20
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4fca672_5967c29e",
@@ -239,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3565866e_dd054572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-08T05:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4fca672_5967c29e",
+      "range": {
+        "startLine": 514,
+        "startChar": 62,
+        "endLine": 514,
+        "endChar": 68
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9af76f31_7dc72fb9",
@@ -252,6 +348,30 @@
       "writtenOn": "2021-07-07T01:22:17Z",
       "side": 1,
       "message": "nit: ditto",
+      "range": {
+        "startLine": 515,
+        "startChar": 75,
+        "endLine": 515,
+        "endChar": 81
+      },
+      "revId": "d710c1bc84499e055046001c132719ffa1eea0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deba64ee_dd97d1c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-08T05:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9af76f31_7dc72fb9",
       "range": {
         "startLine": 515,
         "startChar": 75,
