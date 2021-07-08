@@ -9072,16 +9072,16 @@ type UsageTimeLimitValueTimeWindowLimit struct {
 }
 
 type UsageTimeLimitValueTimeWindowLimitEntries struct {
-	EffectiveDay      string        `json:"effective_day"`
-	EndsAt            *RefTime      `json:"ends_at"`
-	LastUpdatedMillis string        `json:"last_updated_millis"`
-	StartsAt          *RefUsageTime `json:"starts_at"`
+	EffectiveDay      string   `json:"effective_day"`
+	EndsAt            *RefTime `json:"ends_at"`
+	LastUpdatedMillis string   `json:"last_updated_millis"`
+	StartsAt          *RefTime `json:"starts_at"`
 }
 
 type UsageTimeLimitValueTimeUsageLimit struct {
 	Friday    *RefTimeUsageLimitEntry `json:"friday"`
 	Monday    *RefTimeUsageLimitEntry `json:"monday"`
-	ResetAt   *RefUsageTime           `json:"reset_at"`
+	ResetAt   *RefTime                `json:"reset_at"`
 	Saturday  *RefTimeUsageLimitEntry `json:"saturday"`
 	Sunday    *RefTimeUsageLimitEntry `json:"sunday"`
 	Thursday  *RefTimeUsageLimitEntry `json:"thursday"`
@@ -18492,11 +18492,6 @@ type RefWeeklyTime struct {
 }
 
 type RefTime struct {
-	Hour   int `json:"hour"`
-	Minute int `json:"minute"`
-}
-
-type RefUsageTime struct {
 	Hour   int `json:"hour"`
 	Minute int `json:"minute"`
 }
