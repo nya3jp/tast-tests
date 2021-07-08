@@ -116,6 +116,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a22d375e_8cb5a442",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-08T16:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b0cac3_4d016520",
+      "range": {
+        "startLine": 39,
+        "startChar": 55,
+        "endLine": 39,
+        "endChar": 66
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f88b0f_6b3cba38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-08T16:20:38Z",
+      "side": 1,
+      "message": "Why do we need to avoid flashing twice? The flash in NewFirmwareTest should be called to fix bad firmware and will initialize entropy, whereas the flash in bio_wash test is to remove entropy.",
+      "parentUuid": "64fce57f_64963789",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 115
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c8907d4_125f7280",
