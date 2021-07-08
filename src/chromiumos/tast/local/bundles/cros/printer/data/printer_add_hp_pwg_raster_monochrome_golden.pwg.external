@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_pwg_raster_monochrome_golden_20201215.pwg",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_pwg_raster_monochrome_golden_20210226.pwg",
   "size": 12077,
-  "sha256sum": "7a80060bdf7c5c574b38d4fa630f4f76e48f7c6195c8ca7c7fb64e2948998c49"
+  "sha256sum": "45208bd278734640aa594e81e6bf466e9fc2a6df2607151772f34aecebab4d1c"
 }
