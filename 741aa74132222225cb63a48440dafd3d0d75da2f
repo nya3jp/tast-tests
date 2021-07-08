@@ -16,6 +16,29 @@
       "message": "FYI to yuhsuan@. Pls feel free to loop in appropriate CrOS engs working on audio.\nI\u0027m holding on this. Commented to the other CL.",
       "revId": "741aa74132222225cb63a48440dafd3d0d75da2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e7a537_3cd4f867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-07-08T01:47:16Z",
+      "side": 1,
+      "message": "Speakers and microphones are required for this test.",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "741aa74132222225cb63a48440dafd3d0d75da2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
