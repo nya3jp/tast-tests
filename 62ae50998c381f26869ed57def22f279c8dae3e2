@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee25a3c8_404ecce9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-08T22:43:52Z",
+      "side": 1,
+      "message": "We can fix in follow-up CL, in order to get this test running and see some results.",
+      "parentUuid": "47f333da_ea02bdfb",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 115
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c8907d4_125f7280",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
         "patchSetId": 2
@@ -219,6 +243,30 @@
       "writtenOn": "2021-07-08T02:12:19Z",
       "side": 1,
       "message": "optional: cmd can usually introduce racing flakiness in test. I would personally suggest to use polling in result check.",
+      "range": {
+        "startLine": 97,
+        "startChar": 23,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0905ec_9f91dbfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-08T22:43:52Z",
+      "side": 1,
+      "message": "I\u0027m not following. Specifically the `figerprint.CheckRollbackState` command?",
+      "parentUuid": "2c8907d4_125f7280",
       "range": {
         "startLine": 97,
         "startChar": 23,
