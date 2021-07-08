@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b373071b_ad419331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-08T19:04:54Z",
+      "side": 1,
+      "message": "CCing Kevin/Andrew/Jeremy -- FYI, I will no longer count for OWNERS review after this CL.",
+      "revId": "8922b2486487717280678c0a118cb37ac39e3724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
