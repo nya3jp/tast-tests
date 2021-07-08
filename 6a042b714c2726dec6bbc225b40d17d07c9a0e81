@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587c41d5_258e240c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-08T07:19:30Z",
+      "side": 1,
+      "message": "Rafactors \"Tasks\" into Units, which are runnable outside of memoryuser.RunTest. Adds Fill[Arc|ChromeOS|Crostini]Memory methods, which are an easy way to consume memory on different components.\n\nAlso fixes how MemoryStressTask.Close works, since the old way was broken if the tab had been discarded.",
+      "revId": "6a042b714c2726dec6bbc225b40d17d07c9a0e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
