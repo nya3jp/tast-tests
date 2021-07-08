@@ -8,10 +8,13 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/services/cros/wifi"
+	"chromiumos/tast/testing"
 )
 
 // VerifyWakeOnWifiReason puts the DUT into suspend with timeout=duration,
@@ -76,4 +79,56 @@ func VerifyWakeOnWifiReason(
 		return err
 	}
 	return nil
+}
+
+// DarkResumeSuspend suspends the DUT with powerd_dbus_suspend with dark resume
+// enabled. On successful call, a shortened context and a cleanup function to
+// wake up the DUT are returned.
+func DarkResumeSuspend(fullCtx context.Context, d *dut.DUT, servoInst *servo.Servo) (context.Context, func() error, error) {
+	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+
+	done := make(chan error, 1)
+	go func(ctx context.Context) {
+		defer close(done)
+		out, err := d.Command("powerd_dbus_suspend", "--disable_dark_resume=false", "--print_wakeup_type=true").CombinedOutput(ctx)
+		testing.ContextLog(ctx, "DEBUG: powerd_dbus_suspend output: ", string(out))
+		done <- err
+	}(ctx)
+
+	if err := d.WaitUnreachable(ctx); err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to wait for DUT being unreachable")
+	}
+	cleanupFunc := func() error {
+		// Cancel the context used by the goroutine before leaving.
+		defer cancel()
+
+		if err := d.Conn().Ping(fullCtx, time.Second); err != nil {
+			// Failed SSH ping to DUT. DUT is likely still in suspend.
+			// Try to wake the DUT up with power key press.
+			testing.ContextLog(ctx, "Try to wake up DUT with power_key:press")
+			if err := servoInst.KeypressWithDuration(fullCtx, servo.PowerKey, servo.DurPress); err != nil {
+				return errors.Wrap(err, "failed to trigger power key press with servo")
+			}
+			// Wait for DUT to become reachable.
+			const maxPingRetry = 5
+			reachable := false
+			for retry := 0; retry < maxPingRetry; retry++ {
+				if err := d.Conn().Ping(fullCtx, time.Second); err != nil {
+					testing.ContextLog(ctx, "SSH ping failed: ", err)
+				} else {
+					reachable = true
+					break
+				}
+			}
+			if !reachable {
+				return errors.New("failed to wake up DUT with servo")
+			}
+			testing.ContextLog(ctx, "DUT back to reachable")
+		}
+		if err := <-done; err != nil {
+			return errors.Wrap(err, "powerd_dbus_suspend failed")
+		}
+		return nil
+	}
+	return ctx, cleanupFunc, nil
 }

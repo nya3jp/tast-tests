@@ -240,3 +240,8 @@ func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, params
 func (h *APIface) Set(ctx context.Context, prop hostapd.Property, val string) error {
 	return h.hostapd.Set(ctx, prop, val)
 }
+
+// ListSTA lists the MAC addresses of connected STAs.
+func (h *APIface) ListSTA(ctx context.Context) ([]string, error) {
+	return h.hostapd.ListSTA(ctx)
+}
