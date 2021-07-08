@@ -148,7 +148,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Setting up ipp-usb connection")
-		ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device), "--keep-alive", ippusbbridge.KeepAlivePath(devInfo))
+		ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device))
 
 		if err := ippusbBridge.Start(); err != nil {
 			s.Fatal("Failed to connect to printer with ippusb_bridge: ", err)
