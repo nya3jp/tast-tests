@@ -111,7 +111,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 
 	// Wait until CPU is cooled down.
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
-		s.Fatal("CPU failed to cool down: ", err)
+		s.Error("CPU failed to cool down: ", err)
 	}
 
 	// Start camera testing app.
