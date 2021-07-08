@@ -46,6 +46,30 @@
       },
       "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa88a12_de7b2f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-08T02:38:59Z",
+      "side": 1,
+      "message": "So the tests are about testing drag \u0026 drop to/from Android apps.\nThere will be three tests in total:\n* Testing Drag and Drop from Chrome to Android\n* Testing Drag and Drop from Android to Android\n* Testing Drag and Drop from Android to Chrome\n\nI think it makes sense to have them as sub-tests under one test.\n\nOtherwise, I can make them separate tests like:\n* arc.DragDropAndroidToChrome\n* arc.DragDropChromeToAndroid\n* arc.DragDropAndroidToAndroid\nbut I thought it\u0027s a bit awkward as tightly related tests are not grouped together.\n\ntbegin@ WDYT? I don\u0027t have a strong opinion here, so I\u0027d like to follow your suggestion.",
+      "parentUuid": "c56dfb6f_9a6e5bd4",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
