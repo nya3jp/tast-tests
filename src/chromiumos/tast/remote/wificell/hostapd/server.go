@@ -240,6 +240,20 @@ func (s *Server) Close(ctx context.Context) error {
 	return nil
 }
 
+// hostapdCLI is a helper function for running hostapd_cli command to control
+// this Server.
+func (s *Server) hostapdCLI(ctx context.Context, args ...string) (string, error) {
+	fullArgs := append([]string{
+		"-p" + s.ctrlPath(),
+		"-i" + s.Interface(),
+	}, args...)
+	raw, err := s.host.Command(hostapdCLI, fullArgs...).Output(ctx)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to run hostapd_cli, stdout=%q", string(raw))
+	}
+	return string(raw), nil
+}
+
 // DeauthClient deauthenticates the client with specified MAC address.
 func (s *Server) DeauthClient(ctx context.Context, clientMAC string) error {
 	if err := s.host.Command(hostapdCLI, fmt.Sprintf("-p%s", s.ctrlPath()), "deauthenticate", clientMAC).Run(ctx); err != nil {
@@ -267,7 +281,7 @@ type BSSTMReqParams struct {
 func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, params BSSTMReqParams) error {
 	// Construct the arguments for:
 	//   `hostapd_cli -p${ctrlPath} BSS_TM_REQ ${clientMAC} neighbor=${n},0,0,0,0 pref=1`
-	args := []string{"-p" + s.ctrlPath(), "BSS_TM_REQ", clientMAC}
+	args := []string{"BSS_TM_REQ", clientMAC}
 	for _, n := range params.Neighbors {
 		args = append(args, fmt.Sprintf("neighbor=%s,0,0,0,0", n))
 	}
@@ -282,7 +296,7 @@ func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, params 
 	}
 
 	// Run the command
-	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+	if _, err := s.hostapdCLI(ctx, args...); err != nil {
 		return errors.Wrapf(err, "failed to send BSS TM request to client %s", clientMAC)
 	}
 	return nil
@@ -298,8 +312,8 @@ const (
 
 // Set sets a hostapd property prop to value val
 func (s *Server) Set(ctx context.Context, prop Property, val string) error {
-	args := []string{"-p" + s.ctrlPath(), "SET", string(prop), val}
-	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+	args := []string{"SET", string(prop), val}
+	if _, err := s.hostapdCLI(ctx, args...); err != nil {
 		return errors.Wrapf(err, "failed to set property %v to value %v", prop, val)
 	}
 	return nil
@@ -348,7 +362,6 @@ func (s *Server) StartChannelSwitch(ctx context.Context, csCount, csChannel int,
 	}
 
 	var args []string
-	args = append(args, fmt.Sprintf("-p%s", s.ctrlPath()))
 	args = append(args, "chan_switch")
 	args = append(args, strconv.Itoa(csCount))
 	args = append(args, strconv.Itoa(csFreq))
@@ -356,7 +369,7 @@ func (s *Server) StartChannelSwitch(ctx context.Context, csCount, csChannel int,
 		args = append(args, cfg.mode)
 	}
 
-	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+	if _, err := s.hostapdCLI(ctx, args...); err != nil {
 		return errors.Wrapf(err, "failed to send CSA with freq %d", csFreq)
 	}
 
