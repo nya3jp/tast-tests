@@ -47,6 +47,9 @@ func Smoke(ctx context.Context, s *testing.State) {
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the network screen to be visible: ", err)
 	}
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "!OobeAPI.screens.NetworkScreen.nextButton.disabled"); err != nil {
+		s.Fatal("Failed to wait for the network screen next button to be enabled: ", err)
+	}
 	if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.clickNext()", nil); err != nil {
 		s.Fatal("Failed to click network page next button: ", err)
 	}
