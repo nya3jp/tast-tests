@@ -21,11 +21,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// KeepAlivePath returns the path to ippusb_bridge's keepalive socket.
-func KeepAlivePath(devInfo usbprinter.DevInfo) string {
-	return fmt.Sprintf("/run/ippusb/%s-%s_keep_alive.sock", devInfo.VID, devInfo.PID)
-}
-
 // SocketPath returns the path to ippusb_bridge's main socket.
 func SocketPath(devInfo usbprinter.DevInfo) string {
 	return fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)
@@ -116,9 +111,6 @@ func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
 	}
 	if err := os.Remove(SocketPath(devInfo)); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove ippusb_bridge socket")
-	}
-	if err := os.Remove(KeepAlivePath(devInfo)); err != nil && !os.IsNotExist(err) {
-		return errors.Wrap(err, "failed to remove ippusb_bridge keepalive socket")
 	}
 	return nil
 }
