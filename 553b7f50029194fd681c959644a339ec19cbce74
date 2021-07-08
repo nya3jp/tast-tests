@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c7c181_57a9a246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-08T01:46:08Z",
+      "side": 1,
+      "message": "The pre-built APK can be stored in gs to reduce test image size as well.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files",
+      "revId": "553b7f50029194fd681c959644a339ec19cbce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752ef59a_fb8478e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/data/webshare_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-08T01:46:08Z",
+      "side": 1,
+      "message": "This icon is not necessary for functional testing. Can you remove it to reduce the image size?",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "553b7f50029194fd681c959644a339ec19cbce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
