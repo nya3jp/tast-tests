@@ -16,6 +16,46 @@
       "message": "Hi Hiroki, here\u0027s a small change, PTAL?",
       "revId": "41b2da1d2db375bd05c64ad11bc4b9f90fc219f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714b9ff1_4b52be05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-08T00:46:24Z",
+      "side": 1,
+      "message": "Thanks!\nCR+1-ing to unblock, but please address the comment!",
+      "revId": "41b2da1d2db375bd05c64ad11bc4b9f90fc219f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cddaf3c_a422ea8c",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-08T00:46:24Z",
+      "side": 1,
+      "message": "When cv.focusedNode returns an error, WaitForFocusedNode exits from polling and the test fails. (see line 128)\nBut IIUC, generally getCurrentRange returning null means ChromeVox is not ready yet and we want to continue polling.\nSo, how about returning \"nil, nil\" here, and making WaitForFocusedNode explicitly handle that case?",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "41b2da1d2db375bd05c64ad11bc4b9f90fc219f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
