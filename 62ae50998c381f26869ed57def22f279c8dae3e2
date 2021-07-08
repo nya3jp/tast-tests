@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4619393_a2b8e24d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-08T22:35:11Z",
+      "side": 1,
+      "message": "Ahh, roger that. You will be missed.",
+      "parentUuid": "81d8ba67_f58ea792",
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69b0cac3_4d016520",
@@ -154,6 +172,30 @@
       "side": 1,
       "message": "Why do we need to avoid flashing twice? The flash in NewFirmwareTest should be called to fix bad firmware and will initialize entropy, whereas the flash in bio_wash test is to remove entropy.",
       "parentUuid": "64fce57f_64963789",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 115
+      },
+      "revId": "62ae50998c381f26869ed57def22f279c8dae3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f333da_ea02bdfb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_bio_wash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-08T22:35:11Z",
+      "side": 1,
+      "message": "Right, but then the flashing that is done in this test body (to clear entropy) undoes/redoes all the work that NewFirmwareTest does.\n\nFlashing take a lot of time to complete (especially for Zork with the reboot) + the flash on these chips don\u0027t have infinitive erase/write cycles.",
+      "parentUuid": "d3f88b0f_6b3cba38",
       "range": {
         "startLine": 39,
         "startChar": 1,
