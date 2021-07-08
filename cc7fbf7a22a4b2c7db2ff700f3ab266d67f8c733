@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6ee559_5c31635e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-08T19:26:11Z",
+      "side": 1,
+      "message": "Thanks Hiroki. Adding tast owners for official approval.",
+      "revId": "cc7fbf7a22a4b2c7db2ff700f3ab266d67f8c733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
