@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e1be86_a362a0d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-08T14:38:31Z",
+      "side": 1,
+      "message": "do you extedn the timeout, while the commit message said it\u0027s accelerating...?\nAt a glance, it looks conflicting?",
+      "revId": "037008a2a97d8afc4859ee1866cd6e59876d1aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f4b413_0508c9db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-08T14:38:31Z",
+      "side": 1,
+      "message": "nit: could you use const?\n\nconst (\n  slcTestDuration \u003d ...\n  stressTestDuration \u003d ...\n)",
+      "revId": "037008a2a97d8afc4859ee1866cd6e59876d1aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
