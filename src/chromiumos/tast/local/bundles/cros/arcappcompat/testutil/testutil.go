@@ -32,6 +32,7 @@ import (
 // Variables used by other tast tests
 const (
 	AndroidButtonClassName = "android.widget.Button"
+	notNowText             = "Not now"
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
@@ -145,6 +146,14 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			defer d.Close(ctx)
 
 			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+			// Click on not now button to skip the display profile visible in public.
+			notNowButton := d.Object(ui.ClassName(AndroidButtonClassName), ui.TextMatches("(?i)"+notNowText))
+			if err := notNowButton.WaitForExists(ctx, DefaultUITimeout); err == nil {
+				if err := notNowButton.Click(ctx); err != nil {
+					s.Fatal("Failed to click on notNow Button: ", err)
+				}
+			}
 
 			// It is ok if the package is currently equal the installer package.
 			// It is also ok if the package is currently equal the play service package.
