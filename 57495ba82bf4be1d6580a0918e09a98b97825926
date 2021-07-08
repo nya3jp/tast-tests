@@ -33,6 +33,24 @@
       "message": "I think it would be great to give an example of cras_bench json output here, it will also help explain why we need to do strings.Replace for \u0027/\u0027.",
       "revId": "57495ba82bf4be1d6580a0918e09a98b97825926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a402bded_a31500ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-07-08T03:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "911d5228_d3f315ac",
+      "revId": "57495ba82bf4be1d6580a0918e09a98b97825926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
