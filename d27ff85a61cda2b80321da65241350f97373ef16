@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e351051_869863b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-08T01:12:45Z",
+      "side": 1,
+      "message": "to",
+      "range": {
+        "startLine": 310,
+        "startChar": 46,
+        "endLine": 310,
+        "endChar": 51
+      },
+      "revId": "d27ff85a61cda2b80321da65241350f97373ef16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c2d4322_445f4a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-08T01:12:45Z",
+      "side": 1,
+      "message": "Make this a separate line?",
+      "range": {
+        "startLine": 310,
+        "startChar": 74,
+        "endLine": 311,
+        "endChar": 27
+      },
+      "revId": "d27ff85a61cda2b80321da65241350f97373ef16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9930c03a_c5c16a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-08T01:12:45Z",
+      "side": 1,
+      "message": "put it to the same line as will?",
+      "range": {
+        "startLine": 311,
+        "startChar": 112,
+        "endLine": 312,
+        "endChar": 3
+      },
+      "revId": "d27ff85a61cda2b80321da65241350f97373ef16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed35410_d99eb93b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-08T01:12:45Z",
+      "side": 1,
+      "message": "Suggest to move this near to the line it is used.",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 17
+      },
+      "revId": "d27ff85a61cda2b80321da65241350f97373ef16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3f3b61_e3616098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-08T01:12:45Z",
+      "side": 1,
+      "message": "Why changing this? What else does it do besides switching the if-else order?",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 82
+      },
+      "revId": "d27ff85a61cda2b80321da65241350f97373ef16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc55ce6_afc14fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-08T01:12:45Z",
+      "side": 1,
+      "message": "So this it to clickIcon until waitMenuItemView succeeds? If yes, suggest to add a func RetryUntil to automation.go",
+      "range": {
+        "startLine": 349,
+        "startChar": 19,
+        "endLine": 349,
+        "endChar": 23
+      },
+      "revId": "d27ff85a61cda2b80321da65241350f97373ef16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
