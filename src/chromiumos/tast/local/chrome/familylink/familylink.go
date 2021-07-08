@@ -7,8 +7,10 @@ package familylink
 
 import (
 	"context"
+	"strconv"
 	"time"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -132,4 +134,40 @@ func NavigateEduCoexistenceFlow(ctx context.Context, tconn *chrome.TestConn, par
 	}
 
 	return nil
+}
+
+// CreateUsageTimeLimitPolicy returns the *policy.UsageTimeLimit with default
+// setting. It's value needs to be overridden for test.
+func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
+	now := time.Now()
+	dailyTimeUsageLimit := policy.RefTimeUsageLimitEntry{
+		LastUpdatedMillis: strconv.FormatInt(now.Unix() /*base=*/, 10),
+		// There's 1440 minutes in a day, so no screen time limit.
+		UsageQuotaMins: 1440,
+	}
+
+	hour, _, _ := now.Clock()
+	resetTime := policy.RefTime{
+		// Make sure the policy doesn't reset before the test ends
+		Hour:   (hour + 2) % 24,
+		Minute: 0,
+	}
+	return &policy.UsageTimeLimit{
+		Val: &policy.UsageTimeLimitValue{
+			Overrides: []*policy.UsageTimeLimitValueOverrides{},
+			TimeUsageLimit: &policy.UsageTimeLimitValueTimeUsageLimit{
+				Friday:    &dailyTimeUsageLimit,
+				Monday:    &dailyTimeUsageLimit,
+				ResetAt:   &resetTime,
+				Saturday:  &dailyTimeUsageLimit,
+				Sunday:    &dailyTimeUsageLimit,
+				Thursday:  &dailyTimeUsageLimit,
+				Tuesday:   &dailyTimeUsageLimit,
+				Wednesday: &dailyTimeUsageLimit,
+			},
+			TimeWindowLimit: &policy.UsageTimeLimitValueTimeWindowLimit{
+				Entries: []*policy.UsageTimeLimitValueTimeWindowLimitEntries{},
+			},
+		},
+	}
 }
