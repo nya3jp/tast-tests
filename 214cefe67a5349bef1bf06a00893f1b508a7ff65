@@ -56,6 +56,30 @@
       },
       "revId": "214cefe67a5349bef1bf06a00893f1b508a7ff65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c978416b_39fd11cb",
+        "filename": "src/chromiumos/tast/common/android/adb/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-08T05:28:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2abe603c_6e68a65e",
+      "range": {
+        "startLine": 254,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 34
+      },
+      "revId": "214cefe67a5349bef1bf06a00893f1b508a7ff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
