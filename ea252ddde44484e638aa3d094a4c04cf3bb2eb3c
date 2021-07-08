@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099c45ca_09670684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-08T16:38:48Z",
+      "side": 1,
+      "message": "Just a heads up: a test I\u0027m writing needs a fixture with just wificell.TFFeaturesRouters (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2830027), so it would be great if you could add that as well (if not, I can do it too).",
+      "revId": "ea252ddde44484e638aa3d094a4c04cf3bb2eb3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
