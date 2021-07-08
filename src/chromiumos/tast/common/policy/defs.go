@@ -9062,9 +9062,9 @@ type UsageTimeLimit struct {
 }
 
 type UsageTimeLimitValue struct {
-	Overrides       []*UsageTimeLimitValueOverrides     `json:"overrides"`
-	TimeUsageLimit  *UsageTimeLimitValueTimeUsageLimit  `json:"time_usage_limit"`
-	TimeWindowLimit *UsageTimeLimitValueTimeWindowLimit `json:"time_window_limit"`
+	Overrides       []*UsageTimeLimitValueOverrides     `json:"overrides,omitempty"`
+	TimeUsageLimit  *UsageTimeLimitValueTimeUsageLimit  `json:"time_usage_limit,omitempty"`
+	TimeWindowLimit *UsageTimeLimitValueTimeWindowLimit `json:"time_window_limit,omitempty"`
 }
 
 type UsageTimeLimitValueTimeWindowLimit struct {
@@ -9072,16 +9072,16 @@ type UsageTimeLimitValueTimeWindowLimit struct {
 }
 
 type UsageTimeLimitValueTimeWindowLimitEntries struct {
-	EffectiveDay      string        `json:"effective_day"`
-	EndsAt            *RefTime      `json:"ends_at"`
-	LastUpdatedMillis string        `json:"last_updated_millis"`
-	StartsAt          *RefUsageTime `json:"starts_at"`
+	EffectiveDay      string   `json:"effective_day"`
+	EndsAt            *RefTime `json:"ends_at"`
+	LastUpdatedMillis string   `json:"last_updated_millis"`
+	StartsAt          *RefTime `json:"starts_at"`
 }
 
 type UsageTimeLimitValueTimeUsageLimit struct {
 	Friday    *RefTimeUsageLimitEntry `json:"friday"`
 	Monday    *RefTimeUsageLimitEntry `json:"monday"`
-	ResetAt   *RefUsageTime           `json:"reset_at"`
+	ResetAt   *RefTime                `json:"reset_at"`
 	Saturday  *RefTimeUsageLimitEntry `json:"saturday"`
 	Sunday    *RefTimeUsageLimitEntry `json:"sunday"`
 	Thursday  *RefTimeUsageLimitEntry `json:"thursday"`
