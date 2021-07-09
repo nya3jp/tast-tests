@@ -109,6 +109,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "be1f0836_f13c87be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-09T00:44:07Z",
+      "side": 1,
+      "message": "Sorry for late. Checked that `test_that \u003cDUT\u003e tast.camerabox-facing-back` can also pass the test. So this fix probably not related to py2/py3 problem.",
+      "parentUuid": "a8477daf_317db2a4",
+      "revId": "dccea08ca300309d3070367d1325c7e79f6d0e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74087a6f_48611162",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
