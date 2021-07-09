@@ -438,7 +438,7 @@ func PressKeysAndConsumeExpectations(ctx context.Context, sm *SpeechMonitor, key
 	}
 
 	if err := sm.Consume(ctx, expectations); err != nil {
-		return errors.Wrap(err, "error when consuming expectations")
+		return errors.Wrapf(err, "error when consuming expectations after pressing keys: %q", keySequence)
 	}
 
 	return nil
