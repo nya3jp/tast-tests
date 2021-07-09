@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5ab423_2417b77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1384541
+      },
+      "writtenOn": "2021-07-09T03:16:31Z",
+      "side": 1,
+      "message": "Ah yes good point. The initial design of this change only reduced surfing portion and I failed to update the commit comment after making an additional change. Please see the updated commit comment",
+      "parentUuid": "00e1be86_a362a0d7",
+      "revId": "037008a2a97d8afc4859ee1866cd6e59876d1aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f4b413_0508c9db",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-08T14:38:31Z",
       "side": 1,
       "message": "nit: could you use const?\n\nconst (\n  slcTestDuration \u003d ...\n  stressTestDuration \u003d ...\n)",
+      "revId": "037008a2a97d8afc4859ee1866cd6e59876d1aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f24328_70e77df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1384541
+      },
+      "writtenOn": "2021-07-09T03:16:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6f4b413_0508c9db",
       "revId": "037008a2a97d8afc4859ee1866cd6e59876d1aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
