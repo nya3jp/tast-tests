@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3c7877_b6261a64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-09T17:42:35Z",
+      "side": 1,
+      "message": "Do we need to update the tests in src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go also to exercise the new transitions that are possible?\n",
+      "revId": "2f6054998a8f3553151a449cb12f2f39d04d3bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92cb5043_d970f3ad",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-09T17:42:35Z",
+      "side": 1,
+      "message": "ClearAndSetGBBFlags is very slow, and in most cases this is unnecessary. \n\nHow about another option called AssumeGBBFlagsCorrect and skip this if that is passed, and we can pass that flag from the precondition.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "2f6054998a8f3553151a449cb12f2f39d04d3bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
