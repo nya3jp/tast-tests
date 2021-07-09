@@ -170,7 +170,9 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 			testing.ContextLog(ctx, "Waiting for DUT to finish booting")
 			// The machine is up, just wait for it to finish booting
 			h.CloseRPCConnection(ctx)
-			if err = h.DUT.WaitConnect(ctx); err == nil {
+			waitBootCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+			defer cancel()
+			if err = h.DUT.WaitConnect(waitBootCtx); err == nil {
 				return nil
 			}
 			// If WaitConnect didn't work, let it reset.
