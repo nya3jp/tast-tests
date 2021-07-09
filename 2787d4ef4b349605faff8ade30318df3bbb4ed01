@@ -33,6 +33,24 @@
       "message": "Hi Harvey,\n\nThanks for this effort, supporting Perfetto in Tast sounds great!\n\nArchitecture-wise, my first and foremost question is, do we want to support Perfetto for local tests? This patch introduces a library for remote tests, but as you may know most of Tast tests are written as local tests, so it would be a lot more useful if it\u0027s usable from local tests.\n\nTo support Perfetto for local tests, we have to install trace_processor to the DUT. I think this can be done in ebuilds, rather than downloading it as a test data file. We have to be careful about using prebuilts though because Chrome OS runs on multiple architectures. Anyway, installing trace_processor on test images would be useful for all users even if they don\u0027t run Tast.\n",
       "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3950fbbc_2f533b56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-09T10:33:13Z",
+      "side": 1,
+      "message": "Local tests is a good target, but that requires building trace_processor_shell binary for the DUTs and post-processing trace data on DUTs. It\u0027s been a pain for processing trace data generated in telemetry benchmarks for CrOS so it was decided to prebuild trace_processor_shell and roll out the binary on a GS bucket. There is still no support of of arm32 or arm64 yet.\n\nWe want to support remote tests in the first place so we can focus on having an initial support of trace-based metrics (even though it\u0027s more tedious to write remote tests) and avoid re-solving the problem of building trace_processor_shell within the CrOS build system. Then we can support local tests later if test developers like trace-based metrics in tests and desire it in local tests.",
+      "parentUuid": "a48e1c25_eb2b3c84",
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
