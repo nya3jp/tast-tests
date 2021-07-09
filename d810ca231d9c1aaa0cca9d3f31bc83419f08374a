@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f5a75e_6548e5a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-07-09T15:59:38Z",
+      "side": 1,
+      "message": "updated the commit msg and code comment from @Vidya, Thanks!",
+      "revId": "d810ca231d9c1aaa0cca9d3f31bc83419f08374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
