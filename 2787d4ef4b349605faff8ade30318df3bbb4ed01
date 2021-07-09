@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f0da10_98e1f736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-09T04:00:29Z",
+      "side": 1,
+      "message": "Hi Shuhei,\nChinglin and I are wondering if you have cycles to review the architecture and design of this tast test (with design doc: go/crosetto-testing-support)?\nThanks!",
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
