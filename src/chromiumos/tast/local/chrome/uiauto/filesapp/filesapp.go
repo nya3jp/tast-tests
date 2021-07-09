@@ -327,6 +327,29 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
+// ToggleAvailableOfflineForFile selects the specified file and toggles the Available Offline switch.
+// This will also enable Docs Offline if it hasn't already been enabled.
+func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action {
+	toggleOfflineErrorOkButton := nodewith.Name("OK").Role(role.Button)
+	// Just after startup there's a period of time where making Docs/Sheets/Slides files available offline errors out
+	// as DriveFS has not established communication with the Docs Offline extension, so retry if the error appears.
+	return uiauto.Retry(5, uiauto.Combine(fmt.Sprintf("Try toggle Available Offline for %q", fileName),
+		f.SelectFile(fileName),
+		f.LeftClick(nodewith.Name("Available offline").Role(role.ToggleButton)),
+		f.ui.IfSuccessThen(f.WithTimeout(time.Second).WaitUntilExists(toggleOfflineErrorOkButton),
+			func(ctx context.Context) error {
+				// Dismiss the error dialog so we can retry.
+				if err := f.LeftClick(toggleOfflineErrorOkButton)(ctx); err != nil {
+					return err
+				}
+				return errors.Errorf("toggling Available Offline for %q returned an error", fileName)
+			},
+		),
+		f.ui.IfSuccessThen(f.Exists(nodewith.Name("Enable Offline").Role(role.Button)),
+			f.LeftClick(nodewith.Name("Enable Offline").Role(role.Button))),
+	))
+}
+
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
 func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *input.KeyboardEventWriter) uiauto.Action {
 	return func(ctx context.Context) error {
