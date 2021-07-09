@@ -327,6 +327,37 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
+// ToggleAvailableOfflineForFile selects the specified file and toggles the Available Offline switch.
+// In cases where Docs Offline is not yet initialised, this also retries if an error comes up.
+func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action {
+	return func(ctx context.Context) error {
+		toggleOfflineErrorOkButton := nodewith.Name("OK").Role(role.Button)
+		for i := 0; i < 5; i++ {
+			if err := uiauto.Combine(fmt.Sprintf("Toggle Available Offline for %q", fileName),
+				f.SelectFile(fileName),
+				f.LeftClick(nodewith.Name("Available offline").Role(role.ToggleButton)),
+			)(ctx); err != nil {
+				return err
+			}
+
+			// There's no clear indication that the action succeeded, so we wait for an error to pop up.
+			f.ui.Sleep(time.Second)(ctx)
+			toggleOfflineErrorShown, err := f.IsNodeFound(ctx, toggleOfflineErrorOkButton)
+			if err != nil {
+				return err
+			}
+			if !toggleOfflineErrorShown {
+				break
+			}
+			if err := f.LeftClick(toggleOfflineErrorOkButton)(ctx); err != nil {
+				return err
+			}
+		}
+		return f.ui.IfSuccessThen(f.Exists(nodewith.Name("Enable Offline").Role(role.Button)),
+			uiauto.Combine("", f.LeftClick(nodewith.Name("Enable Offline").Role(role.Button)), f.ui.Sleep(time.Second)))(ctx)
+	}
+}
+
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
 func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *input.KeyboardEventWriter) uiauto.Action {
 	return func(ctx context.Context) error {
