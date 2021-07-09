@@ -34,7 +34,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{caps.BuiltinUSBCamera},
-		Timeout:      4 * time.Minute,
+		Timeout:      10 * time.Minute,
 	})
 }
 
