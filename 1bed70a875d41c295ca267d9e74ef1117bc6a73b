@@ -303,6 +303,24 @@
       "parentUuid": "da3d7aa4_f38758a6",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfd790c_ac32f9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-09T04:34:14Z",
+      "side": 1,
+      "message": "Oh really. Yes, I\u0027m happy to help - I created crrev.com/c/3016139.",
+      "parentUuid": "f1306f50_808e8df8",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
