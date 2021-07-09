@@ -34,6 +34,24 @@
       "parentUuid": "5655a8b3_a8855aa5",
       "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9d7c1a_f74c8406",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-09T14:55:58Z",
+      "side": 1,
+      "message": "Sample results are in an updated commit message.\nGenerally, we see relatively lower throughput drop, though quite strangely upload now is much slower than download (120MBps vs 185MBps).",
+      "parentUuid": "e0418810_943ac12f",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
