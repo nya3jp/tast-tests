@@ -22,6 +22,30 @@
       },
       "revId": "a875de119a2198da3452d0b683fb04415f57b394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fcff3d6_c3cef6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-09T00:42:16Z",
+      "side": 1,
+      "message": "Done. Many thanks for your review Judy!",
+      "parentUuid": "899569f4_9c943aaf",
+      "range": {
+        "startLine": 348,
+        "startChar": 8,
+        "endLine": 348,
+        "endChar": 15
+      },
+      "revId": "a875de119a2198da3452d0b683fb04415f57b394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
