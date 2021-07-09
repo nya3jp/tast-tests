@@ -68,6 +68,13 @@ func (f *Finder) copy() *Finder {
 	return copy
 }
 
+func convertRestriction(r restriction.Restriction) string {
+	if r == restriction.None {
+		return "undefined"
+	}
+	return fmt.Sprintf("%q", r)
+}
+
 // convertRegexp converts golang regexp to javascript format.
 // The regular expressions used for looking up node is javascript code.
 // The original regex provided in Golang needs to be converted.
@@ -88,8 +95,10 @@ func (f *Finder) attributesBytes() ([]byte, error) {
 	buf.WriteByte('{')
 	for k, v := range f.attributes {
 		switch v := v.(type) {
-		case string, checked.Checked, restriction.Restriction:
+		case string, checked.Checked:
 			fmt.Fprintf(&buf, "%q:%q,", k, v)
+		case restriction.Restriction:
+			fmt.Fprintf(&buf, "%q:%v,", k, convertRestriction(v))
 		case int, float32, float64, bool:
 			fmt.Fprintf(&buf, "%q:%v,", k, v)
 		case *regexp.Regexp:
