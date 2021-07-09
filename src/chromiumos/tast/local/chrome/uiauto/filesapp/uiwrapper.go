@@ -68,6 +68,11 @@ func (f *FilesApp) WaitUntilGone(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.WaitUntilGone(finder.FinalAncestor(WindowFinder))
 }
 
+// IsNodeFound calls ui.IsNodeFound scoping the finder to the Files App.
+func (f *FilesApp) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
+	return f.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder))
+}
+
 // LeftClick calls ui.LeftClick scoping the finder to the Files App.
 func (f *FilesApp) LeftClick(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.LeftClick(finder.FinalAncestor(WindowFinder))

@@ -30,11 +30,12 @@ type PreData struct {
 }
 
 // NewPrecondition creates a new drivefs precondition for tests that need different logins.
-func NewPrecondition(name string, gaia *GaiaVars) testing.Precondition {
+func NewPrecondition(name string, gaia *GaiaVars, opts ...chrome.Option) testing.Precondition {
 	pre := &preImpl{
 		name:    name,
 		timeout: chrome.GAIALoginTimeout,
 		gaia:    gaia,
+		opts:    opts,
 	}
 	return pre
 }
@@ -50,7 +51,8 @@ type preImpl struct {
 	name    string        // testing.Precondition.String
 	timeout time.Duration // testing.Precondition.Timeout
 
-	gaia *GaiaVars // a struct containing GAIA secret variables
+	gaia *GaiaVars       // a struct containing GAIA secret variables
+	opts []chrome.Option // extra options passed to Chrome
 
 	mountPath string // The path where Drivefs is mounted
 	cr        *chrome.Chrome
@@ -96,7 +98,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			var err error
 			username := s.RequiredVar(p.gaia.UserVar)
 			password := s.RequiredVar(p.gaia.PassVar)
-			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCDisabled())
+			p.cr, err = chrome.New(ctx, append(p.opts, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCDisabled())...)
 			if err != nil {
 				s.Fatal("Failed to start Chrome: ", err)
 			}
