@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a568187_ab3088fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-07-09T20:11:49Z",
+      "side": 1,
+      "message": "Hey folks, now that we are populating the model name for reven, we can skip-over the precise test cases that are currently failing and can revert this chromite hack:\nhttps://chromium-review.googlesource.com/c/chromiumos/chromite/+/2953481\n\nThanks for taking a look!",
+      "revId": "cd59caba7a13419e6c1382a6be294cd7bb244744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
