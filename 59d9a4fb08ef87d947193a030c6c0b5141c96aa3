@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e21966_383ce9fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-09T13:10:46Z",
+      "side": 1,
+      "message": "Hello, Hope you are having a good day.\nPrivacy test is working now. \nPTAL, Thanks 😊\n\nPS: Added Aya back in attention set since test is working now. If have to be removed please do let me know.",
+      "revId": "59d9a4fb08ef87d947193a030c6c0b5141c96aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
