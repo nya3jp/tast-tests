@@ -6,6 +6,7 @@ package apps
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -21,6 +22,12 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+// Notable info from the response of indexRemote.find().
+type findResponse struct {
+	Status     int `json:"status"`
+	NumResults int `json:"numResults"`
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -79,25 +86,33 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	}
 	defer trustedHelpAppConn.Close()
 
+	const searchKeyword = "halp"
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		responseStatus := -1
-		err := trustedHelpAppConn.Eval(ctx,
+		var response findResponse
+		err := trustedHelpAppConn.Eval(ctx, fmt.Sprintf(
 			`(async () => {
 				const toString16 = (s) => ({
 					data: Array.from(s, c => c.charCodeAt())
 				});
 				const indexRemote = chromeos.localSearchService
 					.mojom.Index.getRemote();
-				return (await indexRemote.find(toString16('foo'))).status;
-			})()`, &responseStatus)
+				const res = await indexRemote.find(toString16('%s'));
+				return {
+					status: res.status,
+					numResults: res.results.length,
+				};
+			})()`, searchKeyword), &response)
 		if err != nil {
 			return errors.Wrap(err, "failed to run javascript to check LSS status")
 		}
 
 		// Status 1 corresponds to kSuccess.
-		// https://source.chromium.org/chromium/chromium/src/+/HEAD:chromeos/components/local_search_service/mojom/types.mojom;l=68;drc=378c706113a7a8573a184d60e1bd67d704644251
-		if responseStatus != 1 {
-			return errors.Wrapf(err, "response status does not equal to kSuccess, want 1, got %d", responseStatus)
+		// https://source.chromium.org/chromium/chromium/src/+/main:chromeos/components/local_search_service/public/mojom/types.mojom;l=68;drc=f6c91c781cfb40a7a0f07a49ec3fcd5685d85423
+		if response.Status != 1 {
+			return errors.Wrapf(err, "response status is not kSuccess. Want 1. Got %d", response.Status)
+		}
+		if response.NumResults == 0 {
+			return errors.Wrap(err, "response has 0 results")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
@@ -114,7 +129,6 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 
 	firstSearchResultContainer := nodewith.ClassName("search-result selected").Role(role.ListItem).Ancestor(helpapp.RootFinder)
 
-	const searchKeyword = "halp"
 	expectedResultFinder := nodewith.Role(role.Link).NameContaining("help").Ancestor(firstSearchResultContainer)
 
 	if err := uiauto.Combine("type keyword to search and validate result",
