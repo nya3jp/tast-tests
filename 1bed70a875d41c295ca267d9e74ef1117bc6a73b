@@ -285,6 +285,24 @@
       "parentUuid": "6b0e2f37_15377c83",
       "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1306f50_808e8df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-09T01:00:41Z",
+      "side": 1,
+      "message": "mthiyagarajan@mthiyagarajan ~/trunk/src/scripts $cros deploy --root\u003d/usr/local chromeos6-row4-rack21-host15.cros chromeos-base/tast-use-flags\" worked for coral board  and also worked for caroline board, cros deploy --root\u003d/usr/local chromeos6-row1-rack23-host19.cros chromeos-base/tast-use-flags.\n \nNow the test is skipping on Nasher360, Caroline devices and running fine on Eve, Kevin, Kohaku and Careena devices.\n\nI uploaded the new patch for autocad.go file and added \"no_arc_x86\": \"!(amd64 \u0026\u0026 cheets_user)\" in main.go file and uploaded CL, crrev.com/c/2994958 on it. When I tried to upload CL for replacing \"cheets_user\" with \"+cheets_user\" in \"tast-use-flags-9999.ebuild\" file. I am getting permission denied error. Looks like I don\u0027t have permission to change the \"tast-use-flags-9999.ebuild\" file. Could you please help in replacing \"cheets_user\" with \"+cheets_user\" in \"tast-use-flags-9999.ebuild\" file.",
+      "parentUuid": "da3d7aa4_f38758a6",
+      "revId": "1bed70a875d41c295ca267d9e74ef1117bc6a73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
