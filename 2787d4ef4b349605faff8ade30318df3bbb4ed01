@@ -16,6 +16,23 @@
       "message": "Hi Shuhei,\nChinglin and I are wondering if you have cycles to review the architecture and design of this tast test (with design doc: go/crosetto-testing-support)?\nThanks!",
       "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a48e1c25_eb2b3c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-09T09:42:50Z",
+      "side": 1,
+      "message": "Hi Harvey,\n\nThanks for this effort, supporting Perfetto in Tast sounds great!\n\nArchitecture-wise, my first and foremost question is, do we want to support Perfetto for local tests? This patch introduces a library for remote tests, but as you may know most of Tast tests are written as local tests, so it would be a lot more useful if it\u0027s usable from local tests.\n\nTo support Perfetto for local tests, we have to install trace_processor to the DUT. I think this can be done in ebuilds, rather than downloading it as a test data file. We have to be careful about using prebuilts though because Chrome OS runs on multiple architectures. Anyway, installing trace_processor on test images would be useful for all users even if they don\u0027t run Tast.\n",
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
