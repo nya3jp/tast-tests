@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7004da23_31ac6d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "LGTM % nits\n\nVery solid test! 😊",
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563425dd_fd9ddc02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "nit: not required.",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba654dd_156ae1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "nit: time.Minute",
+      "range": {
+        "startLine": 105,
+        "startChar": 117,
+        "endLine": 105,
+        "endChar": 131
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d3802e_d973c518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "nit: Can you keep all error messages consistent? e.g. \"Failed to find expected files: \", err. Ditto for the below error messages on line 111 and line 119",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69c5448_ca557973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "Can this just be moved to line 131 (i.e. after the regexp.Match as it occurs regardless of this if condition and is duplicated\n```\nif res, err :\u003d regexp.Match(sigAuthFailure, contents); err !\u003d nil {\n\ts.Error(\"Failed to save the meta file: \", err)\n\t} else if !res {\n\t\ts.Error(\"Failed to find the expected auth_failure signature\")\n\t}\n}\nif err :\u003d crash.MoveFilesToOut(ctx, s.OutDir(), metaFile); err !\u003d nil {\n\ts.Error(\"Failed to save the meta file: \", err)\n}\n```",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 5
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067ac48f_43248f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "nit: Unexpected number of files found, got %q; want 1",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 54
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff77cc8_b00a048d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "nit: Collapse this into one comment? TODO(b/192034446): Reason + action",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5fb16cf_643e365d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "The errors printed out from daemonController.Restart seem sufficient that you don\u0027t have to wrap them with another layer, consider maybe just returning daemonController.Restart instead?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 11
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02abd4c3_e76fbe29",
+        "filename": "src/chromiumos/tast/local/hwsec/dictionary_attack.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-09T00:41:46Z",
+      "side": 1,
+      "message": "nit: returning errors should be lowercase",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
