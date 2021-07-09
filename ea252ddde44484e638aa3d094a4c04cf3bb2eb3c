@@ -16,6 +16,24 @@
       "message": "Just a heads up: a test I\u0027m writing needs a fixture with just wificell.TFFeaturesRouters (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2830027), so it would be great if you could add that as well (if not, I can do it too).",
       "revId": "ea252ddde44484e638aa3d094a4c04cf3bb2eb3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08470957_babcf03a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-09T02:00:43Z",
+      "side": 1,
+      "message": "OK, so we\u0027ll still need one fixture for multi-routers, but I guess it is still nicer to use the default fixture in DiagSecureWifi as it doesn\u0027t need multiple routers.\n\nI added a \"wificellFixtRouters\" for the usage. PTAL. However, as mentioned in another comment, currently the Tauto wrapper doesn\u0027t set \"routers\" Var, so some changes there will also be needed to support manual execution. Maybe I can take a look after this CL is merged.",
+      "parentUuid": "099c45ca_09670684",
+      "revId": "ea252ddde44484e638aa3d094a4c04cf3bb2eb3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
