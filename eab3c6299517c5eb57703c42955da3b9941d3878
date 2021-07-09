@@ -18,6 +18,162 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b086b823_0693e3ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Yes, we\u0027ll probably end up using a different account for ARC tests. \n\nPolicyBlob already has a variable called PolicyUser.",
+      "parentUuid": "65fa5ec5_109671e8",
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2b0e37_4744ce68",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3813506_9e7fe62d",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "I don\u0027t think a change is needed here. You can modify the returned policy blob afterwards.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75563596_03540897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "The fixture run time is not included in the test timeout, so you can remove this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ade1de_580b6cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Test different values for the policy like this test [1], and verify safe search is actually enabled or disabled. However, don\u0027t copy and paste the code to avoid duplication. Create a library function in a new file in src/platform/tast-tests/src/chromiumos/tast/local/policyutil/ to share the test logic.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go;l\u003d19?q\u003dForceGoogleSafeSearch",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec047c94_22cfbe46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Nit: were or just remove this word.",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec2bdf7_89582166",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Nit: extra space",
+      "range": {
+        "startLine": 162,
+        "startChar": 30,
+        "endLine": 162,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92330554_da297e58",
@@ -43,6 +199,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d770de59_b5ebeddf",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "How do you pull two values out of this cast? Does the bool isFLPolicytTest just mean that fdms is not null?",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 59
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a47ea40_247a5b45",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Doesn\u0027t fixtures/fakedms.go already do this Ping in SetUp() on line 107? So is this duplicate call needed?",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370b1582_20f271ed",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Isn\u0027t this also already done in fixtures/fakedms.go on line 117 in SetUp()?",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74afd701_06f4a0ce",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Nit: just fdms, not f.fdms",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 18
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3f39e9_9a1bd060",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Just call policyutil.ResetChrome(ctx, f.fdms, f.cr) here, as vsavu suggested, and skip the call to f.cr.ResetState below.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8b30653_476deb38",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
         "patchSetId": 10
@@ -59,6 +330,99 @@
         "startChar": 39,
         "endLine": 55,
         "endChar": 58
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3465ae2_cfb67844",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "It\u0027s very unclear what this fakedms refers to. Either pass it as a parameter, or just store the policy user directly (see comment below).",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce9153b_4acd5e7e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "I would just create another fixture for a different account. Notice how familylink/fixture.go has a fixture for familyLinkUnicornLogin and another one for familyLinkUnicornArcLogin, where the difference is just the account and the chrome.ARCSupported() supported flag.",
+      "parentUuid": "e8b30653_476deb38",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf555c3_b8df11d8",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Is this necessary? Can we just store the policy user directly like before?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d787b5b0_d3d29d93",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Instead of doing this, why not store the policy blob in a variable like\n\npolicyBlob :\u003d fakedms.NewPolicyBlob()\n\nAnd then modify the policyBlob.PolicyUser? This userCallBack is not very readable and it\u0027s very unclear that the purpose is to modify the call to NewPolicyBlob() below.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
       },
       "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
