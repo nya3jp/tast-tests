@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbedcaa_8a47ae22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-09T08:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b397fb5f_5719113b",
+      "revId": "a7a059c6efe695156c459308436a6e8ef7aad345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b67095a_5e8373eb",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-08T14:38:34Z",
       "side": 1,
       "message": "which notifications are you closing here?",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "a7a059c6efe695156c459308436a6e8ef7aad345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b6dfc71_18e128a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-09T08:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b67095a_5e8373eb",
       "range": {
         "startLine": 94,
         "startChar": 3,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76512b92_0fb2d5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-09T08:04:37Z",
+      "side": 1,
+      "message": "Clip text uses \u0027chrome.autotestPrivate.getClipboardTextData\u0027 to get the clip data. So, doesn\u0027t the autotest api use extension for execution. Also, getClipboardTextData uses ui::Clipboard which as mentioned here https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d2022;bpv\u003d0;bpt\u003d0 checks for DLP and extension.",
+      "parentUuid": "2657d381_11d1b1d6",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 1
+      },
+      "revId": "a7a059c6efe695156c459308436a6e8ef7aad345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f020079f_ca633f04",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
         "patchSetId": 22
@@ -77,6 +143,24 @@
       "writtenOn": "2021-07-08T14:38:34Z",
       "side": 1,
       "message": "Could you check here the notification bubble isn\u0027t shown the same as omnibox?",
+      "revId": "a7a059c6efe695156c459308436a6e8ef7aad345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de30f1b_277aa8fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-09T08:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f020079f_ca633f04",
       "revId": "a7a059c6efe695156c459308436a6e8ef7aad345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
