@@ -24,18 +24,14 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Vars:         []string{"servo"},
 		Params: []testing.Param{{
-			Pre:       pre.NormalMode(),
-			ExtraAttr: []string{"firmware_smoke"},
+			Pre: pre.NormalMode(),
 		}, {
 			Name:      "rec",
 			Pre:       pre.RecMode(),
-			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
+			ExtraAttr: []string{"firmware_usb"},
 		}, {
 			Name: "dev",
 			Pre:  pre.DevMode(),
-			// TODO(gredelston): Reenable when b/183044117 is resolved
-			// ExtraAttr: []string{"firmware_smoke"},
-			ExtraAttr: []string{"firmware_experimental"},
 		}},
 	})
 }
