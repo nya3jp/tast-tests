@@ -25,9 +25,14 @@ const (
 	jumpToStatusTray = "Alt+Shift+S"
 )
 
-type spokenFeedbackTestData struct {
+type spokenFeedbackTestVoiceData struct {
 	VoiceData  a11y.VoiceData
 	EngineData a11y.TTSEngineData
+}
+
+type spokenFeedbackTestStep struct {
+	KeyCommands  []string
+	Expectations []a11y.SpeechExpectation
 }
 
 func init() {
@@ -43,7 +48,7 @@ func init() {
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "google_tts",
-			Val: spokenFeedbackTestData{
+			Val: spokenFeedbackTestVoiceData{
 				VoiceData: a11y.VoiceData{
 					ExtID:  a11y.GoogleTTSExtensionID,
 					Locale: "en-US",
@@ -55,7 +60,7 @@ func init() {
 			},
 		}, {
 			Name: "espeak",
-			Val: spokenFeedbackTestData{
+			Val: spokenFeedbackTestVoiceData{
 				VoiceData: a11y.VoiceData{
 					// eSpeak does not come with an English voice built-in, so we need to
 					// use another language. We use Greek here since the voice is built-in
@@ -106,7 +111,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer cvconn.Close()
 
-	td := s.Param().(spokenFeedbackTestData)
+	td := s.Param().(spokenFeedbackTestVoiceData)
 	vd := td.VoiceData
 	ed := td.EngineData
 	if err := cvconn.SetVoice(ctx, vd); err != nil {
@@ -130,44 +135,40 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 		s.Error("Failed to wait for initial ChromeVox focus: ", err)
 	}
 
-	// Test basic navigation.
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{nextObject}, []a11y.SpeechExpectation{a11y.NewStringExpectation("Start")}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
+	testSteps := []spokenFeedbackTestStep{
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{nextObject},
+			Expectations: []a11y.SpeechExpectation{a11y.NewStringExpectation("Start")},
+		},
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{nextObject},
+			Expectations: []a11y.SpeechExpectation{a11y.NewStringExpectation("This is a ChromeVox test")},
+		},
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{nextObject},
+			Expectations: []a11y.SpeechExpectation{a11y.NewStringExpectation("End")},
+		},
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{previousObject},
+			Expectations: []a11y.SpeechExpectation{a11y.NewStringExpectation("This is a ChromeVox test")},
+		},
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{previousObject},
+			Expectations: []a11y.SpeechExpectation{a11y.NewStringExpectation("Start")},
+		},
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{jumpToLauncher},
+			Expectations: []a11y.SpeechExpectation{a11y.NewRegexExpectation("(Launcher|Back)")},
+		},
+		spokenFeedbackTestStep{
+			KeyCommands:  []string{jumpToStatusTray},
+			Expectations: []a11y.SpeechExpectation{a11y.NewRegexExpectation("Quick Settings*")},
+		},
 	}
 
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{nextObject}, []a11y.SpeechExpectation{a11y.NewStringExpectation("This is a ChromeVox test")}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{nextObject}, []a11y.SpeechExpectation{a11y.NewStringExpectation("End")}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{previousObject}, []a11y.SpeechExpectation{a11y.NewStringExpectation("This is a ChromeVox test")}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{previousObject}, []a11y.SpeechExpectation{a11y.NewStringExpectation("Start")}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-
-	// Test system-wide shortcuts.
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{jumpToLauncher},
-		[]a11y.SpeechExpectation{
-			a11y.NewStringExpectation("Launcher"),
-			a11y.NewStringExpectation("Button"),
-			a11y.NewStringExpectation("Shelf"),
-			a11y.NewStringExpectation("Tool bar"),
-			a11y.NewStringExpectation("Press Search plus Space to activate"),
-		}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
-	}
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{jumpToStatusTray},
-		[]a11y.SpeechExpectation{
-			a11y.NewRegexExpectation("Quick Settings*"),
-			a11y.NewRegexExpectation("Press search plus left to access the notification center*"),
-			a11y.NewStringExpectation("window"),
-		}); err != nil {
-		s.Error("Error when pressing keys and expecting speech: ", err)
+	for _, step := range testSteps {
+		if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, step.KeyCommands, step.Expectations); err != nil {
+			s.Error("Error when pressing keys and expecting speech: ", err)
+		}
 	}
 }
