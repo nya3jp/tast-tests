@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6439ce5b_984959f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-09T21:23:21Z",
+      "side": 1,
+      "message": "Yes, done",
+      "parentUuid": "9b3c7877_b6261a64",
+      "revId": "2f6054998a8f3553151a449cb12f2f39d04d3bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "793b6da0_64594268",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-09T21:23:21Z",
+      "side": 1,
+      "message": "NOTE: I was not able to run the rec-mode tests (firmware.Pre.rec, firmware.BootMode.rec, firmware.BootMode.rec_to_dev, firmware.BootMode.rec_to_dev_gbb, firmware.BootMode.dev_to_rec, firmware.BootMode.dev_gbb_to_rec) due to a USB issue that is also causing widespread failures in the lab (tastboard/test/firmware.BootMode.rec). Nevertheless, I think the tests that were run provide sufficient coverage for me to feel confident in this change.",
+      "revId": "2f6054998a8f3553151a449cb12f2f39d04d3bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92cb5043_d970f3ad",
@@ -31,6 +66,30 @@
       "writtenOn": "2021-07-09T17:42:35Z",
       "side": 1,
       "message": "ClearAndSetGBBFlags is very slow, and in most cases this is unnecessary. \n\nHow about another option called AssumeGBBFlagsCorrect and skip this if that is passed, and we can pass that flag from the precondition.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "2f6054998a8f3553151a449cb12f2f39d04d3bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a4901c_fbb0acac",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-09T21:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92cb5043_d970f3ad",
       "range": {
         "startLine": 82,
         "startChar": 0,
