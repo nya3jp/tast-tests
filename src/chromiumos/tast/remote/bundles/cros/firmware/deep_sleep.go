@@ -109,9 +109,6 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set a KeypressControl by servo: ", err)
 	}
 	h.DisconnectDUT(ctx)
-	// DUT will probably still booting at end of test.
-	// pre.NormalMode().Close() will cause an extra reboot here if we don't wait.
-	defer h.DUT.WaitConnect(ctx)
 
 	s.Log("Waiting until power state is G3")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -166,6 +163,14 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to disable cold reset: ", err)
 		}
 	}
+
+	// DUT will probably still booting at end of test.
+	// pre.NormalMode().Close() will cause an extra reboot here if we don't wait.
+	defer func() {
+		newCtx, cancel := context.WithTimeout(ctx, time.Minute)
+		defer cancel()
+		h.DUT.WaitConnect(newCtx)
+	}()
 
 	mahEnd := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
