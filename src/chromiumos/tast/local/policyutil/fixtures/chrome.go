@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -87,11 +88,29 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
 		chrome.ARCEnabled(),
 		chrome.ExtraArgs("--arc-availability=officially-supported"),
+		chrome.DeferLogin(),
 	}
 	opts = append(opts, p.extraOpts...)
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Chrome startup failed: ", err)
+	}
+
+	if arcType, ok := arc.Type(); ok && arcType == arc.Container {
+		// The ARC mini instance, created when the login screen is
+		// shown, blocks session_manager, preventing it from responding
+		// to D-Bus methods. Cloud policy initialisation relies on being
+		// able to contact session_manager, otherwise initialisation
+		// will time out.
+		err = arc.WaitAndroidInit(ctx)
+		if err != nil {
+			s.Fatal("Failed waiting for Android init: ", err)
+		}
+	}
+
+	err = cr.ContinueLogin(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
