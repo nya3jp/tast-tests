@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type smokeTestParams struct {
@@ -49,6 +50,7 @@ func init() {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 			ExtraAttr:         []string{"group:camera-postsubmit"},
 			Val: smokeTestParams{
 				useCameraType: testutil.UseVividCamera,
