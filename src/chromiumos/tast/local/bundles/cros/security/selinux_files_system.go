@@ -72,6 +72,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sbin/crash_sender", Context: "cros_crash_sender_exec"},
 		{Path: "/sbin/debugd", Context: "cros_debugd_exec"},
 		{Path: "/sbin/dhcpcd", Context: "cros_dhcpcd_exec"},
+		{Path: "/sbin/featured", Context: "cros_featured_exec"},
 		{Path: "/sbin/frecon", Context: "frecon_exec"},
 		{Path: "/sbin/init", Context: "chromeos_init_exec"},
 		{Path: "/sbin/insmod", Context: "cros_modprobe_exec"},

@@ -127,6 +127,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"patchpaneld", "patchpaneld", "patchpaneld", restrictCaps},
 		{"cros_healthd", "root", "root", mntNS},                                                       // cros_healthd's root-level executor
 		{"cros_healthd", "cros_healthd", "cros_healthd", mntNS | restrictCaps | noNewPrivs | seccomp}, // main cros_healthd daemon
+		{"featured", "root", "root", 0},
 
 		// These processes run as root in the ARC container.
 		{"app_process", "android-root", "android-root", pidNS | mntNS},
