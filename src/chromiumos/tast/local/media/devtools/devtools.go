@@ -30,18 +30,18 @@ func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChanged
 		}
 
 		for _, s := range reply.Properties {
-			if s.Name == "kFrameUrl" && *s.Value != url {
+			if s.Name == "kFrameUrl" && s.Value != url {
 				return errors.New("failed to find the expected URL in Media DevTools")
 			}
 
 			if s.Name == "kIsPlatformVideoDecoder" {
 				hasPlatform = true
-				isPlatform = *s.Value == "true"
-				testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
+				isPlatform = s.Value == "true"
+				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
 			} else if s.Name == "kVideoDecoderName" {
 				hasName = true
-				name = *s.Value
-				testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
+				name = s.Value
+				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
 			}
 
 			if hasName && hasPlatform {
@@ -53,7 +53,7 @@ func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChanged
 			// Marshall reply.Properties to add it to the error log for debugging.
 			var log string
 			for _, s := range reply.Properties {
-				log = fmt.Sprintf("%s, %s: %s", log, s.Name, *s.Value)
+				log = fmt.Sprintf("%s, %s: %s", log, s.Name, s.Value)
 			}
 			return errors.Errorf("failed to find kIsPlatformVideoDecoder and kVideoDecoderName in media DevTools Properties. Observed: %s", log)
 		}
@@ -88,22 +88,22 @@ func CheckHWDRMPipeline(ctx context.Context, observer media.PlayerPropertiesChan
 		}
 
 		for _, s := range reply.Properties {
-			if s.Name == "kFrameUrl" && *s.Value != url {
+			if s.Name == "kFrameUrl" && s.Value != url {
 				return errors.New("failed to find the expected url in Media DevTools")
 			}
 
 			if s.Name == "kIsPlatformVideoDecoder" {
 				hasPlatform = true
-				isPlatform = *s.Value == "true"
-				testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
+				isPlatform = s.Value == "true"
+				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
 			} else if s.Name == "kIsVideoDecryptingDemuxerStream" {
 				hasDemux = true
-				isVideoDecryptingDemuxer = *s.Value == "true"
-				testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
+				isVideoDecryptingDemuxer = s.Value == "true"
+				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
 			} else if s.Name == "kIsVideoEncrypted" {
 				hasEncrypted = true
-				isVideoEncrypted = *s.Value == "true"
-				testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
+				isVideoEncrypted = s.Value == "true"
+				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
 			}
 
 			if hasEncrypted && hasDemux && hasPlatform {
@@ -115,7 +115,7 @@ func CheckHWDRMPipeline(ctx context.Context, observer media.PlayerPropertiesChan
 			// Marshall reply.Properties to add it to the error log for debugging.
 			var log string
 			for _, s := range reply.Properties {
-				log = fmt.Sprintf("%s, %s: %s", log, s.Name, *s.Value)
+				log = fmt.Sprintf("%s, %s: %s", log, s.Name, s.Value)
 			}
 			return errors.Errorf("failed to find kIsPlatformVideoDecoder, kVideoDecoderName, kIsVideoEncrypted and kIsVideoDecryptingDemuxerStream in media DevTools Properties. Observed: %s", log)
 		}
