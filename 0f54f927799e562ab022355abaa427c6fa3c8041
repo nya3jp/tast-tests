@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e097ba03_fd8c3f22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "The upstream dependency has already landed in the 93.0.4570.0 uprev.",
+      "parentUuid": "f0d180fc_2b7cff87",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18636248_8a870836",
@@ -449,6 +467,24 @@
       "side": 1,
       "message": "Replaced with userCallBack in the latest patch, since the user account needs to be supplied in fakeDMSFixture.Reset(ctx context.Context), and we could not call  s.RequiredVar in Reset().",
       "parentUuid": "e21f3072_b33816a6",
+      "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fa4336_2f30c2ad",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-09T23:30:10Z",
+      "side": 1,
+      "message": "Instead of storing policyUserVar here, why not store the policyUser directly?\n\nYou can pass the user through the f *fakeDMSFixture, just like how you passed f.fdms to familyLinkFixture.Reset(). You should only need to call s.RequiredVar(\"unicorn.childUser\") once.",
+      "parentUuid": "a0881a5a_032af585",
       "revId": "0f54f927799e562ab022355abaa427c6fa3c8041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
