@@ -33,6 +33,24 @@
       "message": "Do you have any data evidence on how much improved by this change?",
       "revId": "d6cc7a9e373384146fb926623773db4c0998c20b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fff90f_6d1b6648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-07-10T00:56:11Z",
+      "side": 1,
+      "message": "Will share with you the test result (number of related errors before and after changing this) when we finish the current round of run. Thank you Jun!",
+      "parentUuid": "963aeedf_a86310b5",
+      "revId": "d6cc7a9e373384146fb926623773db4c0998c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
