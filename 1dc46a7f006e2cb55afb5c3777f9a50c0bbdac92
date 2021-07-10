@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e068bd2e_c28d3305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-10T01:03:35Z",
+      "side": 1,
+      "message": "Also check that it is actually enabled. If you change this for upower the test would pass even when upower is not working on Chrome OS",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "1dc46a7f006e2cb55afb5c3777f9a50c0bbdac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d239f8_37683bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-10T01:03:35Z",
+      "side": 1,
+      "message": "if the file is called fwupd_powerd_startup this has to be FwupdPowerdStartup",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "1dc46a7f006e2cb55afb5c3777f9a50c0bbdac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332c02ec_62e8ce02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-10T01:03:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "1dc46a7f006e2cb55afb5c3777f9a50c0bbdac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cca0f1_69bb45e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-10T01:03:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "1dc46a7f006e2cb55afb5c3777f9a50c0bbdac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaece7b9_2f54fefc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-10T01:03:35Z",
+      "side": 1,
+      "message": "Here you want :\u003d (this is what is causing the error you mention on the commit message)",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "1dc46a7f006e2cb55afb5c3777f9a50c0bbdac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
