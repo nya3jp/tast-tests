@@ -279,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1beeaa_60c32c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:39:05Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a5fb12fd_3cf87995",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f35d2d9e_52a9fb1a",
@@ -695,6 +719,30 @@
       "side": 1,
       "message": "adding one more tool to the test/service will complicate it IMO.\n\nAlso you don\u0027t need to do any parsing if you work with proto.",
       "parentUuid": "c7ba9f49_91b7c4fc",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "d871283f3340f65455617b1f9881c347a073c360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abab1b84_8ffebcd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/power_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:39:05Z",
+      "side": 1,
+      "message": "Hi I looked into it. The SetBrightness is okay, but I am getting trouble with GetBrightnessPercent method. It returns a float64 value, currently we don\u0027t have proto message type to accept that. The CallProtoMethod function from dbusutil package takes request and response in proto.Message interface. I tried with SetBacklightBrightnessRequest struct as it implements Message interface as well as has a percent field. But the protomethod returns an error something like, failed to serialize float64 into .. struct (due to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/dbusutil/proto.go;l\u003d45?q\u003dCallProtoMethodWithSequence%20file:go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\nI think we should have a method that just takes interface Ptr and that\u0027s it)\n\n```\n\t_, obj, err :\u003d dbusutil.Connect(ctx, dbusName, dbusPath)\n\tif err !\u003d nil {\n\t\treturn nil, err\n\t}\n\tbuff :\u003d pmpb.SetBacklightBrightnessRequest{}\n\tif err :\u003d dbusutil.CallProtoMethod(ctx, obj, dbusInterface+\".GetScreenBrightnessPercent\", nil, \u0026buff); err !\u003d nil{\n\t\ttesting.ContextLog(ctx, \"FAILED: \",err)\n\t}\n\ttesting.ContextLogf(ctx,\"\\n\\n\\n%+v\\n\\n\\n\", buff)\n```\nThis it is a stable way to communicate, i feel like it adds a lot of unnecessary code to the implementation. Maybe a better way would be making the `obj` field public here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/power/power_manager.go;l\u003d37?q\u003dNewPowerManager%20file:go\u0026ss\u003dchromiumos",
+      "parentUuid": "3566b842_aa51714a",
       "range": {
         "startLine": 130,
         "startChar": 12,
