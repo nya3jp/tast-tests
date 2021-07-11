@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb275de_435e9d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:13:31Z",
+      "side": 1,
+      "message": "This would suffice, right? Something like transnational that you were talking about earlier ig.",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 0
+      },
+      "revId": "2a8051d3735af279c32a41a356b0e9a3083e79a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

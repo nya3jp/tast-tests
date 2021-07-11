@@ -170,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9693777_4cc7bb0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ec6c90_0f08cc22",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f31d42e_31aab982",
@@ -476,6 +500,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a3b9eb_02405291",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1efc83e7_d639b99a",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 7
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db9fc188_96580589",
@@ -735,6 +783,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2c637a_5298f951",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b19701_77ac7ab2",
+      "range": {
+        "startLine": 185,
+        "startChar": 17,
+        "endLine": 185,
+        "endChar": 55
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09f856b5_b7349d27",
@@ -890,6 +962,30 @@
       "side": 1,
       "message": "In the previous CL I suggested to have only 1 RPC call, now it makes sense to BatteryStatus call as well.",
       "parentUuid": "d8df29fe_20d9e07c",
+      "range": {
+        "startLine": 263,
+        "startChar": 18,
+        "endLine": 263,
+        "endChar": 36
+      },
+      "revId": "bc33aa6a7a094ae91b096c248192a0bff0a0f56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a1ac33_90c10a95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-11T07:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09b98114_64dd208d",
       "range": {
         "startLine": 263,
         "startChar": 18,
