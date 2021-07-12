@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38da3f1f_e787b729",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-07-12T21:43:40Z",
+      "side": 1,
+      "message": "The linked bugs do not explain why that directory is missing http://issuetracker.google.com/169152720#comment61\n\nMy understanding is that we could enable debugfs for upstream iwlwifi, why not try to do that instead? Maybe I misunderstood?",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "0359723f485cfc0d68df4fc35194dd48548eb35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7922432f_2ce36ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-07-12T21:43:40Z",
+      "side": 1,
+      "message": "The commit message mentions /sys/kernel/debug/iwlwifi, but this test only runs on Qualcomm devices so iwlwifi should not be relevant, I think?",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "0359723f485cfc0d68df4fc35194dd48548eb35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
