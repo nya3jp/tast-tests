@@ -84,6 +84,24 @@
       "message": "ping ?",
       "revId": "199cf62c24a344b11b1bac83d05dedfb31b45e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6bcaa92_134f4384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-07-12T13:10:48Z",
+      "side": 1,
+      "message": "Haven\u0027t gotten around to figuring out why this test is racy/flaky. I cannot get it to reliably find the firewall hole closed, unless I add a delay, but a delay will make things flaky.",
+      "parentUuid": "8d859e96_56c0ef33",
+      "revId": "199cf62c24a344b11b1bac83d05dedfb31b45e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
