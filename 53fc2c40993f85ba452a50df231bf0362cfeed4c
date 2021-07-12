@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5356d580_f5c61d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-12T07:31:51Z",
+      "side": 1,
+      "message": "\u003e \"enalbed\" is a possible misspelling of \"enabled\".\n\nPlease fix.",
+      "parentUuid": "7f128d3d_e662a346",
+      "range": {
+        "startLine": 46,
+        "startChar": 71,
+        "endLine": 46,
+        "endChar": 78
+      },
+      "revId": "53fc2c40993f85ba452a50df231bf0362cfeed4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
