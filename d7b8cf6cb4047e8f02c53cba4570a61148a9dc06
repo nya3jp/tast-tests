@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "91b8e85c_e66c4fa9",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,27 @@
       "side": 1,
       "message": "any progress?",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c64250_d99c9e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-07-12T08:00:43Z",
+      "side": 1,
+      "message": "John, how about this one? do we still wanna maintain stateful recovery test?",
+      "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "02c027ef_5682f13b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -31,10 +49,10 @@
       "side": 1,
       "message": "are you sure you can add this test to informational group w/o any logging issue?",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "69e7f540_a6f15358",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -48,10 +66,10 @@
       "side": 1,
       "message": "// ... is the maximum amount of time for rebooting the device.",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "715f3e35_60625476",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -71,10 +89,10 @@
         "endChar": 41
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a4a50348_b1a51f22",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -94,10 +112,10 @@
         "endChar": 29
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e54cbc9c_247375ed",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -117,10 +135,10 @@
         "endChar": 98
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0684f075_e4cb4c5f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -140,10 +158,10 @@
         "endChar": 46
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6c49a007_b9bb8376",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -163,10 +181,10 @@
         "endChar": 44
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3e0fbc3a_e589d97d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -186,10 +204,10 @@
         "endChar": 70
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fa25cd63_dc5cb660",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -203,10 +221,10 @@
       "side": 1,
       "message": "Can we use d.WaitUnreachable()?",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4b63998a_3c9d4b87",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -220,10 +238,10 @@
       "side": 1,
       "message": "Can be omitted.",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "84789516_ca7647eb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -237,10 +255,10 @@
       "side": 1,
       "message": "As long as WaitConnect succeeded, why we need to run /bin/true on DUT?",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "112c5ea9_ebf4c2f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -254,10 +272,10 @@
       "side": 1,
       "message": "Move to const () at the line 35?",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8b3d4266_ef822e16",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -277,10 +295,10 @@
         "endChar": 47
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4e6048a2_b206ab55",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -294,10 +312,10 @@
       "side": 1,
       "message": "As long as the logging is to inform test runner what the test is doing for time consuming tasks, it is okay to log.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5120b62a_b9dda287",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -311,10 +329,10 @@
       "side": 1,
       "message": "No need to log as you already return an error.",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "163b57c9_001e9819",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -334,10 +352,10 @@
         "endChar": 68
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3fb6dc24_d9daf3ca",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -351,10 +369,10 @@
       "side": 1,
       "message": "We used to omit the main test function\u0027s comment as it is addressed in testing.Test.Desc field.",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2ed2629a_7ef29ee8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -369,10 +387,10 @@
       "message": "This is required by golint but tast explicitly ignored the warning. That said, Test.Desc is much appropriate place to put additional info.\n\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/tast-lint/check/golint.go?l\u003d29\u0026rcl\u003dc5c87bf035af67cb4f7dce57abad0b2c09738c48",
       "parentUuid": "3fb6dc24_d9daf3ca",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f8d80456_cccd3e12",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -386,10 +404,10 @@
       "side": 1,
       "message": "Can you call ctxutil.Shorten(ctx, cleanupTime) to save some time to cleanup?",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5576c0ca_60d83242",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -409,10 +427,10 @@
         "endChar": 25
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "56c434bf_7818454b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -432,10 +450,10 @@
         "endChar": 127
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "863e0d31_0f7434a4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -449,10 +467,10 @@
       "side": 1,
       "message": "Clean them up to avoid interfering the following tests.",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "48cbf6d9_13ff8e5b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -466,10 +484,10 @@
       "side": 1,
       "message": "The method name is self-explanatory. The comment can be removed. Same below.",
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f78c8169_66861362",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/stateful_recovery.go",
@@ -489,8 +507,7 @@
         "endChar": 8
       },
       "revId": "d7b8cf6cb4047e8f02c53cba4570a61148a9dc06",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
