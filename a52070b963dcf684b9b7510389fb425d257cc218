@@ -63,6 +63,30 @@
       },
       "revId": "a52070b963dcf684b9b7510389fb425d257cc218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efacb463_0a07a7aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-12T03:07:50Z",
+      "side": 1,
+      "message": "Yes golang supports this through an empty interface type, see https://tour.golang.org/methods/14",
+      "parentUuid": "641b9212_49550b70",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "a52070b963dcf684b9b7510389fb425d257cc218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
