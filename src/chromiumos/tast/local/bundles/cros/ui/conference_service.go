@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -32,10 +33,10 @@ func init() {
 		Vars: []string{
 			// mode is optional. Expecting "tablet" or "clamshell".
 			"ui.cuj_mode",
-			// Chrome login credentials.
+			// CrOS login credentials.
 			"ui.cuj_username",
 			"ui.cuj_password",
-			// UI meet joining credentials.
+			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
 			"ui.meet_account",
 			"ui.meet_password",
 			// Static Google meet rooms with different participant number have been created.
@@ -63,6 +64,8 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if !ok {
 		return nil, errors.New("failed to get variable ui.cuj_username")
 	}
+	// user account is case-insensitive and shown as lower case in CrOS.
+	account = strings.ToLower(account)
 	password, ok := s.s.Var("ui.cuj_password")
 	if !ok {
 		return nil, errors.New("failed to get variable ui.cuj_password")
@@ -71,6 +74,8 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if !ok {
 		return nil, errors.New("failed to get variable ui.meet_account")
 	}
+	// user account is case-insensitive and shown as lower case in CrOS.
+	meetAccount = strings.ToLower(meetAccount)
 	meetPassword, ok := s.s.Var("ui.meet_password")
 	if !ok {
 		return nil, errors.New("failed to get variable ui.meet_password")

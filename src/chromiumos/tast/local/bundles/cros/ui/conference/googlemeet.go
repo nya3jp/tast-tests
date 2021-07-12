@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
@@ -34,12 +35,9 @@ type GoogleMeetConference struct {
 	password   string
 }
 
-// animationUIInterval is used by uiauto functions to operate on UI elements shown with animation.
-// This number is tuned to work on low-end DUT models to accomodate UI lagging.
-const animationUIInterval = 2 * time.Second
-
 // Join joins a new conference room.
 func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
+	const showJoinNowTimeout = time.Minute
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 	meetAccount := conf.account
@@ -88,7 +86,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		if err := uiauto.Combine("join conference",
-			ui.WithTimeout(40*time.Second).LeftClickUntil(joinNowButton, ui.WaitUntilGone(nodewith.Name("Return to home screen"))),
+			ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(nodewith.Name("Return to home screen"))),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to join conference")
 		}
@@ -126,7 +124,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 			ui.LeftClickUntil(passwordField, ui.Exists(passwordFieldFocused)),
 			kb.TypeAction(conf.password),
 			ui.LeftClick(nextButton),
-			ui.LeftClick(iAgree),
+			ui.LeftClickUntil(iAgree, ui.WithTimeout(1*time.Second).WaitUntilGone(iAgree)),
 		)
 		if err := uiauto.Combine("enter email and password",
 			actions...,
@@ -182,8 +180,6 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	// when running the case. And also add the test account if the DUT doesn't
 	// be added before.
 	switchUserJoin := func(ctx context.Context) error {
-		const showJoinNowTimeout = time.Minute
-
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		if err := ui.WithTimeout(3 * time.Second).Exists(joinNowButton); err == nil {
 			testing.ContextLog(ctx, "Join the meeting without switching account")
@@ -281,10 +277,12 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
+	isLogin := nodewith.Name(conf.account).Role(role.StaticText)
 	return uiauto.Combine("join conference",
 		openConference,
 		allowPerm,
-		switchUserJoin,
+		// Check if the user is login by specific account. If not, switch to a specific account.
+		ui.IfSuccessThen(ui.Gone(isLogin), switchUserJoin),
 		joinConf,
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
@@ -376,28 +374,25 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to close otifications")
 	}
-
 	moreOptions := nodewith.Name("More options").First()
+	menu := nodewith.Name("Call options").Role(role.Menu)
 	changeLayoutButton := nodewith.Name("Change layout").Role(role.MenuItem)
+	changeLayoutPanel := nodewith.Name("Change layout").Role(role.Dialog)
+	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(changeLayoutPanel)
 	for _, mode := range []string{"Tiled", "Spotlight"} {
 		modeNode := nodewith.Name(mode).Role(role.RadioButton)
-
 		changeLayout := func(ctx context.Context) error {
 			testing.ContextLog(ctx, "Change layout to ", mode)
 			return uiauto.Combine("change layout to "+mode,
-				ui.LeftClickUntil(moreOptions, ui.WithTimeout(5*time.Second).WaitUntilExists(changeLayoutButton)),
-				// The "more" option menu will expand to its full size with animation. Low end DUTs
-				// will see lagging for this animation. Use a longer interval to wait for the changeLayoutButton
-				// to be stable to accomodate UI lagging. Otherwise it might click in the middle of
-				// the animation on wrong coordinates.
-				ui.WithInterval(animationUIInterval).LeftClick(changeLayoutButton),
+				ExpandMenu(conf.tconn, moreOptions, menu, 433),
+				ui.LeftClick(changeLayoutButton),
 				ui.LeftClick(modeNode),
 			)(ctx)
 		}
 
 		if err := uiauto.Combine("change layout",
 			ui.Retry(3, changeLayout),
-			ui.LeftClick(moreOptions),
+			ui.LeftClick(closeButton),
 			ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
 		)(ctx); err != nil {
 			return err
@@ -417,18 +412,15 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 	ui := uiauto.New(conf.tconn)
 	changeBackground := func(background string) error {
 		moreOptions := nodewith.Name("More options").First()
+		menu := nodewith.Name("Call options").Role(role.Menu)
 		changeBackground := nodewith.Name("Change background").Role(role.MenuItem)
 		backgroundButton := nodewith.Name(background).First()
 		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
 		testing.ContextLog(ctx, "Change background to ", background)
 		return uiauto.Combine("change background",
-			ui.LeftClick(moreOptions),
-			// The "more" option menu will expand to its full size with animation. Low end DUTs will
-			// see lagging for this animation. Use a longer interval to wait for the changeBackground menuitem
-			// to be stable to accomodate UI lagging. Otherwise it might click in the middle of
-			// the animation on wrong coordinates.
-			ui.WithInterval(animationUIInterval).LeftClick(changeBackground), // Open "Background" panel.
+			ExpandMenu(conf.tconn, moreOptions, menu, 433),
+			ui.LeftClick(changeBackground), // Open "Background" panel.
 			ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
 			ui.LeftClick(closeButton), // Close "Background" panel.
 			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
@@ -635,5 +627,32 @@ func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, tabletMo
 		roomSize:   roomSize,
 		account:    account,
 		password:   password,
+	}
+}
+
+// ExpandMenu returns a function that clicks the button and waits for the menu to expand to the given height.
+// This function is useful when the target menu will expand to its full size with animation. On Low end DUTs
+// the expansion animation might stuck for some time. The node might have returned a stable location if
+// checking with a fixed interval before the animiation completes. This function ensures animation completes
+// by checking the menu height.
+func ExpandMenu(tconn *chrome.TestConn, button, menu *nodewith.Finder, height int) action.Action {
+	ui := uiauto.New(tconn)
+	return func(ctx context.Context) error {
+		if err := ui.LeftClick(button)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click button")
+		}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			menuInfo, err := ui.Info(ctx, menu)
+			if err != nil {
+				return errors.Wrap(err, "failed to get menu info")
+			}
+			if menuInfo.Location.Height < height {
+				return errors.Errorf("got menu height %d, want %d", menuInfo.Location.Height, height)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second}); err != nil {
+			return err
+		}
+		return nil
 	}
 }
