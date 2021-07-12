@@ -24,12 +24,12 @@ func init() {
 		Desc: "Test that ARC++ apps can successfully connect to the remote host through the system-proxy daemon",
 		Contacts: []string{
 			"acostinas@google.com", // Test author
-			"chromeos-commercial-networking@google.com",
 			"hugobenichi@google.com",
+			"chromeos-commercial-networking@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeEnrolledLoggedIn",
+		Fixture:      "chromePolicyLoggedInARC",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}},
