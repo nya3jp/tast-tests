@@ -16,6 +16,52 @@
       "message": "What do you think about the Poll() instead of the policyutil.WaitUntilExistsStatus()?",
       "revId": "41be747880ca3308bab90296d075c3fe3df03a6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcad079b_e15e8544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T14:40:04Z",
+      "side": 1,
+      "message": "Use the result of testing.Poll instead of using a variable, it\u0027s easier to understand.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "41be747880ca3308bab90296d075c3fe3df03a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd12d11_32707948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T14:40:04Z",
+      "side": 1,
+      "message": "Use PollBreak here",
+      "range": {
+        "startLine": 133,
+        "startChar": 12,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "41be747880ca3308bab90296d075c3fe3df03a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
