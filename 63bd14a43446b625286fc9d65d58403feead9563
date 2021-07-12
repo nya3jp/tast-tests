@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2fce343_19d18caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-12T15:15:34Z",
+      "side": 1,
+      "message": "Do we not always want to close the server, even if there was an error?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "63bd14a43446b625286fc9d65d58403feead9563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c01a60_2fa34a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-12T15:15:34Z",
+      "side": 1,
+      "message": "this error message is probably going to be confusing for people looking at the dashboard, as the value of incognitoMode reads like an error message based on the context here and they\u0027ll be confused as to why an error is being returned with \"true\" as the message, or so on",
+      "range": {
+        "startLine": 165,
+        "startChar": 33,
+        "endLine": 165,
+        "endChar": 101
+      },
+      "revId": "63bd14a43446b625286fc9d65d58403feead9563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5970547_23196ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-12T15:15:34Z",
+      "side": 1,
+      "message": "do we not always want to defer pc.Close()?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "63bd14a43446b625286fc9d65d58403feead9563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a074bd70_9d20325c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-12T15:15:34Z",
+      "side": 1,
+      "message": "nit: just \"failed to navigate to %s: %v\" is fine, you don\u0027t need this",
+      "range": {
+        "startLine": 180,
+        "startChar": 57,
+        "endLine": 180,
+        "endChar": 64
+      },
+      "revId": "63bd14a43446b625286fc9d65d58403feead9563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
