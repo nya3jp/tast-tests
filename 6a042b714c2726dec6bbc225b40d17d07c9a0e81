@@ -39,6 +39,30 @@
       },
       "revId": "6a042b714c2726dec6bbc225b40d17d07c9a0e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66b1cd6_14ace73f",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-12T01:06:50Z",
+      "side": 1,
+      "message": "It\u0027s the maximum number that can be passed to InstallArcLifecycleTestApps, so in theory it\u0027s useful. I\u0027ll update the comment on InstallArcLifecycleTestApps to make this clear.",
+      "parentUuid": "c7c16d09_3ed5da4b",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "6a042b714c2726dec6bbc225b40d17d07c9a0e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
