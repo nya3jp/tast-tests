@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e874c21_d2504154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-12T16:50:28Z",
+      "side": 1,
+      "message": "Yes please, it would be better to mark this as non-critical in the internal infra config.",
+      "parentUuid": "57cb7401_e53465ae",
+      "revId": "6fc82ff05b30572a59013e16e2d9e08e4a66b3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9896dd2_707099f8",
