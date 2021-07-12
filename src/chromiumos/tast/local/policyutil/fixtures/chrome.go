@@ -45,6 +45,22 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          "fakeDMSEnrolled",
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeEnrolledLoggedInARC",
+		Desc:     "Logged into a user session with enrollment with ARC support",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Impl: &policyChromeFixture{
+			extraOpts: []chrome.Option{chrome.KeepEnrollment(), chrome.ARCEnabled(),
+				chrome.ExtraArgs("--arc-availability=officially-supported")},
+			waitForARC: true,
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          "fakeDMS",
+	})
 }
 
 type policyChromeFixture struct {
@@ -55,6 +71,10 @@ type policyChromeFixture struct {
 
 	// extraOpts contains extra options passed to Chrome.
 	extraOpts []chrome.Option
+
+	// waitForARC indicates the fixture needs to wait for ARC before login.
+	// Only needs to be set if ARC is enabled.
+	waitForARC bool
 }
 
 // FixtData is returned by the fixtures and used by tests to interact with Chrome and FakeDMS.
@@ -86,8 +106,6 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
-		chrome.ARCEnabled(),
-		chrome.ExtraArgs("--arc-availability=officially-supported"),
 		chrome.DeferLogin(),
 	}
 	opts = append(opts, p.extraOpts...)
@@ -98,15 +116,17 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		s.Fatal("Chrome startup failed: ", err)
 	}
 
-	if arcType, ok := arc.Type(); ok && arcType == arc.Container {
-		// The ARC mini instance, created when the login screen is
-		// shown, blocks session_manager, preventing it from responding
-		// to D-Bus methods. Cloud policy initialisation relies on being
-		// able to contact session_manager, otherwise initialisation
-		// will time out.
-		err = arc.WaitAndroidInit(ctx)
-		if err != nil {
-			s.Fatal("Failed waiting for Android init: ", err)
+	if p.waitForARC {
+		if arcType, ok := arc.Type(); ok && arcType == arc.Container {
+			// The ARC mini instance, created when the login screen is
+			// shown, blocks session_manager, preventing it from responding
+			// to D-Bus methods. Cloud policy initialisation relies on being
+			// able to contact session_manager, otherwise initialisation
+			// will time out.
+			err = arc.WaitAndroidInit(ctx)
+			if err != nil {
+				s.Fatal("Failed waiting for Android init: ", err)
+			}
 		}
 	}
 
