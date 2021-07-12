@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Verify device coredumps are handled as expected",
 		Contacts:     []string{"briannorris@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi"},
+		SoftwareDeps: []string{"wifi", "no_kernel_upstream"},
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
 		// If the test is skipping when it should run or vice versa, check the hwdep
 		// to see if your board is incorrectly included/excluded.

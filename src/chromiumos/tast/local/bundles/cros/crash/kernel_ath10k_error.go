@@ -41,7 +41,7 @@ func init() {
 		Desc:         "Verify kernel ath10k crashes are logged as expected",
 		Contacts:     []string{"arowa@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi"},
+		SoftwareDeps: []string{"wifi", "no_kernel_upstream"},
 		HardwareDeps: hwdep.D(hwdep.WifiQualcomm()),
 	})
 }
