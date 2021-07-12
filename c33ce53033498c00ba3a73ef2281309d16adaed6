@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d15407d_7e6fd2a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-12T06:53:46Z",
+      "side": 1,
+      "message": "Thanks for the test. Understand that we want to cover all scenarios of this resize lock feature in this single test. Should we split the test \"testResizeLockedAppCUJ\" which covers multiple scenarios into subtests or separate tests so that one scenario failure will not cause the further scenarios unverified.",
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e933a432_36ab5966",
