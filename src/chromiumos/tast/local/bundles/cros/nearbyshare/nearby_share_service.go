@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"time"
 
@@ -46,6 +47,7 @@ type NearbyService struct {
 	receiverSurface *nearbyshare.ReceiveSurface
 	chromeReader    *syslog.LineReader
 	messageReader   *syslog.LineReader
+	btLogCmd        *exec.Cmd
 	fileNames       []string
 	username        string
 	dataUsage       nearbysetup.DataUsage
@@ -122,7 +124,12 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed io start Message logging")
 	}
+	cmd := exec.Command("/usr/bin/btmon", "-w", filepath.Join("/tmp", nearbycommon.BtsnoopLog))
+	if err := cmd.Start(); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed io start Message logging")
+	}
 	testing.ContextLog(ctx, "Started logging chrome and message logs")
+	n.btLogCmd = cmd
 	n.chromeReader = chromeReader
 	n.messageReader = messageReader
 	return &empty.Empty{}, err
@@ -131,6 +138,9 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 // SaveLogs saves the chrome and messages logs on the DUT.
 func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var err error
+	if err = n.btLogCmd.Process.Kill(); err != nil {
+		testing.ContextLog(ctx, "Failed to kill btmon: ", err)
+	}
 	if err = os.RemoveAll(nearbycommon.NearbyLogDir); err != nil {
 		testing.ContextLog(ctx, "Failed to delete nearby log dir: ", err)
 	}
