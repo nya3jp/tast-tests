@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cfa81e_f204d3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-12T23:21:06Z",
+      "side": 1,
+      "message": "Sorry I forgot to mention that the upstream kernel does not have iwlwifi7000 provided by Intel and used in the final products. Instead it has the upstream iwlwifi. In this case, if enabling the flag CONFIG_IWLWIFI_DEBUGFS in the upstream iwlwifi works and the tests pass, then we are testing the upstream iwlwifi. I am not sure if the upstream and iwl7000 are the same.\n\nrefer:\nhttps://mail.google.com/mail/u/0/?q\u003dRami#search/lmajczak%40google.com/DmwnWrRlQQMQvfXqTXVZgjVqGHhDGFpHwkMMTrZnRSzbPdXzCljzwqCCHRqRlcnxzwTpwpxMSfJV",
+      "revId": "048ee2f5fd88367a48257786337e41db24cf6f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
