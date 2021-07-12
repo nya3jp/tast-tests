@@ -637,6 +637,15 @@ func (c *Chrome) StartTracing(ctx context.Context, categories []string, opts ...
 	return c.sess.StartTracing(ctx, categories, opts...)
 }
 
+// StartSystemTracing starts trace events collection from the system tracing
+// service using the marshaled binary protobuf trace config.
+// Note: StopTracing should be called even if StartTracing returns an error.
+// Sometimes, the request to start tracing reaches the browser process, but there
+// is a timeout while waiting for the reply.
+func (c *Chrome) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
+	return c.sess.StartSystemTracing(ctx, perfettoConfig)
+}
+
 // StopTracing stops trace collection and returns the collected trace events.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	return c.sess.StopTracing(ctx)
