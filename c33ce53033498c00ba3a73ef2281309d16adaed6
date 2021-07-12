@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf574861_1e7597b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-12T08:24:37Z",
+      "side": 1,
+      "message": "I understand what you mean, but I intentionally chose this design because:\n(i) testResizeLockedAppCUJ is something that should never fail (we\u0027re even considering adding this to Chrome and Android presubmit). So we don\u0027t have to worry so much about a failure hiding another failure. Even if it happens, we immediately fix it.\n(ii) given that splash is only shown at most twice per user, adding a lot of small test cases makes it hard to track the counter. It\u0027s possbible to reset the counter by recreating the user profile in Tast, but it increases test time duration a lot.",
+      "parentUuid": "7d15407d_7e6fd2a4",
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e933a432_36ab5966",
