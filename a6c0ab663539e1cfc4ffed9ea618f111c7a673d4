@@ -223,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad31d206_4bca1cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/auth_failure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-07-12T10:30:17Z",
+      "side": 1,
+      "message": "How about:\n```\nres, err :\u003d regexp.Match(sigAuthFailure, contents)\nif err \u003d\u003d nil \u0026\u0026 !res {\n    err \u003d errors.New(\"failed to find the expected auth_failure signature\")\n}\nif err !\u003d nil {\n    s.Error(\"Failed to run regex: \", err)\n    if err :\u003d crash.MoveFilesToOut(ctx, s.OutDir(), metaFile); err !\u003d nil {\n        s.Error(\"Failed to save the meta file: \", err)\n    }\n}\n```",
+      "parentUuid": "cbc6d075_08401c2a",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 5
+      },
+      "revId": "a6c0ab663539e1cfc4ffed9ea618f111c7a673d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "067ac48f_43248f77",
