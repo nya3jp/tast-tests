@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf36a7f_3f90cf9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-12T17:12:25Z",
+      "side": 1,
+      "message": "We need to find a way how to run this test only on devices that support privacy screen hardware. Seems that it might be something like https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ab5cdc_fdd21413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-12T17:12:25Z",
+      "side": 1,
+      "message": "This can be reduced to 1 test as they are the same.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146ba117_1b90bdc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-12T17:12:25Z",
+      "side": 1,
+      "message": "\u003c\u003d 1 ?",
+      "range": {
+        "startLine": 197,
+        "startChar": 21,
+        "endLine": 197,
+        "endChar": 23
+      },
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
