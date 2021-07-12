@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d21d827_4a131c22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T09:19:31Z",
+      "side": 1,
+      "message": "LGTM % remaining nit",
+      "revId": "a2501104e7a503a71b322d66054522a82a5e64b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b308c8f_1d7a4d4e",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "This flag needs to change to \"--arc-availability\u003dnone\" to eliminate the need for this change. Just removing it, or removing ARCEnabled() above isn\u0027t enough. We need to say the device isn\u0027t capable of running ARC so that chrome doesn\u0027t start up the container \"just in case\".\n\nIf you\u0027re ok running policy tests with ARC completely disabled, then I can abandon this change and do an alternate that disables ARC.",
       "parentUuid": "1b308c8f_1d7a4d4e",
+      "revId": "a2501104e7a503a71b322d66054522a82a5e64b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83325cc_f40552a7",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T09:19:31Z",
+      "side": 1,
+      "message": "Ack. Will keep this change then.",
+      "parentUuid": "280abc53_0eb04642",
       "revId": "a2501104e7a503a71b322d66054522a82a5e64b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
