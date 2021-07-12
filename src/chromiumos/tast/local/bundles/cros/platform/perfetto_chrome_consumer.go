@@ -1,0 +1,97 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package platform
+
+import (
+	"context"
+	"io/ioutil"
+	"path/filepath"
+	"time"
+
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"github.com/golang/protobuf/proto"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/platform/perfetto"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         PerfettoChromeConsumer,
+		Desc:         "Tests Chrome DevTools protocol for collecting a system-wide trace via the system tracing service",
+		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
+		SoftwareDeps: []string{"chrome"},
+		Data:         []string{perfetto.TraceConfigFile},
+		Attr:         []string{"group:mainline", "informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
+	})
+}
+
+// PerfettoChromeConsumer tests Chrome as a perfetto trace consumer.
+// The test enables the "EnablePerfettoSystemTracing" feature flag for Chrome and then collects a system-wide trace using the system backend connected to traced, the system tracing service daemon.
+func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
+	const (
+		traceDataFile = "trace.data.gz"
+	)
+
+	cleanupCtx := ctx
+
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Start Chrome with the "EnablePerfettoSystemTracing" feature flag.
+	// TODO(crbug/1194540, b/191235714): remove this after the feature is enabled by default.
+	cr, err := chrome.New(
+		ctx,
+		chrome.ExtraArgs("--enable-features=EnablePerfettoSystemTracing"))
+	if err != nil {
+		s.Fatal("Failed to enable Perfetto system tracing for Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	// Create the binary protobuf TraceConfig: unmarshal from pbtxt and then marshal to binary protobuf.
+	traceConfigPath := s.DataPath(perfetto.TraceConfigFile)
+	configTxt, err := ioutil.ReadFile(traceConfigPath)
+	if err != nil {
+		s.Fatal("Failed to read the trace config: ", err)
+	}
+	// Unmarshall the pbtxt and then marshall to binary protobuf.
+	config := &trace.TraceConfig{}
+	if err := proto.UnmarshalText(string(configTxt), config); err != nil {
+		s.Fatal("Failed to unmarshal perfetto config: ", err)
+	}
+	configPb, err := proto.Marshal(config)
+	if err != nil {
+		s.Fatal("Failed to marshal perfetto config: err")
+	}
+
+	triedToStopTracing := false
+	defer func() {
+		if triedToStopTracing {
+			return
+		}
+		if _, err := cr.StopTracing(cleanupCtx); err != nil {
+			s.Error("Failed to stop tracing in cleanup phase: ", err)
+		}
+	}()
+
+	if err := cr.StartSystemTracing(ctx, configPb); err != nil {
+		s.Fatal("Failed to start tracing: ", err)
+	}
+
+	triedToStopTracing = true
+	tr, err := cr.StopTracing(ctx)
+	if err != nil {
+		s.Fatal("Failed to stop tracing: ", err)
+	}
+	if tr == nil || len(tr.Packet) == 0 {
+		s.Fatal("No trace data is collected")
+	}
+	// TODO(crbug/1194540): in addition to checking the number of trace packets, post-process the collected trace using trace_processor_shell to verify the trace data.
+	if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), traceDataFile)); err != nil {
+		s.Fatal("Failed to save trace to file: ", err)
+	}
+}
