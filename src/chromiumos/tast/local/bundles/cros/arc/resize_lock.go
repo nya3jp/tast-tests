@@ -40,11 +40,20 @@ const (
 	checkBoxClassName      = "Checkbox"
 	bubbleDialogClassName  = "BubbleDialogDelegateView"
 	overlayDialogClassName = "OverlayDialog"
+	shelfIconClassName     = "ash/ShelfAppButton"
+	menuItemViewClassName  = "MenuItemView"
 
-	// A11y names are available for buttons
-	splashCloseButtonName = "Got it"
-	confirmButtonName     = "Allow"
-	cancelButtonName      = "Cancel"
+	// A11y names are available for some UI elements
+	splashCloseButtonName          = "Got it"
+	confirmButtonName              = "Allow"
+	cancelButtonName               = "Cancel"
+	appManagementSettingToggleName = "Preset window sizes"
+	appInfoMenuItemViewName        = "App info"
+	closeMenuItemViewName          = "Close"
+
+	// Used to identify the shelf icon of interest.
+	resizeLockAppName = "ArcResizeLockTest"
+	settingsAppName   = "Settings"
 )
 
 // Represents the size of a window.
@@ -289,6 +298,15 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		return errors.Wrapf(err, "failed to change the resize lock mode of %s from phone to resizable", resizeLockMainActivityName)
 	}
 
+	// Toggle the resizability state via the Chrome OS setting toggle.
+	if err := toggleAppManagementPage(ctx, tconn, a, d, cr, resizeLockAppName, resizableResizeLockMode, phoneResizeLockMode); err != nil {
+		return errors.Wrapf(err, "failed to toggle the resizability state from %s to %s on the Chrome OS settings", getResizeLockModeString(resizableResizeLockMode), getResizeLockModeString(phoneResizeLockMode))
+	}
+
+	if err := toggleAppManagementPage(ctx, tconn, a, d, cr, resizeLockAppName, phoneResizeLockMode, resizableResizeLockMode); err != nil {
+		return errors.Wrapf(err, "failed to toggle the resizability state from %s to %s on the Chrome OS settings", getResizeLockModeString(phoneResizeLockMode), getResizeLockModeString(resizableResizeLockMode))
+	}
+
 	return nil
 }
 
@@ -399,7 +417,7 @@ func checkCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		}
 		button.Release(ctx)
 
-		if button.Name != getResizeLockModeButtonName(mode) {
+		if button.Name != getResizeLockModeString(mode) {
 			return errors.New("failed to verify the name of compat-mode button")
 		}
 
@@ -569,7 +587,7 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 	}
 	defer compatModeMenuDialog.Release(ctx)
 
-	nextResizeLockModeName := getResizeLockModeButtonName(nextMode)
+	nextResizeLockModeName := getResizeLockModeString(nextMode)
 	resizeLockModeButton, err := compatModeMenuDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: nextResizeLockModeName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find the %s button on the compat mode menu", nextResizeLockModeName)
@@ -633,8 +651,8 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 	return checkResizeLockState(ctx, tconn, a, d, cr, activity, expectedMode, false /* isSplashVisible */)
 }
 
-// getResizeLockModeButtonName converts resizeLockMode to the corresponding button name.
-func getResizeLockModeButtonName(mode resizeLockMode) string {
+// getResizeLockModeString converts resizeLockMode to the corresponding button name.
+func getResizeLockModeString(mode resizeLockMode) string {
 	switch mode {
 	case phoneResizeLockMode:
 		return phoneButtonName
@@ -645,4 +663,86 @@ func getResizeLockModeButtonName(mode resizeLockMode) string {
 	default:
 		return ""
 	}
+}
+
+// toggleAppManagementPage opens the app-management page for ArcResizeLockTest via the shelf icon, toggles the resize lock setting, and verifies the state of the setting toggle.
+func toggleAppManagementPage(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, appName string, currentMode, nextMode resizeLockMode) error {
+	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: shelfIconClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the shelf icon of %s", appName)
+	}
+	defer resizeLockShelfIcon.Release(ctx)
+
+	if err := resizeLockShelfIcon.RightClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click on the shelf icon of %s", appName)
+	}
+
+	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the menu item for the app-management page")
+	}
+	defer appInfoMenuItem.Release(ctx)
+
+	if err := appInfoMenuItem.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the menu item for the app-management page")
+	}
+
+	settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the setting toggle")
+	}
+	defer settingToggle.Release(ctx)
+
+	if err := checkAppManagementSettingToggleState(ctx, tconn, currentMode); err != nil {
+		return errors.Wrap(err, "failed to verify the state of the setting toggle before toggling the setting")
+	}
+
+	if err := settingToggle.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the setting toggle")
+	}
+
+	if err := checkAppManagementSettingToggleState(ctx, tconn, nextMode); err != nil {
+		return errors.Wrap(err, "failed to verify the state of the setting toggle after toggling the setting")
+	}
+
+	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: shelfIconClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the shelf icon of the settings app")
+	}
+	defer settingShelfIcon.Release(ctx)
+
+	if err := settingShelfIcon.RightClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the shelf icon of the settings app")
+	}
+
+	closeMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: closeMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the menu item for closing the settings app")
+	}
+	defer closeMenuItem.Release(ctx)
+
+	if err := closeMenuItem.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the menu item for closing the settings app")
+	}
+
+	return nil
+}
+
+// checkAppManagementSettingToggleState verifies the resize lock setting state on the app-management page.
+// The app management page must be open when this function is called.
+func checkAppManagementSettingToggleState(ctx context.Context, tconn *chrome.TestConn, mode resizeLockMode) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 2*time.Second)
+		if err != nil {
+			return errors.Wrap(err, "failed to find the resize lock setting toggle on the app-management page")
+		}
+		defer settingToggle.Release(ctx)
+
+		if ((mode == phoneResizeLockMode || mode == tabletResizeLockMode) && settingToggle.Checked != chromeui.CheckedStateTrue) ||
+			(mode == resizableResizeLockMode && settingToggle.Checked == chromeui.CheckedStateTrue) {
+			return errors.Errorf("the app-management resize lock setting value (%v) doesn't match the expected curent state (%s)", settingToggle.Checked, getResizeLockModeString(mode))
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
