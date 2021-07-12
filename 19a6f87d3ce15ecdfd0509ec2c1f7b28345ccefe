@@ -39,6 +39,30 @@
       },
       "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2796847b_062fab22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-07-12T07:54:35Z",
+      "side": 1,
+      "message": "I see, I didn\u0027t understand the purpose of checking first_api_level \u003d\u003d SDK version as fallback. I\u0027ll keep the logic here.\n\nIn fact since we will eventually require all board overlays to set arc_first_release_*, I think I can just remove betty/novato from expectedFirstAPILevelMap, and update their corresponding first_api_level so the fallback check passes.",
+      "parentUuid": "dca51c02_ac8cfec8",
+      "range": {
+        "startLine": 173,
+        "startChar": 79,
+        "endLine": 173,
+        "endChar": 106
+      },
+      "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
