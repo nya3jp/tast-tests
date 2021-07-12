@@ -10,10 +10,12 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -109,24 +111,36 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			uia := uiauto.New(tconn)
+
 			// Open launcher if it is not open already.
-			if exists, err := ui.Exists(ctx, tconn, ui.FindParams{ClassName: "AppListView"}); err != nil || !exists {
+			if exists, err := uia.IsNodeFound(ctx, nodewith.ClassName("AppListView")); err != nil || !exists {
 				// Open Launcher.
 				if err := kb.Accel(ctx, "Search"); err != nil {
 					s.Fatal("Failed to type Search: ", err)
 				}
 
-				if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "AppListView"}, 10*time.Second); err != nil {
+				if err := uia.WaitUntilExists(nodewith.ClassName("AppListView"))(ctx); err != nil {
 					s.Fatal("Failed to open launcher: ", err)
 				}
 			}
 
 			// Look for the Play Store icon.
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Name:      apps.PlayStore.Name,
-				ClassName: "SearchResultSuggestionChipView",
-			}, param.wantEnabled, 15*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Play Store suggestion chip view: ", err)
+			enabled := false
+			// Polling till the icon is found or the timeout is reached.
+			testing.Poll(ctx, func(ctx context.Context) error {
+				if found, err := uia.IsNodeFound(ctx, nodewith.Name(apps.PlayStore.Name).ClassName("SearchResultSuggestionChipView")); err != nil {
+					return errors.Wrap(err, "failed to check Close button")
+				} else if found {
+					enabled = true
+					return nil
+				}
+
+				return errors.New("failed to determine installation outcome")
+			}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second})
+
+			if enabled != param.wantEnabled {
+				s.Error("Unexpected play store icon presence; got %t, want %t", enabled, param.wantEnabled)
 			}
 		})
 	}
