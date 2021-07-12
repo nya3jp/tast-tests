@@ -130,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64f950d7_82b038d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T08:10:04Z",
+      "side": 1,
+      "message": "Verify below does check if the policy is set.",
+      "parentUuid": "a7ade1de_580b6cec",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec047c94_22cfbe46",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 10
@@ -222,6 +246,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68650330_67f8a464",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T08:10:04Z",
+      "side": 1,
+      "message": "The second flag indicates whether the cast is successful. It will panic for an unsuccessful cast otherwise.",
+      "parentUuid": "d770de59_b5ebeddf",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 59
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a47ea40_247a5b45",
         "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
         "patchSetId": 10
@@ -233,6 +281,30 @@
       "writtenOn": "2021-07-09T23:30:10Z",
       "side": 1,
       "message": "Doesn\u0027t fixtures/fakedms.go already do this Ping in SetUp() on line 107? So is this duplicate call needed?",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34653932_5d758836",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T08:10:04Z",
+      "side": 1,
+      "message": "Ping is cheap 😊. I don\u0027t mind this liveness check.",
+      "parentUuid": "6a47ea40_247a5b45",
       "range": {
         "startLine": 192,
         "startChar": 2,
@@ -307,6 +379,29 @@
         "startChar": 1,
         "endLine": 269,
         "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc79a47_bbb1b191",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T08:10:04Z",
+      "side": 1,
+      "message": "nit: in Chrome",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 28
       },
       "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
