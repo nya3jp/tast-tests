@@ -109,7 +109,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			// TODO(b/191203129): Run on JSL devices as well.
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
-			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC3SL3TL",
+			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC3SL3TLKey",
 		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
