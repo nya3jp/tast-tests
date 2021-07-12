@@ -676,6 +676,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e506c0b_338e7238",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "That bit of code is duplicated everywhere, is it possible to abstract it in some way?",
+      "parentUuid": "432fafec_7ce33886",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02b9d20e_bc18aa25",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 2
@@ -1234,6 +1252,24 @@
       "side": 1,
       "message": "No, clean up is done when an account is requested or when it is manually triggered by the CleanUp() call above.\nThe reason for that is that accounts might not get released and will then time out. Cleaning those up would make things very complicated so the easiest solution is to clean an account when it is requested.",
       "parentUuid": "dcfa461f_8e393d0b",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156b785a_a4462bea",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "Should tests call CleanUp or should we depend on cleanup when requesting accounts? I\u0027m leaning towards the latter.",
+      "parentUuid": "0df64462_3165fc50",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
