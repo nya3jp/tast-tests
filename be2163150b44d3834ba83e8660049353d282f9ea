@@ -16,6 +16,23 @@
       "message": "Oka-san, could you tell how to fix the following error?\n\n[FAILED] chromiumos/platform/tast-tests: tast_lint                          \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:        \n      Following errors should be modified by yourself:           \n        src/chromiumos/tast/local/media/pre/fixture.go:50:20: Test Vars should be an array literal of str\ning literals or constants                           \n        ....\n        \n",
       "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b855624d_f15b2d55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-07-12T18:02:30Z",
+      "side": 1,
+      "message": "Thanks for fixing this! \n\n(I remember seeing this complain when adding the SVC flags\nbut I forgot to follow up 😅)",
+      "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
