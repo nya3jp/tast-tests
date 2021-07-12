@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/syzcorpus/syzutils"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -36,6 +37,12 @@ func init() {
 		Timeout: 30 * time.Minute,
 		Attr:    []string{"group:syzcorpus"},
 		Data:    []string{binKVMX64Zip, kvmEnabledRepros},
+
+		// Skip unstable models.
+		// TODO(b/192917522): Remove this after stabilizing the test.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
+			"nautilus-debug-kernel",
+			"octopus-debug-kernel")),
 	})
 }
 
