@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f24cfe7_ee82a13a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T11:29:04Z",
+      "side": 1,
+      "message": "PTAL. I\u0027m unable to test if the test still works since I don\u0027t have a DUT with android_p.",
+      "revId": "4a0449f6b4c8f898449882fcfb5a5d4a054baebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
