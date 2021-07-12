@@ -248,6 +248,20 @@ func (s *Session) StartTracing(ctx context.Context, categories []string, opts ..
 	return s.devsess.StartTracing(ctx, categories, opts...)
 }
 
+// StartSystemTracing starts trace events collection from the system tracing
+// service using the marshaled binary protobuf trace config.
+// Note: StopTracing should be called even if StartSystemTracing returns an error.
+// Sometimes, the request to start tracing reaches the browser process, but there
+// is a timeout while waiting for the reply.
+func (s *Session) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
+	// Note: even when StartSystemTracing fails, it might be due to the case that the
+	// StartSystemTracing request is successfully sent to the browser and tracing
+	// collection has started, but the context deadline is exceeded before Tast
+	// receives the reply.  Therefore, tracingStarted flag is marked beforehand.
+	s.tracingStarted = true
+	return s.devsess.StartSystemTracing(ctx, perfettoConfig)
+}
+
 // StopTracing stops trace collection and returns the collected trace events.
 func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	traces, err := s.devsess.StopTracing(ctx)
