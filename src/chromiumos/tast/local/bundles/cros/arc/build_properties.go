@@ -170,28 +170,29 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	}
 	device = match[1]
 
-	expectedFirstAPILevel := getProperty(propertySDKVersion)
-	if device == "rammus" && strings.HasSuffix(board, "-arc-r") {
-		// TODO(b/159985784): Remove the hack once we bring up a board truly
-		// setting first_api_level=30.
-		//
-		// Correct value for rammus-arc-r is the same for rammus (28, obtained
-		// from the map), but it is currently put under a special experiment
-		// to test behaviors of devices of first API level 30. See b/159114376.
-		expectedFirstAPILevel = "30"
-	} else if overwrite, ok := expectedFirstAPILevelMap[device]; ok {
-		expectedFirstAPILevel = strconv.Itoa(overwrite)
-	}
-
-	firstAPILevel := getProperty(propertyFirstAPILevel)
-	if firstAPILevel != expectedFirstAPILevel {
-		if props, err := a.Command(ctx, "getprop").Output(testexec.DumpLogOnError); err != nil {
-			s.Log("Failed to read properties: ", err)
-		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "props.txt"), props, 0644); err != nil {
-			s.Log("Failed to dump properties: ", err)
+	// Verify ro.product.first_api_level has the correct value, if we require one in expectedFirstAPILevelMap.
+	if v, ok := expectedFirstAPILevelMap[device]; ok {
+		expectedFirstAPILevel := strconv.Itoa(v)
+		if device == "rammus" && strings.HasSuffix(board, "-arc-r") {
+			// TODO(b/159985784): Remove the hack once we bring up a board truly
+			// setting first_api_level=30.
+			//
+			// Correct value for rammus-arc-r is the same for rammus (28, obtained
+			// from the map), but it is currently put under a special experiment
+			// to test behaviors of devices of first API level 30. See b/159114376.
+			expectedFirstAPILevel = "30"
 		}
-		s.Errorf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
-			firstAPILevel, expectedFirstAPILevel)
+
+		firstAPILevel := getProperty(propertyFirstAPILevel)
+		if firstAPILevel != expectedFirstAPILevel {
+			if props, err := a.Command(ctx, "getprop").Output(testexec.DumpLogOnError); err != nil {
+				s.Log("Failed to read properties: ", err)
+			} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "props.txt"), props, 0644); err != nil {
+				s.Log("Failed to dump properties: ", err)
+			}
+			s.Errorf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
+				firstAPILevel, expectedFirstAPILevel)
+		}
 	}
 
 	// Verify that ro.serialno and ro.boot.serialno has same value and not empty.
@@ -254,7 +255,6 @@ var expectedFirstAPILevelMap = map[string]int{
 	// Boards initially shipped with ARC N (sorted alphabetically.)
 	"asuka":    arc.SDKN,
 	"banon":    arc.SDKN,
-	"betty":    arc.SDKN,
 	"bob":      arc.SDKN,
 	"caroline": arc.SDKN,
 	"cave":     arc.SDKN,
@@ -279,7 +279,6 @@ var expectedFirstAPILevelMap = map[string]int{
 	"minnie":   arc.SDKN,
 	"nami":     arc.SDKN,
 	"nautilus": arc.SDKN,
-	"novato":   arc.SDKN,
 	"paine":    arc.SDKN,
 	"pyro":     arc.SDKN,
 	"reef":     arc.SDKN,
