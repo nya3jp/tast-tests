@@ -92,6 +92,30 @@
       },
       "revId": "a2501104e7a503a71b322d66054522a82a5e64b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcba84da_84fc6b22",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2021-07-12T12:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001b4249_e3c86506",
+      "range": {
+        "startLine": 109,
+        "startChar": 39,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "a2501104e7a503a71b322d66054522a82a5e64b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
