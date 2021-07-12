@@ -55,34 +55,17 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 		defer conn.Close()
 
 		newButton := nodewith.Name("New").First()
+		menu := nodewith.Role(role.Menu)
 		googleSlides := nodewith.Name("Google Slides").Role(role.MenuItem)
 		filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
 		titleNode := nodewith.Name("title").First()
 		subtitleNode := nodewith.Name("subtitle").First()
-
-		checkOKButton := func(ctx context.Context) error {
-			okButton := nodewith.Name("OK").Role(role.Button)
-			if err := ui.Exists(okButton); err != nil {
-				// OK button doesn't exist. Just return.
-				return nil
-			}
-			if err := ui.ImmediateLeftClick(okButton)(ctx); err != nil {
-				return errors.Wrap(err, "failed to immediately click OK button")
-			}
-			testing.ContextLog(ctx, "Clicked ok in the first time")
-			return nil
-		}
+		okButton := nodewith.Name("OK").Role(role.Button)
 
 		if err := uiauto.Combine("create new slide",
-			ui.WaitUntilExists(newButton),
-			checkOKButton,
-			// Use LeftClickUntil to make sure Google Slides menu is launched.
-			ui.LeftClickUntil(newButton, ui.WithTimeout(5*time.Second).WaitUntilExists(googleSlides)),
-			// The "New" menu will expand to its full size with animation. Low end DUTs will see
-			// lagging for this animation. Use a longer interval to wait for the "Google Slides"
-			// option to be stable to accomodate UI lagging. Otherwise it might click in the middle of
-			// the animation on wrong coordinates.
-			ui.WithInterval(animationUIInterval).LeftClick(googleSlides),
+			ui.IfSuccessThen(ui.Exists(okButton), ui.LeftClick(okButton)),
+			expandMenu(tconn, newButton, menu, 246),
+			ui.LeftClick(googleSlides),
 			// Some DUT models with poor performance need to wait a long time.
 			ui.WithTimeout(2*time.Minute).WaitUntilExists(filmstripView),
 		)(ctx); err != nil {
