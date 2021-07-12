@@ -6,6 +6,7 @@ package power
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -74,4 +75,34 @@ func TurnOnDisplay(ctx context.Context) error {
 		return errors.Wrap(err, "failed to call HandleWakeNotification D-Bus method")
 	}
 	return nil
+}
+
+// NewSignalWatcher creates an D-Bus signal watcher on PowerManager interface.
+func NewSignalWatcher(ctx context.Context, signalNames ...string) (*dbusutil.SignalWatcher, error) {
+	if len(signalNames) == 0 {
+		return nil, errors.New("no signal to watch")
+	}
+	var matches []dbusutil.MatchSpec
+	for _, signalName := range signalNames {
+		matches = append(matches, dbusutil.MatchSpec{
+			Type:      "signal",
+			Path:      dbus.ObjectPath(dbusPath),
+			Interface: dbusInterface,
+			Member:    signalName,
+		})
+	}
+	watcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx, matches...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create dbus watcher")
+	}
+	return watcher, nil
+}
+
+// SignalName extracts the signal name from a dbus.Signal object.
+func SignalName(s *dbus.Signal) string {
+	parts := strings.Split(s.Name, ".")
+	if len(parts) == 0 {
+		return ""
+	}
+	return parts[len(parts)-1]
 }
