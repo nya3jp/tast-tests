@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f24bbcb_64e7f0e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-07-12T17:10:12Z",
+      "side": 1,
+      "message": "I have a CL out now to mark the test as non-critical. Chih-Yu, please feel free to abandon this change.",
+      "parentUuid": "7e874c21_d2504154",
+      "revId": "6fc82ff05b30572a59013e16e2d9e08e4a66b3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9896dd2_707099f8",
