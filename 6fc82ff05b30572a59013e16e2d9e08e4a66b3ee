@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cb7401_e53465ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-12T16:22:51Z",
+      "side": 1,
+      "message": "Zubin, is this okay with you? Maybe it\u0027s better to mark these tests as non-critical in our internal infra config.",
+      "revId": "6fc82ff05b30572a59013e16e2d9e08e4a66b3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9896dd2_707099f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzcorpus/kvmrepros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-12T16:22:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this will do what you want as these are not models. You probably want:\n\n  HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(\"nautilus\", \"octopus\"))",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "6fc82ff05b30572a59013e16e2d9e08e4a66b3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
