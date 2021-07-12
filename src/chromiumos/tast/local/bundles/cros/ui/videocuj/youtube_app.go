@@ -60,8 +60,11 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		youtubeApp              = "Youtube App"
 		youtubeAct              = "com.google.android.apps.youtube.app.WatchWhileActivity"
 		youtubeLogoDescription  = "YouTube Premium"
-		skipTrialText           = "SKIP TRIAL"
 		accountImageDescription = "Account"
+		noThanksText            = "NO THANKS"
+		skipTrialText           = "SKIP TRIAL"
+		qualityText             = "Quality"
+		advancedText            = "Advanced"
 		accountImageID          = youtubePkg + ":id/image"
 		searchButtonID          = youtubePkg + ":id/menu_item_1"
 		searchEditTextID        = youtubePkg + ":id/search_edit_text"
@@ -93,9 +96,9 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 	}
 
 	// Clear notification prompt if it exists.
-	noThanksEle := y.d.Object(androidui.ID(dismissID), androidui.Text("NO THANKS"))
+	noThanksEle := y.d.Object(androidui.ID(dismissID), androidui.Text(noThanksText))
 	if err := cuj.ClickIfExist(noThanksEle, 5*time.Second)(ctx); err != nil {
-		return errors.Wrap(err, `failed to click "NO THANKS" to clear notification prompt`)
+		return errors.Wrap(err, "failed to click 'NO THANKS' to clear notification prompt")
 	}
 
 	playVideo := func() error {
@@ -131,7 +134,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 				if strings.Contains(err.Error(), "click") {
 					return testing.PollBreak(err)
 				}
-				return errors.Wrap(err, `failed to find "First Video"`)
+				return errors.Wrap(err, "failed to find 'First Video'")
 			}
 
 			testing.ContextLogf(ctx, "Elapsed time when waiting the video list: %.3f s", time.Since(startTime).Seconds())
@@ -150,7 +153,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 		if !y.premium {
 			skipAds := y.d.Object(androidui.ID(skipAdsID))
-			if err := cuj.ClickIfExist(skipAds, 15*time.Second)(ctx); err != nil {
+			if err := cuj.ClickIfExist(skipAds, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to click 'Skip Ads'")
 			}
 		}
@@ -164,15 +167,15 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 			moreBtn := y.d.Object(androidui.ID(moreOptions))
 			if err := cuj.FindAndClick(moreBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
-				return errors.Wrap(err, `failed to find/click the "More options"`)
+				return errors.Wrap(err, "failed to find/click the 'More options'")
 			}
 
-			qualityBtn := y.d.Object(androidui.Text("Quality"))
+			qualityBtn := y.d.Object(androidui.Text(qualityText))
 			if err := cuj.FindAndClick(qualityBtn, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the Quality")
 			}
 
-			advancedBtn := y.d.Object(androidui.Text("Advanced"))
+			advancedBtn := y.d.Object(androidui.Text(advancedText))
 			if err := cuj.FindAndClick(advancedBtn, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the advanced option")
 			}
@@ -244,28 +247,34 @@ func (y *YtApp) checkYoutubeAppPIP(ctx context.Context) error {
 func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 	testing.ContextLog(ctx, "Make Youtube app fullscreen")
 
-	const fullscreenBtnID = "com.google.android.youtube:id/fullscreen_button"
+	const fullscreenDesc = "Enter fullscreen"
+	const exitFullscreenDesc = "Exit fullscreen"
 
 	playerView := y.d.Object(androidui.ID(playerViewID))
 
 	startTime := time.Now()
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the player view")
 		}
 
-		fsBtn := y.d.Object(androidui.ID(fullscreenBtnID))
+		fsBtn := y.d.Object(androidui.Description(fullscreenDesc))
 		if err := cuj.FindAndClick(fsBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the fullscreen button")
 		}
 
 		testing.ContextLogf(ctx, "Elapsed time when doing enter fullscreen %.3f s", time.Since(startTime).Seconds())
-		return nil
-	}, &testing.PollOptions{Interval: time.Second, Timeout: 30 * time.Second}); err != nil {
-		return err
-	}
 
-	return ash.WaitForARCAppWindowState(ctx, y.tconn, youtubePkg, ash.WindowStateFullscreen)
+		// Check video playback is in fullscreen.
+		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find/click the player view")
+		}
+		exitFullscreenBtn := y.d.Object(androidui.Description(exitFullscreenDesc))
+		if err := exitFullscreenBtn.WaitForExists(ctx, waitTimeAfterClickPlayerView); err != nil {
+			return errors.Wrap(err, "failed to play video in fullscreen")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: uiWaitTime})
 }
 
 // PauseAndPlayVideo verifies video playback on youtube app.
