@@ -16,6 +16,29 @@
       "message": "PTAL. I believe first_api_level is only used by CTS.",
       "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca51c02_ac8cfec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2021-07-12T06:29:43Z",
+      "side": 1,
+      "message": "Could you define a separate list for \"ignorable\" boards?\n\nThe purpose of this test is to ensure all new boards are setting the right values.\nWe want to signal an error from this testcase if a new board is added, configured to use R, but first-api-level set to P (e.g., by copying the profile from an existing board).",
+      "range": {
+        "startLine": 173,
+        "startChar": 79,
+        "endLine": 173,
+        "endChar": 106
+      },
+      "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
