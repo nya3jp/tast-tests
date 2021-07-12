@@ -11,13 +11,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
 	pmpb "chromiumos/system_api/power_manager_proto"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -48,33 +46,28 @@ func (*PowerManagerEmitter) Stop(ctx context.Context) error {
 
 // EmitPowerSupplyPoll emits PowerSupplyPoll D-Bus signal.
 func (p *PowerManagerEmitter) EmitPowerSupplyPoll(ctx context.Context, msg *pmpb.PowerSupplyProperties) error {
-	return p.emitEvent(ctx, msg, "PowerSupplyPoll")
+	return p.emitEvent(ctx, msg, SignalPowerSupplyPoll)
 }
 
 // EmitSuspendImminent emits SuspendImminent D-Bus signal.
 func (p *PowerManagerEmitter) EmitSuspendImminent(ctx context.Context, msg *pmpb.SuspendImminent) error {
-	return p.emitEvent(ctx, msg, "SuspendImminent")
+	return p.emitEvent(ctx, msg, SignalSuspendImminent)
 }
 
 // EmitDarkSuspendImminent emits DarkSuspendImminent D-Bus signal.
 func (p *PowerManagerEmitter) EmitDarkSuspendImminent(ctx context.Context, msg *pmpb.SuspendImminent) error {
-	return p.emitEvent(ctx, msg, "DarkSuspendImminent")
+	return p.emitEvent(ctx, msg, SignalDarkSuspendImminent)
 }
 
 // EmitSuspendDone emits SuspendDone D-Bus signal.
 func (p *PowerManagerEmitter) EmitSuspendDone(ctx context.Context, msg *pmpb.SuspendDone) error {
-	return p.emitEvent(ctx, msg, "SuspendDone")
+	return p.emitEvent(ctx, msg, SignalSuspendDone)
 }
 
 func (*PowerManagerEmitter) emitEvent(ctx context.Context, msg proto.Message, eventName string) error {
-	watcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      dbus.ObjectPath(dbusPath),
-		Interface: dbusInterface,
-		Member:    eventName,
-	})
+	watcher, err := NewSignalWatcher(ctx, eventName)
 	if err != nil {
-		return errors.Wrap(err, "failed to create dbus watcher")
+		return err
 	}
 	defer watcher.Close(ctx)
 
