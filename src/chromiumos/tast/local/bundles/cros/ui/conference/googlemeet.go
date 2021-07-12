@@ -37,6 +37,7 @@ type GoogleMeetConference struct {
 
 // Join joins a new conference room.
 func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
+	const showJoinNowTimeout = time.Minute
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 	meetAccount := conf.account
@@ -84,10 +85,9 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	joinConf := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := uiauto.Combine("join conference",
-			ui.WithTimeout(40*time.Second).LeftClickUntil(joinNowButton, ui.WaitUntilGone(nodewith.Name("Return to home screen"))),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to join conference")
+		homeScreenLink := nodewith.Name("Return to home screen").Role(role.Link)
+		if err := ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(homeScreenLink))(ctx); err != nil {
+			return errors.Wrapf(err, "failed to click button to join conference within %v", showJoinNowTimeout)
 		}
 		return nil
 	}
@@ -123,7 +123,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 			ui.LeftClickUntil(passwordField, ui.Exists(passwordFieldFocused)),
 			kb.TypeAction(conf.password),
 			ui.LeftClick(nextButton),
-			ui.LeftClick(iAgree),
+			ui.LeftClickUntil(iAgree, ui.WithTimeout(1*time.Second).WaitUntilGone(iAgree)),
 		)
 		if err := uiauto.Combine("enter email and password",
 			actions...,
@@ -175,17 +175,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
-	// If gaia-login isn't use the conference-test only account, it would switch
-	// when running the case. And also add the test account if the DUT doesn't
-	// be added before.
-	switchUserJoin := func(ctx context.Context) error {
-		const showJoinNowTimeout = time.Minute
-
-		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := ui.WithTimeout(3 * time.Second).Exists(joinNowButton); err == nil {
-			testing.ContextLog(ctx, "Join the meeting without switching account")
-			return nil
-		}
+	// switchUser switches to the account that will be used to join the Google meet.
+	switchUser := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Switch account")
 		switchAccount := nodewith.Name("Switch account").Role(role.Link)
 		meetAccountText := nodewith.Name(meetAccount).First()
@@ -224,6 +215,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		}
 
 		// Wait for the "Join now" button.
+		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		if err := ui.WithTimeout(showJoinNowTimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
 			return errors.Wrapf(err, "Join now button didn't show for account %s", meetAccount)
 		}
@@ -278,10 +270,12 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
+	targetMeetAccount := nodewith.Name(conf.account).Role(role.StaticText)
 	return uiauto.Combine("join conference",
 		openConference,
 		allowPerm,
-		switchUserJoin,
+		// Check if the login account is the one for google meet. If not, switch to google meet account.
+		ui.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
 		joinConf,
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
