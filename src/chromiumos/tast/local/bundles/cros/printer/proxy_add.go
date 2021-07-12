@@ -194,6 +194,15 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"},
 			}, {
+				Name: "star_m",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_star_printer_rastertostarm.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_star_printer_rastertostarm.bin",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_star_printer_rastertostarm.ppd.gz", "printer_add_star_printer_rastertostarm.bin"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "star_lm",
 				Val: &ippprint.Params{
 					PPDFile:      "printer_add_star_printer_rastertostarlm.ppd.gz",
