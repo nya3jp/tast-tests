@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7dc5a1e_06cf4d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T08:19:59Z",
+      "side": 1,
+      "message": "I don\u0027t see a point *yet* in adding this extra abstraction, maybe we can add it if we need it later.",
+      "parentUuid": "9fb29c64_fd69cd6b",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "3eebe706f08159429f8e234be07c7f18ed7997d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcf7d09c_6dd2e91f",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled.go",
         "patchSetId": 1
