@@ -1,0 +1,527 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb73162_4673ac9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "Did another pass. It is coming together well, and probably close to where we can get a Tast Owner to review it.\n\nAt this point we have to ask the longer term questions. What is the agreement with regards to maintaining this test? What does that Intel mail alias lead to? Who is going to manage this test if we encounter a build breakage or infrastructure issues 6 months down the line? 12 months? 2 years?\n\nIt\u0027s well and good to write this test, but if there aren\u0027t longer term guarantees to provide support for :\na. the test code\nb. the hardware is relies on\n\nthen it is debatable whether we want to run it on our infrastructure.\n\nHappy to take this discussion to email if that\u0027s preferable (and please feel free to reply via email if so). I feel like we should iron that out before investing more time in review.",
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c1edb3_6818e59c",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "Isn\u0027t there an already defined constant/variable for this? It\u0027s an HTTP success response so I\u0027d imagine it\u0027s already defined somewhere.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0922f9_8435d05a",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "I think you can remove all of these. They\u0027re only used in one place so just declare them where you use them, or just use the string literal.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5f9545_e07440b0",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f976a094_90517103",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: return",
+      "range": {
+        "startLine": 54,
+        "startChar": 101,
+        "endLine": 54,
+        "endChar": 102
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc73981f_9c4e37c2",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: IP (use well-known acronyms with the appropriate capitalization).",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253da4ce_65cd8890",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "Thanks. This is looking better now. I think it can be refactored even further. Here (L110-L118) and elsewhere, I see the same pattern for the various requests. I think they can also be factored out into a common function (you can just inline reqHeaderAdd into this new function then).",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 24
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac432cd4_a8428be2",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "This seems unnecessarily complex. What does the caller do with this error message? Isn\u0027t a generic failure, with possible an appropriate error code sufficient?",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 108
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3d6eac_92f1bc3d",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "Same as earlier. Why do you need to return the map? It\u0027s easier to just return the status string.",
+      "range": {
+        "startLine": 189,
+        "startChar": 75,
+        "endLine": 189,
+        "endChar": 92
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9919855c_b1912830",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: resultStatus",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 15
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f56c49_aeb7aebe",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "This is a *long* time. The TAST owner will likely have a question about this. I can\u0027t see why a local HTTP request should need this long.",
+      "range": {
+        "startLine": 246,
+        "startChar": 34,
+        "endLine": 246,
+        "endChar": 51
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537e2617_9e44e905",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "I think \"command status\" is more apropos here.",
+      "range": {
+        "startLine": 247,
+        "startChar": 29,
+        "endLine": 247,
+        "endChar": 44
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab7c331_4a17bd4a",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is the best definition. We\u0027re mentioning \"toggle\", but really, we\u0027re just accepting *any* `cswitch` command. I think instead of a `cswitch` argument, you need to use a simpler on/off argument (create your own enum, or use boolean to begin with).\n\nThe aim should be to really limit the function interface to only the functionality we would like to expose.\n\nAs it stands, ToggleCswitchPort literally doesn\u0027t do anything except pass the same parameters to execCommand, so doesn\u0027t serve much purpose.",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 35
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13dd787_6c82a2bd",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: out",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 2
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e93f3fb5_e3e1bf86",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: out",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 2
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc1e74c_65892815",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "Do you mean: of the device connected to the DUT?",
+      "range": {
+        "startLine": 285,
+        "startChar": 39,
+        "endLine": 285,
+        "endChar": 69
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db78f45_49d9580f",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 285,
+        "startChar": 13,
+        "endLine": 285,
+        "endChar": 14
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353cdc33_aaf992b6",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "DUT: let us be consistent in our use of capitalization.",
+      "range": {
+        "startLine": 286,
+        "startChar": 33,
+        "endLine": 286,
+        "endChar": 36
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffd11f8_1f26e8d9",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: TBT (since this is an acronym which is being used elsewhere)",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 21
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847c4992_79c4411c",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: remove extra space.",
+      "range": {
+        "startLine": 297,
+        "startChar": 21,
+        "endLine": 297,
+        "endChar": 22
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b08d13d_8571304c",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "Same comment as L285",
+      "range": {
+        "startLine": 319,
+        "startChar": 37,
+        "endLine": 319,
+        "endChar": 67
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b970cd_be850916",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: I think you can drop this comment since the code makes it self-evident.",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 72
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53c0b01_f0525028",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-12T23:58:37Z",
+      "side": 1,
+      "message": "nit: out",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 2
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
