@@ -45,6 +45,21 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          "fakeDMSEnrolled",
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeEnrolledLoggedInARC",
+		Desc:     "Logged into a user session with enrollment with ARC support",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Impl: &policyChromeFixture{
+			extraOpts: []chrome.Option{chrome.KeepEnrollment(), chrome.ARCEnabled(),
+				chrome.ExtraArgs("--arc-availability=officially-supported")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          "fakeDMS",
+	})
 }
 
 type policyChromeFixture struct {
@@ -86,8 +101,6 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
-		chrome.ARCEnabled(),
-		chrome.ExtraArgs("--arc-availability=officially-supported"),
 		chrome.DeferLogin(),
 	}
 	opts = append(opts, p.extraOpts...)
