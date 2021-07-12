@@ -63,6 +63,30 @@
       },
       "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecec422c_a070a46a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-07-12T07:58:23Z",
+      "side": 1,
+      "message": "One drawback of this approach is that we\u0027ll need USE flags for desserts we don\u0027t ship. I think we still need a list of boards to ignore.",
+      "parentUuid": "2796847b_062fab22",
+      "range": {
+        "startLine": 173,
+        "startChar": 79,
+        "endLine": 173,
+        "endChar": 106
+      },
+      "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
