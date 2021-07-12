@@ -11,8 +11,10 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -96,18 +98,9 @@ func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 }
 
 func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, url string) (bool, error) {
-	addParam := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Add to Chrome",
-	}
-	blockedParam := ui.FindParams{
-		Name:      "Close",
-		ClassName: "MdTextButton",
-	}
-	undoParam := ui.FindParams{
-		Name:      "Undo",
-		ClassName: "MdTextButton",
-	}
+	addButton := nodewith.Name("Add to Chrome").Role(role.Button).First()
+	blockedButton := nodewith.Name("Close").ClassName("MdTextButton")
+	undoButton := nodewith.Name("Undo").ClassName("MdTextButton")
 
 	// Open the Chrome Web Store page of the extension.
 	conn, err := cr.NewConn(ctx, url)
@@ -116,21 +109,23 @@ func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, cr *chrome
 	}
 	defer conn.Close()
 
+	uia := uiauto.New(tconn)
+
 	// Install extension.
-	if err := ui.StableFindAndClick(ctx, tconn, addParam, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+	if err := uia.LeftClick(addButton)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to click Add to Chrome button")
 	}
 
 	installed := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if blocked, err := ui.Exists(ctx, tconn, blockedParam); err != nil {
+		if blocked, err := uia.IsNodeFound(ctx, blockedButton); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check Close button"))
 		} else if blocked {
 			installed = false
 			return nil
 		}
 
-		if allowed, err := ui.Exists(ctx, tconn, undoParam); err != nil {
+		if allowed, err := uia.IsNodeFound(ctx, undoButton); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check Undo button"))
 		} else if allowed {
 			installed = true
@@ -145,12 +140,12 @@ func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, cr *chrome
 	// Remove extension if needed. If it is not removed, the next subtests will fail.
 	// A theme can only be removed here, or by installing a new one.
 	if installed {
-		if err := ui.StableFindAndClick(ctx, tconn, undoParam, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		if err := uia.LeftClick(undoButton)(ctx); err != nil {
 			return false, errors.Wrap(err, "failed to click Undo button")
 		}
 
 		// Wait until removing is complete.
-		if err := ui.WaitUntilExists(ctx, tconn, addParam, 15*time.Second); err != nil {
+		if err := uia.WaitUntilExists(addButton)(ctx); err != nil {
 			return false, errors.Wrap(err, "failed to wait for Add to Chrome button")
 		}
 	}
