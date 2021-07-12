@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "633851b6_e78b9bdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-12T02:03:03Z",
+      "side": 1,
+      "message": "LGTM for behavior and expectations with a qq.\nLet me hand over to Katherine for general Go/Tast stuff.",
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e933a432_36ab5966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-12T02:03:03Z",
+      "side": 1,
+      "message": "qq: shouldn\u0027t we use `\u003d\u003d chromeui.CheckedStateFalse`?",
+      "range": {
+        "startLine": 751,
+        "startChar": 93,
+        "endLine": 751,
+        "endChar": 121
+      },
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
