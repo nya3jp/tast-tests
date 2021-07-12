@@ -16,6 +16,241 @@
       "message": "Thanks a lot for all your comments.",
       "revId": "675cb414edea1b1eab28703303d562379fae11b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d1294a_0dfc73b2",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "aesthetic nit 😊: format like above for symmetry",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3d073c_df52e4df",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "nit: maybe \"Run\" here",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570ede7d_86045ce7",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "\u003e \"get\u0027s\" is a possible misspelling of \"gets\".\n\nPlease fix.",
+      "parentUuid": "d0c83578_480a5f00",
+      "range": {
+        "startLine": 210,
+        "startChar": 64,
+        "endLine": 210,
+        "endChar": 69
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5b43ca_2d16fb9e",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "nit: check in",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db1cdbd_dbd6b904",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "These structs don\u0027t need to be in the generated file, move them to a separate one in the same package.",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a44bf6_d876128a",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "What is the purpose of this interface? Can you use the empty interface instead?",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9ef28a_20a169f5",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if adding the orgunit to the struct is a better option here. It would allow us to use the existing Marshal interface, but it might be more difficult to understand. I\u0027m leaning to keeping the current solution.\n\nWDYT?",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6406d259_a04a1e22",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "nit: document what the argument is",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4331576_5bf213c3",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "Also shorten the context here to a reasonable value. Maybe 30 seconds?",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b7d8ca9_26e2cbfd",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "Does this also apply when requesting an account? If so please specify that tests are not expected to use this.",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5161aa7_087ff5a9",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "nit: p",
+      "range": {
+        "startLine": 96,
+        "startChar": 15,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab10f295_7f727ac7",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-12T07:53:39Z",
+      "side": 1,
+      "message": "nit: document whether tests are expected to call this.",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
