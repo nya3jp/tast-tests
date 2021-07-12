@@ -68,6 +68,24 @@
       "message": "lgtm, thanks!",
       "revId": "e478951d1060a0d450186153c2d311c2c98d7cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a41372b_4b40908d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-12T23:46:49Z",
+      "side": 1,
+      "message": "I just found that \"A test needs to be registered by calling testing.AddTest() in the test entry file, which is located directly under a category package.\" in Test registration section[1]. So if we probably can not move them into ui/wmp because ui is the category package[2]?\n\n[1]https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md\n[2]https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/remote/bundles/cros/main.go",
+      "parentUuid": "2ac05f14_77548af1",
+      "revId": "e478951d1060a0d450186153c2d311c2c98d7cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
