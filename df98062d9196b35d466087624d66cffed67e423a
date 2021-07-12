@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5a26f8_acf012ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-12T02:09:26Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "df98062d9196b35d466087624d66cffed67e423a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19917136_caa0ed90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-12T02:09:26Z",
+      "side": 1,
+      "message": "nit: for this and the below error messages, maybe keep them consistent?\ninvalid NumTotalThreads, got %d; want 1+\ninvalid PhysicalCPUs, got %d; want 1+",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 53
+      },
+      "revId": "df98062d9196b35d466087624d66cffed67e423a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93c0f42_1989ade4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-12T02:09:26Z",
+      "side": 1,
+      "message": "nit: wrapper errors start with lowercase",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "df98062d9196b35d466087624d66cffed67e423a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
