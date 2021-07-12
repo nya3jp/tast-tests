@@ -55,6 +55,7 @@ const (
 // ChooseSecondaryDUT figures out which DUT is primary and which is secondary in a Nearby Share CB->CB test.
 // TODO(b/175889133) Remove hardcoded hostnames when multi dut skylab support is available.
 func ChooseSecondaryDUT(hostname, secondaryTarget string) (string, error) {
+	return secondaryTarget, nil
 	// Switch on the DUTs in our lab setup first, then fall back to user supplied var.
 	var secondaryDUT string
 	if strings.Contains(hostname, HatchHostname) {

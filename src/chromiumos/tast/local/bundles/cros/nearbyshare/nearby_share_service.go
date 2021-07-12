@@ -17,6 +17,7 @@ import (
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
@@ -46,6 +47,8 @@ type NearbyService struct {
 	receiverSurface *nearbyshare.ReceiveSurface
 	chromeReader    *syslog.LineReader
 	messageReader   *syslog.LineReader
+	btLogCmd        *testexec.Cmd
+	btCancelFunc    context.CancelFunc
 	fileNames       []string
 	username        string
 	dataUsage       nearbysetup.DataUsage
@@ -122,7 +125,16 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed io start Message logging")
 	}
-	testing.ContextLog(ctx, "Started logging chrome and message logs")
+	btCtx, cancel := context.WithTimeout(n.s.ServiceContext(), 60*time.Minute)
+	cmd := testexec.CommandContext(btCtx, "/usr/bin/btmon", "-w", filepath.Join("/tmp", nearbycommon.BtsnoopLog))
+	if err := cmd.Start(); err != nil {
+		cancel()
+		n.btCancelFunc()
+		return &empty.Empty{}, errors.Wrap(err, "failed io start Message logging")
+	}
+	testing.ContextLog(ctx, "Started logging chrome and message logs for service started")
+	n.btLogCmd = cmd
+	n.btCancelFunc = cancel
 	n.chromeReader = chromeReader
 	n.messageReader = messageReader
 	return &empty.Empty{}, err
@@ -131,6 +143,15 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 // SaveLogs saves the chrome and messages logs on the DUT.
 func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var err error
+	if n.btLogCmd != nil {
+		if err = n.btLogCmd.Process.Kill(); err != nil {
+			testing.ContextLog(ctx, "Failed to kill btmon: ", err)
+		}
+	}
+	if n.btCancelFunc != nil {
+		n.btCancelFunc()
+	}
+	testing.ContextLog(ctx, "Save logs for service started")
 	if err = os.RemoveAll(nearbycommon.NearbyLogDir); err != nil {
 		testing.ContextLog(ctx, "Failed to delete nearby log dir: ", err)
 	}
