@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3ef684_f0889fc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-07-12T06:15:46Z",
+      "side": 1,
+      "message": "PTAL. I believe first_api_level is only used by CTS.",
+      "revId": "19a6f87d3ce15ecdfd0509ec2c1f7b28345ccefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
