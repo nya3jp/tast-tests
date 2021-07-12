@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16cef2b6_c4ef4b5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-12T22:56:43Z",
+      "side": 1,
+      "message": "I contacted the volteer_kernelnext team (Lukasz team) two weeks ago to add the debug config to the volteer_kernelnext (tracking continues upstream kernel). They said they would add the config in the next release which happens every week. I see the tests are still failing. I just sent another email to confirm that they have added the debug config.\n\nI submitted this CL because I thought the main concern was making sure that we can run these tests on -kernelnext not -kernelnext that are tracking continues upstream kernel.\n\nSure I will update the bugs 👍",
+      "parentUuid": "38da3f1f_e787b729",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "0359723f485cfc0d68df4fc35194dd48548eb35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7922432f_2ce36ec9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T21:43:40Z",
       "side": 1,
       "message": "The commit message mentions /sys/kernel/debug/iwlwifi, but this test only runs on Qualcomm devices so iwlwifi should not be relevant, I think?",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "0359723f485cfc0d68df4fc35194dd48548eb35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62a18f1_cf7e041f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-12T22:56:43Z",
+      "side": 1,
+      "message": "That is true,This test should not be here.",
+      "parentUuid": "7922432f_2ce36ec9",
       "range": {
         "startLine": 45,
         "startChar": 30,
