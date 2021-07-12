@@ -128,6 +128,24 @@
       "parentUuid": "5fc830cd_dcdbed9b",
       "revId": "a3ca5978d706547f218498181e1e8a6d798cecc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7df55b_1249ecfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-12T16:25:26Z",
+      "side": 1,
+      "message": "tast run [user@]host[:port] firmware.FwupdPowerdStartup",
+      "parentUuid": "dad2b939_7eeae249",
+      "revId": "a3ca5978d706547f218498181e1e8a6d798cecc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
