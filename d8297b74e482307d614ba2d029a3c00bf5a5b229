@@ -16,6 +16,24 @@
       "message": "Good catch.\n",
       "revId": "d8297b74e482307d614ba2d029a3c00bf5a5b229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197b364e_47ae1f59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-12T17:09:10Z",
+      "side": 1,
+      "message": "Haha, it was kind of *your* catch in the parent CL ;)",
+      "parentUuid": "28d2a5d7_e2810695",
+      "revId": "d8297b74e482307d614ba2d029a3c00bf5a5b229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
