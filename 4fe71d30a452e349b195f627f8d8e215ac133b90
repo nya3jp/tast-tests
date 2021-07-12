@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07dc6b6e_0d6d59f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-12T21:05:45Z",
+      "side": 1,
+      "message": "This does need a hardware dependency, yes.",
+      "parentUuid": "dcf36a7f_3f90cf9c",
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53ab5cdc_fdd21413",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
         "patchSetId": 7
@@ -37,6 +55,23 @@
         "endLine": 97,
         "endChar": 4
       },
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2128a4_f475be6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-12T21:05:45Z",
+      "side": 1,
+      "message": "Maybe we should try NameContaining to reduce the potential fragility a little?",
       "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
