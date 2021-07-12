@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a95aef33_3cce6c04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-12T02:23:50Z",
+      "side": 1,
+      "message": "LGTM with a question 😊",
+      "revId": "a52070b963dcf684b9b7510389fb425d257cc218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b81f64_48096bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_block_devices.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-12T02:23:50Z",
+      "side": 1,
+      "message": "Thinking about this method in the wider scheme of all these CLs, might be beneficial to take this out into a helper package as it\u0027s now duplicated across a number of tests, e.g. \n```\ndecodeJson(ctx context.Context, jsonData string, output interface{}) error\n```\nWDYT?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "a52070b963dcf684b9b7510389fb425d257cc218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
