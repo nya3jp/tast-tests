@@ -33,6 +33,23 @@
       "message": "lgtm, thanks!",
       "revId": "cc7fbf7a22a4b2c7db2ff700f3ab266d67f8c733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3302c0b_84a1fc82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-12T18:28:47Z",
+      "side": 1,
+      "message": "Gentle ping!",
+      "revId": "cc7fbf7a22a4b2c7db2ff700f3ab266d67f8c733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
