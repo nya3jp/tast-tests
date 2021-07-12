@@ -304,6 +304,26 @@ func (s *Session) StartTracing(ctx context.Context, categories []string, opts ..
 	return nil
 }
 
+// StartSystemTracing starts trace events collection from the system tracing
+// service using the marshaled binary protobuf trace config.
+func (s *Session) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
+	dc := tracing.NewClient(s.wsConn)
+	args := tracing.NewStartArgs()
+
+	// Use the serialized perfetto.protos.TraceConfig protobuf message. This ignores "TraceConfig", "Options" and "Categories" in |args|.
+	args.SetPerfettoConfig(perfettoConfig)
+	// Use the system backend to collect a trace from the system tracing service.
+	args.SetTracingBackend(tracing.BackendSystem)
+	args.SetTransferMode("ReturnAsStream")
+	args.SetStreamFormat(tracing.StreamFormatProto)
+	testing.ContextLog(ctx, "Starting tracing")
+	if err := dc.Start(ctx, args); err != nil {
+		return errors.Wrap(err, "failed to start tracing")
+	}
+
+	return nil
+}
+
 // StopTracing stops trace collection and returns the collected trace events.
 func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	dc := tracing.NewClient(s.wsConn)

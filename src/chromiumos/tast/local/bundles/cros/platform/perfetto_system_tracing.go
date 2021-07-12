@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/platform/perfetto"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -21,9 +22,6 @@ const (
 	tracedJob       = "traced"
 	tracedProbesJob = "traced_probes"
 	waitDuration    = 10 * time.Second
-
-	// Trace config file in text proto format.
-	traceConfigFile = "perfetto/system_trace_cfg.pbtxt"
 	// Trace data output in binary proto format.
 	traceOutputFile = "perfetto_trace.pb"
 )
@@ -33,7 +31,7 @@ func init() {
 		Func:     PerfettoSystemTracing,
 		Desc:     "Verifies functions of Perfetto traced and traced_probes",
 		Contacts: []string{"chinglinyu@chromium.org", "chromeos-performance-eng@google.com"},
-		Data:     []string{traceConfigFile},
+		Data:     []string{perfetto.TraceConfigFile},
 		Attr:     []string{"group:mainline"},
 	})
 }
@@ -66,7 +64,7 @@ func collectTraceData(ctx context.Context, s *testing.State) error {
 
 	// Start a trace session using the perfetto command line tool.
 	traceOutputPath := filepath.Join(s.OutDir(), traceOutputFile)
-	traceConfigPath := s.DataPath(traceConfigFile)
+	traceConfigPath := s.DataPath(perfetto.TraceConfigFile)
 	// This runs a perfetto trace session with the options:
 	//   -c traceConfigPath --txt: configure the trace session as defined in the text proto |traceConfigPath|
 	//   -o traceOutputPath      : save the trace data (binary proto) to |traceOutputPath|
@@ -158,7 +156,7 @@ func PerfettoSystemTracing(ctx context.Context, s *testing.State) {
 		s.Fatal("Error in getting job status after trace collection: ", err)
 	}
 
-	// Check thhat PID stays the same as a heuristic that the jobs didn't crash during the test.
+	// Check that PID stays the same as a heuristic that the jobs didn't crash during the test.
 	if tracedPid != tracedPid2 {
 		s.Errorf("Unexpected respawn of job %s (PID changed from %d to %d)", tracedJob, tracedPid, tracedPid2)
 	}
