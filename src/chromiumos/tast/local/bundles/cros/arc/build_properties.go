@@ -184,7 +184,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	}
 
 	firstAPILevel := getProperty(propertyFirstAPILevel)
-	if firstAPILevel != expectedFirstAPILevel {
+	if _, skip := skipFirstAPILevelCheckMap[device]; !skip && firstAPILevel != expectedFirstAPILevel {
 		if props, err := a.Command(ctx, "getprop").Output(testexec.DumpLogOnError); err != nil {
 			s.Log("Failed to read properties: ", err)
 		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "props.txt"), props, 0644); err != nil {
@@ -254,7 +254,6 @@ var expectedFirstAPILevelMap = map[string]int{
 	// Boards initially shipped with ARC N (sorted alphabetically.)
 	"asuka":    arc.SDKN,
 	"banon":    arc.SDKN,
-	"betty":    arc.SDKN,
 	"bob":      arc.SDKN,
 	"caroline": arc.SDKN,
 	"cave":     arc.SDKN,
@@ -279,7 +278,6 @@ var expectedFirstAPILevelMap = map[string]int{
 	"minnie":   arc.SDKN,
 	"nami":     arc.SDKN,
 	"nautilus": arc.SDKN,
-	"novato":   arc.SDKN,
 	"paine":    arc.SDKN,
 	"pyro":     arc.SDKN,
 	"reef":     arc.SDKN,
@@ -318,4 +316,11 @@ var expectedFirstAPILevelMap = map[string]int{
 	"zork":      arc.SDKP,
 	// Note: This test is public. Do not add new boards unless the board's
 	// overlay already exists in src/overlay/overlay-<board>/.
+}
+
+// Devices to skip the first API level check.
+// These devices are for dev purposes only and are not being shipped.
+var skipFirstAPILevelCheckMap = map[string]struct{}{
+	"betty":  {},
+	"novato": {},
 }
