@@ -231,6 +231,7 @@ func init() {
 				chrome.ExtraArgs(chromeFakeWebcamArgs...),
 				chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_3SL3TL/"),
 				chrome.ExtraArgs("--force-fieldtrials=WebRTC-Vp9InterLayerPred/Enabled,inter_layer_pred_mode:onkeypic/"),
+				chrome.EnableFeatures("Vp9kSVCHWEncoding"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
