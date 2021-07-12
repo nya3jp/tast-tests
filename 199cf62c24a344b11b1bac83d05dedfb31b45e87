@@ -67,6 +67,23 @@
       "message": "Unfortunately this is still racy -- sometimes the test still sees the rule to be present even after closing the lifeline FD. Maybe we can add a delay and see if the flakiness is removed, but I was hoping to not have to do that.",
       "revId": "199cf62c24a344b11b1bac83d05dedfb31b45e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d859e96_56c0ef33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-07-12T01:00:13Z",
+      "side": 1,
+      "message": "ping ?",
+      "revId": "199cf62c24a344b11b1bac83d05dedfb31b45e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
