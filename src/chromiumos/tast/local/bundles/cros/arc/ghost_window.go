@@ -96,8 +96,10 @@ func GhostWindow(ctx context.Context, s *testing.State) {
 
 		// According to the PRD of Full Restore go/chrome-os-full-restore-dd,
 		// it uses a throttle of 2.5s to save the app launching and window status
-		// information to the backend. Therefore, sleep 5 seconds here.
-		testing.Sleep(ctx, 5*time.Second)
+		// information to the backend.
+		// One the other hand, PlayStore app need some seconds to finish load process.
+		// Therefore, sleep 10 seconds here.
+		testing.Sleep(ctx, 10*time.Second)
 	}()
 
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
