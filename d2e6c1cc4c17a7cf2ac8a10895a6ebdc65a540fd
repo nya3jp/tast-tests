@@ -33,6 +33,24 @@
       "message": "nit: No iteration is needed.\n\nvar loggedRegion ...\nif len(loggedSettings.Regions) \u003e 0 {\n  loggedRegsion \u003d loggedSettings.Regsions[len(loggedSettings.Regsions) - 1];\n}",
       "revId": "d2e6c1cc4c17a7cf2ac8a10895a6ebdc65a540fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93bbca50_22363989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/adf_justification.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-07-12T20:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1008f7_b0d21351",
+      "revId": "d2e6c1cc4c17a7cf2ac8a10895a6ebdc65a540fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
