@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -81,28 +81,10 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
-			type windowMode bool
-			const (
-				normalWindow    windowMode = false
-				incognitoWindow windowMode = true
-			)
-			openWindow := func(mode windowMode) error {
-				if err := tconn.Call(ctx, nil, `async (incognito) => {
-					let accelerator = {keyCode: 'n', shift: incognito, control: true, alt: false, search: false, pressed: true};
-					await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
-					accelerator.pressed = false;
-					await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
-				}`, mode); err != nil {
-					return errors.Wrap(err, "could not open browser")
-				}
-
-				return nil
-			}
-
 			incognitoEnabled := param.value.Val != IncognitoModeDisabled
 
 			// Open an incognito window
-			if err := openWindow(incognitoWindow); err != nil {
+			if err := apps.LaunchChromeByShortcut(tconn, true)(ctx); err != nil {
 				if incognitoEnabled {
 					s.Fatal("Failed to open incognito browser window: ", err)
 				}
@@ -111,7 +93,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			}
 
 			// Open a normal window
-			if err := openWindow(normalWindow); err != nil {
+			if err := apps.LaunchChromeByShortcut(tconn, false)(ctx); err != nil {
 				s.Fatal("Failed to open browser window: ", err)
 			}
 

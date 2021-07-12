@@ -11,8 +11,10 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
@@ -21,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
 
@@ -138,31 +141,57 @@ func (inputField InputField) Finder() *nodewith.Finder {
 }
 
 // Launch launches a local web server to serve inputs testing on different type of input fields.
+// It then opens a Chrome browser window in normal mode to visit the test page.
 func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
+	return LaunchInMode(ctx, cr, tconn, false)
+}
+
+// LaunchInMode launches a local web server to serve inputs testing on different type of input fields.
+// It can be either normal user mode or incognito mode.
+func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, incognitoMode bool) (its *InputsTestServer, err error) {
 	testing.ContextLog(ctx, "Start a local server to test inputs")
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
 		io.WriteString(w, html)
 	}))
+	defer func() {
+		if err != nil {
+			server.Close()
+		}
+	}()
 
-	pc, err := cr.NewConn(ctx, server.URL)
-	if err != nil {
-		server.Close()
-		return nil, errors.Wrap(err, "failed to connect to inputs test server")
+	userMode := "normal"
+	if incognitoMode {
+		userMode = "incognito"
 	}
 
-	if err := pc.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		pc.Close()
-		server.Close()
+	if err = apps.LaunchChromeByShortcut(tconn, incognitoMode)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to launch Chrome browser in %s mode", userMode)
+	}
+
+	var pc *chrome.Conn
+	pc, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find new tab")
+	}
+	defer func() {
+		if err != nil {
+			pc.Close()
+		}
+	}()
+
+	if err = pc.Navigate(ctx, server.URL); err != nil {
+		return nil, errors.Wrapf(err, "failed to navigate to %q", server.URL)
+	}
+
+	if err = webutil.WaitForQuiescence(ctx, pc, 10*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to load test page")
 	}
 
 	ui := uiauto.New(tconn)
 	// Even document is ready, target is not yet in a11y tree.
-	if err := ui.WaitUntilExists(pageRootFinder)(ctx); err != nil {
-		pc.Close()
-		server.Close()
+	if err = ui.WaitUntilExists(pageRootFinder)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to render test page")
 	}
 
