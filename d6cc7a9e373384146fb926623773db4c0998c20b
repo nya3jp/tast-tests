@@ -51,6 +51,24 @@
       "parentUuid": "963aeedf_a86310b5",
       "revId": "d6cc7a9e373384146fb926623773db4c0998c20b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231cfbf4_6e4361e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-12T19:58:37Z",
+      "side": 1,
+      "message": "Jun, changing from 1 min to 2 mins only have limited improvement but we still see a lot of failures in these steps on low end models. I\u0027ve created a new bug (https://issuetracker.google.com/193425635) to track this and will seek further fix to it.",
+      "parentUuid": "86fff90f_6d1b6648",
+      "revId": "d6cc7a9e373384146fb926623773db4c0998c20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
