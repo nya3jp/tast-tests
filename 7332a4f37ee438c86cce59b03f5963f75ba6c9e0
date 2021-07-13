@@ -692,6 +692,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e457f6_72615ff0",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e506c0b_338e7238",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02b9d20e_bc18aa25",
@@ -1294,6 +1312,24 @@
       "side": 1,
       "message": "Should tests call CleanUp or should we depend on cleanup when requesting accounts? I\u0027m leaning towards the latter.",
       "parentUuid": "0df64462_3165fc50",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc2d201_288cafde",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "I\u0027d also say tests don\u0027t need to call CleanUp before releasing an Account as this is done anyway when the Account gets requested again.",
+      "parentUuid": "156b785a_a4462bea",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

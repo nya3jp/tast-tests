@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955b1b8a_37b6a500",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d1294a_0dfc73b2",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae3d073c_df52e4df",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c04d94_dfd086ea",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3d073c_df52e4df",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a9acfdf_becae75f",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-07-12T09:56:42Z",
       "side": 1,
       "message": "PolicySchema",
+      "range": {
+        "startLine": 74,
+        "startChar": 53,
+        "endLine": 74,
+        "endChar": 59
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc70b24_3dfc7d3c",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9acfdf_becae75f",
       "range": {
         "startLine": 74,
         "startChar": 53,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db522d93_8285f50e",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "If I omit self here then I\u0027m getting a key error. I\u0027m passing self to the format function so I don\u0027t need to pass name and link separately (line 86).",
+      "parentUuid": "37a3de88_2ea8130f",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54bc8bca_07ccdf0d",
         "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
         "patchSetId": 3
@@ -117,6 +207,30 @@
       "writtenOn": "2021-07-12T09:56:42Z",
       "side": 1,
       "message": "\u003e  path_str \u003d \u0027, \u0027.join([f\u0027\"{type}\"\u0027 for type in self.types])",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 42
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fba4782_ee143318",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54bc8bca_07ccdf0d",
       "range": {
         "startLine": 127,
         "startChar": 0,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "743c0776_4c7d30f3",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feac7fce_417ba9d6",
+      "range": {
+        "startLine": 135,
+        "startChar": 18,
+        "endLine": 135,
+        "endChar": 19
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d3e76bd_6c0128c7",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-07-12T09:56:42Z",
       "side": 1,
       "message": "As field is not edited, this check can be done outside of the for loop.",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 31
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9d449c_8e867686",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Moved that check to the calling function as it makes more sense there.",
+      "parentUuid": "9d3e76bd_6c0128c7",
       "range": {
         "startLine": 157,
         "startChar": 4,
@@ -190,6 +352,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a170c4af_e69d4c09",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a4a5f3_9ff549e1",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d7cb0b_fef9c71d",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a4a5f3_9ff549e1",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41395a4f_cf4a853c",
@@ -203,6 +401,42 @@
       "writtenOn": "2021-07-12T09:56:42Z",
       "side": 1,
       "message": "Can this line be executed more than once in one function call?\nIf no, this line could be\n\u003e enum_str \u003d f\u0027type {enum[\u0027name\u0027]} int\\n\\n const (\\n\u0027",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fd00ee_5eb326fe",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41395a4f_cf4a853c",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c41813d_2b7887bf",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41395a4f_cf4a853c",
       "revId": "675cb414edea1b1eab28703303d562379fae11b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -224,6 +458,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "475d85af_a6126d4c",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9169ede2_52f5d3aa",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0711fd_8f2dcf7d",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9169ede2_52f5d3aa",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "570ede7d_86045ce7",
@@ -238,6 +508,30 @@
       "side": 1,
       "message": "\u003e \"get\u0027s\" is a possible misspelling of \"gets\".\n\nPlease fix.",
       "parentUuid": "d0c83578_480a5f00",
+      "range": {
+        "startLine": 210,
+        "startChar": 64,
+        "endLine": 210,
+        "endChar": 69
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0f31bf_21b5b2df",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570ede7d_86045ce7",
       "range": {
         "startLine": 210,
         "startChar": 64,
@@ -271,6 +565,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2ac2ce_b059729d",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "The types are needed to generate a setPolicy request. I added it to the PolicySchema class.\n\nThe lower one is obsolete.",
+      "parentUuid": "895b17d8_c77f6c0d",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 25
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e399a4a4_ebd0baf0",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "The upper one is needed in the policy schema, I added it to the classe.\nThe lower one is obsolete.",
+      "parentUuid": "895b17d8_c77f6c0d",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 25
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a3414ad_55746c6b",
@@ -284,6 +626,30 @@
       "writtenOn": "2021-07-12T09:56:42Z",
       "side": 1,
       "message": "Can you try\n\u003e  with open(args.input, \u0027r\u0027) as fh:\n\u003e    policy_schemas \u003d json.load(fh)\nto see if it works?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 39
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5b2e84_2d22d6bf",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3414ad_55746c6b",
       "range": {
         "startLine": 275,
         "startChar": 0,
@@ -317,6 +683,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "630d6077_ba5223d2",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a5b43ca_2d16fb9e",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4db1cdbd_dbd6b904",
@@ -330,6 +720,24 @@
       "writtenOn": "2021-07-12T07:53:39Z",
       "side": 1,
       "message": "These structs don\u0027t need to be in the generated file, move them to a separate one in the same package.",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e7bafc_38eb1fae",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db1cdbd_dbd6b904",
       "revId": "675cb414edea1b1eab28703303d562379fae11b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -351,6 +759,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f9ce68_173e7e0e",
+        "filename": "src/chromiumos/tast/common/tape/policy_schemas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a44bf6_d876128a",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f9ef28a_20a169f5",
@@ -364,6 +790,24 @@
       "writtenOn": "2021-07-12T07:53:39Z",
       "side": 1,
       "message": "I\u0027m not sure if adding the orgunit to the struct is a better option here. It would allow us to use the existing Marshal interface, but it might be more difficult to understand. I\u0027m leaning to keeping the current solution.\n\nWDYT?",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0896a02f_face00a2",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Logically the orgunit belongs to the Account, but we could copy it to the PolicySchema too.\nHowever if for whatever reason multiple Accounts are used you need new PolicySchemas for each Account and must make sure you do not mix them up. Also if the Account changes after creating a PolicySchema, then the PolicySchema would become invalid. So we would create a dependency between the two structs which is not enforced and also not easy to understand.\nNot sure if we would really ever run into this, but still I\u0027d lean more on keeping it as it is to avoid potential problems.",
+      "parentUuid": "2f9ef28a_20a169f5",
       "revId": "675cb414edea1b1eab28703303d562379fae11b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -391,6 +835,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ec14cb_65d41811",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6406d259_a04a1e22",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4331576_5bf213c3",
@@ -404,6 +872,24 @@
       "writtenOn": "2021-07-12T07:53:39Z",
       "side": 1,
       "message": "Also shorten the context here to a reasonable value. Maybe 30 seconds?",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5cc916_689a8914",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4331576_5bf213c3",
       "revId": "675cb414edea1b1eab28703303d562379fae11b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -448,6 +934,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f2432e_1bfbf198",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7d8ca9_26e2cbfd",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd82c48_7a799954",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5161aa7_087ff5a9",
+      "range": {
+        "startLine": 96,
+        "startChar": 15,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab10f295_7f727ac7",
@@ -461,6 +989,24 @@
       "writtenOn": "2021-07-12T07:53:39Z",
       "side": 1,
       "message": "nit: document whether tests are expected to call this.",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5399ad3_883a377a",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-13T13:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab10f295_7f727ac7",
       "revId": "675cb414edea1b1eab28703303d562379fae11b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
