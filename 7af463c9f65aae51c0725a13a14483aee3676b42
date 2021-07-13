@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff203e2d_87e702df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "Hi Tim, sorry for the back and forth. The patch looks good to me with some nit comments and one question. We are almost there. Thank you very much!",
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019ff5b2_e5355d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: This log is not necessary as there is a fatal message after calling installTestApps.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23f2595_5a9e8785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: Fatal msg is usually like \"Failed to do\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72207eb7_4cb71145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: This log is not necessary as there is a fatal message after calling launchTestApp.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e707cac_16022645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: Fatal msg is usually like \"Failed to do\"",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df73bbd_e7eb5cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: This log is not necessary as there is a fatal message after calling shareTextAndVerify.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 37
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb617c93_6776bfc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: Fatal msg is usually like \"Failed to do\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91dccc3a_bfc61b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "At the first patch, the test case failed if this error is not wrong. It seems not now? could we return error here instead of wrap the error msg into shareChan and then handle the error in the main func?",
+      "range": {
+        "startLine": 113,
+        "startChar": 45,
+        "endLine": 113,
+        "endChar": 53
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4581a782_e5629fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: to install",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 44
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b2cb80_2021b38b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: to install",
+      "range": {
+        "startLine": 159,
+        "startChar": 34,
+        "endLine": 159,
+        "endChar": 44
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ae4bfe_a6545d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: to initialize",
+      "range": {
+        "startLine": 176,
+        "startChar": 44,
+        "endLine": 176,
+        "endChar": 56
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "807719b4_d5f6fe9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "nit: failed to match shared title",
+      "range": {
+        "startLine": 211,
+        "startChar": 24,
+        "endLine": 211,
+        "endChar": 50
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a7f75a_66ef950a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T23:54:17Z",
+      "side": 1,
+      "message": "failed to match shared text",
+      "range": {
+        "startLine": 215,
+        "startChar": 24,
+        "endLine": 215,
+        "endChar": 50
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
