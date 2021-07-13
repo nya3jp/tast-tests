@@ -33,6 +33,23 @@
       "message": "Oh, it seems Will is using chromium.org account instead.",
       "revId": "841073c20b31e32ca64ce8f48e44316d555e9d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c993dcd_759a9519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-07-13T23:33:33Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t realize my approval was needed on this CL. LGTM.",
+      "revId": "841073c20b31e32ca64ce8f48e44316d555e9d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
