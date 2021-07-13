@@ -22,6 +22,52 @@
       },
       "revId": "f4ee768d05fc23c8e7e37696b1d10514b27a647c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61109f47_94417cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-13T17:39:03Z",
+      "side": 1,
+      "message": "matching anything at the end is useless",
+      "range": {
+        "startLine": 18,
+        "startChar": 51,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "f4ee768d05fc23c8e7e37696b1d10514b27a647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6807e5_bfa6b44f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-13T17:39:03Z",
+      "side": 1,
+      "message": "if you have .* that would also match the white spaces",
+      "range": {
+        "startLine": 18,
+        "startChar": 35,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "f4ee768d05fc23c8e7e37696b1d10514b27a647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
