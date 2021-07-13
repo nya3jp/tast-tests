@@ -56,6 +56,22 @@ func RecMode() testing.Precondition {
 	return recMode
 }
 
+// Vars returns the vars that are required for using this precondition. Pass to testing.Test.Vars.
+func Vars() []string {
+	return []string{"servo"}
+}
+
+// SoftwareDeps returns the software deps that are required for using this precondition. Pass to testing.Test.SoftwareDeps.
+func SoftwareDeps() []string { return []string{"crossystem", "flashrom"} }
+
+// ServiceDeps returns the service deps that are required for using this precondition. Pass to testing.Test.ServiceDeps.
+func ServiceDeps() []string {
+	return []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"}
+}
+
+// Data returns the data deps that are required for using this precondition. Pass to testing.Test.Data.
+func Data() []string { return []string{firmware.ConfigFile} }
+
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
 	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
