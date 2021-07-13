@@ -104,6 +104,24 @@
       "parentUuid": "2a41372b_4b40908d",
       "revId": "e478951d1060a0d450186153c2d311c2c98d7cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755b119c_b08414ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-13T00:04:01Z",
+      "side": 1,
+      "message": "And think we should use \"local/bundles/cros/main.go\" rather than the \"remote\" version. Think \"local\" is relative to DUT. So \"local\" bundle means code running on DUT. \"remote\" bundle means code running on the controller, which is remote to the DUT.\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/overview.md#Local-tests",
+      "parentUuid": "43a5257c_4487cddb",
+      "revId": "e478951d1060a0d450186153c2d311c2c98d7cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
