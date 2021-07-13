@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/resourced"
 	"chromiumos/tast/testing"
 )
 
@@ -38,95 +38,83 @@ func init() {
 	})
 }
 
-const (
-	dbusResourceManagerInterface = "org.chromium.ResourceManager"
-	dbusResourceManagerPath      = "/org/chromium/ResourceManager"
-	dbusResourceManagerService   = "org.chromium.ResourceManager"
-)
-
-func checkSetGameMode(ctx context.Context) error {
-	obj, err := dbusutil.NewDBusObject(ctx, dbusResourceManagerService, dbusResourceManagerInterface, dbusResourceManagerPath)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to Resource Manager")
-	}
-
+func checkSetGameMode(ctx context.Context, rm *resourced.Client) (resErr error) {
 	// Get the original game mode.
-	var origGameMode uint8
-	if err = obj.Call(ctx, "GetGameMode").Store(&origGameMode); err != nil {
-		return errors.Wrap(err, "failed to call method GetGameMode")
+	origGameMode, err := rm.GameMode(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query game mode state")
 	}
 	testing.ContextLog(ctx, "Original game mode: ", origGameMode)
+
+	defer func() {
+		// Restore game mode.
+		if err = rm.SetGameMode(ctx, origGameMode); err != nil {
+			if resErr == nil {
+				resErr = errors.Wrap(err, "failed to reset game mode state")
+			} else {
+				testing.ContextLog(ctx, "Failed to reset game mode state: ", err)
+			}
+		}
+	}()
 
 	// Set game mode to different value.
 	var newGameMode uint8
 	if origGameMode == 0 {
 		newGameMode = 1
 	}
-	if err = obj.Call(ctx, "SetGameMode", newGameMode).Err; err != nil {
-		return errors.Wrap(err, "failed to call method SetGameMode")
+	if err = rm.SetGameMode(ctx, newGameMode); err != nil {
+		return errors.Wrap(err, "failed to set game mode state")
 	}
 	testing.ContextLog(ctx, "Set game mode: ", newGameMode)
 
 	// Check game mode is set to the new value.
-	var gameMode uint8
-	if err = obj.Call(ctx, "GetGameMode").Store(&gameMode); err != nil {
-		return errors.Wrap(err, "failed to call method GetGameMode")
+	gameMode, err := rm.GameMode(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query game mode state")
 	}
 	if newGameMode != gameMode {
 		return errors.Errorf("set game mode to: %d, but got game mode: %d", newGameMode, gameMode)
 	}
-
-	// Restore game mode.
-	if err = obj.Call(ctx, "SetGameMode", origGameMode).Err; err != nil {
-		return errors.Wrap(err, "failed to call method SetGameMode")
-	}
 	return nil
 }
 
-func checkQueryMemoryStatus(ctx context.Context) error {
-	obj, err := dbusutil.NewDBusObject(ctx, dbusResourceManagerService, dbusResourceManagerInterface, dbusResourceManagerPath)
+func checkQueryMemoryStatus(ctx context.Context, rm *resourced.Client) error {
+	availableKB, err := rm.AvailableMemoryKB(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to connect to Resource Manager")
-	}
-
-	var availableKB uint64
-	if err = obj.Call(ctx, "GetAvailableMemoryKB").Store(&availableKB); err != nil {
-		return errors.Wrap(err, "failed to call method GetAvailableMemoryKB")
+		return errors.Wrap(err, "failed to query available memory")
 	}
 	testing.ContextLog(ctx, "GetAvailableMemoryKB returns: ", availableKB)
 
-	var foregroundAvailableKB uint64
-	if err = obj.Call(ctx, "GetForegroundAvailableMemoryKB").Store(&foregroundAvailableKB); err != nil {
-		return errors.Wrap(err, "failed to call method GetForegroundAvailableMemoryKB")
+	foregroundAvailableKB, err := rm.ForegroundAvailableMemoryKB(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query foreground available memory")
 	}
 	testing.ContextLog(ctx, "GetForegroundAvailableMemoryKB returns: ", foregroundAvailableKB)
 
-	var criticalMarginKB, moderateMarginKB uint64
-	if err = obj.Call(ctx, "GetMemoryMarginsKB").Store(&criticalMarginKB, &moderateMarginKB); err != nil {
-		return errors.Wrap(err, "failed to call method GetMemoryMarginsKB")
+	m, err := rm.MemoryMarginsKB(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query memory margins")
 	}
-	testing.ContextLog(ctx, "GetMemoryMarginsKB returns, critical: ", criticalMarginKB, ", moderate: ", moderateMarginKB)
+	testing.ContextLog(ctx, "GetMemoryMarginsKB returns, critical: ", m.CriticalKB, ", moderate: ", m.ModerateKB)
 
 	return nil
 }
 
-func checkMemoryPressureSignal(ctx context.Context) error {
+func checkMemoryPressureSignal(ctx context.Context, rm *resourced.Client) error {
 	// Check MemoryPressureChrome signal is sent.
-	pressure, _ := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      dbusResourceManagerPath,
-		Interface: dbusResourceManagerInterface,
-		Member:    "MemoryPressureChrome",
-	})
-	defer pressure.Close(ctx)
+	ctxWatcher, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
+	watcher, err := rm.NewChromePressureWatcher(ctxWatcher)
+	if err != nil {
+		return errors.Wrap(err, "failed to create PressureWatcher")
+	}
+	defer watcher.Close(ctx)
 
 	select {
-	case sig := <-pressure.Signals:
-		if len(sig.Body) != 2 {
-			return errors.New("wrong MemoryPressureChrome format")
-		}
-		testing.ContextLogf(ctx, "Got MemoryPressureChrome signal, level: %d, delta: %d", sig.Body[0], sig.Body[1])
-	case <-ctx.Done():
+	case sig := <-watcher.Signals:
+		testing.ContextLogf(ctx, "Got MemoryPressureChrome signal, level: %d, delta: %d", sig.Level, sig.Delta)
+	case <-ctxWatcher.Done():
 		return errors.New("didn't get MemoryPressureChrome signal")
 	}
 
@@ -134,8 +122,13 @@ func checkMemoryPressureSignal(ctx context.Context) error {
 }
 
 func Resourced(ctx context.Context, s *testing.State) {
+	rm, err := resourced.NewClient(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Resource Manager client: ", err)
+	}
+
 	// Baseline checks.
-	if err := checkSetGameMode(ctx); err != nil {
+	if err := checkSetGameMode(ctx, rm); err != nil {
 		s.Fatal("Checking SetGameMode failed: ", err)
 	}
 
@@ -144,13 +137,11 @@ func Resourced(ctx context.Context, s *testing.State) {
 	}
 
 	// Other checks.
-	if err := checkQueryMemoryStatus(ctx); err != nil {
+	if err := checkQueryMemoryStatus(ctx, rm); err != nil {
 		s.Fatal("Querying memory status failed: ", err)
 	}
 
-	ctxSignal, cancel := context.WithTimeout(ctx, 20*time.Second)
-	defer cancel()
-	if err := checkMemoryPressureSignal(ctxSignal); err != nil {
+	if err := checkMemoryPressureSignal(ctx, rm); err != nil {
 		s.Fatal("Checking memory pressure signal failed: ", err)
 	}
 }
