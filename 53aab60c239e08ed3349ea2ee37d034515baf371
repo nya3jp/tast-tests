@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d71611_728704bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-13T14:08:24Z",
+      "side": 1,
+      "message": "PTL",
+      "revId": "53aab60c239e08ed3349ea2ee37d034515baf371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bfa0943_da7893d5",
+        "filename": "android/ArcQuotaProjectIdTest/res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-13T14:08:24Z",
+      "side": 1,
+      "message": "This file exists to have a non-empty res directory.\nOtherwise, build fails complaining about the lack of the resource directory.",
+      "revId": "53aab60c239e08ed3349ea2ee37d034515baf371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
