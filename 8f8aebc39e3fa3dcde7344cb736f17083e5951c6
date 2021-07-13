@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f9e8c4_2364448f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T08:59:40Z",
+      "side": 1,
+      "message": "LGTM\nJust to be sure: enabling this feature should not have any effect on the other tests that are using this fixture, right?",
+      "revId": "8f8aebc39e3fa3dcde7344cb736f17083e5951c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
