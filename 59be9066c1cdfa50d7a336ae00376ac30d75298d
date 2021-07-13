@@ -62,6 +62,30 @@
       },
       "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c6b327_c66ea468",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-07-13T22:00:49Z",
+      "side": 1,
+      "message": "We only support clear_tpm_owner_request for the VM cases(For example: amd64-generic, betty, reven).\nCombining them would get nothing on the VM...\n```\nlocalhost ~ # crossystem clear_tpm_owner_done clear_tpm_owner_request\nlocalhost ~ # echo $?\n1\nlocalhost ~ #\n```",
+      "parentUuid": "b218d356_58621c01",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
