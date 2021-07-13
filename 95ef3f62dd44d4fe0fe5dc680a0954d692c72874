@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2360488a_fd6ae4ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-13T21:27:17Z",
+      "side": 1,
+      "message": "PTAL. This is very similar to what I did to glbench.",
+      "revId": "95ef3f62dd44d4fe0fe5dc680a0954d692c72874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
