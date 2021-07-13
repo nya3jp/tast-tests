@@ -24,7 +24,8 @@ import (
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "gpuWatchHangs",
-		Desc:            "Check if there any gpu related hangs during a test.",
+		Desc:            "Check if there any gpu related hangs during a test",
+		Contacts:        []string{"ddmail@google.com", "chromeos-gfx@google.com"},
 		Impl:            &gpuWatchHangsFixture{},
 		PreTestTimeout:  5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
@@ -32,7 +33,8 @@ func init() {
 
 	testing.AddFixture(&testing.Fixture{
 		Name:            "gpuWatchDog",
-		Desc:            "Check if there any gpu related problems(hangs+crashes) observed during a test.",
+		Desc:            "Check if there any gpu related problems(hangs+crashes) observed during a test",
+		Contacts:        []string{"ddmail@google.com", "chromeos-gfx@google.com"},
 		Parent:          "gpuWatchHangs",
 		Impl:            &gpuWatchDogFixture{},
 		PreTestTimeout:  5 * time.Second,
@@ -40,9 +42,10 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:   "chromeGraphics",
-		Desc:   "Logged into a user session for graphics testing.",
-		Parent: "gpuWatchDog",
+		Name:     "chromeGraphics",
+		Desc:     "Logged into a user session for graphics testing",
+		Contacts: []string{"ddmail@google.com", "chromeos-gfx@google.com"},
+		Parent:   "gpuWatchDog",
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
@@ -52,21 +55,23 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:   "chromeGraphicsLacros",
-		Desc:   "Logged into a user session for graphics testing (lacros).",
-		Parent: "gpuWatchDog",
+		Name:     "chromeGraphicsLacros",
+		Desc:     "Logged into a user session for graphics testing (lacros)",
+		Contacts: []string{"chromeos-gfx@google.com"},
+		Parent:   "gpuWatchDog",
 		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            launcher.LacrosFixtureVars,
+		Vars:            []string{"lacrosDeployedBinary"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:            "graphicsNoChrome",
-		Desc:            "Stop UI before tests, start UI after.",
+		Desc:            "Stop UI before tests, start UI after",
+		Contacts:        []string{"chromeos-gfx@google.com"},
 		Impl:            &graphicsNoChromeFixture{},
 		Parent:          "gpuWatchHangs",
 		SetUpTimeout:    chrome.ResetTimeout,
