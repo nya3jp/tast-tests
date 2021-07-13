@@ -50,6 +50,9 @@ type Context interface {
 
 	// DragToNode returns a function to cause a drag to the specified node.
 	DragToNode(f *nodewith.Finder, duration time.Duration) uiauto.Action
+
+	// Hold returns a function to hold the pointer for the specified duration.
+	Hold(duration time.Duration) uiauto.Action
 }
 
 // MouseContext is a Context with the mouse.
@@ -81,6 +84,11 @@ func (mc *MouseContext) ClickAt(loc coords.Point) uiauto.Action {
 // MenuClick implements Context.MenuClick.
 func (mc *MouseContext) MenuClick(finder *nodewith.Finder) uiauto.Action {
 	return mc.ac.RightClick(finder)
+}
+
+// Hold implements Context.Hold.
+func (mc *MouseContext) Hold(duration time.Duration) uiauto.Action {
+	return nil
 }
 
 // Drag implements Context.Drag.
@@ -177,4 +185,9 @@ func (tc *TouchContext) DragTo(loc coords.Point, duration time.Duration) uiauto.
 // DragToNode implements COntext.DragToNode.
 func (tc *TouchContext) DragToNode(f *nodewith.Finder, duration time.Duration) uiauto.Action {
 	return tc.tc.SwipeToNode(f, duration)
+}
+
+// Hold implements Context.Hold.
+func (tc *TouchContext) Hold(duration time.Duration) uiauto.Action {
+	return tc.tc.Hold(duration)
 }
