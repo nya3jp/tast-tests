@@ -51,6 +51,23 @@
       "parentUuid": "c2aa96c5_ac46894b",
       "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da1b4b2_cfc5bdcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-13T18:06:26Z",
+      "side": 1,
+      "message": "Thanks for fixing the Contact fields.",
+      "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
