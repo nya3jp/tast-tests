@@ -33,6 +33,24 @@
       "message": "Thanks for fixing this! \n\n(I remember seeing this complain when adding the SVC flags\nbut I forgot to follow up 😅)",
       "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91fd535_02b5ca1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-07-13T12:31:15Z",
+      "side": 1,
+      "message": "oka-san, may I ask you to tell me how to fix this?\nThis error seems to be derived from lacros/launcher/fixture.go.\nIn fact, tast-lint complains fixture.go if I run against the file.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/lacros/launcher/fixture.go.",
+      "parentUuid": "c2aa96c5_ac46894b",
+      "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
