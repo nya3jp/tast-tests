@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b36e3a39_98edc476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-13T17:07:01Z",
+      "side": 1,
+      "message": "Yes, it would.",
+      "parentUuid": "dc2deed4_78cdf4be",
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53ab5cdc_fdd21413",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
         "patchSetId": 7
@@ -132,6 +150,24 @@
       "side": 1,
       "message": "Added the change.\nIt is fragile, earlier I was checking for more nodes with their roles and ancestor but It didn\u0027t worked. I just ended up with this.\nIs there anything I can do to make it less fragile?",
       "parentUuid": "dd2128a4_f475be6c",
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1031a6ce_198723b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-13T17:07:01Z",
+      "side": 1,
+      "message": "It\u0027s not really clear to me... I\u0027d have to think about it some more.",
+      "parentUuid": "5ccf93fa_0f3d3360",
       "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
