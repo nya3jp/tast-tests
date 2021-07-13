@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2bc9190c_ceb39d86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-13T23:09:11Z",
+      "side": 1,
+      "message": "LGTM with a comment",
+      "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0dab2a70_8cd7c275",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 1
@@ -36,6 +53,29 @@
         "startChar": 14,
         "endLine": 372,
         "endChar": 21
+      },
+      "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32f226e_510002bc",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-13T23:09:11Z",
+      "side": 1,
+      "message": "Might be worth checking this for an error as well?",
+      "range": {
+        "startLine": 397,
+        "startChar": 2,
+        "endLine": 397,
+        "endChar": 9
       },
       "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
