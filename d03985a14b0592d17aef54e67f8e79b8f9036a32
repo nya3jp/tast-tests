@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fae6c1_955b34d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-13T22:21:25Z",
+      "side": 1,
+      "message": "@Matthew: so I\u0027ve found a few cases in the lab where the TODO is semi-relevant. But I think it\u0027s clearer to filter out particular frame types than to try to imitate the wlan.bssid\u003dxxx filter directly.\n\nLet\u0027s see who gwsq picks to review though.",
+      "revId": "d03985a14b0592d17aef54e67f8e79b8f9036a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
