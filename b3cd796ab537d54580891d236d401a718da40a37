@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddcf9f7e_f868b96d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-13T19:45:44Z",
+      "side": 1,
+      "message": "edcourtney@ tast lint prevent me to use the predefined slice. I guess you need to define LacrosFixtureVars as a string and use []string{LacrosFixtureVars} instead.\n\nPSA here https://groups.google.com/a/chromium.org/g/tast-users/c/0KxrsZk4m44/m/tiUiRYwrBwAJ?utm_medium\u003demail\u0026utm_source\u003dfooter",
+      "revId": "b3cd796ab537d54580891d236d401a718da40a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
