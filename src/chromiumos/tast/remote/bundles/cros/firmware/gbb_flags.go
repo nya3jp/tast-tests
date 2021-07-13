@@ -31,7 +31,7 @@ func init() {
 }
 
 func GBBFlags(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", "")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", "", "", "", "", "")
 	defer func() {
 		if err := h.Close(ctx); err != nil {
 			s.Log("Closing helper: ", err)

@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/remote/firmware/rpm"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/shutil"
@@ -107,38 +108,44 @@ type Helper struct {
 
 	// ServoProxy wraps the Servo object, and communicates with the servod instance.
 	ServoProxy *servo.Proxy
+
+	// RPM is a remote power management client. Only valid in the test lab.
+	RPM *rpm.RPM
+
+	// dutHostname is the real name of the dut, even if tast is connected to a forwarded port.
+	dutHostname string
+
+	// powerunitHostname, powerunitOutlet, hydraHostname identify the managed power outlet for the DUT.
+	powerunitHostname, powerunitOutlet, hydraHostname string
 }
 
 // NewHelper creates a new Helper object with info from testing.State.
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
-func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort string) *Helper {
+func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname string) *Helper {
 	return &Helper{
-		cfgFilepath:   cfgFilepath,
-		DUT:           d,
-		Reporter:      reporters.New(d),
-		rpcHint:       rpcHint,
-		servoHostPort: servoHostPort,
+		cfgFilepath:       cfgFilepath,
+		DUT:               d,
+		Reporter:          reporters.New(d),
+		rpcHint:           rpcHint,
+		servoHostPort:     servoHostPort,
+		dutHostname:       dutHostname,
+		powerunitHostname: powerunitHostname,
+		powerunitOutlet:   powerunitOutlet,
+		hydraHostname:     hydraHostname,
 	}
 }
 
 // Close shuts down any firmware objects associated with the Helper.
 // Generally, tests should defer Close() immediately after initializing a Helper.
 func (h *Helper) Close(ctx context.Context) error {
-	var firstErr error
-	defer func() {
-		h.ServoProxy = nil
-		h.Servo = nil
-	}()
-	if h.ServoProxy != nil {
-		h.ServoProxy.Close(ctx)
-	}
+	var allErrors []error
 	if h.hostFilesTmpDir != "" {
 		if err := os.RemoveAll(h.hostFilesTmpDir); err != nil {
-			firstErr = errors.Wrap(err, "removing server's copy of Tast host files")
+			allErrors = append(allErrors, errors.Wrap(err, "removing server's copy of Tast host files"))
 		}
 		h.hostFilesTmpDir = ""
 	}
-	if err := h.CloseRPCConnection(ctx); err != nil && firstErr == nil {
+	if err := h.CloseRPCConnection(ctx); err != nil {
 		isIgnorable := false
 		for rootErr := err; rootErr != nil && !isIgnorable; rootErr = errors.Unwrap(rootErr) {
 			// The gRPC Canceled error just means the connection is already closed.
@@ -147,10 +154,19 @@ func (h *Helper) Close(ctx context.Context) error {
 			}
 		}
 		if !isIgnorable {
-			firstErr = errors.Wrap(err, "closing rpc connection")
+			allErrors = append(allErrors, errors.Wrap(err, "closing rpc connection"))
 		}
 	}
-	return firstErr
+	if err := h.CloseServo(ctx); err != nil {
+		allErrors = append(allErrors, errors.Wrap(err, "closing servo"))
+	}
+	if len(allErrors) > 0 {
+		for err := range allErrors[1:] {
+			testing.ContextLog(ctx, "Suppressed error: ", err)
+		}
+		return allErrors[0]
+	}
+	return nil
 }
 
 // EnsureDUTBooted checks the power state, and attempts to boot the DUT if it is off.
@@ -321,14 +337,22 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 }
 
 // CloseServo closes the connection to the servo, use RequireServo to open it again.
-func (h *Helper) CloseServo(ctx context.Context) {
+func (h *Helper) CloseServo(ctx context.Context) error {
 	defer func() {
 		h.ServoProxy = nil
 		h.Servo = nil
+		h.RPM = nil
 	}()
+	var err error
+	if h.RPM != nil {
+		if err = h.RPM.Close(ctx); err != nil {
+			err = errors.Wrap(err, "failed to close rpm client")
+		}
+	}
 	if h.ServoProxy != nil {
 		h.ServoProxy.Close(ctx)
 	}
+	return err
 }
 
 const (
@@ -551,4 +575,71 @@ func (h *Helper) WaitConnect(ctx context.Context) error {
 			return errors.Wrapf(err, "context error = %v", ctx.Err())
 		}
 	}
+}
+
+// RequireRPM creates the RPM client in h.RPM.
+func (h *Helper) RequireRPM(ctx context.Context) error {
+	if h.RPM != nil {
+		return nil
+	}
+	if err := h.RequireServo(ctx); err != nil {
+		return err
+	}
+	var err error
+	if h.ServoProxy.Proxied() {
+		h.RPM, err = rpm.NewLabRPM(ctx, h.ServoProxy, h.dutHostname, h.powerunitHostname, h.powerunitOutlet, h.hydraHostname)
+	} else {
+		h.RPM, err = rpm.NewLabRPM(ctx, nil, h.dutHostname, h.powerunitHostname, h.powerunitOutlet, h.hydraHostname)
+	}
+	if err != nil {
+		return errors.Wrap(err, "new rpm client")
+	}
+	return nil
+}
+
+// SetDUTPower turns the DUT's power on or off. Uses servo v4 pd role if possible, and falls back to RPM.
+// To use RPM the command line vars `powerunitHostname` and `powerunitOutlet` must be set.
+// `dutHostname` can be used to override the DUT's hostname, if ssh and rpm have different names.
+// For plugs attached to hyrda, also set var `hydraHostname`.
+func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
+	// Try servo SetPDRole (servo v4 type C). The servo is slightly evil though, and will report that it has this control even for Type-A.
+	connectionType := ""
+	hasControl, err := h.Servo.HasControl(ctx, string(servo.PDRole))
+	if err != nil {
+		return errors.Wrap(err, "checking for control")
+	}
+	if hasControl {
+		connectionType, err = h.Servo.GetString(ctx, "root.dut_connection_type")
+		if err != nil {
+			return errors.Wrap(err, "getting connection type")
+		}
+	}
+	if connectionType == "type-c" {
+		role := servo.PDRoleSnk
+		if powerOn {
+			role = servo.PDRoleSrc
+		}
+		if err := h.Servo.SetPDRole(ctx, role); err != nil {
+			return errors.Wrap(err, "set pd role")
+		}
+		testing.ContextLogf(ctx, "SetPDRole: %q", role)
+		return nil
+	}
+	// Try rpm client
+	if h.powerunitHostname != "" {
+		if err := h.RequireRPM(ctx); err != nil {
+			return err
+		}
+		powerState := rpm.Off
+		if powerOn {
+			powerState = rpm.On
+		}
+		if ok, err := h.RPM.SetPower(ctx, powerState); err != nil {
+			return errors.Wrap(err, "set power via rpm")
+		} else if !ok {
+			return errors.Errorf("rpm client did not set power state to %s", powerState)
+		}
+		return nil
+	}
+	return errors.New("servo does not support pd role and no rpm vars provided")
 }
