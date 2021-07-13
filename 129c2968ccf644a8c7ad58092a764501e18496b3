@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f575636_e4d56c0f",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T15:28:01Z",
+      "side": 0,
+      "message": "Removing ARC startup from policy tests that don\u0027t need it seems to break WaitAndroidInit on some devices:\n\n[Fixture failure] chromePolicyLoggedIn: Failed waiting for Android init: init/crosvm process did not start up: context deadline exceeded; last error follows: didn\u0027t find init process\n\nIs there some condition missing here?",
+      "revId": "129c2968ccf644a8c7ad58092a764501e18496b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
