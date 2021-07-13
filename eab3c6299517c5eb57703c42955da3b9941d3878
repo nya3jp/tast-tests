@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f68bafcd_b035b7c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-13T00:36:42Z",
+      "side": 1,
+      "message": "Thank you for replies!!!\n\nNo updates for CL. \nJust reply for some confusion first. 😊",
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc2b0e37_4744ce68",
@@ -72,6 +89,30 @@
       "writtenOn": "2021-07-09T23:30:10Z",
       "side": 1,
       "message": "I don\u0027t think a change is needed here. You can modify the returned policy blob afterwards.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "465757f1_ce7e7890",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-13T00:36:42Z",
+      "side": 1,
+      "message": "NewPolicyBlob() is used in policyutil[1] and fakedms fixture[2].\n\nIt has at least 2 benefits to change here:\n1 We could use policyutil.ServeAndVerify() for child account with no change for policyutil[1]. Otherwise, we need to be very careful when using policyutil. For example, ServeAndVerify(), ResetChrome() or ServeAndRefresh() should not be used directly. The only thing work is ServeBlobAndRefresh(). For ResetChrome(), We may need a work around. When people write child account policy test, they don\u0027t need to learn which function in policyutil works, and they could just follow other policy tests in tast.\n\n2 Keep a global policyUser account so that no need to updates the return of NewPolicyBlob() every time. In the fakedms fixture[2], we might not able to pass testing.FixtState to Reset() so that we might need to find other way to retrieve user account and then update the returned of NewPolicyBlob(). \n\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/policyutil/policyutil.go?l\u003d33\u0026rcl\u003dae0a459f8cb291bfe36ef3fce44573d90ba50b27\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/fakedms.go?l\u003d109\u0026rcl\u003d03b1d8d64180a8e6f5c073c683cd3ba070adf1f8",
+      "parentUuid": "d3813506_9e7fe62d",
       "range": {
         "startLine": 83,
         "startChar": 2,
@@ -574,6 +615,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ccaf5cf_f89a22b7",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-13T00:36:42Z",
+      "side": 1,
+      "message": "We could only call s.RequiredVar() in SetUp(). If no Vars was set (like fakeDMSEnrolled or fakeDMS), the program will be panic if calling s.RequiredVar() in SetUp() directly. \n\nI didn\u0027t find any ways to differentiate fixtures in SetUp(). If we don\u0027t use callback, we might need 2 variables in fakeDMSFixture. One records the policyUserVar(like \"unicorn.ChildUser\"), which will be used to called s.RequiredVar(policyUserVar) in SetUp(). The other records policyUser(\"xxxx@gmail.com\"), as you suggested above, used in Reset(). Also, we may need to do some if-else in SetUp() to differentiate whether it has vars or not.\n\nBy using a call back here, we don\u0027t need to modify SetUp() for the policyUser when adding new fixture. It\u0027s more general.",
+      "parentUuid": "3cf555c3_b8df11d8",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d787b5b0_d3d29d93",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
         "patchSetId": 10
@@ -585,6 +650,30 @@
       "writtenOn": "2021-07-09T23:30:10Z",
       "side": 1,
       "message": "Instead of doing this, why not store the policy blob in a variable like\n\npolicyBlob :\u003d fakedms.NewPolicyBlob()\n\nAnd then modify the policyBlob.PolicyUser? This userCallBack is not very readable and it\u0027s very unclear that the purpose is to modify the call to NewPolicyBlob() below.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7adb16e_376f1d55",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-13T00:36:42Z",
+      "side": 1,
+      "message": "The purpose of userCallBack is to set the policyUser for global. fakedms.NewPolicyBlob() is also used in policyutil. I just want to make policyutil simple to used with less change.\n \nPeople used callback in fixture before, for example chrome.OptionsCallback[1]. I think we could use here if it\u0027s needed.\n\n[1]http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go?l\u003d141\u0026rcl\u003d5d70f1c7b86633f10058f85fd378e0fc68fbd34c",
+      "parentUuid": "d787b5b0_d3d29d93",
       "range": {
         "startLine": 111,
         "startChar": 1,
