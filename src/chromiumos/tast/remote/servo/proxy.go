@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/rpm"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -26,10 +27,11 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 // Proxy wraps a Servo object and forwards connections to the servod instance
 // over SSH if needed.
 type Proxy struct {
-	svo  *Servo
-	hst  *ssh.Conn      // nil if servod is running locally
-	fwd  *ssh.Forwarder // nil if servod is running locally
-	port int
+	svo    *Servo
+	hst    *ssh.Conn      // nil if servod is running locally
+	fwd    *ssh.Forwarder // nil if servod is running locally
+	RPMFwd *ssh.Forwarder
+	port   int
 }
 
 func splitHostPort(servoHostPort string) (string, int, int, error) {
@@ -151,6 +153,11 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 		if err != nil {
 			return nil, err
 		}
+		pxy.RPMFwd, err = pxy.hst.NewForwarder("localhost:0", fmt.Sprintf("%s:%d", rpm.DefaultRPMServer, rpm.DefaultRPMPort),
+			func(err error) { testing.ContextLog(ctx, "Got rpm forwarding error: ", err) })
+		if err != nil {
+			return nil, err
+		}
 		var portstr string
 		if host, portstr, err = net.SplitHostPort(pxy.fwd.ListenAddr().String()); err != nil {
 			return nil, err
@@ -188,6 +195,7 @@ func logServoStatus(ctx context.Context, hst *ssh.Conn, port int) {
 
 // Close closes the proxy's SSH connection if present.
 func (p *Proxy) Close(ctx context.Context) {
+	testing.ContextLog(ctx, "Closing Servo Proxy")
 	if p.svo != nil {
 		p.svo.Close(ctx)
 		p.svo = nil
@@ -195,6 +203,10 @@ func (p *Proxy) Close(ctx context.Context) {
 	if p.fwd != nil {
 		p.fwd.Close()
 		p.fwd = nil
+	}
+	if p.RPMFwd != nil {
+		p.RPMFwd.Close()
+		p.RPMFwd = nil
 	}
 	if p.hst != nil {
 		p.hst.Close(ctx)
