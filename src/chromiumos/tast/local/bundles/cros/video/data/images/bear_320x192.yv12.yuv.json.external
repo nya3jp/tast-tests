@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/images/bear_320x192_20210615.yv12.yuv.json",
+  "size": 112,
+  "sha256sum": "09346a0987261cf05de7a18d33e80b40986fc26ffc8e69013021399a40e85a78"
+}
