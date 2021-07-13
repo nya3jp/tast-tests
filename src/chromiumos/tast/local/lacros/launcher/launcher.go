@@ -196,7 +196,11 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 	// LaunchLacrosChrome don't interfere with each other.
 	userDataDir, err := ioutil.TempDir(f.LacrosPath, "")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create temp dir")
+		// Fall back to create it under the default user data dir in case Lacros in the read-only partition is used.
+		userDataDir = LacrosUserDataDir
+		if err = os.MkdirAll(LacrosUserDataDir, 0777); err != nil {
+			return nil, errors.Wrap(err, "failed to set up a user data dir")
+		}
 	}
 
 	l := &LacrosChrome{lacrosPath: f.LacrosPath, userDataDir: userDataDir}
@@ -247,7 +251,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		return nil, err
 	}
 
-	debuggingPortPath := l.userDataDir + "/DevToolsActivePort"
+	debuggingPortPath := filepath.Join(l.userDataDir, "DevToolsActivePort")
 	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
 		l.Close(ctx)
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
