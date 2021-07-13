@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bf909e_50a3fe9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T07:17:21Z",
+      "side": 1,
+      "message": "Hi Dean and Hsin-chen,\n\nThis is a wificell.TestFixture refactor CL requesting for comments. (I add you as reviewer because you touched the wificell infra quite a lot.)\n\nPlease take a look when you have some time and let me know what you think.\n\nThanks!",
+      "revId": "7e430bda3d644221f89a8c5050a6061fe52d9de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
