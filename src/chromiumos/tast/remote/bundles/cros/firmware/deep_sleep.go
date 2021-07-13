@@ -38,8 +38,6 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	const requiredBatteryLife = 100 * 24 * time.Hour
 	// hibernateDelay is the time after the EC hibernate command where it still writes output.
 	const hibernateDelay = 1 * time.Second
-	// pdRoleDelay is the time from setting the PD role until the battery can see that the charger is attached or detached.
-	const pdRoleDelay = 2 * time.Second
 	// g3PollOptions is the time to wait for the DUT to reach G3 after power off.
 	g3PollOptions := testing.PollOptions{
 		Timeout:  30 * time.Second,
@@ -47,12 +45,12 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	}
 	// postWakePollOptions is the time to wait for the battery after waking up from hibernate.
 	postWakePollOptions := testing.PollOptions{
-		Timeout:  5 * time.Second,
+		Timeout:  20 * time.Second,
 		Interval: 250 * time.Millisecond,
 	}
 	// getChargerPollOptions is the time to retry the GetChargerAttached command. Unexpected EC uart logging can make it fail.
 	getChargerPollOptions := testing.PollOptions{
-		Timeout:  2 * time.Second,
+		Timeout:  10 * time.Second,
 		Interval: 250 * time.Millisecond,
 	}
 
@@ -80,23 +78,15 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		s.Fatal("PreferDebugHeader: ", err)
 	}
 
-	hasPDRole, err := h.Servo.HasControl(ctx, string(servo.PDRole))
-	if err != nil {
-		s.Fatal("Could not get pd role: ", err)
-	}
-
-	if hasPDRole {
-		s.Log("Stopping power supply from servo")
-		if err := h.Servo.SetPDRole(ctx, servo.PDRoleSnk); err != nil {
-			s.Fatal("Failed to set servo role: ", err)
-		}
-		testing.Sleep(ctx, pdRoleDelay)
+	s.Log("Stopping power supply")
+	if err := h.SetDUTPower(ctx, false); err != nil {
+		s.Fatal("Failed to remove charger: ", err)
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if attached, err := h.Servo.GetChargerAttached(ctx); err != nil {
 			return err
 		} else if attached {
-			return testing.PollBreak(errors.New("charger is still attached - use Servo V4"))
+			return errors.New("charger is still attached - use Servo V4 Type-C or supply RPM vars")
 		}
 		return nil
 	}, &getChargerPollOptions); err != nil {
