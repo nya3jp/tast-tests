@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc2deed4_78cdf4be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-13T10:45:49Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any privacy screen hardware dependency, would this involve adding a new hardware dependency like mentioned here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#adding-new-hardware-conditions",
+      "parentUuid": "07dc6b6e_0d6d59f9",
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53ab5cdc_fdd21413",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
         "patchSetId": 7
@@ -49,6 +67,30 @@
       "writtenOn": "2021-07-12T17:12:25Z",
       "side": 1,
       "message": "This can be reduced to 1 test as they are the same.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "727efeba_d87eb42e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-13T10:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ab5cdc_fdd21413",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -76,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccf93fa_0f3d3360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-13T10:45:49Z",
+      "side": 1,
+      "message": "Added the change.\nIt is fragile, earlier I was checking for more nodes with their roles and ancestor but It didn\u0027t worked. I just ended up with this.\nIs there anything I can do to make it less fragile?",
+      "parentUuid": "dd2128a4_f475be6c",
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "146ba117_1b90bdc8",
@@ -89,6 +149,30 @@
       "writtenOn": "2021-07-12T17:12:25Z",
       "side": 1,
       "message": "\u003c\u003d 1 ?",
+      "range": {
+        "startLine": 197,
+        "startChar": 21,
+        "endLine": 197,
+        "endChar": 23
+      },
+      "revId": "4fe71d30a452e349b195f627f8d8e215ac133b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9d58d3_57fc360d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-13T10:45:49Z",
+      "side": 1,
+      "message": "After making sure of edge cases in lot of CP problems and then this was stupid. Corrected.",
+      "parentUuid": "146ba117_1b90bdc8",
       "range": {
         "startLine": 197,
         "startChar": 21,
