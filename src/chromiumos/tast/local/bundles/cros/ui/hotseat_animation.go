@@ -311,7 +311,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		// Swipe the hotseat up from the hidden state to the extended state.
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+		if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
 			return err
 		}
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfExtended); err != nil {

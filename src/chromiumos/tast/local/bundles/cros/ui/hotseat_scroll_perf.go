@@ -236,7 +236,7 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 		}
 
 		// Swipe up the hotseat.
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+		if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
 			return cleanupAll, errors.Wrap(err, "failed to test the in-app shelf")
 		}
 	} else if !isInTabletMode && isLauncherVisible {

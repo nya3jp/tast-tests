@@ -65,7 +65,7 @@ func HotseatSmoke(ctx context.Context, s *testing.State) {
 		}
 		defer tc.Close()
 
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+		if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter(), true); err != nil {
 			s.Fatal("Failed to swipe up the hotseat: ", err)
 		}
 	}

@@ -121,7 +121,7 @@ func DefaultSearchProviderEnabled(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Could not get new info for the address bar: ", err)
 			}
-			location := nodeInfo.Value;
+			location := nodeInfo.Value
 
 			defaultSearchEngineUsed := strings.Contains(location, defaultSearchEngine)
 			if param.enabled != defaultSearchEngineUsed {
