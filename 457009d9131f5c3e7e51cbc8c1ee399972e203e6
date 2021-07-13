@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3d96c9_1c7ee153",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415460
+      },
+      "writtenOn": "2021-07-13T18:23:34Z",
+      "side": 1,
+      "message": "Hi Yichen and Xiyuan,\nPlease review the following change.\n\nThanks.",
+      "revId": "457009d9131f5c3e7e51cbc8c1ee399972e203e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
