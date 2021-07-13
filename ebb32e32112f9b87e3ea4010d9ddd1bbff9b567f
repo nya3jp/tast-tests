@@ -16,6 +16,98 @@
       "message": "Thanks, Judy!",
       "revId": "ebb32e32112f9b87e3ea4010d9ddd1bbff9b567f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4dccf1b_2bf04513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T04:03:58Z",
+      "side": 1,
+      "message": "It is usually not recommended to pass the testing state around. Instead, return an error where fails.",
+      "range": {
+        "startLine": 98,
+        "startChar": 45,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "ebb32e32112f9b87e3ea4010d9ddd1bbff9b567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072ff6c5_b0e17821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T04:03:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 131,
+        "startChar": 42,
+        "endLine": 131,
+        "endChar": 58
+      },
+      "revId": "ebb32e32112f9b87e3ea4010d9ddd1bbff9b567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f5f155_f6089878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T04:03:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 155,
+        "startChar": 40,
+        "endLine": 155,
+        "endChar": 56
+      },
+      "revId": "ebb32e32112f9b87e3ea4010d9ddd1bbff9b567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92e70bd_2b6d4b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-13T04:03:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 176,
+        "startChar": 45,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "ebb32e32112f9b87e3ea4010d9ddd1bbff9b567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
