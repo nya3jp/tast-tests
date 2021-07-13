@@ -39,11 +39,11 @@ import (
 // func init() {
 //	testing.AddTest(&testing.Test{
 //		...
-//              Data:         []string{firmware.ConfigFile},
-//              Pre:          pre.NormalMode(),
-//              ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-//              SoftwareDeps: []string{"crossystem", "flashrom"},
-//              Vars:         []string{"servo"},
+//              Data:         pre.Data,
+//              Pre:          pre.NormalMode,
+//              ServiceDeps:  pre.ServiceDeps,
+//              SoftwareDeps: pre.SoftwareDeps,
+//              Vars:         pre.Vars,
 //	})
 // }
 //
