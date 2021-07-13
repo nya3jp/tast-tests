@@ -19,8 +19,8 @@ const (
 	deviceInfoPattern = `.*PS175:
 .*Device ID:          [0-9a-f]+
 .*Current version:    \d+\.\d+
-.*Vendor:             Parade \(I2C:1AF8\)
-.*GUID:               f8887c5d-6236-50cd-bbc4-b188a4a3b198 \? FLASHROM-LSPCON-I2C-SPI\\VEN_1AF8&DEV_0175
+.*Vendor:             Parade Technologies \(PCI:0x1AF8, OUI:001CF8\)
+.*GUIDs:              c46df45b-16f2-5eb2-be8d-66f5af40cca8 ? PARADE-LSPCON\NAME_1AF80175:00
 `
 )
 
