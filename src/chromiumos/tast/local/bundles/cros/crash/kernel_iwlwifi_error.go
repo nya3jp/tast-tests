@@ -37,7 +37,7 @@ func init() {
 		Func:         KernelIwlwifiError,
 		Desc:         "Verify kernel iwlwifi errors are logged as expected",
 		Contacts:     []string{"arowa@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
 		// If the test is skipping when it should run or vice versa, check the hwdep
