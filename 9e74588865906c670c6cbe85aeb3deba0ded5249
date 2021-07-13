@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef14ac8_5e569adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-13T17:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "838255f4_f4b4d417",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "9e74588865906c670c6cbe85aeb3deba0ded5249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961061ef_d6d29cc9",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Here you want to use s.Fatal instead of s.Fatalf which expect formatting",
       "parentUuid": "961061ef_d6d29cc9",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "9e74588865906c670c6cbe85aeb3deba0ded5249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c326a71e_bec8b23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-13T17:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2c7186c_5a926187",
       "range": {
         "startLine": 58,
         "startChar": 1,
