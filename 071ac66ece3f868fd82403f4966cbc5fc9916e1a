@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5772d7d_e239ba0b",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-13T00:37:16Z",
+      "side": 1,
+      "message": "You probably need to either:\n- Explain via comment what \"tqc\" stands for in the name tqc_helper.go\n\u003cor\u003e\n- Rename the file to something which doesn\u0027t use a non-standard acronym.",
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00c1edb3_6818e59c",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 8
