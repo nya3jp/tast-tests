@@ -58,6 +58,29 @@ func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
 		return errors.Wrapf(err, "failed to fire clear_tpm_owner_request, output: %q", string(rawOutput))
 	}
 
+	// Check we have effective value of crossystem.
+	rawOutput, err := tc.cmdRunner.RunWithCombinedOutput(ctx, "crossystem", "clear_tpm_owner_done")
+	output := string(rawOutput)
+	if err != nil {
+		// clear_tpm_owner_done is meaningless on VM.
+		// We should log the error message instead of failing the test.
+		testing.ContextLogf(ctx, "Failed to query clear_tpm_owner_done, output: %q, %v", output, err)
+	}
+	if output != "0" {
+		// clear_tpm_owner_done is meaningless on VM.
+		// We should log the error message instead of failing the test.
+		testing.ContextLogf(ctx, "clear_tpm_owner_done = %q; want 0", output)
+	}
+
+	rawOutput, err = tc.cmdRunner.RunWithCombinedOutput(ctx, "crossystem", "clear_tpm_owner_request")
+	output = string(rawOutput)
+	if err != nil {
+		return errors.Wrapf(err, "failed to query clear_tpm_owner_request, output: %q", output)
+	}
+	if output != "1" {
+		return errors.Wrapf(err, "clear_tpm_owner_request = %q; want 1", output)
+	}
+
 	return nil
 }
 
