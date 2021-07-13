@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "271eb767_1127c8d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-13T15:15:57Z",
+      "side": 1,
+      "message": "Sorry for taking some time to get back on this. After looking a bit on this, I think it is expected to match by \"name\". Almost all tests actually also match by name and role. Currently, the library also does not have match by ID. (It is accessible through HTMLAttributes though)\n\nFor this test, the elements actually have identifiable ID. However, for this particular case, the element is something like:\n```\n\u003cid\u003dIDENTIFIABLE_ID\u003e\n  ...\n  \u003cid\u003dbutton\u003e...\u003c/\u003e\n  ...\n\u003c/\u003e\n```\nThe \"id\u003dbutton\" part overrides the parent ID in the automation. I assume that it is not correct to update the id of this for the test.\n\nI wonder what would be a good alternative for this? Would it be okay to match by name? Thanks!",
+      "parentUuid": "0ce83052_622e0a42",
+      "range": {
+        "startLine": 89,
+        "startChar": 65,
+        "endLine": 89,
+        "endChar": 81
+      },
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24e61647_78830b98",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
         "patchSetId": 4
