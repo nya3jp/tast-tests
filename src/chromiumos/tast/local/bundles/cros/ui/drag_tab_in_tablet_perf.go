@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
@@ -74,6 +75,13 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 
+	var pc pointer.Context
+	pc, err = pointer.NewTouch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to set up the touch context: ", err)
+	}
+	defer pc.Close()
+
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
@@ -87,12 +95,14 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the tab strip button")
 	}
 
-	tab := nodewith.Role(role.Tab).First()
+	firstTab := nodewith.Role(role.Tab).First()
+	firstTabLocation, _ := ac.Location(ctx, firstTab)
 	tabList := nodewith.Role(role.TabList).First()
+	tabListLocation, _ := ac.Location(ctx, tabList)
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := uiauto.Combine("drag and move a tab",
+		if err := uiauto.Combine("mouse drag and move a tab",
 			// Drag the first tab in the tab strip.
-			ac.MouseMoveTo(tab, 0),
+			ac.MouseMoveTo(firstTab, 0),
 			// Drag in tablet mode starts with a long press.
 			mouse.Press(tconn, mouse.LeftButton),
 			ac.Sleep(time.Second),
@@ -106,8 +116,18 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 			// Sleep to ensure that the next run performs correctly.
 			ac.Sleep(time.Second),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to drag the tab")
+			return errors.Wrap(err, "failed to mouse drag the tab")
 		}
+
+		if err := uiauto.Combine("touch drag and move a tab",
+			// Drag the first tab in the tab strip to the location of the second tab.
+			pc.Drag(firstTabLocation.CenterPoint(), pc.Hold(time.Second), pc.DragTo(tabListLocation.CenterPoint(), 3*time.Second)),
+			// Sleep to ensure that the next run performs correctly.
+			ac.Sleep(time.Second),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to touch drag the tab")
+		}
+
 		return nil
 	},
 		"Ash.TabDrag.PresentationTime.TabletMode",
