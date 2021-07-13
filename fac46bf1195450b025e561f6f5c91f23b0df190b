@@ -22,6 +22,30 @@
       },
       "revId": "fac46bf1195450b025e561f6f5c91f23b0df190b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71446b81_c5a3fd4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T08:02:31Z",
+      "side": 1,
+      "message": "Done, and updated the corresponding comment.",
+      "parentUuid": "10b6d2aa_f0e47022",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 45
+      },
+      "revId": "fac46bf1195450b025e561f6f5c91f23b0df190b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
