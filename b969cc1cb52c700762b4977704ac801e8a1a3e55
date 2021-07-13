@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c688267c_0f3bbd8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-13T07:46:14Z",
+      "side": 1,
+      "message": "I did this after seeing other packages doing similarly :)\n\nAs we have multiple Perfetto tests, we will refactor and put shared utilities in this package.",
+      "parentUuid": "0811a9be_88337520",
+      "revId": "b969cc1cb52c700762b4977704ac801e8a1a3e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0797218b_3550a18c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-12T18:58:37Z",
       "side": 1,
       "message": "Can you add comment here as well explaining why \u0027triedToStopTracing\u0027 is needed?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "b969cc1cb52c700762b4977704ac801e8a1a3e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a60878_e0fd9ea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-13T07:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0797218b_3550a18c",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a89e0a_d0125d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-13T07:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56bc72c3_b28529d2",
+      "range": {
+        "startLine": 159,
+        "startChar": 10,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "b969cc1cb52c700762b4977704ac801e8a1a3e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26e658bc_5fac2ab3",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-07-12T18:58:37Z",
       "side": 1,
       "message": "Add some comment explaining why tracingStarted is needed.",
+      "revId": "b969cc1cb52c700762b4977704ac801e8a1a3e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f801adb_9236f317",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-13T07:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e658bc_5fac2ab3",
       "revId": "b969cc1cb52c700762b4977704ac801e8a1a3e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
