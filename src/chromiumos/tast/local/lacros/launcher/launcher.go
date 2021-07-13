@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -196,7 +197,15 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 	// LaunchLacrosChrome don't interfere with each other.
 	userDataDir, err := ioutil.TempDir(f.LacrosPath, "")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create temp dir")
+		// Fall back to create it under /tmp in case rootfs-lacros is used.
+		if userDataDir, err = ioutil.TempDir("/tmp", ""); err != nil {
+			return nil, errors.Wrap(err, "failed to set up a user data dir")
+		}
+	}
+
+	// Set user to chronos, since we run lacros as chronos.
+	if err := os.Chown(userDataDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+		return nil, errors.Wrap(err, "failed to chown user data dir")
 	}
 
 	l := &LacrosChrome{lacrosPath: f.LacrosPath, userDataDir: userDataDir}
@@ -247,7 +256,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		return nil, err
 	}
 
-	debuggingPortPath := l.userDataDir + "/DevToolsActivePort"
+	debuggingPortPath := filepath.Join(l.userDataDir, "DevToolsActivePort")
 	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
 		l.Close(ctx)
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
