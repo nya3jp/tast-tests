@@ -195,6 +195,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ec837c_1d1600e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T08:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5b0425_708af983",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d545954_da479a24",
@@ -291,6 +309,24 @@
       "side": 1,
       "message": "SGTM renaming deconfigAP to deconfigExistingAP.",
       "parentUuid": "bc621917_631c972c",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c17557_dd01b69d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T08:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ae2f82_63ee72bf",
       "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
