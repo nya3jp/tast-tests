@@ -312,7 +312,7 @@ func (t *TabletActionHandler) SwitchToAppWindowByName(appName, targetName string
 // If menuItemFinder is nil, which is used when there is only one window for the app,
 // it will just tap the app icon to do the switch.
 func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
-	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc); err != nil {
+	if err := ash.SwipeHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc, true); err != nil {
 		return errors.Wrap(err, "failed to show hotseat")
 	}
 

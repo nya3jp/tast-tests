@@ -169,7 +169,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				// swipe-up quickly to reveal the hotseat, and then tap the app icon
 				// for the next active window. In case there are multiple windows in
 				// an app, it will show up a pop-up, so tap on the menu item.
-				if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+				if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
 					return errors.Wrap(err, "failed to show the hotseat")
 				}
 

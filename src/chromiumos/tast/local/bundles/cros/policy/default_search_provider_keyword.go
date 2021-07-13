@@ -137,7 +137,7 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Could not get new info for the address bar: ", err)
 			}
-			location := nodeInfo.Value;
+			location := nodeInfo.Value
 
 			// Check that test search engine was triggered by the keyword and '{searchTerms}' was replaced in the query by the user's search term.
 			keywordPresent := strings.Contains(location, fmt.Sprintf("%s/search?q=%s", testSearchEngine, testSearchTerm))

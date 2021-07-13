@@ -133,7 +133,7 @@ func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName s
 	defer stw.Close()
 
 	// Make sure hotseat is shown.
-	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+	if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
 		return startTime, errors.Wrap(err, "failed to show hotseat")
 	}
 
