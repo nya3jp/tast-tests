@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cf7360_b3984d67",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-07-13T20:05:32Z",
+      "side": 1,
+      "message": "How about \"\u003e\"?",
+      "range": {
+        "startLine": 247,
+        "startChar": 18,
+        "endLine": 247,
+        "endChar": 20
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
