@@ -16,6 +16,109 @@
       "message": "Thanks for the comments.",
       "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d97a08_5c20552c",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "nit: document function",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22d9b80_ba892e95",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "\"not take\" ?",
+      "range": {
+        "startLine": 196,
+        "startChar": 56,
+        "endLine": 196,
+        "endChar": 61
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba64e4c4_4f267bcd",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "I think you are looking for https://pkg.go.dev/context#WithTimeout not Shorten\n\nSame below",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232117c7_8a282165",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "\"not take\"",
+      "range": {
+        "startLine": 222,
+        "startChar": 56,
+        "endLine": 222,
+        "endChar": 61
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865b77d4_a75d37df",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "\"not take\"",
+      "range": {
+        "startLine": 248,
+        "startChar": 57,
+        "endLine": 248,
+        "endChar": 61
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

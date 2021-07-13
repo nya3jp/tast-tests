@@ -1332,6 +1332,24 @@
       "parentUuid": "156b785a_a4462bea",
       "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e958672_e0938934",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "Ack. Let\u0027s just document this.",
+      "parentUuid": "1cc2d201_288cafde",
+      "revId": "7332a4f37ee438c86cce59b03f5963f75ba6c9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
