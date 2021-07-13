@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e527ff99_98eb5169",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T10:15:27Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "638ab406f46ca256d4490f029bcfdea8af4b44b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cd3742_df826c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T10:15:27Z",
+      "side": 1,
+      "message": "Create this error outside the Poll and then you can check if you\u0027re failing the search itself.\n\nOr use s.Fatal instead of the PollBreak (not pretty).",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 57
+      },
+      "revId": "638ab406f46ca256d4490f029bcfdea8af4b44b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c49bd6_f3df75f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T10:15:27Z",
+      "side": 1,
+      "message": "Not sure if \"(err \u003d\u003d nil) !\u003d param.wantEnabled\" is more readable.",
+      "revId": "638ab406f46ca256d4490f029bcfdea8af4b44b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa60f852_9b3fd313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T10:15:27Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "d4d0d812_1aef0854",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "41be747880ca3308bab90296d075c3fe3df03a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abd12d11_32707948",
