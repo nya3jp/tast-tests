@@ -485,10 +485,10 @@ func processRunning(procName string) (bool, error) {
 	return false, nil
 }
 
-// MarkTestInProgress writes |name| to |testInProgressPath|, indicating to crash_reporter
+// MarkTestInProgress writes |prefix| and |testName| to |testInProgressPath|, indicating to crash_reporter
 // that the given test is in progress.
-func MarkTestInProgress(name string) error {
-	if err := ioutil.WriteFile(testInProgressPath, []byte(name), 0644); err != nil {
+func MarkTestInProgress(prefix, testName string) error {
+	if err := ioutil.WriteFile(testInProgressPath, []byte(prefix+testName), 0644); err != nil {
 		return errors.Wrap(err, "failed to write in-progress test name")
 	}
 	return nil

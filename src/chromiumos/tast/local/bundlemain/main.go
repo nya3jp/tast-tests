@@ -132,8 +132,10 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		}
 	}
 
-	if err := crash.MarkTestInProgress(s.TestName()); err != nil {
-		s.Log("Failed to mark crash test in progress: ", err)
+	if !s.NoTestInProgFile() {
+		if err := crash.MarkTestInProgress(s.CrashPrefix(), s.TestName()); err != nil {
+			s.Log("Failed to mark crash test in progress: ", err)
+		}
 	}
 
 	// Wait for Internet connectivity.
@@ -173,8 +175,10 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 			}
 		}
 
-		if err := crash.MarkTestDone(); err != nil {
-			s.Log("Failed to unmark crash test in progress file: ", err)
+		if !s.NoTestInProgFile() {
+			if err := crash.MarkTestDone(); err != nil {
+				s.Log("Failed to unmark crash test in progress file: ", err)
+			}
 		}
 
 		if checkFreeSpace {
