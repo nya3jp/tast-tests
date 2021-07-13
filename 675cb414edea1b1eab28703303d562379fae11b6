@@ -812,6 +812,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ad0a4c_d29b1e19",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T14:04:28Z",
+      "side": 1,
+      "message": "Makes sense to keep the two separate in that case.",
+      "parentUuid": "0896a02f_face00a2",
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6406d259_a04a1e22",
