@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -33,7 +34,7 @@ func init() {
 		Desc:            "Reboot into normal mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeNormal, false),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -46,7 +47,7 @@ func init() {
 		Desc:            "Reboot into dev mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, false),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -59,7 +60,7 @@ func init() {
 		Desc:            "Reboot into dev mode using GBB flags before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, true),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -72,7 +73,7 @@ func init() {
 		Desc:            "Reboot into recovery mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeRecovery, false),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -303,7 +304,18 @@ func (i *impl) String() string {
 func (i *impl) initHelper(ctx context.Context, s *testing.FixtState) {
 	if i.value.Helper == nil {
 		servoSpec, _ := s.Var("servo")
-		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
+		dutHostname, _ := s.Var("dutHostname")
+		if dutHostname == "" {
+			host, _, err := net.SplitHostPort(s.DUT().HostName())
+			if err != nil {
+				testing.ContextLogf(ctx, "Failed to extract DUT hostname from %q, use --var=dutHostname to set", s.DUT().HostName())
+			}
+			dutHostname = host
+		}
+		powerunitHostname, _ := s.Var("powerunitHostname")
+		powerunitOutlet, _ := s.Var("powerunitOutlet")
+		hydraHostname, _ := s.Var("hydraHostname")
+		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
 	}
 }
 
