@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45396d86_3fcb9da2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-13T01:41:35Z",
+      "side": 1,
+      "message": "Adding it to presubmit will be great that it will be Green most of the time and QA team can confidently ignore the manual verification of the tests without having to track the failure and run that failing case manually.",
+      "parentUuid": "cf574861_1e7597b6",
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e933a432_36ab5966",
