@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a615a09_9ac7ce14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-13T13:38:00Z",
+      "side": 1,
+      "message": "\u003e \"guage\" is a possible misspelling of \"gauge\".\n\nPlease fix.",
+      "parentUuid": "aeb263c2_edc28c20",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "d9abddde41525e0ef9532cf9d08fb37be37c4387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a23b48d_9ec3c5c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-13T13:38:00Z",
+      "side": 1,
+      "message": "\u003e \"paticular\" is a possible misspelling of \"particular\".\n\nPlease fix.",
+      "parentUuid": "720c8e52_70e17c9d",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "d9abddde41525e0ef9532cf9d08fb37be37c4387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
