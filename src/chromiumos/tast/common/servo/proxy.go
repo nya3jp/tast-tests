@@ -215,6 +215,7 @@ func logServoStatus(ctx context.Context, hst *ssh.Conn, port int) {
 
 // Close closes the proxy's SSH connection if present.
 func (p *Proxy) Close(ctx context.Context) {
+	testing.ContextLog(ctx, "Closing Servo Proxy")
 	if p.svo != nil {
 		p.svo.Close(ctx)
 		p.svo = nil
@@ -463,4 +464,25 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 
 	wg.Wait()
 	return out, err
+}
+
+// Proxied returns true if the servo host is connected via ssh proxy.
+func (p *Proxy) Proxied() bool {
+	if p.hst == nil {
+		return false
+	}
+	return true
+}
+
+// NewForwarder forwards a local port to a remote port on the servo host.
+func (p *Proxy) NewForwarder(ctx context.Context, hostPort string) (*ssh.Forwarder, error) {
+	if p.hst == nil {
+		return nil, errors.New("servo host is not proxied via ssh")
+	}
+	fwd, err := p.hst.NewForwarder("localhost:0", hostPort,
+		func(err error) { testing.ContextLog(ctx, "Got forwarding error: ", err) })
+	if err != nil {
+		return nil, errors.Wrap(err, "creating ssh forwarder")
+	}
+	return fwd, nil
 }

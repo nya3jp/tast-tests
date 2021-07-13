@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -303,7 +304,18 @@ func (i *impl) String() string {
 func (i *impl) initHelper(ctx context.Context, s *testing.FixtState) {
 	if i.value.Helper == nil {
 		servoSpec, _ := s.Var("servo")
-		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
+		dutHostname, _ := s.Var("dutHostname")
+		if dutHostname == "" {
+			host, _, err := net.SplitHostPort(s.DUT().HostName())
+			if err != nil {
+				testing.ContextLogf(ctx, "Failed to extract DUT hostname from %q, use --var=dutHostname to set", s.DUT().HostName())
+			}
+			dutHostname = host
+		}
+		powerunitHostname, _ := s.Var("powerunitHostname")
+		powerunitOutlet, _ := s.Var("powerunitOutlet")
+		hydraHostname, _ := s.Var("hydraHostname")
+		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
 	}
 }
 
