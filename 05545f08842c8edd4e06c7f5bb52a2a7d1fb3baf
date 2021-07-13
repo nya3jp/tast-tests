@@ -16,6 +16,23 @@
       "message": "Hi Renuga, \n\nPlease review it. Thanks.\n\nRegards, \nMeena",
       "revId": "05545f08842c8edd4e06c7f5bb52a2a7d1fb3baf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8acc045_039eeb6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-13T02:12:50Z",
+      "side": 1,
+      "message": "Please have the cleanup changes related to suite alone in this CL. Other changes like UIElement and seed value change can be in separate CL?.",
+      "revId": "05545f08842c8edd4e06c7f5bb52a2a7d1fb3baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
