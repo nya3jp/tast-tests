@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "208685f6_118b7699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T11:33:14Z",
+      "side": 1,
+      "message": "Good point, we can leave it as is. It will still fail in the pass case, but I don\u0027t expect it to happen anyway.",
+      "parentUuid": "ad5948fd_1ea6ef03",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 57
+      },
+      "revId": "638ab406f46ca256d4490f029bcfdea8af4b44b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c2c49bd6_f3df75f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
         "patchSetId": 2
