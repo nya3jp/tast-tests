@@ -16,6 +16,52 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dab2a70_8cd7c275",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-13T15:45:53Z",
+      "side": 1,
+      "message": "Do you want to look at the fileinfo to make sure it is a directory also? Although, even the stat probably doesn\u0027t matter because the mkdir will fail on like 377 and should probably be clear enough.",
+      "range": {
+        "startLine": 372,
+        "startChar": 14,
+        "endLine": 372,
+        "endChar": 21
+      },
+      "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b218d356_58621c01",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-13T15:45:53Z",
+      "side": 1,
+      "message": "For these reads, you can combine them. The results will be space separated.\n\n```\nlocalhost ~ # crossystem clear_tpm_owner_done clear_tpm_owner_request\n1 0localhost ~ # \n```\n\nYou\u0027d have to try it, but I suspect you could merge all 4 of these into 1 command.\n\ncrossystem clear_tpm_owner_done\u003d0 clear_tpm_owner_request\u003d1 clear_tpm_owner_done clear_tpm_owner_request",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
