@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064bf186_f887fff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:47:39Z",
+      "side": 1,
+      "message": "Thanks! LGTM % some phrasing.",
+      "revId": "6f2f449699957875743eed3cec71055a7e9c146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab2de61_19682b9a",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:47:39Z",
+      "side": 1,
+      "message": "it fails",
+      "range": {
+        "startLine": 226,
+        "startChar": 153,
+        "endLine": 226,
+        "endChar": 159
+      },
+      "revId": "6f2f449699957875743eed3cec71055a7e9c146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b02e582_d6b5fdcf",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:47:39Z",
+      "side": 1,
+      "message": "mismatched",
+      "range": {
+        "startLine": 226,
+        "startChar": 203,
+        "endLine": 226,
+        "endChar": 211
+      },
+      "revId": "6f2f449699957875743eed3cec71055a7e9c146f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
