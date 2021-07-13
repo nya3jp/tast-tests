@@ -143,14 +143,35 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 				return !bytes.Equal(dot11.Address1, mac)
 			},
 		),
-		// (QoS) null filter: these frames are short (no data payload), and it's more
+		// We skip a few frame types for various reasons:
+		//
+		// (QoS) null: these frames are short (no data payload), and it's more
 		// important that they be reliable (e.g., for PS transitions) than fast. See
 		// b/132825853#comment40, for example.
+		//
+		// RTS: all nearby stations need to hear this (not just
+		// those on the current BSS), so a station can't respect only
+		// the current AP's rates.
+		//
+		// Probe request: these frames are not associated with a particular BSS yet.
 		func(p gopacket.Packet) bool {
-			qosLayer := p.Layer(layers.LayerTypeDot11DataQOSNull)
-			nullLayer := p.Layer(layers.LayerTypeDot11DataNull)
-			// Skip QoS null data or null data.
-			return qosLayer == nil && nullLayer == nil
+			// Skip QoS null data.
+			if l := p.Layer(layers.LayerTypeDot11DataQOSNull); l != nil {
+				return false
+			}
+			// Skip null data.
+			if l := p.Layer(layers.LayerTypeDot11DataNull); l != nil {
+				return false
+			}
+			// Skip RTS.
+			if l := p.Layer(layers.LayerTypeDot11CtrlRTS); l != nil {
+				return false
+			}
+			// Skip probe requests.
+			if l := p.Layer(layers.LayerTypeDot11MgmtProbeReq); l != nil {
+				return false
+			}
+			return true
 		},
 		// TODO: skip BlockAcks, etc.? The original test did so (see
 		// https://crrev.com/c/1679995) because our test APs don't always (as of 2019-06-28)
