@@ -187,6 +187,7 @@ type HotseatInfoClass struct {
 	SwipeUp      HotseatSwipeDescriptor `json:"swipeUp"`
 	HotseatState HotseatStateType       `json:"state"`
 	IsAnimating  bool                   `json:"isAnimating"`
+	IsAutoHidden bool                   `json:"IsAutoHidden"`
 }
 
 // ShelfInfo corresponds to the "ShelfInfo" defined in autotest_private.idl.
@@ -396,10 +397,56 @@ func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string)
 	}, &testing.PollOptions{Timeout: time.Minute})
 }
 
-// WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
-func WaitForHotseatAnimatingToIdealState(ctx context.Context, tc *chrome.TestConn, state HotseatStateType) error {
+// AutoHide sets shelf auto hide behavior from the wallpaper context menu.
+func AutoHide(ctx context.Context, tconn *chrome.TestConn, displayID string) error {
+	ui := uiauto.New(tconn)
+	SetAutoHiddenShelf := nodewith.Name("Autohide shelf").Role(role.MenuItem)
+	if err := uiauto.Combine("set autohide shelf",
+		ui.RightClick(nodewith.ClassName("WallpaperView")),
+		// Autohide shelf button takes some time before it becomes clickable.
+		// Keep clicking it until the click is received and the menu closes.
+		ui.WithInterval(500*time.Millisecond).LeftClickUntil(SetAutoHiddenShelf, ui.Gone(SetAutoHiddenShelf)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to setup autohide shelf")
+	}
+
+	sb, err := GetShelfBehavior(ctx, tconn, displayID)
+	if err != nil {
+		return errors.Wrap(err, "failed to get shelf auto hide behavior")
+	}
+	if sb != ShelfBehaviorAlwaysAutoHide {
+		return errors.New("failed to setup shelf to auto hide")
+	}
+
+	return nil
+}
+
+// WaitForHotseatToUpdateAutoHideState waits for the hotseat to reach the expected autohide state.
+func WaitForHotseatToUpdateAutoHideState(ctx context.Context, tconn *chrome.TestConn, autoHideState bool) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := fetchShelfInfoForState(ctx, tc, &ShelfState{})
+		info, err := fetchShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return err
+		}
+
+		hotseatInfo := info.HotseatInfo
+		if hotseatInfo.IsAutoHidden != autoHideState {
+			return errors.Errorf("got hotseat (IsAutoHidden) = %v; want %v", hotseatInfo.IsAutoHidden, autoHideState)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for the expected autohide state")
+	}
+
+	return nil
+
+}
+
+// WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
+func WaitForHotseatAnimatingToIdealState(ctx context.Context, tconn *chrome.TestConn, state HotseatStateType) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := fetchShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
 			return err
 		}
@@ -424,6 +471,22 @@ func WaitForHotseatAnimatingToIdealState(ctx context.Context, tc *chrome.TestCon
 
 // SwipeUpHotseatAndWaitForCompletion swipes the hotseat up, changing the hotseat state from hidden to extended. The function does not end until the hotseat animation completes.
 func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) error {
+	if err := swipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
+		return errors.Wrap(err, "failed to swipe up on hotseat to extend")
+	}
+	return nil
+}
+
+// SwipeDownHotseatAndWaitForCompletion swipes the hotseat down, changing the hotseat state from extended to hidden. The function does not end until the hotseat animation completes.
+func SwipeDownHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) error {
+	if err := swipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, false); err != nil {
+		return errors.Wrap(err, "failed to swipe down on hotseat to hide")
+	}
+	return nil
+}
+
+// swipeHotseatAndWaitForCompletion swipes the hotseat and change the state between hidden to extended. The function does not end until the hotseat animation completes.
+func swipeHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter, swipeUp bool) error {
 	if err := WaitForHotseatAnimationToFinish(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for the animation to finish")
 	}
@@ -433,14 +496,19 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestC
 		return errors.Wrap(err, "failed to obtain the hotseat info")
 	}
 
-	// If the hotseat is visible and it is not animating to hidden, we can simply return.
-	if info.HotseatState != ShelfHidden {
+	// We can simply return if we are swiping up on a visible hotseat or swiping down on a hidden hotseat.
+	if swipeUp == (info.HotseatState != ShelfHidden) {
 		return nil
 	}
 
 	// Convert the gesture locations from screen coordinates to touch screen coordinates.
 	startX, startY := tcc.ConvertLocation(info.SwipeUp.SwipeStartLocation)
 	endX, endY := tcc.ConvertLocation(info.SwipeUp.SwipeEndLocation)
+	// Swap start and end locations if swiping down.
+	if !swipeUp {
+		startX, startY = tcc.ConvertLocation(info.SwipeUp.SwipeEndLocation)
+		endX, endY = tcc.ConvertLocation(info.SwipeUp.SwipeStartLocation)
+	}
 
 	if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
 		return errors.Wrap(err, "failed to swipe")
@@ -450,9 +518,16 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestC
 		return errors.Wrap(err, "failed to finish the gesture")
 	}
 
-	// Hotseat should be extended after gesture swipe.
-	if err := WaitForHotseatAnimatingToIdealState(ctx, tconn, ShelfExtended); err != nil {
-		return errors.Wrap(err, "failed to wait for the hoteat to be extended")
+	if swipeUp {
+		// Hotseat should be extended after gesture swipe up.
+		if err := WaitForHotseatAnimatingToIdealState(ctx, tconn, ShelfExtended); err != nil {
+			return errors.Wrap(err, "failed to wait for the hoteat to be extended")
+		}
+	} else {
+		// Hotseat should be hidden after gesture swipe down.
+		if err := WaitForHotseatAnimatingToIdealState(ctx, tconn, ShelfHidden); err != nil {
+			return errors.Wrap(err, "failed to wait for the hoteat to be hidden")
+		}
 	}
 
 	return nil
@@ -598,9 +673,9 @@ func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName stri
 }
 
 // WaitForHotseatAnimationToFinish waits for the hotseat animation is done.
-func WaitForHotseatAnimationToFinish(ctx context.Context, tc *chrome.TestConn) error {
+func WaitForHotseatAnimationToFinish(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := fetchShelfInfoForState(ctx, tc, &ShelfState{})
+		info, err := fetchShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
 			return err
 		}
@@ -617,14 +692,14 @@ func WaitForHotseatAnimationToFinish(ctx context.Context, tc *chrome.TestConn) e
 }
 
 // WaitForStableShelfBounds waits for the shelf location to be the same for a single iteration of polling.
-func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
+func WaitForStableShelfBounds(ctx context.Context, tconn *chrome.TestConn) error {
 	// The shelf info does not provide the shelf bounds themselves, but shelf icon bounds can be used as
 	// a proxy for the shelf position.
 	var firstIconBounds, lastIconBounds coords.Rect
 	var newFirstIconBounds, newLastIconBounds coords.Rect
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		shelfInfo, err := fetchShelfInfoForState(ctx, tc, &ShelfState{})
+		shelfInfo, err := fetchShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to fetch scrollable shelf info"))
 		}
