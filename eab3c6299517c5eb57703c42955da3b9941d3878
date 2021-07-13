@@ -125,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9a2d567_76f0aa8e",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T10:02:09Z",
+      "side": 1,
+      "message": "I\u0027m strongly against using a global here and changing it between tests. It will make reasoning about tests very difficult as this is never done in tast.\n\nSince child accounts are a special case, I don\u0027t mind if not all of the existing functions work as expected (but still work as designed).",
+      "parentUuid": "465757f1_ce7e7890",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75563596_03540897",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 10
@@ -627,6 +651,30 @@
       "side": 1,
       "message": "We could only call s.RequiredVar() in SetUp(). If no Vars was set (like fakeDMSEnrolled or fakeDMS), the program will be panic if calling s.RequiredVar() in SetUp() directly. \n\nI didn\u0027t find any ways to differentiate fixtures in SetUp(). If we don\u0027t use callback, we might need 2 variables in fakeDMSFixture. One records the policyUserVar(like \"unicorn.ChildUser\"), which will be used to called s.RequiredVar(policyUserVar) in SetUp(). The other records policyUser(\"xxxx@gmail.com\"), as you suggested above, used in Reset(). Also, we may need to do some if-else in SetUp() to differentiate whether it has vars or not.\n\nBy using a call back here, we don\u0027t need to modify SetUp() for the policyUser when adding new fixture. It\u0027s more general.",
       "parentUuid": "3cf555c3_b8df11d8",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bca045_b3a64e83",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-13T10:02:09Z",
+      "side": 1,
+      "message": "As noted above I am strongly against using a global.\n\nI think the 2 variables are a better solution in this case. We can think about abstracting things away once we have more cases to handle, but I don\u0027t expect that many to exist.",
+      "parentUuid": "2ccaf5cf_f89a22b7",
       "range": {
         "startLine": 76,
         "startChar": 1,
