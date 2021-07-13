@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb5b0425_708af983",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-13T07:57:14Z",
+      "side": 1,
+      "message": "Please comment your intention. This is helpful to avoid the follower to add a disconnection check here.",
+      "parentUuid": "87666ba3_b3a035fe",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d545954_da479a24",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
         "patchSetId": 3
@@ -261,6 +279,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13ae2f82_63ee72bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-13T07:57:14Z",
+      "side": 1,
+      "message": "SGTM renaming deconfigAP to deconfigExistingAP.",
+      "parentUuid": "bc621917_631c972c",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba1360ea_36612bcd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
         "patchSetId": 3
@@ -337,6 +373,24 @@
       "side": 1,
       "message": "I guess SSH ping might not always fail because it is possible that ethernet + SSH can become alive during dark resume.\n\nHowever, this reminds me one possibly missed case here: DUT does fully wake up but ethernet haven\u0027t come back here.\n\nIt might be more accurate to poll for \"ec_system_powerstate !\u003d S0\" with servo. Updated to use ec_system_powerstate instead of SSH state.",
       "parentUuid": "bcb9862c_94da220c",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d35d14_1c5e5aff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-13T07:57:14Z",
+      "side": 1,
+      "message": "Thanks for the update. Hope the check is more robust.",
+      "parentUuid": "4c5c2859_335c8345",
       "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -536,6 +590,24 @@
       "side": 1,
       "message": "It\u0027s quite awkward that WaitConnect will create another connection. This behavior will break gRPC + other existing SSH sessions, which is not quite expected in the middle of one test. (might be OK if it\u0027s right before exiting one test)\n\nIn any case, it is more accurate to check ec_system_powerstate, so I changed the logic here.",
       "parentUuid": "044e3dc6_8f42d0bc",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432a7f15_9c04b0a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-13T07:57:14Z",
+      "side": 1,
+      "message": "Noted. Thanks.\n\nWe shall give an warning that WaitConnect() will break gRPC and hence it is not suitable to be called in the middle of the test.",
+      "parentUuid": "c7cb6dcb_9ef61b6a",
       "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

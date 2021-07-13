@@ -16,6 +16,52 @@
       "message": "Thanks for the review.",
       "revId": "36400410cc178ab08b84028b00e1557dbd562f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38efa5e_5fe7bff9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-13T07:57:14Z",
+      "side": 1,
+      "message": "the same",
+      "range": {
+        "startLine": 176,
+        "startChar": 19,
+        "endLine": 176,
+        "endChar": 23
+      },
+      "revId": "36400410cc178ab08b84028b00e1557dbd562f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573d4950_d3ff468a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-13T07:57:14Z",
+      "side": 1,
+      "message": "accesses",
+      "range": {
+        "startLine": 84,
+        "startChar": 13,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "36400410cc178ab08b84028b00e1557dbd562f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
