@@ -73,6 +73,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "674bede6_a7a0a1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-07-13T23:07:35Z",
+      "side": 1,
+      "message": "Seems cleaner to put this in a for loop with two iterations to reinforce that you\u0027re doing the same thing twice on purpose.\n\nIf you\u0027d rather not, please indicate that you\u0027re toggling on/off in the comment - it took me a second to realize that this wasn\u0027t a copy/paste error!",
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414b418c_98fe5ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-07-13T23:07:35Z",
+      "side": 1,
+      "message": "not technically your code, but using \"get\" is discouraged in Go function names.  Also this function seems like it would be better done as a stringer function on the resizeLockMode type.\n\nE.g. https://play.golang.org/p/xe--75tOmLB\n\nThen you could just use mode directly (for anything calling fmt package under the hood) or call mode.String()",
+      "revId": "c33ce53033498c00ba3a73ef2281309d16adaed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e933a432_36ab5966",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 8
