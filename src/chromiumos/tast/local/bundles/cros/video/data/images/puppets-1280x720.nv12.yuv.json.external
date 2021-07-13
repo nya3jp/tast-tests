@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/images/puppets-1280x720_20210615.nv12.yuv.json",
+  "size": 113,
+  "sha256sum": "1f506ad73af0732488ad7e2e456077c5d512adaa68b756935bc316db08ff36e5"
+}
