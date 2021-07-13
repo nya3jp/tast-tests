@@ -16,6 +16,52 @@
       "message": "Thanks for the feedback,\nCL updated per review comments.",
       "revId": "95464f7cb560014f3c47f8553560329db5e75fa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f7387d_b2a5e2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-13T23:16:47Z",
+      "side": 1,
+      "message": "nit: Let\u0027s make enum like values.\ne.g.\n\n  type pointerTypeParam int\n  const (\n\tpointerMouse pointerTypeParam \u003d iota\n\tpointerTouch\n  )\n  \n  func init() {\n    ...\n      Params: []testing.Param{{\n        Val: pointerMouse,\n      }, {\n        Name: \"touch\",\n\tVal:  pointerTouch,\n      }},\n  }\n  \nAnd later in code, we could use `pointerTypeParam` instead of string.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "95464f7cb560014f3c47f8553560329db5e75fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251d34f2_efe23681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-13T23:16:47Z",
+      "side": 1,
+      "message": "Think we could use `pointer.Context` interface and si\n\n  var pc pointer.Context\n  pt :\u003d s.Param().(pointerTypeParam)\n  if pt \u003d\u003d pointerTouch {\n    pc, err \u003d pointer.NewTouch(ctx, tconn)\n    if err !\u003d nil {\n      s.Fatal(\"Failed to set up the touch context: \", err)\n    }\n  } else {\n    pc \u003d pointer.NewMouse(tconn)\n  }\n  \nAnd in test body, we should could use the new pc.Drag() call and have just one piece of code for both mouse and touch.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "95464f7cb560014f3c47f8553560329db5e75fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
