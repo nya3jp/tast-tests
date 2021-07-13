@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f71e88_f3444a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-13T13:35:44Z",
+      "side": 1,
+      "message": "When uploading, I received a check that I should mark the test as \"informational\" on this line since it is new. Where/how would I include that?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "9e74588865906c670c6cbe85aeb3deba0ded5249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961061ef_d6d29cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-13T13:35:44Z",
+      "side": 1,
+      "message": "I am also getting a check on this line that \"The number of verbs in format literal mismatches with the number of arguments\". How would I fix this?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "9e74588865906c670c6cbe85aeb3deba0ded5249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
