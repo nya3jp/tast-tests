@@ -24,7 +24,6 @@ func init() {
 			"cros-fw-engprod@google.com",
 		},
 		Attr: []string{"group:firmware", "firmware_ec"},
-		Data: []string{firmware.ConfigFile},
 		HardwareDeps: hwdep.D(
 			// Eventlog is broken/wontfix on veyron devices.
 			// See http://b/35585376#comment14 for more info.
@@ -32,9 +31,10 @@ func init() {
 			hwdep.SkipOnPlatform("veyron_tiger"),
 		),
 		Pre:          pre.NormalMode(),
-		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
-		Vars:         []string{"servo"},
+		Data:         pre.Data,
+		ServiceDeps:  pre.ServiceDeps,
+		SoftwareDeps: pre.SoftwareDeps,
+		Vars:         pre.Vars,
 	})
 }
 

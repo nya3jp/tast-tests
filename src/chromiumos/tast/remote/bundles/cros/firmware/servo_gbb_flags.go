@@ -15,7 +15,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 
 	commonbios "chromiumos/tast/common/firmware/bios"
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/bios"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
@@ -30,11 +29,11 @@ func init() {
 		Timeout:      8 * time.Minute,
 		Contacts:     []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
-		Data:         []string{firmware.ConfigFile},
 		Pre:          pre.NormalMode(),
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
-		Vars:         []string{"servo"},
+		Data:         pre.Data,
+		ServiceDeps:  pre.ServiceDeps,
+		SoftwareDeps: pre.SoftwareDeps,
+		Vars:         pre.Vars,
 	})
 }
 
