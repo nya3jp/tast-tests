@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc57fdf_704060e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:06:08Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b9b2af43_fa0cc688",
@@ -14,6 +37,69 @@
       "writtenOn": "2021-07-13T19:50:22Z",
       "side": 1,
       "message": "PTAL.",
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6f6930_cda0771d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:06:08Z",
+      "side": 1,
+      "message": "Thanks! A few questions.",
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f97d03a_31feb399",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:06:08Z",
+      "side": 1,
+      "message": "nit: Document this parameter.",
+      "range": {
+        "startLine": 226,
+        "startChar": 87,
+        "endLine": 226,
+        "endChar": 93
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f36e9c1_5a47bbb6",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:06:08Z",
+      "side": 1,
+      "message": "newCrashes",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 13
+      },
       "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -36,6 +122,52 @@
         "startChar": 18,
         "endLine": 247,
         "endChar": 20
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab16bb7_1c7c5321",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:06:08Z",
+      "side": 1,
+      "message": "Will we see this as a failure? Or do you need to return an error.",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 251,
+        "endChar": 23
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b4c043_ffdbb635",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-07-13T20:06:08Z",
+      "side": 1,
+      "message": "Should we consider sorting the elements before printing? I only say that because it may help with the testmon clustering algorithm.",
+      "range": {
+        "startLine": 254,
+        "startChar": 46,
+        "endLine": 254,
+        "endChar": 48
       },
       "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
