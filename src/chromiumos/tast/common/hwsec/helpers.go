@@ -12,6 +12,8 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -337,10 +339,13 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 	}(ctx)
 
 	if err != nil {
+		if err := h.saveTPMClearLogs(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to save TPM clear logs: ", err)
+		}
 		return errors.Wrap(err, "failed to ensure TPM is reset")
 	}
 
-	testing.ContextLog(ctx, "Waiting for system to be ready after reset TPM ")
+	testing.ContextLog(ctx, "Waiting for system to be ready after reset TPM")
 	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
@@ -354,6 +359,53 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 		return errors.New("ineffective reset of TPM")
 	}
 
+	return nil
+}
+
+// saveTPMClearLogs saves the logs which are related to the TPM clear failure to outdir.
+// For more information, please see b/172876417.
+func (h *CmdTPMClearHelper) saveTPMClearLogs(ctx context.Context) error {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		return errors.New("failed to get name of directory")
+	}
+	if _, err := os.Stat(dir); err != nil {
+		return errors.Wrap(err, "output directory not found")
+	}
+
+	logDir := filepath.Join(dir, "tpm_clear_faillog")
+	if err := os.MkdirAll(logDir, 0755); err != nil {
+		return errors.Wrap(err, "failed to create directory for tpm clear faillog")
+	}
+	if _, err := h.cmdRunner.Run(ctx, "flashrom -r -i RW_NVRAM:/tmp/nvram.bin"); err != nil {
+		testing.ContextLog(ctx, "Failed to call flashrom command: ", err)
+	}
+
+	saveLogFile := func(from, to string) error {
+		rawOutput, err := h.ReadFile(ctx, from)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get the %s", from)
+		}
+
+		path := filepath.Join(logDir, to)
+		f, err := os.Create(path)
+		if err != nil {
+			return errors.Wrapf(err, "failed to create %s", to)
+		}
+		defer f.Close()
+
+		if _, err := f.Write(rawOutput); err != nil {
+			return errors.Wrapf(err, "failed to write data to %s", to)
+		}
+		return nil
+	}
+
+	if err := saveLogFile("/tmp/nvram.bin", "nvram.bin"); err != nil {
+		testing.ContextLog(ctx, "Failed to save nvram.bin: ", err)
+	}
+	if err := saveLogFile("/sys/firmware/log", "firmware_log"); err != nil {
+		testing.ContextLog(ctx, "Failed to save firmware_log: ", err)
+	}
 	return nil
 }
 
