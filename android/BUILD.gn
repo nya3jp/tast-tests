@@ -43,6 +43,7 @@ group("all") {
     "ArcPrintTest:ArcPrintTest",
     "ArcPreImeKeyEventTest:ArcPreImeKeyEventTest",
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
+    "ArcQuotaProjectIdTest:ArcQuotaProjectIdTest",
     "ArcResizeLockTest:ArcResizeLockTest",
     "ArcSensorLatencyTest:ArcSensorLatencyTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
