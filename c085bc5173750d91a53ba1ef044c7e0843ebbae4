@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71578dd4_2bea2769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-13T06:15:10Z",
+      "side": 1,
+      "message": "My local build/tests just finished. Thanks for the quick review.",
+      "revId": "c085bc5173750d91a53ba1ef044c7e0843ebbae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
