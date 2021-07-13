@@ -16,6 +16,63 @@
       "message": "Hi Yichen and Xiyuan,\nPlease review the following change.\n\nThanks.",
       "revId": "457009d9131f5c3e7e51cbc8c1ee399972e203e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc0b6e6_bf4351b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-13T19:46:20Z",
+      "side": 1,
+      "message": "I wonder whether we should make the test parameterized to run mouse and touch separately so that we get the metrics separately.",
+      "revId": "457009d9131f5c3e7e51cbc8c1ee399972e203e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02030ce6_845f14f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-13T19:46:20Z",
+      "side": 1,
+      "message": "We can use `ac.Sleep()` (or action.Sleep) instead of pc.Hold.",
+      "range": {
+        "startLine": 124,
+        "startChar": 43,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "457009d9131f5c3e7e51cbc8c1ee399972e203e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ff226f_aa0a2d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-13T19:46:20Z",
+      "side": 1,
+      "message": "The mouse drag does snap right, snap left, center of screen, then go back. Should we do the same for touch drag as well? The left/right snap would trigger window manager to prepare to the drop to snap and we might want to exercise that as well.",
+      "revId": "457009d9131f5c3e7e51cbc8c1ee399972e203e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
