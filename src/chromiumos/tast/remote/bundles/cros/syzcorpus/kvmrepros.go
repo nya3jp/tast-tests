@@ -44,13 +44,6 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	start := time.Now()
 	d := s.DUT()
 
-	// TODO: This test has been failing on postsubmit with stacktraces
-	// unrelated to KVM. To determine if this is due to side-effects from
-	// previous tests, reboot the DUT before starting to test(b/192782710).
-	if err := d.Reboot(ctx); err != nil {
-		s.Fatal("Failed to reboot DUT: ", err)
-	}
-
 	arch, err := syzutils.FindDUTArch(ctx, d)
 	if err != nil {
 		s.Fatal("Unable to find syzkaller arch: ", err)
