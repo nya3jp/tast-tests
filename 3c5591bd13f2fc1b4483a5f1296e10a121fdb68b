@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "852f29f1_06bc2d15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85463a9b_a88c8db8",
+      "range": {
+        "startLine": 30,
+        "startChar": 48,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c1229ee_dcdd6d03",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T19:33:36Z",
       "side": 1,
       "message": "the DUT",
+      "range": {
+        "startLine": 72,
+        "startChar": 54,
+        "endLine": 72,
+        "endChar": 57
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8279d579_bf9746b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1229ee_dcdd6d03",
       "range": {
         "startLine": 72,
         "startChar": 54,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5e55d7_ec54bf3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd201006_e3e71328",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89779c10_96e01be7",
@@ -89,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87666ba3_b3a035fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "I don\u0027t wait for service idle here on purpose. I kind of want to cover the possibility that disconnection event might race with suspend. I think shill might have problems in some timing.\n\n(although deconfig is not perfect for that as it will explicitly send out DEAUTH)",
+      "parentUuid": "89779c10_96e01be7",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d545954_da479a24",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
         "patchSetId": 3
@@ -100,6 +190,30 @@
       "writtenOn": "2021-07-12T19:33:36Z",
       "side": 1,
       "message": "suspended",
+      "range": {
+        "startLine": 196,
+        "startChar": 15,
+        "endLine": 196,
+        "endChar": 25
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80277a77_488651ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d545954_da479a24",
       "range": {
         "startLine": 196,
         "startChar": 15,
@@ -129,6 +243,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc621917_631c972c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "deconfigAP will check \"ap \u003d\u003d nil\", so it is already handled. Maybe we can rename deconfigAP to deconfigExistingAP for readability, WDYT?",
+      "parentUuid": "bf898cd9_85c208c7",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba1360ea_36612bcd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
         "patchSetId": 3
@@ -140,6 +272,30 @@
       "writtenOn": "2021-07-12T19:33:36Z",
       "side": 1,
       "message": "Can we add \"the same\" / \"different\" according to param.reconnectToSameAP?",
+      "range": {
+        "startLine": 205,
+        "startChar": 30,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b22450_3e2e4c18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba1360ea_36612bcd",
       "range": {
         "startLine": 205,
         "startChar": 30,
@@ -169,6 +325,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c5c2859_335c8345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "I guess SSH ping might not always fail because it is possible that ethernet + SSH can become alive during dark resume.\n\nHowever, this reminds me one possibly missed case here: DUT does fully wake up but ethernet haven\u0027t come back here.\n\nIt might be more accurate to poll for \"ec_system_powerstate !\u003d S0\" with servo. Updated to use ec_system_powerstate instead of SSH state.",
+      "parentUuid": "bcb9862c_94da220c",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c1bcd7d_e1ebea7c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/conn_util.go",
         "patchSetId": 3
@@ -180,6 +354,30 @@
       "writtenOn": "2021-07-12T19:33:36Z",
       "side": 1,
       "message": "it deconfigs the AP and waits the AP disconnection event of the DUT without ..",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7245efde_2e3925b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/conn_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c1bcd7d_e1ebea7c",
       "range": {
         "startLine": 17,
         "startChar": 8,
@@ -207,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9134a5_9d7848b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Introduce a new function to watch power state with servo, which has timeout as input.\n\nVerifyWakeOnWifiReason still uses WaitUnreachable as I don\u0027t want to introduce extra servo dependency on the tests for wake source.",
+      "parentUuid": "66cc924e_5cd67318",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c376006b_1c6e5305",
@@ -220,6 +436,24 @@
       "writtenOn": "2021-07-12T19:33:36Z",
       "side": 1,
       "message": "In this code path, no one call cancel(), is that okay?",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7d9e00_19d28ca3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Thanks for catching this. It should call cancel in this case.",
+      "parentUuid": "c376006b_1c6e5305",
       "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -247,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "647cf7bb_85fcb167",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0765ca61_92fad475",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 47
+      },
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "044e3dc6_8f42d0bc",
@@ -260,6 +518,24 @@
       "writtenOn": "2021-07-12T19:33:36Z",
       "side": 1,
       "message": "Why not reuse d.WaitConnect() with shorten context?",
+      "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cb6dcb_9ef61b6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/wake_on_wifi_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-13T06:03:50Z",
+      "side": 1,
+      "message": "It\u0027s quite awkward that WaitConnect will create another connection. This behavior will break gRPC + other existing SSH sessions, which is not quite expected in the middle of one test. (might be OK if it\u0027s right before exiting one test)\n\nIn any case, it is more accurate to check ec_system_powerstate, so I changed the logic here.",
+      "parentUuid": "044e3dc6_8f42d0bc",
       "revId": "3c5591bd13f2fc1b4483a5f1296e10a121fdb68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
