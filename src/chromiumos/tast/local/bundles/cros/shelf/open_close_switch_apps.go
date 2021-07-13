@@ -131,7 +131,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	for i := 0; i < 2; i++ {
 		for _, app := range checkApps {
 			if tabletMode {
-				if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+				if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
 					s.Fatal("Failed to swipe up the hotseat: ", err)
 				}
 			}
@@ -153,7 +153,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	// Close the apps via shelf context menu
 	for _, app := range checkApps {
 		if tabletMode {
-			if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+			if err := ash.SwipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
 				s.Fatal("Failed to swipe up the hotseat: ", err)
 			}
 		}
