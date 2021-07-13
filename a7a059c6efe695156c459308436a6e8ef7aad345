@@ -178,6 +178,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7e4df6_5a3db0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-13T08:13:15Z",
+      "side": 1,
+      "message": "Yes, Removed file test for now and I will add it suitably with extension test in new CL.",
+      "parentUuid": "7346bfc2_6dff1e3b",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 1
+      },
+      "revId": "a7a059c6efe695156c459308436a6e8ef7aad345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f020079f_ca633f04",
