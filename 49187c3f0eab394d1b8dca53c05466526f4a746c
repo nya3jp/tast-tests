@@ -33,6 +33,24 @@
       "message": "nit: comments on declarations should start with the name of the thing being described [1]. E.g.\n// skipFirstAPILevelCheckMap is the set of boards ...\"\n\noptional: I note the comment on expectedFirstAPILevelMap does not follow in this style, you are welcome to clean this up as well.\n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
       "revId": "49187c3f0eab394d1b8dca53c05466526f4a746c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35a2fc3_033042c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-07-13T04:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "636a43e9_a22cc69a",
+      "revId": "49187c3f0eab394d1b8dca53c05466526f4a746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
