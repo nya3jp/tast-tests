@@ -23,7 +23,7 @@ func init() {
 }
 
 func Config(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), "")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), "", "", "", "", "")
 	defer h.Close(ctx)
 
 	if err := h.RequireConfig(ctx); err != nil {

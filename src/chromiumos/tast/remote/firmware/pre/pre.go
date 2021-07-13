@@ -7,6 +7,7 @@ package pre
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -59,7 +60,7 @@ func RecMode() testing.Precondition {
 // These are exported so they can be used in test declarations, but not const because they are arrays, please don't modify them.
 var (
 	// Vars is vars that are required for using this precondition. Pass to testing.Test.Vars.
-	Vars = []string{"servo"}
+	Vars = []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname"}
 
 	// SoftwareDeps is the software deps that are required for using this precondition. Pass to testing.Test.SoftwareDeps.
 	SoftwareDeps = []string{"crossystem", "flashrom"}
@@ -249,7 +250,18 @@ func (i *impl) initHelper(ctx context.Context, s *testing.PreState) {
 			s.Fatal("SoftwareDeps does not include 'flashrom'")
 		}
 		servoSpec, _ := s.Var("servo")
-		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
+		dutHostname, _ := s.Var("dutHostname")
+		if dutHostname == "" {
+			host, _, err := net.SplitHostPort(s.DUT().HostName())
+			if err != nil {
+				testing.ContextLogf(ctx, "Failed to extract DUT hostname from %q, use --var=dutHostname to set", s.DUT().HostName())
+			}
+			dutHostname = host
+		}
+		powerunitHostname, _ := s.Var("powerunitHostname")
+		powerunitOutlet, _ := s.Var("powerunitOutlet")
+		hydraHostname, _ := s.Var("hydraHostname")
+		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
 	}
 }
 
