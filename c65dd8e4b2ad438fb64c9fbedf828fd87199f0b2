@@ -315,6 +315,30 @@
       },
       "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebee380_708211bd",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-13T20:41:05Z",
+      "side": 1,
+      "message": "idk about the clustering part. I added the sort, even though each crash has their timestamp attached, but clustering purely based on the crash file name is almost useless if we don\u0027t peek into its content.",
+      "parentUuid": "0297974c_22917fce",
+      "range": {
+        "startLine": 254,
+        "startChar": 46,
+        "endLine": 254,
+        "endChar": 48
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
