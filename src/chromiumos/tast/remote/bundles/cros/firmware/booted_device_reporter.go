@@ -7,7 +7,6 @@ package firmware
 import (
 	"context"
 
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
@@ -18,11 +17,11 @@ func init() {
 		Func:         BootedDeviceReporter,
 		Desc:         "Verifies that the BootedDevice reporter identifies which device mode the DUT was booted from",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Attr:         []string{"group:firmware", "firmware_smoke"},
-		Data:         []string{firmware.ConfigFile},
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		Vars:         []string{"servo"},
+		Data:         pre.Data,
+		ServiceDeps:  pre.ServiceDeps,
+		SoftwareDeps: pre.SoftwareDeps,
+		Vars:         pre.Vars,
 		Params: []testing.Param{{
 			Pre: pre.NormalMode(),
 		}, {

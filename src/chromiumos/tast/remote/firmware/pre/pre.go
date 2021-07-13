@@ -56,6 +56,20 @@ func RecMode() testing.Precondition {
 	return recMode
 }
 
+// These are exported so they can be used in test declarations, but not const because they are arrays, please don't modify them.
+var (
+	// Vars is vars that are required for using this precondition. Pass to testing.Test.Vars.
+	Vars = []string{"servo"}
+
+	// SoftwareDeps is the software deps that are required for using this precondition. Pass to testing.Test.SoftwareDeps.
+	SoftwareDeps = []string{"crossystem", "flashrom"}
+
+	// ServiceDeps is the service deps that are required for using this precondition. Pass to testing.Test.ServiceDeps.
+	ServiceDeps = []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"}
+	// Data returns the data deps that are required for using this precondition. Pass to testing.Test.Data.
+	Data = []string{firmware.ConfigFile}
+)
+
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
 	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}

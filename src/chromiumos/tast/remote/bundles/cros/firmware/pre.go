@@ -8,7 +8,6 @@ import (
 	"context"
 
 	common "chromiumos/tast/common/firmware"
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/checkers"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/testing"
@@ -19,10 +18,10 @@ func init() {
 		Func:         Pre,
 		Desc:         "Verifies firmware Preconditions",
 		Contacts:     []string{"cros-fw-engprod@google.com", "aluo@google.com"},
-		Data:         []string{firmware.ConfigFile},
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
-		Vars:         []string{"servo"},
+		Data:         pre.Data,
+		ServiceDeps:  pre.ServiceDeps,
+		SoftwareDeps: pre.SoftwareDeps,
+		Vars:         pre.Vars,
 		Attr:         []string{"group:firmware"},
 		Params: []testing.Param{{
 			Name:      "normal",
