@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a14d7c_c1cb030b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-13T00:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03d168b2_69547ea7",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "7df801cbe189a219284ae2220d847ea7d3bf8f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b9a7fa8_4fc34b1d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-09T04:56:46Z",
       "side": 1,
       "message": "There are a few defer, suggest to leave some cleanup time, e.g: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go;l\u003d47",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "7df801cbe189a219284ae2220d847ea7d3bf8f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6617e2cd_26ae48b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-13T00:51:57Z",
+      "side": 1,
+      "message": "Neat, done!",
+      "parentUuid": "0b9a7fa8_4fc34b1d",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4d662d_30cdd436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-13T00:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0ec60ad_e81e346b",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "7df801cbe189a219284ae2220d847ea7d3bf8f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c14a1ef1_6ceca5a5",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-09T04:56:46Z",
       "side": 1,
       "message": "Is it gauranteed that r.MultipartForm.Value[\"text\"] is not empty? Same question to r.MultipartForm.Value[\"title\"]",
+      "range": {
+        "startLine": 98,
+        "startChar": 45,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "7df801cbe189a219284ae2220d847ea7d3bf8f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7750853e_cbacb968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-13T00:51:57Z",
+      "side": 1,
+      "message": "Added a check",
+      "parentUuid": "c14a1ef1_6ceca5a5",
       "range": {
         "startLine": 98,
         "startChar": 45,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c320a86e_716b77de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-13T00:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72cc7189_c73f1a2f",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 10
+      },
+      "revId": "7df801cbe189a219284ae2220d847ea7d3bf8f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "864c7ab6_762ad13f",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-09T04:56:46Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 10
+      },
+      "revId": "7df801cbe189a219284ae2220d847ea7d3bf8f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae32dc8e_d4fdccb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-13T00:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864c7ab6_762ad13f",
       "range": {
         "startLine": 174,
         "startChar": 4,
