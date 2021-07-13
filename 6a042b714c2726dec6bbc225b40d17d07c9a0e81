@@ -63,6 +63,30 @@
       },
       "revId": "6a042b714c2726dec6bbc225b40d17d07c9a0e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b2e8894_8bbe83a4",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-13T06:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66b1cd6_14ace73f",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "6a042b714c2726dec6bbc225b40d17d07c9a0e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
