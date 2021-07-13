@@ -33,9 +33,10 @@ func init() {
 		Func:         BootMode,
 		Desc:         "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		Data:         []string{firmware.ConfigFile},
-		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
+		Data:         pre.Data,
+		ServiceDeps:  pre.ServiceDeps,
+		SoftwareDeps: pre.SoftwareDeps,
+		Vars:         pre.Vars,
 		Attr:         []string{"group:firmware"},
 		Timeout:      15 * time.Minute, // Enough time to download test image from CloudStorage if necessary
 		Params: []testing.Param{{
@@ -158,7 +159,6 @@ func init() {
 			},
 			ExtraAttr: []string{"firmware_experimental"},
 		}},
-		Vars: []string{"servo"},
 	})
 }
 
