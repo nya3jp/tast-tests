@@ -16,6 +16,86 @@
       "message": "tast shadow reviewer LGTM",
       "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03649bf_ecb3ed7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-13T20:13:21Z",
+      "side": 1,
+      "message": "Generally looks good, thanks!",
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0f9ed8_3082b165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-13T20:13:21Z",
+      "side": 1,
+      "message": "Is game mode always going to be one of two values? If not, we might fail here and then not reset the game mode on L69... maybe we should defer the reset after L57 instead",
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e045323b_1cf8f5cf",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-13T20:13:21Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 139,
+        "startChar": 70,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6e0d20_b7d60655",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-13T20:13:21Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 172,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
