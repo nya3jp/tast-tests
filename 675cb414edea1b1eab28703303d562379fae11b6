@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "988fb147_e7303e33",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db522d93_8285f50e",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "675cb414edea1b1eab28703303d562379fae11b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54bc8bca_07ccdf0d",

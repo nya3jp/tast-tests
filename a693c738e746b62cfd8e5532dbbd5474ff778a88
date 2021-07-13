@@ -20,6 +20,183 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78a307f7_9a864bae",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "You don\u0027t need the enum[\"name\"] in the first line, like before?",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a26dad_4e27f96b",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "As you get this empty, and you don\u0027t use it outside of this function, this should only be defined within this function.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500ea218_0ebd12f2",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "style: if you use inline comments, you should put 2 spaces before the #.",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 17
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e48388_7851be0a",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "This can be an f-string.",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a21e4c_d4b5bee1",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "You are not using fields anywhere.",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89901599_4fff8376",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "This can be an f-string.",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd834d27_0372e23d",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "This can be an f-string.",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3047859e_55d0fc63",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "You are not catching these error anywhere. Like this, it is not different than the built in error when you try to access an item that is not in the dict.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 43
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc9e7b3_6deb9e05",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-13T14:18:35Z",
+      "side": 1,
+      "message": "\u003e  types, additional_structs \u003d parse_values(definition, messages)\nwould be easier to read. This way it is clear what is the input, and what is the output.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 20
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81d97a08_5c20552c",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 6
