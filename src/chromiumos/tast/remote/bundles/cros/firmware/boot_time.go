@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -30,11 +29,11 @@ func init() {
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
 		Attr:         []string{"group:firmware", "firmware_ec"},
-		Data:         []string{firmware.ConfigFile},
+		Data:         pre.Data,
+		ServiceDeps:  pre.ServiceDeps,
+		SoftwareDeps: pre.SoftwareDeps,
+		Vars:         pre.Vars,
 		Pre:          pre.NormalMode(),
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
-		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{
 			{
