@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bea9ba44_7fe7ec6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-14T19:43:33Z",
+      "side": 1,
+      "message": "two nits",
+      "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c323c18_272af6a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 2
@@ -53,6 +70,52 @@
         "startChar": 64,
         "endLine": 256,
         "endChar": 73
+      },
+      "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8532ed_6083b954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-14T19:43:33Z",
+      "side": 1,
+      "message": "You may reserve some time for defer to run in case the main flow timeout.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task\n\nctxDefer :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.second)\n...\ndefer a.Uninstall(ctxDefer, arc.APKPath(apkName))",
+      "range": {
+        "startLine": 317,
+        "startChar": 20,
+        "endLine": 317,
+        "endChar": 23
+      },
+      "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e287f1e4_83f3b412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-14T19:43:33Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "range": {
+        "startLine": 331,
+        "startChar": 101,
+        "endLine": 331,
+        "endChar": 122
       },
       "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
