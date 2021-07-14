@@ -24,6 +24,7 @@ import (
 
 func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) error {
 	const (
+		newSlidesURL = "https://slides.new"
 		title        = "CUJ Testing"
 		subtitle     = "For testing only"
 		slideTitle   = "CUJ_slide_title_page %d"
@@ -48,34 +49,21 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 		if newWindow {
 			opts = append(opts, cdputil.WithNewWindow())
 		}
-		conn, err := cr.NewConn(ctx, "https://drive.google.com", opts...)
+		conn, err := cr.NewConn(ctx, newSlidesURL, opts...)
 		if err != nil {
 			return err
 		}
 		defer conn.Close()
-
-		newButton := nodewith.Name("New").First()
-		menu := nodewith.Role(role.Menu)
-		googleSlides := nodewith.Name("Google Slides").Role(role.MenuItem)
-		filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
-		titleNode := nodewith.Name("title").First()
-		subtitleNode := nodewith.Name("subtitle").First()
-		okButton := nodewith.Name("OK").Role(role.Button)
-
-		if err := uiauto.Combine("create new slide",
-			ui.IfSuccessThen(ui.Exists(okButton), ui.LeftClick(okButton)),
-			expandMenu(tconn, newButton, menu, 246),
-			ui.LeftClick(googleSlides),
-			// Some DUT models with poor performance need to wait a long time.
-			ui.WithTimeout(2*time.Minute).WaitUntilExists(filmstripView),
-		)(ctx); err != nil {
-			return err
-		}
 		if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
 			return errors.Wrap(err, "failed to wait for page to finish loading")
 		}
 
+		filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
+		titleNode := nodewith.Name("title").First()
+		subtitleNode := nodewith.Name("subtitle").First()
+
 		return uiauto.Combine("edit slide title and subtitle",
+			ui.WithTimeout(time.Minute).WaitUntilExists(filmstripView),
 			ui.WaitUntilExists(titleNode),
 			ui.DoubleClick(titleNode),
 			ui.Sleep(time.Second),
@@ -137,7 +125,7 @@ func presentSlide(ctx context.Context, tconn *chrome.TestConn, kb *input.Keyboar
 	ui := uiauto.New(tconn)
 	presentationOptionsButton := nodewith.Name("Presentation options").First()
 	presentFromBeginningButton := nodewith.Name("Present from beginning").First()
-	if err := uiauto.Combine("Present Slide",
+	if err := uiauto.Combine("present Slide",
 		ui.WaitUntilExists(presentationOptionsButton),
 		ui.LeftClickUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
 		ui.LeftClick(presentFromBeginningButton),
@@ -177,10 +165,30 @@ func editSlide(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEv
 	if err != nil {
 		return errors.Wrap(err, "failed to get nodes info")
 	}
-	return uiauto.Combine("Edit slide",
+	return uiauto.Combine("edit slide",
 		mouse.DoubleClick(tconn, nodesInfo[len(nodesInfo)-1].Location.CenterPoint(), 500*time.Millisecond),
 		kb.TypeAction(text),
 		kb.AccelAction("Esc"),
 		kb.AccelAction("Esc"),
+	)(ctx)
+}
+
+func deleteSlide(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	application := nodewith.Role(role.Application) // Google Slide appliction node.
+	slideWebArea := nodewith.Name("Google Slides").Role(role.RootWebArea)
+	fileButton := nodewith.Name("File").Role(role.MenuItem).Ancestor(application)
+	menu := nodewith.Role(role.Menu).Ancestor(application)
+	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
+	goToSlidesHome := nodewith.Name("Go to Slides home screen").Role(role.Button)
+	leaveButton := nodewith.Name("Leave").Role(role.Button)
+	return uiauto.Combine("delete slide",
+		expandMenu(tconn, fileButton, menu, 526),
+		ui.LeftClick(moveToTrash),
+		ui.LeftClick(goToSlidesHome),
+		// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
+		// If it appears, click the leave button.
+		ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
+		ui.WithTimeout(time.Minute).WaitUntilExists(slideWebArea),
 	)(ctx)
 }
