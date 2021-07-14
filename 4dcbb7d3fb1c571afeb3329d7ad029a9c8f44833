@@ -16,6 +16,29 @@
       "message": "ptal!",
       "revId": "4dcbb7d3fb1c571afeb3329d7ad029a9c8f44833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b8b788_450b67ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-14T05:50:00Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this.\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md#manually_added-attributes",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "4dcbb7d3fb1c571afeb3329d7ad029a9c8f44833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
