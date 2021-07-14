@@ -25,10 +25,11 @@ import (
 )
 
 const (
-	resizeLockTestPkgName             = "org.chromium.arc.testapp.resizelock"
-	resizeLockApkName                 = "ArcResizeLockTest.apk"
-	resizeLockMainActivityName        = "org.chromium.arc.testapp.resizelock.MainActivity"
-	resizeLockUnresizableActivityName = "org.chromium.arc.testapp.resizelock.UnresizableActivity"
+	resizeLockTestPkgName                        = "org.chromium.arc.testapp.resizelock"
+	resizeLockApkName                            = "ArcResizeLockTest.apk"
+	resizeLockMainActivityName                   = "org.chromium.arc.testapp.resizelock.MainActivity"
+	resizeLockUnresizableUnspecifiedActivityName = "org.chromium.arc.testapp.resizelock.UnresizableUnspecifiedActivity"
+	resizeLockUnresizablePortraitActivityName    = "org.chromium.arc.testapp.resizelock.UnresizablePortraitActivity"
 
 	// Verifying splash visbility requres 3 different resize-locked apps.
 	resizeLock2PkgName = "org.chromium.arc.testapp.resizelock2"
@@ -115,6 +116,10 @@ var testCases = []resizeLockTestCase{
 	resizeLockTestCase{
 		name: "Resize Locked App - CUJ",
 		fn:   testResizeLockedAppCUJ,
+	},
+	resizeLockTestCase{
+		name: "Resize Locked App - Fully Locked",
+		fn:   testFullyLockedApp,
 	},
 	resizeLockTestCase{
 		name: "O4C App",
@@ -233,7 +238,7 @@ func testO4CApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 
 // testMaximizedApp verifies that an maximized app is not resize locked even if it's newly-installed.
 func testMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableActivityName)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableUnspecifiedActivityName)
 }
 
 // testNonResizeLocked verifies that the given app is not resize locked.
@@ -260,6 +265,58 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
 	}
 	return nil
+}
+
+// testFullyLockedApp verifies that the given app is fully locked
+func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
+	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName); err != nil {
+		return errors.Wrap(err, "failed to reinstall APK")
+	} else if !alreadyInstalled {
+		defer a.Uninstall(ctx, arc.APKPath(resizeLockApkName))
+	}
+
+	activity, err := arc.NewActivity(a, resizeLockTestPkgName, resizeLockUnresizablePortraitActivityName)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create %s", resizeLockUnresizablePortraitActivityName)
+	}
+	defer activity.Close()
+
+	if err := activity.Start(ctx, tconn); err != nil {
+		return errors.Wrapf(err, "failed to start %s", resizeLockUnresizablePortraitActivityName)
+	}
+	defer activity.Stop(ctx, tconn)
+
+	// Verify the initial state of the given non-resize-locked app.
+	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, false /* isSplashVisible */); err != nil {
+		return errors.Wrapf(err, "failed to verify the resize lock state of %s", resizeLockUnresizablePortraitActivityName)
+	}
+
+	// The compat-mode button of a fully-locked app is disabled.
+	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the compat-mode button")
+	}
+	defer icon.Release(ctx)
+
+	if err := icon.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the compat-mode button")
+	}
+
+	// Need some sleep here as we verify that nothing changes.
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		errors.Wrap(err, "failed to sleep after clicking on the compat-mode button: ")
+	}
+
+	if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false); err != nil {
+		return errors.Wrapf(err, "failed to verify the visibility of the compat-mode menu of %s", activity.ActivityName())
+	}
+
+	// The setting toggle of a fully-locked app is invisible in the app-management page.
+	if err := openAppManagementSetting(ctx, tconn, resizeLockAppName); err != nil {
+		return errors.Wrapf(err, "failed to open the app management page of %s", resizeLockAppName)
+	}
+	defer closeAppManagementSetting(ctx, tconn)
+	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 10*time.Second)
 }
 
 // testResizeLockedAppCUJ goes though the critical user journey of a resize-locked app, and verifies the app behaves expectedly.
@@ -430,7 +487,7 @@ func getExpectedResizability(activity *arc.Activity, mode resizeLockMode) bool {
 	}
 
 	// The activity with resizability false in its manifest is unresizable.
-	if activity.ActivityName() == resizeLockUnresizableActivityName {
+	if activity.ActivityName() == resizeLockUnresizableUnspecifiedActivityName {
 		return false
 	}
 
@@ -728,27 +785,11 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, appName string, currentMode, nextMode resizeLockMode) error {
 	// This check must be done before opening the Chrome OS settings page so it won't affect the screenshot taken in one of the checks.
 	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, currentMode, false /* isSplashVisible */); err != nil {
-		return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
+		return errors.Wrapf(err, "failed to verify resize lock state of %s", appName)
 	}
 
-	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: shelfIconClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find the shelf icon of %s", appName)
-	}
-	defer resizeLockShelfIcon.Release(ctx)
-
-	if err := resizeLockShelfIcon.RightClick(ctx); err != nil {
-		return errors.Wrapf(err, "failed to click on the shelf icon of %s", appName)
-	}
-
-	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the menu item for the app-management page")
-	}
-	defer appInfoMenuItem.Release(ctx)
-
-	if err := appInfoMenuItem.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on the menu item for the app-management page")
+	if err := openAppManagementSetting(ctx, tconn, appName); err != nil {
+		return errors.Wrapf(err, "failed to open the app management page of %s", appName)
 	}
 
 	settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 10*time.Second)
@@ -769,6 +810,41 @@ func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 		return errors.Wrap(err, "failed to verify the state of the setting toggle after toggling the setting")
 	}
 
+	if err := closeAppManagementSetting(ctx, tconn); err != nil {
+		return errors.Wrapf(err, "failed to close the app management page of %s", appName)
+	}
+
+	// This check must be done after closing the Chrome OS settings page so it won't affect the screenshot taken in one of the checks.
+	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nextMode, false /* isSplashVisible */); err != nil {
+		return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
+	}
+
+	return nil
+}
+
+// openAppManagementSetting opens the app management page if the given app.
+func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: shelfIconClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the shelf icon of %s", appName)
+	}
+	defer resizeLockShelfIcon.Release(ctx)
+
+	if err := resizeLockShelfIcon.RightClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click on the shelf icon of %s", appName)
+	}
+
+	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the menu item for the app-management page")
+	}
+	defer appInfoMenuItem.Release(ctx)
+
+	return appInfoMenuItem.LeftClick(ctx)
+}
+
+// closeAppManagementSetting closes any open app management page.
+func closeAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) error {
 	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: shelfIconClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the shelf icon of the settings app")
@@ -785,16 +861,7 @@ func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 	}
 	defer closeMenuItem.Release(ctx)
 
-	if err := closeMenuItem.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on the menu item for closing the settings app")
-	}
-
-	// This check must be done after closing the Chrome OS settings page so it won't affect the screenshot taken in one of the checks.
-	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nextMode, false /* isSplashVisible */); err != nil {
-		return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
-	}
-
-	return nil
+	return closeMenuItem.LeftClick(ctx)
 }
 
 // checkAppManagementSettingToggleState verifies the resize lock setting state on the app-management page.
