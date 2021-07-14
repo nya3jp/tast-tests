@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9471f621_a91b9135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-14T14:18:46Z",
+      "side": 1,
+      "message": "for readability, could you introduce enum-like type?",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9339de37_3018e0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-14T14:18:46Z",
+      "side": 1,
+      "message": "for stability, could you avoid depending on the human readable text, and instead use some ID etc.?\nDitto for below.",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2bb535_0dee8673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-14T14:18:46Z",
+      "side": 1,
+      "message": "Could you move this under the subpackage to be shared?\nIn tast bundles, we do not want to share functions defined in a file with another file for better maintenance.\n(I think tast-lint warns this...?)",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
