@@ -50,6 +50,24 @@
       "message": "according to the Tast, we should wait a few more builds... (perhaps until tomorrow?)\n\nhttps://tastboard.corp.google.com/test/arc.TextToSpeech",
       "revId": "e4b11b3c28d50a328e612e3e63918172474f1c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20016d6_46c7c549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-14T23:25:04Z",
+      "side": 1,
+      "message": "sgtm, i will wait until end of this week (Fri 16 July)",
+      "parentUuid": "c40286f4_32b185d4",
+      "revId": "e4b11b3c28d50a328e612e3e63918172474f1c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
