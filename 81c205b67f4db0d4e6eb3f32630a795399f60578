@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356d7f12_896bb683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-14T23:56:13Z",
+      "side": 1,
+      "message": "Thank you Shuhei for this detailed explanation! I feel like I understand the context usage much better now, and it makes sense why it didn\u0027t work before.",
+      "parentUuid": "2d978f7f_fdb6091f",
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cda638d5_8e1f9f0b",
@@ -92,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5e4e89_32251d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-14T23:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda638d5_8e1f9f0b",
+      "range": {
+        "startLine": 129,
+        "startChar": 46,
+        "endLine": 129,
+        "endChar": 49
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "699aa924_d4ec548f",
@@ -105,6 +147,30 @@
       "writtenOn": "2021-07-14T04:50:28Z",
       "side": 1,
       "message": "Need to call n.btsnoopCmd.Wait() as well to release resources associated to the subprocess.\nhttps://pkg.go.dev/os/exec#Cmd.Wait",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd897513_1997844d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-14T23:56:13Z",
+      "side": 1,
+      "message": "I added it, but it seems to get an error every time:\n```\nFailed to wait for btmon to stop: signal: killed\n```\nWe\u0027re just logging the error here so it\u0027s not critical, but I\u0027m not sure if this is expected behavior from Wait().",
+      "parentUuid": "699aa924_d4ec548f",
       "range": {
         "startLine": 153,
         "startChar": 1,
@@ -162,6 +228,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5562e4a6_c84f8982",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-14T23:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b7094e_98b060a5",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 39
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f501b0c_15f891e2",
@@ -175,6 +265,30 @@
       "writtenOn": "2021-07-14T04:50:28Z",
       "side": 1,
       "message": "I believe we can pass ctx (not s.TestContext()) to these gRPC methods.",
+      "range": {
+        "startLine": 346,
+        "startChar": 35,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2694a9_26792c9c",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-14T23:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f501b0c_15f891e2",
       "range": {
         "startLine": 346,
         "startChar": 35,
