@@ -85,10 +85,9 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	joinConf := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := uiauto.Combine("join conference",
-			ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(nodewith.Name("Return to home screen"))),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to join conference")
+		homeScreenLink := nodewith.Name("Return to home screen").Role(role.Link)
+		if err := ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(homeScreenLink))(ctx); err != nil {
+			return errors.Wrapf(err, "failed to click button to join conference within %v", showJoinNowTimeout)
 		}
 		return nil
 	}
@@ -176,15 +175,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
-	// If gaia-login isn't use the conference-test only account, it would switch
-	// when running the case. And also add the test account if the DUT doesn't
-	// be added before.
-	switchUserJoin := func(ctx context.Context) error {
-		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := ui.WithTimeout(3 * time.Second).Exists(joinNowButton); err == nil {
-			testing.ContextLog(ctx, "Join the meeting without switching account")
-			return nil
-		}
+	// switchUser switches to the account that will be used to join the Google meet.
+	switchUser := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Switch account")
 		switchAccount := nodewith.Name("Switch account").Role(role.Link)
 		meetAccountText := nodewith.Name(meetAccount).First()
@@ -223,6 +215,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		}
 
 		// Wait for the "Join now" button.
+		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		if err := ui.WithTimeout(showJoinNowTimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
 			return errors.Wrapf(err, "Join now button didn't show for account %s", meetAccount)
 		}
@@ -277,12 +270,12 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
-	isLogin := nodewith.Name(conf.account).Role(role.StaticText)
+	targetMeetAccount := nodewith.Name(conf.account).Role(role.StaticText)
 	return uiauto.Combine("join conference",
 		openConference,
 		allowPerm,
-		// Check if the user is login by specific account. If not, switch to a specific account.
-		ui.IfSuccessThen(ui.Gone(isLogin), switchUserJoin),
+		// Check if the login account is the one for google meet. If not, switch to google meet account.
+		ui.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
 		joinConf,
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
@@ -443,7 +436,6 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
-	ui := uiauto.New(tconn)
 	// Make Google Meet to show the bottom bar
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -451,27 +443,31 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	}
 	defer kb.Close()
 
-	shareScreen := func(ctx context.Context, tconn *chrome.TestConn) error {
-		meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
-		presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
-		aWindow := nodewith.Name("A window").Role(role.MenuItem)
-		presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
-		shareButton := nodewith.Name("Share").Role(role.Button)
-		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
-		stopPresenting := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
-		return uiauto.Combine("share screen",
-			ui.LeftClick(presentNowButton),
-			ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
-			ui.LeftClick(presentWindow),
-			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
-			ui.WithTimeout(2*time.Minute).WaitUntilExists(stopPresenting),
-		)(ctx)
+	deletePerformed := false
+	// slideCleanup switches to the slide page and deletes it.
+	slideCleanup := func(ctx context.Context) error {
+		if deletePerformed {
+			return nil
+		}
+		deletePerformed = true // Set it to true because we only try to delete once.
+
+		testing.ContextLog(ctx, "Switch to the slide to do cleanup")
+		if err := conf.switchToChromeTab(ctx, slideTitle); err != nil {
+			return errors.Wrap(err, "failed to switch tab to slide page")
+		}
+		testing.ContextLog(ctx, "Delete slide")
+		if err := deleteSlide(ctx, conf.tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to delete slide: ", err)
+			return errors.Wrap(err, "failed to delete slide")
+		}
+		return nil
 	}
 
 	testing.ContextLog(ctx, "Create a new Google Slides")
 	if err := newGoogleSlides(ctx, conf.cr, false); err != nil {
 		return err
 	}
+	defer slideCleanup(ctx) // Delete slide if any error occures.
 
 	testing.ContextLog(ctx, "Switch to conference page")
 	if err := conf.switchToChromeTab(ctx, "Meet"); err != nil {
@@ -479,7 +475,7 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	}
 
 	testing.ContextLog(ctx, "Start to share screen")
-	if err := shareScreen(ctx, tconn); err != nil {
+	if err := conf.shareScreen(ctx, tconn, false); err != nil {
 		return err
 	}
 
@@ -496,6 +492,11 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	testing.ContextLog(ctx, "Edit slide")
 	if err := editSlide(ctx, tconn, kb); err != nil {
 		return errors.Wrap(err, "failed to edit slide when leave presentation mode")
+	}
+
+	if err := slideCleanup(ctx); err != nil {
+		// Only log the error.
+		testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
 	}
 
 	testing.ContextLog(ctx, "Switch to conference page")
@@ -516,7 +517,6 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 		return errors.Wrap(err, "failed to initialize keyboard input")
 	}
 	defer kb.Close()
-
 	moveConferenceTab := func(ctx context.Context) error {
 		return uiauto.Combine("move conference to exteneded display",
 			kb.AccelAction("Alt+Tab"),
@@ -526,27 +526,34 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 		)(ctx)
 	}
 
-	shareScreen := func(ctx context.Context) error {
-		meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
-		presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
-		aWindow := nodewith.Name("A window").First()
-		presentWindow := nodewith.ClassName("DesktopMediaSourceView").NameRegex(regexp.MustCompile("My Drive|" + slideTitle))
-		shareButton := nodewith.Name("Share").Role(role.Button)
-		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
-		stopPresentation := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
-		return uiauto.Combine("share screen",
-			ui.LeftClick(presentNowButton),
-			ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
-			ui.LeftClick(presentWindow),
-			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
-			ui.WaitUntilGone(stopPresentation),
-		)(ctx)
+	deletePerformed := false
+	// slideCleanup switches to the slide page and deletes it.
+	slideCleanup := func(ctx context.Context) error {
+		if deletePerformed {
+			return nil
+		}
+		deletePerformed = true // Set it to true because we only try to delete once.
+
+		webArea := nodewith.Name(slideTitle).Role(role.RootWebArea)
+		if err := ui.Exists(webArea); err != nil {
+			testing.ContextLog(ctx, "Switch to the slide browser tab to do cleanup")
+			if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+				return errors.Wrap(err, "failed to press Alt+Tab to switch to slide page")
+			}
+		}
+		testing.ContextLog(ctx, "Delete slide")
+		if err := deleteSlide(ctx, conf.tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to delete slide: ", err)
+			return errors.Wrap(err, "failed to delete slide")
+		}
+		return nil
 	}
 
 	testing.ContextLog(ctx, "Create a new Google Slides")
 	if err := newGoogleSlides(ctx, conf.cr, true); err != nil {
 		return err
 	}
+	defer slideCleanup(ctx) // Delete slide if any error occures.
 
 	testing.ContextLog(ctx, "Switch to conference page")
 	if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
@@ -554,7 +561,7 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 
 	testing.ContextLog(ctx, "Start to share screen")
-	if err := shareScreen(ctx); err != nil {
+	if err := conf.shareScreen(ctx, tconn, true); err != nil {
 		return err
 	}
 
@@ -576,6 +583,11 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	testing.ContextLog(ctx, "Edit slide")
 	if err := editSlide(ctx, tconn, kb); err != nil {
 		return errors.Wrap(err, "failed to edit slide when leave presentation mode")
+	}
+
+	if err := slideCleanup(ctx); err != nil {
+		// Only log the error.
+		testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
 	}
 
 	testing.ContextLog(ctx, "Switch to conference page")
@@ -615,6 +627,29 @@ func (conf *GoogleMeetConference) switchToChromeTab(ctx context.Context, tabName
 		}
 	}
 	return ui.LeftClick(nodewith.NameContaining(tabName).Role(role.Tab))(ctx)
+}
+
+// shareScreen share screen from google meet.
+func (conf *GoogleMeetConference) shareScreen(ctx context.Context, tconn *chrome.TestConn, extendedDisplay bool) error {
+	const slideTitle = "Untitled presentation - Google Slides"
+	ui := uiauto.New(tconn)
+	meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+	presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
+	aWindow := nodewith.Name("A window").Role(role.MenuItem)
+	presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
+	shareButton := nodewith.Name("Share").Role(role.Button)
+	// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
+	stopPresenting := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
+	if extendedDisplay {
+		presentWindow = nodewith.ClassName("DesktopMediaSourceView").NameRegex(regexp.MustCompile("My Drive|" + slideTitle))
+	}
+	return uiauto.Combine("share screen",
+		ui.LeftClick(presentNowButton),
+		ui.WithTimeout(time.Minute).LeftClickUntil(aWindow, ui.WaitUntilExists(presentWindow)),
+		ui.LeftClick(presentWindow),
+		ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
+		ui.WithTimeout(time.Minute).WaitUntilExists(stopPresenting),
+	)(ctx)
 }
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
