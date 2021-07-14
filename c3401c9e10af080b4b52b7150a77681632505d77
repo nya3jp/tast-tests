@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db4187e_be3be330",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-14T03:10:48Z",
+      "side": 1,
+      "message": "Hi Judy, checked the LeftClickUntil code, it always expected nil if condition is not met. Returning error will make the LeftClickUntil function terminate.",
+      "parentUuid": "334160d7_05fdb138",
+      "range": {
+        "startLine": 394,
+        "startChar": 18,
+        "endLine": 394,
+        "endChar": 21
+      },
+      "revId": "c3401c9e10af080b4b52b7150a77681632505d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44550d07_e0ae7dac",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-14T01:56:38Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 412,
+        "startChar": 17,
+        "endLine": 412,
+        "endChar": 20
+      },
+      "revId": "c3401c9e10af080b4b52b7150a77681632505d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c718ef_af124ca4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-14T03:10:48Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "44550d07_e0ae7dac",
       "range": {
         "startLine": 412,
         "startChar": 17,
