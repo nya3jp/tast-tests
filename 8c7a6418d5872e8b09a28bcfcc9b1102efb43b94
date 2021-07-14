@@ -118,6 +118,30 @@
       },
       "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f765d89_d86e127f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-07-14T05:08:41Z",
+      "side": 1,
+      "message": "That\u0027s covered by https://crrev.com/c/3007558.\nThe new plugin generates different GUIDs, so this test will not pass without modification when the old plugin is removed.",
+      "parentUuid": "a57af88b_126d85ac",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
