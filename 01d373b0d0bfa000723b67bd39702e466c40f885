@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47fa7a18_a996743f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:17:41Z",
+      "side": 1,
+      "message": "a space after //",
+      "revId": "01d373b0d0bfa000723b67bd39702e466c40f885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6372a84d_df55667f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:17:41Z",
+      "side": 1,
+      "message": "verify that the shelf is shown with no windows?",
+      "revId": "01d373b0d0bfa000723b67bd39702e466c40f885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80fbb50a_3f7012d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:17:41Z",
+      "side": 1,
+      "message": "can we verify the shelf is hidden after this?",
+      "revId": "01d373b0d0bfa000723b67bd39702e466c40f885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b709d48a_f60ea0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:17:41Z",
+      "side": 1,
+      "message": "swipe down and verify the shelf gets hidden",
+      "revId": "01d373b0d0bfa000723b67bd39702e466c40f885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
