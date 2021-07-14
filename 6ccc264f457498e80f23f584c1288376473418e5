@@ -16,6 +16,23 @@
       "message": "Alexander, could you please take a look at this one too? Since you looked on the wrong one 😊 Thanks!",
       "revId": "6ccc264f457498e80f23f584c1288376473418e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a170aea5_af7daab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T12:48:37Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6ccc264f457498e80f23f584c1288376473418e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
