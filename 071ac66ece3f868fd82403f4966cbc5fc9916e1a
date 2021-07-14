@@ -455,6 +455,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53638718_b27fb1da",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-14T20:34:05Z",
+      "side": 1,
+      "message": "So just return the error string then, why return this map? Only \"result-status\" is ever being used from this map (L228).",
+      "parentUuid": "df3cb2c1_38abb2b4",
+      "range": {
+        "startLine": 189,
+        "startChar": 75,
+        "endLine": 189,
+        "endChar": 92
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9919855c_b1912830",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 8
@@ -819,6 +843,30 @@
       "side": 1,
       "message": "Yes,TBT device connected to DUT.",
       "parentUuid": "fcc1e74c_65892815",
+      "range": {
+        "startLine": 285,
+        "startChar": 39,
+        "endLine": 285,
+        "endChar": 69
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89656b5_088a42d1",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-14T20:34:05Z",
+      "side": 1,
+      "message": "Sorry, I meant: change this to \"NVM version of the TBT device connected to the DUT\". Same applies L319",
+      "parentUuid": "8a63be81_eb19212c",
       "range": {
         "startLine": 285,
         "startChar": 39,
