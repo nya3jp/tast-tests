@@ -16,6 +16,47 @@
       "message": "Now it should work as intended.\nPTAL",
       "revId": "5706ed6856626bdd6b7cf2d7963e8f84cbd4700f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b099cc5_3b561c65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-14T13:42:55Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "5c2edb0f_573540e4",
+      "revId": "5706ed6856626bdd6b7cf2d7963e8f84cbd4700f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04dd10ac_5b355779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-14T13:42:55Z",
+      "side": 1,
+      "message": "final nit: 15 seconds for slower devices",
+      "range": {
+        "startLine": 129,
+        "startChar": 36,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "5706ed6856626bdd6b7cf2d7963e8f84cbd4700f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
