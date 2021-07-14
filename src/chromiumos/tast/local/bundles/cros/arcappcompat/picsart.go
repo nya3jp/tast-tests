@@ -97,27 +97,8 @@ func launchAppForPicsart(ctx context.Context, s *testing.State, tconn *chrome.Te
 		closeClassName = "android.widget.ImageButton"
 		closeDes       = "Navigate up"
 		homeText       = "Home"
-		selectSkipID   = "com.picsart.studio:id/skipButton"
 		skipID         = "com.picsart.studio:id/btnSkip"
 	)
-
-	// Click on skip button.
-	selectSkipButton := d.Object(ui.ID(selectSkipID))
-	if err := selectSkipButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("selectSkipButton doesn't exists: ", err)
-	} else if err := selectSkipButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on selectSkipButton: ", err)
-	}
-
-	// Click on close button to skip subscription.
-	closeButton := d.Object(ui.ClassName(closeClassName))
-	if err := closeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("closeButton doesn't exists: ", err)
-		d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0)
-	} else if err := closeButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on closeButton: ", err)
-	}
-
 	// Click on skip button.
 	skipButton := d.Object(ui.ID(skipID))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -132,18 +113,16 @@ func launchAppForPicsart(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Log("allowButton doesn't exists: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
-
 	}
 
 	// Click on close button.
-	closeButton = d.Object(ui.ClassName(closeClassName), ui.Description(closeDes))
+	closeButton := d.Object(ui.ClassName(closeClassName), ui.Description(closeDes))
 	if err := closeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("closeButton doesn't exists: ", err)
 	} else if err := closeButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on closeButton: ", err)
 	}
 
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
 	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
