@@ -71,7 +71,7 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not verify test routine has started: ", err)
 	}
 
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxSuccessBadge, 5*time.Minute); err != nil {
+	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxPassedBadge, 5*time.Minute); err != nil {
 		s.Fatal("Could not verify successful run of at least one CPU routine: ", err)
 	}
 
