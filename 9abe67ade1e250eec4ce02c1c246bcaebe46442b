@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d914ef_4f6719ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-14T06:55:50Z",
+      "side": 1,
+      "message": "M93 will have this feature launched and this will affect all Clamshell devices. Hence it is better to work on the fix for it. May be have this as a ToDo temporarily to disable the feature.",
+      "revId": "9abe67ade1e250eec4ce02c1c246bcaebe46442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
