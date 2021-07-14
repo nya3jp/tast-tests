@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b657fc5e_d5b4ac1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2021-07-14T06:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf2be02f_3960aa6a",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "245eb3cd9749e1d190c54777c3b3947ab6900027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8159246a_790aa035",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-14T04:01:54Z",
       "side": 1,
       "message": "With this context and the below (deferred actions) ensure you reserve enough time for these cleanup actions to occur. e.g.\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n```\nPass through the cleanupCtx to this and the below function and use ctx elsewhere",
+      "range": {
+        "startLine": 66,
+        "startChar": 32,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "245eb3cd9749e1d190c54777c3b3947ab6900027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0c07c5_0bae8ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2021-07-14T06:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8159246a_790aa035",
       "range": {
         "startLine": 66,
         "startChar": 32,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37cf668_95b9f9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2021-07-14T06:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd85de43_09cb6f9b",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "245eb3cd9749e1d190c54777c3b3947ab6900027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7a40f6_497be27a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-14T04:01:54Z",
       "side": 1,
       "message": "Can you move this all into a helper function?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "245eb3cd9749e1d190c54777c3b3947ab6900027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a473a2e1_03365309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2021-07-14T06:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb7a40f6_497be27a",
       "range": {
         "startLine": 69,
         "startChar": 0,
