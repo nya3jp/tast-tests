@@ -7,6 +7,7 @@ package crostini
 import (
 	"bytes"
 	"context"
+	"image"
 	"image/color"
 	"image/png"
 	"os"
@@ -32,7 +33,7 @@ import (
 // mostly (>= 1/2) contains the expected color. Will retry for up to 10 seconds
 // if it fails. For logging purposes, the screenshot will be saved at the given
 // path.
-func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expectedColor color.Color, screenshotPath string) error {
+func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expectedColor color.Color, screenshotPath string, rects ...image.Rectangle) error {
 	if !strings.HasSuffix(screenshotPath, ".png") {
 		return errors.New("Screenshots must have the '.png' extension, got: " + screenshotPath)
 	}
@@ -54,12 +55,21 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 		if err != nil {
 			return errors.Wrapf(err, "failed decoding the screenshot image %v", screenshotPath)
 		}
-		color, ratio := colorcmp.DominantColor(im)
-		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
-			return nil
+
+		if len(rects) == 0 {
+			rects = append(rects, im.Bounds())
 		}
-		return errors.Errorf("screenshot did not have matching dominant color, got %v at ratio %0.2f but expected %v",
-			colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
+		centre := image.Pt(im.Bounds().Dx(), im.Bounds().Dy()).Div(2)
+
+		for _, r := range rects {
+			rcentre := image.Pt(r.Dx(), r.Dy()).Div(2)
+			color, ratio := colorcmp.DominantColor(im.(*image.RGBA).SubImage(r.Add(centre).Sub(rcentre)))
+			if ratio < 0.5 || !colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+				return errors.Errorf("screenshot did not have matching dominant color, got %v at ratio %0.2f but expected %v",
+					colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
+			}
+		}
+		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return err
 	}
