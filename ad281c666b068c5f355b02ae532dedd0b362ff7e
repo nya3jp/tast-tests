@@ -16,6 +16,46 @@
       "message": "Jun/Alex, please hold on the review. Got some comment in the bug that there might be a better approach to get the DUT wakeup time. I\u0027ll let you know if the change is ready for review. Thanks!",
       "revId": "ad281c666b068c5f355b02ae532dedd0b362ff7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35de7740_d12cba24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-14T00:50:34Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ad281c666b068c5f355b02ae532dedd0b362ff7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095f0fca_c1a0f3fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-14T00:50:34Z",
+      "side": 1,
+      "message": "nit: resumeStart is float type, should you use 0.0 here?",
+      "range": {
+        "startLine": 438,
+        "startChar": 21,
+        "endLine": 438,
+        "endChar": 22
+      },
+      "revId": "ad281c666b068c5f355b02ae532dedd0b362ff7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
