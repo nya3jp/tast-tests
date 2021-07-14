@@ -151,7 +151,7 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	for platform := CfgPlatformFromLSBBoard(board); platform != ""; {
 		b, ok := consolidated[platform]
 		if !ok {
-			return nil, errors.Wrapf(err, "consolidated JSON did not contain platform %s", platform)
+			return nil, errors.Errorf("consolidated JSON did not contain platform %s", platform)
 		}
 		parent, err := parentFromBytes(b)
 		if err != nil {
