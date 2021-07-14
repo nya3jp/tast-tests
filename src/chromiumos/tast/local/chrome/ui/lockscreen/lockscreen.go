@@ -13,7 +13,11 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -155,4 +159,31 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
 	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
+}
+
+// Signout clicks "Sign out" button and waits for the Chrome restart.
+func Signout(ctx context.Context, tconn *chrome.TestConn) error {
+	oldpid, err := chromeproc.GetRootPID()
+	if err != nil {
+		return err
+	}
+
+	ui := uiauto.New(tconn)
+	// We ingore errors here because when we click on "Sign out" button Chrome
+	// shuts down and the connection is closed. So we always get an error.
+	ui.LeftClick(nodewith.Name("Sign out").Role(role.Button))(ctx)
+
+	// Wait for Chrome restart
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		newpid, err := chromeproc.GetRootPID()
+		if err != nil {
+			return err
+		}
+		if newpid == oldpid {
+			return errors.New("Chrome still did not restart")
+		}
+		return nil
+
+	}, &opts)
 }
