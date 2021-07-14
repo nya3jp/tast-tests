@@ -16,6 +16,46 @@
       "message": "PTAL!",
       "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b991ba15_fb1bb184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-14T08:10:00Z",
+      "side": 1,
+      "message": "Behavior and expectations LGTM. Let me hand over to tast-owners for general Go/Tast stuff.",
+      "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c323c18_272af6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-14T08:10:00Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 256,
+        "startChar": 64,
+        "endLine": 256,
+        "endChar": 73
+      },
+      "revId": "e3cd124e1e629177c9a8603e5335e7a6af6f2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
