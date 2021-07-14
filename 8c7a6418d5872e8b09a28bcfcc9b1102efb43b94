@@ -94,6 +94,30 @@
       },
       "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57af88b_126d85ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-14T03:21:17Z",
+      "side": 1,
+      "message": "If that is the case this test should probably pass but the actual behavior that we are implementing (updated) will not without additional modification: updates are triggered by specifying plugin on emit command: https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/HEAD/overlay-puff/sys-firmware/parade-ps175-firmware/files/99-fwupdtool-lspcon.rules",
+      "parentUuid": "e4b81d70_31a3cbb7",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
