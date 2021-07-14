@@ -490,7 +490,7 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
 	// To perform touch and text inputs.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "2", "--throttle", "100", "-v", "50").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test touch and text inputs: ", err)
 	}
@@ -518,7 +518,7 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
 	// To perform keyboard navigations.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "20", "--pct-nav", "20", "--pct-majornav", "20", "--pct-nav", "20", "--pct-majornav", "20", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-nav", "20", "--pct-majornav", "20", "--pct-nav", "20", "--pct-majornav", "20", "--throttle", "100", "-v", "50").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test keyboard navigations: ", err)
 	}
@@ -530,14 +530,6 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 // TouchAndPlayVideo func verifies app perform touch and play video successfully without crash or ANR.
 func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
-	}
-	if tabletModeEnabled {
-		s.Log("Device is in tablet mode. Skipping test")
-		return
-	}
 	// Press enter key twice.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
@@ -546,7 +538,7 @@ func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
 	// To perform touch and play video.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "60", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "60", "--throttle", "100", "-v", "50").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test touch and play video content: ", err)
 	}
@@ -600,8 +592,13 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 
 // MouseScrollAction func verifies app perform mouse scroll actions successfully without crash or ANR.
 func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	checkForScrollLayout := d.Object(ui.PackageName(appPkgName), ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
+	if err := checkForScrollLayout.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
+		return
+	}
 	// To perform mouse scroll actions.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--throttle", "100", "--pct-touch", "30", "--pct-trackball", "50", "-v", "1000").Output(testexec.DumpLogOnError)
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-trackball", "100", "--throttle", "100", "-v", "50").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Error("Failed to perform monkey test mouse scroll: ", err)
 	}
@@ -613,7 +610,7 @@ func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 // TouchScreenScroll Test verifies app perform scrollForward successfully without crash or ANR.
 func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	checkForScrollLayout := d.Object(ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
+	checkForScrollLayout := d.Object(ui.PackageName(appPkgName), ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
 	if err := checkForScrollLayout.WaitForExists(ctx, DefaultUITimeout); err != nil {
 		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
 		return
@@ -643,7 +640,7 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 		s.Log("Device is in tablet mode. Skipping test")
 		return
 	}
-	checkUIElement := d.Object(ui.Clickable(true), ui.Focusable(true), ui.Enabled(true))
+	checkUIElement := d.Object(ui.PackageName(appPkgName), ui.Clickable(true), ui.Focusable(true), ui.Enabled(true))
 	if err := checkUIElement.WaitForExists(ctx, DefaultUITimeout); err != nil {
 		s.Log("checkUIElement doesn't exist and skipped mouse click: ", err)
 		return
@@ -835,6 +832,7 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err != nil {
 		s.Fatal("Failed to obtain the orientation info: ", err)
 	}
+	s.Logf("Orientation of primary window, orientation.Type %+v", orientation.Type)
 	//TODO(b/178401320): Remove this if a proper solution is found to perform split screen on portrait oriented apps.
 	if orientation.Type == display.OrientationPortraitPrimary {
 		s.Log("App is in portrait orientation. Skipping test")
