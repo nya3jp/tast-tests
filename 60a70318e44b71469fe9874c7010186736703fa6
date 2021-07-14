@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand where the not enough memory is coming from\n\nDo other wayland apps crash when you make their windows too big?",
       "revId": "60a70318e44b71469fe9874c7010186736703fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4560bb4b_32e3e3f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-07-14T11:02:25Z",
+      "side": 1,
+      "message": "No. There\u0027s genuine problem with mmap in crosvm for zork, AFAICT. Possibly other boards. However this means we can test Wayland, not mmap.",
+      "parentUuid": "b0bfafbc_bc4a133f",
+      "revId": "60a70318e44b71469fe9874c7010186736703fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
