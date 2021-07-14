@@ -9,7 +9,7 @@ package org.chromium.arc.testapp.resizelock;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class UnresizableActivity extends Activity {
+public class UnresizableUnspecifiedActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
