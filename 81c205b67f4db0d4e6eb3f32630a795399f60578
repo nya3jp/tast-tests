@@ -73,6 +73,30 @@
       },
       "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b7094e_98b060a5",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-14T00:50:58Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to make a difference in this case. The test runs the same with either context, and the btsnoop logs still are not saved.",
+      "parentUuid": "45a00f65_bf344066",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 39
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
