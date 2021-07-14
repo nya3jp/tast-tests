@@ -123,7 +123,7 @@ func loadBytes(configDataDir, platform string) ([]byte, error) {
 func parentFromBytes(b []byte) (string, error) {
 	var cfg Config
 	if err := json.Unmarshal(b, &cfg); err != nil {
-		return "", errors.Wrapf(err, "unmarshaling json bytes %s", b)
+		return "", errors.Wrapf(err, "unmarshalling json bytes %s", b)
 	}
 	if cfg.Parent == "" && cfg.Platform != "" {
 		return defaultName, nil
@@ -143,7 +143,7 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	// Unmarshal consolidated JSON bytes onto a map from platform name to raw JSON
 	var consolidated map[string]json.RawMessage
 	if err := json.Unmarshal(b, &consolidated); err != nil {
-		return nil, errors.Wrapf(err, "unmarshaling consolidated JSON bytes %s", b)
+		return nil, errors.Wrapf(err, "unmarshalling consolidated JSON bytes %s", b)
 	}
 
 	// inherits is an array of platform names to be inherited, from most specific (board) to most general (DEFAULTS).
@@ -151,7 +151,7 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	for platform := CfgPlatformFromLSBBoard(board); platform != ""; {
 		b, ok := consolidated[platform]
 		if !ok {
-			return nil, errors.Wrapf(err, "consolidated JSON did not contain platform %s", platform)
+			return nil, errors.Errorf("consolidated JSON did not contain platform %s", platform)
 		}
 		parent, err := parentFromBytes(b)
 		if err != nil {
