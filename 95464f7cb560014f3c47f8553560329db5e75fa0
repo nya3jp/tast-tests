@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d826a94_bf33f1ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1415460
+      },
+      "writtenOn": "2021-07-14T16:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f7387d_b2a5e2e1",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "95464f7cb560014f3c47f8553560329db5e75fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "251d34f2_efe23681",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-13T23:16:47Z",
       "side": 1,
       "message": "Think we could use `pointer.Context` interface and si\n\n  var pc pointer.Context\n  pt :\u003d s.Param().(pointerTypeParam)\n  if pt \u003d\u003d pointerTouch {\n    pc, err \u003d pointer.NewTouch(ctx, tconn)\n    if err !\u003d nil {\n      s.Fatal(\"Failed to set up the touch context: \", err)\n    }\n  } else {\n    pc \u003d pointer.NewMouse(tconn)\n  }\n  \nAnd in test body, we should could use the new pc.Drag() call and have just one piece of code for both mouse and touch.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "95464f7cb560014f3c47f8553560329db5e75fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b424a9_f4494100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1415460
+      },
+      "writtenOn": "2021-07-14T16:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "251d34f2_efe23681",
       "range": {
         "startLine": 85,
         "startChar": 0,
