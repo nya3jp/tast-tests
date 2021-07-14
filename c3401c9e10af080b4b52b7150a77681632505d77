@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5e834c_6fedf8a3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:47:38Z",
+      "side": 1,
+      "message": "This is actually not right. Do you have plan to port the CUJs to uiauto?",
+      "parentUuid": "5db4187e_be3be330",
+      "range": {
+        "startLine": 394,
+        "startChar": 18,
+        "endLine": 394,
+        "endChar": 21
+      },
+      "revId": "c3401c9e10af080b4b52b7150a77681632505d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44550d07_e0ae7dac",
