@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13217d8d_478e95ef",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-14T16:34:44Z",
+      "side": 1,
+      "message": "Looks like there is: https://pkg.go.dev/net/http#pkg-constants (see StatusOK)\n\nFor that matter, even the method types (GET, POST, etc) all have constants associated with them. Please use those.",
+      "parentUuid": "0c14548b_7ae113ba",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c0922f9_8435d05a",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 8
