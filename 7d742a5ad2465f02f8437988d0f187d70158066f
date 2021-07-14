@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f26d540_9a24d425",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-07-14T22:20:24Z",
+      "side": 1,
+      "message": "I got it working now. The previous failures were due to different reason. The code worked after I flash both DUTs.",
+      "revId": "7d742a5ad2465f02f8437988d0f187d70158066f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
