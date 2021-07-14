@@ -71,6 +71,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd1876e_7c9ecf30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-14T13:16:10Z",
+      "side": 1,
+      "message": "I think it\u0027s time to add Harpreet, who may better answer Matthew\u0027s question: what would be the effort necessary to modify all wificell setups by linking both Gale LAN ports with a patchcord? Could it be done in a reasonable time (e.g. this/next month)?",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d88e6a4_43aecaac",
