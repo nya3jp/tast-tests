@@ -2611,6 +2611,9 @@ func (s *ShillService) SetLoggingConfig(ctx context.Context, req *wifi.SetLoggin
 
 // GetWakeOnWifi returns the wake on WiFi related properties of WiFi device.
 func (s *ShillService) GetWakeOnWifi(ctx context.Context, _ *empty.Empty) (*wifi.GetWakeOnWifiResponse, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
@@ -2643,6 +2646,9 @@ func (s *ShillService) GetWakeOnWifi(ctx context.Context, _ *empty.Empty) (*wifi
 
 // SetWakeOnWifi sets wake on WiFi related property of WiFi device.
 func (s *ShillService) SetWakeOnWifi(ctx context.Context, req *wifi.SetWakeOnWifiRequest) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
@@ -2675,6 +2681,9 @@ func (s *ShillService) SetWakeOnWifi(ctx context.Context, req *wifi.SetWakeOnWif
 
 // CheckLastWakeReason checks if the last wake reason of WiFi device is as expected.
 func (s *ShillService) CheckLastWakeReason(ctx context.Context, req *wifi.CheckLastWakeReasonRequest) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
 		return nil, err
