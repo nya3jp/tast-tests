@@ -16,6 +16,24 @@
       "message": "Removing ARC startup from policy tests that don\u0027t need it seems to break WaitAndroidInit on some devices:\n\n[Fixture failure] chromePolicyLoggedIn: Failed waiting for Android init: init/crosvm process did not start up: context deadline exceeded; last error follows: didn\u0027t find init process\n\nIs there some condition missing here?",
       "revId": "129c2968ccf644a8c7ad58092a764501e18496b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7244d6_b67bbe39",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2021-07-14T01:14:02Z",
+      "side": 0,
+      "message": "Looks like removing both ARC flags completely disables ARC (I missed that in my local testing), but arc.Type() doesn\u0027t take that into account.\n\nSolution here is to only do the WaitAndroidInit() in the chromeEnrolledLoggedInARC fixture and not in the regular chromeEnrolledLoggedIn fixture. Maybe an extra parameter passed into:\n  Impl: \u0026policyChromeFixture{\nto indicate ARC is being enabled.",
+      "parentUuid": "4f575636_e4d56c0f",
+      "revId": "129c2968ccf644a8c7ad58092a764501e18496b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
