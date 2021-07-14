@@ -33,6 +33,24 @@
       "message": "thanks!",
       "revId": "d03985a14b0592d17aef54e67f8e79b8f9036a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c51b53_aea6b9c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-14T00:25:50Z",
+      "side": 1,
+      "message": "\u003e I think it\u0027s clearer to filter out particular frame types than to try to imitate the wlan.bssid\u003dxxx filter directly\n\nThis sounds good to me. Hopefully the list of frame types we need to skip isn\u0027t too long.",
+      "parentUuid": "f9fae6c1_955b34d9",
+      "revId": "d03985a14b0592d17aef54e67f8e79b8f9036a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
