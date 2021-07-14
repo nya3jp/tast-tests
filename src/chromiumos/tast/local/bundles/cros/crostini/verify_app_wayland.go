@@ -79,5 +79,8 @@ func VerifyAppWayland(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.WaylandDemoConfig())
+	conf := crostini.WaylandDemoConfig()
+	conf.Width, conf.Height = 256, 256
+
+	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, conf)
 }

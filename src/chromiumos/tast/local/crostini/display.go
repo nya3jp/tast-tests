@@ -7,6 +7,7 @@ package crostini
 import (
 	"bytes"
 	"context"
+	"image"
 	"image/color"
 	"image/png"
 	"os"
@@ -32,7 +33,7 @@ import (
 // mostly (>= 1/2) contains the expected color. Will retry for up to 10 seconds
 // if it fails. For logging purposes, the screenshot will be saved at the given
 // path.
-func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expectedColor color.Color, screenshotPath string) error {
+func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expectedColor color.Color, screenshotPath string, rects ...image.Rectangle) error {
 	if !strings.HasSuffix(screenshotPath, ".png") {
 		return errors.New("Screenshots must have the '.png' extension, got: " + screenshotPath)
 	}
@@ -54,12 +55,25 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 		if err != nil {
 			return errors.Wrapf(err, "failed decoding the screenshot image %v", screenshotPath)
 		}
-		color, ratio := colorcmp.DominantColor(im)
-		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
-			return nil
+
+		centre := im.Bounds().Min.Add(im.Bounds().Max).Div(2)
+		testing.ContextLogf(ctx, "centre %#v, bounds %v", centre, im.Bounds())
+
+		for _, r := range rects {
+			subimage := im
+			if !r.Empty() {
+				rcentre := r.Min.Add(r.Max).Div(2)
+				subimage = im.(*image.RGBA).SubImage(r.Add(centre).Sub(rcentre))
+				testing.ContextLogf(ctx, "rcentre %#v bounds %#v", rcentre, subimage.Bounds())
+			}
+
+			color, ratio := colorcmp.DominantColor(subimage)
+			if ratio < 0.5 || !colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+				return errors.Errorf("screenshot did not have matching dominant color, got %v at ratio %0.2f but expected %v",
+					colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
+			}
 		}
-		return errors.Errorf("screenshot did not have matching dominant color, got %v at ratio %0.2f but expected %v",
-			colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
+		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return err
 	}
