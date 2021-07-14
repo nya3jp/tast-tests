@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d5048c_01f99601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:43:32Z",
+      "side": 1,
+      "message": "Hmm, gwsq didn\u0027t notice my vacation? Sorry for the delay.",
+      "revId": "3ef0f00e9d80bd3b1bf2a62ce88239198abf135e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
