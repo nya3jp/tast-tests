@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334160d7_05fdb138",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T01:56:38Z",
+      "side": 1,
+      "message": "Return the err since it is not nil?",
+      "range": {
+        "startLine": 394,
+        "startChar": 18,
+        "endLine": 394,
+        "endChar": 21
+      },
+      "revId": "c3401c9e10af080b4b52b7150a77681632505d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44550d07_e0ae7dac",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T01:56:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 412,
+        "startChar": 17,
+        "endLine": 412,
+        "endChar": 20
+      },
+      "revId": "c3401c9e10af080b4b52b7150a77681632505d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
