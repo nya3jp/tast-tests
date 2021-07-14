@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a9d5b8_74feeb63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-14T08:12:21Z",
+      "side": 1,
+      "message": "Tast LGTM, but please get approval from your teammate :) ",
+      "revId": "97c77aaafa58716df380a8e4bd62c6cb75d95689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
