@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2e563c_bdae91a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-14T07:27:03Z",
+      "side": 1,
+      "message": "right now it is, but in the future there could be more, so I\u0027ve put the reset code into a defer.",
+      "parentUuid": "ee0f9ed8_3082b165",
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fb5f2b9_f023decf",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-07-14T04:00:52Z",
       "side": 1,
       "message": "nit: you could also check if level is one of ChromePressureLevelNone, ChromePressureLevelModerate or ChromePressureLevelCritical.",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2852eba_5dd4ae57",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-14T07:27:03Z",
+      "side": 1,
+      "message": "I added a check to the type check on 106.",
+      "parentUuid": "7fb5f2b9_f023decf",
       "range": {
         "startLine": 114,
         "startChar": 13,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9630eafe_3ad8920d",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-14T07:27:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e045323b_1cf8f5cf",
+      "range": {
+        "startLine": 139,
+        "startChar": 70,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a6e0d20_b7d60655",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-07-13T20:13:21Z",
       "side": 1,
       "message": "nit: D-Bus",
+      "range": {
+        "startLine": 172,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1016611c_0a8153d6",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-14T07:27:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6e0d20_b7d60655",
       "range": {
         "startLine": 172,
         "startChar": 25,
