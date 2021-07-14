@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "830db322_a158bd91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-14T23:22:28Z",
+      "side": 1,
+      "message": "No, I don\u0027t think so. Chrome login here should be done at the line 65.\nAnother test file called pn_app_to_shelf.go also utilizes \"install2Apps\". Therefore it should be good to just use \"install2Apps\" here",
+      "parentUuid": "d59a556b_82df1720",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "d385730e34ef8e5d6319c794f862d9ccae9fbc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec75848_5e707460",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
         "patchSetId": 12
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-02T17:58:35Z",
       "side": 1,
       "message": "do we need switch here? you\u0027re handling all cases the same way",
+      "revId": "d385730e34ef8e5d6319c794f862d9ccae9fbc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8621fcfe_e74e2b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-14T23:22:28Z",
+      "side": 1,
+      "message": "Remove the switch now. Actually it is for the subsequent CLs. `testType` can be ARC and PWA. It will have different code paths then.",
+      "parentUuid": "0ec75848_5e707460",
       "revId": "d385730e34ef8e5d6319c794f862d9ccae9fbc3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
