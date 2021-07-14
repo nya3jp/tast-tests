@@ -22,6 +22,30 @@
       },
       "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12badc33_71d06f7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-07-14T02:43:43Z",
+      "side": 1,
+      "message": "Added Cq-Depend on new plugin implementation.",
+      "parentUuid": "cf151ea5_8c7b87f8",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
