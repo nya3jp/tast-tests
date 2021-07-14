@@ -18,10 +18,18 @@ type DemoConfig struct {
 	Name string
 	// AppPath is the path to the demo's executable.
 	AppPath string
-	// DominantColot is used to paint the demo's window. By convention, we
+	// DominantColor is used to paint the demo's window. By convention, we
 	// associate demo windows with colors (in order to easily identify
 	// screenshots).
 	DominantColor color.Color
+
+	// Width is the width of the image to render. If 0, the image is the width
+	// of the screen.
+	Width int
+
+	// Height is the height of the image to render. If 0, the image is the height
+	// of the screen.
+	Height int
 }
 
 // X11DemoConfig returns the configuration needed to run demo tests based on the x11_demo app.

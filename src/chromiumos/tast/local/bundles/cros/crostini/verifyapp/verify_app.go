@@ -7,6 +7,7 @@ package verifyapp
 import (
 	"context"
 	"fmt"
+	"image"
 	"image/color"
 	"path/filepath"
 
@@ -33,14 +34,36 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.
 	nrgba := color.NRGBAModel.Convert(conf.DominantColor).(color.NRGBA)
 	commandColor := fmt.Sprintf("--bgcolor=0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
 	commandTitle := fmt.Sprintf("--title=%s_terminal", conf.Name)
-	cmd := cont.Command(ctx, conf.AppPath, commandColor, commandTitle)
+
+	args := []string{conf.AppPath, commandColor, commandTitle}
+	if conf.Width > 0 {
+		args = append(args, fmt.Sprintf("--width=%v", conf.Width))
+	}
+	if conf.Height > 0 {
+		args = append(args, fmt.Sprintf("--height=%v", conf.Height))
+	}
+
+	pre := s.PreValue().(crostini.PreData)
+	tconn := pre.TestAPIConn
+
+	scale, err := crostini.PrimaryDisplayScaleFactor(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get primary display scale factor: ", err)
+	}
+	// When |rect| is empty, the whole screenshot will be checked for dominant
+	// color. This matches the way our apps behave when --width or --height are
+	// unset.
+	w, h := int(float64(conf.Width)/scale), int(float64(conf.Height)/scale)
+	rect := image.Rect(0, 0, w, h)
+
+	cmd := cont.Command(ctx, args...)
 	if err := cmd.Start(); err != nil {
 		s.Fatalf("Failed launching %v: %v", conf.AppPath, err)
 	}
 	defer cmd.Wait(testexec.DumpLogOnError)
 	defer cmd.Kill()
 
-	if err := crostini.MatchScreenshotDominantColor(ctx, cr, conf.DominantColor, filepath.Join(s.OutDir(), conf.Name+"_screenshot.png")); err != nil {
+	if err := crostini.MatchScreenshotDominantColor(ctx, cr, conf.DominantColor, filepath.Join(s.OutDir(), conf.Name+"_screenshot.png"), rect); err != nil {
 		s.Fatalf("Failed to see screenshot %q: %v", conf.Name, err)
 	}
 
