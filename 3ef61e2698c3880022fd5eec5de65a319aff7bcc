@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e138ab_f6eef07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "As the const are only used in one of the funcs, suggest to make them func global instead of package global.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b66c881_8c6f365e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "Suggest to log the username",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70bea0e2_ec291811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54a8671_bb4c5ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "Suggest to rename it to unmountAll",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7327711d_0f579f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "I might have not understood the probability is caculated here. Please correct me:\n1. r is a number between 0 and totalProb\n2. if r is smaller than mountProb, it does doMountUserTurn, otherwise it does doUnmountUserTurn.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397f8370_85edd712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "The main func is usually placed immediately after the init func",
+      "range": {
+        "startLine": 153,
+        "startChar": 5,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8a20fe_8d61698a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T03:38:41Z",
+      "side": 1,
+      "message": "I found this a bit vague since CleanupScratchpad, UnmountAll, and RemoveVault are called with the original ctx.\n\nI\u0027d suggest to move Shorten to the beginning of the func and assign the original ctx to a cleanupCtx and use it in defer.",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 13
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
