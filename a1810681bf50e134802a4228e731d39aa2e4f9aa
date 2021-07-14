@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711cbc16_49d19010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-14T07:04:02Z",
+      "side": 1,
+      "message": "Existing policy tests work again. Only waiting for ARC when it is enabled.",
+      "revId": "a1810681bf50e134802a4228e731d39aa2e4f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
