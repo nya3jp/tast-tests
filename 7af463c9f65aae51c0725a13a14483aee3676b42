@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b7a6c7_eedc52e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019ff5b2_e5355d33",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23f2595_5a9e8785",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-13T23:54:17Z",
       "side": 1,
       "message": "nit: Fatal msg is usually like \"Failed to do\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f1e1ac_3173cf34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23f2595_5a9e8785",
       "range": {
         "startLine": 89,
         "startChar": 11,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcde4bd_022e1f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72207eb7_4cb71145",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e707cac_16022645",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-13T23:54:17Z",
       "side": 1,
       "message": "nit: Fatal msg is usually like \"Failed to do\"",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4c1f7f_bf0ca137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e707cac_16022645",
       "range": {
         "startLine": 95,
         "startChar": 11,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec243ce0_68934d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df73bbd_e7eb5cd0",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 37
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb617c93_6776bfc8",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-07-13T23:54:17Z",
       "side": 1,
       "message": "nit: Fatal msg is usually like \"Failed to do\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be102d3c_093f67f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb617c93_6776bfc8",
       "range": {
         "startLine": 103,
         "startChar": 11,
@@ -181,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "facc336c_a4ca892e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "This is the problem I messaged you about on Chat yesterday.\n\nThis is an anonymous function which gets passed in to the HTTP server. I think there\u0027s no way for me to directly return an error from inside this function back to the main function, so passing through the channel seemed like the best alternative.",
+      "parentUuid": "91dccc3a_bfc61b7b",
+      "range": {
+        "startLine": 113,
+        "startChar": 45,
+        "endLine": 113,
+        "endChar": 53
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4581a782_e5629fca",
         "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
         "patchSetId": 6
@@ -192,6 +360,30 @@
       "writtenOn": "2021-07-13T23:54:17Z",
       "side": 1,
       "message": "nit: to install",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 44
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1953f3b_11d8cdbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4581a782_e5629fca",
       "range": {
         "startLine": 156,
         "startChar": 34,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8b9e64_f6e40d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b2cb80_2021b38b",
+      "range": {
+        "startLine": 159,
+        "startChar": 34,
+        "endLine": 159,
+        "endChar": 44
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ae4bfe_a6545d39",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-07-13T23:54:17Z",
       "side": 1,
       "message": "nit: to initialize",
+      "range": {
+        "startLine": 176,
+        "startChar": 44,
+        "endLine": 176,
+        "endChar": 56
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86360330_1a8a730b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ae4bfe_a6545d39",
       "range": {
         "startLine": 176,
         "startChar": 44,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa85896_55111bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "807719b4_d5f6fe9d",
+      "range": {
+        "startLine": 211,
+        "startChar": 24,
+        "endLine": 211,
+        "endChar": 50
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a7f75a_66ef950a",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-07-13T23:54:17Z",
       "side": 1,
       "message": "failed to match shared text",
+      "range": {
+        "startLine": 215,
+        "startChar": 24,
+        "endLine": 215,
+        "endChar": 50
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40676955_602882ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T00:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a7f75a_66ef950a",
       "range": {
         "startLine": 215,
         "startChar": 24,
