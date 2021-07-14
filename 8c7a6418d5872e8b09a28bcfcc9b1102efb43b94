@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf151ea5_8c7b87f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-14T02:34:07Z",
+      "side": 1,
+      "message": "new plugin is not present on puff boards until ebuilds are fixed for this.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "8c7a6418d5872e8b09a28bcfcc9b1102efb43b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
