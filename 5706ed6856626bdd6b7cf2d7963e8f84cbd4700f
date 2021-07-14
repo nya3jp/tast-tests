@@ -57,6 +57,30 @@
       },
       "revId": "5706ed6856626bdd6b7cf2d7963e8f84cbd4700f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e40117_6678fb2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-14T14:37:42Z",
+      "side": 1,
+      "message": "Done. Fatal and nit is a funny combination :)",
+      "parentUuid": "04dd10ac_5b355779",
+      "range": {
+        "startLine": 129,
+        "startChar": 36,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "5706ed6856626bdd6b7cf2d7963e8f84cbd4700f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
