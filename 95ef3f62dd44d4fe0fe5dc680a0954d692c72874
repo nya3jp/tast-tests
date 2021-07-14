@@ -16,6 +16,52 @@
       "message": "PTAL. This is very similar to what I did to glbench.",
       "revId": "95ef3f62dd44d4fe0fe5dc680a0954d692c72874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4966db7_a1ba8e08",
+        "filename": "src/chromiumos/tast/local/graphics/vkbench/cros_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-07-14T15:35:04Z",
+      "side": 1,
+      "message": "initializes",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "95ef3f62dd44d4fe0fe5dc680a0954d692c72874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffaff20b_6ca392b1",
+        "filename": "src/chromiumos/tast/local/graphics/vkbench/cros_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-07-14T15:35:04Z",
+      "side": 1,
+      "message": "tears down",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "95ef3f62dd44d4fe0fe5dc680a0954d692c72874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
