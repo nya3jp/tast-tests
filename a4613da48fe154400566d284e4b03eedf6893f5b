@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6209d7_250f0380",
+        "filename": "src/chromiumos/tast/services/cros/platform/perfetto_trace_based_metrics_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:28:27Z",
+      "side": 1,
+      "message": "I recommend changing this method to return a stream - see my comment in crrev.com/c/2874923.",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "a4613da48fe154400566d284e4b03eedf6893f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
