@@ -16,6 +16,23 @@
       "message": "Thanks for the feedback.\nCL updated per review comments.",
       "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13905262_75e99b88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-14T16:44:02Z",
+      "side": 1,
+      "message": "lgtm % others\n\nThank you. \n\nI am not a test owner. Once you get lgtm from Yichen as well, you would need to add tast-owners@google.com to get an owner\u0027s blessing to land it.",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
