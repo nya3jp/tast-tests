@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c09ca8_087a1bb7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-14T22:18:03Z",
+      "side": 1,
+      "message": "Agreed. It took time for us to figure out how to use this function. CUJs are written with uiauto already. This file is from supporting library and I\u0027m not sure if there are any plans for tast to move all code to uiauto.",
+      "parentUuid": "3c5e834c_6fedf8a3",
+      "range": {
+        "startLine": 394,
+        "startChar": 18,
+        "endLine": 394,
+        "endChar": 21
+      },
+      "revId": "c3401c9e10af080b4b52b7150a77681632505d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44550d07_e0ae7dac",
