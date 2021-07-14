@@ -16,6 +16,24 @@
       "message": "This test looks new (3 days) and not stable enough to be promoted to the CQ.\nhttps://cros-health-prod.googleplex.com/test/platform.PerfettoChromeProducer\n\nPlease wait until 20 successful builds.",
       "revId": "18e833ba61022b48354c3252b255f9017a6dc3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4db395_9c6c0acd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-14T10:19:40Z",
+      "side": 1,
+      "message": "There are several know failures that don\u0027t look directly related to this test. Should we make it critical? Thanks.",
+      "parentUuid": "e54de44b_af4d502e",
+      "revId": "18e833ba61022b48354c3252b255f9017a6dc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
