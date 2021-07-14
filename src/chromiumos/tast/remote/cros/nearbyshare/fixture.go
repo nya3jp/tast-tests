@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyservice"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -177,10 +176,6 @@ type nearbyShareFixture struct {
 
 	// Attributes for both chromebooks.
 	attributes []byte
-
-	// Commands for starting/stopping bluetooth HCI logging.
-	senderBtsnoopCmd   *ssh.Cmd
-	receiverBtsnoopCmd *ssh.Cmd
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -362,31 +357,17 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	}
 
 	// Start logging on each DUT.
-	// TODO(crbug/1205689): move btsnoop log capture into the local NearbyService.
 	if _, err := f.sender.StartLogging(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the sender: ", err)
 	}
-	f.senderBtsnoopCmd = f.d1.Conn().Command("/usr/bin/btmon", "-w", filepath.Join("/tmp", nearbyshare.BtsnoopLog))
-	if err := f.senderBtsnoopCmd.Start(s.TestContext()); err != nil {
-		s.Error("Failed to start btsnoop log collection on the sender: ", err)
-	}
-
 	if _, err := f.receiver.StartLogging(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the receiver: ", err)
-	}
-	f.receiverBtsnoopCmd = f.d2.Conn().Command("/usr/bin/btmon", "-w", filepath.Join("/tmp", nearbyshare.BtsnoopLog))
-	if err := f.receiverBtsnoopCmd.Start(s.TestContext()); err != nil {
-		s.Error("Failed to start btsnoop log collection on the receiver: ", err)
 	}
 }
 
 // PostTest will pull the logs from the DUT and delete leftover logs and test files.
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	// Save logs on each DUT.
-	f.senderBtsnoopCmd.Abort()
-	f.senderBtsnoopCmd = nil
-	f.receiverBtsnoopCmd.Abort()
-	f.receiverBtsnoopCmd = nil
 	if _, err := f.sender.SaveLogs(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to save nearby share logs on the sender: ", err)
 	}
