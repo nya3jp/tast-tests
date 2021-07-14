@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb84cd4_2ff1d603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T07:04:59Z",
+      "side": 1,
+      "message": "nit\u0026optional: I recommend dropping the absolute path to search from $PATH since there are many binary directories (/bin, /sbin, /usr/bin, /usr/sbin, /usr/local/bin, /usr/local/sbin) and the test doesn\u0027t need to sensitive to the difference.",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "9ff355579190a5f18ee464609f93170b52ca892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae4d47f_013d859d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T07:04:59Z",
+      "side": 1,
+      "message": "shutil.EscapeSlice is already escaped, so you don\u0027t need to quote it again; I recommend %s.",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "9ff355579190a5f18ee464609f93170b52ca892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df45ce7_6206a31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T07:04:59Z",
+      "side": 1,
+      "message": "I recommend saving `output` to a file. It\u0027s useful when debugging failures of this test - otherwise the only message we get will be \"powerd was not found among enabled plugins\", which might be not sufficient.\n\n if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), \"fwupdmgr.txt\"), output, 0644); err !\u003d nil {\n   t.Fatal(\"Failed dumping fwupdmgr output: \", err)\n }",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "9ff355579190a5f18ee464609f93170b52ca892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
