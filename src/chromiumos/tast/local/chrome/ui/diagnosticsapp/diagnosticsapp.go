@@ -57,9 +57,9 @@ var DxCPUChart = ui.FindParams{
 	Role:      ui.RoleTypeGenericContainer,
 }
 
-// DxSuccessBadge export is used to find success badge notification
-var DxSuccessBadge = ui.FindParams{
-	Name: "SUCCESS",
+// DxPassedBadge export is used to find success badge notification
+var DxPassedBadge = ui.FindParams{
+	Name: "PASSED",
 	Role: ui.RoleTypeStaticText,
 }
 
