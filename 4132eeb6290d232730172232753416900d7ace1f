@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92799081_14a111a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-14T12:35:27Z",
+      "side": 1,
+      "message": "CQ failed in dev-util/dut-server which looks quite unrelated to this change. Retry.",
+      "revId": "4132eeb6290d232730172232753416900d7ace1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
