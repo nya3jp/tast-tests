@@ -39,6 +39,30 @@
       },
       "revId": "4dcbb7d3fb1c571afeb3329d7ad029a9c8f44833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0e9859_28835cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-14T06:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36b8b788_450b67ca",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "4dcbb7d3fb1c571afeb3329d7ad029a9c8f44833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
