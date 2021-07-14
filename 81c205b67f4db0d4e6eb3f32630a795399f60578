@@ -54,6 +54,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d978f7f_fdb6091f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T04:50:28Z",
+      "side": 1,
+      "message": "Hi Kyle,\n\nGenerally speaking (not Tast specific), a Go function taking context.Context as an argument should behave in the following way:\n\n- It should return immediately if the context is canceled during its execution.\n- The context might be cancelled immediately after the function returns, but it\u0027s not guaranteed. It\u0027s up to the caller, so functions should be prepared for immediate cancellation.\n\nos/exec, testexec has the following behavior, which aligns with the above general rule:\n\n- A subprocess started with CommandContext is killed when the context is canceled.\n\nFinally, Tast has the following behavior, which also aligns with the above general rule:\n\n- context.Context passed to user-defined functions called by Tast framework (test main functions, fixture lifecycle methods, gRPC service methods etc.) are cancelled immediately after they return.\n- context.Context returned by State methods (e.g. FixtState.FixtContext(), ServiceState.ServiceContext()) have lifetime aligned to associated entities (e.g. a context returned by ServiceContext() is canceled on stopping gRPC services).\n\nKeeping these points in the mind, I believe what to fix in this CL is that it starts a btsnoop subprocess with a context passed to gRPC method StartLogging. Thus the subprocess is killed immediately after StartLogging returns. To avoid this, we can call StartBTSnoopLogging with a service-scoped context which you can obtain by ServiceState.ServiceContext().",
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda638d5_8e1f9f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T04:50:28Z",
+      "side": 1,
+      "message": "We have to pass n.s.ServiceContext() here so that the started subprocess is not killed after this gRPC method returns.",
+      "range": {
+        "startLine": 129,
+        "startChar": 46,
+        "endLine": 129,
+        "endChar": 49
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699aa924_d4ec548f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T04:50:28Z",
+      "side": 1,
+      "message": "Need to call n.btsnoopCmd.Wait() as well to release resources associated to the subprocess.\nhttps://pkg.go.dev/os/exec#Cmd.Wait",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45a00f65_bf344066",
         "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
         "patchSetId": 1
@@ -94,6 +157,29 @@
         "startChar": 36,
         "endLine": 244,
         "endChar": 39
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f501b0c_15f891e2",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T04:50:28Z",
+      "side": 1,
+      "message": "I believe we can pass ctx (not s.TestContext()) to these gRPC methods.",
+      "range": {
+        "startLine": 346,
+        "startChar": 35,
+        "endLine": 350,
+        "endChar": 0
       },
       "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
