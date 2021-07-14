@@ -34,6 +34,47 @@
       "parentUuid": "b0bfafbc_bc4a133f",
       "revId": "60a70318e44b71469fe9874c7010186736703fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb74dde_286ed603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-07-14T11:10:02Z",
+      "side": 1,
+      "message": "mmap is an important part of the wayland protocol, but I guess we can limit it for now",
+      "parentUuid": "4560bb4b_32e3e3f3",
+      "revId": "60a70318e44b71469fe9874c7010186736703fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e7385c_9462c622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-07-14T11:10:02Z",
+      "side": 1,
+      "message": "Should we update this function instead?",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "60a70318e44b71469fe9874c7010186736703fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
