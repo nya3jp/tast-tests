@@ -224,9 +224,15 @@ func (c *Capturer) downloadPacket(ctx context.Context) error {
 		return err
 	}
 	src := c.packetPathOnRemote()
+	if c.downloaded {
+		return errors.Errorf("packet already downloaded from %s to %s", src, dst)
+	}
 	if err := linuxssh.GetFile(ctx, c.host, src, dst, linuxssh.PreserveSymlinks); err != nil {
 		return errors.Wrapf(err, "unable to download packet from %s to %s", src, dst)
 	}
 	c.downloaded = true
+	if err := c.host.Command("rm", src).Run(ctx, ssh.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to clean up remote file %s", src)
+	}
 	return nil
 }
