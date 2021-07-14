@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fb5f2b9_f023decf",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2021-07-14T04:00:52Z",
+      "side": 1,
+      "message": "nit: you could also check if level is one of ChromePressureLevelNone, ChromePressureLevelModerate or ChromePressureLevelCritical.",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "d22a17e6cb2accdea3a21b28c3fe05a95227bf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e045323b_1cf8f5cf",
         "filename": "src/chromiumos/tast/local/resourced/client.go",
         "patchSetId": 4
