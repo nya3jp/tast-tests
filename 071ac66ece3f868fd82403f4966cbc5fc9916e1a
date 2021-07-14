@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "592aeb16_c6ca1ed0",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5772d7d_e239ba0b",
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c1edb3_6818e59c",
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c14548b_7ae113ba",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "It is not defined as constant/variable anywhere globally.",
+      "parentUuid": "00c1edb3_6818e59c",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c0922f9_8435d05a",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 8
@@ -71,6 +113,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "I think you can remove all of these. They\u0027re only used in one place so just declare them where you use them, or just use the string literal.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7214da2a_ad68ac95",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0922f9_8435d05a",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -127,6 +193,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af20b324_9c2e16d8",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f976a094_90517103",
+      "range": {
+        "startLine": 54,
+        "startChar": 101,
+        "endLine": 54,
+        "endChar": 102
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7431988b_d857dce2",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db5f9545_e07440b0",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc73981f_9c4e37c2",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09efc5a_fc3a762b",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc73981f_9c4e37c2",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "253da4ce_65cd8890",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "Thanks. This is looking better now. I think it can be refactored even further. Here (L110-L118) and elsewhere, I see the same pattern for the various requests. I think they can also be factored out into a common function (you can just inline reqHeaderAdd into this new function then).",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 24
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89998bd4_55429fb2",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "253da4ce_65cd8890",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -198,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39a9abda_ab8d0da4",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Failure is having multiple reasons, in order to highlight the specific error message for readability.",
+      "parentUuid": "ac432cd4_a8428be2",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 108
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c3d6eac_92f1bc3d",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 8
@@ -209,6 +395,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "Same as earlier. Why do you need to return the map? It\u0027s easier to just return the status string.",
+      "range": {
+        "startLine": 189,
+        "startChar": 75,
+        "endLine": 189,
+        "endChar": 92
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3cb2c1_38abb2b4",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Failure is having multiple reasons, in order to highlight the specific error message for readability.",
+      "parentUuid": "9c3d6eac_92f1bc3d",
       "range": {
         "startLine": 189,
         "startChar": 75,
@@ -242,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d40040ab_1e029fd2",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9919855c_b1912830",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 15
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f56c49_aeb7aebe",
@@ -255,6 +489,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "This is a *long* time. The TAST owner will likely have a question about this. I can\u0027t see why a local HTTP request should need this long.",
+      "range": {
+        "startLine": 246,
+        "startChar": 34,
+        "endLine": 246,
+        "endChar": 51
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32b8dec_6bc773f4",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4f56c49_aeb7aebe",
       "range": {
         "startLine": 246,
         "startChar": 34,
@@ -288,6 +546,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8abff9_2075240f",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537e2617_9e44e905",
+      "range": {
+        "startLine": 247,
+        "startChar": 29,
+        "endLine": 247,
+        "endChar": 44
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aab7c331_4a17bd4a",
@@ -301,6 +583,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "I\u0027m not sure this is the best definition. We\u0027re mentioning \"toggle\", but really, we\u0027re just accepting *any* `cswitch` command. I think instead of a `cswitch` argument, you need to use a simpler on/off argument (create your own enum, or use boolean to begin with).\n\nThe aim should be to really limit the function interface to only the functionality we would like to expose.\n\nAs it stands, ToggleCswitchPort literally doesn\u0027t do anything except pass the same parameters to execCommand, so doesn\u0027t serve much purpose.",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 35
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84696c4_46774865",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aab7c331_4a17bd4a",
       "range": {
         "startLine": 252,
         "startChar": 3,
@@ -334,6 +640,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "686e4949_1c113208",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13dd787_6c82a2bd",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 2
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93f3fb5_e3e1bf86",
@@ -347,6 +677,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "nit: out",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 2
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f42e46_9847df0d",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e93f3fb5_e3e1bf86",
       "range": {
         "startLine": 278,
         "startChar": 1,
@@ -403,6 +757,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7217730_9ecbd97c",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db78f45_49d9580f",
+      "range": {
+        "startLine": 285,
+        "startChar": 13,
+        "endLine": 285,
+        "endChar": 14
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a63be81_eb19212c",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Yes,TBT device connected to DUT.",
+      "parentUuid": "fcc1e74c_65892815",
+      "range": {
+        "startLine": 285,
+        "startChar": 39,
+        "endLine": 285,
+        "endChar": 69
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "353cdc33_aaf992b6",
@@ -449,6 +851,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3f1a67_94d563ac",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ffd11f8_1f26e8d9",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 21
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e73ca1b_86121f21",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353cdc33_aaf992b6",
+      "range": {
+        "startLine": 286,
+        "startChar": 33,
+        "endLine": 286,
+        "endChar": 36
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "847c4992_79c4411c",
@@ -462,6 +912,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "nit: remove extra space.",
+      "range": {
+        "startLine": 297,
+        "startChar": 21,
+        "endLine": 297,
+        "endChar": 22
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb518be_3d186a95",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "847c4992_79c4411c",
       "range": {
         "startLine": 297,
         "startChar": 21,
@@ -497,6 +971,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f4068a9_90b87a36",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Yes,TBT device connected to DUT.",
+      "parentUuid": "5b08d13d_8571304c",
+      "range": {
+        "startLine": 319,
+        "startChar": 37,
+        "endLine": 319,
+        "endChar": 67
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46b970cd_be850916",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 8
@@ -508,6 +1006,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "nit: I think you can drop this comment since the code makes it self-evident.",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 72
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ecdaeb_498512e7",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b970cd_be850916",
       "range": {
         "startLine": 323,
         "startChar": 1,
@@ -531,6 +1053,30 @@
       "writtenOn": "2021-07-12T23:58:37Z",
       "side": 1,
       "message": "nit: out",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 2
+      },
+      "revId": "071ac66ece3f868fd82403f4966cbc5fc9916e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8acdda12_47a32230",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53c0b01_f0525028",
       "range": {
         "startLine": 324,
         "startChar": 1,

@@ -484,6 +484,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fc28116_50c09733",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-14T14:07:48Z",
+      "side": 1,
+      "message": "We have explained about cswitch in helper file.",
+      "parentUuid": "38d3873e_0dd4f810",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3878211_f0a018b3",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 7
