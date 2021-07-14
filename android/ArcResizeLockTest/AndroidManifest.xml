@@ -22,9 +22,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UnresizableActivity"
+            android:name=".UnresizableUnspecifiedActivity"
             android:resizeableActivity="false"
             android:exported="true" >
         </activity>
+        <activity
+            android:name=".UnresizablePortraitActivity"
+            android:exported="true"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>
