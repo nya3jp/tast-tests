@@ -51,6 +51,317 @@
       "parentUuid": "a48e1c25_eb2b3c84",
       "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5fb37e_6eb6c17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "What I worry is that test authors might rewrite their local tests to remote tests just to use this library. Since remote tests are harder to maintain than local tests, this is not very preferable.\n\nSo, I don\u0027t object to start with supporting remote tests only, but please remember to not encourage people to convert their local tests.",
+      "parentUuid": "3950fbbc_2f533b56",
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41913b73_d480c606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "Hi, sorry for delay - I was OOO earlier this week.\n\nSending more detailed reviews...",
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d58e9420_c3561d73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/trace_processor_shell-linux-a3ce2cbf4cbe4f86cc10b02957db727cecfafae8.external",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "You can set\n\n \"executable\": true\n \nto set an executable bit.",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e07dc3_975114b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "nit: Not needed?",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f07ad82_f0b35606",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "Let us insert newlines to comments to make them more readable.\ngo/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdca627_c21e84b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "I generally discourage passing testing.State to common functions:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#State",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 54
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715e42cd_34a90e06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "Pass interfaces as values, not as pointers.\nhttps://github.com/golang/go/wiki/CodeReviewComments#pass-values",
+      "range": {
+        "startLine": 27,
+        "startChar": 59,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b04573_13fb74fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "Setting MaxCallRecvMsgSize is inconvenient. I recommend converting the gRPC method to a streaming method.",
+      "range": {
+        "startLine": 34,
+        "startChar": 115,
+        "endLine": 34,
+        "endChar": 157
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47dd84eb_92e75bfb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "Use ioutil.TempFile instead to avoid relying on external commands.\nhttps://pkg.go.dev/io/ioutil#TempFile",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8905ff_72e94316",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "In this case, the temporary file is not removed.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 54
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f84732_d43a43a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "It\u0027s nice to avoid multi-line error messages since they\u0027re visible on test reporting UIs (e.g. Stainless).\n\nActually do we expect error messages in stdout instead of stderr? If error messages are written to stderr we will lose them as they\u0027re not captured.\n\nI\u0027d recommend passing testexec.DumpLogOnError option to cmd.Output(). Then standard errors are automatically captured and written to logs on failures.",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50781ea_2722c54c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "What TBM stands for? It\u0027s nice to leave a comment somewhere.",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c33e54c_7d06edef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "fullCtx is not used, so this is exactly the same as setting {Timeout: 10*time.Second} on test registration. I think it\u0027s easier to understand.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658faf31_4610c8c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:27:16Z",
+      "side": 1,
+      "message": "Please avoid modifying the data file permission as it might be shared among multiple tests.\n\nYou can set executable bit by updating .external file. Please see my another comment.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
