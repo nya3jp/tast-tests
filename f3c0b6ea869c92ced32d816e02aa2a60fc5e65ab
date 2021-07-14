@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9706c2f_ed52d612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:29:50Z",
+      "side": 1,
+      "message": "This looks not needed?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "f3c0b6ea869c92ced32d816e02aa2a60fc5e65ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5794b3c_902c3acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:29:50Z",
+      "side": 1,
+      "message": "Optional: I recommend using relative name (i.e. \"perfetto\") since there are several binary directories in Chrome OS and it\u0027s not trivial to choose from them.",
+      "range": {
+        "startLine": 41,
+        "startChar": 39,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "f3c0b6ea869c92ced32d816e02aa2a60fc5e65ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f469ea4_f1245540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:29:50Z",
+      "side": 1,
+      "message": "This can block forever if we write many data to pipe since there\u0027s no reader of it yet.\n\nIn general, directly dealing with subprocess pipes is often tricky. I instead recommend setting Cmd fields, just like:\n\n cmd :\u003d testexec.CommandContext(...)\n cmd.Stdin \u003d bytes.NewBufferString(config)\n out, err :\u003d cmd.Output()",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "f3c0b6ea869c92ced32d816e02aa2a60fc5e65ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca662e38_8c26405b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-14T06:29:50Z",
+      "side": 1,
+      "message": "I\u0027d think it\u0027s up to callers of the service whether they want to write all perfetto output to logs. How about moving it to the remote test?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 40
+      },
+      "revId": "f3c0b6ea869c92ced32d816e02aa2a60fc5e65ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
