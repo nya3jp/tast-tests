@@ -15,6 +15,7 @@ import (
 )
 
 // GBBFlags checks that the flags on DUT equals the wanted one.
+// You must add `ServiceDeps: []string{"tast.cros.firmware.BiosService"}` to your `testing.Test` to use this.
 func (c *Checker) GBBFlags(ctx context.Context, want pb.GBBFlagsState) error {
 	if err := c.h.RequireBiosServiceClient(ctx); err != nil {
 		return err
