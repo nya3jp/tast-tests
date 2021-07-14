@@ -52,6 +52,109 @@
       "parentUuid": "e0418810_943ac12f",
       "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7f8e3e_bbb600a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-14T00:49:51Z",
+      "side": 1,
+      "message": "Mostly looks good, but I\u0027m not sure how I feel about falling back to the old setup and reducing the threshold from 0.8 to 0.3 - at this point it seems like we may as well not run the test.\n\nKevin, do you know what the plan is for adding the connection between router and pcap? Is this something we\u0027ll be able to count on in the future?",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d88e6a4_43aecaac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-14T00:49:51Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 2
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eff834f_4bd01edb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-14T00:49:51Z",
+      "side": 1,
+      "message": "can\u0027t you just move this part up into the inner for loop above?",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea92dd2_1f43bdbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-14T00:49:51Z",
+      "side": 1,
+      "message": "Kevin, do you mind commenting on how this part is set up?",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287b863a_81e880f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-07-14T00:49:51Z",
+      "side": 1,
+      "message": "let\u0027s not do hard-coded IPs (either make them global so we can use them in the test or have this be generated at runtime).",
+      "range": {
+        "startLine": 318,
+        "startChar": 47,
+        "endLine": 318,
+        "endChar": 59
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
