@@ -363,6 +363,30 @@
       },
       "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7dd269_c715727c",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-07-14T00:36:49Z",
+      "side": 1,
+      "message": "Yeah, it is tough. I was wondering about the timestamps. We probably should work backwards and look at failure reasons on the dashboard and find them in the sources and improve those there.",
+      "parentUuid": "2e90a45f_a2233318",
+      "range": {
+        "startLine": 254,
+        "startChar": 46,
+        "endLine": 254,
+        "endChar": 48
+      },
+      "revId": "c65dd8e4b2ad438fb64c9fbedf828fd87199f0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
