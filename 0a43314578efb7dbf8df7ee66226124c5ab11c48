@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09d5297_1efc9686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-07-14T15:32:46Z",
+      "side": 1,
+      "message": "Just wanted to circle back to this. Mostly we have been working with \"ectool temps all\" to get an idea of the temperatures. But I think those are slower/not CPU temperatures? They can tell us if the system is relatively warm. There is some autotest code to guess is_system_thermally_throttled() that should tell us about the current state.\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/master/client/bin/utils.py#1538\n\nWhat also interests me a lot is how much higher the temperatures are after a test than before. Ideally a perf test cools(!) a device. Now obviously most don\u0027t. But the problem is how does one know when it overheated? If it did, random numbers again. That is more of a load/stress test than a microbenchmark.",
+      "revId": "0a43314578efb7dbf8df7ee66226124c5ab11c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "add36a6b_7f16eb83",
