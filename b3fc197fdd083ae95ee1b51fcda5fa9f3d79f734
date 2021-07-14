@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbfdba5d_d676f485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "I think the main piece of feedback is that we should make new launcher methods take the app list item nodes they operate on as params (instead of finding them automatically). To make it easier to use them, we can probably add some utilities to find app list item views in the current page.",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7911274_1fd0f59b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "what does ac stand for?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29098015_f9bb2981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "nit: Add remaining 18\n\nthough, can we make this a bit less dependent on the number of items in a page - i.e. can we keep adding items to the folder while there are some shown in the page, and then move to the next page.\n\nAlso, we may need to filter out folder items (e.g. the device may have an OEM folder)",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361879d6_f30f8aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "folder :)",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94a9e76_9cbcae21",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "the default UI behavior is now that the icon location changes when you start drag",
+      "range": {
+        "startLine": 192,
+        "startChar": 91,
+        "endLine": 192,
+        "endChar": 98
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d4d7e0_984f66e6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "I\u0027d avoid linking to a cl here - maybe just describe the feature",
+      "range": {
+        "startLine": 192,
+        "startChar": 43,
+        "endLine": 192,
+        "endChar": 78
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b234859_29f1ec95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "we may want to make sure this is not a folder (but that may require adding some metadata to AppListItemView)",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4c622d_d8234ec4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "can we pass the src and dest in as the function params?",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a195219_79bc229d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "verify that the folder view is closed here?",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd7ab73_bbb63d2c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-14T17:47:12Z",
+      "side": 1,
+      "message": "can we verify the page has actually changed here?",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
