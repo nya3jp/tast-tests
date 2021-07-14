@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f304c46f_810cf9ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-14T07:07:20Z",
+      "side": 1,
+      "message": "Hi,\nCL contains part a (ARC) of test no 7 for clipboard test cases\nPTAL, Thanks 😊\n",
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
