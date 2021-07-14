@@ -349,6 +349,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec95f07b_4f320e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-14T02:15:32Z",
+      "side": 1,
+      "message": "As we discussed offline, please add a comment about why the err is handled this way. Thanks",
+      "parentUuid": "facc336c_a4ca892e",
+      "range": {
+        "startLine": 113,
+        "startChar": 45,
+        "endLine": 113,
+        "endChar": 53
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4581a782_e5629fca",
         "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
         "patchSetId": 6
