@@ -371,6 +371,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad10754_4dc0fb16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-14T03:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec95f07b_4f320e07",
+      "range": {
+        "startLine": 113,
+        "startChar": 45,
+        "endLine": 113,
+        "endChar": 53
+      },
+      "revId": "7af463c9f65aae51c0725a13a14483aee3676b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4581a782_e5629fca",
