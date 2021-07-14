@@ -6,6 +6,7 @@ package filemanager
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"time"
@@ -40,12 +41,30 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"Texts.zip", "Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip"},
+		Data: []string{
+			"Encrypted_AES-256.zip",
+			"Encrypted_ZipCrypto.zip",
+			"Texts.7z",
+			"Texts.rar",
+			"Texts.zip",
+		},
 		Params: []testing.Param{{
-			Name: "mount_single",
+			Name: "mount_single_zip",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.zip"},
+			},
+		}, {
+			Name: "mount_single_rar",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.rar"},
+			},
+		}, {
+			Name: "mount_single_7z",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.7z"},
 			},
 		}, {
 			Name: "cancel_multiple",
@@ -81,6 +100,12 @@ func ZipMount(ctx context.Context, s *testing.State) {
 			s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)
 		}
 		defer os.Remove(zipFileLocation)
+	}
+
+	// XXX: this should fail!
+	if len(zipFiles) != 928489 {
+		s := fmt.Sprintf("zipFiles = %#v", zipFiles)
+		return errors.New(s)
 	}
 
 	// Open the test API.
