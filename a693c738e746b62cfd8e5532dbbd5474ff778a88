@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3afcceb_c2581761",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "I don\u0027t need it, however it was still unintentionally left away, so now it\u0027s back.",
+      "parentUuid": "78a307f7_9a864bae",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6a26dad_4e27f96b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-13T14:18:35Z",
       "side": 1,
       "message": "As you get this empty, and you don\u0027t use it outside of this function, this should only be defined within this function.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeaaf23b_ddc40968",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "The set is created before a loop iterating over all policy_schemas as it should check for duplications over all of them (two policy_schemas can use the same struct/enum which would then be duplicated in the code i.e. NullableBoolean).\nThat\u0027s why it needs to be defined before the function is called.",
+      "parentUuid": "e6a26dad_4e27f96b",
       "range": {
         "startLine": 128,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd3fecb_5035fab5",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500ea218_0ebd12f2",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 17
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e48388_7851be0a",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-07-13T14:18:35Z",
       "side": 1,
       "message": "This can be an f-string.",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d5d936_ba5542a9",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e48388_7851be0a",
       "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80922a65_8bcc6db3",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a21e4c_d4b5bee1",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89901599_4fff8376",
@@ -128,6 +230,24 @@
       "writtenOn": "2021-07-13T14:18:35Z",
       "side": 1,
       "message": "This can be an f-string.",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b86dc8_f4d54e78",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89901599_4fff8376",
       "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b5a0af_eb0b9e1f",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd834d27_0372e23d",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3047859e_55d0fc63",
@@ -162,6 +300,30 @@
       "writtenOn": "2021-07-13T14:18:35Z",
       "side": 1,
       "message": "You are not catching these error anywhere. Like this, it is not different than the built in error when you try to access an item that is not in the dict.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 43
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdbaaaa_f5e7e473",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "The intention of these exceptions was just to also print the json when the key is not found.\nThere isn\u0027t really anything else that could be done here when this occurs as it means that the file is somehow corrupt and we therefore need to stop the execution of the script.",
+      "parentUuid": "3047859e_55d0fc63",
       "range": {
         "startLine": 191,
         "startChar": 0,
@@ -195,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a6c4e5_1a435ac0",
+        "filename": "src/chromiumos/tast/common/tape/gen/generate_code_from_policy_schemas.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc9e7b3_6deb9e05",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 20
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81d97a08_5c20552c",
@@ -208,6 +394,24 @@
       "writtenOn": "2021-07-13T14:04:28Z",
       "side": 1,
       "message": "nit: document function",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c7fa7b_2ed32a82",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d97a08_5c20552c",
       "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -235,6 +439,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2154a711_df7cf740",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22d9b80_ba892e95",
+      "range": {
+        "startLine": 196,
+        "startChar": 56,
+        "endLine": 196,
+        "endChar": 61
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba64e4c4_4f267bcd",
@@ -248,6 +476,24 @@
       "writtenOn": "2021-07-13T14:04:28Z",
       "side": 1,
       "message": "I think you are looking for https://pkg.go.dev/context#WithTimeout not Shorten\n\nSame below",
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb4bef8_f39de2cf",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba64e4c4_4f267bcd",
       "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -275,6 +521,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1c7189_a54acc34",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "232117c7_8a282165",
+      "range": {
+        "startLine": 222,
+        "startChar": 56,
+        "endLine": 222,
+        "endChar": 61
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "865b77d4_a75d37df",
@@ -288,6 +558,30 @@
       "writtenOn": "2021-07-13T14:04:28Z",
       "side": 1,
       "message": "\"not take\"",
+      "range": {
+        "startLine": 248,
+        "startChar": 57,
+        "endLine": 248,
+        "endChar": 61
+      },
+      "revId": "a693c738e746b62cfd8e5532dbbd5474ff778a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3783736_4fce5685",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-14T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865b77d4_a75d37df",
       "range": {
         "startLine": 248,
         "startChar": 57,
