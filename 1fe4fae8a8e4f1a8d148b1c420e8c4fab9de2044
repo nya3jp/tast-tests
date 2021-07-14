@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "1fe4fae8a8e4f1a8d148b1c420e8c4fab9de2044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fba8ba_6d6151c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-14T08:53:30Z",
+      "side": 1,
+      "message": "testing.Sleep is fundamentally a source of flakiness.\nIs there any specific condition to be waited here, instead?\nThen, you can use testing.Poll().",
+      "revId": "1fe4fae8a8e4f1a8d148b1c420e8c4fab9de2044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
