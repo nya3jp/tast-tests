@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86284112_0fdcd819",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-15T03:43:16Z",
+      "side": 1,
+      "message": "The crostini --rwdisk path isn\u0027t easy to tell if it\u0027s crostini, so we just put everything not in ARCVM into a generic crosvm_file metric. Which should be OK for all the tests I know about.",
+      "revId": "062087f351e3cc01f3980fccab51338b65198042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
