@@ -138,6 +138,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if err := ms.poweroff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
+		if err := ms.waitUnreachable(ctx); err != nil {
+			return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
+		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
 		}
@@ -505,13 +508,17 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
 		return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
 	}
+
+	if err := ms.waitUnreachable(ctx); err != nil {
+		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
+	}
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
 		return errors.Wrapf(err, "setting power state to %s", servo.PowerStateRec)
 	}
 	return nil
 }
 
-// poweroff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
+// poweroff safely powers off the DUT with the "poweroff" command.
 func (ms *ModeSwitcher) poweroff(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
@@ -523,12 +530,6 @@ func (ms *ModeSwitcher) poweroff(ctx context.Context) error {
 	// Since the DUT will power off, deadline exceeded is expected here.
 	if err := h.DUT.Conn().Command("poweroff").Run(poweroffCtx); err != nil && !errors.Is(err, context.DeadlineExceeded) {
 		return errors.Wrapf(err, "DUT poweroff %T", err)
-	}
-
-	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
-	defer cancel()
-	if err := ms.waitUnreachable(offCtx); err != nil {
-		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
 	}
 	return nil
 }
