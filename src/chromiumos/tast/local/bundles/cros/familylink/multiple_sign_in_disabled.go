@@ -56,16 +56,14 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	userProfileName := fmt.Sprintf("%s%s", strings.ToLower(childFirstName), strings.ToLower(childLastName))
 	s.Logf("Looking for user profile name %q", userProfileName)
 	userProfileIcon := nodewith.NameContaining(userProfileName).Role(role.Button)
-	if err := uiauto.Combine("Attempting to add multiple profiles",
-		ui.WaitUntilExists(userProfileIcon),
-		ui.LeftClick(userProfileIcon))(ctx); err != nil {
-		s.Fatal("Failed to click the user profile icon: ", err)
+	if err := ui.WaitUntilExists(userProfileIcon)(ctx); err != nil {
+		s.Fatal("Failed to find the user profile icon: ", err)
 	}
 
-	s.Log("Checking for error message preventing Unicorn users from adding multi-profiles")
-	// A regular user would see "Sign in another user..." at this
-	// point instead of the expected error message.
-	if err := ui.WaitUntilExists(nodewith.Name("All available users have already been added to this session.").Role(role.StaticText))(ctx); err != nil {
-		s.Fatal("Failed to detect error message preventing Unicorn users from adding multi-profiles: ", err)
+	// A regular user would see "Sign in another user..." after
+	// clicking the user profile icon. For Unicorn users, the icon
+	// button is disabled.
+	if err := ui.WaitUntilExists(userProfileIcon.Focusable())(ctx); err == nil {
+		s.Fatal("User profile button should be disabled for Unicorn users: ", err)
 	}
 }
