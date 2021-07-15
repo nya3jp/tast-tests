@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9845cbb7_831ae582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 44
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-15T06:16:12Z",
+      "side": 1,
+      "message": "Since it is a video relate cuj, should \"video\" be part of the name?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "885c166d200f35b4bbf9c16b03456e4e4672b2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41af07a3_4feeab72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_cuj.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-15T06:16:12Z",
+      "side": 1,
+      "message": "This is the internal display, how to make sure that is has an extended display?",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "885c166d200f35b4bbf9c16b03456e4e4672b2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522f37c9_8541be2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_cuj.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-15T06:16:12Z",
+      "side": 1,
+      "message": "Previously, the ctx was not only used by defer but also other code, suggest to define a cleanup ctx clearly.",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "885c166d200f35b4bbf9c16b03456e4e4672b2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
