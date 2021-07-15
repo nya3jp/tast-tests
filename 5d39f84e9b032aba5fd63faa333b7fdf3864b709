@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa21f97b_733d7244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T08:14:08Z",
+      "side": 1,
+      "message": "Ah I see what you mean. The contracts of functions taking context.Context are following:\n\n- If a function takes context.Context as an argument, it may block until the context is canceled. Upon cancellation of the context, the function must return immediately.\n- All functions that can block should take context.Context as an argument to honor context timeouts. The contraposition is: a function NOT taking context.Context as an argument should always return immediately.\n\nSo we usually don\u0027t care about the execution time of deferred functions not taking context.Context as an argument.",
+      "parentUuid": "d99fffc7_ecf2ed1d",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59f38894_f9752339",
