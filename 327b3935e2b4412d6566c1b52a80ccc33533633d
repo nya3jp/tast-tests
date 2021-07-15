@@ -41,6 +41,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f43e9c9_371862bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-15T11:03:33Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to check that if the removable media is not set to be visible via Chrome OS Settings, the Android folder is not created even after the ArcExternalStorageTest app is launched?",
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2514e39_d9f57244",
+        "filename": "android/ArcExternalStorageTest/src/org/chromium/arc/testapp/appvaliditytast/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-15T11:03:33Z",
+      "side": 1,
+      "message": "Maybe we can just omit this unused variable declaration?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fcde830_1d603295",
+        "filename": "android/ArcExternalStorageTest/src/org/chromium/arc/testapp/appvaliditytast/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-15T11:03:33Z",
+      "side": 1,
+      "message": "nit: getExternalFilesDir*s*() might be better suited for the purpose (although it is called internally by getExternalFilesDir()). ...Dir() returns the primary shared/external storage device, which should be different from the removable media we are testing.",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed015d2b_0a8d7e4f",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-15T11:03:33Z",
+      "side": 1,
+      "message": "IIUC the copyright year basically should not be changed after the file creation: https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++.md#file-headers\n\u003e $YEAR should be set to the current year at the time a file is created, and not changed thereafter.",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d2d20d_3572c17c",
