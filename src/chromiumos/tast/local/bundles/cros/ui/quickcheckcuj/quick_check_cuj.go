@@ -194,6 +194,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		}
 		if performWifi {
 			// Verify WiFi AP is re-connected after resume.
+			pollOpts := testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				c, err := wifi.Connected(ctx)
 				if err != nil {
@@ -203,8 +204,8 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 					return errors.New("WiFi is not connected")
 				}
 				return nil
-			}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}); err != nil {
-				return errors.Wrap(err, "failed to re-connect WiFi after resume")
+			}, &pollOpts); err != nil {
+				return errors.Wrapf(err, "failed to re-connect WiFi after resume within %v", pollOpts.Timeout)
 			}
 			testing.ContextLog(ctx, "WiFi AP has been reconnected")
 		}
@@ -284,8 +285,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 					return errors.Wrapf(err, "failed to wait for finish render [%s]", tab.url)
 				}
 				// Wait each page to finish loading (to see if the network connection works).
-				if err := webutil.WaitForQuiescence(ctx, tab.conn, time.Minute); err != nil {
-					return errors.Wrapf(err, "a tab is still loading [%s]", tab.url)
+				timeout := time.Minute
+				if err := webutil.WaitForQuiescence(ctx, tab.conn, timeout); err != nil {
+					return errors.Wrapf(err, "a tab is still loading [%s] after %v", tab.url, timeout)
 				}
 
 				for _, scroll := range scrollActions {
@@ -390,6 +392,7 @@ func readWakeupDuration(ctx context.Context, earliestModTime time.Time) (float64
 
 	// Wait until the suspend procedure successfully generates the last_resume_timings with a
 	// newer timestamp.
+	pollOpts := testing.PollOptions{Timeout: suspendTotalTime, Interval: time.Second}
 	if err := testing.Poll(ctx, func(c context.Context) error {
 		fState, err := os.Stat(lastResumeTimingsFile)
 		if err != nil {
@@ -402,8 +405,8 @@ func readWakeupDuration(ctx context.Context, earliestModTime time.Time) (float64
 			return errors.New("last_resume_timings file hasn't been updated")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: suspendTotalTime, Interval: time.Second}); err != nil {
-		return 0.0, errors.Wrap(err, "failed to check existence of a new last_resume_timings file")
+	}, &pollOpts); err != nil {
+		return 0.0, errors.Wrapf(err, "failed to check existence of a new last_resume_timings file within %v", pollOpts.Timeout)
 	}
 
 	b, err := ioutil.ReadFile(lastResumeTimingsFile)
