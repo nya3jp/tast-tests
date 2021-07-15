@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca4980f_3ade8d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-07-15T11:28:44Z",
+      "side": 1,
+      "message": "LGTM %a minor nits\nPlease get a +2 from a team member",
+      "revId": "272e88e0fe6ea4352536f46d9f8052316f2781d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d48018_7cbac947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-07-15T11:28:44Z",
+      "side": 1,
+      "message": "missing . at the end of the comment.",
+      "revId": "272e88e0fe6ea4352536f46d9f8052316f2781d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b22a38_b15f187f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-07-15T11:28:44Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "272e88e0fe6ea4352536f46d9f8052316f2781d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
