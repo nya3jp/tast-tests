@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: MultipleSignInDisabled,
-		Desc: "Verifies that multiple sign-in is disabled for Unicorn users",
+		Desc: "Verifies that multiple sign-in is disabled for Unicorn users. Geller users should behave similarly",
 		Contacts: []string{
 			"tobyhuang@chromium.org", "cros-families-eng+test@google.com",
 		},
@@ -56,16 +56,13 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	userProfileName := fmt.Sprintf("%s%s", strings.ToLower(childFirstName), strings.ToLower(childLastName))
 	s.Logf("Looking for user profile name %q", userProfileName)
 	userProfileIcon := nodewith.NameContaining(userProfileName).Role(role.Button)
-	if err := uiauto.Combine("Attempting to add multiple profiles",
-		ui.WaitUntilExists(userProfileIcon),
-		ui.LeftClick(userProfileIcon))(ctx); err != nil {
-		s.Fatal("Failed to click the user profile icon: ", err)
+	if err := ui.WaitUntilExists(userProfileIcon)(ctx); err != nil {
+		s.Fatal("Failed to find the user profile icon: ", err)
 	}
 
-	s.Log("Checking for error message preventing Unicorn users from adding multi-profiles")
-	// A regular user would see "Sign in another user..." at this
-	// point instead of the expected error message.
-	if err := ui.WaitUntilExists(nodewith.Name("All available users have already been added to this session.").Role(role.StaticText))(ctx); err != nil {
-		s.Fatal("Failed to detect error message preventing Unicorn users from adding multi-profiles: ", err)
+	// Family Link users are never allowed to use multi-user sign-
+	// in, so the the profile icon button should be disabled.
+	if err := ui.WaitUntilExists(userProfileIcon.Focusable())(ctx); err == nil {
+		s.Fatal("User profile button should be disabled for Family Link users: ", err)
 	}
 }
