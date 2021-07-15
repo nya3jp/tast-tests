@@ -26,7 +26,7 @@ func init() {
 		Func:         PhysicalKeyboardJapaneseTyping,
 		Desc:         "Checks that Japanese physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
