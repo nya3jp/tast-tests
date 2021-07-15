@@ -290,3 +290,67 @@ func (vm *Crosvm) WaitForOutput(ctx context.Context, re *regexp.Regexp) (string,
 		return r.line, r.err
 	}
 }
+
+// RunCommand runs a command in the crosvm shell. It returns the output of stdout.
+// This function will consume output from stdout until the shell prompt is seen.
+func (vm *Crosvm) RunCommand(ctx context.Context, cmd string) ([]string, error) {
+	re := regexp.MustCompile("^tast>>")
+
+	if _, err := io.WriteString(vm.stdin, "/bin/sh -c \"" + cmd + "\"\n"); err != nil {
+		return nil, err
+	}
+
+	// Start a goroutine that reads bytes from crosvm and buffers them in a
+	// string builder. We can't do this with lines because then we will miss the
+	// initial prompt that comes up that doesn't have a line terminator. If a
+	// matching line is found, send it through the channel.
+	type result struct {
+		lines []string
+		err  error
+	}
+	ch := make(chan result, 1)
+	// Allow the blocking read call to stop when the deadline has been exceeded.
+	// Defer removing the deadline until this function has exited.
+	deadline, ok := ctx.Deadline()
+	// If no deadline is set, default to no timeout.
+	if !ok {
+		deadline = time.Time{}
+	}
+	vm.stdout.SetReadDeadline(deadline)
+	defer vm.stdout.SetReadDeadline(time.Time{})
+	go func() {
+		defer close(ch)
+		var line strings.Builder
+		var lines []string
+		var b [1]byte
+		for {
+			_, err := vm.stdout.Read(b[:])
+			if err != nil {
+				ch <- result{lines, err}
+				return
+			}
+			if b[0] == '\n' {
+				lines = append(lines, line.String())
+				line.Reset()
+				continue
+			}
+			line.WriteByte(b[0])
+			if re.MatchString(line.String()) {
+				ch <- result{lines, nil}
+				return
+			}
+		}
+	}()
+
+	select {
+	case r := <-ch:
+		if os.IsTimeout(r.err) {
+			// If the read times out, this means the deadline has passed
+			select {
+			case <-ctx.Done():
+				return nil, errors.Wrap(ctx.Err(), "timeout out waiting for output")
+			}
+		}
+		return r.lines[1:], r.err
+	}
+}
