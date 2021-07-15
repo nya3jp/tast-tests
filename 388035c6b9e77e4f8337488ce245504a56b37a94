@@ -50,6 +50,40 @@
       "message": "Hi Tast Owners,\nPlease review the following change to drag_tab_in_tablet_perf.go\n\nThanks.",
       "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f084c616_c5be891c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-15T16:34:05Z",
+      "side": 1,
+      "message": "I think this test should have a name as well.",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac676447_cd38b041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-15T16:34:05Z",
+      "side": 1,
+      "message": "Does this test need to be marked as informational as it is new?",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
