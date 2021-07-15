@@ -94,6 +94,30 @@
       },
       "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e8c2f0_677a6fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-15T05:24:16Z",
+      "side": 1,
+      "message": "\u003e The test should mostly shared one body of code that is tweaked and modified by the different conditionals by setting variables. WDYT?\n\nDone. PTAL again.",
+      "parentUuid": "6176a9e4_386a3694",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
