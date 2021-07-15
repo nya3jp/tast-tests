@@ -525,12 +525,25 @@ func (ms *ModeSwitcher) poweroff(ctx context.Context) error {
 		return errors.Wrap(err, "requiring servo")
 	}
 	testing.ContextLog(ctx, "Powering off DUT")
-	poweroffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
+	// Since the DUT will power off
+	cmdStartCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
 	defer cancel()
-	// Since the DUT will power off, deadline exceeded is expected here.
-	if err := h.DUT.Conn().Command("poweroff").Run(poweroffCtx); err != nil && !errors.Is(err, context.DeadlineExceeded) {
+	cmd := h.DUT.Conn().Command("poweroff")
+	if err := cmd.Start(cmdStartCtx); err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			return nil
+		}
 		return errors.Wrapf(err, "DUT poweroff %T", err)
 	}
+	// This command will time out, so wait for it in the background.
+	go func() {
+		poweroffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
+		defer cancel()
+		err := cmd.Wait(poweroffCtx)
+		if err != nil && !errors.Is(err, context.DeadlineExceeded) {
+			testing.ContextLog(ctx, "DUT poweroff failed: ", err)
+		}
+	}()
 	return nil
 }
 
