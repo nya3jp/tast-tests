@@ -33,6 +33,52 @@
       "message": "I\u0027m creating NewFirmwareTest here and use it only in CheckWriteProtectStateCorrect. This is overkill for me (NewFirmwareTest performes full initialization including FPMCU reboot and FPMCU flash after test finishes, but I wasn\u0027t able to find easier way to check write protect on FPMCU)\n\nCould you give me some hints what can be used instead?",
       "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efd83ca_e0b10b6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-15T17:16:55Z",
+      "side": 1,
+      "message": "These have been downgraded to not required. So, s.Var(\"servo\").\n\nhttps://crrev.com/c/2940796",
+      "range": {
+        "startLine": 44,
+        "startChar": 52,
+        "endLine": 44,
+        "endChar": 76
+      },
+      "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd54eff_bdaedda3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-15T17:16:55Z",
+      "side": 1,
+      "message": "Servo also downgraded for this usage, see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2940796/8/src/chromiumos/tast/remote/firmware/codelab/README.md#258",
+      "range": {
+        "startLine": 59,
+        "startChar": 35,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
