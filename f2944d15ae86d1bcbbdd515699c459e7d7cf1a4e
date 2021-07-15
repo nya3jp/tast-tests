@@ -39,6 +39,29 @@
       },
       "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb527d3_89ddc8e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-15T16:10:35Z",
+      "side": 1,
+      "message": "Is this something that should use testing.PollBreak? Or can this be a transient failure also?",
+      "range": {
+        "startLine": 642,
+        "startChar": 3,
+        "endLine": 642,
+        "endChar": 218
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
