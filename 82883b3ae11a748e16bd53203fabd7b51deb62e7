@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "089e0dff_b315d031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-15T11:20:28Z",
+      "side": 1,
+      "message": "http://tastboard/test/firmware.FwupdInstallRemote\n\nLooks flaky on some boards. Could you identify the cause and fix?",
+      "revId": "82883b3ae11a748e16bd53203fabd7b51deb62e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
