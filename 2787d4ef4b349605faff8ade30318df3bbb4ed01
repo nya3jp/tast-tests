@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a6eb1a_643e0151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "No worries. Thanks for the review and comments for this newbie CL :)",
+      "parentUuid": "41913b73_d480c606",
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d58e9420_c3561d73",
@@ -101,6 +119,30 @@
       "writtenOn": "2021-07-14T06:27:16Z",
       "side": 1,
       "message": "You can set\n\n \"executable\": true\n \nto set an executable bit.",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29c2b31_890cd810",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/trace_processor_shell-linux-a3ce2cbf4cbe4f86cc10b02957db727cecfafae8.external",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "d58e9420_c3561d73",
       "range": {
         "startLine": 4,
         "startChar": 1,
@@ -134,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3228a8_ccb2d1b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Right, after using stream, it\u0027s not needed.",
+      "parentUuid": "a0e07dc3_975114b2",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f07ad82_f0b35606",
@@ -147,6 +213,30 @@
       "writtenOn": "2021-07-14T06:27:16Z",
       "side": 1,
       "message": "Let us insert newlines to comments to make them more readable.\ngo/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b9db68_fbf5c85e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Right, the gofmt didn\u0027t do that so I thought it\u0027s intended.\nDone, please check.",
+      "parentUuid": "2f07ad82_f0b35606",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -203,6 +293,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe523587_a9e69ec8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "I see! Done.",
+      "parentUuid": "715e42cd_34a90e06",
+      "range": {
+        "startLine": 27,
+        "startChar": 59,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb9e4b4_08dc59e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Right. Updated, please check.",
+      "parentUuid": "bcdca627_c21e84b1",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 54
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7b04573_13fb74fe",
@@ -216,6 +354,30 @@
       "writtenOn": "2021-07-14T06:27:16Z",
       "side": 1,
       "message": "Setting MaxCallRecvMsgSize is inconvenient. I recommend converting the gRPC method to a streaming method.",
+      "range": {
+        "startLine": 34,
+        "startChar": 115,
+        "endLine": 34,
+        "endChar": 157
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1b0f0f_8fe9869f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d7b04573_13fb74fe",
       "range": {
         "startLine": 34,
         "startChar": 115,
@@ -251,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a148042_17d3981f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "I see! Updated, please check.",
+      "parentUuid": "47dd84eb_92e75bfb",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d8905ff_72e94316",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
         "patchSetId": 12
@@ -262,6 +448,30 @@
       "writtenOn": "2021-07-14T06:27:16Z",
       "side": 1,
       "message": "In this case, the temporary file is not removed.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 54
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b62a3e_3db3fcd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Thanks! Removed it here.",
+      "parentUuid": "6d8905ff_72e94316",
       "range": {
         "startLine": 46,
         "startChar": 2,
@@ -295,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b90416c_ecb94a57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Thanks! That makes a lot of sense.",
+      "parentUuid": "87f84732_d43a43a0",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f50781ea_2722c54c",
@@ -308,6 +542,30 @@
       "writtenOn": "2021-07-14T06:27:16Z",
       "side": 1,
       "message": "What TBM stands for? It\u0027s nice to leave a comment somewhere.",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5eace5_034233fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "Added trace-based metrics in the comment.",
+      "parentUuid": "f50781ea_2722c54c",
       "range": {
         "startLine": 83,
         "startChar": 11,
@@ -341,6 +599,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f19043_347975b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "I see! Redeclared |fullCtx| as |ctx|.",
+      "parentUuid": "5c33e54c_7d06edef",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "658faf31_4610c8c4",
@@ -354,6 +636,30 @@
       "writtenOn": "2021-07-14T06:27:16Z",
       "side": 1,
       "message": "Please avoid modifying the data file permission as it might be shared among multiple tests.\n\nYou can set executable bit by updating .external file. Please see my another comment.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db065b96_fe78b4d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-15T13:24:05Z",
+      "side": 1,
+      "message": "I see! Thanks!",
+      "parentUuid": "658faf31_4610c8c4",
       "range": {
         "startLine": 89,
         "startChar": 1,
