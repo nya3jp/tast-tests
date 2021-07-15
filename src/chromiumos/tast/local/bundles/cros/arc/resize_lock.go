@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"image/color"
+	"math"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
@@ -22,6 +23,7 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -64,6 +66,12 @@ const (
 	// Used to identify the shelf icon of interest.
 	resizeLockAppName = "ArcResizeLockTest"
 	settingsAppName   = "Settings"
+
+	// Used in test cases where screenshots are taken.
+	pixelColorDiffMargin                    = 5
+	clientContentColorPixelPercentThreshold = 95
+	borderColorPixelCountThreshold          = 1000
+	borderWidthPX                           = 6
 )
 
 // Represents the size of a window.
@@ -74,6 +82,19 @@ const (
 	tabletOrientation
 	maximizedOrientation
 )
+
+func (mode orientation) String() string {
+	switch mode {
+	case phoneOrientation:
+		return "phone"
+	case tabletOrientation:
+		return "tablet"
+	case maximizedOrientation:
+		return "maximized"
+	default:
+		return "unknown"
+	}
+}
 
 // Represents the high-level state of the app from the resize-lock feature's perspective.
 type resizeLockMode int
@@ -585,32 +606,32 @@ func checkMaximizeRestoreButtonVisibility(ctx context.Context, tconn *chrome.Tes
 }
 
 // checkOrientation verifies the orientation of the given app.
-func checkOrientation(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, orientation orientation) error {
+func checkOrientation(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, expectedOrientation orientation) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		window, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName())
+		actualOrientation, err := activityOrientation(ctx, tconn, activity)
 		if err != nil {
-			return errors.Wrapf(err, "failed to ARC window infomation for package name %s", activity.PackageName())
+			return errors.Wrapf(err, "failed to get the current orientation of %s", activity.PackageName())
 		}
-		switch orientation {
-		case phoneOrientation:
-			if err := ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateNormal); err != nil {
-				return errors.Wrap(err, "failed to verify the window state of the phone orientation")
-			}
-			if window.BoundsInRoot.Width > window.BoundsInRoot.Height {
-				return errors.New("failed to verify the window bounds of the phone orientation")
-			}
-		case tabletOrientation:
-			if err := ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateNormal); err != nil {
-				return errors.Wrap(err, "failed to verify the window state of the tablet orientation")
-			}
-			if window.BoundsInRoot.Height > window.BoundsInRoot.Width {
-				return errors.New("failed to verify the window bounds of the tablet orientation")
-			}
-		case maximizedOrientation:
-			return ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateMaximized)
+		if actualOrientation != expectedOrientation {
+			errors.Errorf("failed to verify the orientation; want: %s, got: %s", expectedOrientation, actualOrientation)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// activityOrientation returns the current orientation of the given app.
+func activityOrientation(ctx context.Context, tconn *chrome.TestConn, activity *arc.Activity) (orientation, error) {
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName())
+	if err != nil {
+		return maximizedOrientation, errors.Wrapf(err, "failed to ARC window infomation for package name %s", activity.PackageName())
+	}
+	if window.State == ash.WindowStateMaximized || window.State == ash.WindowStateFullscreen {
+		return maximizedOrientation, nil
+	}
+	if window.BoundsInRoot.Width < window.BoundsInRoot.Height {
+		return phoneOrientation, nil
+	}
+	return tabletOrientation, nil
 }
 
 // checkCompatModeButton verifies the state of the compat-mode button of the given app.
@@ -634,16 +655,45 @@ func checkCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// checkClientContent verifies the client content fills the entire window.
+// This is useful to check if switching between phone and tablet modes causes any UI glich.
+func checkClientContent(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, activity *arc.Activity) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		bounds, err := activity.WindowBounds(ctx)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get the window bounds of %s", activity.ActivityName())
+		}
+
+		img, err := screenshot.GrabScreenshot(ctx, cr)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get display mode of the primary display")
+		}
+		windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName())
+		if err != nil {
+			return errors.Wrapf(err, "failed to get arc app window info for %s", activity.PackageName())
+		}
+		captionHeight := int(math.Round(float64(windowInfo.CaptionHeight) * dispMode.DeviceScaleFactor))
+
+		totalPixels := (bounds.Height - captionHeight) * bounds.Width
+		bluePixels := imgcmp.CountPixels(img, color.RGBA{0, 0, 255, 255})
+		bluePercent := bluePixels * 100 / totalPixels
+
+		if bluePercent < clientContentColorPixelPercentThreshold {
+			return errors.Errorf("failed to verify the number of the blue pixels exceeds the threshold (%d%%); contains %d / %d (%d%%) blue pixels", clientContentColorPixelPercentThreshold, bluePixels, totalPixels, bluePercent)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
+}
+
 // checkBorder checks whether the special window border for compatibility mode is shown or not.
 // This functions takes a screenshot of the display, and counts the number of pixels that are dark gray around the window border.
 func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, shouldShowBorder bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		const (
-			pixelColorDiffMargin           = 5
-			borderColorPixelCountThreshold = 1000
-			borderWidthPX                  = 6
-		)
-
 		bounds, err := activity.WindowBounds(ctx)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get the window bounds of %s", activity.ActivityName())
@@ -798,6 +848,10 @@ func closeSplashViaClick(ctx context.Context, tconn *chrome.TestConn, splash *ch
 
 // toggleResizeLockMode shows the compat-mode menu, clicks on one of the resize lock mode buttons on the compat-mode menu, and verifies the post state.
 func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, currentMode, nextMode resizeLockMode, action confirmationDialogAction) error {
+	preToggleOrientation, err := activityOrientation(ctx, tconn, activity)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the pre-toggle orientation of %s", activity.PackageName())
+	}
 	if err := showCompatModeMenu(ctx, tconn); err != nil {
 		return errors.Wrapf(err, "failed to show the compat-mode dialog of %s", activity.ActivityName())
 	}
@@ -847,6 +901,17 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return checkVisibility(ctx, tconn, bubbleDialogClassName, false /* visible */)
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to verify that the resizability confirmation dialog is invisible")
+	}
+
+	postToggleOrientation, err := activityOrientation(ctx, tconn, activity)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the post-toggle orientation of %s", activity.PackageName())
+	}
+
+	if preToggleOrientation != postToggleOrientation {
+		if err := checkClientContent(ctx, tconn, cr, activity); err != nil {
+			return errors.Wrapf(err, "failed to verify the client content fills the window of %s", activity.ActivityName())
+		}
 	}
 
 	return checkResizeLockState(ctx, tconn, a, d, cr, activity, expectedMode, false /* isSplashVisible */)
