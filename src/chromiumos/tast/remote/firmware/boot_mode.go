@@ -131,19 +131,12 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		// 1. Set DUT power_state to "off".
-		// 2. Wait ECBootToPwrButton.
-		// 3. Ensure that we cannot reach DUT.
-		// 4. Set DUT power_state to "on".
-		// 5. If booting from Dev Mode, deactivate firmware screen.
-		h.Servo.SetPowerState(ctx, servo.PowerStateOff)
-		if err := testing.Sleep(ctx, h.Config.ECBootToPwrButton); err != nil {
-			return errors.Wrapf(err, "waiting %s (ECBootToPwrButton) while booting DUT into normal mode", h.Config.ECBootToPwrButton)
-		}
-		offCtx, cancel := context.WithTimeout(ctx, offTimeout)
-		defer cancel()
-		if err := h.DUT.WaitUnreachable(offCtx); err != nil {
-			return errors.Wrap(err, "waiting for DUT to be unreachable after powering off")
+		// 1. Power off.
+		// 2. Ensure that we cannot reach DUT.
+		// 3. Set DUT power_state to "on".
+		// 4. If booting from Dev Mode, deactivate firmware screen.
+		if err := ms.poweroff(ctx); err != nil {
+			return errors.Wrap(err, "powering off DUT")
 		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
