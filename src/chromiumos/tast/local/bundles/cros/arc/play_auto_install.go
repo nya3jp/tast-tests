@@ -118,8 +118,8 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 		"com.google.android.apps.books",
 		"com.google.android.play.games",
 		"com.google.android.videos",
-		// TODO(crbug.com/1030107): Add YouTube Music once configured on PAI server.
-		"com.google.android.apps.tachyon"}
+		"com.google.android.apps.youtube.music.pwa",
+		"com.google.android.apps.photos"}
 	// Verify that all default apps from the minimal set are scheduled for installation.
 	for _, defaultDoc := range defaultPaiDocs {
 		if _, ok := paiDocs[defaultDoc]; ok {
