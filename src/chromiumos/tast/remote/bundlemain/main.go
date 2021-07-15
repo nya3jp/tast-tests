@@ -53,6 +53,16 @@ func hwsecGetTPMStatus(ctx context.Context, s *testing.TestHookState) (*hwsec.No
 }
 
 func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatus *hwsec.NonsensitiveStatusInfo, origCounter int) error {
+	cmdRunner := hwsecremote.NewLoglessCmdRunner(s.DUT())
+	fwType, err := cmdRunner.Run(ctx, "crossystem", "mainfw_type")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get the firmware type")
+	}
+	if string(fwType) == "recovery" {
+		// Skipping this check when the device is in recovery mode.
+		return nil
+	}
+
 	status, err := hwsecGetTPMStatus(ctx, s)
 	if err != nil {
 		return errors.Wrap(err, "failed to get TPM status")
