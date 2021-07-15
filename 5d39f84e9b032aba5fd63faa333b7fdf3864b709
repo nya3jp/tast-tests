@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b515df_83b41f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-15T03:12:27Z",
+      "side": 1,
+      "message": "android/ lgtm",
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd83ba3_a001521a",
+        "filename": "android/ArcQuotaProjectIdTest/src/org/chromium/arc/testapp/quotaprojectid/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-15T03:12:27Z",
+      "side": 1,
+      "message": "optional nit: I would use nio if possible, it dones\u0027t have much benefit in this case though.",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc32fa1_9e80d639",
+        "filename": "android/ArcQuotaProjectIdTest/src/org/chromium/arc/testapp/quotaprojectid/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-15T03:12:27Z",
+      "side": 1,
+      "message": "nit: I would put exception to the third argument of Log.e.",
+      "range": {
+        "startLine": 48,
+        "startChar": 55,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cf67ca7_d215b166",
