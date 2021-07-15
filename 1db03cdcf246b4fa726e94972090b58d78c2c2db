@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149d663d_757e8da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-15T22:17:46Z",
+      "side": 1,
+      "message": "with small nits.",
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55817d58_39dbcda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-15T22:17:46Z",
+      "side": 1,
+      "message": "We are about to stop tracing? \nDelete the sentence? \"Set |triedToStopTracing| ...\" should be enough.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a57308_9fa3f7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-15T22:17:46Z",
+      "side": 1,
+      "message": "we don\u0027t need | in Tast.\n\nEffective Go suggesting plain natural language documentation.\nhttps://golang.org/doc/effective_go#commentary",
+      "range": {
+        "startLine": 92,
+        "startChar": 39,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26296a2b_78ff5225",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-15T22:17:46Z",
+      "side": 1,
+      "message": "nit.",
+      "range": {
+        "startLine": 313,
+        "startChar": 127,
+        "endLine": 313,
+        "endChar": 128
+      },
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
