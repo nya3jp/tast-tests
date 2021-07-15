@@ -687,6 +687,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c73f989_dca9d7a6",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-15T23:11:31Z",
+      "side": 1,
+      "message": "Can we consolidate to using only one variable called policyUser? Set it to \"unicorn.childUser\" at first and then overwrite it with f.policyUser \u003d s.RequiredVar(f.policyUser) later.",
+      "parentUuid": "d3bca045_b3a64e83",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d787b5b0_d3d29d93",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
         "patchSetId": 10
