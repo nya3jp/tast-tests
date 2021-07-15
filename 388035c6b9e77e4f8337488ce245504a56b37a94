@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa9a1f4_6cf243ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-15T16:45:14Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f084c616_c5be891c",
@@ -87,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c089a50b_81757901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-15T16:45:14Z",
+      "side": 1,
+      "message": "I think this makes sense to preserve the data since that is the primary purpose of the test.",
+      "parentUuid": "fb5eeb90_29d581fa",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac676447_cd38b041",
@@ -118,6 +153,24 @@
       "side": 1,
       "message": "The test is in \"group:crosbolt\", not part of \"mainline\". So it would not block CQ and \"informational\" does not really matter IIUC.",
       "parentUuid": "ac676447_cd38b041",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7629a29d_6f174f27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-15T16:45:14Z",
+      "side": 1,
+      "message": "Ack, that makes sense to me.",
+      "parentUuid": "9af5f222_3fbe4a81",
       "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
