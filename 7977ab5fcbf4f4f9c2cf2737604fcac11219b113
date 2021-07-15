@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ec6791f_70b8402c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-15T22:02:15Z",
+      "side": 1,
+      "message": "Optional, I might defer a function which calls act.Stop() and act.Close() only if error returned here. You can achieve that by named return value.\n\nstartActivityWithBounds :\u003d func(ctx context.Context, apk, pkg, activityName string, wantBounds coords.Rect) (act *arc.Activity, err error) {\n  ...\n  defer func() {\n     if err !\u003d nil {\n       act.Stop(...)\n       act.Close(...)\n     }\n  } ()\n}",
+      "revId": "7977ab5fcbf4f4f9c2cf2737604fcac11219b113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a29528d3_d36994f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
         "patchSetId": 5
