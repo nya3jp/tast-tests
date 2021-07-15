@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "308f947e70a14ac63278f5452e7801489f91f2bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a10221_97abed3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-15T08:39:23Z",
+      "side": 1,
+      "message": "Behaviors and expectations LGTM. Hand over to Shuhei-san for general Go/Tast stuff.",
+      "revId": "308f947e70a14ac63278f5452e7801489f91f2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
