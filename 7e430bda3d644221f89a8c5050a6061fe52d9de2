@@ -33,6 +33,24 @@
       "message": "WDYT if we embed *WifiClient in TestFixture, so we won\u0027t need to leave the DEPRECATED methods below at all?\nThe downside is that one may accidentally overwrite the method in WifiClient by defining another one in TestFixture with the same name.",
       "revId": "7e430bda3d644221f89a8c5050a6061fe52d9de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6ef45c_a5ebd1d3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-15T06:29:31Z",
+      "side": 1,
+      "message": "I personally prefer not to embed WifiClient here. I think accessing the raw gRPCs with TestFixture can sometimes be less readable, e.g.\n\n  // less readable because it\u0027s not clear HWAddr of what.\n  tf.GetHardwareAddr(...)\n  \n  // better as \"Client\" usually means DUT instead router/pcap.\n  tf.WifiClient().GetHardwareAddr(...) \n\nDefining all related gRPCs/method of WifiClient with another \"Client\" in their name looks a little excessive to me.\n\nOTOH, I\u0027ll start modifying the usages of the DEPRECATED method from tf.Method(...) to tf.WifiClient().Method(...) and those methods should be removed soon. They\u0027re kept only for\n  1) in case other CLs can conflict with the removal in parallel CQ\n  2) to simplify this RFC CL by avoiding noisy renames.",
+      "parentUuid": "16329de9_13380375",
+      "revId": "7e430bda3d644221f89a8c5050a6061fe52d9de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
