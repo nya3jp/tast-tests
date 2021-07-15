@@ -183,6 +183,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0a37326_58b91be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T02:13:20Z",
+      "side": 1,
+      "message": "Yes, that is expected because we call Kill in advance. You can ignore an error from Wait but you still have to call it.",
+      "parentUuid": "bd897513_1997844d",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45a00f65_bf344066",
         "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
         "patchSetId": 1
