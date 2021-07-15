@@ -6,8 +6,10 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -58,10 +60,14 @@ func MojoProxyCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get init PID before reboot: ", err)
 	}
 
-	// Stopping the mojo proxy should result in Android reboot.
-	s.Log("Stopping the proxy process")
-	if err := upstart.StopJob(ctx, "arcvm-server-proxy"); err != nil {
-		s.Fatal("Failed to stop the proxy process: ", err)
+	// Forceful kill of the mojo proxy.
+	s.Log("Inducing arcvm-server-proxy crash")
+	_, _, pid, err := upstart.JobStatus(ctx, "arcvm-server-proxy")
+	if err != nil {
+		s.Fatal("Failed to find arcvm-server-proxy job: ", err)
+	}
+	if err := testexec.CommandContext(ctx, "kill", fmt.Sprintf("%d", pid)).Run(); err != nil {
+		s.Fatal("Failed to kill arcvm-server-proxy job: ", err)
 	}
 
 	s.Log("Waiting for old init process to exit")
