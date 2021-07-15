@@ -247,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99fffc7_ecf2ed1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-15T08:02:44Z",
+      "side": 1,
+      "message": "Removed.\n\nI thought using a shortened context would spare some time for deferred tasks, but it\u0027s not necessary as long as it works?\nIIUC just using the original context results in the test taking time longer than the desired timeout (i.e. timeout + time spent for deferred tasks).",
+      "parentUuid": "4ffc5ab2_ac32d1a3",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59f38894_f9752339",
