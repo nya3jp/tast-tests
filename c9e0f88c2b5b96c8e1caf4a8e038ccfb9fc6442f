@@ -118,6 +118,30 @@
       },
       "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "474ad392_77a1de02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-15T16:19:22Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "41e8c2f0_677a6fc3",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "c9e0f88c2b5b96c8e1caf4a8e038ccfb9fc6442f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
