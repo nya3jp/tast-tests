@@ -51,6 +51,24 @@
       "parentUuid": "88fba8ba_6d6151c9",
       "revId": "1fe4fae8a8e4f1a8d148b1c420e8c4fab9de2044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1cfbc33_fd86df5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-15T11:24:08Z",
+      "side": 1,
+      "message": "\u003e Unfortunately this cannot be detected by any way, so we have to use sleep here.\n\u003e \n\nCould you clarify the details? Do you mean there\u0027s no signal available now and we need to change chrome to make it possible to detect?\nOr, is it technically impossible at all?\n\nI guess the former, but if so, could you file a tracking bug with higher priority?\nOr, otherwise it means this test is not high priority, so demote to informational until it gets stabilized properly?\n\nIf the latter, we probably need to invent some alternative new approach anyways.\n\n\u003e Maybe we can add a private api to do this on M94.\n\u003e \n\u003e What do you think?",
+      "parentUuid": "7c44caef_a98ced0b",
+      "revId": "1fe4fae8a8e4f1a8d148b1c420e8c4fab9de2044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
