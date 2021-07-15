@@ -296,15 +296,15 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 
 		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find/click the player view")
+			return errors.Wrapf(err, "failed to find/click the player view in %s", uiWaitTime)
 		}
 
 		if err := cuj.FindAndClick(pauseBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find/click the pause button")
+			return errors.Wrapf(err, "failed to find/click the pause button in %s", waitTimeAfterClickPlayerView)
 		}
 
 		if err := playBtn.WaitForExists(ctx, 2*time.Second); err != nil {
-			return errors.Wrap(err, "failed to find the play button")
+			return errors.Wrap(err, "failed to find the play button in 2s")
 		}
 
 		// Immediately clicking the target button sometimes doesn't work.
@@ -315,7 +315,7 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 			return errors.Wrap(err, "failed to click the play button")
 		}
 		if err := pauseBtn.WaitForExists(ctx, uiWaitTime); err != nil {
-			return errors.Wrap(err, "failed to find the pause button")
+			return errors.Wrapf(err, "failed to find the pause button in %s", uiWaitTime)
 		}
 
 		// Keep the video playing for a short time.

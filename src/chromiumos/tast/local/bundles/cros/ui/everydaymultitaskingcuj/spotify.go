@@ -258,7 +258,7 @@ func (s *Spotify) waitUntilHomePageShows(ctx context.Context) error {
 	searchTab := s.d.Object(ui.ID(searchTabID))
 
 	if err := searchTab.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return errors.Wrap(err, `failed to wait for search tab exist`)
+		return errors.Wrapf(err, `failed to wait for search tab to exist in %v`, defaultUITimeout)
 	}
 
 	return nil
