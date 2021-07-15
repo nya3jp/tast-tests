@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627816d5_94dbac4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-15T09:37:04Z",
+      "side": 1,
+      "message": "and also the arc.EnableExternalStorage.vm?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3dd6ac_ff09bee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-15T09:37:04Z",
+      "side": 1,
+      "message": "Thanks for working on this!",
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d2d20d_3572c17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-15T09:37:04Z",
+      "side": 1,
+      "message": "Do we really need to test opening Files App? Can we check the existence of the Android directory under the /media/.../ path without opening Files App?\n\nI feel that opening files app here increases the probability of flakiness (for example, a bug in FilesApp will bring down this test and we will need to investigate that) and makes the code more complicated. If we want to test whether removable media should be shown under FilesApp, it probably should be tested in a separate test (and monitored by the Sydney FilesApp folks).",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e09a01a_5705ca7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-15T09:37:04Z",
+      "side": 1,
+      "message": "Isn\u0027t this just toggling the My Disk Button in the settings? Why is it named as \"Open Android Settings\"?",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 49
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb5d701_12c88e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-15T09:37:04Z",
+      "side": 1,
+      "message": "Same comment about FilesApp.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
