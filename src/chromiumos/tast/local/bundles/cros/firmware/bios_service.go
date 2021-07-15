@@ -31,7 +31,7 @@ type BiosService struct {
 
 // GetGBBFlags gets the flags that are cleared and set.
 func (*BiosService) GetGBBFlags(ctx context.Context, req *empty.Empty) (*pb.GBBFlagsState, error) {
-	img, err := bios.NewImage(ctx)
+	img, err := bios.NewImage(ctx, bios.GBBImageSection)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
@@ -45,11 +45,11 @@ func (*BiosService) GetGBBFlags(ctx context.Context, req *empty.Empty) (*pb.GBBF
 
 // ClearAndSetGBBFlags clears and sets specified GBB flags, leaving the rest unchanged.
 func (bs *BiosService) ClearAndSetGBBFlags(ctx context.Context, req *pb.GBBFlagsState) (*empty.Empty, error) {
-	img, err := bios.NewImage(ctx)
+	bs.s.Logf("Start ClearAndSetGBBFlags: %v", req)
+	img, err := bios.NewImage(ctx, bios.GBBImageSection)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
-	bs.s.Logf("Start ClearAndSetGBBFlags: %v", req)
 	if err = img.ClearAndSetGBBFlags(req.Clear, req.Set); err != nil {
 		return nil, errors.Wrap(err, "could not clear/set flags")
 	}
