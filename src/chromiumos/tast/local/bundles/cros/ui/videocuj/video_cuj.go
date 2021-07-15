@@ -275,7 +275,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 			}
 			return nil
 		}); err != nil {
-			return errors.Wrap(err, "failed to run recorder")
+			return errors.Wrapf(err, "failed to run %q video playback", appName)
 		}
 	}
 
@@ -298,10 +298,10 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	}
 
 	if err := recorder.Record(ctx, pv); err != nil {
-		return errors.Wrap(err, "failed to record result")
+		return errors.Wrap(err, "failed to record the performance metrics")
 	}
 	if err := pv.Save(outDir); err != nil {
-		return errors.Wrap(err, "failed saving perf data")
+		return errors.Wrap(err, "failed to save performance metrics")
 	}
 	if err := recorder.SaveHistograms(outDir); err != nil {
 		return errors.Wrap(err, "failed to save histogram raw data")

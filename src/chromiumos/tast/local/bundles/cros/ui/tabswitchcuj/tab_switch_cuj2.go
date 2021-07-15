@@ -106,7 +106,7 @@ type chromeTab struct {
 
 func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, pattern string) error {
 	if err := tab.conn.Eval(ctx, "window.location.href", &tab.url); err != nil {
-		return errors.Wrap(err, "failed to get URL before clicking on an element")
+		return errors.Wrap(err, "failed to get URL")
 	}
 	testing.ContextLogf(ctx, "Current URL: %q", tab.url)
 
@@ -139,22 +139,23 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: 5 * time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to find HTML element [%s]", pattern)
+		return errors.Wrapf(err, "failed to find and click HTML element with pattern [%s] within %v", pattern, time.Minute)
 	}
 
 	// Navigation does not happen instantly. Use poll to detect whether it has been navigated to new URL.
+	pollOpts := testing.PollOptions{Timeout: 30 * time.Second, Interval: 500 * time.Millisecond}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var urlAfter string
 		if err := tab.conn.Eval(ctx, "window.location.href", &urlAfter); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get URL after clicking on an element"))
+			return testing.PollBreak(errors.Wrap(err, "failed to get URL"))
 		}
 		if urlAfter == tab.url {
 			return errors.New("page has not navigated")
 		}
 		tab.url = urlAfter
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
-		return errors.Wrapf(err, "failed to click HTML element with pattern [%v]", pattern)
+	}, &pollOpts); err != nil {
+		return errors.Wrapf(err, "failed to wait for web page been navigated within %v", pollOpts.Timeout)
 	}
 
 	testing.ContextLogf(ctx, "HTML element clicked [%s], page navigates to: %q", pattern, tab.url)
@@ -171,7 +172,7 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration) er
 	}
 
 	if err := webutil.WaitForQuiescence(ctx, tab.conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for tab quiescence before clicking anchor")
+		return errors.Wrapf(err, "failed to wait for tab quiescence before clicking anchor within %v", timeout)
 	}
 	pattern := tab.pageInfo.contentPatterns[pn]
 	testing.ContextLogf(ctx, "Click link and navigate from %q to %q", tab.pageInfo.contentPatterns[p], pattern)
@@ -433,7 +434,7 @@ func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*c
 			// In record mode, needs to wait for quiescence to properly record web content.
 			if caseLevel == Record {
 				if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-					return errors.Wrap(err, "failed to wait for tab to achieve quiescence")
+					return errors.Wrapf(err, "failed to wait for tab to achieve quiescence within %v", plTimeout)
 				}
 			}
 		}
@@ -479,7 +480,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 			testing.ContextLog(ctx, "Tab rendering time after switching: ", renderTime)
 			if caseLevel == Record {
 				if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-					return errors.Wrap(err, "failed to wait for tab to achieve quiescence")
+					return errors.Wrapf(err, "failed to wait for tab to achieve quiescence within %v", plTimeout)
 				}
 				quiescenceTime := time.Now().Sub(timeStart)
 				// Debugging purpose message, to observe which tab takes unusual long time to quiescence
@@ -499,7 +500,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 							return errors.Wrap(err, "failed to wait for render to finish after scroll")
 						}
 						if err := webutil.WaitForQuiescence(ctx, tab.conn, plTimeout); err != nil {
-							return errors.Wrap(err, "failed to wait for tab to achieve quiescence after scroll")
+							return errors.Wrapf(err, "failed to wait for tab to achieve quiescence after scroll within %v", plTimeout)
 						}
 					}
 				}
