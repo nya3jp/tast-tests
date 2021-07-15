@@ -56,6 +56,17 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 		frArgs = append(frArgs, remoteTempFileName)
 	}
 	if err := runner.RunCommand(ctx, true, "flashrom", frArgs...); err != nil {
+		// TODO(b/185271203): Some debugging that should be removed later
+		output, err := runner.OutputCommand(ctx, true, "ls", "-l", remoteTempFileName)
+		testing.ContextLogf(ctx, "ls -l %s: %s", remoteTempFileName, string(output))
+		if err != nil {
+			testing.ContextLogf(ctx, "ls failed: %s", err)
+		}
+		output, err = runner.OutputCommand(ctx, true, "df", "-h", remoteTempFileName)
+		testing.ContextLogf(ctx, "df -h %s: %s", remoteTempFileName, string(output))
+		if err != nil {
+			testing.ContextLogf(ctx, "df failed: %s", err)
+		}
 		return nil, errors.Wrap(err, "could not read firmware host image")
 	}
 	testing.ContextLog(ctx, "Copying image from servohost to localhost")
