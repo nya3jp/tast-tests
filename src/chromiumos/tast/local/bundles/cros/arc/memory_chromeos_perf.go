@@ -23,10 +23,10 @@ func init() {
 			"cwd@chromium.org",
 			"arcvm-eng@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "noarc",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
 			Fixture:           "chromeLoggedIn",
 		}, {
@@ -34,6 +34,7 @@ func init() {
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
 		}},
