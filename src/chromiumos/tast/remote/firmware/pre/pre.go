@@ -69,7 +69,7 @@ func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
 			GBBFlags: flags,
 		},
 		// The maximum time that the Prepare method should take, adjust as needed.
-		timeout: 5 * time.Minute,
+		timeout: 10 * time.Minute,
 	}
 }
 
