@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
@@ -298,6 +299,7 @@ func (conf *ZoomConference) ExtendedDisplayPresenting(_ context.Context) error {
 
 // PresentSlide presents the slides to the conference.
 func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
+	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
@@ -308,14 +310,13 @@ func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
 	defer kb.Close()
 
 	shareScreen := func(ctx context.Context) error {
-		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 		shareScreenButton := nodewith.Name("Share Screen").Role(role.Button)
 		presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
 		shareButton := nodewith.Name("Share").Role(role.Button)
 		stopShareButton := nodewith.Name("Stop Share").Role(role.Button)
-
+		testing.ContextLog(ctx, "Start to share screen")
 		return uiauto.Combine("share Screen",
-			ui.LeftClick(webArea),
+			conf.showInterface,
 			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(time.Second).WaitUntilExists(presentWindow)),
 			ui.LeftClick(presentWindow),
 			ui.LeftClick(shareButton),
@@ -323,41 +324,50 @@ func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
 		)(ctx)
 	}
 
+	deletePerformed := false
+	// slideCleanup switches to the slide page and delete it.
+	slideCleanup := func(ctx context.Context) error {
+		if deletePerformed {
+			return nil
+		}
+		deletePerformed = true // Set it to true because we only try to delete once.
+		testing.ContextLog(ctx, "Switch to the slide page and delete it")
+		return uiauto.Combine("switch to the slide page and delete it",
+			conf.switchToChromeTab(slideTitle),
+			deleteSlide(conf.tconn),
+		)(ctx)
+	}
+
+	// Shorten the context to cleanup slide.
+	cleanUpSlideCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 	testing.ContextLog(ctx, "Create a new Google Slides")
 	if err := newGoogleSlides(ctx, conf.cr, false); err != nil {
 		return err
 	}
+	defer func() {
+		if err := slideCleanup(cleanUpSlideCtx); err != nil {
+			// Only log the error.
+			testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
+		}
+	}()
 
-	testing.ContextLog(ctx, "Switch back to conference page")
-	if err := conf.switchToChromeTab(ctx, "Zoom"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to conference page")
-	}
-
-	testing.ContextLog(ctx, "Start to share screen")
-	if err := shareScreen(ctx); err != nil {
-		return errors.Wrap(err, "failed to share screen")
-	}
-
-	testing.ContextLog(ctx, "Switch to the slide")
-	if err := conf.switchToChromeTab(ctx, "Untitled presentation - Google Slides"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to slide page")
-	}
-
-	testing.ContextLog(ctx, "Start present slide")
-	if err := presentSlide(ctx, tconn, kb); err != nil {
-		return err
-	}
-
-	testing.ContextLog(ctx, "Edit slide")
-	if err := editSlide(ctx, tconn, kb); err != nil {
-		return errors.Wrap(err, "failed to edit slide when leave presentation mode")
-	}
-
-	testing.ContextLog(ctx, "Switch back to conference page")
-	if err := conf.switchToChromeTab(ctx, "Zoom"); err != nil {
-		return errors.Wrap(err, "failed to switch tab to conference page")
-	}
-	return nil
+	return uiauto.Combine("present slide",
+		conf.switchToChromeTab("Zoom"),
+		shareScreen,
+		conf.switchToChromeTab(slideTitle),
+		presentSlide(tconn, kb),
+		editSlide(tconn, kb),
+		func(ctx context.Context) error {
+			if err := slideCleanup(ctx); err != nil {
+				// Only log the error.
+				testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
+			}
+			return nil
+		},
+		conf.switchToChromeTab("Zoom"),
+	)(ctx)
 }
 
 // StopPresenting stops the presentation mode.
@@ -379,15 +389,21 @@ var _ Conference = (*ZoomConference)(nil)
 //
 // TODO: Merge to cuj.UIActionHandler and introduce UIActionHandler in this test. See
 // https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2779315/
-func (conf *ZoomConference) switchToChromeTab(ctx context.Context, tabName string) error {
+func (conf *ZoomConference) switchToChromeTab(tabName string) action.Action {
 	ui := uiauto.New(conf.tconn)
-	if conf.tabletMode {
-		// If in tablet mode, it should toggle tab strip to show tab list.
-		if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
-			return err
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Switch tab to %q", tabName)
+		if conf.tabletMode {
+			// If in tablet mode, it should toggle tab strip to show tab list.
+			if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
+				return err
+			}
 		}
+		if err := ui.LeftClick(nodewith.NameContaining(tabName).Role(role.Tab))(ctx); err != nil {
+			return errors.Wrapf(err, "failed to switch tab to %q", tabName)
+		}
+		return nil
 	}
-	return ui.LeftClick(nodewith.NameContaining(tabName).Role(role.Tab))(ctx)
 }
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
