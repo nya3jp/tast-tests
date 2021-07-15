@@ -319,6 +319,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2db141b_f8040796",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-15T01:02:31Z",
+      "side": 1,
+      "message": "Do we actually need maxLevel?",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06999891_488382f9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
         "patchSetId": 6
