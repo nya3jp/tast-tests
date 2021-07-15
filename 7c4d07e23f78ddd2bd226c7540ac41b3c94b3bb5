@@ -16,6 +16,23 @@
       "message": "Nit: Per Effective Go [1], \"it\u0027s helpful if everyone using the package can use the same name to refer to its contents\". In this case, I think the style guide recommends using the full package name \"firmware\" instead of \"fw\". But it\u0027s no big deal, and \"fw\" is more concise, so feel free to leave as-is.\n\nhttps://golang.org/doc/effective_go#package-names",
       "revId": "7c4d07e23f78ddd2bd226c7540ac41b3c94b3bb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ae96a6_e2a784ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-15T17:41:49Z",
+      "side": 1,
+      "message": "adding Jun Sheng for owner review",
+      "revId": "7c4d07e23f78ddd2bd226c7540ac41b3c94b3bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
