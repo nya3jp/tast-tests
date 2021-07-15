@@ -93,13 +93,25 @@ func WebAPK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install test apps: ", err)
 	}
 
-	device, activity, err := launchTestApp(ctx, a, tconn)
+	activity, err := arc.NewActivity(a, testPackage, testClass)
 	if err != nil {
-		s.Fatal("Failed to launch test app: ", err)
+		s.Fatal("Failed to create a new activity: ", err)
 	}
 	defer activity.Close()
+	if err := activity.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the test activity: ", err)
+	}
 	defer activity.Stop(cleanupCtx, tconn)
+
+	device, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
 	defer device.Close(cleanupCtx)
+
+	if err := device.WaitForIdle(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to wait for device idle: ", err)
+	}
 
 	if err := shareTextAndVerify(ctx, device, shareChan); err != nil {
 		s.Fatal("Failed to share text from test app: ", err)
@@ -162,26 +174,6 @@ func installTestApps(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tconn *
 	}
 	return nil
 
-}
-
-func launchTestApp(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn) (*ui.Device, *arc.Activity, error) {
-	activity, err := arc.NewActivity(a, testPackage, testClass)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to create a new activity")
-	}
-	if err := activity.Start(ctx, tconn); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to start the test activity")
-	}
-
-	device, err := a.NewUIDevice(ctx)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to initialize UI Automator")
-	}
-
-	if err := device.WaitForIdle(ctx, 5*time.Second); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to wait for device idle")
-	}
-	return device, activity, nil
 }
 
 func shareTextAndVerify(ctx context.Context, device *ui.Device, shareChan chan shareResult) error {
