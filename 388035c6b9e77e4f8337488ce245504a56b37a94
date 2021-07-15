@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adad361d_7248e046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-15T17:05:11Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f084c616_c5be891c",
@@ -171,6 +188,29 @@
       "side": 1,
       "message": "Ack, that makes sense to me.",
       "parentUuid": "9af5f222_3fbe4a81",
+      "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8025ed8_d2aa8313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-15T17:05:11Z",
+      "side": 1,
+      "message": "huge nit: I\u0027d move this one to a new line so that all the commands are easier to read.",
+      "range": {
+        "startLine": 124,
+        "startChar": 45,
+        "endLine": 124,
+        "endChar": 86
+      },
       "revId": "388035c6b9e77e4f8337488ce245504a56b37a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
