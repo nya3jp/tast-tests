@@ -50,7 +50,8 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 
 	testing.ContextLog(ctx, "Running flashrom (on servohost)")
 	frArgs := []string{"-p", programmer, "-r"}
-	if section != "" {
+	isOneSection := section != ""
+	if isOneSection {
 		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, remoteTempFileName))
 	} else {
 		frArgs = append(frArgs, remoteTempFileName)
@@ -68,7 +69,7 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 		return nil, errors.Wrap(err, "could not read firmware host image contents")
 	}
 	var info map[commonbios.ImageSection]commonbios.SectionInfo
-	if section == "" {
+	if !isOneSection {
 		testing.ContextLog(ctx, "Running dump_fmap")
 		fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", localTempFileName).Output(testexec.DumpLogOnError)
 		if err != nil {

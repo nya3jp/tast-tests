@@ -63,7 +63,8 @@ func NewImage(ctx context.Context, section ImageSection) (*Image, error) {
 	defer os.Remove(tmpFile.Name())
 
 	frArgs := []string{"-p", "host", "-r"}
-	if section != "" {
+	isOneSection := section != ""
+	if isOneSection {
 		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, tmpFile.Name()))
 	} else {
 		frArgs = append(frArgs, tmpFile.Name())
@@ -78,7 +79,7 @@ func NewImage(ctx context.Context, section ImageSection) (*Image, error) {
 		return nil, errors.Wrap(err, "could not read firmware host image contents")
 	}
 	var info map[ImageSection]SectionInfo
-	if section == "" {
+	if !isOneSection {
 		fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", tmpFile.Name()).Output(testexec.DumpLogOnError)
 		if err != nil {
 			return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
