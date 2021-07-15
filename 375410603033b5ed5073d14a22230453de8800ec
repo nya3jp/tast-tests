@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3700806a_c9052074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-15T23:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a0cfb5_498addc4",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "375410603033b5ed5073d14a22230453de8800ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d9afcc_3415402d",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-15T14:44:43Z",
       "side": 1,
       "message": "Minor nit: Since this applies to all FL users on CrOS I would stick with calling it Family Link to remove the ambiguity of \u0027what about Gellers?\u0027",
+      "range": {
+        "startLine": 67,
+        "startChar": 54,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "375410603033b5ed5073d14a22230453de8800ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbaf0d9b_3807f75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-15T23:21:17Z",
+      "side": 1,
+      "message": "Done. I also modified the test description above.\n\nNote that we can extend the test in the future to cover Gellers by doing something like:\n\n\t\tParams: []testing.Param{{\n\t\t\tName:              \"unicorn\",\n\t\t\tFixture:           \"familyLinkUnicornLogin\",\n\t\t}, {\n\t\t\tName:              \"geller\",\n\t\t\tFixture:           \"familyLinkGellerLogin\",\n\t\t}}",
+      "parentUuid": "37d9afcc_3415402d",
       "range": {
         "startLine": 67,
         "startChar": 54,
