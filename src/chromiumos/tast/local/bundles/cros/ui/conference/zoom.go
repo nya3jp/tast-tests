@@ -128,13 +128,19 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
 		startVideoButton := nodewith.Name("start sending my video").Role(role.Button)
 		stopVideoButton := nodewith.Name("stop sending my video").Role(role.Button)
-
+		detectCamera := func(ctx context.Context) error {
+			detectCameraTimeout := 15 * time.Second
+			if err := ui.WithTimeout(detectCameraTimeout).WaitUntilExists(cameraButton)(ctx); err != nil {
+				return errors.Wrapf(err, "failed to detect camera within %v", detectCameraTimeout)
+			}
+			return nil
+		}
 		// Some DUTs start playing video for the first time.
 		// If there is a stop video button, do nothing.
 		return uiauto.Combine("start video",
 			allowPerm,
 			conf.showInterface,
-			ui.WaitUntilExists(cameraButton),
+			detectCamera,
 			ui.IfSuccessThen(ui.Exists(startVideoButton),
 				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(time.Second).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),

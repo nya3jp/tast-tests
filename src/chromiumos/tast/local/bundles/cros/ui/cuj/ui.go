@@ -201,7 +201,7 @@ func UnsetMirrorDisplay(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	displayFinder := nodewith.Name("Displays").Role(role.Link).Ancestor(ossettings.WindowFinder)
-	if err := ui.LeftClick(displayFinder)(ctx); err != nil {
+	if err := ui.LeftClickUntil(displayFinder, ui.WithTimeout(3*time.Second).WaitUntilGone(displayFinder))(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch display page")
 	}
 
