@@ -75,6 +75,29 @@
       },
       "revId": "60a70318e44b71469fe9874c7010186736703fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0792ee_2c0151a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-15T00:08:18Z",
+      "side": 1,
+      "message": "width or hight is not appended if they are 0, so they are default to the width and hight of the screen? If yes, suggest to add a comment.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "60a70318e44b71469fe9874c7010186736703fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
