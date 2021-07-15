@@ -532,6 +532,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5becf281_139b81a0",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-15T14:49:42Z",
+      "side": 1,
+      "message": "We have CI meeting with Google team, after that we can add necessary resources.",
+      "parentUuid": "53bf0bc6_ce73be54",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3878211_f0a018b3",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 7
