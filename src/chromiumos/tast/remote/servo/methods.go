@@ -612,13 +612,6 @@ func (s *Servo) GetUSBMuxState(ctx context.Context) (USBMuxState, error) {
 
 // SetUSBMuxState switches the servo's USB mux to the specified power/direction state.
 func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
-	curr, err := s.GetUSBMuxState(ctx)
-	if err != nil {
-		return errors.Wrap(err, "getting servo usb state")
-	}
-	if curr == value {
-		return nil
-	}
 	if value == USBMuxOff {
 		return s.SetString(ctx, ImageUSBKeyPwr, string(value))
 	}
