@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -121,59 +122,65 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 	return nil
 }
 
-func presentSlide(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error {
+func presentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter) action.Action {
 	ui := uiauto.New(tconn)
 	presentationOptionsButton := nodewith.Name("Presentation options").First()
 	presentFromBeginningButton := nodewith.Name("Present from beginning").First()
-	if err := uiauto.Combine("present Slide",
-		ui.WaitUntilExists(presentationOptionsButton),
-		ui.LeftClickUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
-		ui.LeftClick(presentFromBeginningButton),
-		ui.WithTimeout(40*time.Second).WaitUntilGone(presentationOptionsButton),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to present slide")
-	}
-
-	testing.ContextLog(ctx, "Switch slides")
-	for i := 0; i < 6; i++ {
-		if err := kb.Accel(ctx, "Enter"); err != nil {
-			return errors.Wrap(err, `failed to type enter key to switch slide`)
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Start present slide")
+		if err := uiauto.Combine("present Slide",
+			ui.WaitUntilExists(presentationOptionsButton),
+			ui.LeftClickUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
+			ui.LeftClick(presentFromBeginningButton),
+			ui.WithTimeout(40*time.Second).WaitUntilGone(presentationOptionsButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to present slide")
 		}
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep for wait slide switching")
+
+		testing.ContextLog(ctx, "Switch slides")
+		for i := 0; i < 6; i++ {
+			if err := kb.Accel(ctx, "Enter"); err != nil {
+				return errors.Wrap(err, `failed to type enter key to switch slide`)
+			}
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep for wait slide switching")
+			}
 		}
-	}
 
-	testing.ContextLog(ctx, "Leave presentation mode")
-	if err := kb.Accel(ctx, "Esc"); err != nil {
-		return errors.Wrap(err, `failed to type esc to leave presentation mode`)
-	}
-	// Some of DUT models with poor performance need to wait a long time to leave presentation mode.
-	present := nodewith.Name("Present").First()
-	if err := ui.WithTimeout(50 * time.Second).WaitUntilExists(present)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait 'Present'")
-	}
+		testing.ContextLog(ctx, "Leave presentation mode")
+		if err := kb.Accel(ctx, "Esc"); err != nil {
+			return errors.Wrap(err, `failed to type esc to leave presentation mode`)
+		}
+		// Some of DUT models with poor performance need to wait a long time to leave presentation mode.
+		present := nodewith.Name("Present").First()
+		if err := ui.WithTimeout(50 * time.Second).WaitUntilExists(present)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait 'Present'")
+		}
 
-	return nil
+		return nil
+	}
 }
 
-func editSlide(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error {
+func editSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter) action.Action {
 	const text = "This_is_CUJ_testing_slide_page"
 	ui := uiauto.New(tconn)
-	nodes := nodewith.Name(text)
-	nodesInfo, err := ui.NodesInfo(ctx, nodes)
-	if err != nil {
-		return errors.Wrap(err, "failed to get nodes info")
+	return func(ctx context.Context) error {
+		nodes := nodewith.Name(text)
+		nodesInfo, err := ui.NodesInfo(ctx, nodes)
+		if err != nil {
+			return errors.Wrap(err, "failed to get nodes info")
+		}
+		testing.ContextLog(ctx, "Start to edit slide")
+		return uiauto.Combine("edit slide",
+			mouse.DoubleClick(tconn, nodesInfo[len(nodesInfo)-1].Location.CenterPoint(), 500*time.Millisecond),
+			kb.TypeAction(text),
+			kb.AccelAction("Esc"),
+			kb.AccelAction("Esc"),
+		)(ctx)
 	}
-	return uiauto.Combine("edit slide",
-		mouse.DoubleClick(tconn, nodesInfo[len(nodesInfo)-1].Location.CenterPoint(), 500*time.Millisecond),
-		kb.TypeAction(text),
-		kb.AccelAction("Esc"),
-		kb.AccelAction("Esc"),
-	)(ctx)
 }
 
-func deleteSlide(ctx context.Context, tconn *chrome.TestConn) error {
+func deleteSlide(tconn *chrome.TestConn) action.Action {
 	ui := uiauto.New(tconn)
 	application := nodewith.Role(role.Application) // Google Slide appliction node.
 	slideWebArea := nodewith.Name("Google Slides").Role(role.RootWebArea)
@@ -182,13 +189,16 @@ func deleteSlide(ctx context.Context, tconn *chrome.TestConn) error {
 	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
 	goToSlidesHome := nodewith.Name("Go to Slides home screen").Role(role.Button)
 	leaveButton := nodewith.Name("Leave").Role(role.Button)
-	return uiauto.Combine("delete slide",
-		expandMenu(tconn, fileButton, menu, 526),
-		ui.LeftClick(moveToTrash),
-		ui.LeftClick(goToSlidesHome),
-		// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
-		// If it appears, click the leave button.
-		ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
-		ui.WithTimeout(time.Minute).WaitUntilExists(slideWebArea),
-	)(ctx)
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Start to delete slide")
+		return uiauto.Combine("delete slide",
+			expandMenu(tconn, fileButton, menu, 482),
+			ui.LeftClick(moveToTrash),
+			ui.LeftClick(goToSlidesHome),
+			// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
+			// If it appears, click the leave button.
+			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
+			ui.WithTimeout(time.Minute).WaitUntilExists(slideWebArea),
+		)(ctx)
+	}
 }
