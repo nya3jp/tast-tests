@@ -22,6 +22,7 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -63,6 +64,12 @@ const (
 	// Used to identify the shelf icon of interest.
 	resizeLockAppName = "ArcResizeLockTest"
 	settingsAppName   = "Settings"
+
+	// Used in test cases where screenshots are taken.
+	pixelColorDiffMargin                    = 5
+	clientContentColorPixelPercentThreshold = 80
+	borderColorPixelCountThreshold          = 1000
+	borderWidthPX                           = 6
 )
 
 // Represents the size of a window.
@@ -512,6 +519,12 @@ func checkResizeLockState(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return errors.Wrapf(err, "failed to verify the visibility of the resize lock window border of %s", activity.ActivityName())
 	}
 
+	if resizeLocked && !isSplashVisible {
+		if err := checkClientContent(ctx, tconn, a, d, cr, activity); err != nil {
+			return errors.Wrapf(err, "failed to verify the client content fills the window of %s", activity.ActivityName())
+		}
+	}
+
 	// There's no orientation rule for non-resize-locked apps, so only check the phone and tablet modes.
 	if mode == tabletResizeLockMode {
 		if err := checkOrientation(ctx, tconn, a, d, cr, activity, tabletOrientation); err != nil {
@@ -607,16 +620,35 @@ func checkCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// checkClientContent verifies the client content fills the entire window.
+// This is useful to check if switching between phone and tablet modes causes any UI glich.
+func checkClientContent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		bounds, err := activity.WindowBounds(ctx)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get the window bounds of %s", activity.ActivityName())
+		}
+
+		img, err := screenshot.GrabScreenshot(ctx, cr)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		totalPixels := bounds.Height * bounds.Width
+		bluePixels := imgcmp.CountPixels(img, color.RGBA{0, 0, 255, 255})
+		bluePercent := bluePixels * 100 / totalPixels
+
+		if bluePercent < clientContentColorPixelPercentThreshold {
+			return errors.Errorf("failed to verify the number of the blue pixels exceeds the threshold (%d%%); contains %d / %d (%d%%) blue pixels", clientContentColorPixelPercentThreshold, bluePixels, totalPixels, bluePercent)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
+}
+
 // checkBorder checks whether the special window border for compatibility mode is shown or not.
 // This functions takes a screenshot of the display, and counts the number of pixels that are dark gray around the window border.
 func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, shouldShowBorder bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		const (
-			pixelColorDiffMargin           = 5
-			borderColorPixelCountThreshold = 1000
-			borderWidthPX                  = 6
-		)
-
 		bounds, err := activity.WindowBounds(ctx)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get the window bounds of %s", activity.ActivityName())
