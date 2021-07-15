@@ -225,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ffc5ab2_ac32d1a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T07:45:07Z",
+      "side": 1,
+      "message": "Maybe you forgot to remove?",
+      "parentUuid": "cfc300b4_a8c8b906",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f38894_f9752339",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
         "patchSetId": 3
@@ -260,6 +284,30 @@
       "side": 1,
       "message": "Removed.\n\nI added this because there are many existing tests doing it.\nShould they be removed?\nhttps://source.chromium.org/search?q\u003d%22defer%20act.Stop%22",
       "parentUuid": "59f38894_f9752339",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bb1ccf_a3fcd0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T07:45:07Z",
+      "side": 1,
+      "message": "It\u0027s nicer to keep activities open, though it\u0027s not a bug.",
+      "parentUuid": "4f2da44c_80ebe4b0",
       "range": {
         "startLine": 82,
         "startChar": 1,
