@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a2b800_a3256acb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-15T09:31:10Z",
+      "side": 1,
+      "message": "nit: \"arc: Add keyboard navigation support in ResizeLock\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "688c570b9e71d3398ea62faefc4b799d4bd097c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f8a28223_58a40fae",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-07-15T07:26:09Z",
       "side": 1,
       "message": "PTAL~!",
+      "revId": "688c570b9e71d3398ea62faefc4b799d4bd097c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4727f0b3_c963926d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-15T09:31:10Z",
+      "side": 1,
+      "message": "This CL is too big.\nCan you split into 2?\nAs I saw there are some new functions that handle the interaction with the mouse. If you introduce these changes in a separate CL, in this CL you only have to add the keyboard counterpart of these functions, and the switch logic.\nThis is just one idea on how the CL can be split, but any split is good.",
       "revId": "688c570b9e71d3398ea62faefc4b799d4bd097c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
