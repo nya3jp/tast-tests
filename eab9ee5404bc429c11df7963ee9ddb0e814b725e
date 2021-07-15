@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed66336_76af943f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-15T08:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7e8829_31f8e6d4",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd510d16_f8b6c798",
@@ -56,6 +80,30 @@
       "side": 1,
       "message": "\u003e \"launchs\" is a possible misspelling of \"launch\" or \"launches\".\n\nPlease fix.",
       "parentUuid": "23afec66_46910127",
+      "range": {
+        "startLine": 348,
+        "startChar": 49,
+        "endLine": 348,
+        "endChar": 56
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92a7a20_2394a3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-15T08:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd510d16_f8b6c798",
       "range": {
         "startLine": 348,
         "startChar": 49,
@@ -89,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa3120d_dc06111d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-15T08:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2b8816f_a975f671",
+      "range": {
+        "startLine": 368,
+        "startChar": 21,
+        "endLine": 368,
+        "endChar": 24
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6515a916_211688cf",
@@ -102,6 +174,30 @@
       "writtenOn": "2021-07-15T07:35:15Z",
       "side": 1,
       "message": "ctxDefer",
+      "range": {
+        "startLine": 382,
+        "startChar": 21,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b7713f_3d502e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-15T08:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6515a916_211688cf",
       "range": {
         "startLine": 382,
         "startChar": 21,
