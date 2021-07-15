@@ -128,13 +128,13 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
 		startVideoButton := nodewith.Name("start sending my video").Role(role.Button)
 		stopVideoButton := nodewith.Name("stop sending my video").Role(role.Button)
-
 		// Some DUTs start playing video for the first time.
 		// If there is a stop video button, do nothing.
 		return uiauto.Combine("start video",
 			allowPerm,
 			conf.showInterface,
-			ui.WaitUntilExists(cameraButton),
+			// Used NamedAction to return desired error message when action fails.
+			uiauto.NamedAction("to detect camera button within 15 seconds", ui.WaitUntilExists(cameraButton)),
 			ui.IfSuccessThen(ui.Exists(startVideoButton),
 				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(time.Second).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),

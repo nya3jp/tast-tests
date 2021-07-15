@@ -91,7 +91,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem).Ancestor(videoPlayer)
 
 		if err := y.ui.WaitUntilExists(videoPlayer)(ctx); err != nil {
-			return errors.Wrap(err, `failed to find "YouTube Video Player"`)
+			return errors.Wrap(err, "failed to find 'YouTube Video Player'")
 		}
 
 		startTime := time.Now()
@@ -101,10 +101,12 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if err := uiauto.Combine("show the setting panel and click it",
 				y.uiHdl.Click(videoPlayer),
-				y.uiHdl.Click(settings),
-				y.ui.WithTimeout(2*time.Second).WaitUntilExists(quality),
+				y.uiHdl.ClickUntil(settings, y.ui.WithTimeout(10*time.Second).WaitUntilExists(quality)),
 			)(ctx); err != nil {
-				return errors.Wrap(err, "failed to show the setting panel and click it")
+				if y.extendedDisplay {
+					return errors.Wrap(err, "failed to show the setting panel and click it on extended display")
+				}
+				return errors.Wrap(err, "failed to show the setting panel and click it on internal display")
 			}
 			testing.ContextLogf(ctx, "Elapsed time to click setting panel: %.3f s", time.Since(startTime).Seconds())
 			return nil
@@ -113,7 +115,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		}
 
 		if err := y.uiHdl.Click(quality)(ctx); err != nil {
-			return errors.Wrap(err, `failed to click "Quality"`)
+			return errors.Wrap(err, "failed to click 'Quality'")
 		}
 
 		resolutionFinder := nodewith.NameStartingWith(resolution).Role(role.MenuItemRadio).Ancestor(videoPlayer)

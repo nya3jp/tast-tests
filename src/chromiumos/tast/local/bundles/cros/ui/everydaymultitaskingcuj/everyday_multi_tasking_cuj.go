@@ -262,8 +262,9 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 			// We don't need to keep the connection, so close it before leaving this function.
 			defer conn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
-				return errors.Wrap(err, "failed to wait for page to finish loading")
+			timeout := time.Minute
+			if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
+				return errors.Wrapf(err, "failed to wait for page to finish loading within %v [%s]", timeout, url)
 			}
 
 			if params.appName == YoutubeMusicAppName && url == youtubeMusicURL {
