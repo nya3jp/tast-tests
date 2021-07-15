@@ -205,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209b5a20_21fdf652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-15T17:25:16Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "d0a37326_58b91be3",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "81c205b67f4db0d4e6eb3f32630a795399f60578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45a00f65_bf344066",
