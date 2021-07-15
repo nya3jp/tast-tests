@@ -16,6 +16,24 @@
       "message": "Just curious, is the Photos app newly added to the install list as well? Any tracking bugs?",
       "revId": "326226989494a36e03217a87ba6bca1c87ea3502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7d6df1_45dc6341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-07-15T22:42:35Z",
+      "side": 1,
+      "message": "Photos was added earlier in the year, see https://crbug.com/1108033",
+      "parentUuid": "5c293283_f223dd1c",
+      "revId": "326226989494a36e03217a87ba6bca1c87ea3502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
