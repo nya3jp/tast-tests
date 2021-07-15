@@ -239,12 +239,54 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Fatal("DUT is offline after test end: ", err)
 	}
 
-	if err := i.restoreBootMode(ctx); err != nil {
-		s.Error("Failed to restore boot mode: ", err)
+	rebootRequired := false
+	toMode := common.BootModeUnspecified
+	if i.origGBBFlags != nil {
+		if err := i.value.Helper.RequireBiosServiceClient(ctx); err != nil {
+			s.Fatal("Failed to require BiosServiceClient: ", err)
+		}
+
+		testing.ContextLog(ctx, "Get current GBB flags")
+		curr, err := i.value.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("Getting current GBB Flags failed: ", err)
+		}
+
+		if !common.GBBFlagsStatesEqual(*i.origGBBFlags, *curr) {
+			if err := i.setAndCheckGBBFlags(ctx, *i.origGBBFlags); err != nil {
+				s.Fatal("Restore GBB flags failed: ", err)
+			}
+			if common.GBBFlagsChanged(*curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
+				s.Log("Resetting DUT due to GBB flag change")
+				rebootRequired = true
+			}
+		}
 	}
 
-	if err := i.restoreGBBFlags(ctx); err != nil {
-		s.Error("Failed to restore GBB flags: ", err)
+	if i.origBootMode != nil {
+		mode, err := i.value.Helper.Reporter.CurrentBootMode(ctx)
+		if err != nil {
+			s.Fatal("Failed to get boot mode: ", err)
+		}
+		if mode != *i.origBootMode {
+			s.Logf("Restoring boot mode from %q to %q", mode, *i.origBootMode)
+			rebootRequired = true
+			toMode = *i.origBootMode
+		}
+	}
+	if rebootRequired {
+		opts := []firmware.ModeSwitchOption{firmware.AssumeGBBFlagsCorrect}
+		if i.origGBBFlags != nil {
+			for _, flag := range i.origGBBFlags.Set {
+				if flag == pb.GBBFlag_FORCE_DEV_SWITCH_ON {
+					opts = append(opts, firmware.AllowGBBForce)
+					break
+				}
+			}
+		}
+		if err := i.rebootToMode(ctx, toMode, opts...); err != nil {
+			s.Fatalf("Failed to reboot to mode %q: %s", toMode, err)
+		}
 	}
 }
 
@@ -276,68 +318,20 @@ func (i *impl) closeHelper(ctx context.Context, s *testing.FixtState) {
 	i.value.Helper = nil
 }
 
-// restoreBootMode restores DUT's boot mode.
-func (i *impl) restoreBootMode(ctx context.Context) error {
-	// Can't restore the boot mode if unknown.
-	if i.origBootMode == nil {
-		return nil
-	}
-
-	mode, err := i.value.Helper.Reporter.CurrentBootMode(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get boot mode")
-	}
-
-	if mode != *i.origBootMode {
-		testing.ContextLogf(ctx, "Restoring boot mode from %q to %q", mode, *i.origBootMode)
-		if err := i.rebootToMode(ctx, *i.origBootMode); err != nil {
-			return errors.Wrap(err, "failed to restore boot mode")
-		}
-	}
-
-	return nil
-}
-
 // rebootToMode reboots to the specified mode using the ModeSwitcher, it assumes the helper is present.
 func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode, opts ...firmware.ModeSwitchOption) error {
 	ms, err := firmware.NewModeSwitcher(ctx, i.value.Helper)
 	if err != nil {
 		return errors.Wrap(err, "failed to create mode switcher")
 	}
+	if mode == common.BootModeUnspecified {
+		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+			return errors.Wrap(err, "failed to warm reboot")
+		}
+	}
 	if err := ms.RebootToMode(ctx, mode, opts...); err != nil {
 		return errors.Wrapf(err, "failed to reboot to mode %q", mode)
-
 	}
-	return nil
-}
-
-// restoreGBBFlags restores GBB flags as it was prior to the precondition starting.
-func (i *impl) restoreGBBFlags(ctx context.Context) error {
-	if i.origGBBFlags == nil {
-		return nil
-	}
-
-	if err := i.value.Helper.RequireBiosServiceClient(ctx); err != nil {
-		return errors.Wrap(err, "failed to require BiosServiceClient")
-	}
-
-	testing.ContextLog(ctx, "Get current GBB flags")
-	curr, err := i.value.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "failed reading GBB flags")
-	}
-
-	if common.GBBFlagsStatesEqual(*i.origGBBFlags, *curr) {
-		return nil
-	}
-
-	if err := i.setAndCheckGBBFlags(ctx, *i.origGBBFlags); err != nil {
-		return errors.Wrap(err, "restoreGBBFlags failed")
-	}
-	if err := i.rebootIfRequired(ctx, *curr, *i.origGBBFlags); err != nil {
-		return errors.Wrap(err, "failed to reboot after flag change")
-	}
-
 	return nil
 }
 
@@ -357,17 +351,4 @@ func (i *impl) setAndCheckGBBFlags(ctx context.Context, req pb.GBBFlagsState) er
 	}
 
 	return nil
-}
-
-// rebootIfRequired reboots the DUT if any flags that require a reboot have changed.
-func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) error {
-	if !common.GBBFlagsChanged(a, b, common.RebootRequiredGBBFlags()) {
-		return nil
-	}
-	ms, err := firmware.NewModeSwitcher(ctx, i.value.Helper)
-	if err != nil {
-		return errors.Wrap(err, "failed to create mode switcher")
-	}
-	testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
-	return ms.ModeAwareReboot(ctx, firmware.WarmReset)
 }
