@@ -33,6 +33,23 @@
       "message": "Thanks for fixing this.",
       "revId": "91efdf3aff9c6168e186c55dd88cc4a55e91aebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "475af213_647b743b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-15T01:10:07Z",
+      "side": 1,
+      "message": "do we do any cleanup for any other files (e.g., hostapd configs)? I guess those are all much smaller, and mostly have a bounded size (except for hostapd *logs*) so might have similar problems.\n\nBut anyway, pcaps are the biggest.",
+      "revId": "91efdf3aff9c6168e186c55dd88cc4a55e91aebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
