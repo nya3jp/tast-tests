@@ -68,6 +68,24 @@
       "message": "Thanks for fixing the Contact fields.",
       "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf54f29_06a0656c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-15T20:36:39Z",
+      "side": 1,
+      "message": "Probably change it to []string{\"lacrosDeployedBinary\"} and CC the author about the lint rule (edcourtney@)?",
+      "parentUuid": "d91fd535_02b5ca1d",
+      "revId": "be2163150b44d3834ba83e8660049353d282f9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
