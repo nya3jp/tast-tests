@@ -20,11 +20,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
@@ -108,6 +107,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
+
+	ac := uiauto.New(tconn)
 
 	if _, ok := s.Var("record"); ok {
 		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
@@ -218,11 +219,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the window: ", err)
 	}
 
-	var pc pointer.Controller
+	var pc pointer.Context
 	if !tabletMode {
-		pc = pointer.NewMouseController(tconn)
+		pc = pointer.NewMouse(tconn)
 	} else {
-		pc, err = pointer.NewTouchController(ctx, tconn)
+		pc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create a touch controller: ", err)
 		}
@@ -250,10 +251,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			upperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
 			middlePt := coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2)
 			testing.ContextLog(ctx, "Resizing the window")
-			if err := pointer.Drag(ctx, pc, upperLeftPt, middlePt, duration); err != nil {
+			if err := pc.Drag(upperLeftPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to resize window from the upper left to the middle")
 			}
-			if err := pointer.Drag(ctx, pc, middlePt, upperLeftPt, duration); err != nil {
+			if err := pc.Drag(middlePt, pc.DragTo(upperLeftPt, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to resize window back from the middle")
 			}
 
@@ -265,10 +266,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 			tabStripGapPt := coords.NewPoint(newTabButtonRect.Right()+10, newTabButtonRect.Top)
 			testing.ContextLog(ctx, "Dragging the window")
-			if err := pointer.Drag(ctx, pc, tabStripGapPt, middlePt, duration); err != nil {
+			if err := pc.Drag(tabStripGapPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag window from the tab strip point to the middle")
 			}
-			if err := pointer.Drag(ctx, pc, middlePt, tabStripGapPt, duration); err != nil {
+			if err := pc.Drag(middlePt, pc.DragTo(tabStripGapPt, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag window back from the middle")
 			}
 
@@ -304,7 +305,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for window to become normal")
 			}
 			testing.ContextLog(ctx, "Snapping the window to the left")
-			if err := pointer.Drag(ctx, pc, tabStripGapPt, snapLeftPoint, duration); err != nil {
+			if err := pc.Drag(tabStripGapPt, pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to snap the window to the left")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -318,7 +319,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			if err != nil {
 				return errors.Wrap(err, "failed to get the location of the first tab")
 			}
-			if err := pointer.Drag(ctx, pc, firstTabRect.CenterPoint(), snapRightPoint, duration); err != nil {
+			if err := pc.Drag(firstTabRect.CenterPoint(), pc.DragTo(snapRightPoint, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to snap the second tab to the right")
 			}
 
@@ -368,7 +369,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for location-change events to be completed")
 			}
 			// Drag the first window from overview grid to snap.
-			if err := pointer.Drag(ctx, pc, w.OverviewInfo.Bounds.CenterPoint(), snapLeftPoint, duration); err != nil {
+			if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag window from overview to snap")
 			}
 			w, err = ash.FindFirstWindowInOverview(ctx, tconn)
@@ -383,7 +384,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrapf(err, "expected more than 1 desk mini-views; found %v", deskMiniViewCount)
 			}
 			// Drag the second window to another desk to obtain an empty overview grid.
-			if err := pointer.Drag(ctx, pc, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViews[1].Location.CenterPoint(), time.Second); err != nil {
+			if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(deskMiniViews[1].Location.CenterPoint(), time.Second))(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 			}
 			// Wait for 2 seconds for location-change events to be completed.
@@ -393,21 +394,21 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 			// Drag divider.
 			testing.ContextLog(ctx, "Dragging the divider")
-			if err := pc.Press(ctx, splitViewDragPoints[0]); err != nil {
-				return errors.Wrap(err, "failed to start divider drag")
-			}
-			if err := pc.Move(ctx, splitViewDragPoints[0], splitViewDragPoints[1], duration); err != nil {
-				return errors.Wrap(err, "failed to drag divider slightly right")
-			}
-			if err := pc.Move(ctx, splitViewDragPoints[1], splitViewDragPoints[2], duration); err != nil {
-				return errors.Wrap(err, "failed to drag divider all the way left")
-			}
-			if err := pc.Move(ctx, splitViewDragPoints[2], splitViewDragPoints[0], duration); err != nil {
-				return errors.Wrap(err, "failed to drag divider back to the center")
-			}
-			if err := pc.Release(ctx); err != nil {
-				return errors.Wrap(err, "failed to end divider drag")
-			}
+			// if err := pc.Press(ctx, splitViewDragPoints[0]); err != nil {
+			// 	return errors.Wrap(err, "failed to start divider drag")
+			// }
+			// if err := pc.Move(ctx, splitViewDragPoints[0], splitViewDragPoints[1], duration); err != nil {
+			// 	return errors.Wrap(err, "failed to drag divider slightly right")
+			// }
+			// if err := pc.Move(ctx, splitViewDragPoints[1], splitViewDragPoints[2], duration); err != nil {
+			// 	return errors.Wrap(err, "failed to drag divider all the way left")
+			// }
+			// if err := pc.Move(ctx, splitViewDragPoints[2], splitViewDragPoints[0], duration); err != nil {
+			// 	return errors.Wrap(err, "failed to drag divider back to the center")
+			// }
+			// if err := pc.Release(ctx); err != nil {
+			// 	return errors.Wrap(err, "failed to end divider drag")
+			// }
 			return nil
 		}
 	} else {
@@ -415,18 +416,20 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		// tab dragging and split view resizing.
 		f = func(ctx context.Context) error {
 			tabStripButton := nodewith.Role(role.Button).ClassName("WebUITabCounterButton").First()
+			if err := pc.Click(tabStripButton)(ctx); err != nil {
+				s.Fatal("Failed to click the tab strip button")
+			}
+
 			firstTab := nodewith.Role(role.Tab).First()
-			if err := uiauto.Combine("drag a tab to snap to the right",
-				// Click the tab strip button.
-				ui.LeftClick(tabStripButton),
-				// Drag the first tab in the tab strip.
-				ui.MouseMoveTo(firstTab, 0),
-				// Drag in tablet mode starts with a long press.
-				mouse.Press(tconn, mouse.LeftButton),
-				ui.Sleep(time.Second),
-				// Snap the tab to the right.
-				mouse.Move(tconn, snapRightPoint, 3*time.Second),
-				mouse.Release(tconn, mouse.LeftButton),
+			firstTabRect, err := ui.Location(ctx, firstTab)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the location of the first tab")
+			}
+
+			// Drag the first tab in the tab strip and snap it to the right.
+			if err := pc.Drag(firstTabRect.CenterPoint(),
+				ac.Sleep(time.Second),
+				pc.DragTo(snapRightPoint, 3*time.Second),
 			)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag a tab to snap to the right")
 			}
@@ -450,21 +453,14 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 			// Split view resizing by dragging the divider.
 			testing.ContextLog(ctx, "Dragging the divider")
-			if err := pc.Press(ctx, splitViewDragPoints[0]); err != nil {
-				return errors.Wrap(err, "failed to start divider drag")
+			if err := pc.Drag(splitViewDragPoints[0],
+				pc.DragTo(splitViewDragPoints[1], duration),
+				pc.DragTo(splitViewDragPoints[2], duration),
+				pc.DragTo(splitViewDragPoints[0], duration),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "drag divider slightly right, all the way left, and back to center")
 			}
-			if err := pc.Move(ctx, splitViewDragPoints[0], splitViewDragPoints[1], duration); err != nil {
-				return errors.Wrap(err, "failed to drag divider slightly right")
-			}
-			if err := pc.Move(ctx, splitViewDragPoints[1], splitViewDragPoints[2], duration); err != nil {
-				return errors.Wrap(err, "failed to drag divider all the way left")
-			}
-			if err := pc.Move(ctx, splitViewDragPoints[2], splitViewDragPoints[0], duration); err != nil {
-				return errors.Wrap(err, "failed to drag divider back to the center")
-			}
-			if err := pc.Release(ctx); err != nil {
-				return errors.Wrap(err, "failed to end divider drag")
-			}
+
 			return nil
 		}
 	}
