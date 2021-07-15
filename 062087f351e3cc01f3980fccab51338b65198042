@@ -16,6 +16,24 @@
       "message": "The crostini --rwdisk path isn\u0027t easy to tell if it\u0027s crostini, so we just put everything not in ARCVM into a generic crosvm_file metric. Which should be OK for all the tests I know about.",
       "revId": "062087f351e3cc01f3980fccab51338b65198042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2764a852_1bde74e4",
+        "filename": "src/chromiumos/tast/local/memory/crosvm_fincore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-07-15T08:56:55Z",
+      "side": 1,
+      "message": "if you base64 decode `dGVybWluYQ\u003d\u003d.img` then it gives you `termina`, and termina is the unique name you can identify crostini.",
+      "parentUuid": "86284112_0fdcd819",
+      "revId": "062087f351e3cc01f3980fccab51338b65198042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
