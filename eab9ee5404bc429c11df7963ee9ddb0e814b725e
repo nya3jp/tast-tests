@@ -16,6 +16,100 @@
       "message": "PTAL again!",
       "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7e8829_31f8e6d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-15T07:35:15Z",
+      "side": 1,
+      "message": "\u003e \"requres\" is a possible misspelling of \"requires\".\n\nPlease fix.",
+      "parentUuid": "02c07be3_a5a0bc71",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd510d16_f8b6c798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-15T07:35:15Z",
+      "side": 1,
+      "message": "\u003e \"launchs\" is a possible misspelling of \"launch\" or \"launches\".\n\nPlease fix.",
+      "parentUuid": "23afec66_46910127",
+      "range": {
+        "startLine": 348,
+        "startChar": 49,
+        "endLine": 348,
+        "endChar": 56
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b8816f_a975f671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-15T07:35:15Z",
+      "side": 1,
+      "message": "ctxDefer",
+      "range": {
+        "startLine": 368,
+        "startChar": 21,
+        "endLine": 368,
+        "endChar": 24
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6515a916_211688cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-15T07:35:15Z",
+      "side": 1,
+      "message": "ctxDefer",
+      "range": {
+        "startLine": 382,
+        "startChar": 21,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "eab9ee5404bc429c11df7963ee9ddb0e814b725e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
