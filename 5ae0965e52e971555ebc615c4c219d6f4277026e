@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df532223_568d535b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T01:04:59Z",
+      "side": 1,
+      "message": "nit: finish in full stop.",
+      "range": {
+        "startLine": 97,
+        "startChar": 98,
+        "endLine": 97,
+        "endChar": 99
+      },
+      "revId": "5ae0965e52e971555ebc615c4c219d6f4277026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea846702_7bd1aa72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T01:04:59Z",
+      "side": 1,
+      "message": "nit: finish with full stop.",
+      "range": {
+        "startLine": 146,
+        "startChar": 98,
+        "endLine": 146,
+        "endChar": 99
+      },
+      "revId": "5ae0965e52e971555ebc615c4c219d6f4277026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e17e0fbf_6045e8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T01:04:59Z",
+      "side": 1,
+      "message": "This is exactly the same as upper change. Can you make a private function to share the code?",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 91
+      },
+      "revId": "5ae0965e52e971555ebc615c4c219d6f4277026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450b8a2c_0e116400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T01:04:59Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "5ae0965e52e971555ebc615c4c219d6f4277026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f11c7d_87c32144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T01:04:59Z",
+      "side": 1,
+      "message": "nit:\nreturn settings.Close(ctx)",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 11
+      },
+      "revId": "5ae0965e52e971555ebc615c4c219d6f4277026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
