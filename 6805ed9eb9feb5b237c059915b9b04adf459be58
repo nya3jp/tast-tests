@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "6805ed9eb9feb5b237c059915b9b04adf459be58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b744f296_a4c72659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-15T19:59:52Z",
+      "side": 1,
+      "message": "Verified with `tast run $DUT firmware.Fixture*` with this change patched.",
+      "revId": "6805ed9eb9feb5b237c059915b9b04adf459be58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
