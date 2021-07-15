@@ -30,8 +30,7 @@ func init() {
 		),
 		SoftwareDeps: []string{"reboot", "chrome", "crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.arc.ADBOverUSBService", "tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
-		// TODO(http://b/192688102): Test is disabled until firmware tast boot switcher is fixed
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -39,9 +38,9 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Data:    []string{firmware.ConfigFile},
-		Pre:     pre.DevMode(),
+		Pre:     pre.DevModeGBB(),
 		Vars:    []string{"servo"},
-		Timeout: 15 * time.Minute,
+		Timeout: 20 * time.Minute,
 	})
 }
 
