@@ -51,6 +51,24 @@
       "parentUuid": "16329de9_13380375",
       "revId": "7e430bda3d644221f89a8c5050a6061fe52d9de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0910bdfc_5df6edca",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-07-15T07:18:22Z",
+      "side": 1,
+      "message": "Ack. That makes sense to me.",
+      "parentUuid": "2f6ef45c_a5ebd1d3",
+      "revId": "7e430bda3d644221f89a8c5050a6061fe52d9de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
