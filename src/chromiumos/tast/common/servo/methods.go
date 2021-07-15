@@ -594,6 +594,7 @@ func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressContro
 
 // GetUSBMuxState determines whether the servo USB mux is on, and if so, which direction it is pointed.
 func (s *Servo) GetUSBMuxState(ctx context.Context) (USBMuxState, error) {
+	testing.ContextLog(ctx, "Get ImageUSBKeyPwr")
 	pwr, err := s.GetString(ctx, ImageUSBKeyPwr)
 	if err != nil {
 		return "", err
@@ -601,6 +602,7 @@ func (s *Servo) GetUSBMuxState(ctx context.Context) (USBMuxState, error) {
 	if pwr == string(USBMuxOff) {
 		return USBMuxOff, nil
 	}
+	testing.ContextLog(ctx, "Get ImageUSBKeyDirection")
 	direction, err := s.GetString(ctx, ImageUSBKeyDirection)
 	if err != nil {
 		return "", err
@@ -614,12 +616,14 @@ func (s *Servo) GetUSBMuxState(ctx context.Context) (USBMuxState, error) {
 // SetUSBMuxState switches the servo's USB mux to the specified power/direction state.
 func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 	if value == USBMuxOff {
+		testing.ContextLog(ctx, "ImageUSBKeyPwr USBMuxOff")
 		return s.SetString(ctx, ImageUSBKeyPwr, string(value))
 	}
 	// Servod ensures the following:
 	// * The port is power cycled if it is changing directions
 	// * The port ends up in a powered state after this call
 	// * If facing the host side, the call only returns once a USB device is detected, or after a generous timeout (10s)
+	testing.ContextLog(ctx, "ImageUSBKeyDirection ", value)
 	if err := s.SetStringTimeout(ctx, ImageUSBKeyDirection, string(value), 90*time.Second); err != nil {
 		return err
 	}
@@ -630,6 +634,7 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 	// has had time to enumerate the USB.
 	// TODO(b/157751281): Clean this up once servo_v3 has been removed.
 	if value == USBMuxDUT {
+		testing.ContextLog(ctx, "sleep 5 ", value)
 		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			return errors.Wrap(err, "sleeping after switching usbkey direction")
 		}
