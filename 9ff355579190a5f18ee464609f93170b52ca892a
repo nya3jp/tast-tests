@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "419fb83f_1dfb49bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-15T15:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdb84cd4_2ff1d603",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "9ff355579190a5f18ee464609f93170b52ca892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae4d47f_013d859d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb27bb8_8bc8d5e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-15T15:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae4d47f_013d859d",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "9ff355579190a5f18ee464609f93170b52ca892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1df45ce7_6206a31c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-14T07:04:59Z",
       "side": 1,
       "message": "I recommend saving `output` to a file. It\u0027s useful when debugging failures of this test - otherwise the only message we get will be \"powerd was not found among enabled plugins\", which might be not sufficient.\n\n if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), \"fwupdmgr.txt\"), output, 0644); err !\u003d nil {\n   t.Fatal(\"Failed dumping fwupdmgr output: \", err)\n }",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "9ff355579190a5f18ee464609f93170b52ca892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cae8cad_e65c4b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-15T15:59:57Z",
+      "side": 1,
+      "message": "I had to use s.Fatal here instead of t.Fatal because t.Fatal was undefined and I couldn\u0027t find the right package for it.",
+      "parentUuid": "1df45ce7_6206a31c",
       "range": {
         "startLine": 55,
         "startChar": 1,
