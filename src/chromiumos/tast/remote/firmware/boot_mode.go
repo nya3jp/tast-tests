@@ -131,19 +131,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		// 1. Set DUT power_state to "off".
-		// 2. Wait ECBootToPwrButton.
-		// 3. Ensure that we cannot reach DUT.
-		// 4. Set DUT power_state to "on".
-		// 5. If booting from Dev Mode, deactivate firmware screen.
-		h.Servo.SetPowerState(ctx, servo.PowerStateOff)
-		if err := testing.Sleep(ctx, h.Config.ECBootToPwrButton); err != nil {
-			return errors.Wrapf(err, "waiting %s (ECBootToPwrButton) while booting DUT into normal mode", h.Config.ECBootToPwrButton)
-		}
-		offCtx, cancel := context.WithTimeout(ctx, offTimeout)
-		defer cancel()
-		if err := h.DUT.WaitUnreachable(offCtx); err != nil {
-			return errors.Wrap(err, "waiting for DUT to be unreachable after powering off")
+		if err := ms.powerOff(ctx); err != nil {
+			return errors.Wrap(err, "powering off DUT")
 		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
@@ -506,7 +495,7 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	if err := ms.poweroff(ctx); err != nil {
+	if err := ms.powerOff(ctx); err != nil {
 		return errors.Wrap(err, "powering off DUT")
 	}
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
@@ -518,17 +507,17 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	return nil
 }
 
-// poweroff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
-func (ms *ModeSwitcher) poweroff(ctx context.Context) error {
+// powerOff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
+func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
 	testing.ContextLog(ctx, "Powering off DUT")
-	poweroffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
+	powerOffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
 	defer cancel()
 	// Since the DUT will power off, deadline exceeded is expected here.
-	if err := h.DUT.Conn().Command("poweroff").Run(poweroffCtx); err != nil && !errors.Is(err, context.DeadlineExceeded) {
+	if err := h.DUT.Conn().Command("poweroff").Run(powerOffCtx); err != nil && !errors.Is(err, context.DeadlineExceeded) {
 		return errors.Wrapf(err, "DUT poweroff %T", err)
 	}
 
