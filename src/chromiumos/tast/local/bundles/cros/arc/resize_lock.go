@@ -467,6 +467,8 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		nextMode    resizeLockMode
 		action      confirmationDialogAction
 	}{
+		// Check the cancel button does nothing.
+		{phoneResizeLockMode, resizableResizeLockMode, dialogActionCancel},
 		// Toggle between Phone and Tablet.
 		{phoneResizeLockMode, tabletResizeLockMode, dialogActionNoDialog},
 		{tabletResizeLockMode, phoneResizeLockMode, dialogActionNoDialog},
