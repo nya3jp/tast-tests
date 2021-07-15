@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"path"
 	"regexp"
+	"strings"
 
 	"github.com/shirou/gopsutil/process"
 
@@ -32,11 +33,8 @@ var diskCategories = []diskCategory{
 		pathRE: regexp.MustCompile(`^/opt/google/vms/android/`),
 		name:   "arcvm_file",
 	}, {
-		pathRE: regexp.MustCompile(`^/run/imageloader/cros-termina/`),
-		name:   "crostini_file",
-	}, {
 		pathRE: regexp.MustCompile(`.*`),
-		name:   "crosvm_other_file",
+		name:   "crosvm_file",
 	},
 }
 
@@ -102,6 +100,8 @@ func parseFincoreJSON(ctx context.Context, bytes []byte) (*fincoreJSON, error) {
 	return nil, errors.Wrap(err2, "failed to parse fincore output")
 }
 
+var fincoreArcVMDiskArgRe = regexp.MustCompile("^(--disk|--rwdisk|--root|--rwroot)$")
+
 // CrosvmFincoreMetrics logs a JSON file with the amount resident memory for
 // each file used as a disk by crosvm. If p is not nil, the amount of memory
 // used by each VM type is logged as perf.Values. If outdir is "", then no logs
@@ -110,7 +110,6 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 	// Look for crosvm processes with
 	processes, err := process.Processes()
 	const crosvmPath = "/usr/bin/crosvm"
-	const diskArg = "--disk"
 	disks := make(map[string]bool)
 	for _, p := range processes {
 		if exe, err := p.Exe(); err != nil {
@@ -126,11 +125,12 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 			return errors.Wrapf(err, "failed to get arguments for process %d", p.Pid)
 		}
 		for i, arg := range args {
-			if arg == diskArg {
+			if fincoreArcVMDiskArgRe.MatchString(arg) {
 				if i+1 >= len(args) {
 					return errors.Errorf("crosvm has --disk arg with no path, args=%v", args)
 				}
-				disks[args[i+1]] = true
+				file := strings.Split(args[i+1], ",")[0]
+				disks[file] = true
 			}
 		}
 	}
