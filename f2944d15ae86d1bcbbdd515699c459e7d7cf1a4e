@@ -16,6 +16,29 @@
       "message": "PTAL!",
       "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94f3f6c_fa31318c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-15T08:35:22Z",
+      "side": 1,
+      "message": "I think 80% is a bit too defensive to detect the content size glitch for Tablet-to-Phone resize case. Because in the Tablet-to-Phone case, the height is changed from 732dp to 600dp and 600/732\u003d82%\u003e80%.",
+      "range": {
+        "startLine": 70,
+        "startChar": 43,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
