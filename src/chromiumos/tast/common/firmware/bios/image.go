@@ -54,29 +54,45 @@ func NewImageFromData(data []byte, sections map[ImageSection]SectionInfo) *Image
 	return &Image{data, sections}
 }
 
-// NewImage creates an Image object representing the currently loaded BIOS image.
-func NewImage(ctx context.Context) (*Image, error) {
+// NewImage creates an Image object representing the currently loaded BIOS image. If you pass in a section, only that section will be read.
+func NewImage(ctx context.Context, section ImageSection) (*Image, error) {
 	tmpFile, err := ioutil.TempFile("", "")
 	if err != nil {
 		return nil, errors.Wrap(err, "creating tmpfile for image contents")
 	}
 	defer os.Remove(tmpFile.Name())
 
-	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "-r", tmpFile.Name()).Run(testexec.DumpLogOnError); err != nil {
+	frArgs := []string{"-p", "host", "-r"}
+	if section != "" {
+		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, tmpFile.Name()))
+	} else {
+		frArgs = append(frArgs, tmpFile.Name())
+	}
+
+	if err = testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
 		return nil, errors.Wrap(err, "could not read firmware host image")
 	}
 
-	fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", tmpFile.Name()).Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
-	}
-	info, err := ParseSections(string(fmap))
-	if err != nil {
-		return nil, errors.Wrap(err, "could not parse dump_fmap output")
-	}
 	data, err := ioutil.ReadFile(tmpFile.Name())
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware host image contents")
+	}
+	var info map[ImageSection]SectionInfo
+	if section == "" {
+		fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", tmpFile.Name()).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not dump_fmap on firmware host image")
+		}
+		info, err = ParseSections(string(fmap))
+		if err != nil {
+			return nil, errors.Wrap(err, "could not parse dump_fmap output")
+		}
+	} else {
+		info = make(map[ImageSection]SectionInfo)
+		info[section] = SectionInfo{
+			Start:  0,
+			Length: uint(len(data)),
+		}
 	}
 	return &Image{data, info}, nil
 }
@@ -108,7 +124,7 @@ func (i *Image) ClearAndSetGBBFlags(clearFlags, setFlags []pb.GBBFlag) error {
 
 // WriteFlashrom writes the current data in the specified section into flashrom.
 func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection) error {
-	flashromSec, ok := defaultChromeosFmapConversion[sec]
+	dataRange, ok := i.Sections[sec]
 	if !ok {
 		return errors.Errorf("section %q is not recognized", string(sec))
 	}
@@ -119,23 +135,14 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection) error {
 	}
 	defer os.Remove(imgTmp.Name())
 
-	if err := ioutil.WriteFile(imgTmp.Name(), i.Data, 0644); err != nil {
+	dataToWrite := i.Data[dataRange.Start : dataRange.Start+dataRange.Length]
+
+	if err := ioutil.WriteFile(imgTmp.Name(), dataToWrite, 0644); err != nil {
 		return errors.Wrap(err, "writing image contents to tmpfile")
 	}
 
-	layData := i.GetLayout()
-
-	layTmp, err := ioutil.TempFile("", "")
-	if err != nil {
-		return errors.Wrap(err, "creating tmpfile for layout contents")
-	}
-	defer os.Remove(layTmp.Name())
-
-	if err := ioutil.WriteFile(layTmp.Name(), layData, 0644); err != nil {
-		return errors.Wrap(err, "wrting layout contents to tmpfile")
-	}
-
-	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "-l", layTmp.Name(), "-i", flashromSec, "-w", imgTmp.Name()).Run(testexec.DumpLogOnError); err != nil {
+	// -N == no verify all. Verify is slow.
+	if err = testexec.CommandContext(ctx, "flashrom", "-N", "-p", "host", "-i", fmt.Sprintf("%s:%s", sec, imgTmp.Name()), "-w").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "could not write host image")
 	}
 
