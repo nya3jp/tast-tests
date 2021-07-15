@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c96071_0e91dac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T07:46:13Z",
+      "side": 1,
+      "message": "If you really want to use AutoShift as the test item, you can use pre.VKEnabledTabletReset which resets Chrome when starting this test, while the current precondition reuse the existing Chrome session (It can break the test if VK was remained in cap state).",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "cb65c9fc5ffd346790dc0d8384b818af931a2421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f311d0_e32d48e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T07:46:13Z",
+      "side": 1,
+      "message": "due to the non-deterministic AutoShift function, maybe it is not a good test candidate. How about \"Double-space to type period\"",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "cb65c9fc5ffd346790dc0d8384b818af931a2421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca3cfcc_50adf084",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T07:46:13Z",
+      "side": 1,
+      "message": "This function only works on US-en, not other IMEs. I would suggest to implement a function OpenActiveIMESettingsPage(). Alternatively you can add a TODO here, I can work on it later.",
+      "range": {
+        "startLine": 89,
+        "startChar": 22,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "cb65c9fc5ffd346790dc0d8384b818af931a2421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf0ac07_21861423",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-15T07:46:13Z",
+      "side": 1,
+      "message": "Align with other functions, you can return an uiauto.Action, so it can be grouped with other actions.",
+      "range": {
+        "startLine": 99,
+        "startChar": 22,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "cb65c9fc5ffd346790dc0d8384b818af931a2421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
