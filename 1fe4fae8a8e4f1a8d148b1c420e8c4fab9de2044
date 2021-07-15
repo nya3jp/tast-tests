@@ -33,6 +33,24 @@
       "message": "testing.Sleep is fundamentally a source of flakiness.\nIs there any specific condition to be waited here, instead?\nThen, you can use testing.Poll().",
       "revId": "1fe4fae8a8e4f1a8d148b1c420e8c4fab9de2044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c44caef_a98ced0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-07-15T01:51:29Z",
+      "side": 1,
+      "message": "Unfortunately this cannot be detected by any way, so we have to use sleep here.\n\nMaybe we can add a private api to do this on M94.\n\nWhat do you think?",
+      "parentUuid": "88fba8ba_6d6151c9",
+      "revId": "1fe4fae8a8e4f1a8d148b1c420e8c4fab9de2044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
