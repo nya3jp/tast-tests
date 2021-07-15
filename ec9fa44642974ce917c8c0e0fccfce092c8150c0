@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0464fc_cabd8fae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-07-15T18:53:05Z",
+      "side": 1,
+      "message": "This test should only be scheduled to run on devices in wificell_perf pool and all the devices in this pool (https://screenshot.googleplex.com/AN6nh5mhmc3S2cn) already have the connection between the LAN ports of the 2 Gale APs. \n\nSince the additional connection is only needed for perf tests which are only run in pool wificell_perf (conductive testbeds), there are currently no plans for adding this connection to testbeds in other devices pools like wificell and wificell_perbuild.",
+      "parentUuid": "0fd1876e_7c9ecf30",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2524f436_231af01b",
