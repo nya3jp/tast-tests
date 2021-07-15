@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5aa7d0_f5250790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-15T01:38:17Z",
+      "side": 1,
+      "message": "I might have to add some api functions for getting data about the launcher and app list items. WDYT?",
+      "revId": "63defbe1160aa5d26f068a212dc690becc254952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
