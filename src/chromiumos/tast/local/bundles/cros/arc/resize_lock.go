@@ -891,7 +891,19 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		}
 	}
 
-	if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false /* visible */); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// The compat-mode dialog stays shown for two seconds by default after resize lock mode is toggled.
+		// Explicitly close the dialog using the Esc key.
+		keyboard, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create a keyboard")
+		}
+		if err := keyboard.Accel(ctx, "Esc"); err != nil {
+			return errors.Wrap(err, "failed to press the Esc key")
+		}
+
+		return checkVisibility(ctx, tconn, bubbleDialogClassName, false /* visible */)
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to verify that the resizability confirmation dialog is invisible")
 	}
 
