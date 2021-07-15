@@ -178,7 +178,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
 			// 2. From the firmware screen that appears, press keys to transition to dev mode.
 			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
-			if err := ms.enableRecMode(ctx, servo.USBMuxHost); err != nil {
+			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
 			if err := ms.fwScreenToDevMode(ctx); err != nil {
@@ -489,7 +489,7 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 
 // enableRecMode powers the DUT into the "rec" state, but does not wait to reconnect to the DUT.
 // If booting into rec mode, usbMux should point to the DUT, so that the DUT can finish booting into recovery mode.
-// Otherwise, usbMux should point to the Host. This will prevent the DUT from transitioning to rec mode, so other operations can be performed (such as bypassing to dev mode).
+// Otherwise, usbMux should be off. This will prevent the DUT from transitioning to rec mode, so other operations can be performed (such as bypassing to dev mode).
 func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxState) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
