@@ -495,11 +495,17 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	if err := ms.powerOff(ctx); err != nil {
-		return errors.Wrap(err, "powering off DUT")
-	}
+
+	powerOffErrChannel := make(chan error)
+	go func(ctx context.Context, errChan chan<- error) {
+		defer close(errChan)
+		errChan <- ms.powerOff(ctx)
+	}(ctx, powerOffErrChannel)
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
 		return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+	}
+	if err := <-powerOffErrChannel; err != nil {
+		return errors.Wrap(err, "powering off DUT")
 	}
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
 		return errors.Wrapf(err, "setting power state to %s", servo.PowerStateRec)
