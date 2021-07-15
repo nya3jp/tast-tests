@@ -523,8 +523,33 @@ func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 
 	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
 	defer cancel()
-	if err := h.DUT.WaitUnreachable(offCtx); err != nil {
+	if err := ms.waitUnreachable(offCtx); err != nil {
 		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
+	}
+	return nil
+}
+
+func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
+	// Try reading the power state from the EC.
+	err := testing.Poll(ctx, func(c context.Context) error {
+		powerState, err := ms.Helper.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if powerState != "G3" && powerState != "S5" {
+			return errors.Errorf("Power state = %s", powerState)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout: offTimeout, Interval: 250 * time.Millisecond})
+	if err == nil {
+		return nil
+	}
+	// If the EC didn't return a power state, try wait unreachable instead.
+	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
+	defer cancel()
+	if err := ms.Helper.DUT.WaitUnreachable(offCtx); err != nil {
+		return errors.Wrap(err, "waiting for DUT to be unreachable after powering off")
 	}
 	return nil
 }
