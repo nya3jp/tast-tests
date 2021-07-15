@@ -16,6 +16,121 @@
       "message": "Thanks!",
       "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf67ca7_d215b166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T02:53:05Z",
+      "side": 1,
+      "message": "Does it take so long? Note that we don\u0027t need to include fixture runtime in this timeout.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b700cf_73e3bd88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T02:53:05Z",
+      "side": 1,
+      "message": "Do you mean to reserve some time for cleanup? Then you need to use the original longer context for cleanup. Otherwise, when the test times out, we fail to run cleanup because the context is already expired. Please also see my another comment about act.Stop below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f38894_f9752339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T02:53:05Z",
+      "side": 1,
+      "message": "Do we need to stop the activity? If not, it is recommended to keep the state for better manual debuggability.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown\n\nEven if you leave some activity running, the fixture is responsible for closing them between tests.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44c2d0d_7158b4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T02:53:05Z",
+      "side": 1,
+      "message": "It would be nice to include expectation as well for debuggability. For example:\n\n s.Error(\"Unexpected project ID: got %d, want in range [%d, %d]\", projectID, projectIDExtDataStart, projectIDExtDataEnd)\n\nc.f. https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 95,
+        "startChar": 19,
+        "endLine": 95,
+        "endChar": 46
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2043d7_a52c5ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quota_project_id.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-15T02:53:05Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "5d39f84e9b032aba5fd63faa333b7fdf3864b709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
