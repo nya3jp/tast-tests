@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7708541f_4e28706e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-07-15T01:02:03Z",
+      "side": 1,
+      "message": "I don\u0027t think so.",
+      "parentUuid": "85e7385c_9462c622",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "60a70318e44b71469fe9874c7010186736703fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd0792ee_2c0151a5",
