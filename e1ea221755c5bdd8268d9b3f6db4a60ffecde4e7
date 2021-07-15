@@ -16,6 +16,69 @@
       "message": "PTAL!",
       "revId": "e1ea221755c5bdd8268d9b3f6db4a60ffecde4e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcabe4a_11ed86a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-15T08:43:27Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "e1ea221755c5bdd8268d9b3f6db4a60ffecde4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a520a2_ba8dac1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-15T08:43:27Z",
+      "side": 1,
+      "message": "nit: requestMode? I think nextMode is a bit confusing as it\u0027s not always the expected \"next mode\".",
+      "range": {
+        "startLine": 467,
+        "startChar": 2,
+        "endLine": 467,
+        "endChar": 10
+      },
+      "revId": "e1ea221755c5bdd8268d9b3f6db4a60ffecde4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84477837_292d925a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-15T08:43:27Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 847,
+        "startChar": 153,
+        "endLine": 847,
+        "endChar": 161
+      },
+      "revId": "e1ea221755c5bdd8268d9b3f6db4a60ffecde4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
