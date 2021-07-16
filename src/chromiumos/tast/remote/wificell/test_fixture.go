@@ -769,30 +769,6 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 	return response, nil
 }
 
-// DiscoverBSSID discovers a service with the given properties.
-// DEPRECATED: Use tf.WifiClient().DiscoverBSSID instead.
-func (tf *TestFixture) DiscoverBSSID(ctx context.Context, bssid, iface string, ssid []byte) error {
-	return tf.WifiClient().DiscoverBSSID(ctx, bssid, iface, ssid)
-}
-
-// RequestRoam requests DUT to roam to the specified BSSID and waits until the DUT has roamed.
-// DEPRECATED: Use tf.WifiClient().RequestRoam instead.
-func (tf *TestFixture) RequestRoam(ctx context.Context, iface, bssid string, timeout time.Duration) error {
-	return tf.WifiClient().RequestRoam(ctx, iface, bssid, timeout)
-}
-
-// Reassociate triggers reassociation with the current AP and waits until it has reconnected or the timeout expires.
-// DEPRECATED: Use tf.WifiClient().Reassociate instead.
-func (tf *TestFixture) Reassociate(ctx context.Context, iface string, timeout time.Duration) error {
-	return tf.WifiClient().Reassociate(ctx, iface, timeout)
-}
-
-// FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
-// DEPRECATED: Use tf.WifiClient().FlushBSS instead.
-func (tf *TestFixture) FlushBSS(ctx context.Context, iface string, age time.Duration) error {
-	return tf.WifiClient().FlushBSS(ctx, iface, age)
-}
-
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
 func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*wifi.ConnectResponse, error) {
 	conf := ap.Config()
@@ -837,18 +813,6 @@ func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
 // ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
 func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 5*time.Second)
-}
-
-// AssureDisconnect assures that the WiFi service has disconnected within timeout.
-// DEPRECATED: Use tf.WifiClient().AssureDisconnect instead.
-func (tf *TestFixture) AssureDisconnect(ctx context.Context, servicePath string, timeout time.Duration) error {
-	return tf.WifiClient().AssureDisconnect(ctx, servicePath, timeout)
-}
-
-// QueryService queries shill information of selected service.
-// DEPRECATED: Use tf.WifiClient().QueryService instead.
-func (tf *TestFixture) QueryService(ctx context.Context) (*wifi.QueryServiceResponse, error) {
-	return tf.WifiClient().QueryService(ctx)
 }
 
 // PingFromDUT tests the connectivity between DUT and target IP.
@@ -1136,12 +1100,6 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	return nil
 }
 
-// CurrentClientTime returns the current time on DUT.
-// DEPRECATED: Use tf.WifiClient().CurrentTime instead.
-func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error) {
-	return tf.WifiClient().CurrentTime(ctx)
-}
-
 // ClearBSSIDIgnoreDUT clears the BSSID_IGNORE list on DUT.
 func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context) error {
 	wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.dut.Conn()})
@@ -1152,64 +1110,6 @@ func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context) error {
 	}
 
 	return nil
-}
-
-// ExpectShillProperty is a wrapper for the streaming gRPC call ExpectShillProperty.
-// It takes an array of ShillProperty, an array of shill properties to monitor, and
-// a shill service path. It returns a function that waites for the expected property
-// changes and returns the monitor results.
-// DEPRECATED: Use tf.WifiClient().ExpectShillProperty instead.
-func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty, monitorProps []string) (func() ([]protoutil.ShillPropertyHolder, error), error) {
-	return tf.WifiClient().ExpectShillProperty(ctx, objectPath, props, monitorProps)
-}
-
-// EAPAuthSkipped is a wrapper for the streaming gRPC call EAPAuthSkipped.
-// It returns a function that waits and verifies the EAP authentication is skipped or not in the next connection.
-// DEPRECATED: Use tf.WifiClient().EAPAuthSkipped instead.
-func (tf *TestFixture) EAPAuthSkipped(ctx context.Context) (func() (bool, error), error) {
-	return tf.WifiClient().EAPAuthSkipped(ctx)
-}
-
-// DisconnectReason is a wrapper for the streaming gRPC call DisconnectReason.
-// It returns a function that waits for the wpa_supplicant DisconnectReason
-// property change, and returns the disconnection reason code.
-// DEPRECATED: Use tf.WifiClient().DisconnectReason instead.
-func (tf *TestFixture) DisconnectReason(ctx context.Context) (func() (int32, error), error) {
-	return tf.WifiClient().DisconnectReason(ctx)
-}
-
-// SuspendAssertConnect suspends the DUT for wakeUpTimeout seconds through gRPC and returns the duration from resume to connect.
-// DEPRECATED: Use tf.WifiClient().SuspendAssertConnect instead.
-func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout time.Duration) (time.Duration, error) {
-	return tf.WifiClient().SuspendAssertConnect(ctx, wakeUpTimeout)
-}
-
-// Suspend suspends the DUT for wakeUpTimeout seconds through gRPC.
-// This call will fail when the DUT wake up early. If the caller expects the DUT to
-// wake up early, please use the Suspend gRPC to specify the detailed options.
-// DEPRECATED: Use tf.WifiClient().Suspend instead.
-func (tf *TestFixture) Suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
-	return tf.WifiClient().Suspend(ctx, wakeUpTimeout)
-}
-
-// DisableMACRandomize disables MAC randomization on DUT if supported, this
-// is useful for tests verifying probe requests from DUT.
-// On success, a shortened context and cleanup function is returned.
-// DEPRECATED: Use tf.WifiClient().DisableMACRandomize instead.
-func (tf *TestFixture) DisableMACRandomize(ctx context.Context) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
-	return tf.WifiClient().DisableMACRandomize(ctx)
-}
-
-// SetWifiEnabled persistently enables/disables Wifi via shill.
-// DEPRECATED: Use tf.WifiClient().SetWifiEnabled instead.
-func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
-	return tf.WifiClient().SetWifiEnabled(ctx, enabled)
-}
-
-// TurnOffBgscan turns off the DUT's background scan, and returns a shortened ctx and a restoring function.
-// DEPRECATED: Use tf.WifiClient().TurnOffBgscan instead.
-func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func() error, error) {
-	return tf.WifiClient().TurnOffBgscan(ctx)
 }
 
 // SendChannelSwitchAnnouncement sends a CSA frame and waits for Client_Disconnection, or Channel_Switch event.
@@ -1312,10 +1212,4 @@ func (tf *TestFixture) getLoggingConfig(ctx context.Context) (int, []string, err
 		return 0, nil, err
 	}
 	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
-}
-
-// SetWakeOnWifi sets properties related to wake on WiFi.
-// DEPRECATED: Use tf.WifiClient().SetWakeOnWifi instead.
-func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOption) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
-	return tf.WifiClient().SetWakeOnWifi(ctx, ops...)
 }
