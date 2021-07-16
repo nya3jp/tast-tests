@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97ab966_8c689cb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-16T16:26:18Z",
+      "side": 1,
+      "message": "Ok, I see. But you know that initialization will fail when write protect can\u0027t be enabled (like on Voxel, b/175159760)? Error message might not be obvious, so we should check write protect during initialization too.",
+      "parentUuid": "ca2d0b63_b27fc6e7",
+      "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd54eff_bdaedda3",
