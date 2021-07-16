@@ -29,7 +29,7 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	parentFirstName, parentLastName, parentUser, parentPass,
 	secondUser, secondPass string) error {
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
 	if err := ui.Exists(nodewith.Name("This account is managed by Family Link").Role(role.Image))(ctx); err != nil {
@@ -47,14 +47,15 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	selectParentOption := nodewith.NameStartingWith(parentFirstName + " " + parentLastName).Role(role.ListBoxOption)
 	if err := uiauto.Combine("open in-session edu coexistence flow",
 		ui.WaitUntilExists(googleAccountsButton),
-		ui.LeftClickUntil(googleAccountsButton, ui.Exists(addSchoolAccountButton)),
+		ui.FocusAndWait(googleAccountsButton), // scroll the button into view
+		ui.WithInterval(time.Second).LeftClickUntil(googleAccountsButton, ui.Exists(addSchoolAccountButton)),
 		ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, ui.Exists(selectParentOption)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to open in-session edu coexistence flow")
 	}
 
 	testing.ContextLog(ctx, "Clicking button that matches parent email: ", parentUser)
-	if err := ui.LeftClickUntil(selectParentOption, ui.Exists(nodewith.Name("Parent password").Role(role.TextField)))(ctx); err != nil {
+	if err := ui.WithInterval(time.Second).LeftClickUntil(selectParentOption, ui.Exists(nodewith.Name("Parent password").Role(role.TextField)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click button that matches parent email")
 	}
 
@@ -92,6 +93,8 @@ func NavigateEduCoexistenceFlow(ctx context.Context, tconn *chrome.TestConn, par
 	}
 	defer kb.Close()
 
+	// TODO(chromium:12227440): Reduce typing flakiness and replace \n with a more
+	// consistent way to navigate to the next screen, here and other places.
 	testing.ContextLog(ctx, "Typing the parent password")
 	if err := kb.Type(ctx, parentPass+"\n"); err != nil {
 		return errors.Wrap(err, "failed to type parent password")
@@ -102,7 +105,7 @@ func NavigateEduCoexistenceFlow(ctx context.Context, tconn *chrome.TestConn, par
 	enterSchoolEmailText := nodewith.Name("School email").Role(role.TextField)
 	if err := uiauto.Combine("Clicking next",
 		ui.WaitUntilExists(nextButton),
-		ui.LeftClickUntil(nextButton, ui.Exists(enterSchoolEmailText)))(ctx); err != nil {
+		ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(enterSchoolEmailText)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Next button")
 	}
 
