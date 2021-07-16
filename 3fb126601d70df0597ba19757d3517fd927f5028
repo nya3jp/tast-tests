@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b2e0ba_90fc2ce6",
+        "filename": "src/chromiumos/tast/local/chrome/ime/inputmethods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-16T02:43:48Z",
+      "side": 1,
+      "message": "nit: would it be better to change this field name to \"ID\", which is commonly used in almost all e14s documents?",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "3fb126601d70df0597ba19757d3517fd927f5028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
