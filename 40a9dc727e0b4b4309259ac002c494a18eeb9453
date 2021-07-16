@@ -62,6 +62,41 @@
       "message": "There is an ongoing discussion about UI tests in the CQ. I would like to put this CL on hold for a few days. I will update this comment as soon as I know something new.",
       "revId": "40a9dc727e0b4b4309259ac002c494a18eeb9453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07f4a25_846d0444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-16T10:17:54Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "40a9dc727e0b4b4309259ac002c494a18eeb9453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9741eef_ffca4455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-16T10:17:54Z",
+      "side": 1,
+      "message": "It seems like everything should go like it used to till the end of Q3.",
+      "parentUuid": "befe81bd_19c84e8e",
+      "revId": "40a9dc727e0b4b4309259ac002c494a18eeb9453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
