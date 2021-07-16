@@ -1584,3 +1584,28 @@ func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 	}
 	return ctx, restore, nil
 }
+
+// WatchDarkResume is a wrapper for the streaming gRPC call WatchDarkResume, which
+// watches dark resumes before next full resume.
+// It returns a function that waits for the response of the gRPC call.
+func (tf *TestFixture) WatchDarkResume(ctx context.Context) (func() (*wifi.WatchDarkResumeResponse, error), error) {
+	stream, err := tf.WifiClient().WatchDarkResume(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, err
+	}
+
+	s, err := stream.Recv()
+	if err != nil {
+		return nil, errors.New("failed to get the ready signal from WatchDarkResume")
+	}
+	if s.Count != 0 {
+		return nil, errors.Errorf("unexpected ready signal=%v", s)
+	}
+	return func() (*wifi.WatchDarkResumeResponse, error) {
+		resp, err := stream.Recv()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to receive from WatchDarkResume")
+		}
+		return resp, nil
+	}, nil
+}
