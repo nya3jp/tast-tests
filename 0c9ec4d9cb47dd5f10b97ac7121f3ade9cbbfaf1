@@ -60,6 +60,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5ff4987_60ba24f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-16T16:07:59Z",
+      "side": 1,
+      "message": "This can get messy later and it\u0027s not exactly clear why we need to do this. Maybe we can add a boolean to the test table for whether or not to close the splash screen, or explicitly check that this is equal to the length of the test table minus 1, if we want to close all but the last?",
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3be6b20d_38e5512a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 2
