@@ -33,6 +33,24 @@
       "message": "this runs at the end of the function (not end of the scope).\nSo, I think it is not intentional?",
       "revId": "10a9dee62e2c8d2fbd24ae1e687b6a6f4eb5e6ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebfa39f4_e44fcfba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T09:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63841a0_67c0f786",
+      "revId": "10a9dee62e2c8d2fbd24ae1e687b6a6f4eb5e6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
