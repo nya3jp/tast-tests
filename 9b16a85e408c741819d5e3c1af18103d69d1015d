@@ -16,6 +16,46 @@
       "message": "Lgtm",
       "revId": "9b16a85e408c741819d5e3c1af18103d69d1015d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5e07c4f_9cd3e97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-16T08:52:35Z",
+      "side": 1,
+      "message": "LGTM with recommendation.",
+      "revId": "9b16a85e408c741819d5e3c1af18103d69d1015d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b69b96d_e96ff855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-16T08:52:35Z",
+      "side": 1,
+      "message": "in precise, rar is not a zip?\nMaybe SingleArchiveFile or SingleCompressedFile or something?",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "9b16a85e408c741819d5e3c1af18103d69d1015d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
