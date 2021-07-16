@@ -22,6 +22,30 @@
       },
       "revId": "d7c139f01eb457142bfaaabcb77693bc86f5fe2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4fc47f3_88fe2819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-16T07:18:46Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "367a7dd8_30e61ed1",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "d7c139f01eb457142bfaaabcb77693bc86f5fe2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
