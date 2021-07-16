@@ -16,6 +16,184 @@
       "message": "PTAL!",
       "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e829b9a6_191e1a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "Is this timeout still acceptable with the new test cases added?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 32
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c9178c_101fe6e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "Is this comment needed?",
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99540640_49b30928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "For all of these via %s log statements, can that information be populated in the error in the actual function? This way every call to the function doesn\u0027t need to add this.",
+      "range": {
+        "startLine": 473,
+        "startChar": 86,
+        "endLine": 473,
+        "endChar": 93
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30924bac_8d69ba85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "Should this be \"Enter\"?",
+      "range": {
+        "startLine": 787,
+        "startChar": 48,
+        "endLine": 787,
+        "endChar": 51
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a759492_d4d5495a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "Should this be handleConfirmationDialogViaKeyboard?",
+      "range": {
+        "startLine": 854,
+        "startChar": 13,
+        "endLine": 854,
+        "endChar": 45
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e603ea_643feff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "via keyboard?",
+      "range": {
+        "startLine": 867,
+        "startChar": 89,
+        "endLine": 867,
+        "endChar": 98
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7c0d62_4ac420fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "via click?",
+      "range": {
+        "startLine": 882,
+        "startChar": 86,
+        "endLine": 882,
+        "endChar": 98
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0935eca_fad867b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:12:47Z",
+      "side": 1,
+      "message": "This function seems to be an exact copy of the one before it?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 1
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
