@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f6bb2f_c37c88a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T03:54:56Z",
+      "side": 1,
+      "message": "Good catch!\n\nTurns out by removing the window title bar and excluding caption height, we can achieve 100%.",
+      "parentUuid": "e94f3f6c_fa31318c",
+      "range": {
+        "startLine": 70,
+        "startChar": 43,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f072ae5_b9073dfd",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-16T00:48:13Z",
       "side": 1,
       "message": "Seems none of these are being used? Maybe remove them",
+      "range": {
+        "startLine": 625,
+        "startChar": 45,
+        "endLine": 625,
+        "endChar": 93
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9247dbd2_0b5a6665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T03:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f072ae5_b9073dfd",
       "range": {
         "startLine": 625,
         "startChar": 45,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b22551_d4d49aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T03:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2401fa2_d15dceed",
+      "range": {
+        "startLine": 632,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 3
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb527d3_89ddc8e4",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d90071_e1be6bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T03:54:56Z",
+      "side": 1,
+      "message": "I may take a little bit of time for the client (Android) to render the content. So we want to wait if it fails.",
+      "parentUuid": "edb527d3_89ddc8e4",
+      "range": {
+        "startLine": 642,
+        "startChar": 3,
+        "endLine": 642,
+        "endChar": 218
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc5f9951_457f9077",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-07-16T00:48:13Z",
       "side": 1,
       "message": "nit: these seem to be common amongst a lot of these helper methods, consider centralising this at the start of resizeLock isntead, for a follow up CL maybe?",
+      "range": {
+        "startLine": 645,
+        "startChar": 4,
+        "endLine": 645,
+        "endChar": 74
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06ea115_33f414d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T03:54:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc5f9951_457f9077",
       "range": {
         "startLine": 645,
         "startChar": 4,
