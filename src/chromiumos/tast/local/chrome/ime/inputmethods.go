@@ -4,7 +4,15 @@
 
 package ime
 
-import "chromiumos/tast/errors"
+import (
+	"context"
+	"fmt"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+)
 
 // TODO(b/192819861): Defining new input method struct and migrating existing use of InputMethodCode.
 // This page is partly implementation of b/192819861.
@@ -15,6 +23,9 @@ type InputMethod struct {
 	Name string // The displayed name of the IME in OS Settings.
 	ID   string // The code / id of the IME, e.g. "xkb:us::eng"
 }
+
+// DefaultInputMethod is the default input method enabled for new users.
+var DefaultInputMethod = XKB_US_ENG
 
 // XKB_US_ENG represents the input method of English (US).
 var XKB_US_ENG = InputMethod{ // NOLINT
@@ -137,4 +148,82 @@ func FindInputMethodByID(id string) (*InputMethod, error) {
 		}
 	}
 	return nil, errors.Errorf("failed to find input method by IME id %q", id)
+}
+
+// FindInputMethodByFullyQualifiedIMEID finds the input method by fully qualified IME ID,
+// e.g. _comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:us::eng.
+func FindInputMethodByFullyQualifiedIMEID(ctx context.Context, tconn *chrome.TestConn, fullyQualifiedIMEID string) (*InputMethod, error) {
+	imePrefix, err := GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get IME prefix")
+	}
+	for _, im := range inputMethods {
+		if imePrefix+im.ID == fullyQualifiedIMEID {
+			return &im, nil
+		}
+	}
+	return nil, errors.Errorf("failed to find input method by IME Code %q", fullyQualifiedIMEID)
+}
+
+// FullyQualifiedIMEID returns the fully qualified IME code constructed by IMEPrefix + IME ID.
+// In Chrome, the IME code is Chrome IME prefix + id: e.g. _comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:us::eng
+// In Chromium, the IME code is Chromium IME prefix + id: e.g. _comp_ime_fgoepimhcoialccpbmpnnblemnepkkaoxkb:us::eng
+func (im *InputMethod) FullyQualifiedIMEID(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	imePrefix, err := GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get IME prefix")
+	}
+	return imePrefix + im.ID, nil
+}
+
+// Equals compares two input methods by id and returns true if they equal.
+func (im *InputMethod) Equals(imb InputMethod) bool {
+	return im.ID == imb.ID
+}
+
+// ToString returns the key representative string content of the input method.
+func (im *InputMethod) ToString() string {
+	return fmt.Sprintf("ID: %s; Name: %s", im.ID, im.Name)
+}
+
+// Install installs the input method via Chrome API.
+func (im *InputMethod) Install(tconn *chrome.TestConn) action.Action {
+	installFunc := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return AddInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, installFunc)
+}
+
+// Activate sets the input method to use via Chrome API.
+func (im *InputMethod) Activate(tconn *chrome.TestConn) action.Action {
+	activateFunc := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return SetCurrentInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, activateFunc)
+}
+
+// InstallAndActivate installs the input method and set it to active via Chrome API.
+func (im *InputMethod) InstallAndActivate(tconn *chrome.TestConn) action.Action {
+	return uiauto.Combine(fmt.Sprintf("install and activate input method: %q", im.ToString()),
+		im.Install(tconn),
+		im.Activate(tconn),
+	)
+}
+
+// Remove uninstalls the input method via Chrome API.
+func (im *InputMethod) Remove(tconn *chrome.TestConn) action.Action {
+	removeFunc := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return RemoveInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, removeFunc)
+}
+
+func (im *InputMethod) actionWithFullyQualifiedID(tconn *chrome.TestConn, f func(ctx context.Context, fullyQualifiedIMEID string) error) action.Action {
+	return func(ctx context.Context) error {
+		fullyQualifiedIMEID, err := im.FullyQualifiedIMEID(ctx, tconn)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get fully qualified IME ID of %q", im.ToString())
+		}
+		return f(ctx, fullyQualifiedIMEID)
+	}
 }
