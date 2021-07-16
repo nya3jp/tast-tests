@@ -16,6 +16,23 @@
       "message": "PTAL again!\n\nNow this CL only extracts input logic into separate functions.",
       "revId": "529c93a4c1ca9f4715f32b8f45c83b9be1775669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23a45b2_0a5f9e56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-16T10:12:12Z",
+      "side": 1,
+      "message": "Thanks for doing all the changes! In this version it is easy to follow what is happening.",
+      "revId": "529c93a4c1ca9f4715f32b8f45c83b9be1775669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
