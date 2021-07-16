@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3adb4d_2db86bbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:22:35Z",
+      "side": 1,
+      "message": "Can you explain why this is necessary in the commit message? It\u0027s not obvious from the provided bug.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9e0da621_d2c97c54",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-07-16T10:26:02Z",
       "side": 1,
       "message": "PTAL again! (mostly indentation change)",
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad8b028_12a6d799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:22:35Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM % comments",
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be6b20d_38e5512a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-16T15:22:35Z",
+      "side": 1,
+      "message": "Is this comment needed? It looks like it\u0027s a copy of L371",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 107
+      },
       "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
