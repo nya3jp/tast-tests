@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db578a7a_ad341f4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-16T21:22:47Z",
+      "side": 1,
+      "message": "No code change. Ask a question",
+      "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21b1ebe5_f836a00e",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-07-16T17:41:20Z",
       "side": 1,
       "message": "this may not work as expected if we call PinAppsAndReset more than once in a function - deferred cleanup from the second call would reset pinned apps to match intermediate state.\n\nIt may be safer (instead of resetting for each PinAppsAndReset call) to have tests get set of pinned apps when it starts, and add a single deferred call to reset pins to initial values.",
+      "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f702fe_ac365b60",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-16T21:22:47Z",
+      "side": 1,
+      "message": "\"this may not work as expected if we call PinAppsAndReset more than once in a function - deferred cleanup from the second call would reset pinned apps to match intermediate state.\"\n\nWhy is it a problem? The function deferred is put on a stack. In other words, when we call PinAppAndReset() twice, the second cleanup runs before the first `cleanup`.",
+      "parentUuid": "b3b66246_58f7a109",
       "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
