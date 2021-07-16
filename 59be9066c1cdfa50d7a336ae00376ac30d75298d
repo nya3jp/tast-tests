@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ea3802_3a2ebe58",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-07-16T05:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32f226e_510002bc",
+      "range": {
+        "startLine": 397,
+        "startChar": 2,
+        "endLine": 397,
+        "endChar": 9
+      },
+      "revId": "59be9066c1cdfa50d7a336ae00376ac30d75298d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b218d356_58621c01",
