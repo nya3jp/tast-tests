@@ -34,6 +34,24 @@
       "parentUuid": "089e0dff_b315d031",
       "revId": "82883b3ae11a748e16bd53203fabd7b51deb62e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47364c38_c28d1c67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-16T08:49:14Z",
+      "side": 1,
+      "message": "It\u0027s captured by your test as failure.\nYou may have to wait for the dbus activation to stabilize your test.",
+      "parentUuid": "f32fd91a_5a978052",
+      "revId": "82883b3ae11a748e16bd53203fabd7b51deb62e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
