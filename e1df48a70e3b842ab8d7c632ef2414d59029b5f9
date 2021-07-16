@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a13e04_73ee1e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-16T20:46:24Z",
+      "side": 1,
+      "message": "Is this the result of gofmt?",
+      "range": {
+        "startLine": 39,
+        "startChar": 56,
+        "endLine": 39,
+        "endChar": 57
+      },
+      "revId": "e1df48a70e3b842ab8d7c632ef2414d59029b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df50e9b_88ed0bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-16T20:46:24Z",
+      "side": 1,
+      "message": "Can we make this const since it is used multiple times?",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 58
+      },
+      "revId": "e1df48a70e3b842ab8d7c632ef2414d59029b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba78fe0_12e3d3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-16T20:46:24Z",
+      "side": 1,
+      "message": "diskName?",
+      "range": {
+        "startLine": 128,
+        "startChar": 32,
+        "endLine": 128,
+        "endChar": 38
+      },
+      "revId": "e1df48a70e3b842ab8d7c632ef2414d59029b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
