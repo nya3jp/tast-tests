@@ -40,55 +40,55 @@ func init() {
 				Name: "en_us_tablet",
 				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
-					MisspeltWord:  "helol",
-					CorrectWord:   "hello",
-					UndoMethod:    autocorrect.ViaPopupUsingMouse,
+					InputMethod:  ime.XKB_US_ENG,
+					MisspeltWord: "helol",
+					CorrectWord:  "hello",
+					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
 				Name: "en_us_a11y",
 				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
-					MisspeltWord:  "helol",
-					CorrectWord:   "hello",
-					UndoMethod:    autocorrect.ViaPopupUsingMouse,
+					InputMethod:  ime.XKB_US_ENG,
+					MisspeltWord: "helol",
+					CorrectWord:  "hello",
+					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
 				Name: "es_es_tablet",
 				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
-					MisspeltWord:  "espanol",
-					CorrectWord:   "español",
-					UndoMethod:    autocorrect.NotApplicable,
+					InputMethod:  ime.XKB_ES_SPA,
+					MisspeltWord: "espanol",
+					CorrectWord:  "español",
+					UndoMethod:   autocorrect.NotApplicable,
 				},
 			}, {
 				Name: "es_es_a11y",
 				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
-					MisspeltWord:  "espanol",
-					CorrectWord:   "español",
-					UndoMethod:    autocorrect.NotApplicable,
+					InputMethod:  ime.XKB_ES_SPA,
+					MisspeltWord: "espanol",
+					CorrectWord:  "español",
+					UndoMethod:   autocorrect.NotApplicable,
 				},
 			}, {
 				Name: "fr_fr_tablet",
 				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
-					MisspeltWord:  "francais",
-					CorrectWord:   "français",
-					UndoMethod:    autocorrect.NotApplicable,
+					InputMethod:  ime.XKB_FR_FRA,
+					MisspeltWord: "francais",
+					CorrectWord:  "français",
+					UndoMethod:   autocorrect.NotApplicable,
 				},
 			}, {
 				Name: "fr_fr_a11y",
 				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
-					MisspeltWord:  "francais",
-					CorrectWord:   "français",
-					UndoMethod:    autocorrect.NotApplicable,
+					InputMethod:  ime.XKB_FR_FRA,
+					MisspeltWord: "francais",
+					CorrectWord:  "français",
+					UndoMethod:   autocorrect.NotApplicable,
 				},
 			},
 		},
@@ -102,10 +102,10 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	imeCode := ime.IMEPrefix + testCase.InputMethodID
-	s.Logf("Set current input method to: %s", imeCode)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
-		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+	inputMethod := testCase.InputMethod
+	s.Logf("Set current input method to: %q", inputMethod.ToString())
+	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to install and set input method to %q: %v: ", inputMethod.ToString(), err)
 	}
 
 	vkbCtx := vkb.NewContext(cr, tconn)
@@ -120,7 +120,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		var settingsAPICall = fmt.Sprintf(
 			`chrome.inputMethodPrivate.setSettings(
 						 "%s", { "%s": %s})`,
-			testCase.InputMethodID, entryID, value)
+			testCase.InputMethod.ID, entryID, value)
 
 		tconn := s.PreValue().(pre.PreData).TestAPIConn
 		if err := tconn.Eval(ctx, settingsAPICall, nil); err != nil {
@@ -181,8 +181,8 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	case autocorrect.ViaPopupUsingMouse:
 		// AssistAutoCorrect flag's features. Only available for US-English.
-		if testCase.InputMethodID != string(ime.INPUTMETHOD_XKB_US_ENG) {
-			s.Fatalf("ViaPopupUsingMouse undo method is not applicable for: %s", testCase.InputMethodID)
+		if !testCase.InputMethod.Equals(ime.XKB_US_ENG) {
+			s.Fatalf("ViaPopupUsingMouse undo method is not applicable for: %q", testCase.InputMethod)
 		}
 
 		ui := uiauto.New(tconn)
