@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc6104d9_90d1caf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-16T17:28:29Z",
+      "side": 1,
+      "message": "I\u0027m fine with ac (especially if it\u0027s used elsewhere), I was just wondering hat it stands for - probably accessibility or automation, as it\u0027s using a11y APIs to interact with UI.",
+      "parentUuid": "740f4ba6_6623a0df",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29098015_f9bb2981",
@@ -278,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6a804f0_93defd39",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-16T17:28:29Z",
+      "side": 1,
+      "message": "I think we should be able to achieve this by adding some metadata to the AppListIteView class?",
+      "parentUuid": "0bad6903_79fc4691",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a4c622d_d8234ec4",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -307,6 +355,24 @@
       "side": 1,
       "message": "We would be unable to pass the destination point in as a parameter because we have to wait until the drag has begun to get the correct location. Should we maybe pass the index for the src and dest icons instead?",
       "parentUuid": "5a4c622d_d8234ec4",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c208a14_be552584",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-16T17:28:29Z",
+      "side": 1,
+      "message": "Can we pass the destination node and let the utility method calculate its location when needed",
+      "parentUuid": "419322d7_fc6c886c",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -348,6 +414,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e79ccce8_13ae375c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-16T17:28:29Z",
+      "side": 1,
+      "message": "but it should not always be visible - can we test for that?",
+      "parentUuid": "79802d8f_17f4da85",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd7ab73_bbb63d2c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -377,6 +461,24 @@
       "side": 1,
       "message": "Might need api call to check the current page?",
       "parentUuid": "dbd7ab73_bbb63d2c",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e769095_e91e5701",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-16T17:28:29Z",
+      "side": 1,
+      "message": "we should be able to wait for accessibility alert that we send when a page changes?\n\nsomething like:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go;drc\u003dd879094e95269ff4164fe95319eb50f740fe52c9;l\u003d159",
+      "parentUuid": "20d3ea66_60defb11",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
