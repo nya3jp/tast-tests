@@ -64,7 +64,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            append(fixtureVars, launcher.LacrosFixtureVars...),
+		Vars:            append(fixtureVars, launcher.LacrosDeployedBinary),
 	})
 }
 

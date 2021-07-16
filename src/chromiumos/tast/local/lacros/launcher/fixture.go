@@ -16,9 +16,9 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// LacrosFixtureVars contains the Fixture Vars necessary to run lacros.
+// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
 // This should be used by any lacros fixtures defined outside this file.
-var LacrosFixtureVars = []string{"lacrosDeployedBinary"}
+const LacrosDeployedBinary = "lacrosDeployedBinary"
 
 // NewStartedByData creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
@@ -43,7 +43,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            LacrosFixtureVars,
+		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosStartedByDataWith100FakeApps is the same as lacrosStartedByData but
@@ -59,7 +59,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            LacrosFixtureVars,
+		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosStartedByDataForceComposition is the same as lacrosStartedByData but
@@ -74,7 +74,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            LacrosFixtureVars,
+		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosStartedByDataUI is similar to lacrosStartedByData but should be used
@@ -91,7 +91,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            LacrosFixtureVars,
+		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosStartedByOmaha is a fixture to enable Lacros by feature flag in Chrome.
@@ -232,7 +232,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		// lacros-chrome instead of always downloading from a gcs location.
 		// This workaround is to be removed soon once lab provisioning is supported for Lacros.
 		var path string
-		path, deployed = s.Var("lacrosDeployedBinary")
+		path, deployed = s.Var(LacrosDeployedBinary)
 		if deployed {
 			f.lacrosPath = path
 		} else {
