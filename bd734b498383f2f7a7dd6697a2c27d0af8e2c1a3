@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "bd734b498383f2f7a7dd6697a2c27d0af8e2c1a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe89d22_86d24042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:51:32Z",
+      "side": 1,
+      "message": "Since we expect Wait to always fail, we might want to skip this log to avoid confusing users.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "bd734b498383f2f7a7dd6697a2c27d0af8e2c1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
