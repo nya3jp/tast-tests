@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "937e0ad0_32abc96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T22:38:26Z",
+      "side": 1,
+      "message": "Moved to main case logic. (Previous CL)",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 19
+      },
+      "revId": "bf296fb94fb7d71499793230311d6092de4056ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3be6320b_4e114e6a",
@@ -14,6 +37,30 @@
       "writtenOn": "2021-07-15T06:38:38Z",
       "side": 1,
       "message": "And it also switch Gmail back to the main display?\n\nEnd with .",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 338,
+        "endChar": 55
+      },
+      "revId": "bf296fb94fb7d71499793230311d6092de4056ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cba7e1c_56d0d9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T22:38:26Z",
+      "side": 1,
+      "message": "Comments rephrased and ended with \".\"",
+      "parentUuid": "3be6320b_4e114e6a",
       "range": {
         "startLine": 338,
         "startChar": 19,
@@ -47,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95daea82_3de4879e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T22:38:26Z",
+      "side": 1,
+      "message": "Changed to to use ui.WaitForExists to detect the app is on the target display.",
+      "parentUuid": "cbbac78a_0ea14c55",
+      "range": {
+        "startLine": 351,
+        "startChar": 19,
+        "endLine": 351,
+        "endChar": 24
+      },
+      "revId": "bf296fb94fb7d71499793230311d6092de4056ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c11da04_86e2cae6",
@@ -70,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3382c5_1d052ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T22:38:26Z",
+      "side": 1,
+      "message": "We only allow test with 2 displays. We will fail it if more than two displays are connected. (BTW, this checking logic has moved to the main case in the previous CL)",
+      "parentUuid": "5c11da04_86e2cae6",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "bf296fb94fb7d71499793230311d6092de4056ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "299ccffc_22f3c1e9",
@@ -83,6 +178,30 @@
       "writtenOn": "2021-07-15T06:38:38Z",
       "side": 1,
       "message": "Suggest to define the node in advance.",
+      "range": {
+        "startLine": 80,
+        "startChar": 25,
+        "endLine": 80,
+        "endChar": 81
+      },
+      "revId": "bf296fb94fb7d71499793230311d6092de4056ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4e5b92_c3d79f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T22:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "299ccffc_22f3c1e9",
       "range": {
         "startLine": 80,
         "startChar": 25,
