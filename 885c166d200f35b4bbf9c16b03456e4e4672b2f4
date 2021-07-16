@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db804523_f9fa9dc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 44
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T04:28:39Z",
+      "side": 1,
+      "message": "Hi Judy, we have two extended display test: this one is video cuj on extended display, and another is Google Meet CUJ on extended display. The name is differentiated by the test params:\n\nui.ExtendedDisplayCUJ.plus_video_youtube_web\nui.ExtendedDisplayCUJ.premium_meet_large\n\nThis follows the overall CUJ naming convention.",
+      "parentUuid": "9845cbb7_831ae582",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "885c166d200f35b4bbf9c16b03456e4e4672b2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41af07a3_4feeab72",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a25b7a_609d7874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_cuj.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T04:28:39Z",
+      "side": 1,
+      "message": "We have display number checking logic in ui/videocuj/youtube_web.go. I moved those checking logic up to this main case at line 101 ~ 112 now.\n\nWe want exact two displays to do the testing.",
+      "parentUuid": "41af07a3_4feeab72",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "885c166d200f35b4bbf9c16b03456e4e4672b2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "522f37c9_8541be2a",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-15T06:16:12Z",
       "side": 1,
       "message": "Previously, the ctx was not only used by defer but also other code, suggest to define a cleanup ctx clearly.",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "885c166d200f35b4bbf9c16b03456e4e4672b2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f359b64_45a2e036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_cuj.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-16T04:28:39Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "522f37c9_8541be2a",
       "range": {
         "startLine": 144,
         "startChar": 4,
