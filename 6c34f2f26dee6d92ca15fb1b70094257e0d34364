@@ -46,6 +46,30 @@
       },
       "revId": "6c34f2f26dee6d92ca15fb1b70094257e0d34364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b116e8a3_e8c02a86",
+        "filename": "src/chromiumos/tast/local/chrome/ime/inputmethods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-16T11:19:04Z",
+      "side": 1,
+      "message": "you may need to rebase this CL to the top of the other one. They seem to divert somehow. It treats input_method.go as a brand new file (229 new lines), instead, there should be only around 90 lines in addition to the other CL.",
+      "parentUuid": "d9858592_47153e17",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "6c34f2f26dee6d92ca15fb1b70094257e0d34364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
