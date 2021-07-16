@@ -113,7 +113,13 @@ type resizeLockTestCase struct {
 	fn   resizeLockTestFunc
 }
 
+// The order of the test cases matters since some persistent chrome-side properties are tested.
+// - "Splash" must come first as any launch of the apps affect the test case.
 var testCases = []resizeLockTestCase{
+	resizeLockTestCase{
+		name: "Splash",
+		fn:   testSplash,
+	},
 	resizeLockTestCase{
 		name: "Resize Locked App - CUJ",
 		fn:   testResizeLockedAppCUJ,
@@ -320,9 +326,9 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 10*time.Second)
 }
 
-// testResizeLockedAppCUJ goes though the critical user journey of a resize-locked app, and verifies the app behaves expectedly.
-func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	// Launch 3 different resize-locked apps and verify that the splash screen is shown twice per user, once per app at most.
+// testSplash installs 3 different resize-locked app, launches an activity twice, and verifies that the splash screen works as expected.
+// The spec of visibility: The splash must be shown twice per user, once per app at most.
+func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
 	for i, test := range []struct {
 		apkName      string
 		pkgName      string
@@ -332,11 +338,60 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		{resizeLock2ApkName, resizeLock2PkgName, resizeLockMainActivityName},
 		{resizeLock3ApkName, resizeLock3PkgName, resizeLockMainActivityName},
 	} {
-		if err := checkSplashVisibility(ctx, tconn, a, d, cr, test.apkName, test.pkgName, test.activityName, i < 2 /* isSplashVisible */); err != nil {
-			return errors.Wrapf(err, "failed to verify the splash screen visibility of %s", test.apkName)
+		ctxDefer := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+		if alreadyInstalled, err := reinstallAPK(ctx, a, test.pkgName, test.apkName); err != nil {
+			return errors.Wrap(err, "failed to reinstall APK")
+		} else if !alreadyInstalled {
+			defer a.Uninstall(ctxDefer, arc.APKPath(test.apkName))
+		}
+
+		activity, err := arc.NewActivity(a, test.pkgName, test.activityName)
+		if err != nil {
+			return errors.Wrapf(err, "failed to create %s", test.activityName)
+		}
+		defer activity.Close()
+
+		if err := activity.Start(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to start %s", test.activityName)
+		}
+		defer activity.Stop(ctx, tconn)
+
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, i < 2 /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
+		}
+
+		if i < 2 {
+			if err := closeSplashViaButtonClick(ctx, tconn, a, d, cr, activity); err != nil {
+				return errors.Wrapf(err, "failed to close the splash screen of %s", resizeLockMainActivityName)
+			}
+		}
+
+		// Close and reopen the activity, and verify that the splash is not shown on the same app more than once.
+		if err := activity.Stop(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to stop %s", test.activityName)
+		}
+
+		if err := activity.Start(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to start %s", test.activityName)
+		}
+		defer activity.Stop(ctx, tconn)
+
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, false /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
+		}
+
+		// Close and reopen the activity, and verify that the splash is not shown on the same app more than once.
+		if err := activity.Stop(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to stop %s", test.activityName)
 		}
 	}
+	return nil
+}
 
+// testResizeLockedAppCUJ goes though the critical user journey of a resize-locked app, and verifies the app behaves expectedly.
+func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
 	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
@@ -397,49 +452,6 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		if err := toggleAppManagementSettingToggle(ctx, tconn, a, d, cr, activity, resizeLockAppName, test.currentMode, test.nextMode); err != nil {
 			return errors.Wrapf(err, "failed to toggle the resizability state from %s to %s on the Chrome OS settings", test.currentMode, test.nextMode)
 		}
-	}
-
-	return nil
-}
-
-// checkSplashVisibility installs the given app, launches the given activity twice, and verifies the visibility of the splash screen.
-func checkSplashVisibility(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, apkName, pkgName, activityName string, isSplashVisible bool) error {
-	ctxDefer := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	if alreadyInstalled, err := reinstallAPK(ctx, a, pkgName, apkName); err != nil {
-		return errors.Wrap(err, "failed to reinstall APK")
-	} else if !alreadyInstalled {
-		defer a.Uninstall(ctxDefer, arc.APKPath(apkName))
-	}
-
-	activity, err := arc.NewActivity(a, pkgName, activityName)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create %s", activityName)
-	}
-	defer activity.Close()
-
-	if err := activity.Start(ctx, tconn); err != nil {
-		return errors.Wrapf(err, "failed to start %s", activityName)
-	}
-	defer activity.Stop(ctxDefer, tconn)
-
-	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, isSplashVisible); err != nil {
-		return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
-	}
-
-	// Close and reopen the activity, and verify that the splash is not shown on the same app more than once.
-	if err := activity.Stop(ctx, tconn); err != nil {
-		return errors.Wrapf(err, "failed to stop %s", activityName)
-	}
-
-	if err := activity.Start(ctx, tconn); err != nil {
-		return errors.Wrapf(err, "failed to start %s", activityName)
-	}
-	defer activity.Stop(ctxDefer, tconn)
-
-	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, false /* isSplashVisible */); err != nil {
-		return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
 	}
 
 	return nil
