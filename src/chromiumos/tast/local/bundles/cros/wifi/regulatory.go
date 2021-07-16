@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wifi/regdb"
+	"chromiumos/tast/local/bundles/cros/wifi/wlan"
 	network_iface "chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
@@ -45,6 +46,31 @@ func Regulatory(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get a WiFi interface: ", err)
 	}
 	s.Log("WiFi interface: ", iface)
+
+	devInfo, err := wlan.DeviceInfo(ctx, iface)
+	if err != nil {
+		s.Fatal("Failed to get device info: ", err)
+	}
+
+	// Intel WiFi should be self-managed.
+	selfManagedDevices := []string{
+		wlan.Intel7260,
+		wlan.Intel7265,
+		wlan.Intel9000,
+		wlan.Intel9260,
+		wlan.Intel22260,
+		wlan.Intel22560,
+		wlan.IntelAX211,
+	}
+
+	expectSelfManaged := false
+	for _, name := range selfManagedDevices {
+		if name == devInfo.Name {
+			expectSelfManaged = true
+			break
+		}
+	}
+
 	phy, err := network_iface.NewInterface(iface).PhyName(ctx)
 	if err != nil {
 		s.Fatal("Failed to get phy name: ", err)
@@ -53,8 +79,13 @@ func Regulatory(ctx context.Context, s *testing.State) {
 	iwr := iw.NewLocalRunner()
 	if selfManaged, err := iwr.IsRegulatorySelfManaged(ctx); err != nil {
 		s.Fatal("Failed to retrieve regulatory status: ", err)
-	} else if selfManaged {
-		s.Fatal("Test does not work on self-managed wiphys")
+	} else if selfManaged != expectSelfManaged {
+		s.Fatal("Unexpected self-managed value of wiphy, got %t, want %t", selfManaged, expectSelfManaged)
+	}
+
+	// If the wiphy is self-managed, we don't need later tests.
+	if expectSelfManaged {
+		return
 	}
 
 	initialDomain, err := iwr.RegulatoryDomain(ctx)
