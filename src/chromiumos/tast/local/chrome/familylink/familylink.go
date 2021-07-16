@@ -29,7 +29,7 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	parentFirstName, parentLastName, parentUser, parentPass,
 	secondUser, secondPass string) error {
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
 	if err := ui.Exists(nodewith.Name("This account is managed by Family Link").Role(role.Image))(ctx); err != nil {
@@ -47,6 +47,7 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	selectParentOption := nodewith.NameStartingWith(parentFirstName + " " + parentLastName).Role(role.ListBoxOption)
 	if err := uiauto.Combine("open in-session edu coexistence flow",
 		ui.WaitUntilExists(googleAccountsButton),
+		ui.FocusAndWait(googleAccountsButton), // scroll the button into view
 		ui.LeftClickUntil(googleAccountsButton, ui.Exists(addSchoolAccountButton)),
 		ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, ui.Exists(selectParentOption)),
 	)(ctx); err != nil {
