@@ -86,6 +86,24 @@
       "parentUuid": "90f702fe_ac365b60",
       "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a22e69_49d9df1c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-16T22:44:58Z",
+      "side": 1,
+      "message": "My main concern is that scheduling cleanup for each pin state iteration makes it harder to follow what actually happens on \"defer\" (especially if one is not familiar with how defer tasks are scheduled).\n\nAnd we\u0027d have to do more work than necessary - we only care that final state matches the initial, we should not have to set all intermediate states.",
+      "parentUuid": "93a60d9b_792c4a0f",
+      "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
