@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f501036_44f70d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-16T02:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55817d58_39dbcda8",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff11415_8928e959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_consumer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-16T02:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51a57308_9fa3f7b3",
+      "range": {
+        "startLine": 92,
+        "startChar": 39,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26296a2b_78ff5225",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-07-15T22:17:46Z",
       "side": 1,
       "message": "nit.",
+      "range": {
+        "startLine": 313,
+        "startChar": 127,
+        "endLine": 313,
+        "endChar": 128
+      },
+      "revId": "1db03cdcf246b4fa726e94972090b58d78c2c2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fc608f_78a56385",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-16T02:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26296a2b_78ff5225",
       "range": {
         "startLine": 313,
         "startChar": 127,
