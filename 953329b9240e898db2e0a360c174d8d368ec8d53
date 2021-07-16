@@ -16,6 +16,92 @@
       "message": "Hi Toby, addressing the low-hanging fruits in the bug.",
       "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036a56f8_cd9df56f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-16T23:03:14Z",
+      "side": 1,
+      "message": "Add dhaddock@ as a reviewer once ready.",
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6097a24_2995c254",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-16T23:03:14Z",
+      "side": 1,
+      "message": "What if instead of left clicking on the text field to focus it, we called ui.FocusAndWait()? Here and below before each call to kb.Type().",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2b56e9_745fe398",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-16T23:03:14Z",
+      "side": 1,
+      "message": "I also think this hacky way of typing \u003center\u003e to proceed to the next screen might cause flakiness. Perhaps just convert to clicking the \"next\" button all the way?",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148dc93a_51b7a24f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-16T23:03:14Z",
+      "side": 1,
+      "message": "What if you change this to ui.WithInterval(time.Second).LeftClickUntil()? That waits one second in between clicks.\n\nDoes that reduce the flakiness? I think the error page might happen from spamming the next button too much.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
