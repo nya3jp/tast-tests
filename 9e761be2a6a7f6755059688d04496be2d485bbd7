@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdffbf7_f7f788c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-07-16T02:03:47Z",
+      "side": 1,
+      "message": "Thanks for making this change.\nCan you keep the part in patchset 1 where it just removes the feature:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3006325/1/src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "9e761be2a6a7f6755059688d04496be2d485bbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
