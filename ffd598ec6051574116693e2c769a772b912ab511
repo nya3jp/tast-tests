@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b555c318_dee86cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T02:19:21Z",
+      "side": 1,
+      "message": "This function mostly only has indent change.",
+      "revId": "ffd598ec6051574116693e2c769a772b912ab511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c71ed18_31fffdbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T02:19:21Z",
+      "side": 1,
+      "message": "The changes of this function:\n- Add |method| param\n- Use a for-loop for toggleResizeLockMode()",
+      "revId": "ffd598ec6051574116693e2c769a772b912ab511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fce3ee5_f05fd7d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T02:19:21Z",
+      "side": 1,
+      "message": "The logic is mostly just moved from toggleResizeLockMode().",
+      "revId": "ffd598ec6051574116693e2c769a772b912ab511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
