@@ -26,11 +26,12 @@ import (
 )
 
 const (
-	resizeLockTestPkgName                        = "org.chromium.arc.testapp.resizelock"
-	resizeLockApkName                            = "ArcResizeLockTest.apk"
-	resizeLockMainActivityName                   = "org.chromium.arc.testapp.resizelock.MainActivity"
-	resizeLockUnresizableUnspecifiedActivityName = "org.chromium.arc.testapp.resizelock.UnresizableUnspecifiedActivity"
-	resizeLockUnresizablePortraitActivityName    = "org.chromium.arc.testapp.resizelock.UnresizablePortraitActivity"
+	resizeLockTestPkgName                               = "org.chromium.arc.testapp.resizelock"
+	resizeLockApkName                                   = "ArcResizeLockTest.apk"
+	resizeLockMainActivityName                          = "org.chromium.arc.testapp.resizelock.MainActivity"
+	resizeLockUnresizableUnspecifiedActivityName        = "org.chromium.arc.testapp.resizelock.UnresizableUnspecifiedActivity"
+	resizeLockUnresizablePortraitActivityName           = "org.chromium.arc.testapp.resizelock.UnresizablePortraitActivity"
+	resizeLockResizableUnspecifiedMaximizedActivityName = "org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity"
 
 	// Verifying splash visbility requires 3 different resize-locked apps.
 	resizeLock2PkgName = "org.chromium.arc.testapp.resizelock2"
@@ -260,16 +261,16 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 
 // testO4CApp verifies that an O4C app is not resize locked even if it's newly-installed.
 func testO4CApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, wm.Pkg24, wm.APKNameArcWMTestApp24, wm.ResizableUnspecifiedActivity)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, wm.Pkg24, wm.APKNameArcWMTestApp24, wm.ResizableUnspecifiedActivity, false /* checkRestoreMaximize */)
 }
 
 // testMaximizedApp verifies that an maximized app is not resize locked even if it's newly-installed.
 func testMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableUnspecifiedActivityName)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockResizableUnspecifiedMaximizedActivityName, true /* checkRestoreMaximize */)
 }
 
 // testNonResizeLocked verifies that the given app is not resize locked.
-func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, packageName, apkName, activityName string) error {
+func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, packageName, apkName, activityName string, checkRestoreMaximize bool) error {
 	if alreadyInstalled, err := reinstallAPK(ctx, a, packageName, apkName); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
@@ -290,6 +291,33 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	// Verify the initial state of the given non-resize-locked app.
 	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nonEligibleResizeLockMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
+	}
+
+	if checkRestoreMaximize {
+		// Restore the app and verify the app is resize-locked.
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, packageName, ash.WMEventNormal); err != nil {
+			errors.Wrapf(err, "failed to restore %s", activityName)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
+			errors.Wrapf(err, "failed to wait for %s to be restored", activityName)
+		}
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, false /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", activityName)
+		}
+		// Make the app resizable to enable maximization.
+		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, resizableResizeLockMode, dialogActionConfirm, inputMethodClick); err != nil {
+			return errors.Wrapf(err, "failed to change the resize lock mode of %s from tablet to resizable", apkName)
+		}
+		// Maximize the app and verify the app is not resize-locked.
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, packageName, ash.WMEventMaximize); err != nil {
+			errors.Wrapf(err, "failed to maximize %s", activityName)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateMaximized); err != nil {
+			errors.Wrapf(err, "failed to wait for %s to be maximized", activityName)
+		}
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nonEligibleResizeLockMode, false /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", activityName)
+		}
 	}
 	return nil
 }
@@ -472,6 +500,18 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 	} {
 		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, test.currentMode, test.nextMode, test.action, method); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from %s to %s via %s", apkName, test.currentMode, test.nextMode, method)
+		}
+
+		// Verify that relaunching an app doesn't cause any inconsistency.
+		if err := activity.Stop(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to stop %s", resizeLockMainActivityName)
+		}
+		if err := activity.Start(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to start %s", resizeLockMainActivityName)
+		}
+		defer activity.Stop(ctx, tconn)
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, test.nextMode, false /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
 		}
 	}
 

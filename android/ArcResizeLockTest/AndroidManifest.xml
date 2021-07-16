@@ -31,5 +31,10 @@
             android:exported="true"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResizableUnspecifiedMaximizedActivity"
+            android:exported="true">
+            <meta-data android:name="WindowManagerPreference:FreeformWindowSize" android:value="maximize" />
+        </activity>
     </application>
 </manifest>
