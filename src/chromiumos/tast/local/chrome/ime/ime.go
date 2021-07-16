@@ -15,12 +15,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// IMEPrefix is the prefix of IME chrome extension
-const IMEPrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
-
-// ChromiumIMEPrefix is the prefix of IME chromium extension
-const ChromiumIMEPrefix = "_comp_ime_fgoepimhcoialccpbmpnnblemnepkkao"
-
 // AddAndSetInputMethod adds the IME identified by imeID and then sets it to the current input method.
 // Note: this function will not do anything if the IME already exists.
 func AddAndSetInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
@@ -154,24 +148,24 @@ func DisableLanguage(ctx context.Context, tconn *chrome.TestConn, lang string) e
 	return tconn.Call(ctx, nil, `chrome.languageSettingsPrivate.disableLanguage`, lang)
 }
 
-// InputMethod is the Go binding struct of
+// BindingInputMethod is the Go binding struct of
 // https://source.chromium.org/chromium/chromium/src/+/HEAD:chrome/common/extensions/api/language_settings_private.idl;l=55
 // The struct only defines the necessary fields.
-type InputMethod struct {
+type BindingInputMethod struct {
 	ID string `json:"id"`
 }
 
-// InputMethodLists is the Go binding struct of
+// BindingInputMethodLists is the Go binding struct of
 // https://source.chromium.org/chromium/chromium/src/+/HEAD:chrome/common/extensions/api/language_settings_private.idl;l=75
 // The struct only defines the necessary fields.
-type InputMethodLists struct {
-	ThirdPartyExtensionIMEs []InputMethod `json:"thirdPartyExtensionImes"`
+type BindingInputMethodLists struct {
+	ThirdPartyExtensionIMEs []BindingInputMethod `json:"thirdPartyExtensionImes"`
 }
 
-// GetInputMethodLists returns supported InputMethodLists obtained
+// GetBrowserInputMethodLists returns supported InputMethodLists obtained
 // via chrome.languageSettingsPrivate.getInputMethodLists API.
-func GetInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*InputMethodLists, error) {
-	var imes InputMethodLists
+func GetBrowserInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*BindingInputMethodLists, error) {
+	var imes BindingInputMethodLists
 	if err := tconn.Call(ctx, &imes, `tast.promisify(chrome.languageSettingsPrivate.getInputMethodLists)`); err != nil {
 		return nil, err
 	}
@@ -180,8 +174,8 @@ func GetInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*InputMet
 
 // GetInstalledInputMethods returns installed input methods
 // via chrome.inputMethodPrivate.getInputMethods API.
-func GetInstalledInputMethods(ctx context.Context, tconn *chrome.TestConn) ([]InputMethod, error) {
-	var inputMethods []InputMethod
+func GetInstalledInputMethods(ctx context.Context, tconn *chrome.TestConn) ([]BindingInputMethod, error) {
+	var inputMethods []BindingInputMethod
 	if err := tconn.Call(ctx, &inputMethods, `tast.promisify(chrome.inputMethodPrivate.getInputMethods)`); err != nil {
 		return nil, err
 	}
