@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22001e0_44cf62d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T04:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b5c7aa_c7c4d76d",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 3
+      },
+      "revId": "7ed3c8c167f33cddce444bb5d4e06e02a609e2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e0ac4f_57510b58",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-16T00:05:28Z",
       "side": 1,
       "message": "nit: Given the 2 seconds mentioned in the comment, can this be reduced to say 2-5 seconds?",
+      "range": {
+        "startLine": 906,
+        "startChar": 34,
+        "endLine": 906,
+        "endChar": 36
+      },
+      "revId": "7ed3c8c167f33cddce444bb5d4e06e02a609e2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7275e862_54436e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T04:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e0ac4f_57510b58",
       "range": {
         "startLine": 906,
         "startChar": 34,
