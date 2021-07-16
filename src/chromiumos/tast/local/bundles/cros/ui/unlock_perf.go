@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Vars:         []string{"lacrosDeployedBinary"},
+		Vars:         []string{launcher.LacrosDeployedBinary},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedIn",

@@ -61,7 +61,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            launcher.LacrosFixtureVars,
+		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{
