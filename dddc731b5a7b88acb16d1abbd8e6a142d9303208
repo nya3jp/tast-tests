@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2d0b63_b27fc6e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-16T16:00:14Z",
+      "side": 1,
+      "message": "I think NewFirmwareTest is appropriate because the clean up process ensures the FPMCU is left in a good state for the next test. Also standardizing our tast tests improves readability",
+      "parentUuid": "8a991996_d3ad3962",
+      "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd54eff_bdaedda3",
