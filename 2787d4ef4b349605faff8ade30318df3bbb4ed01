@@ -247,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e943c9_87c9eb20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:47:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05b9db68_fbf5c85e",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcdca627_c21e84b1",
@@ -341,6 +365,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ec4443_15e86436",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:47:51Z",
+      "side": 1,
+      "message": "Looks nice.",
+      "parentUuid": "4cb9e4b4_08dc59e2",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 54
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7b04573_13fb74fe",
@@ -425,6 +473,30 @@
       "side": 1,
       "message": "I see! Updated, please check.",
       "parentUuid": "47dd84eb_92e75bfb",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "2787d4ef4b349605faff8ade30318df3bbb4ed01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3788974_b04451cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:47:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a148042_17d3981f",
       "range": {
         "startLine": 39,
         "startChar": 1,
