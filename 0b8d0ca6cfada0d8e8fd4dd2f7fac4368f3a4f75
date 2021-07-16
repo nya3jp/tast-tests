@@ -68,6 +68,24 @@
       "parentUuid": "8366ef51_3944f5fe",
       "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff2a49e_2dad6c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-16T13:58:57Z",
+      "side": 1,
+      "message": "minijail ignoring SIGABRT is interesting... We could probably pick a different signal that is intended to terminate the program, if so?",
+      "parentUuid": "e7187a05_1d39466e",
+      "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
