@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc64cb1_5e49f908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:34:14Z",
+      "side": 1,
+      "message": "We have to split results to multiple responses - otherwise streaming responses are not useful.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 76
+      },
+      "revId": "588adb6c5608ce55e13c381fdb38be1147e393c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
