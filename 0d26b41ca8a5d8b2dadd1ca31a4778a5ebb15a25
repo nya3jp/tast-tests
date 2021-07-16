@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e31aca_381eb7f4",
+        "filename": "src/chromiumos/tast/local/chrome/ime/inputmethods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-16T02:24:53Z",
+      "side": 1,
+      "message": "\u003e \"strcuture\" is a possible misspelling of \"structure\".\n\nPlease fix.",
+      "parentUuid": "047da7f6_ac778892",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "0d26b41ca8a5d8b2dadd1ca31a4778a5ebb15a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
