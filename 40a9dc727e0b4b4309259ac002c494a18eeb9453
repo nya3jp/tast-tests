@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b57b39_b3c60fff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-07-16T14:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62510382_50333165",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "40a9dc727e0b4b4309259ac002c494a18eeb9453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6ec989d_406ebc19",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-16T09:34:31Z",
       "side": 1,
       "message": "nit: I would add these only as a review comment, as this information will become obsolete in a month, so it does not add value in the git history.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 84
+      },
+      "revId": "40a9dc727e0b4b4309259ac002c494a18eeb9453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4ce613_9568dda7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-07-16T14:38:21Z",
+      "side": 1,
+      "message": "All stable in tastboard\nhttps://tastboard.corp.google.com/test/peripherals.LaunchAppFromSettings.scan\nhttps://tastboard.corp.google.com/test/peripherals.LaunchAppFromSettings.print_management\nhttps://tastboard.corp.google.com/test/peripherals.LaunchAppFromSettings.diagnostics",
+      "parentUuid": "b6ec989d_406ebc19",
       "range": {
         "startLine": 10,
         "startChar": 0,
