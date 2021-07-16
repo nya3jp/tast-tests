@@ -37,18 +37,18 @@ func init() {
 			{
 				Name: "en_us_1",
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
-					MisspeltWord:  "helol",
-					CorrectWord:   "hello",
-					UndoMethod:    autocorrect.ViaPopupUsingPK,
+					InputMethod:  ime.XKB_US_ENG,
+					MisspeltWord: "helol",
+					CorrectWord:  "hello",
+					UndoMethod:   autocorrect.ViaPopupUsingPK,
 				},
 			}, {
 				Name: "en_us_2",
 				Val: autocorrect.TestCase{
-					InputMethodID: string(ime.INPUTMETHOD_XKB_US_ENG),
-					MisspeltWord:  "wrold",
-					CorrectWord:   "world",
-					UndoMethod:    autocorrect.ViaPopupUsingMouse,
+					InputMethod:  ime.XKB_US_ENG,
+					MisspeltWord: "wrold",
+					CorrectWord:  "world",
+					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
 			},
 			// Test cases for other input methods can be added once the framework
@@ -64,10 +64,11 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	imeCode := ime.IMEPrefix + testCase.InputMethodID
-	s.Logf("Set current input method to: %s", imeCode)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
-		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+	inputMethod := testCase.InputMethod
+	s.Logf("Set current input method to: %q", inputMethod.ToString())
+
+	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to set input method to %q: %v: ", inputMethod.ToString(), err)
 	}
 
 	keyboard, err := input.Keyboard(ctx)
@@ -90,7 +91,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		var settingsAPICall = fmt.Sprintf(
 			`chrome.inputMethodPrivate.setSettings(
 						 "%s", { "physicalKeyboardAutoCorrectionLevel": %s})`,
-			testCase.InputMethodID, level)
+			testCase.InputMethod.ID, level)
 
 		tconn := s.PreValue().(pre.PreData).TestAPIConn
 		if err := tconn.Eval(ctx, settingsAPICall, nil); err != nil {
