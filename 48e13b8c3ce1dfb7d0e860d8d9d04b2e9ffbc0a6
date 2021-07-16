@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50942a6f_03ba507e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T23:15:27Z",
+      "side": 1,
+      "message": "update documentation",
+      "range": {
+        "startLine": 482,
+        "startChar": 13,
+        "endLine": 482,
+        "endChar": 19
+      },
+      "revId": "48e13b8c3ce1dfb7d0e860d8d9d04b2e9ffbc0a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b2891d_089d7d1e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T23:15:27Z",
+      "side": 1,
+      "message": "document",
+      "revId": "48e13b8c3ce1dfb7d0e860d8d9d04b2e9ffbc0a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
