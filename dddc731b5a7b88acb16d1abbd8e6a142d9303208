@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08dcb687_9fa62cc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-16T21:17:46Z",
+      "side": 1,
+      "message": "We should initialize the test with hardware and software write protect both false to minimizes the amount of code that could fail in NewFirmwareTest.",
+      "parentUuid": "f97ab966_8c689cb5",
+      "revId": "dddc731b5a7b88acb16d1abbd8e6a142d9303208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcd54eff_bdaedda3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
         "patchSetId": 1

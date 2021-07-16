@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba2086e_a363e9b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-07-16T21:17:46Z",
+      "side": 1,
+      "message": "Please re-use existing servo proxy: \n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go?l\u003d384\u0026rcl\u003d9ac97bfae03319966d5af026175226c2d821801d",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "228bd8fb08097c2c72377d1dfde31c234acfa5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
