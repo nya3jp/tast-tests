@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f072ae5_b9073dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-16T00:48:13Z",
+      "side": 1,
+      "message": "Seems none of these are being used? Maybe remove them",
+      "range": {
+        "startLine": 625,
+        "startChar": 45,
+        "endLine": 625,
+        "endChar": 93
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2401fa2_d15dceed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-16T00:48:13Z",
+      "side": 1,
+      "message": "This seems rather costly. Every time we\u0027re running checkResizeLockState we\u0027re doing the same verification no? activity.WindowBounds then grab screenshot. Could this be done before all the checks and the screenshot passed into these functions instead?",
+      "range": {
+        "startLine": 632,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 3
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edb527d3_89ddc8e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 1
@@ -59,6 +105,29 @@
         "startChar": 3,
         "endLine": 642,
         "endChar": 218
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5f9951_457f9077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-16T00:48:13Z",
+      "side": 1,
+      "message": "nit: these seem to be common amongst a lot of these helper methods, consider centralising this at the start of resizeLock isntead, for a follow up CL maybe?",
+      "range": {
+        "startLine": 645,
+        "startChar": 4,
+        "endLine": 645,
+        "endChar": 74
       },
       "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
