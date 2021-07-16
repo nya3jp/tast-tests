@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "64c585fca5c495958247f32cea27413bac917201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76531bb3_77d2f4da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-16T20:40:07Z",
+      "side": 1,
+      "message": "The previous error logs also had info about the checkbox when used. If those were useful, it might be nice to consider including that info here somewhere.",
+      "revId": "64c585fca5c495958247f32cea27413bac917201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
