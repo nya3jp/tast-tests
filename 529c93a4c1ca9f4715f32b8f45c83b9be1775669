@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8d3b9f_9bda1666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T10:02:47Z",
+      "side": 1,
+      "message": "PTAL again!\n\nNow this CL only extracts input logic into separate functions.",
+      "revId": "529c93a4c1ca9f4715f32b8f45c83b9be1775669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
