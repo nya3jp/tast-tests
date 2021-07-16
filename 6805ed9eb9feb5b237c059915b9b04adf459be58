@@ -68,6 +68,24 @@
       "parentUuid": "c3aa68cd_c8e1c063",
       "revId": "6805ed9eb9feb5b237c059915b9b04adf459be58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17660999_081fdc05",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-07-16T06:05:12Z",
+      "side": 1,
+      "message": "oh, i was imagining just something very simple, like \"failed to .....(expected if recovery mode).\n\nBut it\u0027s just a nit, anyway.",
+      "parentUuid": "807c0b8e_ffe9d058",
+      "revId": "6805ed9eb9feb5b237c059915b9b04adf459be58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
