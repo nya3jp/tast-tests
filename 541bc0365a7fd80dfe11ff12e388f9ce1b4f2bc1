@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3e0821_2c3972aa",
+        "filename": "src/chromiumos/tast/remote/hwsec/tpm_clearer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-07-16T04:36:42Z",
+      "side": 1,
+      "message": "optionally, tell the fact that the error message is for verbosity.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "541bc0365a7fd80dfe11ff12e388f9ce1b4f2bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
