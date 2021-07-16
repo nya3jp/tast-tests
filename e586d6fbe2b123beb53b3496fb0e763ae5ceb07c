@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286ff97f_f5b2add9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-16T07:50:49Z",
+      "side": 1,
+      "message": "The test does not seem stable enough to be added to the Cq\n\nhttps://cros-health-prod.googleplex.com/test/hardware.SensorIioservice\n\nCriteria for adding Cq:\nhttps://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
+      "revId": "e586d6fbe2b123beb53b3496fb0e763ae5ceb07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
