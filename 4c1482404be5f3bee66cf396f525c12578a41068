@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "092599b5_d780a1f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-16T10:57:24Z",
+      "side": 1,
+      "message": "Hi Oleh,\n\nI think you wrote PowerManagerEmitter. Would you mind reviewing this CL? Please let me know if there\u0027s a better owner/reviewer for the power package.\n\nThanks!",
+      "revId": "4c1482404be5f3bee66cf396f525c12578a41068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
