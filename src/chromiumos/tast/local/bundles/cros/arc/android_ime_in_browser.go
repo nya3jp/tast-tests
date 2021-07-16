@@ -39,7 +39,7 @@ func init() {
 }
 
 func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.TestConn, pkg string) (string, error) {
-	imes, err := ime.GetInputMethodLists(ctx, tconn)
+	imes, err := ime.GetBrowserInputMethodLists(ctx, tconn)
 	if err != nil {
 		return "", err
 	}
