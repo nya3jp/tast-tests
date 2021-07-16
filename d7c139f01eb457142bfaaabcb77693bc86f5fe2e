@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367a7dd8_30e61ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_trace_based_metrics_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T07:11:55Z",
+      "side": 1,
+      "message": "Optional, JFYI: If we use 3-clause for-loops:\n\n const packetSize \u003d 1024 * 1024\n for start :\u003d 0; start \u003c len(result); start +\u003d packetSize {\n   end :\u003d start + packetSize\n   if end \u003e len(result) {\n     end \u003d len(result)\n   }\n   if err :\u003d sender.Send(... result[start:end]); err !\u003d nil {\n     return err\n   }\n }\n return nil",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "d7c139f01eb457142bfaaabcb77693bc86f5fe2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
