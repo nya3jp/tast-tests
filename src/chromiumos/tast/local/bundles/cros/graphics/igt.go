@@ -207,9 +207,9 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
-			Name: "kms_pipe_crc_blank",
+			Name: "kms_pipe_crc_basic",
 			Val: igtTest{
-				exe: "kms_pipe_crc_blank",
+				exe: "kms_pipe_crc_basic",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
