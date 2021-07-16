@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2e4c34_17d2806a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-16T20:42:20Z",
+      "side": 1,
+      "message": "Both of them needs to be tested.",
+      "parentUuid": "4dcf326d_bf566e64",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bb3dd6ac_ff09bee0",
@@ -78,6 +102,24 @@
       "writtenOn": "2021-07-15T11:03:33Z",
       "side": 1,
       "message": "Isn\u0027t it better to check that if the removable media is not set to be visible via Chrome OS Settings, the Android folder is not created even after the ArcExternalStorageTest app is launched?",
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a21f51_3f3fa3b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-16T20:42:20Z",
+      "side": 1,
+      "message": "I agree that this path also need to be tested otherwise this test will pass even if Android directory is always created.",
+      "parentUuid": "5f43e9c9_371862bb",
       "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
