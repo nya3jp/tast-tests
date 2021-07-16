@@ -447,6 +447,17 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, test.currentMode, test.nextMode, test.action); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from %s to %s", resizeLockApkName, test.currentMode, test.nextMode)
 		}
+
+		// Verify that relaunching an app doesn't cause any inconsistency.
+		if err := activity.Stop(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to stop %s", resizeLockMainActivityName)
+		}
+		if err := activity.Start(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to start %s", resizeLockMainActivityName)
+		}
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, test.nextMode, false /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
+		}
 	}
 
 	for _, test := range []struct {
