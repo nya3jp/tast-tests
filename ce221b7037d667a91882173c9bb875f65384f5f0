@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7ea45a_59a31483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T22:28:03Z",
+      "side": 1,
+      "message": "Updated to use \t\t\n\nmouse.Move(2000, 2000)\n\nas moving to chromiumos/tast/local/chrome/ui/mouse\u0027s Move does not allow the mouse pointer to move low enough to trigger the autohidden shelf to be shown.\n\n",
+      "revId": "ce221b7037d667a91882173c9bb875f65384f5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
