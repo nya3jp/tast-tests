@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43814d2_96727dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-16T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ec6791f_70b8402c",
+      "revId": "7977ab5fcbf4f4f9c2cf2737604fcac11219b113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a29528d3_d36994f0",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-15T16:19:22Z",
       "side": 1,
       "message": "optional: I might keep the original language of the failure log since it is more descriptive and to be consistent with the rest of the test.",
+      "revId": "7977ab5fcbf4f4f9c2cf2737604fcac11219b113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709f02df_20194841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-16T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29528d3_d36994f0",
       "revId": "7977ab5fcbf4f4f9c2cf2737604fcac11219b113",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
