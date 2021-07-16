@@ -47,10 +47,13 @@ var UnstableModels = []string{
 	"blacktip360",
 	"blacktiplte",
 	"bruce",
+	"epaulette",
 	"lava",
 	"nasher",
 	// Platform elm
 	"elm",
+	// Platform edgar
+	"edgar",
 	// Platform fiss-moblab
 	"wukong",
 	// Platform fizz
@@ -66,6 +69,12 @@ var UnstableModels = []string{
 	"guado", // crbug.com/1072877
 	// Platform hana
 	"hana",
+	// Platform hatch
+	"kled",
+	"nightfury",
+	// Platform jacuzzi
+	"fennel",
+	"fennel14",
 	// Platform kevin
 	"kevin",
 	"kevin1", // crbug.com/1140145
@@ -79,6 +88,7 @@ var UnstableModels = []string{
 	"ampton",
 	"apel",
 	"bloog",
+	"blorb",
 	"bluebird",
 	"droid",
 	"fleex",
@@ -90,12 +100,23 @@ var UnstableModels = []string{
 	"sparky",
 	"vorticon",
 	"vortininja",
+	// Platform puff
+	"dooly",
+	"faffy",
+	// Platform pyro
+	"pyro",
 	// Platform reef
 	"electro",
+	// Platform reks
+	"reks",
 	// Platform sarien
 	"arcada",
 	// Platform samus
 	"samus", // crbug.com/1072877
+	// Platform scarlet
+	"dru",
+	// Platform soraka
+	"soraka",
 	// Platform stratego
 	"banon",
 	"celes",
@@ -106,6 +127,16 @@ var UnstableModels = []string{
 	"ultima",
 	// Platform tidus
 	"tidus", // crbug.com/1072877
+	// Platform trogdor
+	"lazor",
+	"limozeen",
+	"pompom",
+	// Platform volteer
+	"lindar",
+	// Platform zork
+	"berknip",
+	"vilboz",
+	"vilboz360",
 }
 
 // CrostiniMinDiskSizeCond is a hardware condition that only runs tests on models with > 12GB of disk size.
