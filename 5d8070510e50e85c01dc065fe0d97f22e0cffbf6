@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0562cb1_b610cd88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:47:51Z",
+      "side": 1,
+      "message": "We have to process multiple responses from the server. See my next comment for example.\n\nAlso c.f. https://grpc.io/docs/languages/go/basics/#server-side-streaming-rpc-1",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "5d8070510e50e85c01dc065fe0d97f22e0cffbf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139b9368_e63781b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-16T04:47:51Z",
+      "side": 1,
+      "message": "tempFile must be closed to avoid file descriptor leaks. Also, when writing to a file, we have to watch for an error from Close to detect errors that occur between Write and Close. This is one of common code patterns known to be cumbersome in Go. 😞\n\nHere\u0027s an example to do this:\n\n func RunPerfetto(...) (path string, retErr error) {  // name the return value\n   ...\n   \n   stream, err :\u003d pc.GeneratePerfettoTrace(...)\n   if err !\u003d nil {\n     return ...\n   }\n \n   tempFile, err :\u003d ioutil.TempFile(...)\n   if err !\u003d nil {\n     return ...\n   }\n   defer func() {\n     if err :\u003d tempFile.Close(); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n       retErr \u003d err\n     }\n     if retErr !\u003d nil {\n       os.Remove(tempFile.Name())\n     }\n   }()\n \n   for {\n     res, err :\u003d stream.Recv()\n     if err \u003d\u003d io.EOF {\n       return tempFile.Name(), nil\n     }\n     if err !\u003d nil {\n       return \"\", err\n     }\n     \n     if _, err :\u003d tempFile.Write(res.Result); err !\u003d nil {\n       return \"\", err\n     }\n   }\n }",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "5d8070510e50e85c01dc065fe0d97f22e0cffbf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
