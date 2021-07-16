@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const pkgName = "com.android.vending"
+const ghostWindowPlayStorePkgName = "com.android.vending"
 const appID = "cnbgggchhmkkdmeppjobngjoejnihlei"
 
 const testTimeout = 5 * time.Minute
@@ -39,7 +39,7 @@ func init() {
 
 func waitPlayStoreShown(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName); err != nil {
+		if _, err := ash.GetARCAppWindowInfo(ctx, tconn, ghostWindowPlayStorePkgName); err != nil {
 			return err
 		}
 		return nil
