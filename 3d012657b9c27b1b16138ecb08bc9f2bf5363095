@@ -16,6 +16,24 @@
       "message": "Is there any history why precondition is used instead of fixtures?",
       "revId": "3d012657b9c27b1b16138ecb08bc9f2bf5363095",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f67af9_7db48b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-16T02:08:40Z",
+      "side": 1,
+      "message": "Looks like the only difference from arc.Booted() is that it will GAIA login with the app compat credentials, and opt-in to the Play Store. Please find the history of it, (crrev.com/c/2194169)",
+      "parentUuid": "3198f9f0_80da9ce7",
+      "revId": "3d012657b9c27b1b16138ecb08bc9f2bf5363095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
