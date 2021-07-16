@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38feeb80_2f86ade2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T23:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0cca7aa_555c5e1e",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 32
+      },
+      "revId": "ce221b7037d667a91882173c9bb875f65384f5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e3554e5_fc6f330b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-16T22:37:20Z",
       "side": 1,
       "message": "It seems that this function is related to an existing function called `SwipeUpHotseatAndWaitForCompletion()`. Could we merge these two functions into one to reduce code duplication?",
+      "range": {
+        "startLine": 485,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 41
+      },
+      "revId": "ce221b7037d667a91882173c9bb875f65384f5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1cbdb64_41b95332",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T23:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e3554e5_fc6f330b",
       "range": {
         "startLine": 485,
         "startChar": 0,

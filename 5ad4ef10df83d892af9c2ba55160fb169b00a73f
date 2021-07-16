@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9034bcbe_9218e434",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T23:15:27Z",
+      "side": 1,
+      "message": "WaitForHotseatToUpdateAutoHideState",
+      "revId": "5ad4ef10df83d892af9c2ba55160fb169b00a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "015911e8_d1795e35",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-16T23:15:27Z",
+      "side": 1,
+      "message": "document",
+      "revId": "5ad4ef10df83d892af9c2ba55160fb169b00a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
