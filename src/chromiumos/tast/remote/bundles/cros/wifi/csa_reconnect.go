@@ -89,7 +89,7 @@ func CSAReconnect(ctx context.Context, s *testing.State) {
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
 	monitorProps := []string{shillconst.ServicePropertyIsConnected}
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 	if err != nil {
 		s.Fatal("DUT: failed to create a property watcher, err: ", err)
 	}

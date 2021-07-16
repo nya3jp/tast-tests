@@ -160,7 +160,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to disconnect WiFi: ", err)
 			}
 			// Wait for DUT to disconnect.
-			if err := tf.AssureDisconnect(ctx, resp.ServicePath, 20*time.Second); err != nil {
+			if err := tf.WifiClient().AssureDisconnect(ctx, resp.ServicePath, 20*time.Second); err != nil {
 				s.Fatalf("DUT: failed to disconnect in %s: %v", 20*time.Second, err)
 			}
 		}

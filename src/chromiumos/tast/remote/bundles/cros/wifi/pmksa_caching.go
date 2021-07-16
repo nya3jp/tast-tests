@@ -114,11 +114,11 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 
 	roamCtx, cancel := context.WithTimeout(ctx, roamTimeout)
 	defer cancel()
-	waitForRoam, err := tf.ExpectShillProperty(roamCtx, connResp.ServicePath, roamProps(ap1BSSID), nil)
+	waitForRoam, err := tf.WifiClient().ExpectShillProperty(roamCtx, connResp.ServicePath, roamProps(ap1BSSID), nil)
 	if err != nil {
 		s.Fatal("Failed to create a property watcher on DUT: ", err)
 	}
-	skippedRecver, err := tf.EAPAuthSkipped(roamCtx)
+	skippedRecver, err := tf.WifiClient().EAPAuthSkipped(roamCtx)
 	if err != nil {
 		s.Fatal("Failed to create a EAP authentication watcher: ", err)
 	}
@@ -142,10 +142,10 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get interface from DUT: ", err)
 	}
-	if err := tf.DiscoverBSSID(roamCtx, ap1BSSID, iface, []byte(ssid)); err != nil {
+	if err := tf.WifiClient().DiscoverBSSID(roamCtx, ap1BSSID, iface, []byte(ssid)); err != nil {
 		s.Fatal("Failed to discover AP1's BSSID: ", err)
 	}
-	if err := tf.RequestRoam(roamCtx, iface, ap1BSSID, 5*time.Second); err != nil {
+	if err := tf.WifiClient().RequestRoam(roamCtx, iface, ap1BSSID, 5*time.Second); err != nil {
 		s.Errorf("Failed to roam from %s to %s: %v", ap0BSSID, ap1BSSID, err)
 	}
 
@@ -165,11 +165,11 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 
 	roamCtx, cancel = context.WithTimeout(ctx, roamTimeout)
 	defer cancel()
-	waitForRoam, err = tf.ExpectShillProperty(roamCtx, connResp.ServicePath, roamProps(ap0BSSID), nil)
+	waitForRoam, err = tf.WifiClient().ExpectShillProperty(roamCtx, connResp.ServicePath, roamProps(ap0BSSID), nil)
 	if err != nil {
 		s.Fatal("Failed to create a property watcher on DUT: ", err)
 	}
-	skippedRecver, err = tf.EAPAuthSkipped(roamCtx)
+	skippedRecver, err = tf.WifiClient().EAPAuthSkipped(roamCtx)
 	if err != nil {
 		s.Fatal("Failed to create a EAP authentication watcher: ", err)
 	}

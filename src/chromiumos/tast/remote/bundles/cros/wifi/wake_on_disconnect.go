@@ -35,7 +35,7 @@ func WakeOnDisconnect(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
 	features := shillconst.WakeOnWiFiFeaturesDarkConnect
-	ctx, restoreWakeOnWiFi, err := tf.SetWakeOnWifi(ctx, wificell.WakeOnWifiFeatures(features))
+	ctx, restoreWakeOnWiFi, err := tf.WifiClient().SetWakeOnWifi(ctx, wificell.WakeOnWifiFeatures(features))
 	if err != nil {
 		s.Fatal("Failed to set up wake on WiFi: ", err)
 	}

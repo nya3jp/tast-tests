@@ -37,7 +37,7 @@ func init() {
 func ConnectMBO(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	ctx, restore, err := tf.DisableMACRandomize(ctx)
+	ctx, restore, err := tf.WifiClient().DisableMACRandomize(ctx)
 	if err != nil {
 		s.Fatal("Failed to disable MAC randomization: ", err)
 	}
