@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0b15f8_5fcad10d",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-16T10:59:30Z",
+      "side": 1,
+      "message": "\u003e \"informations\" is a possible misspelling of \"information\".\n\nFixed.",
+      "parentUuid": "0f650786_1e35ad6b",
+      "range": {
+        "startLine": 409,
+        "startChar": 24,
+        "endLine": 409,
+        "endChar": 36
+      },
+      "revId": "ab8f81f53b7fa145a84e8120e7b93e5442e109f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7a209d_b2e11b24",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-16T10:59:30Z",
+      "side": 1,
+      "message": "\u003e \"informations\" is a possible misspelling of \"information\".\n\nFixed.",
+      "parentUuid": "73d2f5dc_e4642eb7",
+      "range": {
+        "startLine": 492,
+        "startChar": 23,
+        "endLine": 492,
+        "endChar": 35
+      },
+      "revId": "ab8f81f53b7fa145a84e8120e7b93e5442e109f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
