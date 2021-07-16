@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a735838_8c21bb68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-16T07:52:23Z",
+      "side": 1,
+      "message": "As number of tests per app are almost double per app now, better to split into batches. Can merge 1st batch stabilize it and make the second batch. Else it might be too much noise with many failure.",
+      "revId": "d7ee1f96069cf32e01373d1eed9d3e2ca6273389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
