@@ -131,7 +131,7 @@ func MTBF(ctx context.Context, s *testing.State) {
 		bgCtx, cancel := context.WithCancel(ctx)
 		go func() {
 			defer close(ch)
-			ch <- tf.Suspend(bgCtx, duration)
+			ch <- tf.WifiClient().Suspend(bgCtx, duration)
 		}()
 		return ch, func() {
 			// In case we failed and returned early in fg routine, cancel the bg routine and wait for it.
@@ -206,7 +206,7 @@ func MTBF(ctx context.Context, s *testing.State) {
 		}
 
 		if !runStep(ctx, fmt.Sprintf("Suspend for %v and reconnect to AP1", suspendDuration), suspendReconnectTimeout, func(ctx context.Context) error {
-			if _, err := tf.SuspendAssertConnect(ctx, suspendDuration); err != nil {
+			if _, err := tf.WifiClient().SuspendAssertConnect(ctx, suspendDuration); err != nil {
 				return errors.Wrap(err, "failed to suspend and reconnect to AP1")
 			}
 			if err := traffic(ctx, ap1.ServerIP()); err != nil {
@@ -218,7 +218,7 @@ func MTBF(ctx context.Context, s *testing.State) {
 		}
 
 		if !runStep(ctx, fmt.Sprintf("Suspend for %v and move to AP2", suspendDuration), suspendMoveTimeout, func(ctx context.Context) error {
-			disconnFromAp1Props, err := tf.ExpectShillProperty(ctx, ap1ServicePath, []*wificell.ShillProperty{{
+			disconnFromAp1Props, err := tf.WifiClient().ExpectShillProperty(ctx, ap1ServicePath, []*wificell.ShillProperty{{
 				Property:       shillconst.ServicePropertyState,
 				ExpectedValues: []interface{}{shillconst.ServiceStateIdle},
 				Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
@@ -258,7 +258,7 @@ func MTBF(ctx context.Context, s *testing.State) {
 		}
 
 		return runStep(ctx, fmt.Sprintf("Suspend for %v and move back to AP1", suspendDuration), suspendMoveBackTimeout, func(ctx context.Context) error {
-			backToAP1Props, err := tf.ExpectShillProperty(ctx, ap1ServicePath, []*wificell.ShillProperty{{
+			backToAP1Props, err := tf.WifiClient().ExpectShillProperty(ctx, ap1ServicePath, []*wificell.ShillProperty{{
 				Property:       shillconst.ServicePropertyState,
 				ExpectedValues: []interface{}{shillconst.ServiceStateIdle},
 				Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,

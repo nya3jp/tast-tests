@@ -105,7 +105,7 @@ func Prefer5Ghz(ctx context.Context, s *testing.State) {
 	}
 	s.Log("WiFi signal: ", listSignal(freqSignal))
 
-	service, err := tf.QueryService(ctx)
+	service, err := tf.WifiClient().QueryService(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the active WiFi service from DUT: ", err)
 	}
