@@ -68,6 +68,24 @@
       "parentUuid": "b3b66246_58f7a109",
       "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a60d9b_792c4a0f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-16T21:26:42Z",
+      "side": 1,
+      "message": "In fact, we call `EnsureTabletModeEnabled()` several times in wm_nonresizable_conversion.go",
+      "parentUuid": "90f702fe_ac365b60",
+      "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
