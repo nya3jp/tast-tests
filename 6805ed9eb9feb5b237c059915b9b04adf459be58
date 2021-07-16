@@ -33,6 +33,23 @@
       "message": "Verified with `tast run $DUT firmware.Fixture*` with this change patched.",
       "revId": "6805ed9eb9feb5b237c059915b9b04adf459be58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3aa68cd_c8e1c063",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-07-16T04:38:24Z",
+      "side": 1,
+      "message": "so this line is reached no matter if it\u0027s expect. maybe we can print different messages for recovery and non-recovery case?",
+      "revId": "6805ed9eb9feb5b237c059915b9b04adf459be58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
