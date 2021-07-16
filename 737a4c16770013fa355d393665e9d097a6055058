@@ -342,6 +342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ed9bc94_cd939fa5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-16T15:09:29Z",
+      "side": 1,
+      "message": "Hi! \nIt\u0027s a diabolical question, sir :) \nFrom a cursory look, it may well seem that only one percentage will be okay, but that would be a hard requirement. What I am trying to say is, imagine battery is at 6% and in another scenario it\u0027s at 94%, what value will we put to justify the range (16 - 95 in peakshift)?\n[In reality, I guess DUT is always plugged in, so don\u0027t know if that would be applicable, at all]\nOne drawback, timeouts will be frequent. What do you think?",
+      "parentUuid": "c2db141b_f8040796",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06999891_488382f9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
         "patchSetId": 6
