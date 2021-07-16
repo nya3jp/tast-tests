@@ -183,6 +183,13 @@ service ShillService {
 
   // CheckLastWakeReason checks if the last wake reason of WiFi device is as expected.
   rpc CheckLastWakeReason(CheckLastWakeReasonRequest) returns (google.protobuf.Empty) {}
+
+  // WatchDarkResume is a streaming gRPC which watchers power manager's D-Bus
+  // signals until next resume (SuspendDone), and returns the count of dark
+  // resumes.
+  // Note that it sends back an empty response first to notify the caller that
+  // the D-Bus watcher is ready.
+  rpc WatchDarkResume(google.protobuf.Empty) returns (stream WatchDarkResumeResponse) {}
 }
 
 message ConnectRequest {
@@ -522,4 +529,8 @@ message GetWakeOnWifiResponse {
 
 message CheckLastWakeReasonRequest {
   string reason = 1;
+}
+
+message WatchDarkResumeResponse {
+  uint32 count = 1;
 }
