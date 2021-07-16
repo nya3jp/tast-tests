@@ -418,31 +418,25 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
 	}
 
-	// Toggle between Phone and Tablet.
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, tabletResizeLockMode, dialogActionNoDialog); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from phone to tablet", resizeLockMainActivityName)
-	}
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, phoneResizeLockMode, dialogActionNoDialog); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from tablet to phone", resizeLockMainActivityName)
-	}
-
-	// Toggle between Phone and Resizable without "Don't ask me again" checked.
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, resizableResizeLockMode, dialogActionConfirm); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from phone to resizable with the checkbox off", resizeLockMainActivityName)
-	}
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, resizableResizeLockMode, phoneResizeLockMode, dialogActionNoDialog); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from resizable to phone", resizeLockMainActivityName)
-	}
-
-	// Toggle between Phone and Resizable with "Don't ask me again" checked.
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, resizableResizeLockMode, dialogActionConfirmWithDoNotAskMeAgainChecked); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from phone to resizable with the checkbox on", resizeLockMainActivityName)
-	}
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, resizableResizeLockMode, phoneResizeLockMode, dialogActionNoDialog); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from resizable to phone", resizeLockMainActivityName)
-	}
-	if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, resizableResizeLockMode, dialogActionNoDialog); err != nil {
-		return errors.Wrapf(err, "failed to change the resize lock mode of %s from phone to resizable", resizeLockMainActivityName)
+	for _, test := range []struct {
+		currentMode resizeLockMode
+		nextMode    resizeLockMode
+		action      confirmationDialogAction
+	}{
+		// Toggle between Phone and Tablet.
+		{phoneResizeLockMode, tabletResizeLockMode, dialogActionNoDialog},
+		{tabletResizeLockMode, phoneResizeLockMode, dialogActionNoDialog},
+		// Toggle between Phone and Resizable without "Don't ask me again" checked.
+		{phoneResizeLockMode, resizableResizeLockMode, dialogActionConfirm},
+		{resizableResizeLockMode, phoneResizeLockMode, dialogActionNoDialog},
+		// Toggle between Phone and Resizable with "Don't ask me again" checked.
+		{phoneResizeLockMode, resizableResizeLockMode, dialogActionConfirmWithDoNotAskMeAgainChecked},
+		{resizableResizeLockMode, phoneResizeLockMode, dialogActionNoDialog},
+		{phoneResizeLockMode, resizableResizeLockMode, dialogActionNoDialog},
+	} {
+		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, test.currentMode, test.nextMode, test.action); err != nil {
+			return errors.Wrapf(err, "failed to change the resize lock mode of %s from %s to %s", resizeLockApkName, test.currentMode, test.nextMode)
+		}
 	}
 
 	for _, test := range []struct {
