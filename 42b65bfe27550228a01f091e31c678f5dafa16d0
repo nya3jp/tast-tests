@@ -39,6 +39,30 @@
       },
       "revId": "42b65bfe27550228a01f091e31c678f5dafa16d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd598c6d_4cb897cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1415460
+      },
+      "writtenOn": "2021-07-16T16:52:28Z",
+      "side": 1,
+      "message": "I think for firstTabRect to successfully be determined, the pc.click operation needs to precede it and expand the WebUI tab strip, and pc.Drag depends on this coordinate. Not sure if there is a way around this.",
+      "parentUuid": "f04c36c0_34482e1e",
+      "range": {
+        "startLine": 410,
+        "startChar": 13,
+        "endLine": 410,
+        "endChar": 21
+      },
+      "revId": "42b65bfe27550228a01f091e31c678f5dafa16d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
