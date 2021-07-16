@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e1d554_b0fa00d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-16T06:40:26Z",
+      "side": 1,
+      "message": "Hanada-san PTAL! (Seeking owner approval.)",
+      "revId": "bada7818b906a2b4245737fa2e7a28ab53e6fd91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
