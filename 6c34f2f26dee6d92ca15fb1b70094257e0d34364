@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f647932b_e18a1c68",
+        "filename": "src/chromiumos/tast/local/chrome/ime/inputmethods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-16T07:57:38Z",
+      "side": 1,
+      "message": "I am not familiar enough with Go style, just wonder if the filename should be input_methods.go since there are two words here.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "6c34f2f26dee6d92ca15fb1b70094257e0d34364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
