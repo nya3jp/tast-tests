@@ -50,6 +50,24 @@
       "message": "Technically this sends the name SIGTERM that Upstart would, right? The process may handle this specifically to shutdown gracefully. Maybe we should pick a different signal such as SIGABRT?",
       "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7187a05_1d39466e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-16T10:38:41Z",
+      "side": 1,
+      "message": "this is very interesting stuff,  the process I need to kill is started by  a shell process called minijail0 .   The upstart.JobStatus call actually returns the pid of minijail, not the pid of the process I intend to kill (arcvm_server_proxy), to simulate a crash.   Then, in a more interesting touch:   minijail0 ignores SIGABRT, but dies ask you\u0027d expect on a regular SIGTERM (taking arcvm_server_proxy down with it).    I can kill arcvm_server_proxy with a SIGABRT though - and I think that\u0027s what I should do, but would like confirmation next week.",
+      "parentUuid": "8366ef51_3944f5fe",
+      "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
