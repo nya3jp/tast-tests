@@ -70,6 +70,30 @@
       },
       "revId": "6c34f2f26dee6d92ca15fb1b70094257e0d34364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5ae05d_e5e7f2b8",
+        "filename": "src/chromiumos/tast/local/chrome/ime/inputmethods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-17T00:33:27Z",
+      "side": 1,
+      "message": "Yes. I ctried to rebase the branch but broke it like this. I am not an expertise in Gerrit. Will rebase it again once the last cl merged. It should be easier.",
+      "parentUuid": "b116e8a3_e8c02a86",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "6c34f2f26dee6d92ca15fb1b70094257e0d34364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
