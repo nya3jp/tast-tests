@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664b3a85_00dc290c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-17T02:23:43Z",
+      "side": 1,
+      "message": "As per the existing test won\u0027t it just continue if skip and close buttons are not there?. Is it the BACK key press causing the problem?",
+      "revId": "3e20e9557dd41c390b1411658687dd8fd0aad32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
