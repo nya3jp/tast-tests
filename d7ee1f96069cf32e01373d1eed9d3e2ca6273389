@@ -34,6 +34,24 @@
       "parentUuid": "0a735838_8c21bb68",
       "revId": "d7ee1f96069cf32e01373d1eed9d3e2ca6273389",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d32be6_62d4d66a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-17T01:47:00Z",
+      "side": 1,
+      "message": "Hi Renuga, As suggested, out of 15 newly added common test cases (Note: Exclude Clamshell: Stylus click and Touchview: Stylus click testcase is added for only one app), I have commented 7 test cases and added only 8 test cases to run for batch 1. Thanks.",
+      "parentUuid": "eb75b846_025f12d3",
+      "revId": "d7ee1f96069cf32e01373d1eed9d3e2ca6273389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
