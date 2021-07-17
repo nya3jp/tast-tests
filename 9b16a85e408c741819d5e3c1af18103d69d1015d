@@ -56,6 +56,30 @@
       },
       "revId": "9b16a85e408c741819d5e3c1af18103d69d1015d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef2ada8_85c00cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2021-07-17T13:32:44Z",
+      "side": 1,
+      "message": "Yeah, rar is not a zip, but changing all of the \"zip\"s in the file (and changing the file name itself) doesn\u0027t seem worth the effort.",
+      "parentUuid": "7b69b96d_e96ff855",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "9b16a85e408c741819d5e3c1af18103d69d1015d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
