@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7274a12_8ecd37d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-17T03:42:26Z",
+      "side": 1,
+      "message": "Can you please clarify the required test flow while existing flow is\n\n1. Mount the External Disk\n2. Verify Android dir is not present\n3. Enable External Storage from Chrome OS Settings\n4. Open the App (To Ensure Android dir is Created)\n5. Verify Android dir is present.\n\nMay be like would work.\n\n1. Mount the External Disk\n2. Open the App.\n3. Verify Android dir is not present\n4. Enable External Storage from Chrome OS Settings\n5. Verify Android dir is present.",
+      "parentUuid": "47a21f51_3f3fa3b4",
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2514e39_d9f57244",
         "filename": "android/ArcExternalStorageTest/src/org/chromium/arc/testapp/appvaliditytast/MainActivity.java",
         "patchSetId": 3
