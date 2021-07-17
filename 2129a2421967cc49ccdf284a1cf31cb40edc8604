@@ -16,6 +16,23 @@
       "message": "Fergus, PTAL.",
       "revId": "2129a2421967cc49ccdf284a1cf31cb40edc8604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1f7841_2c4f9e9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-07-17T04:29:08Z",
+      "side": 1,
+      "message": "RIP trogdor",
+      "revId": "2129a2421967cc49ccdf284a1cf31cb40edc8604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
