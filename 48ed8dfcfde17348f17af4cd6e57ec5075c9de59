@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c312aa_4fa197ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-17T10:46:33Z",
+      "side": 1,
+      "message": "Updated the include paths of perfetto_protos based on CL:3018877.\n\nA nit that I failed to pass the tast linter:\n\nFollowing errors can be automatically modified:                                                                                            \n        src/chromiumos/tast/remote/bundles/cros/platform/perfetto/traces.go: Import should be grouped into standard packages, third-party package\ns and chromiumos packages in this order separated by empty lines.                                                                                \n      Apply the following patch to fix:                                                                                                          \n      @@ -11,7 +11,6 @@                                                                                                                          \n        \"os\"                                                                                                                                     \n        \"strings\"                                                                                                                                \n                                                                        \n      - \"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics\"                                           \n        \"github.com/golang/protobuf/proto\"\n                                                                                                                                                 \n        \"chromiumos/tast/common/testexec\"                                                                                                                                                                                \n        src/chromiumos/tast/remote/bundles/cros/platform/perfetto_tbm_traced_probes.go: Import should be grouped into standard packages, third-party packages and chromiumos packages in this order separated by empty lines.\n      Apply the following patch to fix:             \n      @@ -7,8 +7,6 @@                                                                                                                            \n       import (                                                                                                                                  \n        \"context\"               \n                                                                        \n      - \"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics\"                                     \n      -                                                                                                                                          \n        \"chromiumos/tast/remote/bundles/cros/platform/perfetto\"\n        \n-------\n\nBut the linter only tells me to remove the include path without fixing it. Anyone knows why?",
+      "revId": "48ed8dfcfde17348f17af4cd6e57ec5075c9de59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
