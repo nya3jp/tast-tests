@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa2a8ce_bcf6f3ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Hey guys, applied all the suggestions. Thanks for the review.\nPlease take a look when you get some time.",
+      "revId": "2e04ec354444d16b2e3e56c12d3e5a5bb447087c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

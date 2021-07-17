@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e2a153_99b69c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "666686f4_e12adb99",
+      "range": {
+        "startLine": 401,
+        "startChar": 32,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32d53df8_c08f92cd",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: EC",
+      "range": {
+        "startLine": 406,
+        "startChar": 62,
+        "endLine": 406,
+        "endChar": 64
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de4837d_d51a5e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d53df8_c08f92cd",
       "range": {
         "startLine": 406,
         "startChar": 62,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f757489_d98aced2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0ecebe_66c298e6",
+      "range": {
+        "startLine": 410,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 12
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "119c114d_190de464",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "Why do we perform different operation here and in ResetRTC RPC? Maybe just call ResetRTC here?",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 0
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1909307_560e5568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Definitely. The last command will be redundant inside ResetRTC. But anyway, updated.",
+      "parentUuid": "119c114d_190de464",
       "range": {
         "startLine": 411,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc021db_b02a9cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Yeah sorry. My bad. updated.",
+      "parentUuid": "20d33fe6_545ae131",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 4
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29820f2_cd0325c3",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: it\u0027s better to mention job name here, e.g.\n\nfailed to restart \"wilco_sync_ec_rtc\" job to sync EC RTC",
+      "range": {
+        "startLine": 426,
+        "startChar": 50,
+        "endLine": 426,
+        "endChar": 64
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8393b36b_4926a244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29820f2_cd0325c3",
       "range": {
         "startLine": 426,
         "startChar": 50,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54400a05_277d4ae2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75302aa2_cc8c3765",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a688e45c_7a2941cd",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: google.com",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4065d2_3e825030",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Sure sure :)",
+      "parentUuid": "a688e45c_7a2941cd",
       "range": {
         "startLine": 34,
         "startChar": 11,
@@ -248,6 +440,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a160611_cf42386e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed805f9c_5fe81294",
+      "range": {
+        "startLine": 46,
+        "startChar": 55,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1ee411_19829ae5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "eaa415f3_4b7feb23",
+      "range": {
+        "startLine": 46,
+        "startChar": 18,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ece87d2_0e365ce7",
@@ -294,6 +534,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "878fdfd7_77565c33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d700cbd1_b691f2a1",
+      "range": {
+        "startLine": 47,
+        "startChar": 70,
+        "endLine": 49,
+        "endChar": 76
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73df602_561ebcc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Technically yeah. But that will keep the peak shift off. It\u0027s similar to not setting the policy. Updated accordingly.",
+      "parentUuid": "6ece87d2_0e365ce7",
+      "range": {
+        "startLine": 48,
+        "startChar": 86,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39de5ff3_34e62601",
@@ -307,6 +595,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: charge_start_time",
+      "range": {
+        "startLine": 54,
+        "startChar": 53,
+        "endLine": 54,
+        "endChar": 70
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9474ac1d_3c7faaed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39de5ff3_34e62601",
       "range": {
         "startLine": 54,
         "startChar": 53,
@@ -364,6 +676,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c9cab2c_7f9fb00c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "I think we could keep it, obviously if you are okay with it.",
+      "parentUuid": "2ed9bc94_cd939fa5",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06999891_488382f9",
@@ -410,6 +746,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c68981_cd32469b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "updated to time.Date",
+      "parentUuid": "e3380de4_10289937",
+      "range": {
+        "startLine": 59,
+        "startChar": 13,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f851437_b8e9b3c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Thanks for pointing out. Instead to timestamp as a string, it has been moved to time.Date. Well that solve the problem.",
+      "parentUuid": "06999891_488382f9",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35159d17_aa72d4c2",
@@ -423,6 +807,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: looks like it does not do powerwash, but it simulates powerwash. So i\u0027d prefer to remove it to be more accurate.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/helpers.go;l\u003d366?q\u003dhelper.EnsureTPMAndSystemStateAreReset\u0026start\u003d11",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96c255e_0b1ff707",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35159d17_aa72d4c2",
       "range": {
         "startLine": 63,
         "startChar": 31,
@@ -456,6 +864,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d4fbbf_672f75d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a110de4_a98a0ec4",
+      "range": {
+        "startLine": 73,
+        "startChar": 31,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca44ed27_b92c3531",
@@ -479,6 +911,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54ca8de_766f8b77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca44ed27_b92c3531",
+      "range": {
+        "startLine": 79,
+        "startChar": 54,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b20355d9_52cf8afb",
@@ -492,6 +948,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: Failed",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabf217e_1bc2f44c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20355d9_52cf8afb",
       "range": {
         "startLine": 88,
         "startChar": 12,
@@ -548,6 +1028,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fcf073_0133a840",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d2e9ba8_af5e1c7d",
+      "range": {
+        "startLine": 92,
+        "startChar": 46,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a53dbe_2eaa53aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a234f12e_491d4075",
+      "range": {
+        "startLine": 92,
+        "startChar": 49,
+        "endLine": 92,
+        "endChar": 64
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a328660_37564fbd",
@@ -561,6 +1089,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: add . at the end for consistency.",
+      "range": {
+        "startLine": 96,
+        "startChar": 30,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5c67ce_51af7276",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a328660_37564fbd",
       "range": {
         "startLine": 96,
         "startChar": 30,
@@ -594,6 +1146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b86960d_d5f361da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0677caee_825e2a75",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78fcb392_e3708494",
@@ -607,6 +1183,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "regarding names for enabled_* cases, what about:\n\nenabled_before_start\nenabled_before_end\nenabled_before_charge_start\nenabled_after_charge_start ?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 6
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be962b87_1ff4ea81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Cool. I\u0027m okay with it.\nUpdated.",
+      "parentUuid": "78fcb392_e3708494",
       "range": {
         "startLine": 122,
         "startChar": 2,
@@ -640,6 +1240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a857915_e80e67e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb89ec8_902e07a7",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e6844ee_3bc20a61",
@@ -653,6 +1277,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nti: wantIsCharging / wantCharging",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e68ef567_2fb6e22b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6844ee_3bc20a61",
       "range": {
         "startLine": 125,
         "startChar": 2,
@@ -686,6 +1334,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad74303_a0ba1773",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73937bd1_dcb92d9c",
+      "range": {
+        "startLine": 128,
+        "startChar": 14,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaff87bd_b28c7b5b",
@@ -699,6 +1371,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "No need to specify policy here if unset :)",
+      "range": {
+        "startLine": 129,
+        "startChar": 29,
+        "endLine": 129,
+        "endChar": 89
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3c606b_c080bc49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Thanks for pointing out. Unset isn\u0027t zero valued so I kept adding it.\n\nBut seems \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/fakedms/policy_blob.go;l\u003d101?q\u003dpolicy.StatusUnset%20file:go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\nhaha :)",
+      "parentUuid": "eaff87bd_b28c7b5b",
       "range": {
         "startLine": 129,
         "startChar": 29,
@@ -732,6 +1428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3717f748_2f8d34e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a9247f5_bfd5adda",
+      "range": {
+        "startLine": 140,
+        "startChar": 30,
+        "endLine": 140,
+        "endChar": 42
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd613cee_df4e8410",
@@ -745,6 +1465,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "nit: let\u0027s drop it here since we update all policies",
+      "range": {
+        "startLine": 273,
+        "startChar": 30,
+        "endLine": 273,
+        "endChar": 40
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e19c81_106afbdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd613cee_df4e8410",
       "range": {
         "startLine": 273,
         "startChar": 30,
@@ -778,6 +1522,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabab66c_fc0d948b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062cbd19_01a5746a",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 37
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "772aa189_114a92b6",
@@ -791,6 +1559,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "Let\u0027s put it into a separate \"if\" statement for simplicity",
+      "range": {
+        "startLine": 283,
+        "startChar": 32,
+        "endLine": 283,
+        "endChar": 62
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8dc6c9_02372d0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/power_peak_shift.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "okay, cascaded or 2 separate ifs.\nOr something like if ! ( a\u003d\u003db \u0026\u0026 c\u003d\u003dd)",
+      "parentUuid": "772aa189_114a92b6",
       "range": {
         "startLine": 283,
         "startChar": 32,
@@ -870,6 +1662,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25ed8b8_e5ff724f",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c0cd84d_db3703b6",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4544fd_70af4f25",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ee5a6b_31f125c0",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917d7e4f_207f4e44",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db9da93d_d7dcfc84",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a2c42a_bae06b31",
@@ -883,6 +1747,30 @@
       "writtenOn": "2021-07-13T12:35:33Z",
       "side": 1,
       "message": "I strongly prefer to use timestamp gRPC type",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "737a4c16770013fa355d393665e9d097a6055058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc75041_228abdfc",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-17T22:15:36Z",
+      "side": 1,
+      "message": "Ack\n\n\u0026\u0026 Timestamp has been added as discussed offline.",
+      "parentUuid": "80a2c42a_bae06b31",
       "range": {
         "startLine": 109,
         "startChar": 2,
