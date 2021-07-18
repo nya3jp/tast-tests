@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "86bbae27_97021aeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-18T08:32:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa2e4c34_17d2806a",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb3dd6ac_ff09bee0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -156,6 +180,24 @@
       "side": 1,
       "message": "Maybe the simplest flow is:\n\n1. Mount the External Disk\n2. Call WaitForARCVolumeMount()\n3. [New] Open the app (To ensure Android dir is not created)\n4. Verify Android dir is not present\n5. Enable External Storage from Chrome OS Settings\n6. [New] Call WaitForARCVolumeMount()\n7. Open the app (To ensure Android dir is created)\n8. Verify Android dir is present.\n\n(3) is required in order to catch the case where Android dir is always created by calling getExternalFilesDirs() regardless of the external storage settings.\n(6) should be present because changing the external storage settings triggers unmounting + remounting of the volumes on the Android side.",
       "parentUuid": "a7274a12_8ecd37d3",
+      "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a194f06f_3ef35ed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-18T08:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05fe5fd6_ecc2fff9",
       "revId": "327b3935e2b4412d6566c1b52a80ccc33533633d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
