@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fea0e07_68134ae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-18T23:02:37Z",
+      "side": 1,
+      "message": "Thanks for working on this! It LGTM after fixing the nits that youkichihosoi@ pointed.\n",
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3ad2640_20909540",
@@ -100,6 +117,30 @@
       "writtenOn": "2021-07-18T20:21:48Z",
       "side": 1,
       "message": "Dirs",
+      "range": {
+        "startLine": 119,
+        "startChar": 49,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a334f05_2b5ae095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-18T23:02:37Z",
+      "side": 1,
+      "message": "or maybe you can omit this detail. How it is implemented is up to the apk. If we change how the apk triggers the Android directory creation code in the future by not calling getExternalFilesDirs, we probably won\u0027t remember to update this comment, so it\u0027s better to just omit the implementation detail. Here, the comment only need to explain that the apk creates the Android directory: \"This is a plain app that triggers \"Android\" folder creation when external storage permission is ON.\"",
+      "parentUuid": "a8b3d0d7_214b90ed",
       "range": {
         "startLine": 119,
         "startChar": 49,
