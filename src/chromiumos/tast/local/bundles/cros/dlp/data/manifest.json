@@ -1,0 +1,14 @@
+{
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1ipH+gvKFTlPSNsmL4GuyfVtsQzvAU4R/8Ei68PwjLGkQyAGP9BnBlICbl3ti9mIC/bJ0kLs+5F+uCw6yjEtPi1A0ekFVnZPYDou1w1pZHc1Dd3l+Onu5bKP+5bZC3Ed619P9oPj3I0spuXU9Xs0w5XyedoVBZJ63h1Z8Z5mVuigITLIKcDn001ziURIWtWFDx/HecAYgJ57CTlbwPon/d9WECwTyG3bhompW9VEDJ2ELADjFp1dwX9nuzHjCsqlvDRsFEvHANDuxjFm/EbEAObwRtyqTl4Zl5Z7l3/SdwwPtzPmiGUhyEtrvjQpt8EAXc9sasYqB1NUtDCGCBSSFwIDAQAB",
+  "name": "DLP extension to get clipboard data",
+  "description": "For testing the DLP clipboard restriction",
+  "manifest_version": 2,
+  "version": "0.1",
+  "minimum_chrome_version": "37",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": [ "clipboardWrite", "clipboardRead", "alwaysOnTopWindows"]
+}
