@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9aa95f_4df7e4f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-18T20:21:48Z",
+      "side": 1,
+      "message": "o",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 1
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad586c0_f1c9106e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-18T20:21:48Z",
+      "side": 1,
+      "message": "Thanks a lot for working on this! LGTM with a few super nit comments.",
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ad2640_20909540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-18T20:21:48Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af02df9_f8e47178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-18T20:21:48Z",
+      "side": 1,
+      "message": "close (the app window) + period",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b3d0d7_214b90ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-07-18T20:21:48Z",
+      "side": 1,
+      "message": "Dirs",
+      "range": {
+        "startLine": 119,
+        "startChar": 49,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
