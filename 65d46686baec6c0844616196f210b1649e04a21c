@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2781368c_157d63f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_clear_all_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-19T20:43:54Z",
+      "side": 1,
+      "message": "Please see my comment for https://crrev.com/c/3027674",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "65d46686baec6c0844616196f210b1649e04a21c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03eceb85_e7e23d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_clear_all_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-19T20:43:54Z",
+      "side": 1,
+      "message": "Please see my comment for https://crrev.com/c/3027674",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "65d46686baec6c0844616196f210b1649e04a21c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a8bf2f_7bbe9de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_clear_all_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-19T20:43:54Z",
+      "side": 1,
+      "message": "IMHO this CL and https://crrev.com/c/3027674 share most of the code. Only the method of clearing notifications is different. Therefore we should be able to merge these two tests into the same file. One solution to do so is utilizing testing.Param. hotseat_animation.go is an example (https://source.corp.google.com/h/chromium/chromiumos/platform/tast-tests/+/1800abb5c43d36ea5003f63d12e23f71326f8227:src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go;l\u003d48;bpv\u003d1;bpt\u003d0;drc\u003dd879094e95269ff4164fe95319eb50f740fe52c9)",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "65d46686baec6c0844616196f210b1649e04a21c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
