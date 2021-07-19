@@ -52,6 +52,10 @@ type Options struct {
 	// framework will tell you what to set this to.
 	WindowWidthDP  int
 	WindowHeightDP int
+	// Whether to skip window resizing and moving respectively.
+	// If SkipWindowResize is true, WindowHeightDP and WindowWidthDP won't be required.
+	SkipWindowResize bool
+	SkipWindowMove   bool
 
 	// Density independent pixels within this distance to a border (top / bottom / sides)
 	// of the window will not be considered when determining difference.
@@ -97,6 +101,12 @@ func (o *Options) FillDefaults(d Options) {
 	if o.ScreenshotRetryInterval == 0 {
 		o.ScreenshotRetryInterval = d.ScreenshotRetryInterval
 	}
+	if !o.SkipWindowResize {
+		o.SkipWindowResize = d.SkipWindowResize
+	}
+	if !o.SkipWindowMove {
+		o.SkipWindowMove = d.SkipWindowMove
+	}
 }
 
 // Suffix should return a string representation of the suffix for the test
@@ -128,6 +138,16 @@ func WithBase(base Config, configs []Config) []Config {
 		}
 		if !c.OutputUITrees {
 			c.OutputUITrees = base.OutputUITrees
+		}
+		c.DefaultOptions.FillDefaults(base.DefaultOptions)
+		if !c.DryRun {
+			c.DryRun = base.DryRun
+		}
+		if !c.OutputUITrees {
+			c.OutputUITrees = base.OutputUITrees
+		}
+		if c.NameSuffix == "" {
+			c.NameSuffix = base.NameSuffix
 		}
 		results = append(results, c)
 	}
