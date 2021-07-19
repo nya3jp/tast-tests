@@ -16,6 +16,24 @@
       "message": "As per the existing test won\u0027t it just continue if skip and close buttons are not there?. Is it the BACK key press causing the problem?",
       "revId": "3e20e9557dd41c390b1411658687dd8fd0aad32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0c9cd3_4d73eb16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-19T21:54:51Z",
+      "side": 1,
+      "message": "Existing test will continue even if skip and close button does not exist. In the previous version of app, close button page was on web view, in order to go through the close button page. I had to use to press back button. In the present version of app, skip and close button doesn\u0027t exist and press back key is closing the app, yes it is causing the issue. So need to remove skip and close button from the code.",
+      "parentUuid": "664b3a85_00dc290c",
+      "revId": "3e20e9557dd41c390b1411658687dd8fd0aad32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
