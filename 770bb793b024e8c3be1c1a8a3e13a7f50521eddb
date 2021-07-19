@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19220c79_22203b5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-19T11:57:22Z",
+      "side": 1,
+      "message": "Alex, please get reviewed by a feature owner (e.g. cwd@) as Ben said.\nAlso, after getting approval from a feature owner, please get reviewed by a tast owner again to make sure that the new patch set conforms to the style.",
+      "revId": "770bb793b024e8c3be1c1a8a3e13a7f50521eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
