@@ -95,21 +95,7 @@ var stackAllowlist []string
 
 var loadwxAllowlist []string
 
-var libgccAllowlist = []string{
-	"/opt/google/chrome/nacl_helper",
-
-	// Files from flash player.
-	"/opt/google/chrome/pepper/libpepflashplayer.so",
-	// Prebuilt hdcp driver binary from Intel.
-	"/usr/sbin/hdcpd",
-	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
-	"/usr/lib64/libSkyCamAIC.so",
-	"/usr/lib64/libSkyCamAICKBL.so",
-
-	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
-	"/usr/lib/dri/kms_swrast_dri.so",
-	"/usr/lib/dri/swrast_dri.so",
-}
+var libgccAllowlist []string
 
 var libstdcAllowlist = []string{
 	// Flash player
