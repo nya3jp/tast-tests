@@ -33,6 +33,75 @@
       "message": "ptal!",
       "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4b9de7_876c5b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-19T20:34:45Z",
+      "side": 1,
+      "message": "nit: I would prefer 3 instead of 2 because it is more readable",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cb96c9_7ce6b725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-19T20:34:45Z",
+      "side": 1,
+      "message": "(1) Could you explain a little bit about how 12 comes from? Like 3 groups of notifications and each group has four different categories.\n\n(2) Also should we verify the number of notifications is 0 before adding notifications? IMHO Tast test is complex and it is possible that there are some notifications before you add 12 more. I am concerned that variation in notification number may lead to the variation in performance, which will make performance data less comparable.\n\n(3) Before collecting performance data, should we call cpu.WaitUntilIdle() or testing.Sleep()? Please ask Tast owner",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 108
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df2aa43_9c7565f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-19T20:34:45Z",
+      "side": 1,
+      "message": "nit: The error message is a little bit confusing. Do you mean \"failed to wait for clearing the notification\"?",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
