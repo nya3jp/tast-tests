@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"msta@google.com", "chrome-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{screenshot.GoldServiceAccountKeyVar},
+		Vars:         screenshot.ScreenDiffVars,
 	})
 }
 

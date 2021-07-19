@@ -36,10 +36,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// GoldServiceAccountKeyVar contains the name of the variable storing the service account key.
-const GoldServiceAccountKeyVar = "goldctl.GoldServiceAccountKey"
-
+const screendiffDebugVar = "screendiff.debug"
+const screendiffDryrunVar = "screendiff.dryrun"
+const goldServiceAccountKeyVar = "goldctl.GoldServiceAccountKey"
 const goldServiceAccountKeyFile = "/tmp/gold_service_account_key.json"
+
+// ScreenDiffVars contains a list of all variables used by the screendiff library.
+var ScreenDiffVars = []string{
+	goldServiceAccountKeyVar,
+	screendiffDebugVar,
+	screendiffDryrunVar,
+}
 
 // TODO(crbug.com/skia/10808): Change this once we have a production instance.
 const goldInstance = "cros-tast-dev"
@@ -119,6 +126,16 @@ func NewDifferFromChrome(ctx context.Context, state screenshotState, cr *chrome.
 }
 
 func (d *differ) initialize(ctx context.Context) error {
+	if d.getBoolVar(screendiffDebugVar) {
+		d.config.SkipDpiNormalization = true
+		d.config.DryRun = true
+		d.config.OutputUITrees = true
+		d.config.DefaultOptions.SkipWindowResize = true
+		d.config.DefaultOptions.SkipWindowMove = true
+	}
+	if d.getBoolVar(screendiffDryrunVar) {
+		d.config.DryRun = true
+	}
 	if d.chrome == nil {
 		cr, err := chrome.New(ctx, chrome.Region(d.config.Region))
 		if err != nil {
@@ -435,41 +452,54 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		return testArgs, err
 	}
 
+	// .First() ensures it selects the outermost window element.
+	// Using the .Attribute name instead of Name ensures that in other locales,
+	// it won't attempt to translate (since it gets the name from the system,
+	// it's already translated).
+	windowFinder := nodewith.Role(role.Window).Attribute("name", window.Title).First()
+	shouldResize := window.CanResize && !options.SkipWindowResize
 	// You can only set the bounds of a window in normal state.
 	if windowState == ash.WindowStateNormal {
-		if window.CanResize && (options.WindowWidthDP == 0 || options.WindowHeightDP == 0) {
+		if shouldResize && (options.WindowWidthDP == 0 || options.WindowHeightDP == 0) {
 			return testArgs, errors.Errorf("please add screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: %d, WindowHeightDP: %d}} to your screendiff config", windowBoundsDP.Width, windowBoundsDP.Height)
 		}
 		// Ensure it always goes to the top-left corner of the screen. This should prevent misalignment issues.
-		requestedBounds := coords.Rect{Width: windowBoundsDP.Width, Height: windowBoundsDP.Height}
-		if window.CanResize {
-			requestedBounds = coords.Rect{Width: options.WindowWidthDP, Height: options.WindowHeightDP}
+		requestedBounds := windowBoundsDP
+		if !options.SkipWindowMove {
+			requestedBounds.Left = 0
+			requestedBounds.Top = 0
 		}
-		var displayID string
-		windowBoundsDP, displayID, err = ash.SetWindowBounds(ctx, d.tconn, window.ID, requestedBounds, window.DisplayID)
-		if err != nil {
-			return testArgs, err
-		} else if displayID != window.DisplayID {
-			return testArgs, errors.New("Unable to move window to correct display")
+		if shouldResize {
+			requestedBounds.Width = options.WindowWidthDP
+			requestedBounds.Height = options.WindowHeightDP
+		}
+		// For some reason, SetWindowBounds will resize the window more precisely
+		// if the current window bounds are closer to the requested ones. To solve
+		// this, we apply this iteratively until we get the correct size.
+		for i := 0; i < 3 && windowBoundsDP != requestedBounds; i++ {
+			_, displayID, err := ash.SetWindowBounds(ctx, d.tconn, window.ID, requestedBounds, window.DisplayID)
+			if err != nil {
+				return testArgs, err
+			} else if displayID != window.DisplayID {
+				return testArgs, errors.New("Unable to move window to correct display")
+			}
+			// SetWindowBounds sometimes returns the wrong size. ui.Location is more
+			// trustworthy because it waits for stability.
+			loc, err := ui.Location(ctx, windowFinder)
+			if err != nil {
+				return testArgs, err
+			}
+			windowBoundsDP = *loc
+		}
+		if windowBoundsDP != requestedBounds {
+			return testArgs, errors.Errorf("Requested window bounds %+v, but got %+v", requestedBounds, windowBoundsDP)
 		}
 	}
 	if err := ash.WaitWindowFinishAnimating(ctx, d.tconn, window.ID); err != nil {
 		return testArgs, errors.Wrap(err, "Unable to wait for the window to finish animating")
 	}
 
-	isAtTopLeft := windowBoundsDP.Top == 0 && windowBoundsDP.Left == 0
 	windowBoundsDP = windowBoundsDP.WithInset(options.WindowBorderWidthDP, options.WindowBorderWidthDP)
-
-	// .First() ensures it selects the outermost window element.
-	// Using the .Attribute name instead of Name ensures that in other locales,
-	// it won't attempt to translate (since it gets the name from the system,
-	// it's already translated).
-	rootElement := nodewith.Role(role.Window).Attribute("name", window.Title).First()
-	if finder == nil {
-		finder = rootElement
-	} else {
-		finder = finder.Ancestor(rootElement)
-	}
 
 	dir := filepath.Join(d.dir, screenshotName)
 	if _, err := os.Stat(dir); err == nil {
@@ -483,18 +513,20 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		uiauto.LogRootDebugInfo(ctx, d.tconn, filepath.Join(dir, "ui_tree.txt"))
 	}
 
-	location, err := ui.Location(ctx, finder)
-	if err != nil {
-		return testArgs, errors.Wrap(err, "failed to find node to take screenshot of")
+	location := &windowBoundsDP
+	if finder != nil {
+		location, err = ui.Location(ctx, finder.Ancestor(windowFinder))
+		if err != nil {
+			return testArgs, errors.Wrap(err, "failed to find node to take screenshot of")
+		}
 	}
 
 	boundsPx := coords.ConvertBoundsFromDPToPX(location.Intersection(windowBoundsDP), d.uiScale)
 	windowBoundsPX := coords.ConvertBoundsFromDPToPX(windowBoundsDP, d.uiScale)
 
 	testArgs = append(testArgs,
-		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Height, boundsPx.Width),
+		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Width, boundsPx.Height),
 		"--add-test-optional-key", fmt.Sprintf("fuzzy_pixel_delta_threshold:%d", options.PixelDeltaThreshold),
-		"--add-test-optional-key", fmt.Sprintf("is_at_top_left:%t", isAtTopLeft),
 		"--add-test-optional-key", fmt.Sprintf("screenshot_name:%s", screenshotName),
 		"--add-test-optional-key", fmt.Sprintf("window_size:%dx%d", windowBoundsPX.Width, windowBoundsPX.Height),
 		"--add-test-optional-key", fmt.Sprintf("window_state:%s", windowState),
@@ -505,7 +537,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	// rectangles removed from the cropped image.
 	var removedRects []image.Rectangle
 	for _, subelement := range options.RemoveElements {
-		nodes, err := ui.NodesInfo(ctx, subelement.Ancestor(rootElement))
+		nodes, err := ui.NodesInfo(ctx, subelement.Ancestor(windowFinder))
 		if err != nil {
 			return testArgs, err
 		}
@@ -595,7 +627,7 @@ func (d *differ) authenticateGold(ctx context.Context) error {
 	if file, _ := os.Stat(filepath.Join(goldctlWorkDir, "auth_opt.json")); file != nil {
 		return nil
 	}
-	key, ok := d.state.Var(GoldServiceAccountKeyVar)
+	key, ok := d.state.Var(goldServiceAccountKeyVar)
 	if !ok {
 		return errors.New("couldn't get the gold service account key. Please ensure you have access to tast-tests-private")
 	}
@@ -638,6 +670,21 @@ func (d *differ) getCPUInfo(ctx context.Context) (map[string]string, error) {
 	}
 
 	return result, nil
+}
+
+// getBoolVar converts a var into a boolean based on the following rules:
+// No variable provided -> false
+// -var=debug=true -> debug=true
+// -var=debug= -> debug=true
+// -var=debug=false -> debug=false
+func (d *differ) getBoolVar(name string) bool {
+	val, ok := d.state.Var(name)
+	if !ok || strings.ToLower(val) == "false" {
+		return false
+	} else if val == "" || strings.ToLower(val) == "true" {
+		return true
+	}
+	panic(fmt.Sprintf("Variable %s must be either true, false, or empty", name))
 }
 
 func currentSubPixelAntialiasingMethod() string {
