@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70e11e9b_0c18526f",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T14:14:34Z",
+      "side": 1,
+      "message": "As another solution, move the private structs to a separate file. I\u0027d like the struct to be closer to the public API.",
+      "parentUuid": "bda463ec_88be972c",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4246372c_e0d3ceea",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 7
