@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b397e00b_618b5f00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-19T08:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd3adb4d_2db86bbc",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9e0da621_d2c97c54",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6345b4bd_fb8c290c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-19T08:02:42Z",
+      "side": 1,
+      "message": "Done. Decided to define a constant to make the intention clearer.",
+      "parentUuid": "e5ff4987_60ba24f3",
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3be6b20d_38e5512a",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-07-16T15:22:35Z",
       "side": 1,
       "message": "Is this comment needed? It looks like it\u0027s a copy of L371",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 107
+      },
+      "revId": "0c9ec4d9cb47dd5f10b97ac7121f3ade9cbbfaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed91551_c825e4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-19T08:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be6b20d_38e5512a",
       "range": {
         "startLine": 385,
         "startChar": 2,
