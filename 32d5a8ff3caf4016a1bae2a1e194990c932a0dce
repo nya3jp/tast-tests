@@ -34,6 +34,24 @@
       "parentUuid": "0fc4de9c_fd799600",
       "revId": "32d5a8ff3caf4016a1bae2a1e194990c932a0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7fa0cd_5efbeaa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-19T12:48:12Z",
+      "side": 1,
+      "message": "For devtools protocl, it checks what Chrome returns via cdp and also the number of trace packets.\nFor cmdline, we check the exit code. I also checked that trace through cmdline produces data (830105 bytes, should contain valid trace packets).\n\nI remember that I saw the test passed locally when I worked on https://crrev.com/c/3018878. It turns out that I didn\u0027t have this recent change https://android.git.corp.google.com/platform/external/perfetto/+/8083765f2814e3f19a35b410e389fa1814a81c92%5E%21/src/tracing/core/tracing_service_impl.cc when I tested it.",
+      "parentUuid": "c361c72e_1ad77487",
+      "revId": "32d5a8ff3caf4016a1bae2a1e194990c932a0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
