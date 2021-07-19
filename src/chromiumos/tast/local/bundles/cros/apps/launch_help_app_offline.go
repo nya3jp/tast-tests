@@ -31,16 +31,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Params: []testing.Param{
-			{
-				Name:              "stable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-			}, {
-				Name:              "unstable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-				ExtraAttr:         []string{"informational"},
-			},
-		},
+		HardwareDeps: hwdep.D(pre.AppsStableModels),
 	})
 }
 
