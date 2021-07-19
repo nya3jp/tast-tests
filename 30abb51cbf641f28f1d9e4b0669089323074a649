@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5bb6bc4_009b7d16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Replied comments are fixed in https://crrev.com/c/3032831. I will keep this cl WIP and request for review later.",
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bdd6553_a2b0c45a",
@@ -24,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ef3d92_763938d9",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bdd6553_a2b0c45a",
+      "range": {
+        "startLine": 17,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b73ae84d_f50fb1f3",
@@ -37,6 +78,30 @@
       "writtenOn": "2021-07-19T00:17:22Z",
       "side": 1,
       "message": "nit: a partial?",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00c9e26_fcd1b76d",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73ae84d_f50fb1f3",
       "range": {
         "startLine": 18,
         "startChar": 16,
@@ -93,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b317dbc_8d1eb786",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ecbb6d8_0948c78a",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cd4965_e8ad70f6",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1679577_b33ea605",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "904e4012_3ff8ee81",
@@ -139,6 +252,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d31155_fa41df36",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Added TODO to solve it later.",
+      "parentUuid": "28ea53dd_3feb288b",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec395d08_9455b0c8",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Added TODO to solve it later.",
+      "parentUuid": "904e4012_3ff8ee81",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "069f5c3e_9ebf26a7",
@@ -152,6 +313,30 @@
       "writtenOn": "2021-07-19T00:17:22Z",
       "side": 1,
       "message": "nit: ditto for all these constants...",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7089e892_4a4aefa1",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "069f5c3e_9ebf26a7",
       "range": {
         "startLine": 37,
         "startChar": 4,
@@ -198,6 +383,30 @@
       "writtenOn": "2021-07-19T00:17:22Z",
       "side": 1,
       "message": "nit: not sure where this is defined, but naming methods Get...() is not proper go-style (except where the underlying concept involves \u0027Get\u0027, e.g. HTTP GET). Is it possible to fix this?\nhttps://golang.org/doc/effective_go#Getters\n(see also: go/go-style/decisions#getters).",
+      "range": {
+        "startLine": 156,
+        "startChar": 19,
+        "endLine": 156,
+        "endChar": 31
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0d764d_f39f0462",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T05:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2de8b07_6f0469f7",
       "range": {
         "startLine": 156,
         "startChar": 19,
