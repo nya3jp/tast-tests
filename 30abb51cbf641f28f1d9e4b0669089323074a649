@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bdd6553_a2b0c45a",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: migrate?",
+      "range": {
+        "startLine": 17,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73ae84d_f50fb1f3",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: a partial?",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ecbb6d8_0948c78a",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: represents an",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1679577_b33ea605",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: prefer to drop this, it is mostly noise (we can see it is a struct from the code)",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904e4012_3ff8ee81",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: Constants in go are in MixedCaps.\nhttps://github.com/golang/go/wiki/CodeReviewComments#mixed-caps\n(see also: go/go-style/decisions#constant-names)",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ea53dd_3feb288b",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "Why all these NOLINT comments? Please remove.",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069f5c3e_9ebf26a7",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: ditto for all these constants...",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd24dbd_f5901205",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "This feels a bit yucky to me, I think there are two options:\n- Since this type is basically immutable right now, there is no need to pass references to it (you can pass by value). Modify FullyQualifiedIMEID, String, Equal, etc. to accept the base type (im InputMethod) as the receiver instead of the pointer type (im *InputMethod). (You can do this anyway, methods defined on the base type are lifted to the pointer types automatically.) See https://tour.golang.org/methods/4, https://tour.golang.org/methods/8.\n- Alternatively, when the constants are defined, define them as InputMethod pointers immediately. This will avoid people who want to call methods on the constants needing to take their reference first. I.E.  \n```var HangeulHanjaKorean \u003d \u0026InputMethod{ ... }```",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 13
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2de8b07_6f0469f7",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "nit: not sure where this is defined, but naming methods Get...() is not proper go-style (except where the underlying concept involves \u0027Get\u0027, e.g. HTTP GET). Is it possible to fix this?\nhttps://golang.org/doc/effective_go#Getters\n(see also: go/go-style/decisions#getters).",
+      "range": {
+        "startLine": 156,
+        "startChar": 19,
+        "endLine": 156,
+        "endChar": 31
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3699dd0_694f9646",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "Please name this method Equal(). It is more conventional. See:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/stringset/stringset.go;l\u003d66",
+      "range": {
+        "startLine": 180,
+        "startChar": 23,
+        "endLine": 180,
+        "endChar": 29
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2b1d03_9dd3f56a",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:17:22Z",
+      "side": 1,
+      "message": "Please name this method String(), so that the type implements the Stringer interface. This leads to the expected behaviour in fmt calls:\nhttps://tour.golang.org/methods/17",
+      "range": {
+        "startLine": 185,
+        "startChar": 23,
+        "endLine": 185,
+        "endChar": 31
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
