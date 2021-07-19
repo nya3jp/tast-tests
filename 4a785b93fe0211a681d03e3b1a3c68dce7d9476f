@@ -34,6 +34,24 @@
       "parentUuid": "4872a1bd_e3522026",
       "revId": "4a785b93fe0211a681d03e3b1a3c68dce7d9476f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b62d08_171c394a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-19T22:32:56Z",
+      "side": 1,
+      "message": "IIUC, the test needs to run on self-managed devices to confirm that they are infact self-managed. In this case, you are right we do not need to have a hardware or software dep.",
+      "parentUuid": "0e7508ef_c83225ec",
+      "revId": "4a785b93fe0211a681d03e3b1a3c68dce7d9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
