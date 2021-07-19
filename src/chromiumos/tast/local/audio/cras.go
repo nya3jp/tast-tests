@@ -233,11 +233,11 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 		return err
 	}
 
+	var active StreamType
 	checkActiveNode := func(n *CrasNode) bool {
 		if !n.Active {
 			return false
 		}
-		var active StreamType
 		if n.IsInput {
 			active |= InputStream
 		} else {
