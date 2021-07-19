@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440aaef4_c5c35129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-19T02:04:18Z",
+      "side": 0,
+      "message": "I think we need to keep the test for unresizable activities somehow. WDYT?",
+      "range": {
+        "startLine": 268,
+        "startChar": 92,
+        "endLine": 268,
+        "endChar": 136
+      },
+      "revId": "d4e2422ff57943c7203240cf7a54bbc4d9ca565c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
