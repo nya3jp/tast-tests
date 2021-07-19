@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca5459d_284ef60d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T19:39:22Z",
+      "side": 1,
+      "message": "CL for drag drop test. PTAL :)\nThanks",
+      "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
