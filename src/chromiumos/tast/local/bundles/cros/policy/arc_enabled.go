@@ -108,6 +108,9 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
+			// crbug.com/1229569
+			// Disable arc before the next cleanup step to avoid a timeout in ResetChrome.
+			defer policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{&policy.ArcEnabled{Val: false}})
 
 			// Open launcher if it is not open already.
 			if exists, err := ui.Exists(ctx, tconn, ui.FindParams{ClassName: "AppListView"}); err != nil || !exists {
