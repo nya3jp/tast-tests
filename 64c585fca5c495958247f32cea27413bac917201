@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9e7327_3d6136c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-19T02:04:07Z",
+      "side": 1,
+      "message": "expectations and behaviors LGTM. Hand over to tast-owners@ for tast/Go stuff.",
+      "revId": "64c585fca5c495958247f32cea27413bac917201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76531bb3_77d2f4da",
