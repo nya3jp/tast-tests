@@ -4,6 +4,12 @@
 
 package ime
 
+// ChromeIMEPrefix is the prefix of IME chrome extension.
+const ChromeIMEPrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+
+// ChromiumIMEPrefix is the prefix of IME chromium extension.
+const ChromiumIMEPrefix = "_comp_ime_fgoepimhcoialccpbmpnnblemnepkkao"
+
 // InputMethodCode represents an input method code.
 // TODO(b/192819861): Defining new input method struct and migrating existing use of InputMethodCode.
 type InputMethodCode string

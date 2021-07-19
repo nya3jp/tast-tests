@@ -39,7 +39,7 @@ func init() {
 }
 
 func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.TestConn, pkg string) (string, error) {
-	imes, err := ime.GetInputMethodLists(ctx, tconn)
+	imes, err := ime.BrowserInputMethodLists(ctx, tconn)
 	if err != nil {
 		return "", err
 	}
@@ -114,7 +114,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		actualID, err := ime.GetCurrentInputMethod(ctx, tconn)
+		actualID, err := ime.CurrentInputMethod(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}

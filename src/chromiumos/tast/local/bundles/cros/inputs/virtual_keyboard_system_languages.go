@@ -87,7 +87,7 @@ func init() {
 
 func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	regionCode := s.Param().(testParameters).regionCode
-	defaultInputMethodID := ime.IMEPrefix + s.Param().(testParameters).defaultInputMethodID
+	defaultInputMethodID := ime.ChromeIMEPrefix + s.Param().(testParameters).defaultInputMethodID
 
 	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
 	if err != nil {
@@ -103,7 +103,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Verify default input method
-	currentInputMethodID, err := ime.GetCurrentInputMethod(ctx, tconn)
+	currentInputMethodID, err := ime.CurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current input method: ", err)
 	}

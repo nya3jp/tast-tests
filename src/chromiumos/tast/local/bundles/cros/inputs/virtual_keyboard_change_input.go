@@ -59,7 +59,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		InputMethodLabel         = "FR"
 	)
 
-	if err := ime.AddInputMethod(ctx, tconn, ime.IMEPrefix+inputMethod); err != nil {
+	if err := ime.AddInputMethod(ctx, tconn, ime.ChromeIMEPrefix+inputMethod); err != nil {
 		s.Fatal("Failed to add input method: ", err)
 	}
 
@@ -102,11 +102,11 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 func assertInputMethod(tconn *chrome.TestConn, inputMethod, inputMethodLabel string) uiauto.Action {
 	ui := uiauto.New(tconn)
 	assertAction := func(ctx context.Context) error {
-		currentInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
+		currentInputMethod, err := ime.CurrentInputMethod(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get current input method")
-		} else if currentInputMethod != ime.IMEPrefix+inputMethod {
-			return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.IMEPrefix+inputMethod)
+		} else if currentInputMethod != ime.ChromeIMEPrefix+inputMethod {
+			return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.ChromeIMEPrefix+inputMethod)
 		}
 
 		if err := ui.WaitUntilExists(vkb.NodeFinder.Name(inputMethodLabel).Role(role.StaticText))(ctx); err != nil {
