@@ -22,6 +22,30 @@
       },
       "revId": "983c25e8bd197277a29221e516576640e5b51786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4d97ad_c23e6ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_notifications_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T12:44:31Z",
+      "side": 1,
+      "message": "Maybe add a comment next to radioButtonNames instead. Indicate that the 3 arrays need to be kept in sync.",
+      "parentUuid": "0d0717c1_5e688f68",
+      "range": {
+        "startLine": 115,
+        "startChar": 17,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "983c25e8bd197277a29221e516576640e5b51786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
