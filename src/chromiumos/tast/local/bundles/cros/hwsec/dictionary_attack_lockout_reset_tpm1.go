@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"time"
 
-	"chromiumos/tast/common/hwsec"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -70,14 +69,9 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create log reader: ", err)
 	}
 
-	// Restart tcsd to generate auth failure log
-	if err := daemonController.Restart(ctx, hwsec.TcsdDaemon); err != nil {
-		s.Fatal("Failed to restart tcsd: ", err)
-	}
-	// Restart tpm_managerd to avoid tpm_managerd crashing when receiving next command, see b/192034446.
-	// TODO(b/192034446): remove this once the problem is resolved.
-	if err := daemonController.Restart(ctx, hwsec.TPMManagerDaemon); err != nil {
-		s.Fatal("Failed to restart tpm_managerd: ", err)
+	// Restart TPM daemons to generate auth failure log
+	if err := daemonController.RestartTPMDaemons(ctx); err != nil {
+		s.Fatal("Failed to restart TPM daemons: ", err)
 	}
 
 	matchAuthFailureLog := func(entry *syslog.Entry) bool {
