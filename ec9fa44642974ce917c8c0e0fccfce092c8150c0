@@ -106,6 +106,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e7cf2a_c7328332",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "As per Harpreet response, I can remove fallback now.",
+      "parentUuid": "8b7f8e3e_bbb600a1",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775da492_68c11060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "OK, that info was needed",
+      "parentUuid": "2d0464fc_cabd8fae",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2524f436_231af01b",
@@ -119,6 +155,30 @@
       "writtenOn": "2021-07-15T18:44:49Z",
       "side": 1,
       "message": "We should use wifi_perf (https://b.corp.google.com/issues/187246816#comment2)\n\ndeanliao@ - do we have an ETA on fixing the suite names as discussed in b/187246816#comment2 ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 43,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1857a7c2_dda505de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "The name changes are not yet in the tast code.",
+      "parentUuid": "2524f436_231af01b",
       "range": {
         "startLine": 43,
         "startChar": 43,
@@ -152,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a551e7_f3cb6e36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d88e6a4_43aecaac",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 2
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eff834f_4bd01edb",
@@ -165,6 +249,30 @@
       "writtenOn": "2021-07-14T00:49:51Z",
       "side": 1,
       "message": "can\u0027t you just move this part up into the inner for loop above?",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65900a93_9d700b78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "I keep it separately on purpose to have a nice summary logged at the end.",
+      "parentUuid": "1eff834f_4bd01edb",
       "range": {
         "startLine": 298,
         "startChar": 0,
@@ -205,6 +313,30 @@
       "writtenOn": "2021-07-14T00:49:51Z",
       "side": 1,
       "message": "let\u0027s not do hard-coded IPs (either make them global so we can use them in the test or have this be generated at runtime).",
+      "range": {
+        "startLine": 318,
+        "startChar": 47,
+        "endLine": 318,
+        "endChar": 59
+      },
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68079ec_ede28f30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287b863a_81e880f1",
       "range": {
         "startLine": 318,
         "startChar": 47,
