@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944f9d7e_86a38951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T19:37:33Z",
+      "side": 1,
+      "message": "CL for utility package. PTAL :)\nThanks",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
