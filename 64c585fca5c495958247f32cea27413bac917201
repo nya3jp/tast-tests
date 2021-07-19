@@ -50,6 +50,24 @@
       "message": "The previous error logs also had info about the checkbox when used. If those were useful, it might be nice to consider including that info here somewhere.",
       "revId": "64c585fca5c495958247f32cea27413bac917201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ec6b46_01e2280f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-19T14:48:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76531bb3_77d2f4da",
+      "revId": "64c585fca5c495958247f32cea27413bac917201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
