@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61997cc1_2542e379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-19T14:53:00Z",
+      "side": 1,
+      "message": "Ack (I\u0027ll handle it in a separate CL).",
+      "parentUuid": "47a520a2_ba8dac1b",
+      "range": {
+        "startLine": 467,
+        "startChar": 2,
+        "endLine": 467,
+        "endChar": 10
+      },
+      "revId": "e1ea221755c5bdd8268d9b3f6db4a60ffecde4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84477837_292d925a",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-15T08:43:27Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 847,
+        "startChar": 153,
+        "endLine": 847,
+        "endChar": 161
+      },
+      "revId": "e1ea221755c5bdd8268d9b3f6db4a60ffecde4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef82e892_db2d1681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-19T14:53:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84477837_292d925a",
       "range": {
         "startLine": 847,
         "startChar": 153,
