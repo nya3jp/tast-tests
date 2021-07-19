@@ -16,6 +16,24 @@
       "message": "So far only Intel devices are in the list. Can we just create hwdep \"non_intel\" instead of skipping inside the test. WDYT?",
       "revId": "4a785b93fe0211a681d03e3b1a3c68dce7d9476f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7508ef_c83225ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-19T02:12:16Z",
+      "side": 1,
+      "message": "That\u0027s possible to add non-intel hwdep, but one concern I have is about multi-source devices. Then, the hwdep.WifiIntel is not a simple inverse of hwdep.WifiNonIntel and we\u0027ll need to maintain yet another list of non-Intel boards/models... As a result, I\u0027d prefer to branch the behavior with WiFi device name than boards/models.\n\nOTOH, I think the test is not really \"skipped\" on Intel WiFi as it still checks if they behave as expected (i.e. is self-managed)\n\n+Dean to see if he has some suggestion.",
+      "parentUuid": "4872a1bd_e3522026",
+      "revId": "4a785b93fe0211a681d03e3b1a3c68dce7d9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
