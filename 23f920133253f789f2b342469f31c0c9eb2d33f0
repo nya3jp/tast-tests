@@ -39,6 +39,30 @@
       },
       "revId": "23f920133253f789f2b342469f31c0c9eb2d33f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538b57b1_ae4f3857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-19T08:32:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3fb8d3e_d1696cb3",
+      "range": {
+        "startLine": 122,
+        "startChar": 25,
+        "endLine": 122,
+        "endChar": 43
+      },
+      "revId": "23f920133253f789f2b342469f31c0c9eb2d33f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
