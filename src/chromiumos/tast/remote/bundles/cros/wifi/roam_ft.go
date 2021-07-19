@@ -49,21 +49,18 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixt",
 		Params: []testing.Param{{
-			Name:      "psk",
-			ExtraAttr: []string{"wificell_unstable"},
+			Name: "psk",
 			Val: roamFTparam{
 				secConfFac: wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP), wpa.FTMode(wpa.FTModePure)),
 			},
 		}, {
-			Name:      "mixed_psk",
-			ExtraAttr: []string{"wificell_unstable"},
+			Name: "mixed_psk",
 			Val: roamFTparam{
 				secConfFac: wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP), wpa.FTMode(wpa.FTModeMixed)),
 				mixed:      true,
 			},
 		}, {
-			Name:      "eap",
-			ExtraAttr: []string{"wificell_unstable"},
+			Name: "eap",
 			Val: roamFTparam{
 				secConfFac: wpaeap.NewConfigFactory(
 					roamFTCert1.CACred.Cert, roamFTCert1.ServerCred,
@@ -72,8 +69,7 @@ func init() {
 				),
 			},
 		}, {
-			Name:      "mixed_eap",
-			ExtraAttr: []string{"wificell_unstable"},
+			Name: "mixed_eap",
 			Val: roamFTparam{
 				secConfFac: wpaeap.NewConfigFactory(
 					roamFTCert1.CACred.Cert, roamFTCert1.ServerCred,
