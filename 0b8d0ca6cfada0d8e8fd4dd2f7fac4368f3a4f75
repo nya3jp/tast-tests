@@ -86,6 +86,24 @@
       "parentUuid": "e7187a05_1d39466e",
       "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f832669a_99835a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-19T01:39:48Z",
+      "side": 1,
+      "message": "I think your first suggestion was most faithful to the intent of the test, which is to simulate a crash of that specific process.  So I got its pid (not the minijail pid) and killed it with SIGABRT.",
+      "parentUuid": "6ff2a49e_2dad6c1f",
+      "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
