@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7ed5a6_e4b14e91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T19:38:16Z",
+      "side": 1,
+      "message": "CL for Shelf box test. PTAL :)\nThanks",
+      "revId": "3a62c2483b6283f8270df031f22de16e7bd7790c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
