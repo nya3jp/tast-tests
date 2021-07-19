@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ba5dc09_eec0aa66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-19T06:52:46Z",
+      "side": 1,
+      "message": "This file has now 1000+ LoC! I recommend splitting it to multiple files as a subpackage.",
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e829b9a6_191e1a42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
         "patchSetId": 1
@@ -76,6 +93,52 @@
         "startChar": 86,
         "endLine": 473,
         "endChar": 93
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7de3f19_826c2ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-19T06:52:46Z",
+      "side": 1,
+      "message": "nit: it\u0027s more debuggable to include the actual value in error messages, e.g.\n\n return errors.Errorf(\"invalid inputMethodType is given: %d\", int(method))",
+      "range": {
+        "startLine": 705,
+        "startChar": 26,
+        "endLine": 705,
+        "endChar": 54
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2472c88c_d50a415e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-19T06:52:46Z",
+      "side": 1,
+      "message": "defer keyboard.Close() is missing",
+      "range": {
+        "startLine": 784,
+        "startChar": 1,
+        "endLine": 784,
+        "endChar": 2
       },
       "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -145,6 +208,29 @@
         "startChar": 89,
         "endLine": 867,
         "endChar": 98
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f701b61_99906927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-19T06:52:46Z",
+      "side": 1,
+      "message": "nit\u0026optional: Would be nicer to use switch-case.",
+      "range": {
+        "startLine": 869,
+        "startChar": 1,
+        "endLine": 869,
+        "endChar": 9
       },
       "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
