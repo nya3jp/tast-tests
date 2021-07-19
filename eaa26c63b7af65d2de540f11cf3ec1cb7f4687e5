@@ -16,6 +16,97 @@
       "message": "pwang@, tbegin@: Please take a look. Thank you. It\u0027s a subsequent CL of https://crrev.com/c/2975054",
       "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4906b89b_38e0cb5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-19T18:46:27Z",
+      "side": 1,
+      "message": "Now there\u0027s a lot of if/else. \nI found it is a bit difficult to follow so I tried to write down the code path....\n\n                     android_to_chrome    chrome_to_android    android_to_android\nUnpack extension             O                    O\nsourceAct                    O                                         O\ntargetAct                                         O                    O\nWaitForAndroidText                                O                    O\n\n\n",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68e38b6_d5d53ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-19T18:46:27Z",
+      "side": 1,
+      "message": "Optional for readability.\ninstead of putting a single Val, how about put a struct to determine a test behavior?\n\nA simple example\n\nVal: testArgs{\n    extensionPrefix: \"drag_target_\",\n    androidSource: true, \n    androidTarget: true,\n}",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9579c7_40773a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-19T18:46:27Z",
+      "side": 1,
+      "message": "if extensionPrefix !\u003d \"\" {",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd9bc0f_fec993c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-19T18:46:27Z",
+      "side": 1,
+      "message": "if androidSource {",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c6b697_3674f963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-19T18:46:27Z",
+      "side": 1,
+      "message": "if androidTarget",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
