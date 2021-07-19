@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c863028_58fbdfcd",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:26:01Z",
+      "side": 1,
+      "message": "nit: Get...() is not idiomatic go. \nhttps://golang.org/doc/effective_go#Getters\n\nAs you are renaming this method, can you fix up this issue as well?",
+      "range": {
+        "startLine": 167,
+        "startChar": 5,
+        "endLine": 167,
+        "endChar": 31
+      },
+      "revId": "e27c2d4371147ad288d6a8f7256df7630490fdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4143af59_2d8f67d3",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:26:01Z",
+      "side": 1,
+      "message": "nit: Get...() is not idiomatic go. \nhttps://golang.org/doc/effective_go#Getters\n\nAs you are updating the method signature, can you fix up this issue as well?",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 29
+      },
+      "revId": "e27c2d4371147ad288d6a8f7256df7630490fdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de4c605_59142c1b",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:26:01Z",
+      "side": 1,
+      "message": "optional: Can you fix this up? (Get...() is not idiomatic go.)\nhttps://golang.org/doc/effective_go#Getters\n\n(As you did not touch this method and it is pre-existing, this is optional.)",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 186,
+        "endChar": 17
+      },
+      "revId": "e27c2d4371147ad288d6a8f7256df7630490fdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ddb35ea_cb6cbcbe",
+        "filename": "src/chromiumos/tast/local/chrome/ime/inputmethods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-19T00:26:01Z",
+      "side": 1,
+      "message": "I made a bunch of comments on this file in:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3032840/3\nSome of those comments relate to the original file before it was moed/modified, so may be best addressed here.\n\nAs you note, input_methods.go or input_method.go (i.e. with underscore) is probably a better name for this file.",
+      "revId": "e27c2d4371147ad288d6a8f7256df7630490fdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
