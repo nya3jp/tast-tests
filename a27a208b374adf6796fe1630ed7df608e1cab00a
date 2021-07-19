@@ -16,6 +16,57 @@
       "message": "Thanks for all your comments.",
       "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c426876_1e882b82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T11:03:59Z",
+      "side": 1,
+      "message": "LGTM % final nits.\n\nStructure and usability LGTM.\nNot too worried too much about the python scripts as they will only be called ocasionally.\n\nNow to just find a way to map Policy to PolicySchema 😊 for cheap integration testing.",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e042e8e_3ed4b041",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T11:03:59Z",
+      "side": 1,
+      "message": "nit: move this below the other structs.",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4246372c_e0d3ceea",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T11:03:59Z",
+      "side": 1,
+      "message": "orgunit no longer passed. Please update description.\n\nIMO it can be short this time since users of the package don\u0027t need to do anything special anymore.",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
