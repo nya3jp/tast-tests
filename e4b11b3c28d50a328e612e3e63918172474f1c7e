@@ -85,6 +85,23 @@
       "message": "ricardoq@ could you review again?",
       "revId": "e4b11b3c28d50a328e612e3e63918172474f1c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c42c71_16555439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-19T17:32:19Z",
+      "side": 1,
+      "message": "LGTM.\n\nPlease keep an eye on it since it failed on Nami boards a few builds ago.",
+      "revId": "e4b11b3c28d50a328e612e3e63918172474f1c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
