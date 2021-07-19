@@ -104,6 +104,24 @@
       "parentUuid": "6ff2a49e_2dad6c1f",
       "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff77b83_d5fb34e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-19T01:39:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f832669a_99835a3f",
+      "revId": "0b8d0ca6cfada0d8e8fd4dd2f7fac4368f3a4f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
