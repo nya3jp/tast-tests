@@ -272,11 +272,11 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 }
 
 func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestState, s *testing.State) {
-	imePrefix, err := ime.GetIMEPrefix(ctx, st.tconn)
+	imePrefix, err := ime.Prefix(ctx, st.tconn)
 	if err != nil {
 		s.Fatal("Failed to get the IME extension prefix: ", err)
 	}
-	currentImeID, err := ime.GetCurrentInputMethod(ctx, st.tconn)
+	currentImeID, err := ime.CurrentInputMethod(ctx, st.tconn)
 	if err != nil {
 		s.Fatal("Failed to get the current IME ID: ", err)
 	}

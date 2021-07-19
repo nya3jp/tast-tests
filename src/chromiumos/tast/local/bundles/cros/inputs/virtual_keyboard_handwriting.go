@@ -140,7 +140,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// IME code of the language currently being tested.
-	testIME := ime.IMEPrefix + string(params.imeID)
+	testIME := ime.ChromeIMEPrefix + string(params.imeID)
 
 	// Add and set the required ime for the test case.
 	if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {

@@ -283,7 +283,7 @@ func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCo
 		vkbCtx.HideVirtualKeyboard(),
 		// Set input method. It does nothing if the input method is in use.
 		func(ctx context.Context) error {
-			return ime.AddAndSetInputMethod(ctx, its.tconn, ime.IMEPrefix+string(imeCode))
+			return ime.AddAndSetInputMethod(ctx, its.tconn, ime.ChromeIMEPrefix+string(imeCode))
 		},
 		its.Clear(inputField),
 		its.ClickFieldUntilVKShown(inputField),

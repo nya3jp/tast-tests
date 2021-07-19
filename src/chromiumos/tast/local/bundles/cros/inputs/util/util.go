@@ -80,7 +80,7 @@ func RunSubtestsPerInputMethodAndMessage(ctx context.Context, tconn *chrome.Test
 	inputMethods []ime.InputMethodCode, messages []data.Message, subtest func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State)) {
 	for _, inputMethod := range inputMethods {
 		// Setup input method.
-		imeCode := ime.IMEPrefix + string(inputMethod)
+		imeCode := ime.ChromeIMEPrefix + string(inputMethod)
 		s.Logf("Set current input method to: %s", imeCode)
 		if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
 			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)

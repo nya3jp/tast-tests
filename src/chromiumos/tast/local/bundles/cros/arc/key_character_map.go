@@ -95,7 +95,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	}
 
 	var imePrefix string
-	if imePrefix, err = ime.GetIMEPrefix(ctx, tconn); err != nil {
+	if imePrefix, err = ime.Prefix(ctx, tconn); err != nil {
 		s.Fatal("Failed to get ime prefix: ", err)
 	}
 
