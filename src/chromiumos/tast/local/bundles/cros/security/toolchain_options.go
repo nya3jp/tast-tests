@@ -105,10 +105,6 @@ var libgccAllowlist = []string{
 	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
 	"/usr/lib64/libSkyCamAIC.so",
 	"/usr/lib64/libSkyCamAICKBL.so",
-
-	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
-	"/usr/lib/dri/kms_swrast_dri.so",
-	"/usr/lib/dri/swrast_dri.so",
 }
 
 var libstdcAllowlist = []string{
