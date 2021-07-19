@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a90fef_8b9a89df",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-19T11:04:06Z",
+      "side": 1,
+      "message": "that\u0027s one way to reduce the argument list!  will keep that in mind for a future CL, thanks.",
+      "parentUuid": "1267ac8f_77761914",
+      "range": {
+        "startLine": 93,
+        "startChar": 75,
+        "endLine": 93,
+        "endChar": 81
+      },
+      "revId": "e2ce5a1f750f262dc706794228b5b664bd69fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beded7eb_4cdc4aee",
