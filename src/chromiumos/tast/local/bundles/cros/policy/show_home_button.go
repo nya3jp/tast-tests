@@ -6,11 +6,13 @@ package policy
 
 import (
 	"context"
-	"time"
+	"strings"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -81,11 +83,17 @@ func ShowHomeButton(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Confirm the status of the Home button node.
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Home",
-			}, param.wantButton, 15*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Home button: ", err)
+			ui := uiauto.New(tconn)
+			homeButton := nodewith.Name("Home").Role(role.Button).First()
+			if err = ui.WaitUntilExists(homeButton)(ctx); err != nil {
+				if !strings.Contains(err.Error(), nodewith.ErrNotFound) {
+					s.Fatal("Failed to wait for 'Home' button: ", err)
+				}
+				if param.wantButton {
+					s.Error("'Home' button not found: ", err)
+				}
+			} else if !param.wantButton {
+				s.Error("Unexpected 'Home' button found: ", err)
 			}
 		})
 	}
