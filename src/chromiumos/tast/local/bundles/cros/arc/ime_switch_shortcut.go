@@ -89,11 +89,11 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	}
 
 	var imeID string
-	if imeID, err = ime.GetCurrentInputMethod(ctx, tconn); err != nil {
+	if imeID, err = ime.CurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	}
 	var imePrefix string
-	if imePrefix, err = ime.GetIMEPrefix(ctx, tconn); err != nil {
+	if imePrefix, err = ime.Prefix(ctx, tconn); err != nil {
 		s.Fatal("Failed to get ime prefix: ", err)
 	}
 
@@ -127,7 +127,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to activate US keyboard: ", err)
 	}
 
-	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
+	if imeID, err := ime.CurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != usIMEID {
 		s.Fatalf("Failed to activate US keyboard: got %q; want %q", imeID, usIMEID)
@@ -144,7 +144,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Ctrl-Space: ", err)
 	}
 
-	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
+	if imeID, err := ime.CurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != intlIMEID {
 		s.Fatalf("Failed to switch international keyboard: got %q; want %q", imeID, intlIMEID)

@@ -52,7 +52,7 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+string(ime.INPUTMETHOD_NACL_MOZC_JP)); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+string(ime.INPUTMETHOD_NACL_MOZC_JP)); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
 

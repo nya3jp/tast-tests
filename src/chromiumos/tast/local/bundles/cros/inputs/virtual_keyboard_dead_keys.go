@@ -123,7 +123,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	s.Log("Set input method to: ", testCase.inputMethodID)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+testCase.inputMethodID); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+testCase.inputMethodID); err != nil {
 		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
 	}
 

@@ -74,7 +74,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	imeCode := ime.IMEPrefix + string(s.Param().(ime.InputMethodCode))
+	imeCode := ime.ChromeIMEPrefix + string(s.Param().(ime.InputMethodCode))
 	s.Logf("Set current input method to: %s", imeCode)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
 		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
