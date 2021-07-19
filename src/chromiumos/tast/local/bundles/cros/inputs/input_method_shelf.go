@@ -65,7 +65,7 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Add IME for testing.
-	imeCode := ime.IMEPrefix + inputMethodCode
+	imeCode := ime.ChromeIMEPrefix + inputMethodCode
 
 	settings, err := imesettings.LaunchAtInputsSettingsPage(ctx, tconn, cr)
 	if err != nil {
@@ -103,7 +103,7 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		ui.LeftClick(imeMenuTrayButtonFinder),
 		ui.LeftClick(usOptionFinder),
 		func(ctx context.Context) error {
-			return ime.WaitForInputMethodMatches(ctx, tconn, ime.IMEPrefix+string(ime.INPUTMETHOD_XKB_US_ENG), 10*time.Second)
+			return ime.WaitForInputMethodMatches(ctx, tconn, ime.ChromeIMEPrefix+string(ime.INPUTMETHOD_XKB_US_ENG), 10*time.Second)
 		},
 
 		// Toggle off the option. IME tray should be gone.

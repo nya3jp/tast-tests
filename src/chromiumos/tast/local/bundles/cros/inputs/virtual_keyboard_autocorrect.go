@@ -102,7 +102,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	imeCode := ime.IMEPrefix + testCase.InputMethodID
+	imeCode := ime.ChromeIMEPrefix + testCase.InputMethodID
 	s.Logf("Set current input method to: %s", imeCode)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
 		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)

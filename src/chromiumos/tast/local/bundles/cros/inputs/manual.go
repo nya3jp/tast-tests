@@ -305,7 +305,7 @@ func Manual(ctx context.Context, s *testing.State) {
 
 	// Add testing input method.
 	if settings.imeID != "" {
-		if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+settings.imeID); err != nil {
+		if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+settings.imeID); err != nil {
 			s.Fatalf("Failed to set input method %q: %v", settings.imeID, err)
 		}
 	}
