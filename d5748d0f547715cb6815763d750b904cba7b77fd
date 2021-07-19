@@ -16,6 +16,29 @@
       "message": "PTAL again!",
       "revId": "d5748d0f547715cb6815763d750b904cba7b77fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a4c552_ea0da6c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-19T04:03:33Z",
+      "side": 1,
+      "message": "You have to move this error condition outside the testing.Poll as well. Also ensure you defer the closing of the keyboard handle as well, e.g.\n```\nkeyboard, err :\u003d input.Keyboard(ctx)\nif err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to create a keyboard\")\n}\ndefer keyboard.Close()\n```",
+      "range": {
+        "startLine": 841,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 3
+      },
+      "revId": "d5748d0f547715cb6815763d750b904cba7b77fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
