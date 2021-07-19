@@ -34,6 +34,24 @@
       "parentUuid": "2b49a16c_5657d1a5",
       "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12cf490_42cf5dcc",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-19T12:25:00Z",
+      "side": 1,
+      "message": "InitPID() exists here because it\u0027s used by many tests, and it\u0027s useful to abstract the difference between VM and container.\nOTOH currently there is only one test which needs to find the mojo proxy process.\n\nAlso, beacuse there is only one mojo proxy process in the system, there is no need to check the process UID.\n\nPlease stick to the YAGNI principle to avoid making the utility function unnecessarily complicated.\nThe amount of complexity added here exceeds the amount you can reduce from the test body ATM.\n\nIf we find it useful to have a general purpose function to find the PID of a service, we can add it later, probably not in this ARC directory.",
+      "parentUuid": "f17f100c_88d3dc9f",
+      "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
