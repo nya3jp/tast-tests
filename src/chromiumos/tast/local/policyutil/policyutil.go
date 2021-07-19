@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/timing"
 )
 
 // ServeAndVerify serves the policies using ServeAndRefresh and verifies that they are set in Chrome.
@@ -89,5 +90,8 @@ func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) 
 // Note that this will not work for policies which require a reboot before a
 // change is applied.
 func Refresh(ctx context.Context, tconn *chrome.TestConn) error {
+	ctx, st := timing.Start(ctx, "policy_refresh")
+	defer st.End()
+
 	return tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil)
 }
