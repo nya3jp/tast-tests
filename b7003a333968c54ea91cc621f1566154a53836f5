@@ -51,6 +51,24 @@
       "parentUuid": "538fff49_dedf5291",
       "revId": "b7003a333968c54ea91cc621f1566154a53836f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "108d86ed_3a6c039f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-19T14:38:31Z",
+      "side": 1,
+      "message": "Some tests might require special handling in policy_testserver.py and have their own unique code paths there.\n\nI only know of RequiredClientCertificateForDevice/User as I implemented those. I\u0027m not aware of any other.",
+      "parentUuid": "0898b2da_5f2ab0a5",
+      "revId": "b7003a333968c54ea91cc621f1566154a53836f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
