@@ -339,6 +339,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e6e8ac2_9c2bf94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-19T15:23:06Z",
+      "side": 1,
+      "message": "Ack. Add a comment that the ForceGoogleSafeSearch policy is arbitrarily chosen just to illustrate that setting policies works for Family Link users.",
+      "parentUuid": "4282ac98_5a615c6e",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec047c94_22cfbe46",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 10
@@ -1059,6 +1083,30 @@
       "side": 1,
       "message": "Harder to write is less important than harder to read 😊.",
       "parentUuid": "7f22b8f0_0169dc92",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b1b576_003f4e27",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-19T15:23:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e193000f_ca4954a8",
       "range": {
         "startLine": 76,
         "startChar": 1,
