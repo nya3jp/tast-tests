@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "253b58cb_bfc60bdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-19T05:49:54Z",
+      "side": 1,
+      "message": "Looks good. To be safe, let\u0027s commit it after the tests with previous CL passed.",
+      "revId": "4936b9fe2458e46a1a23dfda3563aa4f1080e7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
