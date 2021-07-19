@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8846343_67098f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-19T20:45:59Z",
+      "side": 1,
+      "message": "Hi Renuga, As discussed over chat, I updated the comment for readability.",
+      "revId": "b46915c362dc64fc9c92a5c59ce7f91493c8dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
