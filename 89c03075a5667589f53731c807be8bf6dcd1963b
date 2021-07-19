@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "24285579_34205773",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-19T06:13:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9aa95f_4df7e4f2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 1
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aad586c0_f1c9106e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdecfdfc_30b49393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-19T06:13:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ad2640_20909540",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5af02df9_f8e47178",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-07-18T20:21:48Z",
       "side": 1,
       "message": "close (the app window) + period",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44140978_324903a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-19T06:13:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5af02df9_f8e47178",
       "range": {
         "startLine": 61,
         "startChar": 27,
@@ -141,6 +213,30 @@
       "side": 1,
       "message": "or maybe you can omit this detail. How it is implemented is up to the apk. If we change how the apk triggers the Android directory creation code in the future by not calling getExternalFilesDirs, we probably won\u0027t remember to update this comment, so it\u0027s better to just omit the implementation detail. Here, the comment only need to explain that the apk creates the Android directory: \"This is a plain app that triggers \"Android\" folder creation when external storage permission is ON.\"",
       "parentUuid": "a8b3d0d7_214b90ed",
+      "range": {
+        "startLine": 119,
+        "startChar": 49,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "89c03075a5667589f53731c807be8bf6dcd1963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce17796_8cf00a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-19T06:13:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a334f05_2b5ae095",
       "range": {
         "startLine": 119,
         "startChar": 49,
