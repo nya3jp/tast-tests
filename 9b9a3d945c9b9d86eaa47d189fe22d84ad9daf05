@@ -16,6 +16,40 @@
       "message": "CL for utility package. PTAL :)\nThanks",
       "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dfb23cc_b090653e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T19:52:26Z",
+      "side": 1,
+      "message": "`I would not be this specific here, any string change will break the test.`\n\nI agree but this notification can\u0027t be tested using ash notification. What would make it more relaxing?",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7573751b_ea222fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T19:52:26Z",
+      "side": 1,
+      "message": "`nit: DLP`\n\nThis was the initial reason I thought for not making Dlp -\u003e DLP \nbecause after DLP there is Policy resulting DLPP continuous.\n\nAlthough I have added the change",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
