@@ -355,6 +355,9 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 		return errors.Wrap(err, "failed to get TPM information")
 	}
 	if tpmInfo.IsOwned {
+		if err := h.saveTPMClearLogs(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to save TPM clear logs: ", err)
+		}
 		// If the TPM is ready, the reset was not successful
 		return errors.New("ineffective reset of TPM")
 	}
