@@ -1,0 +1,603 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68066c7_7cc19599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "First of all thanks for adding so many tests!\n\nI have added quite a few style nits. I might have missed some newlines at the beginning of functions, please avoid them. Test names (including subtests) should be snake_case.\n\nAs a more structural issue, tast tests should not depend as much on UI elements, it will make them brittle over time. IMO it\u0027s better to add simpler tests that don\u0027t exercise as much functionality, but don\u0027t depend on the UI. It is currently being discussed whether to disallow UI tests in the Cq.\n\nIs it possible to move more of the test content to browsertests? When a string is changed (in Chrome), it\u0027s easy to update a browsertest in the same repository. tast makes this process difficult.\n\nCan you also split up the CL into smaller parts? One CL to add the common package, one to move the tests and one for each new test?",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c1f210_52cf96cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e734e162_e05c3f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5b0230_47d2c09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "I would not be this specific here, any string change will break the test.",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f19ecc_5099b635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Do you need to wait on each to appear in order? Did you try just waiting on the last element?",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258f1855_2e510160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "This already writes the policy blob, not need to do it above. Same for the other tests.",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 41
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc3539a_33b46a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "use lowercase subtest names",
+      "range": {
+        "startLine": 82,
+        "startChar": 17,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e706e6b0_744baaa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Don\u0027t you need to focus on something first here? Opening the page might take some time.",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7b5332_68a600d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a008edca_eaa093ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Add a comment here, I\u0027m not sure what is happening.",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615c9226_ad8feb11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Don\u0027t you need to focus on something?",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d80cd8f_45131307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc66acb_8e332ce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324f3b0f_a3576e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "You can reset Chrome here. It will clean up all windows + some other cleanups. Policy will remain untouched.",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07226cf1_42a23ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0646df8b_6618d472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72765f6_704de025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Reset Chrome here.",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f961e4ce_f3d363bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47eeed22_b7b1c819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb987b46_c5ff1fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 13,
+        "startChar": 53,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32b61af_90c8877f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: DLP\n\nI assume DLP is an acronym",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb856054_4357bee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Maybe RestrictiveDPLPolicyForClipboard ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcb4b1e_2a92dce3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: Avoid stop words like Get",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5056f4cf_a1fa5a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc8365b_5a80590d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: just return here",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18a5b33_95c8ae34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 47,
+        "startChar": 40,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c3f0d4_136d2f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: avoid stop words like get",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "923555f3_a6811e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: DLP",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c0e870_e5cf5fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "Maybe StandardDPLPolicyForClipboard ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1497325e_01082d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e424b1_740fedc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T07:24:52Z",
+      "side": 1,
+      "message": "nit: just return here",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "56352f8a590a834604479da9d463a6f259d8666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
