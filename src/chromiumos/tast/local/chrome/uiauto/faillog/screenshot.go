@@ -37,9 +37,9 @@ func saveScreenshotToFileOnError(ctx context.Context, cr *chrome.Chrome, outDir 
 		return
 	}
 
-	screetshotFile := filepath.Join(dir, fileName)
-	testing.ContextLog(ctx, "Test failed. Saving screenshot to ", screetshotFile)
-	if err := screenshot.CaptureChrome(ctx, cr, screetshotFile); err != nil {
+	screenshotFile := filepath.Join(dir, fileName)
+	testing.ContextLog(ctx, "Test failed. Saving screenshot to ", screenshotFile)
+	if err := screenshot.CaptureChrome(ctx, cr, screenshotFile); err != nil {
 		testing.ContextLog(ctx, "Failed to take screenshot: ", err)
 	}
 }
