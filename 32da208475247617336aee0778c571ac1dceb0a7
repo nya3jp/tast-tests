@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a228502f_a75a8364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-19T22:01:10Z",
+      "side": 1,
+      "message": "oopss...",
+      "parentUuid": "90b1893d_5b0618d8",
+      "revId": "32da208475247617336aee0778c571ac1dceb0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b28151_7ae2918b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-19T21:57:22Z",
       "side": 1,
       "message": "nit: download.go -\u003e files.go, or file_util.go",
+      "revId": "32da208475247617336aee0778c571ac1dceb0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827b88ac_15fdd79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/wmp/download.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-19T22:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b28151_7ae2918b",
       "revId": "32da208475247617336aee0778c571ac1dceb0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
