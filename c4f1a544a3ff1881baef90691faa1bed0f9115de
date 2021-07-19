@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d272a6_10414c94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96364779_99588fb0",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "c4f1a544a3ff1881baef90691faa1bed0f9115de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8247353e_338270ed",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-19T08:38:56Z",
       "side": 1,
       "message": "nit: Maybe the `fast_build.sh -T` test would be good here to make sure there were no dependencies left in the codebase.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "c4f1a544a3ff1881baef90691faa1bed0f9115de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a9542b_56b308b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:24:29Z",
+      "side": 1,
+      "message": "Already did that, Cq is more comprehensive 😊",
+      "parentUuid": "8247353e_338270ed",
       "range": {
         "startLine": 10,
         "startChar": 5,
