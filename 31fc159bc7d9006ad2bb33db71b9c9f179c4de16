@@ -34,6 +34,29 @@
       "parentUuid": "16458ef0_e7a83336",
       "revId": "31fc159bc7d9006ad2bb33db71b9c9f179c4de16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3648fb_d7abefbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-19T15:12:27Z",
+      "side": 1,
+      "message": "Please use firmware_experimental for new tests.",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "31fc159bc7d9006ad2bb33db71b9c9f179c4de16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
