@@ -59,9 +59,9 @@ func AuthFailure(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	// Restart related daemons first to cleanup previous auth failure
-	if err := restartRelatedDaemons(ctx, daemonController); err != nil {
-		s.Fatal("Failed to restart related daemon: ", err)
+	// Restart TPM daemons first to cleanup previous auth failure
+	if err := daemonController.RestartTPMDaemons(ctx); err != nil {
+		s.Fatal("Failed to restart TPM daemons: ", err)
 	}
 	// Sleep for a while to prevent cryptohome command failing.
 	testing.Sleep(ctx, time.Second)
@@ -76,9 +76,9 @@ func AuthFailure(ctx context.Context, s *testing.State) {
 	if err := hwseclocal.IncreaseDAWithCheckVault(ctx, cryptohome, mountInfo); err != nil {
 		s.Fatal("Failed to increase dictionary attcack counter: ", err)
 	}
-	// Restart related daemons to generate auth failure log
-	if err := restartRelatedDaemons(ctx, daemonController); err != nil {
-		s.Fatal("Failed to restart related daemons: ", err)
+	// Restart TPM daemons to generate auth failure log
+	if err := daemonController.RestartTPMDaemons(ctx); err != nil {
+		s.Fatal("Failed to restart TPM daemons: ", err)
 	}
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedAuthFailureRegexes)
 	if err == nil {
@@ -92,9 +92,9 @@ func AuthFailure(ctx context.Context, s *testing.State) {
 	if err := hwseclocal.IncreaseDAForTpm1(ctx, tpmManager); err != nil {
 		s.Fatal("Failed to increase dictionary attcack counter: ", err)
 	}
-	// Restart related daemons to generate auth failure log
-	if err := restartRelatedDaemons(ctx, daemonController); err != nil {
-		s.Fatal("Failed to restart related daemons: ", err)
+	// Restart TPM daemons to generate auth failure log
+	if err := daemonController.RestartTPMDaemons(ctx); err != nil {
+		s.Fatal("Failed to restart TPM daemons: ", err)
 	}
 
 	s.Log("Waiting for files")
@@ -135,13 +135,4 @@ func AuthFailure(ctx context.Context, s *testing.State) {
 			s.Error("Failed to save unexpected crashes: ", err)
 		}
 	}
-}
-
-func restartRelatedDaemons(ctx context.Context, daemonController *hwsec.DaemonController) error {
-	// Restart tcsd to generate auth failure log
-	if err := daemonController.Restart(ctx, hwsec.TcsdDaemon); err != nil {
-		return err
-	}
-	// TODO(b/192034446): We restart tpm_managerd to avoid tpm_managerd crashing when receiving next command. Remove this once the problem is resolved.
-	return daemonController.Restart(ctx, hwsec.TPMManagerDaemon)
 }
