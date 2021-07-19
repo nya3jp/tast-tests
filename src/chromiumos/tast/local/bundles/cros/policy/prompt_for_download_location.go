@@ -15,9 +15,13 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -67,29 +71,29 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name            string
 		wantAsk         bool
-		wantRestriction ui.RestrictionState               // wantRestriction is the wanted restriction state of the toggle button in the download settings.
-		wantChecked     ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button in the download settings.
-		value           *policy.PromptForDownloadLocation // value is the value of the policy.
+		wantChecked     checked.Checked
+		wantRestriction restriction.Restriction
+		value           *policy.PromptForDownloadLocation
 	}{
 		{
 			name:            "unset",
 			wantAsk:         false,
-			wantRestriction: ui.RestrictionNone,
-			wantChecked:     ui.CheckedStateFalse,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.None,
 			value:           &policy.PromptForDownloadLocation{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "disabled",
 			wantAsk:         false,
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateFalse,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.Disabled,
 			value:           &policy.PromptForDownloadLocation{Val: false},
 		},
 		{
 			name:            "enabled",
 			wantAsk:         true,
-			wantRestriction: ui.RestrictionDisabled,
-			wantChecked:     ui.CheckedStateTrue,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.Disabled,
 			value:           &policy.PromptForDownloadLocation{Val: true},
 		},
 	} {
@@ -106,48 +110,34 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Open settings page where the affected toggle button can be found.
-			conn, err := cr.NewConn(ctx, "chrome://settings/downloads")
-			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
-			}
-			defer conn.Close()
-
-			if err := policyutil.VerifySettingsNode(ctx, tconn,
-				ui.FindParams{
-					Role: ui.RoleTypeToggleButton,
-					Name: "Ask where to save each file before downloading",
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-						"checked":     param.wantChecked,
-					},
-				},
-			); err != nil {
+			if err := policyutil.SettingsPage(ctx, cr, "downloads").
+				SelectNode(ctx, nodewith.
+					Name("Ask where to save each file before downloading").
+					Role(role.ToggleButton)).
+				Restriction(param.wantRestriction).
+				Checked(param.wantChecked).
+				Verify(); err != nil {
 				s.Error("Unexpected settings state: ", err)
 			}
 
 			// Start a download.
-			if err := conn.Navigate(ctx, server.URL+"/prompt_for_download_location.html"); err != nil {
+			conn, err := cr.NewConn(ctx, server.URL+"/prompt_for_download_location.html")
+			if err != nil {
 				s.Fatal("Failed to start download: ", err)
 			}
+			defer conn.Close()
 
 			if err := conn.Eval(ctx, `document.getElementById('dlink').click()`, nil); err != nil {
 				s.Fatal("Failed to execute JS expression: ", err)
 			}
 
 			// Check whether we get a prompt for the download location or if the file gets downloaded to the default folder.
-			params := ui.FindParams{
-				Role: ui.RoleTypeWindow,
-				Name: "Save file as",
-			}
+			ui := uiauto.New(tconn)
+			downloadPrompt := nodewith.Name("Save file as").Role(role.Window)
 			asked := false
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				// Check if there is a prompt for the download location.
-				if exist, err := ui.Exists(ctx, tconn, params); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
-					return testing.PollBreak(errors.Wrap(err, "finding prompt for download location failed"))
-				} else if exist {
+				if err = ui.Exists(downloadPrompt)(ctx); err == nil {
 					asked = true
 					return nil
 				}
