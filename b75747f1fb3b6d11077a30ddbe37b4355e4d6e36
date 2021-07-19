@@ -185,6 +185,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0343606d_4fd02fb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_cont_netperf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-07-19T14:08:17Z",
+      "side": 1,
+      "message": "I assume this is resolved now.",
+      "parentUuid": "fac8aa87_fbd4a996",
+      "range": {
+        "startLine": 62,
+        "startChar": 77,
+        "endLine": 62,
+        "endChar": 80
+      },
+      "revId": "b75747f1fb3b6d11077a30ddbe37b4355e4d6e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24382d38_c4d65dcf",
