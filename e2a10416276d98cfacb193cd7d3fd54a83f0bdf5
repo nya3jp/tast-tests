@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d73b707_6310b04a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T13:11:33Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e2a10416276d98cfacb193cd7d3fd54a83f0bdf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39e1bd9_27c2cb2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_notifications_setting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T13:11:33Z",
+      "side": 1,
+      "message": "\u003e \"enrties\" is a possible misspelling of \"entries\".\n\nPlease fix.",
+      "parentUuid": "f5bb86ba_fe9b747c",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "e2a10416276d98cfacb193cd7d3fd54a83f0bdf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
