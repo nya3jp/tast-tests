@@ -16,6 +16,24 @@
       "message": "This looks unnecessarily complicated.\nYou can just use pgrep[1] or the process package functions in the test body.\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go;l\u003d108?q\u003dcontainermount.go",
       "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17f100c_88d3dc9f",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-19T10:52:14Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, but I tried to follow the existing model here, just extending to allow more processes.\nDid you notice that the code within InitPid() is almost entirely re-used? \n\nThe existing model does 2 things that a simple inline pgrep does not:\n1) Abstract the process name, keep it in a single place\n2) Also consider the user name in the search for the process",
+      "parentUuid": "2b49a16c_5657d1a5",
+      "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
