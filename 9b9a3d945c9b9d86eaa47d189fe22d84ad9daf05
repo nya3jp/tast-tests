@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c27be26_a4ac4605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-19T20:26:34Z",
+      "side": 1,
+      "message": "Can you use this variable instead? IDS_POLICY_DLP_CLIPBOARD_BLOCKED_ON_PASTE\nhttps://source.chromium.org/chromium/chromium/src/+/main:components/policy_strings.grdp;l\u003d618?q\u003dIDS_POLICY_DLP_CLIPBOARD_BLOCKED_ON_PASTE%20-f:out\u0026ss\u003dchromium%2Fchromium%2Fsrc",
+      "parentUuid": "7dfb23cc_b090653e",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7573751b_ea222fae",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-19T19:52:26Z",
       "side": 1,
       "message": "`nit: DLP`\n\nThis was the initial reason I thought for not making Dlp -\u003e DLP \nbecause after DLP there is Policy resulting DLPP continuous.\n\nAlthough I have added the change",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f3c02bb_d0f11520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-19T20:26:34Z",
+      "side": 1,
+      "message": "We only capitalize D, so it should be Dlp not DLP",
+      "parentUuid": "7573751b_ea222fae",
       "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
