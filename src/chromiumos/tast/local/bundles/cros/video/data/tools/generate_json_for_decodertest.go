@@ -107,6 +107,8 @@ func ffprobeCodecToProfile(codec, profile string) (Profile, error) {
 	switch codec {
 	case "h264":
 		switch profile {
+		case "Constrained Baseline":
+			return h264Baseline, nil
 		case "Baseline":
 			return h264Baseline, nil
 		case "Main":
