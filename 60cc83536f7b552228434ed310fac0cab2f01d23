@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993c57fb_8cbe4aff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T23:56:21Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective % optional nit.",
+      "revId": "60cc83536f7b552228434ed310fac0cab2f01d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "989d437e_2c8723ee",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-19T23:56:21Z",
+      "side": 1,
+      "message": "optional nit: I would personally create a bool in the beginning like:\nisSection :\u003d section !\u003d \"\", so it does not need to compare with a hard code empty string a few times, which does not look very good.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "60cc83536f7b552228434ed310fac0cab2f01d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
