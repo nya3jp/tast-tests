@@ -22,6 +22,30 @@
       },
       "revId": "055b11d00659bf313785e85efee011da7d37c208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47afd901_2fa29145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-19T17:30:45Z",
+      "side": 1,
+      "message": "Thanks for the comment. After combining all actions, the code is really neat!",
+      "parentUuid": "69114b81_6f168727",
+      "range": {
+        "startLine": 335,
+        "startChar": 29,
+        "endLine": 335,
+        "endChar": 41
+      },
+      "revId": "055b11d00659bf313785e85efee011da7d37c208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
