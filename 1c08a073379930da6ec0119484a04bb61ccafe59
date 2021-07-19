@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e958e01_9c62bdf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T20:00:57Z",
+      "side": 1,
+      "message": "This CL would require Commit-Queue +2 If and only if there is no problem",
+      "revId": "1c08a073379930da6ec0119484a04bb61ccafe59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
