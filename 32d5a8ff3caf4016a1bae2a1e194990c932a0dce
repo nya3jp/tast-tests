@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc4de9c_fd799600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-07-19T11:19:52Z",
+      "side": 1,
+      "message": "It\u0027s strange that this bug in config has been there for some while, and the test using perfetto cmdline doesn\u0027t reveal it. It\u0027s revealed by tracing via Chome DevTools protocol with this error:\n\nError at perfetto_chrome_consumer.go:84: Failed to start tracing: failed to start tracing: cdp.Tracing: Start: rpc error: Data source \"linux.process_stats\" specified an out of bounds target_buffer (1 \u003e\u003d 1) (code \u003d -32000) ",
+      "revId": "32d5a8ff3caf4016a1bae2a1e194990c932a0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
