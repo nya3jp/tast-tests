@@ -16,6 +16,23 @@
       "message": "PTAL again!",
       "revId": "eaedc8b09a3c02a3495c6cca8cbeaea4e3229894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a50e0f5_22226d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-07-19T02:03:29Z",
+      "side": 1,
+      "message": "behavior and expectations lgtm. Hand over to Abe-san for tast/Go stuff.",
+      "revId": "eaedc8b09a3c02a3495c6cca8cbeaea4e3229894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
