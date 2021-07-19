@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1754d220_cf35340e",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc2b0e37_4744ce68",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3813506_9e7fe62d",
@@ -147,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ad0cd7_11c5c205",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Make sense. Thanks for explaining!",
+      "parentUuid": "c9a2d567_76f0aa8e",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75563596_03540897",
@@ -160,6 +208,30 @@
       "writtenOn": "2021-07-09T23:30:10Z",
       "side": 1,
       "message": "The fixture run time is not included in the test timeout, so you can remove this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30ecdb4_443593f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75563596_03540897",
       "range": {
         "startLine": 26,
         "startChar": 16,
@@ -243,6 +315,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4282ac98_5a615c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "The purpose of the `policy_login.go` test is used to verify that policy test for child user works. We could remove this test as we have the other policy tests in future. I just randomly picked a policy for this test.\nIf we want a child version safe search test, would it be better to test it with web filter?",
+      "parentUuid": "58f17cce_41ab0fdf",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec047c94_22cfbe46",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
         "patchSetId": 10
@@ -254,6 +350,30 @@
       "writtenOn": "2021-07-09T23:30:10Z",
       "side": 1,
       "message": "Nit: were or just remove this word.",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea8089f_636ada48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec047c94_22cfbe46",
       "range": {
         "startLine": 47,
         "startChar": 27,
@@ -287,6 +407,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c99babb2_49518304",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec2bdf7_89582166",
+      "range": {
+        "startLine": 162,
+        "startChar": 30,
+        "endLine": 162,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92330554_da297e58",
@@ -300,6 +444,30 @@
       "writtenOn": "2021-07-08T04:59:47Z",
       "side": 1,
       "message": "Not used anywhere. I will update it in the next patch.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009cb362_f85e91ba",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "NVM.",
+      "parentUuid": "92330554_da297e58",
       "range": {
         "startLine": 173,
         "startChar": 1,
@@ -475,6 +643,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b9d6c4_95bd3358",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done by replace with RefreshChromePolicy().",
+      "parentUuid": "370b1582_20f271ed",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74afd701_06f4a0ce",
@@ -488,6 +680,30 @@
       "writtenOn": "2021-07-09T23:30:10Z",
       "side": 1,
       "message": "Nit: just fdms, not f.fdms",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 18
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af14aa29_e5d7fe01",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74afd701_06f4a0ce",
       "range": {
         "startLine": 237,
         "startChar": 12,
@@ -521,6 +737,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "328b307e_32cba155",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa3f39e9_9a1bd060",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcc79a47_bbb1b191",
@@ -534,6 +774,30 @@
       "writtenOn": "2021-07-12T08:10:04Z",
       "side": 1,
       "message": "nit: in Chrome",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d7248c_7e612bf3",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcc79a47_bbb1b191",
       "range": {
         "startLine": 70,
         "startChar": 16,
@@ -609,6 +873,54 @@
         "startChar": 39,
         "endLine": 55,
         "endChar": 58
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a015b671_30004db0",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ce9153b_4acd5e7e",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f3d0b2_d3c394a6",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3465ae2_cfb67844",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 11
       },
       "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -709,6 +1021,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f22b8f0_0169dc92",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "I\u0027ve thought about using 1 var as Toby mentioned before. Maybe using 2 vars are better, since it\u0027s less confusing.",
+      "parentUuid": "0c73f989_dca9d7a6",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d787b5b0_d3d29d93",
@@ -746,6 +1082,30 @@
       "side": 1,
       "message": "The purpose of userCallBack is to set the policyUser for global. fakedms.NewPolicyBlob() is also used in policyutil. I just want to make policyutil simple to used with less change.\n \nPeople used callback in fixture before, for example chrome.OptionsCallback[1]. I think we could use here if it\u0027s needed.\n\n[1]http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go?l\u003d141\u0026rcl\u003d5d70f1c7b86633f10058f85fd378e0fc68fbd34c",
       "parentUuid": "d787b5b0_d3d29d93",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "eab3c6299517c5eb57703c42955da3b9941d3878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de3fdb2_add0cfd8",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-19T08:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7adb16e_376f1d55",
       "range": {
         "startLine": 111,
         "startChar": 1,
