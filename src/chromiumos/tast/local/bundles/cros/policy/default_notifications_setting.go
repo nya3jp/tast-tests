@@ -37,39 +37,45 @@ func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
+	radioButtonNames := []string{
+		"Sites can ask to send notifications",
+		"Use quieter messaging",
+		"Don't allow sites to send notifications",
+	}
+
 	for _, param := range []struct {
 		name            string
-		wantPermission  string                  // the expected answer for the JS query
-		wantRestriction restriction.Restriction // the expected restriction state of the toggle button
-		wantChecked     checked.Checked         // the expected checked state of the toggle button
+		wantPermission  string                    // the expected answer for the JS query
+		wantRestriction []restriction.Restriction // the expected restriction states of the radio buttons in radioButtonNames
+		wantChecked     []checked.Checked         // the expected checked states of the radio buttons in radioButtonNames
 		value           *policy.DefaultNotificationsSetting
 	}{
 		{
 			name:            "unset",
 			wantPermission:  "default",
-			wantRestriction: restriction.None,
-			wantChecked:     checked.True,
+			wantRestriction: []restriction.Restriction{restriction.None, restriction.None, restriction.None},
+			wantChecked:     []checked.Checked{checked.True, checked.False, checked.False},
 			value:           &policy.DefaultNotificationsSetting{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "allow",
 			wantPermission:  "granted",
-			wantRestriction: restriction.Disabled,
-			wantChecked:     checked.True,
+			wantRestriction: []restriction.Restriction{restriction.None, restriction.None, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.True, checked.False, checked.False},
 			value:           &policy.DefaultNotificationsSetting{Val: 1}, // Allow sites to show desktop notifications.
 		},
 		{
 			name:            "deny",
 			wantPermission:  "denied",
-			wantRestriction: restriction.Disabled,
-			wantChecked:     checked.False,
+			wantRestriction: []restriction.Restriction{restriction.Disabled, restriction.Disabled, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.False, checked.False, checked.True},
 			value:           &policy.DefaultNotificationsSetting{Val: 2}, // Do not allow any site to show desktop notifications.
 		},
 		{
 			name:            "ask",
 			wantPermission:  "default",
-			wantRestriction: restriction.Disabled,
-			wantChecked:     checked.True,
+			wantRestriction: []restriction.Restriction{restriction.None, restriction.None, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.True, checked.False, checked.False},
 			value:           &policy.DefaultNotificationsSetting{Val: 3}, // Ask every time a site wants to show desktop notifications.
 		},
 	} {
@@ -100,15 +106,17 @@ func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 				s.Errorf("Unexpected permission value; got %s, want %s", permission, param.wantPermission)
 			}
 
-			// Check the button states.
-			if err := policyutil.CurrentPage(cr).
-				SelectNode(ctx, nodewith.
-					Role(role.ToggleButton).
-					Name("Sites can ask to send notifications")).
-				Restriction(param.wantRestriction).
-				Checked(param.wantChecked).
-				Verify(); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			// Check the state of the buttons.
+			for i, radioButtonName := range radioButtonNames {
+				if err := policyutil.CurrentPage(cr).
+					SelectNode(ctx, nodewith.
+						Role(role.RadioButton).
+						Name(radioButtonName)).
+					Restriction(param.wantRestriction[i]).
+					Checked(param.wantChecked[i]).
+					Verify(); err != nil {
+					s.Errorf("Unexpected settings state for the %q button: %v", radioButtonName, err)
+				}
 			}
 		})
 	}
