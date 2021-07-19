@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b420ac7_3f9f67e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-07-19T05:10:55Z",
+      "side": 1,
+      "message": "In addition to Patch Set 1, a few relevant methods were implemented to load SigninProfileExtension, and to check for the existence of power menu at the sign-in screen.",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
