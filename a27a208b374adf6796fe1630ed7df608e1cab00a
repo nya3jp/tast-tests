@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bda463ec_88be972c",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-19T13:55:28Z",
+      "side": 1,
+      "message": "This is the main struct of the file, I think it is nice if it the first. Are there any reasons to move it to be the last one?",
+      "parentUuid": "4e042e8e_3ed4b041",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4246372c_e0d3ceea",
         "filename": "src/chromiumos/tast/common/tape/tape.go",
         "patchSetId": 7
@@ -65,6 +83,86 @@
       "writtenOn": "2021-07-19T11:03:59Z",
       "side": 1,
       "message": "orgunit no longer passed. Please update description.\n\nIMO it can be short this time since users of the package don\u0027t need to do anything special anymore.",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc397b48_e5bd7d8b",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-19T13:55:28Z",
+      "side": 1,
+      "message": "What is the maximum timeout that can be requested?",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb3b3b4_0b5f07f8",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-19T13:55:28Z",
+      "side": 1,
+      "message": "Why not reset the password when the account is returned (after a release or a timeout)?",
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42088eea_fe8e8a2c",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-19T13:55:28Z",
+      "side": 1,
+      "message": "timeout is already a duration.",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ad69c4_938347a2",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-19T13:55:28Z",
+      "side": 1,
+      "message": "You always do a WithTimeout() call before sendRequest().\nMaybe add a timeout parameter to sendRequest(). (With a possible rename to sendRequestWithTimeout().)",
+      "range": {
+        "startLine": 131,
+        "startChar": 18,
+        "endLine": 131,
+        "endChar": 29
+      },
       "revId": "a27a208b374adf6796fe1630ed7df608e1cab00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
