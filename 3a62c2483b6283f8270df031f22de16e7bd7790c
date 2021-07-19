@@ -16,6 +16,29 @@
       "message": "CL for Shelf box test. PTAL :)\nThanks",
       "revId": "3a62c2483b6283f8270df031f22de16e7bd7790c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a48c500f_3c58fc36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-19T20:08:22Z",
+      "side": 1,
+      "message": "`You can reset Chrome here. It will clean up all windows + some other cleanups. Policy will remain untouched.`\n\nAlthough if I reset the chrome here, policy doesn\u0027t behave as expected, rather It allows the restricted sites (which it shouldn\u0027t).\nIt could be because the policy is dynamic_refresh false as mentioned here:  https://source.chromium.org/chromium/chromium/src/+/master:components/policy/resources/policy_templates.json;l\u003d24162;drc\u003d695ffe07105a5edcd41f3691c4586e14ec6c4a53",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "3a62c2483b6283f8270df031f22de16e7bd7790c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
