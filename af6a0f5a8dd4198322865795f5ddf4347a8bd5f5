@@ -16,6 +16,109 @@
       "message": "Hi,\nSorry for the late reply. I switched to other task last week.\n \nI am very appreciate your opinion! Please take a look for the latest change.\n\nThank you!!!\n",
       "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36aa901f_30e7010a",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:35:45Z",
+      "side": 1,
+      "message": "nit: add a comment on the parent fixture here",
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe30b04_b9b1c1ed",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:35:45Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 72,
+        "startChar": 60,
+        "endLine": 72,
+        "endChar": 77
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24462eb7_5b784310",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:35:45Z",
+      "side": 1,
+      "message": "nit: name the constant here, not the value.",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccbd7c9_e1ab45c9",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:35:45Z",
+      "side": 1,
+      "message": "nit: set",
+      "range": {
+        "startLine": 76,
+        "startChar": 18,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb91c09_8a4b8b05",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-19T09:35:45Z",
+      "side": 1,
+      "message": "Maybe create a separate function here (ResetChromeWithBlob?) and allow the policy blob to be specified (user is a small aspect of it). ResetChrome will just call that with the empty blob as it does bring Chrome back to the \"default\".\n\nI\u0027m also not in favour of allowing multiple users just to make this change easier at the cost of readability.",
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
