@@ -52,6 +52,24 @@
       "parentUuid": "f17f100c_88d3dc9f",
       "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8411b268_560d6191",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-19T23:29:20Z",
+      "side": 1,
+      "message": "makes sense, I\u0027m convinced to go the simple/YAGNI way.  Added hidehiko@ (author of InitPID() ) just for awareness.",
+      "parentUuid": "b12cf490_42cf5dcc",
+      "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
