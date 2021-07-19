@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b8fccd_c9b0d89b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2021-07-19T22:06:50Z",
+      "side": 0,
+      "message": "if we empty this list, all these binaries will fail the check. The libunwind change does not change the prebuilt binaries.\nWe should instead make the test ignore the binary if it is not linked with libgcc_s i.e. missing libgcc_s dependency is ok and should not cause failure.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "1800abb5c43d36ea5003f63d12e23f71326f8227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
