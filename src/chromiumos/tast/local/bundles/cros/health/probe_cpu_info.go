@@ -31,7 +31,7 @@ type logicalCPUInfo struct {
 	MaxClockSpeedKhz           jsontypes.Uint32 `json:"max_clock_speed_khz"`
 	ScalingMaxFrequencyKhz     jsontypes.Uint32 `json:"scaling_max_frequency_khz"`
 	ScalingCurrentFrequencyKhz jsontypes.Uint32 `json:"scaling_current_frequency_khz"`
-	IdleTimeUserHz             jsontypes.Uint32 `json:"idle_time_user_hz"`
+	IdleTimeUserHz             jsontypes.Uint64 `json:"idle_time_user_hz"`
 	CStates                    []cStateInfo     `json:"c_states"`
 }
 
