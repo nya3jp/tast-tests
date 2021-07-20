@@ -139,6 +139,30 @@
       },
       "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e9cb0c_4e9de788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T16:33:25Z",
+      "side": 1,
+      "message": "Technically yes, but it is not trivial.\nThe version of stateful Lacros is not fixed per OS version by design.\nSo, there can be more variations of stateful lacros. IMHO, it\u0027s nice to be tracked separately at least.\n\nWDYT?",
+      "parentUuid": "192929b5_2074ce46",
+      "range": {
+        "startLine": 119,
+        "startChar": 42,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
