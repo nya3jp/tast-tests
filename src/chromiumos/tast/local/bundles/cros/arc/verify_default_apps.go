@@ -33,6 +33,10 @@ func init() {
 	})
 }
 
+// VerifyDefaultApps checks that default ARC apps are available after boot.
+// Some of these apps are installed through PAI and will only have "promise
+// icon" stubs available on first boot. This PAI integration is tested
+// separately by arc.PlayAutoInstall.
 func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -42,7 +46,16 @@ func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Lookup for ARC++ default apps
-	for _, app := range []apps.App{apps.PlayStore, apps.Duo, apps.PlayBooks, apps.PlayGames, apps.PlayMovies, apps.Clock, apps.Contacts} {
+	apps := []apps.App{
+		apps.PlayStore,
+		apps.PlayBooks,
+		apps.PlayGames,
+		apps.PlayMovies,
+		apps.Photos,
+		apps.Clock,
+		apps.Contacts,
+	}
+	for _, app := range apps {
 		if err := ash.WaitForChromeAppInstalled(ctx, tconn, app.ID, ctxutil.MaxTimeout); err != nil {
 			s.Fatalf("Failed to wait for %s (%s) to be installed: %v", app.Name, app.ID, err)
 		}
