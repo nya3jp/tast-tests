@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/tulip2-960x540_20210720.yuv.json",
+  "size": 113,
+  "sha256sum": "41b5d727581ee7a77dc32056fb57e8313a29056cc35bd2bf21ad3ce936ac6c9b"
+}
