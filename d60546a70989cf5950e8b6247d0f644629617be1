@@ -16,6 +16,24 @@
       "message": "Adding gredelston@ for local timezone tast review",
       "revId": "d60546a70989cf5950e8b6247d0f644629617be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f194ad3_75ee1da3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-20T20:53:07Z",
+      "side": 1,
+      "message": "Sorry Trent! When I switched to CI, I removed myself from the tast-reviewers rotation.\n\nAdding tast-owners@",
+      "parentUuid": "bbc4df48_302bd61f",
+      "revId": "d60546a70989cf5950e8b6247d0f644629617be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
