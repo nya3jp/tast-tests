@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4444d8df_88857e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T04:24:10Z",
+      "side": 1,
+      "message": "does it work for to introduce such?\n\n\u003e Name/ClassName seem more stable than ids to me. \n\nCould you share the background? In general, name class etc. can be updated as Chromium would like to. They need to be stable across versions, otherwise the test would block to uprev. I.e., this can be a blocker for you to update UI.",
+      "parentUuid": "9adc8efb_26fced65",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e2bb535_0dee8673",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
         "patchSetId": 6
