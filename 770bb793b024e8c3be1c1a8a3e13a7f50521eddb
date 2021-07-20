@@ -102,6 +102,24 @@
       "message": "I think this should be private (statColumns)",
       "revId": "770bb793b024e8c3be1c1a8a3e13a7f50521eddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f81c5b6d_0d4d52b1",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-20T02:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fd1cf54_27c94548",
+      "revId": "770bb793b024e8c3be1c1a8a3e13a7f50521eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
