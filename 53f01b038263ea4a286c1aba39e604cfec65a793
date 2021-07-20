@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a3ce97_f749490c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "LGTM % final nits",
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32788ca0_ec8f6d64",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "in the",
+      "range": {
+        "startLine": 169,
+        "startChar": 45,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730845cb_f63fee2e",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 169,
+        "startChar": 35,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb76ea6d_cbaff028",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "F",
+      "range": {
+        "startLine": 194,
+        "startChar": 45,
+        "endLine": 194,
+        "endChar": 46
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f52852_e04faa6c",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "Put yourself first",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3178a4_e5da56e4",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 15
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a070cbb_5f9682f6",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "nit: return err here",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 51
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc59a4c_177d2aa0",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:53:47Z",
+      "side": 1,
+      "message": "replaces",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
