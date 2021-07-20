@@ -262,7 +262,7 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	if alreadyInstalled, err := reinstallAPK(ctx, a, wm.Pkg23, wm.APKNameArcWMTestApp23, true /* fromPlayStore */); err != nil {
 		s.Fatal("Failed to reinstall the WM23 app: ", err)
 	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, arc.APKPath(wm.APKNameArcWMTestApp23))
+		defer a.Uninstall(ctx, wm.Pkg23)
 	}
 	activity, err := arc.NewActivity(a, wm.Pkg23, wm.NonResizableLandscapeActivity)
 	if err != nil {
@@ -313,7 +313,7 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	if alreadyInstalled, err := reinstallAPK(ctx, a, packageName, apkName, fromPlayStore); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, arc.APKPath(apkName))
+		defer a.Uninstall(ctx, packageName)
 	}
 
 	activity, err := arc.NewActivity(a, packageName, activityName)
@@ -366,7 +366,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName, true /* fromPlayStore */); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, arc.APKPath(resizeLockApkName))
+		defer a.Uninstall(ctx, resizeLockTestPkgName)
 	}
 
 	activity, err := arc.NewActivity(a, resizeLockTestPkgName, resizeLockUnresizablePortraitActivityName)
@@ -437,7 +437,7 @@ func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		if alreadyInstalled, err := reinstallAPK(ctx, a, test.pkgName, test.apkName, true /* fromPlayStore */); err != nil {
 			return errors.Wrap(err, "failed to reinstall APK")
 		} else if !alreadyInstalled {
-			defer a.Uninstall(ctxDefer, arc.APKPath(test.apkName))
+			defer a.Uninstall(ctxDefer, test.pkgName)
 		}
 
 		activity, err := arc.NewActivity(a, test.pkgName, test.activityName)
@@ -505,7 +505,7 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName, true /* fromPlayStore */); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, arc.APKPath(resizeLockApkName))
+		defer a.Uninstall(ctx, resizeLockTestPkgName)
 	}
 
 	activity, err := arc.NewActivity(a, resizeLockTestPkgName, resizeLockMainActivityName)
