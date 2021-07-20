@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33427be_ec7cdfcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-20T07:57:22Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dfb23cc_b090653e",
@@ -71,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1912f9_e89605b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-20T07:57:22Z",
+      "side": 1,
+      "message": "Thanks for explaining this!",
+      "parentUuid": "5d320071_304a39cc",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7573751b_ea222fae",
@@ -120,6 +155,24 @@
       "side": 1,
       "message": "go style capitalises entire acronyms (unlike C++ style).",
       "parentUuid": "1f3c02bb_d0f11520",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae51a94_fe4bb246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-20T07:57:22Z",
+      "side": 1,
+      "message": "Thanks for pointing this out!",
+      "parentUuid": "8fff1c0c_55a8729c",
       "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
