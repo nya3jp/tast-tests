@@ -33,6 +33,75 @@
       "message": "Add Jun back to the attention set.",
       "revId": "b74d96466d31f9e779e308a70980812780a79825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0615b06_9e795dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T23:24:05Z",
+      "side": 1,
+      "message": "If this function has a restraint of 60s, instead of using comment, I would suggest to have a check function and throw out error to explain the reason.",
+      "range": {
+        "startLine": 336,
+        "startChar": 5,
+        "endLine": 336,
+        "endChar": 21
+      },
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957b2e05_b2710d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T23:24:05Z",
+      "side": 1,
+      "message": "not sure if 50 is related to the maximum suspendSeconds. You can define a maximumSuspendSeconds :\u003d 50 for example. Then use it for internal check and cmd.",
+      "range": {
+        "startLine": 347,
+        "startChar": 3,
+        "endLine": 347,
+        "endChar": 15
+      },
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4e9dff_fd673071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T23:24:05Z",
+      "side": 1,
+      "message": "nit: Get...() is not idiomatic go. \nhttps://golang.org/doc/effective_go#Getters.",
+      "range": {
+        "startLine": 364,
+        "startChar": 5,
+        "endLine": 364,
+        "endChar": 22
+      },
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
