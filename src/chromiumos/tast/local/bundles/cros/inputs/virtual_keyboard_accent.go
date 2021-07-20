@@ -58,16 +58,14 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// The input method ID is from:
-	// src/chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json
+	inputMethod := ime.FranchFrance
 	const (
-		inputMethodID = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		keyName       = "e"
 		accentKeyName = "é"
 		languageLabel = "FR"
 	)
 
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+inputMethodID); err != nil {
+	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
 
