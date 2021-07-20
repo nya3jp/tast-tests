@@ -130,7 +130,13 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	testing.ContextLog(ctx, "Running test with tablet mode: ", tabletMode)
 
 	if req.ExtendedDisplay {
+		// Unset mirrored display so two displays can show different information.
+		if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to unset mirror display")
+		}
 		// Make sure there are two displays on DUT.
+		// This procedure must be performed after display mirror is unset. Otherwise we can only
+		// get one display info.
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get display info")
@@ -138,11 +144,6 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		if len(infos) != 2 {
 			return nil, errors.Errorf("expect 2 displays but got %d", len(infos))
-		}
-
-		// Unset mirrored display so two displays can show different information.
-		if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
-			return nil, errors.Wrap(err, "failed to unset mirror display")
 		}
 	}
 

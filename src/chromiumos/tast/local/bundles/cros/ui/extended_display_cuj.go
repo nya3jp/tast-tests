@@ -97,18 +97,19 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-
+	// Unset mirrored display so two displays can show different information.
+	if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+		s.Fatal("Failed to unset mirror display: ", err)
+	}
 	// Make sure there are two displays on DUT.
+	// This procedure must be performed after display mirror is unset. Otherwise we can only
+	// get one display info.
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display info: ", err)
 	}
 	if len(infos) != 2 {
 		s.Fatalf("DUT connected with incorrect nubmer of displays - want 2, got %d: %v", len(infos), err)
-	}
-	// Unset mirrored display so two displays can show different information.
-	if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
-		s.Fatal("Failed to unset mirror display: ", err)
 	}
 
 	kb, err := input.Keyboard(ctx)
