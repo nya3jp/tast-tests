@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee9c4cfd_85242997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T14:05:39Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "2c5e3de68f87b614568fe27188bdcf1121c4ba18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deef844c_27817fc1",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T14:05:39Z",
+      "side": 1,
+      "message": "nit: \"Failed to setup USB key\"?",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 30
+      },
+      "revId": "2c5e3de68f87b614568fe27188bdcf1121c4ba18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2b850a_a241fc21",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T14:05:39Z",
+      "side": 1,
+      "message": "nit: for consistency, please start error logs with \"Failed\". Same for other places",
+      "range": {
+        "startLine": 274,
+        "startChar": 9,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "2c5e3de68f87b614568fe27188bdcf1121c4ba18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
