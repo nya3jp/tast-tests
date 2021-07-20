@@ -30,6 +30,7 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 			Val:               crash_service.SetUpCrashTestRequest_REAL_CONSENT,
 		}, {

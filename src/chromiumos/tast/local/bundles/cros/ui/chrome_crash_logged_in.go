@@ -56,7 +56,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
-			ExtraAttr:         []string{"group:mainline"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "browser_crashpad_mock_consent",
