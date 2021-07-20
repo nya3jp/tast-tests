@@ -213,8 +213,13 @@ func (p *Proxy) isClosed() bool {
 // Servo returns the proxy's encapsulated Servo object.
 func (p *Proxy) Servo() *Servo { return p.svo }
 
-// RunCommand execs a command on the servo host, optionally as root.
-func (p *Proxy) RunCommand(ctx context.Context, asRoot bool, name string, args ...string) error {
+func (p *Proxy) runCommandImpl(ctx context.Context, dumpLogOnError, asRoot bool, name string, args ...string) error {
+	var sshOpts []ssh.RunOption
+	var execOpts []testexec.RunOption
+	if dumpLogOnError {
+		sshOpts = append(sshOpts, ssh.DumpLogOnError)
+		execOpts = append(execOpts, testexec.DumpLogOnError)
+	}
 	if p.isClosed() {
 		return errors.New("connection to servo is closed")
 	}
@@ -222,11 +227,21 @@ func (p *Proxy) RunCommand(ctx context.Context, asRoot bool, name string, args .
 		if asRoot {
 			sudoargs := append([]string{name}, args...)
 			testing.ContextLog(ctx, "Running sudo ", sudoargs)
-			return testexec.CommandContext(ctx, "sudo", sudoargs...).Run(testexec.DumpLogOnError)
+			return testexec.CommandContext(ctx, "sudo", sudoargs...).Run(execOpts...)
 		}
-		return testexec.CommandContext(ctx, name, args...).Run(testexec.DumpLogOnError)
+		return testexec.CommandContext(ctx, name, args...).Run(execOpts...)
 	}
-	return p.hst.Command(name, args...).Run(ctx, ssh.DumpLogOnError)
+	return p.hst.Command(name, args...).Run(ctx, sshOpts...)
+}
+
+// RunCommand execs a command on the servo host, optionally as root.
+func (p *Proxy) RunCommand(ctx context.Context, asRoot bool, name string, args ...string) error {
+	return p.runCommandImpl(ctx /*dumpLogOnError=*/, true, asRoot, name, args...)
+}
+
+// RunCommandQuiet execs a command on the servo host, optionally as root, does not log output.
+func (p *Proxy) RunCommandQuiet(ctx context.Context, asRoot bool, name string, args ...string) error {
+	return p.runCommandImpl(ctx /*dumpLogOnError=*/, false, asRoot, name, args...)
 }
 
 // OutputCommand execs a command as the root user and returns stdout
