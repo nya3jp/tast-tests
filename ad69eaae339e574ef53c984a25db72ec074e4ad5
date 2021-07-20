@@ -16,6 +16,23 @@
       "message": "PTAL~!",
       "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03a5157_69b8d7c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T07:55:13Z",
+      "side": 1,
+      "message": "Tast/Lacros LGTM.\n\nnorvez@, could you take a look from your perspective?",
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
