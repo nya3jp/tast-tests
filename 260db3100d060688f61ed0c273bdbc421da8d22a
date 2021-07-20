@@ -33,6 +33,24 @@
       "message": "`Don\u0027t you need to focus on something first here? Opening the page might take some time.`\n\nOpening page wait until page loads complete and then next steps take place, also  select all operation does takes place successfully.",
       "revId": "260db3100d060688f61ed0c273bdbc421da8d22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0cb3af_8d5f884b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66caed6d_05c00e9c",
+      "revId": "260db3100d060688f61ed0c273bdbc421da8d22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
