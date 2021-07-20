@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023b66f7_826d6535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-20T16:32:44Z",
+      "side": 1,
+      "message": "can you comment here why we need setting app pinned for the test (it\u0027s not too obvious when reading the test)",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741ac57a_eb1f3308",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-20T16:32:44Z",
+      "side": 1,
+      "message": "we could just make this a wrapper around PinApps()?",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f326ba0_9c92f598",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-20T16:32:44Z",
+      "side": 1,
+      "message": "nit: Document that this does not return the browser shortcut (which is always pinned to shelf)",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e44ca2_19cd8a49",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-20T16:32:44Z",
+      "side": 1,
+      "message": "Document the return value, and that it should be run before the test ends",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace35edb_7ca85791",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-20T16:32:44Z",
+      "side": 1,
+      "message": "this doesn\u0027t really reset the shelf apps - it returns the function to reset pinned apps (that should be run in defer)",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 28
+      },
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f10ab566_4aa0b2ca",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-20T16:32:44Z",
+      "side": 1,
+      "message": "we can probably pin and unpin in one go using setPinState directly",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
