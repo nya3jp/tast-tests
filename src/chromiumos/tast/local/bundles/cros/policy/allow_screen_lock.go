@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -28,7 +29,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
 }
@@ -90,15 +91,19 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 			if err := kb.Accel(ctx, "Search+L"); err != nil {
 				s.Fatal("Failed to write events: ", err)
 			}
+			// Locking the screen can take a few seconds.
+			testing.Sleep(ctx, 5*time.Second)
 
 			// Check if the logout button is shown.
 			// If the lock screen is disabled, the button is not there.
 			// If enabled, the screen is locked with the hotkey, but the system tray can be
 			// opened on the lock screen as well, but the button should not be there as the
 			// screen is already locked.
+			if err := quicksettings.Show(ctx, tconn); err != nil {
+				s.Fatal("Failed to open the system tray: ", err)
+			}
 			ui := uiauto.New(tconn)
 			if err := uiauto.Combine("Check lock screen from system tray",
-				ui.LeftClick(nodewith.ClassName("UnifiedSystemTray")),
 				ui.WaitUntilExists(nodewith.Name("Shut down").ClassName("TopShortcutButton")),
 				ui.WaitUntilGone(nodewith.Name("Lock").ClassName("TopShortcutButton")),
 			)(ctx); err != nil {
