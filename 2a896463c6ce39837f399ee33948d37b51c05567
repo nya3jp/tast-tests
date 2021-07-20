@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fc4272d_f6337780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-20T07:55:12Z",
+      "side": 1,
+      "message": "From my understandings, Id could also change even when other UI get updated. Also ids could change every test run. I ran RecordPartialScreen.tablet_mode in my local device hatch-release/R93-14010.0.0[1], one cyan-release/91-13904.97.0 device in skylab[2], you can see the id for the same node changes (might be caused by version updates or device difference). Also I suspect that the id trees in clamshell/tablet mode are different as well.\n\nName and ClassName are common used to find nodes as they identify nodes well[3]. It seems a preferred way to use Role, Name, ClassName and Ancestor to find nodes[4].\n\nAbout it could be a potential blocker, I don\u0027t know a better way to stabilize UI automation...Think we are all switching to uiauto.\n\n[1] https://screenshot.googleplex.com/9VCVBcQdxrxBYeF\n[2] https://screenshot.googleplex.com/7Wy6wJvDWAaNrw4\n[3]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d137\n[4]https://source.chromium.org/search?q\u003dnodewith\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2F\u0026start\u003d1",
+      "parentUuid": "4444d8df_88857e66",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e2bb535_0dee8673",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
         "patchSetId": 6
