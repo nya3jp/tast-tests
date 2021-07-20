@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
@@ -49,14 +50,28 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kevin1")),
 		Params: []testing.Param{
 			{
-				Name: "docked",
+				Name: "docked_stable",
 				// false for docked-mode VK.
-				Val: false,
+				Val:               false,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
-				Name: "floating",
+				Name: "docked_unstable",
+				// false for docked-mode VK.
+				Val:               false,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name: "floating_stable",
 				// true for floating-mode VK.
-				Val: true,
+				Val:               true,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			},
+			{
+				Name: "floating_unstable",
+				// true for floating-mode VK.
+				Val:               true,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 		},
 	})
