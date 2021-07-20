@@ -39,6 +39,30 @@
       },
       "revId": "c9e9dc81a5a64bdb7ed3aa05a3c0d6cd99c7a0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a75ea7_274298cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_logout_button_in_tray.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-20T19:25:45Z",
+      "side": 1,
+      "message": "Only thing that comes to my mind would be something like this:\n\nif err \u003d ui.WaitUntilExists(signOutButton)(ctx); err !\u003d nil {\n\tif errors.Is(err, context.DeadlineExceeded) {\n\t\tif param.wantButton {\n\t\t\ts.Error(\"\\\"Sign out\\\" button not found: \", err)\n\t\t}\n\t} else {\n\t\ts.Fatal(\"Failed to wait until \\\"Sign out\\\" button exists: \", err)\n\t}\n} else if !param.wantButton {\n\ts.Error(\"Unexpected \\\"Sign out\\\" button found: \", err)\n}\n\nHowever for whatever reason this does not work as errors.Is(err, context.DeadlineExceeded) always returns false and I have no idea why.",
+      "parentUuid": "2df72f68_9fda9c76",
+      "range": {
+        "startLine": 81,
+        "startChar": 52,
+        "endLine": 81,
+        "endChar": 55
+      },
+      "revId": "c9e9dc81a5a64bdb7ed3aa05a3c0d6cd99c7a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
