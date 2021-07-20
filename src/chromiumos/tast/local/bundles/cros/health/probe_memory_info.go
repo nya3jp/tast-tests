@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
@@ -62,17 +60,9 @@ func validateMemoryData(memory memoryInfo) error {
 
 func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryMemory}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get memory telemetry info: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var memory memoryInfo
-	if err := dec.Decode(&memory); err != nil {
-		s.Fatalf("Failed to decode memory data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &memory); err != nil {
+		s.Fatal("Failed to get memory telemetry info: ", err)
 	}
 
 	if err := validateMemoryData(memory); err != nil {

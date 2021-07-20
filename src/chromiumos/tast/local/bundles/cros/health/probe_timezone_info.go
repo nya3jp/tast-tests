@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
@@ -34,17 +32,9 @@ func init() {
 
 func ProbeTimezoneInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryTimezone}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get timezone telemetry info: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var timezone timezoneInfo
-	if err := dec.Decode(&timezone); err != nil {
-		s.Fatalf("Failed to decode timezone data %q: %v", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &timezone); err != nil {
+		s.Fatal("Failed to get timezone telemetry info: ", err)
 	}
 
 	if timezone.Posix == "" {

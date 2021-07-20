@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
@@ -58,8 +56,8 @@ func validateBacklightData(result backlightResult) error {
 
 func ProbeBacklightInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBacklight}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
+	var result backlightResult
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &result); err != nil {
 		s.Fatal("Failed to get backlight telemetry info: ", err)
 	}
 
@@ -71,14 +69,6 @@ func ProbeBacklightInfo(ctx context.Context, s *testing.State) {
 	if err == nil && hasBacklight == "false" {
 		// If there is no backlight, there is no output to verify.
 		return
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
-	var result backlightResult
-	if err := dec.Decode(&result); err != nil {
-		s.Fatalf("Failed to decode backlight data [%q], err [%v]", rawData, err)
 	}
 
 	if err := validateBacklightData(result); err != nil {

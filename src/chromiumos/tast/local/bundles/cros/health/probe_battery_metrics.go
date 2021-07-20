@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
@@ -85,12 +83,6 @@ func validateBatteryData(ctx context.Context, battery batteryInfo) error {
 }
 
 func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
-	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBattery}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get battery telemetry info: ", err)
-	}
-
 	psuType, err := crosconfig.Get(ctx, "/hardware-properties", "psu-type")
 	if err != nil && !crosconfig.IsNotFound(err) {
 		s.Fatal("Failed to get psu-type property: ", err)
@@ -102,12 +94,10 @@ func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBattery}
 	var battery batteryInfo
-	if err := dec.Decode(&battery); err != nil {
-		s.Fatalf("Failed to decode battery data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &battery); err != nil {
+		s.Fatal("Failed to get battery telemetry info: ", err)
 	}
 
 	if err := validateBatteryData(ctx, battery); err != nil {

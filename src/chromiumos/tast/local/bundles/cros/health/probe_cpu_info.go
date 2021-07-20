@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
@@ -118,17 +116,9 @@ func validateCPUData(info cpuInfo) error {
 
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to run telem command: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var info cpuInfo
-	if err := dec.Decode(&info); err != nil {
-		s.Fatalf("Failed to decode cpu data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
+		s.Fatal("Failed to run telem command: ", err)
 	}
 
 	if err := validateCPUData(info); err != nil {
