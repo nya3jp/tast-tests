@@ -427,7 +427,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	testing.ContextLog(ctx, "Checking ChromeOS image name on usbkey")
 	mountPath := fmt.Sprintf("/media/servo_usb/%d", h.ServoProxy.GetPort())
 	// Unmount whatever might be mounted
-	h.ServoProxy.RunCommand(ctx, true, "umount", mountPath)
+	h.ServoProxy.RunCommand(ctx, true, "umount", "-q", mountPath)
 
 	// ChromeOS root fs is in /dev/sdx3
 	mountSrc := usbdev + "3"
