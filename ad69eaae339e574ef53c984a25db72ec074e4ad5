@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0576ef3d_c3ff871e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T15:58:13Z",
+      "side": 1,
+      "message": "For faster iteration, let me reply :-)",
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a74d6fd_982a319a",
@@ -66,6 +83,30 @@
       "writtenOn": "2021-07-20T15:30:15Z",
       "side": 1,
       "message": "Any reason to call it |bytes_rootfs_lacros| instead of |bytes_lacros|?",
+      "range": {
+        "startLine": 119,
+        "startChar": 42,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a5d905_069d7df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T15:58:13Z",
+      "side": 1,
+      "message": "a device may have yet another Lacros installed via component updater on stable partition, so just to be clearer.",
+      "parentUuid": "8a74d6fd_982a319a",
       "range": {
         "startLine": 119,
         "startChar": 42,
