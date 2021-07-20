@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9f4180_86c72e8d",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:38:54Z",
+      "side": 1,
+      "message": "@mohamedaomar Do you want to be added to this list as well?",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778f7fb3_198a9fd1",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:38:54Z",
+      "side": 1,
+      "message": "@alexanderhartl Is this email correct?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f95cb98_4cee93af",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:38:54Z",
+      "side": 1,
+      "message": "@gabormagda Is this email correct?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4fa265_9374dd9c",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T06:38:54Z",
+      "side": 1,
+      "message": "@kamilszarek Is this email correct?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
