@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2772f5_dc35d0c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-07-20T18:13:23Z",
+      "side": 1,
+      "message": "Let\u0027s make sure to turn powerd back on (start powerd) at the end of the test.",
+      "revId": "8214c8efe9d6d97a08579292bc61bdd1e4a7149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
