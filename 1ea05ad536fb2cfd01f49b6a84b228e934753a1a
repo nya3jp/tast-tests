@@ -22,6 +22,30 @@
       },
       "revId": "1ea05ad536fb2cfd01f49b6a84b228e934753a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a963ac4d_0880d632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-20T01:31:52Z",
+      "side": 1,
+      "message": "I got your point, but the names \"docked\" and \"floating\" are suggested by Bao-Duy, since they are from the e14s glossary. I think we probably should respect this, WDYT?",
+      "parentUuid": "9e79e6ab_b85a9851",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "1ea05ad536fb2cfd01f49b6a84b228e934753a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
