@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
@@ -81,17 +79,9 @@ func validateBluetoothData(ctx context.Context, info bluetoothInfo) error {
 
 func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBluetooth}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var info bluetoothInfo
-	if err := dec.Decode(&info); err != nil {
-		s.Fatalf("Failed to decode bluetooth data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
+		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}
 
 	if err := validateBluetoothData(ctx, info); err != nil {
