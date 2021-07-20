@@ -457,7 +457,11 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		if err := activity.Start(ctx, tconn); err != nil {
 			return errors.Wrapf(err, "failed to start %s", resizeLockMainActivityName)
 		}
-		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, test.nextMode, false /* isSplashVisible */); err != nil {
+		expectedMode := test.nextMode
+		if test.action == dialogActionCancel {
+			expectedMode = test.currentMode
+		}
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, expectedMode, false /* isSplashVisible */); err != nil {
 			return errors.Wrapf(err, "failed to verify resize lock state of %s", resizeLockMainActivityName)
 		}
 	}
