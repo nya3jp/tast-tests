@@ -554,6 +554,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ca73b9_7db4d01e",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-07-20T18:53:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5becf281_139b81a0",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "67efc354054daeb25ef32d80ab902030c47ebc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3878211_f0a018b3",
