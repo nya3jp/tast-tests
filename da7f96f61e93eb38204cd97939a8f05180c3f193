@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "da7f96f61e93eb38204cd97939a8f05180c3f193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413adf69_de649458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T14:59:49Z",
+      "side": 1,
+      "message": "Can we check for something more explicit here?",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 52
+      },
+      "revId": "da7f96f61e93eb38204cd97939a8f05180c3f193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
