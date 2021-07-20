@@ -115,6 +115,30 @@
       },
       "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192929b5_2074ce46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-07-20T16:29:57Z",
+      "side": 1,
+      "message": "Thanks :-)\nWould it make sense to track the size of the other instance of Lacros too? Space on stateful is less scarce than on the rootfs, but still valuable.",
+      "parentUuid": "60a5d905_069d7df7",
+      "range": {
+        "startLine": 119,
+        "startChar": 42,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
