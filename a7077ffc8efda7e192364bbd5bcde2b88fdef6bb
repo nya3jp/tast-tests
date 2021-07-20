@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f4b669_73f539c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data/content.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-20T18:09:25Z",
+      "side": 1,
+      "message": "I don\u0027t understand the working here, If there is no Ctrl +C in the test this the onMessage function don\u0027t get called and if there is no execCommand function on copy there is no alert.\n\nWhat I mean is, if there is both of the copy operations then only extension works as expected.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
