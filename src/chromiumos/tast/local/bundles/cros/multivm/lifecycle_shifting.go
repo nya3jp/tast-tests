@@ -65,6 +65,10 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get /proc/meminfo: ", err)
 	}
+	basemem, err := multivm.NewBaseMetrics()
+	if err != nil {
+		s.Fatal("Failed to retrieve base memory stats: ", err)
+	}
 
 	// Use a PageReclaimLimit to avoid OOMing in the host. Will be composed with
 	// VM limits so that we don't OOM in the host or any VM.
@@ -179,7 +183,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		s.Fatal("RunTest failed: ", err)
 	}
 
-	if err := multivm.MemoryMetrics(ctx, pre, p, s.OutDir(), ""); err != nil {
+	if err := multivm.MemoryMetrics(ctx, basemem, pre, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to collect memory metrics")
 	}
 	if err := p.Save(s.OutDir()); err != nil {

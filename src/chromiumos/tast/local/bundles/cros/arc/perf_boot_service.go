@@ -190,6 +190,9 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	if err := memory.ZramMmStatMetrics(ctx, p, "", ""); err != nil {
 		return nil, errors.Wrap(err, "failed to collect zram mm_stats metrics")
 	}
+	if err := memory.ZramStatMetrics(ctx, nil, p, "", ""); err != nil {
+		return nil, errors.Wrap(err, "failed to collect zram stats metrics")
+	}
 	if err := arcmem.DumpsysMeminfoMetrics(ctx, a, p, "", ""); err != nil {
 		return nil, errors.Wrap(err, "failed to collect ARC dumpsys meminfo metrics")
 	}
