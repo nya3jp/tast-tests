@@ -46,6 +46,30 @@
       },
       "revId": "1ea05ad536fb2cfd01f49b6a84b228e934753a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e73a565_75597bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T01:37:01Z",
+      "side": 1,
+      "message": "It is fine. Not an issue.",
+      "parentUuid": "a963ac4d_0880d632",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "1ea05ad536fb2cfd01f49b6a84b228e934753a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
