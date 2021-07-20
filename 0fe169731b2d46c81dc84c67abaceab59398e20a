@@ -16,6 +16,23 @@
       "message": "# Move myself to R. Also removed from attention list temporarily. When ready, please feel free to re-add me to it, so that this CL will be shown in my review queue.",
       "revId": "0fe169731b2d46c81dc84c67abaceab59398e20a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcade0f1_6d87a87d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-20T07:36:58Z",
+      "side": 1,
+      "message": "Friendly ping. hidehiko@, as stated in the comment, would it be okay to match with the name? Thanks!",
+      "revId": "0fe169731b2d46c81dc84c67abaceab59398e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
