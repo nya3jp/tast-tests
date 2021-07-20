@@ -7,7 +7,6 @@ package health
 import (
 	"bufio"
 	"context"
-	"encoding/json"
 	"os"
 	"strings"
 	"syscall"
@@ -101,17 +100,9 @@ func validateStatefulPartitionData(statefulPartition statefulPartitionInfo) erro
 
 func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryStatefulPartition}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get stateful partition telemetry info: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var statefulPartition statefulPartitionInfo
-	if err := dec.Decode(&statefulPartition); err != nil {
-		s.Fatalf("Failed to decode stateful partition data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &statefulPartition); err != nil {
+		s.Fatal("Failed to get stateful partition telemetry info: ", err)
 	}
 
 	if err := validateStatefulPartitionData(statefulPartition); err != nil {

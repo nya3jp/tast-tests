@@ -9,6 +9,7 @@ package croshealthd
 import (
 	"context"
 	"encoding/csv"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
@@ -98,4 +99,24 @@ func RunAndParseTelem(ctx context.Context, params TelemParams, outDir string) ([
 	}
 
 	return records, nil
+}
+
+// RunAndParseJSONTelem runs RunTelem and parses the JSON output.
+// Example:
+//   var result certainStruct
+//   err := RunAndParseJSONTelem(_, _, _, &result)
+func RunAndParseJSONTelem(ctx context.Context, params TelemParams, outDir string, result interface{}) error {
+	b, err := RunTelem(ctx, params, outDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to run telem command")
+	}
+
+	dec := json.NewDecoder(strings.NewReader(string(b)))
+	dec.DisallowUnknownFields()
+
+	if err := dec.Decode(result); err != nil {
+		return errors.Wrapf(err, "failed to decode data [%q]", b)
+	}
+
+	return nil
 }
