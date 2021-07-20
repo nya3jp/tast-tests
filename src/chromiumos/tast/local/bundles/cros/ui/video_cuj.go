@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -24,11 +25,18 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type testParam struct {
+	ct     lacros.ChromeType
+	tablet bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -39,7 +47,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
-		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
 		},
@@ -47,11 +54,35 @@ func init() {
 			"ui.VideoCUJ.ytExperiments",
 		},
 		Params: []testing.Param{{
-			Name: "clamshell",
-			Val:  false,
+			Name:    "clamshell",
+			Fixture: "loggedInToCUJUser",
+			Val: testParam{
+				ct: lacros.ChromeTypeChromeOS,
+			},
 		}, {
-			Name: "tablet",
-			Val:  true,
+			Name:    "tablet",
+			Fixture: "loggedInToCUJUser",
+			Val: testParam{
+				ct:     lacros.ChromeTypeChromeOS,
+				tablet: true,
+			},
+		}, {
+			Name:    "lacros",
+			Fixture: "loggedInToCUJUserLacros",
+			Val: testParam{
+				ct: lacros.ChromeTypeLacros,
+			},
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:    "lacros_tablet",
+			Fixture: "loggedInToCUJUserLacros",
+			Val: testParam{
+				ct:     lacros.ChromeTypeLacros,
+				tablet: true,
+			},
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
@@ -67,7 +98,27 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	testParam := s.Param().(testParam)
+
+	var cr *chrome.Chrome
+	var cs ash.ConnSource
+
+	if testParam.ct == lacros.ChromeTypeChromeOS {
+		cr = s.FixtValue().(cuj.FixtureData).Chrome
+		cs = cr
+	} else {
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		var artifactPath string
+		artifactPath = s.DataPath(launcher.DataArtifact)
+
+		var l *launcher.LacrosChrome
+		var err error
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, testParam.ct)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(ctx, l)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -86,7 +137,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		defer crastestclient.Unmute(closeCtx)
 	}
 
-	tabletMode := s.Param().(bool)
+	tabletMode := testParam.tablet
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
 		s.Fatal("Failed to ensure tablet/clamshell mode: ", err)
@@ -144,7 +195,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	webConn, err := cr.NewConn(ctx, ui.PerftestURL)
+	webConn, err := cs.NewConn(ctx, ui.PerftestURL)
 	if err != nil {
 		s.Fatal("Failed to open web: ", err)
 	}
@@ -160,7 +211,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Open youtube Web")
-	ytConn, err := cr.NewConn(ctx,
+	ytConn, err := cs.NewConn(ctx,
 		"https://www.youtube.com/watch?v=EEIk7gwjgIM&absolute_experiments="+
 			s.RequiredVar("ui.VideoCUJ.ytExperiments"),
 		cdputil.WithNewWindow())
