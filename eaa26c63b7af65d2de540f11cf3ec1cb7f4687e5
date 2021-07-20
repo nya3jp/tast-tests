@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a3b57c_5e4d7bf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-20T05:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f68e38b6_d5d53ee3",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd9579c7_40773a9a",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-07-19T18:46:27Z",
       "side": 1,
       "message": "if extensionPrefix !\u003d \"\" {",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95de0320_bfcfd0f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-20T05:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd9579c7_40773a9a",
       "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a35943c_44f4d44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-20T05:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd9bc0f_fec993c3",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c6b697_3674f963",
@@ -105,6 +165,24 @@
       "writtenOn": "2021-07-19T18:46:27Z",
       "side": 1,
       "message": "if androidTarget",
+      "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eefbd2ef_6c784201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-20T05:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c6b697_3674f963",
       "revId": "eaa26c63b7af65d2de540f11cf3ec1cb7f4687e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
