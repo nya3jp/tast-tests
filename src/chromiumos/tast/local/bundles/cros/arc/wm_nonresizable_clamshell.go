@@ -447,17 +447,9 @@ func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmNC15 covers non-resizable/clamshell: display size change.
 // Expected behavior is defined in: go/arc-wm-r NC15: non-resizable/clamshell: display size change.
 func wmNC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	for _, actName := range []string{
-		wm.NonResizableLandscapeActivity,
-		wm.NonResizablePortraitActivity,
-		wm.NonResizableUnspecifiedActivity,
-	} {
-		if err := ncDisplaySizeChangeTestsHelper(ctx, tconn, a, d, actName); err != nil {
-			return err
-		}
-	}
-
-	return nil
+	// Only a portrait activity is tested here as unspecified/landscape apps are launched in maximized and put into size-compat mode, which means there's no consistent rule of scaling.
+	// Once a device with a portrait display is launched, we need to choose the activity programmatically.
+	return ncDisplaySizeChangeTestsHelper(ctx, tconn, a, d, wm.NonResizablePortraitActivity)
 }
 
 // wmNC17 covers non-resizable/clamshell: font size change.
@@ -600,40 +592,42 @@ func ncDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn,
 	}
 	defer wm.ChangeDisplayZoomFactor(ctx, tconn, displayID, dispInfoBeforeZoom.DisplayZoomFactor)
 
-	// Get buttons info after zoom.
-	buttonBoundsAfterZoom, err := wm.GetButtonBounds(ctx, d, act.PackageName())
-	if err != nil {
-		return err
-	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Get buttons info after zoom.
+		buttonBoundsAfterZoom, err := wm.GetButtonBounds(ctx, d, act.PackageName())
+		if err != nil {
+			return err
+		}
 
-	// Get primary display info after zoom.
-	dispInfoAfterZoom, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	if dispInfoAfterZoom == nil {
-		return errors.New("failed to find primary display info")
-	}
+		// Get primary display info after zoom.
+		dispInfoAfterZoom, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if dispInfoAfterZoom == nil {
+			return testing.PollBreak(errors.New("failed to find primary display info"))
+		}
 
-	// The window is maximized, so the content should be relayout (button bounds must be different).
-	if buttonBoundsBeforeZoom == buttonBoundsAfterZoom {
-		return errors.Errorf("invalid button bounds after resolution changed, got: %q, want different than: %q", buttonBoundsAfterZoom, buttonBoundsBeforeZoom)
-	}
+		// The window is maximized, so the content should be relayout (button bounds must be different).
+		if buttonBoundsBeforeZoom == buttonBoundsAfterZoom {
+			return errors.Errorf("invalid button bounds after resolution changed: got %q; want different than %q", buttonBoundsAfterZoom, buttonBoundsBeforeZoom)
+		}
 
-	if err := buttonBoundsCheckAfterZoom(buttonBoundsAfterZoom, buttonBoundsBeforeZoom, newZoom/originalZoom); err != nil {
-		return err
-	}
+		if err := buttonBoundsCheckAfterZoom(buttonBoundsAfterZoom, buttonBoundsBeforeZoom, originalZoom/newZoom); err != nil {
+			return err
+		}
 
-	// DPI before zoom divided by DPI after zoom should be equal to zoom coefficient.
-	// Because of possible roundings, the difference is calculated that should be less than roundingErrorDecimal (0.01) to have up to 2 decimal points of precision.
-	if math.Abs(newZoom/originalZoom-dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX) > roundingErrorDecimal {
-		return errors.Errorf("invalid DPIX ratio after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX, newZoom)
-	}
-	if math.Abs(newZoom/originalZoom-dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY) > roundingErrorDecimal {
-		return errors.Errorf("invalid DPIY ratio after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY, newZoom)
-	}
+		// DPI before zoom divided by DPI after zoom should be equal to zoom coefficient.
+		// Because of possible roundings, the difference is calculated that should be less than roundingErrorDecimal (0.01) to have up to 2 decimal points of precision.
+		if math.Abs(newZoom/originalZoom-dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX) > roundingErrorDecimal {
+			return errors.Errorf("invalid DPIX ratio after resolution changed: got %.3f; want %.3f", dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX, newZoom)
+		}
+		if math.Abs(newZoom/originalZoom-dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY) > roundingErrorDecimal {
+			return errors.Errorf("invalid DPIY ratio after resolution changed: got %.3f; want %.3f", dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY, newZoom)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
-	return nil
 }
 
 // buttonBoundsCheckAfterZoom calculates old rect (before zoom) values based on the new rect and the ratio.
@@ -641,17 +635,9 @@ func ncDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn,
 func buttonBoundsCheckAfterZoom(newRect, oldRect coords.Rect, ratio float64) error {
 	const roundingErrorInt = 1
 
-	oldTopCalc := (int)(math.Round((float64)(newRect.Top) * ratio))
-	oldLeftCalc := (int)(math.Round((float64)(newRect.Left) * ratio))
 	oldWidthCalc := (int)(math.Round((float64)(newRect.Width) * ratio))
 	oldHeightCalc := (int)(math.Round((float64)(newRect.Height) * ratio))
 
-	if intAbs(oldRect.Top-oldTopCalc) > roundingErrorInt {
-		return errors.Errorf("Calculated Top is incorrect, got: %d, want: %d", oldTopCalc, oldRect.Top)
-	}
-	if intAbs(oldRect.Left-oldLeftCalc) > roundingErrorInt {
-		return errors.Errorf("Calculated Left is incorrect, got: %d, want: %d", oldLeftCalc, oldRect.Left)
-	}
 	if intAbs(oldRect.Width-oldWidthCalc) > roundingErrorInt {
 		return errors.Errorf("Calculated Width is incorrect, got: %d, want: %d", oldWidthCalc, oldRect.Width)
 	}
