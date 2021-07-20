@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40549f4f_a004a35f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-20T21:12:34Z",
+      "side": 1,
+      "message": "a11y tree worked. Adding lacros to CUJs that uses uiauto to interact with web contents.",
+      "revId": "06ca23401ddb683a81857ba396dcf4755cef4479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
