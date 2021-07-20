@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d320071_304a39cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:04:04Z",
+      "side": 1,
+      "message": "Unfortunately there\u0027s no way to use these string constants in tast. The issue with the out-of-sync repos also remains. Since this is a policy specific string we can leave it as is, but will need to remove the test from the Cq before the string can to be updated.\n\nThere was a plan by EngProd to address this, but it will take some time to be developed.",
+      "parentUuid": "3c27be26_a4ac4605",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7573751b_ea222fae",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
         "patchSetId": 5
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "We only capitalize D, so it should be Dlp not DLP",
       "parentUuid": "7573751b_ea222fae",
+      "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fff1c0c_55a8729c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:04:04Z",
+      "side": 1,
+      "message": "go style capitalises entire acronyms (unlike C++ style).",
+      "parentUuid": "1f3c02bb_d0f11520",
       "revId": "9b9a3d945c9b9d86eaa47d189fe22d84ad9daf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
