@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c15934_6f017ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-20T07:18:07Z",
+      "side": 1,
+      "message": "added const and renamed var to mojoProxyPath, agree that\u0027s a better name",
+      "parentUuid": "12d380a6_c53d6e41",
+      "revId": "be508e8df3a6a5ff79a274c05bd3166ba024a21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b00c8595_01e65c26",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-07-20T06:37:24Z",
       "side": 1,
       "message": "I do not think you need the scope. So, could you remove braces?\n\nIf you really want to ensure the scope of proc, then\n\nif proc, err :\u003d ...;  err !\u003d nil {\n  ...\n} else if err :\u003d proc.SendSignal(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "be508e8df3a6a5ff79a274c05bd3166ba024a21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbed8d56_21e6405e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-20T07:18:07Z",
+      "side": 1,
+      "message": "interesting go construct, thx.\nMy main concern in limiting the scope is I\u0027m not sure what kind of resources are held by the pointer -  and if any were held, they\u0027d be held til the end of the function.",
+      "parentUuid": "b00c8595_01e65c26",
       "range": {
         "startLine": 86,
         "startChar": 1,
