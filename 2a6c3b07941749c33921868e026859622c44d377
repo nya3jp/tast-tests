@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39d240aa_1070a1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-20T17:28:05Z",
+      "side": 1,
+      "message": "Can you please explain why other activities are removed? Based on the R WM spec (below link), this must be the same as RC15. So if we have to remove landscape and unspecified, then we might want to do the same in RC15.\n\nhttps://docs.google.com/document/d/1WIrUw5F-M7atqQH4LVszfr-JrKkrkVwjhhmbT_QN8iI/edit#heading\u003dh.n59mssig6jtn",
+      "range": {
+        "startLine": 449,
+        "startChar": 5,
+        "endLine": 449,
+        "endChar": 11
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f9109da_d7ecdd82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -53,6 +76,75 @@
         "startChar": 8,
         "endLine": 594,
         "endChar": 20
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4465f121_2677e21a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-20T17:28:05Z",
+      "side": 1,
+      "message": "Since you are modifying this can you please fix this to comply with go-want punctuation convention: \n\n... resolution changed: got %q; want different than %q ...",
+      "range": {
+        "startLine": 612,
+        "startChar": 64,
+        "endLine": 612,
+        "endChar": 106
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea916f7_24b709a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-20T17:28:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 622,
+        "startChar": 61,
+        "endLine": 622,
+        "endChar": 92
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3aec92_578b329b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-20T17:28:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 625,
+        "startChar": 61,
+        "endLine": 625,
+        "endChar": 92
       },
       "revId": "2a6c3b07941749c33921868e026859622c44d377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
