@@ -23,6 +23,29 @@
       },
       "revId": "d37376c5d52100ed94b82136a386d167b91b59f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191a6fc9_cc0b3b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-20T20:54:52Z",
+      "side": 1,
+      "message": "Add a Cq-Depend for crrev.com/c/3042363 and migrate to use --json",
+      "range": {
+        "startLine": 75,
+        "startChar": 49,
+        "endLine": 75,
+        "endChar": 62
+      },
+      "revId": "d37376c5d52100ed94b82136a386d167b91b59f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
