@@ -222,7 +222,7 @@ var av1AomFiles = map[string]map[string][]string{
 // (rounded down) level, i.e. "group1" consists of level 1 and 1.1 streams,
 // "group2" of level 2 and 2.1, etc. This helps to keep together tests with
 // similar amounts of intended behavior/expected stress on devices.
-var vp9Files = map[string]map[string]map[string][]string{
+var vp9WebmFiles = map[string]map[string]map[string][]string{
 	"profile_0": {
 		"group1": {
 			"buf": {
@@ -492,6 +492,10 @@ var vp9Files = map[string]map[string]map[string][]string{
 	},
 }
 
+var vp9SVCFiles = map[string][]string{
+	"profile_0": {"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf"},
+}
+
 func genExtraData(videoFiles []string) []string {
 	tf := make([]string, 0, 2*len(videoFiles))
 	for _, file := range videoFiles {
@@ -530,7 +534,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
-				files := vp9Files[profile][levelGroup][cat]
+				files := vp9WebmFiles[profile][levelGroup][cat]
 				param := paramData{
 					Name:         fmt.Sprintf("vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
 					Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
@@ -566,6 +570,20 @@ func TestPlatformDecodingParams(t *testing.T) {
 				params = append(params, param)
 			}
 		}
+	}
+
+	for i, profile := range []string{"profile_0"} {
+		files := vp9SVCFiles[profile]
+		params = append(params, paramData{
+			Name:         fmt.Sprintf("vaapi_vp9_%d_svc", i),
+			Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+			CmdBuilder:   "vp9decodeVAAPIargs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"vaapi"},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_vp9"},
+		})
 	}
 
 	// Generate VAAPI AV1 tests.
@@ -606,7 +624,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
-				files := vp9Files[profile][levelGroup][cat]
+				files := vp9WebmFiles[profile][levelGroup][cat]
 				param := paramData{
 					Name:         fmt.Sprintf("v4l2_vp9_%d_%s_%s", i, levelGroup, cat),
 					Decoder:      "v4l2_stateful_decoder",

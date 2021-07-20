@@ -496,6 +496,18 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
 			{
+				Name: "vaapi_vp9_0_svc",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp9decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi"},
+				ExtraData:         []string{"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf", "test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
 				Name: "vaapi_av1",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/av1/8-bit/00000527.ivf", "test_vectors/av1/8-bit/00000535.ivf", "test_vectors/av1/8-bit/00000548.ivf", "test_vectors/av1/8-bit/48_delayed.ivf", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf", "test_vectors/av1/8-bit/frames_refs_short_signaling.ivf", "test_vectors/av1/8-bit/non_uniform_tiling.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf"},
