@@ -46,7 +46,6 @@ var stableCUJTests = []wmCUJTestParams{
 	{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
 	{"Lights out / Lights in N", wmLightsOutIn},
 	{"Lights out ignored", wmLightsOutIgnored},
-	{"Picture in Picture", wmPIP},
 }
 
 // New and unstable tests should be placed here. These tests should be fixed, and moved them to "stable" ASAP.
@@ -58,6 +57,7 @@ var unstableCUJTests = []wmCUJTestParams{
 	{"Display resolution", wmDisplayResolution},
 	// PageZoom disabled since it is not implemented in ARC. See: http://b/149790068
 	// {"Page Zoom", wmPageZoom},
+	{"Picture in Picture", wmPIP},
 }
 
 func init() {
