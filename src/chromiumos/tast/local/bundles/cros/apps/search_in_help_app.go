@@ -7,7 +7,6 @@ package apps
 import (
 	"context"
 	"fmt"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -91,7 +90,7 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	}
 	defer trustedHelpAppConn.Close()
 
-	const searchKeyword = "helpa"
+	const searchKeyword = "halp"
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var response findResponse
 		err := trustedHelpAppConn.Eval(ctx, fmt.Sprintf(
@@ -124,8 +123,8 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to initialize local search service: ", err)
 	}
 
-	// Search for "helpa". If local search service is used, it should return
-	// results in the "Help" category.
+	// Search for "halp". If local search service is used, it should return
+	// results for "help".
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get a keyboard")
@@ -133,8 +132,8 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	firstSearchResultContainer := nodewith.ClassName("search-result selected").Role(role.ListItem).Ancestor(helpapp.RootFinder)
-	// The name matches the category of the search result, which should be "Help".
-	expectedResultFinder := nodewith.Role(role.Link).NameRegex(regexp.MustCompile("(help|Help)")).Ancestor(firstSearchResultContainer)
+
+	expectedResultFinder := nodewith.Role(role.Link).NameContaining("help").Ancestor(firstSearchResultContainer)
 
 	if err := uiauto.Combine("type keyword to search and validate result",
 		helpCtx.ClickSearchInputAndWaitForActive(),
