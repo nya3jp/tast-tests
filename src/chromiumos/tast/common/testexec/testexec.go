@@ -40,6 +40,7 @@ import (
 	"unsafe"
 
 	"chromiumos/tast/errors"
+	tastexec "chromiumos/tast/exec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -73,11 +74,11 @@ type Cmd struct {
 
 // RunOption is enum of options which can be passed to Run, Output,
 // CombinedOutput and Wait to control precise behavior of them.
-type RunOption int
+type RunOption = tastexec.RunOption
 
 // DumpLogOnError is an option to dump logs if the executed command fails
 // (i.e., exited with non-zero status code).
-const DumpLogOnError RunOption = iota
+const DumpLogOnError = tastexec.DumpLogOnError
 
 var (
 	errStdoutSet      = errors.New("Stdout was already set")
@@ -109,7 +110,7 @@ func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
 // Run runs an external command and waits for its completion.
 //
 // See os/exec package for details.
-func (c *Cmd) Run(opts ...RunOption) error {
+func (c *Cmd) Run(opts ...tastexec.RunOption) error {
 	if err := c.Start(); err != nil {
 		return err
 	}
