@@ -370,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c1e0e7_ced8c11c",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T11:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd24dbd_f5901205",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 13
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2de8b07_6f0469f7",
@@ -440,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac45b379_77cb1d9c",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T11:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3699dd0_694f9646",
+      "range": {
+        "startLine": 180,
+        "startChar": 23,
+        "endLine": 180,
+        "endChar": 29
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c2b1d03_9dd3f56a",
@@ -453,6 +501,30 @@
       "writtenOn": "2021-07-19T00:17:22Z",
       "side": 1,
       "message": "Please name this method String(), so that the type implements the Stringer interface. This leads to the expected behaviour in fmt calls:\nhttps://tour.golang.org/methods/17",
+      "range": {
+        "startLine": 185,
+        "startChar": 23,
+        "endLine": 185,
+        "endChar": 31
+      },
+      "revId": "30abb51cbf641f28f1d9e4b0669089323074a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa29f302_bd137833",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-20T11:11:16Z",
+      "side": 1,
+      "message": "Done. Thanks for the information.",
+      "parentUuid": "6c2b1d03_9dd3f56a",
       "range": {
         "startLine": 185,
         "startChar": 23,
