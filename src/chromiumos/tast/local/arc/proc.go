@@ -13,23 +13,40 @@ import (
 
 var errInitNotFound = errors.New("didn't find init process")
 
-// getUserPath returns the user and the path to the entry point of ARC
-func getUserPath() (user, path string, err error) {
-	vm, err := VMEnabled()
-	if err != nil {
-		return "", "", errors.Wrap(err, "failed to determine if ARCVM is enabled")
-	}
-	if vm {
-		return "crosvm", "/usr/bin/crosvm", nil
-	}
+// Daemon references one of the system daemons
+type Daemon int
 
-	return "android-root", "/init", nil
+const (
+	// Init references the init process daemon
+	Init = iota
+	// MojoProxy references the arcvm_server_proxy daemon
+	MojoProxy
+)
+
+// getUserPath returns the user and the path to the specified daemon
+func getUserPath(daemon Daemon) (user, path string, err error) {
+	switch daemon {
+	case Init:
+		vm, err := VMEnabled()
+		if err != nil {
+			return "", "", errors.Wrap(err, "failed to determine if ARCVM is enabled")
+		}
+		if vm {
+			return "crosvm", "/usr/bin/crosvm", nil
+		}
+		return "android-root", "/init", nil
+	case MojoProxy:
+		return "root", "/usr/bin/arcvm_server_proxy", nil
+	default:
+		return "", "", errors.Wrapf(err, "failed to indentify daemon %d", daemon)
+	}
 }
 
-// InitPID returns the PID (outside the guest) of the ARC init process.
-// It returns an error in case process is not found.
-func InitPID() (int32, error) {
-	u, initPath, err := getUserPath()
+// GetDaemonPID returns the PID (outside the guest) of the
+// specified daemon process.
+// It returns an error in case the daemon is not found
+func GetDaemonPID(daemon Daemon) (int32, error) {
+	u, path, err := getUserPath(daemon)
 	if err != nil {
 		return -1, err
 	}
@@ -46,13 +63,19 @@ func InitPID() (int32, error) {
 
 	for _, p := range procs {
 		if uids, err := p.Uids(); err == nil && uint32(uids[0]) == uid {
-			if exe, err := p.Exe(); err == nil && exe == initPath {
+			if exe, err := p.Exe(); err == nil && exe == path {
 				return p.Pid, nil
 			}
 		}
 	}
 
 	return -1, errInitNotFound
+}
+
+// InitPID returns the PID (outside the guest) of the ARC init process.
+// It returns an error in case process is not found.
+func InitPID() (int32, error) {
+	return GetDaemonPID(Init)
 }
 
 // InitExists returns true in case ARC init process exists.
