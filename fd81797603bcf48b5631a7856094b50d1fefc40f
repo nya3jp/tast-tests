@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a5a7f2_6516eac8",
+        "filename": "src/chromiumos/tast/remote/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-07-20T01:10:02Z",
+      "side": 1,
+      "message": "nit, use a TODO(bugid) style comment.",
+      "revId": "fd81797603bcf48b5631a7856094b50d1fefc40f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
