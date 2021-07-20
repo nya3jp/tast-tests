@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12d380a6_c53d6e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-20T06:55:25Z",
+      "side": 1,
+      "message": "also mojoProxyPath would be more informative as a variable name.",
+      "parentUuid": "15f1634a_ea8ef211",
+      "revId": "be508e8df3a6a5ff79a274c05bd3166ba024a21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b00c8595_01e65c26",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
         "patchSetId": 6
