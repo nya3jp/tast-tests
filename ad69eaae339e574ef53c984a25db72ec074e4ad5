@@ -33,6 +33,47 @@
       "message": "Tast/Lacros LGTM.\n\nnorvez@, could you take a look from your perspective?",
       "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc687133_f66d6a3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-07-20T15:30:15Z",
+      "side": 1,
+      "message": "No objections, just a nit/question about the naming of the metric",
+      "parentUuid": "c03a5157_69b8d7c6",
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a74d6fd_982a319a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-07-20T15:30:15Z",
+      "side": 1,
+      "message": "Any reason to call it |bytes_rootfs_lacros| instead of |bytes_lacros|?",
+      "range": {
+        "startLine": 119,
+        "startChar": 42,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "ad69eaae339e574ef53c984a25db72ec074e4ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
