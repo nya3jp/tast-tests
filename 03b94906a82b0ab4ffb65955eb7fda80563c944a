@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59908cf2_ccc9f50b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-20T08:54:51Z",
+      "side": 1,
+      "message": "Hi Trent,\n\nI don\u0027t think we need to write data to a file for ProbeNetworkInfo test. In current implementation, if the failure is due to decode error, we\u0027ll add the raw data into error log. So I think we can remove the `appendResultToFile` function. But I\u0027d like to let you know, to see if there is any concern. Thanks!",
+      "revId": "03b94906a82b0ab4ffb65955eb7fda80563c944a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
