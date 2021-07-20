@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -19,6 +20,7 @@ const (
 	bear192P   = "bear-320x192.vp9.webm"
 	tulip360P  = "tulip2-640x360.vp9.webm"
 	tulip361P  = "crowd-641x361.vp9.webm"
+	tulip540P  = "tulip2-960x540.vp9.webm"
 	tulip720P  = "tulip2-1280x720.vp9.webm"
 	crowd1080P = "crowd-1920x1080.vp9.webm"
 	crowd2160P = "crowd-3840x2160.vp9.webm"
@@ -124,13 +126,41 @@ func init() {
 			ExtraData:         encode.TestData(crowd2160P),
 		}, {
 			Name:              "vp9_720p_two_temporal_layers",
-			Val:               encode.MakeTestOptionsWithTemporalLayers(tulip720P, videotype.VP9Prof, 2),
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, 1, 2),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "vp9_720p_three_temporal_layers",
-			Val:               encode.MakeTestOptionsWithTemporalLayers(tulip720P, videotype.VP9Prof, 3),
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, 1, 3),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraData:         encode.TestData(tulip720P),
+		}, {
+			Name:              "vp9_540p_two_spatial_and_three_temporal_layers",
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip540P, videotype.VP9Prof, 2, 3),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			// TODO(b/191203129): Run on JSL devices as well.
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraData:         encode.TestData(tulip540P),
+		}, {
+			Name:              "vp9_540p_three_spatial_and_three_temporal_layers",
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip540P, videotype.VP9Prof, 3, 3),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			// TODO(b/191203129): Run on JSL devices as well.
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraData:         encode.TestData(tulip540P),
+		}, {
+			Name:              "vp9_720p_two_spatial_and_three_temporal_layers",
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, 2, 3),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			// TODO(b/191203129): Run on JSL devices as well.
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraData:         encode.TestData(tulip720P),
+		}, {
+			Name:              "vp9_720p_three_spatial_and_three_temporal_layers",
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, 3, 3),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			// TODO(b/191203129): Run on JSL devices as well.
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "h264_180p_nv12",
