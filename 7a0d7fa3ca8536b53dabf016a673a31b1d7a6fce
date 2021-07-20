@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10db0d5c_38c2b93c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data/content.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-20T17:52:19Z",
+      "side": 1,
+      "message": "I tried  navigator.clipboard.readText(), It doesn\u0027t return any value.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a5fc99_e5f3f19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data/manifest.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-20T17:52:19Z",
+      "side": 1,
+      "message": "I have copied this from one of the extension in tast. Should it be unique? How can I get it.",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 2,
+        "endChar": 406
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47333b52_eb13229f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-20T17:52:19Z",
+      "side": 1,
+      "message": "Should extension be able to access the content all the time? I checked that copying and pasting content is restricted.",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
