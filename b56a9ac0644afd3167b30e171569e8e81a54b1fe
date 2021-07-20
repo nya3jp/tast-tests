@@ -135,6 +135,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e5646ec_33366283",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T15:20:39Z",
+      "side": 1,
+      "message": "After asking some experts, using the name ui.signinProfileTestExtensionManifestKey will allow this value to be auto-populated from the secrets yaml files.",
+      "parentUuid": "3bf5033b_83d94178",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 94
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90f67493_ac2291e5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
