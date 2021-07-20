@@ -69,6 +69,24 @@
       "parentUuid": "0898b2da_5f2ab0a5",
       "revId": "b7003a333968c54ea91cc621f1566154a53836f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9d3207e_6dbf23b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T04:55:37Z",
+      "side": 1,
+      "message": "RequiredClientCertificate is failing, will take a look today.",
+      "parentUuid": "108d86ed_3a6c039f",
+      "revId": "b7003a333968c54ea91cc621f1566154a53836f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
