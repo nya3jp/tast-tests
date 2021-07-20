@@ -36,6 +36,7 @@ var md5OfYUV = map[string]string{
 	"gipsrestat-320x180.i420.yuv":       "556d908527aea47e0e02440bf6c35861",
 	"tulip2-1280x720.i420.yuv":          "1b95123232922fe0067869c74e19cd09",
 	"tulip2-1280x720.nv12.yuv":          "898a3e1bb3b8d2bdd137f92067d42106",
+	"tulip2-960x540.i420.yuv":           "c0ff5b6c62ba8914aa073d630acd6309",
 	"tulip2-640x360.i420.yuv":           "094bd827de18ca196a83cc6442b7b02f",
 	"tulip2-640x360.nv12.yuv":           "750a9d254415858f821b8df06a5f3d48",
 	"tulip2-320x180.i420.yuv":           "55be7124b3aec1b72bfb57f433297193",

@@ -37,6 +37,10 @@ type TestOptions struct {
 	webMName string
 	profile  videotype.CodecProfile
 
+	// The number of spatial layers of the produced bitstream.
+	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about spatial layers.
+	spatialLayers int
+
 	// The number of temporal layers of the produced bitstream.
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
 	temporalLayers int
@@ -51,23 +55,25 @@ type TestOptions struct {
 }
 
 // MakeTestOptions creates TestOptions from webMName and profile.
-// temporalLayers is set to 1 and verifyNV12Input is set to false.
+// spatialLayers and temporalLayers are set to 1 and verifyNV12Input is set to false.
 func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
 		webMName:        webMName,
 		profile:         profile,
+		spatialLayers:   1,
 		temporalLayers:  1,
 		verifyNV12Input: false,
 	}
 }
 
 // MakeBitrateTestOptions creates TestOptions from webMName and codec.
-// temporalLayers is set to 1 and verifyNV12Input is set to false.
+// spatialLayers and temporalLayers are set to 1 and verifyNV12Input is set to false.
 // Sets bitrate for testing quality changes.
 func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bitrate int) TestOptions {
 	return TestOptions{
 		webMName:        webMName,
 		profile:         profile,
+		spatialLayers:   1,
 		temporalLayers:  1,
 		verifyNV12Input: false,
 		bitrate:         bitrate,
@@ -75,24 +81,26 @@ func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bit
 }
 
 // MakeNV12TestOptions creates TestOptions from webMName and profile.
-// temporalLayers is set to 1 and verifyNV12Input is set to true.
+// spatialLayers and temporalLayers are set to 1 and verifyNV12Input is set to true.
 func MakeNV12TestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
 		webMName:        webMName,
 		profile:         profile,
+		spatialLayers:   1,
 		temporalLayers:  1,
 		verifyNV12Input: true,
 	}
 }
 
-// MakeTestOptionsWithTemporalLayers creates TestOptions from webMName, profile and temporalLayers.
+// MakeTestOptionsWithSVCLayers creates TestOptions from webMName, profile, spatialLayers and temporalLayers.
 // verifyNV12Input is set to false.
-func MakeTestOptionsWithTemporalLayers(webMName string, profile videotype.CodecProfile, temporalLayers int) TestOptions {
+func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfile, spatialLayers, temporalLayers int) TestOptions {
 	return TestOptions{
 		webMName:        webMName,
 		profile:         profile,
+		spatialLayers:   spatialLayers,
 		temporalLayers:  temporalLayers,
-		verifyNV12Input: false,
+		verifyNV12Input: true,
 	}
 }
 
@@ -169,6 +177,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		yuvJSONPath,
 	}
 
+	if opts.spatialLayers > 1 {
+		testArgs = append(testArgs, fmt.Sprintf("--num_spatial_layers=%d", opts.spatialLayers))
+	}
 	if opts.temporalLayers > 1 {
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
 	}
