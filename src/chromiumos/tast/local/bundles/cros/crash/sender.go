@@ -33,6 +33,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
