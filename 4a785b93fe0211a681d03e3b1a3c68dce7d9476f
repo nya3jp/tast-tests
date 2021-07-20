@@ -52,6 +52,24 @@
       "parentUuid": "0e7508ef_c83225ec",
       "revId": "4a785b93fe0211a681d03e3b1a3c68dce7d9476f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8fff0ae_e7c42628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-20T01:47:59Z",
+      "side": 1,
+      "message": "Yes, so we can still make sure the self-managed behavior is as expected.",
+      "parentUuid": "24b62d08_171c394a",
+      "revId": "4a785b93fe0211a681d03e3b1a3c68dce7d9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
