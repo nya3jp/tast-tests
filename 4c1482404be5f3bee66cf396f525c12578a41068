@@ -16,6 +16,40 @@
       "message": "Hi Oleh,\n\nI think you wrote PowerManagerEmitter. Would you mind reviewing this CL? Please let me know if there\u0027s a better owner/reviewer for the power package.\n\nThanks!",
       "revId": "4c1482404be5f3bee66cf396f525c12578a41068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4bb7d9_d94bf6ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T14:45:27Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "4c1482404be5f3bee66cf396f525c12578a41068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafafaae_852cf3da",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T14:45:27Z",
+      "side": 1,
+      "message": "nit: maybe it makes sense to put it to a separate file, e.g. power_manager_watcher?",
+      "revId": "4c1482404be5f3bee66cf396f525c12578a41068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
