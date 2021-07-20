@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b922e9_12f1a9d2",
+        "filename": "src/chromiumos/tast/remote/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T15:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27a5a7f2_6516eac8",
+      "revId": "fd81797603bcf48b5631a7856094b50d1fefc40f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a824f1f9_2d0f8c9b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-20T04:27:40Z",
       "side": 1,
       "message": "could you check error and logs? Ditto for below.",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "fd81797603bcf48b5631a7856094b50d1fefc40f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb0b35a_9bb6c02e",
+        "filename": "src/chromiumos/tast/remote/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T15:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a824f1f9_2d0f8c9b",
       "range": {
         "startLine": 60,
         "startChar": 10,
