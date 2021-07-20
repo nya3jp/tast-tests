@@ -16,6 +16,46 @@
       "message": "PTAL.",
       "revId": "2a6c3b07941749c33921868e026859622c44d377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3089f2_666e70a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T12:10:39Z",
+      "side": 1,
+      "message": "Tast LGTM, but please get LGTM from Armen too. Thanks!",
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9109da_d7ecdd82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-20T12:10:39Z",
+      "side": 1,
+      "message": "Are there some error when there is no sense to continue polling? If so, please use testing.PollBreak\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d26?q\u003dtesting.Pollbreak",
+      "range": {
+        "startLine": 594,
+        "startChar": 8,
+        "endLine": 594,
+        "endChar": 20
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
