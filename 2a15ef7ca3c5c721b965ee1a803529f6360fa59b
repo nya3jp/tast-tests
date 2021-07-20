@@ -16,6 +16,46 @@
       "message": "PTAL again!",
       "revId": "2a15ef7ca3c5c721b965ee1a803529f6360fa59b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7ed524_3e803193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-20T14:09:29Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM % comment",
+      "revId": "2a15ef7ca3c5c721b965ee1a803529f6360fa59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936f6a20_0ace09b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-20T14:09:29Z",
+      "side": 1,
+      "message": "No need for the colon and space. errors.Wrap takes care of this for you.",
+      "range": {
+        "startLine": 851,
+        "startChar": 54,
+        "endLine": 851,
+        "endChar": 56
+      },
+      "revId": "2a15ef7ca3c5c721b965ee1a803529f6360fa59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
