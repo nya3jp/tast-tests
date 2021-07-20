@@ -244,6 +244,7 @@ func signOutOfFlipboard(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		flipID            = "flipboard.app:id/cover_flip_hint"
 		homeID            = "flipboard.app:id/toc_page_avatar"
 		settingsIconID    = "flipboard.app:id/profile_page_header_settings"
+		selectAccountText = "Account"
 		selectSignOutID   = "android:id/title"
 		selectSignOutText = "Sign Out"
 	)
@@ -279,6 +280,16 @@ func signOutOfFlipboard(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	settingsIcon := d.Object(ui.ID(settingsIconID))
 	if err := settingsIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("settingsIcon doesn't exist: ", err)
+	} else if err := settingsIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on settingsIcon: ", err)
+	}
+
+	// Click on selectAccount option.
+	selectAccount := d.Object(ui.TextMatches("(?i)" + selectAccountText))
+	if err := selectAccount.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("selectAccount doesn't exist: ", err)
+	} else if err := selectAccount.Click(ctx); err != nil {
+		s.Fatal("Failed to click on selectAccount: ", err)
 	}
 
 	// Click on settings icon until sign out exist.
