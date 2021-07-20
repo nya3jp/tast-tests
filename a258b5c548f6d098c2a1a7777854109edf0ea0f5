@@ -39,6 +39,47 @@
       },
       "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720025ec_d9750d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:07:07Z",
+      "side": 1,
+      "message": "Don\u0027t use policyutil.ResetChrome (that does reset policies). Use cr.ResetState(ctx) to just reset Chrome.",
+      "parentUuid": "b2e6c94e_4e9968a9",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383cb6c7_ed40c91b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:07:07Z",
+      "side": 1,
+      "message": "I\u0027m concerned about the tight integration with the Omnibox UI here. Multiple steps can fail in this test.",
+      "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
