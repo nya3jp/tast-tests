@@ -25,7 +25,7 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		SetUpTimeout:    chrome.LoginTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + (30 * time.Second),
 		ResetTimeout:    5 * time.Second,
 		TearDownTimeout: 10 * time.Second,
 		Impl:            &networkDiagnosticsFixture{},
@@ -40,7 +40,7 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		SetUpTimeout:    chrome.LoginTimeout + (30 * time.Second),
+		SetUpTimeout:    chrome.LoginTimeout + (1 * time.Minute),
 		ResetTimeout:    5 * time.Second,
 		TearDownTimeout: 10 * time.Second,
 		Impl:            &networkDiagnosticsFixture{},
