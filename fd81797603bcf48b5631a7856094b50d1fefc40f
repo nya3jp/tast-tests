@@ -16,6 +16,29 @@
       "message": "nit, use a TODO(bugid) style comment.",
       "revId": "fd81797603bcf48b5631a7856094b50d1fefc40f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a824f1f9_2d0f8c9b",
+        "filename": "src/chromiumos/tast/remote/firmware/bios/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T04:27:40Z",
+      "side": 1,
+      "message": "could you check error and logs? Ditto for below.",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "fd81797603bcf48b5631a7856094b50d1fefc40f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
