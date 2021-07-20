@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64599bd6_10026e95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-20T14:11:59Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM",
+      "revId": "6dd949a75341e0f45d263a052528bbf5c064fb3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b5489e6_6eb292d0",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-07-20T09:40:44Z",
       "side": 1,
       "message": "nit: tabletWindowStateTestsForP",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "6dd949a75341e0f45d263a052528bbf5c064fb3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29b2bb3_e602368c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-20T14:11:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "2b5489e6_6eb292d0",
       "range": {
         "startLine": 53,
         "startChar": 3,
