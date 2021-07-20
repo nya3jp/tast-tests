@@ -6,10 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"os"
-	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -52,35 +48,13 @@ func init() {
 func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryNetwork}
 
-	// Helper function to write the result from telem to a file.
-	f, err := os.OpenFile(filepath.Join(s.OutDir(), "network_health_telem.txt"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		s.Fatal("Unable to open network_health_telem.txt file: ", err)
-	}
-	defer f.Close()
-	appendResultToFile := func(b []byte) {
-		if _, err := f.Write(b); err != nil {
-			s.Fatal("Failed to append to network_health_telem.txt file: ", err)
-		}
-	}
-
 	// If this test is run right after chrome is started, it's possible that the
 	// network health information has not been populated. Poll the routine until
 	// network information is present.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-		if err != nil {
-			s.Fatal("Failed to run telem command: ", err)
-		}
-		appendResultToFile(rawData)
-
-		dec := json.NewDecoder(strings.NewReader(string(rawData)))
-		dec.DisallowUnknownFields()
-
 		var result networkResult
-		if err := dec.Decode(&result); err != nil {
-			s.Fatalf("Failed to decode network data [%q], err [%v]", rawData, err)
+		if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &result); err != nil {
+			s.Fatal("Failed to run telem command: ", err)
 		}
 
 		// Every system should have at least one network device populated. If

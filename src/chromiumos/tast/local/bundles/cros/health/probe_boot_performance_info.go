@@ -6,9 +6,7 @@ package health
 
 import (
 	"context"
-	"encoding/json"
 	"math"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -42,18 +40,9 @@ func init() {
 func getBootPerformanceData(ctx context.Context, outDir string) (bootPerformanceInfo, error) {
 	var bootPerf bootPerformanceInfo
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBootPerformance}
-	rawData, err := croshealthd.RunTelem(ctx, params, outDir)
-	if err != nil {
-		return bootPerf, err
-	}
+	err := croshealthd.RunAndParseJSONTelem(ctx, params, outDir, &bootPerf)
 
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-	if err := dec.Decode(&bootPerf); err != nil {
-		return bootPerf, errors.Wrapf(err, "failed to decode boot performance data %q", rawData)
-	}
-
-	return bootPerf, nil
+	return bootPerf, err
 }
 
 func validateBootPerformanceData(bootPerf bootPerformanceInfo) error {
