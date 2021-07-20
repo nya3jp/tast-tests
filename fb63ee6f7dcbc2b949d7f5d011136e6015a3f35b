@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "367885f4_46882513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll handle it in a follow-up CL!",
+      "parentUuid": "6ba5dc09_eec0aa66",
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e829b9a6_191e1a42",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-16T15:12:47Z",
       "side": 1,
       "message": "Is this timeout still acceptable with the new test cases added?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 32
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b30a5f0_e7345987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Yeah the expected duration is around 90 sec.",
+      "parentUuid": "e829b9a6_191e1a42",
       "range": {
         "startLine": 167,
         "startChar": 2,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b96ecd6_d252dc47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97c9178c_101fe6e4",
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99540640_49b30928",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-07-16T15:12:47Z",
       "side": 1,
       "message": "For all of these via %s log statements, can that information be populated in the error in the actual function? This way every call to the function doesn\u0027t need to add this.",
+      "range": {
+        "startLine": 473,
+        "startChar": 86,
+        "endLine": 473,
+        "endChar": 93
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c8736f_69adf348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "toggleResizeLockMode() already logs this info, so I just removed this here.",
+      "parentUuid": "99540640_49b30928",
       "range": {
         "startLine": 473,
         "startChar": 86,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4436aa1d_96758cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7de3f19_826c2ec7",
+      "range": {
+        "startLine": 705,
+        "startChar": 26,
+        "endLine": 705,
+        "endChar": 54
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2472c88c_d50a415e",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-07-19T06:52:46Z",
       "side": 1,
       "message": "defer keyboard.Close() is missing",
+      "range": {
+        "startLine": 784,
+        "startChar": 1,
+        "endLine": 784,
+        "endChar": 2
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23239982_b962d121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2472c88c_d50a415e",
       "range": {
         "startLine": 784,
         "startChar": 1,
@@ -167,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d949d3_e117b76b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30924bac_8d69ba85",
+      "range": {
+        "startLine": 787,
+        "startChar": 48,
+        "endLine": 787,
+        "endChar": 51
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a759492_d4d5495a",
@@ -180,6 +336,30 @@
       "writtenOn": "2021-07-16T15:12:47Z",
       "side": 1,
       "message": "Should this be handleConfirmationDialogViaKeyboard?",
+      "range": {
+        "startLine": 854,
+        "startChar": 13,
+        "endLine": 854,
+        "endChar": 45
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d4e46e_5b4ec578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a759492_d4d5495a",
       "range": {
         "startLine": 854,
         "startChar": 13,
@@ -213,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc16a17a_193d0ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e603ea_643feff6",
+      "range": {
+        "startLine": 867,
+        "startChar": 89,
+        "endLine": 867,
+        "endChar": 98
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f701b61_99906927",
@@ -226,6 +430,30 @@
       "writtenOn": "2021-07-19T06:52:46Z",
       "side": 1,
       "message": "nit\u0026optional: Would be nicer to use switch-case.",
+      "range": {
+        "startLine": 869,
+        "startChar": 1,
+        "endLine": 869,
+        "endChar": 9
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b04a86_6f57a5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Considered that, but turns out it\u0027s simpler and intuitive to do this as it\u0027s a bit nested below.",
+      "parentUuid": "6f701b61_99906927",
       "range": {
         "startLine": 869,
         "startChar": 1,
@@ -259,6 +487,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6420042_98abb289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7c0d62_4ac420fa",
+      "range": {
+        "startLine": 882,
+        "startChar": 86,
+        "endLine": 882,
+        "endChar": 98
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0935eca_fad867b7",
@@ -272,6 +524,30 @@
       "writtenOn": "2021-07-16T15:12:47Z",
       "side": 1,
       "message": "This function seems to be an exact copy of the one before it?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 1
+      },
+      "revId": "fb63ee6f7dcbc2b949d7f5d011136e6015a3f35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40579004_25b08387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0935eca_fad867b7",
       "range": {
         "startLine": 1051,
         "startChar": 0,
