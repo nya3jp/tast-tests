@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100_20210720.ivf.json",
+  "size": 101697,
+  "sha256sum": "3ad72713ec3d534a9b065b70d22e4ad8eda8525bf4ef58aab3bfda7b88f0b77d"
+}
