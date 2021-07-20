@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e5513e1_fa037114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-07-20T19:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4b9de7_876c5b9d",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23cb96c9_7ce6b725",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d232b30c_b104f3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-07-20T19:57:48Z",
+      "side": 1,
+      "message": "1, 2, done.\n\n3, I couldn\u0027t find others doing this, but I will ask the reviewer!",
+      "parentUuid": "23cb96c9_7ce6b725",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 108
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9df2aa43_9c7565f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 2
@@ -94,6 +142,30 @@
       "writtenOn": "2021-07-19T20:34:45Z",
       "side": 1,
       "message": "nit: The error message is a little bit confusing. Do you mean \"failed to wait for clearing the notification\"?",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea406d71_417efa65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-07-20T19:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df2aa43_9c7565f6",
       "range": {
         "startLine": 97,
         "startChar": 28,
