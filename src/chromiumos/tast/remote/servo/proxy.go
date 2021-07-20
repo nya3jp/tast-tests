@@ -229,6 +229,22 @@ func (p *Proxy) RunCommand(ctx context.Context, asRoot bool, name string, args .
 	return p.hst.Command(name, args...).Run(ctx, ssh.DumpLogOnError)
 }
 
+// RunCommandQuiet execs a command on the servo host, optionally as root, does not log output.
+func (p *Proxy) RunCommandQuiet(ctx context.Context, asRoot bool, name string, args ...string) error {
+	if p.isClosed() {
+		return errors.New("connection to servo is closed")
+	}
+	if p.isLocal() {
+		if asRoot {
+			sudoargs := append([]string{name}, args...)
+			testing.ContextLog(ctx, "Running sudo ", sudoargs)
+			return testexec.CommandContext(ctx, "sudo", sudoargs...).Run()
+		}
+		return testexec.CommandContext(ctx, name, args...).Run()
+	}
+	return p.hst.Command(name, args...).Run(ctx)
+}
+
 // OutputCommand execs a command as the root user and returns stdout
 func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, args ...string) ([]byte, error) {
 	if p.isClosed() {
