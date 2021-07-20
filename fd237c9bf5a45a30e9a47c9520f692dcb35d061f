@@ -70,6 +70,24 @@
       "parentUuid": "b12cf490_42cf5dcc",
       "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5ad9e7_6580485c",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-20T04:33:11Z",
+      "side": 1,
+      "message": "YAGNI sounds a good point.\n\nI think you can define\n\nfunc mojoProxyPID() { ... }\n\nin mojo_proxy_crash.go, which is to find the process by name with gopsutil package (not pgrep command pls for consistency and maintenance).\n\nWe can update the code whenever if new requirement is coming.",
+      "parentUuid": "8411b268_560d6191",
+      "revId": "fd237c9bf5a45a30e9a47c9520f692dcb35d061f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
