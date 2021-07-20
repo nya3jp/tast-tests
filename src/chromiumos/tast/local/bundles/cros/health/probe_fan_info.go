@@ -6,7 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
 	"os"
 	"strconv"
 	"strings"
@@ -71,8 +70,8 @@ func validateFanData(result fanResult, numFans int) error {
 
 func ProbeFanInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryFan}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
+	var result fanResult
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &result); err != nil {
 		s.Fatal("Failed to get fan telemetry info: ", err)
 	}
 
@@ -80,14 +79,6 @@ func ProbeFanInfo(ctx context.Context, s *testing.State) {
 	numFans, err := getNumFans(ctx)
 	if err != nil {
 		s.Fatal("Failed to get number of fans: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
-	var result fanResult
-	if err := dec.Decode(&result); err != nil {
-		s.Fatalf("Failed to decode fan data [%q], err [%v]", rawData, err)
 	}
 
 	if err := validateFanData(result, numFans); err != nil {

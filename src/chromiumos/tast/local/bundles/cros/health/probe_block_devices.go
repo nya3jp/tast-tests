@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
@@ -50,17 +48,9 @@ func init() {
 
 func ProbeBlockDevices(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryStorage}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get storage telemetry info: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var blockDevice blockDeviceResult
-	if err := dec.Decode(&blockDevice); err != nil {
-		s.Fatalf("Failed to decode storage data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &blockDevice); err != nil {
+		s.Fatal("Failed to get storage telemetry info: ", err)
 	}
 
 	if len(blockDevice.BlockDevices) < 1 {

@@ -6,8 +6,6 @@ package health
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
@@ -76,17 +74,9 @@ func validateAudioData(audio audioInfo) error {
 
 func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryAudio}
-	rawData, err := croshealthd.RunTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get audio telemetry info: ", err)
-	}
-
-	dec := json.NewDecoder(strings.NewReader(string(rawData)))
-	dec.DisallowUnknownFields()
-
 	var audio audioInfo
-	if err := dec.Decode(&audio); err != nil {
-		s.Fatalf("Failed to decode audio data [%q], err [%v]", rawData, err)
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &audio); err != nil {
+		s.Fatal("Failed to get audio telemetry info: ", err)
 	}
 
 	if err := validateAudioData(audio); err != nil {
