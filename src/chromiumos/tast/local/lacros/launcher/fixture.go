@@ -141,6 +141,9 @@ const (
 	// of the data dependencies of your test.
 	DataArtifact = "lacros_binary.tar"
 
+	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
+	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
+
 	// lacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
 	lacrosTestPath = "/usr/local/lacros_test_artifacts"
 
