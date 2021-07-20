@@ -102,11 +102,11 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 			wantAllowed: false,
 			url:         "https://www.example.com/",
 		},
-		{
-			name:        "company",
-			wantAllowed: true,
-			url:         "https://www.company.com/",
-		},
+		// {
+		// 	name:        "company",
+		// 	wantAllowed: true,
+		// 	url:         "https://www.company.com/",
+		// },
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
@@ -117,6 +117,10 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 
 			if err := checkFrameStatus(ctx, screenRecorder, true); err != nil {
 				s.Fatal("Failed to check frame status: ", err)
+			}
+
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
 			}
 
 			if _, err = cr.NewConn(ctx, param.url); err != nil {
@@ -131,6 +135,10 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 				s.Fatalf("Failed to wait for notification with title %q: %v", paused, err)
 			}
 
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
+			}
+
 			if _, err = cr.NewConn(ctx, nonRestrictedSite); err != nil {
 				s.Error("Failed to open page: ", err)
 			}
@@ -143,6 +151,10 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 				s.Fatalf("Failed to wait for notification with title %q: %v", resumed, err)
 			}
 
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
+			}
+			s.Log("DONE")
 			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screen_capture_dlp_paused-"), ash.WaitTitle(paused)); err == nil {
 				s.Fatalf("Notification with title %q found, expected none", paused)
 			}

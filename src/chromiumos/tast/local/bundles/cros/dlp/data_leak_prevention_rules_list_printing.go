@@ -49,9 +49,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 				Description: "User should not be able to print confidential content",
 				Sources: &policy.DataLeakPreventionRulesListSources{
 					Urls: []string{
-						"salesforce.com",
-						"google.com",
-						"company.com",
+						"example.com",
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
@@ -95,21 +93,9 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 		wantNotification string
 	}{
 		{
-			name:             "salesforce",
+			name:             "example",
 			printingAllowed:  false,
-			url:              "https://www.salesforce.com/",
-			wantNotification: printingNotAllowed,
-		},
-		{
-			name:             "google",
-			printingAllowed:  false,
-			url:              "https://www.google.com/",
-			wantNotification: printingNotAllowed,
-		},
-		{
-			name:             "company",
-			printingAllowed:  false,
-			url:              "https://www.company.com/",
+			url:              "https://www.example.com/",
 			wantNotification: printingNotAllowed,
 		},
 		{
@@ -127,6 +113,10 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 				s.Fatal("Failed to open page: ", err)
 			}
 			defer conn.Close()
+
+			if err := testing.Sleep(ctx, 110*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
+			}
 
 			// Make a call to print page.
 			printingPossible, err := testPrinting(ctx, tconn, keyboard)

@@ -6,9 +6,11 @@ package dlp
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
@@ -171,4 +173,18 @@ func pasteOmnibox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.K
 	}
 
 	return nil
+}
+func setUpExtension(ctx context.Context, s *testing.State, extDir string) (string, error) {
+	for _, name := range []string{"manifest.json", "background.js", "content.js"} {
+		if err := fsutil.CopyFile(s.DataPath(name), filepath.Join(extDir, name)); err != nil {
+			return "", errors.Wrapf(err, "failed to copy file %q: %v", name, err)
+		}
+	}
+
+	extID, err := chrome.ComputeExtensionID(extDir)
+	if err != nil {
+		s.Fatalf("Failed to compute extension ID for %q: %v", extDir, err)
+	}
+
+	return extID, nil
 }

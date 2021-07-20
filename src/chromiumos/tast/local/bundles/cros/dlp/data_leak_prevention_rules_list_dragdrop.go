@@ -79,18 +79,18 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			url:         "www.example.com",
 			content:     "Example Domain",
 		},
-		{
-			name:        "company",
-			wantAllowed: false,
-			url:         "www.company.com",
-			content:     "One Environment",
-		},
-		{
-			name:        "chromium",
-			wantAllowed: true,
-			url:         "www.chromium.org",
-			content:     "The Chromium Projects",
-		},
+		// {
+		// 	name:        "company",
+		// 	wantAllowed: false,
+		// 	url:         "www.company.com",
+		// 	content:     "One Environment",
+		// },
+		// {
+		// 	name:        "chromium",
+		// 	wantAllowed: true,
+		// 	url:         "www.chromium.org",
+		// 	content:     "The Chromium Projects",
+		// },
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
@@ -100,6 +100,9 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 
 			if _, err = cr.NewConn(ctx, "https://www.google.com/"); err != nil {
+				s.Error("Failed to open page: ", err)
+			}
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
 				s.Error("Failed to open page: ", err)
 			}
 
@@ -113,6 +116,9 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 
 			if err = keyboard.Accel(ctx, "Alt+]"); err != nil {
 				s.Fatal("Failed to press Alt+] to snap window to right: ", err)
+			}
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
 			}
 
 			s.Log("Draging and dropping content")

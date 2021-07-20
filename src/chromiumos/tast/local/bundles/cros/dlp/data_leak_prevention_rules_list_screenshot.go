@@ -45,9 +45,7 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 				Description: "User should not be able to take screen of confidential content",
 				Sources: &policy.DataLeakPreventionRulesListSources{
 					Urls: []string{
-						"salesforce.com",
-						"google.com",
-						"company.com",
+						"example.com",
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
@@ -93,22 +91,10 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		url              string
 	}{
 		{
-			name:             "salesforce",
+			name:             "example",
 			wantAllowed:      false,
 			wantNotification: captureNotAllowed,
-			url:              "https://www.salesforce.com/",
-		},
-		{
-			name:             "google",
-			wantAllowed:      false,
-			wantNotification: captureNotAllowed,
-			url:              "https://www.google.com/",
-		},
-		{
-			name:             "company",
-			wantAllowed:      false,
-			wantNotification: captureNotAllowed,
-			url:              "https://www.company.com/",
+			url:              "https://www.example.com/",
 		},
 		{
 			name:             "chromium",
@@ -133,12 +119,20 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 			}
 			defer conn.Close()
 
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
+			}
+
 			if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
 				s.Fatal("Failed to press Ctrl+F5 to take screenshot: ", err)
 			}
 
 			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("capture_mode_notification"), ash.WaitTitle(param.wantNotification)); err != nil {
 				s.Fatalf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
+			}
+
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+				s.Error("Failed to open page: ", err)
 			}
 
 			has, err := screenshot.HasScreenshots()

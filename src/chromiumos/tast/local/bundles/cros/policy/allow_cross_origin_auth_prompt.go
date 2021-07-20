@@ -23,6 +23,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type accessibilityTestCase struct {
+	name      string          // name is the subtest name.
+	policyKey string          // policyKey is the key for the policy value in chrome.accessibilityFeatures map.
+	wantValue bool            // wantValue is the expected value of the policy once set.
+	policies  []policy.Policy // policies is the policies values.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AllowCrossOriginAuthPrompt,
