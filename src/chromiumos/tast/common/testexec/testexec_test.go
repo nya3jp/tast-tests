@@ -14,6 +14,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	tastexec "chromiumos/tast/exec"
 	"chromiumos/tast/testing"
 )
 
@@ -210,4 +211,20 @@ func TestExitCode(t *gotesting.T) {
 			t.Errorf("ExitCode(%#v) = (%v, %v); want (%v, %v)", c.err, code, ok, c.code, c.ok)
 		}
 	}
+}
+
+type sshOrLocal interface {
+	Run(opts ...tastexec.RunOption) error
+	Output(opts ...tastexec.RunOption) ([]byte, error)
+	CombinedOutput(opts ...tastexec.RunOption) ([]byte, error)
+	Start() error
+	Wait(opts ...tastexec.RunOption) error
+	DumpLog(ctx context.Context) error
+}
+
+// TestCast verifies the return value of CommandContext can be assigned to an interface that also works for ssh Cmd.
+func TestCast(t *gotesting.T) {
+	var cmd sshOrLocal
+	cmd = CommandContext(context.Background(), "true")
+	cmd.Run()
 }
