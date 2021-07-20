@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7524098e_1ad3ac46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-20T15:28:59Z",
+      "side": 1,
+      "message": "I understand hidehiko@\u0027s concern. It is real and has happened before that chrome uprev fails when UI string is updated but devs forgot to update test.\n\nHowever, a11y tree does not provide unique/stable identifiers as shown by yichenz@. One possible way could be replacing \"FeaturePodIconButton\" class name with a more unique one \"ScreenCaptureFeaturePodIconButton\". However, I am a bit hesitate to make this test only change, slightly increase code size and memory size. Also we have many tests that already depend on UI strings.\n\nRandom example: \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go;l\u003d125\n\nIt seems to me that the problem is generally more of a uiauto support problem rather than this CL\u0027s fault. We should have better infra support, e.g. make a11y tree node id stable. We could revisit this later when we have a more systematic solution.",
+      "parentUuid": "8fc4272d_f6337780",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e2bb535_0dee8673",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
         "patchSetId": 6
