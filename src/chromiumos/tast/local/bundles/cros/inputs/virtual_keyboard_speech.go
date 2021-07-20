@@ -20,11 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
-)
-
-const (
-	audioFileEN = "voice_en_hello_20201021.wav"
-	audioFileCN = "voice_cn_hello_20201021.wav"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Struct to contain the virtual keyboard speech test parameters.
@@ -50,6 +46,16 @@ func init() {
 		Data:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEs),
 		Pre:          pre.VKEnabledReset,
 		Timeout:      time.Duration(len(voiceTestIMEs)) * time.Duration(len(voiceTestMessages)) * time.Minute,
+		Params: []testing.Param{
+			{
+				Name:              "stable",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			},
+			{
+				Name:              "unstable",
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+		},
 	})
 }
 
