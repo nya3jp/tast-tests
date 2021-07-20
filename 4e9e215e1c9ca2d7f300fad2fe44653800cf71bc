@@ -39,6 +39,47 @@
       },
       "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6da81c90_57b08bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:09:01Z",
+      "side": 1,
+      "message": "use cr.ResetState(ctx)",
+      "parentUuid": "1b682fa1_c87191de",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca84bd6_1f1fa013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-20T05:09:01Z",
+      "side": 1,
+      "message": "This depends on drag and drop behaviour of windows, is there no API to problematically move the windows to a known position.",
+      "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
