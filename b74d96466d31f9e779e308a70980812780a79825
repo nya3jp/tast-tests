@@ -16,6 +16,23 @@
       "message": "Hi Jun, based on the comment from the bug, in stead of reading from kernel logs, we are using the last_resume_timings file to get the wakeup duration now. This can be used across different models and has been verified. Please help review. Thank you!",
       "revId": "b74d96466d31f9e779e308a70980812780a79825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c80b4d9_0b5b254c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-20T22:14:46Z",
+      "side": 1,
+      "message": "Add Jun back to the attention set.",
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
