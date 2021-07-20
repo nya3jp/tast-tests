@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80406723_87306023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:17:52Z",
+      "side": 1,
+      "message": "Ack. (See the comment below)",
+      "parentUuid": "e9f45550_05d0687f",
+      "range": {
+        "startLine": 535,
+        "startChar": 67,
+        "endLine": 535,
+        "endChar": 110
+      },
+      "revId": "e4a17dd4c28e5c8cc755e96830b74c502df5ff0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e81480_eae13920",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-19T04:16:49Z",
       "side": 1,
       "message": "These seem to only be used to pass to checkResizeLockState, consider removing them as well?",
+      "range": {
+        "startLine": 764,
+        "startChar": 71,
+        "endLine": 764,
+        "endChar": 95
+      },
+      "revId": "e4a17dd4c28e5c8cc755e96830b74c502df5ff0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb61b2b_bd649724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:17:52Z",
+      "side": 1,
+      "message": "Turns out removing them from checkResizeLockState() requires many lines of changes, so let me handle this in a follow-up CL.",
+      "parentUuid": "b5e81480_eae13920",
       "range": {
         "startLine": 764,
         "startChar": 71,

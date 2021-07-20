@@ -183,6 +183,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d213c64c_2eb8c5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:17:52Z",
+      "side": 1,
+      "message": "I moved checkClientContent() to toggleResizeLockMode(), and added a window bounds check there, which reduces a number of the calls significantly.",
+      "parentUuid": "978583eb_571aaa1c",
+      "range": {
+        "startLine": 632,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 3
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a13614_76f0629d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-20T06:17:52Z",
+      "side": 1,
+      "message": "moved the checkClientContent() itself to toggleAppManagementSettingToggle() and added a window size check there, which reduces the number of calls of this function a lot.",
+      "parentUuid": "978583eb_571aaa1c",
+      "range": {
+        "startLine": 632,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 3
+      },
+      "revId": "f2944d15ae86d1bcbbdd515699c459e7d7cf1a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb527d3_89ddc8e4",
