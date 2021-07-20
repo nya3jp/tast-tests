@@ -40,6 +40,7 @@ import (
 	"unsafe"
 
 	"chromiumos/tast/errors"
+	tastexec "chromiumos/tast/exec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -71,13 +72,9 @@ type Cmd struct {
 	sigMu sync.RWMutex
 }
 
-// RunOption is enum of options which can be passed to Run, Output,
-// CombinedOutput and Wait to control precise behavior of them.
-type RunOption int
-
 // DumpLogOnError is an option to dump logs if the executed command fails
 // (i.e., exited with non-zero status code).
-const DumpLogOnError RunOption = iota
+const DumpLogOnError = tastexec.DumpLogOnError
 
 var (
 	errStdoutSet      = errors.New("Stdout was already set")
@@ -109,7 +106,7 @@ func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
 // Run runs an external command and waits for its completion.
 //
 // See os/exec package for details.
-func (c *Cmd) Run(opts ...RunOption) error {
+func (c *Cmd) Run(opts ...tastexec.RunOption) error {
 	if err := c.Start(); err != nil {
 		return err
 	}
@@ -122,7 +119,7 @@ func (c *Cmd) Run(opts ...RunOption) error {
 // stdout output of the command.
 //
 // See os/exec package for details.
-func (c *Cmd) Output(opts ...RunOption) ([]byte, error) {
+func (c *Cmd) Output(opts ...tastexec.RunOption) ([]byte, error) {
 	if c.Stdout != nil {
 		return nil, errStdoutSet
 	}
@@ -142,7 +139,7 @@ func (c *Cmd) Output(opts ...RunOption) ([]byte, error) {
 // returns stdout/stderr output of the command.
 //
 // See os/exec package for details.
-func (c *Cmd) CombinedOutput(opts ...RunOption) ([]byte, error) {
+func (c *Cmd) CombinedOutput(opts ...tastexec.RunOption) ([]byte, error) {
 	if c.Stdout != nil {
 		return nil, errStdoutSet
 	}
@@ -164,7 +161,7 @@ func (c *Cmd) CombinedOutput(opts ...RunOption) ([]byte, error) {
 
 // SeparatedOutput runs an external command, waits for its completion and
 // returns stdout/stderr output of the command separately.
-func (c *Cmd) SeparatedOutput(opts ...RunOption) (stdout, stderr []byte, err error) {
+func (c *Cmd) SeparatedOutput(opts ...tastexec.RunOption) (stdout, stderr []byte, err error) {
 	if c.Stdout != nil {
 		return nil, nil, errStdoutSet
 	}
@@ -226,7 +223,7 @@ func (c *Cmd) Start() error {
 // Wait waits for the process to finish and releases all associated resources.
 //
 // See os/exec package for details.
-func (c *Cmd) Wait(opts ...RunOption) error {
+func (c *Cmd) Wait(opts ...tastexec.RunOption) error {
 	if c.Process == nil {
 		return errNotStarted
 	}
@@ -414,7 +411,7 @@ func ExitCode(cmdErr error) (int, bool) {
 }
 
 // hasOpt returns whether the given opts contain the opt.
-func hasOpt(opt RunOption, opts []RunOption) bool {
+func hasOpt(opt tastexec.RunOption, opts []tastexec.RunOption) bool {
 	for _, o := range opts {
 		if o == opt {
 			return true

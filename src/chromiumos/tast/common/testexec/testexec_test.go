@@ -14,6 +14,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	tastexec "chromiumos/tast/exec"
 	"chromiumos/tast/testing"
 )
 
@@ -210,4 +211,11 @@ func TestExitCode(t *gotesting.T) {
 			t.Errorf("ExitCode(%#v) = (%v, %v); want (%v, %v)", c.err, code, ok, c.code, c.ok)
 		}
 	}
+}
+
+// TestCast verifies the return value of CommandContext can be assigned to tastexec.Cmd.
+func TestCast(t *gotesting.T) {
+	var cmd tastexec.Cmd
+	cmd = CommandContext(context.Background(), "true")
+	cmd.Run()
 }
