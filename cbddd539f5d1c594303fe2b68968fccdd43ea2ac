@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f0c2db8_bd8bfa4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-20T05:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8fde608_550af31b",
+      "range": {
+        "startLine": 66,
+        "startChar": 42,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "cbddd539f5d1c594303fe2b68968fccdd43ea2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c60abc0_48f401d3",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-20T04:33:11Z",
       "side": 1,
       "message": "And standard library, here.",
+      "revId": "cbddd539f5d1c594303fe2b68968fccdd43ea2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95cd3c1_560f0402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-20T05:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c60abc0_48f401d3",
       "revId": "cbddd539f5d1c594303fe2b68968fccdd43ea2ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
