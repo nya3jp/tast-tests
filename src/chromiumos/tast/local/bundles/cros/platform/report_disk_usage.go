@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/platform/fsinfo"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -110,6 +112,11 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		} else {
 			s.Error("Failed to detect ARC type")
 		}
+	}
+
+	// Report the lacros squashfs size, if it exists.
+	if _, err := os.Stat(launcher.LacrosSquashFSPath); err == nil {
+		metrics[launcher.LacrosSquashFSPath] = "bytes_rootfs_lacros"
 	}
 
 	// Log the size of the individual files/directories inside |path|.
