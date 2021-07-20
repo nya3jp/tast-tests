@@ -16,6 +16,46 @@
       "message": "PTAL.",
       "revId": "9eae2bde78460ec8c71957b59002ba23dd94cc0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b50753_620c628a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-20T07:34:28Z",
+      "side": 1,
+      "message": "The change is trivial to skip Tast shadow review.LGTM from Tast side.\n",
+      "revId": "9eae2bde78460ec8c71957b59002ba23dd94cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cef6714_c7276cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-20T07:34:28Z",
+      "side": 1,
+      "message": "nit: If the plan is to stabilize it in future. Please add the TODO bug for the same to track.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 31
+      },
+      "revId": "9eae2bde78460ec8c71957b59002ba23dd94cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
