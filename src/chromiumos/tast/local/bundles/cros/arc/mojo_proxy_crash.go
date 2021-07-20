@@ -6,13 +6,15 @@ package arc
 
 import (
 	"context"
+	"syscall"
 	"time"
+
+	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +27,27 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      10 * time.Minute,
 	})
+}
+
+const mojoProxyPath = "/usr/bin/arcvm_server_proxy"
+
+// findMojoProxy gets the handle for the mojo proxy
+func findMojoProxy(ctx context.Context) (*process.Process, error) {
+	all, err := process.ProcessesWithContext(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list processes")
+	}
+
+	for _, process := range all {
+		if exe, err := process.Exe(); err == nil && exe == mojoProxyPath {
+			return process, nil
+		}
+		// else ignore the error. If a process exited, or we otherwise can't
+		// get its executable path, we want to keep going and looking for
+		// matching processes (not to compound the problem)
+	}
+
+	return nil, errors.New("failed to find Mojo Proxy")
 }
 
 func MojoProxyCrash(ctx context.Context, s *testing.State) {
@@ -58,10 +81,12 @@ func MojoProxyCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get init PID before reboot: ", err)
 	}
 
-	// Stopping the mojo proxy should result in Android reboot.
-	s.Log("Stopping the proxy process")
-	if err := upstart.StopJob(ctx, "arcvm-server-proxy"); err != nil {
-		s.Fatal("Failed to stop the proxy process: ", err)
+	// Forceful kill of the mojo proxy.
+	s.Log("Inducing MojoProxy crash")
+	if proc, err := findMojoProxy(ctx); err != nil {
+		s.Fatal("Failed to find MojoProxy process: ", err)
+	} else if err := proc.SendSignal(syscall.SIGABRT); err != nil {
+		s.Fatal("Failed to kill MojoProxy: ", err)
 	}
 
 	s.Log("Waiting for old init process to exit")
