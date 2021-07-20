@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0b7ba1_78b42de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-20T16:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b1ebe5_f836a00e",
+      "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3b66246_58f7a109",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "My main concern is that scheduling cleanup for each pin state iteration makes it harder to follow what actually happens on \"defer\" (especially if one is not familiar with how defer tasks are scheduled).\n\nAnd we\u0027d have to do more work than necessary - we only care that final state matches the initial, we should not have to set all intermediate states.",
       "parentUuid": "93a60d9b_792c4a0f",
+      "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d689519_f665a6ff",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-20T16:13:06Z",
+      "side": 1,
+      "message": "Create a new function called ResetShelfPinState() in shelf.go which should be called before any change in pin state.",
+      "parentUuid": "77a22e69_49d9df1c",
       "revId": "a897af25168f11a4701db9cec627df0bf67c9efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
