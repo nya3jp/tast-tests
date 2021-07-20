@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5022cc50_d9242562",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-20T01:09:09Z",
+      "side": 1,
+      "message": "It might be worth checking other kernel versions. I think the original mm_stats for zram broke because some stats were missing on old kernels, and new kernels had more columns.\n\nI think they\u0027re very careful to not reorder existing columns though, so the `\u003c StatColumns` is safe.",
+      "parentUuid": "ae792293_6157030a",
+      "range": {
+        "startLine": 51,
+        "startChar": 38,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "e2ce5a1f750f262dc706794228b5b664bd69fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1267ac8f_77761914",
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "that\u0027s one way to reduce the argument list!  will keep that in mind for a future CL, thanks.",
       "parentUuid": "1267ac8f_77761914",
+      "range": {
+        "startLine": 93,
+        "startChar": 75,
+        "endLine": 93,
+        "endChar": 81
+      },
+      "revId": "e2ce5a1f750f262dc706794228b5b664bd69fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2336a0_8323c219",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-20T01:09:09Z",
+      "side": 1,
+      "message": "TiL!",
+      "parentUuid": "62a90fef_8b9a89df",
       "range": {
         "startLine": 93,
         "startChar": 75,
