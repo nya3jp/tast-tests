@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce89494f_345df25b",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T14:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deef844c_27817fc1",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 30
+      },
+      "revId": "2c5e3de68f87b614568fe27188bdcf1121c4ba18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2b850a_a241fc21",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-20T14:05:39Z",
       "side": 1,
       "message": "nit: for consistency, please start error logs with \"Failed\". Same for other places",
+      "range": {
+        "startLine": 274,
+        "startChar": 9,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "2c5e3de68f87b614568fe27188bdcf1121c4ba18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bb6cbf_f4bc2d37",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T14:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b2b850a_a241fc21",
       "range": {
         "startLine": 274,
         "startChar": 9,
