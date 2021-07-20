@@ -67,6 +67,120 @@
       "message": "Still LGTM",
       "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8eba5d_b283e7c2",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-20T11:25:51Z",
+      "side": 1,
+      "message": "For URLs, you can use lines longer than 80 characters.",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec18901_11cbbf8a",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-20T11:25:51Z",
+      "side": 1,
+      "message": "minor nit: you don\u0027t have to escape \u0027, if you use \" as a delimiter.",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50fea0c_12f6ea1e",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-20T11:25:51Z",
+      "side": 1,
+      "message": "minor nit: if you are adding more than 2 strings, I prefer f-strings for that.",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d59ef5_67ac3b9a",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-20T11:25:51Z",
+      "side": 1,
+      "message": "nit: you are mixing \" and \u0027. Please use \u0027, as you chose it in the other file.",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e009ca9_b083b6b5",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-20T11:25:51Z",
+      "side": 1,
+      "message": "Fill it as a dict instead, request.post() expects a dictionary for data as I understood.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e54ac5_cb11e3e1",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-20T11:25:51Z",
+      "side": 1,
+      "message": "Can you try it with a \"with\"?\n\u003e  with requests.post(url, data\u003dpayload) as r:\n\u003e    if \"refresh_token\" not in r.json():\n\u003e      raise_response_error(\"refresh_token\", r.json(), OAUTH_TOKEN_URL)\n\u003e    refresh_token \u003d r.json()[\"refresh_token\"]",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
