@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b72c761_d56e6b1e",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-07-20T04:53:29Z",
+      "side": 1,
+      "message": "You have two defaults here,\n1. nothing provided -\u003e false\n2. invalid input provided -\u003e true\n\nIt is a little surprising to me, not sure if you want to make them default to the same thing.",
+      "range": {
+        "startLine": 678,
+        "startChar": 8,
+        "endLine": 678,
+        "endChar": 45
+      },
+      "revId": "1b95b0d46997b31b4cc2d3aa01b091b44fa71905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
