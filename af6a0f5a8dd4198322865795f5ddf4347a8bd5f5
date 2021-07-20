@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e27a69a_855e64ef",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36aa901f_30e7010a",
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a2e5cad_3e696848",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-19T15:23:06Z",
       "side": 1,
       "message": "Return nil here so you don\u0027t need the else clause.",
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da9e11f_33e2981d",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2e5cad_3e696848",
       "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +134,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b22add5_a359a464",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe30b04_b9b1c1ed",
+      "range": {
+        "startLine": 72,
+        "startChar": 60,
+        "endLine": 72,
+        "endChar": 77
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e538ab_c31f0c06",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24462eb7_5b784310",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "731c4a86_e190bf21",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-07-19T15:23:06Z",
       "side": 1,
       "message": "Nit: instead",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 32
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45180039_48e53a37",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "731c4a86_e190bf21",
       "range": {
         "startLine": 75,
         "startChar": 24,
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c829f07_d4e81e9e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ccbd7c9_e1ab45c9",
+      "range": {
+        "startLine": 76,
+        "startChar": 18,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0f76635_9ff6ec75",
@@ -167,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a891536e_7fa120e4",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f76635_9ff6ec75",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb91c09_8a4b8b05",
@@ -180,6 +336,24 @@
       "writtenOn": "2021-07-19T09:35:45Z",
       "side": 1,
       "message": "Maybe create a separate function here (ResetChromeWithBlob?) and allow the policy blob to be specified (user is a small aspect of it). ResetChrome will just call that with the empty blob as it does bring Chrome back to the \"default\".\n\nI\u0027m also not in favour of allowing multiple users just to make this change easier at the cost of readability.",
+      "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de6b682_1dec1f6b",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-20T06:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfb91c09_8a4b8b05",
       "revId": "af6a0f5a8dd4198322865795f5ddf4347a8bd5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
