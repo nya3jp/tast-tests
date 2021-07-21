@@ -57,8 +57,8 @@ prefixed test.
 A hypothetical user would not see any action on the screen of a DUT when
 running tests of level 2, 3 or 4.
 
-[`media::VideoDecoder`]: https://source.chromium.org/search?q=media::VideoDecoder
-[`media::VideoEncodeAccelerator`]: https://source.chromium.org/search?q=media::VideoEncodeAccelerator
+[`media::VideoDecoder`]: https://source.chromium.org/chromium/chromium/src/+/main:media/base/video_decoder.h;l=23;drc=5db067a3dc38dac442279730580c608d1db5e709
+[`media::VideoEncodeAccelerator`]: https://source.chromium.org/chromium/chromium/src/+/main:media/video/video_encode_accelerator.h;l=107;drc=2dac3a71bdfe771e07e887dffe68b91a587b0c19
 
 ### Direct Video Decoder
 
@@ -105,12 +105,12 @@ whereas those with `caps.HWDecodeVP9` listed will not, for example
 Googlers can refer to [go/crosvideocodec](http://go/crosvideocodec) for more
 information about the video features support.
 
-[15-chipset-skl-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-skl/chromeos-base/autotest-capability-chipset-skl/files/15-chipset-skl-capabilities.yaml
-[15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
-[`autotest-capability-default`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/autotest-capability-default/
-[`caps` package]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go
-[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=117
-[`Play.vp9_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=124
+[15-chipset-skl-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-skl/chromeos-base/autotest-capability-chipset-skl/files/15-chipset-skl-capabilities.yaml;drc=45644e03a37aa93bf61d36dfdf2dc292940918e9
+[15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml;drc=ddc0b955b61ab659142c5e226e6ae17aac5860af
+[`autotest-capability-default`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/ec7f22ef7d96f4325319dd2b641d820a6fffc5cb/chromeos-base/autotest-capability-default/
+[`caps` package]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/media/caps/caps.go;drc=0df001c7962506063c1d8ba6a1b0df11d093ed32
+[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=208;drc=2b77f33de4b453d9f7b73de36b6af38d355a04c4
+[`Play.vp9_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=232;drc=2b77f33de4b453d9f7b73de36b6af38d355a04c4
 
 ### Capability Test (`video.Capability`)
 
@@ -164,7 +164,7 @@ we only test AV1. To run the test use:
 Please see [data/test_vectors/README.md] for details about the video clips used
 in this test.
 
-[data/test_vectors/README.md]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md
+[data/test_vectors/README.md]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md;drc=5173965e8343c6b11fcd2edf06f5700042136e9d
 
 ## Video encoder integration tests (`video.EncodeAccel`)
 
@@ -399,7 +399,7 @@ To run these tests use:
 
     tast run $HOST video.DrawOnCanvas.*
 
-[video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html
+[video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html;drc=745a69342e7a7fa5a6bb1e9bc504b6d0dbb17d92
 
 ## Contents Tests (`video.Contents`)
 
@@ -636,7 +636,7 @@ gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \
   still-colors-720x480-cropped-to-640x360.h264.mp4
 ```
 
-[`video_decode_accelerator_tests`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/video_decoder_test_usage.md
-[`video_decode_accelerator_perf_tests`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/video_decoder_perf_test_usage.md
-[`video_encode_accelerator_tests`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/video_encoder_test_usage.md
+[`video_decode_accelerator_tests`]: https://chromium.googlesource.com/chromium/src/+/046f987e020baba45ffb3061b3ee3d960d6ce981/docs/media/gpu/video_decoder_test_usage.md
+[`video_decode_accelerator_perf_tests`]: https://chromium.googlesource.com/chromium/src/+/046f987e020baba45ffb3061b3ee3d960d6ce981/docs/media/gpu/video_decoder_perf_test_usage.md
+[`video_encode_accelerator_tests`]: https://chromium.googlesource.com/chromium/src/+/046f987e020baba45ffb3061b3ee3d960d6ce981/docs/media/gpu/video_encoder_test_usage.md
 [Software Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
