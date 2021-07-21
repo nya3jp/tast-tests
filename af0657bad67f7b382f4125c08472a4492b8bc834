@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453d2530_23035390",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-07-21T00:32:03Z",
+      "side": 1,
+      "message": "nit, I feel like these comments are no longer needed as the logic has been refactored and now the code is clear enough.",
+      "revId": "af0657bad67f7b382f4125c08472a4492b8bc834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
