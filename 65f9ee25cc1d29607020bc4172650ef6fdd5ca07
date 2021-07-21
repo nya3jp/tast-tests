@@ -16,6 +16,24 @@
       "message": "We can keep this as a type alias:\n\n type RunOption \u003d tastexec.RunOption",
       "revId": "65f9ee25cc1d29607020bc4172650ef6fdd5ca07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9886abd4_9067bfe0",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-21T16:55:35Z",
+      "side": 0,
+      "message": "If I have classes A \u0026 B, and they both declare their own RunOptions as tastexec.RunOption.\n\nI.e.\n\na.go:\ntype RunOption tastexec.RunOption\nfunc (a *A) F(...RunOption)\n\nb.go\ntype RunOption tastexec.RunOption\nfunc (b *B) F(...RunOption)\n\nThen I cannot do this\n\ntype AOrB interface {\nF(...tastexec.RunOption)\n}\n\nvar a A\nvar b B\nvar aOrB AOrB\n\naOrB \u003d A // fails\naOrB \u003d B // fails\n\ncannot use a as type AOrB in assignment:\n\t*A does not implement AOrB (wrong type for F method)\n\t\thave F(...RunOption)\n\t\twant F(...\"chromiumos/tast/exec\".RunOption)",
+      "parentUuid": "f15535ad_f801db80",
+      "revId": "65f9ee25cc1d29607020bc4172650ef6fdd5ca07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
