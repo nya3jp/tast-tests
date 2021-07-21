@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f5d5be_83e9fa2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-21T14:35:23Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM",
+      "revId": "5e1a552781eb7fcc0d485944f12a5b88801c3607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ec71385_a057b44c",
