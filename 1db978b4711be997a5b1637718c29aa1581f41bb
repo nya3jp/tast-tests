@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fdb83e_2dd0d1e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-21T15:51:55Z",
+      "side": 1,
+      "message": "Nit: Is this actually making things more readable? This is only setting one member in the TestOptions that isn\u0027t a param.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 131
+      },
+      "revId": "1db978b4711be997a5b1637718c29aa1581f41bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
