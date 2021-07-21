@@ -37,6 +37,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80439ea0_8c5d7093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-21T16:37:03Z",
+      "side": 1,
+      "message": "This can be \"return testing.PollBreak\"",
+      "range": {
+        "startLine": 666,
+        "startChar": 3,
+        "endLine": 666,
+        "endChar": 9
+      },
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3750ada8_0973ace0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-21T16:37:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 670,
+        "startChar": 3,
+        "endLine": 670,
+        "endChar": 9
+      },
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7387add_c28d95ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-21T16:37:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 675,
+        "startChar": 3,
+        "endLine": 675,
+        "endChar": 9
+      },
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6be53605_aa938c80",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 3
@@ -53,6 +122,29 @@
         "startChar": 25,
         "endLine": 698,
         "endChar": 32
+      },
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936f8ed9_932e61cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-21T16:37:03Z",
+      "side": 1,
+      "message": "Same as above, please consider replacing some \"return errors\" with \"return testing.PollBreak\" if retrying doesn\u0027t make any sense.",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 59
       },
       "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
