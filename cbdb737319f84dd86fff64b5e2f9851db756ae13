@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde37459_b7a944c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_logout_button_in_tray.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-21T11:03:39Z",
+      "side": 1,
+      "message": "nit: use \u0027 for readability",
+      "range": {
+        "startLine": 84,
+        "startChar": 33,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "cbdb737319f84dd86fff64b5e2f9851db756ae13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
