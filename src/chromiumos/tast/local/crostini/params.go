@@ -195,7 +195,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	}
 	var it = []iterator{}
 
-	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
+	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster, vm.DebianBullseye} {
 		for _, stable := range []bool{true, false} {
 			it = append(it, iterator{
 				debianVersion: debianVersion,
@@ -253,9 +253,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			// _unstable tests can never be CQ critical.
-			// component tests are informational while they are phased out.
+			// bullseye is informational while in development
 			var extraAttr []string
-			if !i.stable && canBeCritical {
+			if (!i.stable || i.debianVersion == vm.DebianBullseye) && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 

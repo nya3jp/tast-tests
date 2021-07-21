@@ -132,6 +132,30 @@ func init() {
 					Paste: waylandPasteConfig,
 				},
 			}, {
+				Name:              "wayland_to_wayland_bullseye_stable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Pre:               crostini.StartedByDlcBullseye(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  waylandCopyConfig,
+					Paste: waylandPasteConfig,
+				},
+			}, {
+				Name:              "wayland_to_wayland_bullseye_unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
+				Pre:               crostini.StartedByDlcBullseye(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  waylandCopyConfig,
+					Paste: waylandPasteConfig,
+				},
+			}, {
 				Name:              "wayland_to_x11_stretch_stable",
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false)},
 				ExtraSoftwareDeps: []string{"dlc"},
@@ -172,6 +196,30 @@ func init() {
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Pre:               crostini.StartedByDlcBuster(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  waylandCopyConfig,
+					Paste: x11PasteConfig,
+				},
+			}, {
+				Name:              "wayland_to_x11_bullseye_stable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Pre:               crostini.StartedByDlcBullseye(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  waylandCopyConfig,
+					Paste: x11PasteConfig,
+				},
+			}, {
+				Name:              "wayland_to_x11_bullseye_unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
+				Pre:               crostini.StartedByDlcBullseye(),
 				Timeout:           7 * time.Minute,
 				Val: testParameters{
 					Copy:  waylandCopyConfig,
@@ -224,6 +272,30 @@ func init() {
 					Paste: waylandPasteConfig,
 				},
 			}, {
+				Name:              "x11_to_wayland_bullseye_stable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Pre:               crostini.StartedByDlcBullseye(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  x11CopyConfig,
+					Paste: waylandPasteConfig,
+				},
+			}, {
+				Name:              "x11_to_wayland_bullseye_unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
+				Pre:               crostini.StartedByDlcBullseye(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  x11CopyConfig,
+					Paste: waylandPasteConfig,
+				},
+			}, {
 				Name:              "x11_to_x11_stretch_stable",
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false)},
 				ExtraSoftwareDeps: []string{"dlc"},
@@ -264,6 +336,30 @@ func init() {
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Pre:               crostini.StartedByDlcBuster(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  x11CopyConfig,
+					Paste: x11PasteConfig,
+				},
+			}, {
+				Name:              "x11_to_x11_bullseye_stable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Pre:               crostini.StartedByDlcBullseye(),
+				Timeout:           7 * time.Minute,
+				Val: testParameters{
+					Copy:  x11CopyConfig,
+					Paste: x11PasteConfig,
+				},
+			}, {
+				Name:              "x11_to_x11_bullseye_unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
+				Pre:               crostini.StartedByDlcBullseye(),
 				Timeout:           7 * time.Minute,
 				Val: testParameters{
 					Copy:  x11CopyConfig,
