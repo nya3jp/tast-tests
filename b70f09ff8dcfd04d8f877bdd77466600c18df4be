@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60dea611_0f904509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-21T07:19:20Z",
+      "side": 1,
+      "message": "LGTM from from tast point of view, please get a team member review before submitting.\n\n",
+      "revId": "b70f09ff8dcfd04d8f877bdd77466600c18df4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
