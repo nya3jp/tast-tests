@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb632c0d_8f061156",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-21T01:14:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde043c9_2a6aea03",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "10322bd6911905d7e716e825e7b055702725be40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d32eb76_580ecb31",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b114e416_23df2964",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-21T01:14:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d32eb76_580ecb31",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "10322bd6911905d7e716e825e7b055702725be40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d136a55_ecbb1a7f",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-07-21T01:00:16Z",
       "side": 1,
       "message": "nit: Avoid introducing \"IME code\" terminology.",
+      "range": {
+        "startLine": 172,
+        "startChar": 41,
+        "endLine": 174,
+        "endChar": 51
+      },
+      "revId": "10322bd6911905d7e716e825e7b055702725be40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d1a517_f6069daf",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-21T01:14:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d136a55_ecbb1a7f",
       "range": {
         "startLine": 172,
         "startChar": 41,
