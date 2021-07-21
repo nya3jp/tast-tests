@@ -47,7 +47,7 @@ var (
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
-func (ec *ECTool) Command(ctx context.Context, args ...string) *ssh.CmdCtx {
+func (ec *ECTool) Command(ctx context.Context, args ...string) *ssh.Cmd {
 	args = append([]string{"--name=" + string(ec.name)}, args...)
 	return ec.dut.Conn().CommandContext(ctx, "ectool", args...)
 }
