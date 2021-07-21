@@ -30,7 +30,7 @@ type Sender struct {
 	host    *ssh.Conn
 	iface   string
 	workDir string
-	curCmd  *ssh.CmdCtx
+	curCmd  *ssh.Cmd
 	logFile *os.File
 }
 

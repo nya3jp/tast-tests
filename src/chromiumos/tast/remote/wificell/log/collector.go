@@ -44,7 +44,7 @@ type Collector struct {
 	host *ssh.Conn
 	buf  buffer
 	path string
-	cmd  *ssh.CmdCtx
+	cmd  *ssh.Cmd
 }
 
 // StartCollector spawns a log collector on file p on host.
