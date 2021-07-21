@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd40318_29ce5ad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-21T01:28:59Z",
+      "side": 1,
+      "message": "Nice followup CL, LGTM % nits",
+      "revId": "03b94906a82b0ab4ffb65955eb7fda80563c944a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23809e8_5573d68a",
@@ -71,6 +88,29 @@
         "startChar": 3,
         "endLine": 63,
         "endChar": 49
+      },
+      "revId": "03b94906a82b0ab4ffb65955eb7fda80563c944a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58efc9dc_cc0d96ec",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-21T01:28:59Z",
+      "side": 1,
+      "message": "nit: don\u0027t use |result|, doesn\u0027t work well with godoc.",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 11
       },
       "revId": "03b94906a82b0ab4ffb65955eb7fda80563c944a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
