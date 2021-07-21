@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53710e2a_2ebba046",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-07-21T10:38:08Z",
+      "side": 1,
+      "message": "Yes, please",
+      "parentUuid": "dd9f4180_86c72e8d",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "778f7fb3_198a9fd1",
         "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
         "patchSetId": 1
