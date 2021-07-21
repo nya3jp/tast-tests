@@ -580,6 +580,28 @@ func isPortraitOrientation(orientation display.OrientationType) bool {
 	return orientation == display.OrientationPortraitPrimary || orientation == display.OrientationPortraitSecondary
 }
 
+// RotateToLandscape ensures to set the primary display orientation to landscape.
+func RotateToLandscape(ctx context.Context, tconn *chrome.TestConn) (func() error, error) {
+	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	if pdInfo.Bounds.Height > pdInfo.Bounds.Width {
+		targetRotation := display.Rotate0
+		if pdInfo.Rotation == 0 || pdInfo.Rotation == 180 {
+			targetRotation = display.Rotate90
+		}
+		cleanupFunction, err := RotateDisplay(ctx, tconn, targetRotation)
+		if err != nil {
+			return cleanupFunction, err
+		}
+		return nil, nil
+	}
+	return func() error {
+		return nil
+	}, nil
+}
+
 // checkUnspecifiedActivityInTabletMode makes sure that the display orientation won't change for an activity with unspecified orientation.
 func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, orientation display.OrientationType, unActName string) (err error) {
 	// Set the display orientation.
