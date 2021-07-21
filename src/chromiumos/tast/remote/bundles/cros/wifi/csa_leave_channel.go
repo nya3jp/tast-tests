@@ -132,7 +132,7 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start iw.EventWatcher: ", err)
 	}
-	defer ew.Stop(ctx)
+	defer ew.Stop()
 
 	const maxRetry = 5
 	const alterChannel = 36

@@ -88,12 +88,12 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if out, err := d.Command("logger", "Running KernelCrash").CombinedOutput(ctx); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "logger", "Running KernelCrash").CombinedOutput(); err != nil {
 		s.Logf("WARNING: Failed to log info message: %s", out)
 	}
 
 	// Sync filesystem to minimize impact of the panic on other tests
-	if out, err := d.Command("sync").CombinedOutput(ctx); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "sync").CombinedOutput(); err != nil {
 		s.Fatalf("Failed to sync filesystems: %s", out)
 	}
 
@@ -107,7 +107,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	else
 		echo panic > /proc/breakme
 	fi' >/dev/null 2>&1 </dev/null &`
-	if err := d.Command("sh", "-c", cmd).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "sh", "-c", cmd).Run(); err != nil {
 		s.Fatal("Failed to panic DUT: ", err)
 	}
 
