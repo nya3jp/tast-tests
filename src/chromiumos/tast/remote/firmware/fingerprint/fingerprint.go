@@ -703,13 +703,13 @@ func parseColonDelimitedOutput(output string) map[string]string {
 }
 
 // EctoolCommand constructs an "ectool" command for the FPMCU.
-func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.CmdCtx {
+func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
 	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(ctx, args...)
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd.Args))
 	return cmd
 }
 
-func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.CmdCtx {
+func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
 	return EctoolCommand(ctx, d, "fpframe", "raw")
 }
 
