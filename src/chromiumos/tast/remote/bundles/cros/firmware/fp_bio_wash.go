@@ -80,7 +80,7 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 
 	// Enable software write protect.
 	testing.ContextLog(ctx, "Enabling software write protect")
-	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "enable").Run(ctx); err == nil {
+	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "enable").Run(); err == nil {
 		s.Fatal("Failed to enable software write protect")
 	}
 

@@ -58,7 +58,7 @@ func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error
 					retErr = errors.Wrapf(err, "failed pull chart script logs from %v", displayOutputLog)
 				}
 			}
-			if err := conn.Command("rm", displayOutputLog).Run(ctx); err != nil {
+			if err := conn.CommandContext(ctx, "rm", displayOutputLog).Run(); err != nil {
 				if retErr != nil {
 					testing.ContextLogf(ctx, "Failed to clean up %v on chart tablet: %v", displayOutputLog, err)
 				} else {
@@ -67,7 +67,7 @@ func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error
 			}
 		}()
 
-		if err := conn.Command("kill", "-2", pid).Run(ctx); err != nil {
+		if err := conn.CommandContext(ctx, "kill", "-2", pid).Run(); err != nil {
 			return errors.Wrap(err, "failed to send interrupt signal to close display script")
 		}
 		// Here we assume the script closing process should be very quick
@@ -81,7 +81,7 @@ func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error
 			if len(dir) == 0 {
 				return nil
 			}
-			if err := conn.Command("rm", "-rf", dir).Run(ctx); err != nil {
+			if err := conn.CommandContext(ctx, "rm", "-rf", dir).Run(); err != nil {
 				return errors.Wrapf(err, "failed remove chart directory %v", dir)
 			}
 			return nil
@@ -148,7 +148,7 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 	}
 
 	// Create temp directory for saving chart files.
-	out, err := conn.Command("mktemp", "-d", "/tmp/chart_XXXXXX").Output(ctx)
+	out, err := conn.CommandContext(ctx, "mktemp", "-d", "/tmp/chart_XXXXXX").Output()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create chart file directory on chart tablet")
 	}
@@ -165,7 +165,7 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 		"(python2 %s %s > %s 2>&1) & echo -n $!",
 		shutil.Escape(displayScript), shutil.Escape(chartHostPath), shutil.Escape(displayOutputLog))
 	testing.ContextLog(ctx, "Start display chart process: ", displayCmd)
-	out, err = conn.Command("sh", "-c", displayCmd).Output(ctx)
+	out, err = conn.CommandContext(ctx, "sh", "-c", displayCmd).Output()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run display chart script")
 	}
@@ -173,7 +173,7 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 
 	testing.ContextLog(ctx, "Poll for 'is ready' message for ensuring chart is ready")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		err := conn.Command("grep", "-q", "Chart is ready.", displayOutputLog).Run(ctx)
+		err := conn.CommandContext(ctx, "grep", "-q", "Chart is ready.", displayOutputLog).Run()
 		switch err.(type) {
 		case nil, *cryptossh.ExitError:
 			// We reach here either when grep ready pattern succeed

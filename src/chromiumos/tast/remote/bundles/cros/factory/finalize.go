@@ -45,7 +45,7 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		out, err := d.Command("initctl", "status", "system-services").Output(ctx)
+		out, err := d.Conn().CommandContext(ctx, "initctl", "status", "system-services").Output()
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "fail to access initctl"))
 		}
@@ -62,7 +62,7 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 	s.Log("Start wiping and umount")
 	defer cleanup(fullCtx, s)
 	// "gooftool" of "factory-mini" package has been already installed on test image.
-	if err := d.Command("gooftool", "wipe_in_place", "--test_umount").Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := d.Conn().CommandContext(ctx, "gooftool", "wipe_in_place", "--test_umount").Run(ssh.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run wiping of finalize: ", err)
 	}
 
@@ -70,7 +70,7 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		out, err := d.Command("cat", "/tmp/wipe_init.log").Output(ctx)
+		out, err := d.Conn().CommandContext(ctx, "cat", "/tmp/wipe_init.log").Output()
 		// keep retrying when the log file is not created.
 		if err != nil {
 			return errors.Wrap(err, "fail to access log")

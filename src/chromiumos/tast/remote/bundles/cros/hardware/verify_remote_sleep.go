@@ -70,7 +70,7 @@ func stringInSlice(a string, list []string) bool {
 	return false
 }
 
-func doRemoteSleep(ctx context.Context, s *testing.State, remoteClock string) *ssh.Cmd {
+func doRemoteSleep(ctx context.Context, s *testing.State, remoteClock string) *ssh.CmdCtx {
 	const exe = "/usr/local/libexec/tast/helpers/local/cros/hardware.VerifyRemoteSleep.timersignal"
 	sleepArg := strconv.FormatInt(int64(sleepDuration.Milliseconds()), 10)
 	itersArg := strconv.FormatInt(sleepIterations, 10)
@@ -78,8 +78,8 @@ func doRemoteSleep(ctx context.Context, s *testing.State, remoteClock string) *s
 	testCommand := fmt.Sprintf("sleep 1; %s %s %s %s %s", exe, sleepArg, itersArg, remoteClock, fileArg)
 
 	dut := s.DUT()
-	cmd := dut.Conn().Command("sh", "-c", testCommand)
-	err := cmd.Start(ctx)
+	cmd := dut.Conn().CommandContext(ctx, "sh", "-c", testCommand)
+	err := cmd.Start()
 
 	if err != nil {
 		s.Fatal("Couldn't start the remote sleep: ", err)
@@ -168,7 +168,7 @@ func VerifyRemoteSleep(ctx context.Context, s *testing.State) {
 	}
 
 	cmd := doRemoteSleep(ctx, s, remoteClockArg)
-	defer cmd.Wait(ctx)
+	defer cmd.Wait()
 	defer cmd.Abort()
 
 	measureRemoteSleep(ctx, s)

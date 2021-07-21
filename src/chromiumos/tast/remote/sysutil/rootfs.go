@@ -18,7 +18,7 @@ import (
 )
 
 func removeRootfsVerification(ctx context.Context, d *dut.DUT) error {
-	if err := d.Conn().Command("/usr/share/vboot/bin/make_dev_ssd.sh", "--remove_rootfs_verification", "--force").Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := d.Conn().CommandContext(ctx, "/usr/share/vboot/bin/make_dev_ssd.sh", "--remove_rootfs_verification", "--force").Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to run make_dev_ssd.sh")
 	}
 	return nil
@@ -73,7 +73,7 @@ func makeRootfsWritable(ctx context.Context, d *dut.DUT) error {
 		return errors.Wrap(err, "failed to reboot")
 	}
 
-	if err := d.Conn().Command("mount", "-o", "remount,rw", "/").Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := d.Conn().CommandContext(ctx, "mount", "-o", "remount,rw", "/").Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to remount in read-write mode")
 	}
 

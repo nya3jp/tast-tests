@@ -44,7 +44,7 @@ type Collector struct {
 	host *ssh.Conn
 	buf  buffer
 	path string
-	cmd  *ssh.Cmd
+	cmd  *ssh.CmdCtx
 }
 
 // StartCollector spawns a log collector on file p on host.
@@ -61,11 +61,11 @@ func StartCollector(ctx context.Context, host *ssh.Conn, p string) (*Collector, 
 
 // start spawns the tail command to track the target log file.
 func (c *Collector) start(ctx context.Context) error {
-	cmd := c.host.Command("tail", "--follow=name", c.path)
+	cmd := c.host.CommandContext(ctx, "tail", "--follow=name", c.path)
 
 	cmd.Stdout = &c.buf
 
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to run tail command")
 	}
 	c.cmd = cmd
@@ -78,9 +78,9 @@ func (c *Collector) Dump(w io.Writer) error {
 }
 
 // Close stops the collector.
-func (c *Collector) Close(ctx context.Context) error {
+func (c *Collector) Close() error {
 	c.cmd.Abort()
 	// Ignore the error as wait always has error on aborted command.
-	c.cmd.Wait(ctx)
+	c.cmd.Wait()
 	return nil
 }

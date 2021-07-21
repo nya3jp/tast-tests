@@ -116,10 +116,10 @@ func requiredFields(ctx context.Context, s *testing.State) (requiredFieldSet, er
 	fieldsMapping := make(requiredFieldSet)
 	// We assume that cros_debug is always enabled on testing DUTs.
 	verificationSpecPath := "/usr/local/" + verificationSpecRelPath
-	output, err := dut.Command("cat", verificationSpecPath).Output(ctx)
+	output, err := dut.Conn().CommandContext(ctx, "cat", verificationSpecPath).Output()
 	if err != nil {
 		verificationSpecPath = "/" + verificationSpecRelPath
-		output, err = dut.Command("cat", verificationSpecPath).Output(ctx)
+		output, err = dut.Conn().CommandContext(ctx, "cat", verificationSpecPath).Output()
 		if err != nil {
 			return nil, err
 		}
@@ -261,7 +261,7 @@ func probe(ctx context.Context, dut *dut.DUT, fieldsMapping requiredFieldSet) (s
 		"array:byte:" + bytesLiteral,
 	}
 
-	output, err := dut.Command("sudo", args...).Output(ctx)
+	output, err := dut.Conn().CommandContext(ctx, "sudo", args...).Output()
 	if err != nil {
 		return nil, err
 	}
@@ -322,7 +322,7 @@ func collectFields(deviceInfo *hvpb.HwVerificationReport_GenericDeviceInfo, fiel
 // script /etc/init/hardware-verifier.conf.
 func hwVerify(ctx context.Context, dut *dut.DUT, fieldsMapping requiredFieldSet) (sortableMessage, error) {
 	args := []string{"-u", "hardware_verifier", "hardware_verifier", "--pii"}
-	output, err := dut.Command("sudo", args...).Output(ctx)
+	output, err := dut.Conn().CommandContext(ctx, "sudo", args...).Output()
 	if err != nil {
 		exitError, isExitError := err.(*ssh.ExitError)
 		// For unqualified hardware components, hardware_verifier would exit with
@@ -354,7 +354,7 @@ func report(ctx context.Context, s *testing.State, fieldsMapping requiredFieldSe
 
 	d := s.DUT()
 	s.Log("Remove result file")
-	if err := d.Command("rm", "-f", resultFilePath).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "rm", "-f", resultFilePath).Run(); err != nil {
 		return nil, errors.Wrap(err, "cannot delete file")
 	}
 	s.Log("Reboot to trigger a dump of result file from hardware_verifier")
@@ -441,7 +441,7 @@ func waitSystemServiceRunning(ctx context.Context, d *dut.DUT, s *testing.State)
 
 	s.Log("Wait for system-services to be start/running state")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		output, err := d.Command("initctl", "status", "system-services").Output(ctx)
+		output, err := d.Conn().CommandContext(ctx, "initctl", "status", "system-services").Output()
 		if err != nil {
 			return err
 		}

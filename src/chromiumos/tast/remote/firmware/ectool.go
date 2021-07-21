@@ -47,14 +47,14 @@ var (
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
-func (ec *ECTool) Command(args ...string) *ssh.Cmd {
+func (ec *ECTool) Command(ctx context.Context, args ...string) *ssh.CmdCtx {
 	args = append([]string{"--name=" + string(ec.name)}, args...)
-	return ec.dut.Conn().Command("ectool", args...)
+	return ec.dut.Conn().CommandContext(ctx, "ectool", args...)
 }
 
 // Version returns the EC version of the active firmware.
 func (ec *ECTool) Version(ctx context.Context) (string, error) {
-	output, err := ec.Command("version").Output(ctx, ssh.DumpLogOnError)
+	output, err := ec.Command(ctx, "version").Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "running 'ectool version' on DUT")
 	}

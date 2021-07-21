@@ -54,7 +54,7 @@ func init() {
 // verification is disabled.
 func assertRootfsVerification(ctx context.Context, s *testing.State) {
 	d := s.DUT()
-	cmdline, err := d.Conn().Command("cat", "/proc/cmdline").Output(ctx)
+	cmdline, err := d.Conn().CommandContext(ctx, "cat", "/proc/cmdline").Output()
 	if err != nil {
 		s.Fatal("Failed to read kernel cmdline")
 	}
@@ -95,7 +95,7 @@ func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, 
 	waitUntilCPUCoolDown(ctx, s)
 
 	// Stop tlsdated, that makes sure nobody will touch the RTC anymore, and also creates a sync-rtc bootstat file.
-	if err := d.Conn().Command("stop", "tlsdated").Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "stop", "tlsdated").Run(); err != nil {
 		s.Fatal("Failed to stop tlsdated")
 	}
 
@@ -155,7 +155,7 @@ func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, 
 func ensureChromeLogin(ctx context.Context, s *testing.State, cl *rpc.Client) error {
 	d := s.DUT()
 	// Check whether OOBE is completed.
-	if err := d.Conn().Command("/usr/bin/test", "-e", "/home/chronos/.oobe_completed").Run(ctx); err == nil {
+	if err := d.Conn().CommandContext(ctx, "/usr/bin/test", "-e", "/home/chronos/.oobe_completed").Run(); err == nil {
 		return nil
 	}
 

@@ -65,7 +65,7 @@ func FpSoftwareWriteProtect(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Disabling software write protect when hardware write protect is enabled when running RO")
-	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "disable").Run(ctx); err == nil {
+	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "disable").Run(); err == nil {
 		s.Fatal("Disabling software write protect should fail")
 	}
 
@@ -90,7 +90,7 @@ func FpSoftwareWriteProtect(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Disabling software write protect when hardware write protect is enabled when running RW")
-	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "disable").Run(ctx); err == nil {
+	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "disable").Run(); err == nil {
 		s.Fatal("Disabling software write protect should fail")
 	}
 

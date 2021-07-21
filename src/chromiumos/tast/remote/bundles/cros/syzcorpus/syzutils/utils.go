@@ -41,7 +41,7 @@ var crashPatterns = []string{
 
 // FindDUTArch determines the DUT arch.
 func FindDUTArch(ctx context.Context, d *dut.DUT) (string, error) {
-	arch, err := d.Command("uname", "-m").Output(ctx)
+	arch, err := d.Conn().CommandContext(ctx, "uname", "-m").Output()
 	if err != nil {
 		return "", err
 	}
@@ -66,7 +66,7 @@ func WarningInDmesg(ctx context.Context, d *dut.DUT) ([]byte, error) {
 }
 
 func readDmesg(ctx context.Context, d *dut.DUT) ([]byte, error) {
-	contents, err := d.Command("dmesg").Output(ctx)
+	contents, err := d.Conn().CommandContext(ctx, "dmesg").Output()
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func readDmesg(ctx context.Context, d *dut.DUT) ([]byte, error) {
 // ClearDmesg clears the dmesg log.
 func ClearDmesg(ctx context.Context, d *dut.DUT) error {
 	testing.ContextLog(ctx, "Clearing dmesg")
-	if err := d.Conn().Command("dmesg", "--clear").Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "dmesg", "--clear").Run(); err != nil {
 		testing.ContextLog(ctx, "Unable to clear dmesg: ", err)
 		return err
 	}
@@ -85,7 +85,7 @@ func ClearDmesg(ctx context.Context, d *dut.DUT) error {
 
 // MkdirRemote creates a directory at path on the DUT.
 func MkdirRemote(ctx context.Context, d *dut.DUT, path string) error {
-	if err := d.Conn().Command("mkdir", "-p", path).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "mkdir", "-p", path).Run(); err != nil {
 		return err
 	}
 	return nil
@@ -93,7 +93,7 @@ func MkdirRemote(ctx context.Context, d *dut.DUT, path string) error {
 
 // RmdirRemote recursively removes the directory at path on the DUT.
 func RmdirRemote(ctx context.Context, d *dut.DUT, path string) error {
-	if err := d.Conn().Command("rm", "-rf", path).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "rm", "-rf", path).Run(); err != nil {
 		return err
 	}
 	return nil
@@ -121,7 +121,7 @@ func RunRepro(ctx context.Context, d *dut.DUT, remotePath string, timeout time.D
 
 	// Run the remote command with a timeout of `timeout`. KILL signal will also be
 	// sent after `timeout`.
-	cmd := d.Conn().Command(
+	cmd := d.Conn().CommandContext(ctx,
 		"/bin/sh", "-c",
 		fmt.Sprintf(
 			"cd %v && timeout -k 2 %v %v",
@@ -133,7 +133,7 @@ func RunRepro(ctx context.Context, d *dut.DUT, remotePath string, timeout time.D
 
 	// The repro might exit with a non-zero exit code and this is expected. The repro
 	// might also run indefinitely, and be terminated by the context timeout.
-	if out, err := cmd.CombinedOutput(ctx); err != nil {
+	if out, err := cmd.CombinedOutput(); err != nil {
 		return out, err
 	}
 	return nil, nil

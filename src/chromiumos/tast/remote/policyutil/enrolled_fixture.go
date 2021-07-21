@@ -44,7 +44,7 @@ func checkVPDState(ctx context.Context, d *dut.DUT) error {
 	// https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#required-rw-fields
 	const requiredField = "gbind_attribute"
 
-	if out, err := d.Conn().Command("vpd", "-i", "RW_VPD", "-l").Output(ctx, ssh.DumpLogOnError); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "vpd", "-i", "RW_VPD", "-l").Output(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to run the vpd command")
 	} else if !strings.Contains(string(out), requiredField) {
 		testing.ContextLog(ctx, "VPD RW_VPD content: ", string(out))

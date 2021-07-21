@@ -74,7 +74,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create iw event watcher: ", err)
 	}
-	defer ew.Stop(ctx)
+	defer ew.Stop()
 
 	// Start to change the DHCP config.
 

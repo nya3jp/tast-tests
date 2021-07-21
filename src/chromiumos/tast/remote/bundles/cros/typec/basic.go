@@ -227,7 +227,7 @@ func setServoDPMode(ctx context.Context, svo *servo.Servo, pinAssign string) err
 // selected pin assignment setting.
 func checkForDPAltMode(ctx context.Context, d *dut.DUT, s *testing.State, pinAssign string) error {
 	// Servo is always on port 0.
-	out, err := d.Command("ls", partnerPath).Output(ctx)
+	out, err := d.Conn().CommandContext(ctx, "ls", partnerPath).Output()
 	if err != nil {
 		return errors.Wrap(err, "could not run ls command on DUT")
 	}

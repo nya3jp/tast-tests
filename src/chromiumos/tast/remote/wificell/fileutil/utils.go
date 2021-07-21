@@ -19,7 +19,7 @@ import (
 
 // WriteTmp writes the content to a temp file created by "mktemp $pattern" on host.
 func WriteTmp(ctx context.Context, host *ssh.Conn, pattern string, content []byte) (string, error) {
-	out, err := host.Command("mktemp", pattern).Output(ctx)
+	out, err := host.CommandContext(ctx, "mktemp", pattern).Output()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create temp file on host")
 	}
