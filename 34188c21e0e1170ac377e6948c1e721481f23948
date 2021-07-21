@@ -16,6 +16,24 @@
       "message": "If it always times out, then why do cmd.Wait?  Would it be better to wait for unreachable and then return because if this returns right after starting the command, the DUT will be in some weird state before it stops communicating with the host.",
       "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce731d7_23e9c9bf",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-21T03:05:20Z",
+      "side": 1,
+      "message": "I think cmd.Wait is still needed to properly release resources.\n\nWith Andrew\u0027s suggestion, maybe we can do something like below?\n\n  var wg sync.WaitGroup\n  defer wg.Wait()\n  \n  bgCtx, cancel :\u003d context.WithTimeout(ctx, cmdTimeout)\n  defer cancel()\n  wg.Add(1)\n  go func(ctx context.Context) {\n    defer wg.Done()\n    if err :\u003d cmd.Run(ctx); err !\u003d nil \u0026\u0026 !errors.Is(err, context.DeadlineExceeded) {\n      testing.ContextLog(ctx, ...)\n    }\n  }(bgCtx)\n  \n  if err :\u003d ms.waitUnreachable(ctx); err !\u003d nil {\n    return errors.Wrap(...)\n  }\n  return nil\n\nbgCtx will be cancelled immediately after waitUnreachable returns so cmd.Run don\u0027t need to wait until timeout and we can also better make sure resources + goroutine are released before leaving the function.\n\nWDYT?",
+      "parentUuid": "4532479f_fc524f43",
+      "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
