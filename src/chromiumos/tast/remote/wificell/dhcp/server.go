@@ -42,7 +42,7 @@ type Server struct {
 	ipStart net.IP
 	ipEnd   net.IP
 
-	cmd        *ssh.CmdCtx
+	cmd        *ssh.Cmd
 	stdoutFile *os.File
 	stderrFile *os.File
 }

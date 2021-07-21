@@ -195,7 +195,7 @@ func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBo
 	return nil
 }
 
-func sysInfoFlagsCommand(ctx context.Context, d *dut.DUT) *ssh.CmdCtx {
+func sysInfoFlagsCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
 	return EctoolCommand(ctx, d, "sysinfo", "flags")
 }
 
