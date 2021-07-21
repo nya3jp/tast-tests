@@ -33,6 +33,46 @@
       "message": "Thanks for the quick review.\n\nCalling owners...",
       "revId": "06ca23401ddb683a81857ba396dcf4755cef4479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5367937_292f1600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:26:47Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "06ca23401ddb683a81857ba396dcf4755cef4479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ef00dd_538aede6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:26:47Z",
+      "side": 1,
+      "message": "nit: the order of fields seems to be different to the above, which has Name, Fixture, then Val. Consider re-ordering for consistency.",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "06ca23401ddb683a81857ba396dcf4755cef4479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
