@@ -6,11 +6,12 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -86,41 +87,34 @@ func ScreenBrightnessPercent(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Find the Status tray node and click to open it.
-			paramsST := ui.FindParams{
-				ClassName: "ash/StatusAreaWidgetDelegate",
-			}
-			nodeST, err := ui.FindWithTimeout(ctx, tconn, paramsST, 15*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find Status tray: ", err)
-			}
-			defer nodeST.Release(ctx)
+			ui := uiauto.New(tconn)
 
-			if err := nodeST.LeftClick(ctx); err != nil {
-				s.Fatal("Failed to open Status tray: ", err)
+			// Find the Status tray node and click to open it.
+			statusTray := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
+			if err := uiauto.Combine("find and click the status tray",
+				ui.WaitUntilExists(statusTray),
+				ui.LeftClick(statusTray),
+			)(ctx); err != nil {
+				s.Fatal("Failed to find and click the status try: ", err)
 			}
+
 			defer func() {
 				// Close the Status tray again, otherwise the next subtest won't find it.
-				if err := nodeST.LeftClick(ctx); err != nil {
+				if err := ui.LeftClick(statusTray)(ctx); err != nil {
 					s.Fatal("Failed to close Status tray: ", err)
 				}
 			}()
 
 			// Find the Brightness slider.
-			paramsBS := ui.FindParams{
-				Role: ui.RoleTypeSlider,
-				Name: "Brightness",
-			}
-			nodeBS, err := ui.FindWithTimeout(ctx, tconn, paramsBS, 15*time.Second)
+			brightnessSlider := nodewith.Name("Brightness").Role(role.Slider)
+			sliderInfo, err := ui.Info(ctx, brightnessSlider)
 			if err != nil {
 				s.Fatal("Failed to find Brightness slider: ", err)
 			}
-			defer nodeBS.Release(ctx)
 
-			if nodeBS.Value != param.wantBrightness {
-				s.Errorf("Unexpected brightness set: got %s; want %s", nodeBS.Value, param.wantBrightness)
+			if sliderInfo.Value != param.wantBrightness {
+				s.Errorf("Unexpected brightness set: got %s; want %s", sliderInfo.Value, param.wantBrightness)
 			}
-
 		})
 	}
 }
