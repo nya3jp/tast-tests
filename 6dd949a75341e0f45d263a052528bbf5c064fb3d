@@ -97,6 +97,30 @@
       },
       "revId": "6dd949a75341e0f45d263a052528bbf5c064fb3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be58c64_c2bdc5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29b2bb3_e602368c",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "6dd949a75341e0f45d263a052528bbf5c064fb3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

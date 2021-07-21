@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeaaa41d_ba0fee92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:38:21Z",
+      "side": 1,
+      "message": "Let me submit this as Prameet is taking a week off.",
+      "revId": "9676d20b719ad4a5948ddc7eb9efdf4e1407f87e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
