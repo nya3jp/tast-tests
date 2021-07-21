@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35e6bb02_c9ac727a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-21T14:10:18Z",
+      "side": 1,
+      "message": "xiyuan, thank you for explanation and that makes sense.\nNote: Tast framework team is still under the discussion about the testing stability and will share it with you sometime soon, I think. Matching with name is still the concern, but we need to move forward.",
+      "parentUuid": "7524098e_1ad3ac46",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "2a896463c6ce39837f399ee33948d37b51c05567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e2bb535_0dee8673",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/record_partial_screen.go",
         "patchSetId": 6
