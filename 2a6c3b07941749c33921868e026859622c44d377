@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1475cdee_20d1cbd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:56:13Z",
+      "side": 1,
+      "message": "Added a brief comment why there are removed.\n\nI\u0027m going to change the spec doc too but I need to explain to and ask Arthur to change the docs, which takes some time, so I need to change tests in parallel.",
+      "parentUuid": "39d240aa_1070a1e4",
+      "range": {
+        "startLine": 449,
+        "startChar": 5,
+        "endLine": 449,
+        "endChar": 11
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f9109da_d7ecdd82",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-20T12:10:39Z",
       "side": 1,
       "message": "Are there some error when there is no sense to continue polling? If so, please use testing.PollBreak\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d26?q\u003dtesting.Pollbreak",
+      "range": {
+        "startLine": 594,
+        "startChar": 8,
+        "endLine": 594,
+        "endChar": 20
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4a0b41_1e9d7bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9109da_d7ecdd82",
       "range": {
         "startLine": 594,
         "startChar": 8,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d6d855_6142ad01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4465f121_2677e21a",
+      "range": {
+        "startLine": 612,
+        "startChar": 64,
+        "endLine": 612,
+        "endChar": 106
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea916f7_24b709a8",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94624dca_7cffb7c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea916f7_24b709a8",
+      "range": {
+        "startLine": 622,
+        "startChar": 61,
+        "endLine": 622,
+        "endChar": 92
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3aec92_578b329b",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-07-20T17:28:05Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 625,
+        "startChar": 61,
+        "endLine": 625,
+        "endChar": 92
+      },
+      "revId": "2a6c3b07941749c33921868e026859622c44d377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "983f816c_423dd4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-21T06:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac3aec92_578b329b",
       "range": {
         "startLine": 625,
         "startChar": 61,
