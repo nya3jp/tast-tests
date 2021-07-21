@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KeyboardShortcut,
 		Desc:         "Checks that screen-locking works by keyboard shortcut",
-		Contacts:     []string{"chromeos-ui@google.com", "chromeos-sw-engprod@google.com"},
+		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Attr:         []string{"group:mainline"},
