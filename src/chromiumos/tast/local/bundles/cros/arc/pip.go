@@ -150,9 +150,9 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 	defer dev.Close(ctx)
 
-	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get internal display info: ", err)
+		s.Fatal("Failed to get primary display info: ", err)
 	}
 
 	origShelfAlignment, err := ash.GetShelfAlignment(ctx, tconn, dispInfo.ID)
@@ -182,7 +182,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	// Be nice and restore tablet mode to its original state on exit.
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display mode: ", err)
 	}

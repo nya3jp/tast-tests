@@ -423,11 +423,11 @@ func WaitForOverviewState(ctx context.Context, tconn *chrome.TestConn, state Ove
 	return nil
 }
 
-// InternalDisplayMode returns the display mode that is currently selected in the internal display.
-func InternalDisplayMode(ctx context.Context, tconn *chrome.TestConn) (*display.DisplayMode, error) {
-	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+// PrimaryDisplayMode returns the display mode that is currently selected in the primary display.
+func PrimaryDisplayMode(ctx context.Context, tconn *chrome.TestConn) (*display.DisplayMode, error) {
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get internal display info")
+		return nil, errors.Wrap(err, "failed to get primary display info")
 	}
 	for _, mode := range dispInfo.Modes {
 		if mode.IsSelected {
