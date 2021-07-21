@@ -230,6 +230,12 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	ctx, cancelForStopUnderActivity := ctxutil.Shorten(ctx, wm.TimeReservedForStop)
 	defer cancelForStopUnderActivity()
 
+	cleanupRotation, err := wm.RotateToLandscape(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanupRotation()
+
 	underActivity, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create under activity")
@@ -385,7 +391,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// 6- Rotate the screen by 270 degrees - to portrait mode.
-	cleanupRotation, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
+	cleanupRotation, err = wm.RotateDisplay(ctx, tconn, display.Rotate270)
 	if err != nil {
 		return err
 	}
