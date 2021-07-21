@@ -16,6 +16,24 @@
       "message": "Please indicate why this is done 😊",
       "revId": "478761a6ed99f806f094727f378ada415d781bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7c5dc2_8e3ecebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T08:29:34Z",
+      "side": 1,
+      "message": "Reason is because the pasted string in Google search box is in this format.\n\nI have indicated it in the change.",
+      "parentUuid": "1ee91c31_ac96b8df",
+      "revId": "478761a6ed99f806f094727f378ada415d781bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
