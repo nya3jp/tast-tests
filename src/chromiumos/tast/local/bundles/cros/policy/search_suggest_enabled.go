@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -88,12 +90,14 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to write events: ", err)
 			}
 
-			// Click the address and search bar.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeTextField,
-				Name: "Address and search bar",
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				s.Fatal("Failed to click address bar: ", err)
+			// Click the address bar.
+			addressBar := nodewith.Name("Address and search bar").Role(role.TextField)
+			ui := uiauto.New(tconn)
+			if err := uiauto.Combine("find and click the address bar",
+				ui.WaitUntilExists(addressBar),
+				ui.LeftClick(addressBar),
+			)(ctx); err != nil {
+				s.Fatal("Failed to find and click the address bar: ", err)
 			}
 
 			// Wait for a second before typing to make sure the module for
@@ -106,24 +110,18 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for the omnibox popup node.
-			err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "OmniboxPopupContentsView"}, 10*time.Second)
-			if err != nil {
+			if err := ui.WaitUntilExists(nodewith.ClassName("OmniboxPopupContentsView"))(ctx); err != nil {
 				s.Fatal("Failed to find omnibox popup: ", err)
 			}
 
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for location change: ", err)
-			}
-
 			// Get all the omnibox results.
-			omniResults, err := ui.FindAll(ctx, tconn, ui.FindParams{ClassName: "OmniboxResultView"})
+			omniboxResults, err := ui.NodesInfo(ctx, nodewith.ClassName("OmniboxResultView"))
 			if err != nil {
 				s.Fatal("Failed to get omnibox results: ", err)
 			}
-			defer omniResults.Release(ctx)
 
 			suggest := false
-			for _, result := range omniResults {
+			for _, result := range omniboxResults {
 				if strings.Contains(result.Name, "search suggestion") {
 					suggest = true
 					break
