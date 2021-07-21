@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4532479f_fc524f43",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-07-21T00:52:38Z",
+      "side": 1,
+      "message": "If it always times out, then why do cmd.Wait?  Would it be better to wait for unreachable and then return because if this returns right after starting the command, the DUT will be in some weird state before it stops communicating with the host.",
+      "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
