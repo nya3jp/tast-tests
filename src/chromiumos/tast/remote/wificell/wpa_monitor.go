@@ -55,7 +55,7 @@ type ScanResultsEvent struct {
 type WPAMonitor struct {
 	stdin         io.WriteCloser
 	stdoutScanner *bufio.Scanner
-	cmd           *ssh.CmdCtx
+	cmd           *ssh.Cmd
 	lines         chan string
 }
 

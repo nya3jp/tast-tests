@@ -45,7 +45,7 @@ type EventWatcher struct {
 	done   chan struct{}
 	cancel context.CancelFunc
 	dut    *dut.DUT
-	cmd    *ssh.CmdCtx
+	cmd    *ssh.Cmd
 	events chan *Event
 }
 

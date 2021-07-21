@@ -43,7 +43,7 @@ type Capturer struct {
 
 	snaplen uint64
 
-	cmd        *ssh.CmdCtx
+	cmd        *ssh.Cmd
 	stdoutFile *os.File
 	stderrFile *os.File
 	wg         sync.WaitGroup
