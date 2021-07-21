@@ -469,8 +469,11 @@ func testPIPAutoPIPMinimize(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 }
 
 func minimizePIP(ctx context.Context, tconn *chrome.TestConn, pipAct *arc.Activity) error {
-	if err := pipAct.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
-		return errors.Wrap(err, "failed to set window state to minimized")
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, pipAct.PackageName(), ash.WMEventMinimize); err != nil {
+		return errors.Wrapf(err, "failed to minimize %s", pipAct.ActivityName())
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), ash.WindowStateMinimized); err != nil {
+		return errors.Wrapf(err, "failed to wait for %s to be minimized", pipAct.ActivityName())
 	}
 	return nil
 }
@@ -483,8 +486,10 @@ func testPIPExpandViaMenuTouch(ctx context.Context, cr *chrome.Chrome, tconn *ch
 	}
 
 	initialWindowState := arc.WindowStateNormal
+	initialWMEvent := ash.WMEventNormal
 	if isTabletModeEnabled {
 		initialWindowState = arc.WindowStateMaximized
+		initialWMEvent = ash.WMEventMaximize
 	}
 
 	initialAshWindowState, err := initialWindowState.ToAshWindowState()
@@ -492,7 +497,7 @@ func testPIPExpandViaMenuTouch(ctx context.Context, cr *chrome.Chrome, tconn *ch
 		return errors.Wrap(err, "failed to get ash window state")
 	}
 
-	if err := pipAct.SetWindowState(ctx, tconn, initialWindowState); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWMEvent); err != nil {
 		return errors.Wrap(err, "failed to set initial window state")
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialAshWindowState); err != nil {
@@ -522,8 +527,10 @@ func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *ch
 	}
 
 	initialWindowState := arc.WindowStateNormal
+	initialWMEvent := ash.WMEventNormal
 	if isTabletModeEnabled {
 		initialWindowState = arc.WindowStateMaximized
+		initialWMEvent = ash.WMEventMaximize
 	}
 
 	initialAshWindowState, err := initialWindowState.ToAshWindowState()
@@ -531,7 +538,7 @@ func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *ch
 		return errors.Wrap(err, "failed to get ash window state")
 	}
 
-	if err := pipAct.SetWindowState(ctx, tconn, initialWindowState); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialWMEvent); err != nil {
 		return errors.Wrap(err, "failed to set initial window state")
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), initialAshWindowState); err != nil {
@@ -572,7 +579,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tcon
 	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the window will have an initial maximized state.
-	if err := settingAct.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, settingPkgName, ash.WMEventMaximize); err != nil {
 		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
 	}
 
