@@ -30,7 +30,7 @@ const (
 
 // KillAll kills all running dhcp server on host, useful for environment setup/cleanup.
 func KillAll(ctx context.Context, host *ssh.Conn) error {
-	return host.Command("killall", dnsmasqCmd).Run(ctx)
+	return host.CommandContext(ctx, "killall", dnsmasqCmd).Run()
 }
 
 // Server controls a DHCP server on AP router.
@@ -42,7 +42,7 @@ type Server struct {
 	ipStart net.IP
 	ipEnd   net.IP
 
-	cmd        *ssh.Cmd
+	cmd        *ssh.CmdCtx
 	stdoutFile *os.File
 	stderrFile *os.File
 }
@@ -125,7 +125,7 @@ func (d *Server) start(fullCtx context.Context) (err error) {
 	// can write conf to stdin without file i/o. However, we need the conf filename
 	// as the command's signature so that pkill works. Switch to write conf file to
 	// stdin once we don't need pkill to kill the process.
-	cmd := d.host.Command(dnsmasqCmd, fmt.Sprintf("--conf-file=%s", d.confPath()), "--no-daemon")
+	cmd := d.host.CommandContext(ctx, dnsmasqCmd, fmt.Sprintf("--conf-file=%s", d.confPath()), "--no-daemon")
 
 	// Prepare stdout/stderr log files.
 	d.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, d.stdoutFilename())
@@ -139,7 +139,7 @@ func (d *Server) start(fullCtx context.Context) (err error) {
 	}
 	cmd.Stderr = d.stderrFile
 
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start dnsmasq")
 	}
 	d.cmd = cmd
@@ -162,10 +162,10 @@ func (d *Server) Close(ctx context.Context) error {
 	if d.cmd != nil {
 		d.cmd.Abort()
 		// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
-		d.host.Command("pkill", "-f", fmt.Sprintf("^%s.*%s", dnsmasqCmd, d.confPath())).Run(ctx)
+		d.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", dnsmasqCmd, d.confPath())).Run()
 
 		// Skip the error in Wait as the process is aborted and always has error in wait.
-		d.cmd.Wait(ctx)
+		d.cmd.Wait()
 		d.cmd = nil
 	}
 	if d.stdoutFile != nil {
@@ -174,7 +174,7 @@ func (d *Server) Close(ctx context.Context) error {
 	if d.stderrFile != nil {
 		d.stderrFile.Close()
 	}
-	if err := d.host.Command("rm", d.confPath()).Run(ctx); err != nil {
+	if err := d.host.CommandContext(ctx, "rm", d.confPath()).Run(); err != nil {
 		return errors.Wrap(err, "failed to remove config")
 	}
 	return nil

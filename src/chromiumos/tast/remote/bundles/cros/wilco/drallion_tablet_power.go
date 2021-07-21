@@ -43,7 +43,7 @@ func init() {
 func DrallionTabletPower(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 	readBootID := func(ctx context.Context) (string, error) {
-		out, err := d.Command("cat", "/proc/sys/kernel/random/boot_id").Output(ctx)
+		out, err := d.Conn().CommandContext(ctx, "cat", "/proc/sys/kernel/random/boot_id").Output()
 		if err != nil {
 			return "", errors.Wrap(err, "error reading boot id")
 		}
@@ -76,7 +76,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 
 	// Get the initial tablet_mode_angle settings to set back at end of test
 	re := regexp.MustCompile(`tablet_mode_angle=(\d+) hys=(\d+)`)
-	out, err := d.Command("ectool", "--name=cros_ish", "motionsense", "tablet_mode_angle").Output(ctx)
+	out, err := d.Conn().CommandContext(ctx, "ectool", "--name=cros_ish", "motionsense", "tablet_mode_angle").Output()
 	if err != nil {
 		s.Fatal("Failed to retreive tablet_mode_angle settings: ", err)
 	}
@@ -86,7 +86,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("Initial settings: lid_angle=%s hys=%s", initLidAngle[1], initLidAngle[2])
 	// Restore tablet_mode_angle settings before returning
-	defer d.Command("ectool", "--name=cros_ish", "motionsense", "tablet_mode_angle", initLidAngle[1], initLidAngle[2]).Run(ctx)
+	defer d.Conn().CommandContext(ctx, "ectool", "--name=cros_ish", "motionsense", "tablet_mode_angle", initLidAngle[1], initLidAngle[2]).Run()
 
 	setTabletMode := func(tabletMode bool) error {
 		// Setting tabletModeAngle to 0 will force the DUT into tablet mode
@@ -98,7 +98,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 			mode = "clamshell"
 		}
 		// Use servo to set tablet_mode_angle
-		out, err = d.Command("ectool", "--name=cros_ish", "motionsense", "tablet_mode_angle", tabletModeAngle, "0").Output(ctx)
+		out, err = d.Conn().CommandContext(ctx, "ectool", "--name=cros_ish", "motionsense", "tablet_mode_angle", tabletModeAngle, "0").Output()
 		if err != nil {
 			return errors.Wrap(err, "failed to set tablet_mode_angle")
 		}

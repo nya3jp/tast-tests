@@ -55,7 +55,7 @@ type ScanResultsEvent struct {
 type WPAMonitor struct {
 	stdin         io.WriteCloser
 	stdoutScanner *bufio.Scanner
-	cmd           *ssh.Cmd
+	cmd           *ssh.CmdCtx
 	lines         chan string
 }
 
@@ -143,7 +143,7 @@ func (e *DisconnectedEvent) ToLogString() string {
 // It starts wpa_cli process in background and creates a thread collecting its output.
 // Both need to be stopped with a call to w.Stop().
 func (w *WPAMonitor) Start(ctx context.Context, dutConn *ssh.Conn) error {
-	cmd := dutConn.Command("sudo", "-u", "wpa", "wpa_cli")
+	cmd := dutConn.CommandContext(ctx, "sudo", "-u", "wpa", "wpa_cli")
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
@@ -155,7 +155,7 @@ func (w *WPAMonitor) Start(ctx context.Context, dutConn *ssh.Conn) error {
 		return errors.Wrap(err, "failed to get stdout pipe from wpa_cli")
 	}
 
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start wpa_cli")
 	}
 
@@ -207,7 +207,7 @@ func (w *WPAMonitor) Stop(ctx context.Context) error {
 		testing.ContextLog(ctx, "Failed to send command to wpa_cli: ", err)
 	}
 	w.stdin.Close()
-	if err := w.cmd.Wait(ctx); err != nil {
+	if err := w.cmd.Wait(); err != nil {
 		return errors.Wrap(err, "failed to wait for wpa_cli exit")
 	}
 	// drain w.lines in case scan goroutine is stuck on writing to a full channel

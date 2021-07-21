@@ -198,8 +198,8 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	// Ensure that system logs(related to tests that might have run earlier)
 	// are flushed to disk.
-	rcmd := d.Conn().Command("sync")
-	if err := rcmd.Run(ctx); err != nil {
+	rcmd := d.Conn().CommandContext(ctx, "sync")
+	if err := rcmd.Run(); err != nil {
 		s.Fatal("Unable to flush cached content to disk: ", err)
 	}
 

@@ -26,5 +26,5 @@ func rollbackFlashOffset(fpBoard FPBoardName) string {
 // The directory containing outputFile must already exist on the DUT.
 func ReadFromRollbackFlash(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, outputFile string) error {
 	offset := rollbackFlashOffset(fpBoard)
-	return EctoolCommand(ctx, d, "flashread", offset, "0x1000", outputFile).Run(ctx)
+	return EctoolCommand(ctx, d, "flashread", offset, "0x1000", outputFile).Run()
 }
