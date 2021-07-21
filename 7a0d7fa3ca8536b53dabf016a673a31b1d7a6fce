@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a2f6e7_a8c0c959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data/manifest.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T01:34:19Z",
+      "side": 1,
+      "message": "Got IT",
+      "parentUuid": "78a5fc99_e5f3f19e",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 2,
+        "endChar": 406
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47333b52_eb13229f",
