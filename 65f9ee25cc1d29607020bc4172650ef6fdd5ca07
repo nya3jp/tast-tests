@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15535ad_f801db80",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-21T08:17:10Z",
+      "side": 0,
+      "message": "We can keep this as a type alias:\n\n type RunOption \u003d tastexec.RunOption",
+      "revId": "65f9ee25cc1d29607020bc4172650ef6fdd5ca07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
