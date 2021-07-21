@@ -16,6 +16,29 @@
       "message": "thanks, this is better. Hopefully we can restore the test soon after libunwind roll.",
       "revId": "3b833439f9e66298c663c78d3619102c61c78a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1753cad0_9e83de20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-21T06:48:09Z",
+      "side": 1,
+      "message": "LGTM per Tast style, but let us ask a review to jorgelo@.",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "3b833439f9e66298c663c78d3619102c61c78a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
