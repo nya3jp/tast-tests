@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59081f63_8e9558f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T09:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720025ec_d9750d86",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "383cb6c7_ed40c91b",
@@ -78,6 +102,24 @@
       "writtenOn": "2021-07-20T05:07:07Z",
       "side": 1,
       "message": "I\u0027m concerned about the tight integration with the Omnibox UI here. Multiple steps can fail in this test.",
+      "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8ac79a_d4e6d644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T09:26:00Z",
+      "side": 1,
+      "message": "This section of tests require three steps:\n\n- Right click omni box\n- Check if paste node is greyed and exists\n- Check if dlp clipboard bubble doesn\u0027t exists\n\nIf possible I could remove third step because it is never expected. Although with omni box it\u0027s just right click on it.\nAlso I would like to mention other tests involving omni box also use same process of nodewith.. and then using uiauto to click it.\nWhat changes should I add to reduce the dependency on uiauto package?",
+      "parentUuid": "383cb6c7_ed40c91b",
       "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
