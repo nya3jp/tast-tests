@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7592688_a85bdae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-21T19:45:53Z",
+      "side": 1,
+      "message": "It seems the vendor format is not right:\n\n```\n??PS175:\\n?     Device ID:          e6cbb94f70a759bae192861b67c828457d66210f\\n?     Current version:    9.69\\n?     Vendor:             Parade Technologies (PCI:0x1AF8|OUI:001CF8)\\n?     GUIDs:              c46df45b-16f2-5eb2-be8d-66f5af40cca8 ? PARADE-LSPCON\\\\NAME_1AF80175:00\\n\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 93
+      },
+      "revId": "45bb97c37e8be67553b9c8c1f3cb7713d94bc88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
