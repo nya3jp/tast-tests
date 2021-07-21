@@ -588,7 +588,7 @@ func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	// 5- Check vertical split in landscape tablet mode.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		if err := wm.CheckVerticalTabletSplit(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to assert vertical split window bounds before conversion")
 		}
 		return nil
@@ -617,7 +617,7 @@ func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	// 9- Check vertical split in landscape tablet mode.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		if err := wm.CheckVerticalTabletSplit(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to assert vertical split window bounds after converting to landscape tablet mode from clamshell")
 		}
 		return nil
@@ -643,7 +643,7 @@ func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	// 11- Check horizontal split in portrait tablet mode.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := wm.CheckHorizontalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		if err := wm.CheckHorizontalTabletSplit(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to assert horizontal split window bounds after rotating to portrait tablet mode from landscape tablet mode")
 		}
 		return nil
@@ -672,7 +672,7 @@ func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	// 15- Check horizontal split in portrait tablet mode.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := wm.CheckHorizontalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		if err := wm.CheckHorizontalTabletSplit(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to assert horizontal split window bounds after converting to portrait tablet mode from clamshell")
 		}
 		return nil
