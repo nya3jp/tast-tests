@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "138d619d57bc9c499846bb0fb127219f47c04723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ab99ea_82c62ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-21T07:15:35Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "138d619d57bc9c499846bb0fb127219f47c04723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca59389_58d4a791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/prompt_for_download_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-21T07:15:35Z",
+      "side": 1,
+      "message": "You can use IsNodeFound() as well, if you want to keep the original logic.\nBut this one is good as well.",
+      "range": {
+        "startLine": 140,
+        "startChar": 16,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "138d619d57bc9c499846bb0fb127219f47c04723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
