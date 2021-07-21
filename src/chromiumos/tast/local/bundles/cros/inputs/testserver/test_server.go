@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -268,34 +267,21 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 
 // ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
 // After input action, it checks whether the outcome equals to expected value.
-func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCode ime.InputMethodCode) uiauto.Action {
-	testData, ok := data.VKInputMap[imeCode]
-	if !ok {
-		return func(ctx context.Context) error {
-			return errors.Errorf("%s sample test data is not defined", string(imeCode))
-		}
-	}
-
-	vkbCtx := vkb.NewContext(its.cr, its.tconn)
-
+func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputData data.InputData) uiauto.Action {
 	return uiauto.Combine("validate vk input function on field "+string(inputField),
-		// Make sure virtual keyboard is not shown before action.
+		//Make sure virtual keyboard is not shown before action.
 		vkbCtx.HideVirtualKeyboard(),
-		// Set input method. It does nothing if the input method is in use.
-		func(ctx context.Context) error {
-			return ime.AddAndSetInputMethod(ctx, its.tconn, ime.ChromeIMEPrefix+string(imeCode))
-		},
 		its.Clear(inputField),
 		its.ClickFieldUntilVKShown(inputField),
 		func(ctx context.Context) error {
-			if err := vkbCtx.TapKeysIgnoringCase(testData.TapKeySeq)(ctx); err != nil {
-				return errors.Wrapf(err, "failed to tap keys: %v", testData.TapKeySeq)
+			if err := vkbCtx.TapKeysIgnoringCase(inputData.CharacterKeySeq)(ctx); err != nil {
+				return errors.Wrapf(err, "failed to tap keys: %v", inputData.CharacterKeySeq)
 			}
-			if testData.SubmitFromSuggestion {
-				return vkbCtx.SelectFromSuggestion(testData.ExpectedText)(ctx)
+			if inputData.SubmitFromSuggestion {
+				return vkbCtx.SelectFromSuggestion(inputData.ExpectedText)(ctx)
 			}
 			return nil
 		},
-		util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), testData.ExpectedText),
+		util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText),
 	)
 }
