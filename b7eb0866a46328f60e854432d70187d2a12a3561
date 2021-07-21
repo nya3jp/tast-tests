@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "b7eb0866a46328f60e854432d70187d2a12a3561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b50b4cb_9006d023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-21T14:13:28Z",
+      "side": 1,
+      "message": "Tast LGTM",
+      "revId": "b7eb0866a46328f60e854432d70187d2a12a3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a82ba12_5957c46d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-21T14:13:28Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 590,
+        "startChar": 10,
+        "endLine": 590,
+        "endChar": 25
+      },
+      "revId": "b7eb0866a46328f60e854432d70187d2a12a3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
