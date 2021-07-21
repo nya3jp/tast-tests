@@ -39,6 +39,29 @@
       },
       "revId": "3b833439f9e66298c663c78d3619102c61c78a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b14eaf9_24d4dc16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-07-21T12:27:16Z",
+      "side": 1,
+      "message": "Do we have a bug for this?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "3b833439f9e66298c663c78d3619102c61c78a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
