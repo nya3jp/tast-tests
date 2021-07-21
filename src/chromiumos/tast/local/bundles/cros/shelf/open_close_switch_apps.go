@@ -28,6 +28,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",
+			"cros-system-ui-eng@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
