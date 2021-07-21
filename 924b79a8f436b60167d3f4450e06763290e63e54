@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d33353_3ebf61b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_user_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-21T10:35:40Z",
+      "side": 1,
+      "message": "its.ValidateVKInputOnField was introduced to avoid repeating code like this: The most common VK input use case is clickToTriggerVK -\u003e TapKeys -\u003e Select Suggestion (optional) -\u003e Validate outcome. I can now see this block repeats a few places such as VirtualKeyboardTypingIME, VirtualKeyboardInputFields (I think it will). Can we still wrap this function?",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "924b79a8f436b60167d3f4450e06763290e63e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
