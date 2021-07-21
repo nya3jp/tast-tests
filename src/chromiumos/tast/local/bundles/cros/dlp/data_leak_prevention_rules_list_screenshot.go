@@ -127,9 +127,11 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 				s.Fatal("Failed to remove screenshots: ", err)
 			}
 
-			if _, err = cr.NewConn(ctx, param.url); err != nil {
+			conn, err := cr.NewConn(ctx, param.url)
+			if err != nil {
 				s.Error("Failed to open page: ", err)
 			}
+			defer conn.Close()
 
 			if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
 				s.Fatal("Failed to press Ctrl+F5 to take screenshot: ", err)
