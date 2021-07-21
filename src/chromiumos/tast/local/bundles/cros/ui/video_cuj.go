@@ -33,7 +33,7 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type testParam struct {
+type videoCUJTestParam struct {
 	ct     lacros.ChromeType
 	tablet bool
 }
@@ -56,20 +56,20 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "clamshell",
 			Fixture: "loggedInToCUJUser",
-			Val: testParam{
+			Val: videoCUJTestParam{
 				ct: lacros.ChromeTypeChromeOS,
 			},
 		}, {
 			Name:    "tablet",
 			Fixture: "loggedInToCUJUser",
-			Val: testParam{
+			Val: videoCUJTestParam{
 				ct:     lacros.ChromeTypeChromeOS,
 				tablet: true,
 			},
 		}, {
 			Name:    "lacros",
 			Fixture: "loggedInToCUJUserLacros",
-			Val: testParam{
+			Val: videoCUJTestParam{
 				ct: lacros.ChromeTypeLacros,
 			},
 			ExtraData:         []string{launcher.DataArtifact},
@@ -77,7 +77,7 @@ func init() {
 		}, {
 			Name:    "lacros_tablet",
 			Fixture: "loggedInToCUJUserLacros",
-			Val: testParam{
+			Val: videoCUJTestParam{
 				ct:     lacros.ChromeTypeLacros,
 				tablet: true,
 			},
@@ -98,7 +98,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	testParam := s.Param().(testParam)
+	testParam := s.Param().(videoCUJTestParam)
 
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
@@ -108,8 +108,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		cs = cr
 	} else {
 		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-		var artifactPath string
-		artifactPath = s.DataPath(launcher.DataArtifact)
+		artifactPath := s.DataPath(launcher.DataArtifact)
 
 		var l *launcher.LacrosChrome
 		var err error

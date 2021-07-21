@@ -24,6 +24,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -42,13 +44,27 @@ func init() {
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
 		Params: []testing.Param{
 			{
-				Name:    "clamshell_mode",
-				Val:     false,
+				Name: "clamshell_mode",
+				Val: windowarrangementcuj.TestParam{
+					ChromeType: lacros.ChromeTypeChromeOS,
+				},
 				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name: "tablet_mode",
-				Val:  true,
+				Val: windowarrangementcuj.TestParam{
+					ChromeType: lacros.ChromeTypeChromeOS,
+					Tablet:     true,
+				},
+			},
+			{
+				Name: "lacros",
+				Val: windowarrangementcuj.TestParam{
+					ChromeType: lacros.ChromeTypeLacros,
+				},
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -70,9 +86,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	tabletMode := s.Param().(bool)
+	testParam := s.Param().(windowarrangementcuj.TestParam)
+	tabletMode := testParam.Tablet
 
-	cs, tconn, chromeCleanUp, err := windowarrangementcuj.SetupChrome(ctx, s, tabletMode)
+	cs, tconn, chromeCleanUp, closeAboutBlank, err := windowarrangementcuj.SetupChrome(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -171,15 +188,26 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// The second tab enters the system PiP mode.
-	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-	pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
-	// Assume that the meeting code is the only textfield in the webpage.
-	if err := ui.LeftClick(pipButton)(ctx); err != nil {
-		s.Fatal("Failed to click the pip button: ", err)
+	// Only show pip window for ash-chrome.
+	// TODO(crbug/1232492): Remove this after fix.
+	if testParam.ChromeType == lacros.ChromeTypeChromeOS {
+		// The second tab enters the system PiP mode.
+		webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+		pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
+		if err := ui.LeftClick(pipButton)(ctx); err != nil {
+			s.Fatal("Failed to click the pip button: ", err)
+		}
+		if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
+			s.Fatal("Failed to wait for quiescence: ", err)
+		}
 	}
-	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
-		s.Fatal("Failed to wait for quiescence: ", err)
+
+	// Lacros specific setup.
+	if testParam.ChromeType == lacros.ChromeTypeLacros {
+		// Close about:blank created at startup after creating other tabs.
+		if err := closeAboutBlank(ctx); err != nil {
+			s.Fatal("Failed to close about:blank: ", err)
+		}
 	}
 
 	var pc pointer.Context
