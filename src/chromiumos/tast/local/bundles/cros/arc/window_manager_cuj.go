@@ -161,12 +161,21 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *
 	resizableLandscapeCheckFunc := wm.CheckRestoreResizable
 	resizableUnspecifiedCheckFunc := wm.CheckRestoreResizable
 	unresizablePortraitCheckFunc := wm.CheckRestoreNonResizable
+	unresizableLandscapeCheckFunc := wm.CheckMaximizeNonResizable
 	if sdkVer, err := arc.SDKVersion(); err != nil {
 		return err
 	} else if sdkVer < arc.SDKR {
 		resizableLandscapeCheckFunc = wm.CheckMaximizeResizable
 		resizableUnspecifiedCheckFunc = wm.CheckMaximizeResizable
 		unresizablePortraitCheckFunc = wm.CheckPillarboxNonResizable
+	} else {
+		displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return err
+		}
+		if displayInfo.Bounds.Height > displayInfo.Bounds.Width {
+			unresizableLandscapeCheckFunc = wm.CheckRestoreNonResizable
+		}
 	}
 	for _, test := range []struct {
 		name        string
@@ -177,7 +186,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *
 		// Window #A.
 		{"Landscape + Resize enabled", wm.ResizableLandscapeActivity, resizableLandscapeCheckFunc},
 		// Window #B.
-		{"Landscape + Resize disabled", wm.NonResizableLandscapeActivity, wm.CheckMaximizeNonResizable},
+		{"Landscape + Resize disabled", wm.NonResizableLandscapeActivity, unresizableLandscapeCheckFunc},
 		// Window #A.
 		{"Unspecified + Resize enabled", wm.ResizableUnspecifiedActivity, resizableUnspecifiedCheckFunc},
 		// Window #B.
