@@ -30,7 +30,7 @@ type Sender struct {
 	host    *ssh.Conn
 	iface   string
 	workDir string
-	curCmd  *ssh.Cmd
+	curCmd  *ssh.CmdCtx
 	logFile *os.File
 }
 
@@ -118,7 +118,7 @@ func (s *Sender) Send(ctx context.Context, t Type, ch int, ops ...Option) error 
 	if err := s.Start(ctx, t, ch, ops...); err != nil {
 		return err
 	}
-	return s.wait(ctx)
+	return s.wait()
 }
 
 // Start runs send_management_frame tool in background to send management
@@ -151,11 +151,11 @@ func (s *Sender) Start(ctx context.Context, t Type, ch int, ops ...Option) error
 	}
 	testing.ContextLogf(ctx, "Logging send_management_frame output to %q", filepath.Base(f.Name()))
 
-	cmd := s.host.Command(cmdSendManagementFrame, args...)
+	cmd := s.host.CommandContext(ctx, cmdSendManagementFrame, args...)
 	// Collect combined output to f.
 	cmd.Stdout = f
 	cmd.Stderr = f
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		f.Close()
 		return errors.Wrap(err, "failed to start send_management_frame")
 	}
@@ -165,8 +165,8 @@ func (s *Sender) Start(ctx context.Context, t Type, ch int, ops ...Option) error
 }
 
 // wait waits the current running command to end and free related resources.
-func (s *Sender) wait(ctx context.Context) error {
-	err := s.curCmd.Wait(ctx)
+func (s *Sender) wait() error {
+	err := s.curCmd.Wait()
 	s.logFile.Close()
 	s.curCmd = nil
 	s.logFile = nil
@@ -184,10 +184,10 @@ func (s *Sender) Stop(ctx context.Context) error {
 		return errors.New("no running command")
 	}
 	// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
-	s.host.Command("pkill", "-f", fmt.Sprintf("^%s.*%s", cmdSendManagementFrame, s.Interface())).Run(ctx)
+	s.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", cmdSendManagementFrame, s.Interface())).Run()
 	s.curCmd.Abort()
 	// Ignore the error from wait, as aborted cmd will always fail.
-	s.wait(ctx)
+	s.wait()
 	return nil
 }
 

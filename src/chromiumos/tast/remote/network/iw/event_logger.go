@@ -55,8 +55,8 @@ func NewEventLogger(ctx context.Context, dut *dut.DUT, ops ...EventWatcherOption
 }
 
 // Stop the EventLogger.
-func (e *EventLogger) Stop(ctx context.Context) error {
-	e.watcher.Stop(ctx)
+func (e *EventLogger) Stop() error {
+	e.watcher.Stop()
 	<-e.done // Wait for the bg routine to end.
 	return nil
 }

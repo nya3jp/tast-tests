@@ -112,7 +112,7 @@ func (r *runner) stopNetserver(ctx context.Context) []error {
 	ctx, cancel := context.WithTimeout(ctx, netperfCommandTimeoutMargin)
 	defer cancel()
 	var errors []error
-	err := r.server.conn.Command("killall", r.netserverPath).Run(ctx)
+	err := r.server.conn.CommandContext(ctx, "killall", r.netserverPath).Run()
 	collectError(ctx, &errors, err)
 	// Turn firwall back on, all 4 rules.
 	for _, fw := range firewallParams {
@@ -132,7 +132,7 @@ func (r *runner) startNetserver(ctx context.Context) error {
 	commandArgs := []string{r.netserverPath, "-p", strconv.Itoa(controlPort)}
 	testing.ContextLogf(ctx, "Run: %s %s", "minijail0", strings.Join(commandArgs, " "))
 
-	if err := r.server.conn.Command("minijail0", commandArgs...).Run(ctx); err != nil {
+	if err := r.server.conn.CommandContext(ctx, "minijail0", commandArgs...).Run(); err != nil {
 		return errors.Wrap(err, "failed to start netserver")
 	}
 
@@ -191,7 +191,7 @@ func (r *runner) run(ctx context.Context, retryCount uint) (*Result, error) {
 		// We need to declare ret here so err won't get shadowed.
 		var ret []byte
 		// Run the command itself and return result if successful.
-		ret, err = r.client.conn.Command(r.netperfPath, commandArgs...).Output(runnerCtx)
+		ret, err = r.client.conn.CommandContext(runnerCtx, r.netperfPath, commandArgs...).Output()
 		if err == nil {
 			// Parse
 			Result, err := parseNetperfOutput(
@@ -207,7 +207,7 @@ func (r *runner) run(ctx context.Context, retryCount uint) (*Result, error) {
 		defer cancel()
 		// Netperf tends to timeout when unable to connect,
 		// make best effort to kill it then.
-		_ = r.client.conn.Command("killall", r.netperfPath).Run(runnerCtx)
+		_ = r.client.conn.CommandContext(runnerCtx, "killall", r.netperfPath).Run()
 		if count > 1 {
 			// Restart netserv, let it define timeout by itself.
 			if restartErr := r.restartNetserver(ctx); restartErr != nil {

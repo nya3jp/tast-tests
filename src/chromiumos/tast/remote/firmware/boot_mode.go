@@ -517,7 +517,7 @@ func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 	powerOffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
 	defer cancel()
 	// Since the DUT will power off, deadline exceeded is expected here.
-	if err := h.DUT.Conn().Command("poweroff").Run(powerOffCtx); err != nil && !errors.Is(err, context.DeadlineExceeded) {
+	if err := h.DUT.Conn().CommandContext(powerOffCtx, "poweroff").Run(); err != nil && !errors.Is(err, context.DeadlineExceeded) {
 		return errors.Wrapf(err, "DUT poweroff %T", err)
 	}
 

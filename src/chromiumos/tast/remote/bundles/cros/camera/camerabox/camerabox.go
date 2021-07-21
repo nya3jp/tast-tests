@@ -23,16 +23,16 @@ func LogTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 	testing.ContextLog(ctx, "Capture scene log image")
 
 	// Release camera unique resource from cros-camera temporarily for taking a picture of test scene.
-	out, err := d.Command("status", "cros-camera").Output(ctx)
+	out, err := d.Conn().CommandContext(ctx, "status", "cros-camera").Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to get initial state of cros-camera")
 	}
 	if strings.Contains(string(out), "start/running") {
-		if err := d.Command("stop", "cros-camera").Run(ctx); err != nil {
+		if err := d.Conn().CommandContext(ctx, "stop", "cros-camera").Run(); err != nil {
 			return errors.Wrap(err, "failed to stop cros-camera")
 		}
 		defer func() {
-			if err := d.Command("start", "cros-camera").Run(ctx); err != nil {
+			if err := d.Conn().CommandContext(ctx, "start", "cros-camera").Run(); err != nil {
 				if retErr != nil {
 					testing.ContextLog(ctx, "Failed to start cros-camera")
 				} else {
@@ -52,12 +52,12 @@ func LogTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 		facingArg = "front"
 	}
 	const sceneLog = "/tmp/scene.jpg"
-	if err := d.Command(
+	if err := d.Conn().CommandContext(captureCtx,
 		"sudo", "--user=arc-camera", "cros_camera_test",
 		"--gtest_filter=Camera3StillCaptureTest/Camera3DumpSimpleStillCaptureTest.DumpCaptureResult/0",
 		"--camera_facing="+facingArg,
 		"--dump_still_capture_path="+sceneLog,
-	).Run(captureCtx); err != nil {
+	).Run(); err != nil {
 		return errors.Wrap(err, "failed to run cros_camera_test to take a scene photo")
 	}
 
@@ -65,7 +65,7 @@ func LogTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 	if err := linuxssh.GetFile(ctx, d.Conn(), sceneLog, filepath.Join(outdir, filepath.Base(sceneLog)), linuxssh.PreserveSymlinks); err != nil {
 		return errors.Wrap(err, "failed to pull scene log file from DUT")
 	}
-	if err := d.Command("rm", sceneLog).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "rm", sceneLog).Run(); err != nil {
 		return errors.Wrap(err, "failed to clean up scene log file from DUT")
 	}
 	return nil

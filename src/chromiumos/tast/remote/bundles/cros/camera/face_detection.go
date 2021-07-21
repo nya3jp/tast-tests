@@ -46,7 +46,7 @@ func FaceDetection(ctx context.Context, s *testing.State) {
 	facing := s.Param().(pb.Facing)
 
 	// Check if this DUT has a fd enabled camera with the tested facing.
-	out, err := d.Command("media_v4l2_test", "--list_usbcam").Output(ctx)
+	out, err := d.Conn().CommandContext(ctx, "media_v4l2_test", "--list_usbcam").Output()
 	if err != nil {
 		s.Fatal(err, " failed to list usb cameras")
 	}
@@ -54,7 +54,7 @@ func FaceDetection(ctx context.Context, s *testing.State) {
 	usbCameraRegexp := regexp.MustCompile(`/dev/video\d+`)
 	for _, m := range usbCameraRegexp.FindAllStringSubmatch(string(out), -1) {
 		device := m[0]
-		out, err := d.Command("media_v4l2_test", "--gtest_filter=*GetRoiSupport*", "--device_path="+device).Output(ctx)
+		out, err := d.Conn().CommandContext(ctx, "media_v4l2_test", "--gtest_filter=*GetRoiSupport*", "--device_path="+device).Output()
 		if err != nil {
 			s.Fatal(err, " failed to get roi support info")
 		}
