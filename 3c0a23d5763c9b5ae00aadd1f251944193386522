@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3104fed4_5fa36532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:11:17Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "3c0a23d5763c9b5ae00aadd1f251944193386522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95303abf_85fd3cb5",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:11:17Z",
+      "side": 1,
+      "message": "Thanks for finding MixedCaps names for these variables. I think this looks much better!",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "3c0a23d5763c9b5ae00aadd1f251944193386522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2527f8d_5d2f1071",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:11:17Z",
+      "side": 1,
+      "message": "nit: a shorter name like \u0027f\u0027 (in a small scope like this, where there is no ambiguity as to the purpose of the function and it is being immediately passed to another method) might be more readable than a longer name like this.\nIn general we also avoid type-like words like \u0027Func\u0027 from variable names (although f seems to be an exception in these contexts, like i is for loop variables).\nSee go/go-style/decisions#variable-names.",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "3c0a23d5763c9b5ae00aadd1f251944193386522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055dbcfd_713d856c",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:11:17Z",
+      "side": 1,
+      "message": "nit: ditto, suggestion is to use \u0027f\u0027",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 13
+      },
+      "revId": "3c0a23d5763c9b5ae00aadd1f251944193386522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e362502_7f991775",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:11:17Z",
+      "side": 1,
+      "message": "nit: ditto, suggestion is to use \u0027f\u0027.",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 11
+      },
+      "revId": "3c0a23d5763c9b5ae00aadd1f251944193386522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
