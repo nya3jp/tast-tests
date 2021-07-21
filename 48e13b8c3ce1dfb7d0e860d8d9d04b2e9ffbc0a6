@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb44c852_bb8d7d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-21T00:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b25112ec_3bc70e07",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "48e13b8c3ce1dfb7d0e860d8d9d04b2e9ffbc0a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be2f8a6a_6761f068",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a0faa3_43ef85ac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-21T00:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be2f8a6a_6761f068",
+      "range": {
+        "startLine": 449,
+        "startChar": 5,
+        "endLine": 449,
+        "endChar": 37
+      },
+      "revId": "48e13b8c3ce1dfb7d0e860d8d9d04b2e9ffbc0a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a472e7e_d88105ef",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-20T17:26:30Z",
       "side": 1,
       "message": "swiping down",
+      "range": {
+        "startLine": 467,
+        "startChar": 36,
+        "endLine": 467,
+        "endChar": 50
+      },
+      "revId": "48e13b8c3ce1dfb7d0e860d8d9d04b2e9ffbc0a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "717e03cd_e14d42b7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-21T00:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a472e7e_d88105ef",
       "range": {
         "startLine": 467,
         "startChar": 36,
