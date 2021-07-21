@@ -67,7 +67,7 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display mode: ", err)
 	}

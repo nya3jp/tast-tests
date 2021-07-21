@@ -30,7 +30,6 @@ import (
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // Default value for arc app window minimize limits (DP).
@@ -103,7 +102,6 @@ func init() {
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
@@ -207,7 +205,7 @@ func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn 
 		return errors.Wrap(err, "could not set window state to normal")
 	}
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -304,7 +302,7 @@ func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn 
 func testCaptionHeight(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getCaptionHeightButtonID = companionLibDemoPkg + ":id/get_caption_height"
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -363,7 +361,7 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 		return err
 	}
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -460,7 +458,7 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 func testWorkspaceInsets(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getWorkspaceInsetsButtonID = companionLibDemoPkg + ":id/get_workspace_insets"
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -978,7 +976,7 @@ func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 		return float64(popupWindowPixelsCount) * 100.0 / float64(totalPixels)
 	}
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -1106,7 +1104,7 @@ func testMaximize(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chro
 		return nil
 	}
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -1176,7 +1174,7 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 		return errors.Wrap(err, "failed to get physical display density")
 	}
 
-	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
