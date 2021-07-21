@@ -122,7 +122,7 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 			filepath.Join(s.OutDir(), "crash-reporter-early-init.log")); err != nil {
 			s.Log("Failed to get early-init log")
 		}
-		if out, err := d.Command("/bin/ls", "-l", "/var/spool/crash/", "/run/crash_reporter/").CombinedOutput(ctx); err != nil {
+		if out, err := d.Conn().CommandContext(ctx, "/bin/ls", "-l", "/var/spool/crash/", "/run/crash_reporter/").CombinedOutput(); err != nil {
 			s.Log("Failed to list crash state dirs: ", err)
 		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "crash_state_dirs.txt"), out, 0644); err != nil {
 			s.Log("Failed to save crash file listing to outDir: ", err)
@@ -135,7 +135,7 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 		if !strings.HasSuffix(match.Regex, ".meta") {
 			continue
 		}
-		if err := d.Command("/bin/grep", "-q", "upload_var_is_early_boot=true", match.Files[0]).Run(ctx); err != nil {
+		if err := d.Conn().CommandContext(ctx, "/bin/grep", "-q", "upload_var_is_early_boot=true", match.Files[0]).Run(); err != nil {
 			s.Error("Couldn't find expected string in meta file: ", err)
 			if err := d.GetFile(cleanupCtx, match.Files[0],
 				filepath.Join(s.OutDir(), path.Base(match.Files[0]))); err != nil {

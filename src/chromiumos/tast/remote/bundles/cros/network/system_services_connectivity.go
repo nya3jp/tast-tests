@@ -100,7 +100,7 @@ func runTLSDate2(ctx context.Context, conn *ssh.Conn) error {
 	// The `-m <n>` option means tlsdate should run at most once every n seconds in steady state
 	// The `-p` option means dry run.
 	// TODO(acostinas,b/179762130) Remove timeout once tlsdated has an option to exit after the first invocation.
-	out, err := conn.Command("timeout", "20", "/usr/bin/tlsdated", "-p", "-m", "60", "--", "/usr/bin/tlsdate", "-v", "-C", "/usr/share/chromeos-ca-certificates", "-l").CombinedOutput(ctx)
+	out, err := conn.CommandContext(ctx, "timeout", "20", "/usr/bin/tlsdated", "-p", "-m", "60", "--", "/usr/bin/tlsdate", "-v", "-C", "/usr/share/chromeos-ca-certificates", "-l").CombinedOutput()
 
 	//  The exit code 124 indicates that timeout sent a SIGTERM to terminate tlsdate.
 	if err != nil && !strings.Contains(err.Error(), "Process exited with status 124") {

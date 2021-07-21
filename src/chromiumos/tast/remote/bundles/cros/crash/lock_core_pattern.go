@@ -23,11 +23,11 @@ func init() {
 
 // initCrashReporter invokes the crash reporter initialization as expected during boot.
 func initCrashReporter(ctx context.Context, d *dut.DUT) error {
-	if err := d.Command("touch", "/run/crash_reporter/crash-test-in-progress").Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "touch", "/run/crash_reporter/crash-test-in-progress").Run(); err != nil {
 		return err
 	}
 
-	return d.Command("/sbin/crash_reporter", "--init").Run(ctx)
+	return d.Conn().CommandContext(ctx, "/sbin/crash_reporter", "--init").Run()
 }
 
 func LockCorePattern(ctx context.Context, s *testing.State) {
@@ -46,8 +46,8 @@ func LockCorePattern(ctx context.Context, s *testing.State) {
 	}
 
 	// Try to modify core_pattern.
-	cmd := d.Command("sh", "-c", "echo 'hello' > /proc/sys/kernel/core_pattern")
-	if err := cmd.Run(ctx); err == nil {
+	cmd := d.Conn().CommandContext(ctx, "sh", "-c", "echo 'hello' > /proc/sys/kernel/core_pattern")
+	if err := cmd.Run(); err == nil {
 		s.Fatal("|core_pattern| writable after crash_reporter initialization")
 	} else {
 		// TODO(sarthakkukreti): Verify whether the error type was an expected one, or remove this message.

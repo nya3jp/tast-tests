@@ -49,12 +49,12 @@ func CameraboxAlign(ctx context.Context, s *testing.State) {
 	}
 
 	// Prepare data path on DUT.
-	tempdir, err := d.Conn().Command("mktemp", "-d", "/tmp/alignment_service_XXXXXX").Output(ctx)
+	tempdir, err := d.Conn().CommandContext(ctx, "mktemp", "-d", "/tmp/alignment_service_XXXXXX").Output()
 	if err != nil {
 		s.Fatal("Failed to create remote data path directory: ", err)
 	}
 	dataPath := strings.TrimSpace(string(tempdir))
-	defer d.Conn().Command("rm", "-r", dataPath).Output(ctx)
+	defer d.Conn().CommandContext(ctx, "rm", "-r", dataPath).Output()
 	if _, err := linuxssh.PutFiles(
 		ctx, d.Conn(), map[string]string{
 			s.DataPath("camerabox_align.html"): filepath.Join(dataPath, "camerabox_align.html"),
