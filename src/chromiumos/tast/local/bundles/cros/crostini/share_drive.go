@@ -69,6 +69,22 @@ func init() {
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Pre:               crostini.StartedByDlcBusterGaia(),
 				Timeout:           7 * time.Minute,
+			}, {
+				Name:              "bullseye_stable_gaia",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Pre:               crostini.StartedByDlcBullseyeGaia(),
+				Timeout:           7 * time.Minute,
+			}, {
+				Name:              "bullseye_unstable_gaia",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
+				Pre:               crostini.StartedByDlcBullseyeGaia(),
+				Timeout:           7 * time.Minute,
 			},
 		},
 	})
