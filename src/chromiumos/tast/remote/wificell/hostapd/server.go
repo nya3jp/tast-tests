@@ -35,7 +35,7 @@ const (
 
 // KillAll kills all running hostapd on host, useful for environment setup/cleanup.
 func KillAll(ctx context.Context, host *ssh.Conn) error {
-	return host.Command("killall", hostapdCmd).Run(ctx)
+	return host.CommandContext(ctx, "killall", hostapdCmd).Run()
 }
 
 // Server controls a hostapd on router.
@@ -46,7 +46,7 @@ type Server struct {
 	workDir string
 	conf    *Config
 
-	cmd        *ssh.Cmd
+	cmd        *ssh.CmdCtx
 	wg         sync.WaitGroup
 	stdoutFile *os.File
 	stderrFile *os.File
@@ -153,7 +153,7 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		// hostapd command.
 		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPath()),
 	}
-	cmd := s.host.Command("sh", "-c", strings.Join(cmdStrs, " "))
+	cmd := s.host.CommandContext(ctx, "sh", "-c", strings.Join(cmdStrs, " "))
 	// Prepare stdout/stderr log files.
 	var err error
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
@@ -191,7 +191,7 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		io.Copy(multiWriter, stdoutPipe)
 	}()
 
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start hostapd")
 	}
 	s.cmd = cmd
@@ -220,10 +220,10 @@ func (s *Server) Close(ctx context.Context) error {
 	if s.cmd != nil {
 		s.cmd.Abort()
 		// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
-		s.host.Command("pkill", "-f", fmt.Sprintf("^%s.*%s", hostapdCmd, s.confPath())).Run(ctx)
+		s.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", hostapdCmd, s.confPath())).Run()
 
 		// Skip the error in Wait as the process is aborted and always has error in wait.
-		s.cmd.Wait(ctx)
+		s.cmd.Wait()
 		s.cmd = nil
 	}
 	// Wait the bg routine to end before closing files.
@@ -234,7 +234,7 @@ func (s *Server) Close(ctx context.Context) error {
 	if s.stderrFile != nil {
 		s.stderrFile.Close()
 	}
-	if err := s.host.Command("rm", s.confPath()).Run(ctx); err != nil {
+	if err := s.host.CommandContext(ctx, "rm", s.confPath()).Run(); err != nil {
 		return errors.Wrap(err, "failed to remove config")
 	}
 	return nil
@@ -247,7 +247,7 @@ func (s *Server) hostapdCLI(ctx context.Context, args ...string) (string, error)
 		"-p" + s.ctrlPath(),
 		"-i" + s.Interface(),
 	}, args...)
-	raw, err := s.host.Command(hostapdCLI, fullArgs...).Output(ctx)
+	raw, err := s.host.CommandContext(ctx, hostapdCLI, fullArgs...).Output()
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to run hostapd_cli, stdout=%q", string(raw))
 	}
@@ -256,7 +256,7 @@ func (s *Server) hostapdCLI(ctx context.Context, args ...string) (string, error)
 
 // DeauthClient deauthenticates the client with specified MAC address.
 func (s *Server) DeauthClient(ctx context.Context, clientMAC string) error {
-	if err := s.host.Command(hostapdCLI, fmt.Sprintf("-p%s", s.ctrlPath()), "deauthenticate", clientMAC).Run(ctx); err != nil {
+	if err := s.host.CommandContext(ctx, hostapdCLI, fmt.Sprintf("-p%s", s.ctrlPath()), "deauthenticate", clientMAC).Run(); err != nil {
 		return errors.Wrapf(err, "failed to deauthenticate client with MAC address %s", clientMAC)
 	}
 

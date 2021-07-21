@@ -101,7 +101,7 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 	}()
 
 	// Sync filesystem to minimize impact of the crash on other tests
-	if out, err := d.Command("sync").CombinedOutput(ctx); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "sync").CombinedOutput(); err != nil {
 		s.Fatalf("Failed to sync filesystems: %s. err: %v", out, err)
 	}
 
@@ -114,7 +114,7 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 	cmd := `nohup sh -c 'sleep 2
 	stop daisydog
 	sleep 60 > /dev/watchdog' >/dev/null 2>&1 </dev/null &`
-	if err := d.Command("bash", "-c", cmd).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
 		s.Fatal("Failed to panic DUT: ", err)
 	}
 
@@ -170,7 +170,7 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 				s.Errorf("Unexpected number of kernel crashes: %d, want 1", len(m.Files))
 				continue
 			}
-			if err := d.Command("/bin/grep", "-q", "sig=kernel-(WATCHDOG)", m.Files[0]).Run(ctx); err != nil {
+			if err := d.Conn().CommandContext(ctx, "/bin/grep", "-q", "sig=kernel-(WATCHDOG)", m.Files[0]).Run(); err != nil {
 				// get all files to help debug test failures
 				if err := saveAllFiles(cleanupCtx, d, append(res.Matches, biosLogMatches), s.OutDir()); err != nil {
 					s.Log("Failed to get meta file: ", err)
