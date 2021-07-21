@@ -120,7 +120,7 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 			uia := uiauto.New(tconn)
 			notFoundError := errors.New("Play Store icon is not found yet")
 			err := testing.Poll(ctx, func(ctx context.Context) error {
-				if found, err := uia.IsNodeFound(ctx, nodewith.Name(apps.PlayStore.Name)); err != nil {
+				if found, err := uia.IsNodeFound(ctx, nodewith.Name(apps.PlayStore.Name).ClassName("ash/ShelfAppButton")); err != nil {
 					if errors.Is(err, context.DeadlineExceeded) {
 						return err
 					}
