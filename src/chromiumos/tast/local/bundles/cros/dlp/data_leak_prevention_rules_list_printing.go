@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
@@ -119,6 +120,8 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
 			conn, err := cr.NewConn(ctx, param.url)
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
