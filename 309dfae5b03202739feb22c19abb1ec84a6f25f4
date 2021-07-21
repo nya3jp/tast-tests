@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09212c08_45b771ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-21T05:35:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d232b30c_b104f3ff",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 108
+      },
+      "revId": "309dfae5b03202739feb22c19abb1ec84a6f25f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df2aa43_9c7565f6",
