@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76e63b1a_6e7e4be0",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-07-21T07:16:18Z",
+      "side": 1,
+      "message": "Further comment/no action: the temptation is sometimes to define anonymous functions inline like:\n```\nreturn im.actionWithFullyQualifiedID(tconn, func( ... ) {\n   ...\n})\n```\nbut I believe our go readability reviewers are generally in agreement that defining the function on a separate line is more readable. So just wanted to support you keeping that aspect the same :)",
+      "parentUuid": "b2527f8d_5d2f1071",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "3c0a23d5763c9b5ae00aadd1f251944193386522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "055dbcfd_713d856c",
         "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
         "patchSetId": 5
