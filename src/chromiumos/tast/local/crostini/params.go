@@ -195,7 +195,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	}
 	var it = []iterator{}
 
-	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
+	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster, vm.DebianBullseye} {
 		for _, stable := range []bool{true, false} {
 			it = append(it, iterator{
 				debianVersion: debianVersion,
