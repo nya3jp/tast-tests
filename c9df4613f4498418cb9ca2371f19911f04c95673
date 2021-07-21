@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce79f2e5_ac6ffb47",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "Presubmit actually pointed out that when two or more consecutive named function parameters share a type, you can omit the type from all but the last.\n\nexample here: https://tour.golang.org/basics/5",
+      "parentUuid": "15a3509a_f73dc0ef",
+      "range": {
+        "startLine": 195,
+        "startChar": 64,
+        "endLine": 195,
+        "endChar": 72
+      },
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81e8068e_e0d447b7",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 12
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-21T20:26:31Z",
       "side": 1,
       "message": "nit: mention that it opens an closes the folder, and that it may not work if a folder is already opened",
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bab9835_0780050d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81e8068e_e0d447b7",
       "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2021-07-21T20:26:31Z",
       "side": 1,
       "message": "can we pass in the node to use (we may have multiple Folder Unnamed items, or folder name may change during the test)",
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1697922_ccc36daa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df8339b_0dfb37d0",
       "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

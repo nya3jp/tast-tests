@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1bcbb7c_74fa29bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "The problem with checking how many items are on the current page is that there is no explicit way of finding the apps that are only on the current page. There is an \u0027offscreen\u0027 attribute that gets set, but even some of the applistitemviews that are on the top of the next page are sometimes considered onscreen. I think a small api that returns simply the current page number and the number of apps on the page could quickly solve this issue.",
+      "parentUuid": "29098015_f9bb2981",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "361879d6_f30f8aa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
         "patchSetId": 10
@@ -374,6 +398,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1406b6a9_065edaa8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "Actually it looks like this works, every folder item starts its name with \"Folder\".  Do we still want to check if it is a folder or not? Would it ever be reasonable for a caller of this function to want to drag a folder to a new location?",
+      "parentUuid": "0c1c016c_0b55131a",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a4c622d_d8234ec4",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -439,6 +487,24 @@
       "side": 1,
       "message": "I changed this function to take the source and destination index as parameters.",
       "parentUuid": "3c208a14_be552584",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a9a307_7cdf726d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f346773_539c5066",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -528,6 +594,24 @@
       "side": 1,
       "message": "are you sure that this is actually needed? Could it be that you\u0027re not waiting for folder hide animation to finish before checking the folder view existence?",
       "parentUuid": "b05058b1_4b00581b",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b4a76d_b4aa348e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T23:37:22Z",
+      "side": 1,
+      "message": "I\u0027ve looked at the ash side code and AppListFolderView is only ever constructed once in the AppsContainerView and then is never explicitly destroyed anywhere. It does seem that the size of AppListFolderView goes to (1x1) when closed, so I could potentially check that?\n\nAlternatively an api call to the ash launcher might be more precise.",
+      "parentUuid": "562ce38d_765b4ed8",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
