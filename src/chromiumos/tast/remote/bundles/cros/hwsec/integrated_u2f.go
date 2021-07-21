@@ -248,7 +248,7 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 		u2fTestPath = "/usr/local/bin/U2FTest"
 		trigger     = "Touch device and hit enter."
 	)
-	cmd := dut.Command("stdbuf", "-o0", u2fTestPath, device)
+	cmd := dut.Conn().CommandContext(ctx, "stdbuf", "-o0", u2fTestPath, device)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return errors.Wrap(err, "failed to create stdout pipe")
@@ -259,11 +259,11 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 		return errors.Wrap(err, "failed to create stdin pipe")
 	}
 
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start U2fTest")
 	}
 	defer func() {
-		if err := cmd.Wait(ctx); err != nil {
+		if err := cmd.Wait(); err != nil {
 			if retErr != nil {
 				testing.ContextLog(ctx, "Failed to wait U2fTest: ", err)
 			} else {

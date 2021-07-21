@@ -72,7 +72,7 @@ func ExecuteCommand(ctx context.Context, conn *ssh.Conn, ruleOpt ...RuleOption) 
 		opt(&commandArgs)
 	}
 
-	return conn.Command(iptablesPath, commandArgs...).Run(ctx)
+	return conn.CommandContext(ctx, iptablesPath, commandArgs...).Run()
 }
 
 // OptionAppendRule appends a new rule to a given chain.

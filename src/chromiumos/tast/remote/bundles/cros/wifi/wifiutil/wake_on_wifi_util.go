@@ -130,7 +130,7 @@ func DarkResumeSuspend(fullCtx context.Context, d *dut.DUT, servoInst *servo.Ser
 	done := make(chan error, 1)
 	go func(ctx context.Context) {
 		defer close(done)
-		out, err := d.Command("powerd_dbus_suspend", "--disable_dark_resume=false", "--print_wakeup_type=true").CombinedOutput(ctx)
+		out, err := d.Conn().CommandContext(ctx, "powerd_dbus_suspend", "--disable_dark_resume=false", "--print_wakeup_type=true").CombinedOutput()
 		testing.ContextLog(ctx, "DEBUG: powerd_dbus_suspend output: ", string(out))
 		done <- err
 	}(ctx)

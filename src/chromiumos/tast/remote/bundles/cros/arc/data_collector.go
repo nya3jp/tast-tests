@@ -92,7 +92,7 @@ func init() {
 
 // getMemoryTotalKB returns total memory available in kilobytes for DUT.
 func getMemoryTotalKB(ctx context.Context, dut *dut.DUT) (int, error) {
-	memInfo, err := dut.Command("cat", "/proc/meminfo").Output(ctx)
+	memInfo, err := dut.Conn().CommandContext(ctx, "cat", "/proc/meminfo").Output()
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to read /proc/meminfo")
 	}
@@ -310,7 +310,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to generate GMS Core caches")
 		}
-		defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
+		defer d.Conn().CommandContext(ctx, "rm", "-rf", response.TargetDir).Output()
 
 		targetDir := filepath.Join(dataDir, gmsCoreCache)
 		if err = os.Mkdir(targetDir, 0744); err != nil {
@@ -341,10 +341,10 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	// Helper that dumps logcat on failure. Dumping is optional and error here does not break
 	// DataCollector flow and retries on error.
 	dumpLogcat := func(mode string, attempt int) {
-		log, err := d.Conn().Command(
+		log, err := d.Conn().CommandContext(ctx,
 			"/usr/sbin/android-sh",
 			"-c",
-			"/system/bin/logcat -d").Output(ctx)
+			"/system/bin/logcat -d").Output()
 		if err != nil {
 			s.Logf("Failed to dump logcat, continue after this error: %q", err)
 			return

@@ -27,7 +27,7 @@ func init() {
 }
 
 func validateRebootVault(ctx context.Context, d *dut.DUT) error {
-	return d.Command("encrypted-reboot-vault", "--action=validate").Run(ctx)
+	return d.Conn().CommandContext(ctx, "encrypted-reboot-vault", "--action=validate").Run()
 }
 
 func EncryptedRebootVault(ctx context.Context, s *testing.State) {
@@ -46,12 +46,12 @@ func EncryptedRebootVault(ctx context.Context, s *testing.State) {
 	// Create a file in the encrypted reboot vault.
 	// TODO(crbug.com/1047737): Replace with linuxssh.WriteFile() once available.
 	cmd := fmt.Sprintf("echo '%s' >  %s", encryptedVaultFileContents, encryptedVaultFilePath)
-	if out, err := d.Command("sh", "-c", cmd).CombinedOutput(ctx); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "sh", "-c", cmd).CombinedOutput(); err != nil {
 		s.Fatalf("Unable to create test file: %s", out)
 	}
 
 	defer func() {
-		if err := d.Command("rm", "-f", encryptedVaultFilePath).Run(ctx); err != nil {
+		if err := d.Conn().CommandContext(ctx, "rm", "-f", encryptedVaultFilePath).Run(); err != nil {
 			s.Fatal("Failed to clean up test file: ", err)
 		}
 	}()
@@ -67,7 +67,7 @@ func EncryptedRebootVault(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the contents of the test file added.
-	out, err := d.Command("cat", encryptedVaultFilePath).Output(ctx)
+	out, err := d.Conn().CommandContext(ctx, "cat", encryptedVaultFilePath).Output()
 	if err != nil {
 		s.Fatal("Failed to read file: ", err)
 	}

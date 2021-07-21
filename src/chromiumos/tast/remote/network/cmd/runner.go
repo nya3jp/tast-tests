@@ -30,9 +30,9 @@ func (r *RemoteCmdRunner) Run(ctx context.Context, cmd string, args ...string) e
 
 // Output runs a command, waits for its completion and returns stdout output of the command.
 func (r *RemoteCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
-	cc := r.Host.Command(cmd, args...)
+	cc := r.Host.CommandContext(ctx, cmd, args...)
 	if r.NoLogOnError {
-		return cc.Output(ctx)
+		return cc.Output()
 	}
-	return cc.Output(ctx, ssh.DumpLogOnError)
+	return cc.Output(ssh.DumpLogOnError)
 }

@@ -76,8 +76,8 @@ func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Running flash_fp_mcu --hello")
-	cmd := s.DUT().Conn().Command("flash_fp_mcu", "--hello")
-	out, err := cmd.CombinedOutput(ctx)
+	cmd := s.DUT().Conn().CommandContext(ctx, "flash_fp_mcu", "--hello")
+	out, err := cmd.CombinedOutput()
 	s.Log("flash_fp_mcu output:", "\n", string(out))
 	if err != nil {
 		s.Fatal("Error encountered when running flash_fp_mcu: ", err)

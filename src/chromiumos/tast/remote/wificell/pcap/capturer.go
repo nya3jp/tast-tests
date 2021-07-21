@@ -43,7 +43,7 @@ type Capturer struct {
 
 	snaplen uint64
 
-	cmd        *ssh.Cmd
+	cmd        *ssh.CmdCtx
 	stdoutFile *os.File
 	stderrFile *os.File
 	wg         sync.WaitGroup
@@ -95,7 +95,7 @@ func (c *Capturer) start(fullCtx context.Context) (err error) {
 		args = append(args, "-s", strconv.FormatUint(c.snaplen, 10))
 	}
 
-	cmd := c.host.Command(tcpdumpCmd, args...)
+	cmd := c.host.CommandContext(ctx, tcpdumpCmd, args...)
 	c.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stdout"))
 	if err != nil {
 		return errors.Wrap(err, "failed to open stdout log of tcpdump")
@@ -123,7 +123,7 @@ func (c *Capturer) start(fullCtx context.Context) (err error) {
 		io.Copy(multiWriter, stderrPipe)
 	}()
 
-	if err := cmd.Start(ctx); err != nil {
+	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start tcpdump")
 	}
 	c.cmd = cmd
@@ -146,8 +146,8 @@ func (c *Capturer) close(ctx context.Context) error {
 		// Kill with SIGTERM here, so that the process can flush buffer.
 		// If the process does not die before deadline, cmd.Wait will then abort it.
 		// TODO(crbug.com/1030635): Signal through SSH might not work. Use pkill to send signal for now.
-		c.host.Command("pkill", "-f", fmt.Sprintf("^%s.*%s", tcpdumpCmd, c.packetPathOnRemote())).Run(ctx)
-		c.cmd.Wait(ctx)
+		c.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", tcpdumpCmd, c.packetPathOnRemote())).Run()
+		c.cmd.Wait()
 		err = c.downloadPacket(ctx)
 	}
 	// Wait for the bg routine to end before closing files.
@@ -231,7 +231,7 @@ func (c *Capturer) downloadPacket(ctx context.Context) error {
 		return errors.Wrapf(err, "unable to download packet from %s to %s", src, dst)
 	}
 	c.downloaded = true
-	if err := c.host.Command("rm", src).Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := c.host.CommandContext(ctx, "rm", src).Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to clean up remote file %s", src)
 	}
 	return nil
