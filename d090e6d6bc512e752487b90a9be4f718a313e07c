@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381dcba4_18a2025e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T19:49:52Z",
+      "side": 1,
+      "message": "autoHideState",
+      "range": {
+        "startLine": 401,
+        "startChar": 83,
+        "endLine": 401,
+        "endChar": 96
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a060deff_0e980cac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T19:49:52Z",
+      "side": 1,
+      "message": "can you use this in the new test?",
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc18a010_cf895a50",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T19:49:52Z",
+      "side": 1,
+      "message": "maybe rename to swipeHotseatAndWaitForComplection (s\u003dto indicate this is supposed to be file local)",
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1f31bb_797fdb62",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T19:49:52Z",
+      "side": 1,
+      "message": "revert this change?",
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
