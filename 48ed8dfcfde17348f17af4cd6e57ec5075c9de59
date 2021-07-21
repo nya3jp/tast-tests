@@ -33,6 +33,24 @@
       "message": "Hi Shuhei,\nThe CQ failed on atlas-cq.hw.bvt-tast-parallels-cq: [tast.critical-parallels] quite several times, while I have no clue what\u0027s wrong.\nDo you happen to know why?",
       "revId": "48ed8dfcfde17348f17af4cd6e57ec5075c9de59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac27a26_b110dfed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-21T07:54:13Z",
+      "side": 1,
+      "message": "I guess it\u0027s b/194012348. It\u0027s marked fixed now, I think you can just retry.",
+      "parentUuid": "d4f680c0_8926c694",
+      "revId": "48ed8dfcfde17348f17af4cd6e57ec5075c9de59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
