@@ -172,14 +172,14 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 // logServoStatus logs the current servo status from the servo host.
 func logServoStatus(ctx context.Context, hst *ssh.Conn, port int) {
 	// Check if servod is running of the servo host.
-	out, err := hst.Command("servodtool", "instance", "show", "-p", fmt.Sprint(port)).CombinedOutput(ctx)
+	out, err := hst.CommandContext(ctx, "servodtool", "instance", "show", "-p", fmt.Sprint(port)).CombinedOutput()
 	if err != nil {
 		testing.ContextLogf(ctx, "Servod process is not initialized on the servo-host: %v: %v", err, string(out))
 		return
 	}
 	testing.ContextLogf(ctx, "Servod instance is running on port %v of the servo host", port)
 	// Check if servod is busy.
-	if out, err = hst.Command("dut-control", "-p ", fmt.Sprint(port), "serialname").CombinedOutput(ctx); err != nil {
+	if out, err = hst.CommandContext(ctx, "dut-control", "-p ", fmt.Sprint(port), "serialname").CombinedOutput(); err != nil {
 		testing.ContextLogf(ctx, "The servod is not responsive or busy: %v: %v", err, string(out))
 		return
 	}
@@ -231,7 +231,7 @@ func (p *Proxy) runCommandImpl(ctx context.Context, dumpLogOnError, asRoot bool,
 		}
 		return testexec.CommandContext(ctx, name, args...).Run(execOpts...)
 	}
-	return p.hst.Command(name, args...).Run(ctx, sshOpts...)
+	return p.hst.CommandContext(ctx, name, args...).Run(sshOpts...)
 }
 
 // RunCommand execs a command on the servo host, optionally as root.
@@ -257,7 +257,7 @@ func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, arg
 		}
 		return testexec.CommandContext(ctx, name, args...).Output(testexec.DumpLogOnError)
 	}
-	return p.hst.Command(name, args...).Output(ctx, ssh.DumpLogOnError)
+	return p.hst.CommandContext(ctx, name, args...).Output(ssh.DumpLogOnError)
 }
 
 // InputCommand execs a command and redirects stdin.
@@ -277,9 +277,9 @@ func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, 
 		cmd.Stdin = stdin
 		return cmd.Run(testexec.DumpLogOnError)
 	}
-	cmd := p.hst.Command(name, args...)
+	cmd := p.hst.CommandContext(ctx, name, args...)
 	cmd.Stdin = stdin
-	return cmd.Run(ctx, ssh.DumpLogOnError)
+	return cmd.Run(ssh.DumpLogOnError)
 }
 
 // GetFile copies a servo host file to a local file

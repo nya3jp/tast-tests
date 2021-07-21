@@ -156,14 +156,14 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *test
 		args = []string{"--noservices", "--read",
 			"--noremove_flash_read_protect", fileReadFromFlash}
 	}
-	cmd := d.Conn().Command("flash_fp_mcu", args...)
-	if err := cmd.Run(ctx, ssh.DumpLogOnError); err != nil {
+	cmd := d.Conn().CommandContext(ctx, "flash_fp_mcu", args...)
+	if err := cmd.Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to read from flash")
 	}
 
 	testing.ContextLog(ctx, "Checking that value read matches the flashed version")
-	cmd = d.Conn().Command("cmp", buildFwFile, fileReadFromFlash)
-	if err := cmd.Run(ctx); err != nil {
+	cmd = d.Conn().CommandContext(ctx, "cmp", buildFwFile, fileReadFromFlash)
+	if err := cmd.Run(); err != nil {
 		return errors.Wrap(err, "file read from flash does not match original fw file")
 	}
 

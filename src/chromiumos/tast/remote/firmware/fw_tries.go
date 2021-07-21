@@ -52,7 +52,7 @@ func SetFWTries(ctx context.Context, d *dut.DUT, nextFW fwCommon.RWSection, tryC
 		crossystemArgs[i] = fmt.Sprintf("%s=%s", k, v)
 		i++
 	}
-	if err := d.Command("crossystem", crossystemArgs...).Run(ctx); err != nil {
+	if err := d.Conn().CommandContext(ctx, "crossystem", crossystemArgs...).Run(); err != nil {
 		return errors.Wrapf(err, "running crossystem %s", strings.Join(crossystemArgs, " "))
 	}
 	return nil

@@ -96,7 +96,7 @@ func ModeReboot(ctx context.Context, s *testing.State) {
 
 	// Send key file to DUT.
 	keyPath := filepath.Join("/tmp", "testcert.p12")
-	defer d.Conn().Command("rm", "-r", keyPath).Output(ctx)
+	defer d.Conn().CommandContext(ctx, "rm", "-r", keyPath).Output()
 	if _, err := linuxssh.PutFiles(
 		ctx, d.Conn(), map[string]string{
 			s.DataPath("testcert.p12"): keyPath,
@@ -157,7 +157,7 @@ func builtInTBTDevice(name string) bool {
 // |expected| specifies whether we want to check for the presence of a TBT device (true) or the
 // absence of one (false).
 func checkTBTDevice(ctx context.Context, d *dut.DUT, expected bool) error {
-	out, err := d.Command("ls", "/sys/bus/thunderbolt/devices").Output(ctx)
+	out, err := d.Conn().CommandContext(ctx, "ls", "/sys/bus/thunderbolt/devices").Output()
 	if err != nil {
 		return errors.Wrap(err, "could not run ls command on DUT")
 	}
@@ -201,7 +201,7 @@ func checkTBTDevice(ctx context.Context, d *dut.DUT, expected bool) error {
 // - The error value if the command didn't run, else nil.
 func checkPortsForTBTPartner(ctx context.Context, d *dut.DUT) (bool, error) {
 	for i := 0; i < maxTypeCPorts; i++ {
-		out, err := d.Command("ectool", "typecdiscovery", strconv.Itoa(i), "0").CombinedOutput(ctx)
+		out, err := d.Conn().CommandContext(ctx, "ectool", "typecdiscovery", strconv.Itoa(i), "0").CombinedOutput()
 		if err != nil {
 			// If we get an invalid param error, that means there are no more ports left.
 			// In that case, we shouldn't return an error, but should return false.

@@ -212,7 +212,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	f.d2 = d2
 	s.Log("Preparing to move remote data files to DUT1 (Sender)")
-	tempdir, err := d1.Conn().Command("mktemp", "-d", "/tmp/nearby_share_XXXXXX").Output(ctx)
+	tempdir, err := d1.Conn().CommandContext(ctx, "mktemp", "-d", "/tmp/nearby_share_XXXXXX").Output()
 	if err != nil {
 		s.Fatal("Failed to create remote data path directory: ", err)
 	}
@@ -339,7 +339,7 @@ func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.F
 // TearDown removes the test files from the sender and and closes the services on both DUTs.
 func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Delete the test files from the sender.
-	if err := f.d1.Conn().Command("rm", "-r", f.remoteFilePath).Run(ctx); err != nil {
+	if err := f.d1.Conn().CommandContext(ctx, "rm", "-r", f.remoteFilePath).Run(); err != nil {
 		s.Error("Failed to remove test files from the sender: ", err)
 	}
 	// Shut down the nearby share service connections.
@@ -382,7 +382,7 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	duts := []*dut.DUT{f.d1, f.d2}
 	tags := []string{"sender", "receiver"}
 	for i, dut := range duts {
-		logFiles, err := dut.Conn().Command("ls", nearbyshare.NearbyLogDir).Output(ctx)
+		logFiles, err := dut.Conn().CommandContext(ctx, "ls", nearbyshare.NearbyLogDir).Output()
 		if err != nil {
 			testing.ContextLog(ctx, "Failed to get list of log files in remote DUTs nearby temp dir: ", err)
 		} else {
@@ -396,7 +396,7 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 			}
 		}
 		// Delete the log files so that we have a clean run for parameterized tests.
-		if err := dut.Conn().Command("rm", "-r", nearbyshare.NearbyLogDir).Run(ctx); err != nil {
+		if err := dut.Conn().CommandContext(ctx, "rm", "-r", nearbyshare.NearbyLogDir).Run(); err != nil {
 			testing.ContextLog(ctx, "Failed to remove the log files at end of test: ", err)
 		}
 	}

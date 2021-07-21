@@ -46,8 +46,8 @@ func unpack(s []string, vars ...*string) {
 
 // sendCmd sends a command to the attenuator via proxy.
 func (a *Attenuator) sendCmd(ctx context.Context, cmd string) (string, error) {
-	ret, err := a.proxyConn.Command("wget", "-q", "-O", "-",
-		"http://"+a.hostIP+"/:"+cmd).Output(ctx)
+	ret, err := a.proxyConn.CommandContext(ctx, "wget", "-q", "-O", "-",
+		"http://"+a.hostIP+"/:"+cmd).Output()
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to run command %s", cmd)
 	}

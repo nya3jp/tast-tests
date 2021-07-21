@@ -35,7 +35,7 @@ func GetBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 		propertyFile = "/usr/share/arc/properties/build.prop"
 	}
 
-	buildProp, err := dut.Command("cat", propertyFile).Output(ctx)
+	buildProp, err := dut.Conn().CommandContext(ctx, "cat", propertyFile).Output()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read ARC build property file remotely")
 	}

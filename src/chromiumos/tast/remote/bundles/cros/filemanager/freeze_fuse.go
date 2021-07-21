@@ -57,12 +57,12 @@ func FreezeFUSE(ctx context.Context, s *testing.State) {
 	fc := fmpb.NewFreezeFUSEServiceClient(cl.Conn)
 
 	// Copy the data to DUT
-	tempdir, err := d.Conn().Command("mktemp", "-d", "/tmp/freeze_fuse_XXXXXX").Output(ctx)
+	tempdir, err := d.Conn().CommandContext(ctx, "mktemp", "-d", "/tmp/freeze_fuse_XXXXXX").Output()
 	if err != nil {
 		s.Fatal("Failed to create remote data path directory: ", err)
 	}
 	dataPath := strings.TrimSpace(string(tempdir))
-	defer d.Conn().Command("rm", "-r", dataPath).Run(ctx)
+	defer d.Conn().CommandContext(ctx, "rm", "-r", dataPath).Run()
 
 	zipFile := "100000_files_in_one_folder.zip"
 

@@ -41,7 +41,7 @@ func (r *CmdRunnerRemote) Run(ctx context.Context, cmd string, args ...string) (
 	if r.printLog {
 		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
 	}
-	result, err := r.d.Command(cmd, args...).Output(ctx)
+	result, err := r.d.Conn().CommandContext(ctx, cmd, args...).Output()
 	err = checkExitError(cmd, err)
 	return result, err
 }
@@ -51,7 +51,7 @@ func (r *CmdRunnerRemote) RunWithCombinedOutput(ctx context.Context, cmd string,
 	if r.printLog {
 		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
 	}
-	result, err := r.d.Command(cmd, args...).CombinedOutput(ctx)
+	result, err := r.d.Conn().CommandContext(ctx, cmd, args...).CombinedOutput()
 	err = checkExitError(cmd, err)
 	return result, err
 }

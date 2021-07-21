@@ -88,7 +88,7 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 		s.Fatal("Timed out waiting for biod to start: ", err)
 	}
 
-	out, err := fingerprint.EctoolCommand(ctx, d, "fpencstatus").Output(ctx, ssh.DumpLogOnError)
+	out, err := fingerprint.EctoolCommand(ctx, d, "fpencstatus").Output(ssh.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to get encryption status: ", err)
 	}
