@@ -34,6 +34,24 @@
       "parentUuid": "4532479f_fc524f43",
       "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670960e9_be76591f",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-21T16:31:23Z",
+      "side": 1,
+      "message": "I don\u0027t want to waitUnreachable in this function, see crrev/c/3039453\n\nAlso if the command fails for some reason other than deadline exceeded, it would be good to know.\n\nI could leave this function as synchronous, and call it from a goroutine at the caller sites (there are just 2).\n\nIs it a problem to leave this lingering goroutine here and return before it exits?",
+      "parentUuid": "2ce731d7_23e9c9bf",
+      "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
