@@ -9,11 +9,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -48,29 +49,29 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 		name            string
 		value           *policy.AutoclickEnabled
 		wantButton      bool
-		wantChecked     ui.CheckedState
-		wantRestriction ui.RestrictionState
+		wantChecked     checked.Checked
+		wantRestriction restriction.Restriction
 	}{
 		{
 			name:            "unset",
 			value:           &policy.AutoclickEnabled{Stat: policy.StatusUnset},
 			wantButton:      false,
-			wantChecked:     ui.CheckedStateFalse,
-			wantRestriction: ui.RestrictionNone,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.None,
 		},
 		{
 			name:            "disabled",
 			value:           &policy.AutoclickEnabled{Val: false},
 			wantButton:      false,
-			wantChecked:     ui.CheckedStateFalse,
-			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.Disabled,
 		},
 		{
 			name:            "enabled",
 			value:           &policy.AutoclickEnabled{Val: true},
 			wantButton:      true,
-			wantChecked:     ui.CheckedStateTrue,
-			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.Disabled,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -86,65 +87,41 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Find the system tray button node.
-			stNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role:      ui.RoleTypeButton,
-				ClassName: "UnifiedSystemTray",
-			}, 15*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find the system tray button: ", err)
-			}
-			defer stNode.Release(ctx)
+			ui := uiauto.New(tconn)
 
-			// Move mouse to the middle of the system tray button.
-			c := coords.Point{
-				X: stNode.Location.Left + stNode.Location.Width/2,
-				Y: stNode.Location.Top + stNode.Location.Height/2,
-			}
-
-			if err := mouse.Move(ctx, tconn, c, 0); err != nil {
-				s.Fatal("Failed to move the mouse: ", err)
+			// Move mouse to status tray.
+			if err := ui.MouseMoveTo(nodewith.ClassName("ash/StatusAreaWidgetDelegate"), 0)(ctx); err != nil {
+				s.Fatal("Failed to move mouse to status tray")
 			}
 
 			// Check if a click occurred by checking whether the Sign out button is visible or not.
-			if err := policyutil.VerifyNodeState(ctx, tconn, ui.FindParams{
-				Name:      "Sign out",
-				ClassName: "SignOutButton",
-			}, param.wantButton, 10*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Sign out button: ", err)
+			if err := ui.WithTimeout(time.Second * 10).WaitUntilExists(nodewith.Name("Sign out").ClassName("SignOutButton"))(ctx); err != nil {
+				if param.wantButton {
+					s.Error("Could not find 'Sign out' button")
+				}
+			} else {
+				if !param.wantButton {
+					s.Error("Unexpected 'Sign out' button found")
+				}
 			}
 
-			// Open settings page where the affected toggle button can be found.
-			sconn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osAccessibility")
-			if err != nil {
-				s.Fatal("Failed to connect to the accessibility settings page: ", err)
-			}
-			defer sconn.Close()
-
-			// Find and click manage accessibility link.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeLink,
-				Name: "Manage accessibility features Enable accessibility features",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to find and click Manage accessibility features link: ", err)
+			// Move mouse to Launcher button so the next test case will have to move the mouse again.
+			// Otherwise autoclick won't be triggered.
+			if err := ui.MouseMoveTo(nodewith.Name("Launcher").ClassName("ash/HomeButton"), 0)(ctx); err != nil {
+				s.Fatal("Failed to move mouse to status tray")
 			}
 
-			if err := policyutil.VerifySettingsNode(ctx, tconn,
-				ui.FindParams{
-					Role: ui.RoleTypeToggleButton,
-					Name: "Automatically click when the cursor stops",
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-						"checked":     param.wantChecked,
-					},
-				},
-			); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			if err := policyutil.OSSettingsPage(ctx, cr, "manageAccessibility").
+				SelectNode(ctx, nodewith.
+					Name("Automatically click when the cursor stops").
+					Role(role.ToggleButton)).
+				Restriction(param.wantRestriction).
+				Checked(param.wantChecked).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
 			}
 
-			if param.wantChecked == ui.CheckedStateTrue {
+			if param.wantChecked == checked.True {
 				// Policy unset will open the modal dialog about turning off autoclicks.
 				// We need to close it. Otherwise it messes up the next test.
 
@@ -152,25 +129,17 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to clean up: ", err)
 				}
 
-				// Find Yes button on the dialog.
-				yesButton, err := ui.StableFind(ctx, tconn, ui.FindParams{
-					ClassName: "MdTextButton",
-					Name:      "Yes",
-				}, &testing.PollOptions{Timeout: 15 * time.Second})
-				if err != nil {
-					s.Fatal("Failed to find and yes button: ", err)
+				// TODO(crbug.com/1197511): investigate why this is needed.
+				// Wait for a second before clicking the Yes button as the click
+				// won't be registered otherwise.
+				testing.Sleep(ctx, time.Second)
+
+				condition := func(ctx context.Context) error {
+					return ui.Gone(nodewith.Name("Are you sure you want to turn off automatic clicks?"))(ctx)
 				}
 
-				condition := func(ctx context.Context) (bool, error) {
-					isDialogShown, err := ui.Exists(ctx, tconn, ui.FindParams{
-						Name: "Are you sure you want to turn off automatic clicks?",
-					})
-					return !isDialogShown, err
-				}
-
-				opts := testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond}
 				// Click until the dialog is gone.
-				if err := yesButton.LeftClickUntil(ctx, condition, &opts); err != nil {
+				if err := ui.LeftClickUntil(nodewith.Name("Yes").ClassName("MdTextButton"), condition)(ctx); err != nil {
 					s.Fatal("Failed to close the dialog: ", err)
 				}
 			}
