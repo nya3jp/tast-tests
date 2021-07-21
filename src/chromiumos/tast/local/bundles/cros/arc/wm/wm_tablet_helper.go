@@ -82,7 +82,8 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 			}
 
 			// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
-			if tc.DesiredDO != newDO.Type {
+			// As it's not guaranteed that the display rotates to a "primary" orientation, only check the "binary" orientation here.
+			if isPortraitOrientation(tc.DesiredDO) != isPortraitOrientation(newDO.Type) {
 				return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, tc.DesiredDO)
 			}
 
@@ -572,6 +573,11 @@ func getOppositeDisplayOrientation(orientation display.OrientationType) display.
 		return display.OrientationLandscapePrimary
 	}
 	return display.OrientationPortraitPrimary
+}
+
+// isPortraitOrientation returns true if the given orientation is portrait-primary or portrait-secondary.
+func isPortraitOrientation(orientation display.OrientationType) bool {
+	return orientation == display.OrientationPortraitPrimary || orientation == display.OrientationPortraitSecondary
 }
 
 // checkUnspecifiedActivityInTabletMode makes sure that the display orientation won't change for an activity with unspecified orientation.
