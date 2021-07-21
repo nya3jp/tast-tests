@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f551538_6cf824cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T16:55:17Z",
+      "side": 1,
+      "message": "Hello,\nCL adds some improvements in the test,\nPTAL, Thanks",
+      "revId": "6d7f25606b49af3e966186f2e4d1073554b31452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
