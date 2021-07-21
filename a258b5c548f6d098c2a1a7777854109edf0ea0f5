@@ -122,6 +122,24 @@
       "parentUuid": "383cb6c7_ed40c91b",
       "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1512cccb_d66460ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-21T11:45:14Z",
+      "side": 1,
+      "message": "I\u0027m concerned about the amount of UI interaction with the Omnibox, if something ever changes this test will break. Since there are a number of steps performed (mostly in pasteOmnibox) I was hoping there would be a better way to interact with it.\n\nWe can merge as is, but I still hope for less UI interaction if it can be done (even if we test less).",
+      "parentUuid": "1c8ac79a_d4e6d644",
+      "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
