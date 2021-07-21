@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd31c6c_4b4067c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-21T16:10:42Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "a46c25395db67b1cd5abf35c27889885131dd895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227ef05c_7382762c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2752,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-21T16:10:42Z",
+      "side": 1,
+      "message": "How about appending \"Note that it sends back an empty response to notify the caller that the D-Bus watcher is ready.\"",
+      "revId": "a46c25395db67b1cd5abf35c27889885131dd895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9ba5ac_62784122",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fast_reconnect_in_dark_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-21T16:10:42Z",
+      "side": 1,
+      "message": "We shall reserve some time to run defer logic.",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "a46c25395db67b1cd5abf35c27889885131dd895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3210b6cb_29af57bd",
+        "filename": "src/chromiumos/tast/services/cros/wifi/shill_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-21T16:10:42Z",
+      "side": 1,
+      "message": "How about appending \"Note that it sends back an empty response to notify the caller that the D-Bus watcher is ready.\"",
+      "revId": "a46c25395db67b1cd5abf35c27889885131dd895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
