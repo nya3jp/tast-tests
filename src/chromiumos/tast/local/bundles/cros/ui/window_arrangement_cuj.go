@@ -28,10 +28,17 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type windowArrangementCUJTestParam struct {
+	ct     lacros.ChromeType
+	tablet bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -46,13 +53,27 @@ func init() {
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
 		Params: []testing.Param{
 			{
-				Name:    "clamshell_mode",
-				Val:     false,
+				Name: "clamshell_mode",
+				Val: windowArrangementCUJTestParam{
+					ct: lacros.ChromeTypeChromeOS,
+				},
 				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name: "tablet_mode",
-				Val:  true,
+				Val: windowArrangementCUJTestParam{
+					ct:     lacros.ChromeTypeChromeOS,
+					tablet: true,
+				},
+			},
+			{
+				Name: "lacros",
+				Val: windowArrangementCUJTestParam{
+					ct: lacros.ChromeTypeLacros,
+				},
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -74,17 +95,35 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	tabletMode := s.Param().(bool)
+	testParam := s.Param().(windowArrangementCUJTestParam)
+	tabletMode := testParam.tablet
 
 	var cr *chrome.Chrome
-	if tabletMode {
-		var err error
-		if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
-			s.Fatal("Failed to init: ", err)
+	var cs ash.ConnSource
+
+	if testParam.ct == lacros.ChromeTypeChromeOS {
+		if tabletMode {
+			var err error
+			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
+				s.Fatal("Failed to init: ", err)
+			}
+			defer cr.Close(ctx)
+		} else {
+			cr = s.FixtValue().(*chrome.Chrome)
 		}
-		defer cr.Close(ctx)
+		cs = cr
 	} else {
-		cr = s.FixtValue().(*chrome.Chrome)
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		var artifactPath string
+		artifactPath = s.DataPath(launcher.DataArtifact)
+
+		var l *launcher.LacrosChrome
+		var err error
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, testParam.ct)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(ctx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -170,7 +209,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	connPiP, err := cr.NewConn(ctx, srv.URL+"/pip.html")
+	connPiP, err := cs.NewConn(ctx, srv.URL+"/pip.html")
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
@@ -179,7 +218,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
-	connNoPiP, err := cr.NewConn(ctx, srv.URL+"/pip.html")
+	connNoPiP, err := cs.NewConn(ctx, srv.URL+"/pip.html")
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
@@ -277,6 +316,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to maximize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				if w.ID == id0 {
+					s.Log("#### Poll for maximized, state=", w.State, ", animating=", w.IsAnimating)
+				}
 				return w.ID == id0 && w.State == ash.WindowStateMaximized && !w.IsAnimating
 			}, &testing.PollOptions{Timeout: timeout}); err != nil {
 				return errors.Wrap(err, "failed to wait for window to become maximized")
