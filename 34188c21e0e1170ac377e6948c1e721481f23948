@@ -52,6 +52,24 @@
       "parentUuid": "2ce731d7_23e9c9bf",
       "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffc921b_6e361377",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-07-21T18:21:02Z",
+      "side": 1,
+      "message": "There\u0027s not a problem if the call sites are careful about it, but the caller needs to be more careful and ensure waitUnreachable is called somewhere down the line.  Sorry didn\u0027t realize on the other code-review.  There are many ways to address this, along the lines of Yen-lin\u0027s comment, I think that by returning the WaitGroup from poweroff would make it clear to the caller that they have to eventually wait for unreachable.  The caller can choose to wait immediately or delay it for efficiency reasons, depending on the use case.",
+      "parentUuid": "670960e9_be76591f",
+      "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
