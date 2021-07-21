@@ -57,6 +57,30 @@
       },
       "revId": "a133495b89ad155b52e5c1a1395c033debcdef81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2940ae_c8108d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-07-21T00:11:56Z",
+      "side": 1,
+      "message": "Ack. At one point, I think ExtraAttr and Attr didn\u0027t play well together, but that\u0027s long since fixed.",
+      "parentUuid": "c738227a_04647fe1",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 46
+      },
+      "revId": "a133495b89ad155b52e5c1a1395c033debcdef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
