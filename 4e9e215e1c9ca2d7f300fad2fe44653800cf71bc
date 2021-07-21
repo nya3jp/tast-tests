@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c30cd7_04bce594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T10:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da81c90_57b08bb4",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fca84bd6_1f1fa013",
@@ -78,6 +102,24 @@
       "writtenOn": "2021-07-20T05:09:01Z",
       "side": 1,
       "message": "This depends on drag and drop behaviour of windows, is there no API to problematically move the windows to a known position.",
+      "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e010b60d_0ef5ce3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-21T10:09:18Z",
+      "side": 1,
+      "message": "This have significantly increased the speed of the the test. Thanks",
+      "parentUuid": "fca84bd6_1f1fa013",
       "revId": "4e9e215e1c9ca2d7f300fad2fe44653800cf71bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
