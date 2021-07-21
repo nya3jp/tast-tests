@@ -51,7 +51,7 @@ type Server struct {
 	workDir string
 	conf    *Config
 
-	cmd        *ssh.CmdCtx
+	cmd        *ssh.Cmd
 	wg         sync.WaitGroup
 	stdoutFile *os.File
 	stderrFile *os.File
