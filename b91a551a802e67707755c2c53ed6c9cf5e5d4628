@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3edab57b_1ee37ffb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-21T11:22:58Z",
+      "side": 1,
+      "message": "nit: neither the bug nor the commit message contains the information on why is there no need for the sleep anymore. Can you add a short justification?",
+      "revId": "b91a551a802e67707755c2c53ed6c9cf5e5d4628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6342e296_1a3174fc",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-07-21T09:28:11Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "b91a551a802e67707755c2c53ed6c9cf5e5d4628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320903b0_09a98f79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-21T11:22:58Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "b91a551a802e67707755c2c53ed6c9cf5e5d4628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
