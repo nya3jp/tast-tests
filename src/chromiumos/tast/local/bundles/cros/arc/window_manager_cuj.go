@@ -64,7 +64,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     WindowManagerCUJ,
 		Desc:     "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
-		Contacts: []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
+		Contacts: []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(http://b/149790068): Test is disabled until it can be fixed
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
