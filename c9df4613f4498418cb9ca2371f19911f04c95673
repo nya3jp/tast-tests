@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a3509a_f73dc0ef",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T20:26:31Z",
+      "side": 1,
+      "message": "do we need type for this one",
+      "range": {
+        "startLine": 195,
+        "startChar": 64,
+        "endLine": 195,
+        "endChar": 72
+      },
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e8068e_e0d447b7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T20:26:31Z",
+      "side": 1,
+      "message": "nit: mention that it opens an closes the folder, and that it may not work if a folder is already opened",
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df8339b_0dfb37d0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T20:26:31Z",
+      "side": 1,
+      "message": "can we pass in the node to use (we may have multiple Folder Unnamed items, or folder name may change during the test)",
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

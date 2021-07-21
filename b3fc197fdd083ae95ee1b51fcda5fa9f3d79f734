@@ -350,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c1c016c_0b55131a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T20:26:31Z",
+      "side": 1,
+      "message": "we could probably check whether the node name starts with \"Folder\". \nnot sure whether there\u0027s a better approach (but I might be missing something obvious)",
+      "parentUuid": "a6e2155a_82c0e7dc",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a4c622d_d8234ec4",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -486,6 +510,24 @@
       "side": 1,
       "message": "I added a check for this, it will require landing this change: https://chromium-review.googlesource.com/c/chromium/src/+/3042414",
       "parentUuid": "e79ccce8_13ae375c",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562ce38d_765b4ed8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-21T20:26:31Z",
+      "side": 1,
+      "message": "are you sure that this is actually needed? Could it be that you\u0027re not waiting for folder hide animation to finish before checking the folder view existence?",
+      "parentUuid": "b05058b1_4b00581b",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
