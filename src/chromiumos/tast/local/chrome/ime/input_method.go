@@ -4,7 +4,15 @@
 
 package ime
 
-import "chromiumos/tast/errors"
+import (
+	"context"
+	"fmt"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+)
 
 // TODO(b/192819861): Define new input method struct and migrate existing use of InputMethodCode.
 // This page is a partial implementation of b/192819861.
@@ -20,110 +28,110 @@ type InputMethod struct {
 	ID   string // The code / id of the IME, e.g. "xkb:us::eng"
 }
 
-// TODO(b/192819861): Rename IME constants to Mixed caps to align Golang naming practise.
-// https://github.com/golang/go/wiki/CodeReviewComments#mixed-caps.
+// DefaultInputMethod is the default input method enabled for new users.
+var DefaultInputMethod = EnglishUS
 
-// XKB_US_ENG represents the input method of English (US).
-var XKB_US_ENG = InputMethod{ // NOLINT
+// EnglishUS represents the input method of English (US).
+var EnglishUS = InputMethod{
 	Name: "English (US)",
 	ID:   "xkb:us::eng",
 }
 
-// XKB_US_INTL represents the input method of English (US) with International keyboard.
-var XKB_US_INTL = InputMethod{ // NOLINT
+// EnglishUSWithInternationalKeyboard represents the input method of English (US) with International keyboard.
+var EnglishUSWithInternationalKeyboard = InputMethod{
 	Name: "English (US) with International keyboard",
 	ID:   "xkb:us:intl:eng",
 }
 
-// XKB_GB_EXTD_ENG represents the input method of English (US).
-var XKB_GB_EXTD_ENG = InputMethod{ // NOLINT
+// EnglishUK represents the input method of English (UK).
+var EnglishUK = InputMethod{
 	Name: "English (UK)",
 	ID:   "xkb:gb:extd:eng",
 }
 
-// XKB_ES_SPA represents the input method of Spanish (Spain).
-var XKB_ES_SPA = InputMethod{ // NOLINT
+// SpanishSpain represents the input method of Spanish (Spain).
+var SpanishSpain = InputMethod{
 	Name: "Spanish (Spain)",
 	ID:   "xkb:es::spa",
 }
 
-// XKB_SE_SWE represents the input method of Swedish.
-var XKB_SE_SWE = InputMethod{ // NOLINT
+// Swedish represents the input method of Swedish.
+var Swedish = InputMethod{
 	Name: "Swedish",
 	ID:   "xkb:se::swe",
 }
 
-// XKB_JP_JPN represents the input method of Alphanumeric with Japanese keyboard.
-var XKB_JP_JPN = InputMethod{ // NOLINT
+// AlphanumericWithJapaneseKeyboard represents the input method of Alphanumeric with Japanese keyboard.
+var AlphanumericWithJapaneseKeyboard = InputMethod{
 	Name: "Alphanumeric with Japanese keyboard",
 	ID:   "xkb:jp::jpn",
 }
 
-// XKB_CA_ENG represents the input method of English (Canada).
-var XKB_CA_ENG = InputMethod{ // NOLINT
+// EnglishCanada represents the input method of English (Canada).
+var EnglishCanada = InputMethod{
 	Name: "English (Canada)",
 	ID:   "xkb:ca:eng:eng",
 }
 
-// NACL_MOZC_JP represents the input method of Japanese.
-var NACL_MOZC_JP = InputMethod{ // NOLINT
+// Japanese represents the input method of Japanese.
+var Japanese = InputMethod{
 	Name: "Japanese",
 	ID:   "nacl_mozc_jp",
 }
 
-// XKB_FR_FRA represents the input method of Franch (France).
-var XKB_FR_FRA = InputMethod{ // NOLINT
-	Name: "Franch (France)",
+// FrenchFrance represents the input method of French (France).
+var FrenchFrance = InputMethod{
+	Name: "French (France)",
 	ID:   "xkb:fr::fra",
 }
 
-// NACL_MOZC_US represents the input method of Japanese with US keyboard.
-var NACL_MOZC_US = InputMethod{ // NOLINT
+// JapaneseWithUSKeyboard represents the input method of Japanese with US keyboard.
+var JapaneseWithUSKeyboard = InputMethod{
 	Name: "Japanese with US keyboard",
 	ID:   "nacl_mozc_us",
 }
 
-// PINYIN_CHINESE_SIMPLIFIED represents the input method of Chinese Pinyin.
-var PINYIN_CHINESE_SIMPLIFIED = InputMethod{ // NOLINT
+// ChinesePinyin represents the input method of Chinese Pinyin.
+var ChinesePinyin = InputMethod{
 	Name: "Chinese Pinyin",
 	ID:   "zh-t-i0-pinyin",
 }
 
-// CANTONESE_CHINESE_TRADITIONAL represents the input method of Chinese Cantonese.
-var CANTONESE_CHINESE_TRADITIONAL = InputMethod{ // NOLINT
-	Name: "Chinese Cantonese",
+// Cantonese represents the input method of Chinese Cantonese.
+var Cantonese = InputMethod{
+	Name: "Cantonese",
 	ID:   "yue-hant-t-i0-und",
 }
 
-// CANGJIE87_CHINESE_TRADITIONAL represents the input method of Chinese Cangjie.
-var CANGJIE87_CHINESE_TRADITIONAL = InputMethod{ // NOLINT
+// ChineseCangjie represents the input method of Chinese Cangjie.
+var ChineseCangjie = InputMethod{
 	Name: "Chinese Cangjie",
 	ID:   "zh-hant-t-i0-cangjie-1987",
 }
 
-// HANGEUL_HANJA_KOREAN represents the input method of Korean.
-var HANGEUL_HANJA_KOREAN = InputMethod{ // NOLINT
+// Korean represents the input method of Korean.
+var Korean = InputMethod{
 	Name: "Korean",
 	ID:   "ko-t-i0-und",
 }
 
 // inputMethods represents in-use (available) IMEs in ChromeOS.
 // Only listed input methods are promised to be available.
-var inputMethods = []InputMethod{ // NOLINT
-	XKB_US_ENG,
-	XKB_US_INTL,
-	XKB_GB_EXTD_ENG,
-	XKB_ES_SPA,
-	XKB_SE_SWE,
-	XKB_JP_JPN,
-	XKB_CA_ENG,
-	NACL_MOZC_JP,
-	XKB_FR_FRA,
-	NACL_MOZC_US,
-	PINYIN_CHINESE_SIMPLIFIED,
-	CANTONESE_CHINESE_TRADITIONAL,
-	CANGJIE87_CHINESE_TRADITIONAL,
-	HANGEUL_HANJA_KOREAN,
+var inputMethods = []InputMethod{
+	EnglishUS,
+	EnglishUSWithInternationalKeyboard,
+	EnglishUK,
+	SpanishSpain,
+	Swedish,
+	AlphanumericWithJapaneseKeyboard,
+	EnglishCanada,
+	Japanese,
+	FrenchFrance,
+	JapaneseWithUSKeyboard,
+	ChinesePinyin,
+	Cantonese,
+	ChineseCangjie,
+	Korean,
 }
 
 // FindInputMethodByName finds the input method by displayed name.
@@ -144,4 +152,82 @@ func FindInputMethodByID(id string) (*InputMethod, error) {
 		}
 	}
 	return nil, errors.Errorf("failed to find input method by IME id %q", id)
+}
+
+// FindInputMethodByFullyQualifiedIMEID finds the input method by fully qualified IME ID,
+// e.g. _comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:us::eng.
+func FindInputMethodByFullyQualifiedIMEID(ctx context.Context, tconn *chrome.TestConn, fullyQualifiedIMEID string) (*InputMethod, error) {
+	imePrefix, err := Prefix(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get IME prefix")
+	}
+	for _, im := range inputMethods {
+		if imePrefix+im.ID == fullyQualifiedIMEID {
+			return &im, nil
+		}
+	}
+	return nil, errors.Errorf("failed to find input method by IME Code %q", fullyQualifiedIMEID)
+}
+
+// FullyQualifiedIMEID returns the fully qualified IME id constructed by IMEPrefix + IME ID.
+// In Chrome, the fully qualified IME id is Chrome IME prefix + id: e.g. _comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:us::eng
+// In Chromium, the fully qualified IME id is Chromium IME prefix + id: e.g. _comp_ime_fgoepimhcoialccpbmpnnblemnepkkaoxkb:us::eng
+func (im InputMethod) FullyQualifiedIMEID(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	imePrefix, err := Prefix(ctx, tconn)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get IME prefix")
+	}
+	return imePrefix + im.ID, nil
+}
+
+// Equal compares two input methods by id and returns true if they equal.
+func (im InputMethod) Equal(imb InputMethod) bool {
+	return im.ID == imb.ID
+}
+
+// String returns the key representative string content of the input method.
+func (im InputMethod) String() string {
+	return fmt.Sprintf("ID: %s; Name: %s", im.ID, im.Name)
+}
+
+// Install installs the input method via Chrome API.
+func (im InputMethod) Install(tconn *chrome.TestConn) action.Action {
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return AddInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
+
+// Activate sets the input method to use via Chrome API.
+func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return SetCurrentInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
+
+// InstallAndActivate installs the input method and set it to active via Chrome API.
+func (im InputMethod) InstallAndActivate(tconn *chrome.TestConn) action.Action {
+	return uiauto.Combine(fmt.Sprintf("install and activate input method: %q", im),
+		im.Install(tconn),
+		im.Activate(tconn),
+	)
+}
+
+// Remove uninstalls the input method via Chrome API.
+func (im InputMethod) Remove(tconn *chrome.TestConn) action.Action {
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return RemoveInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
+
+func (im InputMethod) actionWithFullyQualifiedID(tconn *chrome.TestConn, f func(ctx context.Context, fullyQualifiedIMEID string) error) action.Action {
+	return func(ctx context.Context) error {
+		fullyQualifiedIMEID, err := im.FullyQualifiedIMEID(ctx, tconn)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get fully qualified IME ID of %q", im)
+		}
+		return f(ctx, fullyQualifiedIMEID)
+	}
 }
