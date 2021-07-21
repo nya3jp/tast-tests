@@ -46,29 +46,11 @@ func init() {
 				},
 			},
 			{
-				Name:              "60fps",
-				ExtraSoftwareDeps: []string{"android_p"},
-				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "60",
-					dischargeMode: setup.ForceBatteryDischarge,
-				},
-			},
-			{
 				Name:              "30fps_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 				Val: powerCameraPreviewPerfArgs{
 					targetFPS:     "30",
-					dischargeMode: setup.ForceBatteryDischarge,
-				},
-			},
-			{
-				Name:              "60fps_vm",
-				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "60",
 					dischargeMode: setup.ForceBatteryDischarge,
 				},
 			},
@@ -82,29 +64,11 @@ func init() {
 				},
 			},
 			{
-				Name:              "60fps_nobatterymetrics",
-				ExtraSoftwareDeps: []string{"android_p"},
-				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "60",
-					dischargeMode: setup.NoBatteryDischarge,
-				},
-			},
-			{
 				Name:              "30fps_vm_nobatterymetrics",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 				Val: powerCameraPreviewPerfArgs{
 					targetFPS:     "30",
-					dischargeMode: setup.NoBatteryDischarge,
-				},
-			},
-			{
-				Name:              "60fps_vm_nobatterymetrics",
-				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "60",
 					dischargeMode: setup.NoBatteryDischarge,
 				},
 			},
