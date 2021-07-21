@@ -17,8 +17,9 @@ func init() {
 		Func: ChromeGAIA,
 		Desc: "Checks that Chrome can make real GAIA logins",
 		Contacts: []string{
-			"chromeos-ui@google.com",
 			"tast-owners@google.com",
+			"cros-oac@google.com",
+			"chromeos-sw-engprod@google.com",
 		},
 		SoftwareDeps: []string{
 			"chrome",

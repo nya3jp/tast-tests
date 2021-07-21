@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Chrome,
 		Desc:         "Checks that Chrome supports login",
-		Contacts:     []string{"cros-oac@google.com", "rsorokin@google.com"},
+		Contacts:     []string{"cros-oac@google.com", "rsorokin@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:       1,
