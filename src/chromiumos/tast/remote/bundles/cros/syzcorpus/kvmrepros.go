@@ -94,7 +94,7 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	}
 
 	count := 1
-	windowSize := 1
+	windowSize := 3
 	for start := 0; start < len(repros); start += windowSize {
 		// Take windowSize number of repros at a time.
 		end := start + windowSize
