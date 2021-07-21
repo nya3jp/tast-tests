@@ -16,6 +16,63 @@
       "message": "PTAL.",
       "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09bbbc6a_707ecbdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-21T10:26:20Z",
+      "side": 1,
+      "message": "LGTM % nits, please wait for the other reviewers as well",
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be53605_aa938c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-21T10:26:20Z",
+      "side": 1,
+      "message": "nit: also set the interval for such a short timeout.",
+      "range": {
+        "startLine": 698,
+        "startChar": 25,
+        "endLine": 698,
+        "endChar": 32
+      },
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa58c34_a855fdb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-21T10:26:20Z",
+      "side": 1,
+      "message": "nit: also set the interval",
+      "revId": "f9b288b20266a3f04993831dee774ff8bdeb49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
