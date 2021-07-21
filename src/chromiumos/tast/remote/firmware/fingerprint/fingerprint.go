@@ -290,11 +290,11 @@ func readFmapSection(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFwF
 	}()
 
 	outputPath := filepath.Join(tempdirPath, section)
-	if err := d.Conn().Command("dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := d.Conn().CommandContext(ctx, "dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ssh.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to run dump_fmap")
 	}
 
-	out, err := d.Conn().Command("cat", outputPath).Output(ctx, ssh.DumpLogOnError)
+	out, err := d.Conn().CommandContext(ctx, "cat", outputPath).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read dump_fmap output")
 	}
@@ -304,7 +304,7 @@ func readFmapSection(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFwF
 
 // readFirmwareKeyID reads the key id of a firmware file on device.
 func readFirmwareKeyID(ctx context.Context, d *dut.DUT, buildFwFile string) (string, error) {
-	out, err := d.Conn().Command("futility", "show", buildFwFile).Output(ctx, ssh.DumpLogOnError)
+	out, err := d.Conn().CommandContext(ctx, "futility", "show", buildFwFile).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to run futility on device")
 	}
@@ -318,7 +318,7 @@ func readFirmwareKeyID(ctx context.Context, d *dut.DUT, buildFwFile string) (str
 
 // calculateSha256sum calculates the sha256sum of a file on device.
 func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (string, error) {
-	out, err := d.Conn().Command("sha256sum", buildFwFile).Output(ctx, ssh.DumpLogOnError)
+	out, err := d.Conn().CommandContext(ctx, "sha256sum", buildFwFile).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to calculate sha256sum on device")
 	}
@@ -327,7 +327,7 @@ func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (st
 
 // boardFromCrosConfig returns the fingerprint board name from cros_config.
 func boardFromCrosConfig(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
-	out, err := d.Conn().Command("cros_config", "/fingerprint", "board").Output(ctx, ssh.DumpLogOnError)
+	out, err := d.Conn().CommandContext(ctx, "cros_config", "/fingerprint", "board").Output(ssh.DumpLogOnError)
 	return FPBoardName(out), err
 }
 
@@ -352,7 +352,7 @@ func Board(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
 // FirmwarePath returns the path to the fingerprint firmware file on device.
 func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string, error) {
 	cmd := fmt.Sprintf("ls %s%s*.bin", fingerprintFirmwarePathBase, fpBoard)
-	out, err := d.Conn().Command("bash", "-c", cmd).Output(ctx, ssh.DumpLogOnError)
+	out, err := d.Conn().CommandContext(ctx, "bash", "-c", cmd).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", err
 	}
@@ -377,7 +377,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing boo
 	}
 	flashCmd := []string{"flash_fp_mcu", "--noservices", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
-	if err := d.Conn().Command(flashCmd[0], flashCmd[1:]...).Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...).Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")
 	}
 
@@ -393,7 +393,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing boo
 
 // InitializeEntropy initializes the anti-rollback block in RO firmware.
 func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
-	if err := d.Conn().Command("bio_wash", "--factory_init").Run(ctx, ssh.DumpLogOnError); err != nil {
+	if err := d.Conn().CommandContext(ctx, "bio_wash", "--factory_init").Run(ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to initialize entropy")
 	}
 	return nil
@@ -402,7 +402,7 @@ func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
 // CheckFirmwareIsFunctional checks that the AP can talk to the FPMCU and get the version.
 func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) {
 	testing.ContextLog(ctx, "Checking firmware is functional")
-	return EctoolCommand(ctx, d, "version").Output(ctx, ssh.DumpLogOnError)
+	return EctoolCommand(ctx, d, "version").Output(ssh.DumpLogOnError)
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
@@ -498,10 +498,10 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 	testing.ContextLog(ctx, "Rebooting FPMCU")
 	// This command returns error even on success, so ignore error. b/116396469
-	_ = EctoolCommand(ctx, d, "reboot_ec").Run(ctx)
+	_ = EctoolCommand(ctx, d, "reboot_ec").Run()
 	if bootTo == ImageTypeRO {
 		testing.Sleep(ctx, 500*time.Millisecond)
-		err := EctoolCommand(ctx, d, "rwsigaction", "abort").Run(ctx)
+		err := EctoolCommand(ctx, d, "rwsigaction", "abort").Run()
 		if err != nil {
 			return errors.Wrap(err, "failed to abort rwsig")
 		}
@@ -538,7 +538,7 @@ func WaitForRunningFirmwareImage(ctx context.Context, d *dut.DUT, image FWImageT
 
 // RunningFirmwareCopy returns the firmware copy on FPMCU (RO or RW).
 func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
-	out, err := EctoolCommand(ctx, d, "version").Output(ctx)
+	out, err := EctoolCommand(ctx, d, "version").Output()
 	if err != nil {
 		return FWImageType(""), errors.Wrap(err, "failed to query FPMCU version")
 	}
@@ -565,7 +565,7 @@ func CheckRunningFirmwareCopy(ctx context.Context, d *dut.DUT, image FWImageType
 
 // runningFirmwareVersion returns the current RO or RW firmware version on the FPMCU.
 func runningFirmwareVersion(ctx context.Context, d *dut.DUT, image FWImageType) (string, error) {
-	out, err := EctoolCommand(ctx, d, "version").Output(ctx, ssh.DumpLogOnError)
+	out, err := EctoolCommand(ctx, d, "version").Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to query FPMCU version")
 	}
@@ -619,7 +619,7 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *dut.DUT, expecte
 func RollbackInfo(ctx context.Context, d *dut.DUT) ([]byte, error) {
 	cmd := []string{"ectool", "--name=cros_fp", "rollbackinfo"}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
-	out, err := d.Conn().Command(cmd[0], cmd[1:]...).Output(ctx, ssh.DumpLogOnError)
+	out, err := d.Conn().CommandContext(ctx, cmd[0], cmd[1:]...).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return []byte{}, errors.Wrap(err, "failed to query FPMCU rollbackinfo")
 	}
@@ -675,7 +675,7 @@ func AddEntropy(ctx context.Context, d *dut.DUT, reset bool) error {
 	if reset {
 		args = append(args, "reset")
 	}
-	return EctoolCommand(ctx, d, args[0:]...).Run(ctx)
+	return EctoolCommand(ctx, d, args[0:]...).Run()
 }
 
 // BioWash calls bio_wash to reset the entropy key material on the FPMCU.
@@ -684,7 +684,7 @@ func BioWash(ctx context.Context, d *dut.DUT, reset bool) error {
 	if !reset {
 		cmd = append(cmd, "--factory_init")
 	}
-	return d.Conn().Command(cmd[0], cmd[1:]...).Run(ctx)
+	return d.Conn().CommandContext(ctx, cmd[0], cmd[1:]...).Run()
 }
 
 // parseColonDelimitedOutput parses colon delimited information to a map.
@@ -703,13 +703,13 @@ func parseColonDelimitedOutput(output string) map[string]string {
 }
 
 // EctoolCommand constructs an "ectool" command for the FPMCU.
-func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
-	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(args...)
+func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.CmdCtx {
+	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(ctx, args...)
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd.Args))
 	return cmd
 }
 
-func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
+func rawFPFrameCommand(ctx context.Context, d *dut.DUT) *ssh.CmdCtx {
 	return EctoolCommand(ctx, d, "fpframe", "raw")
 }
 
@@ -724,7 +724,7 @@ Failed to get FP sensor frame
 	cmd := rawFPFrameCommand(ctx, d)
 	cmd.Stderr = &stderrBuf
 
-	if err := cmd.Run(ctx); err == nil {
+	if err := cmd.Run(); err == nil {
 		return errors.New("command to read raw frame succeeded")
 	}
 

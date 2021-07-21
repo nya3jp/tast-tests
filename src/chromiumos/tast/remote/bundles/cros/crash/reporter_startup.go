@@ -116,7 +116,7 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 		// Restore expected contents if crash_reporter --init didn't work,
 		// so that no matter what this test will end with the expected core pattern.
 		if !goodCore {
-			if err := d.Conn().Command("/bin/bash", "-c", fmt.Sprintf("/bin/echo '%s' > %s", commoncrash.ExpectedCorePattern(), commoncrash.CorePattern)).Run(cleanupCtx); err != nil {
+			if err := d.Conn().CommandContext(cleanupCtx, "/bin/bash", "-c", fmt.Sprintf("/bin/echo '%s' > %s", commoncrash.ExpectedCorePattern(), commoncrash.CorePattern)).Run(); err != nil {
 				s.Errorf("Failed restoring core pattern file %s: %s", commoncrash.CorePattern, err)
 			}
 		}

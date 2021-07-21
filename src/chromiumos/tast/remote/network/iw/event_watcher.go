@@ -45,7 +45,7 @@ type EventWatcher struct {
 	done   chan struct{}
 	cancel context.CancelFunc
 	dut    *dut.DUT
-	cmd    *ssh.Cmd
+	cmd    *ssh.CmdCtx
 	events chan *Event
 }
 
@@ -84,12 +84,12 @@ func NewEventWatcher(ctx context.Context, dut *dut.DUT, ops ...EventWatcherOptio
 
 // start starts the "iw event" process and parser routine in background.
 func (e *EventWatcher) start(ctx context.Context) error {
-	e.cmd = e.dut.Command("iw", "event", "-t")
+	e.cmd = e.dut.Conn().CommandContext(ctx, "iw", "event", "-t")
 	r, err := e.cmd.StdoutPipe()
 	if err != nil {
 		return err
 	}
-	if err := e.cmd.Start(ctx); err != nil {
+	if err := e.cmd.Start(); err != nil {
 		return err
 	}
 	ctx, e.cancel = context.WithCancel(ctx)
@@ -104,9 +104,9 @@ func (e *EventWatcher) start(ctx context.Context) error {
 // Stop stops the EventWatcher.
 // Note that it also closes the channel, that is, events are dropped even if
 // they arrived before calling Stop() if the channel buffer is full.
-func (e *EventWatcher) Stop(ctx context.Context) error {
+func (e *EventWatcher) Stop() error {
 	e.cmd.Abort()
-	e.cmd.Wait(ctx) // Ignore the error due to abort.
+	e.cmd.Wait() // Ignore the error due to abort.
 	e.cancel()
 	<-e.done // Wait for the bg routine to end.
 	return nil

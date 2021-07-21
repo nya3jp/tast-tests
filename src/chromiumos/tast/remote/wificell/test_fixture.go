@@ -984,7 +984,7 @@ func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Co
 		return errors.Wrap(err, "failed to start iw.EventLogger")
 	}
 	errf := f(ctx)
-	if err := el.Stop(ctx); err != nil {
+	if err := el.Stop(); err != nil {
 		// Let's also keep errf if available. Wrapf is equivalent to Errorf when errf==nil.
 		return errors.Wrapf(errf, "failed to stop iw.EventLogger, err=%s", err.Error())
 	}
@@ -1149,7 +1149,7 @@ func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *AP
 	if err != nil {
 		return errors.Wrap(err, "failed to start iw.EventWatcher")
 	}
-	defer ew.Stop(ctx)
+	defer ew.Stop()
 
 	// Action frame might be lost, give it some retries.
 	for i := 0; i < maxRetry; i++ {

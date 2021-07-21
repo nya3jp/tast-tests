@@ -95,12 +95,12 @@ func ECCrash(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if out, err := d.Command("logger", "Running ECCrash").CombinedOutput(ctx); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "logger", "Running ECCrash").CombinedOutput(); err != nil {
 		s.Logf("WARNING: Failed to log info message: %s", out)
 	}
 
 	// Sync filesystem to minimize impact of the panic on other tests
-	if out, err := d.Command("sync").CombinedOutput(ctx); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "sync").CombinedOutput(); err != nil {
 		s.Fatalf("Failed to sync filesystems: %s", out)
 	}
 

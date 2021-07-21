@@ -80,17 +80,17 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 
 	// Clean up Autotest working dir, in case we're out of space.
 	// NB: we need 'sh' to handle the glob.
-	if err := r.host.Command("sh", "-c", strings.Join([]string{"rm", "-rf", autotestWorkdirGlob}, " ")).Run(shortCtx); err != nil {
+	if err := r.host.CommandContext(shortCtx, "sh", "-c", strings.Join([]string{"rm", "-rf", autotestWorkdirGlob}, " ")).Run(); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrapf(err, "failed to remove workdir %q", autotestWorkdirGlob)
 	}
 
 	// Set up working dir.
-	if err := r.host.Command("rm", "-rf", r.workDir()).Run(shortCtx); err != nil {
+	if err := r.host.CommandContext(shortCtx, "rm", "-rf", r.workDir()).Run(); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrapf(err, "failed to remove workdir %q", r.workDir())
 	}
-	if err := r.host.Command("mkdir", "-p", r.workDir()).Run(shortCtx); err != nil {
+	if err := r.host.CommandContext(shortCtx, "mkdir", "-p", r.workDir()).Run(); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrapf(err, "failed to create workdir %q", r.workDir())
 	}
@@ -129,7 +129,7 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 	// TODO(crbug.com/839164): Current CrOS on router haven't got the fix in crrev.com/c/1979112.
 	// Let's keep the truncate and remove it after we have router updated.
 	const umaEventsPath = "/var/lib/metrics/uma-events"
-	if err := r.host.Command("truncate", "-s", "0", "-c", umaEventsPath).Run(shortCtx); err != nil {
+	if err := r.host.CommandContext(shortCtx, "truncate", "-s", "0", "-c", umaEventsPath).Run(); err != nil {
 		// Don't return error here, as it might not bother the test as long as it does not
 		// fill the whole partition.
 		testing.ContextLogf(shortCtx, "Failed to truncate %s: %v", umaEventsPath, err)
@@ -145,9 +145,9 @@ func newLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		defer st.End()
 
 		// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
-		r.host.Command("stop", "wpasupplicant").Run(shortCtx)
+		r.host.CommandContext(shortCtx, "stop", "wpasupplicant").Run()
 		// Stop avahi if available as it just causes unnecessary network traffic.
-		r.host.Command("stop", "avahi").Run(shortCtx)
+		r.host.CommandContext(shortCtx, "stop", "avahi").Run()
 	}
 	stopDaemon()
 
@@ -214,7 +214,7 @@ func (r *legacyRouterStruct) setupWifiPhys(ctx context.Context) error {
 				return errors.Wrapf(err, "failed to set bitmap for %s", p.Name)
 			}
 		}
-		phyIDBytes, err := r.host.Command("cat", fmt.Sprintf("/sys/class/ieee80211/%s/index", p.Name)).Output(ctx)
+		phyIDBytes, err := r.host.CommandContext(ctx, "cat", fmt.Sprintf("/sys/class/ieee80211/%s/index", p.Name)).Output()
 		if err != nil {
 			return errors.Wrapf(err, "failed to get phy idx for %s", p.Name)
 		}
@@ -251,7 +251,7 @@ func (r *legacyRouterStruct) configureRNG(ctx context.Context) error {
 	const rngCurrentPath = "/sys/class/misc/hw_random/rng_current"
 	const wantRng = "tpm-rng"
 
-	out, err := r.host.Command("cat", rngCurrentPath).Output(ctx)
+	out, err := r.host.CommandContext(ctx, "cat", rngCurrentPath).Output()
 	if err != nil {
 		// The system might not support hw_random, skip the configuration.
 		return nil
@@ -261,7 +261,7 @@ func (r *legacyRouterStruct) configureRNG(ctx context.Context) error {
 		return nil
 	}
 
-	out, err = r.host.Command("cat", rngAvailPath).Output(ctx)
+	out, err = r.host.CommandContext(ctx, "cat", rngAvailPath).Output()
 	if err != nil {
 		return err
 	}
@@ -320,7 +320,7 @@ func (r *legacyRouterStruct) Close(ctx context.Context) error {
 	if err := r.stopLogCollectors(ctx); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
 	}
-	if err := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
+	if err := r.host.CommandContext(ctx, "rm", "-rf", r.workDir()).Run(); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
 	}
 	return firstErr
@@ -800,11 +800,11 @@ func (r *legacyRouterStruct) devicePowered(ctx context.Context, dev string) (boo
 	// The dbus call may fail if shill has not yet noticed and registered the device.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		b, err = r.host.Command("gdbus", "call", "--system",
+		b, err = r.host.CommandContext(ctx, "gdbus", "call", "--system",
 			"--dest", "org.chromium.flimflam",
 			"--object-path", fmt.Sprintf("/device/%s", dev),
 			"--method", "org.chromium.flimflam.Device.GetProperties",
-		).Output(ctx)
+		).Output()
 		return err
 	}, &testing.PollOptions{
 		Timeout:  poweredTimeout,
@@ -850,9 +850,9 @@ func (r *legacyRouterStruct) claimBridge(ctx context.Context, br string) error {
 		}
 
 		// Disable the bridge to prevent shill from spawning dhcpcd on it.
-		if err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
+		if err := r.host.CommandContext(ctx, "dbus-send", "--system", "--type=method_call", "--print-reply",
 			"--dest=org.chromium.flimflam", fmt.Sprintf("/device/%s", br), "org.chromium.flimflam.Device.Disable",
-		).Run(ctx, ssh.DumpLogOnError); err != nil {
+		).Run(ssh.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "failed to set bridge %s down", br)
 		}
 
@@ -969,7 +969,7 @@ func (r *legacyRouterStruct) collectLogs(ctx context.Context, suffix string) err
 func (r *legacyRouterStruct) stopLogCollectors(ctx context.Context) error {
 	var firstErr error
 	for _, c := range r.logCollectors {
-		if err := c.Close(ctx); err != nil {
+		if err := c.Close(); err != nil {
 			wifiutil.CollectFirstErr(ctx, &firstErr, err)
 		}
 	}
@@ -1009,8 +1009,8 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 	const lsbReleasePath = "/etc/lsb-release"
 	const crosReleaseBoardKey = "CHROMEOS_RELEASE_BOARD"
 
-	cmd := host.Command("cat", lsbReleasePath)
-	out, err := cmd.Output(ctx)
+	cmd := host.CommandContext(ctx, "cat", lsbReleasePath)
+	out, err := cmd.Output()
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to read %s", lsbReleasePath)
 	}

@@ -185,7 +185,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
 		}
-		defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
+		defer d.Conn().CommandContext(ctx, "rm", "-rf", response.TargetDir).Output()
 
 		newCacheFile := filepath.Join(response.TargetDir, response.PackagesCacheName)
 		genCacheFile := filepath.Join(response.TargetDir, response.GeneratedPackagesCacheName)

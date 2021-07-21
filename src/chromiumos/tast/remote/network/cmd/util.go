@@ -15,7 +15,7 @@ import (
 // FindCmdPath returns full path for the binary on the given device, defined
 // by its SSH connection.
 func FindCmdPath(ctx context.Context, conn *ssh.Conn, cmd string) (string, error) {
-	res, err := conn.Command("which", cmd).Output(ctx)
+	res, err := conn.CommandContext(ctx, "which", cmd).Output()
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to run command 'which %s'", cmd)
 	}

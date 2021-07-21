@@ -67,7 +67,7 @@ const (
 )
 
 func flashProtectState(ctx context.Context, d *dut.DUT) (string, error) {
-	bytes, err := EctoolCommand(ctx, d, "flashprotect").Output(ctx)
+	bytes, err := EctoolCommand(ctx, d, "flashprotect").Output()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get flashprotect state")
 	}
@@ -160,11 +160,11 @@ func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error
 	}
 	// TODO(b/116396469): Add error checking once it's fixed.
 	// This command can return error even on success, so ignore error for now.
-	_ = EctoolCommand(ctx, d, "flashprotect", softwareWriteProtect).Run(ctx)
+	_ = EctoolCommand(ctx, d, "flashprotect", softwareWriteProtect).Run()
 	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
 	// it to complete before attempting to reboot.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return EctoolCommand(ctx, d, "version").Run(ctx)
+		return EctoolCommand(ctx, d, "version").Run()
 	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
 		return errors.Wrap(err, "failed to poll after running flashprotect")
 	}
@@ -195,7 +195,7 @@ func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBo
 	return nil
 }
 
-func sysInfoFlagsCommand(ctx context.Context, d *dut.DUT) *ssh.Cmd {
+func sysInfoFlagsCommand(ctx context.Context, d *dut.DUT) *ssh.CmdCtx {
 	return EctoolCommand(ctx, d, "sysinfo", "flags")
 }
 
@@ -207,7 +207,7 @@ func CheckSystemIsLocked(ctx context.Context, d *dut.DUT) error {
 	// See https://chromium.googlesource.com/chromiumos/platform/ec/+/10fe09bf9aaf59213d141fc1d479ed259f786049/include/ec_commands.h#1865
 	const sysInfoSystemIsLockedFlags = "0x0000000d"
 
-	flagsBytes, err := sysInfoFlagsCommand(ctx, d).Output(ctx, ssh.DumpLogOnError)
+	flagsBytes, err := sysInfoFlagsCommand(ctx, d).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return errors.Wrap(err, "failed to get sysinfo flags")
 	}
