@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68073f88_f13ed241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-21T07:53:57Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "138d619d57bc9c499846bb0fb127219f47c04723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca59389_58d4a791",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-07-21T07:15:35Z",
       "side": 1,
       "message": "You can use IsNodeFound() as well, if you want to keep the original logic.\nBut this one is good as well.",
+      "range": {
+        "startLine": 140,
+        "startChar": 16,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "138d619d57bc9c499846bb0fb127219f47c04723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8698334_4ce7560d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/prompt_for_download_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-21T07:53:57Z",
+      "side": 1,
+      "message": "ok, I\u0027ll keep it as it is.",
+      "parentUuid": "5ca59389_58d4a791",
       "range": {
         "startLine": 140,
         "startChar": 16,
