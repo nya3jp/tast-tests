@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83a635d9_0f0a5c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-21T02:50:53Z",
+      "side": 1,
+      "message": "If there is no error in `croshealthd.RunAndParseJSONTelem`, there are two cases:\n1. No network info\n2. Contain network info\n\nSo in this line, if the length is smaller than 1, it should be \"No network info\" case. In this case, I think logging anything is useless?",
+      "parentUuid": "c23809e8_5573d68a",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 49
+      },
+      "revId": "03b94906a82b0ab4ffb65955eb7fda80563c944a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58efc9dc_cc0d96ec",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 1
@@ -106,6 +130,30 @@
       "writtenOn": "2021-07-21T01:28:59Z",
       "side": 1,
       "message": "nit: don\u0027t use |result|, doesn\u0027t work well with godoc.",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "03b94906a82b0ab4ffb65955eb7fda80563c944a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b197d3_5fb76675",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-21T02:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58efc9dc_cc0d96ec",
       "range": {
         "startLine": 105,
         "startChar": 3,
