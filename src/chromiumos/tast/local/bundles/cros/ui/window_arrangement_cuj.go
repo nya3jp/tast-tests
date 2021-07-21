@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -28,10 +29,17 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type windowArrangementCUJTestParam struct {
+	ct     lacros.ChromeType
+	tablet bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -46,13 +54,27 @@ func init() {
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
 		Params: []testing.Param{
 			{
-				Name:    "clamshell_mode",
-				Val:     false,
+				Name: "clamshell_mode",
+				Val: windowArrangementCUJTestParam{
+					ct: lacros.ChromeTypeChromeOS,
+				},
 				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name: "tablet_mode",
-				Val:  true,
+				Val: windowArrangementCUJTestParam{
+					ct:     lacros.ChromeTypeChromeOS,
+					tablet: true,
+				},
+			},
+			{
+				Name: "lacros",
+				Val: windowArrangementCUJTestParam{
+					ct: lacros.ChromeTypeLacros,
+				},
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -74,17 +96,35 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	tabletMode := s.Param().(bool)
+	testParam := s.Param().(windowArrangementCUJTestParam)
+	tabletMode := testParam.tablet
 
 	var cr *chrome.Chrome
-	if tabletMode {
-		var err error
-		if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
-			s.Fatal("Failed to init: ", err)
+	var cs ash.ConnSource
+	var l *launcher.LacrosChrome
+
+	if testParam.ct == lacros.ChromeTypeChromeOS {
+		if tabletMode {
+			var err error
+			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
+				s.Fatal("Failed to init: ", err)
+			}
+			defer cr.Close(ctx)
+		} else {
+			cr = s.FixtValue().(*chrome.Chrome)
 		}
-		defer cr.Close(ctx)
+		cs = cr
 	} else {
-		cr = s.FixtValue().(*chrome.Chrome)
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		var artifactPath string
+		artifactPath = s.DataPath(launcher.DataArtifact)
+
+		var err error
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, testParam.ct)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(ctx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -170,7 +210,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	connPiP, err := cr.NewConn(ctx, srv.URL+"/pip.html")
+	connPiP, err := cs.NewConn(ctx, srv.URL+"/pip.html")
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
@@ -179,7 +219,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
-	connNoPiP, err := cr.NewConn(ctx, srv.URL+"/pip.html")
+	connNoPiP, err := cs.NewConn(ctx, srv.URL+"/pip.html")
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
@@ -190,17 +230,21 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// The second tab enters the system PiP mode.
-	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-	pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
-	// Assume that the meeting code is the only textfield in the webpage.
-	if err := ui.LeftClick(pipButton)(ctx); err != nil {
-		s.Fatal("Failed to click the pip button: ", err)
-	}
-	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
-		s.Fatal("Failed to wait for quiescence: ", err)
+	// Only show pip window for ash-chrome.
+	// TODO(crbug/1232492): Remove this after fix.
+	if testParam.ct == lacros.ChromeTypeChromeOS {
+		// The second tab enters the system PiP mode.
+		webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+		pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
+		if err := ui.LeftClick(pipButton)(ctx); err != nil {
+			s.Fatal("Failed to click the pip button: ", err)
+		}
+		if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
+			s.Fatal("Failed to wait for quiescence: ", err)
+		}
 	}
 
+	// Gets info of the browser window, assuming it is the active window.
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
@@ -215,6 +259,14 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	w0, err := ash.GetWindow(ctx, tconn, id0)
 	if err != nil {
 		s.Fatal("Failed to get the window: ", err)
+	}
+
+	// Lacros specific setup.
+	if testParam.ct == lacros.ChromeTypeLacros {
+		// Close about:blank created at startup after creating other tabs.
+		if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 0); err != nil {
+			s.Fatal("Failed to close about:blank: ", err)
+		}
 	}
 
 	var pc pointer.Context
@@ -252,7 +304,14 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			if err := pc.Drag(upperLeftPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to resize window from the upper left to the middle")
 			}
-			if err := pc.Drag(middlePt, pc.DragTo(upperLeftPt, duration))(ctx); err != nil {
+
+			w0, err = ash.GetWindow(ctx, tconn, id0)
+			if err != nil {
+				return errors.Wrap(err, "failed to get window info")
+			}
+			bounds = w0.BoundsInRoot
+			newUpperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
+			if err := pc.Drag(newUpperLeftPt, pc.DragTo(upperLeftPt, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to resize window back from the middle")
 			}
 
@@ -293,7 +352,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for window to become minimized")
 			}
 
-			// Snap the window to the left and drag the second tab to snap to the right.
+			// Restore window.
 			if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
 				return errors.Wrap(err, "failed to set the window state to normal")
 			}
@@ -302,6 +361,19 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}, &testing.PollOptions{Timeout: timeout}); err != nil {
 				return errors.Wrap(err, "failed to wait for window to become normal")
 			}
+
+			// Lacros browser sometime restores to a different bounds so calculate
+			// a new grab point.
+			if testParam.ct == lacros.ChromeTypeLacros {
+				w0, err = ash.GetWindow(ctx, tconn, id0)
+				if err != nil {
+					return errors.Wrap(err, "failed to get window info")
+				}
+				bounds = w0.BoundsInRoot
+				tabStripGapPt = coords.NewPoint(bounds.Left+bounds.Width*3/4, bounds.Top+10)
+			}
+
+			// Snap the window to the left and drag the second tab to snap to the right.
 			testing.ContextLog(ctx, "Snapping the window to the left")
 			if err := pc.Drag(tabStripGapPt, pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to snap the window to the left")
@@ -358,17 +430,21 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 				return errors.Wrap(err, "failed to create a new desk")
 			}
+			// Wait for location-change events to be completed.
+			if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to wait for location-change events to be completed")
+			}
 			w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to find the window in the overview mode")
 			}
-			// Wait for 2 seconds for location-change events to be completed.
-			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait for location-change events to be completed")
-			}
 			// Drag the first window from overview grid to snap.
 			if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag window from overview to snap")
+			}
+			// Wait for location-change events to be completed.
+			if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to wait for location-change events to be completed")
 			}
 			w, err = ash.FindFirstWindowInOverview(ctx, tconn)
 			if err != nil {
@@ -382,11 +458,13 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrapf(err, "expected more than 1 desk mini-views; found %v", deskMiniViewCount)
 			}
 			// Drag the second window to another desk to obtain an empty overview grid.
-			if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(deskMiniViews[1].Location.CenterPoint(), time.Second))(ctx); err != nil {
+			if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(),
+				ui.Sleep(2*time.Second),
+				pc.DragTo(deskMiniViews[1].Location.CenterPoint(), duration))(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 			}
-			// Wait for 2 seconds for location-change events to be completed.
-			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+			// Wait for location-change events to be completed.
+			if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
 				return errors.Wrap(err, "failed to wait for location-change events to be completed")
 			}
 
