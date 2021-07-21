@@ -16,8 +16,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -280,51 +278,6 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait until over activity is ready")
 	}
 
-	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	if pdInfo == nil {
-		return errors.New("failed to find primary display info")
-	}
-
-	tew, err := input.Touchscreen(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create touch screen event writer")
-	}
-	defer tew.Close()
-
-	stw, err := tew.NewSingleTouchWriter()
-	if err != nil {
-		return errors.Wrap(err, "failed to create single touch screen writer")
-	}
-	defer stw.Close()
-
-	tcc := tew.NewTouchCoordConverter(pdInfo.Bounds.Size())
-
-	// 3- Snap the over activity to the left - Start.
-	from := coords.NewPoint(pdInfo.WorkArea.Width/2, 0)
-	to := coords.NewPoint(pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height/2)
-
-	x0, y0 := tcc.ConvertLocation(from)
-	x1, y1 := tcc.ConvertLocation(to)
-
-	//   3-1- Swipe the over activity from top-center to the middle of the screen.
-	if err := stw.Swipe(ctx, x0, y0, x1, y1, 500*time.Millisecond); err != nil {
-		return errors.Wrap(err, "failed to swipe")
-	}
-
-	//   3-2- Continue swiping the over activity from the middle of the screen to the top-left corner.
-	to = coords.NewPoint(1, 1)
-	x2, y2 := tcc.ConvertLocation(to)
-
-	if err := stw.Swipe(ctx, x1, y1, x2, y2, 500*time.Millisecond); err != nil {
-		return errors.Wrap(err, "failed to swipe")
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrap(err, "failed to finish the swipe gesture")
-	}
-
 	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for over activity")
@@ -332,6 +285,10 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	//   3-3- Make sure the over activity is snapped to the left.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24Secondary, ash.WMEventSnapLeft); err != nil {
+			return errors.Wrapf(err, "failed to left snap %s", wm.Pkg24Secondary)
+		}
+
 		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for over activity"))
@@ -347,20 +304,8 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// 3- Snap the over activity to the left - End.
 
 	// 4- Snap the under activity to the right - Start.
-	overActivityWInfo, err = ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for over activity")
-	}
-
-	mid := coords.NewPoint(pdInfo.WorkArea.Width*3/4, pdInfo.WorkArea.Height/2)
-	x, y := tcc.ConvertLocation(mid)
-
-	//   4-1- Touch the middle of the right half of the screen.
-	if err := stw.Move(x, y); err != nil {
-		return errors.Wrap(err, "failed to move touch")
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrap(err, "failed to end touch")
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventSnapRight); err != nil {
+		return errors.Wrapf(err, "failed to right snap %s", wm.Pkg24)
 	}
 
 	//   4-2- Make sure the under activity is snapped to the right.
