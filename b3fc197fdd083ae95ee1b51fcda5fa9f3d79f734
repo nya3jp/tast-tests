@@ -326,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6e2155a_82c0e7dc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T02:09:16Z",
+      "side": 1,
+      "message": "As far as adding metadata, I\u0027ve been looking into doing something similar to this (https://chromium-review.googlesource.com/c/chromium/src/+/3042414) but nothing obvious jumps out at me.",
+      "parentUuid": "e6a804f0_93defd39",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a4c622d_d8234ec4",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -373,6 +397,24 @@
       "side": 1,
       "message": "Can we pass the destination node and let the utility method calculate its location when needed",
       "parentUuid": "419322d7_fc6c886c",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f346773_539c5066",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T02:09:16Z",
+      "side": 1,
+      "message": "I changed this function to take the source and destination index as parameters.",
+      "parentUuid": "3c208a14_be552584",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -432,6 +474,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b05058b1_4b00581b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T02:09:16Z",
+      "side": 1,
+      "message": "I added a check for this, it will require landing this change: https://chromium-review.googlesource.com/c/chromium/src/+/3042414",
+      "parentUuid": "e79ccce8_13ae375c",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd7ab73_bbb63d2c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -479,6 +539,24 @@
       "side": 1,
       "message": "we should be able to wait for accessibility alert that we send when a page changes?\n\nsomething like:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go;drc\u003dd879094e95269ff4164fe95319eb50f740fe52c9;l\u003d159",
       "parentUuid": "20d3ea66_60defb11",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e260750_de227036",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-21T02:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e769095_e91e5701",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
