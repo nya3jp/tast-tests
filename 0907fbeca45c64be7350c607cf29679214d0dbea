@@ -33,6 +33,29 @@
       "message": "LGTM tast shadow reviewer",
       "revId": "0907fbeca45c64be7350c607cf29679214d0dbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9925b2a8_1580103c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-07-21T16:53:43Z",
+      "side": 1,
+      "message": "I understand that maintaining long comments like this is hard and over the time it is impossible, but can you please at least delete this comment and all reference numbers in the code?",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 55
+      },
+      "revId": "0907fbeca45c64be7350c607cf29679214d0dbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
