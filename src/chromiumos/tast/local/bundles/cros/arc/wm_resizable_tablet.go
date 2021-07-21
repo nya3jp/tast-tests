@@ -127,7 +127,7 @@ func wmRT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		},
 	}
 
-	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, luActivities, wm.CheckMaximizeResizable); err != nil {
+	if err := wm.TabletShelfHideShowHelper(ctx, tconn, a, d, luActivities, wm.CheckMaximizeNonResizable); err != nil {
 		return err
 	}
 
@@ -143,7 +143,7 @@ func wmRT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		},
 	}
 
-	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities, wm.CheckMaximizeResizable)
+	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities, wm.CheckMaximizeNonResizable)
 }
 
 // wmRT15 covers resizable/tablet: display size change.
