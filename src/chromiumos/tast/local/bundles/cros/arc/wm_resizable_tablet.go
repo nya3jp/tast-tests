@@ -336,10 +336,6 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer cleanupRotation()
 
-	if err := testing.Sleep(ctx, wm.RotationAnimationDuration); err != nil {
-		return errors.Wrap(err, "failed to sleep for rotation to portrait animation to finish")
-	}
-
 	// 7- Get app window info for assertions. Over activity must be snapped to the top and under activity to the bottom.
 	if err := wm.CheckHorizontalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
 		return errors.Wrap(err, "failed to assert horizontal split window bounds in portrait mode")
@@ -351,10 +347,6 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 	defer cleanupRotation()
-
-	if err := testing.Sleep(ctx, wm.RotationAnimationDuration); err != nil {
-		return errors.Wrap(err, "failed to sleep for rotation to landscape animation to finish")
-	}
 
 	// 9- Get app window info for assertions. Over activity must be snapped to the left and under activity to the right.
 	if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
