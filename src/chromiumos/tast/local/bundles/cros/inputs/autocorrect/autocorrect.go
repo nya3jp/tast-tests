@@ -5,6 +5,8 @@
 // Package autocorrect contains common defs shared by Autocorrect-related tests.
 package autocorrect
 
+import "chromiumos/tast/local/chrome/ime"
+
 // UndoMethod enum corresponds to ways autocorrect can be undone.
 type UndoMethod int
 
@@ -18,8 +20,8 @@ const (
 
 // TestCase struct encapsulates parameters for each Autocorrect test.
 type TestCase struct {
-	InputMethodID string
-	MisspeltWord  string
-	CorrectWord   string
-	UndoMethod    UndoMethod
+	InputMethod  ime.InputMethod
+	MisspeltWord string
+	CorrectWord  string
+	UndoMethod   UndoMethod
 }
