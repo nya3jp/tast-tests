@@ -103,17 +103,11 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	}
 	defer activity.Stop(cleanupCtx, tconn)
 
-	device, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer device.Close(cleanupCtx)
-
-	if err := device.WaitForIdle(ctx, 5*time.Second); err != nil {
-		s.Fatal("Failed to wait for device idle: ", err)
+	if err := clickShareTextButton(ctx, a); err != nil {
+		s.Fatal("Failed to click share button in test app: ", err)
 	}
 
-	if err := shareTextAndVerify(ctx, device, shareChan); err != nil {
+	if err := verifySharedText(ctx, shareChan); err != nil {
 		s.Fatal("Failed to share text from test app: ", err)
 	}
 }
@@ -176,19 +170,37 @@ func installTestApps(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tconn *
 
 }
 
-func shareTextAndVerify(ctx context.Context, device *ui.Device, shareChan chan shareResult) error {
+func clickShareTextButton(ctx context.Context, a *arc.ARC) error {
 	const (
 		shareTextButtonID = testPackage + ":id/share_text_button"
-
-		expectedSharedTitle = "Shared title"
-		expectedSharedText  = "Shared text"
 	)
+
+	device, err := a.NewUIDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to initialize UI Automator")
+	}
+	// Deliberately close the UI Automator server as soon as we're done with
+	// it, rather than at the end of the test. On rvc-arc, sharing sometimes
+	// does not happen until the UI Automator server is closed.
+	defer device.Close(ctx)
+
+	if err := device.WaitForIdle(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for device idle")
+	}
 
 	// Clicking the "Share Text" button will send share data directly to
 	// any installed WebAPK.
 	if err := device.Object(ui.ID(shareTextButtonID)).Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click share button")
 	}
+	return nil
+}
+
+func verifySharedText(ctx context.Context, shareChan chan shareResult) error {
+	const (
+		expectedSharedTitle = "Shared title"
+		expectedSharedText  = "Shared text"
+	)
 
 	var receivedShare shareResult
 	select {
