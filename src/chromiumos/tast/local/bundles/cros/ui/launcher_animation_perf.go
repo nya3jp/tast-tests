@@ -31,6 +31,7 @@ func init() {
 		Contacts: []string{
 			"newcomer@chromium.org", "tbarzic@chromium.org", "cros-launcher-prod-notifications@google.com",
 			"mukai@chromium.org", // original test author
+			"cros-system-ui-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

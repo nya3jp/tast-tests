@@ -30,6 +30,7 @@ func init() {
 			"seewaifu@chromium.org",
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",
+			"cros-system-ui-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
