@@ -70,7 +70,7 @@ func stringInSlice(a string, list []string) bool {
 	return false
 }
 
-func doRemoteSleep(ctx context.Context, s *testing.State, remoteClock string) *ssh.CmdCtx {
+func doRemoteSleep(ctx context.Context, s *testing.State, remoteClock string) *ssh.Cmd {
 	const exe = "/usr/local/libexec/tast/helpers/local/cros/hardware.VerifyRemoteSleep.timersignal"
 	sleepArg := strconv.FormatInt(int64(sleepDuration.Milliseconds()), 10)
 	itersArg := strconv.FormatInt(sleepIterations, 10)
