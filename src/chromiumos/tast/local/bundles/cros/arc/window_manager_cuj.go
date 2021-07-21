@@ -371,17 +371,20 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 				return err
 			}
 
-			// Calling ash.SetARCAppWindowState() doesn't work in this subtest, using act.SetWindowState instead.
-			// Pre-N applications trigger a pop-up dialog  asking for confirmation. ash.SetARCAppWindowState() will
-			// "wait forever" for a window event to occur, but this event won't occur due to the pop-up dialog.
-			if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
-				return err
-			}
-
 			if sdkVer < arc.SDKR {
+				// Calling ash.SetARCAppWindowState() doesn't work in this subtest, using act.SetWindowState instead.
+				// Pre-N applications trigger a pop-up dialog  asking for confirmation. ash.SetARCAppWindowState() will
+				// "wait forever" for a window event to occur, but this event won't occur due to the pop-up dialog.
+				if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
+					return err
+				}
 				// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks in P.
 				// We treat pre-N apps as resizable from R, so this is only needed in P.
 				if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+					return err
+				}
+			} else {
+				if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
 					return err
 				}
 			}
@@ -391,14 +394,17 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 				return err
 			}
 
-			if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
-				return err
-			}
-
 			if sdkVer < arc.SDKR {
+				if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+					return err
+				}
 				// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks in P.
 				// We treat pre-N apps as resizable from R, so this is only needed in P.
 				if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+					return err
+				}
+			} else {
+				if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
 					return err
 				}
 			}
