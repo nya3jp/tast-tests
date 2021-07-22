@@ -16,6 +16,29 @@
       "message": "Hi Jorge,\n\nHere is a small fix regarding the RunOCI failure. Please let me know if this is acceptable, or if more changes are necessary (I\u0027m afraid I don\u0027t know Go currently, but this seems pretty easy of a change from my end).\n\nThanks,\n~Jordan",
       "revId": "ecad7aa32ab0c250854fff09f660bab25055940e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8e14d5_a3d263ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2021-07-22T22:43:31Z",
+      "side": 1,
+      "message": "I think we need to disable this test first before glibc update. Otherwise, the expected stdout will not match for a while (prebuilts etc.) causing builder failures.\nThe test should be re-enabled once glibc update is stable.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 126
+      },
+      "revId": "ecad7aa32ab0c250854fff09f660bab25055940e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
