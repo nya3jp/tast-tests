@@ -16,6 +16,24 @@
       "message": "Either use a defer or reset state at the beginning of the test.",
       "revId": "ccf7cb56ad63b84bb3f06a06c41de56c76ceac9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f1b99c_2a8979ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T08:03:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51903527_3d722d47",
+      "revId": "ccf7cb56ad63b84bb3f06a06c41de56c76ceac9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
