@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fb734a_c2c75599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T15:27:52Z",
+      "side": 1,
+      "message": "Btw, I\u0027m not sure why all of those CQ runs failed at \u0027call build API script\u0027 that seems unrelated to me.",
+      "revId": "bf577f8aae6a2aed056660b8cdc197438cc1a9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
