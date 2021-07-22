@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5abbc04_03af5d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/flipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-22T00:56:18Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t get it. selectAccount is an actual item. In the app, I can see like this, select \"account\" option. so used selectAccount for readability.",
+      "parentUuid": "8718e976_8899e0ad",
+      "range": {
+        "startLine": 290,
+        "startChar": 11,
+        "endLine": 290,
+        "endChar": 24
+      },
+      "revId": "a26463ff3979612cd2b07b0173e881f44185247c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76cb999b_0c933138",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-20T01:30:20Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 292,
+        "startChar": 30,
+        "endLine": 292,
+        "endChar": 43
+      },
+      "revId": "a26463ff3979612cd2b07b0173e881f44185247c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12af47f6_85eb876f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/flipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-22T00:56:18Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t get it. selectAccount is an actual item. In the app, I can see like this, select \"account\" option. so used selectAccount for readability.",
+      "parentUuid": "76cb999b_0c933138",
       "range": {
         "startLine": 292,
         "startChar": 30,
