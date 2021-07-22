@@ -70,6 +70,30 @@
       },
       "revId": "45bb97c37e8be67553b9c8c1f3cb7713d94bc88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bac9c3_d14ff181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-22T01:52:11Z",
+      "side": 1,
+      "message": "I\u0027ll add it to the chain add run the tryjobs again",
+      "parentUuid": "b29120c1_7e600c68",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 93
+      },
+      "revId": "45bb97c37e8be67553b9c8c1f3cb7713d94bc88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
