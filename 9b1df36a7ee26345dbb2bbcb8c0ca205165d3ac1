@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "9b1df36a7ee26345dbb2bbcb8c0ca205165d3ac1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e31460_12e9b9f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoclick_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-22T13:09:10Z",
+      "side": 1,
+      "message": "Please check error type.",
+      "range": {
+        "startLine": 98,
+        "startChar": 122,
+        "endLine": 98,
+        "endChar": 132
+      },
+      "revId": "9b1df36a7ee26345dbb2bbcb8c0ca205165d3ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
