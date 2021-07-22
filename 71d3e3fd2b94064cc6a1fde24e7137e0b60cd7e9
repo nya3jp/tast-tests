@@ -16,6 +16,23 @@
       "message": "Hi Hyung Tae,\n\nThis is a first attempt at marking some a11y tests as critical, can you PTAL?\n\nThank you.",
       "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbb643d_f77dea73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T19:32:19Z",
+      "side": 1,
+      "message": "+1.\nAdding tast-owners@ as I only have +1. By the way, a11y.ChromevoxHint looks pretty stable from the past runs, but a11y.Autoclick (https://tastboard.corp.google.com/test/a11y.Autoclick) seems to have a bit flakes that I\u0027m not sure if tast-owners@ can give further advice on that. Thanks,",
+      "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
