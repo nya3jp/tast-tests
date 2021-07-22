@@ -13,8 +13,10 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -103,28 +105,24 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 			}
 			defer hconn.Close()
 
+			ui := uiauto.New(tconn)
+
 			// Check whether there is a browser history or not.
 			histFound := false
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 
 				// Check if there is a browser history entry.
-				if exist, err := ui.Exists(ctx, tconn, ui.FindParams{
-					Role:      ui.RoleTypeLink,
-					ClassName: "website-link",
-				}); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
+				if exists, err := ui.IsNodeFound(ctx, nodewith.ClassName("website-link").Role(role.Link)); err != nil {
 					return testing.PollBreak(errors.Wrap(err, "finding website-link node failed"))
-				} else if exist {
+				} else if exists {
 					histFound = true
 					return nil
 				}
 
 				// Check if there is no browser history.
-				if exist, err := ui.Exists(ctx, tconn, ui.FindParams{
-					Role: ui.RoleTypeStaticText,
-					Name: "Your browsing history appears here",
-				}); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
+				if exists, err := ui.IsNodeFound(ctx, nodewith.Name("Your browsing history appears here").Role(role.StaticText)); err != nil {
 					return testing.PollBreak(errors.Wrap(err, "finding text node failed"))
-				} else if exist {
+				} else if exists {
 					histFound = false
 					return nil
 				}
