@@ -34,6 +34,24 @@
       "parentUuid": "b48b88e3_72574694",
       "revId": "c88a326158f1188a6bcad23dc0dbe92652d34dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de86c9f_c43bb5cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-07-22T10:26:17Z",
+      "side": 1,
+      "message": "Yep, the keyframes decode correctly, but all the subsequent frames appear all green or mostly green with slightly recognizable artifacts. (This is on hatch and volteer; nautilus is OK.)",
+      "parentUuid": "5c3b2e7c_ee1de5d9",
+      "revId": "c88a326158f1188a6bcad23dc0dbe92652d34dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
