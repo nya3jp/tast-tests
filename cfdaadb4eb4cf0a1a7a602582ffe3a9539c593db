@@ -16,6 +16,24 @@
       "message": "The dry run failures seem related? Notably, the timeout fetching data files concerns me if there\u0027s some timeout adding these extra data files pushes us into hitting more often? I.e. if the timeout is per suite, adding extra files is a problem we should fix. If it\u0027s per-file and we got very unlucky then meh.\n\nOtherwise LGTM.",
       "revId": "cfdaadb4eb4cf0a1a7a602582ffe3a9539c593db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e55169e_6af3ab05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-07-22T05:34:20Z",
+      "side": 1,
+      "message": "I think we\u0027re hitting the global test timeout.\n\nAt some point someone seems to have (accidentally?) added stretch back to the CQ and adding bullseye on top of that is too much.",
+      "parentUuid": "ec932a6d_836aff8f",
+      "revId": "cfdaadb4eb4cf0a1a7a602582ffe3a9539c593db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
