@@ -16,6 +16,23 @@
       "message": "Added minor change to close the connection after it is opened",
       "revId": "0957fa75b1eb152326a10f8d5d55ce2a99f3eb61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21afbd0e_655268bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-22T07:48:55Z",
+      "side": 1,
+      "message": "Don\u0027t you need to reset Chrome state here?",
+      "revId": "0957fa75b1eb152326a10f8d5d55ce2a99f3eb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
