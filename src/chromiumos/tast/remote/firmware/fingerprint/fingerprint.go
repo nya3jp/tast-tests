@@ -269,7 +269,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 			return nil, errors.Wrap(err, "failed to check if rootfs is writable")
 		}
 		if rootfsIsWritable {
-			return nil, errors.New("rootfs should not be writable")
+			testing.ContextLog(ctx, "WARNING: The rootfs is writable")
 		}
 	}
 
