@@ -51,6 +51,24 @@
       "message": "nit:Recommend adding these details in bug Investigation with detail about what is failing and how is it being addressed in this CL. (Your latest comment).",
       "revId": "3e20e9557dd41c390b1411658687dd8fd0aad32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0146c5a6_e10012b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-22T00:51:28Z",
+      "side": 1,
+      "message": "Updated the bug, b/193696865 with the details.",
+      "parentUuid": "64ed2a1f_9283bbad",
+      "revId": "3e20e9557dd41c390b1411658687dd8fd0aad32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
