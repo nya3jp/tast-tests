@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be960e05_84f74609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T07:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5eb3a70_f9bb56f9",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "3a62c2483b6283f8270df031f22de16e7bd7790c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b8c4ab_156d0d3c",
@@ -78,6 +102,24 @@
       "writtenOn": "2021-07-20T05:10:34Z",
       "side": 1,
       "message": "The amount of UI interactions here are concerning. Are there no tast helpers to interact with the shelf?",
+      "revId": "3a62c2483b6283f8270df031f22de16e7bd7790c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e40f57_ba7fd59b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T07:32:24Z",
+      "side": 1,
+      "message": "I have tried to reduce UI dependency. Now only basic commands are left. Please take a look",
+      "parentUuid": "a5b8c4ab_156d0d3c",
       "revId": "3a62c2483b6283f8270df031f22de16e7bd7790c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
