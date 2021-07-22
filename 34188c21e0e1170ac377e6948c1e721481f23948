@@ -70,6 +70,24 @@
       "parentUuid": "670960e9_be76591f",
       "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464e8e4c_77e0b8bc",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T00:38:09Z",
+      "side": 1,
+      "message": "I changed crrev/c/3039453, so this is basically pointless now, and I\u0027m going to abandon it.",
+      "parentUuid": "4ffc921b_6e361377",
+      "revId": "34188c21e0e1170ac377e6948c1e721481f23948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
