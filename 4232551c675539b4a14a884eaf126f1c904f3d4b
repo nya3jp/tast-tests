@@ -133,6 +133,30 @@
       },
       "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d8ee81_b9849653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-22T23:50:18Z",
+      "side": 1,
+      "message": "I thought it made sense to leave it since the test is just calling chrome.New, so any issues with that would probably end up redirected to tast-owners (I think Tast team maintains chrome.go more than us or cros-oac@). I don\u0027t feel too strongly either way, if Roman is okay with cros-oac@ being the main contact for the test though.",
+      "parentUuid": "f1a3d1e1_b1ff7b88",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
