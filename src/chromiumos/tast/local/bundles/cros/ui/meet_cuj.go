@@ -610,11 +610,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
 		if err != nil {
-			if errors.Is(err, profiler.ErrUnsupportedPlatform) {
-				s.Log("Profiler is not supported: ", err)
-			} else {
-				return errors.Wrap(err, "failed to start the profiler")
-			}
+			return errors.Wrap(err, "failed to start the profiler")
 		}
 		if prof != nil {
 			defer func() {

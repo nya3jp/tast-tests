@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/shutil"
 )
 
@@ -75,9 +74,6 @@ type PerfOpts struct {
 	perfStatOutput *PerfStatOutput
 }
 
-// ErrUnsupportedPlatform means that profiler is not supported on a platform.
-var ErrUnsupportedPlatform = errors.New("unsupported platform")
-
 // PerfStatOpts creates a PerfOpts for running "perf stat -a" on the DUT.
 // out is a pointer to PerfStatOutput, which will hold CPU cycle count per second spent
 // on pid process after End() is called on RunningProf.
@@ -112,16 +108,6 @@ func Perf(opts *PerfOpts) Profiler {
 func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, error) {
 	if opts.t == perfStat && opts.pid < 0 {
 		return nil, errors.Errorf("invalid pid %d for perfStat", opts.pid)
-	}
-
-	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
-	u, err := sysutil.Uname()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed getting system architecture")
-	}
-	if u.Machine == "aarch64" {
-		return nil, errors.Wrapf(ErrUnsupportedPlatform,
-			"running perf on %s is disabled (crbug.com/996728)", u.Machine)
 	}
 
 	cmd, err := getCmd(ctx, outDir, opts)

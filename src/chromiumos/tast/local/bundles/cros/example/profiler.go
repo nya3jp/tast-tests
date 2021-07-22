@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/profiler"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -23,22 +22,16 @@ func init() {
 }
 
 func Profiler(ctx context.Context, s *testing.State) {
+	var perfStatOutput profiler.PerfStatOutput
+
 	profs := []profiler.Profiler{
 		profiler.Top(&profiler.TopOpts{
 			Interval: 2 * time.Second,
 		}),
-		profiler.VMStat(nil)}
-
-	var perfStatOutput profiler.PerfStatOutput
-	runPerf := false
-
-	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
-	if u, err := sysutil.Uname(); err == nil && u.Machine != "aarch64" {
-		profs = append(profs, profiler.Perf(profiler.PerfStatRecordOpts()))
-
+		profiler.VMStat(nil),
+		profiler.Perf(profiler.PerfStatRecordOpts()),
 		// Get CPU cycle count for all processes.
-		profs = append(profs, profiler.Perf(profiler.PerfStatOpts(&perfStatOutput, profiler.PerfAllProcs)))
-		runPerf = true
+		profiler.Perf(profiler.PerfStatOpts(&perfStatOutput, profiler.PerfAllProcs)),
 	}
 
 	p, err := profiler.Start(ctx, s.OutDir(), profs...)
@@ -50,9 +43,7 @@ func Profiler(ctx context.Context, s *testing.State) {
 		if err := p.End(); err != nil {
 			s.Error("Failure in ending the profiler: ", err)
 		}
-		if runPerf {
-			s.Log("All CPU cycle count per second: ", perfStatOutput.CyclesPerSecond)
-		}
+		s.Log("All CPU cycle count per second: ", perfStatOutput.CyclesPerSecond)
 	}()
 
 	// Wait for 2 seconds to gather perf.data.
