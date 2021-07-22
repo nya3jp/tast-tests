@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4962eec5_b09a81c2",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e1223c2_9ef396f7",
+      "range": {
+        "startLine": 202,
+        "startChar": 42,
+        "endLine": 202,
+        "endChar": 65
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "003d8df9_34f39cf9",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-21T18:15:03Z",
       "side": 1,
       "message": "Please use errors.Wrap.  errors.Wrap(err, \"failed to get output of perf sched latency\")\ncf. https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/errors#hdr-Simple_usage",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 207,
+        "endChar": 68
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99236c35_2c0137c1",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003d8df9_34f39cf9",
       "range": {
         "startLine": 207,
         "startChar": 12,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d9d862_2a41c617",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d3cdff1_346cc18c",
+      "range": {
+        "startLine": 210,
+        "startChar": 25,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b953e4_de9558f5",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-10-21T18:15:03Z",
       "side": 1,
       "message": "similarly use errors.Wrap",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 54
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77c612f_40b8834d",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b953e4_de9558f5",
       "range": {
         "startLine": 213,
         "startChar": 12,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef91c3b_a04496c0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e73b2c_3bcf0215",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61c633d_5d833f68",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-10-21T18:15:03Z",
       "side": 1,
       "message": "Please drop \u0027\u003d\u003d true\u0027. That is redundant.",
+      "range": {
+        "startLine": 225,
+        "startChar": 52,
+        "endLine": 225,
+        "endChar": 59
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9da35d_3a2900c4",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61c633d_5d833f68",
       "range": {
         "startLine": 225,
         "startChar": 52,

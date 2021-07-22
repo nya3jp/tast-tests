@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b09d16_1b6b2f45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-22T21:23:14Z",
+      "side": 1,
+      "message": "didn\u0027t mean to upload yet, but while I\u0027m here, I\u0027ll resolve some comments...",
+      "revId": "2177322caa972b52371cf096f9675115c02690a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
