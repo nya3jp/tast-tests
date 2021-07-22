@@ -64,7 +64,7 @@ func (h *Helper) WaitForEnabledState(ctx context.Context, expected bool) error {
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  defaultTimeout,
-		Interval: 100 * time.Millisecond,
+		Interval: 500 * time.Millisecond,
 	})
 }
 
