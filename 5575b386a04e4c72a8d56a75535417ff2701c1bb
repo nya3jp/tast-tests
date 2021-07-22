@@ -22,6 +22,30 @@
       },
       "revId": "5575b386a04e4c72a8d56a75535417ff2701c1bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec5c5d6_b390f36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T15:52:28Z",
+      "side": 1,
+      "message": "If param.wantAllowed \u0026\u0026 notification!\u003dnil means drag drop is allowed by the policy and there was no notification.\n\nThis is what is expected because in CheckClipboardBubble there will be error and notification !\u003d nil\n\nI will change notification to notificationError for right meaning",
+      "parentUuid": "893cb19e_d19d3afb",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "5575b386a04e4c72a8d56a75535417ff2701c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
