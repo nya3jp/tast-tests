@@ -65,7 +65,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.MockConsent,
 			},
-			ExtraAttr:         []string{"group:mainline"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"crashpad"},
 		}, {
 			Name: "gpu_process_breakpad",
