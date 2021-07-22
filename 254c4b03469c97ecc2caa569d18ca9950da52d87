@@ -22,6 +22,30 @@
       },
       "revId": "254c4b03469c97ecc2caa569d18ca9950da52d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14cb473c_ee2bcb21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-22T00:46:47Z",
+      "side": 1,
+      "message": "Specific owner was added for the arcappcompat tests because of the following reasons: \"Make Stainless Green\" team will send an email directly to test owner\u0027s for any failures. I have observed that if arcappcompat tests are failing without having any specific owners, I didn\u0027t receive an email from \"Make Stainless Green\" team for test failures and got to know about it when Uma forwarded the email from \"Make Stainless Green\" team. I think, to avoid missing notifications, add specific owner to the tests will be helpful and also for easy maintenance of code.",
+      "parentUuid": "92bbd320_dcfbd503",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "254c4b03469c97ecc2caa569d18ca9950da52d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
