@@ -268,11 +268,11 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 
 // ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
 // After input action, it checks whether the outcome equals to expected value.
-func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCode ime.InputMethodCode) uiauto.Action {
-	testData, ok := data.VKInputMap[imeCode]
+func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, im ime.InputMethod) uiauto.Action {
+	testData, ok := data.VKInputMap[im]
 	if !ok {
 		return func(ctx context.Context) error {
-			return errors.Errorf("%s sample test data is not defined", string(imeCode))
+			return errors.Errorf("%q sample test data is not defined", im)
 		}
 	}
 
@@ -282,9 +282,7 @@ func (its *InputsTestServer) ValidateVKInputOnField(inputField InputField, imeCo
 		// Make sure virtual keyboard is not shown before action.
 		vkbCtx.HideVirtualKeyboard(),
 		// Set input method. It does nothing if the input method is in use.
-		func(ctx context.Context) error {
-			return ime.AddAndSetInputMethod(ctx, its.tconn, ime.ChromeIMEPrefix+string(imeCode))
-		},
+		im.InstallAndActivate(its.tconn),
 		its.Clear(inputField),
 		its.ClickFieldUntilVKShown(inputField),
 		func(ctx context.Context) error {

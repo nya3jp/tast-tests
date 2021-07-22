@@ -50,9 +50,6 @@ var InputsUnstableModels = hwdep.SkipOnModel(append(StableModels, "kevin1")...)
 // resetTimeout is the timeout duration to trying reset of the current precondition.
 const resetTimeout = 30 * time.Second
 
-// defaultIMECode is used for new Chrome instance.
-const defaultIMECode = ime.ChromeIMEPrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
-
 func inputsPreCondition(name string, dm deviceMode, vkEnabled, reset bool, opts ...chrome.Option) *preImpl {
 	return &preImpl{
 		name:      name,
@@ -240,13 +237,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 // ResetIMEStatus resets IME input method and settings.
 func ResetIMEStatus(ctx context.Context, tconn *chrome.TestConn) error {
 	// Reset input to default input method.
-	currentIME, err := ime.CurrentInputMethod(ctx, tconn)
+	activeIME, err := ime.ActiveInputMethod(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get current ime")
 	}
-	if currentIME != defaultIMECode {
-		if err := ime.SetCurrentInputMethod(ctx, tconn, defaultIMECode); err != nil {
-			return errors.Wrapf(err, "failed to set ime to %s", defaultIMECode)
+	if !activeIME.Equal(ime.DefaultInputMethod) {
+		if err := ime.DefaultInputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to set ime to %q", ime.DefaultInputMethod)
 		}
 	}
 

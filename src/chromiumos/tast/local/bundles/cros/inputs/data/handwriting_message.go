@@ -11,10 +11,10 @@ type handwritingMessage map[ime.Language]InputData
 // GetInputData returns two values given an input method: inputData and ok.
 // If the test data for the given input method can be found, ok is true.
 // If there is no match for the given input method, ok is false, and inputData is the zero value.
-func (message handwritingMessage) GetInputData(inputMethodCode ime.InputMethodCode) (InputData, bool) {
+func (message handwritingMessage) GetInputData(im ime.InputMethod) (InputData, bool) {
 	var inputData InputData
 
-	languageCode, ok := LanguageOfIME[inputMethodCode]
+	languageCode, ok := LanguageOfIME[im]
 	if !ok {
 		return inputData, false
 	}

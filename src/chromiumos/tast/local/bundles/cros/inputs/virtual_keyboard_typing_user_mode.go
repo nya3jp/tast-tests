@@ -17,8 +17,8 @@ import (
 )
 
 type testParams struct {
-	inputMethodID ime.InputMethodCode
-	userMode      string
+	inputMethod ime.InputMethod
+	userMode    string
 }
 
 func init() {
@@ -33,29 +33,29 @@ func init() {
 		Params: []testing.Param{{
 			Name: "us_en_guest",
 			Val: testParams{
-				inputMethodID: ime.INPUTMETHOD_XKB_US_ENG,
-				userMode:      "guest",
+				inputMethod: ime.EnglishUS,
+				userMode:    "guest",
 			},
 			Pre: pre.VKEnabledInGuest,
 		}, {
 			Name: "us_en_incognito",
 			Val: testParams{
-				inputMethodID: ime.INPUTMETHOD_XKB_US_ENG,
-				userMode:      "incognito",
+				inputMethod: ime.EnglishUS,
+				userMode:    "incognito",
 			},
 			Pre: pre.VKEnabledReset,
 		}, {
 			Name: "jp_jpn_guest",
 			Val: testParams{
-				inputMethodID: ime.INPUTMETHOD_XKB_JP_JPN,
-				userMode:      "guest",
+				inputMethod: ime.AlphanumericWithJapaneseKeyboard,
+				userMode:    "guest",
 			},
 			Pre: pre.VKEnabledReset,
 		}, {
 			Name: "jp_jpn_incognito",
 			Val: testParams{
-				inputMethodID: ime.INPUTMETHOD_XKB_JP_JPN,
-				userMode:      "incognito",
+				inputMethod: ime.AlphanumericWithJapaneseKeyboard,
+				userMode:    "incognito",
 			},
 			Pre: pre.VKEnabledReset,
 		}},
@@ -76,7 +76,7 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := its.ValidateVKInputOnField(testserver.TextAreaInputField, testParams.inputMethodID)(ctx); err != nil {
-		s.Fatalf("Failed to VK input in %q mode using input method %q", testParams.userMode, string(testParams.inputMethodID))
+	if err := its.ValidateVKInputOnField(testserver.TextAreaInputField, testParams.inputMethod)(ctx); err != nil {
+		s.Fatalf("Failed to VK input in %q mode using input method %q", testParams.userMode, testParams.inputMethod)
 	}
 }

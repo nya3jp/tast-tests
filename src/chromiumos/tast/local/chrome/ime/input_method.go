@@ -134,6 +134,15 @@ var inputMethods = []InputMethod{
 	Korean,
 }
 
+// ActiveInputMethod returns the active input method via Chrome API.
+func ActiveInputMethod(ctx context.Context, tconn *chrome.TestConn) (*InputMethod, error) {
+	fullyQualifiedIMEID, err := CurrentInputMethod(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	return FindInputMethodByFullyQualifiedIMEID(ctx, tconn, fullyQualifiedIMEID)
+}
+
 // FindInputMethodByName finds the input method by displayed name.
 func FindInputMethodByName(name string) (*InputMethod, error) {
 	for _, im := range inputMethods {
