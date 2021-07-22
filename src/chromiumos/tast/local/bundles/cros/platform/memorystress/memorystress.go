@@ -100,7 +100,9 @@ func waitAllocation(ctx context.Context, conn *chrome.Conn) error {
 	const expr = "!window.location.href.includes('memory_stress') || document.hasOwnProperty('out') == true"
 	if err := conn.WaitForExprFailOnErr(waitCtx, expr); err != nil {
 		if waitCtx.Err() == context.DeadlineExceeded {
-			return errors.Errorf("Tab quiesce timeout (%v)", timeout)
+			// Quiesce timeout is common under memory stress, do not interrupt the test in this case.
+			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
+			return nil
 		}
 		return errors.Wrap(err, "unexpected error waiting for tab quiesce")
 	}
