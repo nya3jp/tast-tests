@@ -26,7 +26,8 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"oci"},
-		Attr:         []string{"group:mainline"},
+        // TODO(ajordanr): Disabiling this test temporarily until glibc until glibc change stabilises it.
+		// Attr:         []string{"group:mainline"},
 	})
 }
 
