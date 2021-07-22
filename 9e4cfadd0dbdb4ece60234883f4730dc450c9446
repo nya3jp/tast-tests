@@ -33,6 +33,23 @@
       "message": "LGTM for iptables part.",
       "revId": "9e4cfadd0dbdb4ece60234883f4730dc450c9446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1ed60f_5edcc771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-07-22T10:47:32Z",
+      "side": 1,
+      "message": "Friendly ping David.",
+      "revId": "9e4cfadd0dbdb4ece60234883f4730dc450c9446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
