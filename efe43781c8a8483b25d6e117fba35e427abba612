@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "efe43781c8a8483b25d6e117fba35e427abba612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0dff46d_b843a29f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-22T05:24:50Z",
+      "side": 1,
+      "message": "LGTM for Tast style. Please also wait for Jorge\u0027s review.",
+      "revId": "efe43781c8a8483b25d6e117fba35e427abba612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
