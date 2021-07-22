@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f47035_634c7956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-22T06:26:59Z",
+      "side": 1,
+      "message": "Change the order of battery test: When there is no battery, we don\u0027t decode the result.",
+      "revId": "88f1a004b570e8c3ac561208d9aa1ca46bc775e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
