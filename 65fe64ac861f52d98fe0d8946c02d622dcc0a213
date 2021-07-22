@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93843521_3c2a81c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T17:47:41Z",
+      "side": 1,
+      "message": "Hi Hiroki, can you PTAL? Thank you 😊",
+      "revId": "65fe64ac861f52d98fe0d8946c02d622dcc0a213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
