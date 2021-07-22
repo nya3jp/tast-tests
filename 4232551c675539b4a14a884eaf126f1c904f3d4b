@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "854e962e_f6d94dff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-07-22T07:29:01Z",
+      "side": 1,
+      "message": "lgtm with nits.",
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9563d47_96795d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/keyboard_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-07-22T07:29:01Z",
+      "side": 1,
+      "message": "let\u0027s nuke it while we\u0027re here. I don\u0027t think it\u0027s alive anymore.",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19f7442_0ac70abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-07-22T07:29:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07849eda_43dae7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-07-22T07:29:01Z",
+      "side": 1,
+      "message": "maybe remove this too? I don\u0027t think we need them to own the test.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
