@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea87996_b30e15de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T16:58:51Z",
+      "side": 1,
+      "message": "Hi, thank you for the change! This LGTM once the comments are resolved. Giving a +1 to ensure you\u0027re not blocked. Please make sure to get a +2 from a tast owner, since I am not an official owner.",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7aecd7b_470a7779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T16:58:51Z",
+      "side": 1,
+      "message": "Nit: should this be one individual person instead of a mailing list?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c7b0d6_e2b5dddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T16:58:51Z",
+      "side": 1,
+      "message": "Nit: Should this first test parameter have a name?",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41aeea77_0573ea8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T16:58:51Z",
+      "side": 1,
+      "message": "Nit: Should this be removed?",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a82447_3363dbc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T16:58:51Z",
+      "side": 1,
+      "message": "Nit: should this be removed?",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dfc06ae_435133a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T16:58:51Z",
+      "side": 1,
+      "message": "Nit: please use HasClass(), since ClassName() is apparently deprecated [1]\n\nPlease do so here and throughout the rest of the file\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d590?q\u003dfile:tast%20nodewith\u0026ss\u003dchromiumos",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 55
+      },
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
