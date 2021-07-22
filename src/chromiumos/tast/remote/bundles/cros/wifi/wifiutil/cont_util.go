@@ -131,7 +131,7 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	defer destroyIfNotExported()
 
 	var err error
-	ctx, ct.restoreBg, err = ct.tf.TurnOffBgscan(ctx)
+	ctx, ct.restoreBg, err = ct.tf.WifiClient().TurnOffBgscan(ctx)
 	if err != nil {
 		s.Fatal("Failed to turn off the background scan: ", err)
 	}
