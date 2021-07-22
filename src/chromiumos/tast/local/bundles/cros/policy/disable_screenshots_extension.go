@@ -47,7 +47,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Data:         append(extensionFiles, disableScreenshotsExtensionHTML),
 		// 2 minutes is the default local test timeout. Check localTestTimeout constant in tast/src/chromiumos/tast/internal/bundle/local.go.
-		Timeout: chrome.LoginTimeout + 2*time.Minute,
+		Timeout: chrome.ManagedUserLoginTimeout + 2*time.Minute,
 	})
 }
 
@@ -91,7 +91,8 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.UnpackedExtension(extDir),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fdms.URL))
+		chrome.DMSPolicy(fdms.URL),
+		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout))
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)
 	}
