@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ea405f_4cbd9556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T08:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6323854_da428832",
+      "range": {
+        "startLine": 27,
+        "startChar": 95,
+        "endLine": 27,
+        "endChar": 96
+      },
+      "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03074412_4e552d23",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-22T07:46:06Z",
       "side": 1,
       "message": "Error here",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 11
+      },
+      "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fc5dad_51731462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T08:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03074412_4e552d23",
       "range": {
         "startLine": 119,
         "startChar": 6,
