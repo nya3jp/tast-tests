@@ -22,6 +22,30 @@
       },
       "revId": "924b79a8f436b60167d3f4450e06763290e63e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b919e9_83d49795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_user_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-22T00:02:39Z",
+      "side": 1,
+      "message": "Sure, sounds good! Revised it, will do the same to VKTypingIME and VKInputField in separated CLs.",
+      "parentUuid": "f3d33353_3ebf61b4",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "924b79a8f436b60167d3f4450e06763290e63e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
