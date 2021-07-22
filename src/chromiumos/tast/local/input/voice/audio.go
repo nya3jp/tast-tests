@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -51,6 +50,8 @@ func EnableAloop(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.
 	}
 
 	// Activate the Aloop nodes.
+	// TODO(b/195208639): use quicksetting after it is migrated to use new uiauto library,
+	// and refactored to use a reliable indicator of whether the quick setting is shown.
 	if err := activateAloopNodes(ctx, tconn); err != nil {
 		// Unload ALSA loopback if any following setups failed.
 		unload(ctx)
@@ -68,10 +69,10 @@ func EnableAloop(ctx context.Context, tconn *chrome.TestConn) (func(ctx context.
 func activateAloopNodes(ctx context.Context, tconn *chrome.TestConn) error {
 	cleanupCtx, shortCancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer shortCancel()
-	if err := quicksettings.Show(ctx, tconn); err != nil {
+	if err := showQuickSetting(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to show Quick Settings: ")
 	}
-	defer quicksettings.Hide(cleanupCtx, tconn)
+	defer hideQuickSetting(cleanupCtx, tconn)
 
 	if err := selectAudioOption(ctx, tconn, "Loopback Playback"); err != nil {
 		return errors.Wrap(err, "failed to select ALSA loopback output")
@@ -80,18 +81,53 @@ func activateAloopNodes(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := selectAudioOption(ctx, tconn, "Loopback Capture"); err != nil {
 		return errors.Wrap(err, "failed to select ALSA loopback input")
 	}
-
 	return nil
 }
 
-func selectAudioOption(ctx context.Context, tconn *chrome.TestConn, device string) error {
-	if err := quicksettings.OpenAudioSettings(ctx, tconn); err != nil {
+func showQuickSetting(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	shownIndicator := nodewith.HasClass("UnifiedSystemTrayView")
+	// Do nothing if quickseting is already shown.
+	if err := ui.Exists(shownIndicator)(ctx); err == nil {
+		return nil
+	}
+	quickSetting := nodewith.Role(role.Button).HasClass("UnifiedSystemTray")
+	if err := ui.DoDefault(quickSetting)(ctx); err != nil {
 		return err
 	}
 
-	ui := uiauto.New(tconn)
-	option := nodewith.Role(role.CheckBox).Name(device)
+	return ui.WaitUntilExists(shownIndicator)(ctx)
+}
 
+func hideQuickSetting(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	shownIndicator := nodewith.HasClass("UnifiedSystemTrayView")
+	// Do nothing if quickseting is not shown.
+	if err := ui.Exists(shownIndicator)(ctx); err != nil {
+		return nil
+	}
+	quickSetting := nodewith.Role(role.Button).HasClass("UnifiedSystemTray")
+	if err := ui.DoDefault(quickSetting)(ctx); err != nil {
+		return err
+	}
+
+	return ui.WaitUntilGone(shownIndicator)(ctx)
+}
+
+func selectAudioOption(ctx context.Context, tconn *chrome.TestConn, device string) error {
+	ui := uiauto.New(tconn)
+
+	// Open audio settings.
+	audioSetting := nodewith.Role(role.Button).Name("Audio settings")
+	if err := ui.IfSuccessThen(
+		ui.WithTimeout(time.Second).WaitUntilExists(audioSetting),
+		ui.LeftClick(audioSetting),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open audio settings")
+	}
+
+	// Select playback nodes.
+	option := nodewith.Role(role.CheckBox).Name(device)
 	if err := ui.DoDefault(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click %v audio option", device)
 	}
