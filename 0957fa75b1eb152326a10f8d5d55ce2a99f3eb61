@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ace79cf_ae9470da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T06:34:37Z",
+      "side": 1,
+      "message": "Added minor change to close the connection after it is opened",
+      "revId": "0957fa75b1eb152326a10f8d5d55ce2a99f3eb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
