@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e40e75_6b521c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-07-22T01:03:40Z",
+      "side": 1,
+      "message": "you can jjust pull this out into the uiauto.combine directly",
+      "revId": "c7f3286d0c709819751a590d9c107e7b15dd96ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
