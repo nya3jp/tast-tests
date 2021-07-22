@@ -26,7 +26,8 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"oci"},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/194923131): Marking informational temporarily until glibc change stabilises it.
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
