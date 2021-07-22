@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -79,9 +80,9 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Open people settings page.
-			conn, err := cr.NewConn(ctx, "chrome://settings/people")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osPeople")
 			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
+				s.Fatal("Failed to open OS settings accounts page: ", err)
 			}
 			defer conn.Close()
 
