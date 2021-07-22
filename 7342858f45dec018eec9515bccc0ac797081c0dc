@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cc30bbd_cde2e9d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-22T08:12:24Z",
+      "side": 1,
+      "message": "shelf textfield*",
+      "parentUuid": "c6323854_da428832",
+      "range": {
+        "startLine": 27,
+        "startChar": 95,
+        "endLine": 27,
+        "endChar": 96
+      },
+      "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03074412_4e552d23",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
         "patchSetId": 5
@@ -107,6 +131,29 @@
         "startChar": 6,
         "endLine": 119,
         "endChar": 11
+      },
+      "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e292b2d_3f546a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-07-22T08:12:24Z",
+      "side": 1,
+      "message": "What if err \u003d\u003d nil \u0026\u0026 !wantAllowed?\n\nCan\u0027t you rewrite it to be:\n```\nif err \u003d\u003d nil \u0026\u0026 wantAllowed {\n    return errors.New(\"Notification found, expected none\")\n}\n\nreturn err\n```",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
       },
       "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
