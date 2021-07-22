@@ -138,6 +138,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0e75aa0_b736201a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-22T21:42:08Z",
+      "side": 1,
+      "message": "I\u0027d like to avoid adding more APIs if possible (if we have no other options that may be viable, but in this case my intuition tells me we should be able to get most of the information we need from the ui hierarchy)",
+      "parentUuid": "a1bcbb7c_74fa29bc",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3210e002_0ea09038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-22T21:42:08Z",
+      "side": 1,
+      "message": "I wonder whether we could do something like:\n\ntarget item index \u003d find first folder item\nsource_item index \u003d target_item index + 1\nwhile (added_apps \u003c max_folder_items) {\n  while  item at source item is folder\n     source item index ++\n      (if source item index off screen\n         - not quite sure what the best approach would be here, maybe test whether the whole node bounds fit within the screen or apps grid bounds; ideally API for finding nodes would just fail :) )\n  drag source item to target item\n}",
+      "parentUuid": "a1bcbb7c_74fa29bc",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "361879d6_f30f8aa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
         "patchSetId": 10
@@ -422,6 +470,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7ced761_8259b7d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-22T21:42:08Z",
+      "side": 1,
+      "message": "I\u0027d check it somewhere (either here or at the call site).\nDragging folder onto folder does not work, but I could imagine adding a test for that interaction at some point.",
+      "parentUuid": "1406b6a9_065edaa8",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a4c622d_d8234ec4",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
@@ -612,6 +684,24 @@
       "side": 1,
       "message": "I\u0027ve looked at the ash side code and AppListFolderView is only ever constructed once in the AppsContainerView and then is never explicitly destroyed anywhere. It does seem that the size of AppListFolderView goes to (1x1) when closed, so I could potentially check that?\n\nAlternatively an api call to the ash launcher might be more precise.",
       "parentUuid": "562ce38d_765b4ed8",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040593f5_b076a219",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-22T21:42:08Z",
+      "side": 1,
+      "message": "it does become invisible, afaik - not sure whether that would remove it from the automation node hierarchy. If not, we should be able to detect that it\u0027s hidden (a11y tools would have to know this so it can be ignored)",
+      "parentUuid": "b5b4a76d_b4aa348e",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

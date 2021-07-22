@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe0e90c_164af74e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-22T21:42:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ce79f2e5_ac6ffb47",
+      "range": {
+        "startLine": 195,
+        "startChar": 64,
+        "endLine": 195,
+        "endChar": 72
+      },
+      "revId": "c9df4613f4498418cb9ca2371f19911f04c95673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e8068e_e0d447b7",
