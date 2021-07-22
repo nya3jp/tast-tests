@@ -16,6 +16,52 @@
       "message": "Rebase and apply the WifiClient cleanup change to the codes in this CL.",
       "revId": "0d3cc0826f8f8e2358efd18edb283bf1757e5005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effb7606_7fe1ff48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fast_reconnect_in_dark_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-22T19:43:39Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "0d3cc0826f8f8e2358efd18edb283bf1757e5005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e41b031_d12680c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fast_reconnect_in_dark_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-22T19:43:39Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "0d3cc0826f8f8e2358efd18edb283bf1757e5005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
