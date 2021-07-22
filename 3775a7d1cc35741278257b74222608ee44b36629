@@ -61,6 +61,305 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68e323bc_c43e0c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Since chrome.LoggedIn is a precondition, this func does not do it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f30dcc_b84c1797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "End with .\n\nPlease check all the comments and make sure they all end with .",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bcb51e8_4db56535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "data:",
+      "range": {
+        "startLine": 59,
+        "startChar": 35,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be3ccf0_d6ae2772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Wrap some information here? Please check all other s.Fatal(err)",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f95889_2043f5f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Please leave some time for cleanup.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa68c1d_bfbfc911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Should cleanup failure fail this test?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa30aee_1fc1e29f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "speed:",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d4c457_ad8527f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Please use this format: Failed to verify the rx speed, got %s, want %s",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6300c124_294c164b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 119,
+        "startChar": 11,
+        "endLine": 119,
+        "endChar": 42
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb17b1fd_46d296fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e846512_c99697db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "This comment is a bit unnecessary.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c55fae2_f6354c7d",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c878a33_f7888ab3",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Define them as const?",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8bb5c1c_44cf2114",
         "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
         "patchSetId": 10
@@ -146,6 +445,144 @@
         "startChar": 24,
         "endLine": 113,
         "endChar": 31
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238eb92d_2050b698",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Wrap some information?",
+      "range": {
+        "startLine": 132,
+        "startChar": 9,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fce9c57_17972fce",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Create",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 11
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00a048b_573f9442",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Read",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "357904b1_dbaebb28",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Verify",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9147ab43_8ca4ab46",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "invalid",
+      "range": {
+        "startLine": 155,
+        "startChar": 24,
+        "endLine": 155,
+        "endChar": 31
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f86ed8d_4e10e24c",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-22T01:28:32Z",
+      "side": 1,
+      "message": "Wrap some information",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 13
       },
       "revId": "3775a7d1cc35741278257b74222608ee44b36629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
