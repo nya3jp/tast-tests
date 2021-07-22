@@ -45,6 +45,14 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
+	// radioButtonNames is a list of UI element names in the notification settings page.
+	// The order of the strings should follow the order in the settings page.
+	// wantRestriction and wantChecked entries are expected to follow this order as well.
+	radioButtonNames := []string{
+		"Sites can ask for your location",
+		"Don't allow sites to see your location",
+	}
+
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -56,40 +64,40 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 		name            string
 		nodeName        string                            // nodeName is the name of the toggle button node we want to check.
 		wantAsk         bool                              // wantAsk states whether a dialog to ask for permission should appear or not.
-		wantChecked     checked.Checked                   // wantChecked is the wanted checked state of the toggle button in the location settings.
-		wantRestriction restriction.Restriction           // wantRestriction is the wanted restriction state of the toggle button in the location settings.
+		wantRestriction []restriction.Restriction         // the expected restriction states of the radio buttons in radioButtonNames
+		wantChecked     []checked.Checked                 // the expected checked states of the radio buttons in radioButtonNames
 		value           *policy.DefaultGeolocationSetting // value is the value of the policy.
 	}{
 		{
 			name:            "unset",
 			nodeName:        "Ask before accessing (recommended)",
 			wantAsk:         true,
-			wantChecked:     checked.True,
-			wantRestriction: restriction.None,
+			wantRestriction: []restriction.Restriction{restriction.None, restriction.None},
+			wantChecked:     []checked.Checked{checked.True, checked.False},
 			value:           &policy.DefaultGeolocationSetting{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "allow",
 			nodeName:        "Ask before accessing (recommended)",
 			wantAsk:         false,
-			wantChecked:     checked.True,
-			wantRestriction: restriction.Disabled,
+			wantRestriction: []restriction.Restriction{restriction.Disabled, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.True, checked.False},
 			value:           &policy.DefaultGeolocationSetting{Val: 1},
 		},
 		{
 			name:            "deny",
 			nodeName:        "Blocked",
 			wantAsk:         false,
-			wantChecked:     checked.False,
-			wantRestriction: restriction.Disabled,
+			wantRestriction: []restriction.Restriction{restriction.Disabled, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.False, checked.True},
 			value:           &policy.DefaultGeolocationSetting{Val: 2},
 		},
 		{
 			name:            "ask",
 			nodeName:        "Ask before accessing (recommended)",
 			wantAsk:         true,
-			wantChecked:     checked.True,
-			wantRestriction: restriction.Disabled,
+			wantRestriction: []restriction.Restriction{restriction.Disabled, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.True, checked.False},
 			value:           &policy.DefaultGeolocationSetting{Val: 3},
 		},
 	} {
@@ -155,20 +163,23 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			}
 
 			// Check if we got an error while requesting the current position.
-			if ec == 1 && param.wantChecked == checked.True {
+			if ec == 1 && param.wantChecked[0] == checked.True {
 				s.Error("Failed to get geolocation")
-			} else if ec != 1 && param.wantChecked == checked.False {
+			} else if ec != 1 && param.wantChecked[0] == checked.False {
 				s.Error("Getting geolocation wasn't blocked")
 			}
 
-			if err := policyutil.SettingsPage(ctx, cr, "content/location").
-				SelectNode(ctx, nodewith.
-					Name(param.nodeName).
-					Role(role.ToggleButton)).
-				Restriction(param.wantRestriction).
-				Checked(param.wantChecked).
-				Verify(); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			// Check the state of the buttons.
+			for i, radioButtonName := range radioButtonNames {
+				if err := policyutil.SettingsPage(ctx, cr, "content/location").
+					SelectNode(ctx, nodewith.
+						Role(role.RadioButton).
+						Name(radioButtonName)).
+					Restriction(param.wantRestriction[i]).
+					Checked(param.wantChecked[i]).
+					Verify(); err != nil {
+					s.Errorf("Unexpected settings state for the %q button: %v", radioButtonName, err)
+				}
 			}
 		})
 	}
