@@ -59,7 +59,7 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
-		Parent:          "fakeDMS",
+		Parent:          "fakeDMSEnrolled",
 	})
 }
 
