@@ -46,6 +46,30 @@
       },
       "revId": "5575b386a04e4c72a8d56a75535417ff2701c1bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07615c0_0f5b07d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T16:41:03Z",
+      "side": 1,
+      "message": "Just to clarify this is the Idea behind these conditions (In this CL and other ones)\n\nThere are four conditions :-\n\n  - wantAllowed - True and err - nil \u003d\u003e This means dlp policy allows the site but still there is notification\n \n  - wantAllowed - True and err - not nil  \u003d\u003e Dlp policy allows and there is no notification. This is expected.\n  \n  - wantAllowed - False and err - nil \u003d\u003e Dlp policy doesn\u0027t allows and there is notification. This is expected.\n  \n  - wantAllowed - False and err - not nil \u003d\u003e Dlp policy doesn\u0027t allows and there is no notification rather there should be.\n  \n  \n So for two of the conditions which are not expected there is check and for rest there is no problem.\n \n \nPlease do let me know if there is anything wrong or I should improve it.",
+      "parentUuid": "0ec5c5d6_b390f36e",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "5575b386a04e4c72a8d56a75535417ff2701c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
