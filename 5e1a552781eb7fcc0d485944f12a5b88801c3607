@@ -33,6 +33,24 @@
       "message": "nit, update these comments.",
       "revId": "5e1a552781eb7fcc0d485944f12a5b88801c3607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9dfc35_45361fad",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T00:38:50Z",
+      "side": 1,
+      "message": "1. They are actually correct now.\n2. I deleted them in a parent cl as you requested.",
+      "parentUuid": "7ec71385_a057b44c",
+      "revId": "5e1a552781eb7fcc0d485944f12a5b88801c3607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b2acc3_9d9adad0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T00:38:50Z",
+      "side": 1,
+      "message": "Totally new approach, after discussion in other cl.",
+      "revId": "c8b1610071e4c70419f0e8d94711a95522af1149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
