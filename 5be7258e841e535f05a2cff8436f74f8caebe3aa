@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfffded0_ea7bd679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-22T13:54:27Z",
+      "side": 1,
+      "message": "Filed crbug.com/1231991 to migrate to uiauto and reduce code duplication",
+      "revId": "5be7258e841e535f05a2cff8436f74f8caebe3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
