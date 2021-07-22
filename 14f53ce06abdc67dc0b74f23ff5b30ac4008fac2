@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad31a2c_aece1560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T23:42:37Z",
+      "side": 1,
+      "message": "delete blank name",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d19bee_3677b79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T23:42:37Z",
+      "side": 1,
+      "message": "is this the correct name? thought it was ash-chrome\n\njust wanna be consistent with the other lacros tests",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90a08d0_66c47026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T23:42:37Z",
+      "side": 1,
+      "message": "Are these big if statements necessary \n\nDoes lacros.Setup() not take care of doing the switching and returning you the right data based on the ChromeType passed in?",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6d75e6_62684e1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T23:42:37Z",
+      "side": 1,
+      "message": "this will likely fail on the arm64-generic builders in CrOS and in Chrome CI\n\nsee apps.ChromeOrChromium",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9136cd4e_7d02073e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T23:42:37Z",
+      "side": 1,
+      "message": "Not sure these are necessary since we already have tests in the CQ for shelf and launcher.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
