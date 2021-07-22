@@ -157,6 +157,30 @@
       },
       "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3384a00_0be0d74a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-22T15:54:52Z",
+      "side": 1,
+      "message": "if err \u003d\u003d nil \u0026\u0026 !wantAllowed this is expected because there will Clipboard bubble when site is not allowed and err \u003d\u003d nil because we can find the toast\n\nCan\u0027t rewrite to \n\n`if err \u003d\u003d nil \u0026\u0026 wantAllowed {\n    return errors.New(\"Notification found, expected none\")\n}\n\nreturn err`\n\nbecause when err !\u003d nil \u0026\u0026 wantAllowed  we don\u0027t want to return the error because it is a expected behavior since when copy paste is allowed by site there should be no Clipboard toast",
+      "parentUuid": "9e292b2d_3f546a0d",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "7342858f45dec018eec9515bccc0ac797081c0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
