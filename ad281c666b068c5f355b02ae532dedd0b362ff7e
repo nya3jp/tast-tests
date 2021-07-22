@@ -56,6 +56,30 @@
       },
       "revId": "ad281c666b068c5f355b02ae532dedd0b362ff7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a167acce_3d555c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-22T18:26:08Z",
+      "side": 1,
+      "message": "use 0.0 in all new logic for float64.",
+      "parentUuid": "095f0fca_c1a0f3fa",
+      "range": {
+        "startLine": 438,
+        "startChar": 21,
+        "endLine": 438,
+        "endChar": 22
+      },
+      "revId": "ad281c666b068c5f355b02ae532dedd0b362ff7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f687ff_72243d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-22T18:26:08Z",
+      "side": 1,
+      "message": "define a maxSleepTime and added logic to check given sleepTime is less than it.\n\n(parameter changed from suspendSeconds to sleepTime, and added more comments)",
+      "parentUuid": "f0615b06_9e795dba",
+      "range": {
+        "startLine": 336,
+        "startChar": 5,
+        "endLine": 336,
+        "endChar": 21
+      },
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "957b2e05_b2710d3b",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a009e081_36262576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-22T18:26:08Z",
+      "side": 1,
+      "message": "define a timeout var uses maxSleepTime+20. Added comments why this value is chosen.",
+      "parentUuid": "957b2e05_b2710d3b",
+      "range": {
+        "startLine": 347,
+        "startChar": 3,
+        "endLine": 347,
+        "endChar": 15
+      },
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae4e9dff_fd673071",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-07-20T23:24:05Z",
       "side": 1,
       "message": "nit: Get...() is not idiomatic go. \nhttps://golang.org/doc/effective_go#Getters.",
+      "range": {
+        "startLine": 364,
+        "startChar": 5,
+        "endLine": 364,
+        "endChar": 22
+      },
+      "revId": "b74d96466d31f9e779e308a70980812780a79825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45a202b_4f5feb96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-22T18:26:08Z",
+      "side": 1,
+      "message": "change to readWakeupDuration.",
+      "parentUuid": "ae4e9dff_fd673071",
       "range": {
         "startLine": 364,
         "startChar": 5,
