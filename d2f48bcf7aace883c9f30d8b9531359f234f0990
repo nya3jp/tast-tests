@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f403f4d_a5b787c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-22T07:52:14Z",
+      "side": 1,
+      "message": "nit: Add",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d2f48bcf7aace883c9f30d8b9531359f234f0990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e9a444_ecd2c946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-22T07:52:14Z",
+      "side": 1,
+      "message": "LGTM % nit\nPlease fix the nit before merging the CL.\nThank you for adding this fix!",
+      "revId": "d2f48bcf7aace883c9f30d8b9531359f234f0990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
