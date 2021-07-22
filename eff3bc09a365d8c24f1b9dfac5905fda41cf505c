@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74106bae_22cbdeb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T20:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef067f5_58361183",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "eff3bc09a365d8c24f1b9dfac5905fda41cf505c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc58ce17_22421d94",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-21T16:45:40Z",
       "side": 1,
       "message": "USB ... DUT",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "eff3bc09a365d8c24f1b9dfac5905fda41cf505c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af529afb_8201ec33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T20:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc58ce17_22421d94",
       "range": {
         "startLine": 9,
         "startChar": 13,
