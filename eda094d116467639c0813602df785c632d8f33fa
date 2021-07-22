@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3222025b_82345674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T19:53:13Z",
+      "side": 1,
+      "message": "Any clarification from other reviewers may be helpful here. My understanding is that it\u0027s optional for the default test? Without the \u0027name\u0027 the param is used by the default test which name is \"A11y.smoke\" in this CL. Not sure if having the name of the param is mandatory in this case.",
+      "parentUuid": "80c7b0d6_e2b5dddd",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41aeea77_0573ea8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
         "patchSetId": 2
@@ -71,6 +89,24 @@
       "writtenOn": "2021-07-22T16:58:51Z",
       "side": 1,
       "message": "Nit: Should this be removed?",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8546ea31_6063ab55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T19:53:13Z",
+      "side": 1,
+      "message": "Removed. It was just a line left over when I initially wrote this CL as an example of a Tast test for multiple browsers.",
+      "parentUuid": "41aeea77_0573ea8a",
       "revId": "eda094d116467639c0813602df785c632d8f33fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
       "writtenOn": "2021-07-22T16:58:51Z",
       "side": 1,
       "message": "Nit: should this be removed?",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78e8292_376107cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T19:53:13Z",
+      "side": 1,
+      "message": "Removed. ditto.",
+      "parentUuid": "98a82447_3363dbc6",
       "revId": "eda094d116467639c0813602df785c632d8f33fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +164,53 @@
         "startChar": 46,
         "endLine": 120,
         "endChar": 55
+      },
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "985f168f_b9e5b9fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T19:53:13Z",
+      "side": 1,
+      "message": "Done. Didn\u0027t see it deprecated. Thanks for the catch.",
+      "parentUuid": "7dfc06ae_435133a5",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 55
+      },
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8e5e39_f5823682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-22T19:53:13Z",
+      "side": 1,
+      "message": "Akihiro, would you recommend what other key UI elements can be better checked together here line 127-130 and line 138? anything on tray, shelf or is it good for now?\nI initially wrote this up for browser windows and elements inside of it though. Thanks,",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 43
       },
       "revId": "eda094d116467639c0813602df785c632d8f33fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
