@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d977521_fcde173d",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T00:36:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453d2530_23035390",
+      "revId": "af0657bad67f7b382f4125c08472a4492b8bc834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "421a6fcf_a291c439",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-21T07:20:46Z",
       "side": 1,
       "message": "nit: not sure where this is defined, I think this method should be named powerOff to meet MixedCamel conventions for variable names.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#mixed-caps",
+      "range": {
+        "startLine": 138,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "af0657bad67f7b382f4125c08472a4492b8bc834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620e2e57_2e83ad32",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-22T00:36:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "421a6fcf_a291c439",
       "range": {
         "startLine": 138,
         "startChar": 15,
