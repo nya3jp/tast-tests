@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "320f4685_12184c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/keyboard_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T20:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9563d47_96795d8a",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f19f7442_0ac70abb",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-07-22T07:29:01Z",
       "side": 1,
       "message": "maybe remove this too? I don\u0027t think we need them to own the test.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a3d1e1_b1ff7b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-22T20:04:30Z",
+      "side": 1,
+      "message": "I removed this one in patch 1 but kyle suggested we keep it",
+      "parentUuid": "07849eda_43dae7f0",
       "range": {
         "startLine": 21,
         "startChar": 4,
