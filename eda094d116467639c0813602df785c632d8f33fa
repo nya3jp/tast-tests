@@ -238,6 +238,30 @@
       },
       "revId": "eda094d116467639c0813602df785c632d8f33fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcc38e3_1285f2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-22T21:19:53Z",
+      "side": 1,
+      "message": "This looks good to me, but optionally you could add the Launcher and the status tray (the bottom left and bottom right UI elements, respectively).",
+      "parentUuid": "5b8e5e39_f5823682",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
