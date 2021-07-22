@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "7fc12e63cb0f7737e2b7a8a7c5ba773227592719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a983b28_c2dbf3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-22T07:25:51Z",
+      "side": 1,
+      "message": "LGTM. Please wait for approval from Toshiki before submitting.",
+      "revId": "7fc12e63cb0f7737e2b7a8a7c5ba773227592719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
