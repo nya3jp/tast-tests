@@ -22,6 +22,30 @@
       },
       "revId": "45bb97c37e8be67553b9c8c1f3cb7713d94bc88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fabefdc4_97bdca99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_ps175.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-07-22T01:37:32Z",
+      "side": 1,
+      "message": "Upstream uses the format currently set, which would seem to indicate it was changed at some point and we haven\u0027t picked that change?",
+      "parentUuid": "c7592688_a85bdae3",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 93
+      },
+      "revId": "45bb97c37e8be67553b9c8c1f3cb7713d94bc88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
