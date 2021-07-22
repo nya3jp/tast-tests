@@ -112,6 +112,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ef83c73_02b6d46e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-22T16:35:11Z",
+      "side": 1,
+      "message": "Nit: space before parentheses.\n\nvariable (i.e.",
+      "range": {
+        "startLine": 74,
+        "startChar": 45,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8cf7e8_35f0f407",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-22T16:35:11Z",
+      "side": 1,
+      "message": "Nit: It is used to set the value of the policyUser variable above.",
+      "range": {
+        "startLine": 76,
+        "startChar": 45,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d3178a4_e5da56e4",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
         "patchSetId": 12
@@ -151,6 +197,29 @@
         "startChar": 9,
         "endLine": 69,
         "endChar": 51
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c319935f_66106b42",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-22T16:35:11Z",
+      "side": 1,
+      "message": "Replace entire function body with\n\nreturn ResetChromeWithBlob(ctx, fdms, cr, fakedms.NewPolicyBlob())",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 11
       },
       "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
