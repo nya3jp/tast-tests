@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e574f8b5_dfd33984",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fast_reconnect_in_dark_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-23T03:01:48Z",
+      "side": 1,
+      "message": "The pattern we use for Deconfig and Disconnect is a little different from the one above, but shorten is definitely needed here. Fixed.",
+      "parentUuid": "effb7606_7fe1ff48",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "0d3cc0826f8f8e2358efd18edb283bf1757e5005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e41b031_d12680c0",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-22T19:43:39Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "0d3cc0826f8f8e2358efd18edb283bf1757e5005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fedbb8c_0010ac89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/fast_reconnect_in_dark_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-23T03:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e41b031_d12680c0",
       "range": {
         "startLine": 107,
         "startChar": 3,
