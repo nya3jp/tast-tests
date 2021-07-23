@@ -107,16 +107,18 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 
 	if err := uiauto.Combine("Create file with VSCode",
 		// Launch Visual Studio Code.
-		terminalApp.RunCommand(keyboard, fmt.Sprintf("code %s", testFile)),
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("code --disable-extensions %s", testFile)),
 		// Left click the app window and type string.
 		ui.LeftClick(appWindowUnsaved),
 		keyboard.TypeAction(testString),
-		// Get rid of up to two notification bubbles for consistent screendiffs.
-		keyboard.AccelAction("esc"),
-		keyboard.AccelAction("esc"),
 		// Press ctrl+S to save the file.
 		keyboard.AccelAction("ctrl+S"),
 		ui.WaitUntilExists(appWindowSaved),
+		// Get rid of up to two notification bubbles for consistent screendiffs.
+		keyboard.AccelAction("esc"),
+		keyboard.AccelAction("esc"),
+		// We have no way of detecting if the notification bubbles have disappeared, so just wait.
+		ui.Sleep(time.Second*5),
 		d.DiffWindow(ctx, "vscode"),
 		// Press ctrl+W twice to exit window.
 		keyboard.AccelAction("ctrl+W"),
