@@ -22,9 +22,9 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-var typingModeTestIMEs = []ime.InputMethodCode{
-	ime.INPUTMETHOD_XKB_US_ENG,
-	ime.INPUTMETHOD_XKB_JP_JPN,
+var typingModeTestIMEs = []ime.InputMethod{
+	ime.EnglishUS,
+	ime.JapaneseWithUSKeyboard,
 }
 var typingModeTestMessages = []data.Message{data.TypingMessageHello}
 
