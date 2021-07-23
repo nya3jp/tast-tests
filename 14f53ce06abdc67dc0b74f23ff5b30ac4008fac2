@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48e9fa1_2155979a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe5e9cf0_5c70227a",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ad31a2c_aece1560",
@@ -58,6 +82,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b71331_867e4218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad31a2c_aece1560",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d072518_5d22ea82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ebf2df9_3ad9bea7",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29d19bee_3677b79e",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fca885c_8d0f27c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Looking at codesearch under the tast dir, interestingly it tied at 3-3 in terms of the number of files containing each. \nHowever, more lines of code use \u0027chromeos-chrome\u0027 than \u0027ash-chrome\u0027. I\u0027m a bit inclined to \u0027chromeos-chrome\u0027. Also it also matches the ebuild name and we can change less lines when someone claims it the other way.\n\nhttps://source.corp.google.com/search?q\u003df:tast%20chromeos-chrome",
+      "parentUuid": "29d19bee_3677b79e",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90a08d0_66c47026",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-07-22T23:42:37Z",
       "side": 1,
       "message": "Are these big if statements necessary \n\nDoes lacros.Setup() not take care of doing the switching and returning you the right data based on the ChromeType passed in?",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28def1b_7347b908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Thanks for the question! You know, through this CL, I wanted to see what it is like to write a test for all three browsers with minimal boiler-plates so eventually to figure out any refactoring points in the future.\n\nMy intention was to just see clear distinction of the setup flow between two browsers.\nSee https://paste.googleplex.com/6464325607751680 for comparison when using the lacros.Setup(). \nIt seems just 3 lines saved since extra conditions before/after lacros.Setup() should be added.\n\nEither is okay to me now, so I\u0027ll go ahead with your suggestion.",
+      "parentUuid": "e90a08d0_66c47026",
       "range": {
         "startLine": 72,
         "startChar": 10,
@@ -150,6 +258,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a50752c_8c627201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f96f62_2bec3413",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5208c9cf_e8f023f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Good to know! Looking at apps.ChromeOrChromium did you mean `amd64-generic` not `arm`? Are we running any tests against non-branded chromium browser anywhere?",
+      "parentUuid": "ad6d75e6_62684e1a",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "212e32e7_c4b05be9",
@@ -163,6 +319,30 @@
       "writtenOn": "2021-07-22T23:42:57Z",
       "side": 1,
       "message": "similarly I think this can just be apps.Lacros right?",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 60
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a8ad69_022db869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Should be! Done.",
+      "parentUuid": "212e32e7_c4b05be9",
       "range": {
         "startLine": 97,
         "startChar": 8,
@@ -196,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8f8631_6f75c427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "You got my points. As replied to the David\u0027s comment above, will do once figuring out how to minimize boiler-plates further for multiple browsers.",
+      "parentUuid": "175477a5_76290d4e",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dc9e5f4_fb96a920",
@@ -213,6 +417,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f33993_477d89ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Removed. This was an anchor point after the lengthy common browser setups.",
+      "parentUuid": "2dc9e5f4_fb96a920",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21f66d73_19c6f1bc",
@@ -226,6 +448,30 @@
       "writtenOn": "2021-07-22T23:42:57Z",
       "side": 1,
       "message": "nit: \"lconn\" makes me think this is lacros only. It can be either depending on the target browser right?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cf97c2_471e0fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done. A good catch. Forgot to change it to \u0027conn\u0027 or something (if \u0027conn\u0027 sounds like ash only) for any target browser.",
+      "parentUuid": "21f66d73_19c6f1bc",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -259,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f45ee6c_f6bf8319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "The call is routed to driver.Close that does not close the window but disconnects from it and clean up resources.\nThanks for the catch! Moved as it\u0027s better to dump ui before any disconnects anyway.",
+      "parentUuid": "5da5b562_e0937886",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25c1c053_8051e762",
@@ -272,6 +542,30 @@
       "writtenOn": "2021-07-22T23:42:57Z",
       "side": 1,
       "message": "the default timeout for a uiauto context is 15 seconds, so you could probably remove this",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f6a507_39c10550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Well noted! 15 seconds enough.",
+      "parentUuid": "25c1c053_8051e762",
       "range": {
         "startLine": 133,
         "startChar": 14,
@@ -299,6 +593,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48053c28_e4a78cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f71c28_0f497a1e",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "867cffc6_04457753",
@@ -312,6 +624,30 @@
       "writtenOn": "2021-07-22T23:42:57Z",
       "side": 1,
       "message": "You could probably add this to the list of nodes in the earlier for-loop. The \"name\" field makes the distinction between nodes clear enough, so I don\u0027t think you need separate loops",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 81
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "951b6781_c0f1bbe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Removed the whole loop as there are tests already enabled for the shelf and launcher.",
+      "parentUuid": "867cffc6_04457753",
       "range": {
         "startLine": 144,
         "startChar": 2,
@@ -345,6 +681,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f631b3_95e5e6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Thanks for the catch. It doesn\u0027t need to. Removed the whole loop as there are tests already enabled for the shelf and launcher.",
+      "parentUuid": "220c02b4_e202321c",
+      "range": {
+        "startLine": 148,
+        "startChar": 55,
+        "endLine": 148,
+        "endChar": 57
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccdb59f4_0039cb20",
@@ -358,6 +718,24 @@
       "writtenOn": "2021-07-22T23:42:57Z",
       "side": 1,
       "message": "ditto",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b1931e_1f754bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccdb59f4_0039cb20",
       "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -385,6 +763,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eab8b6f_f6ad1e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Removed. right, if already enabled there, it is like a duplicate. didn\u0027t know there are.",
+      "parentUuid": "9136cd4e_7d02073e",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d49427f_74620423",
@@ -398,6 +800,24 @@
       "writtenOn": "2021-07-22T23:42:57Z",
       "side": 1,
       "message": "ditto",
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920f7b45_a6a09841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d49427f_74620423",
       "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

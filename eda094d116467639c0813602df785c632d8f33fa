@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e628fd0_ed7c1af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-23T02:16:15Z",
+      "side": 1,
+      "message": "Thanks David for confirming. I\u0027ll leave the default test without the param name as usual.",
+      "parentUuid": "6b7e92d4_0bed1c2e",
+      "revId": "eda094d116467639c0813602df785c632d8f33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41aeea77_0573ea8a",
