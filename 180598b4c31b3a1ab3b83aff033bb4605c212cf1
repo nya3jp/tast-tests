@@ -116,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e673d48_f4404564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-23T21:55:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7e0eabc_861a99c1",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2933d60_3fb6998e",
@@ -494,6 +518,30 @@
       "side": 1,
       "message": "\u003e Could it happen that WaitUntilExits times-out (for whatever reason), so, it returns an error... but if given more time it would have returned \"nil\" ?\n\n\u003e or that the Toast appeared \u0026 disappeared, but WaitForExists failed to capture it?\n\nFor this I could create ui :\u003d uiauto.New(tconn) before the content is pasted so that it doesn\u0027t take time to create the ui. But will have to depend on WaitUntilExits function for robustness.\n\nRegarding the solution:\n - As mentioned above, as per my understanding, can\u0027t access toast using chrome.\n - There is something CommandContext which prepares to run an external command here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d96?q\u003d%22%2F%2F%20CommandContext%20prepares%20to%20run%20an%20external%20command.%22 I am not sure but it can be used to run os commands maybe use this to access toast.\n \n - A simpler way could be to check for different parts of the bubble separately  like different parts of string, or ancestor of the string and got it button",
       "parentUuid": "cdab3e20_a3a0c299",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629195f9_04f7bf16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-23T21:55:07Z",
+      "side": 1,
+      "message": "By looking at the function again, \n\na)\nwhat is confusing is also the name \"checkArcClipbaordToast\" implies that you are looking at an ARC Toast... but what the function is checking is the \"bubbles\" that run on the Chrome-side (not ARC-side).\n\nb)\nIs there a better way to verify that copy\u0026paste failed, other thank looking at the Bubble?\nFor example, would it work to check whether the content was pasted correctly?",
+      "parentUuid": "a77214e2_76271165",
       "range": {
         "startLine": 209,
         "startChar": 0,
