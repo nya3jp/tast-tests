@@ -140,6 +140,30 @@
       },
       "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15455cf7_95aed86e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T11:30:50Z",
+      "side": 1,
+      "message": "Sorry, Above comment is wrong.\n\nFrom here: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/changes/25/3041025/9/src/chromiumos/tast/local/bundles/cros/dlp/data/content.js#32\n\n\nExtension is able to access the clipboard data in all cases which it shouldn\u0027t.\nAlthough there is no Clipboard bubble which is correct behavior.",
+      "parentUuid": "0f5833c8_14cc414d",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
