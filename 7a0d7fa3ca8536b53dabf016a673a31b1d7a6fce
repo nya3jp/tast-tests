@@ -116,6 +116,30 @@
       },
       "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5833c8_14cc414d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T11:27:39Z",
+      "side": 1,
+      "message": "Behavior is that Extension is able to access selected text. But restriction is of clipboard so it should happen. I will change it.\n\nThanks for pointing out.",
+      "parentUuid": "e1f78b98_947e9253",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

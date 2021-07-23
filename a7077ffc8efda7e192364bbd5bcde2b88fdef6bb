@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fb55cb_8cc3a0e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T11:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab224c88_eed5237d",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 63
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad991e6f_e213683d",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "355a7c67_5d01a4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T11:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad991e6f_e213683d",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 50
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8177c58b_089718dd",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-07-23T09:18:58Z",
       "side": 1,
       "message": "Let\u0027s leave just 1 test for true and 1 for false.\nOr do example.com and company.com tests differ in anything rather than the url?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 4
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6515ac_a6fe301e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T11:27:39Z",
+      "side": 1,
+      "message": "No just the url. Added the change",
+      "parentUuid": "8177c58b_089718dd",
       "range": {
         "startLine": 122,
         "startChar": 0,
