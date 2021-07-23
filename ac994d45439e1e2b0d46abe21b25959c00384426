@@ -139,6 +139,24 @@
       "parentUuid": "db13a292_a8c0207e",
       "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f532631_197bf45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-23T21:56:57Z",
+      "side": 1,
+      "message": "LGTM :D",
+      "parentUuid": "c8989aa5_a2ca1d46",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
