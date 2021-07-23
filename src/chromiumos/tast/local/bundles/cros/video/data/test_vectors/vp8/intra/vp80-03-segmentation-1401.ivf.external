@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/vp8/intra/vp80-03-segmentation-1401_20210719.ivf",
+  "size": 34739,
+  "sha256sum": "5d519ef3936771d6058c6f888f6e3dd5951af8d6f8571653a6f321a2aa878ac7"
+}
