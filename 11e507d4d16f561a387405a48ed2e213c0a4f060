@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8a7384_47f8d03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:22:33Z",
+      "side": 1,
+      "message": "can you add the two team alias\u0027s . See this CL\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3043493",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bfb20fb_1289d0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:22:33Z",
+      "side": 1,
+      "message": "Why are these retries necessary. I don\u0027t believe I\u0027ve seen them in other tests",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e638a173_58994b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:22:33Z",
+      "side": 1,
+      "message": "Can we store the num of apps per app list page in a var and make these magic numbers relative to that or something",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34df1cb8_d950f502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:22:33Z",
+      "side": 1,
+      "message": "THis is in several tests. Can you move it to the launcher package",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbc04a4_a9b653f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:22:33Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 94,
+        "startChar": 43,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f089324_b04a6a3e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:22:33Z",
+      "side": 1,
+      "message": "We\u0027re not supposed to pass around uiauto contexts like this. They should be recreated in test packages when needed since they can have custom timeouts and polling options that may not be applicable to the ones defined in a test.",
+      "range": {
+        "startLine": 182,
+        "startChar": 63,
+        "endLine": 182,
+        "endChar": 81
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
