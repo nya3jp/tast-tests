@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0539488_f2b518dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-23T03:48:39Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I guess we can simplify that. I will address this separately. The original thoughts there was to prevent the case where the message for an input method is not properly defined.",
+      "parentUuid": "88643b87_c62bd44a",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec96fc3a_2147eacb",
