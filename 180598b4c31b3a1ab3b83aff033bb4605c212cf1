@@ -97,6 +97,69 @@
       },
       "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a63caa4_0985ebd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-23T15:02:32Z",
+      "side": 1,
+      "message": "Can we also include the err in this statement?",
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281ec73b_e8fec4ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-23T15:02:32Z",
+      "side": 1,
+      "message": "Does the test timeout need to be adjusted if there are two subtests running, each with two ~30 second operations?",
+      "range": {
+        "startLine": 164,
+        "startChar": 57,
+        "endLine": 164,
+        "endChar": 71
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c3fb9d_51aed81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-23T15:02:32Z",
+      "side": 1,
+      "message": "nit: add comma after \"found\"",
+      "range": {
+        "startLine": 216,
+        "startChar": 37,
+        "endLine": 216,
+        "endChar": 42
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
