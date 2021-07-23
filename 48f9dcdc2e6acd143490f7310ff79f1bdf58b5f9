@@ -16,6 +16,23 @@
       "message": "Hi reviewers, this cl might conflict with https://crrev.com/c/3043460. I will rebase the code after.",
       "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b226a97b_98355aaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-23T00:56:39Z",
+      "side": 1,
+      "message": "Reassigned to tast owner since ricardoq is OOO.",
+      "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
