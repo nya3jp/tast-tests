@@ -27,6 +27,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0baa51db_e192d258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:40:33Z",
+      "side": 1,
+      "message": "This got reverted on your last revision",
+      "parentUuid": "0a217df6_4deb96d0",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "44b690b220ab9ad723ac7e14a2e0de8bdb380113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47da19dd_a53a5453",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
         "patchSetId": 3
