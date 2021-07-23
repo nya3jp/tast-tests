@@ -31,46 +31,46 @@ var vkInputEng = vkInputData{
 // VKInputMap contains sample input data of each input method.
 // This is temporary solution to scale input method coverage.
 // It might be refactored in b/188488890.
-var VKInputMap = map[ime.InputMethodCode]vkInputData{
-	ime.INPUTMETHOD_XKB_US_ENG:      vkInputEng,
-	ime.INPUTMETHOD_XKB_US_INTL:     vkInputEng,
-	ime.INPUTMETHOD_XKB_GB_EXTD_ENG: vkInputEng,
-	ime.INPUTMETHOD_XKB_ES_SPA:      vkInputEng,
-	ime.INPUTMETHOD_XKB_SE_SWE: {
+var VKInputMap = map[ime.InputMethod]vkInputData{
+	ime.EnglishUS:                          vkInputEng,
+	ime.EnglishUSWithInternationalKeyboard: vkInputEng,
+	ime.EnglishUK:                          vkInputEng,
+	ime.SpanishSpain:                       vkInputEng,
+	ime.Swedish: {
 		TapKeySeq:            strings.Split("kött", ""),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "kött",
 	},
-	ime.INPUTMETHOD_XKB_CA_ENG: vkInputEng,
-	ime.INPUTMETHOD_XKB_JP_JPN: vkInputEng,
-	ime.INPUTMETHOD_NACL_MOZC_JP: {
+	ime.EnglishCanada:                    vkInputEng,
+	ime.AlphanumericWithJapaneseKeyboard: vkInputEng,
+	ime.Japanese: {
 		TapKeySeq:    strings.Split("konnnitiha", ""),
 		ExpectedText: "こんにちは",
 	},
-	ime.INPUTMETHOD_NACL_MOZC_US: {
+	ime.JapaneseWithUSKeyboard: {
 		TapKeySeq:    strings.Split("konnnitiha", ""),
 		ExpectedText: "こんにちは",
 	},
-	ime.INPUTMETHOD_XKB_FR_FRA: {
+	ime.FrenchFrance: {
 		TapKeySeq:    strings.Split("bonjour", ""),
 		ExpectedText: "bonjour",
 	},
-	ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED: {
+	ime.ChinesePinyin: {
 		TapKeySeq:            strings.Split("nihao", ""),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "你好",
 	},
-	ime.INPUTMETHOD_CANTONESE_CHINESE_TRADITIONAL: {
+	ime.Cantonese: {
 		TapKeySeq:            strings.Split("mou", ""),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "冇",
 	},
-	ime.INPUTMETHOD_CANGJIE87_CHINESE_TRADITIONAL: {
+	ime.ChineseCangjie: {
 		TapKeySeq:            strings.Split("竹手戈", ""),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "我",
 	},
-	ime.INPUTMETHOD_HANGEUL_HANJA_KOREAN: {
+	ime.Korean: {
 		TapKeySeq:    []string{"ㅎ", "\u1161", "ㄴ"}, // ㅎㅏㄴ
 		ExpectedText: "한",
 	},

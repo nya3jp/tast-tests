@@ -24,9 +24,9 @@ import (
 )
 
 var voiceTestMessages = []data.Message{data.VoiceMessageHello}
-var voiceTestIMEs = []ime.InputMethodCode{
-	ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-	ime.INPUTMETHOD_XKB_US_ENG,
+var voiceTestIMEs = []ime.InputMethod{
+	ime.ChinesePinyin,
+	ime.EnglishUS,
 }
 
 func init() {

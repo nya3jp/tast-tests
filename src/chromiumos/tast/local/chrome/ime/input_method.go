@@ -134,6 +134,15 @@ var inputMethods = []InputMethod{
 	Korean,
 }
 
+// ActiveInputMethod returns the active input method via Chrome API.
+func ActiveInputMethod(ctx context.Context, tconn *chrome.TestConn) (*InputMethod, error) {
+	fullyQualifiedIMEID, err := CurrentInputMethod(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	return FindInputMethodByFullyQualifiedIMEID(ctx, tconn, fullyQualifiedIMEID)
+}
+
 // FindInputMethodByName finds the input method by displayed name.
 func FindInputMethodByName(name string) (*InputMethod, error) {
 	for _, im := range inputMethods {
@@ -191,16 +200,36 @@ func (im InputMethod) String() string {
 }
 
 // Install installs the input method via Chrome API.
+// It does nothing if the IME is already installed.
 func (im InputMethod) Install(tconn *chrome.TestConn) action.Action {
 	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		fullyQualifiedIMEs, err := InstalledInputMethods(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get installed input methods")
+		}
+
+		for _, installedIME := range fullyQualifiedIMEs {
+			if installedIME.ID == fullyQualifiedIMEID {
+				return nil
+			}
+		}
 		return AddInputMethod(ctx, tconn, fullyQualifiedIMEID)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
 
 // Activate sets the input method to use via Chrome API.
+// It does nothing if the IME is already in use.
 func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
 	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		activeIME, err := ActiveInputMethod(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get active input method")
+		}
+
+		if activeIME.Equal(im) {
+			return nil
+		}
 		return SetCurrentInputMethod(ctx, tconn, fullyQualifiedIMEID)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
