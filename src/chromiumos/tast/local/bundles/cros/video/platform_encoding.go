@@ -44,6 +44,9 @@ var regExpFPSV4L2 = regexp.MustCompile(`\((\d+\.\d+)fps\)`)
 // regExpFPSVpxenc is the regexp to find the FPS output from vpxenc's log.
 var regExpFPSVpxenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
 
+// regExpFPSOpenh264enc is the regexp to find the FPS output from openh264enc's log.
+var regExpFPSOpenh264enc = regexp.MustCompile(`(\d+\.\d+) fps`)
+
 // regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
 var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 
@@ -555,6 +558,94 @@ func init() {
 				regExpFPS:       regExpFPSVpxenc,
 				decoder:         "vpxdec",
 				regExpKeyFrames: regExpKeyFramesVP9,
+			},
+			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
+			// Devices with small SSDs can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
+			Name: "openh264enc_180",
+			Val: testParam{
+				command:         "openh264enc",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  argsOpenh264enc,
+				regExpFPS:       regExpFPSOpenh264enc,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
+			},
+			ExtraData: []string{"tulip2-320x180.vp9.webm"},
+		}, {
+			Name: "openh264enc_360",
+			Val: testParam{
+				command:         "openh264enc",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  argsOpenh264enc,
+				regExpFPS:       regExpFPSOpenh264enc,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
+			},
+			ExtraData: []string{"tulip2-640x360.vp9.webm"},
+		}, {
+			Name: "openh264enc_720",
+			Val: testParam{
+				command:         "openh264enc",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  argsOpenh264enc,
+				regExpFPS:       regExpFPSOpenh264enc,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
+			},
+			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
+			// Devices with small SSDs can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
+			Name: "openh264enc_180_meet",
+			Val: testParam{
+				command:         "openh264enc",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  argsOpenh264enc,
+				regExpFPS:       regExpFPSOpenh264enc,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
+			},
+			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
+		}, {
+			Name: "openh264enc_360_meet",
+			Val: testParam{
+				command:         "openh264enc",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  argsOpenh264enc,
+				regExpFPS:       regExpFPSOpenh264enc,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
+			},
+			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
+		}, {
+			Name: "openh264enc_720_meet",
+			Val: testParam{
+				command:         "openh264enc",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  argsOpenh264enc,
+				regExpFPS:       regExpFPSOpenh264enc,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
 			// Devices with small SSDs can't store the files, see b/181165183.
@@ -1079,6 +1170,50 @@ func argsVpxenc(ctx context.Context, testName, exe, yuvFile string, size coords.
 
 	// Source file goes at the end without any flag.
 	command = append(command, yuvFile)
+	return
+}
+
+// argsOpenh264enc constructs the command line for openh264enc. Values are
+// taken from the WebRTC implementation at the time of writing, see
+// https://chromium.googlesource.com/external/webrtc/+/e99f6879f6ae1c8c53f9ce7024abb33ce3173795/modules/video_coding/codecs/h264/h264_encoder_impl.cc#532
+func argsOpenh264enc(ctx context.Context, testName, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, _ error) {
+	// openh264enc needs a configuration file, even if empty.
+	emptyCfg := filepath.Join(filepath.Dir(yuvFile), "empty.cfg")
+	if err := ioutil.WriteFile(emptyCfg, []byte(""), 0644); err != nil {
+		return nil, "", 0, errors.Wrapf(err, "failed creating an empty file: %s", emptyCfg)
+	}
+	command = append(command, exe, emptyCfg)
+
+	// Input resolution, frame rate and number of frames.
+	command = append(command, "-sw", strconv.Itoa(size.Width))
+	command = append(command, "-sh", strconv.Itoa(size.Height))
+	command = append(command, "-frin", strconv.Itoa(fps))
+	command = append(command, "-n", "0" /* Read number of frames from yuvFile*/)
+
+	// "-org" for origin and "-bf" for bitstream (output) files.
+	command = append(command, "-org", yuvFile)
+	h264File = yuvFile + ".h264"
+	command = append(command, "-bf", h264File)
+
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
+	// period and certain min/max quality parameters (QP).
+	command = append(command, "-iper", "2048")
+	command = append(command, "-minqp", "24", "-maxqp", "37")
+
+	// RC_BITRATE_MODE (1) would not work with openh264enc when feeding the
+	// input file at maximum speed and not at its frame rate. Use
+	// RC_BUFFERBASED_MODE (2) instead.
+	command = append(command, "-rc", "2" /* Constant BitRate */)
+	bitrate = int(0.1 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
+	command = append(command, "-tarb", strconv.Itoa(bitrate/1000) /* Kbps */)
+	command = append(command, "-trace", "4" /* More verbose output.*/)
+	command = append(command, "-denois", "1" /* Enable denoiser.*/)
+
+	// 1 spatial layer, same resolution and frame rate as input.
+	command = append(command, "-numl", "1", "-dprofile", "0", "66" /* Baseline profile*/)
+	command = append(command, "-dw", "0", strconv.Itoa(size.Width))
+	command = append(command, "-dh", "0", strconv.Itoa(size.Height))
+	command = append(command, "-frout", "0", strconv.Itoa(fps))
 	return
 }
 
