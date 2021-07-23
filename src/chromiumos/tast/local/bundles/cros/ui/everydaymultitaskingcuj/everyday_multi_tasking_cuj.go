@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
@@ -154,7 +153,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		// The screenshot and ui tree dump must been taken before tabs are closed.
 		faillog.SaveScreenshotOnError(ctx, cr, params.outDir, func() bool { return retErr != nil })
 		faillog.DumpUITreeOnError(ctx, params.outDir, func() bool { return retErr != nil }, tconn)
-		apps.Close(ctx, tconn, apps.Chrome.ID)
+		cuj.CloseChrome(ctx, tconn)
 	}(faillogCtx)
 
 	var appStartTime int64
