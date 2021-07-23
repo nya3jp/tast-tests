@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62d010a_6fb7c0f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-23T14:36:39Z",
+      "side": 1,
+      "message": "PTAL\n\nLink to original library: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/browser/browser.go\n\nThe first three methods are new to be more inline with the other uiauto sub packages (e.g. ossettings, filesapp)",
+      "revId": "14d9aec68f6c034649f2cca983e6063528adfb65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
