@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06756336_e7a07682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-23T00:17:41Z",
+      "side": 1,
+      "message": "It says: TbtHotplugUnplug performs the following:",
+      "parentUuid": "d14be99c_d7d1ffda",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5f30dcc_b84c1797",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 10
@@ -261,6 +285,30 @@
       "side": 1,
       "message": "error itself is self explanatory.",
       "parentUuid": "3be3ccf0_d6ae2772",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "096047ad_28c14428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-23T00:17:41Z",
+      "side": 1,
+      "message": "Wrapping some information here also help debugging.",
+      "parentUuid": "2aa3db67_ffbe309e",
       "range": {
         "startLine": 75,
         "startChar": 10,
@@ -684,6 +732,30 @@
       "side": 1,
       "message": "As per previous review comments, above are removed from constants.",
       "parentUuid": "9c878a33_f7888ab3",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f21171_ed15e495",
+        "filename": "src/chromiumos/tast/local/cswitch/tqc_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-23T00:17:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd619430_5029f553",
       "range": {
         "startLine": 41,
         "startChar": 16,
