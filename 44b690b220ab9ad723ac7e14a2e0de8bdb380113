@@ -46,6 +46,30 @@
       },
       "revId": "44b690b220ab9ad723ac7e14a2e0de8bdb380113",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c4fb75_9a4b31fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:17:32Z",
+      "side": 1,
+      "message": "You could change the if around and just deal with the positive case then use Error instead of Fatal and at the end do startup\n\n if err \u003d\u003d nil {\n\tif err :\u003d checkForPowerdDis(output); err !\u003d nil {\n\t\ts.Error(err)\n\t\tif err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), \"fwupdmgr.txt\"), output, 0644); err !\u003d nil {\n\t\t\ts.Error(\"Failed dumping fwupdmgr output: \", err)\n\t\t}\n } else {\n \ts.Errorf(\"%s failed: %v\", shutil.EscapeSlice(cmd.Args), err)\n }\n startupPowerd(ctx, s)\n \nTake a look at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Errors-and-logging",
+      "parentUuid": "47da19dd_a53a5453",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "44b690b220ab9ad723ac7e14a2e0de8bdb380113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

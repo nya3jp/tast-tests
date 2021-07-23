@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755152c9_3eee1294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:17:32Z",
+      "side": 1,
+      "message": "this is just a single space \" : \"",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d70ecc_cbf78dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:17:32Z",
+      "side": 1,
+      "message": "Within the [] \"disabled could appear in any order preceded or followed by other flags\"\n\nDoes [.*\"disabled\".*] work better?",
+      "range": {
+        "startLine": 20,
+        "startChar": 73,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c1a48a_d0725f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:17:32Z",
+      "side": 1,
+      "message": "also just a single space",
+      "range": {
+        "startLine": 20,
+        "startChar": 59,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fcb1775_ea9628ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:17:32Z",
+      "side": 1,
+      "message": "do not abbreviate",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd6b85a_d4f8a98c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-23T02:17:32Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 23
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
