@@ -16,6 +16,24 @@
       "message": "Either use a defer here or call it at the beginning of the subtest",
       "revId": "bf558bf57e233467f8d8e234a52285bf652d3ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a08c03_ffba6070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T17:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e530df3a_8b134bda",
+      "revId": "bf558bf57e233467f8d8e234a52285bf652d3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

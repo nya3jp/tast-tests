@@ -140,6 +140,24 @@
       "parentUuid": "1c8ac79a_d4e6d644",
       "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f21cfc4_4d6c1618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T17:34:08Z",
+      "side": 1,
+      "message": "I have tried to reduce ui interaction in pasteOmnibox to only for checking Clipboard bubble. PTAL",
+      "parentUuid": "1512cccb_d66460ed",
+      "revId": "a258b5c548f6d098c2a1a7777854109edf0ea0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
