@@ -1035,6 +1035,90 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf.json"},
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
+			{
+				Name: "v4l2_vp8_inter",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1402.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "v4l2_vp8_inter_multi_coeff",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "v4l2_vp8_inter_segment",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf", "test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "v4l2_vp8_intra",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1400.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf.json", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "v4l2_vp8_intra_multi_coeff",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf", "test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "v4l2_vp8_intra_segment",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf", "test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "v4l2_vp8_comprehensive",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf"},
+					decoder:        "v4l2_stateful_decoder",
+					commandBuilder: vp8decodeV4L2args,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"v4l2_codec", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-001.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-018.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
 		},
 	})
 }
@@ -1077,6 +1161,13 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	// The test may also fail if the decoded results do not match expected MD5
 	// hashes.
 	exec := testOpt.decoder
+	errorString := ""
+
+	// Change to true to process all files in a test case even if one file
+	// fails. This is useful when debugging new tests. Do not check this
+	// file in when set to true.
+	const pdDebugDecodeAllFiles = false
+
 	for _, filename := range testOpt.filenames {
 		testing.ContextLogf(ctx, "Running %s on %s", exec, filename)
 		args := testOpt.commandBuilder(s.DataPath(filename))
@@ -1090,10 +1181,22 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 
 		if err != nil {
 			output := append(stdout, stderr...)
-			s.Fatalf("%v failed unexpectedly: %v", exec, errors.Wrap(err, string(output)))
+			errorString = fmt.Sprintf("%v failed unexpectedly: %v", exec, errors.Wrap(err, string(output)))
+			if !pdDebugDecodeAllFiles {
+				s.Fatal(errorString)
+			}
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
 	}
+
+	if pdDebugDecodeAllFiles && errorString != "" {
+		s.Fatal(errorString)
+	}
+}
+
+// vp8decodeV4L2args provides the arguments to use with the VP8 decoding binary exe for v4l2.
+func vp8decodeV4L2args(filename string) []string {
+	return []string{"--file=" + filename, "--md5", "--log_level=1"}
 }
 
 // vp9decodeV4L2args provides the arguments to use with the VP9 decoding binary exe for v4l2.

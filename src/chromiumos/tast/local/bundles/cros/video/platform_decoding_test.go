@@ -492,6 +492,80 @@ var vp9Files = map[string]map[string]map[string][]string{
 	},
 }
 
+var vp8Files = map[string][]string{
+	"inter_multi_coeff": {
+		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf",
+		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf",
+		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf",
+		//"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf", // TODO(b/195789194)
+		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf",
+		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf",
+		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf",
+	},
+	"inter_segment": {
+		"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf",
+	},
+	"inter": {
+		"test_vectors/vp8/inter/vp80-02-inter-1402.ivf",
+		//"test_vectors/vp8/inter/vp80-02-inter-1412.ivf", // TODO(b/195789194)
+		"test_vectors/vp8/inter/vp80-02-inter-1418.ivf",
+		"test_vectors/vp8/inter/vp80-02-inter-1424.ivf",
+		"test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf",
+		//"test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf", //TODO(b/195790894)
+		"test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf",
+		"test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf",
+		"test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf",
+		"test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf",
+		//"test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf", //TODO(b/195790894)
+		"test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf",
+		"test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf",
+		"test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf",
+		"test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf",
+	},
+	"intra_multi_coeff": {
+		"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf",
+	},
+	"intra_segment": {
+		"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf",
+	},
+	"intra": {
+		"test_vectors/vp8/intra/vp80-01-intra-1400.ivf",
+		//"test_vectors/vp8/intra/vp80-01-intra-1411.ivf", // TODO(b/195789194)
+		"test_vectors/vp8/intra/vp80-01-intra-1416.ivf",
+		"test_vectors/vp8/intra/vp80-01-intra-1417.ivf",
+		"test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf",
+	},
+	"comprehensive": {
+		"test_vectors/vp8/vp80-00-comprehensive-001.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-002.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-003.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-004.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-005.ivf",
+		//"test_vectors/vp8/vp80-00-comprehensive-006.ivf", // TODO(b/194908118)
+		"test_vectors/vp8/vp80-00-comprehensive-007.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-008.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-009.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-010.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-011.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-012.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-013.ivf",
+		//"test_vectors/vp8/vp80-00-comprehensive-014.ivf", // TODO(b/194908118)
+		"test_vectors/vp8/vp80-00-comprehensive-015.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-016.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-017.ivf",
+		"test_vectors/vp8/vp80-00-comprehensive-018.ivf",
+	},
+}
+
 func genExtraData(videoFiles []string) []string {
 	tf := make([]string, 0, 2*len(videoFiles))
 	for _, file := range videoFiles {
@@ -637,6 +711,21 @@ func TestPlatformDecodingParams(t *testing.T) {
 				params = append(params, param)
 			}
 		}
+	}
+
+	// Generate V4L2 VP8 tests.
+	for _, testGroup := range []string{"inter", "inter_multi_coeff", "inter_segment", "intra", "intra_multi_coeff", "intra_segment", "comprehensive"} {
+		files := vp8Files[testGroup]
+		params = append(params, paramData{
+			Name:         fmt.Sprintf("v4l2_vp8_%s", testGroup),
+			Decoder:      "v4l2_stateful_decoder",
+			CmdBuilder:   "vp8decodeV4L2args",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP8},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_vp8"},
+		})
 	}
 
 	code := genparams.Template(t, `{{ range . }}{

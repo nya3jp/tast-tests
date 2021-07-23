@@ -93,6 +93,36 @@ and follow the same directory structure:
 The original .webm files were converted with
   `ffmpeg -i input.webm -vcodec -copy output.ivf`
 
+## VP8
+
+The license of these video files is the
+[Creative Commons Attribution 3.0 Unported License], as specified
+[here](https://www.webmproject.org/license/bitstream/).
+
+The following files contain images with (c) copyright 2008, Blender Foundation /
+www.bigbuckbunny.org
+
+* [vp80-00-comprehensive-001.ivf](vp8/vp80-00-comprehensive-001.ivf.external)
+* [vp80-00-comprehensive-002.ivf](vp8/vp80-00-comprehensive-002.ivf.external)
+* [vp80-00-comprehensive-003.ivf](vp8/vp80-00-comprehensive-003.ivf.external)
+* [vp80-00-comprehensive-004.ivf](vp8/vp80-00-comprehensive-004.ivf.external)
+* [vp80-00-comprehensive-005.ivf](vp8/vp80-00-comprehensive-005.ivf.external)
+* [vp80-00-comprehensive-007.ivf](vp8/vp80-00-comprehensive-007.ivf.external)
+* [vp80-00-comprehensive-008.ivf](vp8/vp80-00-comprehensive-008.ivf.external)
+* [vp80-00-comprehensive-009.ivf](vp8/vp80-00-comprehensive-009.ivf.external)
+* [vp80-00-comprehensive-010.ivf](vp8/vp80-00-comprehensive-010.ivf.external)
+* [vp80-00-comprehensive-011.ivf](vp8/vp80-00-comprehensive-011.ivf.external)
+* [vp80-00-comprehensive-012.ivf](vp8/vp80-00-comprehensive-012.ivf.external)
+* [vp80-00-comprehensive-013.ivf](vp8/vp80-00-comprehensive-013.ivf.external)
+* [vp80-00-comprehensive-016.ivf](vp8/vp80-00-comprehensive-016.ivf.external)
+* [vp80-00-comprehensive-017.ivf](vp8/vp80-00-comprehensive-017.ivf.external)
+* [vp80-00-comprehensive-018.ivf](vp8/vp80-00-comprehensive-018.ivf.external)
+
+
+The directory holds test vectors from
+[here](https://chromium.googlesource.com/webm/vp8-test-vectors/). The clips are
+organized into subdirectories by clip type. I.e. `intra`, `inter`, ...
+
 [video decoder compliance tests]: ../../README.md#video-decoder-compliance-tests
 [aomenc]: https://aomedia.googlesource.com/aom/
 [AOM license]: ../licenses/AOM-LICENSE

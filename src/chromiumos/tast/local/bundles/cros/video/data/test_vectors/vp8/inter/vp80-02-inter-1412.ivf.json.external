@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/vp8/inter/vp80-02-inter-1412_20210719.ivf.json",
+  "size": 1398,
+  "sha256sum": "29ed1e6f6a8fdf6c510a5d400f00d4f727d0de748f9477e3c5af3b6dff62ee38"
+}
