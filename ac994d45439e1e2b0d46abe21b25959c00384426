@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3de528f_fcff1db8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-23T21:08:16Z",
+      "side": 1,
+      "message": "Acked.",
+      "parentUuid": "72ec9b58_bd7bdae6",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e74b0e12_fdc91f93",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97ed6c3a_054e4799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-23T21:08:16Z",
+      "side": 1,
+      "message": "Acked.",
+      "parentUuid": "e74b0e12_fdc91f93",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7c1c04b_3e727879",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2021-07-23T20:30:48Z",
       "side": 1,
       "message": "This is not for lacros. We have to wait for the overview grid to finish animation. Otherwise we could drag at wrong place and not drag the 2nd window. Happens for ash-chrome too.",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db13a292_a8c0207e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-07-23T21:08:16Z",
+      "side": 1,
+      "message": "Can we use ui.WaitForLocationChangeCompleted here?",
+      "parentUuid": "c7c1c04b_3e727879",
       "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
