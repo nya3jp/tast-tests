@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405_20210719.ivf.json",
+  "size": 1037,
+  "sha256sum": "52fb54ae0beb00d951a65cab60c3e2ff58384dae58b42e8d09a2f2efe1a3bde5"
+}
