@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c016d76_4fb7881f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-07-23T22:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "690ffbfc_6837268c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "c88a326158f1188a6bcad23dc0dbe92652d34dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b48b88e3_72574694",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -124,6 +148,30 @@
       "writtenOn": "2021-07-22T11:32:06Z",
       "side": 1,
       "message": "Is there a short term plan to expand this map?\nIf not, I think it is unnecessary to prepare for a possible future expansion now.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 1
+      },
+      "revId": "c88a326158f1188a6bcad23dc0dbe92652d34dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9ec891_b0255186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-07-23T22:40:34Z",
+      "side": 1,
+      "message": "Sure, can expand it back later.",
+      "parentUuid": "201c0283_1b1d59e8",
       "range": {
         "startLine": 495,
         "startChar": 0,
