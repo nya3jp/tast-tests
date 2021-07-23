@@ -85,6 +85,24 @@
       "message": "When some time has passed to ensure test is not flaky, tast shadow reviewer LGTM",
       "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863b6cdf_e514ed55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-23T16:33:45Z",
+      "side": 1,
+      "message": "I think there might be two different Autoclick tests out there. I recently migrated the a11y Autoclick test to uiauto, which has been stable for some time:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2945837",
+      "parentUuid": "fc826d07_423d7770",
+      "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
