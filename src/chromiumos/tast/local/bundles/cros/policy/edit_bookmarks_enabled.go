@@ -10,7 +10,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/browser"
+	"chromiumos/tast/local/chrome/uiauto/browser"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -105,42 +105,42 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			conn, err := cr.NewConn(ctx, param.urlToBookmark)
+			browserUI, err := browser.Launch(ctx, tconn, cr, param.urlToBookmark)
 			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatal("Failed to launch browser: ", err)
 			}
-			defer conn.Close()
+			defer browserUI.Close(ctx)
 
-			if err := browser.ShowBookmarksBar(ctx, tconn, keyboard); err != nil {
+			if err := browserUI.ShowBookmarksBar(ctx, keyboard); err != nil {
 				s.Fatal("Could not show bookmark bar: ", err)
 			}
 
 			// Run actual test.
-			if allowed, err := browser.IsBookmarkStarIconVisible(ctx, tconn); err != nil {
+			if allowed, err := browserUI.IsBookmarkStarIconVisible(ctx); err != nil {
 				s.Fatal("Encountered error when executing test logic for checking visibility of bookmark icon, Err: ", err)
 			} else if allowed != param.wantAllowed {
 				s.Errorf("Unexpected result for checking visibility of bookmark icon; got %t, want %t", allowed, param.wantAllowed)
 			}
 
-			if allowed, err := canAddBookmark(ctx, tconn, keyboard); err != nil {
+			if allowed, err := canAddBookmark(ctx, browserUI, keyboard); err != nil {
 				s.Fatal("Encountered error when executing test logic for adding bookmark, Err: ", err)
 			} else if allowed != param.wantAllowed {
 				s.Errorf("Unexpected result for adding bookmark; got %t, want %t", allowed, param.wantAllowed)
 			}
 
-			if allowed, err := canRenameBookmark(ctx, tconn, keyboard, param.bookmarkNewName); err != nil {
+			if allowed, err := canRenameBookmark(ctx, browserUI, keyboard, param.bookmarkNewName); err != nil {
 				s.Fatal("Encountered error when executing test logic for editing bookmark, Err: ", err)
 			} else if allowed != param.wantAllowed {
 				s.Errorf("Unexpected result for editing bookmark; got %t, want %t", allowed, param.wantAllowed)
 			}
 
-			if allowed, err := canRemoveBookmark(ctx, tconn, keyboard, param.bookmarkNewName); err != nil {
+			if allowed, err := canRemoveBookmark(ctx, browserUI, keyboard, param.bookmarkNewName); err != nil {
 				s.Fatal("Encountered error when executing test logic for removing bookmark, Err: ", err)
 			} else if allowed != param.wantAllowed {
 				s.Errorf("Unexpected result for removing bookmark; got %t, want %t", allowed, param.wantAllowed)
 			}
 
-			if allowed, err := canOpenInitiallyAddedBookmark(ctx, tconn); err != nil {
+			if allowed, err := canOpenInitiallyAddedBookmark(ctx, browserUI); err != nil {
 				s.Fatal("Encountered error when executing test logic for opening existing bookmark, Err: ", err)
 			} else if allowed != true { // Opening already bookmarked pages is always allowed.
 				s.Errorf("Unexpected result for opening existing bookmark; got %t, want true", allowed)
@@ -151,17 +151,17 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 
 // addInitialBookmark adds initial bookmark.
 func addInitialBookmark(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	conn, err := cr.NewConn(ctx, urlOfInitialBookmark)
+	browserUI, err := browser.Launch(ctx, tconn, cr, urlOfInitialBookmark)
 	if err != nil {
-		return errors.Wrap(err, "failed to connect to chrome")
+		return errors.Wrap(err, "failed to launch browser")
 	}
-	defer conn.Close()
+	defer browserUI.Close(ctx)
 
-	if err := browser.ShowBookmarksBar(ctx, tconn, keyboard); err != nil {
+	if err := browserUI.ShowBookmarksBar(ctx, keyboard); err != nil {
 		return errors.Wrap(err, "could not show bookmarks bar")
 	}
 
-	if addedBm, err := canAddBookmark(ctx, tconn, keyboard); err != nil {
+	if addedBm, err := canAddBookmark(ctx, browserUI, keyboard); err != nil {
 		return errors.Wrap(err, "encountered error when adding bookmark")
 	} else if addedBm != true {
 		return errors.New("could not add bookmark")
@@ -172,33 +172,33 @@ func addInitialBookmark(ctx context.Context, tconn *chrome.TestConn, cr *chrome.
 // canAddBookmark attempts to add currently open tab as a bookmark and
 // validates that operation on the bookmarks bar. Returns true if bookmarks
 // count increased by one, otherwise returns false.
-func canAddBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) (bool, error) {
+func canAddBookmark(ctx context.Context, browserUI *browser.Browser, keyboard *input.KeyboardEventWriter) (bool, error) {
 	// If we cannot see bookmark icon we stop execution of the test logic.
 	// This relies on an assumption that visibility of the bookmark star icon
 	// is related to bookmark functionality being enabled.
-	if canSeeBookmarkIcon, err := browser.IsBookmarkStarIconVisible(ctx, tconn); err != nil {
+	if canSeeBookmarkIcon, err := browserUI.IsBookmarkStarIconVisible(ctx); err != nil {
 		return false, errors.Wrap(err, "could not check if bookmark icon was visible")
 	} else if canSeeBookmarkIcon != true {
 		return false, nil
 	}
 
-	bookmarksCountBefore, err := browser.VisibleBookmarksCount(ctx, tconn)
+	bookmarksCountBefore, err := browserUI.VisibleBookmarksCount(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "could not get count of bookmarks")
 	}
 
-	if err := browser.BookmarkCurrentTab(ctx, tconn, keyboard); err != nil {
+	if err := browserUI.BookmarkCurrentTab(ctx, keyboard); err != nil {
 		return false, errors.Wrap(err, "could not add current page as bookmark")
 	}
 
 	// Toggle bar off/on to refresh it.
 	for i := 0; i < 2; i++ {
-		if err := browser.ToggleBookmarksBar(ctx, tconn, keyboard); err != nil {
+		if err := browserUI.ToggleBookmarksBar(ctx, keyboard); err != nil {
 			return false, errors.Wrap(err, "unable to toggle bookmark bar")
 		}
 	}
 
-	bookmarksCountAfter, err := browser.VisibleBookmarksCount(ctx, tconn)
+	bookmarksCountAfter, err := browserUI.VisibleBookmarksCount(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "could not get count of bookmarks")
 	}
@@ -211,21 +211,21 @@ func canAddBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *input
 
 // canRenameBookmark attempts to rename bookmark's name for currently open tab
 // Returns true if bookmark's name was changed, otherwise returns false.
-func canRenameBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, newName string) (bool, error) {
+func canRenameBookmark(ctx context.Context, browserUI *browser.Browser, keyboard *input.KeyboardEventWriter, newName string) (bool, error) {
 	// If we cannot see bookmark icon we stop execution of the test logic.
 	// This relies on an assumption that visibility of the bookmark star icon
 	// is related to bookmark functionality being enabled.
-	if canSeeBookmarkIcon, err := browser.IsBookmarkStarIconVisible(ctx, tconn); err != nil {
+	if canSeeBookmarkIcon, err := browserUI.IsBookmarkStarIconVisible(ctx); err != nil {
 		return false, errors.Wrap(err, "could not check if bookmark icon was visible")
 	} else if canSeeBookmarkIcon != true {
 		return false, nil
 	}
 
-	if err := browser.RenameBookmarkForCurrentTab(ctx, tconn, keyboard, newName); err != nil {
+	if err := browserUI.RenameBookmarkForCurrentTab(ctx, keyboard, newName); err != nil {
 		return false, errors.Wrap(err, "could not rename the current tab bookmark")
 	}
 
-	bookmarkName, err := browser.CurrentTabBookmarkName(ctx, tconn, keyboard)
+	bookmarkName, err := browserUI.CurrentTabBookmarkName(ctx, keyboard)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get Bookmark name")
 	}
@@ -240,28 +240,28 @@ func canRenameBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *in
 // Validates removal operation by checking visibility of the bookmark on
 // the bookmarks bar. Returns true if bookmark was removed, otherwise returns
 // false.
-func canRemoveBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, bookmarkName string) (bool, error) {
+func canRemoveBookmark(ctx context.Context, browserUI *browser.Browser, keyboard *input.KeyboardEventWriter, bookmarkName string) (bool, error) {
 	// If we cannot see bookmark icon we stop execution of the test logic.
 	// This relies on an assumption that visibility of the bookmark star icon
 	// is related to bookmark functionality being enabled.
-	if canSeeBookmarkIcon, err := browser.IsBookmarkStarIconVisible(ctx, tconn); err != nil {
+	if canSeeBookmarkIcon, err := browserUI.IsBookmarkStarIconVisible(ctx); err != nil {
 		return false, errors.Wrap(err, "could not check if bookmark icon was visible")
 	} else if canSeeBookmarkIcon != true {
 		return false, nil
 	}
 
-	if err := browser.RemoveBookmarkForCurrentTab(ctx, tconn, keyboard); err != nil {
+	if err := browserUI.RemoveBookmarkForCurrentTab(ctx, keyboard); err != nil {
 		return false, errors.Wrap(err, "could not remove bookmark")
 	}
 
 	// Toggle bar off/on to refresh it.
 	for i := 0; i < 2; i++ {
-		if err := browser.ToggleBookmarksBar(ctx, tconn, keyboard); err != nil {
+		if err := browserUI.ToggleBookmarksBar(ctx, keyboard); err != nil {
 			return false, errors.Wrap(err, "unable to toggle bookmark bar")
 		}
 	}
 
-	visibleAfterRemoving, err := browser.IsBookmarkVisible(ctx, tconn, bookmarkName)
+	visibleAfterRemoving, err := browserUI.IsBookmarkVisible(ctx, bookmarkName)
 	if err != nil {
 		return false, errors.Wrapf(err, "could not check existence of bookmark %s", bookmarkName)
 	}
@@ -273,12 +273,12 @@ func canRemoveBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *in
 
 // canOpenInitiallyAddedBookmark attempts to open initially bookmarked page.
 // Returns true if bookmark was opened, otherwise returns false.
-func canOpenInitiallyAddedBookmark(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	if err := browser.OpenBookmark(ctx, tconn, nameOfInitialBookmark); err != nil {
+func canOpenInitiallyAddedBookmark(ctx context.Context, browserUI *browser.Browser) (bool, error) {
+	if err := browserUI.OpenBookmark(ctx, nameOfInitialBookmark); err != nil {
 		return false, errors.Wrapf(err, "failed to open %s bookmark", nameOfInitialBookmark)
 	}
 
-	addressBarText, err := browser.GetAddressBarText(ctx, tconn)
+	addressBarText, err := browserUI.GetAddressBarText(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "problem getting address bar value")
 	}
