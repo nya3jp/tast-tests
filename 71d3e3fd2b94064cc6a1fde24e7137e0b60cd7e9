@@ -50,6 +50,41 @@
       "message": "The Autoclick test was migrated yesterday from the use of the old ui library to the uiauto library: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3043950\n\nTherefore we shouldn\u0027t promote the test until we\u0027ve seen those changes didn\u0027t make the test flaky.",
       "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc826d07_423d7770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-23T15:03:57Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "88266e7f_239d2a2f",
+      "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2164ab59_9dac053c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-23T15:03:57Z",
+      "side": 1,
+      "message": "When some time has passed to ensure test is not flaky, tast shadow reviewer LGTM",
+      "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
