@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ce5133_e0c4eeef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T19:50:38Z",
+      "side": 1,
+      "message": "Thanks for the review. I have added some comments regarding the clipboard bubble. Please do let me know if there is anything incorrect or a better solution can be implemented for the bubble.\nI will add the changes soon, once I have access to device containing arc.",
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11db7d2d_321d1c9a",
@@ -65,6 +82,30 @@
       "writtenOn": "2021-07-23T17:44:34Z",
       "side": 1,
       "message": "nit: Just to confirm that you don\u0027t have a chromium account and/or a company account?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e0eabc_861a99c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T19:50:38Z",
+      "side": 1,
+      "message": "No.  I have given permission here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2944267/comments/5fa5a5ff_d05e8535\nto be contacted after GSoC.",
+      "parentUuid": "11db7d2d_321d1c9a",
       "range": {
         "startLine": 31,
         "startChar": 4,
@@ -394,6 +435,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fa8e2fd_b99a99ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T19:50:38Z",
+      "side": 1,
+      "message": "Format is from here: https://source.chromium.org/chromium/chromium/src/+/main:components/policy_strings.grdp;l\u003d622?q\u003d%22has%20been%20blocked%20by%20administrator%20policy%22\n\nRegarding the Bubble:\n - Clipboard bubble is a toast (Or an ash toast)\n - Toast bubble are in chromium os they cannot be accessed using chrome i.e using ash package of tast (Or ash.WaitForNotification)\n - Other tests that access toast notification also use same uiauto \n like here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go;l\u003d81?q\u003d%22%2F%2F%20ShareToastNotification%20represents%20an%20instance%20of%20the%20toast%20notification%20of%20sharing%20folder.%22\n\n\nOne discussion related to this is here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3038223/comments/7dfb23cc_b090653e",
+      "parentUuid": "e3dc3dfc_57cb5380",
+      "range": {
+        "startLine": 207,
+        "startChar": 43,
+        "endLine": 207,
+        "endChar": 124
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdab3e20_a3a0c299",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
         "patchSetId": 2
@@ -405,6 +470,30 @@
       "writtenOn": "2021-07-23T17:44:34Z",
       "side": 1,
       "message": "this is tricky.\n\nCould it happen that WaitUntilExits times-out (for whatever reason), so, it returns an error... but if given more time it would have returned \"nil\" ?\n\nor that the Toast appeared \u0026 disappeared, but WaitForExists failed to capture it?\n\nWhatever the answer, comments needs to be added saying how robust/fragile this is.\nAnd if this is very fragile, probably another solution is needed.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77214e2_76271165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T19:50:38Z",
+      "side": 1,
+      "message": "\u003e Could it happen that WaitUntilExits times-out (for whatever reason), so, it returns an error... but if given more time it would have returned \"nil\" ?\n\n\u003e or that the Toast appeared \u0026 disappeared, but WaitForExists failed to capture it?\n\nFor this I could create ui :\u003d uiauto.New(tconn) before the content is pasted so that it doesn\u0027t take time to create the ui. But will have to depend on WaitUntilExits function for robustness.\n\nRegarding the solution:\n - As mentioned above, as per my understanding, can\u0027t access toast using chrome.\n - There is something CommandContext which prepares to run an external command here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d96?q\u003d%22%2F%2F%20CommandContext%20prepares%20to%20run%20an%20external%20command.%22 I am not sure but it can be used to run os commands maybe use this to access toast.\n \n - A simpler way could be to check for different parts of the bubble separately  like different parts of string, or ancestor of the string and got it button",
+      "parentUuid": "cdab3e20_a3a0c299",
       "range": {
         "startLine": 209,
         "startChar": 0,
