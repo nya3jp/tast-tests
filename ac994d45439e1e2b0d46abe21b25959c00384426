@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc994054_df2bfd00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-23T20:30:48Z",
+      "side": 1,
+      "message": "Yichen please do the sanity check in WindowArrangementCUJ to ensure I did not change the scenario too much.\n\nAchuith for the overall review and exercise review+2 power.\n\nScreen recording if interested:\n  https://drive.google.com/file/d/1HjaS9AxWtseWT6uxkrZfDGv6ZYdmFmEq/view?usp\u003dsharing\n\nThanks.",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ec9b58_bd7bdae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-23T20:30:48Z",
+      "side": 1,
+      "message": "Needs this because lacros browser window has a different size restriction and does not follow the mouse to resize its bounds. At the end of the 1st resize, `middlePt` is not the origin of the new window bounds.\n\nI could make this lacros-only but does not hurt to do that for ash-chrome.",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74b0e12_fdc91f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-23T20:30:48Z",
+      "side": 1,
+      "message": "This might be a real bug. I did not file one because I could not manually repro it. So far it only happens when we programmatically send a WMEventNormal event like in this test.",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c1c04b_3e727879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-23T20:30:48Z",
+      "side": 1,
+      "message": "This is not for lacros. We have to wait for the overview grid to finish animation. Otherwise we could drag at wrong place and not drag the 2nd window. Happens for ash-chrome too.",
+      "revId": "ac994d45439e1e2b0d46abe21b25959c00384426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
