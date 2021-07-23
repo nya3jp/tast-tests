@@ -33,6 +33,23 @@
       "message": "+1.\nAdding tast-owners@ as I only have +1. By the way, a11y.ChromevoxHint looks pretty stable from the past runs, but a11y.Autoclick (https://tastboard.corp.google.com/test/a11y.Autoclick) seems to have a bit flakes that I\u0027m not sure if tast-owners@ can give further advice on that. Thanks,",
       "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88266e7f_239d2a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-23T08:46:49Z",
+      "side": 1,
+      "message": "The Autoclick test was migrated yesterday from the use of the old ui library to the uiauto library: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3043950\n\nTherefore we shouldn\u0027t promote the test until we\u0027ve seen those changes didn\u0027t make the test flaky.",
+      "revId": "71d3e3fd2b94064cc6a1fde24e7137e0b60cd7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
