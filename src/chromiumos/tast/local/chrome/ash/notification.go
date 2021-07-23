@@ -105,6 +105,34 @@ func WaitForNotification(ctx context.Context, tconn *chrome.TestConn, timeout ti
 	return result, nil
 }
 
+// WaitUntilNotificationGone waits for the notifications that satisfies all predicates to disappear.
+func WaitUntilNotificationGone(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration, predicates ...waitPredicate) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		notifications, err := Notifications(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get list of notifications"))
+		}
+
+	NotificationLoop:
+		for _, notification := range notifications {
+			foundNotif := true
+			for _, predicate := range predicates {
+				if !predicate(notification) {
+					foundNotif = false
+					break
+				}
+			}
+			if foundNotif {
+				continue NotificationLoop
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "failed to wait for notification to disappear")
+	}
+	return nil
+}
+
 // NotificationType describes the types of notifications you can create with chrome.notifications.create()
 type NotificationType string
 
