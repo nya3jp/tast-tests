@@ -33,6 +33,75 @@
       "message": "Reassigned to tast owner since ricardoq is OOO.",
       "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a83aa78_6e6e0bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/inputs_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-23T01:59:21Z",
+      "side": 1,
+      "message": "we shouldn\u0027t omit the ok.",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "235d50b0_8a7b99c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-23T01:59:21Z",
+      "side": 1,
+      "message": "Out of curiosity. \n\nIs this function really needed? Isn\u0027t it easier for caller to call message[im] directly?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec96fc3a_2147eacb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-23T01:59:21Z",
+      "side": 1,
+      "message": "nit. looks like it will call AddInputMethod no matter input method is in use or not.",
+      "range": {
+        "startLine": 284,
+        "startChar": 23,
+        "endLine": 284,
+        "endChar": 68
+      },
+      "revId": "48f9dcdc2e6acd143490f7310ff79f1bdf58b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
