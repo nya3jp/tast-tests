@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc76b0f2_d4325d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-23T08:12:09Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "6329ed073cd249b4edffea6fc4d78cd00b701801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6b4f95_f4472c9d",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-07-23T08:12:09Z",
+      "side": 1,
+      "message": "nit: If you\u0027re powering off in a goroutine then setting usb mux state, it\u0027s possible that the DUT is not finished powering off yet, is this comment correct still?",
+      "range": {
+        "startLine": 505,
+        "startChar": 56,
+        "endLine": 505,
+        "endChar": 72
+      },
+      "revId": "6329ed073cd249b4edffea6fc4d78cd00b701801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
