@@ -26,7 +26,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 			"cros-arc-te@google.com",
 		},
-		Attr:         []string{"group:mainline", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{

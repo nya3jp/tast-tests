@@ -21,7 +21,7 @@ func init() {
 		Func:         IMEBlockingVK,
 		Desc:         "Checks if IME is properly hidden by an ARC dialog in tablet mode",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedInTabletMode",
 		Params: []testing.Param{{
