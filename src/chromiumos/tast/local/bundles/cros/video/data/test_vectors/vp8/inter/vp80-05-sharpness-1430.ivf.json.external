@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/vp8/inter/vp80-05-sharpness-1430_20210719.ivf.json",
+  "size": 796,
+  "sha256sum": "353f021e197a235d1716af94d39fd860b2e8ae9cbac3a15854464882f56ffbd7"
+}
