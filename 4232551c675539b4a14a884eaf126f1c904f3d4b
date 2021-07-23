@@ -157,6 +157,30 @@
       },
       "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11071f37_3a3cef5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-07-23T06:03:51Z",
+      "side": 1,
+      "message": "I don\u0027t mind either way. Although this test is more related to the Gaia login which is our area.",
+      "parentUuid": "38d8ee81_b9849653",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
