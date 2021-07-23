@@ -30,10 +30,10 @@ const (
 )
 
 var hwTestMessages = []data.Message{data.HandwritingMessageHello}
-var hwTestIMEs = []ime.InputMethodCode{
-	ime.INPUTMETHOD_NACL_MOZC_JP,
-	ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-	ime.INPUTMETHOD_XKB_US_ENG,
+var hwTestIMEs = []ime.InputMethod{
+	ime.Japanese,
+	ime.ChinesePinyin,
+	ime.EnglishUS,
 }
 
 func init() {

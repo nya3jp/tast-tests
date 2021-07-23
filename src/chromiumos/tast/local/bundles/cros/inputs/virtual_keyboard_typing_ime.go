@@ -23,21 +23,21 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-var typingTestIMEs = []ime.InputMethodCode{
-	ime.INPUTMETHOD_XKB_US_ENG,
-	ime.INPUTMETHOD_NACL_MOZC_US,
-	ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-	ime.INPUTMETHOD_XKB_US_INTL,
-	ime.INPUTMETHOD_XKB_GB_EXTD_ENG,
-	ime.INPUTMETHOD_XKB_ES_SPA,
-	ime.INPUTMETHOD_XKB_SE_SWE,
-	ime.INPUTMETHOD_XKB_CA_ENG,
-	ime.INPUTMETHOD_XKB_JP_JPN,
-	ime.INPUTMETHOD_NACL_MOZC_JP,
-	ime.INPUTMETHOD_XKB_FR_FRA,
-	ime.INPUTMETHOD_CANTONESE_CHINESE_TRADITIONAL,
-	ime.INPUTMETHOD_CANGJIE87_CHINESE_TRADITIONAL,
-	ime.INPUTMETHOD_HANGEUL_HANJA_KOREAN,
+var typingTestIMEs = []ime.InputMethod{
+	ime.EnglishUS,
+	ime.JapaneseWithUSKeyboard,
+	ime.ChinesePinyin,
+	ime.EnglishUSWithInternationalKeyboard,
+	ime.EnglishUK,
+	ime.SpanishSpain,
+	ime.Swedish,
+	ime.EnglishCanada,
+	ime.AlphanumericWithJapaneseKeyboard,
+	ime.Japanese,
+	ime.FrenchFrance,
+	ime.Cantonese,
+	ime.ChineseCangjie,
+	ime.Korean,
 }
 
 var typingTestMessages = []data.Message{data.TypingMessageHello}

@@ -77,21 +77,20 @@ func GetNthCandidateText(ctx context.Context, tconn *chrome.TestConn, n int) (st
 // RunSubtestsPerInputMethodAndMessage runs subtest that uses testName and inputdata on
 // every combination of given input methods and messages.
 func RunSubtestsPerInputMethodAndMessage(ctx context.Context, tconn *chrome.TestConn, s *testing.State,
-	inputMethods []ime.InputMethodCode, messages []data.Message, subtest func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State)) {
-	for _, inputMethod := range inputMethods {
+	inputMethods []ime.InputMethod, messages []data.Message, subtest func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State)) {
+	for _, im := range inputMethods {
 		// Setup input method.
-		imeCode := ime.ChromeIMEPrefix + string(inputMethod)
-		s.Logf("Set current input method to: %s", imeCode)
-		if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
-			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+		s.Logf("Set current input method to: %q", im)
+		if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+			s.Fatalf("Failed to set input method to %q: %v: ", im, err)
 		}
 
 		for _, message := range messages {
-			inputData, ok := message.GetInputData(inputMethod)
+			inputData, ok := message.GetInputData(im)
 			if !ok {
-				s.Fatalf("Test Data for input method %v does not exist", inputMethod)
+				s.Fatalf("Test Data for input method %q does not exist", im)
 			}
-			testName := string(inputMethod) + "-" + string(inputData.ExpectedText)
+			testName := string(im.Name) + "-" + string(inputData.ExpectedText)
 
 			s.Run(ctx, testName, subtest(testName, inputData))
 		}
