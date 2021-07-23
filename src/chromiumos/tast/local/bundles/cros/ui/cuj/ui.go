@@ -90,6 +90,25 @@ func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 	})()`, nil)
 }
 
+// CloseChrome closes Chrome browser application properly.
+// If there exist unsave changes on web page, e.g. media content is playing or online document is editing,
+// "leave site" prompt will prevent the tab from closing.
+// This function confirms the "leave site" prompts so browser can be closed.
+func CloseChrome(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := apps.Close(ctx, tconn, apps.Chrome.ID); err != nil {
+		return errors.Wrap(err, "failed to close Chrome")
+	}
+
+	ui := uiauto.New(tconn)
+	leaveWin := nodewith.Name("Leave site?").Role(role.Window).First()
+	leaveBtn := nodewith.Name("Leave").Role(role.Button).Ancestor(leaveWin)
+	if err := ui.WithTimeout(time.Second).WaitUntilExists(leaveWin)(ctx); err != nil {
+		return nil
+	}
+
+	return ui.RetryUntil(ui.LeftClick(leaveBtn), ui.WithTimeout(time.Second).WaitUntilGone(leaveWin))(ctx)
+}
+
 // LaunchAppFromShelf opens an app by name which is currently pinned to the shelf.
 // Which it is also support multiple names for a single app (e.g. "Chrome"||"Chromium" for Google Chrome, the browser).
 // It returns the time when a mouse click event is injected to the app icon.
