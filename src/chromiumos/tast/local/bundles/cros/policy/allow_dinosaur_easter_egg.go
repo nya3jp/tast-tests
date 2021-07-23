@@ -8,6 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -22,13 +24,21 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Fixture:      "chromePolicyLoggedIn",
+		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Fixture: "chromePolicyLoggedInWithAsh",
+		}, {
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Fixture:           "chromePolicyLoggedInWithLacros",
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
 func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	br := s.FixtValue().(*fixtures.FixtData).Browser
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	for _, param := range []struct {
@@ -52,17 +62,17 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup.
-			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+			if err := policyutil.ResetChrome(ctx, fdms, br); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndRefresh(ctx, fdms, br, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
 			// Run actual test.
-			conn, err := cr.NewConn(ctx, "chrome://dino")
+			conn, err := br.NewConn(ctx, "chrome://dino")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
