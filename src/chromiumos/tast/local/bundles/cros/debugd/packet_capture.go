@@ -10,11 +10,13 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -38,6 +40,10 @@ func init() {
 func PacketCapture(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	dbg, err := debugd.New(ctx)
 	if err != nil {
@@ -143,10 +149,26 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 				s.Error("Ping command failed: ", err)
 			}
 
+			// Notification ID of the packet capture notification. It is hard-coded in Chrome as
+			// DebugdNotificationHandler::kPacketCaptureNotificationId.
+			notificationID := "debugd-packetcapture"
+
+			// A notification must be shown after packet capture starts successfully.
+			testing.ContextLog(ctx, "Checking if packet capture notification is visible")
+			if _, err = ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(notificationID)); err != nil {
+				s.Error("Packet capture notification is not visible")
+			}
+
 			testing.ContextLog(ctx, "Stopping packet capture")
 			// Stop packet capture.
 			if err := dbg.PacketCaptureStop(ctx, handle); err != nil {
 				s.Error("PacketCaptureStop DBus call failed: ", err)
+			}
+
+			// Notification must be gone after the packet capture is stopped.
+			testing.ContextLog(ctx, "Checking if packet capture notification is gone")
+			if ash.WaitUntilNotificationGone(ctx, tconn, 5*time.Second, ash.WaitIDContains(notificationID)) != nil {
+				s.Error("Notification isn't gone after stopping packet capture")
 			}
 
 			// Check the output file size.
