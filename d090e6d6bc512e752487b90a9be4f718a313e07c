@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed86f81_d7582e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c844852_a974f12c",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e8923d_c47e0807",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-23T00:03:08Z",
       "side": 1,
       "message": "Add your team\u0027s alias too so we can easily find all sys-ui-surfaces tests\n\n\"cros-system-ui-eng@google.com\",",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123b63cb_4b7ba849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e8923d_c47e0807",
       "range": {
         "startLine": 30,
         "startChar": 3,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8865289f_9344cd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "I think it would make sense to have tests that run on both: could you point me to an example of such a test? Thanks!",
+      "parentUuid": "4bdb1abe_72abf984",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e2676db_1fb9b791",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
         "patchSetId": 10
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-23T00:03:08Z",
       "side": 1,
       "message": "This should probably be moved to the ash/shelf package",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f4bdaf_2f864b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2676db_1fb9b791",
       "range": {
         "startLine": 67,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfeaf940_18efa245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27fc41e_c9878f8e",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 89
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6989cc1a_8dec84a6",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-23T00:03:08Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e9a540_6af16371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6989cc1a_8dec84a6",
       "range": {
         "startLine": 94,
         "startChar": 3,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cafae7c2_78191dba",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "381dcba4_18a2025e",
+      "range": {
+        "startLine": 401,
+        "startChar": 83,
+        "endLine": 401,
+        "endChar": 96
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a060deff_0e980cac",
@@ -175,6 +343,24 @@
       "writtenOn": "2021-07-21T19:49:52Z",
       "side": 1,
       "message": "can you use this in the new test?",
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ab7808_429e7784",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Currently used in auto_hide_smoke",
+      "parentUuid": "a060deff_0e980cac",
       "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -196,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c5c682_fee41fe4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc18a010_cf895a50",
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d1f31bb_797fdb62",
@@ -209,6 +413,24 @@
       "writtenOn": "2021-07-21T19:49:52Z",
       "side": 1,
       "message": "revert this change?",
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d33a5a4_b5a0bc09",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-23T22:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d1f31bb_797fdb62",
       "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
