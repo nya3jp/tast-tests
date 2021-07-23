@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a212a727_7dda7c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-23T14:24:21Z",
+      "side": 1,
+      "message": "\".*\" doesn\u0027t account for newlines, so I had to match with white-space before \"disabled\" and end the string after.",
+      "parentUuid": "e3d70ecc_cbf78dd5",
+      "range": {
+        "startLine": 20,
+        "startChar": 73,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff15cdd8_27b02c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-23T14:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c1a48a_d0725f8a",
+      "range": {
+        "startLine": 20,
+        "startChar": 59,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c527be49_1c9e0f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-23T14:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "755152c9_3eee1294",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fcb1775_ea9628ab",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e3cb8e_fa47a819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-23T14:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fcb1775_ea9628ab",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fd6b85a_d4f8a98c",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-07-23T02:17:32Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 23
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1176ab_f28a2c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-23T14:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd6b85a_d4f8a98c",
       "range": {
         "startLine": 70,
         "startChar": 3,
