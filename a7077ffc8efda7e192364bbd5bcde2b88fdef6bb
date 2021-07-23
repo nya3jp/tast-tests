@@ -22,6 +22,75 @@
       },
       "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab224c88_eed5237d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-23T09:18:58Z",
+      "side": 1,
+      "message": "Please, update it.",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 63
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad991e6f_e213683d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-23T09:18:58Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 50
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8177c58b_089718dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-23T09:18:58Z",
+      "side": 1,
+      "message": "Let\u0027s leave just 1 test for true and 1 for false.\nOr do example.com and company.com tests differ in anything rather than the url?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 4
+      },
+      "revId": "a7077ffc8efda7e192364bbd5bcde2b88fdef6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

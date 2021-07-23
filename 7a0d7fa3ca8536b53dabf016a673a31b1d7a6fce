@@ -92,6 +92,30 @@
       },
       "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f78b98_947e9253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-07-23T09:18:58Z",
+      "side": 1,
+      "message": "So the behavior doesn\u0027t differ here? Or what happens in the reality with the text?",
+      "parentUuid": "47333b52_eb13229f",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "7a0d7fa3ca8536b53dabf016a673a31b1d7a6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
