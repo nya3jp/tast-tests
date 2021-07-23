@@ -3,6 +3,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c844852_a974f12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:03:08Z",
+      "side": 1,
+      "message": "Can you update this to be more descriptive",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e8923d_c47e0807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:03:08Z",
+      "side": 1,
+      "message": "Add your team\u0027s alias too so we can easily find all sys-ui-surfaces tests\n\n\"cros-system-ui-eng@google.com\",",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdb1abe_72abf984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:03:08Z",
+      "side": 1,
+      "message": "Do you want to only run this test on devices that support tablet mode or have two versions of the test 1 that runs on any clamshell devices and 1 that support tablet mode ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2676db_1fb9b791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:03:08Z",
+      "side": 1,
+      "message": "This should probably be moved to the ash/shelf package",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27fc41e_c9878f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:03:08Z",
+      "side": 1,
+      "message": "comment about what this is doing",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 89
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6989cc1a_8dec84a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-23T00:03:08Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "381dcba4_18a2025e",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 10
