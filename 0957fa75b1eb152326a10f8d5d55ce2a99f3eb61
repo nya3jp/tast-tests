@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ceca57_da85a20a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-23T17:06:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7df09700_793f6f4d",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "0957fa75b1eb152326a10f8d5d55ce2a99f3eb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21afbd0e_655268bb",
