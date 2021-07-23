@@ -46,6 +46,30 @@
       },
       "revId": "254c4b03469c97ecc2caa569d18ca9950da52d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f37f2c_7c7e544d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-23T01:11:30Z",
+      "side": 1,
+      "message": "Got it. So why not same have it same in all places and not have mthiyagarajan@chromium.org like in some places. (Better to do this cleanup in separate CL and not integrate into this to reduce LOC).",
+      "parentUuid": "14cb473c_ee2bcb21",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "254c4b03469c97ecc2caa569d18ca9950da52d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
