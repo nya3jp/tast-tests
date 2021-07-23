@@ -10,11 +10,14 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -38,6 +41,10 @@ func init() {
 func PacketCapture(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	dbg, err := debugd.New(ctx)
 	if err != nil {
@@ -143,10 +150,20 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 				s.Error("Ping command failed: ", err)
 			}
 
+			// A notification must be shown after packet capture starts successfully.
+			if !checkPacketCaptureNotificationVisible(ctx, tconn) {
+				s.Error("Packet capture notification is not visible")
+			}
+
 			testing.ContextLog(ctx, "Stopping packet capture")
 			// Stop packet capture.
 			if err := dbg.PacketCaptureStop(ctx, handle); err != nil {
 				s.Error("PacketCaptureStop DBus call failed: ", err)
+			}
+
+			// Notification must be gone after the packet capture is stopped.
+			if checkPacketCaptureNotificationVisible(ctx, tconn) {
+				s.Error("Notification is visible after stopping packet captures")
 			}
 
 			// Check the output file size.
@@ -159,4 +176,14 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
+}
+
+// checkPacketCaptureNotificationVisible returns true when the notification is visible.
+func checkPacketCaptureNotificationVisible(ctx context.Context, tconn *chrome.TestConn) bool {
+	const timeout = 5 * time.Second
+	// Notification ID is hard-coded in Chrome as DebugdNotificationHandler::kPacketCaptureNotificationId.
+	notificationID := "debugd-packetcapture"
+	testing.ContextLog(ctx, "Checking packet capture notification")
+	_, err := ash.WaitForNotification(ctx, tconn, timeout, ash.WaitIDContains(notificationID))
+	return err == nil
 }
