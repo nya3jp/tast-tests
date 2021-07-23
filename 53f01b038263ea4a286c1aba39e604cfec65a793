@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6e83cc_27d3586c",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32788ca0_ec8f6d64",
+      "range": {
+        "startLine": 169,
+        "startChar": 45,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6263f319_4e1839a2",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730845cb_f63fee2e",
+      "range": {
+        "startLine": 169,
+        "startChar": 35,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb76ea6d_cbaff028",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-07-20T06:53:47Z",
       "side": 1,
       "message": "F",
+      "range": {
+        "startLine": 194,
+        "startChar": 45,
+        "endLine": 194,
+        "endChar": 46
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3da79c9_1be3bf7e",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb76ea6d_cbaff028",
       "range": {
         "startLine": 194,
         "startChar": 45,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b4c623_21fb0c75",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f52852_e04faa6c",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef83c73_02b6d46e",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-07-22T16:35:11Z",
       "side": 1,
       "message": "Nit: space before parentheses.\n\nvariable (i.e.",
+      "range": {
+        "startLine": 74,
+        "startChar": 45,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcd0309_d4689f5c",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef83c73_02b6d46e",
       "range": {
         "startLine": 74,
         "startChar": 45,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc52249_a0e73a44",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8cf7e8_35f0f407",
+      "range": {
+        "startLine": 76,
+        "startChar": 45,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d3178a4_e5da56e4",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-07-20T06:53:47Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 15
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "381fa041_d06efc9d",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d3178a4_e5da56e4",
       "range": {
         "startLine": 144,
         "startChar": 10,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "557685d2_20f281bd",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a070cbb_5f9682f6",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 51
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c319935f_66106b42",
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7882ae_5a9cbd62",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c319935f_66106b42",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dc59a4c_177d2aa0",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-07-20T06:53:47Z",
       "side": 1,
       "message": "replaces",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "53f01b038263ea4a286c1aba39e604cfec65a793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7cca7f_4cd41e3e",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-23T00:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dc59a4c_177d2aa0",
       "range": {
         "startLine": 75,
         "startChar": 41,
