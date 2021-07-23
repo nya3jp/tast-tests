@@ -16,6 +16,29 @@
       "message": "Filed crbug.com/1231991 to migrate to uiauto and reduce code duplication",
       "revId": "5be7258e841e535f05a2cff8436f74f8caebe3aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83b4dc5_3d1233cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-23T09:06:06Z",
+      "side": 1,
+      "message": "I think this should be added to the testing table.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "5be7258e841e535f05a2cff8436f74f8caebe3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
