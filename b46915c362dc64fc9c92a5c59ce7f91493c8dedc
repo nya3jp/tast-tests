@@ -369,6 +369,30 @@
       },
       "revId": "b46915c362dc64fc9c92a5c59ce7f91493c8dedc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9bcf34_70628138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-24T03:11:05Z",
+      "side": 1,
+      "message": "when I was checking manually, observed that sometimes window state of an app is retained from the previous test case state behavior. I remember once I checked with priyankd@ on it, got to know that this behavior is an intended behavior and so not need to file bug on it.",
+      "parentUuid": "1102dea7_06b7d614",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 51
+      },
+      "revId": "b46915c362dc64fc9c92a5c59ce7f91493c8dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
