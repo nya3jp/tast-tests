@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8669dbc3_4b87de2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a8a7384_47f8d03f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bfb20fb_1289d0a1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-23T00:22:33Z",
       "side": 1,
       "message": "Why are these retries necessary. I don\u0027t believe I\u0027ve seen them in other tests",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a926750d_ff9b6e12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "I have the retries because I based these new tests on the already existing create_and_rename_folder.go test. I assume that they were put there for flakiness reasons.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go?l\u003d96\u0026rcl\u003dd879094e95269ff4164fe95319eb50f740fe52c9",
+      "parentUuid": "0bfb20fb_1289d0a1",
       "range": {
         "startLine": 45,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbc986b_eec4af13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "I have added a utility function to handle this now, so no magic numbers are needed.",
+      "parentUuid": "e638a173_58994b4b",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34df1cb8_d950f502",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-23T00:22:33Z",
       "side": 1,
       "message": "THis is in several tests. Can you move it to the launcher package",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b7a623_cd8df7ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34df1cb8_d950f502",
       "range": {
         "startLine": 58,
         "startChar": 11,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1312c8_a59c1593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdbc04a4_a9b653f2",
+      "range": {
+        "startLine": 94,
+        "startChar": 43,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f089324_b04a6a3e",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-23T00:22:33Z",
       "side": 1,
       "message": "We\u0027re not supposed to pass around uiauto contexts like this. They should be recreated in test packages when needed since they can have custom timeouts and polling options that may not be applicable to the ones defined in a test.",
+      "range": {
+        "startLine": 182,
+        "startChar": 63,
+        "endLine": 182,
+        "endChar": 81
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71c5c79a_f4021e9f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "Removed passing in of uiauto contexts.",
+      "parentUuid": "7f089324_b04a6a3e",
       "range": {
         "startLine": 182,
         "startChar": 63,

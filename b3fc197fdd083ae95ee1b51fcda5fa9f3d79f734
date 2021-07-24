@@ -184,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86180fcf_490d1461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "We can check if an item is on the current page by checking that an item\u0027s bounds are contained in the AppsGridView\u0027s bounds.\n\nI have done as suggested, and we are no longer dependent on the numbers of apps on the page, I created the launcher utility function AddItemsToFolder(). This also skips attempting to add folder items.",
+      "parentUuid": "e0e75aa0_b736201a",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361879d6_f30f8aa5",
@@ -492,6 +516,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec304225_21944d99",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "In the new function AddItemsToFolder(), we now check that the added items are not a folder.",
+      "parentUuid": "d7ced761_8259b7d4",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a4c622d_d8234ec4",
@@ -702,6 +750,24 @@
       "side": 1,
       "message": "it does become invisible, afaik - not sure whether that would remove it from the automation node hierarchy. If not, we should be able to detect that it\u0027s hidden (a11y tools would have to know this so it can be ignored)",
       "parentUuid": "b5b4a76d_b4aa348e",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb0d707_d5fdacb5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-24T01:30:02Z",
+      "side": 1,
+      "message": "It makes sense that a11y would know it can be ignored, and it actually seems that ChromeVox must have regressed in this instance (bug filed here crbug.com/1232593). It seems that ChromeVox still iterates over all views in the hierarchy when a folder is open, including root level AppListItemViews.",
+      "parentUuid": "040593f5_b076a219",
       "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
