@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3579641_9bd7c169",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-24T01:45:06Z",
+      "side": 1,
+      "message": "Thanks. I further split it to 3 CLs.",
+      "parentUuid": "14bbe186_40d522cc",
+      "revId": "3f55b7ef6b547603d3b75cf84c3b0c285823b0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e33269d8_13fd93f7",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae8b353_5bb75e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-24T01:45:06Z",
+      "side": 1,
+      "message": "There is not need to use ui.Combine() here and we return error with the timeout value.\n\nThis logic is removed to the second CL.",
+      "parentUuid": "e33269d8_13fd93f7",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 102
+      },
+      "revId": "3f55b7ef6b547603d3b75cf84c3b0c285823b0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b3eb30a_913942f5",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-07-24T00:02:13Z",
       "side": 1,
       "message": "Please split the cl or rewrite the description. These changes are irrelevant with the current description.",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 1
+      },
+      "revId": "3f55b7ef6b547603d3b75cf84c3b0c285823b0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52fcdda9_10282099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-24T01:45:06Z",
+      "side": 1,
+      "message": "This is not new code. When making the new slide and delete slide changes, we found the shareScreen code is duplicated in \"ExtendedDisplayPresenting\" and \"PresentSlide\" function so we extract it out. I added this to the description.",
+      "parentUuid": "0b3eb30a_913942f5",
       "range": {
         "startLine": 632,
         "startChar": 0,
