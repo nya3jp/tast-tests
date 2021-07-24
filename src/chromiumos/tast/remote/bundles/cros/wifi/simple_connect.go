@@ -170,6 +170,8 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20), ap.Hidden()},
 				}},
+				// TODO(b/189972561) Enable this test on Trogdor once active scanning on 5 GHz channel is enabled.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("strongbad", "trogdor", "trogdor-kernelnext")),
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
 				Name: "wep40",
