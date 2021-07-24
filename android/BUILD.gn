@@ -38,6 +38,7 @@ group("all") {
     "ArcMotionInputTest:ArcMotionInputTest",
     "ArcMulticastForwarderTest:ArcMulticastForwarderTest",
     "ArcMultiDisplayTest:ArcMultiDisplayTest",
+    "ArcNearbyShareTest:ArcNearbyShareTest",
     "ArcNotificationTest:ArcNotificationTest",
     "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPipTest:ArcPipTest",
