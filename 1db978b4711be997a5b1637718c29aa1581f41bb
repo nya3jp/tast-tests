@@ -22,6 +22,30 @@
       },
       "revId": "1db978b4711be997a5b1637718c29aa1581f41bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f3a621_d002297c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-07-25T03:10:43Z",
+      "side": 1,
+      "message": "I think readability will improve by directly constructing.\nBut if we directly construct the structure, we need to capitalize the variables of the structure.",
+      "parentUuid": "19fdb83e_2dd0d1e8",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 131
+      },
+      "revId": "1db978b4711be997a5b1637718c29aa1581f41bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
