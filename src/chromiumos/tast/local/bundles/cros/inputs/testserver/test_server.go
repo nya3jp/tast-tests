@@ -11,6 +11,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -268,6 +269,18 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 // ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
 // After input action, it checks whether the outcome equals to expected value.
 func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputData data.InputData) uiauto.Action {
+	// Validate a text field given its type, and handle special case of password input.
+	validateFiled := func(ctx context.Context) error {
+		if inputField == PasswordInputField {
+			// Password input is a special case. The value is presented with placeholder "•".
+			// Using PasswordTextField field to verify the outcome.
+			return uiauto.Combine("validate passward field",
+				util.WaitForFieldTextToBe(its.tconn, inputField.Finder(), strings.Repeat("•", len(inputData.CharacterKeySeq))),
+				util.WaitForFieldTextToBe(its.tconn, PasswordTextField.Finder(), inputData.ExpectedText),
+			)(ctx)
+		}
+		return util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText)(ctx)
+	}
 	return uiauto.Combine("validate vk input function on field "+string(inputField),
 		// Make sure virtual keyboard is not shown before action.
 		vkbCtx.HideVirtualKeyboard(),
@@ -280,6 +293,6 @@ func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardC
 			}
 			return nil
 		},
-		util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText),
+		validateFiled,
 	)
 }
