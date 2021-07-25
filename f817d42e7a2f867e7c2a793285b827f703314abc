@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4948e4be_bd877cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-25T23:16:54Z",
+      "side": 1,
+      "message": "Should use ignoring case here. The VK can be retained shifted state from last test.",
+      "range": {
+        "startLine": 279,
+        "startChar": 9,
+        "endLine": 279,
+        "endChar": 29
+      },
+      "revId": "f817d42e7a2f867e7c2a793285b827f703314abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
