@@ -187,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f74a1d3_7bdb8117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe127c9_3649dad4",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e50decdf_79ea4ddd",
@@ -200,6 +224,30 @@
       "writtenOn": "2021-07-23T17:44:34Z",
       "side": 1,
       "message": "nit: I\u0027d move these const to L117... where they are used for the first time.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 8
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6ac356_f50e4453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e50decdf_79ea4ddd",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -233,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7ad0f4_6c338b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8b31d7b_8bf44660",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 33
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9099313_4c734eac",
@@ -246,6 +318,30 @@
       "writtenOn": "2021-07-23T17:44:34Z",
       "side": 1,
       "message": "nit:  \"wantAllowed\" -\u003e \"copyAllowed\"",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 13
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5af0448_cde651c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9099313_4c734eac",
       "range": {
         "startLine": 123,
         "startChar": 2,
@@ -279,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f038e8_9bfe8d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Opening page waits for the page to completely load, no command is executed until then.\nAdded the description in the error to make it clearer.",
+      "parentUuid": "67996cce_c6f592cb",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 4
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3936d64_faa3b589",
@@ -292,6 +412,30 @@
       "writtenOn": "2021-07-23T17:44:34Z",
       "side": 1,
       "message": "nit: do you need to create/start/stop a new activity, or can you reuse it?\n\ne.g: does it work if you move the creation/start/stop/ui-wait-for-exist outside the \"for ... range\" ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a55c68_42d0e595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3936d64_faa3b589",
       "range": {
         "startLine": 152,
         "startChar": 3,
@@ -319,6 +463,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2d757e_4168b0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a63caa4_0985ebd8",
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "281ec73b_e8fec4ed",
@@ -332,6 +494,30 @@
       "writtenOn": "2021-07-23T15:02:32Z",
       "side": 1,
       "message": "Does the test timeout need to be adjusted if there are two subtests running, each with two ~30 second operations?",
+      "range": {
+        "startLine": 164,
+        "startChar": 57,
+        "endLine": 164,
+        "endChar": 71
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ce6a04_c3101d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Added the time out in the parameters of the test",
+      "parentUuid": "281ec73b_e8fec4ed",
       "range": {
         "startLine": 164,
         "startChar": 57,
@@ -365,6 +551,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14dcb6fd_a98b0e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afedf4de_e1357367",
+      "range": {
+        "startLine": 194,
+        "startChar": 37,
+        "endLine": 194,
+        "endChar": 45
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5bd8d9d_9c48df68",
@@ -378,6 +588,30 @@
       "writtenOn": "2021-07-23T17:44:34Z",
       "side": 1,
       "message": "nit: \"didn\u0027t copied\" -\u003e \"didn\u0027t copy\" or better: \n   \n   s.Fatal(\"Failed to copy string: \", copiedString)",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 34
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab18a28_34e6fd01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5bd8d9d_9c48df68",
       "range": {
         "startLine": 198,
         "startChar": 28,
@@ -434,6 +668,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "907bc3e0_add917d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7d81853_82cd1c47",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718659c9_86057e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328bf83e_e29e70f4",
+      "range": {
+        "startLine": 204,
+        "startChar": 10,
+        "endLine": 204,
+        "endChar": 13
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3dc3dfc_57cb5380",
@@ -471,6 +753,30 @@
       "side": 1,
       "message": "Format is from here: https://source.chromium.org/chromium/chromium/src/+/main:components/policy_strings.grdp;l\u003d622?q\u003d%22has%20been%20blocked%20by%20administrator%20policy%22\n\nRegarding the Bubble:\n - Clipboard bubble is a toast (Or an ash toast)\n - Toast bubble are in chromium os they cannot be accessed using chrome i.e using ash package of tast (Or ash.WaitForNotification)\n - Other tests that access toast notification also use same uiauto \n like here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go;l\u003d81?q\u003d%22%2F%2F%20ShareToastNotification%20represents%20an%20instance%20of%20the%20toast%20notification%20of%20sharing%20folder.%22\n\n\nOne discussion related to this is here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3038223/comments/7dfb23cc_b090653e",
       "parentUuid": "e3dc3dfc_57cb5380",
+      "range": {
+        "startLine": 207,
+        "startChar": 43,
+        "endLine": 207,
+        "endChar": 124
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72512577_0e86e9f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fa8e2fd_b99a99ad",
       "range": {
         "startLine": 207,
         "startChar": 43,
@@ -552,6 +858,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14aca90_99968e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "a) Added the change in function name, doc string and comment while calling it.\n\nb) I was checking the condition of string not empty and empty but added one more condition here: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/changes/27/3026227/5/src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go#198\n\nAlso, the problem with checking full string is that while pasting there is some change in format of the string due to images and link, and to make it not more fragile just checking the title in the latest condition",
+      "parentUuid": "629195f9_04f7bf16",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15c3fb9d_51aed81a",
@@ -593,6 +923,54 @@
         "startChar": 21,
         "endLine": 216,
         "endChar": 22
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b59759b_1e1fba57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc4e2e9c_17ca7057",
+      "range": {
+        "startLine": 216,
+        "startChar": 21,
+        "endLine": 216,
+        "endChar": 22
+      },
+      "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f67746_39129f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-25T06:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c3fb9d_51aed81a",
+      "range": {
+        "startLine": 216,
+        "startChar": 37,
+        "endLine": 216,
+        "endChar": 42
       },
       "revId": "180598b4c31b3a1ab3b83aff033bb4605c212cf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
