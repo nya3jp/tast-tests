@@ -10,13 +10,11 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
@@ -75,7 +73,6 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 			defer shortCancel()
 
 			defer func(ctx context.Context) {
-
 				outDir := filepath.Join(s.OutDir(), testName)
 				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_tree_"+testName)
 
@@ -84,26 +81,9 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
-				s.Fatal("Failed to show VK: ", err)
-			}
-
-			if err := uiauto.Combine("validate vk input function on field "+string(inputField),
-				its.Clear(inputField),
-				func(ctx context.Context) error {
-					if err := vkbCtx.TapKeysIgnoringCase(inputData.CharacterKeySeq)(ctx); err != nil {
-						return errors.Wrapf(err, "failed to tap keys: %v", inputData.CharacterKeySeq)
-					}
-					if inputData.SubmitFromSuggestion {
-						return vkbCtx.SelectFromSuggestion(inputData.ExpectedText)(ctx)
-					}
-					return nil
-				},
-				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), inputData.ExpectedText),
-			)(ctx); err != nil {
+			if err := its.ValidateVKInputOnField(vkbCtx, inputField, inputData)(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
-
 		}
 	}
 	// Run defined subtest per input method and message combination.
