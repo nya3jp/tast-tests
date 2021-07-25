@@ -161,6 +161,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a8e8b1b_2961ca2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-07-25T10:01:02Z",
+      "side": 1,
+      "message": "Ack, thanks! I\u0027ll update when the alternative is available.",
+      "parentUuid": "753260d5_ad21ae88",
+      "range": {
+        "startLine": 89,
+        "startChar": 65,
+        "endLine": 89,
+        "endChar": 81
+      },
+      "revId": "360a0d6ed4bf5fd83b8ec79fcc2d34f2cc299eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24e61647_78830b98",
