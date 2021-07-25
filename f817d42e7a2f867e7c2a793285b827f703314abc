@@ -46,6 +46,30 @@
       },
       "revId": "f817d42e7a2f867e7c2a793285b827f703314abc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1265ac_25817d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-25T23:32:23Z",
+      "side": 1,
+      "message": "Yes. It looks weird but unfortunately the only way to do it before we have resetState.\n\nWe use sub-test go through each field. If the test failed in last field in a shifted state, it remains to password field. In comparison to typing test. Letter case check is relatively lower priority.",
+      "parentUuid": "fdc58ed7_bf0ce832",
+      "range": {
+        "startLine": 279,
+        "startChar": 9,
+        "endLine": 279,
+        "endChar": 29
+      },
+      "revId": "f817d42e7a2f867e7c2a793285b827f703314abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
