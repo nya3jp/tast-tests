@@ -16,6 +16,23 @@
       "message": "Oops. Forgot Tast Owners.",
       "revId": "a481da7be3fef87441fa37972c7d1dcf7290b63d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0642e9f2_4aa32069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-26T08:28:35Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a481da7be3fef87441fa37972c7d1dcf7290b63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
