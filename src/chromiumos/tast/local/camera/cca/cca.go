@@ -1167,7 +1167,7 @@ func (a *App) ToggleMirroringOption(ctx context.Context) (bool, error) {
 
 // ToggleQRCodeOption toggles the barcode scanning option.
 func (a *App) ToggleQRCodeOption(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "scan-barcode", "#toggle-barcode")
+	return a.toggleOption(ctx, "enable-scan-barcode", "#toggle-barcode")
 }
 
 // SetTimerOption sets the timer option to on/off.
