@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2f3aed_a05ac39d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-26T12:45:02Z",
+      "side": 1,
+      "message": "LGTM. I see that will stay as the lib not following returning Actions by exposed API. I think, if there was more to be added to Browser structure we should convert functions into returning Actions as other libraries.",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bfe8ab7_e06e62b9",
@@ -20,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e81db106_3176dee7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/bookmarks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-26T12:45:02Z",
+      "side": 1,
+      "message": "I am not getting it.\n\nThis check and below if/else make sure that if the bookmarks bar is already visible nothing will be done. It is already shown.",
+      "parentUuid": "4bfe8ab7_e06e62b9",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eaf0ad1_ef0103a1",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/browser.go",
         "patchSetId": 3
@@ -31,6 +66,24 @@
       "writtenOn": "2021-07-26T08:24:20Z",
       "side": 1,
       "message": "What do you think about including keyboard *input.KeyboardEventWriter here. You could open the keyboard in Launch() (and close it Close()).",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6121b7ef_2bae9c12",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-26T12:45:02Z",
+      "side": 1,
+      "message": "I liked the idea at first. When I gave it a second thought I came to this:\n\nIMHO creating keyboard instance should be happening outside. If keyboard is created in this package it strongly binds two packages. Creating keyboard outside of Browser instance and passing it follows dependency injection.\n\nWe could pass keyboard to Launch method - is that is what you meant?. But then it will create either discrepancy with other keyboard usages -\u003e keyboard closure will be handled within Browser.Close() whereas usual usage, so far, has been to defer keyboard.Close(), or we will be closing browser and keyboard in separate defers -\u003e which doesn\u0027t change anything.\n\nI think, I would leave it as is.",
+      "parentUuid": "8eaf0ad1_ef0103a1",
       "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
