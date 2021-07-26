@@ -63,6 +63,7 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the Settings activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	for _, test := range []struct {
 		wmEvent             ash.WMEventType
