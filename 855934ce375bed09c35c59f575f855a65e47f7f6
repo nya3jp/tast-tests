@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8de8949_9efe42bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-26T04:31:06Z",
+      "side": 1,
+      "message": "I think it should pass, but please still make sure that camera.CCAUIPerf can pass too.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "855934ce375bed09c35c59f575f855a65e47f7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
