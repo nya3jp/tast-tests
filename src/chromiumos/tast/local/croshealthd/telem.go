@@ -46,6 +46,7 @@ const (
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
 	TelemCategoryStorage           TelemCategory = "storage"
 	TelemCategorySystem            TelemCategory = "system"
+	TelemCategorySystem2           TelemCategory = "system2"
 	TelemCategoryTimezone          TelemCategory = "timezone"
 )
 
