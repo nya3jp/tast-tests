@@ -46,6 +46,11 @@ const (
 	SwitchWindowThroughShelf = SwitchWindowThroughHotseat
 )
 
+// pageScrollingInterval is the time interval when doing page scrolling.
+// A long page scrolling interval is required
+// in order to get Graphics.Smoothness.PercentDroppedFrames.AllInteractions metric results.
+const pageScrollingInterval = 1500 * time.Millisecond
+
 // UIActionHandler defines UI actions performed either on a tablet or on a clamshell UI.
 type UIActionHandler interface {
 	// Close releases the underlying resouses.
@@ -560,7 +565,7 @@ func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]action.Ac
 
 	// Swipe the page down.
 	swipeDown := func(ctx context.Context) error {
-		if err := t.tc.Swipe(start, t.tc.SwipeTo(end, 500*time.Millisecond))(ctx); err != nil {
+		if err := t.tc.Swipe(start, t.tc.SwipeTo(end, pageScrollingInterval))(ctx); err != nil {
 			return errors.Wrap(err, "failed to Swipe down")
 		}
 		return nil
@@ -568,7 +573,7 @@ func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]action.Ac
 
 	// Swipe the page up.
 	swipeUp := func(ctx context.Context) error {
-		if err := t.tc.Swipe(end, t.tc.SwipeTo(start, 500*time.Millisecond))(ctx); err != nil {
+		if err := t.tc.Swipe(end, t.tc.SwipeTo(start, pageScrollingInterval))(ctx); err != nil {
 			return errors.Wrap(err, "failed to Swipe down")
 		}
 		return nil
@@ -957,7 +962,7 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]actio
 
 	// Swipe the page down.
 	doubleSwipeDown := func(ctx context.Context) error {
-		if err := cl.touchPad.DoubleSwipe(ctx, x, ystart, x, yend, d, 500*time.Millisecond); err != nil {
+		if err := cl.touchPad.DoubleSwipe(ctx, x, ystart, x, yend, d, pageScrollingInterval); err != nil {
 			return errors.Wrap(err, "failed to DoubleSwipe down")
 		}
 		if err := cl.touchPad.End(); err != nil {
@@ -968,7 +973,7 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]actio
 
 	// Swipe the page up.
 	doubleSwipeUp := func(ctx context.Context) error {
-		if err := cl.touchPad.DoubleSwipe(ctx, x, yend, x, ystart, d, 500*time.Millisecond); err != nil {
+		if err := cl.touchPad.DoubleSwipe(ctx, x, yend, x, ystart, d, pageScrollingInterval); err != nil {
 			return errors.Wrap(err, "failed to DoubleSwipe up")
 		}
 		if err := cl.touchPad.End(); err != nil {
