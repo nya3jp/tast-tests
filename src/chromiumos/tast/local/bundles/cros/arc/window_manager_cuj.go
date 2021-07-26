@@ -918,6 +918,14 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 // wmDisplayResolution verifies that the Android resolution gets updated as defined in:
 // go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
 func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	sdkVer, err := arc.SDKVersion()
+	if err != nil {
+		return err
+	}
+	// Density is handled differently in R, where bounds are calculated in a more complicated way based on display size, etc, so the operation frequently changes and is not very testable.
+	if sdkVer >= arc.SDKR {
+		return nil
+	}
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
