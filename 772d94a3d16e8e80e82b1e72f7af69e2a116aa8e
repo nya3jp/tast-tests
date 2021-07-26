@@ -16,6 +16,40 @@
       "message": "davidwelling@ to have a look at this.",
       "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba70f312_7ccb3c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-07-26T18:44:52Z",
+      "side": 1,
+      "message": "I don\u0027t think this variable needs to be defined at this level. It is only being used in the RunTestCases method so it is better suited as a variable defined in that method. It can be defined where the call to createFullTestList is now (and I don\u0027t believe you need that method, you can build it inline), and then you should be able to remove the defer that cleans it up (because it will be reset when the function is called). That should help consolidate that variable and prevent cases where it isn\u0027t properly cleaned up.",
+      "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d979a7d_ab1e0e21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-07-26T18:44:52Z",
+      "side": 1,
+      "message": "nit: the named second parameter can be reused in each iteration (i.e. curTest instead of test1, test2, test3)",
+      "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
