@@ -41,7 +41,7 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 		return nil, errors.Wrap(err, "closing local temp file")
 	}
 
-	remoteTmpFile, err := runner.OutputCommand(ctx, true, "tempfile")
+	remoteTmpFile, err := runner.OutputCommand(ctx, true, "tempfile", "-d", "/var/tmp", "-p", "fwimg")
 	if err != nil {
 		return nil, errors.Wrap(err, "creating remote temp file")
 	}
@@ -128,12 +128,12 @@ func WriteRemoteFlashrom(ctx context.Context, runner ServoHostCommandRunner, pro
 		err = err1
 	}
 
-	remoteTmpFile, err := runner.OutputCommand(ctx, true, "tempfile")
+	remoteTmpFile, err := runner.OutputCommand(ctx, true, "tempfile", "-d", "/var/tmp", "-p", "fwimg")
 	if err != nil {
 		return errors.Wrap(err, "creating remote temp file")
 	}
 	remoteImageFileName := strings.TrimSuffix(string(remoteTmpFile), "\n")
-	// defer runner.RunCommand(ctx, true, "rm", "-f", remoteImageFileName)
+	defer runner.RunCommand(ctx, true, "rm", "-f", remoteImageFileName)
 
 	if err = runner.PutFiles(ctx, true, map[string]string{localImageFileName: remoteImageFileName}); err != nil {
 		return errors.Wrap(err, "could not copy files to servo host")
