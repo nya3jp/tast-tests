@@ -16,6 +16,52 @@
       "message": "I\u0027m still getting a context canceled error when running this",
       "revId": "6215d454c7989fc5f487f9f5b9c8fdd7b1d04570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e5ebb8_c6fb729b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-26T16:12:54Z",
+      "side": 1,
+      "message": "If you call \"go\" outside you can just have this as a \"regular\" function without nesting this func()",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "6215d454c7989fc5f487f9f5b9c8fdd7b1d04570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b68a6a6_0f3c20da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-26T16:12:54Z",
+      "side": 1,
+      "message": "You may want to switch this to Error",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "6215d454c7989fc5f487f9f5b9c8fdd7b1d04570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
