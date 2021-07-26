@@ -378,6 +378,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "286cb405_77650b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-26T16:47:24Z",
+      "side": 1,
+      "message": "Thanks for confirming Yuke. Replaced with apps.ChromeOrChromium.",
+      "parentUuid": "9c744425_a85e416e",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "212e32e7_c4b05be9",
