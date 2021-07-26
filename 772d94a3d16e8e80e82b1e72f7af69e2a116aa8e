@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "810e88fe_25333351",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-26T20:11:43Z",
+      "side": 1,
+      "message": "LGTM once David\u0027s comments resolved. ",
+      "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba70f312_7ccb3c66",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 33
