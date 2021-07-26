@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218182a0_75b3da60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:07:17Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e450c2_0b895336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:07:17Z",
+      "side": 1,
+      "message": "nit: this log looks redundant.",
+      "range": {
+        "startLine": 459,
+        "startChar": 3,
+        "endLine": 459,
+        "endChar": 59
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6befe79a_cdb89e21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:07:17Z",
+      "side": 1,
+      "message": "This cleanup does not work if the function fails due to context timeout. Please shorten the context to reserve time for cleanup.",
+      "range": {
+        "startLine": 555,
+        "startChar": 7,
+        "endLine": 555,
+        "endChar": 19
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c2dfd2_f919e404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:07:17Z",
+      "side": 1,
+      "message": "Optional: You can either return type action.Action.",
+      "range": {
+        "startLine": 632,
+        "startChar": 113,
+        "endLine": 632,
+        "endChar": 118
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2de23de_f6aec07c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/slide.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:07:17Z",
+      "side": 1,
+      "message": "nit: I would suggest to use pattern or something else to make this identifier more robust. This name highly depends on Slide side change.",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 66
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
