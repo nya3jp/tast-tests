@@ -82,5 +82,8 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 		} else if state != test.expectedWindowState {
 			s.Errorf("Unexpected window state: got %s; want %s", state, test.expectedWindowState)
 		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, pkg, test.expectedWindowState); err != nil {
+			s.Errorf("Failed to wait for new window state: %s", test.expectedWindowState)
+		}
 	}
 }
