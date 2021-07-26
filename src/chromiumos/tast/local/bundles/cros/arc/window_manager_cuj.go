@@ -61,6 +61,8 @@ var unstableCUJTests = []wmCUJTestParams{
 // New and unstable tests that are only for P should be placed here. Will be gone once all P devices are gone.
 var unstableCUJTestsP = []wmCUJTestParams{
 	{"Springboard N / Pre-N", wmSpringboardP},
+	// Density is handled differently in R, where bounds are calculated in a more complicated way based on display size, etc, so the operation frequently changes and is not very testable.
+	{"Display resolution", wmDisplayResolutionP},
 }
 
 func init() {
@@ -900,9 +902,9 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// wmDisplayResolution verifies that the Android resolution gets updated as defined in:
+// wmDisplayResolutionP verifies that the Android resolution gets updated as defined in:
 // go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
-func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+func wmDisplayResolutionP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
