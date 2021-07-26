@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd3b6825_090fe0aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-26T07:13:39Z",
+      "side": 1,
+      "message": "My understanding is that WMResizableTablet verifies how a resizable app behaves in tablet mode, so regardless of the policy (whether a resizable app behaves like resizable or unresizable), we should have this test case.\n\nAlso as you said, we may have freeform tablet mode in the future, so I think we should leave this test for now?",
+      "parentUuid": "a8115939_30c54d01",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "10ad73d8450e93553656f6193064f19c9d5c275d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9c19153e_e4638d9e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,23 @@
       "writtenOn": "2021-07-22T20:45:15Z",
       "side": 1,
       "message": "+2 for style.",
+      "revId": "10ad73d8450e93553656f6193064f19c9d5c275d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90fe5ec8_69831334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-07-26T07:13:39Z",
+      "side": 1,
+      "message": "PTAL again!",
       "revId": "10ad73d8450e93553656f6193064f19c9d5c275d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
