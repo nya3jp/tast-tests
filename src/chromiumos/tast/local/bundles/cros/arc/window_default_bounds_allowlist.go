@@ -93,16 +93,16 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 		}
 
 		// The default window state in ARC P is maximized, so ensure that the app is restored first to calculate the default freeform bounds.
-		windowState, err := act.GetWindowState(ctx)
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 		if err != nil {
-			return coords.Rect{}, errors.Wrap(err, "failed to get the default window state of the non-allowlisted activity")
+			return coords.Rect{}, errors.Wrap(err, "failed to get the window info of the non-allowlisted activity")
 		}
-		if windowState != arc.WindowStateNormal {
+		if window.State != ash.WindowStateNormal {
 			winInfoBeforeRestore, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 			if err != nil {
 				return coords.Rect{}, err
 			}
-			if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventNormal); err != nil {
 				return coords.Rect{}, errors.Wrap(err, "failed to restore the window")
 			}
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
@@ -111,11 +111,10 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			if err := ash.WaitWindowFinishAnimating(ctx, tconn, winInfoBeforeRestore.ID); err != nil {
 				return coords.Rect{}, errors.Wrap(err, "failed to wait for the animation of the non-allowlisted activity to be finished")
 			}
-		}
-
-		window, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return coords.Rect{}, errors.Wrap(err, "failed to get the window info of the non-allowlisted activity")
+			window, err = ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+			if err != nil {
+				return coords.Rect{}, errors.Wrap(err, "failed to get the window info of the non-allowlisted activity")
+			}
 		}
 		return window.BoundsInRoot, nil
 	}()
