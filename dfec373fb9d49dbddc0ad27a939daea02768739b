@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db57e691_347d9b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-07-26T13:47:53Z",
+      "side": 1,
+      "message": "Right. I did inline it as you said. Thank you for the suggestion!",
+      "parentUuid": "448dd64d_b70a31e0",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e35dde93_69df4a8a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-26T10:08:50Z",
       "side": 1,
       "message": "nit: this used only once, no need to make it constant",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 14
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ce6edc_bedbf684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-07-26T13:47:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e35dde93_69df4a8a",
       "range": {
         "startLine": 183,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee075ffd_f90ecf53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-07-26T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbdc3f56_4c3adabf",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 15
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df06fec_2ed87d83",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-26T10:08:50Z",
       "side": 1,
       "message": "ash.WaitForNotification can return few errors, but only one will indicate that there are no wanted notifications.\n\nIdeally, you should introduce new function in ash package to wait until notification gone. Otherwise you have to check whether error indicates that there are no notifications.",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 18
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31adf1b5_e9645a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-07-26T13:47:53Z",
+      "side": 1,
+      "message": "I didn\u0027t think about it, thank you for pointing out :) I added a new function to ash package that waits for the notification to be gone now.",
+      "parentUuid": "3df06fec_2ed87d83",
       "range": {
         "startLine": 188,
         "startChar": 8,
