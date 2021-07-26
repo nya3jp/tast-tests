@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2949085_753a9741",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/bookmarks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-26T13:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d0dd35_0c5628ee",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eaf0ad1_ef0103a1",
@@ -119,6 +137,24 @@
       "writtenOn": "2021-07-26T13:04:10Z",
       "side": 1,
       "message": "Ack",
+      "parentUuid": "6121b7ef_2bae9c12",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cf1c72_ab8fb2f6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-26T13:12:02Z",
+      "side": 1,
+      "message": "I also thought about it at first but logically it doesn\u0027t seem to belong there.\nThe strong binding of the keyboard package to this package is also a valid point.\nI think I\u0027d also rather leave it as it is.",
       "parentUuid": "6121b7ef_2bae9c12",
       "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
