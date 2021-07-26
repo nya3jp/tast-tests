@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca7c999_e3a56d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-26T17:50:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903f4adf_4b9b0be9",
+      "range": {
+        "startLine": 394,
+        "startChar": 33,
+        "endLine": 394,
+        "endChar": 54
+      },
+      "revId": "e11b7a83ae7f056eb25ed127d6bbe99ecb9b9554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e59438d_deab8081",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a8dddf_a23e8248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-26T17:50:48Z",
+      "side": 1,
+      "message": "Looks like go formatter enforces this space. Didn\u0027t change it.",
+      "parentUuid": "9e59438d_deab8081",
+      "range": {
+        "startLine": 395,
+        "startChar": 29,
+        "endLine": 395,
+        "endChar": 30
+      },
+      "revId": "e11b7a83ae7f056eb25ed127d6bbe99ecb9b9554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34b1e540_4c1f8b04",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-26T00:20:49Z",
       "side": 1,
       "message": "Do not see this function used anywhere else outside the package. Please change it to private function.",
+      "range": {
+        "startLine": 637,
+        "startChar": 5,
+        "endLine": 637,
+        "endChar": 15
+      },
+      "revId": "e11b7a83ae7f056eb25ed127d6bbe99ecb9b9554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a51f3fb_c29942bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-26T17:50:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34b1e540_4c1f8b04",
       "range": {
         "startLine": 637,
         "startChar": 5,
