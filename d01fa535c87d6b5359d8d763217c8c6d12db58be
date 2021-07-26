@@ -16,6 +16,29 @@
       "message": "PTAL!",
       "revId": "d01fa535c87d6b5359d8d763217c8c6d12db58be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d571a6a_4d647daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-26T18:30:51Z",
+      "side": 1,
+      "message": "I\u0027m not convinced about this one.\n\nI think it should be more explicit when the test doesn\u0027t run on certain platforms.\n\n\nPossible solutions:\n  - rename the function: wmSprintboard -\u003e wmSprintboardP and mention that on the docstring... \n  - or if this pattern keeps appearing, add a flag in wmCUJTestParams[] that says in which platforms it should run.\n  - or (similar to the previous one) if this pattern keeps appearing, perhaps group all the \"P-only\" test together and put them under the \"run on in P\" precondition",
+      "range": {
+        "startLine": 511,
+        "startChar": 1,
+        "endLine": 513,
+        "endChar": 2
+      },
+      "revId": "d01fa535c87d6b5359d8d763217c8c6d12db58be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
