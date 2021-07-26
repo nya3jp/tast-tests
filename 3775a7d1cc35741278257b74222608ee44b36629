@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43806e98_efe2d3cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-26T05:26:49Z",
+      "side": 1,
+      "message": "Yes, we are performing plug and unplug after login to the chrome book.",
+      "parentUuid": "06756336_e7a07682",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5f30dcc_b84c1797",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 10
@@ -309,6 +333,30 @@
       "side": 1,
       "message": "Wrapping some information here also help debugging.",
       "parentUuid": "2aa3db67_ffbe309e",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ace7048_76083427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-26T05:26:49Z",
+      "side": 1,
+      "message": "Error message is clear for debugging(logs) so, we have skipped wrapping the extra message.",
+      "parentUuid": "096047ad_28c14428",
       "range": {
         "startLine": 75,
         "startChar": 10,
