@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bfe8ab7_e06e62b9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/bookmarks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-26T08:24:20Z",
+      "side": 1,
+      "message": "nit: you can move this to the if check.\nThe same for the visibility checks below.",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eaf0ad1_ef0103a1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-26T08:24:20Z",
+      "side": 1,
+      "message": "What do you think about including keyboard *input.KeyboardEventWriter here. You could open the keyboard in Launch() (and close it Close()).",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
