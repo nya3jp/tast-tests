@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/lacros/lacros_binary_20210618.tar",
-  "size": 88520588,
-  "sha256sum": "8236dcc4a0bf6aa12b39b65b2332aa810e0d5056ba2dea8ea302575ada0d6444"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/lacros/lacros_binary_20210726.tar",
+  "size": 87793388,
+  "sha256sum": "1dd423e0e1e554def44e7d6294a258deabc3374039a68481703691cc570258af"
 }
