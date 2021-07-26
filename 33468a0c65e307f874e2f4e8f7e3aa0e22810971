@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8e8b40_6098c20a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-26T16:38:01Z",
+      "side": 1,
+      "message": "This change violates the style guide, which expects Test struct values to be populated with consts, not by calling functions.\n\nHowever if the data in fixtures (b/187793648) is going to take a long time, this will help to manage the growth of SoftwareDeps, ServiceDeps, and Vars in the firmware precondition.",
+      "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
