@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/bond"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/action"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -32,6 +34,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/profiler"
@@ -50,15 +53,16 @@ const (
 
 // meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
-	num      int            // Number of the participants in the meeting.
-	layout   meetLayoutType // Type of the layout in the meeting.
-	present  bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
-	docs     bool           // Whether it is running with a Google Docs window.
-	jamboard bool           // Whether it is running with a Jamboard window.
-	split    bool           // Whether it is in split screen mode. It can not be true if docs is false.
-	cam      bool           // Whether the camera is on or not.
-	power    bool           // Whether to collect power metrics.
-	duration time.Duration  // Duration of the meet call. Must be less than test timeout.
+	num       int            // Number of the participants in the meeting.
+	layout    meetLayoutType // Type of the layout in the meeting.
+	present   bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
+	docs      bool           // Whether it is running with a Google Docs window.
+	jamboard  bool           // Whether it is running with a Jamboard window.
+	split     bool           // Whether it is in split screen mode. It can not be true if docs is false.
+	cam       bool           // Whether the camera is on or not.
+	power     bool           // Whether to collect power metrics.
+	duration  time.Duration  // Duration of the meet call. Must be less than test timeout.
+	useLacros bool           // Whether to use lacros browser.
 }
 
 const defaultTestTimeout = 7 * time.Minute
@@ -70,7 +74,6 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
-		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
 			"record",
@@ -90,6 +93,7 @@ func init() {
 				cam:      true,
 				duration: 30 * time.Minute,
 			},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// Small meeting.
 			Name:    "4p_present_notes_split",
@@ -102,6 +106,7 @@ func init() {
 				split:   true,
 				cam:     true,
 			},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting.
 			Name:    "16p",
@@ -111,6 +116,7 @@ func init() {
 				layout: meetLayoutTiled,
 				cam:    true,
 			},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting with notes.
 			Name:    "16p_notes",
@@ -122,6 +128,7 @@ func init() {
 				split:  true,
 				cam:    true,
 			},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// 4p power test.
 			Name:              "power_4p",
@@ -133,6 +140,7 @@ func init() {
 				cam:    true,
 				power:  true,
 			},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// 16p power test.
 			Name:              "power_16p",
@@ -144,6 +152,7 @@ func init() {
 				cam:    true,
 				power:  true,
 			},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// 16p with jamboard test.
 			Name:    "16p_jamboard",
@@ -155,6 +164,20 @@ func init() {
 				split:    true,
 				cam:      true,
 			},
+			Fixture: "loggedInToCUJUser",
+		}, {
+			// Lacros 4p
+			Name:    "lacros_4p",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:       4,
+				layout:    meetLayoutTiled,
+				cam:       true,
+				useLacros: true,
+			},
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
@@ -184,6 +207,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		defaultDocsURL = "https://docs.new/"
 		jamboardURL    = "https://jamboard.google.com"
 		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		newTabTitle    = "New Tab"
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -220,6 +244,53 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
+	var tconn *chrome.TestConn
+	var cs ash.ConnSource
+
+	{
+		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
+		// variation.
+		var cr *chrome.Chrome
+		if meet.useLacros {
+			cr = s.FixtValue().(launcher.FixtData).Chrome
+		} else {
+			cr = s.FixtValue().(cuj.FixtureData).Chrome
+			cs = cr
+		}
+
+		var err error
+		tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to the test API connection: ", err)
+		}
+	}
+
+	if meet.useLacros {
+		// Launch lacros via shelf.
+		f := s.FixtValue().(launcher.FixtData)
+
+		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+		if err := launcher.EnsureLacrosChrome(ctx, f, s.DataPath(launcher.DataArtifact)); err != nil {
+			s.Fatal("Failed to extract lacros binary: ", err)
+		}
+		s.Log("Launch lacros via Shelf")
+		if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		s.Log("Wait for Lacros window")
+		if err := launcher.WaitForLacrosWindow(ctx, tconn, newTabTitle); err != nil {
+			s.Fatal("Failed to wait for lacros: ", err)
+		}
+		var l *launcher.LacrosChrome
+		var err error
+		l, err = launcher.ConnectToLacrosChrome(ctx, f.LacrosPath, launcher.LacrosUserDataDir)
+		if err != nil {
+			s.Fatal("Failed to connect to lacros: ", err)
+		}
+		defer l.Close(ctx)
+		cs = l
+	}
+
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
 	bc, err := bond.NewClient(ctx, bond.WithCredsJSON([]byte(creds)))
 	if err != nil {
@@ -241,13 +312,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}()
 		s.Log("Created a room with the code ", meetingCode)
-	}
-
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -351,12 +415,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	meetConn, err := cr.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
 	defer meetConn.Close()
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Lacros specific setup.
+	if meet.useLacros {
+		// Close "New Tab" window after creating the meet window.
+		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
+		})
+		if err != nil {
+			s.Fatal("Failed to find New Tab window: ", err)
+		}
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			s.Fatal("Failed to close New Tab window: ", err)
+		}
+	}
 
 	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	s.Logf("Is in tablet-mode: %t", inTabletMode)
@@ -450,7 +528,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Create another browser window and open a Google Docs file.
-		docsConn, err := cr.NewConn(ctx, docsURL, cdputil.WithNewWindow())
+		docsConn, err := cs.NewConn(ctx, docsURL, cdputil.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open the google docs website: ", err)
 		}
@@ -458,7 +536,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Creating a Google Docs window")
 	} else if meet.jamboard {
 		// Create another browser window and open a new Jamboard file.
-		jamboardConn, err := cr.NewConn(ctx, jamboardURL, cdputil.WithNewWindow())
+		jamboardConn, err := cs.NewConn(ctx, jamboardURL, cdputil.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open the jamboard website: ", err)
 		}
