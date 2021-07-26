@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da4b764_66db50bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-26T18:25:15Z",
+      "side": 1,
+      "message": "nit: want",
+      "range": {
+        "startLine": 203,
+        "startChar": 45,
+        "endLine": 203,
+        "endChar": 53
+      },
+      "revId": "957466bfd1bd046d930953a79fb122265157158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518e3c61_755f8e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-26T18:25:15Z",
+      "side": 1,
+      "message": "related to my comment from the previous patchset:\n\nIf you remove this function, would the test work?\n \nI have the feeling that this function will make the test more flaky:\n\n\n- The string that you are using as reference might change\n- Toast might not be used in the future\n- Testing that for \"nothing happened\" is not recommended... since due to delays that event might happen.",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 30
+      },
+      "revId": "957466bfd1bd046d930953a79fb122265157158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca627f05_0f79b527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-26T18:25:15Z",
+      "side": 1,
+      "message": "add link from where the string was taken. e.g:\n\n  // String taken from: [URL that points to the string]",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 134
+      },
+      "revId": "957466bfd1bd046d930953a79fb122265157158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
