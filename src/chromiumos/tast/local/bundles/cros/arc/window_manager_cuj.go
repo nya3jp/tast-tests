@@ -503,6 +503,14 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 // wmSpringboard verifies that child activities do not honor the root activity state as defined in:
 // go/arc-wm-p "Clamshell: Springboard activities" (slide #18).
 func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	sdkVer, err := arc.SDKVersion()
+	if err != nil {
+		return err
+	}
+	// The policy this test is checking is obsolete in R+. In R+, once a task is launched, the task bounds remains the same even with root-activity replacement.
+	if sdkVer >= arc.SDKR {
+		return nil
+	}
 	for _, test := range []struct {
 		name    string
 		pkgName string
