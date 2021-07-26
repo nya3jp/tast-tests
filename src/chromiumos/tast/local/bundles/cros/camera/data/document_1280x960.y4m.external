@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/document_1280x960_20210728.y4m",
+  "size": 1843265,
+  "sha256sum": "19242dc6bace46e5864ad701874f618155e2dcbfd998d9eec99e55f1fc3613c2"
+}
