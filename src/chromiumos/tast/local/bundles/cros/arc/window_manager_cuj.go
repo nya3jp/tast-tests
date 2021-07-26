@@ -51,13 +51,18 @@ var stableCUJTests = []wmCUJTestParams{
 // New and unstable tests should be placed here. These tests should be fixed, and moved them to "stable" ASAP.
 var unstableCUJTests = []wmCUJTestParams{
 	{"Follow Root Activity N / Pre-N", wmFollowRoot},
-	{"Springboard N / Pre-N", wmSpringboard},
 	{"Freeform Resize", wmFreeformResize},
 	{"Snapping to half screen", wmSnapping},
-	{"Display resolution", wmDisplayResolution},
 	// PageZoom disabled since it is not implemented in ARC. See: http://b/149790068
 	// {"Page Zoom", wmPageZoom},
 	{"Picture in Picture", wmPIP},
+}
+
+// New and unstable tests that are only for P should be placed here. Will be gone once all P devices are gone.
+var unstableCUJTestsP = []wmCUJTestParams{
+	{"Springboard N / Pre-N", wmSpringboardP},
+	// Density is handled differently in R, where bounds are calculated in a more complicated way based on display size, etc, so the operation frequently changes and is not very testable.
+	{"Display resolution", wmDisplayResolutionP},
 }
 
 func init() {
@@ -77,7 +82,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "unstable",
-			Val:               unstableCUJTests,
+			Val:               append(unstableCUJTests, unstableCUJTestsP...),
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
@@ -509,9 +514,9 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 	return nil
 }
 
-// wmSpringboard verifies that child activities do not honor the root activity state as defined in:
+// wmSpringboardP verifies that child activities do not honor the root activity state as defined in:
 // go/arc-wm-p "Clamshell: Springboard activities" (slide #18).
-func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+func wmSpringboardP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name    string
 		pkgName string
@@ -897,9 +902,9 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// wmDisplayResolution verifies that the Android resolution gets updated as defined in:
+// wmDisplayResolutionP verifies that the Android resolution gets updated as defined in:
 // go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
-func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+func wmDisplayResolutionP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
