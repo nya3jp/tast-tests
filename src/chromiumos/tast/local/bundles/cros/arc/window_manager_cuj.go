@@ -886,36 +886,30 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		return err
 	}
 
-	maximizedBounds, err := act.WindowBounds(ctx)
-	if err != nil {
-		return err
-	}
-	halfWidth := maximizedBounds.Width / 2
-
 	// Snap to left edge.
 	if err := kb.Accel(ctx, "Alt+["); err != nil {
 		return err
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		snappedBounds, err := act.WindowBounds(ctx)
+		dispInfo, err := display.GetInternalInfo(ctx, tconn)
 		if err != nil {
-			return testing.PollBreak(err)
+			return err
 		}
-		// 1-pixel margin error in case of using an odd screen width.
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return err
+		}
+		// 1-DP margin error in case of using an odd screen width.
 		const errorMargin = 1
-		if math.Abs(float64(snappedBounds.Width-halfWidth)) > errorMargin {
-			return errors.Errorf("invalid window width: got %d, want Abs(%d - %d) <= 1", snappedBounds.Width, snappedBounds.Width, halfWidth)
+		if math.Abs(float64(dispInfo.WorkArea.Width/2-window.BoundsInRoot.Width)) > errorMargin {
+			return errors.Errorf("invalid window width: got %d, want Abs(%d - %d) <= 1", window.BoundsInRoot.Width, window.BoundsInRoot.Width, dispInfo.WorkArea.Width/2)
 		}
-		if snappedBounds.Left != 0 {
-			return errors.Errorf("invalid window origin: got %d, want 0", snappedBounds.Left)
+		if window.BoundsInRoot.Left != 0 {
+			return errors.Errorf("invalid window origin: got %d, want 0", window.BoundsInRoot.Left)
 		}
-		state, err := ash.GetARCAppWindowState(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		if state != ash.WindowStateLeftSnapped {
-			return errors.Errorf("invalid window state: got %s, want WindowStateNormal", state)
+		if window.State != ash.WindowStateLeftSnapped {
+			return errors.Errorf("invalid window state: got %s, want WindowStateLeftSnapped", window.State)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
