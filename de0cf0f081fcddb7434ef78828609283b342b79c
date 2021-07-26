@@ -16,6 +16,46 @@
       "message": "Thanks the reviews :) Added the change",
       "revId": "de0cf0f081fcddb7434ef78828609283b342b79c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cc1d3a_160b586c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-26T14:51:45Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM % nit",
+      "revId": "de0cf0f081fcddb7434ef78828609283b342b79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57d7ef8_cad59219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-26T14:51:45Z",
+      "side": 1,
+      "message": "nit: colon and space are not needed. errors.Wrap takes care of this.",
+      "range": {
+        "startLine": 223,
+        "startChar": 62,
+        "endLine": 223,
+        "endChar": 64
+      },
+      "revId": "de0cf0f081fcddb7434ef78828609283b342b79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
