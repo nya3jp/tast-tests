@@ -67,22 +67,28 @@ func CPUVulnerabilitiesCrosvm(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("Saw kernel run init in line %q", line)
 
-	s.Logf("Mounting sysfs")
+	s.Log("Mounting sysfs")
 	const mountCmd = "/bin/mount -t sysfs sys /sys"
 	cmdCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	if _, err := cvm.RunCommand(cmdCtx, mountCmd); err != nil {
+	if lines, err := cvm.RunCommand(s, cmdCtx, mountCmd); err != nil {
 		s.Error("Couldn't mount sysfs: ", err)
+	} else {
+		s.Logf("Lines are: ", lines)
 	}
 
-	const cmd = "/bin/grep -li affect /sys/devices/system/cpu/vulnerabilities/*"
+	const cmd = "/bin/grep -li not /sys/devices/system/cpu/vulnerabilities/*"
 	cmdCtx, cancel = context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	if files, err := cvm.RunCommand(cmdCtx, cmd); err != nil {
+	if files, err := cvm.RunCommand(s, cmdCtx, cmd); err != nil {
 		s.Error("Couldn't grep for vulnerable in sysfs: ", err)
-	} else if len(files) > 0 {
-		for _, f := range files {
-			s.Errorf("File %q has CPU vulnerabilities", f)
+	} else {
+		s.Logf("Lines are: ", files)
+
+		if len(files) > 0 {
+			for _, f := range files {
+				s.Errorf("File %q has CPU vulnerabilities", f)
+			}
 		}
 	}
 }

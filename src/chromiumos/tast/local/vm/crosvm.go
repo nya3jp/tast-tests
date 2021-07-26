@@ -293,10 +293,10 @@ func (vm *Crosvm) WaitForOutput(ctx context.Context, re *regexp.Regexp) (string,
 
 // RunCommand runs a command in the crosvm shell. It returns the output of stdout.
 // This function will consume output from stdout until the shell prompt is seen.
-func (vm *Crosvm) RunCommand(ctx context.Context, cmd string) ([]string, error) {
+func (vm *Crosvm) RunCommand(s *testing.State, ctx context.Context, cmd string) ([]string, error) {
 	re := regexp.MustCompile("^tast>>")
 
-	if _, err := io.WriteString(vm.stdin, "/bin/sh -c \"" + cmd + "\"\n"); err != nil {
+	if _, err := io.WriteString(vm.stdin, "/bin/sh -c \""+cmd+"\"\n"); err != nil {
 		return nil, err
 	}
 
@@ -306,7 +306,7 @@ func (vm *Crosvm) RunCommand(ctx context.Context, cmd string) ([]string, error) 
 	// matching line is found, send it through the channel.
 	type result struct {
 		lines []string
-		err  error
+		err   error
 	}
 	ch := make(chan result, 1)
 	// Allow the blocking read call to stop when the deadline has been exceeded.
@@ -329,13 +329,18 @@ func (vm *Crosvm) RunCommand(ctx context.Context, cmd string) ([]string, error) 
 				ch <- result{lines, err}
 				return
 			}
+
 			if b[0] == '\n' {
-				lines = append(lines, line.String())
+				t := strings.TrimSpace(line.String())
+				if len(t) > 0 {
+					lines = append(lines, t)
+				}
 				line.Reset()
 				continue
 			}
 			line.WriteByte(b[0])
 			if re.MatchString(line.String()) {
+				s.Logf("line is ", line)
 				ch <- result{lines, nil}
 				return
 			}
@@ -348,9 +353,15 @@ func (vm *Crosvm) RunCommand(ctx context.Context, cmd string) ([]string, error) 
 			// If the read times out, this means the deadline has passed
 			select {
 			case <-ctx.Done():
-				return nil, errors.Wrap(ctx.Err(), "timeout out waiting for output")
+				return nil, errors.Wrap(ctx.Err(), "timeout waiting for output")
 			}
 		}
-		return r.lines[1:], r.err
+
+		// Ignore the line for the command that was written to stdout
+		if len(r.lines) > 1 {
+			return r.lines[1:], r.err
+		}
+
+		return nil, r.err
 	}
 }
