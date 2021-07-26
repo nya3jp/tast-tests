@@ -16,6 +16,46 @@
       "message": "Hi Hiroki, can you PTAL? Thank you 😊",
       "revId": "65fe64ac861f52d98fe0d8946c02d622dcc0a213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162ce5fe_0c51b1fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-26T01:14:51Z",
+      "side": 1,
+      "message": "LGTM.\n\nAs commented in the previous CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2984334/comments/a0a01d60_f07bc4ac), instead of allowing both tablet mode and clamshell mode implicitly, I prefer testing both mode explicitly by using ash.EnsureTabletModeEnabled.\nThis allows us better understanding of a new error in the future.",
+      "revId": "65fe64ac861f52d98fe0d8946c02d622dcc0a213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6bbfad_d13c2781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-26T01:14:51Z",
+      "side": 1,
+      "message": "nit: This is only used here. So I would define something like this:\n\n\ttestSteps :\u003d []struct {\n\t\tKeys []string\n\t\tExpectations []a11y.SpeechExpectation\n\t}{\n\t\t{\n\t\t\t[]string{nextObject},\n\t\t\t[]a11y.SpeechExpectation{a11y.NewStringExpectation(\"Start\")},\n\t\t},\n\t\t...",
+      "range": {
+        "startLine": 138,
+        "startChar": 16,
+        "endLine": 138,
+        "endChar": 38
+      },
+      "revId": "65fe64ac861f52d98fe0d8946c02d622dcc0a213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
