@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cacb1f1_37edc442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-26T01:22:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1085ba30_6e3e5494",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 79
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f649153c_c9861ad6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-26T00:30:25Z",
       "side": 1,
       "message": "nit: This log is redundant.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 23
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c95dac0_8c6ac5fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-26T01:22:21Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "f649153c_c9861ad6",
       "range": {
         "startLine": 100,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e946ac6e_a940ce99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-26T01:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef4b1a3_87c2a76a",
+      "range": {
+        "startLine": 101,
+        "startChar": 39,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d88132ce_0767c639",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42dc04f_8ddc57eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-26T01:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88132ce_0767c639",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc7d4af7_f23f4eff",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-07-26T00:30:25Z",
       "side": 1,
       "message": "This should be part of the subtest. Otherwise it fails the whole test if an IME test data does not exist.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ca585e_a5d39475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-07-26T01:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc7d4af7_f23f4eff",
       "range": {
         "startLine": 107,
         "startChar": 3,
