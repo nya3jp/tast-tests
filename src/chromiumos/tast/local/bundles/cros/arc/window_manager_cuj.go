@@ -51,13 +51,17 @@ var stableCUJTests = []wmCUJTestParams{
 // New and unstable tests should be placed here. These tests should be fixed, and moved them to "stable" ASAP.
 var unstableCUJTests = []wmCUJTestParams{
 	{"Follow Root Activity N / Pre-N", wmFollowRoot},
-	{"Springboard N / Pre-N", wmSpringboard},
 	{"Freeform Resize", wmFreeformResize},
 	{"Snapping to half screen", wmSnapping},
 	{"Display resolution", wmDisplayResolution},
 	// PageZoom disabled since it is not implemented in ARC. See: http://b/149790068
 	// {"Page Zoom", wmPageZoom},
 	{"Picture in Picture", wmPIP},
+}
+
+// New and unstable tests that are only for P should be placed here. Will be gone once all P devices are gone.
+var unstableCUJTestsP = []wmCUJTestParams{
+	{"Springboard N / Pre-N", wmSpringboardP},
 }
 
 func init() {
@@ -77,7 +81,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "unstable",
-			Val:               unstableCUJTests,
+			Val:               append(unstableCUJTests, unstableCUJTestsP...),
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
@@ -509,9 +513,9 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 	return nil
 }
 
-// wmSpringboard verifies that child activities do not honor the root activity state as defined in:
+// wmSpringboardP verifies that child activities do not honor the root activity state as defined in:
 // go/arc-wm-p "Clamshell: Springboard activities" (slide #18).
-func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+func wmSpringboardP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name    string
 		pkgName string
