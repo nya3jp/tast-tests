@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f1089a_2a854445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-26T12:33:30Z",
+      "side": 1,
+      "message": "nit: not useful, only log before waiting for something.",
+      "revId": "005f053bd5f523258395eaf2474121a6c9a2d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e1aeb3c_23a17a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-26T12:33:30Z",
+      "side": 1,
+      "message": "nit: move above",
+      "revId": "005f053bd5f523258395eaf2474121a6c9a2d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
