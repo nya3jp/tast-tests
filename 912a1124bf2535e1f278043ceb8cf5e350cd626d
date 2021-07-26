@@ -16,6 +16,23 @@
       "message": "There\u0027s a dependent CL of the culprit CL and need to revert multiple CLs. Maybe a quickfix is simpler?",
       "revId": "912a1124bf2535e1f278043ceb8cf5e350cd626d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac19b31_4beeffc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-26T04:37:10Z",
+      "side": 1,
+      "message": "Let\u0027s revert the offending CL first.",
+      "revId": "912a1124bf2535e1f278043ceb8cf5e350cd626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
