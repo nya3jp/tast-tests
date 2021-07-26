@@ -16,6 +16,29 @@
       "message": "PTAL!",
       "revId": "efd18df1c1e38a984d906b91b68532120876c5ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe515c29_c62ca0d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-26T16:25:28Z",
+      "side": 1,
+      "message": "returning \"nil\" might trigger a false-negative.\n\n\nA possible alternative is to rename the function to \"wmDisplayResolutionP\", and only call it when sdkver is P.\n\nperhaps doing something like this:\n\n  func wmDisplayResolution() {\n     if sdkver \u003d P\n        return wmDisplayResolutionP()\n     if sdkver \u003e\u003d R\n        return wmDisplayResolutionR()\n     return err\n  }\n  \n  func wmDisplayResolutionR() {\n    // TODO(b/xxxx): Not implemented.\n    \n    // perhaps add some logs about this\n    return nil\n  }",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 928,
+        "endChar": 2
+      },
+      "revId": "efd18df1c1e38a984d906b91b68532120876c5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
