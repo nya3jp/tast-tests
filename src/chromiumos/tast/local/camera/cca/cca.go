@@ -60,6 +60,8 @@ const (
 	Square = "square"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait"
+	// Scanner is the mode used to scan barcode/document.
+	Scanner = "scanner"
 
 	// Expert is the state used to indicate expert mode.
 	Expert string = "expert"
@@ -86,6 +88,10 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
+	// DocumentPDFPattern is the filename format of the document PDF file.
+	DocumentPDFPattern = regexp.MustCompile(`^SCN_\d{8}_\d{6}[^.]*\.pdf$`)
+	// DocumentPhotoPattern is the filename format of the document photo file.
+	DocumentPhotoPattern = regexp.MustCompile(`^SCN_\d{8}_\d{6}[^.]*\.jpg$`)
 	// ErrVideoNotActive indicates that video is not active.
 	ErrVideoNotActive = "Video is not active within given time"
 )
@@ -208,6 +214,25 @@ var (
 	ZoomOutButton = UIComponent{"zoom out button", []string{"#zoom-out"}}
 	// PTZResetAllButton is the button for reset PTZ to default value.
 	PTZResetAllButton = UIComponent{"ptz reset all button", []string{"#ptz-reset-all"}}
+
+	// ScannerModeButton is the button to enter scanner mode.
+	ScannerModeButton = UIComponent{"scanner mode button", []string{
+		".mode-item>input[data-mode=\"scanner\"]"}}
+	// ScannerDocumentModeOption is the document mode option of scanner mode.
+	ScannerDocumentModeOption = UIComponent{"document mode button", []string{
+		"#scanner-document"}}
+	// DocumentReviewView is the review view after taking a photo under document mode.
+	DocumentReviewView = UIComponent{"document review view", []string{
+		"#view-review-document"}}
+	// SaveAsPDFButton is the button to save document as PDF.
+	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{
+		"#save-pdf-document"}}
+	// SaveAsPhotoButton is the button to save document as photo.
+	SaveAsPhotoButton = UIComponent{"save document as photo button", []string{
+		"#save-photo-document"}}
+	// RetakeButton is the button to retake the document photo.
+	RetakeButton = UIComponent{"retake document photo button", []string{
+		"#retake-document"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -1184,6 +1209,11 @@ func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "custom-video-parameters", "#custom-video-parameters")
 }
 
+// ToggleEnableDocumentMode toggles enable document mode on all cameras and returns whether it's enabled after toggling.
+func (a *App) ToggleEnableDocumentMode(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras")
+}
+
 // ClickShutter clicks the shutter button.
 func (a *App) ClickShutter(ctx context.Context) error {
 	if err := a.conn.Eval(ctx, "Tast.click('.shutter')", nil); err != nil {
@@ -1597,4 +1627,35 @@ func (a *App) SaveScreenshot(ctx context.Context) error {
 	filename := fmt.Sprintf("screenshot_%d.png", time.Now().UnixNano())
 	path := filepath.Join(a.outDir, filename)
 	return screenshot.CaptureChrome(ctx, a.cr, path)
+}
+
+// EnableDocumentMode enables the document mode via expert mode.
+func (a *App) EnableDocumentMode(ctx context.Context) error {
+	if enabled, err := a.ToggleExpertMode(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable expert mode")
+	} else if !enabled {
+		return errors.New("unexpected state after enabling expert mode")
+	}
+
+	if err := MainMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open main menu")
+	}
+	defer MainMenu.Close(ctx, a)
+
+	if err := ExpertMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open expert menu")
+	}
+	defer ExpertMenu.Close(ctx, a)
+
+	if enabled, err := a.ToggleEnableDocumentMode(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable document mode")
+	} else if !enabled {
+		return errors.Wrap(err, "unexpected state after enabling document mode")
+	}
+
+	if err := a.WaitForVisibleState(ctx, ScannerModeButton, true); err != nil {
+		return errors.Wrap(err, "failed to wait for scanner mode button shows up")
+	}
+
+	return nil
 }
