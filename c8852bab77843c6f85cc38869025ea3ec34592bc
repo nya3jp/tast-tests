@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68cc1254_9fc958ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-26T10:02:01Z",
+      "side": 1,
+      "message": "pending this one as it depends on the new methods of WifiClient which is being revert in CL:3052936",
+      "revId": "c8852bab77843c6f85cc38869025ea3ec34592bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
