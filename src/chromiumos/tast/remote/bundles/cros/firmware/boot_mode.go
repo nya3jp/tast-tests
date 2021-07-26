@@ -37,7 +37,7 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Attr:         []string{"group:firmware"},
-		Timeout:      15 * time.Minute, // Enough time to download test image from CloudStorage if necessary
+		Timeout:      15 * time.Minute,
 		Params: []testing.Param{{
 			Name: "normal",
 			Pre:  pre.NormalMode(),
@@ -70,6 +70,7 @@ func init() {
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "rec_warm",
 			Pre:  pre.NormalMode(),
@@ -79,6 +80,7 @@ func init() {
 				resetType:      firmware.WarmReset,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "rec_cold",
 			Pre:  pre.NormalMode(),
@@ -88,6 +90,7 @@ func init() {
 				resetType:      firmware.ColdReset,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "dev",
 			Pre:  pre.NormalMode(),
@@ -120,6 +123,7 @@ func init() {
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "rec_to_dev",
 			Pre:  pre.RecMode(),
@@ -127,6 +131,7 @@ func init() {
 				bootToMode: fwCommon.BootModeDev,
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "dev_gbb",
 			Pre:  pre.NormalMode(),
@@ -142,6 +147,7 @@ func init() {
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "rec_to_dev_gbb",
 			Pre:  pre.RecMode(),
@@ -150,6 +156,7 @@ func init() {
 				allowGBBForce: true,
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+			Timeout:   60 * time.Minute,
 		}, {
 			Name: "dev_gbb_to_normal",
 			Pre:  pre.DevModeGBB(),
