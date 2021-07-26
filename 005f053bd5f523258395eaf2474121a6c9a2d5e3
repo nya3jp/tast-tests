@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3192c8a_8c0a4d1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-26T16:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f1089a_2a854445",
+      "revId": "005f053bd5f523258395eaf2474121a6c9a2d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e1aeb3c_23a17a88",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-26T12:33:30Z",
       "side": 1,
       "message": "nit: move above",
+      "revId": "005f053bd5f523258395eaf2474121a6c9a2d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143f594d_6c5cd4cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-26T16:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e1aeb3c_23a17a88",
       "revId": "005f053bd5f523258395eaf2474121a6c9a2d5e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
