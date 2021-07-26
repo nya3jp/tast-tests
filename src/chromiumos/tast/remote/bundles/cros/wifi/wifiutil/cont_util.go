@@ -362,7 +362,7 @@ func (ct *ContTest) ContinuityRound(ctx context.Context, s *testing.State, round
 
 	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-	waitForProps, err := ct.tf.WifiClient().ExpectShillProperty(waitCtx, ct.servicePath, props[round%2], []string{shillconst.ServicePropertyIsConnected})
+	waitForProps, err := ct.tf.ExpectShillProperty(waitCtx, ct.servicePath, props[round%2], []string{shillconst.ServicePropertyIsConnected})
 	if err != nil {
 		s.Fatal("Failed to create a property watcher: ", err)
 	}
@@ -388,7 +388,7 @@ func (ct *ContTest) ContinuityRound(ctx context.Context, s *testing.State, round
 		}
 	}
 
-	dutState, err := ct.tf.WifiClient().QueryService(ctx)
+	dutState, err := ct.tf.QueryService(ctx)
 	if err != nil {
 		s.Fatal("Failed to query service: ", err)
 	}
