@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00161de3_7d9ddddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-26T14:59:20Z",
+      "side": 1,
+      "message": "Thanks for the suggestion Hiroki, I plan on doing this in a follow-up change.",
+      "parentUuid": "162ce5fe_0c51b1fb",
+      "revId": "65fe64ac861f52d98fe0d8946c02d622dcc0a213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e6bbfad_d13c2781",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-26T01:14:51Z",
       "side": 1,
       "message": "nit: This is only used here. So I would define something like this:\n\n\ttestSteps :\u003d []struct {\n\t\tKeys []string\n\t\tExpectations []a11y.SpeechExpectation\n\t}{\n\t\t{\n\t\t\t[]string{nextObject},\n\t\t\t[]a11y.SpeechExpectation{a11y.NewStringExpectation(\"Start\")},\n\t\t},\n\t\t...",
+      "range": {
+        "startLine": 138,
+        "startChar": 16,
+        "endLine": 138,
+        "endChar": 38
+      },
+      "revId": "65fe64ac861f52d98fe0d8946c02d622dcc0a213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7445c3c8_ea968fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-07-26T14:59:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6bbfad_d13c2781",
       "range": {
         "startLine": 138,
         "startChar": 16,
