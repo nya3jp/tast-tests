@@ -85,6 +85,24 @@
       "message": "Consider using `testing.Sleep(ctx, time)` to give enough time to fwupd to create the file.",
       "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf47f921_764d247c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-26T15:20:44Z",
+      "side": 1,
+      "message": "Better yet, consider listening to dbus signals emitted by the fwupd daemon to discern on which state of the update the system is.",
+      "parentUuid": "8a9a5cf1_b0a4dc18",
+      "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
