@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8bc7137_8660ae2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-07-26T07:12:31Z",
+      "side": 1,
+      "message": "Please TAL, thank you! Will add dhaddock@ as a reviewer after you\u0027ve done a first pass.",
+      "revId": "50308ebb54fb348d1cddfc6ec82ea3a8fb8b6f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
