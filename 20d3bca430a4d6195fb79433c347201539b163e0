@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49948f94_b1733903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-26T03:24:34Z",
+      "side": 1,
+      "message": "For some reason tf.TurnOffBgscan is not properly marked as deprecated and missed in previous CLs. Include the rename in this CL as well.\n\nPlease take another look. Thanks",
+      "revId": "20d3bca430a4d6195fb79433c347201539b163e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
