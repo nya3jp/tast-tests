@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb8eccfb_aee758a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-26T21:46:49Z",
+      "side": 1,
+      "message": "It probably wouldn\u0027t, since it only looks for whitespace before \"disabled\".",
+      "parentUuid": "e117a1bd_ec665df2",
+      "range": {
+        "startLine": 20,
+        "startChar": 73,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fcb1775_ea9628ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
         "patchSetId": 5
