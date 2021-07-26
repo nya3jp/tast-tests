@@ -69,7 +69,7 @@ func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
 			GBBFlags: flags,
 		},
 		// The maximum time that the Prepare method should take, adjust as needed.
-		timeout: 10 * time.Minute,
+		timeout: 5 * time.Minute,
 	}
 }
 
@@ -78,7 +78,13 @@ var (
 	normalMode = newPrecondition(common.BootModeNormal, false)
 	devMode    = newPrecondition(common.BootModeDev, false)
 	devModeGBB = newPrecondition(common.BootModeDev, true)
-	recMode    = newPrecondition(common.BootModeRecovery, false)
+	recMode    = &impl{
+		v: &Value{
+			BootMode: common.BootModeRecovery,
+			GBBFlags: pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()},
+		},
+		timeout: 60 * time.Minute,
+	}
 )
 
 // Prepare ensures that the DUT is booted into the specified mode.
