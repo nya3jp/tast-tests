@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0d0dd35_0c5628ee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/bookmarks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-26T13:04:10Z",
+      "side": 1,
+      "message": "I meant:\n\u003e  if visible, err :\u003d b.ui.IsNodeFound(ctx, bookmarksNode); err !\u003d nil {\n\u003e  \treturn errors.Wrap(err, \"failed to check existence of bookmarks bar\")\n\u003e  } else if visible {\n\u003e  \treturn nil\n\u003e  }",
+      "parentUuid": "e81db106_3176dee7",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eaf0ad1_ef0103a1",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/browser.go",
         "patchSetId": 3
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "I liked the idea at first. When I gave it a second thought I came to this:\n\nIMHO creating keyboard instance should be happening outside. If keyboard is created in this package it strongly binds two packages. Creating keyboard outside of Browser instance and passing it follows dependency injection.\n\nWe could pass keyboard to Launch method - is that is what you meant?. But then it will create either discrepancy with other keyboard usages -\u003e keyboard closure will be handled within Browser.Close() whereas usual usage, so far, has been to defer keyboard.Close(), or we will be closing browser and keyboard in separate defers -\u003e which doesn\u0027t change anything.\n\nI think, I would leave it as is.",
       "parentUuid": "8eaf0ad1_ef0103a1",
+      "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ae082b_83e754ba",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-26T13:04:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6121b7ef_2bae9c12",
       "revId": "0b77a34de268c684db47dda7275efec7f35183b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
