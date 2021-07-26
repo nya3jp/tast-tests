@@ -1204,7 +1204,7 @@ func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
 
 // TurnOffBgscan turns off the DUT's background scan, and returns a shortened ctx and a restoring function.
 func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func() error, error) {
-	return tf.TurnOffBgscan(ctx)
+	return tf.WifiClient().TurnOffBgscan(ctx)
 }
 
 // SendChannelSwitchAnnouncement sends a CSA frame and waits for Client_Disconnection, or Channel_Switch event.
