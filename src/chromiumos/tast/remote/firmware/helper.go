@@ -19,12 +19,14 @@ import (
 	"google.golang.org/grpc/status"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -408,7 +410,7 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 // SetupUSBKey prepares the USB disk for a test. (Borrowed from Tauto's firmware_test.py)
 // It checks the setup of USB disk and a valid ChromeOS test image inside.
 // Downloads the test image if the image isn't the right version.
-func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) error {
+func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) (retErr error) {
 	//     self.stage_build_to_usbkey()
 	testing.ContextLog(ctx, "Validating image usbkey on servo")
 	// This call is super slow.
@@ -437,7 +439,9 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	var lsb map[string]string
 	if err = func() error {
 		if err = h.ServoProxy.RunCommand(ctx, true, "mount", "-o", "ro", mountSrc, mountPath); err != nil {
-			return errors.Wrapf(err, "mount of %q failed at %q", mountSrc, mountPath)
+			testing.ContextLogf(ctx, "mount of %q failed at %q", mountSrc, mountPath)
+			// Mount failure here probably means that there is no partition table, so writing to USB will fix it.
+			return nil
 		}
 		defer h.ServoProxy.RunCommand(ctx, true, "umount", mountPath)
 		output, err := h.ServoProxy.OutputCommand(ctx, true, "cat", fmt.Sprintf("%s/etc/lsb-release", mountPath))
@@ -466,6 +470,12 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return nil
 	}
 	testing.ContextLogf(ctx, "Current build on USB (%s) differs from DUT (%s), proceed with download", releaseBuilderPath, dutBuilderPath)
+
+	// Copying the behavior from src/third_party/hdctools/servo/drv/usb_downloader.py.
+	// Write the chromiumos_test_image.bin straight over /dev/sdx (usbdev).
+	// That code expects a url to a unpacked chromiumos_test_image.bin, but cloudStorage.Open doesn't handle devserver artifacts like `test_image`,
+	// so we need to manually untar the file and write it over the usb device.
+
 	// TODO if needed, recovery images are at .../recovery_image.tar.xz
 	// TODO, change to Config.BuildArtifactsURL if that becomes accessible
 	testImageURL := "gs://chromeos-image-archive/" + dutBuilderPath + "/chromiumos_test_image.tar.xz"
@@ -474,22 +484,32 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return errors.Wrapf(err, "failed to download test image %s", dutBuilderPath)
 	}
 	defer reader.Close()
-	tempnameBytes, err := h.ServoProxy.OutputCommand(ctx, false, "tempfile", "-m", "0644")
-	if err != nil {
-		return errors.Wrap(err, "failed to create tmp file on servo host")
-	}
-	tempname := strings.TrimSuffix(string(tempnameBytes), "\n")
-	defer h.ServoProxy.RunCommand(ctx, false, "rm", tempname)
-	// Copy to the servo host and untar
-	if err = h.ServoProxy.InputCommand(ctx, false, reader, "tar", "-Jxvf", "-",
-		"-C", filepath.Dir(string(tempname)),
-		fmt.Sprintf("--transform=s/chromiumos_test_image.bin/%s/", filepath.Base(tempname)),
-		"chromiumos_test_image.bin"); err != nil {
-		return errors.Wrap(err, "failed to copy os image to servo host")
-	}
+
 	testing.ContextLog(ctx, "Flashing test OS image to USB")
-	if err = h.ServoProxy.RunCommand(ctx, false, "cros", "flash", "usb://"+usbdev, tempname); err != nil {
-		return errors.Wrap(err, "failed to flash os image to usb")
+	// Make sure the device is synced whether or not the command succeeds.
+	defer func(ctx context.Context) {
+		if err = h.ServoProxy.RunCommand(ctx, true, "sync"); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "sync failed")
+			} else {
+				testing.ContextLogf(ctx, "Sync failed: %s", err)
+			}
+		}
+		if err = h.ServoProxy.RunCommand(ctx, true, "blockdev", "--rereadpt", usbdev); err != nil && retErr == nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "blockdev failed")
+			} else {
+				testing.ContextLogf(ctx, "blockdev failed: %s", err)
+			}
+		}
+	}(ctx)
+
+	// Reduce the context deadline to let the deferred calls succeed.
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+	// On my computer with a servo v4, this takes 48 minutes.
+	if err = h.ServoProxy.InputCommand(ctx, true, reader, "sh", "-c", fmt.Sprintf("tar -JxOf - | dd of=%s bs=1M iflag=fullblock oflag=dsync", shutil.Escape(usbdev))); err != nil {
+		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
 	}
 
 	return nil
