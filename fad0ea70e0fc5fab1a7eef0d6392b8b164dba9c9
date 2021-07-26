@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1085ba30_6e3e5494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:30:25Z",
+      "side": 1,
+      "message": "Are you working on an old code path? These TODOs have been removed already.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 79
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f649153c_c9861ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:30:25Z",
+      "side": 1,
+      "message": "nit: This log is redundant.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 23
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef4b1a3_87c2a76a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:30:25Z",
+      "side": 1,
+      "message": "nit: %q is relatively better.",
+      "range": {
+        "startLine": 101,
+        "startChar": 39,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88132ce_0767c639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:30:25Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc7d4af7_f23f4eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-26T00:30:25Z",
+      "side": 1,
+      "message": "This should be part of the subtest. Otherwise it fails the whole test if an IME test data does not exist.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "fad0ea70e0fc5fab1a7eef0d6392b8b164dba9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
