@@ -222,6 +222,30 @@
       },
       "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d1f653_8f7e298d",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-07-26T12:54:12Z",
+      "side": 1,
+      "message": "Yes, it is correct.",
+      "parentUuid": "da4fa265_9374dd9c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "4dbe14ccdcb02b581d2cb9a9c72c6e91aab9e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
