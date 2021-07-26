@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af79ae6_47dcd62c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-26T08:55:37Z",
+      "side": 1,
+      "message": "Maybe assign crbug.com/1231991 to yourself?",
+      "parentUuid": "69cd9dd6_403b02ee",
+      "revId": "69a27735950a5fb8921fedd4dde932131bf6f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ee00175_a3630dbf",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-26T08:40:25Z",
       "side": 1,
       "message": "nit: this can be moved outside of the for loop.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "69a27735950a5fb8921fedd4dde932131bf6f992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66064f73_4a6c13fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-26T08:55:37Z",
+      "side": 1,
+      "message": "No it can\u0027t, Chrome is restarted every subtest.",
+      "parentUuid": "1ee00175_a3630dbf",
       "range": {
         "startLine": 138,
         "startChar": 0,
