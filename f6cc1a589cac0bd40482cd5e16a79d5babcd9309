@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf24b754_83d09bf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-07-26T16:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85626e5_d2338a44",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47801840_39c79f1d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0366544a_ffa29b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-07-26T16:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47801840_39c79f1d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c12dd3_dc39215c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-26T15:05:18Z",
       "side": 1,
       "message": "Use s.Fatalf instead",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92019542_3a15e245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-07-26T16:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c12dd3_dc39215c",
       "range": {
         "startLine": 43,
         "startChar": 16,
