@@ -797,15 +797,34 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 		return err
 	}
 
-	// N apps are launched as maximized. We grab the bounds from the maximized app, and we use those
-	// bounds to resize the app when it is in restored mode.
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
-		return err
-	}
-	maxBounds, err := act.WindowBounds(ctx)
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
 	if err != nil {
 		return err
 	}
+	// Resizable apps are launched in maximized in P.
+	if window.State != ash.WindowStateNormal {
+		if ws, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+			return err
+		} else if ws != ash.WindowStateNormal {
+			return errors.Errorf("failed to set window state: got %s, want %s", ws, ash.WindowStateNormal)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+			return err
+		}
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return err
+		}
+	}
+
+	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	maxBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
 
 	if ws, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
 		return err
