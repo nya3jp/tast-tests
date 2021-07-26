@@ -182,13 +182,10 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 				return errors.Errorf("invalid bounds orientation: got %v; want landscape", orientationFromBounds)
 			}
 
+			// Only checks the width as the default tablet height is shorter than that of phone.
 			if launchBoundsThreshold.Width > window.BoundsInRoot.Width {
 				return errors.Errorf("tablet size width shouldn't be smaller than %v, but it's %v",
 					launchBoundsThreshold.Width, window.BoundsInRoot.Width)
-			}
-			if launchBoundsThreshold.Height > window.BoundsInRoot.Height {
-				return errors.Errorf("tablet size height shouldn't be smaller than %v, but it's %v",
-					launchBoundsThreshold.Height, window.BoundsInRoot.Height)
 			}
 			return nil
 		},
