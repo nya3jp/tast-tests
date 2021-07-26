@@ -12,12 +12,16 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -31,9 +35,18 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInToCUJUser",
 		Timeout:      4 * time.Minute,
 		VarDeps:      []string{"ui.cuj_password"},
+		Params: []testing.Param{{
+			Val:     lacros.ChromeTypeChromeOS,
+			Fixture: "loggedInToCUJUser",
+		}, {
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -54,12 +67,39 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
-	password := s.RequiredVar("ui.cuj_password")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+	ct := s.Param().(lacros.ChromeType)
+
+	var cs ash.ConnSource
+	var tconn *chrome.TestConn
+
+	{
+		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
+		// variation.
+		var cr *chrome.Chrome
+		var err error
+
+		if ct == lacros.ChromeTypeChromeOS {
+			cr = s.FixtValue().(cuj.FixtureData).Chrome
+			cs = cr
+		} else {
+			// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+			artifactPath := s.DataPath(launcher.DataArtifact)
+
+			var l *launcher.LacrosChrome
+			cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, ct)
+			if err != nil {
+				s.Fatal("Failed to initialize test: ", err)
+			}
+			defer lacros.CloseLacrosChrome(ctx, l)
+		}
+
+		tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to test API: ", err)
+		}
 	}
+
+	password := s.RequiredVar("ui.cuj_password")
 
 	recorder, err := cuj.NewRecorder(ctx, tconn)
 	if err != nil {
@@ -106,7 +146,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "waiting for screen to be unlocked failed (last status %+v)", st)
 		}
 
-		conn, err := cr.NewConn(ctx, "https://www.gmail.com/")
+		conn, err := cs.NewConn(ctx, "https://www.gmail.com/")
 		if err != nil {
 			return errors.Wrap(err, "failed to open web")
 		}
