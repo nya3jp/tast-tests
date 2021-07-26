@@ -39,6 +39,30 @@
       },
       "revId": "5be7258e841e535f05a2cff8436f74f8caebe3aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb309744_6828dfdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-26T08:03:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83b4dc5_3d1233cd",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "5be7258e841e535f05a2cff8436f74f8caebe3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
