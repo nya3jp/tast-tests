@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448dd64d_b70a31e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-26T10:08:50Z",
+      "side": 1,
+      "message": "if you remove all constants, this method is just 1 line wrapper around ash.WaitForNotification, so it\u0027s better to inline it",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35dde93_69df4a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-26T10:08:50Z",
+      "side": 1,
+      "message": "nit: this used only once, no need to make it constant",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 14
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdc3f56_4c3adabf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-26T10:08:50Z",
+      "side": 1,
+      "message": "same: used only once",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 15
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df06fec_2ed87d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-26T10:08:50Z",
+      "side": 1,
+      "message": "ash.WaitForNotification can return few errors, but only one will indicate that there are no wanted notifications.\n\nIdeally, you should introduce new function in ash package to wait until notification gone. Otherwise you have to check whether error indicates that there are no notifications.",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 18
+      },
+      "revId": "dfec373fb9d49dbddc0ad27a939daea02768739b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
