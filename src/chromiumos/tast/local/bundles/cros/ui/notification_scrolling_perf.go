@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/notification"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -29,21 +30,48 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:              "arc",
+			ExtraSoftwareDeps: []string{"arc"},
+			Val:               true,
+		}},
 	})
 }
 
 func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
+	isArc := s.Param().(bool)
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	var initArcOpt []chrome.Option
+	if isArc {
+		initArcOpt = []chrome.Option{chrome.ARCEnabled()}
+	}
+
+	cr, err := chrome.New(ctx, initArcOpt...)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	var arcnoti *notification.ARCNotificationTast
+	if isArc {
+		arcnoti, err = notification.NewARCNotificationTast(ctx, tconn, cr, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARCNotificationTast: ", err)
+		}
+		defer arcnoti.Close(ctx, tconn)
 	}
 
 	// Add some notifications so that notification centre shows up when opening Quick Settings.
@@ -61,6 +89,11 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 			if _, err := ash.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
 				s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
 			}
+		}
+
+		// Create an ARC notification.
+		if isArc {
+			arcnoti.CreateOrUpdateTestNotification(ctx, tconn, fmt.Sprintf("TestARCNotification%d", i), "test message", fmt.Sprintf("%d", i))
 		}
 	}
 
