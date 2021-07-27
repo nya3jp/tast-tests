@@ -769,6 +769,11 @@ func testDeviceMode(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *ch
 	if err := setWindowStateSync(ctx, tconn, act, arc.WindowStateNormal); err != nil {
 		return errors.Wrap(err, "failed to set window normal state before testing device mode change")
 	}
+	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the tablet mode status")
+	}
+	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
 	for _, test := range []struct {
 		// isTabletMode represents current mode of system which is Tablet mode or clamshell mode.
 		isTabletMode bool
@@ -812,7 +817,7 @@ func testDeviceMode(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *ch
 			var tempMsg companionLibMessage
 			lines, err := getJSONTextViewContent(ctx, d)
 			if err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to get json text"))
+				return errors.Wrap(err, "failed to get json text")
 			}
 			if err := json.Unmarshal([]byte(lines[len(lines)-1]), &tempMsg); err != nil {
 				return errors.Wrap(err, "parse callback message failure")
@@ -832,7 +837,7 @@ func testDeviceMode(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *ch
 					return errors.Wrap(err, "parse callback message failure")
 				}
 				if callbackmsg.Type != "callback" || callbackmsg.DeviceModeMsg == nil {
-					return testing.PollBreak(errors.New("error on callback message generation"))
+					return errors.New("error on callback message generation")
 				}
 			}
 			return nil
