@@ -66,8 +66,6 @@ func init() {
 		}, {
 			Name: "photo_fake",
 			Pre:  testutil.ChromeWithFakeCamera(),
-			// TODO(b/191846403): Promote the test to Chrome CQ once it is stable enough.
-			ExtraAttr: []string{"informational"},
 			Val: smokeTestParams{
 				useCameraType: testutil.UseFakeCamera,
 				function:      photoTaking,
