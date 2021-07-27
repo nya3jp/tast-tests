@@ -102,7 +102,7 @@ func init() {
 				}},
 		}, {
 			Name:              "chrome_tablet_lacros",
-			ExtraSoftwareDeps: []string{"lacros", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js", launcher.DataArtifact},
 			Fixture:           "lacrosStartedByData",
 			Val: fastInkTestParams{

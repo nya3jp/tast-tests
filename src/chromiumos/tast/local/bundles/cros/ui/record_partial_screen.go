@@ -44,9 +44,8 @@ func init() {
 				Val:  clamshellMode,
 			},
 			{
-				Name:              "tablet_mode",
-				Val:               tabletMode,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Name: "tablet_mode",
+				Val:  tabletMode,
 			},
 		},
 	})
