@@ -16,6 +16,24 @@
       "message": "That is a long time. Is there any way we can check whether we need to setup the USB key in the first place, and possibly avoid this process?",
       "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56323df8_9834c3c0",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T21:35:12Z",
+      "side": 1,
+      "message": "That is what every line of this function above this one does.\n\nIt mounts the usb drive, parses /etc/lsb-release, and compares the version with the version the DUT is running.\n\nIt does seem like AdminRepair or provision.FirmwareUpdate should set up the usb drive instead of doing it in the tests, but on the other hand, there are probably many duts that never run any recovery mode tests between snapshots.",
+      "parentUuid": "81341ec3_2a7fdf1f",
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
