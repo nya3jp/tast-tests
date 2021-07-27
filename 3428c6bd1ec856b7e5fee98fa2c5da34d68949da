@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ccf43f_60599384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-27T12:41:46Z",
+      "side": 1,
+      "message": "LGMT % nits",
+      "revId": "3428c6bd1ec856b7e5fee98fa2c5da34d68949da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87e616e_059fb37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-27T12:41:46Z",
+      "side": 1,
+      "message": "nit: i\u0027d either rename it to notificationTimeout/notifTimeout or just inline that constant even if it will appear twice there. I\u0027d prefer 2nd option.",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "3428c6bd1ec856b7e5fee98fa2c5da34d68949da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de99c309_e4384fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-27T12:41:46Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 172,
+        "startChar": 66,
+        "endLine": 172,
+        "endChar": 67
+      },
+      "revId": "3428c6bd1ec856b7e5fee98fa2c5da34d68949da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99b3f5c_69ba29d5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-27T12:41:46Z",
+      "side": 1,
+      "message": "nit: let\u0027s use \"match\" name maybe?",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "3428c6bd1ec856b7e5fee98fa2c5da34d68949da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55875216_b2564069",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-27T12:41:46Z",
+      "side": 1,
+      "message": "I think here you have to return error to continue polling until there will be no notifications that satisfy predicates",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "3428c6bd1ec856b7e5fee98fa2c5da34d68949da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
