@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d7f79a_a97cee66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "Mention this replaces firmware_ECKeyboardReboot.py",
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15359fa6_63845256",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "Please add bug",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e38a4b_d4f88cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "If possible, use the exact command you ran.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 53
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7a90f9_0c096dec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "I don\u0027t know what this has to do with keyboards. I would rename this to ECReboot",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e38e0b4_664514a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "There aren\u0027t any keyboard requests, just reboots.",
+      "range": {
+        "startLine": 18,
+        "startChar": 65,
+        "endLine": 18,
+        "endChar": 80
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97465790_2fcee025",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "firmware_experimental",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8129f02b_f36275be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "use pre.NormalMode()",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e1a3d1_c42033d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "Should we `sync` before rebooting each time?",
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56af029a_42de011e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "I think this would be more reliable if we checked that the boot id changed instead.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b25704_bfe7450f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d16d17c_b806b244",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:53:22Z",
+      "side": 1,
+      "message": "This would be better if we checked for ec system power state \u003d\u003d G3 instead.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
