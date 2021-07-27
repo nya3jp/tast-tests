@@ -51,6 +51,8 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 		channels += " anglvel_x anglvel_y anglvel_z"
 	} else if sn.Name == iio.Mag {
 		channels += " magn_x magn_y magn_z"
+	} else if sn.Name == iio.Gravity {
+		channels += " gravity_x gravity_y gravity_z"
 	} else if sn.Name == iio.Ring {
 		return errors.New("Kernel must be compiled with USE=iioservice")
 	} else {
@@ -112,6 +114,7 @@ func SensorIioserviceHard(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
+	sensors = iio.AddVirtualSensors(sensors)
 
 	errorCh := make(chan error)
 	numTasks := 0
