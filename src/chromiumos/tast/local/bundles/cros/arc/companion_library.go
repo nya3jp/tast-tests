@@ -84,7 +84,6 @@ var generalTests = []companionLibTestEntry{
 	{"Device Mode", mainActivity, testDeviceMode},
 	{"Caption Height", mainActivity, testCaptionHeight},
 	{"Window Bound", mainActivity, testWindowBounds},
-	{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
 	{"Maximize App-controlled Window", mainActivity, testMaximize},
 	{"Always on Top Window State", mainActivity, testAlwaysOnTop},
 	{"Move and Resize Window", resizeActivity, testResizeWindow},
@@ -93,6 +92,8 @@ var generalTests = []companionLibTestEntry{
 var arcPOnlyTests = []companionLibTestEntry{
 	{"Popup Window", mainActivity, testPopupWindow},
 	{"Window shadow", shadowActivity, testWindowShadow},
+	// TODO(sstan): Add unresizable activity sub-test for ARC R.
+	{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
 }
 
 func init() {
