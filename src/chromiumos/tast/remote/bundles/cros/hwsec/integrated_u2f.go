@@ -17,10 +17,10 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/pkcs11"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	hwsecremote "chromiumos/tast/remote/hwsec"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/example"
 	"chromiumos/tast/testing"
