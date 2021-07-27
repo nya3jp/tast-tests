@@ -16,6 +16,24 @@
       "message": "Should we extend the *Perf ones as well? I\u0027d expect the \nfunctional ones to work but perhaps the performance to\nbe significantly different in JSL.",
       "revId": "44ab51f9abfae63904ecf1c0ddeccab517f2fe5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01201784_874a1ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-07-27T14:55:25Z",
+      "side": 1,
+      "message": "Yeah, I noticed that I had to run the perf test in native input mode for spatial layer encoding.\nI am going to do that.",
+      "parentUuid": "710680b6_54a8cb20",
+      "revId": "44ab51f9abfae63904ecf1c0ddeccab517f2fe5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
