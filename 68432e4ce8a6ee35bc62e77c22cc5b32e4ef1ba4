@@ -16,6 +16,29 @@
       "message": "PS3 did a minor refactoring based on comments of my other CL (CL:3045486) to hide local var \"cr\" so that devs would not accidentally use it to access wrong chrome (e.g. ash-chrome in lacros variation).",
       "revId": "68432e4ce8a6ee35bc62e77c22cc5b32e4ef1ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd40b3ed_4ebc3043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T21:12:10Z",
+      "side": 1,
+      "message": "I don\u0027t understand the purpose for this level of indirection here.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 116
+      },
+      "revId": "68432e4ce8a6ee35bc62e77c22cc5b32e4ef1ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
