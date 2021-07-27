@@ -147,7 +147,7 @@ func (c *Concierge) createDiskImage(ctx context.Context, diskSize uint64) (diskP
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
-			DiskPath:        DefaultVMName,
+			VmName:          DefaultVMName,
 			DiskSize:        diskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_AUTO,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
