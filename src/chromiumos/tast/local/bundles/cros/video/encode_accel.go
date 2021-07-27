@@ -138,29 +138,25 @@ func init() {
 			Name:              "vp9_540p_two_spatial_and_three_temporal_layers",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip540P, videotype.VP9Prof, 2, 3),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			// TODO(b/191203129): Run on JSL devices as well.
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraData:         encode.TestData(tulip540P),
 		}, {
 			Name:              "vp9_540p_three_spatial_and_three_temporal_layers",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip540P, videotype.VP9Prof, 3, 3),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			// TODO(b/191203129): Run on JSL devices as well.
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraData:         encode.TestData(tulip540P),
 		}, {
 			Name:              "vp9_720p_two_spatial_and_three_temporal_layers",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, 2, 3),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			// TODO(b/191203129): Run on JSL devices as well.
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "vp9_720p_three_spatial_and_three_temporal_layers",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.VP9Prof, 3, 3),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			// TODO(b/191203129): Run on JSL devices as well.
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "h264_180p_nv12",
