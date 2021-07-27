@@ -57,6 +57,18 @@ func Default(ctx context.Context) (*Servo, error) {
 	return New(ctx, servodDefaultHost, servodDefaultPort)
 }
 
+// NewDirect returns a servo object for communication with a servod instance running at spec.
+// During local tests, instead of establishing a ssh proxy with servo host, creating a direct
+// connection is preferred. Param spec is either "host:port" or just "host" to use default port..
+// Please make sure "host" is the address reachable from DUT.
+func NewDirect(ctx context.Context, spec string) (*Servo, error) {
+	host, port, _, err := splitHostPort(spec)
+	if err != nil {
+		return nil, err
+	}
+	return New(ctx, host, port)
+}
+
 // verifyConnectivity sends and verifies an echo request to make sure
 // everything is set up properly.
 func (s *Servo) verifyConnectivity(ctx context.Context) error {

@@ -15,8 +15,8 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/servo"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )

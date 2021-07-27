@@ -1,0 +1,45 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package firmware
+
+import (
+	"context"
+
+	"chromiumos/tast/common/servo"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: CodelabServoLocal,
+		Desc: "Demonstrates using servo package in local tests",
+		Contacts: []string{
+			"me@chromium.org",      // Test author
+			"my-team@chromium.org", // Backup mailing list
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Vars:         []string{"servo"},
+	})
+}
+
+// CodelabServoLocal demonstrates finding out DUT ECBoard via Servo.
+func CodelabServoLocal(ctx context.Context, s *testing.State) {
+	// Set up Servo in local tests
+	servoSpec, _ := s.Var("servo")
+	srvo, err := servo.NewDirect(ctx, servoSpec)
+	if err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	defer srvo.Close(ctx)
+
+	// srvo is the Servo object that we created earlier through NewDirect constructor.
+	ecBoard, err := srvo.GetString(ctx, servo.ECBoard)
+	if err != nil {
+		s.Fatal("Getting ec_board control from servo: ", err)
+	}
+	s.Log("EC Board: ", ecBoard)
+}
