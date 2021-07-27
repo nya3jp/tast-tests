@@ -10,6 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -27,9 +29,8 @@ func init() {
 		Desc:         "Measures input latency of scrolling through notification list",
 		Contacts:     []string{"leandre@chromium.org", "cros-status-area-eng@google.com", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,
 	})
 }
@@ -40,10 +41,62 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	var initArcOpt []chrome.Option
+	// Only enable arc if it's supoprted.
+	if arc.Supported() {
+		initArcOpt = []chrome.Option{chrome.ARCEnabled()}
+	}
+
+	cr, err := chrome.New(ctx, initArcOpt...)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	const (
+		apk = "ArcNotificationTest.apk"
+		pkg = "org.chromium.arc.testapp.notification"
+		cls = ".NotificationActivity"
+
+		// UI IDs in the app.
+		idPrefix = pkg + ":id/"
+		idID     = idPrefix + "notification_id"
+		sendID   = idPrefix + "send_button"
+	)
+
+	var de *ui.Device
+	if arc.Supported() {
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+		// Installing the testing app.
+		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+			s.Fatalf("Failed to install %s: %v", apk, err)
+		}
+
+		// Launching the testing app
+		act, err := arc.NewActivity(a, pkg, cls)
+		if err != nil {
+			s.Fatal("Failed to create a new activity: ", err)
+		}
+		defer act.Close()
+
+		if err := act.Start(ctx, tconn); err != nil {
+			s.Fatal("Failed to start the activity: ", err)
+		}
+		defer act.Stop(ctx, tconn)
+
+		de, err = a.NewUIDevice(ctx)
+		if err != nil {
+			s.Fatal("Failed to initialize UI Automator: ", err)
+		}
+		defer de.Close(ctx)
 	}
 
 	// Add some notifications so that notification centre shows up when opening Quick Settings.
@@ -60,6 +113,16 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 		for _, t := range ts {
 			if _, err := ash.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
 				s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
+			}
+		}
+
+		// Create an ARC notification using the testing app.
+		if arc.Supported() {
+			if err := de.Object(ui.ID(idID)).SetText(ctx, fmt.Sprintf("%d", i)); err != nil {
+				s.Fatal("Failed to set message ID in the testing app: ", err)
+			}
+			if err := de.Object(ui.ID(sendID)).Click(ctx); err != nil {
+				s.Fatalf("Failed to click %s button in the testing app: %v", sendID, err)
 			}
 		}
 	}
