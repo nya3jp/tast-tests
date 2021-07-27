@@ -107,8 +107,7 @@ func init() {
 			Name:              "vp9_enc_force_l3t3_key",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			// TODO(b/191203129): Run on JSL devices as well.
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC3SL3TLKey",
 		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
