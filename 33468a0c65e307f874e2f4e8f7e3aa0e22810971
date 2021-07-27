@@ -51,6 +51,24 @@
       "parentUuid": "8a003d3a_b4e27734",
       "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7567af7_078f0858",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T15:43:25Z",
+      "side": 1,
+      "message": "tast-lint does not pass. I had to use --ignore-hooks to upload this.\n\n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go:30:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go:41:14: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go:38:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go:39:17: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go:34:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go:35:17: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go:23:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/booted_device_reporter.go:24:17: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go:24:17: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go:25:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go:36:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go:37:17: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/pre.go:23:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/pre.go:24:17: Test Vars should be an array literal of string literals or constants\n        src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go:35:17: Test SoftwareDeps should be an array literal of string literals or (possibly qualified) identifiers\n        src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go:36:17: Test Vars should be an array literal of string literals or constants\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-registration",
+      "parentUuid": "19fac4a6_b80fd28e",
+      "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
