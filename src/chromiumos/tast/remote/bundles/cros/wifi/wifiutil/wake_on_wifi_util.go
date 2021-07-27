@@ -8,10 +8,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
