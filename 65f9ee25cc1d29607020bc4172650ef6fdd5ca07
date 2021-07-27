@@ -34,6 +34,24 @@
       "parentUuid": "f15535ad_f801db80",
       "revId": "65f9ee25cc1d29607020bc4172650ef6fdd5ca07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f22633_afddc181",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T07:55:58Z",
+      "side": 0,
+      "message": "Alias decls are different from type defs (though they look very similar!)\n\n type A B   // new type\n type A \u003d B // type alias\n \nc.f. https://golang.org/ref/spec#Type_declarations",
+      "parentUuid": "9886abd4_9067bfe0",
+      "revId": "65f9ee25cc1d29607020bc4172650ef6fdd5ca07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
