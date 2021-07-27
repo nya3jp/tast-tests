@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "529f434b_eeda2d8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-27T14:09:09Z",
+      "side": 1,
+      "message": "No,that actually failed. [^]* just matches the beginning of a line, not the newline.\n\nIf you read https://riptutorial.com/regex/example/32238/why-doesn-t-dot-----match-the-newline-character----n---, it looks like we may have to change regex settings.",
+      "parentUuid": "017f93df_e0f5a2a4",
+      "range": {
+        "startLine": 20,
+        "startChar": 73,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fcb1775_ea9628ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
         "patchSetId": 5
