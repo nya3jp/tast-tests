@@ -24,6 +24,9 @@ type Device struct {
 	Path string
 }
 
+// ErrNoDeviceFound is returned by parser function when no device matches.
+var ErrNoDeviceFound = errors.New("no Device found")
+
 // SensorName is the kind of sensor which is reported by the EC and exposed by
 // the kernel in /sys/bus/iio/devices/iio:device*/name. The name is in the form
 // cros-ec-*.
@@ -181,11 +184,13 @@ func GetSensors(ctx context.Context) ([]*Sensor, error) {
 
 	for _, file := range files {
 		sensor, err := parseSensor(file.Name())
-		if err == nil {
-			ret = append(ret, sensor)
-		} else {
-			testing.ContextLogf(ctx, "Parsing sensor %s FAILED: %+v", file.Name(), err)
+		if err != nil {
+			if !errors.Is(err, ErrNoDeviceFound) {
+				testing.ContextLogf(ctx, "Parsing sensor %s FAILED: %+v", file.Name(), err)
+			}
+			continue
 		}
+		ret = append(ret, sensor)
 	}
 
 	return ret, nil
@@ -202,7 +207,8 @@ func parseSensor(devName string) (*Sensor, error) {
 	var zeroInt, zeroFrac, minInt, minFrac, maxInt, maxFrac int
 
 	if _, err := fmt.Sscanf(devName, "iio:device%d", &sensor.IioID); err != nil {
-		return nil, errors.Wrapf(err, "%q not a sensor", devName)
+		// Could be a trigger, skip.
+		return nil, ErrNoDeviceFound
 	}
 
 	sensor.Path = devName
@@ -327,7 +333,7 @@ func GetTriggers() ([]*Trigger, error) {
 // Trigger if supported..
 func parseTrigger(devName string) (*Trigger, error) {
 	if !iioTriggerRegexp.MatchString(devName) {
-		return nil, errors.New("not a trigger")
+		return nil, ErrNoDeviceFound
 	}
 
 	rawName, err := (&Device{devName}).ReadAttr("name")
