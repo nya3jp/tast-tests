@@ -15,8 +15,8 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/ssh/linuxssh"

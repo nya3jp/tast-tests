@@ -8,9 +8,9 @@ import (
 	"context"
 	"regexp"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/ssh"

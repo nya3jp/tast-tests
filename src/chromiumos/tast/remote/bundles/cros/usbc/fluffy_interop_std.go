@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/testing"
 )
 

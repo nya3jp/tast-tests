@@ -239,12 +239,12 @@ func init() {
 
 Next, in the test body, we will need to create a `servo.Proxy` object, which forwards commands to servod. The [`NewProxy`] constructor requires the servo host:port, and a keyFile and keyDir that can be obtained via the test's `DUT` object. Additionally, we should close the Proxy at the end of the test (via `defer`).
 
-First, import the remote servo library:
+First, import the common servo library:
 
 ```go
 import (
 	...
-	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/common/servo"
 )
 ```
 
@@ -310,12 +310,12 @@ At this point (after running `gofmt`), your test file should resemble [`codelab_
 
 [Servo]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo.md
 [runtime variable]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables
-[`NewProxy`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/proxy.go?q=NewProxy
-[`GetString`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=func.*GetString
-[`methods.go`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go
-[`KeypressControl`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=%22type%20KeypressControl%22
-[`KeypressDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=%22type%20KeypressDuration%22
-[`KeypressWithDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=KeypressWithDuration
+[`NewProxy`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/proxy.go?q=NewProxy
+[`GetString`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=func.*GetString
+[`methods.go`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go
+[`KeypressControl`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=%22type%20KeypressControl%22
+[`KeypressDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=%22type%20KeypressDuration%22
+[`KeypressWithDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=KeypressWithDuration
 [relevant section]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#running-tests-with-servo
 [go/tast-running]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md
 [`codelab_servo.txt`]: ./codelab_servo.txt

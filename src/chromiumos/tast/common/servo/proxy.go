@@ -20,7 +20,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const proxyTimeout = 10 * time.Second // max time for establishing SSH connection
+const (
+	proxyTimeout = 10 * time.Second // max time for establishing SSH connection
+	// KeyFile inside DUT to establish ssh connection to servo during local tests
+	KeyFile = "/mnt/stateful_partition/dev_image/telemetry/src/third_party/catapult/telemetry/third_party/chromite/ssh_keys/testing_rsa"
+	// KeyDir aka local default ssh dir, inside DUT
+	KeyDir = "/root/.ssh"
+)
 
 // Proxy wraps a Servo object and forwards connections to the servod instance
 // over SSH if needed.
