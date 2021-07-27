@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfbb804_ff079a80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-27T08:56:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da4b764_66db50bb",
+      "range": {
+        "startLine": 203,
+        "startChar": 45,
+        "endLine": 203,
+        "endChar": 53
+      },
+      "revId": "957466bfd1bd046d930953a79fb122265157158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "518e3c61_755f8e0e",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40693802_a71d1726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-27T08:56:35Z",
+      "side": 1,
+      "message": "Yes this test works without the function also. I will try add if possible a better solution for the bubble but in a new CL and without uiauto.",
+      "parentUuid": "518e3c61_755f8e0e",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 30
+      },
+      "revId": "957466bfd1bd046d930953a79fb122265157158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca627f05_0f79b527",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-26T18:25:15Z",
       "side": 1,
       "message": "add link from where the string was taken. e.g:\n\n  // String taken from: [URL that points to the string]",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 134
+      },
+      "revId": "957466bfd1bd046d930953a79fb122265157158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3934ecd2_fcb78f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_leak_prevention_rules_list_arc_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-27T08:56:35Z",
+      "side": 1,
+      "message": "Although removed the function but noted. I will add it some other place where it is required. Thanks",
+      "parentUuid": "ca627f05_0f79b527",
       "range": {
         "startLine": 218,
         "startChar": 1,
