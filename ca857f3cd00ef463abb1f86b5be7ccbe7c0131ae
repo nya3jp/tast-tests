@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec15d3f_435d4e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-27T02:08:07Z",
+      "side": 1,
+      "message": "Hi Jeremie, \n\nI reckon depending on how likely the flag is reverted back, you can either force disable the feature or remove this test out from mainline.",
+      "revId": "ca857f3cd00ef463abb1f86b5be7ccbe7c0131ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
