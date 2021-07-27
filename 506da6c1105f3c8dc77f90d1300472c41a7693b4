@@ -16,6 +16,46 @@
       "message": "Thanks for the review Hiroki! Adding tast-owners for official code review.",
       "revId": "506da6c1105f3c8dc77f90d1300472c41a7693b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22089d0_91b3ccc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T07:59:15Z",
+      "side": 1,
+      "message": "LGTM % one suggestion.\n",
+      "revId": "506da6c1105f3c8dc77f90d1300472c41a7693b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41529f5_4bca0606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T07:59:15Z",
+      "side": 1,
+      "message": "Does this error message contain the performed operations? If not, I\u0027d recommend including step.KeyCommands in the error message so that we can tell which step failed.",
+      "range": {
+        "startLine": 169,
+        "startChar": 61,
+        "endLine": 169,
+        "endChar": 66
+      },
+      "revId": "506da6c1105f3c8dc77f90d1300472c41a7693b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
