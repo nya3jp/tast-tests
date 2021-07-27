@@ -16,6 +16,115 @@
       "message": "Thanks for the review.\n\nSend to owners.",
       "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be80eba3_774a97b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T08:19:53Z",
+      "side": 1,
+      "message": "Not a blocker: This file reached 500+ LoC, I recommend considering splitting it to multiple files under a subpackage.",
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1484ad75_7c0b1a25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T08:19:53Z",
+      "side": 1,
+      "message": "IIUC, all code below cr.TestAPIConn() at L130 are supposed to use \"cs\" instead of \"cr\". But since cr is still in the scope, it\u0027s easy to access it accidentally, in which case this test may fail only on Lacros.\n\nTo avoid such potential issues, I recommend introducing a utility function that returns ash.ConnSource and chrome.TestConn, but not chrome.Chrome nor launcher.LacrosChrome.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "889fd86e_8125dd5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T08:19:53Z",
+      "side": 1,
+      "message": "nit: artifactPath :\u003d ...",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110cb21f_7ebc1e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T08:19:53Z",
+      "side": 1,
+      "message": "While you\u0027re at it: I recommend giving a longer name to this variable as its lifetime is long.",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 3
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce50fff_d83e0f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T08:19:53Z",
+      "side": 1,
+      "message": "This assignment modifies the variable w0 in the outer scope. I recommend avoiding this...\n\nIn this case we can just use :\u003d to create a variable. It\u0027s likely you want to name it differently as well so as not to confuse them.\n\ne.g.\n \n window, err :\u003d ...",
+      "range": {
+        "startLine": 308,
+        "startChar": 3,
+        "endLine": 308,
+        "endChar": 16
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
