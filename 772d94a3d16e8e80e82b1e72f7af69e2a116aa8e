@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0064b7_e93e599d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-27T22:12:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "810e88fe_25333351",
+      "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba70f312_7ccb3c66",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09841842_602779b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-27T22:12:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba70f312_7ccb3c66",
+      "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d979a7d_ab1e0e21",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-07-26T18:44:52Z",
       "side": 1,
       "message": "nit: the named second parameter can be reused in each iteration (i.e. curTest instead of test1, test2, test3)",
+      "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd28feed_91c00bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-27T22:12:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d979a7d_ab1e0e21",
       "revId": "772d94a3d16e8e80e82b1e72f7af69e2a116aa8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
