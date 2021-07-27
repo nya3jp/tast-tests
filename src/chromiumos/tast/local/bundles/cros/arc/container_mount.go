@@ -27,7 +27,7 @@ func init() {
 			"android_p",
 			"chrome",
 		},
-		Attr:    []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline"},
 		Fixture: "arcBooted",
 	})
 }
