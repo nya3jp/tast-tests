@@ -39,6 +39,30 @@
       },
       "revId": "6329ed073cd249b4edffea6fc4d78cd00b701801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3ef0ef_5a78ce30",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T15:32:07Z",
+      "side": 1,
+      "message": "Maybe I\u0027ll just drop this. It doesn\u0027t change that much anyway, vs. some of the other changes I made elsewhere.",
+      "parentUuid": "3d6b4f95_f4472c9d",
+      "range": {
+        "startLine": 505,
+        "startChar": 56,
+        "endLine": 505,
+        "endChar": 72
+      },
+      "revId": "6329ed073cd249b4edffea6fc4d78cd00b701801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
