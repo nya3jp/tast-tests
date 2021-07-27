@@ -12,7 +12,7 @@ import (
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
-	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )

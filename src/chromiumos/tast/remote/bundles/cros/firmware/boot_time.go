@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
