@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/notification"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -29,21 +30,48 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:              "arc",
+			ExtraSoftwareDeps: []string{"arc"},
+			Val:               true,
+		}},
 	})
 }
 
 func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
+	isArc := s.Param().(bool)
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	var initArcOpt []chrome.Option
+	if isArc {
+		initArcOpt = []chrome.Option{chrome.ARCEnabled()}
+	}
+
+	cr, err := chrome.New(ctx, initArcOpt...)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	var arcclient *notification.ARCClient
+	if isArc {
+		arcclient, err = notification.NewARCClient(ctx, tconn, cr, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARCClient: ", err)
+		}
+		defer arcclient.Close(ctx, tconn)
 	}
 
 	// Add some notifications so that notification centre shows up when opening Quick Settings.
@@ -58,15 +86,22 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	}
 	for i := 0; i <= n; i++ {
 		for _, t := range ts {
-			if _, err := ash.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
+			title := fmt.Sprintf("Test%sNotification%d", t, i)
+			if _, err := ash.CreateTestNotification(ctx, tconn, t, title, "test message"); err != nil {
 				s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
 			}
+			// Wait for the notification to finish creating, making sure that it is created.
+			if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(title)); err != nil {
+				s.Fatalf("Failed to wait for %d-th %s notification: %v", i, t, err)
+			}
 		}
-	}
 
-	// Wait for the last notification to finish creating.
-	if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(fmt.Sprintf("Test%sNotification%d", ts[len(ts)-1], n))); err != nil {
-		s.Fatal("Failed waiting for notification: ", err)
+		// Create an ARC notification.
+		if isArc {
+			if err := arcclient.CreateOrUpdateTestNotification(ctx, tconn, fmt.Sprintf("TestARCNotification%d", i), "test message", fmt.Sprintf("%d", i)); err != nil {
+				s.Fatalf("Failed to create %d-th ARC notification: %v", i, err)
+			}
+		}
 	}
 
 	pad, err := input.Trackpad(ctx)
