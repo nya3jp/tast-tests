@@ -16,6 +16,24 @@
       "message": "Hi Jeremie, \n\nI reckon depending on how likely the flag is reverted back, you can either force disable the feature or remove this test out from mainline.",
       "revId": "ca857f3cd00ef463abb1f86b5be7ccbe7c0131ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f77252_1c0eb6f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-07-27T02:30:32Z",
+      "side": 1,
+      "message": "Thanks for the approval.\n\nThe new feature (or new implementation for zip archiving) is enabled by default, and just requires some further CLs regarding notifications. This test will rely on these notifications.\n\nWe do want to keep the test running with the old zip archiving implementation for now, so that we can capture the performance improvement of the new implementation on crosbolt once the notifications are ready.",
+      "parentUuid": "5ec15d3f_435d4e81",
+      "revId": "ca857f3cd00ef463abb1f86b5be7ccbe7c0131ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
