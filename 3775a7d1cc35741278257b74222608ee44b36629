@@ -180,6 +180,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38d2fee6_534762b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-27T02:10:55Z",
+      "side": 1,
+      "message": "So it means login to chrome is not part of this func?",
+      "parentUuid": "43806e98_efe2d3cf",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5f30dcc_b84c1797",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 10
@@ -357,6 +381,30 @@
       "side": 1,
       "message": "Error message is clear for debugging(logs) so, we have skipped wrapping the extra message.",
       "parentUuid": "096047ad_28c14428",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea9965f_32bfccfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-27T02:10:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ace7048_76083427",
       "range": {
         "startLine": 75,
         "startChar": 10,
