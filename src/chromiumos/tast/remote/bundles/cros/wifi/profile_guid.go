@@ -149,7 +149,8 @@ func ProfileGUID(ctx context.Context, s *testing.State) {
 }
 
 func assertGUID(ctx context.Context, tf *wificell.TestFixture, servicePath, expectedGUID string) error {
-	res, err := tf.WifiClient().QueryService(ctx, &wifi.QueryServiceRequest{Path: servicePath})
+	req := &wifi.QueryServiceRequest{Path: servicePath}
+	res, err := tf.WifiClient().ShillServiceClient.QueryService(ctx, req)
 	if err != nil {
 		return errors.Wrap(err, "failed to query service info")
 	}
