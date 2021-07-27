@@ -16,6 +16,305 @@
       "message": "ptal",
       "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33d14c82_3b333e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "nit: I think you can do something similar with ints and iota e.g:\n\n  type notificationCloseTestType int\n  const (\n      clearOneAtATime notificationCloseTestType \u003d iota\n      clearAll\n  )",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bea404d_2614ee57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "huge nit: leave a empty line",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba0f3b3_03b5803f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "a) Move them closer to where they are used. Perhpaps to L106\n\n\nb)\nnit: move them inside a const guard. eg:\n\n  const {\n    uiTimeout \u003d ...\n    n \u003d ...\n  }\n \nc)\nbe more verbose with \"n\"... \"totalGroups\" or something like that",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a288e56_79bf6085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "nit: what\u0027s the meaning of \"ts\"? could you be more verbose with the name?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44116a57_ee6c2dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "ditto a). I\"d move it closer to where it is used. L106 or similar",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d5f1b8_45745ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "nit: ditto, whats the meaning of \"ac\"?\n\n\nGolang likes short variable names, but the meaning is trivial and/or easy to find.\nIn this case \"ac\" is declared here, but it is also used in L151.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872b74fa_b51d0bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "nit:\n\nwhen declaring + assigning prefer to use :\u003d instead of var. e.g:\n\n  shouldClearOneAtATime :\u003d s.Param()...",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7eee19_be139140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "nit: replace it with \"n * len(ts)\"  ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ee72d9_107780c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "nit: any reason for starting with \"i :\u003d 1\" and not \"i :\u003d 0\".\n\nThe code has many \"i-1\"...",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708cb681_542e1eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "Here and in the rest of the code:\nalthough in go there is no limit for comments (as long as it helps readability) I\u0027d split this one in two or three lines.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 193
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f8d78a_70f97940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "this is a potential source of flakyness.\nIs the another way to wait for the needed condition?",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db795a2_73375fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "ditto above... try to replace the sleep with some another condition",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362154ae_a0327e0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-27T20:32:41Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 5
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
