@@ -167,10 +167,23 @@ func (s *Spotify) Play(ctx context.Context) error {
 
 func (s *Spotify) login(ctx context.Context) error {
 	testing.ContextLog(ctx, "Signing into Spotify")
-	signIn := s.d.Object(ui.Text("Continue with Google"))
-	if err := signIn.WaitForExists(ctx, shortUITimeout); err != nil {
+
+	// The "This app is designed for mobile" prompt needs to be dismissed to get to the log in page.
+	gotIt := s.d.Object(ui.Text("Got it"))
+	if err := cuj.ClickIfExist(gotIt, shortUITimeout)(ctx); err != nil {
+		return errors.Wrap(err, `failed to dismiss "This app is designed for mobile" prompt`)
+	}
+
+	// This is the new "Log in" button we need to click before we can sign in with Google.
+	signIn := s.d.Object(ui.Text("Log in"))
+	if err := cuj.ClickIfExist(signIn, shortUITimeout)(ctx); err != nil {
+		return errors.Wrap(err, `failed to click "Log in" button`)
+	}
+
+	signInWithGoogle := s.d.Object(ui.Text("Continue with Google"))
+	if err := signInWithGoogle.WaitForExists(ctx, shortUITimeout); err != nil {
 		testing.ContextLog(ctx, `"Continue with Google" button not found, assuming splash screen has been dismissed already`)
-	} else if err := signIn.Click(ctx); err != nil {
+	} else if err := signInWithGoogle.Click(ctx); err != nil {
 		return errors.Wrap(err, `failed to click "Continue with Google" button`)
 	} else {
 		accountButton := s.d.Object(ui.Text(s.account))
