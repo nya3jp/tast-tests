@@ -49,7 +49,8 @@ func VerifyWakeOnWifiReason(
 	defer cancel()
 	go func() {
 		defer close(suspendErrCh)
-		_, err := tf.WifiClient().Suspend(suspendCtx, &wifi.SuspendRequest{
+		// Use the raw gRPC to have better control.
+		_, err := tf.WifiClient().ShillServiceClient.Suspend(suspendCtx, &wifi.SuspendRequest{
 			WakeUpTimeout:  (duration + suspendBuffer).Nanoseconds(),
 			CheckEarlyWake: false,
 		})
