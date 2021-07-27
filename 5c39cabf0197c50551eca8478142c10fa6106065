@@ -34,6 +34,24 @@
       "parentUuid": "81341ec3_2a7fdf1f",
       "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28adf864_02d2d04f",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-27T21:38:21Z",
+      "side": 1,
+      "message": "Ah, I see now. I was unable to find a `return nil` branchpoint, and now I see it at L468.\n\nI agree that those options would be preferable. Well, if this winds up as a pain point, then I\u0027m sure we\u0027ll have compelling data to prioritize that change.",
+      "parentUuid": "56323df8_9834c3c0",
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
