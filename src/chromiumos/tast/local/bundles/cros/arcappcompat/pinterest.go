@@ -48,7 +48,7 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               touchviewTestsForPinterest,
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name:              "vm",
@@ -58,7 +58,7 @@ func init() {
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               touchviewTestsForPinterest,
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,

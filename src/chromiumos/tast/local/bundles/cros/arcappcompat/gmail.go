@@ -25,7 +25,7 @@ var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
+	{Name: "Clamshell: TouchScreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Clamshell: Mouse click", Fn: testutil.MouseClick},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
 	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
@@ -37,7 +37,7 @@ var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Touchview: Rotate", Fn: testutil.TouchviewRotate},
-	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
+	{Name: "Touchview: TouchScreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 }
 
@@ -58,10 +58,10 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               touchviewTestsForGmail,
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name:              "vm",
@@ -74,10 +74,10 @@ func init() {
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               touchviewTestsForGmail,
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,

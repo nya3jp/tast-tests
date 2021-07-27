@@ -25,7 +25,7 @@ var clamshellTestsForIHeartRadio = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
+	{Name: "Clamshell: TouchScreen Scroll", Fn: testutil.TouchScreenScroll},
 }
 
 // TouchviewTests are placed here.
@@ -33,7 +33,7 @@ var touchviewTestsForIHeartRadio = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForIHeartRadio},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
+	{Name: "Touchview: TouchScreen Scroll", Fn: testutil.TouchScreenScroll},
 }
 
 func init() {
@@ -53,10 +53,10 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               touchviewTestsForIHeartRadio,
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name:              "vm",
@@ -69,10 +69,10 @@ func init() {
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               touchviewTestsForIHeartRadio,
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
