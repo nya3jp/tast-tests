@@ -12,8 +12,8 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"

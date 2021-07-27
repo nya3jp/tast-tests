@@ -18,11 +18,11 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/firmware/reporters"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/ssh/linuxssh"

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
