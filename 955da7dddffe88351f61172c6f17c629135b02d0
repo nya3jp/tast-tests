@@ -86,6 +86,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7fae00a_d8d6bb11",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-27T20:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba8eba5d_b283e7c2",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ec18901_11cbbf8a",
@@ -99,6 +117,24 @@
       "writtenOn": "2021-07-20T11:25:51Z",
       "side": 1,
       "message": "minor nit: you don\u0027t have to escape \u0027, if you use \" as a delimiter.",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd77fb8_e5a17fa8",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-27T20:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec18901_11cbbf8a",
       "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +156,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21366b76_4c63968b",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-27T20:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50fea0c_12f6ea1e",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d59ef5_67ac3b9a",
@@ -133,6 +187,24 @@
       "writtenOn": "2021-07-20T11:25:51Z",
       "side": 1,
       "message": "nit: you are mixing \" and \u0027. Please use \u0027, as you chose it in the other file.",
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c147fb46_0a6075f6",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-27T20:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d59ef5_67ac3b9a",
       "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -160,6 +232,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e82b1e_6f683d71",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-27T20:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e009ca9_b083b6b5",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e54ac5_cb11e3e1",
@@ -173,6 +269,30 @@
       "writtenOn": "2021-07-20T11:25:51Z",
       "side": 1,
       "message": "Can you try it with a \"with\"?\n\u003e  with requests.post(url, data\u003dpayload) as r:\n\u003e    if \"refresh_token\" not in r.json():\n\u003e      raise_response_error(\"refresh_token\", r.json(), OAUTH_TOKEN_URL)\n\u003e    refresh_token \u003d r.json()[\"refresh_token\"]",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "955da7dddffe88351f61172c6f17c629135b02d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abc6c5db_8e9dcada",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-07-27T20:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87e54ac5_cb11e3e1",
       "range": {
         "startLine": 82,
         "startChar": 0,
