@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3aeb628_887d36b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-27T05:20:51Z",
+      "side": 1,
+      "message": "can you just do:\n\nvalidateField :\u003d util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText)\n\nif inputField \u003d\u003d PasswordInputField {\n\t// Password input is a special case. The value is presented with placeholder \"•\".\n\t// Using PasswordTextField field to verify the outcome.\n\tvalidateField \u003d uiauto.Combine(\"validate passward field\",\n\tutil.WaitForFieldTextToBe(its.tconn, inputField.Finder(), strings.Repeat(\"•\", len(inputData.CharacterKeySeq))),\n\tutil.WaitForFieldTextToBeIgnoringCase(its.tconn, PasswordTextField.Finder(), inputData.ExpectedText),\n\t)\n}",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 2
+      },
+      "revId": "a3969deb86ece5ef0e7e7b68d127867b0b264cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
