@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cfda12_8ff517f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-27T19:13:56Z",
+      "side": 1,
+      "message": "Thanks! So, it mean that both the project id of Downloads and media also need to be set during P-\u003eR upgrade as well during fixup - is that correct?\n",
+      "revId": "e2d3f625aa6e0d3d02683d9267016812391c2267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
