@@ -6,6 +6,8 @@
 package data
 
 import (
+	"fmt"
+
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
 )
@@ -50,8 +52,10 @@ func ExtractExternalFiles(messages []Message, inputMethods []ime.InputMethod) []
 
 	for _, message := range messages {
 		for _, im := range inputMethods {
-			//TODO(b/192819861): evaluate the OK result.
-			inputData, _ := message.GetInputData(im)
+			inputData, ok := message.GetInputData(im)
+			if !ok {
+				panic(fmt.Sprintf("Input data is not found for %q", im))
+			}
 			if inputData.HandwritingFile != "" {
 				files = append(files, inputData.HandwritingFile)
 			}
