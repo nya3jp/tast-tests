@@ -6,6 +6,8 @@ package fingerprint
 
 import (
 	"context"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -50,6 +52,20 @@ Writable flags:      0x00000001 ro_at_boot
 `
 )
 
+const (
+	ecFlashProtectRoAtBoot          = 0x1   // RO flash code protected when the EC boots.
+	ecFlashProtectRoNow             = 0x2   // RO flash code protected now.  If this bit is set, at-boot status cannot be changed.
+	ecFlashProtectAllNow            = 0x4   // Entire flash code protected now, until reboot.
+	ecFlashProtectGpioAsserted      = 0x8   // Flash write protect GPIO is asserted now.
+	ecFlashProtectErrorStuck        = 0x10  // Error - at least one bank of flash is stuck locked, and cannot be unlocked.
+	ecFlashProtectErrorInconsistent = 0x20  // Error - flash protection is in inconsistent state.
+	ecFlashProtectAllAtBoot         = 0x40  // Entire flash code protected when the EC boots.
+	ecFlashProtectRwAtBoot          = 0x80  // RW flash code protected when the EC boots.
+	ecFlashProtectRwNow             = 0x100 // RW flash code protected now.
+	ecFlashProtectRollbackAtBoot    = 0x200 // Rollback information flash region protected when the EC boots.
+	ecFlashProtectRollbackNow       = 0x400 // Rollback information flash region protected now.
+)
+
 func flashprotectState(ctx context.Context, d *dut.DUT) (string, error) {
 	bytes, err := EctoolCommand(ctx, d, "flashprotect").Output(ctx)
 	if err != nil {
@@ -85,6 +101,38 @@ func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softw
 	}
 
 	return expectedOutput
+}
+
+func extractFlashProtectFlags(ctx context.Context, d *dut.DUT) (uint64, error) {
+	flashProtectState, err := flashprotectState(ctx, d)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get flashprotect state")
+	}
+
+	re := regexp.MustCompile(`Flash protect flags: (0x\d+)`)
+	result := re.FindStringSubmatch(flashProtectState)
+	if result == nil {
+		return 0, errors.Errorf("can't find flash protect flags in %s", flashProtectState)
+	}
+
+	flags, err := strconv.ParseUint(string(result[1]), 0, 32)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to convert flash protect flags (%s) to int", result[1])
+	}
+
+	return flags, nil
+}
+
+// GetHardwareWriteProtectState is used to obtain actual hardware write protection state as
+// reported by the FPMCU using 'ectool --name=cros_fp flashprotect' command.
+// This is not the opposite of SetHardwareWriteProtect
+func GetHardwareWriteProtectState(ctx context.Context, d *dut.DUT) (bool, error) {
+	flashProtectFlags, err := extractFlashProtectFlags(ctx, d)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get flash protect flags")
+	}
+
+	return (flashProtectFlags & ecFlashProtectGpioAsserted) != 0, nil
 }
 
 // SetHardwareWriteProtect sets the FPMCU's hardware write protection to the
