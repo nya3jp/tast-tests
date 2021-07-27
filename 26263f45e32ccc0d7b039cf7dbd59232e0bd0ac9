@@ -16,6 +16,24 @@
       "message": "FYI: Not sure if this bug is related. https://crrev.com/c/3028957",
       "revId": "26263f45e32ccc0d7b039cf7dbd59232e0bd0ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225eab55_4af53ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-27T01:07:34Z",
+      "side": 1,
+      "message": "Thank you! Uploaded a new patch to fix one issue of calling expandMenu() in slide.go (although this logic will removed in next CL). I also added log in expandMenu() so we can check how this new function helps in the future -- in case the issue has been fixed, we can remove it.",
+      "parentUuid": "89a34bb2_8455fa38",
+      "revId": "26263f45e32ccc0d7b039cf7dbd59232e0bd0ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
