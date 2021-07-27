@@ -181,9 +181,10 @@ func GetSensors(ctx context.Context) ([]*Sensor, error) {
 
 	for _, file := range files {
 		sensor, err := parseSensor(file.Name())
-		if err == nil {
+		if sensor != nil {
 			ret = append(ret, sensor)
-		} else {
+
+		} else if err != nil {
 			testing.ContextLogf(ctx, "Parsing sensor %s FAILED: %+v", file.Name(), err)
 		}
 	}
@@ -202,7 +203,8 @@ func parseSensor(devName string) (*Sensor, error) {
 	var zeroInt, zeroFrac, minInt, minFrac, maxInt, maxFrac int
 
 	if _, err := fmt.Sscanf(devName, "iio:device%d", &sensor.IioID); err != nil {
-		return nil, errors.Wrapf(err, "%q not a sensor", devName)
+		// Could be a trigger, skip.
+		return nil, nil
 	}
 
 	sensor.Path = devName
