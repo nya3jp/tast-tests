@@ -46,6 +46,30 @@
       },
       "revId": "2f07270a8545dae0f4a1b8c473b6069b739709b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c76a0a_6fa0e2e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-27T03:02:37Z",
+      "side": 1,
+      "message": "We decided to skip the test if the dut doesn\u0027t support it.",
+      "parentUuid": "a09e7787_a711a59f",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "2f07270a8545dae0f4a1b8c473b6069b739709b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

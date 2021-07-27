@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10af5a2_2175026f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-27T03:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752304a6_d4499834",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "137c3f521d43669a361effbf56b4d27d2dac0d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66c687b_9f3f957a",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fafc2a_11c5a8ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-27T03:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e934f5ce_c5ab74a4",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "137c3f521d43669a361effbf56b4d27d2dac0d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76097c0_b3e4cb39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-27T03:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66c687b_9f3f957a",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "137c3f521d43669a361effbf56b4d27d2dac0d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3af3044_ca9ad7dd",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-26T07:00:39Z",
       "side": 1,
       "message": "nits: How about simply as follow:\n\nif (m2[0][1] \u003d\u003d \"front\") \u003d\u003d (facing \u003d\u003d pb.Facing_FACING_FRONT) \u0026\u0026 m2[0][2] \u003d\u003d \"1\" {\n  checkRoiSupport \u003d true\n  break\n}",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "137c3f521d43669a361effbf56b4d27d2dac0d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39972150_6f2c30f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-07-27T03:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3af3044_ca9ad7dd",
       "range": {
         "startLine": 66,
         "startChar": 3,
