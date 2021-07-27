@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc740817_ba74d570",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T21:09:57Z",
+      "side": 1,
+      "message": "The edu coexistence flow seems much flakier on device than on VM [1]. Another reason to test on a real device.\n\n[1] https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003darc.UnicornCannotAddNonEduAccount\u0026dep\u003d",
+      "revId": "c5eb4fe8d6d8cb85bca54fda85b1fac21fd41151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

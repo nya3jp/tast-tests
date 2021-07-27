@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e5928a2_f3ae72d5",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T21:09:57Z",
+      "side": 1,
+      "message": "Add a TODO to replace LeftClick() with FocusAndWait() for text fields.",
+      "parentUuid": "9a38aa68_11df9293",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b2b56e9_745fe398",
         "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
         "patchSetId": 1
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "I came across a failure screenshot where there was 1 letter missing in the email address, so I suspect using the keyboard to type might cause flakiness.\n\nMaybe we should just set the value for these text fields directly, or type more slowly. Will look more into this (deferring fix to subsequent CLs).",
       "parentUuid": "8b2b56e9_745fe398",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28a4a3d_3b7c7e11",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T21:09:57Z",
+      "side": 1,
+      "message": "Ack. Add a TODO to fix typing flakiness and replace \\n with a more consistent way to navigate to the next screen.",
+      "parentUuid": "53a3b97f_f4f67c9c",
       "range": {
         "startLine": 97,
         "startChar": 36,
