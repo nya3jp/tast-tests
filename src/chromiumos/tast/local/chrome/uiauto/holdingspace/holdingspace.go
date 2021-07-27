@@ -5,6 +5,10 @@
 package holdingspace
 
 import (
+	"context"
+	"time"
+
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
@@ -39,4 +43,22 @@ func FindPinnedFileChip(name string) *nodewith.Finder {
 // FindTray returns a finder which locates the holding space tray node.
 func FindTray() *nodewith.Finder {
 	return nodewith.ClassName("HoldingSpaceTray")
+}
+
+// OpenBubble opens the holding space bubble.
+func OpenBubble(ctx context.Context, uia *uiauto.Context) error {
+
+	pinnedFilesBubble := nodewith.ClassName("PinnedFilesBubble")
+
+	// If we find the bubble, it's already open. Return early.
+	if uia.WithTimeout(time.Second).WaitUntilExists(pinnedFilesBubble)(ctx) == nil {
+		return nil
+	}
+
+	holdingSpaceTray := FindTray()
+
+	return uiauto.Combine("Open holding space bubble",
+		uia.LeftClick(holdingSpaceTray),
+		uia.WaitUntilExists(pinnedFilesBubble),
+	)(ctx)
 }
