@@ -204,6 +204,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "847a2736_49f17b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-27T07:44:27Z",
+      "side": 1,
+      "message": "Yes it is not part of this function, as precondition we are login to the DUT. So we have updated the comment.",
+      "parentUuid": "38d2fee6_534762b1",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5f30dcc_b84c1797",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 10
