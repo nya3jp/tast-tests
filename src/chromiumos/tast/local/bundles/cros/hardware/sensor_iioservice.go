@@ -39,6 +39,7 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 
 	// Call libmems' functions directly here to read and verify samples
 	sensors, err := iio.GetSensors(ctx)
+	sensors = iio.AddVirtualSensors(sensors)
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
