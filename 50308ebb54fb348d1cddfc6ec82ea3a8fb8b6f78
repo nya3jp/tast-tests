@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5395175d_0fda2922",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T23:55:27Z",
+      "side": 1,
+      "message": "Link to the dependent ChromeOS internal CL. Are you putting these new variables in geller.yaml?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "50308ebb54fb348d1cddfc6ec82ea3a8fb8b6f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d8bc7137_8660ae2e",
@@ -14,6 +37,69 @@
       "writtenOn": "2021-07-26T07:12:31Z",
       "side": 1,
       "message": "Please TAL, thank you! Will add dhaddock@ as a reviewer after you\u0027ve done a first pass.",
+      "revId": "50308ebb54fb348d1cddfc6ec82ea3a8fb8b6f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337d128c_e36e7c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T23:55:27Z",
+      "side": 1,
+      "message": "This test passes 10/10 times, good job for making it not flaky!",
+      "revId": "50308ebb54fb348d1cddfc6ec82ea3a8fb8b6f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4e1536_d11efd1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/gellerization.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T23:55:27Z",
+      "side": 1,
+      "message": "You can consider recycling geller.parentUser instead of creating a new parent test account. However, we should create a new child user because geller.childUser must always remain supervised for the familylink.GellerLogin Tast test to pass.",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "50308ebb54fb348d1cddfc6ec82ea3a8fb8b6f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05d0636_09e0fb71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/gellerization.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-27T23:55:27Z",
+      "side": 1,
+      "message": "I did some experimentation and LeftClick() is actually substantially more robust than FocusAndWait(). There\u0027s a script [1] for running Tast tests multiple times in a row to debug flakes. LeftClick() passes 10/10 times but FocusAndWait() only passes 2/10 times.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/tools/repeat-test.sh;bpv\u003d0",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 23
+      },
       "revId": "50308ebb54fb348d1cddfc6ec82ea3a8fb8b6f78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
