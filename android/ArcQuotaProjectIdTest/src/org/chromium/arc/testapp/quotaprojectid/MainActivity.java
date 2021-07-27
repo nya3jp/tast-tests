@@ -60,27 +60,34 @@ public class MainActivity extends Activity {
         Log.i(TAG, "Wrote to " + file.getPath());
 
         // Save the data in the primary external volume.
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.ImageColumns.IS_PENDING, 1);
-        values.put(MediaStore.Images.ImageColumns.TITLE, FILE_NAME);
-        values.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, FILE_NAME);
-        values.put(MediaStore.Images.ImageColumns.MIME_TYPE, "image/png");
+        writeToMediaStore(MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY),
+                png);
+        writeToMediaStore(MediaStore.Downloads.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY),
+                png);
+    }
 
-        final Uri targetUri = getContentResolver().insert(
-                MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY), values);
+    void writeToMediaStore(Uri mediaTableUri, byte[] data) {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.MediaColumns.IS_PENDING, 1);
+        values.put(MediaStore.MediaColumns.TITLE, FILE_NAME);
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILE_NAME);
+        values.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
+
+        final Uri targetUri = getContentResolver().insert(mediaTableUri, values);
         if (targetUri == null) {
-            Log.e(TAG, "Failed to insert to the primary external volume.");
+            Log.e(TAG, "Failed to insert to " + mediaTableUri);
             return;
         }
+
         try (OutputStream out = getContentResolver().openOutputStream(targetUri)) {
-            out.write(png);
+            out.write(data);
         } catch (IOException e) {
             Log.e(TAG, "Failed to write ", e);
             return;
         }
 
         values.clear();
-        values.put(MediaStore.Images.ImageColumns.IS_PENDING, 0);
+        values.put(MediaStore.MediaColumns.IS_PENDING, 0);
         if (getContentResolver().update(targetUri, values, null) != 1) {
             Log.e(TAG, "Failed to update.");
             return;
