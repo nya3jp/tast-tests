@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b932fc26_c2fd7268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-27T20:49:27Z",
+      "side": 1,
+      "message": "Done.\n\nMoved the chrome setup and test scenario code into subpackage.",
+      "parentUuid": "be80eba3_774a97b2",
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1484ad75_7c0b1a25",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-27T08:19:53Z",
       "side": 1,
       "message": "IIUC, all code below cr.TestAPIConn() at L130 are supposed to use \"cs\" instead of \"cr\". But since cr is still in the scope, it\u0027s easy to access it accidentally, in which case this test may fail only on Lacros.\n\nTo avoid such potential issues, I recommend introducing a utility function that returns ash.ConnSource and chrome.TestConn, but not chrome.Chrome nor launcher.LacrosChrome.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12701bc_2d31e907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-27T20:49:27Z",
+      "side": 1,
+      "message": "Done.\n\nCreated a SetupChrome util func in subpackage. In addition to \"cs\" and \"tconn\", I also return a cleanup func and a CloseAboutBlank helper func.",
+      "parentUuid": "1484ad75_7c0b1a25",
       "range": {
         "startLine": 102,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8fb2dfe_364cffd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-27T20:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889fd86e_8125dd5f",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110cb21f_7ebc1e7d",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58569943_db25ffd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-27T20:49:27Z",
+      "side": 1,
+      "message": "Done\n\nid0 -\u003e browserWindID\nw0 -\u003e browserWin",
+      "parentUuid": "110cb21f_7ebc1e7d",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 3
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ce50fff_d83e0f08",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-07-27T08:19:53Z",
       "side": 1,
       "message": "This assignment modifies the variable w0 in the outer scope. I recommend avoiding this...\n\nIn this case we can just use :\u003d to create a variable. It\u0027s likely you want to name it differently as well so as not to confuse them.\n\ne.g.\n \n window, err :\u003d ...",
+      "range": {
+        "startLine": 308,
+        "startChar": 3,
+        "endLine": 308,
+        "endChar": 16
+      },
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbffbd16_0e386ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-27T20:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ce50fff_d83e0f08",
       "range": {
         "startLine": 308,
         "startChar": 3,
