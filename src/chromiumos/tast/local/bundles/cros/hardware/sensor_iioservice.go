@@ -57,7 +57,7 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 		frequency := fmt.Sprintf("--frequency=%f", float64(maxFreq)/1000)
 
 		out, err := testexec.CommandContext(ctx, "iioservice_simpleclient",
-			fmt.Sprintf("--device_id=%s", sn.Path[10:]), "--channels=timestamp",
+			fmt.Sprintf("--device_id=%d", sn.IioID), "--channels=timestamp",
 			frequency).CombinedOutput()
 
 		if err != nil {
@@ -72,7 +72,7 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 		} else if !strings.Contains(strOut, succeedReadingSamples) {
 			s.Error("Not enough successful readsamples on sensor: ", sn.Name)
 		} else {
-			s.Logf("Test passed on device name: %v, id: %v", sn.Name, sn.Path)
+			s.Logf("Test passed on device name: %v, id: %v", sn.Name, sn.IioID)
 		}
 	}
 }
