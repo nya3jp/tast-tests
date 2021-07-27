@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553829d2_e26b6d9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:44:24Z",
+      "side": 1,
+      "message": "Please mention this replaces the firmware_ECWatchdog.py test.",
+      "revId": "dda9b963de83f461b22a371a8da4fef468c49379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e743fe2_d5e0ed23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:44:24Z",
+      "side": 1,
+      "message": "Please create a bug for this.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "dda9b963de83f461b22a371a8da4fef468c49379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "651e6118_3fcaa461",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:44:24Z",
+      "side": 1,
+      "message": "Please use firmware_experimental until the test passes in the experimental pool, then switch to firmware_unstable, and then finally firmware_ec. firmware_smoke is for tests of the framework, as opposed to tests of hardware.",
+      "range": {
+        "startLine": 21,
+        "startChar": 44,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "dda9b963de83f461b22a371a8da4fef468c49379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1f334e_6deb0934",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:44:24Z",
+      "side": 1,
+      "message": "Please include the comment from firmware_ECWatchdog.py as to how this was calculated.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "dda9b963de83f461b22a371a8da4fef468c49379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382ac2bf_ea8ab69c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:44:24Z",
+      "side": 1,
+      "message": "Please use pre.NormalMode() and the helper created by the precondition. See https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/remote/firmware/codelab/README.md#Control-start_end-state-with-firmware_Pre",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "dda9b963de83f461b22a371a8da4fef468c49379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88198e6_e975acfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-27T19:44:24Z",
+      "side": 1,
+      "message": "Sleep takes a time.Duration so (WATCHDOG_DELAY+EC_BOOT_DELAY) * time.Millisecond would be the correct way to specify the sleep time.",
+      "range": {
+        "startLine": 53,
+        "startChar": 57,
+        "endLine": 53,
+        "endChar": 62
+      },
+      "revId": "dda9b963de83f461b22a371a8da4fef468c49379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
