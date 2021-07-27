@@ -33,6 +33,24 @@
       "message": "+nya, is it fine to use functions in test params?",
       "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19fac4a6_b80fd28e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-27T08:53:21Z",
+      "side": 1,
+      "message": "I think it\u0027s okay as long as tast-lint passes.\n\nInitially we wanted test metadata to be very static (e.g. not involving function calls), but I know it\u0027s difficult to maintain a lot of tests with similar metadata.",
+      "parentUuid": "8a003d3a_b4e27734",
+      "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
