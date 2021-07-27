@@ -6,12 +6,15 @@ package arc
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+	"syscall"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -37,11 +40,13 @@ func getQuotaProjectID(ctx context.Context, path string) (int64, error) {
 }
 
 func QuotaProjectID(ctx context.Context, s *testing.State) {
+	const androidUIDOffset = 655360
+	// This number comes from Android's android_filesystem_config.h.
+	const aidAppStart = 10000
 	// These numbers come from Android's android_projectid_config.h.
 	const (
 		projectIDExtMediaImage = 1003
 		projectIDExtDataStart  = 20000
-		projectIDExtDataEnd    = 29999
 	)
 
 	const (
@@ -74,19 +79,36 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start MainActivity: ", err)
 	}
 
-	// Check the project ID of the file in the external files dir.
+	// Check the project ID of the package data directory.
 	pkgDataDir, err := arc.PkgDataDir(cr.NormalizedUser(), pkgName)
 	if err != nil {
 		s.Fatal("Failed to get package data dir: ", err)
 	}
-	externalFilesDirPath := filepath.Join(pkgDataDir, "files/Pictures/test.png")
-	projectID, err := getQuotaProjectID(ctx, externalFilesDirPath)
+	fileInfo, err := os.Stat(pkgDataDir)
+	if err != nil {
+		s.Fatal("Failed to stat the package data dir: ", err)
+	}
+	stat, ok := fileInfo.Sys().(*syscall.Stat_t)
+	if !ok {
+		s.Fatal("Failed to get the stat of the package data dir")
+	}
+	pkgProjectID := int64(stat.Uid - androidUIDOffset - aidAppStart + projectIDExtDataStart)
+	projectID, err := getQuotaProjectID(ctx, pkgDataDir)
 	if err != nil {
 		s.Fatal("Failed to get the project ID: ", err)
 	}
-	if projectID < projectIDExtDataStart || projectIDExtDataEnd < projectID {
-		s.Errorf("Unexpected project ID: %d, expected to be in range [%d %d]",
-			projectID, projectIDExtDataStart, projectIDExtDataEnd)
+	if projectID != pkgProjectID {
+		s.Errorf("Unexpected project ID: %d, expected %d", projectID, pkgProjectID)
+	}
+
+	// Check the project ID of the file in the external files dir.
+	externalFilesDirPath := filepath.Join(pkgDataDir, "files/Pictures/test.png")
+	projectID, err = getQuotaProjectID(ctx, externalFilesDirPath)
+	if err != nil {
+		s.Fatal("Failed to get the project ID: ", err)
+	}
+	if projectID != pkgProjectID {
+		s.Errorf("Unexpected project ID: %d, expected %d", projectID, pkgProjectID)
 	}
 
 	// Check the project ID of the file in the primary external volume.
@@ -96,6 +118,21 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 	primaryExternalVolumePath := filepath.Join(androidDataDir, "data/media/0/Pictures/test.png")
 	projectID, err = getQuotaProjectID(ctx, primaryExternalVolumePath)
+	if err != nil {
+		s.Fatal("Failed to get the project ID: ", err)
+	}
+	if projectID != projectIDExtMediaImage {
+		s.Errorf("Unexpected project ID: %d, expected %d",
+			projectID, projectIDExtMediaImage)
+	}
+
+	// Check the project ID of the file in the Downloads directory.
+	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get the cryptohome user directory: ", err)
+	}
+	downloadsDirPath := filepath.Join(userPath, "Downloads")
+	projectID, err = getQuotaProjectID(ctx, downloadsDirPath)
 	if err != nil {
 		s.Fatal("Failed to get the project ID: ", err)
 	}
