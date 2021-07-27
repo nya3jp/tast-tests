@@ -42,7 +42,7 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 	// Return only one error.
 	start, err := iio.BootTime()
 	if err != nil {
-		return errors.Wrap(err, "error reading BootTime: ")
+		return errors.Wrap(err, "error reading BootTime")
 	}
 	channels := "timestamp"
 	if sn.Name == iio.Accel {
@@ -51,6 +51,8 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 		channels += " anglvel_x anglvel_y anglvel_z"
 	} else if sn.Name == iio.Mag {
 		channels += " magn_x magn_y magn_z"
+	} else if sn.Name == iio.Gravity {
+		channels += " gravity_x gravity_y gravity_z"
 	} else if sn.Name == iio.Ring {
 		return errors.New("Kernel must be compiled with USE=iioservice")
 	} else {
@@ -94,12 +96,12 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 
 	end, err := iio.BootTime()
 	if err != nil {
-		return errors.Wrap(err, "error reading BootTime: ")
+		return errors.Wrap(err, "error reading BootTime")
 	}
 	s.Logf("Got %v readings from %v %v",
 		len(rs), sn.Location, sn.Name)
 	if err := iio.Validate(rs, start, end, sn, nDuration); err != nil {
-		return errors.Wrap(err, "error during validation: ")
+		return errors.Wrap(err, "error during validation")
 	}
 	return nil
 }
@@ -112,6 +114,7 @@ func SensorIioserviceHard(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
+	sensors = iio.AddVirtualSensors(sensors)
 
 	errorCh := make(chan error)
 	numTasks := 0

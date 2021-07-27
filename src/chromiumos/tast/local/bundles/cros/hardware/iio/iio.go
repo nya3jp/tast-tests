@@ -92,6 +92,8 @@ const (
 	// Activity is a special sensor for ChromeOS that produces several kind of
 	// activity events by the data of other sensors.
 	Activity SensorName = "cros-ec-activity"
+	// Gravity is a pseudo sensor reported by iioservice.
+	Gravity SensorName = "gravity"
 )
 
 const (
@@ -142,10 +144,11 @@ var sensorLocations = map[SensorLocation]struct{}{
 // sysfs filename for reading raw sensor values. For example the x axis can be read
 // from in_accel_x_raw for an accelerometer and in_anglvel_x_raw for a gyroscope.
 var readingNames = map[SensorName]string{
-	Accel: "accel",
-	Gyro:  "anglvel",
-	Mag:   "magn",
-	Light: "illuminance",
+	Accel:   "accel",
+	Gyro:    "anglvel",
+	Mag:     "magn",
+	Light:   "illuminance",
+	Gravity: "gravity",
 }
 
 // TriggerType defines the trigger supported by chromeos. sysfs trigger, and ring
@@ -204,6 +207,47 @@ func GetSensors(ctx context.Context) ([]*Sensor, error) {
 	}
 
 	return ret, nil
+}
+
+// AddVirtualSensors adds a gravity sensor if there is a gyroscope and accel in the system.
+func AddVirtualSensors(sensors []*Sensor) []*Sensor {
+	var hasAccel, hasGyro bool
+	var gravityMaxFreq int
+	var gravityScale float64
+	var gravityLocation SensorLocation
+
+	for _, sn := range sensors {
+		if sn.Name == Gyro {
+			if !hasGyro {
+				hasGyro = true
+				gravityLocation = sn.Location
+			} else if sn.Location == Lid {
+				gravityLocation = Lid
+			}
+		}
+	}
+
+	for _, sn := range sensors {
+		if sn.Name == Accel && sn.Location == gravityLocation {
+			hasAccel = true
+			gravityMaxFreq = sn.MaxFrequency
+			gravityScale = sn.Scale
+		}
+	}
+
+	if hasAccel && hasGyro {
+		// Add Gravity sensor
+		var gravity Sensor
+		gravity.Name = Gravity
+		gravity.Path = ""
+		gravity.Location = Base
+		gravity.IioID = 10000
+		gravity.Scale = gravityScale
+		gravity.MinFrequency = 20000
+		gravity.MaxFrequency = gravityMaxFreq
+		sensors = append(sensors, &gravity)
+	}
+	return sensors
 }
 
 // parseSensor reads the sysfs directory at iioBasePath/devName and returns a
