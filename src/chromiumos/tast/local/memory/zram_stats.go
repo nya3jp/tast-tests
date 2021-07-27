@@ -26,11 +26,16 @@ type ZramOpStats struct {
 // statColumns is the number of primitive fields in ZramStats.
 const statColumns = 15
 
+// oldStatColumns is the number of primitive fields in ZramStats,
+// on older boards, which didn't have the last few columns
+const oldStatColumns = 11
+
 // ZramStats holds statistics from /sys/block/zram*/stat.
 type ZramStats struct {
 	Read                              ZramOpStats
 	Write                             ZramOpStats
 	InFlightOps, IoTicks, TimeInQueue uint64
+	HasDiscard                        bool
 	Discard                           ZramOpStats
 }
 
@@ -47,11 +52,17 @@ func NewZramStats() (*ZramStats, error) {
 		return nil, errors.Wrap(err, "failed to read zram stat")
 	}
 	strFields := strings.Fields(string(statBlob))
-	if len(strFields) < statColumns {
-		return nil, errors.Errorf("expected %d fields in stat file, got %d", statColumns, len(strFields))
+	numFields := len(strFields)
+	hasDiscard := false
+	if numFields < statColumns {
+		if numFields != oldStatColumns {
+			return nil, errors.Errorf("expected %d or %d fields in stat file, got %d", statColumns, oldStatColumns, numFields)
+		}
+	} else {
+		hasDiscard = true
 	}
 
-	fields := make([]uint64, len(strFields))
+	fields := make([]uint64, numFields)
 	for i, stat := range strFields {
 		parsed, err := strconv.ParseUint(stat, 10, 64)
 		if err != nil {
@@ -66,7 +77,11 @@ func NewZramStats() (*ZramStats, error) {
 		InFlightOps: fields[8],
 		IoTicks:     fields[9],
 		TimeInQueue: fields[10],
-		Discard:     ZramOpStats{Ops: fields[11], MergedOps: fields[12], Sectors: fields[13], Wait: fields[14]},
+		HasDiscard:  hasDiscard,
+		// intentionally omit Discard, set optionally below
+	}
+	if hasDiscard {
+		stats.Discard = ZramOpStats{Ops: fields[11], MergedOps: fields[12], Sectors: fields[13], Wait: fields[14]}
 	}
 
 	return stats, nil
@@ -85,7 +100,9 @@ func subtractBaseStat(stat, base *ZramStats) {
 	subtractBaseOps(&(stat.Write), &(base.Write))
 	stat.IoTicks -= base.IoTicks
 	stat.TimeInQueue -= base.TimeInQueue
-	subtractBaseOps(&(stat.Discard), &(base.Discard))
+	if stat.HasDiscard && base.HasDiscard {
+		subtractBaseOps(&(stat.Discard), &(base.Discard))
+	}
 }
 
 // ZramStatMetrics writes a JSON file containing statistics from
@@ -133,14 +150,16 @@ func ZramStatMetrics(ctx context.Context, base *ZramStats, p *perf.Values, outdi
 		},
 		float64(stat.Write.Ops),
 	)
-	p.Set(
-		perf.Metric{
-			Name:      fmt.Sprintf("zram_discards%s", suffix),
-			Unit:      "Requests",
-			Direction: perf.SmallerIsBetter, // really, it depends.
-		},
-		float64(stat.Write.Ops),
-	)
+	if stat.HasDiscard {
+		p.Set(
+			perf.Metric{
+				Name:      fmt.Sprintf("zram_discards%s", suffix),
+				Unit:      "Requests",
+				Direction: perf.SmallerIsBetter, // really, it depends.
+			},
+			float64(stat.Discard.Ops),
+		)
+	}
 	p.Set(
 		perf.Metric{
 			Name:      fmt.Sprintf("zram_wait%s", suffix),
