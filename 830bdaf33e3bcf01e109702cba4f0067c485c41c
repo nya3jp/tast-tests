@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7a3adc_082c9169",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-27T13:04:33Z",
+      "side": 1,
+      "message": "Is this timeout too high? The ResetTimeout for chrome is just 15 seconds. Can this be reduced to 5 seconds (currently 2 targets)?",
+      "range": {
+        "startLine": 391,
+        "startChar": 67,
+        "endLine": 391,
+        "endChar": 78
+      },
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
