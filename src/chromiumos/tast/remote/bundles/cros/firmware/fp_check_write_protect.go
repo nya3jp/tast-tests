@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/firmware/reporters"
-	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )

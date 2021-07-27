@@ -242,23 +242,29 @@ func init() {
 }
 ```
 
-Next, in the test body, we will need to create a `servo.Proxy` object, which forwards commands to servod. The [`NewProxy`] constructor requires the servo host:port, and a keyFile and keyDir that can be obtained via the test's `DUT` object. Additionally, we should close the Proxy at the end of the test (via `defer`).
+> Package "servo" can be used in both remote and local tests depending upon the requirements.
 
-First, import the remote servo library:
+Servo functionality & usage remains exactly the same in both the remote & local tests however they just differ in the way the connection is being established. Snippets have been provided for both approaches, pick either one.
+
+First, import the common servo library:
 
 ```go
 import (
 	...
-	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/common/servo"
 )
 ```
+
+### Connecting Servo in remote tests
+
+Next, in the test body, we will need to create a `servo.Proxy` object, which forwards commands to servod. The [`NewProxy`] constructor requires the servo host:port, and a keyFile and keyDir that can be obtained via the test's `DUT` object. Additionally, we should close the Proxy at the end of the test (via `defer`).
 
 Append the following to the test body:
 
 ```go
 func Codelab(ctx context.Context, s *testing.State) {
 	...
-	// Set up Servo
+	// Set up Servo in remote tests
 	dut := s.DUT()
 	servoSpec, _ := s.Var("servo")
 	pxy, err := servo.NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
@@ -266,6 +272,25 @@ func Codelab(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 	defer pxy.Close(ctx)
+}
+```
+
+### Connecting Servo in local tests
+
+In local tests, we don't have to establish a proxy (it's doable but not recommended) to communicate with servod instance, a simple direct connection will be enough. The `NewDirect` constructor takes the servo host:port and returns a `servo.Servo` object. Additionally, we should close the Servo connection at the end of the test (via `defer`). Make sure, the host:port address is reachable from DUT.
+
+Append the following to the test body:
+
+```go
+func Codelab(ctx context.Context, s *testing.State) {
+	...
+	// Set up Servo in local tests
+	servoSpec, _ := s.Var("servo")
+	srvo, err := servo.NewDirect(ctx, servoSpec)
+		if err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	defer srvo.Close(ctx)
 }
 ```
 
@@ -278,6 +303,8 @@ func Codelab(ctx context.Context, s *testing.State) {
 	...
 	// Get the DUT's ec_board via Servo
 	ecBoard, err := pxy.Servo().GetString(ctx, servo.ECBoard)
+	// For local tests run
+	// ecBoard, err := srvo.GetString(ctx, servo.ECBoard)
 	if err != nil {
 		s.Fatal("Getting ec_board control from servo: ", err)
 	}
@@ -309,18 +336,34 @@ Error at codelab.txt:54: Failed to create servo: Post "http://127.0.0.1:42529": 
 
 You'll need to SSH into the servo host machine (if it's different from your workstation) and run `servod` (such as via `start servod PORT=${SERVO_PORT}`). Then try your `tast run` command again. Did it work? It should have.
 
+**Note**: While using servo in local tests, be sure your `servod` instance is not attached to the loopback interface (if DUT and servo host are different devices). You can bind it to a network interface by running `servod --host ${SERVO_HOST_Interface_IP} --port ${SERVO_PORT}` or make it listen to all available interfaces including loopback by using `0.0.0.0` for the flag `--host`. Now rerun your `tast` command again. Did it work?
+
+If you are still getting error similar to this
+
+```
+Failed to establish proxy with servo: timeout = 10s: Post "http://192.168.2.139:9999": dial tcp 192.168.2.139:9999: i/o timeout (Client.Timeout exceeded while awaiting headers)
+```
+
+Please make sure, the `${SERVO_PORT}` that you are using to bind `servod` is open on the servo host device firewall. You can check that by running on servo host
+
+```shell
+$ iptables -L
+# if there is no entry for $SERVO_PORT, allow the port by running
+$ iptables -A INPUT -p tcp --dport ${SERVO_PORT} -j ACCEPT
+```
+
 For reference on running tests with Servo, you can review the [relevant section] of [go/tast-running].
 
 At this point (after running `gofmt`), your test file should resemble [`codelab_servo.txt`].
 
 [Servo]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo.md
 [runtime variable]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables
-[`NewProxy`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/proxy.go?q=NewProxy
-[`GetString`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=func.*GetString
-[`methods.go`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go
-[`KeypressControl`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=%22type%20KeypressControl%22
-[`KeypressDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=%22type%20KeypressDuration%22
-[`KeypressWithDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go?q=KeypressWithDuration
+[`NewProxy`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/proxy.go?q=NewProxy
+[`GetString`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=func.*GetString
+[`methods.go`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go
+[`KeypressControl`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=%22type%20KeypressControl%22
+[`KeypressDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=%22type%20KeypressDuration%22
+[`KeypressWithDuration`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q=KeypressWithDuration
 [relevant section]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#running-tests-with-servo
 [go/tast-running]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md
 [`codelab_servo.txt`]: ./codelab_servo.txt
