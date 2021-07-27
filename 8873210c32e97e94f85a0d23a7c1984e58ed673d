@@ -51,6 +51,41 @@
       "message": "I think we could review and land this even if the bitrate result\nis off. \nhiroh@ PTAL\ntast-owners@ PTAL/RS.",
       "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e60d92_975101e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362700
+      },
+      "writtenOn": "2021-07-27T17:51:54Z",
+      "side": 1,
+      "message": "Here is the link to the partner ticket https://partnerissuetracker.corp.google.com/issues/194515342",
+      "parentUuid": "09390c5b_dd43494b",
+      "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b0a004_1a0ec221",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362700
+      },
+      "writtenOn": "2021-07-27T17:51:54Z",
+      "side": 1,
+      "message": "Here is the link to the partner ticket filed for bit rate failure during h264 4K hw encode - https://partnerissuetracker.corp.google.com/issues/194515342",
+      "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
