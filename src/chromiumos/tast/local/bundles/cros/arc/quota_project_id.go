@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -74,13 +75,23 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start MainActivity: ", err)
 	}
 
-	// Check the project ID of the file in the external files dir.
+	// Check the project ID of the package data directory.
 	pkgDataDir, err := arc.PkgDataDir(cr.NormalizedUser(), pkgName)
 	if err != nil {
 		s.Fatal("Failed to get package data dir: ", err)
 	}
+	projectID, err := getQuotaProjectID(ctx, pkgDataDir)
+	if err != nil {
+		s.Fatal("Failed to get the project ID: ", err)
+	}
+	if projectID < projectIDExtDataStart || projectIDExtDataEnd < projectID {
+		s.Errorf("Unexpected project ID: %d, expected to be in range [%d %d]",
+			projectID, projectIDExtDataStart, projectIDExtDataEnd)
+	}
+
+	// Check the project ID of the file in the external files dir.
 	externalFilesDirPath := filepath.Join(pkgDataDir, "files/Pictures/test.png")
-	projectID, err := getQuotaProjectID(ctx, externalFilesDirPath)
+	projectID, err = getQuotaProjectID(ctx, externalFilesDirPath)
 	if err != nil {
 		s.Fatal("Failed to get the project ID: ", err)
 	}
@@ -96,6 +107,21 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 	primaryExternalVolumePath := filepath.Join(androidDataDir, "data/media/0/Pictures/test.png")
 	projectID, err = getQuotaProjectID(ctx, primaryExternalVolumePath)
+	if err != nil {
+		s.Fatal("Failed to get the project ID: ", err)
+	}
+	if projectID != projectIDExtMediaImage {
+		s.Errorf("Unexpected project ID: %d, expected %d",
+			projectID, projectIDExtMediaImage)
+	}
+
+	// Check the project ID of the file in the Downloads directory.
+	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get the cryptohome user directory: ", err)
+	}
+	downloadsDirPath := filepath.Join(userPath, "Downloads")
+	projectID, err = getQuotaProjectID(ctx, downloadsDirPath)
 	if err != nil {
 		s.Fatal("Failed to get the project ID: ", err)
 	}
