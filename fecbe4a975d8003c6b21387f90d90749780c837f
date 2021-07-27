@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf1a22e_cde59963",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-27T22:40:24Z",
+      "side": 1,
+      "message": "added the arm64 exceptions back in, because they\u0027re not ready yet.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c72b2026_8fe5e4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-27T22:40:24Z",
+      "side": 1,
+      "message": "This is ready now I think, PTAL.",
+      "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
