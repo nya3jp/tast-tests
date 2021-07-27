@@ -389,6 +389,10 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
+		if ctx.Err() != nil {
+			return errors.Wrap(err, "not all targets finished closing, context expired")
+		}
+
 		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
 	}
 
