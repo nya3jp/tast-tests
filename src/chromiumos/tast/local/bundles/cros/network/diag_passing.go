@@ -81,16 +81,12 @@ func DiagPassing(ctx context.Context, s *testing.State) {
 	params := s.Param().(netDiagParams)
 	routine := params.Routine
 
-	result, err := mojo.RunRoutine(ctx, routine)
-	if err != nil {
-		s.Fatal("Unable to run routine: ", err)
-	}
-
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictNoProblem,
 		Problems: []uint32{},
 	}
-	if err := diagcommon.CheckRoutineResult(result, expectedResult); err != nil {
-		s.Fatal("Routine result did not match: ", err)
+	err := mojo.PollRoutine(ctx, routine, expectedResult)
+	if err != nil {
+		s.Fatal("Failed to poll routine: ", err)
 	}
 }
