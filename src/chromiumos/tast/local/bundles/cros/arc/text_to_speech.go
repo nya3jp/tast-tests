@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -122,6 +123,17 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 
 	actual, err := ioutil.ReadFile(targetPathInCros)
 	if err != nil {
+		myFilesDir := filepath.Join(cryptohomeUserPath, "MyFiles")
+		s.Logf("Listing files under %q: ", myFilesDir)
+		if err := filepath.Walk(myFilesDir, func(path string, info os.FileInfo, err error) error {
+			s.Logf("%s", path)
+			if err != nil {
+				s.Error("Error on walking files: ", err)
+			}
+			return nil
+		}); err != nil {
+			s.Errorf("Failed to walk files under %q: %v", cryptohomeUserPath, err)
+		}
 		s.Fatal("Failed to read TTS output file: ", err)
 	}
 
