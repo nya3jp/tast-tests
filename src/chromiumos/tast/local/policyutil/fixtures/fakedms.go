@@ -58,6 +58,22 @@ func init() {
 		TearDownTimeout: 5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "fakeDMSFamilyLinkArc",
+		Desc:     "Fixture for a running FakeDMS of Family Link account",
+		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Vars: []string{
+			"arc.childUser",
+		},
+		Impl: &fakeDMSFixture{
+			policyUserVar: "arc.childUser",
+		},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
 }
 
 type fakeDMSFixture struct {
