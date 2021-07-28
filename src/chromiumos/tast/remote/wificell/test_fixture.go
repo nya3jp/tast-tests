@@ -192,6 +192,8 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyDir = tf.dut.KeyDir()
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
+	sopt.ConnectRetries = 3
+	sopt.ConnectRetryInterval = 5 * time.Second
 	return ssh.New(ctx, &sopt)
 }
 
