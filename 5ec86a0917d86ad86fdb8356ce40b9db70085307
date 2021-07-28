@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8a9b41c_1c7945c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-28T17:39:54Z",
+      "side": 1,
+      "message": "Not using IioID was a major mistake. I may have test the iio:device0 by mistake.\nGetting the ID of sensors is therefore not straightforward. We need a tool to list the sensors iioservice exposes.",
+      "parentUuid": "d67fb77f_490bc5c4",
+      "range": {
+        "startLine": 230,
+        "startChar": 10,
+        "endLine": 230,
+        "endChar": 12
+      },
+      "revId": "5ec86a0917d86ad86fdb8356ce40b9db70085307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "284f6346_0d944918",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
         "patchSetId": 2
