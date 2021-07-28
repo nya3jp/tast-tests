@@ -46,6 +46,22 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
+	// lacrosStartedByDataBypassPermissions is the same as lacrosStartedByData but
+	// camera/microphone permissions are enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosStartedByDataBypassPermissions",
+		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
+		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
+		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
+				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 	// lacrosStartedByDataWith100FakeApps is the same as lacrosStartedByData but
 	// creates 100 fake apps that are shown in the ChromeOS-chrome launcher.
 	testing.AddFixture(&testing.Fixture{

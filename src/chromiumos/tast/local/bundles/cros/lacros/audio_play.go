@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacrosStartedByData",
+		Fixture:      "lacrosStartedByDataBypassPermissions",
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 		Data:         []string{launcher.DataArtifact, "media_session_60sec_test.ogg", "audio_playback_test.html"},
 		Params: []testing.Param{{

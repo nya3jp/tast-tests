@@ -215,7 +215,6 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		"--enable-oop-rasterization",                 // Enable OOP rasterization.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
-		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
