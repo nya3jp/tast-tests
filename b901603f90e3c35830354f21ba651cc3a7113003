@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78dc3fe6_7514bd11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T00:27:01Z",
+      "side": 1,
+      "message": "don\u0027t think you need this because your test will only run on M94+ builds since that is when it\u0027ll be checked in.",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a311fb_f1699e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T00:27:01Z",
+      "side": 1,
+      "message": "Can you define and assign to this in one go",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40815625_66cc72c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T00:27:01Z",
+      "side": 1,
+      "message": "Think a switch would make this cleaner\n\nswitch ct {\n  case lacros.ChromeTypeLacros:\n     figure out artifact path\n     get the app type\n  case lacros.ChromeTypeChromeOS\n     get chromeOrChromium app\n}\ncr, l, cs, err \u003d lacros.Setup(ctx, s.FixtValue(), artifactPath, ct)\ndefer l.Close(ctx)",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2f1234_790f9530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T00:27:01Z",
+      "side": 1,
+      "message": "Is this not the default though?",
+      "range": {
+        "startLine": 101,
+        "startChar": 29,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb00e0a_635e4c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T00:27:01Z",
+      "side": 1,
+      "message": "can put this in the switch statement too",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defa16ba_8f09093e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T00:27:01Z",
+      "side": 1,
+      "message": "Why do you need First() in all of these?",
+      "range": {
+        "startLine": 123,
+        "startChar": 99,
+        "endLine": 123,
+        "endChar": 107
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
