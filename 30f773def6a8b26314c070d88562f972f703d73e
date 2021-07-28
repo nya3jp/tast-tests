@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9f647a_e0396e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-28T08:50:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2dcad1a_062354dc",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "30f773def6a8b26314c070d88562f972f703d73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8c319ef_d52467ad",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-28T16:43:51Z",
       "side": 1,
       "message": "Should this be a test failure if the session cannot be closed?",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 8
+      },
+      "revId": "30f773def6a8b26314c070d88562f972f703d73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a71dab30_eedbad12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-28T08:50:25Z",
+      "side": 1,
+      "message": "No",
+      "parentUuid": "c8c319ef_d52467ad",
       "range": {
         "startLine": 103,
         "startChar": 3,
