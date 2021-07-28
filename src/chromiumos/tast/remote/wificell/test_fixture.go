@@ -186,12 +186,16 @@ type TestFixture struct {
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
-func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*ssh.Conn, error) {
+func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, retry bool) (*ssh.Conn, error) {
 	var sopt ssh.Options
 	ssh.ParseTarget(hostname, &sopt)
 	sopt.KeyDir = tf.dut.KeyDir()
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
+	if retry {
+		sopt.ConnectRetries = 5
+		sopt.ConnectRetryInterval = 10 * time.Second
+	}
 	return ssh.New(ctx, &sopt)
 }
 
@@ -303,7 +307,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	for i := range tf.routers {
 		rt := &tf.routers[i]
 		testing.ContextLogf(ctx, "Adding router %s", rt.target)
-		routerHost, err := tf.connectCompanion(ctx, rt.target)
+		routerHost, err := tf.connectCompanion(ctx, rt.target, true /* allow retry */)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to connect to the router %s", rt.target)
 		}
@@ -361,7 +365,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 
 	// If pcap name is available and unique, try to connect it.
 	if tf.pcapHost == nil && tf.pcapTarget != "" {
-		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget)
+		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget, false /* no retry */)
 		if err != nil {
 			// We want to fallback to use router as pcap iff the default
 			// pcap hostname is invalid. Fail here if it's not the case.
