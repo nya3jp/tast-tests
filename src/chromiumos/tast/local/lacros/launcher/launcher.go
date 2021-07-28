@@ -213,6 +213,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
 		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
 		"--enable-oop-rasterization",                 // Enable OOP rasterization.
+		"--enable-webgl-image-chromium",              // Enable WebGL image.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
 		chrome.BlankURL,                              // Specify first tab to load.
