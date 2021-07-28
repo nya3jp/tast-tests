@@ -18,7 +18,7 @@ import (
 const (
 	// Give long enough timeout for SetUp() and TearDown() as they might need
 	// to reboot a broken DUT.
-	setUpTimeout    = 5 * time.Minute
+	setUpTimeout    = 6 * time.Minute
 	tearDownTimeout = 5 * time.Minute
 	resetTimeout    = 10 * time.Second
 	postTestTimeout = 5 * time.Second
