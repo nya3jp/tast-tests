@@ -90,7 +90,7 @@ func SSIDSwitchBack(ctx context.Context, s *testing.State) {
 		ExpectedValues: []interface{}{true},
 		Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 	}}
-	wait, err := tf.ExpectShillProperty(waitCtx, servicePath, props, nil)
+	wait, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, nil)
 	if err != nil {
 		s.Fatal("Failed to watch service state: ", err)
 	}

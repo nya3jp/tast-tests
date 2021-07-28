@@ -184,7 +184,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 
 	disconnCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
-	reasonRecv, err := tf.DisconnectReason(disconnCtx)
+	reasonRecv, err := tf.WifiClient().DisconnectReason(disconnCtx)
 	if err != nil {
 		s.Fatal("Failed to create a Disconnect Reason watcher: ", err)
 	}
@@ -214,11 +214,11 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 		ctxForEnablingWiFi := ctx
 		ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
 		defer cancel()
-		if err := tf.SetWifiEnabled(ctx, false); err != nil {
+		if err := tf.WifiClient().SetWifiEnabled(ctx, false); err != nil {
 			s.Fatal("DUT: failed to disable the wifi, err: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := tf.SetWifiEnabled(ctx, true); err != nil {
+			if err := tf.WifiClient().SetWifiEnabled(ctx, true); err != nil {
 				s.Fatal("DUT: failed to enable the wifi, err: ", err)
 			}
 		}(ctxForEnablingWiFi)

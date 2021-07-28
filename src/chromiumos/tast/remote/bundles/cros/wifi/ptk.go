@@ -129,7 +129,7 @@ func PTK(ctx context.Context, s *testing.State) {
 	waitBuffer := 5 * time.Second
 	waitCtx, cancel := context.WithTimeout(ctx, time.Duration(float64(param.pingCount)*param.pingInterval)*time.Second+pingBuffer+waitBuffer)
 	defer cancel()
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 
 	s.Logf("Pinging with count=%d interval=%g second(s)", param.pingCount, param.pingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
