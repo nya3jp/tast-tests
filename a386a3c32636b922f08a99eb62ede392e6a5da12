@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "a386a3c32636b922f08a99eb62ede392e6a5da12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4f4dfa_daa50722",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T09:39:36Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m afraid that this change may have bad consequence.\n\nFormerly, the polling timeout (1m) was longer than ResetTimeout (15s). So, if we hit timeout on closing windows, ctx is 100% expired, so any function calls below will fail with context deadline exceeded, which triggers fixtures to restart (\u003d TearDown + SetUp).\n\nHowever, now that the polling timeout is shorter than ResetTimeout, ctx can be alive at this point, and functions calls below can succeed. This may make fixtures successfully reset, even if there are some remaining windows.\n\nSo, if we decrease this timeout, I think we should also treat it a failure to close all windows.",
+      "range": {
+        "startLine": 392,
+        "startChar": 67,
+        "endLine": 392,
+        "endChar": 83
+      },
+      "revId": "a386a3c32636b922f08a99eb62ede392e6a5da12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
