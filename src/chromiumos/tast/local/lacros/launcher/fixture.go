@@ -32,7 +32,6 @@ func NewStartedByData(mode SetupMode, fOpt chrome.OptionsCallback) testing.Fixtu
 func init() {
 	// lacrosStartedByData uses a pre-built image downloaded from cloud storage as a
 	// data-dependency. This fixture should be used by tests that start lacros from the lacros/launcher package.
-	// To use this fixture you must have lacros.DataArtifact as a data dependency.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosStartedByData",
 		Desc:     "Lacros Chrome from a pre-built image",
@@ -43,6 +42,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -59,6 +59,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -75,6 +76,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -90,13 +92,13 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosStartedByDataUI is similar to lacrosStartedByData but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
-	// of by command line. To use this fixture you must have
-	// lacros.DataArtifact as a data dependency.
+	// of by command line.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosStartedByDataUI",
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
@@ -107,6 +109,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -205,8 +208,6 @@ const (
 
 // SetUp is called by tast before each test is run. We use this method to initialize
 // the fixture data, or return early if the fixture is already active.
-// TODO(crbug.com/1127165): Until this bug is resolved, tests must call EnsureLacrosChrome
-// at the beginning of their test.
 func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	ctx, st := timing.Start(ctx, "SetUp")
 	defer st.End()
