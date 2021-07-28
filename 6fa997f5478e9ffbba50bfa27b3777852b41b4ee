@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85a9497_e5947759",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-07-28T14:59:07Z",
+      "side": 1,
+      "message": "This seems to be common pattern in fingerprint tast test, so I\u0027ll leave it.",
+      "parentUuid": "d094ea52_37daa6a1",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "6fa997f5478e9ffbba50bfa27b3777852b41b4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a29636_91772141",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-28T00:13:13Z",
       "side": 1,
       "message": "nit: should start with lowercase. btw, nice to use the same format `failed to`",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "6fa997f5478e9ffbba50bfa27b3777852b41b4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6bb6106_775047fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-07-28T14:59:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c3a29636_91772141",
       "range": {
         "startLine": 81,
         "startChar": 28,
