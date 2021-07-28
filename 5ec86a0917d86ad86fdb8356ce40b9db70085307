@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67fb77f_490bc5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-28T01:32:23Z",
+      "side": 1,
+      "message": "Maybe we want to set IioID instead, as the tast tests are using IioID?\n\nAlthough I\u0027d recommend not using IioID to find the gravity, as iioservice wouldn\u0027t guarantee the first fusion sensor to be gravity in the future. Using \"--device_type\" argument in iioservice_simpleclient makes more sense to me, although it won\u0027t guarantee to get gravity-lid if there are more than one gravity sensor.",
+      "range": {
+        "startLine": 230,
+        "startChar": 10,
+        "endLine": 230,
+        "endChar": 12
+      },
+      "revId": "5ec86a0917d86ad86fdb8356ce40b9db70085307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284f6346_0d944918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-07-28T01:32:23Z",
+      "side": 1,
+      "message": "Move to line 45, as what you did in sensor_iioservice_hard.go.",
+      "revId": "5ec86a0917d86ad86fdb8356ce40b9db70085307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
