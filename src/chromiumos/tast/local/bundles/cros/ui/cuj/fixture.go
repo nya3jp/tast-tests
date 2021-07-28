@@ -69,6 +69,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
+		Data:            []string{launcher.DataArtifact},
 		Vars: []string{
 			"ui.cuj_username",
 			"ui.cuj_password",
