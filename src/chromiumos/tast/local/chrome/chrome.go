@@ -392,8 +392,8 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 			return errors.Errorf("%d target(s) still open", stillClosingCount)
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
-		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "not all targets finished closing")
 	}
 
 	// If the test case started the tracing but somehow StopTracing isn't called,
