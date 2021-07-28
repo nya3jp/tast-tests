@@ -296,7 +296,7 @@ func (vkbCtx *VirtualKeyboardContext) WaitForKeysExist(keys []string) uiauto.Act
 				return errors.Errorf("these keys are not found: %v", notFoundKeys)
 			}
 			return nil
-		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
+		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 15 * time.Second})
 	}
 }
 
