@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
@@ -341,7 +342,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 // it tries to close all "normal" pages, apps and dialog boxes and exclude exemptions.
 func shouldCloseOnReset(t *Target) bool {
 	// Chrome OS Virtual Keyboard is permanently cached in Chrome Session to speed up loading.
-	if t.Type == "other" && t.Title == "Chrome OS Virtual Keyboard" {
+	if t.Type == "other" && (t.Title == "Chrome OS Virtual Keyboard" ||
+		strings.HasPrefix(t.URL, "chrome-extension://jkghodnilhceideoidjikpgommlajknk") || // Don't close input methods extension.
+		strings.HasPrefix(t.URL, "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief")) { // Don't close ChromeVox extension.
 		return false
 	}
 	return t.Type == "page" || t.Type == "app" || t.Type == "other"
