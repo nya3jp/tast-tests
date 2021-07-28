@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "724a0f10_ef80d4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T02:34:49Z",
+      "side": 1,
+      "message": "I\u0027d prefer if we didn\u0027t start with them. Let\u0027s see how this test runs without it first and we can reassess if opening the launcher function can be improved instead of putting these retries in each test.",
+      "parentUuid": "a926750d_ff9b6e12",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e638a173_58994b4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
         "patchSetId": 13
