@@ -52,6 +52,24 @@
       "parentUuid": "1eb22693_2124c8e5",
       "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72402d8_3e633f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-28T20:52:34Z",
+      "side": 1,
+      "message": "I think no ec software sync makes sense and abstracts what that means in terms of implementation, whether it is GBB 0x200 or what ever it is at the time.  The tests are allowed to do what ever they want with the flags and this gives the choice to the caller to decide what that one bit should do. There is output in the log that indicates it is up to the caller to restore the GBB flags back to what they want them to be.\n\nThis is not just an if the test is actually testing software sync or not. It is more that you want the EC-RO to run instead of jumping to EC-RW. This allows for faster builds and tests the new changes in EC-RO",
+      "parentUuid": "eb4a8d2a_ac96d9bf",
+      "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
