@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6e8b27_8654b93e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T11:17:15Z",
+      "side": 1,
+      "message": "Got it. 95 is a good choice. It takes around 8 to 10 mins to drain 5% from full charge. Also documented.",
+      "parentUuid": "98c058a3_ae243c9d",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "026212d6_8b7e37c8",
@@ -414,6 +438,30 @@
       "writtenOn": "2021-07-28T10:17:21Z",
       "side": 1,
       "message": "This is a discharging state. I\u0027d prefer to don\u0027t mix charging/discharging and use just discharging everywhere",
+      "range": {
+        "startLine": 246,
+        "startChar": 77,
+        "endLine": 246,
+        "endChar": 91
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c4cd5d_e3b9d282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T11:17:15Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s a bit confusing. Updated with \"Discharging\" everywhere.",
+      "parentUuid": "cae45951_7ab2a273",
       "range": {
         "startLine": 246,
         "startChar": 77,
