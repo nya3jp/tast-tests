@@ -90,6 +90,30 @@
       },
       "revId": "9e4cfadd0dbdb4ece60234883f4730dc450c9446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bfa032_fef65f89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-07-28T18:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f6eea0_ea084a85",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 18
+      },
+      "revId": "9e4cfadd0dbdb4ece60234883f4730dc450c9446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
