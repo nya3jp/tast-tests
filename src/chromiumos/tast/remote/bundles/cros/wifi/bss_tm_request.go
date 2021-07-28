@@ -142,7 +142,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		props := getProps(roamBSSID)
 		waitCtx, cancel := context.WithTimeout(ctx, bssTMRoamTimeout)
 		defer cancel()
-		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+		waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 		if err != nil {
 			s.Fatal("Failed to create Shill property watcher: ", err)
 		}
@@ -173,14 +173,14 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 
 		// Flush all scanned BSS from wpa_supplicant so that test behavior is consistent.
 		s.Log("Flushing BSS cache")
-		if err := tf.FlushBSS(ctx, clientIface, 0); err != nil {
+		if err := tf.WifiClient().FlushBSS(ctx, clientIface, 0); err != nil {
 			s.Fatal("Failed to flush BSS list: ", err)
 		}
 
 		// Wait for roamBSSID to be discovered if waitForScan is set.
 		if waitForScan {
 			s.Logf("Waiting for roamBSSID: %s", roamBSSID)
-			if err := tf.DiscoverBSSID(ctx, roamBSSID, clientIface, []byte(testSSID)); err != nil {
+			if err := tf.WifiClient().DiscoverBSSID(ctx, roamBSSID, clientIface, []byte(testSSID)); err != nil {
 				s.Fatal("Unable to discover roam BSSID: ", err)
 			}
 		}
@@ -229,7 +229,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		props = getProps(fromBSSID)
 		waitCtx, cancel = context.WithTimeout(ctx, bssTMRoamTimeout)
 		defer cancel()
-		waitForProps, err = tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+		waitForProps, err = tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 		if err != nil {
 			s.Fatal("Failed to create Shill property watcher: ", err)
 		}
@@ -252,7 +252,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 
 			waitCtx, cancel = context.WithTimeout(ctx, bssTMRoamTimeout)
 			defer cancel()
-			waitForProps, err = tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+			waitForProps, err = tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 			if err != nil {
 				s.Fatal("Failed to create Shill property watcher: ", err)
 			}

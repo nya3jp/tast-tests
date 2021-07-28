@@ -109,7 +109,7 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
 	monitorProps := []string{shillconst.ServicePropertyIsConnected}
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 	if err != nil {
 		s.Fatal("DUT: failed to create a property watcher, err: ", err)
 	}
@@ -136,13 +136,13 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 
 	discCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-	if err := tf.DiscoverBSSID(discCtx, ap2BSSID, iface, []byte(ap1SSID)); err != nil {
+	if err := tf.WifiClient().DiscoverBSSID(discCtx, ap2BSSID, iface, []byte(ap1SSID)); err != nil {
 		s.Fatalf("DUT: failed to find the BSSID %s: %v", ap2BSSID, err)
 	}
 
 	// Send roam command to shill, and shill will send D-Bus roam command to wpa_supplicant.
 	s.Logf("Requesting roam from %s to %s", ap1BSSID, ap2BSSID)
-	if err := tf.RequestRoam(ctx, iface, ap2BSSID, 30*time.Second); err != nil {
+	if err := tf.WifiClient().RequestRoam(ctx, iface, ap2BSSID, 30*time.Second); err != nil {
 		s.Errorf("DUT: failed to roam from %s to %s: %v", ap1BSSID, ap2BSSID, err)
 	}
 

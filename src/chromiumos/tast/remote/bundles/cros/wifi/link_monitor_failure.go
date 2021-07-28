@@ -80,7 +80,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 
 	// Obtain current time from the DUT because we use the "disconnect" event timestamp as
 	// the end time of the link failure detection duration, which is from the DUT's clock.
-	linkFailureTime, err := tf.CurrentClientTime(ctx)
+	linkFailureTime, err := tf.WifiClient().CurrentTime(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the current DUT time: ", err)
 	}

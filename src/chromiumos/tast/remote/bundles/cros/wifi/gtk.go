@@ -104,7 +104,7 @@ func GTK(ctx context.Context, s *testing.State) {
 	waitBuffer := 5 * time.Second
 	waitCtx, cancel := context.WithTimeout(ctx, totalTestTime+pingBuffer+waitBuffer)
 	defer cancel()
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, []string{})
+	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, []string{})
 
 	pingCtx, cancel := ctxutil.Shorten(waitCtx, waitBuffer)
 	defer cancel()

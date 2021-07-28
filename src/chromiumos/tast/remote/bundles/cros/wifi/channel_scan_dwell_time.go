@@ -316,7 +316,7 @@ func claimInterface(ctx context.Context, dut *dut.DUT, tf *wificell.TestFixture,
 	ipr := remoteip.NewRemoteRunner(dut.Conn())
 
 	// Tell Shill not to touch the interface
-	if err := tf.SetWifiEnabled(ctx, false); err != nil {
+	if err := tf.WifiClient().SetWifiEnabled(ctx, false); err != nil {
 		return err
 	}
 
@@ -344,7 +344,7 @@ func claimInterface(ctx context.Context, dut *dut.DUT, tf *wificell.TestFixture,
 
 // releaseInterface tells Shill that it can manage the interface again.
 func releaseInterface(ctx context.Context, tf *wificell.TestFixture, iface string) error {
-	return tf.SetWifiEnabled(ctx, true)
+	return tf.WifiClient().SetWifiEnabled(ctx, true)
 }
 
 func uniqueString(n int, chars string) string {

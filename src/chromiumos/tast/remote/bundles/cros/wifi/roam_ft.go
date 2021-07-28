@@ -307,7 +307,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}}
 		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
-		waitForProps, err := tf.ExpectShillProperty(waitCtx, connResp.ServicePath, props, []string{shillconst.ServicePropertyIsConnected})
+		waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, connResp.ServicePath, props, []string{shillconst.ServicePropertyIsConnected})
 		if err != nil {
 			s.Fatal("Failed to create a property watcher: ", err)
 		}
@@ -332,7 +332,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 		discCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 		defer cancel()
-		if err := tf.DiscoverBSSID(discCtx, mac1.String(), iface, []byte(ap1.Config().SSID)); err != nil {
+		if err := tf.WifiClient().DiscoverBSSID(discCtx, mac1.String(), iface, []byte(ap1.Config().SSID)); err != nil {
 			s.Fatalf("Failed to discover the BSSID %s: %v", mac1.String(), err)
 		}
 
@@ -360,7 +360,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		if err := tf.PingFromDUT(ctx, serverIP.String()); err != nil {
 			s.Fatal("Failed to verify connection: ", err)
 		}
-		dutState, err := tf.QueryService(ctx)
+		dutState, err := tf.WifiClient().QueryService(ctx)
 		if err != nil {
 			s.Fatal("Failed to query service: ", err)
 		}
@@ -388,7 +388,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		return false
 	}
 
-	ctx, restoreBg, err := tf.TurnOffBgscan(ctx)
+	ctx, restoreBg, err := tf.WifiClient().TurnOffBgscan(ctx)
 	if err != nil {
 		s.Fatal("Failed to turn off the background scan: ", err)
 	}
