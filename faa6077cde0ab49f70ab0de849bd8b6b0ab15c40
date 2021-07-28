@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966b6c9f_8e08b37c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-28T03:43:15Z",
+      "side": 1,
+      "message": "nit: suggest to make it like this to improve readability:\n// Dump the UI tree to the service/faillog subdirectory. \n// Don\u0027t dump directly into outDir \n// because it might be overridden by the test faillog \n// after pulled back to remote server.",
+      "range": {
+        "startLine": 337,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 60
+      },
+      "revId": "faa6077cde0ab49f70ab0de849bd8b6b0ab15c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
