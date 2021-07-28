@@ -153,39 +153,9 @@ func extensionArgs(extID, extList string) []string {
 	}
 }
 
-// EnsureLacrosChrome ensures that the lacros binary is extracted.
-// Currently, callers need to call this if they do not call LaunchLacrosChrome, but otherwise
-// try to run lacros chrome.
-func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) error {
-	if f.Mode != PreExist {
-		return nil
-	}
-
-	// TODO(crbug.com/1127165): Move this to the fixture when we can use Data in fixtures.
-	_, err := os.Stat(f.LacrosPath)
-	if os.IsNotExist(err) {
-		testing.ContextLog(ctx, "Extracting lacros binary")
-		tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
-		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
-			return errors.Wrap(err, "failed to untar test artifacts")
-		}
-
-		if err := os.Chmod(f.LacrosPath, 0777); err != nil {
-			return errors.Wrap(err, "failed to change permissions of the binary root dir path")
-		}
-	} else {
-		return err
-	}
-	return nil
-}
-
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 // TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
 func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*LacrosChrome, error) {
-	if err := EnsureLacrosChrome(ctx, f, artifactPath); err != nil {
-		return nil, err
-	}
-
 	if err := killLacrosChrome(ctx, f.LacrosPath); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
