@@ -34,6 +34,24 @@
       "parentUuid": "af6df421_a2bedb25",
       "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4a8d2a_ac96d9bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-28T20:43:27Z",
+      "side": 1,
+      "message": "I understand your perspective, but to me running tests with --vars\u003dno_ec_sync\u003dtrue doesn\u0027t shout out \"set GBB flag to 0x200 before starting tests, and leave them set that way afterwards\".\n\nIn any case, it will still behave that way today, because there are some faft tests in autotest and some in TAST. When all the tests are in TAST, this won\u0027t be true, but this will solve your immediate problem, and punts on the long term problems with tests that actually care if ec sync is enabled or not.",
+      "parentUuid": "1eb22693_2124c8e5",
+      "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
