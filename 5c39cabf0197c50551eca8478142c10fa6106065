@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a91f903_ad6eb105",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-28T20:00:20Z",
+      "side": 1,
+      "message": "It gets automatically set during regular returns. So at, say, L482, retErr gains the value.\n\nHere\u0027s a demonstrative example: https://play.golang.com/p/4z9EDqmxYJd",
+      "parentUuid": "f47a7bc8_ce663438",
+      "range": {
+        "startLine": 490,
+        "startChar": 6,
+        "endLine": 490,
+        "endChar": 12
+      },
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81341ec3_2a7fdf1f",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 2
