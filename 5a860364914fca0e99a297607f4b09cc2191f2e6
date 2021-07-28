@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd749abf_a1a884cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-28T22:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023b66f7_826d6535",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "741ac57a_eb1f3308",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55212041_6b57b82f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-28T22:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "741ac57a_eb1f3308",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f326ba0_9c92f598",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-20T16:32:44Z",
       "side": 1,
       "message": "nit: Document that this does not return the browser shortcut (which is always pinned to shelf)",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1db7b5_cc084fc9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-28T22:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f326ba0_9c92f598",
       "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70adf04_8587ccc9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-28T22:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e44ca2_19cd8a49",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9244853f_3bae6a64",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-28T22:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace35edb_7ca85791",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 28
+      },
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f10ab566_4aa0b2ca",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-07-20T16:32:44Z",
       "side": 1,
       "message": "we can probably pin and unpin in one go using setPinState directly",
+      "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a1bd4b_ac8281c0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-28T22:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f10ab566_4aa0b2ca",
       "revId": "5a860364914fca0e99a297607f4b09cc2191f2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
