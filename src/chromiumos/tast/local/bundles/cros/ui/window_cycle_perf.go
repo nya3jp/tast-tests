@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -40,7 +39,6 @@ func init() {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "lacrosStartedByData",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
@@ -52,12 +50,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
