@@ -83,7 +83,7 @@ func init() {
 		}, {
 			Name:              "chrome_clamshell_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js", launcher.DataArtifact},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 			Fixture:           "lacrosStartedByData",
 			Val: fastInkTestParams{
 				arc:        false,
@@ -103,7 +103,7 @@ func init() {
 		}, {
 			Name:              "chrome_tablet_lacros",
 			ExtraSoftwareDeps: []string{"lacros", "tablet_mode"},
-			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js", launcher.DataArtifact},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 			Fixture:           "lacrosStartedByData",
 			Val: fastInkTestParams{
 				arc:        false,
@@ -209,13 +209,8 @@ func FastInk(ctx context.Context, s *testing.State) {
 	if params.arc {
 		cr = s.FixtValue().(*arc.PreData).Chrome
 	} else {
-		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-		var artifactPath string
-		if params.chromeType == lacros.ChromeTypeLacros {
-			artifactPath = s.DataPath(launcher.DataArtifact)
-		}
 		var err error
-		cr, l, _, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, params.chromeType)
+		cr, l, _, err = lacros.Setup(ctx, s.FixtValue(), params.chromeType)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

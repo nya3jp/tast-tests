@@ -27,7 +27,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -66,25 +65,21 @@ func init() {
 		}, {
 			Name:              "small_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{launcher.DataArtifact},
 			Fixture:           "lacrosStartedByData",
 			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: false, layerOverPIP: false},
 		}, {
 			Name:              "big_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{launcher.DataArtifact},
 			Fixture:           "lacrosStartedByData",
 			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: true, layerOverPIP: false},
 		}, {
 			Name:              "small_blend_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{launcher.DataArtifact},
 			Fixture:           "lacrosStartedByData",
 			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: false, layerOverPIP: true},
 		}, {
 			Name:              "big_blend_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{launcher.DataArtifact},
 			Fixture:           "lacrosStartedByData",
 			Val:               chromePIPEnergyAndPowerTestParams{chromeType: lacros.ChromeTypeLacros, bigPIP: true, layerOverPIP: true},
 		}},
@@ -98,12 +93,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	params := s.Param().(chromePIPEnergyAndPowerTestParams)
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if params.chromeType == lacros.ChromeTypeLacros {
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
-	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, params.chromeType)
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), params.chromeType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

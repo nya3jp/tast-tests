@@ -276,9 +276,8 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 	return runHistogram(ctx, tconn, tracer, invoc, perfFn)
 }
 
-func runLacrosTest(ctx context.Context, f launcher.FixtData, artifactPath string, invoc *testInvocation) error {
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, artifactPath, invoc.page.url)
+func runLacrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation) error {
+	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -326,8 +325,7 @@ func runCrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation
 }
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
-// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-func RunGpuCUJ(ctx context.Context, f launcher.FixtData, artifactPath string, params TestParams, serverURL, traceDir string) (
+func RunGpuCUJ(ctx context.Context, f launcher.FixtData, params TestParams, serverURL, traceDir string) (
 	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
 	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn, "lacros.GpuCUJ")
 	if err != nil {
@@ -366,7 +364,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtData, artifactPath string, pa
 			page.url = serverURL + page.url
 		}
 
-		if err := runLacrosTest(ctx, f, artifactPath, &testInvocation{
+		if err := runLacrosTest(ctx, f, &testInvocation{
 			pv:       pv,
 			scenario: params.TestType,
 			page:     page,
