@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba0bf16_a33d9447",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T08:43:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure yet, I think we can think of concrete criteria as we get more cases like this.",
+      "parentUuid": "741bc3c2_6981c76b",
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce7a3adc_082c9169",
@@ -36,6 +54,53 @@
         "startChar": 67,
         "endLine": 391,
         "endChar": 78
+      },
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91292628_adb02ed9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T08:43:41Z",
+      "side": 1,
+      "message": "sgtm to reduce the timeout, thanks for pointing it out!",
+      "parentUuid": "ce7a3adc_082c9169",
+      "range": {
+        "startLine": 391,
+        "startChar": 67,
+        "endLine": 391,
+        "endChar": 78
+      },
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757d6c0d_5a403d06",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T08:43:41Z",
+      "side": 1,
+      "message": "What\u0027s the intention of this check? Why don\u0027t we always return an error?",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 23
       },
       "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
