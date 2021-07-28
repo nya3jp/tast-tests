@@ -39,6 +39,7 @@ const (
 	TelemCategoryBattery           TelemCategory = "battery"
 	TelemCategoryBluetooth         TelemCategory = "bluetooth"
 	TelemCategoryBootPerformance   TelemCategory = "boot_performance"
+	TelemCategoryBus               TelemCategory = "bus"
 	TelemCategoryCPU               TelemCategory = "cpu"
 	TelemCategoryFan               TelemCategory = "fan"
 	TelemCategoryMemory            TelemCategory = "memory"
