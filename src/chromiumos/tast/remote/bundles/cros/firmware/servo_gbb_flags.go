@@ -101,6 +101,10 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 		s.Error("Could not read firmware: ", err)
 	}
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPostCommands)
+	// The commands in APFlashCCDPostCommands might have messed up the data role
+	// Ignore the error, since this might not be implemented on this servo.
+	_ = h.Servo.SetDUTPDDataRole(ctx, servo.DFP)
+
 	if s.HasError() {
 		return
 	}
@@ -157,6 +161,10 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 		s.Error("count not write flashrom: ", err)
 	}
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPostCommands)
+	// The commands in APFlashCCDPostCommands might have messed up the data role
+	// Ignore the error, since this might not be implemented on this servo.
+	_ = h.Servo.SetDUTPDDataRole(ctx, servo.DFP)
+
 	if s.HasError() {
 		return
 	}
