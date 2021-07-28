@@ -34,13 +34,16 @@ func DeniedSitesBlocked(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 
+	// Sleep to wait for the blocked URLs list to sync.
+	testing.Sleep(ctx, 30*time.Second)
+
 	blockedSite := s.RequiredVar("unicorn.blockedSite")
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	conn, err := cr.NewConn(ctx, blockedSite)
 	if err != nil {
-		s.Fatal("Failed to navigate to website: ", err)
+		s.Fatal("Failed to open browser to website: ", err)
 	}
 	defer conn.Close()
 
