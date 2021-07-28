@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85f3ddb9_23f7a0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T21:16:49Z",
+      "side": 1,
+      "message": "OK, sounds fine.",
+      "parentUuid": "cf1491b1_175d975c",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ba3db5d_bab93d38",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
         "patchSetId": 3
@@ -192,6 +216,30 @@
       "side": 1,
       "message": "The plan is to delete the profile before starting the test, and then disabling autoconnect. Post that, the roaming test begins.\n\nI could have chosen to write a generic function that restore\u0027s any service property, but then I\u0027d be creating two ways of solving the same problem (i.e. restoration of shill\u0027s state)",
       "parentUuid": "25cf8a24_82a86f37",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a3c3443_f26ff761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T21:16:49Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "342a10d9_f692d9de",
       "range": {
         "startLine": 35,
         "startChar": 1,
