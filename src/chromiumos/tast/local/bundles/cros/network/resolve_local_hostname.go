@@ -28,6 +28,7 @@ func init() {
 }
 
 func ResolveLocalHostname(ctx context.Context, s *testing.State) {
+	// Get the mDNS hostname of the machine.
 	out, err := testexec.CommandContext(ctx, "avahi-resolve-address", "127.0.0.1").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Log("output: ", string(out))
@@ -37,11 +38,14 @@ func ResolveLocalHostname(ctx context.Context, s *testing.State) {
 	if len(parts) != 2 {
 		s.Fatal("Invalid output: ", parts)
 	}
-	addr := parts[1]
-	if len(addr) < 7 || addr[len(addr)-6:] != ".local" {
-		s.Fatal("Invalid address: ", addr)
+	hostname := parts[1]
+	if len(hostname) < 7 || hostname[len(hostname)-6:] != ".local" {
+		s.Fatal("Invalid hostname: ", hostname)
 	}
-	if err := testexec.CommandContext(ctx, "gethostip", addr).Run(testexec.DumpLogOnError); err != nil {
+	// Resolve the mDNS hostname to an IP address via gethostip. If avahi is not used
+	// to resolve the hostname or avahi fails to resolve the hostname, gethostip will
+	// fail and return an error code.
+	if err := testexec.CommandContext(ctx, "gethostip", hostname).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("gethostip failed: ", err)
 	}
 }
