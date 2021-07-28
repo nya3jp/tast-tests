@@ -22,6 +22,63 @@
       },
       "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1aed1d_cfe68b7e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-28T02:59:49Z",
+      "side": 1,
+      "message": "what if there are no more items left? Probably worth returning error in that case",
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae925d89_d1432168",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-28T02:59:49Z",
+      "side": 1,
+      "message": "should we continue here?",
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30595c16_cb14e64f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-28T02:59:49Z",
+      "side": 1,
+      "message": "nit: can we use a regex matching here?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 54
+      },
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
