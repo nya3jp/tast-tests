@@ -8,7 +8,9 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
@@ -45,6 +47,7 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 		speakText     = "hello world"
 		voiceName     = "Android org.chromium.arc.testapp.tts.ArcTtsTestService en"
 		volume        = 0.0
+		debugFilePath = "files-under-cryptohome.txt"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -109,7 +112,6 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 	}
 
 	// Validate that Chrome TTS was able to receive last event.
-	// Length of spoken text 'hello world' = 11.
 	if charIndex != len(speakText) {
 		s.Fatal("Failed to verify all events were dispatched from Android TTS engine")
 	}
@@ -122,6 +124,21 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 
 	actual, err := ioutil.ReadFile(targetPathInCros)
 	if err != nil {
+		var b strings.Builder
+		if err := filepath.Walk(cryptohomeUserPath, func(path string, info os.FileInfo, err error) error {
+			fmt.Fprintf(&b, "%s %+v\n", path, info)
+			if err != nil {
+				s.Error("Error on walking files: ", err)
+			}
+			return nil
+		}); err != nil {
+			s.Errorf("Failed to walk files under %q: %v", cryptohomeUserPath, err)
+		}
+		path := filepath.Join(s.OutDir(), debugFilePath)
+		s.Logf("Writing a list of files under %q to %q", cryptohomeUserPath, debugFilePath)
+		if writeErr := ioutil.WriteFile(path, []byte(b.String()), 0644); writeErr != nil {
+			s.Error("Error on writing a file list: ", err)
+		}
 		s.Fatal("Failed to read TTS output file: ", err)
 	}
 
