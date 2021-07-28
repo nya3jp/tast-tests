@@ -20,10 +20,12 @@ func (c *Checker) GBBFlags(ctx context.Context, want pb.GBBFlagsState) error {
 	if err := c.h.RequireBiosServiceClient(ctx); err != nil {
 		return err
 	}
-	if res, err := c.h.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{}); err != nil {
+	res, err := c.h.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+	if err != nil {
 		return errors.Wrap(err, "could not get GBB flags")
-	} else if !firmware.GBBFlagsStatesEqual(want, *res) {
-		return errors.Errorf("GBB flags: got %v, want %v", *res, want)
+	}
+	if err = firmware.GBBFlagsVerifyExpected(want, *res); err != nil {
+		return errors.Wrap(err, "GBB flags")
 	}
 	return nil
 }
