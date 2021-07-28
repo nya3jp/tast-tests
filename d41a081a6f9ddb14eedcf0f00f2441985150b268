@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa90bdaa_29258386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2021-07-28T17:43:05Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not a \"real\" tast code owner, I just have permissions for disabling tests as part of Green Stainless.  From OWNERS in the tast-tests directory:\n\n# Green Stainless team\n# They frequently send changes to demote/disable flaky tests. Those changes are\n# exempted from Tast reviews since they are trivial test attribute changes\n# where Tast reviews have limited value. They have to be still approved by test\n# authors in the Contacts field.\ngeohsu@chromium.org\nzwisler@google.com\n\n\nDid I get added as part of the tast-owners@ bot rotation, or did you add me manually?  If the former, there\u0027s a bug that needs to be fixed.",
+      "revId": "d41a081a6f9ddb14eedcf0f00f2441985150b268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
