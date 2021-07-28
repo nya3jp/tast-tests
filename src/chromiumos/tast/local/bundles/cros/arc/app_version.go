@@ -1,0 +1,140 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"path/filepath"
+	"time"
+
+	"chromiumos/tast/common/testexec"
+	androidui "chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
+)
+
+const appVersiontimeoutUI = 30 * time.Second
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         AppVersion,
+		Desc:         "Verifies that app version is available from app info page",
+		Contacts:     []string{"vkrishan@google.com", "cros-arc-te@google.com"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		VarDeps: []string{"ui.gaiaPoolDefault"},
+	})
+}
+
+func AppVersion(ctx context.Context, s *testing.State) {
+
+	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.ARCSupported(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Optin to PlayStore and Close.
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to optin to Play Store and Close: ", err)
+	}
+
+	// Setup ARC.
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(ctx)
+	defer func() {
+		if s.HasError() {
+			if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
+				s.Error("Failed to dump UIAutomator: ", err)
+			} else if err := a.PullFile(ctx, "/sdcard/window_dump.xml",
+				filepath.Join(s.OutDir(), "uiautomator_dump.xml")); err != nil {
+				s.Error("Failed to pull UIAutomator dump: ", err)
+			}
+		}
+	}()
+
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
+	// Open App info page by right click on Play Store App.
+	settings := nodewith.Name("Settings").Role(role.Window).First()
+	appInfoMenu := nodewith.Name("App info").Role(role.MenuItem)
+	playstoreSubpage := "Play Store subpage back button"
+	playstoreSubpageButton := nodewith.Name(playstoreSubpage).Role(role.Button).Ancestor(settings)
+	moreSettingsButton := nodewith.Name("More settings and permissions").Role(role.Link)
+	ui := uiauto.New(tconn)
+
+	openPlayStoreAppInfoPage := func() uiauto.Action {
+		return uiauto.Combine("check app context menu and settings",
+			ui.LeftClick(appInfoMenu),
+			ui.WaitUntilExists(playstoreSubpageButton))
+	}
+
+	if err := uiauto.Combine("check context menu of play store app on the shelf",
+		ash.RightClickApp(tconn, apps.PlayStore.Name),
+		openPlayStoreAppInfoPage(),
+		ui.LeftClick(moreSettingsButton))(ctx); err != nil {
+		s.Fatal("Failed to open app info for Play Store app: ", err)
+	}
+
+	// Click on Advanced to expand it.
+	advancedSettings := d.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)Advanced"), androidui.Enabled(true))
+	if err := advancedSettings.WaitForExists(ctx, appVersiontimeoutUI); err != nil {
+		s.Fatal("Failed finding Advanced Settings : ", err)
+	}
+	if err := advancedSettings.Click(ctx); err != nil {
+		s.Fatal("Failed to click Advanced: ", err)
+	}
+
+	// Scroll until the version is displayed.
+	scrollLayout := d.Object(androidui.ClassName("android.support.v7.widget.RecyclerView"), androidui.Scrollable(true))
+	if t, ok := arc.Type(); ok && t == arc.VM {
+		scrollLayout = d.Object(androidui.ClassName("androidx.recyclerview.widget.RecyclerView"), androidui.Scrollable(true))
+	}
+	system := d.Object(androidui.ClassName("android.widget.TextView"), androidui.TextContains("(?i)Modify system settings"), androidui.Enabled(true))
+	if err := scrollLayout.WaitForExists(ctx, appVersiontimeoutUI); err == nil {
+		scrollLayout.ScrollTo(ctx, system)
+	}
+
+	// Verify version is not empty.
+	versionText, err := d.Object(androidui.ID("android:id/summary"), androidui.TextStartsWith("version")).GetText(ctx)
+	if err != nil {
+		s.Fatal("Failed to get version: ", err)
+	}
+	if len(versionText) == 0 {
+		s.Fatal("Version is Empty: ", err)
+	}
+	s.Logf("App Version = %s", versionText)
+}
