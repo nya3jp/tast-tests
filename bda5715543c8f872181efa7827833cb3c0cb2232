@@ -70,6 +70,24 @@
       "parentUuid": "eb4a8d2a_ac96d9bf",
       "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32ab848_de7f16f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-28T20:58:39Z",
+      "side": 1,
+      "message": "Which you can also accomplish with: ssh $DUT \"/usr/share/vboot/bin/set_gbb_flags.sh 0x200\" \u0026\u0026 dut-control power_state:reset \u0026\u0026 tast run $DUT \u0027(\"group:firmware\" \u0026\u0026 firmware_ec)\u0027",
+      "parentUuid": "c72402d8_3e633f14",
+      "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
