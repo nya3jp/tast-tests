@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/upstart"
 )
 
 const (
@@ -23,6 +24,9 @@ const (
 	// from reading hwclock is  "2019-08-23 12:48:45.846380-06:00"
 	hwclockOutputFormat = "2006-01-02 15:04:05.000000Z07:00"
 	hwclockTimeout      = 3 * time.Second
+
+	// Job "wilco_sync_ec_rtc" continuously keeps the EC RTC in sync with local time.
+	upstartJobName = "wilco_sync_ec_rtc"
 )
 
 // RTC represents a real time clock that is accessed with the "hwclock" command.
@@ -74,4 +78,26 @@ func (rtc RTC) hwclockArgs() []string {
 		args = append(args, "--noadjfile")
 	}
 	return args
+}
+
+// MockECRTC mocks RTC time to the specified time by stopping necessary jobs and returns a callback to revert back to original.
+func (rtc RTC) MockECRTC(ctx context.Context, t time.Time) (func(context.Context) error, error) {
+	// Stop the upstart job that keeps the EC RTC in sync with local time.
+	if err := upstart.StopJob(ctx, upstartJobName); err != nil {
+		return nil, err
+	}
+	if err := rtc.Write(ctx, t); err != nil {
+		return nil, err
+	}
+
+	return func(ctx context.Context) error {
+		if err := upstart.EnsureJobRunning(ctx, upstartJobName); err != nil {
+			return err
+		}
+		args := rtc.hwclockArgs()
+		args = append([]string{"--systohc"}, args...)
+		ctx, cancel := context.WithTimeout(ctx, hwclockTimeout)
+		defer cancel()
+		return testexec.CommandContext(ctx, "hwclock", args...).Run(testexec.DumpLogOnError)
+	}, nil
 }
