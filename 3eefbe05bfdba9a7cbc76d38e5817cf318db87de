@@ -22,6 +22,30 @@
       },
       "revId": "3eefbe05bfdba9a7cbc76d38e5817cf318db87de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f3b2fd_d85661b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-07-28T17:24:36Z",
+      "side": 1,
+      "message": "It uses avahi-resolve-address to find the .local address corresponding to localhost, then tries to resolve that.",
+      "parentUuid": "76da0d65_509726db",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "3eefbe05bfdba9a7cbc76d38e5817cf318db87de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
