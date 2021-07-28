@@ -36,14 +36,13 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // Setup runs lacros-chrome if indicated by the given ChromeType and returns some objects and interfaces
 // useful in tests. If the ChromeType is ChromeTypeLacros, it will return a non-nil LacrosChrome instance or an error.
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
-// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-func Setup(ctx context.Context, f interface{}, artifactPath string, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
+func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
 	switch crt {
 	case ChromeTypeChromeOS:
 		return f.(*chrome.Chrome), nil, f.(*chrome.Chrome), nil
 	case ChromeTypeLacros:
 		f := f.(launcher.FixtData)
-		l, err := launcher.LaunchLacrosChrome(ctx, f, artifactPath)
+		l, err := launcher.LaunchLacrosChrome(ctx, f)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -143,7 +142,7 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 }
 
 // ShelfLaunch launches lacros-chrome via shelf.
-func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, artifactPath string) (*launcher.LacrosChrome, error) {
+func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData) (*launcher.LacrosChrome, error) {
 	const newTabTitle = "New Tab"
 
 	// Ensure shelf is visible in case of tablet mode.

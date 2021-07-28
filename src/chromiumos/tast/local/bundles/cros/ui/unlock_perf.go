@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +29,6 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Vars:         []string{launcher.LacrosDeployedBinary},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedIn",
@@ -42,7 +40,6 @@ func init() {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "lacrosStartedByData",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 		Data: []string{"animation.html", "animation.js"},
@@ -67,13 +64,8 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 	}
 
 	defer kb.Close()
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
 
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

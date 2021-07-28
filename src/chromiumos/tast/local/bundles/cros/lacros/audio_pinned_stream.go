@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByDataBypassPermissions",
-		Data:         []string{launcher.DataArtifact, "media_session_60sec_test.ogg", "audio_playback_test.html"},
+		Data:         []string{"media_session_60sec_test.ogg", "audio_playback_test.html"},
 		Params: []testing.Param{{
 			Name: "play",
 			Val:  audio.OutputStream,
@@ -43,7 +43,7 @@ func AudioPinnedStream(ctx context.Context, s *testing.State) {
 	}
 	defer unload(ctx)
 
-	lc, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	lc, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

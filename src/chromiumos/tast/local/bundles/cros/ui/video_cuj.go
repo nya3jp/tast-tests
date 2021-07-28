@@ -72,7 +72,6 @@ func init() {
 			Val: videoCUJTestParam{
 				ct: lacros.ChromeTypeLacros,
 			},
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			Name:    "lacros_tablet",
@@ -81,7 +80,6 @@ func init() {
 				ct:     lacros.ChromeTypeLacros,
 				tablet: true,
 			},
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
@@ -107,12 +105,9 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
-		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-		artifactPath := s.DataPath(launcher.DataArtifact)
-
 		var l *launcher.LacrosChrome
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, testParam.ct)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.ct)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
@@ -426,7 +421,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 			w, err := ash.GetWindow(ctx, tconn, webWinID)
 			if err != nil {
-				return errors.Wrap(err, "failed to find the other window: ")
+				return errors.Wrap(err, "failed to find the other window")
 			}
 
 			if err := pc.ClickAt(w.OverviewInfo.Bounds.CenterPoint())(ctx); err != nil {

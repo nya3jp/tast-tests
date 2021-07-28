@@ -93,11 +93,10 @@ func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtData, url string)
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
-// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtData, artifactPath, url string) (
+func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtData, url string) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *launcher.LacrosChrome, retCleanup CleanupCallback, retErr error) {
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLacrosChrome(ctx, f, artifactPath)
+	l, err := launcher.LaunchLacrosChrome(ctx, f)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
