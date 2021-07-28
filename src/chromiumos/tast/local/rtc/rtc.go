@@ -22,7 +22,8 @@ const (
 	// for the output when reading the time. An example output
 	// from reading hwclock is  "2019-08-23 12:48:45.846380-06:00"
 	hwclockOutputFormat = "2006-01-02 15:04:05.000000Z07:00"
-	hwclockTimeout      = 3 * time.Second
+	// HwclockTimeout defines the hwclock command execution timeout.
+	HwclockTimeout = 3 * time.Second
 )
 
 // RTC represents a real time clock that is accessed with the "hwclock" command.
@@ -39,13 +40,13 @@ type RTC struct {
 // the external hardware clock, it does not change the OS/system time.
 // It uses a 3 second timeout on top of the given context.
 func (rtc RTC) Write(ctx context.Context, t time.Time) error {
-	args := rtc.hwclockArgs()
+	args := rtc.HwclockArgs()
 	args = append(args, "--set")
 	// hwclock likes "JAN", but t.Format give "Jan" for the month.
 	dateString := strings.ToUpper(t.Format(hwclockDateFormat))
 	args = append(args, "--date="+dateString)
 
-	ctx, cancel := context.WithTimeout(ctx, hwclockTimeout)
+	ctx, cancel := context.WithTimeout(ctx, HwclockTimeout)
 	defer cancel()
 	return testexec.CommandContext(ctx, "hwclock", args...).Run(testexec.DumpLogOnError)
 }
@@ -53,10 +54,10 @@ func (rtc RTC) Write(ctx context.Context, t time.Time) error {
 // Read reads the RTC using the "hwclock" command.
 // It uses a 3 second timeout on top of the given context.
 func (rtc RTC) Read(ctx context.Context) (time.Time, error) {
-	args := rtc.hwclockArgs()
+	args := rtc.HwclockArgs()
 	args = append(args, "--get")
 
-	ctx, cancel := context.WithTimeout(ctx, hwclockTimeout)
+	ctx, cancel := context.WithTimeout(ctx, HwclockTimeout)
 	defer cancel()
 	bytes, err := testexec.CommandContext(ctx, "hwclock", args...).CombinedOutput(testexec.DumpLogOnError)
 	if err != nil {
@@ -65,7 +66,9 @@ func (rtc RTC) Read(ctx context.Context) (time.Time, error) {
 	return time.Parse(hwclockOutputFormat, strings.TrimSpace(string(bytes)))
 }
 
-func (rtc RTC) hwclockArgs() []string {
+// HwclockArgs returns the necessary arguments to be passed as flags with hwclock
+// command based on the RTC struct state.
+func (rtc RTC) HwclockArgs() []string {
 	args := []string{"--rtc=/dev/" + rtc.DevName}
 	if rtc.LocalTime {
 		args = append(args, "--localtime")
