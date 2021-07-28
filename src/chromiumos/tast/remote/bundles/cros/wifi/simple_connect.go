@@ -1199,7 +1199,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking the status of the SSID in the DUT")
-		serInfo, err := tf.QueryService(ctx)
+		serInfo, err := tf.WifiClient().QueryService(ctx)
 		if err != nil {
 			s.Fatal("Failed to get the WiFi service information from DUT, err: ", err)
 		}

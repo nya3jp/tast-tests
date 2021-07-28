@@ -97,7 +97,7 @@ func ReconnectInDarkResume(ctx context.Context, s *testing.State) {
 
 	// Enable darkconnect.
 	features := shillconst.WakeOnWiFiFeaturesDarkConnect
-	ctx, restoreWakeOnWiFi, err := tf.SetWakeOnWifi(ctx, wificell.WakeOnWifiFeatures(features))
+	ctx, restoreWakeOnWiFi, err := tf.WifiClient().SetWakeOnWifi(ctx, wificell.WakeOnWifiFeatures(features))
 	if err != nil {
 		s.Fatal("Failed to set up wake on WiFi: ", err)
 	}

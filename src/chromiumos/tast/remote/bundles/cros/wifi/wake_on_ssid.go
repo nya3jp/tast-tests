@@ -44,7 +44,7 @@ func WakeOnSSID(ctx context.Context, s *testing.State) {
 		wificell.WakeOnWifiFeatures(features),
 		wificell.WakeOnWifiNetDetectScanPeriod(netDetectScanPeriod),
 	}
-	ctx, restoreWakeOnWiFi, err := tf.SetWakeOnWifi(ctx, wakeOnWifiOps...)
+	ctx, restoreWakeOnWiFi, err := tf.WifiClient().SetWakeOnWifi(ctx, wakeOnWifiOps...)
 	if err != nil {
 		s.Fatal("Failed to set up wake on WiFi: ", err)
 	}
@@ -140,7 +140,7 @@ func WakeOnSSID(ctx context.Context, s *testing.State) {
 			Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 		},
 	}
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, nil)
+	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, nil)
 	if err != nil {
 		s.Fatal("Failed to create a property watcher, err: ", err)
 	}

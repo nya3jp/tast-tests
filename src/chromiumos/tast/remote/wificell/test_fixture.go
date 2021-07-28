@@ -1094,7 +1094,7 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	}
 
 	// Check frequency.
-	service, err := tf.QueryService(ctx)
+	service, err := tf.WifiClient().QueryService(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to query shill service information")
 	}

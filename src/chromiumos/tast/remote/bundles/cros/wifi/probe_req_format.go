@@ -38,7 +38,7 @@ func ProbeReqFormat(ctx context.Context, s *testing.State) {
 	// Trigger active scans and verify the format of probe requests in pcap.
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	ctx, restore, err := tf.DisableMACRandomize(ctx)
+	ctx, restore, err := tf.WifiClient().DisableMACRandomize(ctx)
 	if err != nil {
 		s.Fatal("Failed to disable MAC randomization: ", err)
 	}

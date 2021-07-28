@@ -134,7 +134,7 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 
 	testing.ContextLogf(ctx, "Waiting %s for client to notice the missing AP", maxDisconnectTime)
 
-	if err := tf.AssureDisconnect(ctx, servicePath, maxDisconnectTime); err != nil {
+	if err := tf.WifiClient().AssureDisconnect(ctx, servicePath, maxDisconnectTime); err != nil {
 		s.Fatalf("DUT: failed to disconnect in %s: %v", maxDisconnectTime, err)
 	}
 }

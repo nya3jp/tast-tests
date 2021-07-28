@@ -181,7 +181,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 			ExpectedValues: []interface{}{true},
 			Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 		}}
-		wait, err := tf.ExpectShillProperty(ctx, servicePath, props, nil)
+		wait, err := tf.WifiClient().ExpectShillProperty(ctx, servicePath, props, nil)
 		if err != nil {
 			return errors.Wrap(err, "failed to watch service state")
 		}

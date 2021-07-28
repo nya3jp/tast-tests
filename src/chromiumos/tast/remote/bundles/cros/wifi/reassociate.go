@@ -61,7 +61,7 @@ func Reassociate(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Failed to get WiFi interface: ", err)
 	}
-	if err := tf.Reassociate(ctx, iface, 10*time.Second); err != nil {
+	if err := tf.WifiClient().Reassociate(ctx, iface, 10*time.Second); err != nil {
 		s.Error("Failed to reassociate: ", err)
 	}
 }

@@ -342,7 +342,7 @@ func executeRoamNaturalTest(ctx context.Context, s *testing.State, apAllParams [
 				}
 
 				rnDebug(s, "discovering AP")
-				if err := tf.DiscoverBSSID(ctx, ap.Config().BSSID, iface, []byte(ap.Config().SSID)); err != nil {
+				if err := tf.WifiClient().DiscoverBSSID(ctx, ap.Config().BSSID, iface, []byte(ap.Config().SSID)); err != nil {
 					s.Fatal("Failed to discover AP: ", err)
 				}
 			}
