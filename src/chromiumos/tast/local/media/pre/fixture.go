@@ -47,6 +47,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
@@ -66,6 +67,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
@@ -150,6 +152,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
@@ -168,6 +171,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 

@@ -53,7 +53,6 @@ func init() {
 				Name:              "lacros",
 				Fixture:           "chromeVideoLacros",
 				ExtraAttr:         []string{"informational"},
-				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "camera_720p", "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 				Val:               lacros.ChromeTypeLacros,
@@ -80,7 +79,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	var cr getusermedia.ChromeInterface
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
 		var err error
-		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}

@@ -23,7 +23,6 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByDataUI",
-		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 		}, {

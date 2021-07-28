@@ -24,13 +24,6 @@ import (
 const resetTimeout = 30 * time.Second
 
 func init() {
-	var fixtureVars = []string{
-		"ui.cuj_username",
-		"ui.cuj_password",
-		"cuj_username",
-		"cuj_password",
-	}
-
 	testing.AddFixture(&testing.Fixture{
 		Name:            "loggedInToCUJUser",
 		Desc:            "The main fixture used for UI CUJ tests",
@@ -39,7 +32,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            fixtureVars,
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "loggedInAndKeepState",
@@ -49,7 +42,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            fixtureVars,
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name:     "loggedInToCUJUserLacros",
@@ -64,7 +57,8 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            append(fixtureVars, launcher.LacrosDeployedBinary),
+		Data:            []string{launcher.DataArtifact},
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password", "cuj_username", "cuj_password", launcher.LacrosDeployedBinary},
 	})
 }
 
