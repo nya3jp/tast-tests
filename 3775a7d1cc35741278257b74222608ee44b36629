@@ -226,6 +226,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9a2d0b_aa335dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-28T02:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "847a2736_49f17b05",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "3775a7d1cc35741278257b74222608ee44b36629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5f30dcc_b84c1797",
