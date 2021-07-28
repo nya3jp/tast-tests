@@ -16,6 +16,24 @@
       "message": "Software sync should only retain being disabled if \u0027no_ec_sync\u003dtrue\u0027 is set.",
       "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb22693_2124c8e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-28T20:40:33Z",
+      "side": 1,
+      "message": "From chat:Denis Brockus, 1:11 PM\nIf I were running GGB flags with software sync enabled and then loaded EC-RO to test a change I would want to be able to set no_ec_sync to make that bit set while running the test, even if GBB flags were not set that way to begin with.\n\nA test that does not care about software sync may need to know which EC it is running.  This flag gives that ability.  I have seen testing where a change to EC-RO was made and flashed, and then the test went through and verified the EC-RW was not changed/fixed and the problem continued. This flag gives a way to help make this clear",
+      "parentUuid": "af6df421_a2bedb25",
+      "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
