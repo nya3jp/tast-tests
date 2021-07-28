@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5745f99_b2ba4015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:04:39Z",
+      "side": 1,
+      "message": "LGTM % comment. I\u0027ll add another person to review this CL to get more context about servo package.",
+      "revId": "548b9793fb99effb6d93698e2b8f9114b44e248c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a967c3_87b6744b",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:04:39Z",
+      "side": 1,
+      "message": "This is not related to the CL main goal.\n\nAlso, I don\u0027t think this is the right way to provide ssh key, because you have implicit dependency on cros_sdk structure. I think we should either put ssh key into a Go constant or use data file with ssh key.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "548b9793fb99effb6d93698e2b8f9114b44e248c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
