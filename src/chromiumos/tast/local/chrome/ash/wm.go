@@ -52,6 +52,16 @@ const (
 	WMEventSnapRight  WMEventType = "WMEventSnapRight"
 )
 
+// WindowStateTypeToEventType represents the mapping between window states and the corresponding event type.
+var WindowStateTypeToEventType = map[WindowStateType]WMEventType{
+	WindowStateNormal:       WMEventNormal,
+	WindowStateMaximized:    WMEventMaximize,
+	WindowStateMinimized:    WMEventMinimize,
+	WindowStateFullscreen:   WMEventFullscreen,
+	WindowStateLeftSnapped:  WMEventSnapLeft,
+	WindowStateRightSnapped: WMEventSnapRight,
+}
+
 // SnapPosition represents the different snap position in split view.
 type SnapPosition string
 
@@ -272,6 +282,34 @@ func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 		return WindowStateNormal, err
 	}
 	return SetWindowState(ctx, tconn, window.ID, et)
+}
+
+// SetARCAppWindowStateAndWait sends WM event to ARC app window to change its window state, waits for it to stop animating, and returns the expected new state type.
+func SetARCAppWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, pkgName string, expectedState WindowStateType) (WindowStateType, error) {
+	wmEvent, ok := WindowStateTypeToEventType[expectedState]
+	if !ok {
+		return WindowStateNormal, errors.Errorf("didn't find the event for window state: %q", expectedState)
+	}
+
+	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "failed to get window information")
+	}
+
+	gotState, err := SetWindowState(ctx, tconn, window.ID, wmEvent)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "failed to set window state")
+	}
+
+	if gotState != expectedState {
+		return WindowStateNormal, errors.Wrapf(err, "failed to set the window state: got %v want %v", gotState, expectedState)
+	}
+
+	if err = WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+		return gotState, errors.Wrap(err, "failed to wait for the window animation")
+	}
+
+	return gotState, nil
 }
 
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
