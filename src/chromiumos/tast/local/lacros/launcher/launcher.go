@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -165,6 +166,9 @@ func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) er
 	if os.IsNotExist(err) {
 		testing.ContextLog(ctx, "Extracting lacros binary")
 		tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
+		// Set user to chronos, since we run lacros as chronos.
+		tarCmd.Cred(syscall.Credential{Uid: sysutil.ChronosUID, Gid: sysutil.ChronosGID})
+
 		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to untar test artifacts")
 		}
@@ -199,11 +203,15 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
+	// Set user to chronos, since we run lacros as chronos.
+	if err := os.Chown(userDataDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+		return nil, errors.Wrap(err, "failed to chown user data dir")
+	}
+
 	l := &LacrosChrome{lacrosPath: f.LacrosPath, userDataDir: userDataDir}
 	extList := strings.Join(f.Chrome.DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
-		"--no-sandbox",                             // Disable sandbox for now
 		"--no-first-run",                           // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + l.userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                             // Language
@@ -224,6 +232,9 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 	l.cmd = testexec.CommandContext(ctx, "/usr/local/bin/python3", append([]string{"/usr/local/bin/mojo_connection_lacros_launcher.py",
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath, "chrome")}, args...)...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
+
+	// Set user to chronos, so we don't have to run with --no-sandbox.
+	l.cmd.Cred(syscall.Credential{Uid: sysutil.ChronosUID, Gid: sysutil.ChronosGID})
 
 	if out, ok := testing.ContextOutDir(ctx); !ok {
 		testing.ContextLog(ctx, "OutDir not found: ", err)

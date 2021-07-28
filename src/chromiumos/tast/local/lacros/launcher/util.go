@@ -9,6 +9,7 @@ import (
 	"os"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +23,10 @@ func prepareLacrosChromeBinary(ctx context.Context, s *testing.FixtState) error 
 
 	if err := os.MkdirAll(lacrosTestPath, os.ModePerm); err != nil {
 		return errors.Wrap(err, "failed to make new test artifacts directory")
+	}
+
+	if err := os.Chown(lacrosTestPath, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+		return errors.Wrap(err, "failed to chown test artifacts directory")
 	}
 
 	// TODO(crbug.com/1127165): Extract the artifact here, once we can use Data in fixtures.
