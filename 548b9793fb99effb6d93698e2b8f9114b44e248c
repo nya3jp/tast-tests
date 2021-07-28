@@ -56,6 +56,30 @@
       },
       "revId": "548b9793fb99effb6d93698e2b8f9114b44e248c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e075951_4dff0e63",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T11:12:49Z",
+      "side": 1,
+      "message": "My bad. As you have suggested, I have removed the extra lines. Respective local tests will use the keyfile as data file (a symlink to the original keyfile inside chromite git tree). Thanks.",
+      "parentUuid": "d7a967c3_87b6744b",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "548b9793fb99effb6d93698e2b8f9114b44e248c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
