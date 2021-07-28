@@ -18,6 +18,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd09b4c_53c44d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T17:35:51Z",
+      "side": 1,
+      "message": "Madhav\u0027s deletion of the profile cache should account for resetting properties to their default state.\n\nI considered writing a generic function to restore properties, but the profile deletion approach renders it moot.",
+      "parentUuid": "0506a2ac_5a682ae5",
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dffa40d_4cdd23cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T17:35:51Z",
+      "side": 1,
+      "message": "I am considering renaming cellular_multisim as cellular_sim_dependent . That way, we know that the test requires a specific sim to run, and won\u0027t run easily on a local dut. WDYT?",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba3db5d_bab93d38",
@@ -31,6 +72,30 @@
       "writtenOn": "2021-07-28T17:08:37Z",
       "side": 1,
       "message": "nit: Something a bit shorter like cleanupCtx is fine",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26cde32c_56fdf087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T17:35:51Z",
+      "side": 1,
+      "message": "Ack. This code will also be removed once Madhav provides InitDut",
+      "parentUuid": "8ba3db5d_bab93d38",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -58,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f19a599_25c75062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T17:35:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bcdd0ba2_d7981e44",
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42409aae_88c5e43a",
@@ -71,6 +154,30 @@
       "writtenOn": "2021-07-28T17:08:37Z",
       "side": 1,
       "message": "You don\u0027t need to pass the cleanup context as an argument here; closing over it is fine",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19155779_2d914c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T17:35:51Z",
+      "side": 1,
+      "message": "I am not sure what context I should pass into helper.SetServiceAutoConnect(ctx, true);\n\nCould you please elaborate?",
+      "parentUuid": "42409aae_88c5e43a",
       "range": {
         "startLine": 41,
         "startChar": 8,
