@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fca86c0_e845a639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:05:52Z",
+      "side": 1,
+      "message": "Hi Jeremy,\n\nCan you please take a look? Bisakh is using servo package for local test in the follow-up CL in the relation chain.\n\nThanks!",
+      "revId": "548b9793fb99effb6d93698e2b8f9114b44e248c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7a967c3_87b6744b",
