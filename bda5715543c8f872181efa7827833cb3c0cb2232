@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6df421_a2bedb25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-28T19:00:30Z",
+      "side": 1,
+      "message": "Software sync should only retain being disabled if \u0027no_ec_sync\u003dtrue\u0027 is set.",
+      "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
