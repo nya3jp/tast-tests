@@ -159,7 +159,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, nil)
+	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, nil)
 	if err != nil {
 		s.Fatal("DUT: failed to create a property watcher, err: ", err)
 	}

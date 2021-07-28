@@ -30,7 +30,7 @@ func WaitServiceIdle(ctx context.Context, tf *wificell.TestFixture, servicePath 
 		ExpectedValues: []interface{}{shillconst.ServiceStateIdle},
 		Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
 	}}
-	wait, err := tf.ExpectShillProperty(ctx, servicePath, props, nil)
+	wait, err := tf.WifiClient().ExpectShillProperty(ctx, servicePath, props, nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to watch service state")
 	}

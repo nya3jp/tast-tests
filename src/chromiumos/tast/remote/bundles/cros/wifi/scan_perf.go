@@ -127,7 +127,7 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 		logDuration("scan_time_foreground_full", duration)
 	}
 
-	ctx, restoreBg, err := tf.TurnOffBgscan(ctx)
+	ctx, restoreBg, err := tf.WifiClient().TurnOffBgscan(ctx)
 	if err != nil {
 		s.Fatal("Failed to turn off the background scan: ", err)
 	}
