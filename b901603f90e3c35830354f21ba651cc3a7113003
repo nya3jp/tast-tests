@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18738212_54ea5d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-28T01:16:46Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "78dc3fe6_7514bd11",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72a311fb_f1699e3f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-28T00:27:01Z",
       "side": 1,
       "message": "Can you define and assign to this in one go",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ef0f77_7cf67929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-28T01:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a311fb_f1699e3f",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67c897e_b55be7bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-28T01:16:46Z",
+      "side": 1,
+      "message": "I wish I could simplify that way. A few things that stop me from doing it:\n\nget chromeOrChromium app needs the instance of cr and tconn that are set after lacros.Setup()\nl.close(ctx) hit a null pointer access when ash is tested, which requires another if statement after lacros.Setup.\nHaving two switch statements before and after lacros.Setup may not look good.\nThis is what we would have now and could be a good candidate for future refactoring.",
+      "parentUuid": "40815625_66cc72c9",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f2f1234_790f9530",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-28T00:27:01Z",
       "side": 1,
       "message": "Is this not the default though?",
+      "range": {
+        "startLine": 101,
+        "startChar": 29,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587f75fb_3db73202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-28T01:16:46Z",
+      "side": 1,
+      "message": "By default lacros.Setup or LaunchLacrosChrome opens a blank page that doesn\u0027t have any accessible UI element inside.\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/lacros/launcher/launcher.go;l\u003d219;drc\u003d14e7611c4f21d1a921132f6f083a5eeeb0ebd940\nIf this behavior is not consistent with chrome.Chrome, it may need to be refactored. Filed b/194849311",
+      "parentUuid": "7f2f1234_790f9530",
       "range": {
         "startLine": 101,
         "startChar": 29,
@@ -129,6 +225,30 @@
       "writtenOn": "2021-07-28T00:27:01Z",
       "side": 1,
       "message": "Why do you need First() in all of these?",
+      "range": {
+        "startLine": 123,
+        "startChar": 99,
+        "endLine": 123,
+        "endChar": 107
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330c381e_2d05ca76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-28T01:16:46Z",
+      "side": 1,
+      "message": "The test will open a blank page by default, and a new tab page in the line 101, which might end up having two tabs and close buttons. Having First() would help check if there is at least one element, which I believe we\u0027re verifying here, regardless of how many tabs are opened by the test. Does it sound okay?",
+      "parentUuid": "defa16ba_8f09093e",
       "range": {
         "startLine": 123,
         "startChar": 99,
