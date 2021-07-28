@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da74c8c_5b739a4e",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-28T01:10:52Z",
+      "side": 1,
+      "message": "Actually never mind, after experimenting with repeated test runs with both the Edu Coexistence and Gellerization flows, it turns out LeftClick() is more robust than FocusAndWait() surprisingly.",
+      "parentUuid": "5e5928a2_f3ae72d5",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2b56e9_745fe398",
