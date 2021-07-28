@@ -39,6 +39,30 @@
       },
       "revId": "a386a3c32636b922f08a99eb62ede392e6a5da12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90470001_f43b5cf0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-28T09:53:14Z",
+      "side": 1,
+      "message": "Also returning error now, will add further exceptions in shouldCloseOnReset in a separate CL.",
+      "parentUuid": "6b4f4dfa_daa50722",
+      "range": {
+        "startLine": 392,
+        "startChar": 67,
+        "endLine": 392,
+        "endChar": 83
+      },
+      "revId": "a386a3c32636b922f08a99eb62ede392e6a5da12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
