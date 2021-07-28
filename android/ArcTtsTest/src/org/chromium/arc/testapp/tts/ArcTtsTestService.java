@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * A text to speech engine that outputs the generated speech to a file called "ttsoutput.txt" under
@@ -78,7 +79,14 @@ public class ArcTtsTestService extends TextToSpeechService {
                             OUTPUT_FILENAME);
             Files.createFile(path);
             byte[] bytes = request.getText().getBytes();
-            Files.write(path, bytes, java.nio.file.StandardOpenOption.APPEND);
+            Log.d(TAG, "Writing synthesize text to '" + path + "'");
+            Files.write(
+                    path,
+                    bytes,
+                    StandardOpenOption.WRITE,
+                    StandardOpenOption.TRUNCATE_EXISTING,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.SYNC);
         } catch (IOException e) {
             callback.error();
             throw new RuntimeException(e);
