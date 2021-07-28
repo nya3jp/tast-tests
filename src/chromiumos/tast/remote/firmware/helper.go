@@ -409,8 +409,11 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 // It checks the setup of USB disk and a valid ChromeOS test image inside.
 // Downloads the test image if the image isn't the right version.
 func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) error {
-	//     self.stage_build_to_usbkey()
 	testing.ContextLog(ctx, "Validating image usbkey on servo")
+	// Power cycling the USB key helps to make it visible to the host.
+	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+		return errors.Wrap(err, "failed to power off usbkey")
+	}
 	// This call is super slow.
 	usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
 	if err != nil {
