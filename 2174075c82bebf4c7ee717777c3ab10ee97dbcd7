@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e90b7b_ac550b1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-28T15:19:39Z",
+      "side": 1,
+      "message": "I believe this will immediately enable it for production. See b/194500081.\n\nI think you need to drop this tag for now.",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "2174075c82bebf4c7ee717777c3ab10ee97dbcd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
