@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf1491b1_175d975c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T19:45:56Z",
+      "side": 1,
+      "message": "I should have elaborated.\nWhen I run tests on my local dut, I use the following command \ntast run ${cr} \u0027(\"group:cellular\")\u0027\n\nThis test will fail if my local dut does not have a roaming sim. There will be many such tests - esim, pinlock, multisim etc that have dependencies that are identified in a .control file. These tests will run on the correct lab dut because of the control file. However, they may appear as failures when run locally.\n\nThus, we need another group that identifies tests that usually run only in the lab. \ncellular_multisim was created mainly for this purpose. I am proposing that we rename the group \"cellular_multisim\" as \"cellular_sim_dependent\".\n\nThe alternative is to create a subattribute that marks the test as sim_dependent.I suppose Steven will also have an opinion on this, so I will not submit until he chimes in.",
+      "parentUuid": "cfbe45cb_ee03cb34",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ba3db5d_bab93d38",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
         "patchSetId": 3
@@ -144,6 +168,30 @@
       "side": 1,
       "message": "Does the profile cache deletion not also reset AutoConnect?",
       "parentUuid": "26cde32c_56fdf087",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342a10d9_f692d9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-07-28T19:45:56Z",
+      "side": 1,
+      "message": "The plan is to delete the profile before starting the test, and then disabling autoconnect. Post that, the roaming test begins.\n\nI could have chosen to write a generic function that restore\u0027s any service property, but then I\u0027d be creating two ways of solving the same problem (i.e. restoration of shill\u0027s state)",
+      "parentUuid": "25cf8a24_82a86f37",
       "range": {
         "startLine": 35,
         "startChar": 1,
