@@ -16,6 +16,40 @@
       "message": "LGTM for tast style. Please also wait for your teammate\u0027s review. Thanks!",
       "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3000666b_9e3ddbbc",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-28T01:33:15Z",
+      "side": 1,
+      "message": "Maybe minStatColumns, and then rename statColumns above to be discardStatColumns (and then comment that that is the number of columns if discard information is available)",
+      "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa81d1f_6edb1861",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-28T01:33:15Z",
+      "side": 1,
+      "message": "Instead of the HasDiscard+Discard bool + value, we can make Discard a reference type:\n    Discard *ZramOpStats",
+      "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
