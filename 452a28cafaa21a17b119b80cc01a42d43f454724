@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0e724f_a8871444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Can we create a new directory for holding space tests?",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3827c709_2758bf11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "We use the term \"Holding Space\" rather than \"Tote\" in code. Let\u0027s do the same in this CL to be consistent :)",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09435ff6_42a477c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Does this mean that the test won\u0027t prevent uprev if its failing?",
+      "range": {
+        "startLine": 32,
+        "startChar": 43,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8651b3f7_48c6e219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "nit: End comments with period, here and elsewhere :)",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e647cb_a28d99dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Comment what this is?",
+      "range": {
+        "startLine": 59,
+        "startChar": 67,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f8b055_b5677050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Consider splitting pin via context menu and pin via drag-and-drop into separate tests",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2359ab4_80768c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Not sure if there is a different styleguide for Go, but this line seems like it should be wrapping?",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa96cfb0_b8f7ffa6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Reads strangely?",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732a1d54_f8dfc747",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Comment seems like it should be wrapping to a newline?",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbebdd2_392a8baf",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Is it a style thing to always preface function docs w/ the name of the function?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071bd4a3_a3356a0c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "This name is probably not clear enough to make it obvious that we are talking about holding space as opposed to, say, apps which are pinned to the shelf in ash. I\u0027d suggest either including holding space in the method name or creating a package for holding space APIs.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65698e27_cf6f6d38",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-07-28T17:20:21Z",
+      "side": 1,
+      "message": "Why do we want the tray icon as opposed to just the tray?",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
