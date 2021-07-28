@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df7e05c_47587a81",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-28T09:14:37Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3058633",
+      "parentUuid": "91292628_adb02ed9",
+      "range": {
+        "startLine": 391,
+        "startChar": 67,
+        "endLine": 391,
+        "endChar": 78
+      },
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "757d6c0d_5a403d06",
@@ -96,6 +120,30 @@
       "writtenOn": "2021-07-28T08:43:41Z",
       "side": 1,
       "message": "What\u0027s the intention of this check? Why don\u0027t we always return an error?",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 23
+      },
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ad7b25_ee4c530f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-28T09:14:37Z",
+      "side": 1,
+      "message": "I just want to error out early here. It fails with a red herring \"failed to free tast remote JS object group\" otherwise.\n\nI\u0027m not sure returning an error here is useful. Two extensions (ChromeVox and essential inputs) seem to have problems and are not related to the actual tast test running the reset.",
+      "parentUuid": "757d6c0d_5a403d06",
       "range": {
         "startLine": 392,
         "startChar": 2,
