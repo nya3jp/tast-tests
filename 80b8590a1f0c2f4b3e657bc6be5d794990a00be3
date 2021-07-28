@@ -16,6 +16,24 @@
       "message": "Instead of commenting out, can you please add informational to the attrs list e.g. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/fsp.go;l\u003d48?q\u003dgroup:mainline\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public\u0026start\u003d21",
       "revId": "80b8590a1f0c2f4b3e657bc6be5d794990a00be3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53eaabd3_a3fc1117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2021-07-28T20:17:37Z",
+      "side": 1,
+      "message": "Fixed. Hmm. Do we want to verify that it works now with `informational`?",
+      "parentUuid": "ed049d73_1d61129f",
+      "revId": "80b8590a1f0c2f4b3e657bc6be5d794990a00be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
