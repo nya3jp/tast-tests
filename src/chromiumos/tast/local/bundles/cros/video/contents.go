@@ -6,12 +6,10 @@ package video
 
 import (
 	"context"
-	"strings"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -67,7 +65,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png", launcher.DataArtifact},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			Fixture:           "chromeVideoLacros",
@@ -139,7 +137,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png", launcher.DataArtifact},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			Fixture:           "chromeAshCompositedVideoLacros",
 		}, {
@@ -151,7 +149,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png", launcher.DataArtifact},
+			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			Fixture:           "chromeLacrosCompositedVideoLacros",
 		}, {
@@ -197,15 +195,7 @@ func init() {
 func Contents(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(contentsParams)
 
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if testOpt.chromeType == lacros.ChromeTypeLacros {
-		if !strings.Contains(s.TestName(), "lacros") {
-			s.Fatal("Non-lacros test run with lacros chrome-type")
-		}
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, testOpt.chromeType)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), testOpt.chromeType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

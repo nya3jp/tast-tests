@@ -60,7 +60,6 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{launcher.DataArtifact},
 			Fixture:           "lacrosStartedByData",
 			Val: testParams{
 				isLacros: true,
@@ -192,7 +191,7 @@ func stressTestCase(ctx context.Context, localRand *rand.Rand, mbPerTab, switchC
 
 func lacrosMain(ctx context.Context, s *testing.State, localRand *rand.Rand, mbPerTab int, baseURL string, perfValues *perf.Values) error {
 	// TODO(b/191105438): Tune Lacros variation when Lacros tab discarder is mature.
-	lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
 		return errors.Wrap(err, "failed to launch lacros-chrome")
 	}
