@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      120 * time.Minute,
-		Data:         []string{launcher.DataArtifact, "video.html", "bbb_1080p60_yuv.vp9.webm"},
+		Data:         []string{"video.html", "bbb_1080p60_yuv.vp9.webm"},
 		Params: []testing.Param{{
 			Name: "maximized",
 			Val: gpucuj.TestParams{
@@ -140,7 +140,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	pv, cleanup, err := gpucuj.RunGpuCUJ(ctx, s.FixtValue().(launcher.FixtData),
-		s.DataPath(launcher.DataArtifact), s.Param().(gpucuj.TestParams), server.URL, s.OutDir())
+		s.Param().(gpucuj.TestParams), server.URL, s.OutDir())
 	if err != nil {
 		s.Fatal("Could not run GpuCUJ test: ", err)
 	}

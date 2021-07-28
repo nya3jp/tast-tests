@@ -26,7 +26,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByData",
 		Timeout:      7 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 		}, {
@@ -67,7 +66,7 @@ func Basic(ctx context.Context, s *testing.State) {
 			"ls", "-l", s.FixtValue().(launcher.FixtData).LacrosPath)
 	}()
 
-	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

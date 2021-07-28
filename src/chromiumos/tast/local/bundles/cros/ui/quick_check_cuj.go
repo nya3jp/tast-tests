@@ -76,12 +76,9 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
-		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-		artifactPath := s.DataPath(launcher.DataArtifact)
-
 		var err error
 		var l *launcher.LacrosChrome
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, ct)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), ct)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

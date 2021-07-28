@@ -154,8 +154,7 @@ func extensionArgs(extID, extList string) []string {
 }
 
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
-// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*LacrosChrome, error) {
+func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) {
 	if err := killLacrosChrome(ctx, f.LacrosPath); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}

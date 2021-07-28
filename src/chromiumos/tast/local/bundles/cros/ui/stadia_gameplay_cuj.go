@@ -88,8 +88,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		// Launch lacros via shelf.
 		f := s.FixtValue().(launcher.FixtData)
 
-		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
-		l, err := lacros.ShelfLaunch(ctx, tconn, f, s.DataPath(launcher.DataArtifact))
+		l, err := lacros.ShelfLaunch(ctx, tconn, f)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}

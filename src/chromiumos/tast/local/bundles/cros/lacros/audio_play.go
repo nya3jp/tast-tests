@@ -26,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByDataBypassPermissions",
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
-		Data:         []string{launcher.DataArtifact, "media_session_60sec_test.ogg", "audio_playback_test.html"},
+		Data:         []string{"media_session_60sec_test.ogg", "audio_playback_test.html"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 		}, {
@@ -38,7 +38,7 @@ func init() {
 }
 
 func AudioPlay(ctx context.Context, s *testing.State) {
-	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

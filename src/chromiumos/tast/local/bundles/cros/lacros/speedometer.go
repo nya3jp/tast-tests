@@ -26,7 +26,6 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
 		Fixture:      "lacrosStartedByData",
 	})
 }
@@ -66,9 +65,8 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.C
 	return score, nil
 }
 
-func runLacrosSpeedometerTest(ctx context.Context, f launcher.FixtData, artifactPath string) (float64, error) {
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, artifactPath, speedometerURL)
+func runLacrosSpeedometerTest(ctx context.Context, f launcher.FixtData) (float64, error) {
+	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, speedometerURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
@@ -105,7 +103,7 @@ func Speedometer(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
 		s.Fatal("Failed to run lacros Speedometer test: ", err)
 	}

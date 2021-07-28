@@ -39,11 +39,8 @@ func init() {
 		Desc:         "Tests lacros memory usage",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Data: []string{
-			launcher.DataArtifact,
-		},
-		Fixture: "lacrosStartedByData",
-		Timeout: 60 * time.Minute,
+		Fixture:      "lacrosStartedByData",
+		Timeout:      60 * time.Minute,
 		Params: []testing.Param{{
 			Name: "blank",
 			Val:  testParams{mode: openURLMode, url: "about:blank"},
@@ -167,7 +164,7 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+		l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
