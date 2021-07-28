@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901035c1_2ab3678c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_scrolling_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T09:05:16Z",
+      "side": 1,
+      "message": "Can this be false when we declare \"arc\" software dep?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "2412c7e6ddf734bba801ec62bf109322ea791a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d354c1_c4afc872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_scrolling_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T09:05:16Z",
+      "side": 1,
+      "message": "IIUC the added code creates notifications, but how do we ensure they\u0027re shown?",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 54
+      },
+      "revId": "2412c7e6ddf734bba801ec62bf109322ea791a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b69b20_de47bcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T09:05:16Z",
+      "side": 1,
+      "message": "These two tests have many things in common, you might want to introduce a subpackage to share the common logic.",
+      "revId": "2412c7e6ddf734bba801ec62bf109322ea791a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
