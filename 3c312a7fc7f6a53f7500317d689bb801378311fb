@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98c058a3_ae243c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T10:17:21Z",
+      "side": 1,
+      "message": "\u003e How about choosing a uniform random between 90 to 100?\n\nI am strongly against any random in tests, because test won\u0027t be reproducible.\n\nOK, let\u0027s also have some buffer to be able to charge battery. I am a bit concerned that we verify that battery does not discharge, but have to verify that it actually charges: as you mentioned it might report Full state for example, or just stuck at some level.\n\nLet\u0027s also maybe use 95% or we even can be more aggressive and choose 97 or 98? Also please add a brief comment to explain why it isn\u0027t equal to 100%",
+      "parentUuid": "afe78719_8c5e42c5",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "026212d6_8b7e37c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
         "patchSetId": 1
@@ -372,6 +396,29 @@
         "startChar": 12,
         "endLine": 246,
         "endChar": 28
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae45951_7ab2a273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T10:17:21Z",
+      "side": 1,
+      "message": "This is a discharging state. I\u0027d prefer to don\u0027t mix charging/discharging and use just discharging everywhere",
+      "range": {
+        "startLine": 246,
+        "startChar": 77,
+        "endLine": 246,
+        "endChar": 91
       },
       "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
