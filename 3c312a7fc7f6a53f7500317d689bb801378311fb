@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc43d88_2dd318c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "nit: let\u0027s move it to bundles/cros/policy",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ec605a_75b4161f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 42,
+        "startChar": 66,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7330eb_d7937bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "if this will be 100, won\u0027t we be able to verify a policy?",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026212d6_8b7e37c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "nit: do we really need this comment?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 57
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef16607e_a489e27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "you have to return it to make it work",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 22
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b121e20_cce88eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "as mentioned in another CL, it\u0027s better to split this into 2 if statements",
+      "range": {
+        "startLine": 245,
+        "startChar": 7,
+        "endLine": 245,
+        "endChar": 95
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3119a3a_00c07510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "there is no need to wrap nil error. Instead create new error",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c608b60_6b52a2d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "error message is unclear. add more context, e.g. what exactly was unexpected:\n\n\"unexpected charging state: want %; got %v\"",
+      "range": {
+        "startLine": 246,
+        "startChar": 31,
+        "endLine": 246,
+        "endChar": 35
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fab1d6c_6dc36ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "nit: we can drop it and Tast will use default 100ms interval",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 26
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4144dee_415a97f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "nit: be more specific with errors, e.g.\n\nFailed to wait for expected battery state",
+      "range": {
+        "startLine": 255,
+        "startChar": 14,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30610db1_dc87d303",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-28T07:52:18Z",
+      "side": 1,
+      "message": "this is very wilco device specific which means it will mislead users of that package. So we should not include method to some general package that won\u0027t work on (almost) all Chrome OS devices.",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
