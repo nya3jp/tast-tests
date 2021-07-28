@@ -141,6 +141,25 @@ func init() {
 		PostTestTimeout: resetTimeout,
 		Parent:          "fakeDMSFamilyLink",
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkUnicornArcPolicyLogin",
+		Desc:     "Supervised Family Link user login with Unicorn account and ARC support with fakeDMS setup",
+		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", true, chrome.ARCSupported()),
+		Vars: []string{
+			"arc.parentUser",
+			"arc.parentPassword",
+			"arc.childUser",
+			"arc.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout + arc.BootTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          "fakeDMSFamilyLinkArc",
+	})
 }
 
 type familyLinkFixture struct {
