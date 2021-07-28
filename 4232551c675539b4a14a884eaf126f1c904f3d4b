@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d88ddda7_010e7562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T02:11:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f19f7442_0ac70abb",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07849eda_43dae7f0",
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "I don\u0027t mind either way. Although this test is more related to the Gaia login which is our area.",
       "parentUuid": "38d8ee81_b9849653",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4232551c675539b4a14a884eaf126f1c904f3d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020c50a7_a6955009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-28T02:11:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11071f37_3a3cef5e",
       "range": {
         "startLine": 21,
         "startChar": 4,
