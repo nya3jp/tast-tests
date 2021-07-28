@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ced3561_5f5286c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-28T01:29:59Z",
+      "side": 1,
+      "message": "LGTM for tast style. Please also wait for your teammate\u0027s review. Thanks!",
+      "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
