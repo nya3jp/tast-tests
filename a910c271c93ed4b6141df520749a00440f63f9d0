@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0506a2ac_5a682ae5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T17:08:37Z",
+      "side": 1,
+      "message": "Do we want to defer some callbacks to set the roaming properties back to whatever they were at the start of the test?",
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba3db5d_bab93d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T17:08:37Z",
+      "side": 1,
+      "message": "nit: Something a bit shorter like cleanupCtx is fine",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdd0ba2_d7981e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T17:08:37Z",
+      "side": 1,
+      "message": "We can pull this out of the else as we\u0027ll fatal if err !\u003d nil and never reach this block anyway",
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42409aae_88c5e43a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T17:08:37Z",
+      "side": 1,
+      "message": "You don\u0027t need to pass the cleanup context as an argument here; closing over it is fine",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
