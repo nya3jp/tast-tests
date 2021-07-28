@@ -25,13 +25,11 @@ func init() {
 		Params: []testing.Param{
 			{
 				Fixture:           "lacrosStartedByDataUI",
-				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 			{
 				Name:              "unstable",
 				Fixture:           "lacrosStartedByDataUI",
-				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 				ExtraAttr:         []string{"informational"},
 			},

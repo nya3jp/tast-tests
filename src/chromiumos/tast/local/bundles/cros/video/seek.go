@@ -7,13 +7,11 @@ package video
 import (
 	"context"
 	"net/http"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -66,7 +64,7 @@ func init() {
 				chromeType: lacros.ChromeTypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"720_h264.mp4", launcher.DataArtifact},
+			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			Fixture:           "chromeVideoLacros",
 		}, {
@@ -110,7 +108,7 @@ func init() {
 				chromeType: lacros.ChromeTypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"720_vp9.webm", launcher.DataArtifact},
+			ExtraData:         []string{"720_vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
 			Fixture:           "chromeVideoLacros",
 		}, {
@@ -338,15 +336,7 @@ func init() {
 func Seek(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(seekTest)
 
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if testOpt.chromeType == lacros.ChromeTypeLacros {
-		if !strings.Contains(s.TestName(), "lacros") {
-			s.Fatal("Non-lacros test run with lacros chrome-type")
-		}
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
-	_, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, testOpt.chromeType)
+	_, l, cs, err := lacros.Setup(ctx, s.FixtValue(), testOpt.chromeType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

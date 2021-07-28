@@ -26,7 +26,6 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
 		Fixture:      "lacrosStartedByData",
 	})
 }
@@ -61,9 +60,8 @@ func runOctaneTest(ctx context.Context, f launcher.FixtData, conn *chrome.Conn) 
 	return score, nil
 }
 
-func runLacrosOctaneTest(ctx context.Context, f launcher.FixtData, artifactPath string) (float64, error) {
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, artifactPath, octaneURL)
+func runLacrosOctaneTest(ctx context.Context, f launcher.FixtData) (float64, error) {
+	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, octaneURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
@@ -100,7 +98,7 @@ func Octane(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	lscore, err := runLacrosOctaneTest(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
+	lscore, err := runLacrosOctaneTest(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
 		s.Fatal("Failed to run lacros Octane test: ", err)
 	}

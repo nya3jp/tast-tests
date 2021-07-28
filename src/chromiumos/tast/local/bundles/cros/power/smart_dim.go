@@ -47,12 +47,7 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		sourceHistogramName = "PowerML.SmartDimFeature.WebPageInfoSource"
 		timeout             = 60 * time.Second
 	)
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
-	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
