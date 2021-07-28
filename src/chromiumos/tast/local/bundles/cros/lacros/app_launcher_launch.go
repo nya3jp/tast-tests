@@ -35,12 +35,7 @@ func init() {
 }
 
 func AppLauncherLaunch(ctx context.Context, s *testing.State) {
-	// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
 	f := s.FixtValue().(launcher.FixtData)
-	if err := launcher.EnsureLacrosChrome(ctx, f, s.DataPath(launcher.DataArtifact)); err != nil {
-		s.Fatal("Failed to extract lacros binary: ", err)
-	}
-
 	tconn, err := f.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
