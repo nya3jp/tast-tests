@@ -35,5 +35,5 @@ yenlinlai@google.com
 # exempted from Tast reviews since they are trivial test attribute changes
 # where Tast reviews have limited value. They have to be still approved by test
 # authors in the Contacts field.
-geohsu@chromium.org
-zwisler@google.com
+geohsu@chromium.org #{LAST_RESORT_SUGGESTION}
+zwisler@google.com #{LAST_RESORT_SUGGESTION}
