@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4181948b_2659d38d",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-28T05:59:23Z",
+      "side": 1,
+      "message": "Done. \nBy the way, I searched for the history of the \u0027discard\u0027 additions, it is an inconspicuous kernel patch [1] not associated with any particular feature set... so the names min/discard are appropriate, IMHO.  A lab machine will or will not have this patch, hard to name the boundary any other way.\n\n[1] https://patchwork.kernel.org/project/linux-block/patch/tc2bn4in8ts.fsf@vmbox.dyndns.org/",
+      "parentUuid": "3000666b_9e3ddbbc",
+      "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fa81d1f_6edb1861",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-28T01:33:15Z",
       "side": 1,
       "message": "Instead of the HasDiscard+Discard bool + value, we can make Discard a reference type:\n    Discard *ZramOpStats",
+      "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e077d789_54b18590",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-07-28T05:59:23Z",
+      "side": 1,
+      "message": "done!",
+      "parentUuid": "1fa81d1f_6edb1861",
       "revId": "bb098d5b031fc85076dac69d1d6dd2bdb68971ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
