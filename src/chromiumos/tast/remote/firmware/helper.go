@@ -168,7 +168,7 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 		}
 		if state == "S0" {
 			testing.ContextLog(ctx, "Waiting for DUT to finish booting")
-			// The machine is up, just wait for it to finish booting
+			// The machine is up, just wait for it to finish booting.
 			h.CloseRPCConnection(ctx)
 			waitBootCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 			defer cancel()
@@ -273,7 +273,7 @@ func (h *Helper) RequirePlatform(ctx context.Context) error {
 	}
 	if h.Model == "" {
 		model, err := h.Reporter.Model(ctx)
-		// Ignore error, as not all boards have a model
+		// Ignore error, as not all boards have a model.
 		if err == nil {
 			h.Model = strings.ToLower(model)
 		} else {
@@ -367,7 +367,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 		dutLocalBundleDir: filepath.Join(tmpDir, tmpLocalBundleDir),
 		dutLocalDataDir:   filepath.Join(tmpDir, tmpLocalDataDir),
 	} {
-		// Only copy the file if it exists
+		// Only copy the file if it exists.
 		if err = h.DUT.Conn().Command("test", "-x", dutSrc).Run(ctx); err == nil {
 			if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst, linuxssh.PreserveSymlinks); err != nil {
 				return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
@@ -409,8 +409,11 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 // It checks the setup of USB disk and a valid ChromeOS test image inside.
 // Downloads the test image if the image isn't the right version.
 func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) error {
-	//     self.stage_build_to_usbkey()
 	testing.ContextLog(ctx, "Validating image usbkey on servo")
+	// Power cycling the USB key helps to make it visible to the host.
+	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+		return errors.Wrap(err, "failed to power off usbkey")
+	}
 	// This call is super slow.
 	usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
 	if err != nil {
@@ -419,17 +422,17 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	if usbdev == "" {
 		return errors.New("no USB key detected")
 	}
-	// Verify that the device really exists on the servo host
+	// Verify that the device really exists on the servo host.
 	if err = h.ServoProxy.RunCommand(ctx, true, "fdisk", "-l", usbdev); err != nil {
 		return errors.Wrapf(err, "validate usb key at %q", usbdev)
 	}
 
 	testing.ContextLog(ctx, "Checking ChromeOS image name on usbkey")
 	mountPath := fmt.Sprintf("/media/servo_usb/%d", h.ServoProxy.GetPort())
-	// Unmount whatever might be mounted
+	// Unmount whatever might be mounted.
 	h.ServoProxy.RunCommandQuiet(ctx, true, "umount", "-q", mountPath)
 
-	// ChromeOS root fs is in /dev/sdx3
+	// ChromeOS root fs is in /dev/sdx3.
 	mountSrc := usbdev + "3"
 	if err = h.ServoProxy.RunCommand(ctx, true, "mkdir", "-p", mountPath); err != nil {
 		return errors.Wrapf(err, "mkdir failed at %q", mountPath)
@@ -466,8 +469,8 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return nil
 	}
 	testing.ContextLogf(ctx, "Current build on USB (%s) differs from DUT (%s), proceed with download", releaseBuilderPath, dutBuilderPath)
-	// TODO if needed, recovery images are at .../recovery_image.tar.xz
-	// TODO, change to Config.BuildArtifactsURL if that becomes accessible
+	// TODO if needed, recovery images are at .../recovery_image.tar.xz.
+	// TODO, change to Config.BuildArtifactsURL if that becomes accessible.
 	testImageURL := "gs://chromeos-image-archive/" + dutBuilderPath + "/chromiumos_test_image.tar.xz"
 	reader, err := cloudStorage.Open(ctx, testImageURL)
 	if err != nil {
@@ -480,7 +483,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	}
 	tempname := strings.TrimSuffix(string(tempnameBytes), "\n")
 	defer h.ServoProxy.RunCommand(ctx, false, "rm", tempname)
-	// Copy to the servo host and untar
+	// Copy to the servo host and untar.
 	if err = h.ServoProxy.InputCommand(ctx, false, reader, "tar", "-Jxvf", "-",
 		"-C", filepath.Dir(string(tempname)),
 		fmt.Sprintf("--transform=s/chromiumos_test_image.bin/%s/", filepath.Base(tempname)),
