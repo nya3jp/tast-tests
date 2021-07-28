@@ -169,8 +169,8 @@ window.Tast = class Tast {
       const imageData = ctx.getImageData(x, y, 1, 1);
       const [r, g, b] = imageData.data;
       const hue = getHue(r, g, b);
-      // 80 <= hue <= 140 according to target green pattern.
-      return 80 <= hue && hue <= 140;
+      // 60 <= hue <= 140 according to target green pattern.
+      return 60 <= hue && hue <= 140;
     };
 
     // Check all boundary pixels fall on target pattern.
