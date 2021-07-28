@@ -105,6 +105,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31fbcb3_bbf1bffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-07-28T18:36:30Z",
+      "side": 1,
+      "message": "LGTM % one comment.",
+      "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6da73455_e481f290",
@@ -118,6 +135,29 @@
       "writtenOn": "2021-07-28T00:16:54Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93120d57_210325f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-07-28T18:36:30Z",
+      "side": 1,
+      "message": "perhaps IDR frame?",
+      "range": {
+        "startLine": 1198,
+        "startChar": 57,
+        "endLine": 1198,
+        "endChar": 68
+      },
       "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
