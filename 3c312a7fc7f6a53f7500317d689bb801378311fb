@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6692d3f3_e07e46b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "8dc43d88_2dd318c8",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31ec605a_75b4161f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-28T07:52:18Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 42,
+        "startChar": 66,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e2e978_8e1a8466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "31ec605a_75b4161f",
       "range": {
         "startLine": 42,
         "startChar": 66,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe78719_8c5e42c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "It will be successful, as long as it is above 15 %. [ Due to the way in tast we are parsing battery status but that\u0027s not ideal I would say]\nIn autotest, I think they capped the higher limit to 95% so that we can detect DUT is charging. (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/labpack/files/server/site_tests/policy_DeviceChargingServer/policy_DeviceChargingServer.py;l\u003d22;bpv\u003d0)\n```\n# 100 %\nlocalhost ~ # dump_power_status\nline_power_connected 1\nline_power_type Mains\nline_power_current 0.00\nbattery_present 1\nbattery_percent 100.00\nbattery_display_percent 100.00\nbattery_charge 5.86\nbattery_charge_full 5.86\nbattery_charge_full_design 5.96\nbattery_current 0.00\nbattery_energy 66.84\nbattery_energy_rate 0.01\nbattery_voltage 12.70\nbattery_status Full\nbattery_discharging 0\n```\n```\nNot 100%, discharging\n\nbattery_status Discharging\nbattery_discharging 1\n```\n\nAs you can see battery_status has three fields [\"Charging\", \"Full\", \"Discharging\"] and during parsing we are stating DUT is charging if it is not discharging (kinda reverse logic). That\u0027s definitely true, but not ideal.\n\nThat\u0027s the reason. However, I think it\u0027s also making the test feel like more real world.\n\nHow about choosing a uniform random between 90 to 100?",
+      "parentUuid": "7e7330eb_d7937bf3",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "026212d6_8b7e37c8",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-28T07:52:18Z",
       "side": 1,
       "message": "nit: do we really need this comment?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 57
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0738f605_0b534967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Nope, saw this in a lot of files. Anyway, removed.",
+      "parentUuid": "026212d6_8b7e37c8",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50e8a14_bac8def6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef16607e_a489e27e",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 22
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b121e20_cce88eea",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-28T07:52:18Z",
       "side": 1,
       "message": "as mentioned in another CL, it\u0027s better to split this into 2 if statements",
+      "range": {
+        "startLine": 245,
+        "startChar": 7,
+        "endLine": 245,
+        "endChar": 95
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf642b7_a43e23ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "3b121e20_cce88eea",
       "range": {
         "startLine": 245,
         "startChar": 7,
@@ -185,6 +329,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41aa15af_45e54783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c608b60_6b52a2d1",
+      "range": {
+        "startLine": 246,
+        "startChar": 31,
+        "endLine": 246,
+        "endChar": 35
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aff232a_576da61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "new doesn\u0027t support formatted string, just trying to avoid another fmt.Sprintf.\nAnyway, Updated to errors.New",
+      "parentUuid": "d3119a3a_00c07510",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fab1d6c_6dc36ad8",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-07-28T07:52:18Z",
       "side": 1,
       "message": "nit: we can drop it and Tast will use default 100ms interval",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 26
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31095bd6_ea962a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "sounds good to me, since the bundle will run locally.",
+      "parentUuid": "1fab1d6c_6dc36ad8",
       "range": {
         "startLine": 252,
         "startChar": 0,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7454aa_c04e9240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/device_power_peak_shift.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Cool",
+      "parentUuid": "e4144dee_415a97f8",
+      "range": {
+        "startLine": 255,
+        "startChar": 14,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30610db1_dc87d303",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-07-28T07:52:18Z",
       "side": 1,
       "message": "this is very wilco device specific which means it will mislead users of that package. So we should not include method to some general package that won\u0027t work on (almost) all Chrome OS devices.",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "3c312a7fc7f6a53f7500317d689bb801378311fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d4ad23_2143dc21",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-28T08:39:36Z",
+      "side": 1,
+      "message": "Yeah that\u0027s make sense. where do you think we should put it? (btw, it will again be required in advanced battery charge)",
+      "parentUuid": "30610db1_dc87d303",
       "range": {
         "startLine": 84,
         "startChar": 15,
