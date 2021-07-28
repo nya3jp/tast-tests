@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "178e5768_19ecc988",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-28T18:42:16Z",
+      "side": 1,
+      "message": "nit: comments should end with a period",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 71
+      },
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47a7bc8_ce663438",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-28T18:42:16Z",
+      "side": 1,
+      "message": "A little confused about this named return parameter, will it actually be returned anywhere? I don\u0027t see any naked returns in the function so I wasn\u0027t sure about it",
+      "range": {
+        "startLine": 490,
+        "startChar": 6,
+        "endLine": 490,
+        "endChar": 12
+      },
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81341ec3_2a7fdf1f",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 2
@@ -50,6 +96,29 @@
       "side": 1,
       "message": "Ah, I see now. I was unable to find a `return nil` branchpoint, and now I see it at L468.\n\nI agree that those options would be preferable. Well, if this winds up as a pain point, then I\u0027m sure we\u0027ll have compelling data to prioritize that change.",
       "parentUuid": "56323df8_9834c3c0",
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61aa7145_ee9322e6",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-28T18:42:16Z",
+      "side": 1,
+      "message": "Do the tests/fixtures/etc that call this function have a long enough deadline to handle this case? Might be worth double-checking and adjusting timeouts if necessary, otherwise they might fail here due to reaching the context deadline",
+      "range": {
+        "startLine": 511,
+        "startChar": 47,
+        "endLine": 511,
+        "endChar": 57
+      },
       "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
