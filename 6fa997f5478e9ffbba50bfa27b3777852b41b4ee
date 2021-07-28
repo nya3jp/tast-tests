@@ -16,6 +16,69 @@
       "message": "Verified on Jinlon, CoachZ and broken Voxel",
       "revId": "6fa997f5478e9ffbba50bfa27b3777852b41b4ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6d7851_42586083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-28T00:13:13Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "6fa997f5478e9ffbba50bfa27b3777852b41b4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d094ea52_37daa6a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-28T00:13:13Z",
+      "side": 1,
+      "message": "Just check if you really want to fail the test if error in cleanup.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "6fa997f5478e9ffbba50bfa27b3777852b41b4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a29636_91772141",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-28T00:13:13Z",
+      "side": 1,
+      "message": "nit: should start with lowercase. btw, nice to use the same format `failed to`",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "6fa997f5478e9ffbba50bfa27b3777852b41b4ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
