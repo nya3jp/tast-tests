@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a774f2b_4ec2c4d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-07-28T03:15:15Z",
+      "side": 1,
+      "message": "hi menghuan@,\n\nI\u0027d like to get your vote first to see if this change is reasonable to you.",
+      "revId": "ea13cf0ceb898a62854a08b8bf01c4469e8b05e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
