@@ -151,11 +151,6 @@ func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtDat
 		return nil, errors.Wrap(err, "failed to show hot seat")
 	}
 
-	// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
-	if err := launcher.EnsureLacrosChrome(ctx, f, artifactPath); err != nil {
-		return nil, errors.Wrap(err, "failed to extract lacros binary")
-	}
-
 	testing.ContextLog(ctx, "Launch lacros via Shelf")
 	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
