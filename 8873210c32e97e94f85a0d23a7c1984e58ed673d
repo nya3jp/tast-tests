@@ -139,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f640b5_e3415602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-07-28T20:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da73455_e481f290",
+      "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93120d57_210325f2",
@@ -152,6 +170,30 @@
       "writtenOn": "2021-07-28T18:36:30Z",
       "side": 1,
       "message": "perhaps IDR frame?",
+      "range": {
+        "startLine": 1198,
+        "startChar": 57,
+        "endLine": 1198,
+        "endChar": 68
+      },
+      "revId": "8873210c32e97e94f85a0d23a7c1984e58ed673d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af9269f_c47204b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-07-28T20:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93120d57_210325f2",
       "range": {
         "startLine": 1198,
         "startChar": 57,
