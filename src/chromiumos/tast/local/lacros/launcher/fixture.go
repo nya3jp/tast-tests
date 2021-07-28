@@ -259,7 +259,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	switch f.mode {
 	case PreExist:
 		if !deployed {
-			if err := prepareLacrosChromeBinary(ctx, s); err != nil {
+			if err := prepareLacrosChromeBinary(ctx, s, f.lacrosPath); err != nil {
 				s.Fatal("Failed to prepare lacros-chrome, err")
 			}
 		}
