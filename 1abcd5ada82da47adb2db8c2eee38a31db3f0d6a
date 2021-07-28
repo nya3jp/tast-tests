@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c588764_69cfed85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-28T08:42:06Z",
+      "side": 1,
+      "message": "could you add more background about this CL?\nI.e., why is this necessary?\nIf long description is needed, nice to have a tracking bug.",
+      "revId": "1abcd5ada82da47adb2db8c2eee38a31db3f0d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51568288_62c02d11",
