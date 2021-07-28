@@ -152,6 +152,30 @@
       },
       "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf9dbe8_e9800f63",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-28T09:40:14Z",
+      "side": 1,
+      "message": "I made a comment at crrev.com/c/3058633.",
+      "parentUuid": "b7ad7b25_ee4c530f",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 23
+      },
+      "revId": "830bdaf33e3bcf01e109702cba4f0067c485c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
