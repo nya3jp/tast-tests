@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d26b63_59fe4e01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-28T18:26:30Z",
+      "side": 1,
+      "message": "This seem good! Just one typo nit.",
+      "revId": "c4cb7bdc38709e6fa0009196061a33821c6fef82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f994c01b_dbf83b9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_check_write_protect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-28T18:26:30Z",
+      "side": 1,
+      "message": "nit: reported",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "c4cb7bdc38709e6fa0009196061a33821c6fef82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
