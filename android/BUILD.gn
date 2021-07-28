@@ -6,6 +6,7 @@ group("all") {
   deps = [
     "ArcAccessibilityTest:ArcAccessibilityTest",
     "ArcAnimationPerformanceTest:ArcAnimationPerformanceTest",
+    "ArcStandardizedKeyboardTypingTest:ArcStandardizedKeyboardTypingTest",
     "ArcAppValidityTest:ArcAppValidityTest",
     "ArcAudioTest:ARCAudioTest",
     "ArcBackupTest:ArcBackupTest",

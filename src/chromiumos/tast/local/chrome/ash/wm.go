@@ -274,6 +274,20 @@ func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 	return SetWindowState(ctx, tconn, window.ID, et)
 }
 
+// SetARCAppWindowStateAndWait sends WM event to ARC app window to change its window state, waits for it to stop animating, and returns the expected new state type.
+func SetARCAppWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, pkgName string, expectedState WindowStateType) (WindowStateType, error) {
+	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "failed to get window information")
+	}
+
+	if err := SetWindowStateAndWait(ctx, tconn, window.ID, expectedState); err != nil {
+		return WindowStateNormal, err
+	}
+
+	return expectedState, nil
+}
+
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
 // Currently, this returns information on the top window of a specified app.
 func GetARCAppWindowInfo(ctx context.Context, tconn *chrome.TestConn, pkgName string) (*Window, error) {
