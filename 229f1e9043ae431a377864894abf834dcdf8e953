@@ -39,6 +39,30 @@
       },
       "revId": "229f1e9043ae431a377864894abf834dcdf8e953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca84336_cbb853aa",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-07-28T15:35:34Z",
+      "side": 1,
+      "message": "Good point. Fixed.",
+      "parentUuid": "69067ab1_7def4167",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "229f1e9043ae431a377864894abf834dcdf8e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
