@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfbe45cb_ee03cb34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T18:52:02Z",
+      "side": 1,
+      "message": "Not sure exactly what you mean by this?",
+      "parentUuid": "5dffa40d_4cdd23cf",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ba3db5d_bab93d38",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
         "patchSetId": 3
@@ -96,6 +120,30 @@
       "side": 1,
       "message": "Ack. This code will also be removed once Madhav provides InitDut",
       "parentUuid": "8ba3db5d_bab93d38",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25cf8a24_82a86f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T18:52:02Z",
+      "side": 1,
+      "message": "Does the profile cache deletion not also reset AutoConnect?",
+      "parentUuid": "26cde32c_56fdf087",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "I am not sure what context I should pass into helper.SetServiceAutoConnect(ctx, true);\n\nCould you please elaborate?",
       "parentUuid": "42409aae_88c5e43a",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d17f61a4_e57440e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-28T18:52:02Z",
+      "side": 1,
+      "message": "For example, you close over \"helper\" here without passing it in (when calling helper.SetServiceAutoConnect). You can do the same with ctxForAutoConnectCleanUp and just reference it by its name outside of this function -- things in scope when the function is declared are also in scope inside its body.",
+      "parentUuid": "19155779_2d914c0a",
       "range": {
         "startLine": 41,
         "startChar": 8,
