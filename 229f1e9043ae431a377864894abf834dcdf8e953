@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e977c5_5cd26e57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-28T15:16:04Z",
+      "side": 1,
+      "message": "Looks Good, I would just like the comment to be a bit more clear.",
+      "revId": "229f1e9043ae431a377864894abf834dcdf8e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69067ab1_7def4167",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-28T15:16:04Z",
+      "side": 1,
+      "message": "// GetHardwareWriteProtectState is used to obtain actual hardware write protection state as reported by the FPMCU using  ectool.\n// This is not the opposite of SetHardwareWriteProtect.\n\nThis function needs to be identified as \"different\", since it does not just do the opposite of SetHardwareWriteProtect. FOr instance this function will fail is the FPMCU has a bad FW image on it.",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "229f1e9043ae431a377864894abf834dcdf8e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
