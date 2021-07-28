@@ -65,6 +65,7 @@ func init() {
 		}, {
 			Name:              "nvme_self_test",
 			Val:               newRoutineParams(croshealthd.RoutineNVMESelfTest),
+			Timeout:           3 * time.Minute,
 			ExtraSoftwareDeps: []string{"nvme"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(),
 				// TODO(http://b/175305207): some zork nvme controllers lock up
