@@ -54,22 +54,6 @@ func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, command
 	}
 }
 
-func toggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
-	var ret []pb.GBBFlag
-	found := false
-	for _, v := range flags {
-		if v == flag {
-			found = true
-		} else {
-			ret = append(ret, v)
-		}
-	}
-	if !found {
-		ret = append(ret, flag)
-	}
-	return ret
-}
-
 // ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
@@ -144,6 +128,22 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	// We need to change some GBB flag, but it doesn't really matter which.
 	// Toggle DEV_SCREEN_SHORT_DELAY
+	toggle := func(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
+		var ret []pb.GBBFlag
+		found := false
+		for _, v := range flags {
+			if v == flag {
+				found = true
+			} else {
+				ret = append(ret, v)
+			}
+		}
+		if !found {
+			ret = append(ret, flag)
+		}
+		return ret
+	}
+
 	cf = toggle(cf, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
 	sf = toggle(sf, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
 	if err := img.ClearAndSetGBBFlags(cf, sf); err != nil {

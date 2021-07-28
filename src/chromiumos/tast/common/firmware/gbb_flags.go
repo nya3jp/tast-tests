@@ -8,17 +8,25 @@ import (
 	"reflect"
 	"sort"
 
+	"chromiumos/tast/errors"
 	pb "chromiumos/tast/services/cros/firmware"
 )
 
 // allGBBFlags has all the GBB Flags in sorted order.
 var allGBBFlags []pb.GBBFlag
 
+// faftClearingGBBFlags has all the GBB Flags in sorted order, except for DISABLE_EC_SOFTWARE_SYNC
+var faftClearingGBBFlags []pb.GBBFlag
+
 func init() {
 	for _, v := range pb.GBBFlag_value {
 		allGBBFlags = append(allGBBFlags, pb.GBBFlag(v))
+		if pb.GBBFlag(v) != pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC {
+			faftClearingGBBFlags = append(faftClearingGBBFlags, pb.GBBFlag(v))
+		}
 	}
 	sort.Slice(allGBBFlags, func(i, j int) bool { return allGBBFlags[i] < allGBBFlags[j] })
+	sort.Slice(faftClearingGBBFlags, func(i, j int) bool { return faftClearingGBBFlags[i] < faftClearingGBBFlags[j] })
 }
 
 // AllGBBFlags returns all the GBB Flags in order by their int values.
@@ -29,6 +37,11 @@ func AllGBBFlags() []pb.GBBFlag {
 // FAFTGBBFlags returns the flags that faft sets in firmware_test.py before starting a test.
 func FAFTGBBFlags() []pb.GBBFlag {
 	return []pb.GBBFlag{pb.GBBFlag_FAFT_KEY_OVERIDE, pb.GBBFlag_ENTER_TRIGGERS_TONORM}
+}
+
+// FAFTClearingGBBFlags returns the flags that faft clears in firmware_test.py before starting a test.
+func FAFTClearingGBBFlags() []pb.GBBFlag {
+	return faftClearingGBBFlags
 }
 
 // RebootRequiredGBBFlags returns flags that require a DUT reboot after they are changed.
@@ -42,6 +55,30 @@ func GBBFlagsStatesEqual(a, b pb.GBBFlagsState) bool {
 	canonicalB := canonicalGBBFlagsState(b)
 
 	return reflect.DeepEqual(canonicalA.Clear, canonicalB.Clear) && reflect.DeepEqual(canonicalA.Set, canonicalB.Set)
+}
+
+// GBBFlagsVerifyExpected if the `want` flag state has been applied to `current`.
+func GBBFlagsVerifyExpected(want, current pb.GBBFlagsState) error {
+	want = canonicalGBBFlagsState(want)
+	current = canonicalGBBFlagsState(current)
+
+	wantClear := makeFlagsMap(want.Clear)
+	wantSet := makeFlagsMap(want.Set)
+	currentSet := makeFlagsMap(current.Set)
+
+	for _, f := range allGBBFlags {
+		_, inWantClear := wantClear[f]
+		_, inWantSet := wantSet[f]
+		_, inCurrentSet := currentSet[f]
+		if inWantClear && inCurrentSet {
+			return errors.Errorf("GBB flag %s incorrect, got: set, want: cleared", f)
+		}
+		if inWantSet && !inCurrentSet {
+			return errors.Errorf("GBB flag %s incorrect, got: cleared, want: set", f)
+		}
+	}
+	return nil
+
 }
 
 // GBBFlagsChanged determines if any of the flags definitely have changed between a and b.
