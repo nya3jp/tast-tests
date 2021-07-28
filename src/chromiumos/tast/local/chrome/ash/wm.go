@@ -52,6 +52,16 @@ const (
 	WMEventSnapRight  WMEventType = "WMEventSnapRight"
 )
 
+// WindowStateTypeToEventType represents the mapping between window states and the corresponding event type.
+var WindowStateTypeToEventType = map[WindowStateType]WMEventType{
+	WindowStateNormal:       WMEventNormal,
+	WindowStateMaximized:    WMEventMaximize,
+	WindowStateMinimized:    WMEventMinimize,
+	WindowStateFullscreen:   WMEventFullscreen,
+	WindowStateLeftSnapped:  WMEventSnapLeft,
+	WindowStateRightSnapped: WMEventSnapRight,
+}
+
 // SnapPosition represents the different snap position in split view.
 type SnapPosition string
 
