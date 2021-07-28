@@ -165,7 +165,8 @@ func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) er
 	_, err := os.Stat(f.LacrosPath)
 	if os.IsNotExist(err) {
 		testing.ContextLog(ctx, "Extracting lacros binary")
-		tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
+		tarCmd := testexec.CommandContext(ctx, "sudo", "-E", "-u", "chronos", "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
+
 		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to untar test artifacts")
 		}
@@ -208,11 +209,15 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		return nil, errors.Wrap(err, "failed to chown user data dir")
 	}
 
+	// Set user to chronos, since we run lacros as chronos.
+	if err := os.Chown(userDataDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+		return nil, errors.Wrap(err, "failed to chown user data dir")
+	}
+
 	l := &LacrosChrome{lacrosPath: f.LacrosPath, userDataDir: userDataDir}
 	extList := strings.Join(f.Chrome.DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
-		"--no-sandbox",                             // Disable sandbox for now
 		"--no-first-run",                           // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + l.userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                             // Language
@@ -230,7 +235,8 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome.LacrosExtraArgs()...)
 
-	l.cmd = testexec.CommandContext(ctx, "/usr/local/bin/python3", append([]string{"/usr/local/bin/mojo_connection_lacros_launcher.py",
+	l.cmd = testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
+		"/usr/local/bin/python3", "/usr/local/bin/mojo_connection_lacros_launcher.py",
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath, "chrome")}, args...)...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
