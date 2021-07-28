@@ -58,7 +58,7 @@ func RecMode() testing.Precondition {
 
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
-	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
+	flags := pb.GBBFlagsState{Clear: common.FAFTClearingGBBFlags(), Set: common.FAFTGBBFlags()}
 	if forceDev {
 		flags.Set = append(flags.Set, pb.GBBFlag_FORCE_DEV_SWITCH_ON)
 	}

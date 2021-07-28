@@ -54,22 +54,6 @@ func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, command
 	}
 }
 
-func toggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
-	var ret []pb.GBBFlag
-	found := false
-	for _, v := range flags {
-		if v == flag {
-			found = true
-		} else {
-			ret = append(ret, v)
-		}
-	}
-	if !found {
-		ret = append(ret, flag)
-	}
-	return ret
-}
-
 // ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
@@ -99,6 +83,10 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	if err = h.RequireBiosServiceClient(ctx); err != nil {
 		s.Fatal("Requiring BiosServiceClient: ", err)
+	}
+
+	if err = h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		s.Fatal("Failed to remove ccd watchdog: ", err)
 	}
 
 	s.Log("Getting GBB flags from BiosService")
@@ -138,12 +126,28 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	}
 	// Flashrom restarts the dut, so wait for it to boot
 	s.Log("Waiting for reboot")
-	if err := h.DUT.WaitConnect(ctx); err != nil {
+	if err := h.WaitConnect(ctx); err != nil {
 		s.Fatalf("Failed to connect to DUT: %s", err)
 	}
 
 	// We need to change some GBB flag, but it doesn't really matter which.
 	// Toggle DEV_SCREEN_SHORT_DELAY
+	toggle := func(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
+		var ret []pb.GBBFlag
+		found := false
+		for _, v := range flags {
+			if v == flag {
+				found = true
+			} else {
+				ret = append(ret, v)
+			}
+		}
+		if !found {
+			ret = append(ret, flag)
+		}
+		return ret
+	}
+
 	cf = toggle(cf, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
 	sf = toggle(sf, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
 	if err := img.ClearAndSetGBBFlags(cf, sf); err != nil {
@@ -163,7 +167,7 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	// Flashrom restarts the dut, so wait for it to boot
 	s.Log("Waiting for reboot")
-	if err := h.DUT.WaitConnect(ctx); err != nil {
+	if err := h.WaitConnect(ctx); err != nil {
 		s.Fatalf("Failed to connect to DUT: %s", err)
 	}
 

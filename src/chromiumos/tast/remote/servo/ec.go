@@ -20,11 +20,23 @@ const (
 	ECUARTCmd          StringControl = "ec_uart_cmd"
 	ECUARTRegexp       StringControl = "ec_uart_regexp"
 	ECUARTStream       StringControl = "ec_uart_stream"
+	DUTPDDataRole      StringControl = "dut_pd_data_role"
 )
 
 // These controls accept only "on" and "off" as values.
 const (
 	ECUARTCapture OnOffControl = "ec_uart_capture"
+)
+
+// USBCDataRole is a USB-C data role.
+type USBCDataRole string
+
+// USB-C data roles.
+const (
+	// UFP is Upward facing partner, i.e. a peripheral. The servo should normally be in this role.
+	UFP USBCDataRole = "UFP"
+	// DFP is Downward facing partner, i.e. a host. The DUT should normally be in this role.
+	DFP USBCDataRole = "DFP"
 )
 
 // RunECCommand runs the given command on the EC on the device.
@@ -59,16 +71,11 @@ func (s *Servo) ECHibernate(ctx context.Context) error {
 	// hibernateDelay is the time after the EC hibernate command where it still writes output
 	const hibernateDelay = 1 * time.Second
 
-	servoType, err := s.GetServoType(ctx)
+	_, err := s.GetServoType(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get servo type")
 	}
-	// SuzyQ reports as ccd_cr50, and doesn't have a watchdog named CCD.
-	if servoType == "ccd_cr50" {
-		if err = s.WatchdogRemove(ctx, WatchdogMain); err != nil {
-			return errors.Wrap(err, "failed to remove watchdog for ccd")
-		}
-	} else if s.hasCCD {
+	if s.hasCCD {
 		if err = s.WatchdogRemove(ctx, WatchdogCCD); err != nil {
 			return errors.Wrap(err, "failed to remove watchdog for ccd")
 		}
@@ -88,4 +95,10 @@ func (s *Servo) ECHibernate(ctx context.Context) error {
 		return errors.Wrap(err, "unexpected EC error")
 	}
 	return nil
+}
+
+// SetDUTPDDataRole tries to find the port attached to the servo, and performs a data role swap if the role doesn't match `role`.
+// Will fail if there is no chromeos EC.
+func (s *Servo) SetDUTPDDataRole(ctx context.Context, role USBCDataRole) error {
+	return s.SetString(ctx, DUTPDDataRole, string(role))
 }
