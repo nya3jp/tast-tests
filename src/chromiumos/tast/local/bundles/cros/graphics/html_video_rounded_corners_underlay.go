@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -36,7 +35,6 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{launcher.DataArtifact},
 			Fixture:           "chromeGraphicsLacros",
 			Val:               lacros.ChromeTypeLacros,
 		}},
@@ -49,12 +47,7 @@ func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-	var artifactPath string
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		artifactPath = s.DataPath(launcher.DataArtifact)
-	}
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

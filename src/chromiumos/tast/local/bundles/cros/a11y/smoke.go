@@ -51,18 +51,12 @@ func init() {
 
 func Smoke(ctx context.Context, s *testing.State) {
 	ct := s.Param().(lacros.ChromeType)
-	artifactPath := ""
 	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", ct)
-	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures
-	// to simplify the extra steps before calling lacros.Setup
 	if ct == lacros.ChromeTypeLacros {
-		if s.FixtValue().(launcher.FixtData).Mode == launcher.PreExist {
-			artifactPath = s.DataPath(launcher.DataArtifact)
-		}
 		// Clean up user data dir to ensure a clean start.
 		os.RemoveAll(launcher.LacrosUserDataDir)
 	}
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, ct)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), ct)
 	if err != nil {
 		s.Fatal("Failed to initialize setup: ", err)
 	}

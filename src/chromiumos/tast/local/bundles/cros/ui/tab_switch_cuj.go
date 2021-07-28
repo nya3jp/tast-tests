@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -33,7 +32,6 @@ func init() {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "loggedInToCUJUserLacros",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})

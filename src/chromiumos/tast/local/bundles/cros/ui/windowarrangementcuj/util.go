@@ -55,11 +55,8 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 		}
 		cs = cr
 	} else {
-		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-		artifactPath := s.DataPath(launcher.DataArtifact)
-
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, testParam.ChromeType)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.ChromeType)
 		if err != nil {
 			return nil, nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
 		}
