@@ -310,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92197d07_157f01af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-28T20:10:32Z",
+      "side": 1,
+      "message": "Ended up finding the right expression.",
+      "parentUuid": "529f434b_eeda2d8d",
+      "range": {
+        "startLine": 20,
+        "startChar": 73,
+        "endLine": 20,
+        "endChar": 121
+      },
+      "revId": "4309c846ac794f698018e9b0aec845ef7eac062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fcb1775_ea9628ab",
