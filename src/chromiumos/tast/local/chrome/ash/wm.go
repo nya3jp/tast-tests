@@ -52,6 +52,16 @@ const (
 	WMEventSnapRight  WMEventType = "WMEventSnapRight"
 )
 
+// WindowStateTypeToEventType represents the mapping between window states and the corresponding event type.
+var WindowStateTypeToEventType = map[WindowStateType]WMEventType{
+	WindowStateNormal:       WMEventNormal,
+	WindowStateMaximized:    WMEventMaximize,
+	WindowStateMinimized:    WMEventMinimize,
+	WindowStateFullscreen:   WMEventFullscreen,
+	WindowStateLeftSnapped:  WMEventSnapLeft,
+	WindowStateRightSnapped: WMEventSnapRight,
+}
+
 // SnapPosition represents the different snap position in split view.
 type SnapPosition string
 
@@ -272,6 +282,20 @@ func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 		return WindowStateNormal, err
 	}
 	return SetWindowState(ctx, tconn, window.ID, et)
+}
+
+// SetARCAppWindowStateAndWait sends WM event to ARC app window to change its window state, waits for it to stop animating, and returns the expected new state type.
+func SetARCAppWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, pkgName string, expectedState WindowStateType) (WindowStateType, error) {
+	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "failed to get window information")
+	}
+
+	if err := SetWindowStateAndWait(ctx, tconn, window.ID, expectedState); err != nil {
+		return WindowStateNormal, err
+	}
+
+	return expectedState, nil
 }
 
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
