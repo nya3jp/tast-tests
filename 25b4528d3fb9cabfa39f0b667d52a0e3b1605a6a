@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c96212a_9065bf03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-29T02:36:59Z",
+      "side": 1,
+      "message": "Thanks for fixing the scripts. Yes this is for debugging purpose and will not be merged. Uploaded patch to fix these issues.",
+      "revId": "25b4528d3fb9cabfa39f0b667d52a0e3b1605a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
