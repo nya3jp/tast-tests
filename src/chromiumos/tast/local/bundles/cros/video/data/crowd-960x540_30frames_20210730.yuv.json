@@ -1,0 +1,7 @@
+{
+    "pixel_format": "I420",
+    "width": 960,
+    "height": 540,
+    "num_frames": 30,
+    "frame_rate": 30
+}

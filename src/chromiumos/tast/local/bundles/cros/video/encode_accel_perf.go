@@ -18,6 +18,7 @@ import (
 const (
 	crowd180p  = "crowd-320x180_30frames.vp9.webm"
 	crowd360p  = "crowd-640x360_30frames.vp9.webm"
+	crowd540p  = "crowd-960x540_30frames_20210730.vp9.webm"
 	crowd720p  = "crowd-1280x720_30frames.vp9.webm"
 	crowd1080p = "crowd-1920x1080_30frames.vp9.webm"
 	crowd2160p = "crowd-3840x2160_30frames.vp9.webm"
@@ -152,6 +153,33 @@ func init() {
 			Val:               encode.MakeTestOptions(crowd360p, videotype.VP9Prof),
 			ExtraData:         encode.TestData(crowd360p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name:              "vp9_540p",
+			Val:               encode.MakeTestOptions(crowd540p, videotype.VP9Prof),
+			ExtraData:         encode.TestData(crowd540p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name:              "vp9_540p_l1t2",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L1T2"),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraData:         encode.TestData(crowd540p),
+		}, {
+			Name:              "vp9_540p_l1t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L1T3"),
+			ExtraData:         encode.TestData(crowd540p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+		}, {
+			Name:              "vp9_540p_l2t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L2T3"),
+			ExtraData:         encode.TestData(crowd540p),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+		}, {
+			Name:              "vp9_540p_l3t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L3T3"),
+			ExtraData:         encode.TestData(crowd540p),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 		}, {
 			Name:              "vp9_720p",
 			Val:               encode.MakeTestOptions(crowd720p, videotype.VP9Prof),
