@@ -207,7 +207,7 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 		mayBeLaterText         = "MAYBE LATER"
 		composeID              = "com.microsoft.office.outlook:id/compose_fab"
 		allowButtonText        = "Allow"
-		scrollLayoutClassName  = "android.webkit.WebView"
+		scrollLayoutClassName  = "android.widget.FrameLayout"
 		scrollLayoutText       = "Sign in - Google Accounts"
 		googleIconDes          = "Setup Google account."
 	)
@@ -287,9 +287,17 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 		s.Fatal("Failed to click on noThanksButton: ", err)
 	}
 
-	// Click on next button.
+	// Scroll until next button is visible.
 	clickOnNextButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+nextText))
-	if err := clickOnNextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	scrollLayout := d.Object(ui.ClassName(scrollLayoutClassName))
+	if err := scrollLayout.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("scrollLayout doesn't exist: ", err)
+	} else if err := scrollLayout.ScrollTo(ctx, clickOnNextButton); err != nil {
+		s.Error("Failed to scroll to reach  clickOnNextButton: ", err)
+	}
+
+	// Click on next button.
+	if err := clickOnNextButton.Exists(ctx); err != nil {
 		s.Log("clickOnNextButton doesn't exist: ", err)
 	} else if err := clickOnNextButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnNextButton: ", err)
@@ -321,10 +329,17 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 		s.Fatal("Failed to enter enterPassword: ", err)
 	}
 	s.Log("Entered password")
+	// Scroll until next button is visible.
+	clickOnNextButton = d.Object(ui.ID(nextID))
+	scrollLayout = d.Object(ui.ClassName(scrollLayoutClassName))
+	if err := scrollLayout.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("scrollLayout doesn't exist: ", err)
+	} else if err := scrollLayout.ScrollTo(ctx, clickOnNextButton); err != nil {
+		s.Error("Failed to scroll to reach clickOnNextButton: ", err)
+	}
 
 	// Click on next button.
-	clickOnNextButton = d.Object(ui.ID(nextID))
-	if err := clickOnNextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := clickOnNextButton.Exists(ctx); err != nil {
 		s.Log("clickOnNextButton doesn't exist: ", err)
 	} else if err := clickOnNextButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnNextButton: ", err)
@@ -358,7 +373,7 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 		mayBeLaterText         = "MAYBE LATER"
 		composeID              = "com.microsoft.office.outlook:id/compose_fab"
 		allowButtonText        = "Allow"
-		scrollLayoutClassName  = "android.webkit.WebView"
+		scrollLayoutClassName  = "android.widget.FrameLayout"
 		scrollLayoutText       = "Sign in - Google Accounts"
 	)
 
@@ -413,9 +428,18 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
-	// Click on next button.
+	// Scroll until next button is visible.
 	clickOnNextButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+nextText))
-	if err := clickOnNextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	scrollLayout := d.Object(ui.ClassName(scrollLayoutClassName))
+	if err := scrollLayout.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("scrollLayout doesn't exist: ", err)
+	} else if err := scrollLayout.ScrollTo(ctx, clickOnNextButton); err != nil {
+		s.Error("Failed to scroll to reach  clickOnNextButton: ", err)
+	}
+
+	// Click on next button.
+	clickOnNextButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+nextText))
+	if err := clickOnNextButton.Exists(ctx); err != nil {
 		s.Log("clickOnNextButton doesn't exist: ", err)
 	} else if err := clickOnNextButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnNextButton: ", err)
@@ -448,9 +472,17 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 	}
 	s.Log("Entered password")
 
-	// Click on next button.
+	// Scroll until next button is visible.
 	clickOnNextButton = d.Object(ui.ID(nextID))
-	if err := clickOnNextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	scrollLayout = d.Object(ui.ClassName(scrollLayoutClassName))
+	if err := scrollLayout.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("scrollLayout doesn't exist: ", err)
+	} else if err := scrollLayout.ScrollTo(ctx, clickOnNextButton); err != nil {
+		s.Error("Failed to scroll to reach  clickOnNextButton: ", err)
+	}
+
+	// Click on next button.
+	if err := clickOnNextButton.Exists(ctx); err != nil {
 		s.Log("clickOnNextButton doesn't exist: ", err)
 	} else if err := clickOnNextButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnNextButton: ", err)
