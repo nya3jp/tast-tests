@@ -59,16 +59,11 @@ func (s *Servo) ECHibernate(ctx context.Context) error {
 	// hibernateDelay is the time after the EC hibernate command where it still writes output
 	const hibernateDelay = 1 * time.Second
 
-	servoType, err := s.GetServoType(ctx)
+	_, err := s.GetServoType(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get servo type")
 	}
-	// SuzyQ reports as ccd_cr50, and doesn't have a watchdog named CCD.
-	if servoType == "ccd_cr50" {
-		if err = s.WatchdogRemove(ctx, WatchdogMain); err != nil {
-			return errors.Wrap(err, "failed to remove watchdog for ccd")
-		}
-	} else if s.hasCCD {
+	if s.hasCCD {
 		if err = s.WatchdogRemove(ctx, WatchdogCCD); err != nil {
 			return errors.Wrap(err, "failed to remove watchdog for ccd")
 		}
