@@ -21,7 +21,7 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -32,6 +32,7 @@ func init() {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledClamshell,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
