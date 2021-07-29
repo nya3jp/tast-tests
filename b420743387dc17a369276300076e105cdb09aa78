@@ -69,6 +69,24 @@
       "parentUuid": "f1e377ff_eaebaae0",
       "revId": "b420743387dc17a369276300076e105cdb09aa78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b38555_aec7e839",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-29T19:59:56Z",
+      "side": 1,
+      "message": "Without set noparent any +2 from a tast reviewer will be enough to land the change. We want to prevent that in this folder specifically. The gwsq config covers much more code.",
+      "parentUuid": "8d992f3b_61038913",
+      "revId": "b420743387dc17a369276300076e105cdb09aa78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
