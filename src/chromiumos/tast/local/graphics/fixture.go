@@ -77,8 +77,8 @@ func init() {
 		Contacts:        []string{"chromeos-gfx@google.com"},
 		Impl:            &graphicsNoChromeFixture{},
 		Parent:          "gpuWatchHangs",
-		SetUpTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		SetUpTimeout:    upstart.UIRestartTimeout,
+		TearDownTimeout: upstart.UIRestartTimeout,
 	})
 }
 
