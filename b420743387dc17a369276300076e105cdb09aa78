@@ -33,6 +33,24 @@
       "message": "I\u0027d recommend not to set noparent here.\nIt is very strong signal, and it makes it difficult to over-all maintenance, e.g. method renaming etc.\nAs long as gwsq assigns reviewer to your team members, it should work practically, I think?\n\nIt\u0027s also worth to add some comments about this OWNERS, maybe referencing to the doc you\u0027re updating?",
       "revId": "b420743387dc17a369276300076e105cdb09aa78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e377ff_eaebaae0",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-07-29T09:52:22Z",
+      "side": 1,
+      "message": "The policy change will land first, then this CL will land.\n\nWe explicitly want \"set noparent\" here. There has already been a case where our fixture was changed by a test author and that made all policy tests flaky. It took some time for us to notice that this had happened.\n\nSince gwsq automatically assigns someone from OWNERS, there should be no issue with larger code changes.",
+      "parentUuid": "378c9bea_cd262b21",
+      "revId": "b420743387dc17a369276300076e105cdb09aa78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
