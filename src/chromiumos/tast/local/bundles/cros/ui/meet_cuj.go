@@ -485,8 +485,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
 	if err := action.Combine(
 		"click and type meeting code",
-		// Assume that the meeting code is the only textfield in the webpage.
-		ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview)),
+		// Assume that the meeting code is the first textfield in the webpage.
+		ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview).First()),
 		kw.TypeAction(meetingCode),
 		kw.AccelAction("Enter"),
 	)(ctx); err != nil {
