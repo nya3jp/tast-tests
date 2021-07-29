@@ -7,6 +7,7 @@ package pre
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -21,9 +22,10 @@ import (
 
 // Value contains fields that are useful for tests.
 type Value struct {
-	BootMode common.BootMode
-	GBBFlags pb.GBBFlagsState
-	Helper   *firmware.Helper
+	BootMode      common.BootMode
+	GBBFlags      pb.GBBFlagsState
+	Helper        *firmware.Helper
+	ForcesDevMode bool
 }
 
 // impl contains fields that are useful for Precondition methods.
@@ -59,7 +61,7 @@ func RecMode() testing.Precondition {
 // These are exported so they can be used in test declarations, but not const because they are arrays, please don't modify them.
 var (
 	// Vars is vars that are required for using this precondition. Pass to testing.Test.Vars.
-	Vars = []string{"servo"}
+	Vars = []string{"servo", "firmware.no_ec_sync"}
 
 	// SoftwareDeps is the software deps that are required for using this precondition. Pass to testing.Test.SoftwareDeps.
 	SoftwareDeps = []string{"crossystem", "flashrom"}
@@ -72,15 +74,10 @@ var (
 
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode, forceDev bool) testing.Precondition {
-	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
-	if forceDev {
-		flags.Set = append(flags.Set, pb.GBBFlag_FORCE_DEV_SWITCH_ON)
-	}
 	return &impl{
 		v: &Value{
-			BootMode: mode,
-			// Default GBBFlagsState for firmware testing.
-			GBBFlags: flags,
+			BootMode:      mode,
+			ForcesDevMode: forceDev,
 		},
 		// The maximum time that the Prepare method should take, adjust as needed.
 		timeout: 5 * time.Minute,
@@ -94,15 +91,41 @@ var (
 	devModeGBB = newPrecondition(common.BootModeDev, true)
 	recMode    = &impl{
 		v: &Value{
-			BootMode: common.BootModeRecovery,
-			GBBFlags: pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()},
+			BootMode:      common.BootModeRecovery,
+			ForcesDevMode: false,
 		},
 		timeout: 60 * time.Minute,
 	}
 )
 
+func (i *impl) noECSync(s *testing.PreState) (bool, error) {
+	noECSync := false
+	noECSyncStr, ok := s.Var("firmware.no_ec_sync")
+	if ok {
+		var err error
+		noECSync, err = strconv.ParseBool(noECSyncStr)
+		if err != nil {
+			return false, errors.Errorf("invalid value for var firmware.no_ec_sync: got %q, want true/false", noECSyncStr)
+		}
+	}
+	return noECSync, nil
+}
+
 // Prepare ensures that the DUT is booted into the specified mode.
 func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
+	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
+	if i.v.ForcesDevMode {
+		common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON)
+	}
+	noECSync, err := i.noECSync(s)
+	if err != nil {
+		s.Fatal("ECSync: ", err)
+	}
+	if noECSync {
+		common.GBBAddFlag(&flags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC)
+		s.Log("User selected to disable EC software sync")
+	}
+	i.v.GBBFlags = flags
 	// Initialize Helper during the first Prepare invocation or after a test has niled it.
 	if i.v.Helper == nil {
 		s.Log("Creating a new firmware Helper instance for Precondition: ", i.String())
@@ -146,8 +169,13 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 
 	// If this is the first Prepare invocation, save the starting GBB flags.
 	if i.origGBBFlags == nil {
-		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this precondition", curr.Set)
-		i.origGBBFlags = curr
+		i.origGBBFlags = common.CopyGBBFlags(*curr)
+		// For backwards compatibility with Tauto FAFT tests, firmware.no_ec_sync=true will leave DISABLE_EC_SOFTWARE_SYNC set after the test is over. See b/194807451
+		// TODO(jbettis): Consider revisiting this flag with something better.
+		if noECSync {
+			common.GBBAddFlag(i.origGBBFlags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC)
+		}
+		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this precondition", i.origGBBFlags.Set)
 	}
 
 	rebootRequired := false
@@ -177,7 +205,7 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 			i.usbKeyVerified = true
 		}
 		opts := []firmware.ModeSwitchOption{firmware.AssumeGBBFlagsCorrect}
-		if i.v.ForcesDevMode() {
+		if i.v.ForcesDevMode {
 			opts = append(opts, firmware.AllowGBBForce)
 		}
 		if err := i.rebootToMode(ctx, i.v.BootMode, opts...); err != nil {
@@ -218,7 +246,7 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 // String identifies this Precondition.
 func (i *impl) String() string {
 	name := string(i.v.BootMode)
-	if i.v.ForcesDevMode() {
+	if i.v.ForcesDevMode {
 		name += "-gbb"
 	}
 	return name
@@ -357,14 +385,4 @@ func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) erro
 	}
 	testing.ContextLog(ctx, "Resetting DUT due to GBB flag change")
 	return ms.ModeAwareReboot(ctx, firmware.WarmReset)
-}
-
-// ForcesDevMode reports whether the Precondition forces dev mode.
-func (v *Value) ForcesDevMode() bool {
-	for _, flag := range v.GBBFlags.Set {
-		if flag == pb.GBBFlag_FORCE_DEV_SWITCH_ON {
-			return true
-		}
-	}
-	return false
 }

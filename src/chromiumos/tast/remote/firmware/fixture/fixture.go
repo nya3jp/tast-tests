@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -33,7 +34,7 @@ func init() {
 		Desc:            "Reboot into normal mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeNormal, false),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "firmware.no_ec_sync"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -46,7 +47,7 @@ func init() {
 		Desc:            "Reboot into dev mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, false),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "firmware.no_ec_sync"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -59,7 +60,7 @@ func init() {
 		Desc:            "Reboot into dev mode using GBB flags before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, true),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "firmware.no_ec_sync"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -72,7 +73,7 @@ func init() {
 		Desc:            "Reboot into recovery mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeRecovery, false),
-		Vars:            []string{"servo"},
+		Vars:            []string{"servo", "firmware.no_ec_sync"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -84,19 +85,10 @@ func init() {
 
 // Value contains fields that are useful for tests.
 type Value struct {
-	BootMode common.BootMode
-	GBBFlags pb.GBBFlagsState
-	Helper   *firmware.Helper
-}
-
-// forcedDevMode reports whether the Precondition forces dev mode.
-func (v *Value) forcedDevMode() bool {
-	for _, flag := range v.GBBFlags.Set {
-		if flag == pb.GBBFlag_FORCE_DEV_SWITCH_ON {
-			return true
-		}
-	}
-	return false
+	BootMode      common.BootMode
+	GBBFlags      pb.GBBFlagsState
+	Helper        *firmware.Helper
+	ForcesDevMode bool
 }
 
 // impl contains fields that are useful for Fixture methods.
@@ -108,22 +100,44 @@ type impl struct {
 
 // newFixture creates an instance of firmware Fixture.
 func newFixture(mode common.BootMode, forceDev bool) testing.FixtureImpl {
-	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
-	if forceDev {
-		flags.Set = append(flags.Set, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
-	}
 	return &impl{
 		value: &Value{
-			BootMode: mode,
-			// Default GBBFlagsState for firmware testing.
-			GBBFlags: flags,
+			BootMode:      mode,
+			ForcesDevMode: forceDev,
 		},
 	}
+}
+
+func (i *impl) noECSync(s *testing.FixtState) (bool, error) {
+	noECSync := false
+	noECSyncStr, ok := s.Var("firmware.no_ec_sync")
+	if ok {
+		var err error
+		noECSync, err = strconv.ParseBool(noECSyncStr)
+		if err != nil {
+			return false, errors.Errorf("invalid value for var firmware.no_ec_sync: got %q, want true/false", noECSyncStr)
+		}
+	}
+	return noECSync, nil
 }
 
 // SetUp is called by the framework to set up the environment with possibly heavy-weight
 // operations.
 func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
+	if i.value.ForcesDevMode {
+		common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
+	}
+	noECSync, err := i.noECSync(s)
+	if err != nil {
+		s.Fatal("ECSync: ", err)
+	}
+	if noECSync {
+		common.GBBAddFlag(&flags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC)
+		s.Log("User selected to disable EC software sync")
+	}
+	i.value.GBBFlags = flags
+
 	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
 	i.initHelper(ctx, s)
 
@@ -185,8 +199,13 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// If this is the first PreTest invocation, save the starting GBB flags.
 	// This isn't in SetUp to avoid reading GetGBBFlags twice. (It's very slow)
 	if i.origGBBFlags == nil {
-		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this fixture", curr.Set)
-		i.origGBBFlags = curr
+		i.origGBBFlags = common.CopyGBBFlags(*curr)
+		// For backwards compatibility with Tauto FAFT tests, firmware.no_ec_sync=true will leave DISABLE_EC_SOFTWARE_SYNC set after the test is over. See b/194807451
+		// TODO(jbettis): Consider revisiting this flag with something better.
+		if common.GBBFlagsContains(i.value.GBBFlags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC) {
+			common.GBBAddFlag(i.origGBBFlags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC)
+		}
+		testing.ContextLogf(ctx, "Saving GBB flags %+v for restoration upon completion of all tests under this fixture", i.origGBBFlags.Set)
 	}
 
 	rebootRequired := false
@@ -210,7 +229,7 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 
 	if rebootRequired {
 		opts := []firmware.ModeSwitchOption{firmware.AssumeGBBFlagsCorrect}
-		if i.value.forcedDevMode() {
+		if i.value.ForcesDevMode {
 			opts = append(opts, firmware.AllowGBBForce)
 		}
 		if err := i.rebootToMode(ctx, i.value.BootMode, opts...); err != nil {
@@ -277,11 +296,8 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 	if rebootRequired {
 		opts := []firmware.ModeSwitchOption{firmware.AssumeGBBFlagsCorrect}
 		if i.origGBBFlags != nil {
-			for _, flag := range i.origGBBFlags.Set {
-				if flag == pb.GBBFlag_FORCE_DEV_SWITCH_ON {
-					opts = append(opts, firmware.AllowGBBForce)
-					break
-				}
+			if common.GBBFlagsContains(*i.origGBBFlags, pb.GBBFlag_FORCE_DEV_SWITCH_ON) {
+				opts = append(opts, firmware.AllowGBBForce)
 			}
 		}
 		if err := i.rebootToMode(ctx, toMode, opts...); err != nil {
@@ -293,7 +309,7 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 // String identifies this fixture.
 func (i *impl) String() string {
 	name := string(i.value.BootMode)
-	if i.value.forcedDevMode() {
+	if i.value.ForcesDevMode {
 		name += "-gbb"
 	}
 	return name
