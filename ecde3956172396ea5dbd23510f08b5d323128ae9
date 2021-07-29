@@ -33,6 +33,41 @@
       "message": "Adding an example of how to use servo in a local test to the codelab would be nice also.",
       "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36691041_129db7ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T16:28:40Z",
+      "side": 1,
+      "message": "Thank you, Jeremy.",
+      "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba3f439_daee67e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T16:28:40Z",
+      "side": 1,
+      "message": "Definitely, I\u0027ll add an example.\n\nYou are okay with this approach, right? (serving the ssh private key as an internal data file)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3058137/3/src/chromiumos/tast/local/bundles/cros/policy/device_power_peak_shift.go#68\n\nPlease let me know. Thanks.",
+      "parentUuid": "78bfdc10_d94175a0",
+      "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
