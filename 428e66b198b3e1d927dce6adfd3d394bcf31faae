@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1d0d2b_038a30cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "Hi Bisakh,\n\nThanks a lot for your CL! I have few comments:",
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10832dcc_415e34ba",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: I am a bit concerned that battery might sound too wide for us. Maybe smth like charge_control to be more specific?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b934beab_4a297aaf",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: there are 2 percentages reported by power manager: display (what user see) and real battery percentage. Here we use display percentage, so please specify it in comments and in variable names.",
+      "range": {
+        "startLine": 20,
+        "startChar": 72,
+        "endLine": 20,
+        "endChar": 92
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3166a7_d70e8a8b",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: used only once, so no need for a separate constant",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42269caa_a44a9731",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: \"open\" to be more precise",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759717c4_a9aaff01",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "it\u0027s safer to introduce a separate cleanup context before any operations in the function, otherwise you might not have enough reserved time for cleanup.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ebe13e_f594e859",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: let\u0027s add more info, e.g. \"still discharging from %.2f to %.2f\" ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a331901_abdd1ec1",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: %.2f%%",
+      "range": {
+        "startLine": 65,
+        "startChar": 59,
+        "endLine": 65,
+        "endChar": 69
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ae1d3d_f0c37028",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "if you are not planning to use this function outside of the package, then it should start with lower case and publicly visible functions should be closer to the beginning of the file.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541d8dc8_df1ebad1",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "I am curious why we don\u0027t have that issue during draining, or we have it?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 86
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918b723b_53e695d9",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: i think we can use default Tast interval here. So no need to specify it explicitly",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd01c260_fb73ff73",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: ensures",
+      "range": {
+        "startLine": 132,
+        "startChar": 66,
+        "endLine": 132,
+        "endChar": 72
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9cfa98_a7deb786",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: this is pretty much clear from function declaration, instead i\u0027d briefly describe how this method ensures that battery within min and max.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 65
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b224b7_2e399119",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "\"(min/max)Percentage\" for consistency?",
+      "range": {
+        "startLine": 133,
+        "startChar": 86,
+        "endLine": 133,
+        "endChar": 104
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e42536_08f6c385",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: here you have float64, but in the test you use int type. Can you choose just one type? Maybe int fits better here since user always will see integer value?",
+      "range": {
+        "startLine": 133,
+        "startChar": 105,
+        "endLine": 133,
+        "endChar": 112
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82849faa_89dd3e83",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "maybe just \"servo v4\" in quotes since it\u0027s more greppable/searchable?",
+      "range": {
+        "startLine": 149,
+        "startChar": 30,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f7408e_b7d0e5a3",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: no need for period if comment is in the same line as code. Also it isn\u0027t consistent through the CL.",
+      "range": {
+        "startLine": 161,
+        "startChar": 66,
+        "endLine": 161,
+        "endChar": 67
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b478453a_224f00b2",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "nit: either remove from here or add the same to line 169",
+      "range": {
+        "startLine": 161,
+        "startChar": 49,
+        "endLine": 161,
+        "endChar": 57
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b36f0c_f94c58b6",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T16:35:42Z",
+      "side": 1,
+      "message": "Such pattern might be useful, but a bit against package design.\n\nSo, let\u0027s split this into 2 methods: get and set brightness",
+      "range": {
+        "startLine": 79,
+        "startChar": 77,
+        "endLine": 79,
+        "endChar": 129
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
