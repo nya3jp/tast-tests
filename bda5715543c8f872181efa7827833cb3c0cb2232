@@ -88,6 +88,24 @@
       "parentUuid": "c72402d8_3e633f14",
       "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708a3fdf_878737d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-29T17:18:35Z",
+      "side": 1,
+      "message": "By default, tests should be explicitly setting the GBB flags to match production systems, which includes clearing the disable EC software sync flag if set.  I agree with Denis, we should be matching FAFT behavior - always clear disable EC sync, unless the user overrides it.",
+      "parentUuid": "b32ab848_de7f16f0",
+      "revId": "bda5715543c8f872181efa7827833cb3c0cb2232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
