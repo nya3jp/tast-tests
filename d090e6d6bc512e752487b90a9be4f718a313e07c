@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90accbc8_bfa61f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-29T04:28:50Z",
+      "side": 1,
+      "message": "Done: looks like:\n\n\t\t\tExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),\n\nmeans tablet mode?",
+      "parentUuid": "405ead32_7f14cee2",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "d090e6d6bc512e752487b90a9be4f718a313e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e2676db_1fb9b791",

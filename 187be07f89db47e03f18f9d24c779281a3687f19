@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cdaf63d_8c3f2933",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-29T04:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "784610ae_473fa6f5",
+      "range": {
+        "startLine": 401,
+        "startChar": 5,
+        "endLine": 401,
+        "endChar": 25
+      },
+      "revId": "187be07f89db47e03f18f9d24c779281a3687f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f611545f_dd2f9756",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-29T04:28:50Z",
+      "side": 1,
+      "message": "Done here and elsewhere",
+      "parentUuid": "15574dc2_f7a8d49a",
+      "range": {
+        "startLine": 401,
+        "startChar": 47,
+        "endLine": 401,
+        "endChar": 49
+      },
+      "revId": "187be07f89db47e03f18f9d24c779281a3687f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d700416_75cdcb55",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-28T02:11:52Z",
       "side": 1,
       "message": "Don\u0027t really need this comment",
+      "range": {
+        "startLine": 405,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 30
+      },
+      "revId": "187be07f89db47e03f18f9d24c779281a3687f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88eb65e1_3b557b74",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-29T04:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d700416_75cdcb55",
       "range": {
         "startLine": 405,
         "startChar": 2,
