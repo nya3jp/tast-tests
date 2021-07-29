@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "882669a5_98af2389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-07-29T01:55:11Z",
+      "side": 1,
+      "message": "This test verifies that a newly installed app directory is correctly configured, not about P-\u003eR fixup.",
+      "parentUuid": "83cfda12_8ff517f8",
+      "revId": "e2d3f625aa6e0d3d02683d9267016812391c2267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40683175_937dc319",
