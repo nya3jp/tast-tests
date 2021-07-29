@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c581dd_96876ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-07-29T19:29:22Z",
+      "side": 0,
+      "message": "It seems like both upstart.EnsureJobRunning and DaemonController.Ensure does or aims to do the same thing. I was wondering why is upstart not working?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "084cf06a538605b7c10379b4354a4d59b6735e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
