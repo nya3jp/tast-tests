@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc85291_c246706e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T13:58:03Z",
+      "side": 1,
+      "message": "Did you try to lease that board from lab?",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8206fa_1542b60b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T13:58:03Z",
+      "side": 1,
+      "message": "nit: please specify full command you used to run the test, e.g.\n\ntast run \u003cIP\u003e \u003ctest name\u003e",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d34ca2_4cfd48e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T13:58:03Z",
+      "side": 1,
+      "message": "nit: probably you just need to return error here or wrap it and return",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2206bcda_f962362c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-29T13:58:03Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand how list of paths can help you. Can you please elaborate?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
