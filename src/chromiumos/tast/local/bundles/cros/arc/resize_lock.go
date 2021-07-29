@@ -142,10 +142,10 @@ var testCases = []resizeLockTestCase{
 		name: "Resizable Maximized App",
 		fn:   testResizableMaximizedApp,
 	},
-	resizeLockTestCase{
+	/* resizeLockTestCase{
 		name: "Install from outside of PlayStore",
 		fn:   testAppFromOutsideOfPlayStore,
-	},
+	}, */
 }
 
 func init() {
