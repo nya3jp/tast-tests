@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1757920_24fa1f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-07-29T22:37:23Z",
+      "side": 1,
+      "message": "Do you need to set ScreenshotRetryInterval here?",
+      "range": {
+        "startLine": 127,
+        "startChar": 79,
+        "endLine": 127,
+        "endChar": 82
+      },
+      "revId": "a748840e98aecf3e20d7322994851ca2d25422da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
