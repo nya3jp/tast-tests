@@ -9,10 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -82,6 +81,8 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 	}
 	defer st.Close(cleanupCtx)
 
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx, keyboard)
 	if err != nil {
 		s.Fatal("Failed to get current or target size: ", err)
@@ -93,7 +94,7 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to resize through moving slider: ", err)
 	}
 
-	if err := verifyResizeResults(ctx, st, cont, sizeOnSlider, size); err != nil {
+	if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, size); err != nil {
 		s.Fatal("Failed to verify resize results: ", err)
 	}
 
@@ -103,42 +104,7 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to resize back to the default value: ", err)
 	}
 
-	if err := verifyResizeResults(ctx, st, cont, sizeOnSlider, size); err != nil {
+	if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, size); err != nil {
 		s.Fatal("Failed to verify resize results: ", err)
 	}
-}
-
-func verifyResizeResults(ctx context.Context, st *settings.Settings, cont *vm.Container, sizeOnSlider string, size uint64) error {
-	// Check the disk size on the Settings app.
-	sizeOnSettings, err := st.GetDiskSize(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the disk size from the Settings app after resizing")
-	}
-	if sizeOnSlider != sizeOnSettings {
-		return errors.Wrapf(err, "failed to verify the disk size on the Settings app, got %s, want %s", sizeOnSettings, sizeOnSlider)
-	}
-	// Check the disk size of the container.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		disk, err := cont.VM.Concierge.GetVMDiskInfo(ctx, vm.DefaultVMName)
-		if err != nil {
-			return errors.Wrap(err, "failed to get VM disk info")
-		}
-		contSize := disk.GetSize()
-
-		// Allow some gap.
-		var diff uint64
-		if size > contSize {
-			diff = size - contSize
-		} else {
-			diff = contSize - size
-		}
-		if diff > settings.SizeMB {
-			return errors.Errorf("failed to verify disk size after resizing, got %d, want approximately %d", contSize, size)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to verify the disk size of the container after resizing")
-	}
-
-	return nil
 }
