@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e795404_95e0d8ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T23:30:08Z",
+      "side": 1,
+      "message": "tast-wise, added some comments",
+      "revId": "901614abd81bad1ea785567529a8168c0308cdf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a512bd1d_40b35238",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T23:30:08Z",
+      "side": 1,
+      "message": "According to the docstring of the function, the function should check that \"want\" is part of \"current\".\nI\u0027d check for that. e.g:\n\n  if inWantClear \u0026\u0026 !inCurrentClear {\n     // error\n  }\n  if inWantSEt \u0026\u0026 !inCurrentSet {\n    // error\n  }\n\nThat would require the extra \"inCurrentClear\", but I think makes the code cleaner.\nI\u0027d would even iterate all over the existing keys in the dict, and not all over allGBBFlags. e.g:\n\n\n  // test wantSet\n  for k, _ :\u003d range wantClear {\n    if _, ok :\u003d currentClear[k]; !ok {\n      // error\n    } \n  }\n\n  // ... and the same for wantSet",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "901614abd81bad1ea785567529a8168c0308cdf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
