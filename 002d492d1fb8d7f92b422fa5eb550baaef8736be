@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f42065c_bdc2a848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-29T22:36:53Z",
+      "side": 1,
+      "message": "lgtm, but wait for David, too",
+      "revId": "002d492d1fb8d7f92b422fa5eb550baaef8736be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20fc7cd2_28934ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-29T22:36:53Z",
+      "side": 1,
+      "message": "do we need this dep for clamshell?",
+      "revId": "002d492d1fb8d7f92b422fa5eb550baaef8736be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cc658d_d30fb174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-29T22:36:53Z",
+      "side": 1,
+      "message": "do we want to close all windows, and verify that shelf is visible",
+      "revId": "002d492d1fb8d7f92b422fa5eb550baaef8736be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
