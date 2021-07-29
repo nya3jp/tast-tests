@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cad6317_cf455974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "1233742?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0b322512_94c2e8c6",
@@ -14,6 +37,184 @@
       "writtenOn": "2021-07-29T08:22:04Z",
       "side": 1,
       "message": "Andre, could you add more info on the test you are planning to add?\n(I assume that this is the bug crbug/1233742)",
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b3fe7b_9a8e55b5",
+        "filename": "android/ArcNotificationTest/res/layout/notification_activity.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "Can you move the definition to the string resource file? Let\u0027s be consistent with other texts.",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58793e8_5e583f4f",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "style: CHANNEL_ID. I think HIGH_IMPORTANCE_CHANNEL_ID is more clear (and chage the string itself as well).",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9624ca0_bb38a88f",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "Not used?",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668b96da_cc8f3ab0",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "style: mNotificationManager",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b59d46a_64744af2",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "optional nit: I would use getSystemService(NotificationManager.class) because we don\u0027t need casting.",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 85
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61080fd5_146e05e8",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "optional suggestion: How about migrating default notifications use NotificationChannel? IIUC, it\u0027s recommended now. Don\u0027t need to be done in this change.",
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7bcb5e2_529853b5",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "This implementation is a bit surprising because a created builder can be discarded.\n\nI would do like below:\n\n        boolean high_priority \u003d ((CheckBox) findViewById(R.id.check_high_priority)).isChecked();\n\n        Notification.Builder builder;\n        if (high_priority) {\n            builder \u003d new Notification.Builder(this, HIGH_IMPORTANCE_CHANNEL_ID);\n        } else {\n            builder \u003d new Notification.Builder(this);\n        }\n\n(Also, please make coding style consistent, aosp style is 4 spaces indent)",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2764825_fb1376f3",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "Now that we can use mNotificationManager",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 27
+      },
       "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

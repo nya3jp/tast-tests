@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a458f11_3fa9aee2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T09:19:05Z",
+      "side": 1,
+      "message": "Can you update the Cl description?",
+      "parentUuid": "cddf279a_27d719f0",
+      "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "07cba129_ad207a46",
