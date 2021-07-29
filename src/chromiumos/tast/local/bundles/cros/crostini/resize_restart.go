@@ -92,7 +92,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to shutdown crostini: ", err)
 	}
 
-	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx, keyboard)
+	curSize, targetSize, err := st.GetCurAndTargetDiskSize(ctx, keyboard, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current or target size: ", err)
 	}
@@ -107,7 +107,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to lauch terminal: ", err)
 	}
 
-	if err := verifyResults(ctx, st, cont, sizeOnSlider, size); err != nil {
+	if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, size); err != nil {
 		s.Fatal("Failed to verify resize results: ", err)
 	}
 
@@ -117,7 +117,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to resize back to the default value: ", err)
 	}
 
-	if err := verifyResults(ctx, st, cont, sizeOnSlider, size); err != nil {
+	if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, size); err != nil {
 		s.Fatal("Failed to verify resize results: ", err)
 	}
 }

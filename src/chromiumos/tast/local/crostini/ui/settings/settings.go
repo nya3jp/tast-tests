@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -38,7 +39,7 @@ const (
 	SizeTB = 1024 * 1024 * 1024 * 1024
 )
 
-const uiTimeout = 10 * time.Second
+const uiTimeout = 30 * time.Second
 
 // Sub settings name.
 const (
@@ -90,7 +91,7 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 		return nil, errors.Wrap(err, "failed to close all notifications in OpenLinuxSubpage()")
 	}
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(uiTimeout)
 	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(DevelopersButton)); err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings app")
 	}
@@ -122,7 +123,7 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.C
 // FindSettingsPage finds a pre-opened Settings page with a window name.
 func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName string) (s *Settings, err error) {
 	// Create a uiauto.Context with default timeout.
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(uiTimeout)
 
 	// Check Settings app is opened to the specific page.
 	if err := ui.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(".*" + windowName + ".*")).First())(ctx); err != nil {
@@ -377,7 +378,7 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 }
 
 // GetCurAndTargetDiskSize gets the current disk size and calculates a target disk size to resize.
-func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.KeyboardEventWriter) (curSize, targetSize uint64, err error) {
+func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn) (curSize, targetSize uint64, err error) {
 	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
@@ -406,10 +407,16 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 		targetSize = minSize + (maxSize-minSize)/3
 	}
 
-	if err := uiauto.Combine("click button Cancel and wait resize dialog gone",
-		s.ui.LeftClick(ResizeDiskDialog.Cancel),
-		s.ui.WaitUntilGone(ResizeDiskDialog.Self))(ctx); err != nil {
+	if err := s.ui.LeftClick(ResizeDiskDialog.Cancel)(ctx); err != nil {
 		return 0, 0, err
+	}
+
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+		return 0, 0, err
+	}
+
+	if err := s.ui.WaitUntilGone(ResizeDiskDialog.Self)(ctx); err != nil {
+		return 0, 0, errors.Wrap(err, "the dialog is still here************************")
 	}
 
 	return curSize, targetSize, nil
@@ -444,6 +451,42 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	}
 
 	return sizeOnSlider, size, nil
+}
+
+//VerifyResizeResults verifies the disk after resizing, both on the Settings page and container.
+func (s *Settings) VerifyResizeResults(ctx context.Context, cont *vm.Container, sizeOnSlider string, size uint64) error {
+	// Check the disk size on the Settings app.
+	sizeOnSettings, err := s.GetDiskSize(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the disk size from the Settings app after resizing")
+	}
+	if sizeOnSlider != sizeOnSettings {
+		return errors.Wrapf(err, "failed to verify the disk size on the Settings app, got %s, want %s", sizeOnSettings, sizeOnSlider)
+	}
+	// Check the disk size of the container.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		disk, err := cont.VM.Concierge.GetVMDiskInfo(ctx, vm.DefaultVMName)
+		if err != nil {
+			return errors.Wrap(err, "failed to get VM disk info")
+		}
+		contSize := disk.GetSize()
+
+		// Allow some gap.
+		var diff uint64
+		if size > contSize {
+			diff = size - contSize
+		} else {
+			diff = contSize - size
+		}
+		if diff > SizeMB {
+			return errors.Errorf("failed to verify disk size after resizing, got %d, want approximately %d", contSize, size)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to verify the disk size of the container after resizing")
+	}
+
+	return nil
 }
 
 // LeftClickUI performs a left click action on the given Finder
