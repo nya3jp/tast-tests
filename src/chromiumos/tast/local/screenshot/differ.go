@@ -88,6 +88,7 @@ type Differ interface {
 	Diff(context.Context, string, *nodewith.Finder) uiauto.Action
 	DiffWindow(context.Context, string) uiauto.Action
 	DiffWithOptions(context.Context, string, *nodewith.Finder, Options) uiauto.Action
+	DiffWindowWithOptions(context.Context, string, Options) uiauto.Action
 	GetFailedDiffs() error
 	DieOnFailedDiffs()
 }
@@ -384,6 +385,12 @@ func (d *differ) DiffWithOptions(ctx context.Context, name string, finder *nodew
 	}
 }
 
+// DiffWindowWithOptions takes a screenshot of the active window and uploads the result to gold.
+// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
+func (d *differ) DiffWindowWithOptions(ctx context.Context, name string, options Options) uiauto.Action {
+	return d.DiffWithOptions(ctx, name, nil, options)
+}
+
 // GetFailedDiffs returns an error containing all of the diffs that failed, if any did, or nil if all passed.
 func (d *differ) GetFailedDiffs() error {
 	if d.reset != nil {
@@ -640,10 +647,11 @@ func (d *differ) authenticateGold(ctx context.Context) error {
 
 func (d *differ) runGoldCommand(ctx context.Context, subcommand string, args ...string) error {
 	args = append([](string){subcommand, "--work-dir", goldctlWorkDir}, args...)
-	testing.ContextLogf(ctx, `Running command "goldctl %v"`, args)
 	if d.config.DryRun {
+		testing.ContextLogf(ctx, `Dryrun: Would otherwise run command "goldctl %v"`, args)
 		return nil
 	}
+	testing.ContextLogf(ctx, `Running command "goldctl %v"`, args)
 	cmd := testexec.CommandContext(ctx, "goldctl", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {

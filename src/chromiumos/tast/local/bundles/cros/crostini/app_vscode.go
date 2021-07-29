@@ -80,6 +80,7 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	}()
 
 	// Cursor blinking breaks screenshots.
+	// Workspace trust adds more notifications. Disable the feature.
 	cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}`)
 
 	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
@@ -117,12 +118,10 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		// Get rid of up to two notification bubbles for consistent screendiffs.
 		keyboard.AccelAction("esc"),
 		keyboard.AccelAction("esc"),
-		// We have no way of detecting if the notification bubbles have disappeared, so just wait.
-		ui.Sleep(time.Second*5),
-		d.DiffWindow(ctx, "vscode"),
-		// Press ctrl+W twice to exit window.
-		keyboard.AccelAction("ctrl+W"),
-		keyboard.AccelAction("ctrl+W"),
+		// We have no way of detecting if the notification bubbles have disappeared, so just wait for screen stability.
+		d.DiffWindowWithOptions(ctx, "vscode", screenshot.Options{ScreenshotRetries: 2}),
+		// Press ctrl+Q to exit window.
+		keyboard.AccelAction("ctrl+Q"),
 		ui.WaitUntilGone(appWindowSaved))(ctx); err != nil {
 		return err
 	}
