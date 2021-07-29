@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cdf637_1fc9e7b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "nit: always good to add a body... in this case describe the purpose of the test",
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "260c63cc_dd8a8041",
@@ -14,6 +31,207 @@
       "writtenOn": "2021-07-29T04:38:57Z",
       "side": 1,
       "message": "Please note that this test can only pass once we allow expert mode on fake camera and make \"document detection on preview\" optional so that the scanner mode can be used by fake camera.\n\nAnd per discussion, inker@ will help prepare such CL so we\u0027ll only land this one after inker\u0027s lands first.",
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bbf1b9_03bb7b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "some nits",
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f060eb82_99debe9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "incomplete sentence perhaps?",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae369f25_e14b6722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "nit: can these values be converted to ints? e.g:\n\n  type reviewChoice int\n  const (\n    pdf reviewChoice \u003d iota\n    photo\n    retake\n  )",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6422a6c_4cdadf72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "nit: typo? not clear the meaning of the entire sentence",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd8617b_8f947829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "move it to L62 and add `defer`. e.g:  `defer cancel()`",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fdc258_02ddcab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "add docstring... all non-trivial funcs should have one",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712fa808_ace2a30d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "nit: add comment explaining what \"retake\" is trying to do",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4358eb_fae842e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "nit: returned errors should start in lowercase",
+      "range": {
+        "startLine": 160,
+        "startChar": 22,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c79d02_f4aae2ee",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T18:54:49Z",
+      "side": 1,
+      "message": "huge nit: \"returns whether it is enabled\" ?",
+      "range": {
+        "startLine": 1260,
+        "startChar": 83,
+        "endLine": 1260,
+        "endChar": 88
+      },
       "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
