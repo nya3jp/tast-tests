@@ -57,7 +57,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
-		testFunc func(context.Context, *chrome.Chrome, *cca.App) error
+		testFunc func(ctx, cleanupCtx context.Context, cr *chrome.Chrome, app *cca.App) error
 	}{{
 		"testFeedback",
 		testFeedback,
@@ -82,7 +82,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 			}
 			defer cca.MainMenu.Close(cleanupCtx, app)
 
-			if err := tst.testFunc(ctx, cr, app); err != nil {
+			if err := tst.testFunc(ctx, cleanupCtx, cr, app); err != nil {
 				s.Fatalf("Failed to run subtest: %v: %v", tst.name, err)
 			}
 
@@ -96,7 +96,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 }
 
 // testFeedback checks feedback button functionality.
-func testFeedback(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testFeedback(ctx, cleanupCtx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err := app.Click(ctx, cca.FeedbackButton); err != nil {
 		return errors.Wrap(err, "failed to click feedback button")
 	}
@@ -107,12 +107,19 @@ func testFeedback(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to open feedback app")
 	}
-	fConn.Close()
+	defer func(ctx context.Context, fconn *chrome.Conn) {
+		if err := fconn.CloseTarget(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to close the feedback page")
+		}
+		if err := fconn.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close connection to the feedback page")
+		}
+	}(cleanupCtx, fConn)
 	return nil
 }
 
 // testHelp checks help button functionality.
-func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testHelp(ctx, cleanupCtx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err := app.Click(ctx, cca.HelpButton); err != nil {
 		return errors.Wrap(err, "failed to click help button")
 	}
@@ -123,16 +130,23 @@ func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to open help app")
 	}
-	hConn.Close()
+	defer func(ctx context.Context, hConn *chrome.Conn) {
+		if err := hConn.CloseTarget(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to close the help page")
+		}
+		if err := hConn.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close connection to the help page")
+		}
+	}(cleanupCtx, hConn)
 	return nil
 }
 
 // testGrid checks that changing grid type in settings is effective.
-func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testGrid(ctx, cleanupCtx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err := cca.GridTypeMenu.Open(ctx, app); err != nil {
 		return err
 	}
-	defer cca.GridTypeMenu.Close(ctx, app)
+	defer cca.GridTypeMenu.Close(cleanupCtx, app)
 
 	if err := app.Click(ctx, cca.GoldenGridButton); err != nil {
 		return errors.Wrap(err, "failed to click golden-grid button")
@@ -144,11 +158,11 @@ func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 }
 
 // testTimer checks that changing timer duration in settings is effective.
-func testTimer(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testTimer(ctx, cleanupCtx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err := cca.TimerMenu.Open(ctx, app); err != nil {
 		return err
 	}
-	defer cca.TimerMenu.Close(ctx, app)
+	defer cca.TimerMenu.Close(cleanupCtx, app)
 
 	if err := app.Click(ctx, cca.Timer10sButton); err != nil {
 		return errors.Wrap(err, "failed to click 10s-timer button")
