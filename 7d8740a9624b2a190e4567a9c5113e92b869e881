@@ -33,6 +33,23 @@
       "message": "triggering cq.",
       "revId": "7d8740a9624b2a190e4567a9c5113e92b869e881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7720fe40_7a9e1886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-29T04:32:27Z",
+      "side": 1,
+      "message": "Given that build is broken now, I recommend contacting go/cros-oncall to ask for chumping as it won\u0027t make things worse.",
+      "revId": "7d8740a9624b2a190e4567a9c5113e92b869e881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
