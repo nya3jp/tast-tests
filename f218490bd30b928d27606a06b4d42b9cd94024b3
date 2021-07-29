@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "260c63cc_dd8a8041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-29T04:38:57Z",
+      "side": 1,
+      "message": "Please note that this test can only pass once we allow expert mode on fake camera and make \"document detection on preview\" optional so that the scanner mode can be used by fake camera.\n\nAnd per discussion, inker@ will help prepare such CL so we\u0027ll only land this one after inker\u0027s lands first.",
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
