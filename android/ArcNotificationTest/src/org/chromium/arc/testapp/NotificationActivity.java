@@ -8,6 +8,7 @@ package org.chromium.arc.testapp.notification;
 
 import android.app.Activity;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +16,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.CheckBox;
 import android.util.Log;
 
 public class NotificationActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "ArcTest.NotificationActivity";
+    private static final String channel_id = "ArcNotificationTest";
+    private NotificationChannel channel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,11 @@ public class NotificationActivity extends Activity implements View.OnClickListen
 
         ((Button) findViewById(R.id.send_button)).setOnClickListener(this);
         ((Button) findViewById(R.id.remove_button)).setOnClickListener(this);
+
+        // Create a high priority channel for high priority notifications to be sent on.
+        channel = new NotificationChannel(channel_id, "High priority",
+                NotificationManager.IMPORTANCE_HIGH);
+
     }
 
     @Override public void onClick(View v) {
@@ -71,12 +80,19 @@ public class NotificationActivity extends Activity implements View.OnClickListen
     }
 
     private void sendNotification(int id, String title, String text) {
-        Notification.Builder builder = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.ic_adb_black_24dp)
-                .setContentTitle(title)
-                .setContentText(text);
+        Notification.Builder builder = new Notification.Builder(this);
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannel(channel);
+
+        boolean high_priority = ((CheckBox) findViewById(R.id.check_high_priority)).isChecked();
+        if (high_priority)
+          builder = new Notification.Builder(this, channel_id);
+
+        builder.setSmallIcon(R.drawable.ic_adb_black_24dp)
+        .setContentTitle(title)
+        .setContentText(text);
+
         notificationManager.notify(id, builder.build());
     }
 
