@@ -93,3 +93,20 @@ func canonicalGBBFlagsState(s pb.GBBFlagsState) pb.GBBFlagsState {
 
 	return pb.GBBFlagsState{Clear: canonicalClear, Set: canonicalSet}
 }
+
+// GBBToggle adds `flag` to `flags` if it is missing, or removes it if it is present. Returns a new list, and does not modify the `flags` slice.
+func GBBToggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
+	var ret []pb.GBBFlag
+	found := false
+	for _, v := range flags {
+		if v == flag {
+			found = true
+		} else {
+			ret = append(ret, v)
+		}
+	}
+	if !found {
+		ret = append(ret, flag)
+	}
+	return ret
+}
