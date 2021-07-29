@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93222330_c6cd503b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-29T10:44:23Z",
+      "side": 1,
+      "message": "Hello,\nI can\u0027t set the policy in chrome because of precondition in crostini. Is it possible?\n\nKindly overlook the extra code right now, I will change it once the test works.\n\nThanks",
+      "revId": "852560bc0ab83f3843f61c2a291cc3c12920e174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26747f3_d58ea43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data_leak_prevention_clipboard_crostini.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-07-29T10:44:23Z",
+      "side": 1,
+      "message": "how to set policy in chrome in this case? \n - Can\u0027t create a new chrome because there is precondition\n - ServeBlobAndReferesh doesn\u0027t sets this dlp policy I can confirm that\n - I searched for policy, fakeDMS etc keywords in crostini folder no result i.e there is no setting of policy in crostini",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "852560bc0ab83f3843f61c2a291cc3c12920e174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
