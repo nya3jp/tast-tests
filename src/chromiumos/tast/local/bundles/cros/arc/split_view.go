@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -141,6 +142,10 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 }
 
 func SplitView(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*10)
+	defer cancel()
+
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
@@ -196,11 +201,13 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer rightAct.Close()
+	defer rightAct.Stop(cleanupCtx, tconn)
 	leftAct, err := showActivityForSplitViewTest(ctx, tconn, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer leftAct.Close()
+	defer leftAct.Stop(cleanupCtx, tconn)
 
 	stw, err := tew.NewSingleTouchWriter()
 	if err != nil {
