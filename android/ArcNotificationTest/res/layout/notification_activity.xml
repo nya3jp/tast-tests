@@ -20,6 +20,10 @@
               android:layout_height="wrap_content"
               android:inputType="number"
               android:text="@string/default_id" />
+    <CheckBox android:id="@+id/check_high_priority"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/checkbox_text_important" />
     <Button android:id="@+id/send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
