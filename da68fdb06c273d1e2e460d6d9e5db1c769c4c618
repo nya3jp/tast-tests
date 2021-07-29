@@ -16,6 +16,23 @@
       "message": "Should fix the build error",
       "revId": "da68fdb06c273d1e2e460d6d9e5db1c769c4c618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4114b5_212d9d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-29T23:19:26Z",
+      "side": 1,
+      "message": "Failed to build chromeos-base/modemfwd-helpers-drallion?\n\nTry again.",
+      "revId": "da68fdb06c273d1e2e460d6d9e5db1c769c4c618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
