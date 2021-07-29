@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea8e20f_c7e26f92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T06:55:01Z",
+      "side": 1,
+      "message": "Can you clarify the purpose of this CL?\n\nIf this is only for manual debugging, why we can\u0027t use an internal test app (ArcNotificationTest2 under vecndor/google_arc already has NotificationChannel with high importance)?\n\nIf you have some plan to use this in tast test in the future, I\u0027d like to understand how it\u0027ll be used.",
+      "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "07cba129_ad207a46",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-07-29T06:17:25Z",
       "side": 1,
       "message": "hirokisato@ PTAL as OWNER\n\nleandre@ FYI",
+      "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34f4988_033d3a0d",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T06:55:01Z",
+      "side": 1,
+      "message": "IIUC, NotificationChannel is something like \"create once, regirster it to the notification manager, then send notification specifying which channle to use\", not something to be created everytime we sed notification.\n\nWould you mind checking if this usage is correct and update if needed?",
       "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
