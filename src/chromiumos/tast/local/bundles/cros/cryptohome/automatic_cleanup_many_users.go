@@ -13,12 +13,13 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
 	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -47,6 +48,13 @@ func init() {
 }
 
 func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	daemonController := helper.DaemonController()
+
 	userCount := s.Param().(int)
 
 	const (
@@ -57,7 +65,7 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 	)
 
 	// Start cryptohomed and wait for it to be available
-	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
@@ -65,10 +73,7 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohomed not running as expected: ", err)
-	}
-	defer upstart.RestartJob(cleanupCtx, "cryptohomed")
+	defer daemonController.Restart(cleanupCtx, hwsec.CryptohomeDaemon)
 
 	if err := cleanup.RunOnExistingUsers(ctx); err != nil {
 		s.Fatal("Failed to perform initial cleanup: ", err)

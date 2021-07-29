@@ -9,10 +9,11 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/upstart"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -39,15 +40,19 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		password      = "1234"
 	)
 
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	daemonController := helper.DaemonController()
+
 	// Start cryptohomed and wait for it to be available
-	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohomed not running as expected: ", err)
-	}
-	defer upstart.RestartJob(ctx, "cryptohomed")
+	defer daemonController.Restart(ctx, hwsec.CryptohomeDaemon)
 
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()

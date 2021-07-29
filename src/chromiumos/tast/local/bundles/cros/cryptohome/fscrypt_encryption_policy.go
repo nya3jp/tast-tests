@@ -11,8 +11,9 @@ import (
 
 	"github.com/google/fscrypt/metadata"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/upstart"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -48,13 +49,16 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 		password = "pass"
 	)
 
-	// Make sure cryptohomed is running.
-	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
-		s.Fatal("Failed to start cryptohomed: ", err)
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
+	daemonController := helper.DaemonController()
 
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohomed not running as expected: ", err)
+	// Make sure cryptohomed is running.
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
+		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
 	// Create user vault.
