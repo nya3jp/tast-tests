@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
@@ -686,6 +687,113 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to restart app: ", err)
 	}
+}
+
+const (
+	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
+	phoneButtonName     = "Phone"
+	tabletButtonName    = "Tablet"
+	resizableButtonName = "Resizable"
+
+	// Currently the automation API doesn't support unique ID, so use the classnames to find the elements of interest.
+	centerButtonClassName  = "FrameCenterButton"
+	checkBoxClassName      = "Checkbox"
+	bubbleDialogClassName  = "BubbleDialogDelegateView"
+	overlayDialogClassName = "OverlayDialog"
+	shelfIconClassName     = "ash/ShelfAppButton"
+	menuItemViewClassName  = "MenuItemView"
+
+	// A11y names are available for some UI elements
+	splashCloseButtonName          = "Got it"
+	confirmButtonName              = "Allow"
+	cancelButtonName               = "Cancel"
+	appManagementSettingToggleName = "Preset window sizes"
+	appInfoMenuItemViewName        = "App info"
+	closeMenuItemViewName          = "Close"
+
+	// Used to identify the shelf icon of interest.
+	resizeLockAppName = "ArcResizeLockTest"
+	settingsAppName   = "Settings"
+)
+
+// Represents the size of a window.
+type orientation int
+
+const (
+	phoneOrientation orientation = iota
+	tabletOrientation
+	maximizedOrientation
+)
+
+// Represents the high-level state of the app from the resize-lock feature's perspective.
+type resizeLockMode int
+
+const (
+	phoneResizeLockMode resizeLockMode = iota
+	tabletResizeLockMode
+	resizableResizeLockMode
+	nonEligibleResizeLockMode
+)
+
+func (mode resizeLockMode) String() string {
+	switch mode {
+	case phoneResizeLockMode:
+		return phoneButtonName
+	case tabletResizeLockMode:
+		return tabletButtonName
+	case resizableResizeLockMode:
+		return resizableButtonName
+	default:
+		return ""
+	}
+}
+
+// Represents the expected behavior and action to take for the resizability confirmation dialog.
+type confirmationDialogAction int
+
+const (
+	dialogActionNoDialog confirmationDialogAction = iota
+	dialogActionCancel
+	dialogActionConfirm
+	dialogActionConfirmWithDoNotAskMeAgainChecked
+)
+
+// ResizeLock Test verifies if app has resize lock feature available or not by checking the dropdown menu.
+// If resize lock feature is available and app is resizable, on changing the mode, check if app is able to switch to tablet and resizable mode.
+// If resize lock feature is available and app is non-resizable, dropdown menu should be greyed out.
+func ResizeLock(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, d *ui.Device, appPkgName, appActivity string, mode resizeLockMode, isSplashVisible bool) {
+	if err := checkCompatModeButton(ctx, tconn, a, d, cr, appActivity, mode); err != nil {
+		s.Fatal(err, "failed to verify the type of the compat mode button of")
+	}
+}
+
+// checkCompatModeButton verifies the state of the compat-mode button of the given app.
+func checkCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, appActivity string, mode resizeLockMode) error {
+	if mode == nonEligibleResizeLockMode {
+		return checkVisibility(ctx, tconn, centerButtonClassName, false /* visible */)
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		button, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName})
+		if err != nil {
+			return errors.Wrap(err, "failed to find the compat-mode button")
+		}
+		button.Release(ctx)
+
+		if button.Name != mode.String() {
+			return errors.Errorf("failed to verify the name of compat-mode button; got: %s, want: %s", button.Name, mode)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// checkVisibility checks whether the node specified by the given class name exists or not.
+func checkVisibility(ctx context.Context, tconn *chrome.TestConn, className string, visible bool) error {
+	if visible {
+		return chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
+	}
+	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
 }
 
 // EscKey Test verifies if app doesn't quit on pressing esc key and without crash or ANR.
