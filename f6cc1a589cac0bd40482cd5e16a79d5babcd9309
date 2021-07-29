@@ -175,6 +175,24 @@
       "parentUuid": "8a9a5cf1_b0a4dc18",
       "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897ea765_35b6454a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-07-29T17:08:33Z",
+      "side": 1,
+      "message": "I don\u0027t think that dbus would be a good way to regulate this since the update only takes about a second to run. I think it would be best to figure out a way to set the update to pause in the middle until it is told to continue",
+      "parentUuid": "cf47f921_764d247c",
+      "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
