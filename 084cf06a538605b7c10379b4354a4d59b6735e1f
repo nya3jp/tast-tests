@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "084cf06a538605b7c10379b4354a4d59b6735e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a4738b_8ff718db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-07-29T20:09:27Z",
+      "side": 1,
+      "message": "Please remember to use tast-owners@google.com to add a random Tast owner!",
+      "revId": "084cf06a538605b7c10379b4354a4d59b6735e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
