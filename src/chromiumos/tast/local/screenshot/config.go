@@ -73,8 +73,8 @@ type Options struct {
 	//    finished moving).
 	// 2) Try and pick up on any ongoing animations during execution rather
 	//    than in gold.
-	ScreenshotRetries       int
-	ScreenshotRetryInterval time.Duration
+	Retries       int
+	RetryInterval time.Duration
 }
 
 // FillDefaults fills any unfilled fields in o with values from d.
@@ -95,11 +95,11 @@ func (o *Options) FillDefaults(d Options) {
 		o.WindowBorderWidthDP = d.WindowBorderWidthDP
 	}
 	o.RemoveElements = append(o.RemoveElements, d.RemoveElements...)
-	if o.ScreenshotRetries == 0 {
-		o.ScreenshotRetries = d.ScreenshotRetries
+	if o.Retries == 0 {
+		o.Retries = d.Retries
 	}
-	if o.ScreenshotRetryInterval == 0 {
-		o.ScreenshotRetryInterval = d.ScreenshotRetryInterval
+	if o.RetryInterval == 0 {
+		o.RetryInterval = d.RetryInterval
 	}
 	if !o.SkipWindowResize {
 		o.SkipWindowResize = d.SkipWindowResize
@@ -161,4 +161,57 @@ func ThoroughConfigs() []Config {
 		// Once they're added, switch screen_diff.go to use ThoroughConfigs instead of an empty list.
 		{Region: "us"},
 	}
+}
+
+// Option is a modifier to apply to Options.
+type Option = func(*Options)
+
+// Timeout controls the screenshot test option Timeout.
+func Timeout(timeout time.Duration) Option {
+	return func(o *Options) { o.Timeout = timeout }
+}
+
+// PixelDeltaThreshold controls the screenshot test option PixelDeltaThreshold.
+func PixelDeltaThreshold(pixelDeltaThreshold int) Option {
+	return func(o *Options) { o.PixelDeltaThreshold = pixelDeltaThreshold }
+}
+
+// WindowWidthDP controls the screenshot test option WindowWidthDP.
+func WindowWidthDP(windowWidthDP int) Option {
+	return func(o *Options) { o.WindowWidthDP = windowWidthDP }
+}
+
+// WindowHeightDP controls the screenshot test option WindowHeightDP.
+func WindowHeightDP(windowHeightDP int) Option {
+	return func(o *Options) { o.WindowHeightDP = windowHeightDP }
+}
+
+// SkipWindowResize controls the screenshot test option SkipWindowResize.
+func SkipWindowResize(skipWindowResize bool) Option {
+	return func(o *Options) { o.SkipWindowResize = skipWindowResize }
+}
+
+// SkipWindowMove controls the screenshot test option SkipWindowMove.
+func SkipWindowMove(skipWindowMove bool) Option {
+	return func(o *Options) { o.SkipWindowMove = skipWindowMove }
+}
+
+// WindowBorderWidthDP controls the screenshot test option WindowBorderWidthDP.
+func WindowBorderWidthDP(windowBorderWidthDP int) Option {
+	return func(o *Options) { o.WindowBorderWidthDP = windowBorderWidthDP }
+}
+
+// RemoveElements controls the screenshot test option RemoveElements.
+func RemoveElements(removeElements []*nodewith.Finder) Option {
+	return func(o *Options) { o.RemoveElements = removeElements }
+}
+
+// Retries controls the screenshot test option Retries.
+func Retries(retries int) Option {
+	return func(o *Options) { o.Retries = retries }
+}
+
+// RetryInterval controls the screenshot test option RetryInterval.
+func RetryInterval(retryInterval time.Duration) Option {
+	return func(o *Options) { o.RetryInterval = retryInterval }
 }
