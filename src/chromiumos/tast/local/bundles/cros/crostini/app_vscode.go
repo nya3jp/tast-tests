@@ -118,11 +118,9 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		keyboard.AccelAction("esc"),
 		keyboard.AccelAction("esc"),
 		// We have no way of detecting if the notification bubbles have disappeared, so just wait.
-		ui.Sleep(time.Second*5),
-		d.DiffWindow(ctx, "vscode"),
-		// Press ctrl+W twice to exit window.
-		keyboard.AccelAction("ctrl+W"),
-		keyboard.AccelAction("ctrl+W"),
+		d.DiffWindowWithOptions(ctx, "vscode", screenshot.Options{ScreenshotRetries: 2, ScreenshotRetryInterval: time.Second * 5}),
+		// Press ctrl+Q to exit window.
+		keyboard.AccelAction("ctrl+Q"),
 		ui.WaitUntilGone(appWindowSaved))(ctx); err != nil {
 		return err
 	}
