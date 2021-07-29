@@ -103,10 +103,19 @@ func launchAppForAdobeIllustratorDraw(ctx context.Context, s *testing.State, tco
 	const (
 		addProjectIconID     = "com.adobe.creativeapps.draw:id/add_project_btn"
 		continueButtonText   = "Continue"
+		closeButtonText      = "Close"
 		checkBoxID           = "consent"
 		selectGmailAccountID = "com.google.android.gms:id/container"
 		signInWithAGoogleID  = "com.adobe.creativeapps.draw:id/tvSignInButtonWithGoogle"
 	)
+
+	// Click on close button.
+	closeButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+closeButtonText))
+	if err := closeButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("closeButton doesn't exists: ", err)
+	} else if err := closeButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on closeButton: ", err)
+	}
 
 	// Check for sign in button.
 	signInButton := d.Object(ui.ID(signInWithAGoogleID))
