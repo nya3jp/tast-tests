@@ -707,7 +707,7 @@ func checkClientContent(ctx context.Context, tconn *chrome.TestConn, cr *chrome.
 			return testing.PollBreak(err)
 		}
 
-		dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+		dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get display mode of the primary display")
 		}
