@@ -191,11 +191,13 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer rightAct.Close()
+	defer rightAct.Stop(ctx, tconn)
 	leftAct, err := showActivityForSplitViewTest(ctx, tconn, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer leftAct.Close()
+	defer leftAct.Stop(ctx, tconn)
 
 	stw, err := tew.NewSingleTouchWriter()
 	if err != nil {
