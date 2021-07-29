@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34eeb3b1_ecf87941",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-29T20:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178e5768_19ecc988",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 71
+      },
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47a7bc8_ce663438",
@@ -161,6 +185,30 @@
       "writtenOn": "2021-07-28T18:42:16Z",
       "side": 1,
       "message": "Do the tests/fixtures/etc that call this function have a long enough deadline to handle this case? Might be worth double-checking and adjusting timeouts if necessary, otherwise they might fail here due to reaching the context deadline",
+      "range": {
+        "startLine": 511,
+        "startChar": 47,
+        "endLine": 511,
+        "endChar": 57
+      },
+      "revId": "5c39cabf0197c50551eca8478142c10fa6106065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06c9b6c_0f2a980e",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-29T20:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61aa7145_ee9322e6",
       "range": {
         "startLine": 511,
         "startChar": 47,
