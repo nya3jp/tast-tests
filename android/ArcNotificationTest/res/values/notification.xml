@@ -9,4 +9,5 @@
     <string name="default_id">123</string>
     <string name="button_text_send">SEND NOTIFICATION</string>
     <string name="button_text_remove">REMOVE NOTIFICATION</string>
+    <string name="checkbox_text_important">Importance</string>
 </resources>
