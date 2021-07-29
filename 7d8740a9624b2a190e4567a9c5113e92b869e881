@@ -16,6 +16,23 @@
       "message": "non-PST owners PTAL!",
       "revId": "7d8740a9624b2a190e4567a9c5113e92b869e881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef91e6fe_15283391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T04:28:47Z",
+      "side": 1,
+      "message": "triggering cq.",
+      "revId": "7d8740a9624b2a190e4567a9c5113e92b869e881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
