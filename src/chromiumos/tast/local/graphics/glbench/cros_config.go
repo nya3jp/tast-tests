@@ -35,7 +35,7 @@ func (config *CrosConfig) SetUp(ctx context.Context) error {
 
 // Run runs glbench and returns the output.
 func (config *CrosConfig) Run(ctx context.Context, preValue interface{}, outDir string) (string, error) {
-	args := []string{"-outdir=" + outDir, "-save", "-notemp"}
+	args := []string{"-outdir=" + outDir, "-save"}
 	if config.IsHasty() {
 		args = append(args, "-hasty")
 	}
