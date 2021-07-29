@@ -640,6 +640,15 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 // Because this is particularly disruptive, it is always logged.
 // It can be slow, because some boards are configured to hold down the power button for 12 seconds.
 func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error {
+	// Power states that reboot the EC can make servod exit or fail if the CCD watchdog is enabled.
+	switch value {
+	case PowerStateReset, PowerStateRec, PowerStateRecForceMRC, PowerStateCR50Reset:
+		if err := s.WatchdogRemove(ctx, WatchdogCCD); err != nil {
+			return errors.Wrap(err, "remove ccd watchdog")
+		}
+	default:
+		// Do nothing
+	}
 	return s.SetStringTimeout(ctx, PowerState, string(value), 20*time.Second)
 }
 
@@ -756,6 +765,21 @@ func (s *Servo) WatchdogAdd(ctx context.Context, val WatchdogValue) error {
 // WatchdogRemove removes the specified watchdog from the servod instance.
 // Servo.Close() will restore the watchdog.
 func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
+	if val == WatchdogCCD {
+		// SuzyQ reports as ccd_cr50, and doesn't have a watchdog named CCD.
+		servoType, err := s.GetServoType(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get servo type")
+		}
+		// No need to remove CCD watchdog if there is no CCD.
+		if !s.hasCCD {
+			testing.ContextLog(ctx, "Skipping watchdog remove CCD, because there is no CCD")
+			return nil
+		}
+		if servoType == "ccd_cr50" {
+			val = WatchdogMain
+		}
+	}
 	if err := s.SetString(ctx, WatchdogRemove, string(val)); err != nil {
 		return err
 	}
