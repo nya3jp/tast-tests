@@ -129,7 +129,7 @@ func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.V
 		return errors.Wrap(err, "failed to switch to photo mode")
 	}
 
-	scanBarcode, err := app.GetState(ctx, "scan-barcode")
+	scanBarcode, err := app.GetState(ctx, "enable-scan-barcode")
 	if err != nil {
 		return errors.Wrap(err, "failed to check barcode state")
 	}
