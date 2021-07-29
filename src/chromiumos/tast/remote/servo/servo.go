@@ -5,6 +5,10 @@
 // Package servo is used to communicate with servo devices connected to DUTs.
 // It communicates with servod over XML-RPC.
 // More details on servo: https://www.chromium.org/chromium-os/servo
+//
+// Caution: If you reboot the ChromeOS EC:
+// - If using a CCD servo, you should call WatchdogRemove(ctx, CCD) or servod will fail.
+// - Use Helper.WaitConnect instead of DUT.WaitConnect.
 package servo
 
 import (
