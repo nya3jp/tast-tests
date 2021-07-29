@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20d4ab9_a8a56706",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-07-29T23:34:19Z",
+      "side": 1,
+      "message": "cryptohome.RegularSession runs right after cryptohome.AutomaticCleanupManyUsers.5_users without checking the cryptohome status is the root cause of the cryptohome.RegularSession flakes.\n\nThis change could prevent the developer accidentally add a test without checking the cryptohome status before using cryptohome.",
+      "parentUuid": "8c7441a8_ef2ddc99",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "bba96dbcb474d1cd7792f5bf01280672f56cecc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "64a80c8d_60a0c967",

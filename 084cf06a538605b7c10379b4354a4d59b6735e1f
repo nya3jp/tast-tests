@@ -22,6 +22,30 @@
       },
       "revId": "084cf06a538605b7c10379b4354a4d59b6735e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca8e477_f2375cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-07-29T23:34:19Z",
+      "side": 0,
+      "message": "Actually the root cause of this issue is \"defer upstart.RestartJob(ctx, \"cryptohomed\")\", it didn\u0027t wait for the cryptohome D-Bus service.",
+      "parentUuid": "64c581dd_96876ec7",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "084cf06a538605b7c10379b4354a4d59b6735e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
