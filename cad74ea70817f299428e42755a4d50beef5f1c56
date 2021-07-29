@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7b4e7e_2ac0d829",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-29T20:19:47Z",
+      "side": 1,
+      "message": "// TFFeatures is an enum type for extra features needed for Tast fixture.\n// Note that two features can be combined using bitwise OR, e.g.\n//  TFFeaturesCapture | TFFeaturesRouters.",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "cad74ea70817f299428e42755a4d50beef5f1c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc8a384_cf7e6da8",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-07-29T20:19:47Z",
+      "side": 1,
+      "message": "represents",
+      "range": {
+        "startLine": 110,
+        "startChar": 19,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "cad74ea70817f299428e42755a4d50beef5f1c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
