@@ -53,10 +53,10 @@ func init() {
 				LaunchTests: touchviewLaunchForAutocad,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode", "no_arc_x86"},
+			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
@@ -75,10 +75,10 @@ func init() {
 				LaunchTests: touchviewLaunchForAutocad,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode", "no_arc_x86"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,

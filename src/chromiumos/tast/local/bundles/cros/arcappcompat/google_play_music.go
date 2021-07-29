@@ -49,7 +49,7 @@ func init() {
 				LaunchTests: touchviewLaunchForGooglePlayMusic,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
@@ -65,7 +65,7 @@ func init() {
 				LaunchTests: touchviewLaunchForGooglePlayMusic,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
