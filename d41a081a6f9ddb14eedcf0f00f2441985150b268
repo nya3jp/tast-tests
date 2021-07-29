@@ -57,6 +57,30 @@
       },
       "revId": "d41a081a6f9ddb14eedcf0f00f2441985150b268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7b3ddb_2f637888",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-29T20:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b062b7d_5108d332",
+      "range": {
+        "startLine": 233,
+        "startChar": 16,
+        "endLine": 233,
+        "endChar": 31
+      },
+      "revId": "d41a081a6f9ddb14eedcf0f00f2441985150b268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
