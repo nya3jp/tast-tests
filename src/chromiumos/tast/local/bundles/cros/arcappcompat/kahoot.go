@@ -66,10 +66,10 @@ func init() {
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForKahoot,
 			},
-			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
@@ -90,10 +90,10 @@ func init() {
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForKahoot,
 			},
-			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
