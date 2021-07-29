@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "affb6d6a_a4415210",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-29T08:54:16Z",
+      "side": 1,
+      "message": "LGTM\nAdding +2 before shadow, as it is a trivial change.",
+      "revId": "1e307b29b9104c7cacd7300371df20a9a528c044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
