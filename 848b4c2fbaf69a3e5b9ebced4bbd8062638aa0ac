@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6228073e_175e0535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T02:05:37Z",
+      "side": 1,
+      "message": "I think this patch is just for testing. Just only for record purpose, adding my local modifications needed to make this pass with http://crrev.com/c/3000047.",
+      "revId": "848b4c2fbaf69a3e5b9ebced4bbd8062638aa0ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a491a1f1_2f35bbcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_web_click.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T02:05:37Z",
+      "side": 1,
+      "message": "ui.WaitUntilExists(searchBoxFocused)(ctx)",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "848b4c2fbaf69a3e5b9ebced4bbd8062638aa0ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b4f225_0624bc5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/extended_display_web_click.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T02:05:37Z",
+      "side": 1,
+      "message": "nodewith.Name(\"Google Search\").Role(role.Button).Default()",
+      "range": {
+        "startLine": 119,
+        "startChar": 17,
+        "endLine": 119,
+        "endChar": 65
+      },
+      "revId": "848b4c2fbaf69a3e5b9ebced4bbd8062638aa0ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
