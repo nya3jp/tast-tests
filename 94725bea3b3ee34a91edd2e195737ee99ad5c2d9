@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddf279a_27d719f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T08:22:04Z",
+      "side": 1,
+      "message": "Andre is planning to add tast test.",
+      "parentUuid": "3ea8e20f_c7e26f92",
+      "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "07cba129_ad207a46",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-29T06:55:01Z",
       "side": 1,
       "message": "IIUC, NotificationChannel is something like \"create once, regirster it to the notification manager, then send notification specifying which channle to use\", not something to be created everytime we sed notification.\n\nWould you mind checking if this usage is correct and update if needed?",
+      "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fcea44_2dd0dbee",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T08:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e34f4988_033d3a0d",
       "revId": "94725bea3b3ee34a91edd2e195737ee99ad5c2d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
