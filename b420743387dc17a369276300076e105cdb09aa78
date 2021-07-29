@@ -51,6 +51,24 @@
       "parentUuid": "378c9bea_cd262b21",
       "revId": "b420743387dc17a369276300076e105cdb09aa78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d992f3b_61038913",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-29T16:49:30Z",
+      "side": 1,
+      "message": "\u003e  There has already been a case where our fixture was changed by a test author and that made all policy tests flaky. It took some time for us to notice that this had happened.\n\nin the case, new gwsq config should assign reviewers from your team, right?\nWasn\u0027t that the goal?",
+      "parentUuid": "f1e377ff_eaebaae0",
+      "revId": "b420743387dc17a369276300076e105cdb09aa78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
