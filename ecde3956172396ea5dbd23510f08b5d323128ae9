@@ -68,6 +68,24 @@
       "parentUuid": "78bfdc10_d94175a0",
       "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f98f92_1c6a73dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-29T17:40:05Z",
+      "side": 1,
+      "message": "I think local tests should use servo without a proxy. A new constructor should be added to servo to make that easier. I.e.\n\nfunc NewDirect(ctx context.Context, spec string) (*Servo, error)  {\n\thost, port, _, err :\u003d splitHostPort(spec)\n\tif err !\u003d nil {\n\t\treturn nil, err\n\t}\n\treturn New(ctx, host, port)\n}\n\nHowever, I realize there is another thing to check. Can\u0027t the test just use the ectool cli?",
+      "parentUuid": "6ba3f439_daee67e7",
+      "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
