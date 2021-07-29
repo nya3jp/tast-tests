@@ -165,7 +165,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
 				return err
 			}
-			if err := h.DUT.WaitConnect(ctx); err == nil {
+			if err := h.WaitConnect(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -191,7 +191,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	// Reconnect to the DUT.
 	testing.ContextLog(ctx, "Reestablishing connection to DUT")
-	if err := h.DUT.WaitConnect(ctx); err != nil {
+	if err := h.WaitConnect(ctx); err != nil {
 		return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 	}
 
@@ -289,7 +289,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		// long time.
 		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
 		defer cancel()
-		if err := h.DUT.WaitConnect(ctx); err != nil {
+		if err := h.WaitConnect(ctx); err != nil {
 			return errors.Wrap(err, "failed to connect to DUT")
 		}
 		if bootID, err := h.Reporter.BootID(ctx); err != nil {
@@ -312,7 +312,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	// Reconnect to the DUT.
 	testing.ContextLog(ctx, "Reestablishing connection to DUT")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return h.DUT.WaitConnect(ctx)
+		return h.WaitConnect(ctx)
 	}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 		return errors.Wrapf(err, "failed to reconnect to DUT after resetting from %s", fromMode)
 	}
