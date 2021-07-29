@@ -34,6 +34,120 @@
       "parentUuid": "d6baedaa_01c09fc2",
       "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3524a3e_f35d4066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-29T09:26:06Z",
+      "side": 1,
+      "message": "drop by as you mentioned this CL in CL:2987726.\n\na few nits.",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8779f400_349da549",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-29T09:26:06Z",
+      "side": 1,
+      "message": "This attribute set won\u0027t get scheduled in any suite currently. Maybe also wificell_func + wificell_unstable?",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46ad7fa_88385484",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-29T09:26:06Z",
+      "side": 1,
+      "message": "Fixture is available on ToT now, maybe can start using it? (it\u0027s also ok to use Pre for now and I\u0027ll migrate in my next round of renaming)",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6c00ea_15c61304",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-29T09:26:06Z",
+      "side": 1,
+      "message": "minor nit: not sure if other test might also want to parse the packet. If so, perhaps it worth to extract the parsing here (+ related types) into a utility function?",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cedb58_79621742",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-29T09:26:06Z",
+      "side": 1,
+      "message": "minor nit: I think the type of ID is uint8, although in golang, byte is an alias of uint8. (one similar case below)",
+      "range": {
+        "startLine": 317,
+        "startChar": 28,
+        "endLine": 317,
+        "endChar": 32
+      },
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2764749d_1ec2dc12",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-07-29T09:26:06Z",
+      "side": 1,
+      "message": "nit: The fields above are with fixed size, not sure if it might be simpler to have them in a single Header type and use binary.Write here?",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
