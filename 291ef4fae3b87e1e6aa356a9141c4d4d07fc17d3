@@ -50,6 +50,24 @@
       "message": "clar: Is there any point to calling this method to see if it has an error if you do not use the result?",
       "revId": "291ef4fae3b87e1e6aa356a9141c4d4d07fc17d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6beef6_d57ab68f",
+        "filename": "src/chromiumos/tast/remote/servo/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-29T15:34:46Z",
+      "side": 1,
+      "message": "It populates s.hasCCD also.",
+      "parentUuid": "8f1b9f89_113ea9ea",
+      "revId": "291ef4fae3b87e1e6aa356a9141c4d4d07fc17d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
