@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -25,6 +27,7 @@ type ArcLifecycleUnit struct {
 	allocateBytes int64
 	ratio         float64
 	limit         memory.Limit
+	minimize      bool
 }
 
 // ArcLifecycleUnitCount is the number of different ARC lifecycle app packages,
@@ -51,7 +54,7 @@ func (t *ArcLifecycleUnit) intentAction(action string) string {
 var amStartRE = regexp.MustCompile("(?m)^Status: ok$")
 
 // Run starts the AndroidLifecycleTest app, and uses it to allocate memory.
-func (t *ArcLifecycleUnit) Run(ctx context.Context, a *arc.ARC) error {
+func (t *ArcLifecycleUnit) Run(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn) error {
 	// Android doesn't like launching apps with the display asleep...
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		return errors.Wrap(err, "failed to turn on display")
@@ -94,6 +97,28 @@ func (t *ArcLifecycleUnit) Run(ctx context.Context, a *arc.ARC) error {
 	}, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to allocate with %q", t.packageName())
 	}
+
+	if t.minimize {
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, t.packageName())
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get window info: ", err)
+		} else {
+			testing.ContextLogf(ctx, "Window Info %q %+v", t.packageName(), info)
+		}
+
+		if err := tconn.Call(ctx, nil, `async (packageName) => {
+			const getWindows = tast.promisify(chrome.autotestPrivate.getAppWindowList);
+			const setState = tast.promisify(chrome.autotestPrivate.setAppWindowState);
+			for (const w of await getWindows()) {
+				if (w.arcPackageName === packageName) {
+					await setState(w.id, {eventType: "WMEventMinimize"});
+				}
+			}
+		}`, t.packageName()); err != nil {
+			return errors.Wrapf(err, "failed to minimize window for %q", t.packageName())
+		}
+	}
+
 	return nil
 }
 
@@ -129,13 +154,14 @@ func (t *ArcLifecycleUnit) StillAlive(ctx context.Context, a *arc.ARC) bool {
 //  allocateBytes - mow much memory to allocate.
 //  ratio         - the compression ratio of allocated memory.
 //  limit         - if not nil, wait for Limit after allocation.
-func NewArcLifecycleUnit(id int, allocateBytes int64, ratio float64, limit memory.Limit) *ArcLifecycleUnit {
-	return &ArcLifecycleUnit{id, allocateBytes, ratio, limit}
+//  minimize      - minimize the app window after allocation completes.
+func NewArcLifecycleUnit(id int, allocateBytes int64, ratio float64, limit memory.Limit, minimize bool) *ArcLifecycleUnit {
+	return &ArcLifecycleUnit{id, allocateBytes, ratio, limit, minimize}
 }
 
 // FillArcMemory installs, launches, and allocated in ArcLifecycleTest apps
 // until one is killed, filling up memory in ARC.
-func FillArcMemory(ctx context.Context, a *arc.ARC, unitBytes int64, ratio float64) (func(context.Context) error, error) {
+func FillArcMemory(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, unitBytes int64, ratio float64) (func(context.Context) error, error) {
 	var units []*ArcLifecycleUnit
 	cleanup := func(ctx context.Context) error {
 		var res error
@@ -154,9 +180,9 @@ func FillArcMemory(ctx context.Context, a *arc.ARC, unitBytes int64, ratio float
 		if err := a.Install(ctx, androidLifecycleTestAPKPath(i)); err != nil {
 			return cleanup, errors.Wrapf(err, "failed to install %q", androidLifecycleTestAPKPath(i))
 		}
-		unit := NewArcLifecycleUnit(i, unitBytes, ratio, nil)
+		unit := NewArcLifecycleUnit(i, unitBytes, ratio, nil, false)
 		units = append(units, unit)
-		if err := unit.Run(ctx, a); err != nil {
+		if err := unit.Run(ctx, a, tconn); err != nil {
 			return cleanup, errors.Wrapf(err, "failed to run ArcLifecycleUnit %d", i)
 		}
 		for _, unit := range units {
@@ -193,7 +219,7 @@ func (t *ArcLifecycleTask) NeedVM() bool {
 
 // Run starts the AndroidLifecycleTest app, and uses it to allocate memory.
 func (t *ArcLifecycleTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	return t.ArcLifecycleUnit.Run(ctx, testEnv.arc)
+	return t.ArcLifecycleUnit.Run(ctx, testEnv.arc, testEnv.tconn)
 }
 
 // Close kills the AndroidLifecycleTest app.
@@ -213,8 +239,9 @@ func (t *ArcLifecycleTask) StillAlive(ctx context.Context, testEnv *TestEnv) boo
 //  allocateBytes - mow much memory to allocate.
 //  ratio         - the compression ratio of allocated memory.
 //  limit         - if not nil, wait for Limit after allocation.
-func NewArcLifecycleTask(id int, allocateBytes int64, ratio float64, limit memory.Limit) *ArcLifecycleTask {
-	return &ArcLifecycleTask{*NewArcLifecycleUnit(id, allocateBytes, ratio, limit)}
+//  minimize      - minimize the app window after allocation completes.
+func NewArcLifecycleTask(id int, allocateBytes int64, ratio float64, limit memory.Limit, minimize bool) *ArcLifecycleTask {
+	return &ArcLifecycleTask{*NewArcLifecycleUnit(id, allocateBytes, ratio, limit, minimize)}
 }
 
 func androidLifecycleTestAPKPath(id int) string {
