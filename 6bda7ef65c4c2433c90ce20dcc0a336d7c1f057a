@@ -104,6 +104,30 @@
       },
       "revId": "6bda7ef65c4c2433c90ce20dcc0a336d7c1f057a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1dfce8_5f429414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-29T22:56:35Z",
+      "side": 1,
+      "message": "Got it. Done.\n\nI thought you want to put \":\u003d\" in an \"if\" and prefer the following:\n\n  if l, err :\u003d ....; err !\u003d nil {\n    s.Fatal(...);\n  } else {\n    defer l.Close(ctx)\n  }",
+      "parentUuid": "68877465_38521377",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 10
+      },
+      "revId": "6bda7ef65c4c2433c90ce20dcc0a336d7c1f057a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
