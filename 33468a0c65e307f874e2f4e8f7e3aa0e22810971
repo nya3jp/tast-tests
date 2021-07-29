@@ -105,6 +105,24 @@
       "parentUuid": "d72d9a5c_8ba7c065",
       "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca190cba_c3c45deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-29T20:31:18Z",
+      "side": 1,
+      "message": "After the changes in crrev/c/3056832 this does pass tast-lint. Is this acceptable now?",
+      "parentUuid": "565ceae4_4399779e",
+      "revId": "33468a0c65e307f874e2f4e8f7e3aa0e22810971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
