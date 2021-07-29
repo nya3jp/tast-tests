@@ -641,6 +641,7 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 // Because this is particularly disruptive, it is always logged.
 // It can be slow, because some boards are configured to hold down the power button for 12 seconds.
 func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error {
+	testing.ContextLogf(ctx, "Setting %q to %q", PowerState, value)
 	// Power states that reboot the EC can make servod exit or fail if the CCD watchdog is enabled.
 	switch value {
 	case PowerStateReset, PowerStateRec, PowerStateRecForceMRC, PowerStateCR50Reset:
