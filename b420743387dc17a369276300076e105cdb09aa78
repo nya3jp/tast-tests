@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9716038_5b42631c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-29T02:18:08Z",
+      "side": 1,
+      "message": "drive-by",
+      "revId": "b420743387dc17a369276300076e105cdb09aa78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378c9bea_cd262b21",
+        "filename": "src/chromiumos/tast/local/policyutil/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-29T02:18:08Z",
+      "side": 1,
+      "message": "I\u0027d recommend not to set noparent here.\nIt is very strong signal, and it makes it difficult to over-all maintenance, e.g. method renaming etc.\nAs long as gwsq assigns reviewer to your team members, it should work practically, I think?\n\nIt\u0027s also worth to add some comments about this OWNERS, maybe referencing to the doc you\u0027re updating?",
+      "revId": "b420743387dc17a369276300076e105cdb09aa78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
