@@ -16,6 +16,40 @@
       "message": "PTAL!",
       "revId": "8787efee1eda244016e509f13ab6b91736763954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eceeb70_8d7b9bcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-29T06:30:18Z",
+      "side": 1,
+      "message": "can we create a cleanup context, so that activities are closed even when the test times out?\n\na the top of func SplitView():\n\n\tcleanupCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second*10)\n\tdefer cancel()\n\t\nThen\n\n\tdefer rightAct.Stop(cleanupCtx, tconn)",
+      "revId": "8787efee1eda244016e509f13ab6b91736763954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a10eeeb_8c126f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-07-29T06:30:18Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "8787efee1eda244016e509f13ab6b91736763954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
