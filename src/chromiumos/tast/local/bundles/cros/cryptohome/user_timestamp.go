@@ -11,10 +11,11 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/upstart"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -48,6 +49,13 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		// updating the home directory timestamp.
 		timestampOld = "92"
 	)
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	daemonController := helper.DaemonController()
 
 	createUser := func(ctx context.Context, user, pass string) error {
 		if err := cryptohome.CreateVault(ctx, user, pass); err != nil {
@@ -121,7 +129,7 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 	}
 
 	// Start cryptohomed and wait for it to be available
-	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
