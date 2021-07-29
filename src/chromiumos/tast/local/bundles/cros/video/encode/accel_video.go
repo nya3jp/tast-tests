@@ -282,6 +282,12 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		yuvJSONPath,
 	}
 
+	if opts.spatialLayers > 1 {
+		testArgs = append(testArgs, fmt.Sprintf("--num_spatial_layers=%d", opts.spatialLayers))
+	}
+	if opts.temporalLayers > 1 {
+		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
+	}
 	if opts.bitrate > 0 {
 		testArgs = append(testArgs, fmt.Sprintf("--bitrate=%d", opts.bitrate))
 	}
@@ -306,16 +312,24 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	if _, err := os.Stat(uncappedJSON); os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to find uncapped performance metrics file")
 	}
-	qualityJSON := filepath.Join(s.OutDir(), "VideoEncoderTest", qualityTestname+".json")
-	if _, err := os.Stat(qualityJSON); os.IsNotExist(err) {
-		return errors.Wrap(err, "failed to find quality performance metrics file")
-	}
-
 	if err := encoding.ParseUncappedPerfMetrics(uncappedJSON, p); err != nil {
 		return errors.Wrap(err, "failed to parse uncapped performance metrics")
 	}
-	if err := encoding.ParseQualityPerfMetrics(qualityJSON, p); err != nil {
-		return errors.Wrap(err, "failed to parse quality performance metrics")
+
+	qualityJSONPath := filepath.Join(s.OutDir(), "VideoEncoderTest", qualityTestname)
+	if opts.spatialLayers > 1 || opts.temporalLayers > 1 {
+		for sID := 1; sID <= opts.spatialLayers; sID++ {
+			for tID := 1; tID <= opts.temporalLayers; tID++ {
+				scalabilityMode := fmt.Sprintf("L%dT%d", sID, tID)
+				if err := addQualityMetrics(qualityJSONPath, scalabilityMode, p); err != nil {
+					return errors.Wrapf(err, "failed to parse quality performance metrics for %v", scalabilityMode)
+				}
+			}
+		}
+	} else {
+		if err := addQualityMetrics(qualityJSONPath, "", p); err != nil {
+			return errors.Wrap(err, "failed to parse quality performance metrics")
+		}
 	}
 
 	// Test 2: Measure CPU usage and power consumption while running capped
@@ -352,5 +366,22 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		return errors.Wrap(err, "failed to save performance metrics")
 	}
 
+	return nil
+}
+
+// addQualityMetrics reads quality metrics from JSON file for scalabilityMode and add them to p.
+// Empty scalabilityMode represents the JSON contains the metrics of non SVC encoding.
+func addQualityMetrics(qualityJSONPath, scalabilityMode string, p *perf.Values) error {
+	qualityJSON := qualityJSONPath
+	if scalabilityMode != "" {
+		qualityJSON += "." + scalabilityMode
+	}
+	qualityJSON += ".json"
+	if _, err := os.Stat(qualityJSON); os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to find quality performance metrics file")
+	}
+	if err := encoding.ParseQualityPerfMetrics(qualityJSON, scalabilityMode, p); err != nil {
+		return errors.Wrap(err, "failed to parse quality performance metrics file")
+	}
 	return nil
 }
