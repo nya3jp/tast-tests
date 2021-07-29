@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e171bcb4_935f081c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-29T19:35:42Z",
+      "side": 1,
+      "message": "nit: so",
+      "range": {
+        "startLine": 319,
+        "startChar": 36,
+        "endLine": 319,
+        "endChar": 38
+      },
+      "revId": "8e12f484f2eb0562ac67820580c14d8387e6f375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

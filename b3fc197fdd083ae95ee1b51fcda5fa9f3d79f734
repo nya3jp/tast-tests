@@ -792,6 +792,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c2fc4bf_365c3410",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-07-29T19:35:42Z",
+      "side": 1,
+      "message": "oh right, because we just change its opacity to 0, so it keeps receiving mouse events...\nwe should probably mark the folder view as ignored for accessibility when we hide it (and then update the code here to wait for the folder to go away).\n\nThough, I\u0027m fine doing that in a follow-up",
+      "parentUuid": "386f6eed_daafaf8e",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd7ab73_bbb63d2c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10
