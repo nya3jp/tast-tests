@@ -212,7 +212,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
 			s.Fatal("Resetting DUT during cleanup: ", err)
 		}
-		if err := h.DUT.WaitConnect(ctx); err != nil {
+		if err := h.WaitConnect(ctx); err != nil {
 			s.Fatal("Reconnecting to DUT during cleanup: ", err)
 		}
 	}(ctxForCleanup)

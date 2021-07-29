@@ -172,7 +172,7 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 			h.CloseRPCConnection(ctx)
 			waitBootCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 			defer cancel()
-			if err = h.DUT.WaitConnect(waitBootCtx); err == nil {
+			if err = h.WaitConnect(waitBootCtx); err == nil {
 				return nil
 			}
 			// If WaitConnect didn't work, let it reset.
@@ -186,7 +186,7 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 		testing.ContextLog(ctx, "Error closing connections to DUT: ", err)
 	}
 	h.CloseRPCConnection(ctx)
-	return h.DUT.WaitConnect(ctx)
+	return h.WaitConnect(ctx)
 }
 
 // RequireRPCClient creates a client connection to the DUT's gRPC server, unless a connection already exists.
@@ -501,4 +501,34 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	}
 
 	return nil
+}
+
+// WaitConnect is similar to DUT.WaitConnect, except that it works with RO EC firmware.
+// Pass a context with a deadline if you don't want to wait forever.
+func (h *Helper) WaitConnect(ctx context.Context) error {
+	const reconnectRetryDelay = time.Second
+
+	if err := h.RequireServo(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to servo")
+	}
+	testing.ContextLogf(ctx, "Waiting for %s to connect", h.DUT.HostName())
+	for {
+		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
+			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
+		}
+		err := h.DUT.Connect(ctx)
+		if err == nil {
+			return nil
+		}
+
+		select {
+		case <-time.After(reconnectRetryDelay):
+			break
+		case <-ctx.Done():
+			if err.Error() == ctx.Err().Error() {
+				return err
+			}
+			return errors.Wrapf(err, "context error = %v", ctx.Err())
+		}
+	}
 }
