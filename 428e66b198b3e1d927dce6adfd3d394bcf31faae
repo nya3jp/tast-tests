@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d632ee1_0f3142ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Thanks for the review, Oleh.",
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10832dcc_415e34ba",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "nit: I am a bit concerned that battery might sound too wide for us. Maybe smth like charge_control to be more specific?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2428fc_c9450abf",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10832dcc_415e34ba",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03192b9d_9cfc9aca",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "b934beab_4a297aaf",
+      "range": {
+        "startLine": 20,
+        "startChar": 72,
+        "endLine": 20,
+        "endChar": 92
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be3166a7_d70e8a8b",
@@ -77,6 +142,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "nit: used only once, so no need for a separate constant",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc46a4f_cd7cd864",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be3166a7_d70e8a8b",
       "range": {
         "startLine": 38,
         "startChar": 7,
@@ -110,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f8c59e_ae690537",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42269caa_a44a9731",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759717c4_a9aaff01",
@@ -123,6 +236,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "it\u0027s safer to introduce a separate cleanup context before any operations in the function, otherwise you might not have enough reserved time for cleanup.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac7536f_1afe7233",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Yeah, totally makes sense.",
+      "parentUuid": "759717c4_a9aaff01",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -156,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bba26d_e9f61f1f",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4ebe13e_f594e859",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a331901_abdd1ec1",
@@ -179,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca5ea3e_5fe7a698",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a331901_abdd1ec1",
+      "range": {
+        "startLine": 65,
+        "startChar": 59,
+        "endLine": 65,
+        "endChar": 69
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29ae1d3d_f0c37028",
@@ -192,6 +377,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "if you are not planning to use this function outside of the package, then it should start with lower case and publicly visible functions should be closer to the beginning of the file.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880bd4ff_04f224bb",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Yes, as I have removed the remote utils, we no longer need it as public.",
+      "parentUuid": "29ae1d3d_f0c37028",
       "range": {
         "startLine": 72,
         "startChar": 5,
@@ -227,6 +436,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea2bdf39_7b9bc69c",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Actually, there is an idea called \"force drain\". When the battery draining rate is higher than the charging rate and it\u0027s possible by rendering the webgl webpage and maxing out screen brightness. But it\u0027s time consuming, some tests (that don\u0027t disconnect the power supply by mistake during writing tests) may become flakier due to timeout.\n\nI was about to discuss that with you. If you prefer force_drain I have to remove line54-55, else I have to add the similar logic on drain also (a polling).\nPlease, do let me know.Thanks.",
+      "parentUuid": "541d8dc8_df1ebad1",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 86
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "918b723b_53e695d9",
         "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
         "patchSetId": 11
@@ -238,6 +471,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "nit: i think we can use default Tast interval here. So no need to specify it explicitly",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe11876_588f0901",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "918b723b_53e695d9",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -294,6 +551,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "347a6fbf_d83df957",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Absolutely.",
+      "parentUuid": "fe9cfa98_a7deb786",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 65
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b677b9e_4f256b77",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd01c260_fb73ff73",
+      "range": {
+        "startLine": 132,
+        "startChar": 66,
+        "endLine": 132,
+        "endChar": 72
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b224b7_2e399119",
@@ -342,6 +647,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19aef7e3_c8057f21",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "The display_battery_percentage from `dump_power_status` returns a float, that\u0027s why I kept the flexibility for some cases when we need battery percentage like (95.5%) (again absurd case, highly unlikely).\nYeah users see the integer value in GUI. Internally it\u0027s a float.\nSo int or float? which one you would prefer.",
+      "parentUuid": "f7e42536_08f6c385",
+      "range": {
+        "startLine": 133,
+        "startChar": 105,
+        "endLine": 133,
+        "endChar": 112
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bc5957_4d265111",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Fine by me. Thanks for pointing out.",
+      "parentUuid": "e6b224b7_2e399119",
+      "range": {
+        "startLine": 133,
+        "startChar": 86,
+        "endLine": 133,
+        "endChar": 104
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82849faa_89dd3e83",
         "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
         "patchSetId": 11
@@ -353,6 +706,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "maybe just \"servo v4\" in quotes since it\u0027s more greppable/searchable?",
+      "range": {
+        "startLine": 149,
+        "startChar": 30,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cecbd0c7_685e6e16",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82849faa_89dd3e83",
       "range": {
         "startLine": 149,
         "startChar": 30,
@@ -409,6 +786,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ad80fe_2334f4b5",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75f7408e_b7d0e5a3",
+      "range": {
+        "startLine": 161,
+        "startChar": 66,
+        "endLine": 161,
+        "endChar": 67
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3731caa0_8be80b5f",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b478453a_224f00b2",
+      "range": {
+        "startLine": 161,
+        "startChar": 49,
+        "endLine": 161,
+        "endChar": 57
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b36f0c_f94c58b6",
@@ -422,6 +847,30 @@
       "writtenOn": "2021-07-29T16:35:42Z",
       "side": 1,
       "message": "Such pattern might be useful, but a bit against package design.\n\nSo, let\u0027s split this into 2 methods: get and set brightness",
+      "range": {
+        "startLine": 79,
+        "startChar": 77,
+        "endLine": 79,
+        "endChar": 129
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8265ec56_566a6e6f",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-29T17:04:00Z",
+      "side": 1,
+      "message": "Okay, so as to speak you mean 2 private get, set \u0026 one public Update with the callback. Or just one Get \u0026 Set.",
+      "parentUuid": "f4b36f0c_f94c58b6",
       "range": {
         "startLine": 79,
         "startChar": 77,
