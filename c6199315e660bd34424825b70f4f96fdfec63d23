@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea46d2f7_26e56dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-07-29T23:31:26Z",
+      "side": 1,
+      "message": "ihf@ Can you approve it. Trivial change.",
+      "revId": "c6199315e660bd34424825b70f4f96fdfec63d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
