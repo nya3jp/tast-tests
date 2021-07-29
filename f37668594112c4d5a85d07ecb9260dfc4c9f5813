@@ -16,6 +16,23 @@
       "message": "Shuhei, is this the best way to exclude Geo and me from being presented in gerrit as an OWNER?\n\nhttp://screen/6a4yVGJGDrtFvin\n\nPer an email conversation we had before (subject \"Green Stainless CLs\"), I thought we were supposed to be excluded from that list in another way, because the OWNERS file and the tast-owners@ lists were separate?  Or does gerrit only know about the OWNERS file?\n\nI don\u0027t see the LAST_RESORT_SUGGESTION text anywhere else:\n\nhttp://source/search?q\u003dpackage:%5Echromeos_%20%20LAST_RESORT_SUGGESTION\u0026sq\u003d\n\nso I don\u0027t know how this will be presented in gerrit.\n\nThanks!",
       "revId": "f37668594112c4d5a85d07ecb9260dfc4c9f5813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91541b4e_5dbb1d5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-29T00:51:55Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t know this annotation.\n",
+      "revId": "f37668594112c4d5a85d07ecb9260dfc4c9f5813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
