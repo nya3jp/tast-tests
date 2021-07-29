@@ -80,6 +80,30 @@
       },
       "revId": "6bda7ef65c4c2433c90ce20dcc0a336d7c1f057a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68877465_38521377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-29T22:44:10Z",
+      "side": 1,
+      "message": "It looks me like L290 is in the same scope as assigning the variable l. If you just use the syntax `l, err :\u003d` the assignments happen like normal, but the types are just inferred from the return values. I think it would be functionally equivalent and let you still defer l.Close(ctx). Let me know if I\u0027m missing something.",
+      "parentUuid": "711da9df_4fc6ab3e",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 10
+      },
+      "revId": "6bda7ef65c4c2433c90ce20dcc0a336d7c1f057a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
