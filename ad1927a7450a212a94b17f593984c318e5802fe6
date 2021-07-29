@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "675b0111_d068f7a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-29T03:54:02Z",
+      "side": 1,
+      "message": "Removed but print log in the caller.",
+      "parentUuid": "25e450c2_0b895336",
+      "range": {
+        "startLine": 459,
+        "startChar": 3,
+        "endLine": 459,
+        "endChar": 59
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6befe79a_cdb89e21",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-26T00:07:17Z",
       "side": 1,
       "message": "This cleanup does not work if the function fails due to context timeout. Please shorten the context to reserve time for cleanup.",
+      "range": {
+        "startLine": 555,
+        "startChar": 7,
+        "endLine": 555,
+        "endChar": 19
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f91443_bb58340d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-29T03:54:02Z",
+      "side": 1,
+      "message": "Done. Also print out error log for debugging purposes.",
+      "parentUuid": "6befe79a_cdb89e21",
       "range": {
         "startLine": 555,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c580f0_7d5c4828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-29T03:54:02Z",
+      "side": 1,
+      "message": "Thanks. We changed some functions to return action.Action based on your comments and the logic will be refined with ui.Combine().\n\nSince the changes also impact the zoom logic, we will use a new CL to review them.",
+      "parentUuid": "30c2dfd2_f919e404",
+      "range": {
+        "startLine": 632,
+        "startChar": 113,
+        "endLine": 632,
+        "endChar": 118
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2de23de_f6aec07c",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-26T00:07:17Z",
       "side": 1,
       "message": "nit: I would suggest to use pattern or something else to make this identifier more robust. This name highly depends on Slide side change.",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 66
+      },
+      "revId": "ad1927a7450a212a94b17f593984c318e5802fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a30d23_62e313b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/slide.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-29T03:54:02Z",
+      "side": 1,
+      "message": "You are right. Since we are already on the google slide tab, change to use other ui node to find the button. \n\nWe do have other occurrences of using \"Untitled presentation - Google Slides\" (eg: switch tab). We will see how to change them in the future.",
+      "parentUuid": "c2de23de_f6aec07c",
       "range": {
         "startLine": 178,
         "startChar": 21,
