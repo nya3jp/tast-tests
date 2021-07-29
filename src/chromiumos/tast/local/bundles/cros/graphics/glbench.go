@@ -48,7 +48,7 @@ func init() {
 				Fixture:   "gpuWatchHangs",
 			}, {
 				Name:              "crostini",
-				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
+				ExtraAttr:         []string{"group:graphics", "graphics_nightly"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "dlc"},
 				Pre:               crostini.StartedByDlcBuster(),
