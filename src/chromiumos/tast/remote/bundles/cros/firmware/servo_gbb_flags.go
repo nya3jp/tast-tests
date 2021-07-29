@@ -101,6 +101,10 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
 
+	if err = h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		s.Fatal("Failed to remove ccd watchdog: ", err)
+	}
+
 	s.Log("Getting GBB flags from BiosService")
 	old, err := h.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
 	if err != nil {
