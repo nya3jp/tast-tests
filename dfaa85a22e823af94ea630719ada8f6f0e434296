@@ -22,6 +22,30 @@
       },
       "revId": "dfaa85a22e823af94ea630719ada8f6f0e434296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721addef_a331c165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1309215
+      },
+      "writtenOn": "2021-07-29T20:25:36Z",
+      "side": 1,
+      "message": "I added a repeated check that tries 10 times.   However, I\u0027m running against the VM at the moment because I don\u0027t have a test device handy.  The VM presumably has a faster connect to chrome sync, so it always succeeds on the first try.  Could you run this against a physical device that you have?",
+      "parentUuid": "d738c594_4cbe9bfd",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "dfaa85a22e823af94ea630719ada8f6f0e434296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
