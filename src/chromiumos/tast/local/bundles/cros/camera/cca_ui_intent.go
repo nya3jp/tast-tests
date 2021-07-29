@@ -115,10 +115,6 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
 	uiDevice, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -234,6 +230,10 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.Name, func(ctx context.Context, s *testing.State) {
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
+
 			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
@@ -243,6 +243,10 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 
 	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 	s.Run(subTestCtx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
+		if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+			s.Fatal("Failed to clear saved directory: ", err)
+		}
+
 		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb); err != nil {
 			s.Error("Failed for instances coexistence test: ", err)
 		}

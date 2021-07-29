@@ -77,6 +77,10 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
+
 			if err := cca.MainMenu.Open(ctx, app); err != nil {
 				s.Fatal("Failed to click settings button: ", err)
 			}

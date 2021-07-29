@@ -63,15 +63,15 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to start Chrome: ", err)
 			}
 
-			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
-				s.Fatal("Failed to clear saved directory: ", err)
-			}
-
 			tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseFakeCamera)
 			if err != nil {
 				s.Fatal("Failed to construct test bridge: ", err)
 			}
 			defer tb.TearDown(ctx)
+
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
 
 			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 			if err != nil {

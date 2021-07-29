@@ -121,10 +121,6 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
@@ -166,6 +162,10 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
 			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
+
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
 
 			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 			if err != nil {

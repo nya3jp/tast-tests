@@ -57,10 +57,6 @@ func CCAUICoexistence(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(cleanupCtx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
 	openCCA := func() (*cca.App, error) {
 		return cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	}
@@ -81,6 +77,10 @@ func CCAUICoexistence(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
+
 			if err := tst.testFunc(cleanupCtx, ctx, cr, openCCA, newCameraWebPage); err != nil {
 				s.Errorf("Failed to run subtest %v: %v", tst.name, err)
 			}
