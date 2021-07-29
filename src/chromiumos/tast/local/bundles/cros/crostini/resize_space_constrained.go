@@ -53,6 +53,7 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	keyboard := pre.Keyboard
+	cont := pre.Container
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -93,10 +94,16 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to fill disk space: ", err)
 		}
+
 		s.Logf("Resizing from %v to %v", currSizeBytes, tBytes)
-		if err = st.ResizeDisk(ctx, keyboard, tBytes, currSizeBytes < tBytes); err != nil {
-			s.Fatalf("Failed to resize disk from %v to %v: %v", currSizeBytes, tBytes, err)
+		sizeOnSlider, sizeInCont, err := st.Resize(ctx, keyboard, tBytes, currSizeBytes)
+		if err != nil {
+			s.Fatal("Failed to resize back to the default value: ", err)
 		}
+		if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, sizeInCont); err != nil {
+			s.Fatal("Failed to verify resize results: ", err)
+		}
+
 		currSizeBytes = tBytes
 		if err = os.Remove(fillFile); err != nil {
 			s.Fatalf("Failed to remove fill file %s: %v", fillFile, err)
