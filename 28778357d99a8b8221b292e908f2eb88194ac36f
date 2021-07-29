@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d460e11d_846fce7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-07-29T16:42:46Z",
+      "side": 1,
+      "message": "Can we create smaller functions and call them in this one since it is getting long and a bit difficult to comprehend?",
+      "revId": "28778357d99a8b8221b292e908f2eb88194ac36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5354405c_449184b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-07-29T16:42:46Z",
+      "side": 1,
+      "message": "nit: We\u0027re not starting ARC. We\u0027re connecting to it. ARC is already running after successful optin.",
+      "revId": "28778357d99a8b8221b292e908f2eb88194ac36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f7ea1a_a7266fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-07-29T16:42:46Z",
+      "side": 1,
+      "message": "maybe better to move it closer to where it is used i.e. L98",
+      "revId": "28778357d99a8b8221b292e908f2eb88194ac36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
