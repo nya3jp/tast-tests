@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd5b725_8db8d59e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-07-29T04:10:30Z",
+      "side": 1,
+      "message": "PTAL~\n\nWe can\u0027t land this until Data fixture support is finished, but it should be finished soon IIUC.",
+      "revId": "b4ae7ccea6cfb9e598d5f7765e140193e6a79185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
