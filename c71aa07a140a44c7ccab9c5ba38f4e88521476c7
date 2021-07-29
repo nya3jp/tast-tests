@@ -50,6 +50,24 @@
       "message": "Tried patching this CL and added below policy related changes to my test whch is on crrev/c/2618819, Still observe that blocked apps (youtube creator) have install button enabled on playstore. Is there anything else required from policy side to disable install button for blocked apps.\n\n        policies :\u003d []policy.Policy{\n\t\t\u0026policy.ArcEnabled{Val: true},\n\t}\n\n\tpb :\u003d fakedms.NewPolicyBlob()\n\tpb.PolicyUser \u003d s.FixtValue().(*familylink.FixtData).PolicyUser\n\tpb.AddPolicies(policies)\n\n\tif err :\u003d policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err !\u003d nil {\n\t\ts.Fatal(\"Failed to serve policies: \", err)\n\t}\n\n\tif err :\u003d launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to launch Play Store\")\n\t}",
       "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a438b9_f1fcd959",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-07-29T18:42:35Z",
+      "side": 1,
+      "message": "Hi, \n\nThe related policy is ArcPolicy[1]:\n\nYou may need to manually add the app tested (i.e.Youtube) as the Application in this policy with the \"InstallType\" to be \"BLOCK\".\nThank you!\n\n[1]http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/policy/defs.go?l\u003d6464\u0026rcl\u003d75c3b39807becb0e3f42aebfc7a9aabce933f4e1",
+      "parentUuid": "60ad2797_86441712",
+      "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
