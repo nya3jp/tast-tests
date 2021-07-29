@@ -343,7 +343,7 @@ func (ac *Activity) moveWindowR(ctx context.Context, tconn *chrome.TestConn, t t
 	from := coords.NewPoint(fromBounds.Left+(fromBounds.Width/4), fromBounds.Top+(fromBounds.Height/4))
 	to := coords.NewPoint(toBounds.Left+(toBounds.Width/4), toBounds.Top+(toBounds.Height/4))
 
-	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -492,7 +492,7 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 		src.X = bounds.Left + bounds.Width + borderOffset
 	}
 
-	dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
