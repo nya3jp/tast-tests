@@ -37,6 +37,64 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b0473c3_4e7b4e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-29T23:15:09Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s needed for clamshell, the test will run on all devices without it. Specifying this dep will exclude chromebox/chromebase/chromebit devices",
+      "parentUuid": "20fc7cd2_28934ce9",
+      "revId": "002d492d1fb8d7f92b422fa5eb550baaef8736be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbc61ef_8d38c87e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-29T23:15:09Z",
+      "side": 1,
+      "message": "What are these surrounding brackets for? If they\u0027re for firing the defers before the `if tabletMode` block runs, I believe this will need to be a function instead of just brackets.",
+      "revId": "002d492d1fb8d7f92b422fa5eb550baaef8736be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6241d533_0481b0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-29T23:15:09Z",
+      "side": 1,
+      "message": "I think this returns an error, it\u0027s good Go style to handle all errors: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "002d492d1fb8d7f92b422fa5eb550baaef8736be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55cc658d_d30fb174",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
         "patchSetId": 13
