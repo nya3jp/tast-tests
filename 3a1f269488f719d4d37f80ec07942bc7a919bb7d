@@ -104,6 +104,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ca4757_e60f32e2",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T03:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "429a80c3_42cdb7a6",
+      "range": {
+        "startLine": 82,
+        "startChar": 53,
+        "endLine": 82,
+        "endChar": 54
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bc3ae4_3657d8c3",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T03:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b2aca6_a3716575",
+      "range": {
+        "startLine": 82,
+        "startChar": 33,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a8ea1e4_5759452e",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T03:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4e5986_031fa8dc",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff110e2e_e4a03de5",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-07-29T02:08:41Z",
       "side": 1,
       "message": "nit typo",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954dd09f_debafc98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-29T03:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff110e2e_e4a03de5",
       "range": {
         "startLine": 131,
         "startChar": 13,
