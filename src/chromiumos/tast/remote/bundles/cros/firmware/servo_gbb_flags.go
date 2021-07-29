@@ -143,7 +143,7 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	}
 	// Flashrom restarts the dut, so wait for it to boot
 	s.Log("Waiting for reboot")
-	if err := h.DUT.WaitConnect(ctx); err != nil {
+	if err := h.WaitConnect(ctx); err != nil {
 		s.Fatalf("Failed to connect to DUT: %s", err)
 	}
 
@@ -168,7 +168,7 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	// Flashrom restarts the dut, so wait for it to boot
 	s.Log("Waiting for reboot")
-	if err := h.DUT.WaitConnect(ctx); err != nil {
+	if err := h.WaitConnect(ctx); err != nil {
 		s.Fatalf("Failed to connect to DUT: %s", err)
 	}
 
