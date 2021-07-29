@@ -10,6 +10,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	common "chromiumos/tast/common/firmware"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/checkers"
@@ -46,9 +47,10 @@ func GBBFlags(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("initial GetGBBFlags failed: ", err)
 	}
-	s.Log("Current GBB flags: ", old)
+	s.Log("Current GBB flags: ", old.Set)
 
-	req := pb.GBBFlagsState{Set: old.Clear, Clear: old.Set}
+	req := pb.GBBFlagsState{Set: common.GBBToggle(old.Set, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY), Clear: common.GBBToggle(old.Clear, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)}
+
 	if _, err = bs.ClearAndSetGBBFlags(ctx, &req); err != nil {
 		s.Fatal("initial ClearAndSetGBBFlags failed: ", err)
 	}
@@ -69,6 +71,6 @@ func GBBFlags(ctx context.Context, s *testing.State) {
 	}(ctxForCleanup)
 
 	if err := checker.GBBFlags(ctx, req); err != nil {
-		s.Fatal("all flags should have been toggled: ", err)
+		s.Fatal("DEV_SCREEN_SHORT_DELAY flag should have been toggled: ", err)
 	}
 }
