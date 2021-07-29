@@ -193,6 +193,24 @@
       "parentUuid": "cf47f921_764d247c",
       "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5df56c_0e148fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-07-29T17:49:05Z",
+      "side": 1,
+      "message": "Another avenue to investigate is the use of inotify to get a signal on the file presence change.",
+      "parentUuid": "897ea765_35b6454a",
+      "revId": "f6cc1a589cac0bd40482cd5e16a79d5babcd9309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
