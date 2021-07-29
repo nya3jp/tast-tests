@@ -7,6 +7,7 @@ package multivm
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -30,6 +31,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"multivm.minimize_arc"},
 		Params: []testing.Param{{
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
@@ -60,6 +62,14 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	param := s.Param().(*lifecycleShiftingParam)
 	preARC := multivm.ARCFromPre(pre)
 	preCrostini := multivm.CrostiniFromPre(pre)
+
+	minimizeArc := false
+	minimizeArcString, ok := s.Var("multivm.minimize_arc")
+	if ok {
+		if minimize, err := strconv.ParseBool(minimizeArcString); err == nil {
+			minimizeArc = minimize
+		}
+	}
 
 	info, err := kernelmeter.MemInfo()
 	if err != nil {
@@ -120,7 +130,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		}
 		if param.inARC {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), taskAllocMiB*memory.MiB, compressRatio, hostLimit)
+				task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), taskAllocMiB*memory.MiB, compressRatio, hostLimit, minimizeArc)
 				appsAliveTasks = append(appsAliveTasks, task)
 				tasks = append(tasks, task)
 			}
