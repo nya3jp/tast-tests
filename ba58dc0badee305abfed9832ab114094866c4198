@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c422e400_eaffa0a6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-29T11:05:35Z",
+      "side": 1,
+      "message": "Changed it to flashProtectState.",
+      "parentUuid": "10992962_98aae117",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "ba58dc0badee305abfed9832ab114094866c4198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe879ea_df763630",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-29T09:18:38Z",
       "side": 1,
       "message": "The scope of this variable is not big, \"state\" should be enough.\nRight now it a little confusing as it is really similar to the function name.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "ba58dc0badee305abfed9832ab114094866c4198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cfb284_d8a03f7e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-29T11:05:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4fe879ea_df763630",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0765ee_fad04f9e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-29T11:05:35Z",
+      "side": 1,
+      "message": "Fixed. Thanks!",
+      "parentUuid": "7ef10692_90192783",
+      "range": {
+        "startLine": 115,
+        "startChar": 61,
+        "endLine": 115,
+        "endChar": 63
+      },
+      "revId": "ba58dc0badee305abfed9832ab114094866c4198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52f2867b_5ea487c0",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-29T09:18:38Z",
       "side": 1,
       "message": "What do you think about IsHardwareWriteProtected?\nStarting a function name with Get should be avoided.\nIf you want to return with the state (so when you name the function HardwareWriteProtectState), I think it would be nicer to return with a custom type, where you give names to the 2 states you expect to get back.",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "ba58dc0badee305abfed9832ab114094866c4198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1de914b_60df9622",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-29T11:05:35Z",
+      "side": 1,
+      "message": "IsHardwareWriteProtected is good name I think. Thanks for information!",
+      "parentUuid": "52f2867b_5ea487c0",
       "range": {
         "startLine": 129,
         "startChar": 5,
