@@ -123,6 +123,9 @@ func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to open help app")
 	}
+	if err := hConn.CloseTarget(ctx); err != nil {
+		return errors.Wrap(err, "failed to close help app")
+	}
 	hConn.Close()
 	return nil
 }
