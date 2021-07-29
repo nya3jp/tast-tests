@@ -60,10 +60,6 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
 	subTestTimeout := 20 * time.Second
 	for _, tst := range []struct {
 		name     string
@@ -84,6 +80,10 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	}} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
+
 			if err := servePolicy(ctx, fdms, cr, tst.policy); err != nil {
 				s.Fatal("Failed to serve policy: ", err)
 			}

@@ -85,6 +85,10 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
+			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+				s.Fatal("Failed to clear saved directory: ", err)
+			}
+
 			if err := tst.testFunc(shortCtx, app); err != nil {
 				s.Fatalf("Failed to run subtest: %v: %v", tst.name, err)
 			}
