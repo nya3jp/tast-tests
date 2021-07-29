@@ -47,19 +47,19 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 		return err
 	}
 
-	noRetries := screenshot.Options{Timeout: 500 * time.Millisecond}
+	noRetries := screenshot.Timeout(500 * time.Millisecond)
 	if err := expectError(
-		d.DiffWithOptions(ctx, "nomatches", nodewith.ClassName("MissingClassName"), noRetries)(ctx),
+		d.Diff(ctx, "nomatches", nodewith.ClassName("MissingClassName"), noRetries)(ctx),
 		"failed to find node"); err != nil {
 		return errors.Wrap(err, "diffing with no matching elements succeeded")
 	}
 	if err := expectError(
-		d.DiffWithOptions(ctx, "nomatchesinwindow", nodewith.ClassName("UnifiedSystemTray"), noRetries)(ctx),
+		d.Diff(ctx, "nomatchesinwindow", nodewith.ClassName("UnifiedSystemTray"), noRetries)(ctx),
 		"failed to find node"); err != nil {
 		return errors.Wrap(err, "diffing with the matching element outside of the window succeeded")
 	}
 	if err := expectError(
-		d.DiffWithOptions(ctx, "multiplematches", nodewith.Name("My Files"), noRetries)(ctx),
+		d.Diff(ctx, "multiplematches", nodewith.Name("My Files"), noRetries)(ctx),
 		"failed to find node"); err != nil {
 		return errors.Wrap(err, "diffing with multiple matching elements succeeded")
 	}
@@ -118,7 +118,7 @@ func ScreenDiff(ctx context.Context, s *testing.State) {
 	}
 
 	if err := expectError(
-		d.DiffWithOptions(ctx, "nowindowopen", nodewith.ClassName("FrameCaptionButton"), screenshot.Options{Timeout: 500 * time.Millisecond})(ctx),
+		d.Diff(ctx, "nowindowopen", nodewith.ClassName("FrameCaptionButton"), screenshot.Timeout(500*time.Millisecond))(ctx),
 		"unable to find focused window"); err != nil {
 		s.Fatal("Diffing with no window open succeeded: ", err)
 	}

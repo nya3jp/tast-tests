@@ -7,6 +7,7 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -23,6 +24,18 @@ import (
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
+
+// https://stackoverflow.com/questions/45033015/how-do-i-turn-off-notifications-globally-in-visual-studio-code.
+const disableNotificationsCommand = `cat << EOF >> /usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.css
+.monaco-workbench > .notifications-toasts.visible {
+  display: none;
+}
+
+.notifications-toasts {
+  display: none;
+}
+EOF
+`
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -50,8 +63,6 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(crostini.PreData).Chrome
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	cont := s.PreValue().(crostini.PreData).Container
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -87,7 +98,8 @@ func AppVscode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start screen differ: ", err)
 	}
 	defer d.DieOnFailedDiffs()
-
+	// Since defers are executed in a stack, this needs to be the last defer so it doesn't close the window before dumping the tree.
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
 	}
@@ -102,8 +114,14 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 	)
 
 	ui := uiauto.New(tconn)
-	appWindowUnsaved := nodewith.Name(fmt.Sprintf("● %s - Visual Studio Code", testFile)).Role(role.Window).First()
-	appWindowSaved := nodewith.Name(fmt.Sprintf("%s - Visual Studio Code", testFile)).Role(role.Window).First()
+	appWindowUnsaved := nodewith.NameStartingWith(fmt.Sprintf("● %s - Visual Studio Code", testFile)).Role(role.Window).First()
+	appWindowSaved := nodewith.NameStartingWith(fmt.Sprintf("%s - Visual Studio Code", testFile)).Role(role.Window).First()
+
+	// Sudo is required because the file the command modifies is read-only.
+	cmd := cont.Command(ctx, "sudo", "sh", "-c", disableNotificationsCommand)
+	if _, err := cmd.Output(); err != nil {
+		return errors.Wrapf(err, "failed to run %v", strings.Join(cmd.Args, " "))
+	}
 
 	if err := uiauto.Combine("Create file with VSCode",
 		// Launch Visual Studio Code.
@@ -114,15 +132,9 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		// Press ctrl+S to save the file.
 		keyboard.AccelAction("ctrl+S"),
 		ui.WaitUntilExists(appWindowSaved),
-		// Get rid of up to two notification bubbles for consistent screendiffs.
-		keyboard.AccelAction("esc"),
-		keyboard.AccelAction("esc"),
-		// We have no way of detecting if the notification bubbles have disappeared, so just wait.
-		ui.Sleep(time.Second*5),
-		d.DiffWindow(ctx, "vscode"),
-		// Press ctrl+W twice to exit window.
-		keyboard.AccelAction("ctrl+W"),
-		keyboard.AccelAction("ctrl+W"),
+		d.DiffWindow(ctx, "vscode", screenshot.Retries(2), screenshot.RetryInterval(time.Second*5)),
+		// Press ctrl+Q to exit window.
+		keyboard.AccelAction("ctrl+Q"),
 		ui.WaitUntilGone(appWindowSaved))(ctx); err != nil {
 		return err
 	}

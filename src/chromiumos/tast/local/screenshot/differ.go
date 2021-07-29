@@ -85,9 +85,8 @@ type screenshotState interface {
 type Differ interface {
 	Chrome() *chrome.Chrome
 	Tconn() *chrome.TestConn
-	Diff(context.Context, string, *nodewith.Finder) uiauto.Action
-	DiffWindow(context.Context, string) uiauto.Action
-	DiffWithOptions(context.Context, string, *nodewith.Finder, Options) uiauto.Action
+	Diff(context.Context, string, *nodewith.Finder, ...Option) uiauto.Action
+	DiffWindow(context.Context, string, ...Option) uiauto.Action
 	GetFailedDiffs() error
 	DieOnFailedDiffs()
 }
@@ -329,25 +328,12 @@ func (d *differ) normalizeDisplayInfoAndMode(ctx context.Context) (*display.Info
 	return info, displayMode, nil
 }
 
-// Diff takes a screenshot of a ui element within the active window and uploads the
-// result to gold. If finder is nil, takes a screenshot of the whole window.
-// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
-func (d *differ) Diff(ctx context.Context, name string, finder *nodewith.Finder) uiauto.Action {
-	return d.DiffWithOptions(ctx, name, finder, Options{})
-}
-
-// Diff takes a screenshot of the active window and uploads the result to gold.
-// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
-func (d *differ) DiffWindow(ctx context.Context, name string) uiauto.Action {
-	return d.Diff(ctx, name, nil)
-}
-
-// DiffWithOptions takes a screenshot of a ui element within the active window and uploads
+// Diff takes a screenshot of a ui element within the active window and uploads
 // the result to gold. If finder is nil, takes a screenshot of the whole window.
-// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs()
-func (d *differ) DiffWithOptions(ctx context.Context, name string, finder *nodewith.Finder, options Options) uiauto.Action {
+// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs().
+func (d *differ) Diff(ctx context.Context, name string, finder *nodewith.Finder, optionList ...Option) uiauto.Action {
 	// Prioritise per-diff options, then test options, then global defaults.
-	options.FillDefaults(d.config.DefaultOptions)
+	options := d.config.DefaultOptions
 	options.FillDefaults(Options{
 		Timeout: time.Second * 2,
 		// A window's corners are rounded, and unlike other elements, the background is inconsistent (since it's the wallpaper).
@@ -357,11 +343,15 @@ func (d *differ) DiffWithOptions(ctx context.Context, name string, finder *nodew
 		// probably due to floating-point arithmetic. Since it's basically invisible to the end-user, ignore it.
 		PixelDeltaThreshold: 3,
 		// By default, retry once to ensure the screen hasn't  changed, and fail if it has changed.
-		ScreenshotRetries: 1,
+		Retries: 1,
 		// Pick a random interval so that we don't happen to always be in sync with
 		// an animation (eg. If a cursor blinks every 100ms, and your interval is 1
 		// second, you're unlikely to pick up this issue during development.
-		ScreenshotRetryInterval: time.Duration(rand.Intn(1000))*time.Millisecond + 500*time.Millisecond})
+		RetryInterval: time.Duration(rand.Intn(1000))*time.Millisecond + 500*time.Millisecond})
+
+	for _, opt := range optionList {
+		opt(&options)
+	}
 
 	return func(ctx context.Context) error {
 		fullName := d.state.TestName() + "." + name + d.config.Suffix()
@@ -382,6 +372,12 @@ func (d *differ) DiffWithOptions(ctx context.Context, name string, finder *nodew
 
 		return nil
 	}
+}
+
+// DiffWindow takes a screenshot of the active window and uploads the result to gold.
+// Collect all your diff results at the end with GetFailedDiffs() or DieOnFailedDiffs().
+func (d *differ) DiffWindow(ctx context.Context, name string, options ...Option) uiauto.Action {
+	return d.Diff(ctx, name, nil, options...)
 }
 
 // GetFailedDiffs returns an error containing all of the diffs that failed, if any did, or nil if all passed.
@@ -583,13 +579,13 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		return testArgs, err
 	}
 	var lastScreenshot *image.RGBA
-	if options.ScreenshotRetries > 1 {
-		if err := testing.Sleep(ctx, options.ScreenshotRetryInterval); err != nil {
+	if options.Retries > 1 {
+		if err := testing.Sleep(ctx, options.RetryInterval); err != nil {
 			return testArgs, err
 		}
 	}
-	if err := action.Retry(options.ScreenshotRetries, func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Taking screenshot again after %q", options.ScreenshotRetryInterval)
+	if err := action.Retry(options.Retries, func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Taking screenshot again after %q", options.RetryInterval)
 		if err := os.Rename(filepath.Join(dir, screenshotFile), filepath.Join(dir, oldScreenshotFile)); err != nil {
 			return err
 		}
@@ -610,7 +606,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 			}
 		}
 		return nil
-	}, options.ScreenshotRetryInterval)(ctx); err != nil {
+	}, options.RetryInterval)(ctx); err != nil {
 		return testArgs, err
 		// Cleanup the old screenshot files, since they're the same images as the new ones.
 	} else if err := os.Remove(filepath.Join(dir, oldScreenshotFile)); err != nil {
@@ -640,10 +636,11 @@ func (d *differ) authenticateGold(ctx context.Context) error {
 
 func (d *differ) runGoldCommand(ctx context.Context, subcommand string, args ...string) error {
 	args = append([](string){subcommand, "--work-dir", goldctlWorkDir}, args...)
-	testing.ContextLogf(ctx, `Running command "goldctl %v"`, args)
 	if d.config.DryRun {
+		testing.ContextLogf(ctx, `Dryrun: Would otherwise run command "goldctl %v"`, args)
 		return nil
 	}
+	testing.ContextLogf(ctx, `Running command "goldctl %v"`, args)
 	cmd := testexec.CommandContext(ctx, "goldctl", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
