@@ -808,6 +808,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09ff392_6384b9ee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T20:11:19Z",
+      "side": 1,
+      "message": "I will address in a follow-up",
+      "parentUuid": "6c2fc4bf_365c3410",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd7ab73_bbb63d2c",
