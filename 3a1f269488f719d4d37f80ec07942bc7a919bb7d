@@ -16,6 +16,115 @@
       "message": "PTAL",
       "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a45a89c_031e8bff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T02:08:41Z",
+      "side": 1,
+      "message": "a few typos, otherwise lgtm",
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "429a80c3_42cdb7a6",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T02:08:41Z",
+      "side": 1,
+      "message": "nit: how about adding \":\" or enclosing in \u0027\u0027",
+      "range": {
+        "startLine": 82,
+        "startChar": 53,
+        "endLine": 82,
+        "endChar": 54
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b2aca6_a3716575",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T02:08:41Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 82,
+        "startChar": 33,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4e5986_031fa8dc",
+        "filename": "android/ArcTtsTest/src/org/chromium/arc/testapp/tts/ArcTtsTestService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T02:08:41Z",
+      "side": 1,
+      "message": "nit typo",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff110e2e_e4a03de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-29T02:08:41Z",
+      "side": 1,
+      "message": "nit typo",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "3a1f269488f719d4d37f80ec07942bc7a919bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
