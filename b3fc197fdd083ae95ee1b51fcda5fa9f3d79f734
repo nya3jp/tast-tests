@@ -774,6 +774,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "386f6eed_daafaf8e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T02:11:38Z",
+      "side": 1,
+      "message": "Alright, so it looks like the folder view only becomes hidden after the mouse drag has been released. (reading this comment helped somewhat https://source.chromium.org/chromium/chromium/src/+/main:ash/app_list/views/app_list_folder_view.cc;l\u003d697;drc\u003d67da1e89273f5e75cf89a4c8a20a1901f951bf20) \n\nI added code to check after the call to mouse.Release. What do you think?\n\n  mouse.Release(tconn, mouse.LeftButton)(ctx)\n\n  // Make sure that the folder has closed.\n  err \u003d ui.Gone(folderView)(ctx)\n  if err !\u003d nil {\n    errors.Wrap(err, \"folderView is not gone\")\n  }\n  \n  return nil",
+      "parentUuid": "ecb0d707_d5fdacb5",
+      "revId": "b3fc197fdd083ae95ee1b51fcda5fa9f3d79f734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd7ab73_bbb63d2c",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 10

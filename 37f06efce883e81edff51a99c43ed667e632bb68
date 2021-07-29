@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "076f7c24_6f4d74e9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T02:11:38Z",
+      "side": 1,
+      "message": "Unfortunately I have to calculate the end point in the middle of this function because the destination icon changes location after the mouse drag begins. \n\nOtherwise I would be able to just calculate the start and end locations, and then combine all of the mouse.* calls into one uiauto.Combine call.",
+      "parentUuid": "db4f75b4_2b56fa31",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 17
+      },
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f1aed1d_cfe68b7e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 14
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-28T02:59:49Z",
       "side": 1,
       "message": "what if there are no more items left? Probably worth returning error in that case",
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670ed2f5_88523cc4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T02:11:38Z",
+      "side": 1,
+      "message": "The call to IsItemOnCurrentPage() below will return an error if the Nth item doesn\u0027t exist. So this case should be covered.",
+      "parentUuid": "3f1aed1d_cfe68b7e",
       "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caaecb91_074acdc0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T02:11:38Z",
+      "side": 1,
+      "message": "There is no need to continue here, since once the folder is moved to the next page, the item can then successfully be dragged into it.",
+      "parentUuid": "ae925d89_d1432168",
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30595c16_cb14e64f",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 14
@@ -71,6 +131,30 @@
       "writtenOn": "2021-07-28T02:59:49Z",
       "side": 1,
       "message": "nit: can we use a regex matching here?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 54
+      },
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ba6ec8_a37bdf62",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T02:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30595c16_cb14e64f",
       "range": {
         "startLine": 447,
         "startChar": 0,

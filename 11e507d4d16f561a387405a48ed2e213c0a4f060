@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dea75b_61c7aa22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-07-29T02:11:38Z",
+      "side": 1,
+      "message": "Removed the retries",
+      "parentUuid": "724a0f10_ef80d4b9",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "11e507d4d16f561a387405a48ed2e213c0a4f060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e638a173_58994b4b",
