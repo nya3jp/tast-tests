@@ -22,11 +22,13 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-var typingModeTestIMEs = []ime.InputMethod{
+var testIMEs = []ime.InputMethod{
 	ime.EnglishUS,
 	ime.JapaneseWithUSKeyboard,
 }
 var typingModeTestMessages = []data.Message{data.TypingMessageHello}
+var voiceModeTestMessages = []data.Message{data.VoiceMessageHello}
+var hwModeTestMessages = []data.Message{data.HandwritingMessageHello}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -36,7 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:input-tools-upstream", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Timeout:      time.Duration(len(typingModeTestIMEs)) * time.Duration(len(typingModeTestMessages)) * time.Minute,
+		Timeout:      time.Duration(len(testIMEs)) * time.Duration(len(typingModeTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "guest",
@@ -79,12 +81,18 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateVKInputOnField(vkbCtx, inputField, inputData)(ctx); err != nil {
+			if err := its.ValidateVKTypingOnField(vkbCtx, inputField, inputData)(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
 		}
 	}
 
-	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, typingModeTestIMEs, typingModeTestMessages, subtest)
+	// Run defined subtest on virtual keyboard typing per input method and message combination.
+	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, typingModeTestMessages, subtest)
+
+	// Run defined subtest on virtual keyboard voice input per input method and message combination.
+	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, voiceModeTestMessages, subtest)
+
+	// Run defined subtest on virtual keyboard voice input per input method and message combination.
+	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, voiceModeTestMessages, subtest)
 }

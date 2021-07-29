@@ -266,7 +266,7 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	)
 }
 
-// ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
+// ValidateVKTypingOnField returns an action to test virtual keyboard input on given input field.
 // After input action, it checks whether the outcome equals to expected value.
 func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputData data.InputData) uiauto.Action {
 	validateField := util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText)
@@ -281,9 +281,7 @@ func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardC
 
 	return uiauto.Combine("validate vk input function on field "+string(inputField),
 		// Make sure virtual keyboard is not shown before action.
-		vkbCtx.HideVirtualKeyboard(),
-		its.Clear(inputField),
-		its.ClickFieldUntilVKShown(inputField),
+		its.cleanFieldAndTriggerVK(vkbCtx, inputField),
 		vkbCtx.TapKeysIgnoringCase(inputData.CharacterKeySeq),
 		func(ctx context.Context) error {
 			if inputData.SubmitFromSuggestion {
@@ -292,5 +290,37 @@ func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardC
 			return nil
 		},
 		validateField,
+	)
+}
+
+// ValidateVoiceInputOnField returns an action to test voice input on given field.
+// After input action, it checks whether the outcome equals to expected value.
+func (its *InputsTestServer) ValidateVoiceInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputData data.InputData) uiauto.Action {
+	return uiauto.Combine("validate vk voice input function on field "+string(inputField),
+		// Make sure virtual keyboard is not shown before action.
+		its.cleanFieldAndTriggerVK(vkbCtx, inputField),
+		vkbCtx.SwitchToVoiceInput(),
+		func(ctx context.Context) error {
+			return voice.AudioFromFile(ctx, s.DataPath(inputData.VoiceFile))
+		},
+		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), inputData.ExpectedText),
+	)
+}
+
+// ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
+// After input action, it checks whether the outcome equals to expected value.
+func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputModality util.InputModality, inputData data.InputData) uiauto.Action {
+	switch inputModality {
+	case util.InputWithVoice:
+		
+	}
+	return its.ValidateVKTypingOnField(vkbCtx, inputField, inputData),
+}
+
+func (its *InputsTestServer) cleanFieldAndTriggerVK(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField) uiauto.Action {
+	return uiauto.Combine("clean and trigger VK on field "+string(inputField),
+		vkbCtx.HideVirtualKeyboard(),
+		its.Clear(inputField),
+		its.ClickFieldUntilVKShown(inputField),
 	)
 }

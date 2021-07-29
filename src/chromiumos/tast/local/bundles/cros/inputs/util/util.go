@@ -19,6 +19,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// InputModality describes the available input modalities.
+// Emoji is not a strict modality related to any input methods.
+// Put it here just for simplicity of testing.
+type InputModality int
+
+// Valid values for InputModality.
+const (
+	InputWithKeyboard InputModality = iota
+	InputWithVoice
+	InputWithHandWriting
+	InputWithEmoji
+)
+
 // PKCandidatesFinder is the finder for candidates in the IME candidates window.
 var PKCandidatesFinder = nodewith.Role(role.ImeCandidate)
 
