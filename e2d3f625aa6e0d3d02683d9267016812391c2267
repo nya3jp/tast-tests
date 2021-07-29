@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d71805d_3fbde259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-07-29T02:34:05Z",
+      "side": 1,
+      "message": "Yes, this actually confirmed my question. Since P doesn\u0027t have project id on Downloads and media, it seems that we will also need to perform fixup on them from P-\u003eR. I will have a CL for the fixup.",
+      "parentUuid": "882669a5_98af2389",
+      "revId": "e2d3f625aa6e0d3d02683d9267016812391c2267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40683175_937dc319",
