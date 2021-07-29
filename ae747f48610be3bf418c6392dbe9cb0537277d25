@@ -94,6 +94,30 @@
       },
       "revId": "ae747f48610be3bf418c6392dbe9cb0537277d25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64116ba8_c7692778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-07-29T16:50:24Z",
+      "side": 1,
+      "message": "Oh I see what you mean. But the regex also has this part:\n{\\s{1,}\"Name\" : \"powerd\",\\s{1,}\"Flags\" : \\[\"\nSo it would look for \"Flag\" before the second curly brace. In other words, wouldn\u0027t it only match this:\n\n    {\n      \"Name\" : \"powerd\"\n      \"Flags\" : [\n    },\n    {\n      \"Name\" : \"other_plugin\",\n      \"Flags\" : [\n        \"other-flag\"\n        \"disabled\",\n      ]\n    },\n    \nBut that \"Flag\" part isn\u0027t there when the plugin is just enabled.",
+      "parentUuid": "28a9f8e9_7fc6e2a4",
+      "range": {
+        "startLine": 20,
+        "startChar": 55,
+        "endLine": 20,
+        "endChar": 57
+      },
+      "revId": "ae747f48610be3bf418c6392dbe9cb0537277d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
