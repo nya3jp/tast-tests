@@ -110,3 +110,26 @@ func GBBToggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
 	}
 	return ret
 }
+
+// GBBAddFlag modifies `s` to add all flags in `flags`.
+func GBBAddFlag(s *pb.GBBFlagsState, flags ...pb.GBBFlag) {
+	s.Set = append(s.Set, flags...)
+	*s = canonicalGBBFlagsState(*s)
+}
+
+// CopyGBBFlags returns a new GBBFlagsState that is a copy of `s`.
+func CopyGBBFlags(s pb.GBBFlagsState) *pb.GBBFlagsState {
+	// Depends on the behavior of canonicalGBBFlagsState to always return a copy with new Set & Clear arrays.
+	ret := canonicalGBBFlagsState(s)
+	return &ret
+}
+
+// GBBFlagsContains returns true if `s` contains the requested GBB flag `flag`.
+func GBBFlagsContains(s pb.GBBFlagsState, flag pb.GBBFlag) bool {
+	for _, f := range s.Set {
+		if f == flag {
+			return true
+		}
+	}
+	return false
+}
