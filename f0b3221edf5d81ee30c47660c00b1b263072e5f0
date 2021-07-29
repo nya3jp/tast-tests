@@ -16,6 +16,23 @@
       "message": "Looks like this CL isn\u0027t tested yet. Let me check if this CL breaks the arcappcompat tests.",
       "revId": "f0b3221edf5d81ee30c47660c00b1b263072e5f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3295b68a_054f34dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-07-29T21:39:23Z",
+      "side": 1,
+      "message": "Tried running the test on different devices/ form factors, Eve, Helios, Krane, Dru and Careena using the command \"tast -verbose run chromeos6-row8-rack3-host1.cros arcappcompat.ABCKids.tablet_mode\". Test successfully preformed all tablet mode test cases in the app.",
+      "revId": "f0b3221edf5d81ee30c47660c00b1b263072e5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
