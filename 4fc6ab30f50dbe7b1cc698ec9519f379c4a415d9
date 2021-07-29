@@ -16,6 +16,63 @@
       "message": "Thanks for the comments.",
       "revId": "4fc6ab30f50dbe7b1cc698ec9519f379c4a415d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c4dace_0b00ad89",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-29T09:23:53Z",
+      "side": 1,
+      "message": "It should work with only 1 ( as well.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "4fc6ab30f50dbe7b1cc698ec9519f379c4a415d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d06148_dd6cc3c1",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-29T09:23:53Z",
+      "side": 1,
+      "message": "The last line should end with \",\" as well.",
+      "revId": "4fc6ab30f50dbe7b1cc698ec9519f379c4a415d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156778c2_7dedca73",
+        "filename": "src/chromiumos/tast/common/tape/gen/get_policy_schemas.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-07-29T09:23:53Z",
+      "side": 1,
+      "message": "Extra space before \":\", and the line should end with \",\".",
+      "revId": "4fc6ab30f50dbe7b1cc698ec9519f379c4a415d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
