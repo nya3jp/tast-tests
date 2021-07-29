@@ -201,6 +201,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb07f39_86ae3fcc",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-07-29T21:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28a4a3d_3b7c7e11",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0e01c7_e65f330a",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-07-29T21:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28a4a3d_3b7c7e11",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "148dc93a_51b7a24f",
@@ -262,6 +310,30 @@
       "side": 1,
       "message": "After further experimentation on eve, atlas, and octopus, I think WithInterval(time.Second) is the way to go. The baseline fail rate is 16% over 50 runs with no changes. If you set the interval to 200ms, the fail rate actually increases to 90% over 10 runs! if you set the interval to a second, the fail rate drops to 0% over 10 runs. \n\nAre you testing on VM? If so, the timings are different from physical devices. I think we should prioritize correctness over speed.",
       "parentUuid": "504e8088_e06ed01f",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "953329b9240e898db2e0a360c174d8d368ec8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a08026_874380cd",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-07-29T21:19:26Z",
+      "side": 1,
+      "message": "Weird, thanks for checking!",
+      "parentUuid": "60fdad4c_94f47393",
       "range": {
         "startLine": 106,
         "startChar": 5,
