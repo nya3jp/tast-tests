@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -156,6 +157,28 @@ func init() {
 			Val:               encode.MakeTestOptions(crowd720p, videotype.VP9Prof),
 			ExtraData:         encode.TestData(crowd720p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name:              "vp9_720p_l1t2",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L1T2"),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraData:         encode.TestData(crowd720p),
+		}, {
+			Name:              "vp9_720p_l1t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L1T3"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+		}, {
+			Name:              "vp9_720p_l2t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L2T3"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+		}, {
+			Name:              "vp9_720p_l3t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L3T3"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 		}, {
 			Name:              "vp9_1080p",
 			Val:               encode.MakeTestOptions(crowd1080p, videotype.VP9Prof),
