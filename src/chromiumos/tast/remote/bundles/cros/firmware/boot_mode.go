@@ -236,7 +236,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 	var opts []firmware.ModeSwitchOption
 	if tc.allowGBBForce {
 		opts = append(opts, firmware.AllowGBBForce)
-	} else if !pv.ForcesDevMode() {
+	} else if !pv.ForcesDevMode {
 		// Don't check the dev-force GBB flag if there's no reason for it to have been set.
 		opts = append(opts, firmware.AssumeGBBFlagsCorrect)
 	}
