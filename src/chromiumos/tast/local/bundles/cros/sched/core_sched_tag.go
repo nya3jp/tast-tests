@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -42,6 +43,7 @@ func init() {
 		// --force-fieldtrial-params=Trial1.Group1:config/core-scheduling
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc", "coresched"},
+		HardwareDeps: hwdep.D(hwdep.CPUSupportsSMT()),
 		Timeout:      3 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
