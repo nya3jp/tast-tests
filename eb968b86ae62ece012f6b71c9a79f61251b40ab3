@@ -16,6 +16,23 @@
       "message": "Thanks for catching this. Should be no harm to log twice but better to fix it.",
       "revId": "eb968b86ae62ece012f6b71c9a79f61251b40ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17f5d6d_fc951f45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-07-30T21:27:26Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "eb968b86ae62ece012f6b71c9a79f61251b40ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
