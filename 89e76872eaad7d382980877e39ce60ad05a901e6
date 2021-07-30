@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbbbf48_84eec130",
+        "filename": "android/ArcNotificationTest/res/layout/notification_activity.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b3fe7b_9a8e55b5",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e58793e8_5e583f4f",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-07-29T09:19:05Z",
       "side": 1,
       "message": "style: CHANNEL_ID. I think HIGH_IMPORTANCE_CHANNEL_ID is more clear (and chage the string itself as well).",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0088b4_c3c74890",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e58793e8_5e583f4f",
       "range": {
         "startLine": 24,
         "startChar": 32,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbc4899_0aa63d1b",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9624ca0_bb38a88f",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "668b96da_cc8f3ab0",
@@ -123,6 +195,30 @@
       "writtenOn": "2021-07-29T09:19:05Z",
       "side": 1,
       "message": "style: mNotificationManager",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6490d1a7_d4489f98",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "668b96da_cc8f3ab0",
       "range": {
         "startLine": 26,
         "startChar": 32,
@@ -196,6 +292,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5c7e2c_e0ddeb61",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7bcb5e2_529853b5",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1288c057_cbcd96b2",
@@ -219,6 +339,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "270d2a80_4d350ac5",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1288c057_cbcd96b2",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2764825_fb1376f3",
@@ -232,6 +376,30 @@
       "writtenOn": "2021-07-29T09:19:05Z",
       "side": 1,
       "message": "Now that we can use mNotificationManager",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "89e76872eaad7d382980877e39ce60ad05a901e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08de8511_a4e2dbd5",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-07-30T06:52:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2764825_fb1376f3",
       "range": {
         "startLine": 101,
         "startChar": 8,
