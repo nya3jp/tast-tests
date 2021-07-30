@@ -44,6 +44,13 @@ func AltSubjectMatch(sans []string) Option {
 	}
 }
 
+// DomainSuffixMatch returns an Option which sets shill EAP.DomainSuffixMatch property in Config.
+func DomainSuffixMatch(domainSuffix []string) Option {
+	return func(c *ConfigFactory) {
+		c.wpaeapOps = append(c.wpaeapOps, wpaeap.DomainSuffixMatch(domainSuffix))
+	}
+}
+
 // FileSuffix returns an Option which sets the file suffix in Config.
 func FileSuffix(suffix string) Option {
 	return func(c *ConfigFactory) {
