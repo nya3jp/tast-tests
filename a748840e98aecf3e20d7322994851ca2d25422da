@@ -71,6 +71,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "49043887_b81d825e",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-30T03:13:38Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 389,
+        "startChar": 82,
+        "endLine": 389,
+        "endChar": 87
+      },
+      "revId": "a748840e98aecf3e20d7322994851ca2d25422da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8e419f43_fe7102a2",
