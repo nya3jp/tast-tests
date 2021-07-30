@@ -33,6 +33,121 @@
       "message": "the apps grid page?",
       "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f785ae6b_402b14a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-30T23:25:18Z",
+      "side": 1,
+      "message": "Think it could be cleaner for this function to return a reference to the folder that was created",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14cb302e_e0d725ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-30T23:25:18Z",
+      "side": 1,
+      "message": "Can you add a comment about why 46 was chosen if there\u0027s a reason for it",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29b7275_df6238e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-30T23:25:18Z",
+      "side": 1,
+      "message": "replace with\n\nsize, err :\u003d launcher.GetFolderSize(",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6958b45_1ce66f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-30T23:25:18Z",
+      "side": 1,
+      "message": "Why is it still 48? Shouldn\u0027t the additemstofolder return an error if it is full?",
+      "range": {
+        "startLine": 74,
+        "startChar": 29,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4664e4_791413fd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-07-30T23:25:18Z",
+      "side": 1,
+      "message": "why not ui.LeftClick(folder) here and other places where dragging is not needed",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 0
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
