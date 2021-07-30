@@ -168,6 +168,24 @@
       "message": "I like how no additional code changes were required beyond adding two new fixtures to support a new account!",
       "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a72d0f9_f4d2bfc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-30T20:55:42Z",
+      "side": 1,
+      "message": "Have tested this fixture with the necessary ARC policy and blocked apps test is unblocked now and works. Default apps has issue that ash.ChromeAppInstalled returns some apps as installed even though it isn\u0027t installed on the device  which needs to be debugged.",
+      "parentUuid": "30a0ed16_263ad716",
+      "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
