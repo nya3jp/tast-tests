@@ -71,10 +71,6 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 
 	// Only setup benchmark mode if we are not in hasty mode.
 	if !config.IsHasty() {
-		if err := ReportTemperature(ctx, pv, "temperature_1_start"); err != nil {
-			appendErr(err, "failed to log temperature_1_start")
-		}
-
 		// Make machine behaviour consistent.
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 			SaveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
