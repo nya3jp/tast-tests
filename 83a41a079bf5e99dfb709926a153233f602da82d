@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0e69cb_b4071e8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-30T18:23:03Z",
+      "side": 1,
+      "message": "what happens if this CL lands before the one in autotest? Will everything break?\n\nIf so, add a comment saying that.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 57
+      },
+      "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "03a281bd_3bcb3435",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-07-30T06:56:23Z",
       "side": 1,
       "message": "Please take a look. Thanks.",
+      "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20650eef_039288c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-30T18:23:03Z",
+      "side": 1,
+      "message": "side note: \nfor Tast reviews, please add \"tast-owners@google.com\" as reviewer, and a bot will assign a reviewer from a pool.",
+      "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49d4ff4_f41a9d1e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-30T18:23:03Z",
+      "side": 1,
+      "message": "not clear why a new function was added.\n\nWhat\u0027s the difference between `SendWMEvent(... true)` and `SetWindowState` ?",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 16
+      },
       "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
