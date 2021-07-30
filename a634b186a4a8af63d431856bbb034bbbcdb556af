@@ -33,6 +33,24 @@
       "message": "tast-wise: +2\n\n\n(note: for Tast reviewer, please add tast-owners@google.com as reviewer. it will automatically assign one from a pool)",
       "revId": "a634b186a4a8af63d431856bbb034bbbcdb556af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5245d96_85be93f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2021-07-30T20:26:40Z",
+      "side": 1,
+      "message": "Ah, didn\u0027t know about the tast-owners@google.com trick. Thanks!",
+      "parentUuid": "c6b0c85d_5f499be8",
+      "revId": "a634b186a4a8af63d431856bbb034bbbcdb556af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
