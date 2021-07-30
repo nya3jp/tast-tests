@@ -45,6 +45,12 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *VirtualKeyboardConte
 // Finder of virtual keyboard root node.
 var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
 
+// headerContainer returns a finder of the header container of the VK.
+var headerContainer = nodewith.Ancestor(vkRootFinder).HasClass("header-candidates")
+
+// bodyContainer returns a finder of the body container of the VK.
+var bodyContainer = nodewith.Ancestor(vkRootFinder).HasClass("body-view-container")
+
 // NodeFinder returns a finder of node on virtual keyboard.
 var NodeFinder = nodewith.Ancestor(vkRootFinder)
 
@@ -166,9 +172,9 @@ func (vkbCtx *VirtualKeyboardContext) tapKeyFunc(keyName string, ignoreCase bool
 	// In vkb extension, it listens to keyPress to send vk layout event to decoder
 	// before sending the actual key tap event.
 	// Mouse click is too quick and causes a racing issue that decoder receives tap key without layout info.
-	keyFinder := KeyFinder.Name(keyName)
+	keyFinder := KeyFinder.Name(keyName).Ancestor(bodyContainer)
 	if ignoreCase {
-		keyFinder = KeyByNameIgnoringCase(keyName)
+		keyFinder = KeyByNameIgnoringCase(keyName).Ancestor(bodyContainer)
 	}
 
 	return uiauto.Combine("move mouse to key center point and click",
@@ -431,7 +437,7 @@ func (vkbCtx *VirtualKeyboardContext) EnableA11yVirtualKeyboard(enabled bool) ui
 
 // SelectFromSuggestion returns an action waiting for suggestion candidate to appear and clicks it to select.
 func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string) uiauto.Action {
-	suggestionFinder := KeyFinder.Name(candidateText).ClassName("sk")
+	suggestionFinder := KeyFinder.Name(candidateText).ClassName("sk").Ancestor(headerContainer)
 	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
 	ac := vkbCtx.ui.WithPollOpts(opts)
 
