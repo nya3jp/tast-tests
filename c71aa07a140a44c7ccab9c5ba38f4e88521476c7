@@ -186,6 +186,24 @@
       "parentUuid": "30a0ed16_263ad716",
       "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb05ebc0_0a967627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T21:24:19Z",
+      "side": 1,
+      "message": "That\u0027s because most of the app ids in apps/apps.go [1] are outdated and incorrect. For example, the app id for Play Books should be mmimngoggfoobjdlefbcabngfnmieonb instead of cafegjnmmjpfibnlddppihpnkbkgicbg.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go;l\u003d143?q\u003df:apps%2Fapps.go",
+      "parentUuid": "2a72d0f9_f4d2bfc6",
+      "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
