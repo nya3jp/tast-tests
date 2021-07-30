@@ -211,10 +211,11 @@ func WMEventTypeForState(state WindowStateType) WMEventType {
 }
 
 // SetWindowState requests changing the state of the window to the requested
-// event type and returns the updated state.
-func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
+// event type and returns the updated state if waitForStateChange is true.
+// Otherwise, SetWindowState just sends a WMEvent and returns the expected state.
+func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType, waitForStateChange bool) (WindowStateType, error) {
 	var state WindowStateType
-	if err := tconn.Call(ctx, &state, "tast.promisify(chrome.autotestPrivate.setAppWindowState)", id, &windowStateChange{EventType: et}); err != nil {
+	if err := tconn.Call(ctx, &state, "tast.promisify(chrome.autotestPrivate.setAppWindowState)", id, &windowStateChange{EventType: et}, waitForStateChange); err != nil {
 		return WindowStateNormal, err
 	}
 	return state, nil
@@ -225,7 +226,7 @@ func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEv
 // returns an error when it can't be in the target state. It will return nil
 // when the window is already in the target state.
 func SetWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, id int, targetState WindowStateType) error {
-	gotState, err := SetWindowState(ctx, tconn, id, stateToWmTypes[targetState])
+	gotState, err := SetWindowState(ctx, tconn, id, stateToWmTypes[targetState], true /* waitForStateChange */)
 	if err != nil {
 		return errors.Wrap(err, "failed to set the window state")
 	}
@@ -272,7 +273,7 @@ func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 	if err != nil {
 		return WindowStateNormal, err
 	}
-	return SetWindowState(ctx, tconn, window.ID, et)
+	return SetWindowState(ctx, tconn, window.ID, et, true /* waitForStateChange */)
 }
 
 // SetARCAppWindowStateAndWait sends WM event to ARC app window to change its window state, waits for it to stop animating, and returns the expected new state type.
