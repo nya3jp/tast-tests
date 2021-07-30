@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -134,6 +135,17 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
+
+	// lacrosStartedByDataWithArcBooted is a fixture that combines the functionality of arcBooted and lacrosStartedByData.
+	testing.AddFixture(&testing.Fixture{
+		Name:            "lacrosStartedByDataWithArcBooted",
+		Desc:            "Lacros Chrome from a pre-built image with ARC booted",
+		Contacts:        []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
+		Impl:            NewArcBootedWithParentChromeFixture(),
+		Parent:          "lacrosStartedByDataWithArcEnabled",
+		SetUpTimeout:    BootTimeout + ui.StartTimeout,
+		PostTestTimeout: postTestTimeout,
+	})
 }
 
 type bootedFixture struct {
@@ -146,6 +158,8 @@ type bootedFixture struct {
 	enableUIAutomator bool // Enable UI Automator
 
 	fOpt chrome.OptionsCallback // Function to return chrome options.
+
+	useParentChrome bool // Whether chrome is created by parent fixture.
 }
 
 // NewArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided.
@@ -194,23 +208,36 @@ func NewArcBootedWithPlayStoreFixture(fOpts chrome.OptionsCallback) testing.Fixt
 	}
 }
 
+// NewArcBootedWithParentChromeFixture returns a FixtureImpl that gets Chrome from a parent fixture.
+func NewArcBootedWithParentChromeFixture() testing.FixtureImpl {
+	return &bootedFixture{useParentChrome: true}
+}
+
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
 
-	opts, err := f.fOpt(ctx, s)
-	if err != nil {
-		s.Fatal("Failed to obtain fixture options: ", err)
-	}
+	var cr *chrome.Chrome
+	var lacrosFixt launcher.FixtData
 
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer func() {
-		if !success {
-			cr.Close(ctx)
+	if f.useParentChrome {
+		lacrosFixt = s.ParentValue().(launcher.FixtData)
+		cr = lacrosFixt.Chrome
+	} else {
+		opts, err := f.fOpt(ctx, s)
+		if err != nil {
+			s.Fatal("Failed to obtain fixture options: ", err)
 		}
-	}()
+
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+		defer func() {
+			if !success {
+				cr.Close(ctx)
+			}
+		}()
+	}
 
 	if f.playStoreOptin {
 		s.Log("Performing Play Store Optin")
@@ -262,7 +289,9 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	// Prevent the arc and chrome package's New and Close functions from
 	// being called while this bootedFixture is active.
 	Lock()
-	chrome.Lock()
+	if !f.useParentChrome {
+		chrome.Lock()
+	}
 
 	f.cr = cr
 	f.arc = arc
@@ -270,9 +299,10 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	f.init = init
 	success = true
 	return &PreData{
-		Chrome:   cr,
-		ARC:      arc,
-		UIDevice: d,
+		Chrome:     cr,
+		ARC:        arc,
+		UIDevice:   d,
+		LacrosFixt: lacrosFixt,
 	}
 }
 
@@ -290,9 +320,11 @@ func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 	f.arc = nil
 
-	chrome.Unlock()
-	if err := f.cr.Close(ctx); err != nil {
-		s.Log("Failed to close Chrome: ", err)
+	if !f.useParentChrome {
+		chrome.Unlock()
+		if err := f.cr.Close(ctx); err != nil {
+			s.Log("Failed to close Chrome: ", err)
+		}
 	}
 	f.cr = nil
 }
@@ -301,8 +333,10 @@ func (f *bootedFixture) Reset(ctx context.Context) error {
 	if f.d != nil && !f.d.Alive(ctx) {
 		return errors.New("UI Automator is dead")
 	}
-	if err := f.cr.ResetState(ctx); err != nil {
-		return errors.Wrap(err, "failed to reset chrome")
+	if !f.useParentChrome {
+		if err := f.cr.ResetState(ctx); err != nil {
+			return errors.Wrap(err, "failed to reset chrome")
+		}
 	}
 	return f.init.Restore(ctx, f.arc)
 }
