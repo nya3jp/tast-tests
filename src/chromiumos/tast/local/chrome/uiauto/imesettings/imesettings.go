@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -76,6 +77,22 @@ func (i *IMESettings) ClickAddButtonToConfirm() uiauto.Action {
 // RemoveInputMethod returns a function that removes the input method by clicking cross button next to the input method on UI.
 func (i *IMESettings) RemoveInputMethod(inputMethodName string) uiauto.Action {
 	return i.settings.LeftClick(nodewith.Name("Remove " + inputMethodName).Role(role.Button))
+}
+
+// OpenInputMethodSetting opens the input method setting pge in OS settings.
+// The setting button is named as "Open settings page for " + im.Name.
+// Japanese is the only exemption in "IME settings in the OS setting".
+func (i *IMESettings) OpenInputMethodSetting(tconn *chrome.TestConn, im ime.InputMethod) uiauto.Action {
+	return func(ctx context.Context) error {
+		if im.Equal(ime.JapaneseWithUSKeyboard) || im.Equal(ime.Japanese) {
+			return errors.Errorf("Open japanese settings in OS Settings is not supported %q", im)
+		}
+
+		imSettingButton := nodewith.Name("Open settings page for " + im.Name)
+		imeSettingHeading := nodewith.Name(im.Name).Role(role.Heading).Ancestor(ossettings.WindowFinder)
+		successCondition := uiauto.New(tconn).WithTimeout(5 * time.Second).WaitUntilExists(imeSettingHeading)
+		return i.settings.LeftClickUntil(imSettingButton, successCondition)(ctx)
+	}
 }
 
 // ToggleShowInputOptionsInShelf clicks the 'Show input options in the shelf' toggle button.
