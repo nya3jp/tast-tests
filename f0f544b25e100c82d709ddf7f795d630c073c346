@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "950ab2c9_9387b073",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-30T03:48:28Z",
+      "side": 1,
+      "message": "novato is a vm board. I was trying on my workstation with while loop until the test fails. I only got unrelated failures (e.g. arc fails to boot) in about a hour.\n\nI also thought it\u0027s affected by test cases that are running before this test case in CI, so I specified multiple arc tests and run them repeatedly, but no luck for now.",
+      "parentUuid": "cdc85291_c246706e",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca8206fa_1542b60b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-29T13:58:03Z",
       "side": 1,
       "message": "nit: please specify full command you used to run the test, e.g.\n\ntast run \u003cIP\u003e \u003ctest name\u003e",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56aed92_df64a35f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-30T03:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca8206fa_1542b60b",
       "range": {
         "startLine": 17,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "526e20cb_d84fcfcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-30T03:48:28Z",
+      "side": 1,
+      "message": "Accroding to the doc, \"if the function returns a non-nil error, Walk stops entirely and returns that error.\"\nhttps://pkg.go.dev/path/filepath#WalkFunc\n\nI\u0027d like to know the existance of files so I\u0027d like to continue even when there\u0027s an error for some file.",
+      "parentUuid": "88d34ca2_4cfd48e8",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2206bcda_f962362c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-29T13:58:03Z",
       "side": 1,
       "message": "I don\u0027t fully understand how list of paths can help you. Can you please elaborate?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95d763a_d0e36a8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-07-30T03:48:28Z",
+      "side": 1,
+      "message": "I wanted to factor out the possibility that the error \"no such file or directory\" means that the directory name is wrong for some reason.\nIf we have correct directory, we can say that this is probably due to IO error. If not, there\u0027s some other cause.\n\nOn the other hand, I don\u0027t think this is the best way to investigate the failure. If you have better idea to improve this, please let me know.",
+      "parentUuid": "2206bcda_f962362c",
       "range": {
         "startLine": 126,
         "startChar": 0,
