@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "003cac07_a7289b08",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-30T02:37:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be3b49bf_646cdc96",
+      "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1c602a1_6721ca31",
@@ -95,6 +113,24 @@
       "writtenOn": "2021-07-30T01:32:36Z",
       "side": 1,
       "message": "I updated the ctx here to be shortened, so we fail faster if a window doesn\u0027t minimize.",
+      "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f748fdd_c4677bdb",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-30T02:37:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1c602a1_6721ca31",
       "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
