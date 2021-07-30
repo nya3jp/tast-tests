@@ -22,6 +22,30 @@
       },
       "revId": "d65e016a32d0a294c2806e53b6f41a1ae4ec8a2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df9fc36_8b3b1aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-30T00:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af88c27e_d1aa2581",
+      "range": {
+        "startLine": 149,
+        "startChar": 67,
+        "endLine": 149,
+        "endChar": 76
+      },
+      "revId": "d65e016a32d0a294c2806e53b6f41a1ae4ec8a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
