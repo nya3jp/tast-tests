@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c311a7_d9d0420d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-30T05:37:19Z",
+      "side": 1,
+      "message": "nit: page",
+      "range": {
+        "startLine": 82,
+        "startChar": 57,
+        "endLine": 82,
+        "endChar": 60
+      },
+      "revId": "a65b0aee5ba7dba763ebfa236fd8794e05beb764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9875c6_7937f2c8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-07-30T05:37:19Z",
+      "side": 1,
+      "message": "What is the usage of this fun? Suggest to submit with another CL which uses it.",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "a65b0aee5ba7dba763ebfa236fd8794e05beb764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
