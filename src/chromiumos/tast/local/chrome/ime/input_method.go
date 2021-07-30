@@ -115,6 +115,12 @@ var Korean = InputMethod{
 	ID:   "ko-t-i0-und",
 }
 
+// Arabic represents the input method of Arabic.
+var Arabic = InputMethod{
+	Name: "Arabic",
+	ID:   "vkd_ar",
+}
+
 // inputMethods represents in-use (available) IMEs in ChromeOS.
 // Only listed input methods are promised to be available.
 var inputMethods = []InputMethod{
@@ -132,6 +138,7 @@ var inputMethods = []InputMethod{
 	Cantonese,
 	ChineseCangjie,
 	Korean,
+	Arabic,
 }
 
 // ActiveInputMethod returns the active input method via Chrome API.

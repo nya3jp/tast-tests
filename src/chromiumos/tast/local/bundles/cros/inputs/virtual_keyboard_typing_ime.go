@@ -22,6 +22,7 @@ import (
 )
 
 var typingTestIMEs = []ime.InputMethod{
+	ime.Arabic,
 	ime.EnglishUS,
 	ime.JapaneseWithUSKeyboard,
 	ime.ChinesePinyin,
