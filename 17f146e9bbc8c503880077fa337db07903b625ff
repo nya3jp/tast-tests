@@ -41,6 +41,64 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beea2ff3_5d0da63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-30T01:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb19f794_cbf83809",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 38
+      },
+      "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3b49bf_646cdc96",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-30T01:32:36Z",
+      "side": 1,
+      "message": "Whoops, this was debug code. I\u0027ll take it out.",
+      "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c602a1_6721ca31",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-30T01:32:36Z",
+      "side": 1,
+      "message": "I updated the ctx here to be shortened, so we fail faster if a window doesn\u0027t minimize.",
+      "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ebca094_181222ce",
@@ -54,6 +112,30 @@
       "writtenOn": "2021-07-29T08:49:09Z",
       "side": 1,
       "message": "style: Please prefer single quotes for JS strings.",
+      "range": {
+        "startLine": 114,
+        "startChar": 38,
+        "endLine": 114,
+        "endChar": 39
+      },
+      "revId": "17f146e9bbc8c503880077fa337db07903b625ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1149224_dc8de559",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-07-30T01:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebca094_181222ce",
       "range": {
         "startLine": 114,
         "startChar": 38,
