@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8222eecd_0105fefd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-30T17:36:59Z",
+      "side": 1,
+      "message": "Well noted. This can be addressed together once the pre/post-setup is further simplified by the future refactoring (eg, crbug.com/1127165)",
+      "parentUuid": "1eb00e0a_635e4c1a",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "defa16ba_8f09093e",
