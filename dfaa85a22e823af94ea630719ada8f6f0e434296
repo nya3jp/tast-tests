@@ -46,6 +46,30 @@
       },
       "revId": "dfaa85a22e823af94ea630719ada8f6f0e434296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99371bf2_1c348b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "Done. It took 7 attempts over 1:35 minutes [1]. So the 30 second sleep is not enough, and 7 attempts is uncomfortably close to 10. Ten attempts also have a bad code smell for the same reason as the sleep.\n\n[1] https://screenshot.googleplex.com/C3VimuQYsq2EnYb.png",
+      "parentUuid": "721addef_a331c165",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "dfaa85a22e823af94ea630719ada8f6f0e434296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

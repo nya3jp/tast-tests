@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a810882c_142b20c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "Nit: Tast",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "6f87dde815db09c0b035886ced98036736eb03f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc18078_84dccf33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "This looping scheme actually works very nicely because you can visually track how many attempts it takes before the prefs sync.\n\nhttps://screenshot.googleplex.com/C3VimuQYsq2EnYb.png",
+      "revId": "6f87dde815db09c0b035886ced98036736eb03f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9db391_18c4ea70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "We should use an infinite loop instead and rely on the test timeout. There\u0027s no guarantee that 10 attempts is enough. Ten attempts is also arbitrary like a 30 second sleep.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "6f87dde815db09c0b035886ced98036736eb03f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d42d6c3_807a9a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "Add a log statement for each iteration. Keep track and print the number of attempts.",
+      "revId": "6f87dde815db09c0b035886ced98036736eb03f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18260d13_322cde61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "Factor this out of the loop.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "6f87dde815db09c0b035886ced98036736eb03f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f734d09a_b1a8e168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T19:29:55Z",
+      "side": 1,
+      "message": "Move this into a deferred function and only output if the test timed out, but not if it succeeded.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 75
+      },
+      "revId": "6f87dde815db09c0b035886ced98036736eb03f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
