@@ -209,14 +209,19 @@ func WMEventTypeForState(state WindowStateType) WMEventType {
 	return stateToWmTypes[state]
 }
 
-// SetWindowState requests changing the state of the window to the requested
-// event type and returns the updated state.
-func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
+// SendWMEvent sends WMEvent to the window and returns the expected state.
+func SendWMEvent(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType, waitForStateChange bool) (WindowStateType, error) {
 	var state WindowStateType
-	if err := tconn.Call(ctx, &state, "tast.promisify(chrome.autotestPrivate.setAppWindowState)", id, &windowStateChange{EventType: et}); err != nil {
+	if err := tconn.Call(ctx, &state, "tast.promisify(chrome.autotestPrivate.setAppWindowState)", id, &windowStateChange{EventType: et}, waitForStateChange); err != nil {
 		return WindowStateNormal, err
 	}
 	return state, nil
+}
+
+// SetWindowState requests changing the state of the window to the requested
+// event type and returns the updated state.
+func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
+	return SendWMEvent(ctx, tconn, id, et, true /* waitForStateChange */)
 }
 
 // SetWindowStateAndWait requests a WMEvent to make the window for the id to be
