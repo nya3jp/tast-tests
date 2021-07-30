@@ -16,6 +16,24 @@
       "message": "Currently L645-647 are noops -- if value\u003d\u003dPowerStateReset, nothing will happen. Is that your intention? If so, I think it would be a little clearer to let them catch the default block (or even remove the default altogether). OTOH, if the intention is to loop them into the WatchdogRemove block, then this code doesn\u0027t do that; you would need one of the following:\n\n    switch value {\n    case PowerStateReset:\n        fallthrough\n    case PowerStateRec:\n        fallthrough\n    case PowerStateRecForceMRC:\n        fallthrough\n    case PowerStateCR50Reset:\n        if err :\u003d s.WatchdogRemove(...\n    }\n    \n    // OR\n    \n    switch value {\n    case PowerStateReset, PowerStateRec, PowerStateRecForceMRC, PowerStateCR50Reset:\n        if err :\u003d s.WatchdogRemove(...\n    }",
       "revId": "ba3cacf02cf942923227500a145f917648fba37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc81801_eab5ece9",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-30T17:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc0fa93_298bdedd",
+      "revId": "ba3cacf02cf942923227500a145f917648fba37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
