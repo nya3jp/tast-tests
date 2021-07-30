@@ -551,7 +551,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 
 				// TODO(b/184683272): Reenable everywhere.
 				if cat == "frm_resize" || cat == "sub8x8_sf" {
-					hardwareDeps = append(hardwareDeps, "hwdep.SkipOnPlatform(\"grunt\", \"zork\")")
+					hardwareDeps = append(hardwareDeps, "hwdep.SkipOnPlatform(\"zork\")")
 				}
 
 				switch levelGroup {
@@ -576,7 +576,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		CmdBuilder:   "vp9decodeVAAPIargs",
 		Files:        []string{vp9SVCFile},
 		Timeout:      defaultTimeout,
-		SoftwareDeps: []string{"vaapi"},
+		SoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
 		Metadata:     genExtraData([]string{vp9SVCFile}),
 		Attr:         []string{"graphics_video_vp9"},
 	})
