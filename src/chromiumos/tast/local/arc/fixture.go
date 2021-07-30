@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -120,6 +121,18 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "lacrosStartedByDataWithArcEnabled",
+		Desc: "Lacros Chrome from a pre-built image with ARC enabled (but the test will have to start ARC)",
+		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled()}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 }
 
