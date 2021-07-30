@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8aa61bcd_edfd78fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Ah, sorry I forgot to put information in it. Just added, thanks for reminding!",
+      "parentUuid": "30cdf637_1fc9e7b4",
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "260c63cc_dd8a8041",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7cf6dd_b9e48dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f060eb82_99debe9a",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae369f25_e14b6722",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-07-29T18:54:49Z",
       "side": 1,
       "message": "nit: can these values be converted to ints? e.g:\n\n  type reviewChoice int\n  const (\n    pdf reviewChoice \u003d iota\n    photo\n    retake\n  )",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09696897_50030af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "I use string instead of int since there are some cases that we need to print the |reviewChoice| down in the debug logs and using string can make it easier.",
+      "parentUuid": "ae369f25_e14b6722",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1691b254_97cb7163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "I extended the sentence to try to make it clearer. PTAL, thanks!",
+      "parentUuid": "c6422a6c_4cdadf72",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fd8617b_8f947829",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-07-29T18:54:49Z",
       "side": 1,
       "message": "move it to L62 and add `defer`. e.g:  `defer cancel()`",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9c65ea_66599414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd8617b_8f947829",
       "range": {
         "startLine": 67,
         "startChar": 2,
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "210d71ad_050f34b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55fdc258_02ddcab3",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "712fa808_ace2a30d",
@@ -180,6 +318,30 @@
       "writtenOn": "2021-07-29T18:54:49Z",
       "side": 1,
       "message": "nit: add comment explaining what \"retake\" is trying to do",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91dee19_882ab277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712fa808_ace2a30d",
       "range": {
         "startLine": 151,
         "startChar": 2,
@@ -213,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a3b529_a68828a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa4358eb_fae842e6",
+      "range": {
+        "startLine": 160,
+        "startChar": 22,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4c79d02_f4aae2ee",
@@ -226,6 +412,30 @@
       "writtenOn": "2021-07-29T18:54:49Z",
       "side": 1,
       "message": "huge nit: \"returns whether it is enabled\" ?",
+      "range": {
+        "startLine": 1260,
+        "startChar": 83,
+        "endLine": 1260,
+        "endChar": 88
+      },
+      "revId": "f218490bd30b928d27606a06b4d42b9cd94024b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dcfe874_c421b386",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-07-30T03:29:52Z",
+      "side": 1,
+      "message": "Oops, I accidentally removed the \"whether\". Added it back, thanks!",
+      "parentUuid": "d4c79d02_f4aae2ee",
       "range": {
         "startLine": 1260,
         "startChar": 83,
