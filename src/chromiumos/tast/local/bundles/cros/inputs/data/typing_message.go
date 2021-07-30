@@ -92,6 +92,10 @@ var TypingMessageHello = typingMessage{
 		CharacterKeySeq: []string{"ㅎ", "ᅡ", "ㄴ"},
 		ExpectedText:    "한",
 	},
+	ime.Arabic: {
+		CharacterKeySeq: strings.Split("سلام", ""),
+		ExpectedText:    "سلام",
+	},
 }
 
 // TypingMessagePassword defines messages of input methods for passwordInputField.
