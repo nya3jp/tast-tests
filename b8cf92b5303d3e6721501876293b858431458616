@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "393e9a39_c37d3b53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-30T15:53:52Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "b8cf92b5303d3e6721501876293b858431458616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0ecc4438_adf17f76",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 2
