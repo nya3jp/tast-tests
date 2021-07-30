@@ -23,6 +23,8 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -30,6 +32,7 @@ import (
 type arcPIPEnergyAndPowerTestParams struct {
 	activityName string
 	bigPIP       bool
+	chromeType   lacros.ChromeType
 }
 
 func init() {
@@ -39,40 +42,95 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "small",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "big",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "small_blend",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "big_blend",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "small_lacros",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
+		}, {
+			Name:              "big_lacros",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
+		}, {
+			Name:              "small_blend_lacros",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
+		}, {
+			Name:              "big_blend_lacros",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
 		}, {
 			Name:              "small_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "big_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "small_blend_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "big_blend_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "small_lacros_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
+		}, {
+			Name:              "big_lacros_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
+		}, {
+			Name:              "small_blend_lacros_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
+		}, {
+			Name:              "big_blend_lacros_vm",
+			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "lacrosStartedByDataWithArcEnabled",
 		}},
 	})
 }
@@ -83,7 +141,35 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.FixtValue().(*arc.PreData).Chrome
+	params := s.Param().(arcPIPEnergyAndPowerTestParams)
+	var cr *chrome.Chrome
+	var cs ash.ConnSource
+	var a *arc.ARC
+	var browserWindowType ash.WindowType
+	switch params.chromeType {
+	case lacros.ChromeTypeChromeOS:
+		cr = s.FixtValue().(*arc.PreData).Chrome
+		cs = cr
+		a = s.FixtValue().(*arc.PreData).ARC
+		browserWindowType = ash.WindowTypeBrowser
+	case lacros.ChromeTypeLacros:
+		var l *launcher.LacrosChrome
+		var err error
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), s.DataPath(launcher.DataArtifact), lacros.ChromeTypeLacros)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+		a, err = arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+
+		browserWindowType = ash.WindowTypeLacros
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -100,7 +186,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close notifications: ", err)
 	}
 
-	a := s.FixtValue().(*arc.PreData).ARC
 	if err := a.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
@@ -125,7 +210,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
-	params := s.Param().(arcPIPEnergyAndPowerTestParams)
 	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", params.activityName)
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
@@ -198,7 +282,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	conn, err := cr.NewConn(ctx, "chrome://settings")
+	conn, err := cs.NewConn(ctx, "chrome://settings")
 	if err != nil {
 		s.Fatal("Failed to load chrome://settings: ", err)
 	}
@@ -212,6 +296,15 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	// there will be no blinking cursor.
 	if err := kw.Accel(ctx, "Tab"); err != nil {
 		s.Fatal("Failed to send Tab: ", err)
+	}
+
+	browser, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == browserWindowType })
+	if err != nil {
+		s.Fatal("Failed to get browser window: ", err)
+	}
+
+	if err := ash.SetWindowStateAndWait(ctx, tconn, browser.ID, ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize browser window: ", err)
 	}
 
 	// triedToStopTracing means that cr.StopTracing(cleanupCtx)
