@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/lacros"
@@ -53,7 +54,7 @@ func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
 		artifactPath = s.DataPath(launcher.DataArtifact)
 	}
-	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -67,11 +68,25 @@ func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	conn, err := cr.NewConn(ctx, srv.URL+"/video_with_rounded_corners.html")
+	conn, err := cs.NewConn(ctx, srv.URL+"/video_with_rounded_corners.html")
 	if err != nil {
 		s.Fatal("Failed to load video_with_rounded_corners.html: ", err)
 	}
 	defer conn.Close()
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get windows: ", err)
+	}
+
+	// Verify that there is one and only one window.
+	if wsCount := len(ws); wsCount != 1 {
+		s.Fatal("Expected 1 window; found ", wsCount)
+	}
+
+	if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize window: ", err)
+	}
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for video_with_rounded_corners.html to achieve quiescence: ", err)
