@@ -67,6 +67,42 @@
       "message": "CheckIntelFWDump is still failing since upstream does not support the debug infrastructure http://issuetracker.google.com/169152720#comment67\n\nArowa, can you skip that test on devices with upstream kernels for now? Please add a TODO to make it run again if/when support for FW dumps lands upstream (AI on Intel)",
       "revId": "048ee2f5fd88367a48257786337e41db24cf6f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a43f18_4d310a55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-30T23:41:20Z",
+      "side": 1,
+      "message": "Sure, I can do that.",
+      "parentUuid": "b3f04ab0_982d696c",
+      "revId": "048ee2f5fd88367a48257786337e41db24cf6f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df62c026_bc66a7f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-07-30T23:41:20Z",
+      "side": 1,
+      "message": "I agree with you.",
+      "parentUuid": "cadb4d27_54135cb9",
+      "revId": "048ee2f5fd88367a48257786337e41db24cf6f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
