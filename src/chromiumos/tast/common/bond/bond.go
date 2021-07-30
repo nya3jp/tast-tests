@@ -104,13 +104,32 @@ func (c *Client) send(ctx context.Context, method, url string, reqObj, respObj i
 	return nil
 }
 
+func (c *Client) sendWithRetry(ctx context.Context, method, url string, reqObj, respObj interface{}) error {
+	var sendErr error
+
+	const retry = 3
+	backOff := 500 * time.Millisecond
+	for i := 0; i < retry; i++ {
+		sendErr = c.send(ctx, method, url, reqObj, respObj)
+		if sendErr == nil {
+			return nil
+		}
+
+		if err := testing.Sleep(ctx, backOff); err != nil {
+			return errors.Wrap(err, "failed to backoff")
+		}
+		backOff = backOff * 2
+	}
+	return sendErr
+}
+
 // AvailableWorkers returns the number of available workers in the server.
 func (c *Client) AvailableWorkers(ctx context.Context) (int, error) {
 	type availableWorkersResponse struct {
 		NumOfAvailableWorkers int `json:"numOfAvailableWorkers"`
 	}
 	resp := availableWorkersResponse{}
-	if err := c.send(ctx, http.MethodGet, endpoint+"/v1/workers:count", nil, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodGet, endpoint+"/v1/workers:count", nil, &resp); err != nil {
 		return 0, err
 	}
 	return resp.NumOfAvailableWorkers, nil
@@ -132,7 +151,7 @@ func (c *Client) CreateConference(ctx context.Context) (string, error) {
 		},
 	}
 	resp := conferenceResponse{}
-	if err := c.send(ctx, http.MethodPost, endpoint+"/v1/conferences:create", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conferences:create", req, &resp); err != nil {
 		return "", err
 	}
 	return resp.Conference.ConferenceCode, nil
@@ -147,7 +166,7 @@ func (c *Client) ExecuteScript(ctx context.Context, script, meetingCode string) 
 		},
 	}
 	resp := map[string]interface{}{}
-	if err := c.send(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/script", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/script", req, &resp); err != nil {
 		return err
 	}
 	if success, ok := resp["success"]; ok && success.(bool) {
@@ -230,7 +249,7 @@ func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, t
 		"use_random_video_file_for_playback": true,
 	}
 	resp := addBotsResponse{}
-	if err := c.send(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
 		return nil, err
 	}
 	return resp.BotIDs, nil
