@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9300ca2_8f36f8e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-30T09:04:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7159247f_2e39027c",
+      "revId": "09c8a3247f295d3a2b32f7173121073f65be0465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb995f9_d310db40",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-29T18:07:57Z",
       "side": 1,
       "message": "Pass the cleanupCtx by value here.",
+      "revId": "09c8a3247f295d3a2b32f7173121073f65be0465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb7ef2e_9e50fcf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_hotplug_unplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-30T09:04:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ddb995f9_d310db40",
       "revId": "09c8a3247f295d3a2b32f7173121073f65be0465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
