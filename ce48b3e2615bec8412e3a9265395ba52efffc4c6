@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22435bc_703f29f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-30T15:08:04Z",
+      "side": 1,
+      "message": "tast shadow reviewer LGTM % comment",
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b758519_e2bf847d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-07-30T15:08:04Z",
+      "side": 1,
+      "message": "not harmful? Could this comment be reworded? I\u0027m not sure what it\u0027s trying to say.",
+      "range": {
+        "startLine": 389,
+        "startChar": 10,
+        "endLine": 389,
+        "endChar": 20
+      },
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
