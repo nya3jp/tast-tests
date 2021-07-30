@@ -97,7 +97,7 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 // it is settled, and the resolved value is stored in out if given.
 //
 //	data := make(map[string]interface{})
-//	err := conn.EvalPromise(ctx,
+//	err := conn.EvalPromiseDeprecated(ctx,
 //		`new Promise(function(resolve, reject) {
 //			runAsync(function(data) {
 //				if (data != null) {
@@ -111,7 +111,7 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 	return c.doEval(ctx, expr, true, out)
 }
 
-// EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
+// EvalPromiseDeprecated evaluates the JavaScript expression expr (which must return a Promise),
 // awaits its result, and stores the result in out (if non-nil). If out is a *chrome.JSObject,
 // a reference to the result is returned. The *chrome.JSObject should get released or
 // the memory it references will not be freed. An error is returned if evaluation fails,
@@ -119,7 +119,7 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 // can't be unmarshaled into it.
 //
 //	data := make(map[string]interface{})
-//	err := conn.EvalPromise(ctx,
+//	err := conn.EvalPromiseDeprecated(ctx,
 //		`new Promise(function(resolve, reject) {
 //			runAsync(function(data) {
 //				if (data != null) {
@@ -131,11 +131,11 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 //		})`, &data)
 //
 // DEPRECATED: please use Eval, instead.
-func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
+func (c *Conn) EvalPromiseDeprecated(ctx context.Context, expr string, out interface{}) error {
 	return c.doEval(ctx, expr, true, out)
 }
 
-// doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromise.
+// doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromiseDeprecated.
 func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
 	// If returning JSObject, pass its RemoteObject to Eval.
 	newOb, returnJSObject := out.(*JSObject)

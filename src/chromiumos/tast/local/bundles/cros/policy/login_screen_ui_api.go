@@ -96,7 +96,7 @@ func LoginScreenUIAPI(ctx context.Context, s *testing.State) {
 
 	// Show window.html.
 	// The file window.html is bundled with the extension.
-	if err := bgConn.EvalPromise(ctx,
+	if err := bgConn.EvalPromiseDeprecated(ctx,
 		`new Promise((resolve, reject) => {
 		chrome.loginScreenUi.show({url: "window.html"}, () => {
 			if (chrome.runtime.lastError) {
@@ -127,7 +127,7 @@ func LoginScreenUIAPI(ctx context.Context, s *testing.State) {
 	}
 
 	// Close the window.
-	if err := bgConn.EvalPromise(ctx,
+	if err := bgConn.EvalPromiseDeprecated(ctx,
 		`new Promise((resolve, reject) => {
 		chrome.loginScreenUi.close(() => {
 			if (chrome.runtime.lastError) {
