@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc89d1f9_f048b467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-30T21:42:12Z",
+      "side": 1,
+      "message": "Filed b/195144659 lacros-tast: Use consistent name in Tast for \u0027chromeos-chrome\u0027 or \u0027ash-chrome\u0027",
+      "parentUuid": "e658c3fc_417e8e7d",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "14f53ce06abdc67dc0b74f23ff5b30ac4008fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90a08d0_66c47026",
