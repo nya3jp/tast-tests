@@ -418,7 +418,7 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	maximized := false
 	for _, w := range ws {
 		if strings.Contains(w.Title, blockerTitle) {
-			ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize)
+			ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize, true /* waitForStateChange */)
 			maximized = true
 			break
 		}

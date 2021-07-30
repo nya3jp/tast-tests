@@ -565,8 +565,13 @@ func (ac *Activity) setWindowStateR(ctx context.Context, tconn *chrome.TestConn,
 		return errors.Wrap(err, "failed to get wm event")
 	}
 
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, ac.PackageName(), wmEvent); err != nil {
-		return errors.Wrap(err, "failed to set window state")
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, ac.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get ARC app window")
+	}
+
+	if _, err := ash.SetWindowState(ctx, tconn, window.ID, wmEvent, false /* waitForStateChange */); err != nil {
+		return errors.Wrap(err, "failed to send wm event")
 	}
 	return nil
 }

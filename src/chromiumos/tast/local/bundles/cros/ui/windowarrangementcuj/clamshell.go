@@ -122,7 +122,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	}
 
 	// Restore window.
-	if _, err := ash.SetWindowState(ctx, tconn, browserWinID, ash.WMEventNormal); err != nil {
+	if _, err := ash.SetWindowState(ctx, tconn, browserWinID, ash.WMEventNormal, true /* waitForStateChange */); err != nil {
 		return errors.Wrap(err, "failed to set the window state to normal")
 	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {

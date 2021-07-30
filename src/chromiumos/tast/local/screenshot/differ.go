@@ -447,7 +447,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	windowBoundsDP := window.BoundsInRoot
 
 	// Even if the window already appears to be in normal state, it may actually be in the Default state. So always set to normal.
-	windowState, err := ash.SetWindowState(ctx, d.tconn, window.ID, ash.WMEventNormal)
+	windowState, err := ash.SetWindowState(ctx, d.tconn, window.ID, ash.WMEventNormal, true /* waitForStateChange */)
 	if err != nil {
 		return testArgs, err
 	}
