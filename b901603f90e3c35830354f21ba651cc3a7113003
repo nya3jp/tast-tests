@@ -257,6 +257,30 @@
       },
       "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba622f51_ff27ba24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-07-30T00:31:49Z",
+      "side": 1,
+      "message": "Filed b/194849311 to avoid the inconsistency between ash/lacros and eventually remove first()",
+      "parentUuid": "330c381e_2d05ca76",
+      "range": {
+        "startLine": 123,
+        "startChar": 99,
+        "endLine": 123,
+        "endChar": 107
+      },
+      "revId": "b901603f90e3c35830354f21ba651cc3a7113003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
