@@ -81,6 +81,30 @@
       },
       "revId": "57091dc4c58923824b3be01edd3f1908981edefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1365c6_91d39d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-30T16:00:51Z",
+      "side": 1,
+      "message": "I meant to do getPowStatus :\u003d func(ctx context.Context) {} getPowStatus(ctx) instead.",
+      "parentUuid": "6b379940_3fcb52e6",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "57091dc4c58923824b3be01edd3f1908981edefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
