@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -26,6 +27,8 @@ type PreData struct {
 	// ARC enables interaction with an already-started ARC environment.
 	// It cannot be closed by tests.
 	ARC *ARC
+	// LacrosFixt is lacros fixture data when tests use lacros related fixtures.
+	LacrosFixt launcher.FixtData
 }
 
 // Booted returns a precondition that ARC Container has already booted when a test is run.
@@ -114,7 +117,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.arc.resetOutDir(ctx, s.OutDir()); err != nil {
 				return nil, errors.Wrap(err, "failed to reset outDir field of ARC object")
 			}
-			return PreData{p.cr, p.arc}, nil
+			return PreData{p.cr, p.arc, launcher.FixtData{}}, nil
 		}()
 		if err == nil {
 			s.Log("Reusing existing ARC session")
@@ -184,7 +187,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	chrome.Lock()
 
 	shouldClose = false
-	return PreData{p.cr, p.arc}
+	return PreData{p.cr, p.arc, launcher.FixtData{}}
 }
 
 // Close is called by the test framework after the last test that uses this precondition.
