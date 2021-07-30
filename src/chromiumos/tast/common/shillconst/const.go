@@ -138,6 +138,7 @@ const (
 	ServicePropertyEAPKeyMgmt                     = "EAP.KeyMgmt"
 	ServicePropertyEAPUseSystemCAs                = "EAP.UseSystemCAs"
 	ServicePropertyEAPSubjectAlternativeNameMatch = "EAP.SubjectAlternativeNameMatch"
+	ServicePropertyEAPDomainSuffixMatch           = "EAP.DomainSuffixMatch"
 )
 
 // Service Error values

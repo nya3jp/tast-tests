@@ -36,10 +36,11 @@ type simpleConnectTestcase struct {
 
 // EAP certs/keys for EAP tests.
 var (
-	eapCert1       = certificate.TestCert1()
-	eapCert2       = certificate.TestCert2()
-	eapCert3       = certificate.TestCert3()
-	eapCert3AltSub = certificate.TestCert3AltSubjectMatch()
+	eapCert1             = certificate.TestCert1()
+	eapCert2             = certificate.TestCert2()
+	eapCert3             = certificate.TestCert3()
+	eapCert3AltSub       = certificate.TestCert3AltSubjectMatch()
+	eapCert3DomainSuffix = certificate.TestCert3DomainSuffixMatch()
 )
 
 func init() {
@@ -644,6 +645,16 @@ func init() {
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
 					),
 					expectedFailure: true,
+				}, {
+					// Failure due the set domain suffix match that does not match any of the dNSName in the server certificate SANs.
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain.com"}),
+					),
+					expectedFailure: true,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled MSCHAPV2.
@@ -690,6 +701,25 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
 					),
 				}},
 			}, {
@@ -738,6 +768,25 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
+					),
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled GTC.
@@ -785,6 +834,25 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
+					),
 				}},
 			}, {
 				// Verifies that DUT CANNOT connect to a TTLS network with wrong settings.
@@ -827,6 +895,16 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
+					),
+					expectedFailure: true,
+				}, {
+					// Failure due the set domain suffix match that does not match any of the dNSName in the server certificate SANs.
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain.com"}),
 					),
 					expectedFailure: true,
 				}},
@@ -876,6 +954,25 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
+					),
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled MD5.
@@ -922,6 +1019,25 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
 					),
 				}},
 			}, {
@@ -970,6 +1086,25 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
+					),
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSMSCHAPV2.
@@ -1016,6 +1151,25 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
 					),
 				}},
 			}, {
@@ -1064,6 +1218,25 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
+					),
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSPAP.
@@ -1110,6 +1283,25 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
+					),
+				}, {
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+						tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+					),
+				}, {
+					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
+					// For more information about how wpa_supplicant uses domain_suffix_match field:
+					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac: tunneled1x.NewConfigFactory(
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
+						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix, "wrongdomain1.com"}),
 					),
 				}},
 			},
