@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cefdce69_36ee4dea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-07-30T16:48:30Z",
+      "side": 1,
+      "message": "consider pulliong this reused function into a utility library",
+      "revId": "49d0e0e1af90844b238ba56eaa49839a2e2e59c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
