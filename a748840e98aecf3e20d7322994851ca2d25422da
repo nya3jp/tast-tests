@@ -22,6 +22,30 @@
       },
       "revId": "a748840e98aecf3e20d7322994851ca2d25422da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94bcbd9a_583459e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-07-30T02:24:54Z",
+      "side": 1,
+      "message": "I didn\u0027t provide it because I was happy with the default retry interval here.",
+      "parentUuid": "b1757920_24fa1f9d",
+      "range": {
+        "startLine": 127,
+        "startChar": 79,
+        "endLine": 127,
+        "endChar": 82
+      },
+      "revId": "a748840e98aecf3e20d7322994851ca2d25422da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
