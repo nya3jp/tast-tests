@@ -125,7 +125,7 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to find the Play Store window: ", err)
 		}
-		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventMinimize); err != nil {
+		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventMinimize, true /* waitForStateChange */); err != nil {
 			s.Fatal("Failed to minimize Play Store window: ", err)
 		}
 
