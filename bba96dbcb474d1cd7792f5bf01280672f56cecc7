@@ -121,6 +121,24 @@
       "message": "Do you need the defer Restart here and in user_timestamp.go?",
       "revId": "bba96dbcb474d1cd7792f5bf01280672f56cecc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4321ec2_66080d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/fscrypt_encryption_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-07-30T04:59:30Z",
+      "side": 1,
+      "message": "I think this test doesn\u0027t need to restart cryptohomed, because it didn\u0027t manipulate the internal state of crypothome into a strange state.",
+      "parentUuid": "59d22e5f_a09f28db",
+      "revId": "bba96dbcb474d1cd7792f5bf01280672f56cecc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
