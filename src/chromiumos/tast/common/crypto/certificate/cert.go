@@ -320,6 +320,9 @@ var certSet3AltSubjectMatch = []string{
 	`{"Type":"DNS","Value":"mail.example.com"}`,
 	`{"Type":"EMAIL","Value":"example@domain.com"}`,
 }
+
+var certSet3DomainSuffixMatch = "example.com"
+
 var certSet3 = CertStore{
 	CACred: Credential{
 		Cert: `-----BEGIN CERTIFICATE-----
@@ -497,4 +500,10 @@ func TestCert3() CertStore {
 // and TestCert3().ExpiredServerCred.Cert in encoded json format.
 func TestCert3AltSubjectMatch() []string {
 	return append([]string(nil), certSet3AltSubjectMatch...)
+}
+
+// TestCert3DomainSuffixMatch provides the domain suffix entry contained in TestCert3().ServerCred.Cert
+// and TestCert3().ExpiredServerCred.Cert.
+func TestCert3DomainSuffixMatch() string {
+	return certSet3DomainSuffixMatch
 }

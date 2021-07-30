@@ -41,6 +41,13 @@ func AltSubjectMatch(sans []string) Option {
 	}
 }
 
+// DomainSuffixMatch returns an Option which sets shill EAP.DomainSuffixMatch property in Config.
+func DomainSuffixMatch(domainSuffix []string) Option {
+	return func(c *ConfigFactory) {
+		c.blueprint.domainSuffixMatch = append([]string(nil), domainSuffix...)
+	}
+}
+
 // Options below are re-wrapped from the options of package eap.
 
 // FileSuffix returns an Option which sets the file suffix in Config.

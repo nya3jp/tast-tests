@@ -587,6 +587,29 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 				tunneled1x.AltSubjectMatch([]string{`+"`"+`{"Type":"DNS","Value":"wrong_dns.com"}`+"`"+`, eapCert3AltSub[0]}),
 			)`, outer, inner),
 		})
+		ret.Val = append(ret.Val, simpleConnectParamsVal{
+			APOpts: simpleConnectCommonSecApOpts,
+			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
+				eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+				tunneled1x.DomainSuffixMatch([]string{eapCert3DomainSuffix}),
+			)`, outer, inner),
+		})
+		ret.Val = append(ret.Val, simpleConnectParamsVal{
+			Doc: []string{
+				"Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.",
+				"For more information about how wpa_supplicant uses domain_suffix_match field:",
+				"https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf",
+			},
+			APOpts: simpleConnectCommonSecApOpts,
+			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
+				eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+				tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix , "wrongdomain1.com"}),
+			)`, outer, inner),
+		})
 		return ret
 	}
 	mkPFail := func(outer, inner string, extraAttr []string) simpleConnectParams {
@@ -624,6 +647,13 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.AltSubjectMatch([]string{` + "`" + `{"Type":"DNS","Value":"wrong_dns.com"}` + "`" + `}),
+			)`},
+			{"Failure due the set domain suffix match that does not match any of the dNSName in the server certificate SANs.",
+				`tunneled1x.NewConfigFactory(
+				eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+				tunneled1x.DomainSuffixMatch([]string{"wrongdomain.com"}),
 			)`},
 		} {
 			ret.Val = append(ret.Val, simpleConnectParamsVal{

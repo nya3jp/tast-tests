@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"encoding/pem"
 	"reflect"
+	"strings"
 	"testing"
 	"time"
 
@@ -170,6 +171,29 @@ func TestAltSubjectMatch(t *testing.T) {
 		}
 		if !reflect.DeepEqual(emailAddresses, expectedEmailAddresses) {
 			t.Errorf("Test %d: email addresses not match, got %v, want %v", testi, emailAddresses, expectedEmailAddresses)
+		}
+	}
+}
+
+// TestDomainSuffixMatch test that the domain specified by TestCert3DomainSuffixMatch() is found in TestCert3.
+func TestDomainSuffixMatch(t *testing.T) {
+	// Get the entries in TestCert3DomainSuffixMatch().
+	expectedDomainSuffixMatch := TestCert3DomainSuffixMatch()
+
+	for testi, testcert := range []string{TestCert3().ServerCred.Cert, TestCert3().ExpiredServerCred.Cert} {
+		// Get the entries of the cert.
+		cert, err := x509ParseCert(testcert)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		match := false
+		for _, d := range cert.DNSNames {
+			match = match || strings.HasSuffix(d, expectedDomainSuffixMatch)
+		}
+
+		if !match {
+			t.Errorf("Test %d: the domain does not match, got %v, want %s", testi, cert.DNSNames, expectedDomainSuffixMatch)
 		}
 	}
 }
