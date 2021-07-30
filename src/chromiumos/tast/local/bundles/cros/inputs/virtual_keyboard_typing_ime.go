@@ -36,6 +36,7 @@ var typingTestIMEs = []ime.InputMethod{
 	ime.Cantonese,
 	ime.ChineseCangjie,
 	ime.Korean,
+	ime.Arabic,
 }
 
 var typingTestMessages = []data.Message{data.TypingMessageHello}
