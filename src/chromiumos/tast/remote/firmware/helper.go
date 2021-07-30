@@ -410,6 +410,7 @@ func (h *Helper) SyncTastFilesToDUT(ctx context.Context) error {
 // SetupUSBKey prepares the USB disk for a test. (Borrowed from Tauto's firmware_test.py)
 // It checks the setup of USB disk and a valid ChromeOS test image inside.
 // Downloads the test image if the image isn't the right version.
+// Will break the DUT if it is currently booted off the USB drive in recovery mode.
 func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudStorage) (retErr error) {
 	testing.ContextLog(ctx, "Validating image usbkey on servo")
 	// Power cycling the USB key helps to make it visible to the host.
@@ -482,6 +483,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	if releaseBuilderPath == dutBuilderPath {
 		return nil
 	}
+
 	testing.ContextLogf(ctx, "Current build on USB (%s) differs from DUT (%s), proceed with download", releaseBuilderPath, dutBuilderPath)
 
 	// Copying the behavior from src/third_party/hdctools/servo/drv/usb_downloader.py.
