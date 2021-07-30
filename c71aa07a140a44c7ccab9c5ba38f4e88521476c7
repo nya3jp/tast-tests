@@ -204,6 +204,24 @@
       "parentUuid": "2a72d0f9_f4d2bfc6",
       "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cb0b67_829f27c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-07-30T21:56:50Z",
+      "side": 1,
+      "message": "Had a chat offline and clarified Toby Huang that apps/apps.go is right and has right IDs.\n\nIIUC below code snippet can be used on an account to get the list of apps installed on it.\n\n\n\tcapps, err :\u003d ash.ChromeApps(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to find installed app: \", err)\n\t}\n\n\tfor _, capp :\u003d range capps {\n\t\ts.Log(\"Installed app name:::: \", capp)\n\t}",
+      "parentUuid": "bb05ebc0_0a967627",
+      "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
