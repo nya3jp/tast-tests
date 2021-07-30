@@ -18,6 +18,7 @@ import (
 	"golang.org/x/oauth2/google"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/testing"
 )
 
@@ -104,13 +105,23 @@ func (c *Client) send(ctx context.Context, method, url string, reqObj, respObj i
 	return nil
 }
 
+func (c *Client) sendWithRetry(ctx context.Context, method, url string, reqObj, respObj interface{}) error {
+	const (
+		retry         = 3
+		retryInterval = 500 * time.Millisecond
+	)
+	return action.Retry(retry, func(ctx context.Context) error {
+		return c.send(ctx, method, url, reqObj, respObj)
+	}, retryInterval)(ctx)
+}
+
 // AvailableWorkers returns the number of available workers in the server.
 func (c *Client) AvailableWorkers(ctx context.Context) (int, error) {
 	type availableWorkersResponse struct {
 		NumOfAvailableWorkers int `json:"numOfAvailableWorkers"`
 	}
 	resp := availableWorkersResponse{}
-	if err := c.send(ctx, http.MethodGet, endpoint+"/v1/workers:count", nil, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodGet, endpoint+"/v1/workers:count", nil, &resp); err != nil {
 		return 0, err
 	}
 	return resp.NumOfAvailableWorkers, nil
@@ -132,7 +143,7 @@ func (c *Client) CreateConference(ctx context.Context) (string, error) {
 		},
 	}
 	resp := conferenceResponse{}
-	if err := c.send(ctx, http.MethodPost, endpoint+"/v1/conferences:create", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conferences:create", req, &resp); err != nil {
 		return "", err
 	}
 	return resp.Conference.ConferenceCode, nil
@@ -147,7 +158,7 @@ func (c *Client) ExecuteScript(ctx context.Context, script, meetingCode string) 
 		},
 	}
 	resp := map[string]interface{}{}
-	if err := c.send(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/script", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/script", req, &resp); err != nil {
 		return err
 	}
 	if success, ok := resp["success"]; ok && success.(bool) {
@@ -230,7 +241,7 @@ func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, t
 		"use_random_video_file_for_playback": true,
 	}
 	resp := addBotsResponse{}
-	if err := c.send(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
 		return nil, err
 	}
 	return resp.BotIDs, nil
