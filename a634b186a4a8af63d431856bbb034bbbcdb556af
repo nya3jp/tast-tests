@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "727dc270_fbca3a11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2021-07-30T17:12:04Z",
+      "side": 1,
+      "message": "Hi Keigo,\n\nCan you take a look at this temporary RunOCI patch while we merge in our glibc patch? We just want to disable this test temporarily while we work out why librt can\u0027t be stated after the merge.\n\nThanks!",
+      "revId": "a634b186a4a8af63d431856bbb034bbbcdb556af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
