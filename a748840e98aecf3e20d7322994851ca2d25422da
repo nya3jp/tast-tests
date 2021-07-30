@@ -96,6 +96,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e2a69989_0c51d17d",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-07-30T06:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49043887_b81d825e",
+      "range": {
+        "startLine": 389,
+        "startChar": 82,
+        "endLine": 389,
+        "endChar": 87
+      },
+      "revId": "a748840e98aecf3e20d7322994851ca2d25422da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8e419f43_fe7102a2",
         "filename": "src/chromiumos/tast/local/screenshot/differ.go",
         "patchSetId": 4
@@ -107,6 +131,30 @@
       "writtenOn": "2021-07-30T03:13:15Z",
       "side": 1,
       "message": "optional: How about use optional parameters in DiffWindow and Diff()? Similar to chrome.New(). You can do DiffWindow(ctx context.Context, name string, opts ...Option). It should be relatively simpler.",
+      "range": {
+        "startLine": 390,
+        "startChar": 73,
+        "endLine": 390,
+        "endChar": 88
+      },
+      "revId": "a748840e98aecf3e20d7322994851ca2d25422da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cec043_f8ad741a",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-07-30T06:15:36Z",
+      "side": 1,
+      "message": "good idea, hadn\u0027t thought of that",
+      "parentUuid": "8e419f43_fe7102a2",
       "range": {
         "startLine": 390,
         "startChar": 73,
