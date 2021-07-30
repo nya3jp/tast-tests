@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"encoding/pem"
 	"reflect"
+	"strings"
 	"testing"
 	"time"
 
@@ -18,10 +19,10 @@ import (
 func pemDecode(s string) ([]byte, error) {
 	block, rest := pem.Decode([]byte(s))
 	if block == nil {
-		return nil, errors.New("Couldn't decode Cert PEM")
+		return nil, errors.New("couldn't decode Cert PEM")
 	}
 	if len(rest) != 0 {
-		return nil, errors.Errorf("Found trailing data in cert: %q", string(rest))
+		return nil, errors.Errorf("found trailing data in cert: %q", string(rest))
 	}
 	return block.Bytes, nil
 }
@@ -103,11 +104,11 @@ func TestCertificate(t *testing.T) {
 			}
 			// Validate private keys.
 			if err := validatePrivateKey(cred.PrivateKey, cert); err != nil {
-				return errors.Errorf("failed private key check: %v", err)
+				return errors.Wrap(err, "failed private key check")
 			}
 			// Check cert signatures.
 			if err := validateCertSignature(cert, caCert); err != nil {
-				return errors.Errorf("failed CA cert check: %v", err)
+				return errors.Wrap(err, "failed CA cert check", err)
 			}
 			return nil
 		}
@@ -170,6 +171,30 @@ func TestAltSubjectMatch(t *testing.T) {
 		}
 		if !reflect.DeepEqual(emailAddresses, expectedEmailAddresses) {
 			t.Errorf("Test %d: email addresses not match, got %v, want %v", testi, emailAddresses, expectedEmailAddresses)
+		}
+	}
+}
+
+// TestDomainSuffixMatch test that the domain specified by TestCert3DomainSuffixMatch() is found in TestCert3.
+func TestDomainSuffixMatch(t *testing.T) {
+	// Get the entries in TestCert3DomainSuffixMatch().
+	expectedDomainSuffixMatch := TestCert3DomainSuffixMatch()
+
+	for testi, testcert := range []string{TestCert3().ServerCred.Cert, TestCert3().ExpiredServerCred.Cert} {
+		// Get the entries of the cert.
+		cert, err := x509ParseCert(testcert)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		for _, d := range cert.DNSNames {
+			match := false
+			for _, s := range expectedDomainSuffixMatch {
+				match = match || strings.HasSuffix(d, s)
+			}
+			if !match {
+				t.Errorf("Test %d: the domain does not match, got %v, want %v", testi, cert.DNSNames, expectedDomainSuffixMatch)
+			}
 		}
 	}
 }
