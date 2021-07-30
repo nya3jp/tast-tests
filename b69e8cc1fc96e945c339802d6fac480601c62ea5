@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833431cf_4b66d51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-30T05:56:52Z",
+      "side": 1,
+      "message": "Since we have 2 options in scanner mode(Document and QRCode). Can you also check the UI[1] is stay in Document scan option by default?\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:chromeos/components/camera_app_ui/resources/views/main.html;drc\u003d4a4cc896082c3a1c496873dd573374d3fe2218e1;l\u003d198",
+      "revId": "b69e8cc1fc96e945c339802d6fac480601c62ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e17949_8e855b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-07-30T05:56:52Z",
+      "side": 1,
+      "message": "Can you poll until |taking| state \u003d\u003d false here? CCA use |taking| state to flag duration from start shutter to file saved.",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 70
+      },
+      "revId": "b69e8cc1fc96e945c339802d6fac480601c62ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
