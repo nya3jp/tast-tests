@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "063b761e_1d63e005",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-30T20:57:48Z",
+      "side": 1,
+      "message": "I was doing it with 500ms for the 1st retry and L121 would double it for the next retry. But new PS is revised to use action.Retry, which uses a fixed interval. So yes. And 500ms is randomly picked number. Happy to change it if you want to try some other numbers.",
+      "parentUuid": "7a701aa3_c9823c4c",
+      "revId": "58dbc1cad3431f37cca0ab6f17e8135837ba7f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ad51d7_f5be2a72",
         "filename": "src/chromiumos/tast/common/bond/bond.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-30T20:17:17Z",
       "side": 1,
       "message": "Do we not have a Tast utility function that does retries with backoff? For autotest, we have:\nhttps://source.corp.google.com/chromeos_public/infra/autotest-drone/client/common_lib/cros/retry.py;l\u003d148\n\nMaybe this:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/action/action.go;l\u003d52",
+      "revId": "58dbc1cad3431f37cca0ab6f17e8135837ba7f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1493cde3_f64b6208",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-30T20:57:48Z",
+      "side": 1,
+      "message": "Good call, revised to use action.Retry. Hope owners is fine with tast/common depending on tast/local files.",
+      "parentUuid": "a2ad51d7_f5be2a72",
       "revId": "58dbc1cad3431f37cca0ab6f17e8135837ba7f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-30T20:17:17Z",
       "side": 1,
       "message": "Perhaps we can add a TODO to poll for some other signal of readiness before this http request. If the endpoint is flakily ready we could end up with bugs where the request comes in when it\u0027s not fully initialized.",
+      "revId": "58dbc1cad3431f37cca0ab6f17e8135837ba7f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df353098_310f0d1c",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-30T20:57:48Z",
+      "side": 1,
+      "message": "I am not sure what signals could be used. The bond client code is a thin wrapper to the bond service running by meet team. We should not hit it in the partial initialized state.\n\nI hope that the http send error is something like a lab network issue, or we hitting some temporary resource limit on bond. And a retry might succeed for such situations.",
+      "parentUuid": "9f16a045_1409c143",
       "revId": "58dbc1cad3431f37cca0ab6f17e8135837ba7f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
