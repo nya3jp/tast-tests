@@ -13,13 +13,14 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/action"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -42,7 +43,16 @@ func init() {
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
-		Fixture:      "chromeGraphics",
+		Params: []testing.Param{{
+			Fixture: "chromeGraphics",
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{launcher.DataArtifact},
+			Fixture:           "chromeGraphicsLacros",
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
@@ -52,7 +62,16 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	var artifactPath string
+	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+		artifactPath = s.DataPath(launcher.DataArtifact)
+	}
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
