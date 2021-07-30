@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf37ed7_d61d8f79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T17:33:00Z",
+      "side": 1,
+      "message": "This CL fixes b/180684603 and crrev.com/c/2705454 as well (even though the two bugs really have the same root cause).",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d594eb4a_692e927e",
@@ -102,6 +125,23 @@
       "side": 1,
       "message": "Thanks for sharing the details, This helps.",
       "parentUuid": "da43ddbb_cac984fc",
+      "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a0ed16_263ad716",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-07-30T17:33:00Z",
+      "side": 1,
+      "message": "I like how no additional code changes were required beyond adding two new fixtures to support a new account!",
       "revId": "c71aa07a140a44c7ccab9c5ba38f4e88521476c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
