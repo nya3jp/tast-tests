@@ -206,6 +206,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 	params := s.Param().(fastInkTestParams)
 	var cr *chrome.Chrome
 	var l *launcher.LacrosChrome
+	var cs ash.ConnSource
 	if params.arc {
 		cr = s.FixtValue().(*arc.PreData).Chrome
 	} else {
@@ -215,7 +216,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 			artifactPath = s.DataPath(launcher.DataArtifact)
 		}
 		var err error
-		cr, l, _, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, params.chromeType)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, params.chromeType)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
@@ -267,17 +268,11 @@ func FastInk(ctx context.Context, s *testing.State) {
 		srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 		defer srv.Close()
 
-		conn, err := cr.NewConn(ctx, srv.URL+"/d-canvas/main.html")
+		conn, err := cs.NewConn(ctx, srv.URL+"/d-canvas/main.html")
 		if err != nil {
 			s.Fatal("Failed to load d-canvas/main.html: ", err)
 		}
 		defer conn.Close()
-
-		if params.chromeType == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
-				s.Fatal("Failed to close about:blank: ", err)
-			}
-		}
 
 		if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 			s.Fatal("Failed to wait for d-canvas/main.html to achieve quiescence: ", err)
