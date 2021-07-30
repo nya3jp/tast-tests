@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddbd729_2bb1c5aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-30T00:20:44Z",
+      "side": 1,
+      "message": "nit: it\u0027s nice to have the actual command here for people unfamiliar with running tast tests",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ebf51f2c_c9482d4b",
@@ -14,6 +37,75 @@
       "writtenOn": "2021-07-28T22:47:33Z",
       "side": 1,
       "message": "+engprod to take a pass",
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9f0e36_dcdfb44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-30T00:20:44Z",
+      "side": 1,
+      "message": "This dep will exclude chromeboxes and similar devices without built-in displays. I don\u0027t see anything related to tablet mode and screen rotation here, so it should be removed.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186db9ea_aae5577c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-30T00:20:44Z",
+      "side": 1,
+      "message": "nit: you could just return a single Action here and call uiauto.Combine inside the function instead, I think it would make the test body a bit cleaner",
+      "range": {
+        "startLine": 234,
+        "startChar": 117,
+        "endLine": 234,
+        "endChar": 132
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00813cdf_c004fabb",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-07-30T00:20:44Z",
+      "side": 1,
+      "message": "Any reason for using this instead of just encoding the order in appIDs? I feel like the call sites are easier to understand that way as well, i.e.\n```\n// Easier to see at a glance how the expected order changes.\nash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID})\nash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, chromeApp.ID, apps.Settings.ID})\n```\nNot a strong preference though",
+      "range": {
+        "startLine": 535,
+        "startChar": 90,
+        "endLine": 535,
+        "endChar": 111
+      },
       "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
