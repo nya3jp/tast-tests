@@ -102,6 +102,24 @@
       "parentUuid": "450bd839_9105e642",
       "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc34c31_f90b6dbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-07-30T03:01:44Z",
+      "side": 1,
+      "message": "Let me check if we can run as chronos with --no-sandbox (I think for some reason it required root?)\n\nIs there a way we can rewrite this test to not require those permissions?",
+      "parentUuid": "cd564a4c_ca21eda4",
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
