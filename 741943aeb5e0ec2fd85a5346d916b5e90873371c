@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6eabd27_171bbfcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-07-30T20:01:14Z",
+      "side": 1,
+      "message": "Done. And rebased to keep the lacros change in this CL.",
+      "parentUuid": "de245192_378f6626",
+      "revId": "741943aeb5e0ec2fd85a5346d916b5e90873371c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1484ad75_7c0b1a25",
