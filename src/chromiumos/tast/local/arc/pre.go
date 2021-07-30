@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -30,6 +31,8 @@ type PreData struct {
 	// UIDevice is a UI Automator device object.
 	// It cannot be closed by tests.
 	UIDevice *ui.Device
+	// LacrosFixt is lacros fixture data when tests use lacros related fixtures.
+	LacrosFixt launcher.FixtData
 }
 
 // Booted returns a precondition that ARC Container has already booted when a test is run.

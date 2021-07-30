@@ -96,6 +96,22 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
+	// lacrosStartedByDataWithArcEnabled is the same as lacrosStartedByData but with ARC enabled.
+	// See also lacrosStartedByDataWithArcBooted in src/chromiumos/tast/local/arc/fixture.go.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosStartedByDataWithArcEnabled",
+		Desc:     "Lacros Chrome from a pre-built image with ARC enabled",
+		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
+		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled()}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact},
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 	// lacrosStartedByDataUI is similar to lacrosStartedByData but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line.
