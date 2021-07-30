@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dcb4437_001c2448",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-30T05:57:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab541c5f_93c71392",
+      "revId": "57091dc4c58923824b3be01edd3f1908981edefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b108aac5_754b9dbd",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-29T18:30:20Z",
       "side": 1,
       "message": "I think contexts are always supposed to be passed by value instead of lambda capture.",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "57091dc4c58923824b3be01edd3f1908981edefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b379940_3fcb52e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-07-30T05:57:04Z",
+      "side": 1,
+      "message": "Hi Jeremy,\nAs we need to get the updated status of charging after plug and unplug so we have created lambda notation, for re usability.",
+      "parentUuid": "b108aac5_754b9dbd",
       "range": {
         "startLine": 67,
         "startChar": 31,
