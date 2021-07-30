@@ -22,10 +22,11 @@ type Config struct {
 	// Embedded EAP Config to inherit the Install* methods.
 	*eap.Config
 
-	mode            wpa.ModeEnum
-	ftMode          wpa.FTModeEnum
-	useSystemCAs    bool
-	altSubjectMatch []string
+	mode              wpa.ModeEnum
+	ftMode            wpa.FTModeEnum
+	useSystemCAs      bool
+	altSubjectMatch   []string
+	domainSuffixMatch []string
 }
 
 // HostapdConfig returns hostapd config of WPA-EAP network.
@@ -78,6 +79,10 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 		ret[shillconst.ServicePropertyEAPSubjectAlternativeNameMatch] = append([]string(nil), c.altSubjectMatch...)
 	}
 
+	if len(c.domainSuffixMatch) > 0 {
+		ret[shillconst.ServicePropertyEAPDomainSuffixMatch] = append([]string(nil), c.domainSuffixMatch...)
+	}
+
 	return ret, nil
 }
 
@@ -126,6 +131,7 @@ func (f *ConfigFactory) Gen() (security.Config, error) {
 
 	conf := f.blueprint
 	conf.altSubjectMatch = append([]string(nil), f.blueprint.altSubjectMatch...)
+	conf.domainSuffixMatch = append([]string(nil), f.blueprint.domainSuffixMatch...)
 	conf.Config = eapConf.(*eap.Config)
 
 	if err := conf.validate(); err != nil {
