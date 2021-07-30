@@ -424,7 +424,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 
 	if c.cfg.VKEnabled() {
 		// Calling the method directly to avoid vkb/chrome circular imports.
-		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
+		if err := tconn.EvalPromiseDeprecated(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
 		}
 

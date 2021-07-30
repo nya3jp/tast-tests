@@ -129,7 +129,7 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 	wrongPw := "wrong password"
 
 	// Launch a MGS with password.
-	if err := conn.EvalPromise(ctx,
+	if err := conn.EvalPromiseDeprecated(ctx,
 		fmt.Sprintf(`new Promise((resolve, reject) => {
 		chrome.login.launchManagedGuestSession("%s", () => {
 			if (chrome.runtime.lastError) {
@@ -162,7 +162,7 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 	defer swLocked.Close(ctx)
 
 	// Lock the session.
-	if err := inSessionConn.EvalPromise(ctx,
+	if err := inSessionConn.EvalPromiseDeprecated(ctx,
 		`new Promise((resolve, reject) => {
 		chrome.login.lockManagedGuestSession(() => {
 			if (chrome.runtime.lastError) {
@@ -205,13 +205,13 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 	})`
 
 	// Unlock the session with wrong password.
-	if err := conn.EvalPromise(ctx,
+	if err := conn.EvalPromiseDeprecated(ctx,
 		fmt.Sprintf(unlockFormatStr, wrongPw), nil); err == nil {
 		s.Fatal("Unlocked session with wrong password")
 	}
 
 	// Unlock the session with the same password.
-	if err := conn.EvalPromise(ctx,
+	if err := conn.EvalPromiseDeprecated(ctx,
 		fmt.Sprintf(unlockFormatStr, pw), nil); err != nil {
 		s.Fatal("Failed to unlock session: ", err)
 	}

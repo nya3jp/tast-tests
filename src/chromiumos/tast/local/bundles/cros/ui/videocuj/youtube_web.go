@@ -222,7 +222,7 @@ func waitForYoutubeReadyState(ctx context.Context, conn *chrome.Conn) error {
 	// Wait for element to appear.
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var pageState bool
-		if err := conn.EvalPromise(ctx, queryCode, &pageState); err != nil {
+		if err := conn.EvalPromiseDeprecated(ctx, queryCode, &pageState); err != nil {
 			return err
 		}
 		if pageState {
