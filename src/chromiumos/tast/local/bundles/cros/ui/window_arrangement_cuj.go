@@ -294,7 +294,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Snap the window to the left and drag the second tab to snap to the right.
-			if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
+			if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal, true /* waitForStateChange */); err != nil {
 				return errors.Wrap(err, "failed to set the window state to normal")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
