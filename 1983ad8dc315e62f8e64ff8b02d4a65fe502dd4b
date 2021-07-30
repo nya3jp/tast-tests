@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2cdcf29_022e8bd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-30T18:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddbd729_2bb1c5aa",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebf51f2c_c9482d4b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b05a62_de2f1a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-30T18:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9f0e36_dcdfb44c",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "186db9ea_aae5577c",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b4a2ae_33f70627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-30T18:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "186db9ea_aae5577c",
+      "range": {
+        "startLine": 234,
+        "startChar": 117,
+        "endLine": 234,
+        "endChar": 132
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00813cdf_c004fabb",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-30T00:20:44Z",
       "side": 1,
       "message": "Any reason for using this instead of just encoding the order in appIDs? I feel like the call sites are easier to understand that way as well, i.e.\n```\n// Easier to see at a glance how the expected order changes.\nash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID})\nash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, chromeApp.ID, apps.Settings.ID})\n```\nNot a strong preference though",
+      "range": {
+        "startLine": 535,
+        "startChar": 90,
+        "endLine": 535,
+        "endChar": 111
+      },
+      "revId": "1983ad8dc315e62f8e64ff8b02d4a65fe502dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf26ad9_edb0d542",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2021-07-30T18:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00813cdf_c004fabb",
       "range": {
         "startLine": 535,
         "startChar": 90,
