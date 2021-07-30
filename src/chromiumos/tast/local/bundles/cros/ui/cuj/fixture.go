@@ -157,6 +157,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 				chrome.GAIALogin(getCreds(s)),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.ExtraArgs("--disable-sync"),
 			}
 			if f.keepState {
 				opts = append(opts, chrome.KeepState())
