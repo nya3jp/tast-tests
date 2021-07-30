@@ -16,6 +16,29 @@
       "message": "Split from CL:3045486 to do the subpackage fist.\n\nYichen, to proof read the CL that I did not break anything.\nShuhei to approve.\n\nTo make it easier to read, I create two diffs:\nhttps://diff.googleplex.com/#key\u003dTuZdsZFjPaoS for the clamshell part.\nhttps://diff.googleplex.com/#key\u003dB3CTa5o22sG2 for the tablet part\n\nFocus on the right pane (new file) would see what have changed and you could see it is mostly moving the code + some renaming.\n\nThanks",
       "revId": "b8cf92b5303d3e6721501876293b858431458616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ecc4438_adf17f76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-07-30T04:00:11Z",
+      "side": 1,
+      "message": "Code around here is now much easier to read :)",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "b8cf92b5303d3e6721501876293b858431458616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
