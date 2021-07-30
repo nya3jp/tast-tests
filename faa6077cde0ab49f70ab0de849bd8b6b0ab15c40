@@ -22,6 +22,30 @@
       },
       "revId": "faa6077cde0ab49f70ab0de849bd8b6b0ab15c40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4010bda_66a9e41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-30T00:37:10Z",
+      "side": 1,
+      "message": "Changed both zoom and Google Meet as advised. Thanks!",
+      "parentUuid": "966b6c9f_8e08b37c",
+      "range": {
+        "startLine": 337,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 60
+      },
+      "revId": "faa6077cde0ab49f70ab0de849bd8b6b0ab15c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
