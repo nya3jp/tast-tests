@@ -39,6 +39,30 @@
       },
       "revId": "5f3296da1d161aeaa9375538a6f78aa59ec5d19f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3766131f_580aa67e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/zoom_conf_cuj.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-07-30T00:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaeabaa5_9f6a9156",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "5f3296da1d161aeaa9375538a6f78aa59ec5d19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
