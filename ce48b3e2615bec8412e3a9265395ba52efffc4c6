@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7b4d51a_a5939d8d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-30T15:48:56Z",
+      "side": 1,
+      "message": "let\u0027s use Call(), instead of string formatting.\n\nbconn.Call(ctx, nil, `(info) \u003d\u003e {\n  window.localStorage.setItem(info, \u0027true\u0027);\n  background.getTestOnlyApi().switchToVOiceInput();\n}`, voicePrivacyInfo)",
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b758519_e2bf847d",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 2
@@ -37,6 +54,23 @@
         "endLine": 389,
         "endChar": 20
       },
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5b4c29_548cbfb3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-07-30T15:48:56Z",
+      "side": 1,
+      "message": "ditto.\nAlso, could you handle error?",
       "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
