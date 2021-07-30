@@ -63,6 +63,30 @@
       },
       "revId": "a6d56a44ef543c57511a987484e7b13e5739edaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278fe656_18ea1d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/photolemur.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1445212
+      },
+      "writtenOn": "2021-07-30T21:19:24Z",
+      "side": 1,
+      "message": "Added software dependencies, \"no_arc_x86\", \"lacros\" to skip on x86, arm and arm64 architecture models.",
+      "parentUuid": "5b21a26f_6a4f7ada",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "a6d56a44ef543c57511a987484e7b13e5739edaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
