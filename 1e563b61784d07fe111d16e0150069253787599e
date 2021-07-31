@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688ab0b0_a151cfa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-31T04:06:36Z",
+      "side": 1,
+      "message": "WaitForHotseatToUpdateAutoHideState",
+      "revId": "1e563b61784d07fe111d16e0150069253787599e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b06e30_4a0b87a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-07-31T04:06:36Z",
+      "side": 1,
+      "message": "finish comment.",
+      "revId": "1e563b61784d07fe111d16e0150069253787599e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
