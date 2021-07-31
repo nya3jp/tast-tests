@@ -135,7 +135,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 			}
 
 			// Switch to handwriting layout.
-			hwCtx, err := vkbCtx.SwitchToHandwritingAndCloseInfoDialogue(ctx)
+			hwCtx, err := vkbCtx.SwitchToHandwriting(ctx)
 			if err != nil {
 				s.Fatal("Failed to switch to handwriting: ", err)
 			}
