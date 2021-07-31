@@ -140,7 +140,15 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 			func(layer gopacket.Layer) bool {
 				dot11 := layer.(*layers.Dot11)
 				// Skip receiver == MAC.
-				return !bytes.Equal(dot11.Address1, mac)
+				if bytes.Equal(dot11.Address1, mac) {
+					return false
+				}
+				// Skip RTS. Also done below, but the gopacket parsing doesn't work
+				// reliably for all LayerTypeDot11CtrlRTS.
+				if dot11.Type == layers.Dot11TypeCtrlRTS {
+					return false
+				}
+				return true
 			},
 		),
 		// We skip a few frame types for various reasons:
@@ -164,6 +172,10 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 				return false
 			}
 			// Skip RTS.
+			// NB: gopacket doesn't reliably parse RTS frames as LayerTypeDot11CtrlRTS
+			// -- instead, some frames with slightly unexpected format (missing
+			// checksum?) just end up with LayerTypeDot11. So we also rely on the above
+			// LayerTypeDot11 filter.
 			if l := p.Layer(layers.LayerTypeDot11CtrlRTS); l != nil {
 				return false
 			}
