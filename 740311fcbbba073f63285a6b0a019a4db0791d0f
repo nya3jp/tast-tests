@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "01427c06_9579fbdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-07-31T01:28:17Z",
+      "side": 1,
+      "message": "True, thanks for the catch! Leaving out the \"fails on AMD\" though since the redundancy was actually for the non-SVC tests in any case.",
+      "parentUuid": "e711f904_d3311d9c",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "740311fcbbba073f63285a6b0a019a4db0791d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eaa561f8_2c42bedb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
