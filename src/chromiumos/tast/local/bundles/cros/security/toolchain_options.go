@@ -109,6 +109,14 @@ var libgccAllowlist = []string{
 	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
 	"/usr/lib/dri/kms_swrast_dri.so",
 	"/usr/lib/dri/swrast_dri.so",
+	"/usr/lib64/dri/kms_swrast_dri.so",
+	"/usr/lib64/dri/swrast_dri.so",
+	"/usr/lib64/dri/virtio_gpu_dri.so",
+	"/usr/lib64/dri/nouveau_dri.so",
+	"/usr/lib64/dri/nouveau_drv_video.so",
+	"/usr/lib64/dri/r300_dri.so",
+	"/usr/lib64/dri/r600_dri.so",
+	"/usr/lib64/dri/r600_dri_video.so",
 }
 
 var libstdcAllowlist = []string{
