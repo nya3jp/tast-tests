@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e711f904_d3311d9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-07-31T01:01:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we use here b/195131651 (\"skylake:\ntast.video.PlatformDecoding.vaapi_vp9_0_svc fails to \nvaCreateConfig with VAProfile\")  and/or b/195131950 (\n\"tast.video.PlatformDecoding.vaapi_vp9_0_svc fails on AMD\",\nwhich is partially addressed by this CL) and/or b/192005652\n(\"Add kSVC testing to tast.video.PlatformDecoding\") ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "740311fcbbba073f63285a6b0a019a4db0791d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eaa561f8_2c42bedb",
