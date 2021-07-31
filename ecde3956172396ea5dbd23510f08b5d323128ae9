@@ -86,6 +86,24 @@
       "parentUuid": "6ba3f439_daee67e7",
       "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc9cb46_47865b3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-07-31T08:13:59Z",
+      "side": 1,
+      "message": "ectool won\u0027t work for us, because we are writing tests for Dell devices with Dell EC.\n\nAlso, we cannot connect to servod without proxy in our setup. Are there some extra firewall rules in the lab to expose 9999 port to the local network?",
+      "parentUuid": "d8f98f92_1c6a73dd",
+      "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
