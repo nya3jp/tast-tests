@@ -104,6 +104,24 @@
       "parentUuid": "d8f98f92_1c6a73dd",
       "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2f5556_8f0ae084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-31T22:15:00Z",
+      "side": 1,
+      "message": "Hi Jeremy, I have added the NewDirect method that you suggested and it\u0027s very possible to use it in local tests.\nAs Oleh rightly pointed, at dev setup, there are few things the developers need to be aware of (especially as we are all accustomed to writing/running servo in remote setup). I have added the full details in the readme. Do let me know, it we have to add something more.\n\n\u003e Also, we cannot connect to servod without proxy in our setup.\n\nThis problem has been resolved after allowing the port 9999 on iptables and binding servod to a network interface (instead of loopback, as usual) [details in readme].\n\n\u003e Are there some extra firewall rules in the lab to expose 9999 port to the local network?\nAlso, it would be really helpful if you could confirm it. Another way is to put the CL in CQ : ). Thanks.",
+      "parentUuid": "9fc9cb46_47865b3f",
+      "revId": "ecde3956172396ea5dbd23510f08b5d323128ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
