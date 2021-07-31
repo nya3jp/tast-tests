@@ -224,7 +224,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, enableHWDecoding bool, videoGridDimension int, videoURL, svc, outDir string, p *perf.Values) error {
+func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, enableHWDecoding, enableHWEncoding bool, videoGridDimension int, videoURL, svc, outDir string, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
@@ -256,17 +256,26 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		return errors.Wrap(err, "establishing connection")
 	}
 
-	hwAccelUsed := checkForCodecImplementation(ctx, conn, VerifyHWDecoderUsed, false /*isSimulcast*/) == nil
+	hwDecoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWDecoderUsed, false /*isSimulcast*/) == nil
 	if enableHWDecoding {
-		if !hwAccelUsed {
+		if !hwDecoderUsed {
 			return errors.New("hardware decode accelerator wasn't used")
 		}
 	} else {
-		if hwAccelUsed {
+		if hwDecoderUsed {
 			return errors.New("software decode wasn't used")
 		}
 	}
-
+	hwEncoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWEncoderUsed, false /*isSimulcast*/) == nil
+	if enableHWEncoding {
+		if !hwEncoderUsed {
+			return errors.New("hardware encode accelerator wasn't used")
+		}
+	} else {
+		if hwEncoderUsed {
+			return errors.New("software encode wasn't used")
+		}
+	}
 	if err := measureRTCStats(shortCtx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
@@ -303,7 +312,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, profile string, enableHWDecoding bool, videoGridDimension int, videoGridFilename, svc string) error {
+func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, profile string, enableHWDecoding, enableHWEncoding bool, videoGridDimension int, videoGridFilename, svc string) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -326,7 +335,7 @@ func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		videoGridURL = server.URL + "/" + videoGridFilename
 	}
 	p := perf.NewValues()
-	if err := decodePerf(ctx, cr, profile, loopbackURL, enableHWDecoding, videoGridDimension, videoGridURL, svc, outDir, p); err != nil {
+	if err := decodePerf(ctx, cr, profile, loopbackURL, enableHWDecoding, enableHWEncoding, videoGridDimension, videoGridURL, svc, outDir, p); err != nil {
 		return err
 	}
 
