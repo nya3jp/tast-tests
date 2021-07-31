@@ -21,6 +21,9 @@ type rtcPerfTest struct {
 	profile            string // Codec to try, e.g. VP8, VP9.
 	videoGridDimension int    // Dimension of the grid in which to embed the RTCPeerConnection <video>.
 	videoGridFile      string // Name of the video file to fill up the grid with, if needed.
+	// ScalableVideoCodec "scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	svc string
 }
 
 func init() {
@@ -61,6 +64,20 @@ func init() {
 			Val:     rtcPerfTest{enableHWAccel: false, profile: "VP9"},
 			Fixture: "chromeVideoWithFakeWebcamAndSWDecoding",
 		}, {
+			// This is a 2 temporal layers test, via the (experimental) API.
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			Name:              "vp9_hw_svc_l1t2",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP9", svc: "L1T2"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
+		}, {
+			// This is a 3 temporal layers test, via the (experimental) API.
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			Name:              "vp9_hw_svc_l1t3",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP9", svc: "L1T3"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
+		}, {
 			Name:              "vp8_hw_multi_vp9_3x3",
 			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP8", videoGridDimension: 3, videoGridFile: "tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
@@ -83,7 +100,7 @@ func init() {
 // RTCPeerConnectionPerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
 func RTCPeerConnectionPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcPerfTest)
-	if err := peerconnection.RunDecodePerf(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt.profile, testOpt.enableHWAccel, testOpt.videoGridDimension, testOpt.videoGridFile); err != nil {
+	if err := peerconnection.RunDecodePerf(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt.profile, testOpt.enableHWAccel, testOpt.videoGridDimension, testOpt.videoGridFile, testOpt.svc); err != nil {
 		s.Error("Failed to measure performance: ", err)
 	}
 }
