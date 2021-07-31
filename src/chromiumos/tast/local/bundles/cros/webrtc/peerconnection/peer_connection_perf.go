@@ -224,7 +224,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, videoGridDimension int, videoURL, outDir string, p *perf.Values) error {
+func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, videoGridDimension int, videoURL, svc, outDir string, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
@@ -252,7 +252,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		}
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile, false, "", streamWidth, streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, false, svc, streamWidth, streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 
@@ -303,7 +303,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, profile string, enableHWAccel bool, videoGridDimension int, videoGridFilename string) error {
+func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, profile string, enableHWAccel bool, videoGridDimension int, videoGridFilename, svc string) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -326,7 +326,7 @@ func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		videoGridURL = server.URL + "/" + videoGridFilename
 	}
 	p := perf.NewValues()
-	if err := decodePerf(ctx, cr, profile, loopbackURL, enableHWAccel, videoGridDimension, videoGridURL, outDir, p); err != nil {
+	if err := decodePerf(ctx, cr, profile, loopbackURL, enableHWAccel, videoGridDimension, videoGridURL, svc, outDir, p); err != nil {
 		return err
 	}
 
