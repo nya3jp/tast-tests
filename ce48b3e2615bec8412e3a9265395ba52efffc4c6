@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38da5db5_4aeafc15",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-31T09:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7b4d51a_a5939d8d",
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b758519_e2bf847d",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5b1fff_c540e9ea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-31T09:27:32Z",
+      "side": 1,
+      "message": "Rephrased the comment.",
+      "parentUuid": "9b758519_e2bf847d",
+      "range": {
+        "startLine": 389,
+        "startChar": 10,
+        "endLine": 389,
+        "endChar": 20
+      },
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a5b4c29_548cbfb3",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-07-30T15:48:56Z",
       "side": 1,
       "message": "ditto.\nAlso, could you handle error?",
+      "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da3ca6b_1874fa7a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-07-31T09:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5b4c29_548cbfb3",
       "revId": "ce48b3e2615bec8412e3a9265395ba52efffc4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
