@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03941722_cf5be6e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-31T08:45:36Z",
+      "side": 1,
+      "message": "Thanks for clarifying.",
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10832dcc_415e34ba",
@@ -482,6 +499,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2826be58_cae3d651",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-31T08:45:36Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "8490a80a_dd5396c7",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 86
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "918b723b_53e695d9",
@@ -741,6 +782,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d8d37d_621c6c55",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-31T08:45:36Z",
+      "side": 1,
+      "message": "just FYI, dump_power_status actually returns a float with 2 decimal precision(something like 94.56%).\nThanks for clarifying. Will make this Int.",
+      "parentUuid": "6e883b75_fd81a587",
+      "range": {
+        "startLine": 133,
+        "startChar": 105,
+        "endLine": 133,
+        "endChar": 112
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82849faa_89dd3e83",
@@ -943,6 +1008,30 @@
       "side": 1,
       "message": "Just simple Get/Set methods since it\u0027s pretty much \"low\" level package.",
       "parentUuid": "8265ec56_566a6e6f",
+      "range": {
+        "startLine": 79,
+        "startChar": 77,
+        "endLine": 79,
+        "endChar": 129
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb90545_828573ca",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-31T08:45:36Z",
+      "side": 1,
+      "message": "Okay Cool.",
+      "parentUuid": "4e9df7e0_ec9f3c63",
       "range": {
         "startLine": 79,
         "startChar": 77,
