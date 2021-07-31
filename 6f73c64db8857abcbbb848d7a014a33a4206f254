@@ -22,6 +22,30 @@
       },
       "revId": "6f73c64db8857abcbbb848d7a014a33a4206f254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "537cb520_3674c700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_power_peak_shift.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-07-31T22:20:05Z",
+      "side": 1,
+      "message": "Hi, we are writing tests for wilco devices. They won\u0027t work. Thanks for pointing out.",
+      "parentUuid": "cfed8306_9386f2fa",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 68
+      },
+      "revId": "6f73c64db8857abcbbb848d7a014a33a4206f254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
