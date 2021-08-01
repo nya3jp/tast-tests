@@ -347,6 +347,18 @@ func (vkbCtx *VirtualKeyboardContext) ClickUntilVKShown(nodeFinder *nodewith.Fin
 	return uiauto.Retry(5, ac.LeftClickUntil(nodeFinder, vkbCtx.WaitLocationStable()))
 }
 
+// SwitchToKeyboard returns an action changing to keyboard layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchToKeyboard() uiauto.Action {
+	showAccessPointsBtn := KeyFinder.Name("Show access points")
+	return uiauto.Combine("switch back to keyboard",
+		vkbCtx.ui.IfSuccessThen(
+			vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(showAccessPointsBtn),
+			vkbCtx.ui.LeftClick(showAccessPointsBtn),
+		),
+		vkbCtx.ui.LeftClick(KeyFinder.Name("Back")),
+	)
+}
+
 // SwitchToVoiceInput returns an action changing virtual keyboard to voice input layout.
 func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 	// Call background API to switch.
