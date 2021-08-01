@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -27,17 +26,17 @@ func init() {
 		Func:         VirtualKeyboardFloat,
 		Desc:         "Validity check on floating virtual keyboard",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
-			Name:              "stable",
+			Name:              "tablet",
+			Pre:               pre.VKEnabledTabletReset,
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
-			Name:              "unstable",
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-		}},
-	})
+			Name:              "clamshell",
+			Pre:               pre.VKEnabledClamshellReset,
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+		}}})
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
@@ -46,22 +45,19 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"), chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, s.TestName())
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 
 	if err := vkbCtx.ShowVirtualKeyboard()(ctx); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
+	}
+
+	if err := vkbCtx.SetFloatingMode(true)(ctx); err != nil {
+		s.Fatal("Failed to set VK to floating mode: ", err)
 	}
 
 	kconn, err := vkbCtx.UIConn(ctx)
@@ -70,10 +66,8 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	}
 	defer kconn.Close()
 
-	dragPointFinder := vkb.NodeFinder.Role(role.Button).Name("move keyboard, double tap then drag to reposition the keyboard")
-
 	// Get current center point of drag button.
-	dragLoc, err := uiauto.New(tconn).Location(ctx, dragPointFinder)
+	dragLoc, err := uiauto.New(tconn).Location(ctx, vkb.DragPointFinder)
 	if err != nil {
 		s.Fatal("Failed to find drag point: ", err)
 	}
@@ -86,7 +80,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	}
 
 	// Get new center point of drag button.
-	newDragLoc, err := uiauto.New(tconn).Location(ctx, dragPointFinder)
+	newDragLoc, err := uiauto.New(tconn).Location(ctx, vkb.DragPointFinder)
 	if err != nil {
 		s.Fatal("Failed to find drag point: ", err)
 	}
