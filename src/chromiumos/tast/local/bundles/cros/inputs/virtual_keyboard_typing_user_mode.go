@@ -22,11 +22,16 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-var typingModeTestIMEs = []ime.InputMethod{
+var userModeTestIMEs = []ime.InputMethod{
 	ime.EnglishUS,
 	ime.JapaneseWithUSKeyboard,
 }
-var typingModeTestMessages = []data.Message{data.TypingMessageHello}
+
+var userModeTestMessages = map[util.InputModality]data.Message{
+	util.InputWithVK:          data.TypingMessageHello,
+	util.InputWithHandWriting: data.HandwritingMessageHello,
+	util.InputWithVoice:       data.VoiceMessageHello,
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -34,9 +39,10 @@ func init() {
 		Desc:         "Checks that virtual keyboard works in different user modes",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools-upstream", "group:input-tools"},
+		Data:         util.ExtractExternalFilesFromMap(userModeTestMessages, userModeTestIMEs),
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Timeout:      time.Duration(len(typingModeTestIMEs)) * time.Duration(len(typingModeTestMessages)) * time.Minute,
+		Timeout:      time.Duration(len(userModeTestIMEs)) * time.Duration(len(userModeTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "guest",
@@ -63,11 +69,11 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	subtest := func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State) {
+	subtest := func(testName string, modality util.InputModality, inputData data.InputData) func(ctx context.Context, s *testing.State) {
 		return func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
 			// Use a shortened context for test operations to reserve time for cleanup.
-			ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
+			ctx, shortCancel := ctxutil.Shorten(ctx, 5*time.Second)
 			defer shortCancel()
 
 			defer func(ctx context.Context) {
@@ -79,12 +85,12 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateVKInputOnField(vkbCtx, inputField, inputData)(ctx); err != nil {
+			if err := its.ValidateInputInField(s, modality, inputField, inputData)(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
 		}
 	}
 
-	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, typingModeTestIMEs, typingModeTestMessages, subtest)
+	// Run defined subtest on virtual keyboard typing per input method and message combination.
+	util.RunSubtestsPerInputMethodAndModalidy(ctx, tconn, s, userModeTestIMEs, userModeTestMessages, subtest)
 }
