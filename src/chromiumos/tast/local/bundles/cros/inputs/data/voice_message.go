@@ -29,6 +29,10 @@ var VoiceMessageHello = voiceMessage{
 		VoiceFile:    "voice_en_hello.wav",
 		ExpectedText: "hello",
 	},
+	ime.LANGUAGE_JA: {
+		VoiceFile:    "voice_ja_hello.wav",
+		ExpectedText: "こんにちは",
+	},
 	ime.LANGUAGE_ZH_HANS: {
 		VoiceFile:    "voice_zh_hans_hello.wav",
 		ExpectedText: "你好",
