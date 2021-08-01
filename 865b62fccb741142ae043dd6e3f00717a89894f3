@@ -16,6 +16,23 @@
       "message": "Thanks for the review. Comments have been resolved with couple of extra changes. Please verify.",
       "revId": "865b62fccb741142ae043dd6e3f00717a89894f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c7a72b_571d3261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-01T23:05:11Z",
+      "side": 1,
+      "message": "Please merge the conflict and submit again.",
+      "revId": "865b62fccb741142ae043dd6e3f00717a89894f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
