@@ -6,6 +6,7 @@ package util
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -17,6 +18,16 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
+)
+
+// InputModality describes the available input modalities.
+type InputModality string
+
+// Valid values for InputModality.
+const (
+	InputWithVK          InputModality = "Virtual Keyboard"
+	InputWithVoice       InputModality = "Voice"
+	InputWithHandWriting InputModality = "Handwriting"
 )
 
 // PKCandidatesFinder is the finder for candidates in the IME candidates window.
@@ -62,6 +73,26 @@ func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expec
 		}))
 }
 
+// WaitForFieldNotEmpty returns an action checking whether the input field value is not empty.
+func WaitForFieldNotEmpty(tconn *chrome.TestConn, finder *nodewith.Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx,
+			func(ctx context.Context) error {
+				nodeInfo, err := uiauto.New(tconn).Info(ctx, finder)
+				if err != nil {
+					return err
+				} else if nodeInfo.Value == "" {
+					return errors.New("input field is empty")
+				}
+				return nil
+			},
+			&testing.PollOptions{
+				Timeout:  5 * time.Second,
+				Interval: 500 * time.Millisecond,
+			})
+	}
+}
+
 // GetNthCandidateText returns the candidate text in the specified position in the candidates window.
 func GetNthCandidateText(ctx context.Context, tconn *chrome.TestConn, n int) (string, error) {
 	ui := uiauto.New(tconn)
@@ -95,4 +126,37 @@ func RunSubtestsPerInputMethodAndMessage(ctx context.Context, tconn *chrome.Test
 			s.Run(ctx, testName, subtest(testName, inputData))
 		}
 	}
+}
+
+// RunSubtestsPerInputMethodAndModalidy runs subtest that uses testName and inputdata on
+// every combination of given input methods and messages.
+func RunSubtestsPerInputMethodAndModalidy(ctx context.Context, tconn *chrome.TestConn, s *testing.State,
+	inputMethods []ime.InputMethod, messages map[InputModality]data.Message, subtest func(testName string, modality InputModality, inputData data.InputData) func(ctx context.Context, s *testing.State)) {
+	for _, im := range inputMethods {
+		// Setup input method.
+		s.Logf("Set current input method to: %s", im)
+		if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+			s.Fatalf("Failed to set input method to %s: %v: ", im, err)
+		}
+
+		for modality, message := range messages {
+			inputData, ok := message.GetInputData(im)
+			if !ok {
+				s.Fatalf("Test Data for input method %s does not exist", im)
+			}
+			testName := fmt.Sprintf("%s-%s-%s", im.Name, modality, inputData.ExpectedText)
+
+			s.Run(ctx, testName, subtest(testName, modality, inputData))
+		}
+	}
+}
+
+// ExtractExternalFilesFromMap returns the file names contained in messages for
+// selected input methods.
+func ExtractExternalFilesFromMap(messages map[InputModality]data.Message, inputMethods []ime.InputMethod) []string {
+	messageList := make([]data.Message, 0, len(messages))
+	for _, message := range messages {
+		messageList = append(messageList, message)
+	}
+	return data.ExtractExternalFiles(messageList, inputMethods)
 }
