@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e465e077_1f498b73",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-01T23:57:37Z",
+      "side": 1,
+      "message": "that was originally used here. As described in the commit message, that package doesn\u0027t work properly. Showing and hiding quicksetting menu were confirmed to be flaky, thus it fails to open audio settings.\n\nPlus, the quicksettings.go is written using old ui library, and it is soon to be migrated to use uiauto, will stabilize it after the migration if needed.",
+      "parentUuid": "524cf130_3d52efd3",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "b9ca1978e2b483f61e1961a2164dcdb2c7c4140b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b0df2c3_9c57449d",
         "filename": "src/chromiumos/tast/local/input/voice/audio.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-01T23:11:34Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 21
+      },
+      "revId": "b9ca1978e2b483f61e1961a2164dcdb2c7c4140b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a6cc60_115e41d5",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-01T23:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0df2c3_9c57449d",
       "range": {
         "startLine": 102,
         "startChar": 5,
