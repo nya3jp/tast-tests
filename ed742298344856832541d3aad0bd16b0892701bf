@@ -16,6 +16,23 @@
       "message": "hiroh@ PTAL (at the whole series please).",
       "revId": "ed742298344856832541d3aad0bd16b0892701bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad3c113_34f6d750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-01T07:23:34Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "ed742298344856832541d3aad0bd16b0892701bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
