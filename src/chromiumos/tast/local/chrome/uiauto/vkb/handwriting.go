@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -236,6 +237,14 @@ func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
 
 // drawStrokes draws the strokes into the handwriting input.
 func drawStrokes(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) error {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 500*time.Millisecond)
+	defer cancel()
+	defer func(ctx context.Context) {
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failed to release mouse: %s", err.Error())
+		}
+	}(cleanupCtx)
 	// Draw the strokes into the handwriting input.
 	for _, s := range sg.strokes {
 		for i, p := range s.points {

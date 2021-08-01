@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
@@ -24,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 )
 
@@ -268,12 +270,13 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 
 // ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
 // After input action, it checks whether the outcome equals to expected value.
+// TODO(b/195208831): Deprecate the use of ValidateVKInputOnField.
 func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputData data.InputData) uiauto.Action {
 	validateField := util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText)
 	if inputField == PasswordInputField {
 		// Password input is a special case. The value is presented with placeholder "•".
 		// Using PasswordTextField field to verify the outcome.
-		validateField = uiauto.Combine("validate passward field",
+		validateField = uiauto.Combine("validate password field",
 			util.WaitForFieldTextToBe(its.tconn, inputField.Finder(), strings.Repeat("•", len(inputData.CharacterKeySeq))),
 			util.WaitForFieldTextToBeIgnoringCase(its.tconn, PasswordTextField.Finder(), inputData.ExpectedText),
 		)
@@ -293,4 +296,136 @@ func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardC
 		},
 		validateField,
 	)
+}
+
+func (its *InputsTestServer) validateVKTypingInField(inputField InputField, inputData data.InputData) uiauto.Action {
+	vkbCtx := vkb.NewContext(its.cr, its.tconn)
+	return uiauto.Combine("validate vk input function on field "+string(inputField),
+		its.cleanFieldAndTriggerVK(inputField),
+		vkbCtx.TapKeysIgnoringCase(inputData.CharacterKeySeq),
+		func(ctx context.Context) error {
+			if inputData.SubmitFromSuggestion {
+				return vkbCtx.SelectFromSuggestion(inputData.ExpectedText)(ctx)
+			}
+			return nil
+		},
+		its.validateResult(inputField, inputData.ExpectedText),
+	)
+}
+
+func (its *InputsTestServer) validateVoiceInField(inputField InputField, inputData data.InputData, dataPath func(string) string) uiauto.Action {
+	return func(ctx context.Context) error {
+		// Setup CRAS Aloop for audio test.
+		cleanup, err := voice.EnableAloop(ctx, its.tconn)
+		if err != nil {
+			return err
+		}
+		defer cleanup(ctx)
+
+		vkbCtx := vkb.NewContext(its.cr, its.tconn)
+		return uiauto.Combine("validate vk voice input function on field "+string(inputField),
+			its.cleanFieldAndTriggerVK(inputField),
+			vkbCtx.SwitchToVoiceInput(),
+			func(ctx context.Context) error {
+				return voice.AudioFromFile(ctx, dataPath(inputData.VoiceFile))
+			},
+			its.validateResult(inputField, inputData.ExpectedText),
+		)(ctx)
+	}
+}
+
+func (its *InputsTestServer) validateHandwritingInField(inputField InputField, inputData data.InputData, dataPath func(string) string) uiauto.Action {
+	vkbCtx := vkb.NewContext(its.cr, its.tconn)
+	return func(ctx context.Context) error {
+		if err := its.cleanFieldAndTriggerVK(inputField)(ctx); err != nil {
+			return err
+		}
+
+		hwCtx, err := vkbCtx.SwitchToHandwriting(ctx)
+		if err != nil {
+			return err
+		}
+
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+		defer cancel()
+		defer hwCtx.SwitchToKeyboard()(cleanupCtx)
+
+		// Warm-up steps to check handwriting engine ready.
+		checkEngineReady := uiauto.Combine("wait for handwriting engine to be ready",
+			its.Clear(inputField),
+			func(ctx context.Context) error {
+				warmCtx, cancel := context.WithTimeout(ctx, 2*time.Second)
+				defer cancel()
+				err := hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile))(warmCtx)
+				// Ignore the context timeout error that is intended.
+				if strings.Contains(err.Error(), "context deadline exceeded") {
+					return nil
+				}
+				return err
+			},
+			util.WaitForFieldNotEmpty(its.tconn, inputField.Finder()),
+			hwCtx.ClearHandwritingCanvas(),
+			its.Clear(inputField))
+
+		return uiauto.Combine("handwriting input on virtual keyboard",
+			hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
+			hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile)),
+			its.validateResult(inputField, inputData.ExpectedText),
+		)(ctx)
+	}
+}
+
+// ValidateInputFieldForMode returns an action to test input in the given field.
+// After input action, it checks whether the outcome equals to expected value.
+func (its *InputsTestServer) ValidateInputFieldForMode(inputField InputField, inputModality util.InputModality, inputData data.InputData, dataPath func(string) string) uiauto.Action {
+	if !inputField.isSupported(inputModality) {
+		return func(ctx context.Context) error {
+			return errors.Errorf("%s is not supported for %s", inputModality, inputField)
+		}
+	}
+	// TODO(b/195083581): Enable ValidateInputFieldForMode for physical keyboard and emoji.
+	switch inputModality {
+	case util.InputWithVK:
+		return its.validateVKTypingInField(inputField, inputData)
+	case util.InputWithVoice:
+		return its.validateVoiceInField(inputField, inputData, dataPath)
+	case util.InputWithHandWriting:
+		return its.validateHandwritingInField(inputField, inputData, dataPath)
+	}
+
+	return func(ctx context.Context) error {
+		return errors.Errorf("input modality not supported: %q", inputModality)
+	}
+}
+
+func (inputField InputField) isSupported(inputModality util.InputModality) bool {
+	if inputField == PasswordInputField {
+		if inputModality == util.InputWithHandWriting || inputModality == util.InputWithVoice {
+			return false
+		}
+	}
+	return true
+}
+
+func (its *InputsTestServer) cleanFieldAndTriggerVK(inputField InputField) uiauto.Action {
+	vkbCtx := vkb.NewContext(its.cr, its.tconn)
+	return uiauto.Combine("clean and trigger VK on field "+string(inputField),
+		vkbCtx.HideVirtualKeyboard(),
+		its.Clear(inputField),
+		its.ClickFieldUntilVKShown(inputField),
+	)
+}
+
+func (its *InputsTestServer) validateResult(inputField InputField, expectedText string) uiauto.Action {
+	validateField := util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), expectedText)
+	if inputField == PasswordInputField {
+		// Password input is a special case. The value is presented with placeholder "•".
+		// Using PasswordTextField field to verify the outcome.
+		validateField = uiauto.Combine("validate passward field",
+			util.WaitForFieldTextToBe(its.tconn, inputField.Finder(), strings.Repeat("•", len(expectedText))),
+			util.WaitForFieldTextToBeIgnoringCase(its.tconn, PasswordTextField.Finder(), expectedText),
+		)
+	}
+	return validateField
 }
