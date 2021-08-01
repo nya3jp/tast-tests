@@ -48,6 +48,9 @@ var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keybo
 // NodeFinder returns a finder of node on virtual keyboard.
 var NodeFinder = nodewith.Ancestor(vkRootFinder)
 
+// DragPointFinder returns the finder of the float VK drag button.
+var DragPointFinder = NodeFinder.Role(role.Button).NameContaining("drag to reposition the keyboard")
+
 // KeyFinder returns a finder of keys on virtual keyboard.
 var KeyFinder = NodeFinder.Role(role.Button)
 
@@ -257,13 +260,25 @@ func (vkbCtx *VirtualKeyboardContext) TapKeysJS(keys []string) uiauto.Action {
 		})
 }
 
-// SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout via private javascript function.
+// SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
 func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enable bool) uiauto.Action {
 	flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
 	if !enable {
 		flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
 	}
 	return vkbCtx.ui.LeftClick(flipButtonFinder)
+}
+
+// IsFloatingMode returns true if the on-screen VK is in floating mode, or false if it is docked mode.
+// It throws our error if VK is not shown.
+func (vkbCtx *VirtualKeyboardContext) IsFloatingMode(ctx context.Context) (bool, error) {
+	if isVKOnScreen, err := vkbCtx.IsShown(ctx); err != nil {
+		return false, errors.Wrap(err, "fail to check visibility of VK")
+	} else if !isVKOnScreen {
+		return false, errors.New("VK is not shown")
+	}
+
+	return vkbCtx.ui.IsNodeFound(ctx, DragPointFinder)
 }
 
 // TapKeyboardLayout returns an action clicking keyboard layout to switch.
