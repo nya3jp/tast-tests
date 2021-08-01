@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8585bc_ca0f0d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-01T23:03:57Z",
+      "side": 1,
+      "message": "This is a shared var? Maybe define it outside this func and inside this package, like at the beinning of this file?",
+      "range": {
+        "startLine": 563,
+        "startChar": 7,
+        "endLine": 563,
+        "endChar": 28
+      },
+      "revId": "5ebef98299403f243f73982f0a29a8512be0afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
