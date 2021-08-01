@@ -22,6 +22,30 @@
       },
       "revId": "c44611cd1f0d966dfd8ce4579ceb784aaf71f135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c669aee_66800b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-01T23:38:00Z",
+      "side": 0,
+      "message": "According to go/e14s-tast-strategy, virtualkeyboard float mode is pretty much front-end UI feature, landing in category 3. So removing coverage on unstable mode.",
+      "parentUuid": "75913021_fc860de6",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "c44611cd1f0d966dfd8ce4579ceb784aaf71f135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
