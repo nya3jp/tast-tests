@@ -48,6 +48,9 @@ var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keybo
 // NodeFinder returns a finder of node on virtual keyboard.
 var NodeFinder = nodewith.Ancestor(vkRootFinder)
 
+// DragPointFinder returns the finder of the float VK drag button.
+var DragPointFinder = NodeFinder.Role(role.Button).NameContaining("drag to reposition the keyboard")
+
 // KeyFinder returns a finder of keys on virtual keyboard.
 var KeyFinder = NodeFinder.Role(role.Button)
 
@@ -257,13 +260,16 @@ func (vkbCtx *VirtualKeyboardContext) TapKeysJS(keys []string) uiauto.Action {
 		})
 }
 
-// SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout via private javascript function.
-func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enable bool) uiauto.Action {
-	flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
-	if !enable {
-		flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
+// SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
+func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Action {
+	var flipButtonFinder *nodewith.Finder
+	if enabled {
+		flipButtonFinder = KeyFinder.Name("make virtual keyboard movable")
+		return vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder))
 	}
-	return vkbCtx.ui.LeftClick(flipButtonFinder)
+
+	flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
+	return vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder))
 }
 
 // TapKeyboardLayout returns an action clicking keyboard layout to switch.
