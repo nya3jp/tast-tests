@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05dbcea4_ac793c6a",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T09:12:15Z",
+      "side": 1,
+      "message": "Instead of introducing new very similar method with the same name which might confuse users, your can introduce optional parameter to WaitConnect function, e.g.\n\n```\nh.DUT.WaitConnect(dut.WithROFirmware())\n\nor \n\nh.DUT.WaitConnect(dut.WithoutROFirmware())\n```\n\nhttps://petomalina.medium.com/dealing-with-optional-parameters-in-go-9780f9bfbd1d",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 0
+      },
+      "revId": "4858420681ceb34f948621d7592889a7e43cd8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
