@@ -6,30 +6,23 @@ package data
 
 import "chromiumos/tast/local/chrome/ime"
 
-type voiceMessage map[ime.Language]InputData
+type voiceMessage map[string]InputData
 
 // GetInputData returns two values given an input method: inputData and ok.
 // If the test data for the given input method can be found, ok is true.
 // If there is no match for the given input method, ok is false, and inputData is the zero value.
 func (message voiceMessage) GetInputData(im ime.InputMethod) (InputData, bool) {
-	var inputData InputData
-
-	languageCode, ok := LanguageOfIME[im]
-	if !ok {
-		return inputData, false
-	}
-
-	inputData, ok = message[languageCode]
+	inputData, ok := message[im.VoiceLanguage]
 	return inputData, ok
 }
 
 // VoiceMessageHello defines hello voice messages of input methods.
 var VoiceMessageHello = voiceMessage{
-	ime.LANGUAGE_EN: {
+	ime.LanguageEn: {
 		VoiceFile:    "voice_en_hello.wav",
 		ExpectedText: "hello",
 	},
-	ime.LANGUAGE_ZH_HANS: {
+	ime.LanguageZhHans: {
 		VoiceFile:    "voice_zh_hans_hello.wav",
 		ExpectedText: "你好",
 	},
