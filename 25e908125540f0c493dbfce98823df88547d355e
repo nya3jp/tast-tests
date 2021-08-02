@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d510601d_d1be437f",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T13:56:03Z",
+      "side": 1,
+      "message": "sorry, looks like i wasn\u0027t very clear. I just mean that maybe we should introduce new section for both local and remote tests, otherwise this and other paragraphs are under local section, but should be under some common section.\n\nupdate: i was reading the whole \"## Servo\" section and it is very remote tests oriented, so I was thinking maybe we should either a) introduce a sub-section for local tests at the end of servo section or b) rename \"servo\" section to \"servo for remote tests\" and introduce below new section \"servo for local tests\"",
+      "parentUuid": "82ae7d80_df2300b8",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 384
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec32ee3d_6c92e447",
         "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
         "patchSetId": 4
@@ -184,6 +208,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83520725_72d088bf",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T13:56:03Z",
+      "side": 1,
+      "message": "nit: shell inside servo host",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 349,
+        "endChar": 8
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcd19c0e_826d1451",
         "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
         "patchSetId": 4
@@ -219,6 +266,30 @@
       "side": 1,
       "message": "Oh okay, fine by me. Could you just reconfirm by giving the servo section an another read ? The way document has been written, I was just following that, i.e. instead of pushing a lots of nitty gritty right from the beginning it lets the developer face the error (if any) first and provide the remediation afterwards.",
       "parentUuid": "bcd19c0e_826d1451",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34325509_1f0d23f3",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T13:56:03Z",
+      "side": 1,
+      "message": "Please check my another comment.",
+      "parentUuid": "1e1e2067_e139ac64",
       "range": {
         "startLine": 339,
         "startChar": 0,
