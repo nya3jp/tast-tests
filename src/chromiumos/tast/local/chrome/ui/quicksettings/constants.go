@@ -12,7 +12,7 @@ import (
 
 // quickSettingsParams are the parameters to find the Quick Settings area in the UI.
 var quickSettingsParams ui.FindParams = ui.FindParams{
-	ClassName: "BubbleFrameView",
+	ClassName: "UnifiedSystemTrayView",
 }
 
 // CollapseBtnParams are the UI params for the collapse button, which collapses and expands Quick Settings.
