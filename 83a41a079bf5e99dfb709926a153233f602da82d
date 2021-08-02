@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "509908a1_32955c13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-02T02:41:35Z",
+      "side": 1,
+      "message": "Sorry for directly assigning you... For arc-related library change (e.g. activity.go), I thought you\u0027re the expert so I intentionally chose you as a reviewer, but was tast-owners@ the better option?",
+      "parentUuid": "20650eef_039288c3",
+      "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f49d4ff4_f41a9d1e",
