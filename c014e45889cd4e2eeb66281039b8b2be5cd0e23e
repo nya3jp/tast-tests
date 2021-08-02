@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ec26e7_9e0279b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-02T01:04:48Z",
+      "side": 1,
+      "message": "Nit: generally, if you deprecate a function and replace it with something else, you\u0027d want the names to be different enough that it\u0027s easy to remember / understand the difference. If you asked me what\u0027s the difference between ValidateVKInputOn/InField, I would have no idea what the difference is. Maybe ValidateVKInputFieldForMode()",
+      "revId": "c014e45889cd4e2eeb66281039b8b2be5cd0e23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83476079_cc5fb924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-02T01:04:48Z",
+      "side": 1,
+      "message": "If you\u0027ve got a retry, you shouldn\u0027t need sleep?\nIt should be sleeping for a second between attempts.",
+      "revId": "c014e45889cd4e2eeb66281039b8b2be5cd0e23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
