@@ -16,6 +16,24 @@
       "message": "Please get +2 from your team member first.",
       "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d6bde4_089b7358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-08-02T04:59:37Z",
+      "side": 1,
+      "message": "Agreed, tast-owners@ are similar to readability reviewers in spirit, so our primary goal is to point out common pitfalls and make sure the code is consistent in style, but we don\u0027t always have domain specific knowledge about individual tests.",
+      "parentUuid": "fc9a7ae7_17670e9f",
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
