@@ -6,8 +6,11 @@ package health
 
 import (
 	"context"
+	"path"
+	"reflect"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/lsbrelease"
@@ -121,8 +124,57 @@ func (info *osInfo) validate(ctx context.Context, s *testing.State) {
 	}
 }
 
+func getExpectedSkuNumber(ctx context.Context, cfg, fpath string) (*string, error) {
+	c, err := utils.IsCrosConfigTrue(ctx, cfg)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cros config")
+	}
+	if !c {
+		return nil, nil
+	}
+	s, err := utils.ReadFile(fpath)
+	if s == nil || err != nil {
+		return nil, errors.Wrap(err, "this board must have sku_number")
+	}
+	return s, nil
+}
+
+func (info *vpdInfo) validate(ctx context.Context, s *testing.State) {
+	const (
+		ro           = "/sys/firmware/vpd/ro/"
+		rw           = "/sys/firmware/vpd/rw/"
+		cfgSkuNumber = "/cros-healthd/cached-vpd/has-sku-number"
+	)
+	t := reflect.TypeOf(*info)
+	v := reflect.ValueOf(*info)
+	for i := 0; i < t.NumField(); i++ {
+		n := t.Field(i).Tag.Get("json")
+		g := v.Field(i).Interface().(*string)
+		var e *string
+		var err error
+		switch n {
+		case "activate_date":
+			if e, err = utils.ReadFile(path.Join(rw, "ActivateDate")); err != nil {
+				s.Fatal("Failed to read file: ", err)
+			}
+		case "sku_number":
+			if e, err = getExpectedSkuNumber(ctx, cfgSkuNumber, path.Join(rw, n)); err != nil {
+				s.Fatal("Failed to get sku_number: ", err)
+			}
+		default:
+			if e, err = utils.ReadFile(path.Join(ro, n)); err != nil {
+				s.Fatal("Failed to read file: ", err)
+			}
+		}
+		if err := utils.CompareStringPtr(e, g); err != nil {
+			s.Error(n, err)
+		}
+	}
+}
+
 func (info *systemInfo) validate(ctx context.Context, s *testing.State) {
 	info.OsInfo.validate(ctx, s)
+	info.VpdInfo.validate(ctx, s)
 }
 
 func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
