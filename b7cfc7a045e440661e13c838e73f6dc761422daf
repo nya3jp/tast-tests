@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867b3a00_fbdb0f95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "\u003e \"enviroments\" is a possible misspelling of \"environments\".\n\nPlease fix.",
+      "parentUuid": "3811b436_793e381d",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73f5b0b_5d923221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "nit: This comment is redundant. The function is self explained.",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3ebc13_441d5512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "nit: maybe remove `keyboard`.\n\nAccording to the name, I suppose maybe move inputField to the first param.",
+      "range": {
+        "startLine": 375,
+        "startChar": 50,
+        "endLine": 375,
+        "endChar": 58
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a906e54e_d29568eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "Not relevant to this cl. You can probably add a TODO if you feel this comment makes sense.\n\nState stands for the test case state, should not be passed into a common function. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 377,
+        "startChar": 50,
+        "endLine": 377,
+        "endChar": 66
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e84881e_afcdd24c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accda453_e83371bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "How about instantiate vkbCtx inside the function? Sorry to provide this wrong code sample, I think it would be nice to reduce input param.",
+      "range": {
+        "startLine": 394,
+        "startChar": 52,
+        "endLine": 394,
+        "endChar": 86
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46137b43_c85f7f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:04:39Z",
+      "side": 1,
+      "message": "Please remove Physical keyboard from this type. Maybe you can add a TODO to add coverage to physical keyboard input methods later. Otherwise you need to separate VK Emoji and PK Emoji. Also please ask @tranbaoduy to review this naming.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 57
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
