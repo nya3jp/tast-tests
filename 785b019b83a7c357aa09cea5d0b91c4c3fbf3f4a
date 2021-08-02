@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ad8200_e3ad1a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33d14c82_3b333e32",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bea404d_2614ee57",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "huge nit: leave a empty line",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf62f8b_c5505bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bea404d_2614ee57",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a083251e_54117d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba0f3b3_03b5803f",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a288e56_79bf6085",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "nit: what\u0027s the meaning of \"ts\"? could you be more verbose with the name?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd2f5c9_f717865f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "I copied and pasted from another test, so I think it\u0027s just Notification Types, so I renamed it.",
+      "parentUuid": "6a288e56_79bf6085",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2314ad03_6c3db825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44116a57_ee6c2dd0",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d5f1b8_45745ff0",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "nit: ditto, whats the meaning of \"ac\"?\n\n\nGolang likes short variable names, but the meaning is trivial and/or easy to find.\nIn this case \"ac\" is declared here, but it is also used in L151.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491b00e7_9c6f9fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "automationController (renamed)",
+      "parentUuid": "47d5f1b8_45745ff0",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "801cd44e_16a0d3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "872b74fa_b51d0bb9",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f7eee19_be139140",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "nit: replace it with \"n * len(ts)\"  ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e103f35_4dcbdf66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7eee19_be139140",
       "range": {
         "startLine": 108,
         "startChar": 24,
@@ -227,6 +419,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc9cfa40_f6881ec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "The prior reviewer said start with 1 instead because it is more readable for go? I can undo it, I have no strong feelings here.",
+      "parentUuid": "38ee72d9_107780c3",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "708cb681_542e1eed",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 6
@@ -238,6 +454,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "Here and in the rest of the code:\nalthough in go there is no limit for comments (as long as it helps readability) I\u0027d split this one in two or three lines.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 193
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f2dea8_f5ab61eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708cb681_542e1eed",
       "range": {
         "startLine": 116,
         "startChar": 5,
@@ -273,6 +513,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79b074a5_9dacb737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "Not currently. We are planning on improving this later though! This is more than enough to add the notifications though. Should we wait for the cpu to be idle instead?",
+      "parentUuid": "e9f8d78a_70f97940",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3db795a2_73375fe2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 6
@@ -284,6 +548,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "ditto above... try to replace the sleep with some another condition",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9288864a_2f8e67b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "(increased timeout, see above. No current way to do this better but we plan on adding an extension api for this eventually). 2 seconds is more than enough, if it flakes it is probably showing a real issue.",
+      "parentUuid": "3db795a2_73375fe2",
       "range": {
         "startLine": 138,
         "startChar": 6,
@@ -307,6 +595,30 @@
       "writtenOn": "2021-07-27T20:32:41Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 5
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981b8815_50b4a783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-02T20:36:55Z",
+      "side": 1,
+      "message": "(see above)",
+      "parentUuid": "362154ae_a0327e0c",
       "range": {
         "startLine": 156,
         "startChar": 4,
