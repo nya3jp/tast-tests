@@ -205,6 +205,16 @@ func StopJob(ctx context.Context, job string, args ...Arg) error {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("upstart_stop_%s", job))
 	defer st.End()
 	if job == uiJob {
+		// Waits for the vm_concierge job to stabilize if it is running.
+		// This is a workaround for b/193806814 where vm_concierge ignores
+		// SIGTERM if the signal is sent in a very early stage of its startup.
+		// We need this workaround because stopping the ui job triggers the
+		// vm_concierge job to stop.
+		// TODO(b/193806814): Remove this workaround once the bug is fixed.
+		if err := waitVMConciergeJobStabilized(ctx); err != nil {
+			// Continue even if we fail to wait.
+			testing.ContextLog(ctx, "Ignored: failed to wait for vm_concierge job to stabilize: ", err)
+		}
 		// The ui and ui-respawn jobs go through the following sequence of statuses
 		// when the session_manager job exits with a nonzero status:
 		//
@@ -266,6 +276,68 @@ func waitUIJobStabilized(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// waitVMConciergeJobStabilized waits for the vm_concierge job to stabilize if
+// it is running. The job is considered stabilized when 3 seconds pass after
+// it starts.
+// This is a workaround for b/193806814 where vm_concierge ignores SIGTERM if
+// the signal is sent in a very early stage of its startup.
+// TODO(b/193806814): Remove this workaround once the bug is fixed.
+func waitVMConciergeJobStabilized(ctx context.Context) error {
+	const (
+		job  = "vm_concierge"
+		wait = 3 * time.Second
+	)
+
+	// If the job does not exist, we have nothing to do.
+	if !JobExists(ctx, job) {
+		return nil
+	}
+
+	goal, _, _, err := JobStatus(ctx, job)
+	if err != nil {
+		return err
+	}
+	// If the job is stopping, we have nothing to do.
+	if goal == upstart.StopGoal {
+		return nil
+	}
+
+	// Wait until the job enters the running state in case it's still in
+	// an early stage of starting.
+	if err := WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, RejectWrongGoal, 10*time.Second); err != nil {
+		return err
+	}
+
+	// Get the latest PID of the process. This can be different from one
+	// returned from the last JobStatus call.
+	_, state, pid, err := JobStatus(ctx, job)
+	if err != nil {
+		return err
+	}
+	if state != upstart.RunningState {
+		return nil
+	}
+
+	// Check when the process started.
+	st, err := os.Stat(fmt.Sprintf("/proc/%d", pid))
+	if err != nil {
+		return err
+	}
+	started := st.ModTime()
+
+	if started.After(time.Now()) {
+		return errors.Errorf("process %d started in the future (%v)", pid, started)
+	}
+
+	// Wait if the process is new.
+	d := time.Until(started.Add(wait))
+	if d < 0 {
+		return nil
+	}
+	testing.ContextLogf(ctx, "Waiting %s job for %v for stabilization (b/193806814)", job, d)
+	return testing.Sleep(ctx, d)
 }
 
 // DumpJobs writes the snapshot of all jobs' status to path.
