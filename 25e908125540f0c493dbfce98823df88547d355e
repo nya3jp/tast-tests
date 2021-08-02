@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "799efb17_7633d3e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:41:38Z",
+      "side": 1,
+      "message": "LGTM, but i\u0027d prefer to take another looks after documentation changes",
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef77ee0_905f48d4",
+        "filename": "src/chromiumos/tast/common/servo/servo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:41:38Z",
+      "side": 1,
+      "message": "nit:\n\nor just \"host\" to use default port.",
+      "range": {
+        "startLine": 62,
+        "startChar": 61,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9937b042_9478876c",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:41:38Z",
+      "side": 1,
+      "message": "nit: [`NewDirect`] ?",
+      "range": {
+        "startLine": 280,
+        "startChar": 169,
+        "endLine": 280,
+        "endChar": 179
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a95430_2a4736d3",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:41:38Z",
+      "side": 1,
+      "message": "nit: it looks like this and following text apply to only local section",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 384
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec32ee3d_6c92e447",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:41:38Z",
+      "side": 1,
+      "message": "nit: servo?",
+      "range": {
+        "startLine": 307,
+        "startChar": 20,
+        "endLine": 307,
+        "endChar": 24
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd19c0e_826d1451",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:41:38Z",
+      "side": 1,
+      "message": "nit: I think this should be closer to local tests section",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "25e908125540f0c493dbfce98823df88547d355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
