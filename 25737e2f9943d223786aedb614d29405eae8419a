@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "767b385d_ddc5c5f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-08-02T01:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91182ab_4c56dcb0",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "25737e2f9943d223786aedb614d29405eae8419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a28c1b57_7f1e5bd5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d425e25f_fa58c80d",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-08-02T01:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e664c825_2053e5d0",
+      "revId": "25737e2f9943d223786aedb614d29405eae8419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72e24a9f_a9d7bb39",
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338c0d9f_48fa36f7",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-08-02T01:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e24a9f_a9d7bb39",
+      "range": {
+        "startLine": 91,
+        "startChar": 16,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "25737e2f9943d223786aedb614d29405eae8419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae0433d5_3d317134",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-07-30T15:54:18Z",
       "side": 1,
       "message": "nit:\n\nNotification.Builder builder \u003d new Notification.Builder(this,\n  isHighPriority ? HIGH_IMPORTANCE_CHANNEL_ID : DEFAULT_CHANNEL_ID);",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "25737e2f9943d223786aedb614d29405eae8419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3c5313_6b9b06e7",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-08-02T01:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae0433d5_3d317134",
       "range": {
         "startLine": 92,
         "startChar": 8,
