@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea96b67_eab6f504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T14:51:35Z",
+      "side": 1,
+      "message": "could you avoid using ancient C style declaration?\nInstead, could you declare variables at the latest timing you need?\n\nAlso, in most cases, could you use \":\u003d\" operator to define variables?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771b1ae0_12ed8433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T14:51:35Z",
+      "side": 1,
+      "message": "could you simplify the logic by splitting this into \"setup lacros\" and \"calculating app\" ?\n\nSo, defer l.Close(ctx) can be very closer to lacros.Setup which is a common pattern.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41a4c91_f5e495aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T14:51:35Z",
+      "side": 1,
+      "message": "nit/style: could you minimize the diff?\n\ntopWindowName :\u003d \"BrowserFrame\"\nif ct \u003d\u003d lacros.ChromeTypeLacros {\n  topWindowName \u003d \"ExoShellSurface\"\n}\ntopLevelWindow :\u003d node... .HasClass(topWindowName)",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767a692d_b961c988",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T14:51:35Z",
+      "side": 1,
+      "message": "Instead, can we make this under /tmp directory, and let chronos own it?",
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
