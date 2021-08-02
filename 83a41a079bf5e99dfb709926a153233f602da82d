@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7301672f_b2d13df9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-02T02:30:59Z",
+      "side": 1,
+      "message": "Yes, that\u0027s why `Cq-Depend:` is declared.\nI have added the a bit more explanation.",
+      "parentUuid": "df0e69cb_b4071e8f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 57
+      },
+      "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "03a281bd_3bcb3435",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-30T18:23:03Z",
       "side": 1,
       "message": "not clear why a new function was added.\n\nWhat\u0027s the difference between `SendWMEvent(... true)` and `SetWindowState` ?",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "83a41a079bf5e99dfb709926a153233f602da82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12bdc4d9_0e48e793",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-02T02:30:59Z",
+      "side": 1,
+      "message": "\u003e What\u0027s the difference between `SendWMEvent(... true)` and `SetWindowState` ?\nExactly the same. I originally thought separating the method makes this CL as small as possible because the changing the signature affects all callers.\nBut, as you mentioned, this is confusing so I\u0027ve changed the signature.",
+      "parentUuid": "f49d4ff4_f41a9d1e",
       "range": {
         "startLine": 213,
         "startChar": 5,
