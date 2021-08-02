@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e26f1492_1a1e1bb0",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T01:09:30Z",
+      "side": 1,
+      "message": "The migration work is undergoing by the automation team I guess, there is a Q3 OKR to complete the the migration of the rest files. Since many existing tests are using quicksettings.go, it might need more efforts to ensure the compatibility.\n\nPlus, another major issue is the constants used, https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go?q\u003dquicksettings\n\nSome contants (e.g., \"BubbleFrameView\") are also a cause of flakiness in our scenario. I was planning to stablize this part after the migration to uiauto is done (there is a TODO here).",
+      "parentUuid": "c4407996_f6d7a42d",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "b9ca1978e2b483f61e1961a2164dcdb2c7c4140b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b0df2c3_9c57449d",
         "filename": "src/chromiumos/tast/local/input/voice/audio.go",
         "patchSetId": 1
