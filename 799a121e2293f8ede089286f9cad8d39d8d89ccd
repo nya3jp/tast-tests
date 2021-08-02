@@ -16,6 +16,46 @@
       "message": "Hi Hidehiko, PTAL",
       "revId": "799a121e2293f8ede089286f9cad8d39d8d89ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f1c6b9_d8594d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T15:17:11Z",
+      "side": 1,
+      "message": "Clarification: do you want to run this even if eventHistogramUpdate is unexpected?\n\nIf so, could you use Errorf instead of Fatalf at L108, so that L117 is also checked.",
+      "revId": "799a121e2293f8ede089286f9cad8d39d8d89ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529283e5_6057a01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T15:17:11Z",
+      "side": 1,
+      "message": "optional: \"%+v\" for slightly better logging.\n\nAlso, could you use \"want, got\" format for consistency?\n\ns.Fatalf(\"Unexpected event histogram update: want %+v, got %+v\", ...)\n\nDitto for L118.",
+      "range": {
+        "startLine": 108,
+        "startChar": 48,
+        "endLine": 108,
+        "endChar": 50
+      },
+      "revId": "799a121e2293f8ede089286f9cad8d39d8d89ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
