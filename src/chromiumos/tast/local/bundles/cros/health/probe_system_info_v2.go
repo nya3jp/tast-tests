@@ -172,9 +172,29 @@ func (info *vpdInfo) validate(ctx context.Context, s *testing.State) {
 	}
 }
 
+func (info *dmiInfo) validate(ctx context.Context, s *testing.State) {
+	const (
+		dmiPath = "/sys/class/dmi/id"
+	)
+	t := reflect.TypeOf(*info)
+	v := reflect.ValueOf(*info)
+	for i := 0; i < t.NumField(); i++ {
+		n := t.Field(i).Tag.Get("json")
+		e, err := utils.ReadFile(path.Join(dmiPath, n))
+		if err != nil {
+			s.Fatal("Failed to read file: ", err)
+		}
+		g := v.Field(i).Interface().(*string)
+		if err := utils.CompareStringPtr(e, g); err != nil {
+			s.Error(n, err)
+		}
+	}
+}
+
 func (info *systemInfo) validate(ctx context.Context, s *testing.State) {
 	info.OsInfo.validate(ctx, s)
 	info.VpdInfo.validate(ctx, s)
+	info.DmiInfo.validate(ctx, s)
 }
 
 func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
