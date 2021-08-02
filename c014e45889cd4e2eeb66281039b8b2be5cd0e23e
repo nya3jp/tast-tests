@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03d4cc1_7ea6d604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T01:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ec26e7_9e0279b0",
+      "revId": "c014e45889cd4e2eeb66281039b8b2be5cd0e23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83476079_cc5fb924",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-02T01:04:48Z",
       "side": 1,
       "message": "If you\u0027ve got a retry, you shouldn\u0027t need sleep?\nIt should be sleeping for a second between attempts.",
+      "revId": "c014e45889cd4e2eeb66281039b8b2be5cd0e23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4d70df_2f6718cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T01:29:17Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "83476079_cc5fb924",
       "revId": "c014e45889cd4e2eeb66281039b8b2be5cd0e23e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
