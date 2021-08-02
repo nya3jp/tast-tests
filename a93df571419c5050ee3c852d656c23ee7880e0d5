@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f789af_25d0bad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-02T22:56:41Z",
+      "side": 1,
+      "message": "I am not sure you can directly use this import here. It would be good to ask a Tast Owner about this setup.",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b591533_a6982a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-02T22:56:41Z",
+      "side": 1,
+      "message": "You probably want this set to true",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e442d4d8_81f760d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-02T22:56:41Z",
+      "side": 1,
+      "message": "You should not need to restart fwupd anymore after crrev.com/c/3055253",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a08d38b_cb2ed27f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-02T22:56:41Z",
+      "side": 1,
+      "message": "If you just use this line outside the if condition, does it work?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 124
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
