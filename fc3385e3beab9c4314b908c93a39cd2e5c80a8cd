@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0be69c6_ca78a68a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-02T03:38:09Z",
+      "side": 1,
+      "message": "LGTM, thanks for splitting out the refactoring change.\n\n+hidehiko FYI about Lacros special handling.\n",
+      "revId": "fc3385e3beab9c4314b908c93a39cd2e5c80a8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41213374_552e38ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-02T03:38:09Z",
+      "side": 1,
+      "message": "No action required: hidehiko@ FYI\n\nThis special handling looks unfortunate, and I guess similar code is needed in many other tests as well. I hope this discrepancy is resolved in Lacros side...",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "fc3385e3beab9c4314b908c93a39cd2e5c80a8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d922d68_a7ec1ef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-02T03:38:09Z",
+      "side": 1,
+      "message": "nit: You may want to give a longer name, e.g. Type or even ChromeType, since it\u0027s an exported field and referenced from larger scope.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "fc3385e3beab9c4314b908c93a39cd2e5c80a8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
