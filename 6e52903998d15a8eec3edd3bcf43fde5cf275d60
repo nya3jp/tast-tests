@@ -85,6 +85,30 @@
       },
       "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50361626_752f4fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T07:27:49Z",
+      "side": 1,
+      "message": "+1, maybe add a pre-flight check in the beginning. Returns error if validating voice / handwriting on password field.",
+      "parentUuid": "a96d3a48_501d4bc3",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 65
+      },
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
