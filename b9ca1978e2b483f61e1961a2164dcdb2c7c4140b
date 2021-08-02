@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a50e3799_5b5a339f",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T04:56:08Z",
+      "side": 1,
+      "message": "The point is quicksetting.Open or Hide() does not belong here. It should be part of quicksetting package. If the original function is not stable, you can make the change there to fix it. \n\nI believe nobody owns feature or function. If you are improving an existing function, it should be appreciated. It is not a good idea to ignore the function then implement your own version.",
+      "parentUuid": "e26f1492_1a1e1bb0",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "b9ca1978e2b483f61e1961a2164dcdb2c7c4140b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b0df2c3_9c57449d",
         "filename": "src/chromiumos/tast/local/input/voice/audio.go",
         "patchSetId": 1
