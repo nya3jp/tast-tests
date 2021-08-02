@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a25f1030_0a3cdc54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "I\u0027ve removed the additional methods that I created here earlier for ECTabletMode. For this cl, I\u0027m leaving the power_menu_service inside Wilco as is, since this is probably in use by some other tests.\n\nI\u0027ve created another service to check power menu, and put it inside the ui folder for now. This time the login request is stored as a boolean value. IsPowerMenuPresent uses this boolean to process connections to the extensions differently.",
+      "parentUuid": "bb73be24_35b38899",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbded05f_b451d900",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "Maybe instead of having 2 functions for IsPowerMenuPresent, just store the login state in NewChrome/NewChromeNoLogIn and then check that state in IsPowerMenuPresent.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ef4d41_3bcec673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "dbded05f_b451d900",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -129,6 +177,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66940d1f_73a6832c",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "OutputStderr was created in chromiumos/tast/common/testexec/testexec.go to only return the stderr output. The original CaptureCombinedOutput function has been renamed as CaptureWithStderr, using OutputStderr to log stderr when capturing a screenshot fails.",
+      "parentUuid": "3048bd7d_c94e0043",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5c2ce6_96d78b3f",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "881a30bc_5f789b1f",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3718ed74_f6966c10",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 2
@@ -175,6 +271,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbc2888c_202c0561",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "fcb290f4_c68bf900",
+      "range": {
+        "startLine": 37,
+        "startChar": 62,
+        "endLine": 37,
+        "endChar": 76
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725c5c0c_981af126",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3718ed74_f6966c10",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0652fee6_76c57700",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 2
@@ -186,6 +330,24 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "Please include err in the message:\n\n    return errors.Wrapf(err, \"failed running %q\", cmd)",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9111076_6cef3028",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0652fee6_76c57700",
       "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -260,6 +422,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "499be7f9_04c26ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5646ec_33366283",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 94
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8017213_521df991",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2117862_84bada20",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b961938f_2aee4d89",
@@ -277,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255fa962_f91ad3c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b961938f_2aee4d89",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90f67493_ac2291e5",
@@ -290,6 +518,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "Use s.Var instead of RequiredVar. If the servo var is blank, servo.NewProxy will default to localhost:9999",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4138ad5a_84a2313a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Replaced with h :\u003d s.PreValue().(*pre.Value).Helper",
+      "parentUuid": "90f67493_ac2291e5",
       "range": {
         "startLine": 50,
         "startChar": 35,
@@ -325,6 +577,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e51c928a_25f6bfda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "I have it in pre.DevMode() at the moment. Our DUT appeared to have some troubles converting to NormalMode. I\u0027ll be doing some more testing under the NormalMode.\n\nAlso, I\u0027ve noticed that both preparing and closing the precondition took on average about 5 minutes each. Is this expected? I\u0027ve had a few failed attempts in the closing part. But, this seems to have been resolved after updating DUT\u0027s test image to the latest release.",
+      "parentUuid": "5c536793_75171e5b",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4940037_1a223e83",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -336,6 +612,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "Operate directly on the []byte, no need to cast to string:\n\n    initLidAngle :\u003d re.FindSubmatch(out)",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7c8950_93b74ad4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4940037_1a223e83",
       "range": {
         "startLine": 62,
         "startChar": 17,
@@ -363,6 +663,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de82b2f6_394db0f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b47387db_140fcadc",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b567875_a6094a82",
@@ -376,6 +694,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "If you\u0027re not using the output, use Run() instead of Output()",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c00081_206772f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b567875_a6094a82",
       "range": {
         "startLine": 70,
         "startChar": 1,
@@ -411,6 +753,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0315ff13_5361ae34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "I\u0027ve added Servo.SetPowerState(ctx, servo.PowerStateOff) as a replacement. Would this be appropriate to use here as well?",
+      "parentUuid": "584d7213_73f12a74",
+      "range": {
+        "startLine": 76,
+        "startChar": 49,
+        "endLine": 76,
+        "endChar": 54
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f1a5512_2fe21b5e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -422,6 +788,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "This will wait for the full timeout of the test, please set a deadline on the context before calling.",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50cac5b_b33509fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Previously, I was considering that different DUTs might require different lengths of time for boot up and shutdown. I\u0027m currently setting the deadlines to be 2 minutes for both power-off and power-on. Would such length be applicable for most DUTs in general?",
+      "parentUuid": "2f1a5512_2fe21b5e",
       "range": {
         "startLine": 81,
         "startChar": 10,
@@ -457,6 +847,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f14bd117_a24e56a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Similar to the above for shutdown, I\u0027ve implemented servo.SetPowerState(ctx, servo.PowerStateOn) here for boot up. But, I\u0027d like to check whether using this here would be suitable.",
+      "parentUuid": "bd74558b_acfd8276",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66de40f6_fa483e5f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -468,6 +882,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "This also needs a context deadline.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2efa0d8_0c8061d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "66de40f6_fa483e5f",
       "range": {
         "startLine": 91,
         "startChar": 1,
@@ -503,6 +941,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea939ea9_98317ecf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Replaced with err :\u003d h.RequireRPCClient(ctx) from the helper class to create RPC connection.",
+      "parentUuid": "0b00adb6_524db5de",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66cacc87_1f053a09",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -514,6 +976,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "The Helper class makes this easier also.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c60ffd8_8c414712",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "66cacc87_1f053a09",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -547,6 +1033,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f848613d_06f24ca2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b251b4e6_bcc9a762",
+      "range": {
+        "startLine": 119,
+        "startChar": 16,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1259ca23_65170a30",
@@ -564,6 +1074,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c7375b_0f81c0f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1259ca23_65170a30",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b2a20b_66358217",
@@ -577,6 +1105,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "As elsewhere, no need for a special error name; it is more consistent to just use err.",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 24
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5869a224_cbd1b1eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Removed checkPowerMenuNoLogin, as checkPowerMenu has been modified to take in sign-in request as well.",
+      "parentUuid": "d3b2a20b_66358217",
       "range": {
         "startLine": 129,
         "startChar": 14,
@@ -610,6 +1162,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76417632_f8892b7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc01c8b_9ca52b4c",
+      "range": {
+        "startLine": 152,
+        "startChar": 52,
+        "endLine": 152,
+        "endChar": 57
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "449b8e7b_8132bbbb",
@@ -623,6 +1199,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "nit/style: Since actions[i] is the only value being checked, please use that for the switch statement:\n\n    switch actions[i] {\n    case \"OFF\":\n        ...\n    case \"ON\":\n        ...\n    }\n\nSimilarly, at L177:\n\n    switch testCase {\n    case \"atSignin\":\n        ...\n    case \"afterSignin\":\n        ...\n    case \"atLockScreen\":\n        ...\n\nAnd at L227:\n\n    switch testCase {\n    case \"atSignin\":\n        ...\n    case \"afterSignin\", \"atLockScreen\":\n        ...\n    }",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 9
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b17f0c_b14985b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "449b8e7b_8132bbbb",
       "range": {
         "startLine": 161,
         "startChar": 3,
@@ -656,6 +1256,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c25f2dd_0a15a739",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7510d8ae_93c2af25",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 17
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffa7157c_a6fd8026",
@@ -669,6 +1293,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "This should be DurTab or DurPress.",
+      "range": {
+        "startLine": 218,
+        "startChar": 51,
+        "endLine": 218,
+        "endChar": 54
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42088d44_6be07f8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffa7157c_a6fd8026",
       "range": {
         "startLine": 218,
         "startChar": 51,
@@ -704,6 +1352,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c05cd3a4_3f4f1488",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Replaced by passing (h.Config.HoldPwrButtonPowerOff)/2 to KeypressWithDuration.",
+      "parentUuid": "62695c5d_cbf63b2a",
+      "range": {
+        "startLine": 246,
+        "startChar": 51,
+        "endLine": 246,
+        "endChar": 56
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea25421b_af4616e8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -715,6 +1387,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "As elsewhere, please use \"err\"",
+      "range": {
+        "startLine": 257,
+        "startChar": 5,
+        "endLine": 257,
+        "endChar": 14
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2696a571_72f4ddc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea25421b_af4616e8",
       "range": {
         "startLine": 257,
         "startChar": 5,
@@ -738,6 +1434,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "Since you\u0027re using these strings a lot, I think it would be safer to assign them constant values. That would protect us against typos in the switch-cases.\n\n    const (\n        atSignin     \u003d \"atSignin\"\n        afterSignin  \u003d \"afterSignin\"\n        atLockScreen \u003d \"atLockScreen\"\n    )\n\n    switch testCase {\n    case atSignin:\n        ...\n    etc\n    }\n    \n    var testCases \u003d []string{atSignin, afterSignin, atLockScreen}",
+      "range": {
+        "startLine": 266,
+        "startChar": 26,
+        "endLine": 266,
+        "endChar": 67
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d029e089_88842b8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1d6029_78ff2ccf",
       "range": {
         "startLine": 266,
         "startChar": 26,
@@ -794,6 +1514,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6109d42_f9123587",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "638d5371_8b7b4199",
+      "range": {
+        "startLine": 271,
+        "startChar": 100,
+        "endLine": 271,
+        "endChar": 106
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d926da01_3b06fc20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "It seems that initLidAngle and initHys have to be converted to strings when passed in as arguments to d.Command().",
+      "parentUuid": "fc13de38_0bc55cfb",
+      "range": {
+        "startLine": 271,
+        "startChar": 66,
+        "endLine": 271,
+        "endChar": 81
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a288bb_99eec1ab",
@@ -807,6 +1575,30 @@
       "writtenOn": "2021-07-19T15:12:27Z",
       "side": 1,
       "message": "Put this into a defer call right after line 66",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 0
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f7603af_0116e7a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06a288bb_99eec1ab",
       "range": {
         "startLine": 271,
         "startChar": 0,
@@ -842,6 +1634,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9867abab_34436ec3",
+        "filename": "src/chromiumos/tast/services/cros/graphics/screenshot_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Renamed as CaptureScreenAndDelete, and added a new comment for clarification.",
+      "parentUuid": "52cdf6de_d23ee2fd",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27ff20b3_3c8a2d66",
         "filename": "src/chromiumos/tast/services/cros/wilco/power_menu_service.proto",
         "patchSetId": 2
@@ -859,6 +1675,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0122a30e_fcb6778f",
+        "filename": "src/chromiumos/tast/services/cros/wilco/power_menu_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "I\u0027ve removed this particular RPC, and left the original power_menu_service as is inside Wilco, since this is probably in use by some other tests. \n\nI\u0027ve instead created another service under the UI folder, and named it as check_power_menu_service. In the check_power_menu_service.proto file, a new field was added to NewChrome(), so that it can handle a boolean sign-in request.",
+      "parentUuid": "27ff20b3_3c8a2d66",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16387127_317be36d",
         "filename": "src/chromiumos/tast/services/cros/wilco/power_menu_service.proto",
         "patchSetId": 2
@@ -870,6 +1704,30 @@
       "writtenOn": "2021-07-21T16:17:23Z",
       "side": 1,
       "message": "nit/style: I think NewChromeNoLogInRequest would be more idiomatic. And, please document the \"key\" field.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545b4a3d_2ce719cd",
+        "filename": "src/chromiumos/tast/services/cros/wilco/power_menu_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "IsPowerMenuPresentNoLogIn has been removed for the same reason as mentioned above.",
+      "parentUuid": "16387127_317be36d",
       "range": {
         "startLine": 34,
         "startChar": 8,

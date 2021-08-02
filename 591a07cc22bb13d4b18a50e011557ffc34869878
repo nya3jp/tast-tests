@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da49f6d1_c8c4a60a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-02T08:15:14Z",
+      "side": 1,
+      "message": "Hello Greg and Jeremy,\n\nThanks for the code review comments. I\u0027ve learned quite much from making the edits, and become increasingly familiar with tast-writing. \n\nIn my next CLs, I\u0027ll make sure that I split changes into smaller ones, and submit separately. ",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
