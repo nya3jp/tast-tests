@@ -46,6 +46,30 @@
       },
       "revId": "5aa2843e538e451a8a78c1e5f3f8596a7ce2e6c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22274e7c_7e79ca3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_over_usb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-02T01:07:06Z",
+      "side": 1,
+      "message": "Thanks for letting me know. tast-lint was very recently updated (crrev.com/c/3035270) to accept more forms, but I think there\u0027s more room to improve.",
+      "parentUuid": "21094774_d23d4859",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 74
+      },
+      "revId": "5aa2843e538e451a8a78c1e5f3f8596a7ce2e6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
