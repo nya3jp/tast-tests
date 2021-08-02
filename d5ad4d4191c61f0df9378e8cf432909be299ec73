@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4d651e_752edfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-02T20:05:02Z",
+      "side": 1,
+      "message": "My intention was to explicitly declare them to show how many different types/interfaces need to be used to write a test for multi-browsers and remove them in a future refactoring CL when possible.\nHowever, I will take it back and use :\u003d since it\u0027s been commented more than once by different reviewers. Thanks,",
+      "parentUuid": "9ea96b67_eab6f504",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "771b1ae0_12ed8433",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-02T14:51:35Z",
       "side": 1,
       "message": "could you simplify the logic by splitting this into \"setup lacros\" and \"calculating app\" ?\n\nSo, defer l.Close(ctx) can be very closer to lacros.Setup which is a common pattern.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427db6bc_9b4f4629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-02T20:05:02Z",
+      "side": 1,
+      "message": "Done. Note: it still may need to check a condition whether the lacros instance is nil or not before l.Close(ctx) it seems, which doesn\u0027t really help reduce the lines but just reorder them.",
+      "parentUuid": "771b1ae0_12ed8433",
       "range": {
         "startLine": 80,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c5ed44_0afa8c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-02T20:05:02Z",
+      "side": 1,
+      "message": "Done, and moved it up to the \"setting app\" post lacros.Setup. Let me know if it doesn\u0027t feel right.",
+      "parentUuid": "a41a4c91_f5e495aa",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "767a692d_b961c988",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-08-02T14:51:35Z",
       "side": 1,
       "message": "Instead, can we make this under /tmp directory, and let chronos own it?",
+      "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b2f2c2_3125e3eb",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-02T20:05:02Z",
+      "side": 1,
+      "message": "Done. Note: I noticed an in-flight CL (https://crrev.com/c/3057341) will let chronos own the user data dir once submitted. Some of those lines are copied here just to avoid merge conflict.",
+      "parentUuid": "767a692d_b961c988",
       "revId": "d5ad4d4191c61f0df9378e8cf432909be299ec73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
