@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1813fff_211afe7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_management.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-02T18:46:47Z",
+      "side": 1,
+      "message": "search",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "6aadd67bc8dfba9658318cc981bf1a5943fa8173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
