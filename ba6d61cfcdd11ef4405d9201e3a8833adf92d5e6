@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8223e74c_e5315836",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/data/remote_files_external.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-02T06:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44f0382_6b242730",
+      "revId": "ba6d61cfcdd11ef4405d9201e3a8833adf92d5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d205ae8e_95b2b29e",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-21T07:04:03Z",
       "side": 1,
       "message": "Hmm, I don\u0027t see these files in data/ ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "ba6d61cfcdd11ef4405d9201e3a8833adf92d5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b206fbca_457be643",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/remote_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-02T06:23:45Z",
+      "side": 1,
+      "message": "Done\nSorry I forgot to commit files.",
+      "parentUuid": "d205ae8e_95b2b29e",
       "range": {
         "startLine": 21,
         "startChar": 3,
