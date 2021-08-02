@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a9e642_1a67457d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T12:44:22Z",
+      "side": 1,
+      "message": "Thanks for the advice. Input tests are more complicated. We have started thinking of migrating to fixture as a whole. So I do not think we need a TODO here.",
+      "parentUuid": "ed251f27_7e739243",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "cbfbed3a4a01fbad5898996f602675e41dcb937a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2f05279_da240490",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-02T09:24:37Z",
       "side": 1,
       "message": "Preconditions are getting deprecated. Migrate to a suitable Fixture if available or add a TODO here.",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "cbfbed3a4a01fbad5898996f602675e41dcb937a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1736596_9e91fc43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T12:44:22Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "c2f05279_da240490",
       "range": {
         "startLine": 37,
         "startChar": 3,
