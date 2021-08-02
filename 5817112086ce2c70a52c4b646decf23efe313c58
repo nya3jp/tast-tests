@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd90423_5fbad0b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-02T18:33:00Z",
+      "side": 1,
+      "message": "Do we use -4 for much? Is -3 good enough?",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "5817112086ce2c70a52c4b646decf23efe313c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
