@@ -64,11 +64,21 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 		}
 	}()
 
+	// Leave a bit of time to clean up.
+	cleanUpCtx := ctx
+	cleanUpTime := 10 * time.Second
+	ctx, cancel := ctxutil.Shorten(cleanUpCtx, cleanUpTime)
+	defer cancel()
+
+	if err := config.SetUp(ctx); err != nil {
+		return appendErr(err, "failed to setup glbench config")
+	}
+	defer config.TearDown(cleanUpCtx)
+
 	// Logging the initial machine temperature.
 	if err := ReportTemperature(ctx, pv, "temperature_1_start"); err != nil {
 		appendErr(err, "failed to report temperature")
 	}
-
 	// Only setup benchmark mode if we are not in hasty mode.
 	if !config.IsHasty() {
 		// Make machine behaviour consistent.
@@ -81,16 +91,6 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 			}
 		}
 	}
-	// Leave a bit of time to clean up.
-	cleanUpCtx := ctx
-	cleanUpTime := 10 * time.Second
-	ctx, cancel := ctxutil.Shorten(cleanUpCtx, cleanUpTime)
-	defer cancel()
-
-	if err := config.SetUp(ctx); err != nil {
-		return appendErr(err, "failed to setup glbench config")
-	}
-	defer config.TearDown(cleanUpCtx)
 
 	// config.Run should run the
 	output, err := config.Run(ctx, preValue, outDir)
