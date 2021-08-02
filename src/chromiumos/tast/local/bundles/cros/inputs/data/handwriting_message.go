@@ -12,29 +12,22 @@ type handwritingMessage map[ime.Language]InputData
 // If the test data for the given input method can be found, ok is true.
 // If there is no match for the given input method, ok is false, and inputData is the zero value.
 func (message handwritingMessage) GetInputData(im ime.InputMethod) (InputData, bool) {
-	var inputData InputData
-
-	languageCode, ok := LanguageOfIME[im]
-	if !ok {
-		return inputData, false
-	}
-
-	inputData, ok = message[languageCode]
+	inputData, ok := message[im.HandwritingLanguage]
 	return inputData, ok
 }
 
 // HandwritingMessageHello defines hello handwriting messages of input methods
 var HandwritingMessageHello = handwritingMessage{
-	ime.LANGUAGE_EN: {
+	ime.LanguageEn: {
 		HandwritingFile: "handwriting_en_hello.svg",
 		ExpectedText:    "hello",
 	},
-	ime.LANGUAGE_ZH_HANS: {
-		HandwritingFile: "handwriting_zh_hans_hello.svg",
-		ExpectedText:    "你好",
-	},
-	ime.LANGUAGE_JA: {
+	ime.LanguageJa: {
 		HandwritingFile: "handwriting_ja_hello.svg",
 		ExpectedText:    "こんにちは",
+	},
+	ime.LanguageZhHans: {
+		HandwritingFile: "handwriting_zh_hans_hello.svg",
+		ExpectedText:    "你好",
 	},
 }
