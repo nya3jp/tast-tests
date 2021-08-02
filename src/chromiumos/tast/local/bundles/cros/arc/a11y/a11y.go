@@ -172,7 +172,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 			if err := func() error {
 				application := nodewith.Name(activity.Title).Role(role.Application)
-				if err = cvconn.WaitForFocusedNode(ctx, tconn, application); err != nil {
+				if err = cvconn.WaitForFocusedNode(ctx, application); err != nil {
 					return errors.Wrap(err, "failed to wait for initial ChromeVox focus")
 				}
 

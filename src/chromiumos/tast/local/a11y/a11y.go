@@ -95,7 +95,7 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 }
 
 // focusedNode returns the currently focused node of ChromeVox.
-func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
+func (cv *ChromeVoxConn) focusedNode(ctx context.Context) (*uiauto.NodeInfo, error) {
 	rangeIsValid := false
 	if err := cv.Eval(ctx, "!!ChromeVoxState.instance.getCurrentRange()", &rangeIsValid); err != nil {
 		return nil, errors.Wrap(err, "failed to check for current range")
@@ -119,11 +119,11 @@ func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn
 
 // WaitForFocusedNode polls until the properties of the focused node matches the finder.
 // timeout specifies the timeout to use when polling.
-func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder) error {
-	ui := uiauto.New(tconn)
+func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, finder *nodewith.Finder) error {
+	ui := uiauto.New(&chrome.TestConn{Conn: cv.Conn})
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := cv.focusedNode(ctx, tconn)
+		focused, err := cv.focusedNode(ctx)
 		if err != nil {
 			return testing.PollBreak(err)
 		}

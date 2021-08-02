@@ -126,7 +126,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 
 	// Wait for ChromeVox to focus the root web area.
 	rootWebArea := nodewith.Role(role.RootWebArea).First()
-	if err = cvconn.WaitForFocusedNode(ctx, tconn, rootWebArea); err != nil {
+	if err = cvconn.WaitForFocusedNode(ctx, rootWebArea); err != nil {
 		s.Error("Failed to wait for initial ChromeVox focus: ", err)
 	}
 
