@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c17a7b_7192fc25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-02T04:10:13Z",
+      "side": 1,
+      "message": "I roughly went through the CL stack, and I feel like AxRouter has mostly separated set of configure, options, setup flow, etc. The only things shared with the old gale setup are the DUT operations and most TestFixture method calls will just fail in AxRouter setup.\n\nGiven that, I wonder if it might be cleaner to:\n- Extract the DUT only logics to a shared object/package e.g. WifiClient in CL:3054412\n  - options like ConnOption will become part of WifiClient and intrinsically shared\n- Define another AxTestFixture for the AxRouter setup instead of making them in a single TestFixture\n  - .*TestFixture will handle the Router management and interaction between Router and DUT, so might be more clear to separate gale and AxRouter as few codes could be shared.\n\nWDYT?\n\n(btw, I\u0027m not yet familiar with openWRT, so I\u0027m not sure if we\u0027ll want to have it in the old TestFixture or not)",
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91a0848_471a5a47",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-02T04:10:13Z",
+      "side": 1,
+      "message": "I feel like the name is too general. It\u0027s router.Config but can only be used in AxRouter.ApplyRouterSettings. Maybe AxRouterConfig is more suitable.\n\nOr, maybe we should even move all these into a axrouter package. Quite a few enums or options could be confusing as we have similar ones in hostapd. If it\u0027s hard to unify the settings, we should make them clear that these are only for AxRouter and hostapd ones are for LegacyRouter.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5281ec_cd45727e",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-02T04:10:13Z",
+      "side": 1,
+      "message": "It is quite implicit that the parameters to restore are stored here, especially when the input Config is passed by value instead of pointer.\n\nHow about having it as return value?",
+      "range": {
+        "startLine": 68,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
