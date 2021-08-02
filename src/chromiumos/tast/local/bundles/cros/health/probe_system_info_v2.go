@@ -6,8 +6,12 @@ package health
 
 import (
 	"context"
+	"strings"
 
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -67,10 +71,71 @@ func init() {
 	})
 }
 
+func (info *osVersion) validate(ctx context.Context) error {
+	lsb, err := lsbrelease.Load()
+	if err != nil {
+		return errors.Wrap(err, "failed to get lsb-release info")
+	}
+	if err := utils.CompareString(lsb[lsbrelease.Milestone], info.ReleaseMilestone); err != nil {
+		return errors.Wrap(err, "ReleaseMilestone")
+	}
+	if err := utils.CompareString(lsb[lsbrelease.BuildNumber], info.BuildNumber); err != nil {
+		return errors.Wrap(err, "BuildNumber")
+	}
+	if err := utils.CompareString(lsb[lsbrelease.PatchNumber], info.PatchNumber); err != nil {
+		return errors.Wrap(err, "PatchNumber")
+	}
+	if err := utils.CompareString(lsb[lsbrelease.ReleaseTrack], info.ReleaseChannel); err != nil {
+		return errors.Wrap(err, "ReleaseChannel")
+	}
+	return nil
+}
+
+func validateBootMode(got string) error {
+	v, err := utils.ReadFile("/proc/cmdline")
+	if err != nil {
+		return err
+	}
+	if got == "Unknown" || v == nil || !strings.Contains(*v, got) {
+		return errors.Wrapf(err, "BootMode is not in /proc/cmdline, got: %v, /proc/cmdline: %v", got, utils.PtrToStr(v))
+	}
+	return nil
+}
+
+func (info *osInfo) validate(ctx context.Context) error {
+	const (
+		cfgCodeName      = "/name"
+		cfgMarketingName = "/arc/build-properties/marketing-name"
+	)
+	if err := utils.CompareStringPtrWithCrosConfig(ctx, cfgCodeName, &info.CodeName); err != nil {
+		return errors.Wrap(err, "CodeName")
+	}
+	if err := utils.CompareStringPtrWithCrosConfig(ctx, cfgMarketingName, info.MarketingName); err != nil {
+		return errors.Wrap(err, "MarketingName")
+	}
+	if err := info.OsVersion.validate(ctx); err != nil {
+		return err
+	}
+	if err := validateBootMode(info.BootMode); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (info *systemInfo) validate(ctx context.Context) error {
+	if err := info.OsInfo.validate(ctx); err != nil {
+		return err
+	}
+	return nil
+}
+
 func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategorySystem2}
 	var info systemInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to get system info v2 telemetry info: ", err)
+	}
+	if err := info.validate(ctx); err != nil {
+		s.Fatal("Validation failed: ", err)
 	}
 }
