@@ -16,6 +16,24 @@
       "message": "Thanks! And IIUC, the archived file only need to be put in the code repository (and no need to be uploaded somewhere else) right?",
       "revId": "7aec7d2385c83b1859725228d727aeef43e5ea5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00d02d3_afccda0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-08-02T07:41:22Z",
+      "side": 1,
+      "message": "Actually, you need to upload the .tbz file to gs://chromiumos-test-assets-public/tast/cros/arc/\nPlease see the updated instruction.",
+      "parentUuid": "73e27f91_687ccf12",
+      "revId": "7aec7d2385c83b1859725228d727aeef43e5ea5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
