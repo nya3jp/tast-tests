@@ -16,6 +16,41 @@
       "message": "Hi Shuhei!\n\nI was wondering if you could give some advice about using the inotify package. It doesn\u0027t seem to be available to be imported in this directory (I tried several variations of \"github.com/fsnotify/fsnotify\" and \"gopkg.in/fsnotify.v0\"). How difficult would it be to add this package, or do you have any advice for an alternate way of doing this? I\u0027m currently working on a dbus solution.",
       "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3ac429_6b8ef108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-02T03:31:38Z",
+      "side": 1,
+      "message": "It\u0027s documented here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Use-of-third-party-libraries\n\nI guess it will be straightforward to add the fsnotify module as its only dependency is x/sys.",
+      "parentUuid": "ea5b1418_ccf80e25",
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e86d14c_a2eba08e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-02T03:31:38Z",
+      "side": 1,
+      "message": "Please use `repo upload` to upload the change. It runs pre-upload checks that catch popular issues before reviews.\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Upload-changes",
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
