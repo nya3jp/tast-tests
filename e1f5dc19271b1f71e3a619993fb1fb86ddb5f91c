@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f2d5ac_62486831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-02T17:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6f0272_3693b80b",
+      "range": {
+        "startLine": 447,
+        "startChar": 48,
+        "endLine": 447,
+        "endChar": 54
+      },
+      "revId": "e1f5dc19271b1f71e3a619993fb1fb86ddb5f91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94d601cb_68667840",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-02T06:18:08Z",
       "side": 1,
       "message": "nit: deletes.\n\nNot sure why you used switches, then delete.",
+      "range": {
+        "startLine": 509,
+        "startChar": 48,
+        "endLine": 509,
+        "endChar": 54
+      },
+      "revId": "e1f5dc19271b1f71e3a619993fb1fb86ddb5f91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e942e02_8b055e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-02T17:16:30Z",
+      "side": 1,
+      "message": "This is the typo and then copied, I believe. Fixed.",
+      "parentUuid": "94d601cb_68667840",
       "range": {
         "startLine": 509,
         "startChar": 48,
