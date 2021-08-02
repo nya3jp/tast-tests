@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f331de4_73a91f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-02T19:07:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we ensure tlsdated is running at the end of the test?",
+      "revId": "387b13347156ba369c46e2b9cb38f6ea77281551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
