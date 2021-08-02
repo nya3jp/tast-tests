@@ -251,20 +251,20 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		roomSize := conf.roomSize
 		participantNumber := int(num)
 		if participantNumber == 1 {
-			return errors.Wrapf(err, "there are no other participants in the conference room, meeting participant number got %v; want %v", num, roomSize)
+			return ParticipantError(errors.Wrapf(err, "there are no other participants in the conference room %q; meeting participant number got %d; want %d", room, num, roomSize))
 		}
 		switch roomSize {
 		case ClassRoomSize:
 			if participantNumber < roomSize {
-				return errors.Wrapf(err, "meeting participant number got %v; want at least %v", num, roomSize)
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want at least %d", room, num, roomSize))
 			}
 		case SmallRoomSize, LargeRoomSize:
 			if participantNumber != roomSize && participantNumber != roomSize+1 {
-				return errors.Wrapf(err, "meeting participant number got %v; want %v ~ %v", num, roomSize, roomSize+1)
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d ~ %d", room, num, roomSize, roomSize+1))
 			}
 		case TwoRoomSize:
 			if participantNumber != roomSize {
-				return errors.Wrapf(err, "meeting participant number got %v; want %v", num, roomSize)
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d", room, num, roomSize))
 			}
 		}
 
@@ -420,8 +420,13 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
 		)(ctx)
 	}
-	if err := ui.LeftClick(nodewith.Name("Pin yourself to your main screen."))(ctx); err != nil {
-		return errors.Wrap(err, "failed to switch to your main screen")
+	pinBtn := nodewith.Name("Pin yourself to your main screen.")
+	if err := ui.Exists(pinBtn)(ctx); err != nil {
+		// If there are no participants in the room, the pin button will not be displayed.
+		return ParticipantError(errors.Wrap(err, "failed to find the button to pin to main screen; other participants might have left"))
+	}
+	if err := ui.LeftClick(pinBtn)(ctx); err != nil {
+		return errors.Wrap(err, "failed to pin to main screen")
 	}
 
 	for _, background := range []string{blurBackground, skyBackground, turnOffBackground} {
