@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"path/filepath"
@@ -45,14 +46,28 @@ func init() {
 			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
 			"ui.meet_account",
 			"ui.meet_password",
+
 			// Static Google meet rooms with different participant number have been created.
 			// They have different URLs. ui.meet_url can be used to run a specific subtest but
 			// assigning urls to different vars will be easier when running with ui.GoogleMeetCUJ.*.
+			// Each of the folliwng vars can be assigned with mutiple URLs, seperated by comma.
+			// Test can retry another url if one fails.
+			// - Primary URLs: use these URLs first.
 			"ui.meet_url",
 			"ui.meet_url_two",
 			"ui.meet_url_small",
 			"ui.meet_url_large",
 			"ui.meet_url_class",
+			// - Secondary URLs: only used when primary ones fail.
+			"ui.meet_url_secondary",
+			"ui.meet_url_two_secondary",
+			"ui.meet_url_small_secondary",
+			"ui.meet_url_large_secondary",
+			"ui.meet_url_class_secondary",
+
+			// The total timeout and inteval when trying different URLs if one fails.
+			"ui.meet_url_retry_timeout",
+			"ui.meet_url_retry_interval",
 			// Zoom meet bot server address.
 			"ui.zoom_bot_server",
 			"ui.zoom_bot_token",
@@ -65,6 +80,10 @@ type ConferenceService struct {
 }
 
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
+	const (
+		defaultMeetRetryTimeout  = 40 * time.Minute
+		defaultMeetRetryInterval = 2 * time.Minute
+	)
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
 		return nil, errors.New("failed to get outdir from context")
@@ -90,106 +109,208 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		return nil, errors.New("failed to get variable ui.meet_password")
 	}
 
-	var urlVar string
+	var urlVar, urlSeondaryVar string
 	switch req.RoomSize {
 	case conference.SmallRoomSize:
 		urlVar = "ui.meet_url_small"
+		urlSeondaryVar = "ui.meet_url_small_secondary"
 	case conference.LargeRoomSize:
 		urlVar = "ui.meet_url_large"
+		urlSeondaryVar = "ui.meet_url_large_secondary"
 	case conference.ClassRoomSize:
 		urlVar = "ui.meet_url_class"
+		urlSeondaryVar = "ui.meet_url_class_secondary"
 	default:
 		urlVar = "ui.meet_url_two"
+		urlSeondaryVar = "ui.meet_url_two_secondary"
 	}
-	meetURL, ok := s.s.Var(urlVar)
-	if !ok {
-		// if specific meeting url is not found, try the general meet url var.
-		if meetURL, ok = s.s.Var("ui.meet_url"); !ok {
-			return nil, errors.Errorf("failed to get variable ui.meet_url or %s", urlVar)
+	varToURLs := func(varName, generalVarName string) []string {
+		var urls []string
+		meetURL, ok := s.s.Var(varName)
+		if !ok {
+			// If specific meeting url is not found, try the general meet url var.
+			if meetURL, ok = s.s.Var(generalVarName); !ok {
+				testing.ContextLogf(ctx, "Variable %s or %s is not provided", varName, generalVarName)
+				return urls
+			}
 		}
+		inputURLs := strings.Split(meetURL, ",")
+		// Ignore empty urls.
+		for _, url := range inputURLs {
+			s := strings.TrimSpace(url)
+			if s == "" {
+				continue
+			}
+			urls = append(urls, s)
+		}
+		return urls
 	}
+	meetURLs := varToURLs(urlVar, "ui.meet_url")
+	if len(meetURLs) == 0 {
+		// Primary meet URL is mandatory.
+		return nil, errors.New("no valid primary meet URLs are given")
+	}
+	meetSecURLs := varToURLs(urlSeondaryVar, "ui.meet_url_secondary")
+	// Shuffle the URLs so different tests can try different URLs with random order.
+	rand.Seed(time.Now().UnixNano())
+	rand.Shuffle(len(meetURLs), func(i, j int) { meetURLs[i], meetURLs[j] = meetURLs[j], meetURLs[i] })
+	rand.Shuffle(len(meetSecURLs), func(i, j int) { meetSecURLs[i], meetSecURLs[j] = meetSecURLs[j], meetSecURLs[i] })
+	// Put secondary URLs to the tail.
+	meetURLs = append(meetURLs, meetSecURLs...)
+	testing.ContextLog(ctx, "Google meet URLs: ", meetURLs)
 
-	testing.ContextLog(ctx, "Start google meet scenario")
-	cr, err := chrome.New(ctx,
-		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
-		// Remove this when new UI becomes default.
-		chrome.EnableFeatures("WebUITabStrip"),
-		chrome.KeepState(),
-		chrome.ARCSupported(),
-		chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
+	varToDuration := func(name string, defaultValue time.Duration) (time.Duration, error) {
+		str, ok := s.s.Var(name)
+		if !ok {
+			return defaultValue, nil
+		}
+
+		val, err := strconv.Atoi(str)
+		if err != nil {
+			return 0, errors.Wrapf(err, "failed to parse integer variable %v", name)
+		}
+
+		return time.Duration(val) * time.Minute, nil
+	}
+	meetRetryTimeout, err := varToDuration("ui.meet_url_retry_timeout", defaultMeetRetryTimeout)
 	if err != nil {
 		return nil, err
 	}
-
-	tconn, err := cr.TestAPIConn(ctx)
+	meetRetryInterval, err := varToDuration("ui.meet_url_retry_interval", defaultMeetRetryInterval)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to test API")
+		return nil, err
 	}
+	testing.ContextLogf(ctx, "Retry vars: meetRetryTimeout %v, meetRetryInterval %v", meetRetryTimeout, meetRetryInterval)
 
-	var tabletMode bool
-	if mode, ok := s.s.Var("ui.cuj_mode"); ok {
-		tabletMode = mode == "tablet"
-		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	run := func(ctx context.Context, roomURL string) error {
+		testing.ContextLog(ctx, "Start google meet scenario with meet url ", roomURL)
+		cr, err := chrome.New(ctx,
+			// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
+			// Remove this when new UI becomes default.
+			chrome.EnableFeatures("WebUITabStrip"),
+			chrome.KeepState(),
+			chrome.ARCSupported(),
+			chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to enable tablet mode to %v", tabletMode)
+			return err
 		}
-		defer cleanup(ctx)
-	} else {
-		// Use default screen mode of the DUT.
-		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
+		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to get DUT default screen mode")
+			return errors.Wrap(err, "failed to connect to test API")
 		}
+
+		var tabletMode bool
+		if mode, ok := s.s.Var("ui.cuj_mode"); ok {
+			tabletMode = mode == "tablet"
+			cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+			if err != nil {
+				return errors.Wrapf(err, "failed to enable tablet mode to %v", tabletMode)
+			}
+			defer cleanup(ctx)
+		} else {
+			// Use default screen mode of the DUT.
+			tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to get DUT default screen mode")
+			}
+		}
+		testing.ContextLog(ctx, "Running test with tablet mode: ", tabletMode)
+
+		if req.ExtendedDisplay {
+			// Unset mirrored display so two displays can show different information.
+			if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to unset mirror display")
+			}
+			// Make sure there are two displays on DUT.
+			// This procedure must be performed after display mirror is unset. Otherwise we can only
+			// get one display info.
+			infos, err := display.GetInfo(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to get display info")
+			}
+
+			if len(infos) != 2 {
+				return errors.Errorf("expect 2 displays but got %d", len(infos))
+			}
+		}
+
+		prepare := func(ctx context.Context) (string, conference.Cleanup, error) {
+			cleanup := func(ctx context.Context) (err error) {
+				// Nothing to clean up at the end of Google Meet conference.
+				return nil
+			}
+			if roomURL == "" {
+				return "", nil, errors.New("the conference invite link is empty")
+			}
+			return roomURL, cleanup, nil
+		}
+
+		// Creates a Google Meet conference instance which implements conference.Conference methods
+		// which provides conference operations.
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword)
+		defer gmcli.End(ctx)
+		// Shorten context a bit to allow for cleanup if Run fails.
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+
+		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
+			// Dump the UI tree to the service/faillog subdirectory.
+			// Don't dump directly into outDir
+			// because it might be overridden by the test faillog after pulled back to remote server.
+			faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
+			return errors.Wrap(err, "failed to run Google Meet conference")
+		}
+		return nil
 	}
-	testing.ContextLog(ctx, "Running test with tablet mode: ", tabletMode)
 
-	if req.ExtendedDisplay {
-		// Unset mirrored display so two displays can show different information.
-		if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
-			return nil, errors.Wrap(err, "failed to unset mirror display")
+	runWithMeetUrls := func(ctx context.Context) error {
+		var err error
+		for _, url := range meetURLs {
+			testing.ContextLog(ctx, "URL to be tested in the meet url list : ", url)
+			err = run(ctx, url)
+			if err == nil {
+				return nil
+			}
+			if !conference.IsParticipantError(err) {
+				return err
+			}
 		}
-		// Make sure there are two displays on DUT.
-		// This procedure must be performed after display mirror is unset. Otherwise we can only
-		// get one display info.
-		infos, err := display.GetInfo(ctx, tconn)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to get display info")
+		return err
+	}
+	// If meetRetryTimeout equal to 0, don't do any retry.
+	if meetRetryTimeout == 0 {
+		testing.ContextLog(ctx, "Start running meet scenario")
+		if err := runWithMeetUrls(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failed to run conference: %+v", err) // Print error with stack trace.
+			return nil, err
 		}
-
-		if len(infos) != 2 {
-			return nil, errors.Errorf("expect 2 displays but got %d", len(infos))
-		}
+		return &empty.Empty{}, nil
 	}
 
-	prepare := func(ctx context.Context) (string, conference.Cleanup, error) {
-		cleanup := func(ctx context.Context) (err error) {
-			// Nothing to clean up at the end of Google Meet conference.
-			return nil
+	var lastError error
+	startTime := time.Now()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := runWithMeetUrls(ctx); err != nil {
+			elapsedTime := time.Now().Sub(startTime)
+			if elapsedTime < meetRetryTimeout {
+				// Record the complete run result if the failure is not because of timeout.
+				lastError = err
+			}
+			if conference.IsParticipantError(err) {
+				testing.ContextLogf(ctx, "Wait %v and try to run meet scenario again", meetRetryInterval)
+				return err
+			}
+			return testing.PollBreak(err) // Break if error is not participant number related.
 		}
-		if meetURL == "" {
-			return "", nil, errors.New("the conference invite link is empty")
+		return nil
+	}, &testing.PollOptions{Timeout: meetRetryTimeout, Interval: meetRetryInterval}); err != nil {
+		// Return test failure reason of last complete run.
+		if lastError != nil {
+			err = lastError
 		}
-		return meetURL, cleanup, nil
-	}
-
-	// Creates a Google Meet conference instance which implements conference.Conference methods
-	// which provides conference operations.
-	gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword)
-	defer gmcli.End(ctx)
-	// Shorten context a bit to allow for cleanup if Run fails.
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer cancel()
-
-	if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
 		testing.ContextLogf(ctx, "Failed to run conference: %+v", err) // Print error with stack trace.
-
-		// Dump the UI tree to the service/faillog subdirectory.
-		// Don't dump directly into outDir
-		// because it might be overridden by the test faillog after pulled back to remote server.
-		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
-		return nil, errors.Wrap(err, "failed to run MeetConference")
+		return nil, err
 	}
-
 	return &empty.Empty{}, nil
 }
 
