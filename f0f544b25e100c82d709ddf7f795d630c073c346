@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e918ec51_4d83b5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T13:13:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "526e20cb_d84fcfcf",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2206bcda_f962362c",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I wanted to factor out the possibility that the error \"no such file or directory\" means that the directory name is wrong for some reason.\nIf we have correct directory, we can say that this is probably due to IO error. If not, there\u0027s some other cause.\n\nOn the other hand, I don\u0027t think this is the best way to investigate the failure. If you have better idea to improve this, please let me know.",
       "parentUuid": "2206bcda_f962362c",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e9fa7a_ac33b59a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T13:13:41Z",
+      "side": 1,
+      "message": "It might be possible that Downloads folder does not exist or it is located directly under user path (without MyFiles). Maybe just print all files under cryptohome dir?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go;l\u003d26?q\u003dtast-tests%20Downloads",
+      "parentUuid": "b95d763a_d0e36a8b",
       "range": {
         "startLine": 126,
         "startChar": 0,
