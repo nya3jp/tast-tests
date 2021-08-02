@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1150cf24_61e0a8b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-02T19:11:23Z",
+      "side": 1,
+      "message": "It looks like fsnotify is already in third_party/chromiumos-overlay, but I still can\u0027t use it in the tast test as \"fsnotify\"\n\nCan you help me troubleshoot this?",
+      "parentUuid": "bb3ac429_6b8ef108",
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e86d14c_a2eba08e",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 7
