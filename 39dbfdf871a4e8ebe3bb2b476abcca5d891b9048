@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6af1406_75695c63",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-02T04:16:56Z",
+      "side": 1,
+      "message": "As we discussed, this should be fixed on the product side of things, and this is a stopgap solution. Could you file a bug for this, and add a TODO to remove these once it\u0027s fixed for each usage of this function.",
+      "revId": "39dbfdf871a4e8ebe3bb2b476abcca5d891b9048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
