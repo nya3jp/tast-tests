@@ -808,6 +808,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40a73c50_0405ce87",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "Sorry, you are right here. Power manager internally operates with floats and expose floats via D-Bus:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/power_manager/tools/dump_power_status.cc;l\u003d77?q\u003ddisplay_battery_percentage\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform2%2Fpower_manager%2F\n\nSo, I suppose we should operate with floats everywhere then to be consistent?",
+      "parentUuid": "c3d8d37d_621c6c55",
+      "range": {
+        "startLine": 133,
+        "startChar": 105,
+        "endLine": 133,
+        "endChar": 112
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82849faa_89dd3e83",
         "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
         "patchSetId": 11

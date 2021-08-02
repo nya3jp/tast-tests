@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5586859_ea54e1ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "In general looks good, but please pay attention to consistency within your CL and within existing files/packages. Please apply some comments in other CLs as well.",
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0034cf_3831b40e",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: remove this from comment",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407b75b3_4923c086",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: reports?",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412fe8fe_e5fcb54e",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: it can be just \"min and max percentages\". If possible, try to avoid variable names in comments.",
+      "range": {
+        "startLine": 20,
+        "startChar": 76,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9195597_a6a31575",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: This function",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c44c146_530acf59",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: initiates",
+      "range": {
+        "startLine": 23,
+        "startChar": 64,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903a63df_1d30a9c6",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: maybe it makes sense to add from/to percentages for more info?",
+      "range": {
+        "startLine": 54,
+        "startChar": 35,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4da1e0_53c0269b",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "should this be before line 62 for consistency?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2378f33_97dea039",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: please allocate it at the beginning of the function. If context at the beginning of the function cannot be shortened by 5 seconds, there is no sense to continue, so you will fail faster",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f84cafe_5a30cae8",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: should we treat this differently?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614daf3c_55d5b9ae",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: maybe log \"from\" and then \"to\" ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 40,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d609df9a_23dc2f2a",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: please wrap it\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\n\n```\nIt is recommended to wrap when you cross package boundary, which represents some kind of barrier beneath which everything is an implementation detail. Otherwise it is fine to return an error without wrapping, if you can\u0027t really add much context to make debugging easier. Use your best judgement to decide wrap or not.\n```",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1f93d2_0f2fd35e",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: be consistent with space between number and % symbol",
+      "range": {
+        "startLine": 177,
+        "startChar": 59,
+        "endLine": 177,
+        "endChar": 60
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33a294f_bee192d8",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: and",
+      "range": {
+        "startLine": 184,
+        "startChar": 14,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7a3ee8_301844a6",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: what about acConnected/pdConnected?",
+      "range": {
+        "startLine": 185,
+        "startChar": 44,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd66da9_275d90bd",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit1: please move this method before TurnOnDisplays, so all PowerManager related methods will sit together.\n\nnit2: usually D-Bus related methods have the same name as underlying D-Bus call, e.g. GetScreenBrightnessPercent for this method",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67e6722_5c4b52dd",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: be consistent within package\n\nfailed to call GetScreenBrightnessPercent D-Bus method",
+      "range": {
+        "startLine": 83,
+        "startChar": 37,
+        "endLine": 83,
+        "endChar": 90
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f101ec73_8c5c9168",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 52
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2d9862_308f961d",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T11:03:01Z",
+      "side": 1,
+      "message": "nit: looks like caller already add such info to the error message",
+      "range": {
+        "startLine": 100,
+        "startChar": 60,
+        "endLine": 100,
+        "endChar": 70
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
