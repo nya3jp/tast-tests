@@ -15,7 +15,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -387,12 +386,6 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, exePath)
 	cmd.Stdout = f
 	cmd.Stderr = f
-	// Tests such as kms_flip requires Suspend and Wake-up which is achieved using the RTC wake-up alarm.
-	// tlsdated is holding /dev/rtc so IGT fails to take the lock and set a wake up alarm. Hence, it
-	// is required to stop the tlsdated before running the IGT test.
-	if err := upstart.StopJob(ctx, "tlsdated"); err != nil {
-		s.Fatal("Failed to stop tlsdated: ", err)
-	}
 	err = cmd.Run()
 	exitErr, isExitErr := err.(*exec.ExitError)
 
