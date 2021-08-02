@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57eb2eb3_b0f1a55d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:25:24Z",
+      "side": 1,
+      "message": "LGTM % question to Bao-Duy.",
+      "revId": "44798e14aca202bdc5a95a0c532603ccb08fe547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495b231d_d1b58313",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:25:24Z",
+      "side": 1,
+      "message": "not sure if UK-en and US-en are same language. @Bao-Duy",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "44798e14aca202bdc5a95a0c532603ccb08fe547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
