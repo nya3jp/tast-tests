@@ -34,6 +34,24 @@
       "parentUuid": "fc9a7ae7_17670e9f",
       "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32acc8d_fbfaa97f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-02T15:22:33Z",
+      "side": 1,
+      "message": "Will do! I misunderstood the owners file a bit but that makes much more sense now. One of my team members is also an owner so I should be able to get it all settled that way. Thanks for the help!",
+      "parentUuid": "98d6bde4_089b7358",
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
