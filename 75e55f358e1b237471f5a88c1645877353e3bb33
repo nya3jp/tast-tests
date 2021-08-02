@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66625448_8c85f751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-08-02T08:20:27Z",
+      "side": 1,
+      "message": "Why don\u0027t we just use the following? I think `PtrToStr` handles the case well?\n```\nreturn CompareString(PtrToStr(expected), PtrToStr(got))\n```",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "75e55f358e1b237471f5a88c1645877353e3bb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
