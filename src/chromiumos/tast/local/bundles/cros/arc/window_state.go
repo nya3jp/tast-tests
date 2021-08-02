@@ -47,13 +47,8 @@ var clamshellWindowStateTests = []windowStateTest{
 var tabletWindowStateTests = []windowStateTest{
 	{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen, ash.WindowStateFullscreen},
 	{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized, ash.WindowStateMinimized},
+	{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateNormal, arc.WindowStateMaximized, ash.WindowStateMaximized},
 	{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, arc.WindowStateFullscreen, ash.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized, ash.WindowStateMinimized},
-}
-
-// tabletWindowStateTestsForP contains list of tablet mode test cases that are only for P.
-// In R or later, freeform mode in tablet is no longer supported.
-var tabletWindowStateTestsForP = []windowStateTest{
-	{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized, ash.WindowStateMaximized},
 	{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, arc.WindowStateFullscreen, ash.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateMaximized, ash.WindowStateMaximized},
 	{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized, ash.WindowStateMinimized},
 }
@@ -104,7 +99,7 @@ func init() {
 			Val: windowStateParams{
 				true, // Tablet Mode.
 				1,    // Num test iterations.
-				append(tabletWindowStateTests, tabletWindowStateTestsForP...),
+				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -120,7 +115,7 @@ func init() {
 			Val: windowStateParams{
 				true, // Tablet Mode.
 				25,   // Num test iterations.
-				append(tabletWindowStateTests, tabletWindowStateTestsForP...),
+				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
