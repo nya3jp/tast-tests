@@ -34,6 +34,24 @@
       "parentUuid": "f9e9a99c_1b75e459",
       "revId": "76e8ba37a35962a1214fc5a2d3af59cdbf074d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c091fe9_d7449a87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-02T12:50:51Z",
+      "side": 1,
+      "message": "there might be some overhead without reflection, but code will be much easier and more readable IMO. Can you prepare alternative CL so we will be able to compare both approaches?\n\nAlso, reflection mostly use in Tast for deep comparison:\nhttps://source.chromium.org/search?q\u003dtast-tests%20%22reflect.%22\u0026start\u003d1",
+      "parentUuid": "7211efbc_615ce214",
+      "revId": "76e8ba37a35962a1214fc5a2d3af59cdbf074d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
