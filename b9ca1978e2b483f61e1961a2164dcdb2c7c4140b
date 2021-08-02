@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4407996_f6d7a42d",
+        "filename": "src/chromiumos/tast/local/input/voice/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-02T00:52:28Z",
+      "side": 1,
+      "message": "I think it would be easier to just migrate the library to uiauto? Looks like it\u0027s only one file, and the API doesn\u0027t even involve any findparams, so it should be really easy to migrate.",
+      "parentUuid": "e465e077_1f498b73",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "b9ca1978e2b483f61e1961a2164dcdb2c7c4140b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b0df2c3_9c57449d",
         "filename": "src/chromiumos/tast/local/input/voice/audio.go",
         "patchSetId": 1
