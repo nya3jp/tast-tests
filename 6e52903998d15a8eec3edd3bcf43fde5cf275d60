@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f35f3576_0b3e9d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-02T02:44:28Z",
+      "side": 1,
+      "message": "maybe name this validateVKTypingInField",
+      "range": {
+        "startLine": 302,
+        "startChar": 29,
+        "endLine": 302,
+        "endChar": 46
+      },
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f946e13_2478440c",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 3
@@ -14,6 +37,52 @@
       "writtenOn": "2021-08-02T01:32:26Z",
       "side": 1,
       "message": "Is this a function specific to this test? Should it be in a library?",
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c59217_e219d320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-02T02:44:28Z",
+      "side": 1,
+      "message": "This function looks like it would also work for switching from the Emoji/Voice/Multipaste keyboard back to the regular keyboard\n\nCould be added to Library.",
+      "range": {
+        "startLine": 366,
+        "startChar": 10,
+        "endLine": 366,
+        "endChar": 62
+      },
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96d3a48_501d4bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-02T02:44:28Z",
+      "side": 1,
+      "message": "Note: For password fields, there should be no \"SwitchToVoiceInput\" / \"SwitchToHandwriting\" button, so if WAI, I think this test will automatically fail.\n\nCould we check that those buttons do not exist if the field type is password?",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 65
+      },
       "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
