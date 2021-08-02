@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d29898c_b8fd086d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25f1030_0a3cdc54",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbded05f_b451d900",
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "ditto.",
       "parentUuid": "dbded05f_b451d900",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ec8f77_015f65f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38ef4d41_3bcec673",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -225,6 +273,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41567f06_162c4676",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "This function does the same thing as Capture(). In L28, the Run command uses testexec.DumpLogOnError, which will log stderr when capturing a screenshot fails — which is exactly what this function is meant to accomplish.\n\nUnless we have a specific reason to include stderr in the return error, let\u0027s avoid creating unnecessary code and use the existing Capture().",
+      "parentUuid": "66940d1f_73a6832c",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ec0930_1df5a0ad",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f5c2ce6_96d78b3f",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3718ed74_f6966c10",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 2
@@ -312,6 +408,30 @@
         "startChar": 1,
         "endLine": 37,
         "endChar": 4
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0490be0c_58bd7c1b",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bbc2888c_202c0561",
+      "range": {
+        "startLine": 37,
+        "startChar": 62,
+        "endLine": 37,
+        "endChar": 76
       },
       "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -542,6 +662,30 @@
       "side": 1,
       "message": "Replaced with h :\u003d s.PreValue().(*pre.Value).Helper",
       "parentUuid": "90f67493_ac2291e5",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e25025c_0e845ec9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4138ad5a_84a2313a",
       "range": {
         "startLine": 50,
         "startChar": 35,
@@ -824,6 +968,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "405ad8f4_6a77d424",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Sounds appropriate to me.",
+      "parentUuid": "e50cac5b_b33509fd",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd74558b_acfd8276",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -963,6 +1131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1156d022_98b5f5ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea939ea9_98317ecf",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66cacc87_1f053a09",
@@ -1000,6 +1192,30 @@
       "side": 1,
       "message": "ditto.",
       "parentUuid": "66cacc87_1f053a09",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98300e61_bfdb5bd7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c60ffd8_8c414712",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -1129,6 +1345,30 @@
       "side": 1,
       "message": "Removed checkPowerMenuNoLogin, as checkPowerMenu has been modified to take in sign-in request as well.",
       "parentUuid": "d3b2a20b_66358217",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 24
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "405bad55_c78b369f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5869a224_cbd1b1eb",
       "range": {
         "startLine": 129,
         "startChar": 14,
@@ -1374,6 +1614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41986d4_4a6f00b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05cd3a4_3f4f1488",
+      "range": {
+        "startLine": 246,
+        "startChar": 51,
+        "endLine": 246,
+        "endChar": 56
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea25421b_af4616e8",
@@ -1562,6 +1826,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4428ea8_b5a5d610",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d926da01_3b06fc20",
+      "range": {
+        "startLine": 271,
+        "startChar": 66,
+        "endLine": 271,
+        "endChar": 81
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a288bb_99eec1ab",
@@ -1656,6 +1944,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72af9b48_40567b61",
+        "filename": "src/chromiumos/tast/services/cros/graphics/screenshot_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9867abab_34436ec3",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27ff20b3_3c8a2d66",
@@ -1687,6 +1999,24 @@
       "side": 1,
       "message": "I\u0027ve removed this particular RPC, and left the original power_menu_service as is inside Wilco, since this is probably in use by some other tests. \n\nI\u0027ve instead created another service under the UI folder, and named it as check_power_menu_service. In the check_power_menu_service.proto file, a new field was added to NewChrome(), so that it can handle a boolean sign-in request.",
       "parentUuid": "27ff20b3_3c8a2d66",
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5cf5f2_e7df19dd",
+        "filename": "src/chromiumos/tast/services/cros/wilco/power_menu_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0122a30e_fcb6778f",
       "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1728,6 +2058,30 @@
       "side": 1,
       "message": "IsPowerMenuPresentNoLogIn has been removed for the same reason as mentioned above.",
       "parentUuid": "16387127_317be36d",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb47160_22f0c288",
+        "filename": "src/chromiumos/tast/services/cros/wilco/power_menu_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "545b4a3d_2ce719cd",
       "range": {
         "startLine": 34,
         "startChar": 8,

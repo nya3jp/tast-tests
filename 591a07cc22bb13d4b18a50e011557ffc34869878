@@ -16,6 +16,97 @@
       "message": "Hello Greg and Jeremy,\n\nThanks for the code review comments. I\u0027ve learned quite much from making the edits, and become increasingly familiar with tast-writing. \n\nIn my next CLs, I\u0027ll make sure that I split changes into smaller ones, and submit separately. ",
       "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5636caa_c59febb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Thank you for the responsive clean-up!",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b017d05_da2507b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "nit/style: An if/else block would be simpler than a switch/case:\n\n    if p.requestLogin {\n        cr, err :\u003d chrome.New(ctx)\n        if err !\u003d nil {\n            return nil, err\n        }\n        p.cr \u003d cr\n    } else {\n        cr, err :\u003d chrome.New(ctx, chrome.KeepState(), chrome.NoLogin(), chrome.LoadSigninProfileExtension(req.Key))\n        if err !\u003d nil {\n            return nil, err\n        }\n        p.cr \u003d cr\n    }",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55a407a_5de40e84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "nit/style: Ditto the above: if/else is simpler",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79552a12_13538aa3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "Would this test work with the DevModeGBB precondition? If so, I would recommend suing that, since it\u0027s much stabler. But if the test exercises mode-switching behaviors, then DevModeGBB would not be appropriate.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/pre/pre.go;l\u003d50",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854e7ba5_254e4b80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-02T17:18:33Z",
+      "side": 1,
+      "message": "nit: Per go/tast-writing#When-to-log, avoid logging unnecessary information that would clutter the logs. In this case, I do not think we will ever need the original boot ID for debugging.",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
