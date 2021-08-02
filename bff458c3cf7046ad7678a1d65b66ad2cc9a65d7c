@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "983ad5e9_2aa5bd6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-02T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd76d46d_61846469",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "942cb117_5152186f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-29T08:41:59Z",
       "side": 1,
       "message": "a.Close is not called.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fc354f_2a62cdc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-02T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "942cb117_5152186f",
       "range": {
         "startLine": 46,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b4a4e2_07fd997d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-02T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dcbab9a_65318a37",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ed4118_b0664745",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89574eb1_d9a64199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-02T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06ed4118_b0664745",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81196b20_f17f13a6",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-07-29T08:41:59Z",
       "side": 1,
       "message": "This check is strange in several ways.\n\n1. We don\u0027t check errors from this method.\n2. This method does not only create notifications but also checks that they\u0027re acutally shown. This is not reflected in the method name nor its doc comment.\n3. In the existing code below, we have logic to verify that (non-ARC) notifications are correctly shown. Why do we introduce another independent logic to verification? They looks inconsistent.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 92
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f2da09_d52a3b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_scrolling_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-02T20:28:22Z",
+      "side": 1,
+      "message": "1. Added a check errors for this method.\n2. Added a comment in the method reflecting that this method create notification and verify that it is created.\n3. The logic below actually does not verify that non-ARC notification are correctly shown. WaitForNotifcation() is called only to make sure that we don\u0027t open the Uber tray and start the perf test before all notifications are created. To make this more consistently with the verification logic (and also to make sure that all notifications are created successfully), I have moved this logic to after notification creation. Thus, we always verify that a notification is created for each notification.",
+      "parentUuid": "81196b20_f17f13a6",
       "range": {
         "startLine": 96,
         "startChar": 3,
