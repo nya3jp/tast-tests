@@ -16,6 +16,24 @@
       "message": "IMO, reflection looks too complicated for validation. Why we just don\u0027t compare actual vs expected structs?",
       "revId": "76e8ba37a35962a1214fc5a2d3af59cdbf074d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7211efbc_615ce214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-02T09:31:10Z",
+      "side": 1,
+      "message": "I use reflection to map the struct field to the file name under sysfs, so we don\u0027t need to write each name again in tast.\nDo you think list and compair each field one by one is more suitable for tast? If so, I can change to that format.",
+      "parentUuid": "f9e9a99c_1b75e459",
+      "revId": "76e8ba37a35962a1214fc5a2d3af59cdbf074d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
