@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7eb69c_12a06a39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "867b3a00_fbdb0f95",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c73f5b0b_5d923221",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-08-02T03:04:39Z",
       "side": 1,
       "message": "nit: This comment is redundant. The function is self explained.",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6031e80_78dc78c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c73f5b0b_5d923221",
       "range": {
         "startLine": 345,
         "startChar": 0,
@@ -71,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0294544_77071930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3ebc13_441d5512",
+      "range": {
+        "startLine": 375,
+        "startChar": 50,
+        "endLine": 375,
+        "endChar": 58
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a906e54e_d29568eb",
@@ -84,6 +156,30 @@
       "writtenOn": "2021-08-02T03:04:39Z",
       "side": 1,
       "message": "Not relevant to this cl. You can probably add a TODO if you feel this comment makes sense.\n\nState stands for the test case state, should not be passed into a common function. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 377,
+        "startChar": 50,
+        "endLine": 377,
+        "endChar": 66
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a218de77_8c4cf1fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. We can avoid passing state by simply passing a func to find the data file, which is all we need using the state.\n\nRevised.",
+      "parentUuid": "a906e54e_d29568eb",
       "range": {
         "startLine": 377,
         "startChar": 50,
@@ -111,6 +207,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04eb749_0eac63d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e84881e_afcdd24c",
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "accda453_e83371bf",
@@ -134,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb5fa7d_8ffb377a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "accda453_e83371bf",
+      "range": {
+        "startLine": 394,
+        "startChar": 52,
+        "endLine": 394,
+        "endChar": 86
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46137b43_c85f7f1d",
@@ -147,6 +285,30 @@
       "writtenOn": "2021-08-02T03:04:39Z",
       "side": 1,
       "message": "Please remove Physical keyboard from this type. Maybe you can add a TODO to add coverage to physical keyboard input methods later. Otherwise you need to separate VK Emoji and PK Emoji. Also please ask @tranbaoduy to review this naming.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 57
+      },
+      "revId": "b7cfc7a045e440661e13c838e73f6dc761422daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c130a28_b61b37ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "removed both physical keyboard and Emoji, since only the other three are supported for now. Also added a TODO to add coverage for them in test_server.go",
+      "parentUuid": "46137b43_c85f7f1d",
       "range": {
         "startLine": 29,
         "startChar": 0,

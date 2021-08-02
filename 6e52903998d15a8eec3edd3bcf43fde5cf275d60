@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65faa46d_8e0d7942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35f3576_0b3e9d3e",
+      "range": {
+        "startLine": 302,
+        "startChar": 29,
+        "endLine": 302,
+        "endChar": 46
+      },
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f946e13_2478440c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d300a0_a79e077e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "4f946e13_2478440c",
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5c59217_e219d320",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-08-02T02:44:28Z",
       "side": 1,
       "message": "This function looks like it would also work for switching from the Emoji/Voice/Multipaste keyboard back to the regular keyboard\n\nCould be added to Library.",
+      "range": {
+        "startLine": 366,
+        "startChar": 10,
+        "endLine": 366,
+        "endChar": 62
+      },
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2348e224_b0573956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "e5c59217_e219d320",
       "range": {
         "startLine": 366,
         "startChar": 10,
@@ -101,6 +167,30 @@
       "side": 1,
       "message": "+1, maybe add a pre-flight check in the beginning. Returns error if validating voice / handwriting on password field.",
       "parentUuid": "a96d3a48_501d4bc3",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 65
+      },
+      "revId": "6e52903998d15a8eec3edd3bcf43fde5cf275d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e429f9ab_a6db9b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T22:54:48Z",
+      "side": 1,
+      "message": "Done. Added a checkValidity func to check the combination of modality and input field.",
+      "parentUuid": "50361626_752f4fb7",
       "range": {
         "startLine": 393,
         "startChar": 0,
