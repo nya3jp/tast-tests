@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53636c25_57bd70ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:21:03Z",
+      "side": 1,
+      "message": "As I comment another place, close can also be chained in combined action once changing it to an action.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "a4c268688734a93cfc862911e39af284a1391660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

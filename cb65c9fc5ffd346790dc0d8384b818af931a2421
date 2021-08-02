@@ -187,6 +187,30 @@
       },
       "revId": "cb65c9fc5ffd346790dc0d8384b818af931a2421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4339b34_b275657d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T03:21:03Z",
+      "side": 1,
+      "message": "func (i *IMESettings) Close() uiauto.Action{\n    return func(ctx context.Context) error{\n        return i.settings.Close(ctx)\n    }\n}\n\nuiauto.Action is a definition (function) of an action. It only runs with an actual context. Such as i.Close()(ctx) or chain multiple actions to run together. e.g.\n\n\nif err :\u003d uiauto.Combine(\"enable auto cap\",\n    i.OpenImeSettingsPage(),\n    i.ClickAutoCap(),\n    i.Close(),\n)(ctx); err !\u003d nil{\n    ...\n}",
+      "parentUuid": "2fcc8247_304d58a7",
+      "range": {
+        "startLine": 99,
+        "startChar": 22,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "cb65c9fc5ffd346790dc0d8384b818af931a2421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
