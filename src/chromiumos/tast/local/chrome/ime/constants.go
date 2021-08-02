@@ -33,12 +33,19 @@ const (
 	INPUTMETHOD_HANGEUL_HANJA_KOREAN          InputMethodCode = "ko-t-i0-und"               // NOLINT: Korean input method
 )
 
-// Language represents a language.
+// Language represents the handwriting/voice language for an input method.
 type Language string
 
-// List of languages.
+// List of languages, names are defined based on ISO 639.
 const (
-	LANGUAGE_EN      Language = "English"            //NOLINT
-	LANGUAGE_ZH_HANS Language = "Simplified Chinese" //NOLINT
-	LANGUAGE_JA      Language = "Japanese"           //NOLINT
+	LanguageAr      Language = "Arabic"
+	LanguageEn      Language = "English"
+	LanguageEs      Language = "Spanish"
+	LanguageFr      Language = "French"
+	LanguageJa      Language = "Japanese"
+	LanguageKo      Language = "Korean"
+	LanguageSv      Language = "Swedish"
+	LanguageYueHant Language = "Traditional Cantonese"
+	LanguageZhHans  Language = "Simplified Chinese"
+	LanguageZhHant  Language = "Traditional Chinese"
 )
