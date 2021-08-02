@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e0d019b_ba11ccef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "I will land this later (filed here: https://crbug.com/1224446)",
+      "parentUuid": "e36d18eb_3028f4ed",
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "585788ed_ce237a19",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
         "patchSetId": 16
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-30T16:57:38Z",
       "side": 1,
       "message": "the apps grid page?",
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce3c0a3_e03af0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585788ed_ce237a19",
       "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2021-07-30T23:25:18Z",
       "side": 1,
       "message": "Think it could be cleaner for this function to return a reference to the folder that was created",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3590a54_3dd04e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure that we need to do this, since all newly created folders can be referenced by launcher.UnnamedFolderFinder, since new folders always start out at unnamed.",
+      "parentUuid": "f785ae6b_402b14a7",
       "range": {
         "startLine": 50,
         "startChar": 20,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "363e12b7_59f0d8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "Changed the comment to explain that adding 46 more items gets to the maximum folder size.",
+      "parentUuid": "14cb302e_e0d725ac",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d29b7275_df6238e9",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-07-30T23:25:18Z",
       "side": 1,
       "message": "replace with\n\nsize, err :\u003d launcher.GetFolderSize(",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eba35c6_c8ae567c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d29b7275_df6238e9",
       "range": {
         "startLine": 60,
         "startChar": 1,
@@ -129,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ca3d77d_97f6368d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "We still want AddItemsToFolder to attempt adding an item to the folder, this way the size can be tested afterwards to make sure that the item did not get added when the folder should already have been full.\n\nI have added a better comment here, and another comment about full folders at the AddItemsToFolder function definition.",
+      "parentUuid": "f6958b45_1ce66f7f",
+      "range": {
+        "startLine": 74,
+        "startChar": 29,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f4664e4_791413fd",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 16
@@ -140,6 +272,30 @@
       "writtenOn": "2021-07-30T23:25:18Z",
       "side": 1,
       "message": "why not ui.LeftClick(folder) here and other places where dragging is not needed",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 0
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11bd26b7_4d87b619",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-02T21:55:35Z",
+      "side": 1,
+      "message": "This does simplify code. I changed to use ui.LeftClick here and in one other place that clicks on a specific node.",
+      "parentUuid": "8f4664e4_791413fd",
       "range": {
         "startLine": 396,
         "startChar": 1,
