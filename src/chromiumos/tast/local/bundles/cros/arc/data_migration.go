@@ -25,6 +25,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// How to create archived home data to be used by this test:
+// 1) Flash the previous version of ARC++ (e.g. ARC++ P).
+// 2) Sign in with the specified test account (See arc.DataMigration.yaml for username/password).
+// 3) Wait until ARC++ boots and uninstall all unnecessary apps.
+// 4) (optional) Populate files under /data/ or install apps.
+// 5) ssh to DUT and create .tbz2 file by
+//    `cd /home/.shadow/<hash>/mount && tar --xattrs --selinux -cjf /tmp/<dest_file_name>.tbz2 .`
+// 6) Upload the tbz2 file into gs://chromiumos-test-assets-public/tast/cros/arc/ and update
+//    the .external file (See tast/local/bundles/cros/arc/data/data_migration_pi_x86_64.external).
 const (
 	homeDataNameNycX86 = "data_migration_nyc_x86_64"
 	homeDataNamePiX86  = "data_migration_pi_x86_64"
