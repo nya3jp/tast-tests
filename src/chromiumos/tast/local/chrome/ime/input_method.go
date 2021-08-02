@@ -24,8 +24,9 @@ import (
 
 // InputMethod represents an input method.
 type InputMethod struct {
-	Name string // The displayed name of the IME in OS Settings.
-	ID   string // The code / id of the IME, e.g. "xkb:us::eng"
+	Name     string // The displayed name of the IME in OS Settings.
+	ID       string // The code / id of the IME, e.g. "xkb:us::eng"
+	Language string // The language for handwriting and voice dictation.
 }
 
 // DefaultInputMethod is the default input method enabled for new users.
@@ -33,92 +34,107 @@ var DefaultInputMethod = EnglishUS
 
 // EnglishUS represents the input method of English (US).
 var EnglishUS = InputMethod{
-	Name: "English (US)",
-	ID:   "xkb:us::eng",
+	Name:     "English (US)",
+	ID:       "xkb:us::eng",
+	Language: LanguageEn,
 }
 
 // EnglishUSWithInternationalKeyboard represents the input method of English (US) with International keyboard.
 var EnglishUSWithInternationalKeyboard = InputMethod{
-	Name: "English (US) with International keyboard",
-	ID:   "xkb:us:intl:eng",
+	Name:     "English (US) with International keyboard",
+	ID:       "xkb:us:intl:eng",
+	Language: LanguageEn,
 }
 
 // EnglishUK represents the input method of English (UK).
 var EnglishUK = InputMethod{
-	Name: "English (UK)",
-	ID:   "xkb:gb:extd:eng",
+	Name:     "English (UK)",
+	ID:       "xkb:gb:extd:eng",
+	Language: LanguageEn,
 }
 
 // SpanishSpain represents the input method of Spanish (Spain).
 var SpanishSpain = InputMethod{
-	Name: "Spanish (Spain)",
-	ID:   "xkb:es::spa",
+	Name:     "Spanish (Spain)",
+	ID:       "xkb:es::spa",
+	Language: LanguageEs,
 }
 
 // Swedish represents the input method of Swedish.
 var Swedish = InputMethod{
-	Name: "Swedish",
-	ID:   "xkb:se::swe",
+	Name:     "Swedish",
+	ID:       "xkb:se::swe",
+	Language: LanguageSv,
 }
 
 // AlphanumericWithJapaneseKeyboard represents the input method of Alphanumeric with Japanese keyboard.
 var AlphanumericWithJapaneseKeyboard = InputMethod{
-	Name: "Alphanumeric with Japanese keyboard",
-	ID:   "xkb:jp::jpn",
+	Name:     "Alphanumeric with Japanese keyboard",
+	ID:       "xkb:jp::jpn",
+	Language: LanguageJa,
 }
 
 // EnglishCanada represents the input method of English (Canada).
 var EnglishCanada = InputMethod{
-	Name: "English (Canada)",
-	ID:   "xkb:ca:eng:eng",
+	Name:     "English (Canada)",
+	ID:       "xkb:ca:eng:eng",
+	Language: LanguageEn,
 }
 
 // Japanese represents the input method of Japanese.
 var Japanese = InputMethod{
-	Name: "Japanese",
-	ID:   "nacl_mozc_jp",
+	Name:     "Japanese",
+	ID:       "nacl_mozc_jp",
+	Language: LanguageJa,
 }
 
 // FrenchFrance represents the input method of French (France).
 var FrenchFrance = InputMethod{
-	Name: "French (France)",
-	ID:   "xkb:fr::fra",
+	Name:     "French (France)",
+	ID:       "xkb:fr::fra",
+	Language: LanguageFr,
 }
 
 // JapaneseWithUSKeyboard represents the input method of Japanese with US keyboard.
 var JapaneseWithUSKeyboard = InputMethod{
-	Name: "Japanese with US keyboard",
-	ID:   "nacl_mozc_us",
+	Name:     "Japanese with US keyboard",
+	ID:       "nacl_mozc_us",
+	Language: LanguageJa,
 }
 
 // ChinesePinyin represents the input method of Chinese Pinyin.
 var ChinesePinyin = InputMethod{
-	Name: "Chinese Pinyin",
-	ID:   "zh-t-i0-pinyin",
+	Name:     "Chinese Pinyin",
+	ID:       "zh-t-i0-pinyin",
+	Language: LanguageZhHans,
 }
 
 // Cantonese represents the input method of Chinese Cantonese.
 var Cantonese = InputMethod{
-	Name: "Cantonese",
-	ID:   "yue-hant-t-i0-und",
+	Name:     "Cantonese",
+	ID:       "yue-hant-t-i0-und",
+	Language: LanguageZhHant,
 }
 
 // ChineseCangjie represents the input method of Chinese Cangjie.
 var ChineseCangjie = InputMethod{
-	Name: "Chinese Cangjie",
-	ID:   "zh-hant-t-i0-cangjie-1987",
+	Name:     "Chinese Cangjie",
+	ID:       "zh-hant-t-i0-cangjie-1987",
+	Language: LanguageZhHant,
 }
 
 // Korean represents the input method of Korean.
 var Korean = InputMethod{
-	Name: "Korean",
-	ID:   "ko-t-i0-und",
+	Name:     "Korean",
+	ID:       "ko-t-i0-und",
+	Language: LanguageKo,
 }
 
 // Arabic represents the input method of Arabic.
 var Arabic = InputMethod{
-	Name: "Arabic",
-	ID:   "vkd_ar",
+	Name:     "Arabic",
+	ID:       "vkd_ar",
+	Language: LanguageAr,
 }
 
 // inputMethods represents in-use (available) IMEs in ChromeOS.
