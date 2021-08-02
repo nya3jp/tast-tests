@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba3ce6d_07b5c5c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T05:58:02Z",
+      "side": 1,
+      "message": "Marking LG respecting this what you wrote.",
+      "revId": "d21ed9e992e3d243abcc82bb0a955ab7398ff6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a8b99df_22d4087e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T05:58:02Z",
+      "side": 1,
+      "message": "Sorry, overlooked. This line also needed to be updated to use Lacros as a browser, too.",
+      "revId": "d21ed9e992e3d243abcc82bb0a955ab7398ff6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
