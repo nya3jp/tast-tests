@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b0f859_59429e52",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-08-02T16:44:01Z",
+      "side": 1,
+      "message": "Read through the bug and the \"why\" is escaping me.  Do you have any more background as to why Leona goes to S5 on a warm reset?  I am wondering if it is a property that should be modeled.",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 66
+      },
+      "revId": "f35196bbfbb52baabb2f99c84949c20c3a1c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
