@@ -56,20 +56,23 @@ func Run(ctx context.Context, outDir string, fixtValue interface{}, config Confi
 		}
 	}()
 
+	// Leave a bit of time to clean up.
+	cleanUpCtx := ctx
+	cleanUpTime := 10 * time.Second
+	ctx, cancel := ctxutil.Shorten(cleanUpCtx, cleanUpTime)
+	defer cancel()
+
 	// Logging the initial machine temperature.
 	if err := glbench.ReportTemperature(ctx, pv, "temperature_initial"); err != nil {
 		appendErr(err, "failed to report temperature_initial")
 	}
+	if err := config.SetUp(ctx); err != nil {
+		return appendErr(err, "failed to setup vkbench config")
+	}
+	defer config.TearDown(cleanUpCtx)
 
 	// Only setup benchmark mode if we are not in hasty mode.
 	if !config.IsHasty() {
-		pv = perf.NewValues()
-		defer func() {
-			if err := pv.Save(outDir); err != nil {
-				appendErr(err, "failed to save perf data")
-			}
-		}()
-
 		// Make machine behaviour consistent.
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 			glbench.SaveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
@@ -80,17 +83,6 @@ func Run(ctx context.Context, outDir string, fixtValue interface{}, config Confi
 			}
 		}
 	}
-
-	// Leave a bit of time to clean up.
-	cleanUpCtx := ctx
-	cleanUpTime := 10 * time.Second
-	ctx, cancel := ctxutil.Shorten(cleanUpCtx, cleanUpTime)
-	defer cancel()
-
-	if err := config.SetUp(ctx); err != nil {
-		return appendErr(err, "failed to setup vkbench config")
-	}
-	defer config.TearDown(cleanUpCtx)
 
 	if err := glbench.ReportTemperature(ctx, pv, "temperature_before_test"); err != nil {
 		appendErr(err, "failed to log temperature_before_test")
