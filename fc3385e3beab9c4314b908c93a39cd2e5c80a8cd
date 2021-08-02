@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eff405e_97c3bbfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-02T06:16:28Z",
+      "side": 1,
+      "message": "For short term, that will be resolved because we\u0027ll run Lacros in the background.\nHowever, for long term, we\u0027ll stop running Lacros, if all Web Browser is closed by users.\n\nWe need redesign APIs related Web Browser to adapt the situation.",
+      "parentUuid": "41213374_552e38ab",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "fc3385e3beab9c4314b908c93a39cd2e5c80a8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d922d68_a7ec1ef7",
