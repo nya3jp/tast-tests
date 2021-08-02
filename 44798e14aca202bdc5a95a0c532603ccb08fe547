@@ -39,6 +39,30 @@
       },
       "revId": "44798e14aca202bdc5a95a0c532603ccb08fe547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1493d53f_5abec1e9",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-02T04:00:46Z",
+      "side": 1,
+      "message": "For handwriting and voice, they are just English. see\nhttps://docs.google.com/spreadsheets/d/1PMA4GExxDo-B5LOqFDJqCV1gh-eZKT1JNFardnj35xA/edit?resourcekey\u003d0-kMei1mB1pLIW8LybAj2jzA#gid\u003d0\n\n@Bao-Duy, please confirm.",
+      "parentUuid": "495b231d_d1b58313",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "44798e14aca202bdc5a95a0c532603ccb08fe547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
