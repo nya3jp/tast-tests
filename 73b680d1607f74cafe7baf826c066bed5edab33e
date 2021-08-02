@@ -51,6 +51,41 @@
       "parentUuid": "ebc6b1cf_cda18f1c",
       "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cdee04_132ed9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-02T04:54:49Z",
+      "side": 1,
+      "message": "Got it- we\u0027ll revisit this again once the latest bug has been fixed",
+      "parentUuid": "0143c400_bde148b1",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6880c3_d55d7428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-02T04:54:49Z",
+      "side": 1,
+      "message": "The bug that fixes test-flakiness was merged back to main late last week, and landed on 14120.0.0.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3055349\n\nSo far no repeats of the same issue on stainless, but will give it 1-2 more days to be sure: https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2021-07-31\u0026last_date\u003d2021-08-02\u0026test\u003d%5Etast%5C.arc%5C.ContainerMount%24\u0026build\u003d%5ER94.*%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\n",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
