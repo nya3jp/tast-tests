@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8574b351_2df60582",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T06:18:08Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e1f5dc19271b1f71e3a619993fb1fb86ddb5f91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6f0272_3693b80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T06:18:08Z",
+      "side": 1,
+      "message": "nit: deletes",
+      "range": {
+        "startLine": 447,
+        "startChar": 48,
+        "endLine": 447,
+        "endChar": 54
+      },
+      "revId": "e1f5dc19271b1f71e3a619993fb1fb86ddb5f91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d601cb_68667840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-02T06:18:08Z",
+      "side": 1,
+      "message": "nit: deletes.\n\nNot sure why you used switches, then delete.",
+      "range": {
+        "startLine": 509,
+        "startChar": 48,
+        "endLine": 509,
+        "endChar": 54
+      },
+      "revId": "e1f5dc19271b1f71e3a619993fb1fb86ddb5f91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
