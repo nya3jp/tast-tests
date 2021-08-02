@@ -22,6 +22,30 @@
       },
       "revId": "75e55f358e1b237471f5a88c1645877353e3bb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c01ad4_69203dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-02T09:18:24Z",
+      "side": 1,
+      "message": "Though it seems won\u0027t happen, but if the string is \"[Null]\" and nil then the comparison will considerred them as the same.",
+      "parentUuid": "66625448_8c85f751",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "75e55f358e1b237471f5a88c1645877353e3bb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
