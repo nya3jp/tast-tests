@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b2b9af_877147fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:31:51Z",
+      "side": 1,
+      "message": "FYI for the future: In the Gerrit UI, when you\u0027re responding to a comment, there\u0027s a little checkbox labeled \"Resolved\". I recommend clicking this when you\u0027re Done/Ack with a comment.\n\nI\u0027ve responded to the comments you finished here, to mark them resolved.\n\nNice work here! I look forward to reviewing your other CLs.",
+      "revId": "c4ac197bd6e933bbe8f21593d61bb93d3d20e8b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

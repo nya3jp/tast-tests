@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f666c8_c6ab2c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb1fda9_b69bd2bb",
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b30db93_9b701dd6",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8b30db93_9b701dd6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1463f9_6fbe4497",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d261f19_5b900b50",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -130,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "912b6f1f_d941b8b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "356d6b99_56289b42",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f3e9b64_b0d5ef77",
@@ -167,6 +233,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "9f3e9b64_b0d5ef77",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5681ccca_d9c3ceb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b31f4983_f51a6cd4",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -237,6 +327,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1162e68b_d7b4bf04",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0001b07_2dc7a893",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6090bdcc_1466e9f9",
       "range": {
         "startLine": 47,
         "startChar": 1,
