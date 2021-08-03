@@ -253,17 +253,33 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP0: ", err)
 	}
+	ap0Name := uniqueAPName()
+	freqOps, err := ap0Conf.PcapFreqOptions()
+	if err != nil {
+		s.Fatal("Failed to get Freq Opts: ", err)
+	}
+	p, ok := tf.Pcap().(router.SupportCapture)
+	if !ok {
+		s.Fatal("Pcap device does not have log capture support")
+	}
+	capturer, err := p.StartCapture(ctx, ap0Name, ap0Conf.Channel, freqOps)
+	if err != nil {
+		s.Fatal("Failed to start capturer: ", err)
+	}
+	ds.push(func() {
+		p.StopCapture(ctx, capturer)
+	})
+
+	s.Log("Starting the first AP on ", ct.br[0])
+	ct.ap[0], err = ct.r.StartHostapd(ctx, ap0Name, ap0Conf)
+	if err != nil {
+		s.Fatal("Failed to start the hostapd server on the first AP: ", err)
+	}
 	ds.push(func() {
 		if err := ct.r.StopHostapd(ctx, ct.ap[0]); err != nil {
 			s.Error("Failed to stop the hostapd server on the first AP: ", err)
 		}
 	})
-	s.Log("Starting the first AP on ", ct.br[0])
-	ap0Name := uniqueAPName()
-	ct.ap[0], err = ct.r.StartHostapd(ctx, ap0Name, ap0Conf)
-	if err != nil {
-		s.Fatal("Failed to start the hostapd server on the first AP: ", err)
-	}
 
 	s.Logf("Starting the DHCP server on %s, serverIP=%s", ct.br[0], serverIP)
 	ct.dserv, err = ct.r.StartDHCP(ctx, ap0Name, ct.br[0], startIP, endIP, serverIP, broadcastIP, mask)
@@ -305,6 +321,22 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP1: ", err)
 	}
+
+	freqOps, err := ap1Conf.PcapFreqOptions()
+	if err != nil {
+		s.Fatal("Failed to get Freq Opts: ", err)
+	}
+	p, ok := ct.tf.Pcap().(router.SupportCapture)
+	if !ok {
+		s.Fatal("Pcap device does not have log capture support")
+	}
+	capturer, err := p.StartCapture(ctx, ap1Name, ap1Conf.Channel, freqOps)
+	if err != nil {
+		s.Fatal("Failed to start capturer: ", err)
+	}
+	ds.push(func() {
+		p.StopCapture(ctx, capturer)
+	})
 
 	ct.ap[1], err = ct.r.StartHostapd(ctx, ap1Name, ap1Conf)
 	if err != nil {
