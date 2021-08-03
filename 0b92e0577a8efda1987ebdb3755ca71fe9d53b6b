@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5625f54c_c70ef67d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-03T16:59:17Z",
+      "side": 1,
+      "message": "Sheng and Alex, please review the Google Meet retry mechanism to improve the pass rate when bot server is down. The implementation is based on what we discussed in the associated bug report. Thank you!",
+      "revId": "0b92e0577a8efda1987ebdb3755ca71fe9d53b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
