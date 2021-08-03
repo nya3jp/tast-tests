@@ -33,6 +33,23 @@
       "message": "LGTM Thanks!",
       "revId": "e64c613d6fea1bd8c64d57d67482354877caeb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff926380_2377397f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133074
+      },
+      "writtenOn": "2021-08-03T21:57:27Z",
+      "side": 1,
+      "message": "Thanks for the quick review Trent, I have owners-override powers for Chromium but it looks like that doesn\u0027t extend to this repo so I\u0027ve added the tast-owners alias to request approval.",
+      "revId": "e64c613d6fea1bd8c64d57d67482354877caeb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
