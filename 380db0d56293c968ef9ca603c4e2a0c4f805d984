@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00f2909_b89dca6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2021-08-03T22:21:18Z",
+      "side": 1,
+      "message": "LGTM and thank you!\nPlease resolve the opened comments with Xiqi.",
+      "revId": "380db0d56293c968ef9ca603c4e2a0c4f805d984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdfe4fc5_135438e0",
