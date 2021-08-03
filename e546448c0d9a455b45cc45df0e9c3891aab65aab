@@ -87,6 +87,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4325b58e_9fd018ef",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "some standard go package i guess still uses it. As the function signature gets visible along with the comments, It might be easier for end user to relate the args they are going to pass and what it does exactly.\n\nAnyway, updated like you asked.",
+      "parentUuid": "412fe8fe_e5fcb54e",
+      "range": {
+        "startLine": 20,
+        "startChar": 76,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db29321_7efdb0f8",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b0034cf_3831b40e",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d184434_1b8aa25e",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "407b75b3_4923c086",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9195597_a6a31575",
@@ -133,6 +205,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d615cb_1e843e04",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c44c146_530acf59",
+      "range": {
+        "startLine": 23,
+        "startChar": 64,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fae75a5_04f6bf27",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9195597_a6a31575",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "903a63df_1d30a9c6",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: maybe it makes sense to add from/to percentages for more info?",
+      "range": {
+        "startLine": 54,
+        "startChar": 35,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fd30b3_f9662569",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903a63df_1d30a9c6",
       "range": {
         "startLine": 54,
         "startChar": 35,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a79287_1cdea353",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "NOPE. if we fails to flip the servo role, there is no point of logging such info.",
+      "parentUuid": "9c4da1e0_53c0269b",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2378f33_97dea039",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: please allocate it at the beginning of the function. If context at the beginning of the function cannot be shortened by 5 seconds, there is no sense to continue, so you will fail faster",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f18613_67dff221",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "why would you say that? It hardly impacts anything, since everything is dependent on context. as per the Shorten doc \n\u003e Note that if ctx\u0027s deadline is less than d in the future, the returned context\u0027s deadline will have already expired.\n\nso the new ctx will fail in next op.\nThough I get the fail fast concept, updated accordingly.",
+      "parentUuid": "c2378f33_97dea039",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed16877_35a966ed",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "think it as some kind of range checking. instead of throwing an error for provided percentages like (102), it\u0027s a way to fulfill the goal without error. It\u0027s not required in drain because for percentage less than 0.0 the DUT will be powered off and that will be an error by nature.\n\nAgain, I think you will ask about consistency so I have removed it, and added an edge checking on the `EnsureBatteryWithinRange` method itself. Thanks.",
+      "parentUuid": "6f84cafe_5a30cae8",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "614daf3c_55d5b9ae",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: maybe log \"from\" and then \"to\" ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 40,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543fb362_6d763ee0",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614daf3c_55d5b9ae",
       "range": {
         "startLine": 114,
         "startChar": 40,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f97c50_234c71ce",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "dbusutil.Connect returns a pretty elaborate error after wrapping the error coming . That\u0027s why I skipped it. \nDone, if you say so.",
+      "parentUuid": "d609df9a_23dc2f2a",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf1f93d2_0f2fd35e",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: be consistent with space between number and % symbol",
+      "range": {
+        "startLine": 177,
+        "startChar": 59,
+        "endLine": 177,
+        "endChar": 60
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea3e0b4_da74fd52",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1f93d2_0f2fd35e",
       "range": {
         "startLine": 177,
         "startChar": 59,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22e3cfc_bbbad5a3",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c33a294f_bee192d8",
+      "range": {
+        "startLine": 184,
+        "startChar": 14,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c7a3ee8_301844a6",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: what about acConnected/pdConnected?",
+      "range": {
+        "startLine": 185,
+        "startChar": 44,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4b9b7c_ac8d1850",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7a3ee8_301844a6",
       "range": {
         "startLine": 185,
         "startChar": 44,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0413682_16d3f389",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dd66da9_275d90bd",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f67e6722_5c4b52dd",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: be consistent within package\n\nfailed to call GetScreenBrightnessPercent D-Bus method",
+      "range": {
+        "startLine": 83,
+        "startChar": 37,
+        "endLine": 83,
+        "endChar": 90
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0746be1b_dd46f69c",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67e6722_5c4b52dd",
       "range": {
         "startLine": 83,
         "startChar": 37,
@@ -409,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead5d4a8_0c8ab28f",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f101ec73_8c5c9168",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 52
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae2d9862_308f961d",
@@ -422,6 +830,30 @@
       "writtenOn": "2021-08-02T11:03:01Z",
       "side": 1,
       "message": "nit: looks like caller already add such info to the error message",
+      "range": {
+        "startLine": 100,
+        "startChar": 60,
+        "endLine": 100,
+        "endChar": 70
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c627650_5891d8e0",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "ae2d9862_308f961d",
       "range": {
         "startLine": 100,
         "startChar": 60,

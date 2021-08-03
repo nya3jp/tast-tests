@@ -830,6 +830,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "059175ee_7de36d14",
+        "filename": "src/chromiumos/tast/local/power/battery/battery_control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T12:29:10Z",
+      "side": 1,
+      "message": "No issues. Updated again.",
+      "parentUuid": "40a73c50_0405ce87",
+      "range": {
+        "startLine": 133,
+        "startChar": 105,
+        "endLine": 133,
+        "endChar": 112
+      },
+      "revId": "428e66b198b3e1d927dce6adfd3d394bcf31faae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82849faa_89dd3e83",
