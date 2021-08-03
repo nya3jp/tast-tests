@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1b2e58_ac463c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-03T16:45:34Z",
+      "side": 1,
+      "message": "I think it will be better to update docs/test_dependencies.md (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md) to describe the new feature.",
+      "revId": "00cfeee8ec572822e9d537838431888b2464cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
