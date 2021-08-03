@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf4879c_c8dff2b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T10:06:18Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "feb17f78f92c36814a1510e16fd74649e60d8657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a7c7f6_fdb8af5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T10:06:18Z",
+      "side": 1,
+      "message": "it isn\u0027t that common to pass 2 contexts to the function and you depend on the caller to setup timeouts. Please create cleanup context inside a function where you need it.",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "feb17f78f92c36814a1510e16fd74649e60d8657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa620a1_0c2e9f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T10:06:18Z",
+      "side": 1,
+      "message": "nit: you can bind fconn by reference, but not ctx. So you can just remove fconn from function arguments",
+      "range": {
+        "startLine": 110,
+        "startChar": 33,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "feb17f78f92c36814a1510e16fd74649e60d8657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0d0ad1_7555d1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T10:06:18Z",
+      "side": 1,
+      "message": "nit: usually this error ignored, but up to you",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "feb17f78f92c36814a1510e16fd74649e60d8657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a324f3_0fab6440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T10:06:18Z",
+      "side": 1,
+      "message": "nit: usually Close() and CloseTarget() run in 2 defer statements:\n\n```\ndefer fconn.Close()\ndefer func(ctx context.Context) {\n\tif err :\u003d fconn.CloseTarget(ctx); err !\u003d nil {\n\t\ttesting.ContextLog(ctx, \"Failed to close the feedback page\")\n\t}\t\n}(cleanupCtx)\n```\n\nOtherwise it might be a bad example for some people: they can copy-paste your code and instead of logging error, return error which will lead to memory leaking. Also if CloseTarget() will panic, you won\u0027t be able to run Close() method.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "feb17f78f92c36814a1510e16fd74649e60d8657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
