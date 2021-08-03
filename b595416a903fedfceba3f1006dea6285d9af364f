@@ -16,6 +16,52 @@
       "message": "Hi Bao-Duy, could you please take a look at the namings especially in util.go file? Thanks!",
       "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8844a685_dd9b8c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-03T01:25:17Z",
+      "side": 1,
+      "message": "checkTestSupported() might be a better name.\n\nI think all InputModality + InputFields combindations are \"valid\", but the tests don\u0027t support them.",
+      "range": {
+        "startLine": 394,
+        "startChar": 29,
+        "endLine": 394,
+        "endChar": 42
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc027860_f2e2eaf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-03T01:25:17Z",
+      "side": 1,
+      "message": "Could we have a bug to add support for this combination in the future? IE Check header contents is correct for PasswordInputFields (Check that the Switch to handwriting button is not there / disabled.)\n\nIt might be hard to add these tests now, since the last time I checked, headers are not consistent across input methods. There may also not be much point, since this seems likely to change in the future. For some keyboards, we can\u0027t switch modes when the keyboard header is (1,2,3,...), which is a design bug: b/178519812. A fix for that would mean the header contents changes.",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
