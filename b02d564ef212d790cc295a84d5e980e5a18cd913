@@ -16,6 +16,40 @@
       "message": "Thanks! PTAL",
       "revId": "b02d564ef212d790cc295a84d5e980e5a18cd913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04dc739c_602c8952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-03T01:42:37Z",
+      "side": 1,
+      "message": "LGTM.\n\nFYI: Eliot, could you update your CL to include SmartDim after this CL\u0027s land? Thanks in advance.",
+      "revId": "b02d564ef212d790cc295a84d5e980e5a18cd913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361de770_da8e614c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-03T01:42:37Z",
+      "side": 1,
+      "message": "nit/style: could you move this down to L80 (just before waitForHistogram), so that obj declaration (at L61) and call (its user) is closer.",
+      "revId": "b02d564ef212d790cc295a84d5e980e5a18cd913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
