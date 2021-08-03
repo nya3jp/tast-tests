@@ -443,6 +443,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e0c4007_03abaf79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-03T01:40:06Z",
+      "side": 1,
+      "message": "It depends whether it simplifies the code or not.\n\nIn this case starting with 0 simplifies it with because you don\u0027t have to add the (i-1)",
+      "parentUuid": "dc9cfa40_f6881ec3",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "708cb681_542e1eed",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 6
@@ -537,6 +561,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c30fb01b_a5e34cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-03T01:40:06Z",
+      "side": 1,
+      "message": "If you/someone is actively working on \"wait for cpu\", then add a TODO\n\n  // TODO(b/xxx): Replace with Wait for CPU idle...",
+      "parentUuid": "79b074a5_9dacb737",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3db795a2_73375fe2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 6
@@ -584,6 +632,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11f9df36_91b5c5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-03T01:40:06Z",
+      "side": 1,
+      "message": "ditto above: add a TODO then.",
+      "parentUuid": "9288864a_2f8e67b4",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "362154ae_a0327e0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 6
@@ -619,6 +691,30 @@
       "side": 1,
       "message": "(see above)",
       "parentUuid": "362154ae_a0327e0c",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 5
+      },
+      "revId": "785b019b83a7c357aa09cea5d0b91c4c3fbf3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bd11d4_9b8d7c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-03T01:40:06Z",
+      "side": 1,
+      "message": "ditto above",
+      "parentUuid": "981b8815_50b4a783",
       "range": {
         "startLine": 156,
         "startChar": 4,
