@@ -393,7 +393,8 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		return v, errors.New("cannot get ARC pre-start time")
 	}
 
-	output, err := a.Command(ctx, "stat", "-c", "%z", "/proc/1").Output(testexec.DumpLogOnError)
+	// The `:19` is needed to include seconds (see `ps --help`). The `=` makes the header line blank.
+	output, err := a.Command(ctx, "ps", "-p", "1", "-o", "stime:19=").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return v, errors.Wrap(err, "failed to get init process start time")
 	}
@@ -401,10 +402,7 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	testing.ContextLogf(ctx, "ARC pre-start time: %f UNIX ms, and /init proc time %q", ret.PreStartTime, timeStr)
 	preStartTimeNS := (int64)(ret.PreStartTime * 1000000.0)
 	tPreStart := time.Unix(preStartTimeNS/1000000000, preStartTimeNS%1000000000)
-	tInit, err := time.Parse("2006-01-02 15:04:05.999999999 -0700", timeStr)
-	if err != nil {
-		tInit, err = time.ParseInLocation("2006-01-02 15:04:05.999999999", timeStr, time.Local)
-	}
+	tInit, err := time.ParseInLocation("2006-01-02 15:04:05", timeStr, time.Local)
 	if err != nil {
 		return v, errors.Wrap(err, "failed to parse time")
 	}
