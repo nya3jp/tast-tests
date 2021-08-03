@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c351328f_d369cac0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-03T16:30:50Z",
+      "side": 1,
+      "message": "I think it would be good to at least do `tast run \u003cdut\u003e quicksettings.*` to make sure everything still works.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "4154dc1d4ab3c370118f0648e4b9ed04b1a53913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84778f3f_9d0930f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-03T16:30:50Z",
+      "side": 1,
+      "message": "Looks good to me but I\u0027d suggest testing the change by running all quicksettings.* tests.",
+      "revId": "4154dc1d4ab3c370118f0648e4b9ed04b1a53913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
