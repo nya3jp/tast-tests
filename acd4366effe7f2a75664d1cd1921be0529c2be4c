@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d900000_1ba2c4c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T07:46:53Z",
+      "side": 1,
+      "message": "Sorry for huge delay! Somehow I missed that CL to review!",
+      "revId": "acd4366effe7f2a75664d1cd1921be0529c2be4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d00570_eea5ec13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T07:46:53Z",
+      "side": 1,
+      "message": "ideally you should this under defer statement and use cleanupCtx for this",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "acd4366effe7f2a75664d1cd1921be0529c2be4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b76b3ea_b15955ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T07:46:53Z",
+      "side": 1,
+      "message": "This is potentially memory leak issue. Please follow documentation and put this and other calls in this file under defer statement.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;l\u003d60",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "acd4366effe7f2a75664d1cd1921be0529c2be4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
