@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a460c09_c578441d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-08-03T14:50:21Z",
+      "side": 1,
+      "message": "Thanks for taking a look.\nUpdated the patch, PTAL.",
+      "revId": "8ff69c309c9527fe0428bf12c16e8f9c73fa2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

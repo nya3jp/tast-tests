@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8315da3e_b0e49dda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-08-03T14:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de3c27dc_4cffac84",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "e2b9688a73335d309786ca78ab3d3906ebf50a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "27f85bad_0e2ae140",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -88,6 +112,30 @@
       "writtenOn": "2021-08-03T12:44:08Z",
       "side": 1,
       "message": "With this command the settings page is opened twice. Can you leave the\n\u003e  conn, err :\u003d cr.NewConn(ctx, \"chrome://settings/cookies\")\npart in the code, and here use \n\u003e  policyutil.CurrentPage(cr).\ninstead of\n\u003e  policyutil.SettingsPage(ctx, cr, \"cookies\").\n?",
+      "range": {
+        "startLine": 92,
+        "startChar": 25,
+        "endLine": 92,
+        "endChar": 37
+      },
+      "revId": "e2b9688a73335d309786ca78ab3d3906ebf50a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4eea67_92e7b34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-08-03T14:50:21Z",
+      "side": 1,
+      "message": "Makes sense, done",
+      "parentUuid": "3b6785d8_58b429dc",
       "range": {
         "startLine": 92,
         "startChar": 25,
