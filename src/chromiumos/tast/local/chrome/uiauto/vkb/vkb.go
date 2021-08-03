@@ -42,6 +42,16 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *VirtualKeyboardConte
 	}
 }
 
+// localStorageKey defines the key used in virtual keyboard local storage.
+type localStorageKey string
+
+const (
+	// voicePrivacyInfo key is defined in http://google3/i18n/input/javascript/chos/message/name.ts.
+	voicePrivacyInfo localStorageKey = "voice_privacy_info"
+	// showLongformEdu key is defined in http://google3/i18n/input/javascript/chos/ui/widget/longform_dialog_view.ts.
+	showLongformEdu localStorageKey = "shownLongformEdu"
+)
+
 // Finder of virtual keyboard root node.
 var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
 
@@ -355,7 +365,10 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 		if err != nil {
 			return err
 		}
-		if err := bconn.Eval(ctx, `background.getTestOnlyApi().switchToVoiceInput()`, nil); err != nil {
+		if err := bconn.Call(ctx, nil, `(info) => {
+			window.localStorage.setItem(info, 'true');
+			background.getTestOnlyApi().switchToVoiceInput();
+		  }`, voicePrivacyInfo); err != nil {
 			return errors.Wrap(err, "failed to call switchToVoiceInput()")
 		}
 		return nil
@@ -372,33 +385,30 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 	)
 }
 
-// switchToHandwriting changes to handwriting layout and returns a handwriting context.
-func (vkbCtx *VirtualKeyboardContext) switchToHandwriting(ctx context.Context) (*HandwritingContext, error) {
+// SwitchToHandwriting changes to handwriting layout and returns a handwriting context.
+func (vkbCtx *VirtualKeyboardContext) SwitchToHandwriting(ctx context.Context) (*HandwritingContext, error) {
+	// Set local storage to override the LF first time tutorial prompt.
+	// It does not apply to legacy handwriting.
+	bconn, err := vkbCtx.BackgroundConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := bconn.Call(ctx, nil, `(info) => {
+		window.localStorage.setItem(info, 'true');
+	  }`, showLongformEdu); err != nil {
+		return nil, errors.Wrap(err, "failed to set local storage")
+	}
+
 	if err := vkbCtx.leftClickIfExist(KeyFinder.NameStartingWith("switch to handwriting"))(ctx); err != nil {
 		return nil, err
 	}
 
+	if err := vkbCtx.ui.WaitUntilExists(NodeFinder.Role(role.Canvas))(ctx); err != nil {
+		return nil, err
+	}
+
 	return vkbCtx.NewHandwritingContext(ctx)
-}
-
-// SwitchToHandwritingAndCloseInfoDialogue changes to handwriting layout,
-// closes the information dialogue if one shows up and returns a handwriting context.
-func (vkbCtx *VirtualKeyboardContext) SwitchToHandwritingAndCloseInfoDialogue(ctx context.Context) (*HandwritingContext, error) {
-	hwCtx, err := vkbCtx.switchToHandwriting(ctx)
-	if err != nil {
-		return nil, err
-	}
-	// Close info dialogue if one shows up in longform VK.
-	if hwCtx.isLongForm {
-		if err := hwCtx.closeInfoDialogue("Got it")(ctx); err != nil {
-			return nil, err
-		}
-	}
-
-	if err = vkbCtx.ui.WaitUntilExists(NodeFinder.Role(role.Canvas))(ctx); err != nil {
-		return nil, err
-	}
-	return hwCtx, nil
 }
 
 // SwitchToMultipaste returns an action changing to multipaste layout.
