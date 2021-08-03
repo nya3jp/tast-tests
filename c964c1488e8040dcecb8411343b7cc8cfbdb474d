@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb5834a3_0f4a6940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-08-03T01:52:32Z",
+      "side": 1,
+      "message": "Do we want to remove this after bug is fixed?\nI understand it\u0027s clean, but on the other hand it might be helpful when a similar regression happens in the future.\n\nI slightly prefer to leave this even after the bug is fixed. What do you think?",
+      "parentUuid": "720d84d0_f42ca1bb",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 60
+      },
+      "revId": "c964c1488e8040dcecb8411343b7cc8cfbdb474d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ec63332_00d9d88f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
         "patchSetId": 5
@@ -88,6 +112,30 @@
       "writtenOn": "2021-08-03T01:33:59Z",
       "side": 1,
       "message": "might want to also print os.lstat() info (?)\n\nhttps://pkg.go.dev/os#Lstat",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "c964c1488e8040dcecb8411343b7cc8cfbdb474d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c74accb_267ad444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-08-03T01:52:32Z",
+      "side": 1,
+      "message": "Done. (printing the |info| given as a parameter in the filepath.Walk callback)",
+      "parentUuid": "8ec63332_00d9d88f",
       "range": {
         "startLine": 129,
         "startChar": 3,

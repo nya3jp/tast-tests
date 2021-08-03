@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc98dd15_df3ff9ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-08-03T01:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950ab2c9_9387b073",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca8206fa_1542b60b",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "It might be possible that Downloads folder does not exist or it is located directly under user path (without MyFiles). Maybe just print all files under cryptohome dir?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go;l\u003d26?q\u003dtast-tests%20Downloads",
       "parentUuid": "b95d763a_d0e36a8b",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "f0f544b25e100c82d709ddf7f795d630c073c346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd534f09_9f237489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-08-03T01:52:32Z",
+      "side": 1,
+      "message": "Done. Because the list is large, writing to a file instead.",
+      "parentUuid": "25e9fa7a_ac33b59a",
       "range": {
         "startLine": 126,
         "startChar": 0,
