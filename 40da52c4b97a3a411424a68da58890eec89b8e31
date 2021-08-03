@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a61b17_831a8150",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-03T00:42:34Z",
+      "side": 1,
+      "message": "nit reference where this comes from (and maybe even add a comment in the g3 source linking here",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "40da52c4b97a3a411424a68da58890eec89b8e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
