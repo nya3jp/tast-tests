@@ -16,6 +16,29 @@
       "message": "Please take a look again.",
       "revId": "514de84e4748419df81ed3a6842cfb8ce3628f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96efe375_5b74382a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-03T01:24:13Z",
+      "side": 1,
+      "message": "it seems that nobody is calling this function (?)\n\nNot against adding this function if needed, but if you are going to add I suggest replacing the calls  of SetWindowState(..., true) with SetWindowStateAndWait()",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 26
+      },
+      "revId": "514de84e4748419df81ed3a6842cfb8ce3628f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
