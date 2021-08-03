@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98fbf38f_b2dde9bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-03T17:02:47Z",
+      "side": 1,
+      "message": "yes, debug logs should be removed.\nThis is to reduce noise, and disk space.\n\nThe way I see it is that dumping the contents of the folder are not relevant to this test. E.g: This test is not about testing a filesystem or similar.\n\nAlso, if by dumping the filesystem you realize that the bug is related to filesystem or permissions, then it makes sense to create a new test that verifies that.",
+      "parentUuid": "fb5834a3_0f4a6940",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 60
+      },
+      "revId": "c964c1488e8040dcecb8411343b7cc8cfbdb474d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ec63332_00d9d88f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
         "patchSetId": 5
