@@ -25,7 +25,7 @@ func init() {
 			"cros-cryptohome-dev@google.com",
 		},
 		Attr:         []string{"informational", "group:mainline"},
-		SoftwareDeps: []string{"gsc", "reboot"},
+		SoftwareDeps: []string{"pinweaver", "reboot"},
 	})
 }
 
