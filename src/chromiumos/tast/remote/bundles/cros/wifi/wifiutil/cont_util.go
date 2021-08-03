@@ -19,11 +19,14 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/legacyrouter"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
@@ -96,6 +99,26 @@ func hasFTSupport(ctx context.Context, s *testing.State) bool {
 		}
 	}
 	return false
+}
+
+func setupPcapOnRouter(ctx context.Context, r legacyrouter.Legacy,
+	apName string, apConf *hostapd.Config, ds *destructorStack) error {
+	freqOps, err := apConf.PcapFreqOptions()
+	if err != nil {
+		return errors.Wrap(err, "failed to get Freq Opts")
+	}
+	captureIf, ok := r.(router.SupportCapture)
+	if !ok {
+		return errors.Wrap(err, "this device does not have a packet capture support")
+	}
+	capturer, err := captureIf.StartCapture(ctx, apName, apConf.Channel, freqOps)
+	if err != nil {
+		return errors.Wrap(err, "failed to start capturer")
+	}
+	ds.push(func() {
+		captureIf.StopCapture(ctx, capturer)
+	})
+	return nil
 }
 
 // ServerIP returns server IP used for the test.
@@ -254,17 +277,30 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP0: ", err)
 	}
+	ap0Name := uniqueAPName()
+	if err = setupPcapOnRouter(ctx, ct.r, ap0Name, ap0Conf, ds); err != nil {
+		s.Fatal("Failed to setup pcap: ", err)
+	}
+
+	dutCapturer, err := pcap.StartCapturer(ctx, s.DUT().Conn(), "dut", "wlan0", "/var/log/")
+	if err != nil {
+		s.Fatal("Failed to start DUT capturer: ", err)
+	}
+	ds.push(func() {
+		dutCapturer.Close(ctx)
+	})
+
+	s.Log("Starting the first AP on ", ct.br[0])
+
+	ct.ap[0], err = ct.r.StartHostapd(ctx, ap0Name, ap0Conf)
+	if err != nil {
+		s.Fatal("Failed to start the hostapd server on the first AP: ", err)
+	}
 	ds.push(func() {
 		if err := ct.r.StopHostapd(ctx, ct.ap[0]); err != nil {
 			s.Error("Failed to stop the hostapd server on the first AP: ", err)
 		}
 	})
-	s.Log("Starting the first AP on ", ct.br[0])
-	ap0Name := uniqueAPName()
-	ct.ap[0], err = ct.r.StartHostapd(ctx, ap0Name, ap0Conf)
-	if err != nil {
-		s.Fatal("Failed to start the hostapd server on the first AP: ", err)
-	}
 
 	s.Logf("Starting the DHCP server on %s, serverIP=%s", ct.br[0], serverIP)
 	ct.dserv, err = ct.r.StartDHCP(ctx, ap0Name, ct.br[0], startIP, endIP, serverIP, broadcastIP, mask)
@@ -305,6 +341,10 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 	ap1Conf, err := hostapd.NewConfig(ct.apOps[1]...)
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP1: ", err)
+	}
+
+	if err = setupPcapOnRouter(ctx, ct.r, ap1Name, ap1Conf, ds); err != nil {
+		s.Fatal("Failed to setup pcap: ", err)
 	}
 
 	ct.ap[1], err = ct.r.StartHostapd(ctx, ap1Name, ap1Conf)
