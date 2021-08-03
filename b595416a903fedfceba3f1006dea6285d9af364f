@@ -62,6 +62,98 @@
       },
       "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3428c7_8b3d1df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-03T02:46:52Z",
+      "side": 1,
+      "message": "I would suggest to use Poll instead of retry.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7043248f_09daff5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-03T02:46:52Z",
+      "side": 1,
+      "message": "I think this part can be done inside the subtest. How about defining a different structure for subtest meta data. \n\ntype subtest struct{\n    InputMethod,\n    InputModality,\n    InputField,\n    TestData,\n}",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 4
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c01779_8675bd39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-03T02:46:52Z",
+      "side": 1,
+      "message": "Optional: I personally suggest to use underline instead of `-`",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc445d3_1a61d75d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-03T02:46:52Z",
+      "side": 1,
+      "message": "You can probably wait for this cl to land cl/388155856. Then implement this function with test api.",
+      "range": {
+        "startLine": 350,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 19
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
