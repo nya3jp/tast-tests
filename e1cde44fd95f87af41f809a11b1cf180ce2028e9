@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4e2ea28_1ca72f75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f8dc7a_9425a1a1",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27809a92_236722e0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "27809a92_236722e0",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d0c0be_1ed2e396",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67428bdc_b7ee29b9",
       "range": {
         "startLine": 16,
         "startChar": 5,
@@ -144,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56ed88ec_b33e06e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0920a8d_4125bc04",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c783fb05_351c0479",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 1
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "c783fb05_351c0479",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d3df03_24045fae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51c8d71b_1498645b",
       "range": {
         "startLine": 40,
         "startChar": 2,
@@ -238,6 +334,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "688fbe19_d51e2194",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cffb11b5_22b671f8",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 71
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "431dac27_97a826a7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 1
@@ -273,6 +393,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "431dac27_97a826a7",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5541d56_c6033ebf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c1b606_0ba99810",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -332,6 +476,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fe19a77_b14ec819",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f227d0b2_c69124ca",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be39fda1_8417b470",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 1
@@ -367,6 +535,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "be39fda1_8417b470",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 44
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fef25d_4891661c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ec1ff5_7eb962e6",
       "range": {
         "startLine": 72,
         "startChar": 1,
@@ -426,6 +618,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2b282bb_c1e5bd73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf54791_65c590fb",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca2e1e05_37e7758a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 1
@@ -461,6 +677,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "ca2e1e05_37e7758a",
+      "range": {
+        "startLine": 94,
+        "startChar": 54,
+        "endLine": 94,
+        "endChar": 67
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee1e472_796bb38d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "644488b4_16546a38",
       "range": {
         "startLine": 94,
         "startChar": 54,
@@ -520,6 +760,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cbb6330_9a9de08e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3361cb99_74057afc",
+      "range": {
+        "startLine": 110,
+        "startChar": 13,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46d983f3_7aa6327a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 1
@@ -555,6 +819,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "46d983f3_7aa6327a",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d6a473_4ac77e7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8855a79c_d84437ab",
       "range": {
         "startLine": 116,
         "startChar": 3,
@@ -614,6 +902,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fd2d554_482a8184",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca83a32a_cc7b371b",
+      "range": {
+        "startLine": 156,
+        "startChar": 31,
+        "endLine": 156,
+        "endChar": 116
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2450d529_2399b7db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 1
@@ -649,6 +961,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "2450d529_2399b7db",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "e1cde44fd95f87af41f809a11b1cf180ce2028e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e69e04_350659c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024445cf_276f5c62",
       "range": {
         "startLine": 181,
         "startChar": 0,
