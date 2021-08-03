@@ -62,10 +62,30 @@ type ShillService struct {
 	s *testing.ServiceState
 }
 
+// cleanUpUsbmon cleans up usbmon files and processes, if any.
+// BT tests might left those after exiting and caused some problems. As a
+// workaround, let's force cleanup here as well in case the previous tasks may
+// be killed before the cleanup is finished. See: b/194536867#comment15.
+func (s *ShillService) cleanUpUsbmon(ctx context.Context) {
+	// Ignore the error as the process might not exist.
+	testexec.CommandContext(ctx, "pkill", "tcpdump").Run()
+
+	// USBMON_DIR_LOG_PATH in Tauto (bluetooth_adapter_tests.py).
+	const usbmonDirLogPath = "/var/log/usbmon"
+	if err := os.RemoveAll(usbmonDirLogPath); err != nil {
+		// Only log here because this is just something nice to be done and
+		// does not really block WiFi tests.
+		testing.ContextLogf(ctx, "Error removing %s: %v", usbmonDirLogPath, err)
+	}
+}
+
 // InitDUT properly initializes the DUT for WiFi tests.
 func (s *ShillService) InitDUT(ctx context.Context, req *wifi.InitDUTRequest) (*empty.Empty, error) {
 	ctx, cancel := reserveForReturn(ctx)
 	defer cancel()
+
+	// Clean up usbmon before any setup in case it can cause any misbehave.
+	s.cleanUpUsbmon(ctx)
 
 	if !req.WithUi {
 		// Stop UI to avoid interference from UI (e.g. request scan).
