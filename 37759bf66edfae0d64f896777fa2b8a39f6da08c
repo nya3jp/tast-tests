@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d12b741_b2d888e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-03T18:33:51Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "37759bf66edfae0d64f896777fa2b8a39f6da08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d6aa2c_3ad1bef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-03T18:33:51Z",
+      "side": 1,
+      "message": "nit: comments should start with a capital letter unless they start with a variable/constant/function name which is written in lower case as the comment above.",
+      "range": {
+        "startLine": 49,
+        "startChar": 47,
+        "endLine": 49,
+        "endChar": 48
+      },
+      "revId": "37759bf66edfae0d64f896777fa2b8a39f6da08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
