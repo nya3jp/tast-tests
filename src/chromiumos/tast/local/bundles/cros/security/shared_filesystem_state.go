@@ -37,7 +37,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
@@ -138,6 +138,12 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		// network DNS proxy processes.
 		"^/run/netns/connected_netns_0$": true,
 		"^/run/netns/connected_netns_1$": true,
+		// These mount points are to ensure that the root namespace's
+		// /home/root/<hash> is propagated into the mnt_concierge namespace even
+		// when the latter namespace is created before login. This mount is not
+		// actually used if ARCVM is not running, but will be present if
+		// vm_concierge is running (see b/197786414).
+		"^/run/arcvm$": true,
 	}
 
 	// ARCExpectedSharedMountsCommon contains the paths of all mountpoints that
@@ -158,12 +164,6 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		"^/run/arc/media(/|$)": true,
 		// Used for Android Debugging over USB.
 		"^/run/arc/adbd$": true,
-		// These mount points are to ensure that the root namespace's
-		// /home/root/<hash> is propagated into the mnt_concierge namespace even
-		// when the latter namespace is created before login. This mount is not
-		// actually used by ARC++ but will be present if vm_concierge is running
-		// (see b/197786414).
-		"^/run/arcvm$": true,
 	}
 
 	// ARCExpectedSharedMountsUser contains the names of all mountpoints that are
@@ -183,10 +183,6 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	ARCVMExpectedSharedMountsCommon := map[string]bool{
 		// Used to share Android's sdcard partition to ChromeOS
 		"^/run/arc/sdcard$": true,
-		// These mount points are to ensure that the root
-		// namespace's /home/root/<hash> is propagated into the mnt_concierge
-		// namespace even when the latter namespace is created before login.
-		"^/run/arcvm$": true,
 	}
 
 	// ARCVMExpectedSharedMountsUser contains the names of all mountpoints that are
