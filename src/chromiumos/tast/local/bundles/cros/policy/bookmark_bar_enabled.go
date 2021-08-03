@@ -6,11 +6,13 @@ package policy
 
 import (
 	"context"
-	"time"
+	"strings"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -44,6 +46,8 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+
 	const bookmarkName = "Policies"
 	// Bookmark the URL: chrome://policy.
 	func() {
@@ -66,15 +70,17 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 		}
 
 		// Adding bookmark dialog should be shown.
-		// Find and click the Name field in the dialog to specify a name for the bookmark.
-		if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-			Role: ui.RoleTypeTextField,
-			Name: "Bookmark name",
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatal("Failed to click address bar: ", err)
+		// Find and click the name field in the dialog to specify the bookmark name.
+		bookmarkNameField := nodewith.Name("Bookmark name").Role(role.TextField)
+		if err := uiauto.Combine("find and click the bookmark name text field",
+			ui.WaitUntilExists(bookmarkNameField),
+			ui.LeftClick(bookmarkNameField),
+		)(ctx); err != nil {
+			s.Fatal("Failed to find and click the bookmark name text field: ", err)
 		}
 
-		// Select the existing text in the Name field so that it can be deleted by pressing backspace in the next step.
+		// Select the existing text in the bookmark name field so that it can be deleted by pressing
+		// backspace in the next step.
 		if err := kb.Accel(ctx, "Ctrl+a"); err != nil {
 			s.Fatal("Failed to select bookmark name: ", err)
 		}
@@ -85,11 +91,8 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 		}
 
 		// Click the "Done" button on the dialog.
-		if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-			Role: ui.RoleTypeButton,
-			Name: "Done",
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			s.Fatal("Failed to find and click done button: ", err)
+		if err := ui.LeftClick(nodewith.Name("Done").Role(role.Button).First())(ctx); err != nil {
+			s.Fatal("Failed to click the add bookmark done button: ", err)
 		}
 	}()
 
@@ -135,11 +138,17 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 			defer vconn.Close()
 
 			// Confirm whether bookmark bar is shown with the bookmarked URL.
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: bookmarkName,
-			}, param.wantBookmarbar, 10*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the bookmark bar: ", err)
+			// // TODO(crbug.com/1236546): Replace this with a helper function to check the existence of a UI node.
+			bookmarkedButton := nodewith.Name(bookmarkName).Role(role.Button).First()
+			if err = ui.WaitUntilExists(bookmarkedButton)(ctx); err != nil {
+				if !strings.Contains(err.Error(), nodewith.ErrNotFound) {
+					s.Fatal("Failed to wait for the bookmark bar: ", err)
+				}
+				if param.wantBookmarbar {
+					s.Error("Bookmark bar with bookmarked URL not found: ", err)
+				}
+			} else if !param.wantBookmarbar {
+				s.Error("Unexpected bookmark bar with bookmarked URL found: ", err)
 			}
 		})
 	}
