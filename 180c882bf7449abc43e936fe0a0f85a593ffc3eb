@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c4a65f_e5ea0c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:14:22Z",
+      "side": 1,
+      "message": "LGMT % nits, thanks a lot!",
+      "revId": "180c882bf7449abc43e936fe0a0f85a593ffc3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69755e65_1d282d71",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:14:22Z",
+      "side": 1,
+      "message": "nit: and",
+      "range": {
+        "startLine": 318,
+        "startChar": 20,
+        "endLine": 318,
+        "endChar": 21
+      },
+      "revId": "180c882bf7449abc43e936fe0a0f85a593ffc3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f920dcb0_bf6562a3",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:14:22Z",
+      "side": 1,
+      "message": "nit: this: // add :\n\nsame in other places",
+      "range": {
+        "startLine": 359,
+        "startChar": 42,
+        "endLine": 359,
+        "endChar": 46
+      },
+      "revId": "180c882bf7449abc43e936fe0a0f85a593ffc3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
