@@ -39,7 +39,7 @@ func init() {
 		Attr:         []string{"group:wificell", "wificell_perf", "wificell_unstable"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
-		Fixture:      "wificellFixt",
+		Fixture:      "wificellFixtWithCapture",
 		Timeout:      time.Minute * 5, // The average test time doubled.
 		Vars:         []string{"wifi.RoamContPing.rounds"},
 		Params: []testing.Param{{
