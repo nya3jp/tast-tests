@@ -69,6 +69,121 @@
       "message": "This commit sets up the structure of where I think the App Standardization tests can live, a few helper classes for spinning up the tests quickly, and an implementation of the Keyboard typing test (app and tast tests). @yhanada, I wanted to get your eyes on this first commit since the remaining applications will follow a similar structure. ",
       "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2adbd8_d41950fd",
+        "filename": "android/ArcAppCompatStandardizedKeyboardTypingTest/res/layout/activity_main.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-03T15:48:02Z",
+      "side": 1,
+      "message": "nit: Could you format this file?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01e0c1f_6d364cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/standardized_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-03T15:48:02Z",
+      "side": 1,
+      "message": "I guess we need to make sure the input field is focused before typing keys.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f923d079_3c5cb45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-03T15:48:02Z",
+      "side": 1,
+      "message": "optional: How about introducing a struct to gather the arguments? The benefit is it will be easier to more states when we need. Also easier to represent optional arguemtns.",
+      "range": {
+        "startLine": 23,
+        "startChar": 70,
+        "endLine": 23,
+        "endChar": 174
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b23e0d_3d875ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-03T15:48:02Z",
+      "side": 1,
+      "message": "We had an issue on slower devices to use cpu.WaitUntilIdle() before. On those kind of devices, cpu.WaitUntilIdle took too much time and no time was left for actual testing.\nIs there any specific reason why we need to wait for cpu is free? Or is it a general protection for flakiness?",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb959edd_f3ef1582",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-03T15:48:02Z",
+      "side": 1,
+      "message": "How about introducing SetARCAppWindowStateAndWait() and using it in the tests?\nIt might contribute to stabilize the tests.\nThe new method will call SetWindowStateAndWait() instead of SetWindowState().",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
