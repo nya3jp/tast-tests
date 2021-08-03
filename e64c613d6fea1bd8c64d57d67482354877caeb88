@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83b0dd2_129052cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133074
+      },
+      "writtenOn": "2021-08-03T21:11:17Z",
+      "side": 1,
+      "message": "The network.DiagPassing.* tests are failing fairly often in the M93 builders so I would like to cherry-pick this into the release branch.  Example failure:\nhttps://ci.chromium.org/p/chromium-m93/builders/ci/chromeos-amd64-generic-rel\n\nI typically cherry-pick into Chromium rather than Chromiumos so please let me know if something looks wonky : )\n\nThanks!",
+      "revId": "e64c613d6fea1bd8c64d57d67482354877caeb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
