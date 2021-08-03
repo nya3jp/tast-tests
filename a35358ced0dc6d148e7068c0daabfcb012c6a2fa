@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b970deda_3956dcd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-03T04:13:20Z",
+      "side": 1,
+      "message": "I\u0027m afraid that matching JSON output with regexp is not a good idea. For example we might change fwupdmgr to change the formatting of the output while keeping JSON validity, but this test will break by such changes.\n\nI recommend parsing JSON with encoding/json package.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "a35358ced0dc6d148e7068c0daabfcb012c6a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9effb5f_42afa329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-03T04:13:20Z",
+      "side": 1,
+      "message": "Whenever possible, I recommend avoiding to pass testing.State as a function argument.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#State\n\nYou can instead return error, and check it in the caller.",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "a35358ced0dc6d148e7068c0daabfcb012c6a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a73ad6_afe02187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-03T04:13:20Z",
+      "side": 1,
+      "message": "nil slice is a valid empty slice, but not an only empty slice, so it\u0027s usually a bug to compare a slice to nil.\n\nc.f.\nhttps://medium.com/@habibridho/golang-nil-vs-empty-slice-87fd51c0a4d\n\nIn this case, I believe just checking err is sufficient:\n\n if err !\u003d nil { ... }",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "a35358ced0dc6d148e7068c0daabfcb012c6a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e420f9c_ae5df227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-03T04:13:20Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "a35358ced0dc6d148e7068c0daabfcb012c6a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
