@@ -46,6 +46,30 @@
       },
       "revId": "75e55f358e1b237471f5a88c1645877353e3bb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9c0bfa_1443d0db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-08-03T01:20:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9c01ad4_69203dac",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "75e55f358e1b237471f5a88c1645877353e3bb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
