@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1489e6a3_2d068eb0",
+        "filename": "android/ArcAppCompatStandardizedKeyboardTypingTest/res/layout/activity_main.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-03T16:50:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe2adbd8_d41950fd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b01e0c1f_6d364cc1",
@@ -107,6 +131,30 @@
       "writtenOn": "2021-08-03T15:48:02Z",
       "side": 1,
       "message": "I guess we need to make sure the input field is focused before typing keys.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832d09bb_db69886e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/standardized_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-03T16:50:28Z",
+      "side": 1,
+      "message": "The android app by default focuses the input. However, I think there is benefit in calling it out explicitly in the tast test so I\u0027ve updated it to click/ensure focus before running the test.",
+      "parentUuid": "b01e0c1f_6d364cc1",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -140,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "476bc8cd_082de44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-03T16:50:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f923d079_3c5cb45b",
+      "range": {
+        "startLine": 23,
+        "startChar": 70,
+        "endLine": 23,
+        "endChar": 174
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58b23e0d_3d875ed6",
@@ -163,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e793fec_bc7747f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-03T16:50:28Z",
+      "side": 1,
+      "message": "I was noticing flakiness when the window resized. However, in the new SetARCAppWindowStateAndWait() method, I noticed there was existing logic to wait for the window to stop animating. That seemed to be the actual problem so I have removed this line.",
+      "parentUuid": "58b23e0d_3d875ed6",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb959edd_f3ef1582",
@@ -176,6 +272,30 @@
       "writtenOn": "2021-08-03T15:48:02Z",
       "side": 1,
       "message": "How about introducing SetARCAppWindowStateAndWait() and using it in the tests?\nIt might contribute to stabilize the tests.\nThe new method will call SetWindowStateAndWait() instead of SetWindowState().",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "2d7996e60f5bc7d07593f995b8510b22914861db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d630f28_7dc4d72c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-03T16:50:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb959edd_f3ef1582",
       "range": {
         "startLine": 279,
         "startChar": 5,
