@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dea7ac_29e9b406",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "nit/naming: BatteryStatus, BatteryVoltageReading, and BatterCurrentReading are all filepath templates. But the names sound like they\u0027re the actual values. Could you rename these to be more precise? For example, BatteryStatusFPTemplate, BatteryVoltageFPTemplate, and BatteryCurrentFPTemplate?",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7583d6f5_05a1f40c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "Please clarify the temperature units (Celsius vs. Kelvin).",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7860792e_2056f605",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "nit: remove space at end of line",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3a4094_00454263",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "Simpler to operate directly on the []byte.\n\n    import (\n        \"bytes\"\n        ...\n    )\n    ...\n    batteryName \u003d bytes.TrimSuffix(batteryNameOut, []byte(\"\\n\"))",
+      "range": {
+        "startLine": 78,
+        "startChar": 15,
+        "endLine": 78,
+        "endChar": 63
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c99d35e_9f36b484",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "nit/naming: As before, this name is unclear. It reads as if this is an actual value, where it\u0027s actually a filepath. How about batteryVoltageFP?\n\nSame thing for batteryCurrent.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200e96af_94d98346",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "L87-115 and L117-143 contain a lot of duplicated logic. If we put it into a function or a loop, we can remove a lot of code, which will help with maintainability.\n\n    type comparisonTestCase {\n        metric       string\n        units        string\n        servoControl servo.IntControl\n        sysfsPath    string\n        errorMargin  int\n    }\n    for _, tc :\u003d range []measurementComparisonTestCase{\n        comparisonTestCase{\"voltage\", \"mV\", servo.BatteryVoltageMV, batteryVoltage, VoltagemVErrorMargin},\n        comparisonTestCase{\"current\", \"mA\", servo.BatteryCurrentMA, batteryCurrent, CurrentmAErrorMargin},\n    } {\n        s.Logf(\"Checking if %s from sysfs matches servo\", metric)\n        servoReading, err :\u003d h.Servo.GetInt(ctx, tc.servoControl)\n        if err !\u003d nil {\n            s.Fatalf(\"Failed to read battery %s from servo: %+v\", tc.metric, err)\n        }\n        \n        kernelReadingOut, err :\u003d h.DUT.Conn().Command(\"cat\", sysfsPath).Output(ctx)\n        if err !\u003d nil {\n            s.Fatalf(\"Failed to read battery %s from kernel: %+v\", tc.metric, err)\n        }\n        \n        kernelReadingStr :\u003d strings.TrimSuffix(string(kernelReadingOut), \"\\n\")\n        kernelReading, err :\u003d strconv.ParseInt(kernelReadingStr), 10, 64)\n        if err !\u003d nil {\n            s.Fatalf(\"Failed to parse kernel %s reading value %s: %+v\", tc.metric, kernelReadingStr, err)\n        }\n        \n        kernelReading \u003d kernelReading / 1000\n        \n        s.Logf(\"%s reading from servo: %d%s\", tc.metric, servoReading, tc.units)\n        s.Logf(\"%s reading from kernel: %d\", tc.metric, kernelReading, tc.units)\n        \n        if math.Abs(servoReading-kernelReading) \u003e errorMargin) {\n            s.Fatalf(\"%s reading from servo (%d%s) and kernel (%d%s) mismatch beyond %d%s error margin\", tc.metric, servoReading, tc.units, kernelReading, tc.units, tc.errorMargin, tc.units)\n        }\n    }",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95aac8e1_1f320e88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "nit: kernelVoltageReadingStr is already a string. No need to re-cast to a string.\n\nOr, even simpler, you could avoid creating kernelVoltageReadingStr at all by operating directly on the []byte.\n\n    kernelVoltageReadingOut \u003d bytes.TrimSuffix(kernelVoltageReadingOut, []byte(\"\\n\"))\n    kernelVoltageReading, err :\u003d strconv.ParseInt(string(kernelVoltageReadingOut), 10, 64)\n    \nThe same applies to the the kernelCurrentReading, below.",
+      "range": {
+        "startLine": 99,
+        "startChar": 47,
+        "endLine": 99,
+        "endChar": 53
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f807a0_ffc018d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "nit/style: Simpler to use s.Fatalf:\n\n    s.Fatalf(\"Failed to parse kernel voltage reading value %s: %+v\", kernelVotlageReadingStr, err)\n\nThe same aplies to L106, L107, L110, and elsewhere.",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31fba163_0a2eea06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "Please add a comment about why you\u0027re doing this. Ditto for the current reading.",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef14abc_ecd4f7f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "Please create a constant for this in the servo package, as you did for ppvar_vbat_mv.",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2f3291_1453734f",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T20:23:09Z",
+      "side": 1,
+      "message": "nit/style: please alphabetize in this list",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
