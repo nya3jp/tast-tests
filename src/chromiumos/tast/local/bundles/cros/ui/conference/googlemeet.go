@@ -101,14 +101,20 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		}
 		defer kb.Close()
 
-		emailContent := nodewith.NameContaining(meetAccount).Editable()
+		emailContent := nodewith.NameContaining(meetAccount).Role(role.InlineTextBox).Editable()
 		emailField := nodewith.Name("Email or phone").Role(role.TextField)
 		emailFieldFocused := nodewith.Name("Email or phone").Role(role.TextField).Focused()
 		nextButton := nodewith.Name("Next").Role(role.Button)
 		passwordField := nodewith.Name("Enter your password").Role(role.TextField)
 		passwordFieldFocused := nodewith.Name("Enter your password").Role(role.TextField).Focused()
 		iAgree := nodewith.Name("I agree").Role(role.Button)
-
+		closeNotifications := func(ctx context.Context) error {
+			// The "Sign-in again" notification will block the next button, close it.
+			if err := ash.CloseNotifications(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to close all notifications")
+			}
+			return nil
+		}
 		var actions []uiauto.Action
 		if err := ui.WaitUntilExists(emailContent)(ctx); err != nil {
 			// Email has not been entered into the text box yet.
@@ -119,6 +125,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 			)
 		}
 		actions = append(actions,
+			closeNotifications,
 			ui.LeftClick(nextButton),
 			// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
 			ui.LeftClickUntil(passwordField, ui.Exists(passwordFieldFocused)),
