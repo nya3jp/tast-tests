@@ -371,6 +371,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caeb4e68_76b8bbdf",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e2c950_a578aa64",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2378f33_97dea039",
@@ -432,6 +456,30 @@
       "side": 1,
       "message": "as discussed offline, test will fail faster in this case. Please update CL.",
       "parentUuid": "a7f18613_67dff221",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16027b49_f6142b16",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6cfdc11_a782b22c",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -597,6 +645,30 @@
       "side": 1,
       "message": "This method might return \"failed to connect to system bus\" error which has nothing about power manager.",
       "parentUuid": "f6f97c50_234c71ce",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da75819_843c755f",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a24d5a3_64148b1b",
       "range": {
         "startLine": 140,
         "startChar": 9,

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7315614f_01e413f9",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc98a77_4168d8ad",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90390133_6a4c37cf",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-03T14:28:12Z",
       "side": 1,
       "message": "nit: Wrap it, check other places",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc258bfe_64144032",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90390133_6a4c37cf",
       "range": {
         "startLine": 44,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a260fec_8f37ecbd",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a446fe_3155281f",
+      "range": {
+        "startLine": 141,
+        "startChar": 44,
+        "endLine": 141,
+        "endChar": 57
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57399241_1b7c656f",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-03T14:28:12Z",
       "side": 1,
       "message": "nit: D-Bus",
+      "range": {
+        "startLine": 66,
+        "startChar": 48,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba08ef4_d6eb9b37",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-03T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57399241_1b7c656f",
       "range": {
         "startLine": 66,
         "startChar": 48,
