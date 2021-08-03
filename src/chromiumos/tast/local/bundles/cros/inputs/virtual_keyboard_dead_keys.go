@@ -44,7 +44,7 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:              "french_stable",
+				Name:              "french",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				// "French - French keyboard" input method uses a compact-layout VK for
@@ -64,7 +64,7 @@ func init() {
 					expectedTypingResult: "â",
 				},
 			}, {
-				Name:              "french_unstable",
+				Name:              "french_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledClamshell,
@@ -75,7 +75,7 @@ func init() {
 					expectedTypingResult: "â",
 				},
 			}, {
-				Name:              "catalan_stable",
+				Name:              "catalan",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				// "Catalan keyboard" input method uses the same full-layout VK (that
@@ -94,7 +94,7 @@ func init() {
 					expectedTypingResult: "á",
 				},
 			}, {
-				Name:              "catalan_unstable",
+				Name:              "catalan_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledTablet,

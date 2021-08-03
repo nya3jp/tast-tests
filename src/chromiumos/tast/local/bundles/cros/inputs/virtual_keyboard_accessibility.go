@@ -24,12 +24,11 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
-			Name:              "stable",
 			Pre:               pre.VKEnabledClamshell,
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
-			Name:              "unstable",
+			Name:              "informational",
 			Pre:               pre.VKEnabledClamshell,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			ExtraAttr:         []string{"informational"},

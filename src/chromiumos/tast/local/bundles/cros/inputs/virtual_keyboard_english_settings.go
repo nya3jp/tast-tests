@@ -31,10 +31,9 @@ func init() {
 		Pre:          pre.VKEnabledTablet,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "stable",
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 		}, {
-			Name:              "unstable",
+			Name:              "informational",
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
 	})

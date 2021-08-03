@@ -49,11 +49,10 @@ func init() {
 		Timeout:      time.Duration(len(inputFieldTestIMEs)) * time.Duration(len(inputFieldToMessage)) * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
-				Name:              "unstable",
+				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 		},
