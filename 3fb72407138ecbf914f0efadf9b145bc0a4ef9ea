@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdedbc2_7acf0c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-03T15:18:03Z",
+      "side": 1,
+      "message": "I\u0027m having issues here. For some reason, the \"start powerd\" command keeps failing at the end of the test.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "3fb72407138ecbf914f0efadf9b145bc0a4ef9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
