@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325c7a3e_143701f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-03T16:36:48Z",
+      "side": 1,
+      "message": "LGTM % comment about hwdep.InternalDisplay() hardware dep",
+      "revId": "27b048ed84ff0ac0b9bba1974e228d209baf145a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e2839c_6692c860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-03T16:36:48Z",
+      "side": 1,
+      "message": "looks like you forgot to remove this between patch sets, or else was there a reason to keep it? I think it should be removed so the test will run on chromeboxes etc.",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "27b048ed84ff0ac0b9bba1974e228d209baf145a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
