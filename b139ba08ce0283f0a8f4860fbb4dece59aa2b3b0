@@ -34,6 +34,23 @@
       "parentUuid": "c1f7c390_b86c6e36",
       "revId": "b139ba08ce0283f0a8f4860fbb4dece59aa2b3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac1e0ab_9e6afc1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T06:46:58Z",
+      "side": 1,
+      "message": "LGTM % defer to inputs team\u0027s reviews",
+      "revId": "b139ba08ce0283f0a8f4860fbb4dece59aa2b3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
