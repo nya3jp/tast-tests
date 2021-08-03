@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2db429_d3fae3dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-03T19:20:50Z",
+      "side": 1,
+      "message": "Right, sorry about that. I had the conditions mixed up.",
+      "parentUuid": "3abe5a6d_25bba761",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e442d4d8_81f760d7",
@@ -192,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df532af5_6d6543dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-03T19:20:50Z",
+      "side": 1,
+      "message": "Sgtm. I\u0027ll try restructuring the test this way.",
+      "parentUuid": "0b2c315e_9ef44ac3",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a08d38b_cb2ed27f",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 6
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "What if you set set.flags to NULL? Have not tried any of this",
       "parentUuid": "8eb3e315_95e1f656",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 124
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb18931_92d0a689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-03T19:20:50Z",
+      "side": 1,
+      "message": "Tried setting it to nil, but it still outputted the empty string.",
+      "parentUuid": "c3b3bc64_c53cf11b",
       "range": {
         "startLine": 120,
         "startChar": 2,
