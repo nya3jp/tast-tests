@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c270192a_1809ab68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-03T19:04:15Z",
+      "side": 1,
+      "message": "Hi Judy, appreciate if you can check this CL because there are two others are depending on this one. Thank you.",
+      "revId": "d6e93572785665b87504ab13c191b6d37dde4ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
