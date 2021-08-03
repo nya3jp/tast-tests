@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba64aed_a80c817f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-08-03T00:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23f1c6b9_d8594d30",
+      "revId": "799a121e2293f8ede089286f9cad8d39d8d89ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "529283e5_6057a01a",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-08-02T15:17:11Z",
       "side": 1,
       "message": "optional: \"%+v\" for slightly better logging.\n\nAlso, could you use \"want, got\" format for consistency?\n\ns.Fatalf(\"Unexpected event histogram update: want %+v, got %+v\", ...)\n\nDitto for L118.",
+      "range": {
+        "startLine": 108,
+        "startChar": 48,
+        "endLine": 108,
+        "endChar": 50
+      },
+      "revId": "799a121e2293f8ede089286f9cad8d39d8d89ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c873fc76_64cb43e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-08-03T00:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529283e5_6057a01a",
       "range": {
         "startLine": 108,
         "startChar": 48,
