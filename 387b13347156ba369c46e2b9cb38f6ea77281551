@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t we ensure tlsdated is running at the end of the test?",
       "revId": "387b13347156ba369c46e2b9cb38f6ea77281551",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f14f30_0a552802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-08-03T15:12:36Z",
+      "side": 1,
+      "message": "i remember looking into this but I don\u0027t remember why I didn\u0027t do it. I think other tests were also stopping services and never brought them back up. \n\nEnabling it back again won\u0027t affect the test so I wouldn\u0027t mind enabling them after all tests are run. feel free to push a CL for this.",
+      "parentUuid": "3f331de4_73a91f9b",
+      "revId": "387b13347156ba369c46e2b9cb38f6ea77281551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
