@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"path"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -122,8 +123,55 @@ func (info *osInfo) validate(ctx context.Context) error {
 	return nil
 }
 
+func compareSkuNumber(ctx context.Context, fpath string, got *string) error {
+	const (
+		cfgSkuNumber = "/cros-healthd/cached-vpd/has-sku-number"
+	)
+	c, err := utils.IsCrosConfigTrue(ctx, cfgSkuNumber)
+	if err != nil {
+		return err
+	}
+	if !c {
+		return utils.CompareStringPtr(nil, got)
+	}
+	e, err := utils.ReadFile(fpath)
+	if e == nil || err != nil {
+		return errors.Wrap(err, "this board must have sku_number")
+	}
+	return utils.CompareStringPtr(e, got)
+}
+
+func (info *vpdInfo) validate(ctx context.Context) error {
+	const (
+		ro = "/sys/firmware/vpd/ro/"
+		rw = "/sys/firmware/vpd/rw/"
+	)
+	if err := utils.CompareStringPtrWithFile(path.Join(rw, "ActivateDate"), info.ActivateDate); err != nil {
+		return errors.Wrap(err, "ActivateDate")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(ro, "mfg_date"), info.MfgDate); err != nil {
+		return errors.Wrap(err, "MfgDate")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(ro, "model_name"), info.ModelName); err != nil {
+		return errors.Wrap(err, "ModelName")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(ro, "region"), info.Region); err != nil {
+		return errors.Wrap(err, "Region")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(ro, "serial_number"), info.SerialNumber); err != nil {
+		return errors.Wrap(err, "SerialNumber")
+	}
+	if err := compareSkuNumber(ctx, path.Join(ro, "sku_number"), info.SkuNumber); err != nil {
+		return errors.Wrap(err, "SkuNumber")
+	}
+	return nil
+}
+
 func (info *systemInfo) validate(ctx context.Context) error {
 	if err := info.OsInfo.validate(ctx); err != nil {
+		return err
+	}
+	if err := info.VpdInfo.validate(ctx); err != nil {
 		return err
 	}
 	return nil
