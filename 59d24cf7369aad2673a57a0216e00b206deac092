@@ -56,6 +56,30 @@
       },
       "revId": "59d24cf7369aad2673a57a0216e00b206deac092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059a83f5_c6154aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-03T02:48:03Z",
+      "side": 1,
+      "message": "VP8 is correct but is missing a caps.HWDecodeVP9 since the test\nis supposed to encode+decode a VP8 stream in a grid of VP9 \nremote streams (hence, only decode); this would repro one of\nMeet \"scenarios\".",
+      "parentUuid": "d322a3f7_94377525",
+      "range": {
+        "startLine": 99,
+        "startChar": 44,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "59d24cf7369aad2673a57a0216e00b206deac092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
