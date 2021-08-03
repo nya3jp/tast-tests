@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aacbf22c_9c6bbc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-08-03T16:11:09Z",
+      "side": 1,
+      "message": "Looks like the autoclick test flaked during the CQ. I will investigate further in a different CL. For the meantime, let\u0027s promote only the ChromeVox hint test to critical.",
+      "revId": "ae473fae149d4e76f61e3700aa81de3d71bf4678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
