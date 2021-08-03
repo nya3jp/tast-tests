@@ -40,11 +40,12 @@ func init() {
 }
 
 func InputMethodManagement(ctx context.Context, s *testing.State) {
-	const (
-		searchKeyword   = "japanese"                           // Keyword used to search input method.
-		inputMethodName = "Japanese with US keyboard"          // Input method should be displayed after search.
-		inputMethodCode = string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
-	)
+	testInputMethod := ime.JapaneseWithUSKeyboard
+
+	// Use the first 5 letters to search input method.
+	// This will handle Unicode characters correctly.
+	runes := []rune(testInputMethod.Name)
+	searchKeyword := string(runes[0:5])
 
 	// This test changes input method, it affects other tests if not cleaned up.
 	// Using new Chrome instance to isolate it from other tests.
@@ -71,16 +72,12 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 	}
 	if err := uiauto.Combine("test input method management",
 		settings.ClickAddInputMethodButton(),
-		settings.SearchInputMethod(keyboard, searchKeyword, inputMethodName),
-		settings.SelectInputMethod(inputMethodName),
+		settings.SearchInputMethod(keyboard, searchKeyword, testInputMethod.Name),
+		settings.SelectInputMethod(testInputMethod.Name),
 		settings.ClickAddButtonToConfirm(),
-		func(ctx context.Context) error {
-			return ime.WaitForInputMethodInstalled(ctx, tconn, inputMethodCode, 60*time.Second)
-		},
-		settings.RemoveInputMethod(inputMethodName),
-		func(ctx context.Context) error {
-			return ime.WaitForInputMethodRemoved(ctx, tconn, inputMethodCode, 60*time.Second)
-		},
+		testInputMethod.WaitUntilInstalled(tconn),
+		settings.RemoveInputMethod(testInputMethod.Name),
+		testInputMethod.WaitUntilRemoved(tconn),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test input method management: ", err)
 	}

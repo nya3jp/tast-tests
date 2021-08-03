@@ -7,6 +7,7 @@ package ime
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/action"
@@ -214,6 +215,22 @@ func (im InputMethod) Install(tconn *chrome.TestConn) action.Action {
 			}
 		}
 		return AddInputMethod(ctx, tconn, fullyQualifiedIMEID)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
+
+// WaitUntilInstalled waits for the input method to be installed.
+func (im InputMethod) WaitUntilInstalled(tconn *chrome.TestConn) action.Action {
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return WaitForInputMethodInstalled(ctx, tconn, fullyQualifiedIMEID, 20*time.Second)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
+
+// WaitUntilRemoved waits for the input method to be removed.
+func (im InputMethod) WaitUntilRemoved(tconn *chrome.TestConn) action.Action {
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return WaitForInputMethodRemoved(ctx, tconn, fullyQualifiedIMEID, 20*time.Second)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
