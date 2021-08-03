@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67eb21e6_3a4be0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "Thanks! change it to isSupported. This is a library api to use, not really a test though.",
+      "parentUuid": "8844a685_dd9b8c04",
+      "range": {
+        "startLine": 394,
+        "startChar": 29,
+        "endLine": 394,
+        "endChar": 42
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc027860_f2e2eaf4",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-03T01:25:17Z",
       "side": 1,
       "message": "Could we have a bug to add support for this combination in the future? IE Check header contents is correct for PasswordInputFields (Check that the Switch to handwriting button is not there / disabled.)\n\nIt might be hard to add these tests now, since the last time I checked, headers are not consistent across input methods. There may also not be much point, since this seems likely to change in the future. For some keyboards, we can\u0027t switch modes when the keyboard header is (1,2,3,...), which is a design bug: b/178519812. A fix for that would mean the header contents changes.",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80ee752_49e3b2b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "I am assuming this a new test case? @Jun, are we tracking this somewhere else?",
+      "parentUuid": "cc027860_f2e2eaf4",
       "range": {
         "startLine": 397,
         "startChar": 3,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59d8178_78b47911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "done, revised it to Poll.",
+      "parentUuid": "0cc74fc7_0ee6cdc6",
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa3428c7_8b3d1df9",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "013f0a1b_c1c2a0d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa3428c7_8b3d1df9",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7043248f_09daff5d",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-08-03T02:46:52Z",
       "side": 1,
       "message": "I think this part can be done inside the subtest. How about defining a different structure for subtest meta data. \n\ntype subtest struct{\n    InputMethod,\n    InputModality,\n    InputField,\n    TestData,\n}",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 4
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea80a49c_35972b9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "This may not be related to this CL and need more design about that. Currently, the subtest is message-agnostic and only focuses on handling inputData, and reading data from message is a repeated process for all subtests.",
+      "parentUuid": "7043248f_09daff5d",
       "range": {
         "startLine": 138,
         "startChar": 3,
@@ -174,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f659385f_0b7417b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "I assume that convention is for naming? Do we have the conventions for error messages as well?",
+      "parentUuid": "878b8b08_f487e8a5",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afc445d3_1a61d75d",
@@ -187,6 +325,30 @@
       "writtenOn": "2021-08-03T02:46:52Z",
       "side": 1,
       "message": "You can probably wait for this cl to land cl/388155856. Then implement this function with test api.",
+      "range": {
+        "startLine": 350,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 19
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0018911_189eccb5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-03T04:27:44Z",
+      "side": 1,
+      "message": "Added a TODO to handle this.",
+      "parentUuid": "afc445d3_1a61d75d",
       "range": {
         "startLine": 350,
         "startChar": 3,
