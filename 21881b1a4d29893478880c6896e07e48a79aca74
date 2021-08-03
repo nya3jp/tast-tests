@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adb1fda9_b69bd2bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c5b542_1a0e0048",
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b30db93_9b701dd6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-27T20:46:10Z",
       "side": 1,
       "message": "Please create bug.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d261f19_5b900b50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b30db93_9b701dd6",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "356d6b99_56289b42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09ddedd_55a6a232",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f3e9b64_b0d5ef77",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
         "patchSetId": 1
@@ -77,6 +143,30 @@
       "writtenOn": "2021-07-27T20:46:10Z",
       "side": 1,
       "message": "Please use pre.NormalMode()",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31f4983_f51a6cd4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3e9b64_b0d5ef77",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -123,6 +213,30 @@
       "writtenOn": "2021-07-27T20:46:10Z",
       "side": 1,
       "message": "It would probably be good to send `chan 0` before these reads like you did in the other test.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "21881b1a4d29893478880c6896e07e48a79aca74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6090bdcc_1466e9f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-03T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1162e68b_d7b4bf04",
       "range": {
         "startLine": 47,
         "startChar": 1,
