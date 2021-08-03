@@ -24,6 +24,8 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/legacyrouter"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
@@ -254,17 +256,42 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP0: ", err)
 	}
+	ap0Name := uniqueAPName()
+	freqOps, err := ap0Conf.PcapFreqOptions()
+	if err != nil {
+		s.Fatal("Failed to get Freq Opts: ", err)
+	}
+	routerCaptureIf, ok := ct.r.(router.SupportCapture)
+	if !ok {
+		s.Fatal("Pcap device does not have packet capture support")
+	}
+	routerCapturer, err := routerCaptureIf.StartCapture(ctx, ap0Name, ap0Conf.Channel, freqOps)
+	if err != nil {
+		s.Fatal("Failed to start router capturer: ", err)
+	}
+	ds.push(func() {
+		routerCaptureIf.StopCapture(ctx, routerCapturer)
+	})
+
+	dutCapturer, err := pcap.StartCapturer(ctx, s.DUT().Conn(), "dut", "wlan0", "/var/log/")
+	if err != nil {
+		s.Fatal("Failed to start DUT capturer: ", err)
+	}
+	ds.push(func() {
+		dutCapturer.Close(ctx)
+	})
+
+	s.Log("Starting the first AP on ", ct.br[0])
+
+	ct.ap[0], err = ct.r.StartHostapd(ctx, ap0Name, ap0Conf)
+	if err != nil {
+		s.Fatal("Failed to start the hostapd server on the first AP: ", err)
+	}
 	ds.push(func() {
 		if err := ct.r.StopHostapd(ctx, ct.ap[0]); err != nil {
 			s.Error("Failed to stop the hostapd server on the first AP: ", err)
 		}
 	})
-	s.Log("Starting the first AP on ", ct.br[0])
-	ap0Name := uniqueAPName()
-	ct.ap[0], err = ct.r.StartHostapd(ctx, ap0Name, ap0Conf)
-	if err != nil {
-		s.Fatal("Failed to start the hostapd server on the first AP: ", err)
-	}
 
 	s.Logf("Starting the DHCP server on %s, serverIP=%s", ct.br[0], serverIP)
 	ct.dserv, err = ct.r.StartDHCP(ctx, ap0Name, ct.br[0], startIP, endIP, serverIP, broadcastIP, mask)
@@ -306,6 +333,22 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP1: ", err)
 	}
+
+	freqOps, err := ap1Conf.PcapFreqOptions()
+	if err != nil {
+		s.Fatal("Failed to get Freq Opts: ", err)
+	}
+	captureIf, ok := ct.r.(router.SupportCapture)
+	if !ok {
+		s.Fatal("Pcap device does not have packet capture support")
+	}
+	capturer, err := captureIf.StartCapture(ctx, ap1Name, ap1Conf.Channel, freqOps)
+	if err != nil {
+		s.Fatal("Failed to start capturer: ", err)
+	}
+	ds.push(func() {
+		captureIf.StopCapture(ctx, capturer)
+	})
 
 	ct.ap[1], err = ct.r.StartHostapd(ctx, ap1Name, ap1Conf)
 	if err != nil {
