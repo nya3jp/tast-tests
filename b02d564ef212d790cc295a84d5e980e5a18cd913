@@ -50,6 +50,24 @@
       "message": "nit/style: could you move this down to L80 (just before waitForHistogram), so that obj declaration (at L61) and call (its user) is closer.",
       "revId": "b02d564ef212d790cc295a84d5e980e5a18cd913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8878cd58_30a1fcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-08-03T03:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361de770_da8e614c",
+      "revId": "b02d564ef212d790cc295a84d5e980e5a18cd913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
