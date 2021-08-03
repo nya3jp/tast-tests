@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a0dc8c_df408597",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-03T19:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9126a1ee_340e2676",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "16f2bf0690706029212fb897dd9404688e8fffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8362b52_05b41562",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-03T01:40:06Z",
       "side": 1,
       "message": "nit: remove \"1*\"",
+      "range": {
+        "startLine": 151,
+        "startChar": 35,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "16f2bf0690706029212fb897dd9404688e8fffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58272978_b7e35a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-03T19:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8362b52_05b41562",
       "range": {
         "startLine": 151,
         "startChar": 35,
