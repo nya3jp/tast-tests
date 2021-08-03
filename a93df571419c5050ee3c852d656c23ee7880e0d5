@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b2c315e_9ef44ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-03T18:16:29Z",
+      "side": 1,
+      "message": "According to the issue above just use `reinstall` instead of `update` for the second instance and it should work without a restart... In other words you can restructure this test into two cases:\n\nAC connected and AC disconnected. For each of the cases do an update with --ignore-power which should always succeed and then so a reinstall without the --ignore-power flag.",
+      "parentUuid": "41542a6d_1d6d4d75",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a08d38b_cb2ed27f",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 6
