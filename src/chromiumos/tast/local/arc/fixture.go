@@ -29,6 +29,20 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedWithGpuWatchDog is a fixture similar to arcBooted. The only difference from arcBooted is that this fixture checks if there are any GPU-related problems (hangs + crashes) observed during a test.
+	testing.AddFixture(&testing.Fixture{
+		Name:   "arcBootedWithGpuWatchDog",
+		Desc:   "ARC is booted with checking for GPU-related problems (hangs + crashes)",
+		Parent: "gpuWatchDog",
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled()}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that ARC content sync is disabled to avoid noise during power/performance measurements.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithDisableSyncFlags",
