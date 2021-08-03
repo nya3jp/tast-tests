@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -248,10 +249,17 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 			max = math.Max(x, max)
 			min = math.Min(x, min)
 		}
-		average := sum / float64(len(samples))
+		samplesLen := len(samples)
+		average := sum / float64(samplesLen)
 
-		s.Logf("%s - average: %d, range %d - %d based on %d samples",
-			name, int(average), int(min), int(max), len(samples))
+		sort.Float64s(samples)
+		median := samples[samplesLen/2]
+		if samplesLen%2 == 0 {
+			median = (median + samples[samplesLen/2-1]) / 2
+		}
+
+		s.Logf("%s - average: %d, median: %d, range %d - %d based on %d samples",
+			name, int(average), int(median), int(min), int(max), samplesLen)
 		resultForLog = append(resultForLog, strconv.Itoa(int(min)),
 			strconv.Itoa(int(average)), strconv.Itoa(int(max)))
 	}
