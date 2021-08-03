@@ -6,12 +6,14 @@ package health
 
 import (
 	"context"
+	"fmt"
 	"path"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
@@ -40,17 +42,17 @@ type vpdInfo struct {
 }
 
 type dmiInfo struct {
-	BiosVendor     *string `json:"bios_vendor"`
-	BiosVersion    *string `json:"bios_version"`
-	BoardName      *string `json:"board_name"`
-	BoardVender    *string `json:"board_vendor"`
-	BoardVersion   *string `json:"board_version"`
-	ChassisVendor  *string `json:"chassis_vendor"`
-	ChassisType    *string `json:"chassis_type"`
-	ProductFamily  *string `json:"product_family"`
-	ProductName    *string `json:"product_name"`
-	ProductVersion *string `json:"product_version"`
-	SysVendor      *string `json:"sys_vendor"`
+	BiosVendor     *string           `json:"bios_vendor"`
+	BiosVersion    *string           `json:"bios_version"`
+	BoardName      *string           `json:"board_name"`
+	BoardVender    *string           `json:"board_vendor"`
+	BoardVersion   *string           `json:"board_version"`
+	ChassisVendor  *string           `json:"chassis_vendor"`
+	ChassisType    *jsontypes.Uint64 `json:"chassis_type"`
+	ProductFamily  *string           `json:"product_family"`
+	ProductName    *string           `json:"product_name"`
+	ProductVersion *string           `json:"product_version"`
+	SysVendor      *string           `json:"sys_vendor"`
 }
 
 type systemInfo struct {
@@ -170,11 +172,62 @@ func (info *vpdInfo) validate(ctx context.Context) error {
 	return nil
 }
 
+func getChassisTypeStrPtr(v *jsontypes.Uint64) *string {
+	if v == nil {
+		return nil
+	}
+	s := fmt.Sprintf("%d", *v)
+	return &s
+}
+
+func (info *dmiInfo) validate(ctx context.Context) error {
+	const (
+		dmi = "/sys/class/dmi/id"
+	)
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "bios_vendor"), info.BiosVendor); err != nil {
+		return errors.Wrap(err, "BiosVendor")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "bios_version"), info.BiosVersion); err != nil {
+		return errors.Wrap(err, "BiosVersion")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "board_name"), info.BoardName); err != nil {
+		return errors.Wrap(err, "BoardName")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "board_vendor"), info.BoardVender); err != nil {
+		return errors.Wrap(err, "BoardVender")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "board_version"), info.BoardVersion); err != nil {
+		return errors.Wrap(err, "BoardVersion")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "chassis_vendor"), info.ChassisVendor); err != nil {
+		return errors.Wrap(err, "ChassisVendor")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "chassis_type"), getChassisTypeStrPtr(info.ChassisType)); err != nil {
+		return errors.Wrap(err, "ChassisType")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "product_family"), info.ProductFamily); err != nil {
+		return errors.Wrap(err, "ProductFamily")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "product_name"), info.ProductName); err != nil {
+		return errors.Wrap(err, "ProductName")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "product_version"), info.ProductVersion); err != nil {
+		return errors.Wrap(err, "ProductVersion")
+	}
+	if err := utils.CompareStringPtrWithFile(path.Join(dmi, "sys_vendor"), info.SysVendor); err != nil {
+		return errors.Wrap(err, "SysVendor")
+	}
+	return nil
+}
+
 func (info *systemInfo) validate(ctx context.Context) error {
 	if err := info.OsInfo.validate(ctx); err != nil {
 		return err
 	}
 	if err := info.VpdInfo.validate(ctx); err != nil {
+		return err
+	}
+	if err := info.DmiInfo.validate(ctx); err != nil {
 		return err
 	}
 	return nil
