@@ -16,6 +16,24 @@
       "message": "is it resolution second? If so, this does not provide required precision. At least we need .X precision.",
       "revId": "974eb02d456095a52dc3a95b229a0622ad0322f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3d6ad6_1a095534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2021-08-03T04:06:26Z",
+      "side": 1,
+      "message": "Yes, it\u0027s only to the nearest second. I couldn\u0027t find a way to get more precise output from ps. \n\nWould manually converting the starttime field from /proc/1/stat work instead then? I.e. \u0027date\u0027 - \u0027/proc/uptime\u0027 + \u0027starttime\u0027 / ‘getconf CLK_TCK’\n\nOr if you can think of a simpler solution, let me know.",
+      "parentUuid": "c9be37f2_199145ca",
+      "revId": "974eb02d456095a52dc3a95b229a0622ad0322f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
