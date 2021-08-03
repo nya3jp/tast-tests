@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d433542c_c893621c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-03T03:57:24Z",
+      "side": 1,
+      "message": "tast-build-deps is missing a dependency to fsnotify. Could you try adding one?\n\nAfter making a change to tast-build-deps-9999.ebuild locally, you have to update the local chroot to apply the change:\n\n cros_workon --host start tast-build-deps\n ./update_chroot\n\nFor details of the command please refer to:\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#making-changes-to-packages-whose-source-code-is-checked-into-chromium-os-git-repositories",
+      "parentUuid": "1150cf24_61e0a8b8",
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e86d14c_a2eba08e",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 7
