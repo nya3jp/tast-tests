@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9be37f2_199145ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-08-03T03:33:26Z",
+      "side": 1,
+      "message": "is it resolution second? If so, this does not provide required precision. At least we need .X precision.",
+      "revId": "974eb02d456095a52dc3a95b229a0622ad0322f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
