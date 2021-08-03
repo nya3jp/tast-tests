@@ -16,6 +16,24 @@
       "message": "How about that we rename to other meaningful word? \"informational\" is kind of trivial, as we already have this in the groups, as well as in tastboard/stainless there are clear indication for critical/informational tests. \n\ni.e., \"making tests on unpopular boards informational\" could be better than \"making informational tests informational\"",
       "revId": "b139ba08ce0283f0a8f4860fbb4dece59aa2b3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8910f5_c5dbb2a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-03T05:36:06Z",
+      "side": 1,
+      "message": "As discussed offline. It is okay to continue with `informational` as we could not think of a better name unless other option suggested by reviewers.",
+      "parentUuid": "c1f7c390_b86c6e36",
+      "revId": "b139ba08ce0283f0a8f4860fbb4dece59aa2b3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
