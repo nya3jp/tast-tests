@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce40aef_eab89899",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-03T16:31:27Z",
+      "side": 1,
+      "message": "I had to upload a second patchset to resolve a merge conflict.",
+      "revId": "73bca2f079a66ce9ebb0c4658c667b9830d9c848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
