@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "beee81b1_505fd1cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/data/remote_files_external.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-03T06:55:48Z",
+      "side": 1,
+      "message": "Not done yet...\n\nI understand that it\u0027s misleading that \"tast run\" saves remote external data files to the source code directory. Do you mind filing a bug to improve this?",
+      "parentUuid": "8223e74c_e5315836",
+      "revId": "ba6d61cfcdd11ef4405d9201e3a8833adf92d5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d205ae8e_95b2b29e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/remote_files.go",
         "patchSetId": 4
