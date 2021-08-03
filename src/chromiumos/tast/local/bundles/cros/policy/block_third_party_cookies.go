@@ -8,8 +8,11 @@ import (
 	"context"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -33,55 +36,42 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
-	// Connect to Test API to use it with the UI library.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
+	// radioButtonNames is a list of UI element names in the cookies settings page.
+	// The order of the strings should follow the order in the settings page.
+	// wantRestriction and wantChecked entries are expected to follow this order as well.
+	radioButtonNames := []string{
+		"Allow all cookies",
+		"Block third-party cookies",
 	}
 
 	for _, param := range []struct {
-		name                 string                 // name is the name of the test case.
-		wantAllowCookiesAttr map[string]interface{} // wantAllowCookiesAttr are the expected attributes of
-		// "Allow all cookies" radio button on settings page.
-		wantBlockExternalCookiesAttr map[string]interface{} // wantBlockExternalCookiesAttr are the expected attributes of
-		// "Block third-party cookies" radio button on settings page.
+		name            string                    // name is the name of the test case.
+		wantRestriction []restriction.Restriction // The expected restriction states of the radio buttons in
+		// radioButtonNames.
+		wantChecked []checked.Checked // The expected checked states of the radio buttons in
+		// radioButtonNames.
 		policy *policy.BlockThirdPartyCookies // policy is the policy we test.
 	}{
 		{
-			name: "unset",
-			wantAllowCookiesAttr: map[string]interface{}{
-				"restriction": ui.RestrictionNone,
-			},
-			wantBlockExternalCookiesAttr: map[string]interface{}{
-				"restriction": ui.RestrictionNone,
-			},
-			policy: &policy.BlockThirdPartyCookies{Stat: policy.StatusUnset},
+			name:            "unset",
+			wantRestriction: []restriction.Restriction{restriction.None, restriction.None},
+			wantChecked:     []checked.Checked{checked.False, checked.False},
+			policy:          &policy.BlockThirdPartyCookies{Stat: policy.StatusUnset},
 		},
 		{
-			name: "allow",
-			wantAllowCookiesAttr: map[string]interface{}{
-				"restriction": ui.RestrictionNone,
-				"checked":     ui.CheckedStateTrue,
-			},
-			wantBlockExternalCookiesAttr: map[string]interface{}{
-				"restriction": ui.RestrictionDisabled,
-				"checked":     ui.CheckedStateFalse,
-			},
-			policy: &policy.BlockThirdPartyCookies{Val: false},
+			name:            "allow",
+			wantRestriction: []restriction.Restriction{restriction.None, restriction.Disabled},
+			wantChecked:     []checked.Checked{checked.True, checked.False},
+			policy:          &policy.BlockThirdPartyCookies{Val: false},
 		},
 		{
 			name: "block",
-			wantAllowCookiesAttr: map[string]interface{}{
-				"restriction": ui.RestrictionDisabled,
-				"checked":     ui.CheckedStateFalse,
-			},
-			// The radio button is not disabled in this case as the user can switch between blocking only third party
-			// cookies or all cookies for which there is another radio button on the cookies settings page.
-			wantBlockExternalCookiesAttr: map[string]interface{}{
-				"restriction": ui.RestrictionNone,
-				"checked":     ui.CheckedStateTrue,
-			},
-			policy: &policy.BlockThirdPartyCookies{Val: true},
+			// The radio button for "Block third-party cookies" is not disabled in this case as the user can switch
+			// between blocking only third party cookies or all cookies for which there is another radio button on
+			// the cookies settings page.
+			wantRestriction: []restriction.Restriction{restriction.Disabled, restriction.None},
+			wantChecked:     []checked.Checked{checked.False, checked.True},
+			policy:          &policy.BlockThirdPartyCookies{Val: true},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -104,30 +94,17 @@ func BlockThirdPartyCookies(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Verify the state of "Allow all cookies" radio button.
-			if err := policyutil.VerifySettingsNode(ctx, tconn,
-				ui.FindParams{
-					Role: ui.RoleTypeRadioButton,
-					Name: "Allow all cookies",
-				},
-				ui.FindParams{
-					Attributes: param.wantAllowCookiesAttr,
-				},
-			); err != nil {
-				s.Error("Unexpected Allow all cookies radio button state: ", err)
-			}
-
-			// Verify the state of "Block third-party cookies" radio button.
-			if err := policyutil.VerifySettingsNode(ctx, tconn,
-				ui.FindParams{
-					Role: ui.RoleTypeRadioButton,
-					Name: "Block third-party cookies",
-				},
-				ui.FindParams{
-					Attributes: param.wantBlockExternalCookiesAttr,
-				},
-			); err != nil {
-				s.Error("Unexpected Block third-party cookies radio button state: ", err)
+			// Open cookies settings page and check the state of the radio buttons.
+			for i, radioButtonName := range radioButtonNames {
+				if err := policyutil.CurrentPage(cr).
+					SelectNode(ctx, nodewith.
+						Role(role.RadioButton).
+						Name(radioButtonName)).
+					Restriction(param.wantRestriction[i]).
+					Checked(param.wantChecked[i]).
+					Verify(); err != nil {
+					s.Errorf("Unexpected settings state for the %q button: %v", radioButtonName, err)
+				}
 			}
 			// TODO(crbug.com/1186217): Verify that third party cookies are actually blocked.
 		})
