@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cc74fc7_0ee6cdc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-03T03:42:21Z",
+      "side": 1,
+      "message": "Nit: uiauto.NamedAction instead of uiauto.Combine when there\u0027s only one.\n\nIt provides more readable error messages.",
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa3428c7_8b3d1df9",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
         "patchSetId": 4
@@ -123,6 +140,30 @@
       "writtenOn": "2021-08-03T02:46:52Z",
       "side": 1,
       "message": "Optional: I personally suggest to use underline instead of `-`",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878b8b08_f487e8a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-03T03:42:21Z",
+      "side": 1,
+      "message": "Isn\u0027t tast test convention to use CapsCase?",
+      "parentUuid": "09c01779_8675bd39",
       "range": {
         "startLine": 142,
         "startChar": 28,
