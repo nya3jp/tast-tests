@@ -39,6 +39,30 @@
       },
       "revId": "514de84e4748419df81ed3a6842cfb8ce3628f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9d27e6_12c52a11",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-03T03:15:08Z",
+      "side": 1,
+      "message": "Some tests use this function. https://source.chromium.org/search?q\u003d%22ash.SetWindowStateAndWait%22\n\n\u003e Not against adding this function if needed,\nSorry, I don\u0027t get what you mean. I don\u0027t add this SetWindowStateAndWait function, it\u0027s already there.\n\nFYI, SetWindowState(..., true) waits for \"window state change\", and SetWindowStateAndWait() waits for \"window state change\" and \"window animation completion\" according the function description and impl. So, SetWindowStateAndWait() is a \"safer\" function, as you might have mentioned.",
+      "parentUuid": "96efe375_5b74382a",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 26
+      },
+      "revId": "514de84e4748419df81ed3a6842cfb8ce3628f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
