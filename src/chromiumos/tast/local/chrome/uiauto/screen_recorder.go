@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/base64"
 	"io/ioutil"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -28,6 +29,11 @@ type ScreenRecorder struct {
 	isRecording   bool
 	videoRecorder *chrome.JSObject
 	result        string
+}
+
+type testingState interface {
+	OutDir() string
+	HasError() bool
 }
 
 // NewScreenRecorder creates a ScreenRecorder.
@@ -117,6 +123,7 @@ func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) erro
 	if err := r.videoRecorder.Call(ctx, nil, `function() {this.start();}`); err != nil {
 		return errors.Wrap(err, "failed to start to record screen")
 	}
+	testing.ContextLog(ctx, "Started screen recording")
 	r.isRecording = true
 
 	ui := New(tconn)
@@ -195,4 +202,34 @@ func ScreenRecorderStopSaveRelease(ctx context.Context, r *ScreenRecorder, fileN
 		}
 		r.Release(ctx)
 	}
+}
+
+// RecordScreen records the screen for the duration of the function into recording.webm.
+// For example, if you wanted to record your whole test, you would do the following:
+// func MyTest(ctx context.Context, s *testing.State) {
+//   cr := s.PreValue().(pre.PreData).Chrome
+//   tconn := s.PreValue().(pre.PreData).TestAPIConn
+//   uiauto.RecordScreen(ctx, s, tconn, func() {
+//   <all your existing test code here>
+//   })
+// }
+func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f func()) {
+	recorder, err := NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to start screen recording: ", err)
+	}
+	if recorder != nil {
+		recorder.Start(ctx, tconn)
+		defer func() {
+			// If there's an error, we want to wait long enough to see what happens
+			// after the error. This allows you to see subtitles when the error has
+			// occurred, and also happens to help in case something happens after
+			// timing out.
+			if s.HasError() {
+				testing.Sleep(ctx, time.Second*2)
+			}
+			ScreenRecorderStopSaveRelease(ctx, recorder, filepath.Join(s.OutDir(), "recording.webm"))
+		}()
+	}
+	f()
 }
