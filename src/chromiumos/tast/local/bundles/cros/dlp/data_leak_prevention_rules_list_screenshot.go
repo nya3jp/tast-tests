@@ -143,7 +143,7 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 
 			has, err := screenshot.HasScreenshots()
 			if err != nil {
-				s.Fatal("Failed to check whether screenshot is present")
+				s.Fatal("Failed to check whether screenshot is present: ", err)
 			}
 			if has != param.wantAllowed {
 				s.Errorf("Unexpected screenshot allowed: get %v; want %v", has, param.wantAllowed)

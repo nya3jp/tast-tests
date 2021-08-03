@@ -109,7 +109,7 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 
 			has, err := screenshot.HasScreenshots()
 			if err != nil {
-				s.Fatal("Failed to check whether screenshot is present")
+				s.Fatal("Failed to check whether screenshot is present: ", err)
 			}
 			if has != tc.wantAllowed {
 				s.Errorf("Unexpected screenshot allowed: get %t; want %t", has, tc.wantAllowed)
