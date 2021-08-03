@@ -41,11 +41,10 @@ func init() {
 		Timeout:      time.Duration(len(voiceTestIMEs)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
-				Name:              "unstable",
+				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 		},

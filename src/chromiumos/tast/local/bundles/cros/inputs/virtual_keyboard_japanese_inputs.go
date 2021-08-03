@@ -31,12 +31,11 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "stable",
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
-			Name:              "unstable",
+			Name:              "informational",
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			ExtraAttr:         []string{"informational"},
