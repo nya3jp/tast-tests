@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36fa6598_d5ba6b63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Two things.\n\n1. The Command() method is deprecated. Please use CommandContext instead.\n\nCommand implementation, which states that it\u0027s deprecated: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec.go;drc\u003d8693219e729963f5cf65894f7bc3386b005b9007;l\u003d63\n\nCommandContext implementation: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go;drc\u003d8693219e729963f5cf65894f7bc3386b005b9007;l\u003d110\n\n2. This only _creates_ a Cmd (or CmdCtx) object; it doesn\u0027t actually _run_ the command. You\u0027ll need to use Run(), or another running method.\n\n    func syncOnDUT(h *pre.Value, s *testing.State) error {\n        return h.DUT.Conn.CommandContext(ctx, \"sync\").Run()\n    }\n\nBetter yet, I recommend passing in the DumpLogOnError option. This option will show us the stdout/stderr if the sync command fails.\n\n    import (\n        ...\n        \"chromiumos/tast/ssh\"\n    )\n    ...\n    func syncOnDUT(h *pre.Value, s *testing.State) error {\n        return h.DUT.Conn.CommandContext(ctx, \"sync\").Run(ssh.DumpLogOnError)\n    }",
+      "revId": "82ea9f31a0433d8012a6061ab1806766fbe760c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08792ad8_112e5718",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "This appears to be a typo which fails at compile-time. When I try to run unit tests, I get the following errors:\n\n    remote/bundles/cros/firmware/ec_reboot.go:30:3: h.DUT undefined (type *pre.Value has no field or method DUT)                                                                                                                           \n    remote/bundles/cros/firmware/ec_reboot.go:51:13: h.Helper undefined (type *\"chromiumos/tast/remote/firmware\".Helper has no field or method Helper)                                                                                     \n    remote/bundles/cros/firmware/ec_reboot.go:75:13: h.Helper undefined (type *\"chromiumos/tast/remote/firmware\".Helper has no field or method Helper)                                                                                     \n    remote/bundles/cros/firmware/ec_reboot.go:99:13: h.Helper undefined (type *\"chromiumos/tast/remote/firmware\".Helper has no field or method Helper)\n\nAre you intending h to be the Helper, or the pre.Value? Given the name, I assume that it\u0027s meant to be the Helper. To that end, I recommend the following changes:\n\n1. Replace any instances of h.Helper with just h. (L51, L75, L99)\n2. In the parameters for syncOnDUT (L28), take a DUT object instead of Helper or a Value. Then when calling syncOnDUT, call it with h.DUT.\n3. Make sure you run the code after making any modifications, before uploading. If you run this code as it is, it fails to compile.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "82ea9f31a0433d8012a6061ab1806766fbe760c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

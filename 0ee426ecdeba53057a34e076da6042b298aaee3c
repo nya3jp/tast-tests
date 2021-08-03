@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0460bd_20f2bdb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0a84b4_3766a38b",
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15359fa6_63845256",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "15359fa6_63845256",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f132f77_89710daa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfb1e9c7_9e318443",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -130,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b8eb23_7194fb7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c813ac2_ddc5d9bb",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 53
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f7a90f9_0c096dec",
@@ -167,6 +233,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4f7a90f9_0c096dec",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25822920_58050054",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2838e8_512e0011",
       "range": {
         "startLine": 17,
         "startChar": 18,
@@ -224,6 +314,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a74dc66_d06c08ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed9bb5d_22ac8241",
+      "range": {
+        "startLine": 18,
+        "startChar": 65,
+        "endLine": 18,
+        "endChar": 80
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97465790_2fcee025",
@@ -261,6 +375,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "97465790_2fcee025",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936e1971_f016505b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6e686f_8f7712b4",
       "range": {
         "startLine": 20,
         "startChar": 44,
@@ -318,6 +456,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eed7faa_265fab47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e8291f_edbaf6bf",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3e1a3d1_c42033d0",
@@ -349,6 +511,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b3e1a3d1_c42033d0",
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c404121d_f485cc6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ddf266b_eedea87e",
       "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -390,6 +570,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "56af029a_42de011e",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2252282_d94b96df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e2e2ee_43a44332",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -447,6 +651,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6684c4c_995ec545",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8353716d_8b4e3e8b",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d16d17c_b806b244",
@@ -484,6 +712,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2d16d17c_b806b244",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "0ee426ecdeba53057a34e076da6042b298aaee3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2048a9e5_29e5c906",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboardreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-03T19:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2170930e_ebaf1654",
       "range": {
         "startLine": 69,
         "startChar": 2,
