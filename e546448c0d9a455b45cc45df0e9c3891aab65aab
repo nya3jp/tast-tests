@@ -349,6 +349,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18e2c950_a578aa64",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "as discussed offline, please update CL.",
+      "parentUuid": "41a79287_1cdea353",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2378f33_97dea039",
         "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
         "patchSetId": 12
@@ -384,6 +408,30 @@
       "side": 1,
       "message": "why would you say that? It hardly impacts anything, since everything is dependent on context. as per the Shorten doc \n\u003e Note that if ctx\u0027s deadline is less than d in the future, the returned context\u0027s deadline will have already expired.\n\nso the new ctx will fail in next op.\nThough I get the fail fast concept, updated accordingly.",
       "parentUuid": "c2378f33_97dea039",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cfdc11_a782b22c",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "as discussed offline, test will fail faster in this case. Please update CL.",
+      "parentUuid": "a7f18613_67dff221",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -525,6 +573,30 @@
       "side": 1,
       "message": "dbusutil.Connect returns a pretty elaborate error after wrapping the error coming . That\u0027s why I skipped it. \nDone, if you say so.",
       "parentUuid": "d609df9a_23dc2f2a",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "e546448c0d9a455b45cc45df0e9c3891aab65aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a24d5a3_64148b1b",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "This method might return \"failed to connect to system bus\" error which has nothing about power manager.",
+      "parentUuid": "f6f97c50_234c71ce",
       "range": {
         "startLine": 140,
         "startChar": 9,

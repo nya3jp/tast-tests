@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6530ff5_fac73662",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "LGTM % nits. Please make sure to apply comments in other parts of the CL (wrap errors). Thanks!",
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc98a77_4168d8ad",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "nit: please add min and max percentages into error message",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90390133_6a4c37cf",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "nit: Wrap it, check other places",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a446fe_3155281f",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "nit: this is not consistent with line 92",
+      "range": {
+        "startLine": 141,
+        "startChar": 44,
+        "endLine": 141,
+        "endChar": 57
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57399241_1b7c656f",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-03T14:28:12Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 66,
+        "startChar": 48,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "ce2515eb8751dbed5157a62146a2f7dcaac44c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
