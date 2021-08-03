@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/action"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -34,6 +33,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -270,18 +270,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		f := s.FixtValue().(launcher.FixtData)
 
 		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
-		if err := launcher.EnsureLacrosChrome(ctx, f, s.DataPath(launcher.DataArtifact)); err != nil {
-			s.Fatal("Failed to extract lacros binary: ", err)
-		}
-		s.Log("Launch lacros via Shelf")
-		if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
-			s.Fatal("Failed to launch lacros: ", err)
-		}
-		s.Log("Wait for Lacros window")
-		if err := launcher.WaitForLacrosWindow(ctx, tconn, newTabTitle); err != nil {
-			s.Fatal("Failed to wait for lacros: ", err)
-		}
-		l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath, launcher.LacrosUserDataDir)
+		l, err := lacros.ShelfLaunch(ctx, tconn, f, s.DataPath(launcher.DataArtifact))
 		if err != nil {
 			s.Fatal("Failed to connect to lacros: ", err)
 		}
