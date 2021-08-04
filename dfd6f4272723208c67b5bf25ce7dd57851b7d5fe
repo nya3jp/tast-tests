@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1669f397_cd990e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-08-04T20:16:11Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "dfd6f4272723208c67b5bf25ce7dd57851b7d5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
