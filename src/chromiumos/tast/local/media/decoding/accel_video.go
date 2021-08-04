@@ -61,6 +61,8 @@ func generateCmdArgs(outDir, filename string, decoderType DecoderType) []string 
 		args = append(args, "--use_vd")
 	} else if decoderType == VDVDA {
 		args = append(args, "--use_vd_vda")
+	} else if decoderType == VDA {
+		args = append(args, "--use-legacy")
 	}
 	return args
 }
