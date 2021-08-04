@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "700c41e0_f60dfcff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-04T16:02:59Z",
+      "side": 1,
+      "message": "I\u0027ve been havign some trouble with this. I can\u0027t get the decoded output to print. Is the approach at this link the right way to go about it?\n\nhttps://play.golang.org/p/o6hD-UV85SZ",
+      "parentUuid": "b970deda_3956dcd1",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "a35358ced0dc6d148e7068c0daabfcb012c6a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9effb5f_42afa329",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
         "patchSetId": 12
