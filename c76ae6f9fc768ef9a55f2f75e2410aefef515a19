@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07c881fa_cd962f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/standardized_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-04T16:41:18Z",
+      "side": 1,
+      "message": "Probably - It sort of lives in-between Arc and AppCompat. I went ahead and moved it to arc for now to prevent confusion with the AppCompat tests",
+      "parentUuid": "b3a35478_04a58067",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "c76ae6f9fc768ef9a55f2f75e2410aefef515a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4897f5f_aad01aec",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-04T00:29:19Z",
       "side": 1,
       "message": "I think its better to have logic to dump screenshot when the test fails which will help debugging failure later.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "c76ae6f9fc768ef9a55f2f75e2410aefef515a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852ed52a_98609b4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-04T16:41:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4897f5f_aad01aec",
       "range": {
         "startLine": 71,
         "startChar": 5,
