@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,6 +33,8 @@ func init() {
 		// only in RF chambers.
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		// TODO(b/192693354): StP2 + 3.18 doesn't have self-managed regdomain, skip the remaining board before uprev is finished.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("asuka", "sentry")),
 	})
 }
 
