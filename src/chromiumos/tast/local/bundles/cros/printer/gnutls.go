@@ -70,7 +70,7 @@ func waitForServerAddress(ctx context.Context, lines chan string) (string, error
 // startServer starts IPPS server using ippserver utility.
 func startServer(ctx context.Context, s *testing.State) (address string) {
 	const ippserverBinDir = "CUPS_SERVERBIN=/usr/libexec/cups"
-	const ippserverCommand = "/usr/sbin/ippserver"
+	const ippserverCommand = "/usr/local/sbin/ippserver"
 	const ippserverTestDir = "/usr/local/share/ippsample/test"
 
 	// Launch ippserver.
