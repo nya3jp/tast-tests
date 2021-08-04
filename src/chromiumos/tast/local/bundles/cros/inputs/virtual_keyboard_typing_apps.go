@@ -27,18 +27,18 @@ func init() {
 		Func:         VirtualKeyboardTypingApps,
 		Desc:         "Checks that the virtual keyboard works in apps",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "stable",
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
-			Name:              "unstable",
+			Name:              "informational",
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			ExtraAttr:         []string{"informational"},
 		}}})
 }
 
