@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e4456b_295facfc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-04T00:13:26Z",
+      "side": 1,
+      "message": "It is not recommended to pass s around. Suggest to just pass the dir and hasError.",
+      "range": {
+        "startLine": 208,
+        "startChar": 39,
+        "endLine": 208,
+        "endChar": 53
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed80a24_cf07195f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-04T00:13:26Z",
+      "side": 1,
+      "message": "Where is this func used?",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
