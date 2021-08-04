@@ -29,7 +29,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"}, // Remove informational once crbug/1236676 is fixed.
 		Fixture:      "chromePolicyLoggedIn",
 		Data:         []string{"audio_capture_allowed.html"},
 	})
