@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b2b469_19ecd5b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-04T13:44:30Z",
+      "side": 1,
+      "message": "Stop promoting this test due to http://b/195363848",
+      "revId": "f5ba2a5519a1d596b9b215aaad0f9a502d03eab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
