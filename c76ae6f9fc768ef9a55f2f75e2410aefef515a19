@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abeb2b60_0c859c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/standardized_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-04T16:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c881fa_cd962f14",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "c76ae6f9fc768ef9a55f2f75e2410aefef515a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4897f5f_aad01aec",
