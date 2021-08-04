@@ -16,6 +16,46 @@
       "message": "Thanks.",
       "revId": "9b78f0a8fc01c957c0321ab836ede0912d6bcff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a572e70_3a01e8d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:31:56Z",
+      "side": 1,
+      "message": "LGMT % nit, thanks Bisakh!",
+      "revId": "9b78f0a8fc01c957c0321ab836ede0912d6bcff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41683160_8a682425",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:31:56Z",
+      "side": 1,
+      "message": "nit: we usually don\u0027t include information how some object will be used in the future. Instead current log should contain information about what you tried to do in that line, in your case you just tried to create PowerManager instance.",
+      "range": {
+        "startLine": 96,
+        "startChar": 57,
+        "endLine": 96,
+        "endChar": 111
+      },
+      "revId": "9b78f0a8fc01c957c0321ab836ede0912d6bcff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
