@@ -13,10 +13,13 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -169,6 +172,41 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 		})
 		cancel()
 	}
+}
+
+// StandardizedMouseLeftClickObject provides a standard way to left click the mouse on an object.
+func StandardizedMouseLeftClickObject(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object) error {
+	return standardizedMouseClickObject(ctx, testParameters.TestConn, selector, mouse.LeftButton)
+}
+
+// standardizedMouseClickObject implements a standard way to click the mouse button on an object.
+func standardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, selector *ui.Object, button mouse.Button) error {
+	// The device cannot be in tablet mode.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	if tabletModeEnabled {
+		return errors.New("Device is in tablet mode, cannot click with a mouse")
+	}
+
+	// Get the bounds and click the point.
+	uiElementBounds, err := selector.GetBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	mouseClickPosition := coords.Point{
+		X: uiElementBounds.Left,
+		Y: uiElementBounds.Top,
+	}
+
+	if err = mouse.Click(tconn, mouseClickPosition, button)(ctx); err != nil {
+		return errors.Wrapf(err, "Unable to click: %v at provided position", button)
+	}
+
+	return nil
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
