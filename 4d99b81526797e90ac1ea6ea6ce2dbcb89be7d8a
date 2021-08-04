@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10616e64_e17c8fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27020d4c_eb19bf2c",
+      "range": {
+        "startLine": 254,
+        "startChar": 101,
+        "endLine": 254,
+        "endChar": 103
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "033576e9_8c54e259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d269d09_1c214033",
+      "range": {
+        "startLine": 254,
+        "startChar": 145,
+        "endLine": 254,
+        "endChar": 147
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3852edfa_c272669e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7425b4ce_40597c1e",
+      "range": {
+        "startLine": 254,
+        "startChar": 136,
+        "endLine": 254,
+        "endChar": 138
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4efd7296_4ddcbc1f",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-04T01:46:30Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 135
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d2a39d_4e93fe50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4efd7296_4ddcbc1f",
       "range": {
         "startLine": 259,
         "startChar": 11,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "015891e3_0044a1bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0cf6fe_a24b2c08",
+      "range": {
+        "startLine": 263,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 143
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a2a2e82_ed6117c3",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d31dc3d_3857a77a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2a2e82_ed6117c3",
+      "range": {
+        "startLine": 267,
+        "startChar": 11,
+        "endLine": 267,
+        "endChar": 126
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7c6ba38_9a8c5af7",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-08-04T01:46:30Z",
       "side": 1,
       "message": "nit: meetURLs since it can be multiple entries.",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2b86b9_81b848fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "changed to varStr.",
+      "parentUuid": "c7c6ba38_9a8c5af7",
       "range": {
         "startLine": 129,
         "startChar": 2,
@@ -187,6 +355,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "239a1341_3dc5ac8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35718d82_5fb36f78",
+      "range": {
+        "startLine": 133,
+        "startChar": 39,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "960df15e_2481e2e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
         "patchSetId": 3
@@ -198,6 +390,30 @@
       "writtenOn": "2021-08-04T01:46:30Z",
       "side": 1,
       "message": "optional:\n\nif s !\u003d \"\"{\n    urls \u003d append(urls, s)\n}",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 25
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d81538_292b8ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "960df15e_2481e2e8",
       "range": {
         "startLine": 141,
         "startChar": 3,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebcdb9b_7dc8e59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "previous meetURL has changed to varStr",
+      "parentUuid": "c11fbaa1_355afa6b",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f33ed7_07473ee4",
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00ddd1f_79453926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "added the var string for debugging purpose.",
+      "parentUuid": "38f33ed7_07473ee4",
+      "range": {
+        "startLine": 181,
+        "startChar": 14,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12aadb6d_afee482a",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-08-04T01:46:30Z",
       "side": 1,
       "message": "nit: can you wrap the error to make the message clearer.",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 13
+      },
+      "revId": "4d99b81526797e90ac1ea6ea6ce2dbcb89be7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29a6d51_11ae8968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-04T03:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12aadb6d_afee482a",
       "range": {
         "startLine": 195,
         "startChar": 3,
