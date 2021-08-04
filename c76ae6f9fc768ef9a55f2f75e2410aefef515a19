@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a35478_04a58067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/standardized_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-04T00:29:19Z",
+      "side": 1,
+      "message": "Would it be better to keep this inside arc package instead of appcompat considering appcompat folder has all play store apps.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "c76ae6f9fc768ef9a55f2f75e2410aefef515a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4897f5f_aad01aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/standardized_testutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-04T00:29:19Z",
+      "side": 1,
+      "message": "I think its better to have logic to dump screenshot when the test fails which will help debugging failure later.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "c76ae6f9fc768ef9a55f2f75e2410aefef515a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
