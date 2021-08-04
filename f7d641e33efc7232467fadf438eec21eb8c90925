@@ -22,6 +22,30 @@
       },
       "revId": "f7d641e33efc7232467fadf438eec21eb8c90925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f842de68_f05120fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-04T04:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac162a4_b8851417",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "f7d641e33efc7232467fadf438eec21eb8c90925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
