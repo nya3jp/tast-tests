@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc48c570_b50fdc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-04T05:11:48Z",
+      "side": 1,
+      "message": "It seems it only added a timeout? The default timeout is not 15 second?",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "fde90b411fa53ad0c9aac68b1f44f4f5331efa34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
