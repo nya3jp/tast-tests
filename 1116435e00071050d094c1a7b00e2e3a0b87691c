@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493f8a45_9ea7a244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_power_peak_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-04T16:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07382de6_db238bf2",
+      "range": {
+        "startLine": 59,
+        "startChar": 49,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "1116435e00071050d094c1a7b00e2e3a0b87691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3b5d65_92d86758",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9589601_d16034f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_power_peak_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-04T16:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac3b5d65_92d86758",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "1116435e00071050d094c1a7b00e2e3a0b87691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73bd8b0a_9c108903",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-04T14:48:52Z",
       "side": 1,
       "message": "nit: don\u0027t split struct and related methods, i.e. move const upstartJobName before defining RTC struct",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "1116435e00071050d094c1a7b00e2e3a0b87691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551b42cc_48b4c6bb",
+        "filename": "src/chromiumos/tast/local/wilco/rtc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-04T16:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73bd8b0a_9c108903",
       "range": {
         "startLine": 26,
         "startChar": 0,
