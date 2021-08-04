@@ -56,6 +56,29 @@
       },
       "revId": "9b78f0a8fc01c957c0321ab836ede0912d6bcff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac32a026_6d3dbd0a",
+        "filename": "src/chromiumos/tast/local/power/charge/charge_control.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:49:59Z",
+      "side": 1,
+      "message": "nit: Just found that it isn\u0027t common to split number and percent symbol by space:\nhttps://www.ultius.com/glossary/grammar/punctuation/percentage-sign.html?__cf_chl_captcha_tk__\u003dpmd_6c39780cc5bcd614eaf39de05a8cbf2ee21a5924-1628088129-0-gqNtZGzNAuKjcnBszQii",
+      "range": {
+        "startLine": 105,
+        "startChar": 70,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "9b78f0a8fc01c957c0321ab836ede0912d6bcff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
