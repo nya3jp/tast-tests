@@ -53,10 +53,10 @@ type StandardizedTestCase struct {
 // GetStandardizedClamshellTests returns the test cases required for clamshell devices.
 func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
+		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
 		{Name: "Normal", Fn: fn, WindowStateType: ash.WindowStateNormal},
 		{Name: "Snapped left", Fn: fn, WindowStateType: ash.WindowStateLeftSnapped},
 		{Name: "Snapped right", Fn: fn, WindowStateType: ash.WindowStateRightSnapped},
-		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
 	}
 }
 
@@ -68,8 +68,8 @@ func GetStandardizedClamshellHardwareDeps() hwdep.Deps {
 // GetStandardizedTabletTests returns the test cases required for tablet devices.
 func GetStandardizedTabletTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
-		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized},
 		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
+		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized},
 	}
 }
 
