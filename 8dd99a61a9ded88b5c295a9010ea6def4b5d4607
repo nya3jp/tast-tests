@@ -131,6 +131,30 @@
       },
       "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ca98df_0f4e737d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-04T21:49:51Z",
+      "side": 1,
+      "message": "Hey, I would like to share a video of this test running(With very small changes): https://drive.google.com/file/d/1PHFPc7hZr1EEKYXINISadIpafVT-HceC/view?usp\u003dsharing\n\nIs this a bug? or am I doing something wrong\n\nIn video following is happening : -\n\nExtension is able to access the content but when it is pasted in a new omni box it shows notification\n\nCommands are as follows --\nCtrl + A\nCtrl + C\nClick in the middle of the tab\nCtrl + Z\nCtrl + T\nCtrl + V",
+      "parentUuid": "ee8c1342_60658484",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 98
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
