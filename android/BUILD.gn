@@ -7,6 +7,7 @@ group("all") {
     "ArcAccessibilityTest:ArcAccessibilityTest",
     "ArcAnimationPerformanceTest:ArcAnimationPerformanceTest",
     "ArcStandardizedKeyboardTest:ArcStandardizedKeyboardTest",
+    "ArcStandardizedMouseTest:ArcStandardizedMouseTest",
     "ArcAppValidityTest:ArcAppValidityTest",
     "ArcAudioTest:ARCAudioTest",
     "ArcBackupTest:ArcBackupTest",
