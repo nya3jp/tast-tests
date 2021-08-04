@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c85f814_24d30f94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "In the future, please wait for domain OWNERS review before adding tast owners. Also please add tast-owners instead of specific people to spread out the reviewing load.",
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af80cf16_7aebc202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "nit: No. or Number",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae795f06_b7fa83ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "Could it be possible for a device to have a single back facing camera?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8601fa77_378d0fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "These two lines can be combined: \n\nif _, err :\u003d app.TakeSinglePhoto(ctx, cca.TimerOff); err !\u003d nil {",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 17
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f0d9ea1_efb4b6c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "Not needed",
+      "range": {
+        "startLine": 112,
+        "startChar": 40,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5c0509_b7132b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "nit: picture, since only one is being taken.",
+      "range": {
+        "startLine": 112,
+        "startChar": 30,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ab92da_939a8388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "Do we know this for sure? Does the camera app always start front facing? Other wise it\u0027s possible to start back facing and then switch to front.",
+      "range": {
+        "startLine": 119,
+        "startChar": 38,
+        "endLine": 119,
+        "endChar": 54
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd5410b_7846d919",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-04T15:30:32Z",
+      "side": 1,
+      "message": "This this be Facing type as well?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
