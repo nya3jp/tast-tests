@@ -16,6 +16,23 @@
       "message": "tast-wise: +2\n\nplease wait for +2 from inker@",
       "revId": "5f9faa20e6e47963de000772268f53ad569be85e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "085a4053_7d66b9b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-04T10:25:33Z",
+      "side": 1,
+      "message": "Will we run this test on 2g rootfs devices which does not have the doc scan library installed?",
+      "revId": "5f9faa20e6e47963de000772268f53ad569be85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
