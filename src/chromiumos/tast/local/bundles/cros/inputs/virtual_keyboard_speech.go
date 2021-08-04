@@ -35,18 +35,18 @@ func init() {
 		Desc:         "Test voice input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEs),
 		Pre:          pre.VKEnabledReset,
 		Timeout:      time.Duration(len(voiceTestIMEs)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:              "stable",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
-				Name:              "unstable",
+				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
