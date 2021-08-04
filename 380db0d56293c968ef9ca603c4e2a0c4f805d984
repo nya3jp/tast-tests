@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98258b0f_bd7c98a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-04T01:57:44Z",
+      "side": 1,
+      "message": "The intention of the test is to verify ARC Integration. Hence 1 app should be sufficient.",
+      "parentUuid": "bdfe4fc5_135438e0",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "380db0d56293c968ef9ca603c4e2a0c4f805d984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1929fbeb_375f279b",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-08-03T21:47:12Z",
       "side": 1,
       "message": "Maybe policyutil.Verify(...) to verify policies are delivered to device?",
+      "revId": "380db0d56293c968ef9ca603c4e2a0c4f805d984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1744b20d_46c7f36a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-04T01:57:44Z",
+      "side": 1,
+      "message": "When I do that I get policy mismatch error with log\n\nArcPolicy: actual value did not match expected\nPolicy read from DUT: {level: mandatory, scope: user, source: cloud, status: , value: \"{\\\"applications\\\":[{\\\"packageName\\\":\\\"com.google.android.apps.youtube.creator\\\",\\\"installType\\\":\\\"BLOCKED\\\",\\\"defaultPermissionPolicy\\\":\\\"\\\",\\\"managedConfiguration\\\":\\\"\\\"}]}\", error: }\nExpected policy: {value: {\"applications\":[{\"packageName\":\"com.google.android.apps.youtube.creator\",\"installType\":\"BLOCKED\",\"defaultPermissionPolicy\":\"\",\"managedConfiguration\":\"\"}]}, status: set}",
+      "parentUuid": "1929fbeb_375f279b",
       "revId": "380db0d56293c968ef9ca603c4e2a0c4f805d984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
