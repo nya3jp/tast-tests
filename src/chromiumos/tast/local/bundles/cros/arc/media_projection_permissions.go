@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // mediaProjAPK is the name of the APK to be installed for this test.
@@ -34,6 +35,7 @@ func init() {
 		Desc:         "Checks that Chrome permissions dialog is used when using the MediaProjection API",
 		Contacts:     []string{"cherieccy@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome", "android_p"},
 		Fixture:      "arcBooted",
 		Data:         []string{mediaProjAPK},
