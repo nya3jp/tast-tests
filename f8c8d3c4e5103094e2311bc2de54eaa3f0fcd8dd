@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e0eeb0_091b3afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:11:47Z",
+      "side": 1,
+      "message": "Would it be possible for you to create expected dmiInfo and compare it with dmiInfo you have?\n\n```\nvar err error\ninfo :\u003d dmiInfo{\n  BiosVendor: readFile(path.Join(dmi, \"bios_vendor\"), \u0026err),\n  ...\n\n  SysVendor: readFile(path.Join(dmi, \"sys_vendor\"), \u0026err)\n}\nif err !\u003d nil {\n  return err\n}\n\n// otherwise compare structs\n```",
+      "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
