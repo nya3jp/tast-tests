@@ -22,6 +22,30 @@
       },
       "revId": "fcd13ab83ea4a5ff98f9648c0f62da2ca9ef02f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8f3511_650a38c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-04T04:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "208ca6db_732155fe",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "fcd13ab83ea4a5ff98f9648c0f62da2ca9ef02f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
