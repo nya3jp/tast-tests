@@ -33,6 +33,29 @@
       "message": "TY",
       "revId": "4c366ebdcb879150c3bbdf427e11f5643ee94312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52a6c6c_e7c41b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-04T16:23:08Z",
+      "side": 1,
+      "message": "don\u0027t ignore errors",
+      "range": {
+        "startLine": 256,
+        "startChar": 13,
+        "endLine": 256,
+        "endChar": 15
+      },
+      "revId": "4c366ebdcb879150c3bbdf427e11f5643ee94312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
