@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b6ef86_cc6ede2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:07:38Z",
+      "side": 1,
+      "message": "nit: add",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "59cd1f2ab8d4d74a1aabb73c4643fc8738f16d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca4809cf_6d867aaf",
@@ -31,6 +54,23 @@
       "writtenOn": "2021-08-03T20:10:40Z",
       "side": 1,
       "message": "The error generated here:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/screenshot/files.go;l\u003d17-21\n\nis never returned. \n\nIf screenshot.HasScreenshots() returns nil for err, printing err here will not do too much.",
+      "revId": "59cd1f2ab8d4d74a1aabb73c4643fc8738f16d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321ee247_98f3890a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:07:38Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "59cd1f2ab8d4d74a1aabb73c4643fc8738f16d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
