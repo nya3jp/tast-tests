@@ -16,6 +16,46 @@
       "message": "Hi Gabor,\n\nCan you please have a look ?\n\nThanks",
       "revId": "4e573d23b02ad58959adde9c7d33aa09a3be2917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518b10b8_c0d5207e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-04T13:28:15Z",
+      "side": 1,
+      "message": "LGMT % request",
+      "revId": "4e573d23b02ad58959adde9c7d33aa09a3be2917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db135f0_76fcc926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-04T13:28:15Z",
+      "side": 1,
+      "message": "This part is little tricky, and we want to create a general solution for it with the new UI library. Can I ask you to link https://crbug.com/1236546 as a ToDo here?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "4e573d23b02ad58959adde9c7d33aa09a3be2917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
