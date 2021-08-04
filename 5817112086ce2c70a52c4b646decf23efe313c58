@@ -79,6 +79,24 @@
       "message": "Does this order work? stopping mm, reset shill and waiting for service to connect?\n\nmaybe order is: \n\n  stop mm -\u003e stop shill -\u003e start mm -\u003e start shill  and\n  reset shill, reset mm as different methods.",
       "revId": "5817112086ce2c70a52c4b646decf23efe313c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8427f648_129861e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-04T21:01:33Z",
+      "side": 1,
+      "message": "Any order should work -- shill should properly handle MM coming up late.",
+      "parentUuid": "0a14cc0c_0e536490",
+      "revId": "5817112086ce2c70a52c4b646decf23efe313c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
