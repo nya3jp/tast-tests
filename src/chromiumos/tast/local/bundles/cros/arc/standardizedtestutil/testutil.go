@@ -158,6 +158,13 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 				s.Fatal("Failed to set window state: ", err)
 			}
 
+			// In certain cases (maximized/full screen), the resizing of the window causes a large spike in
+			// cpu usage which impacts callers ability to run their tests. By waiting for the cpu
+			// to settle, callers are guaranteed the window is in a state that is ready to be tested.
+			if err := cpu.WaitUntilIdle(ctx); err != nil {
+				s.Fatal("Failed to wait until CPU idle after window change: ", err)
+			}
+
 			test.Fn(ctx, s, StandardizedTestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
