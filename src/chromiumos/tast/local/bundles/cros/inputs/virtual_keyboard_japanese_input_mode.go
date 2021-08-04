@@ -24,10 +24,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardJapaneseInputs,
+		Func:         VirtualKeyboardJapaneseInputMode,
 		Desc:         "Checks switching between Romaji and Kana mode for Japanese inputs",
 		Contacts:     []string{"myy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
@@ -44,7 +44,7 @@ func init() {
 	})
 }
 
-func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
+func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	vkbCtx := vkb.NewContext(cr, tconn)
