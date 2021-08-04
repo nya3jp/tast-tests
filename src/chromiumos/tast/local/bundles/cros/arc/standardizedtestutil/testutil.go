@@ -18,6 +18,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -29,6 +31,21 @@ const (
 	defaultTestCaseTimeout = 2 * time.Minute
 	ShortUITimeout         = 30 * time.Second
 )
+
+// StandardizedMouseButton abstracts the underlying mouse button implementation into a
+// standard type that can be used by callers.
+type StandardizedMouseButton string
+
+// Mouse buttons that can be used by standardized tests.
+const (
+	LeftMouseButton  StandardizedMouseButton = "LEFT"
+	RightMouseButton StandardizedMouseButton = "RIGHT"
+)
+
+var standardizedMouseButtonToMouseButton = map[StandardizedMouseButton]mouse.Button{
+	LeftMouseButton:  mouse.LeftButton,
+	RightMouseButton: mouse.RightButton,
+}
 
 // StandardizedTestFuncParams contains parameters that can be used by the standardized tests.
 type StandardizedTestFuncParams struct {
@@ -189,6 +206,42 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 
 	if isFocused == false {
 		return errors.Wrap(err, "unable to focus the input")
+	}
+
+	return nil
+}
+
+// StandardizedMouseClickObject implements a standard way to click the mouse button on an object.
+func StandardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, selector *ui.Object, standardizedButton StandardizedMouseButton) error {
+	// The device cannot be in tablet mode.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	if tabletModeEnabled {
+		return errors.New("Device is in tablet mode, cannot click with a mouse")
+	}
+
+	// Map the standardized map button to the corresponding mouse.button
+	buttonToUse, exists := standardizedMouseButtonToMouseButton[standardizedButton]
+	if exists == false {
+		return errors.Wrapf(err, "Unable to find button to click. Got: %v", standardizedButton)
+	}
+
+	// Get the bounds and click the point.
+	uiElementBounds, err := selector.GetBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	mouseClickPosition := coords.Point{
+		X: uiElementBounds.Left,
+		Y: uiElementBounds.Top,
+	}
+
+	if err = mouse.Click(tconn, mouseClickPosition, buttonToUse)(ctx); err != nil {
+		return errors.Wrapf(err, "Unable to click: %v at provided position", buttonToUse)
 	}
 
 	return nil
