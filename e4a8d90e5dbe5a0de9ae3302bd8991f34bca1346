@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a916bc3_9e9c6c09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:17:20Z",
+      "side": 1,
+      "message": "nit: SharedFilesystemState",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665cc9a1_a5ecefa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:17:20Z",
+      "side": 1,
+      "message": "nit: it\u0027s already there, but as informational. We usually say \"promote CQ\" or \"promote to critical\":\nhttps://chromium-review.googlesource.com/q/project:chromiumos/platform/tast-tests+status:open+promote",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4451b9_7ad0b5e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:17:20Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "700ba754_c7848b49",
@@ -14,6 +83,23 @@
       "writtenOn": "2021-08-03T19:35:47Z",
       "side": 1,
       "message": "I have checked results from last 14 days.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dqueued_date\u0026col\u003dbuild\u0026first_date\u003d2021-07-21\u0026last_date\u003d2021-08-03\u0026test\u003dSharedFilesystemState\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nLGTM.",
+      "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f916f4_2d6ad872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:17:20Z",
+      "side": 1,
+      "message": "This test looks a bit flaky: https://cros-health-prod.googleplex.com/test/security.SharedFilesystemState. Are these failures related to test itself?\n\nUsually we follow https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md instruction and have to wait until 20+ green builds. Should we make here exception and why?",
       "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
