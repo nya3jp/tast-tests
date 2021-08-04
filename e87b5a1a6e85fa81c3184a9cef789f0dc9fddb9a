@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6a30a9_fe8dc283",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-04T01:51:00Z",
+      "side": 1,
+      "message": "Thank you for writing stable tests @jiwan.",
+      "revId": "e87b5a1a6e85fa81c3184a9cef789f0dc9fddb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
