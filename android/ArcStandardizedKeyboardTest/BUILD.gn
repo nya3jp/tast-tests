@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-android_apk("ArcStandardizedKeyboardTypingTest") {
+android_apk("ArcStandardizedKeyboardTest") {
   manifest = "AndroidManifest.xml"
   source_dirs = ["src"]
   resource_dirs = ["res"]

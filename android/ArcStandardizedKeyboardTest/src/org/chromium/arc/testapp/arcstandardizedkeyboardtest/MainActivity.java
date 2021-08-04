@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.arcstandardizedkeyboardtypingtest;
+package org.chromium.arc.testapp.arcstandardizedkeyboardtest;
 
 import android.app.Activity;
 import android.widget.LinearLayout;
