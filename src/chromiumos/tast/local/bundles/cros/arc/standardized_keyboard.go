@@ -15,6 +15,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// standardizedKeyboardKeyTest represents a key to verify in the keys test.
+type standardizedKeyboardKeyTest struct {
+	displayName  string
+	key          input.EventCode
+	skipOnTablet bool
+}
+
+// allTestKeys holds all the keys under test. Must match keyCodesToTest in the corresponding app.
+var allTestKeys = []standardizedKeyboardKeyTest{
+	{displayName: "KEYS TEST - LEFT ARROW", key: input.KEY_LEFT, skipOnTablet: false},
+	{displayName: "KEYS TEST - DOWN ARROW", key: input.KEY_DOWN, skipOnTablet: false},
+	{displayName: "KEYS TEST - RIGHT ARROW", key: input.KEY_RIGHT, skipOnTablet: false},
+	{displayName: "KEYS TEST - UP ARROW", key: input.KEY_UP, skipOnTablet: false},
+	{displayName: "KEYS TEST - TAB", key: input.KEY_TAB, skipOnTablet: false},
+	{displayName: "KEYS TEST - ESCAPE", key: input.KEY_ESC, skipOnTablet: false},
+	{displayName: "KEYS TEST - ENTER", key: input.KEY_ENTER, skipOnTablet: false},
+	{displayName: "KEYS TEST - FORWARD", key: input.KEY_FORWARD, skipOnTablet: false},
+	{displayName: "KEYS TEST - BACK", key: input.KEY_BACK, skipOnTablet: true}, // The back button is actually a gesture in tablet mode.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StandardizedKeyboard,
@@ -74,6 +94,8 @@ func runStandardizedKeyboardTests(ctx context.Context, s *testing.State, testPar
 	runStandardizedKeyboardTypingTest(ctx, s, testParameters, kbd)
 
 	runStandardizedKeyboardCopyPasteTest(ctx, s, testParameters, kbd)
+
+	runStandardizedKeyboardKeysTest(ctx, s, testParameters, kbd)
 }
 
 // runStandardizedKeyboardTypingTest types into the input field, and ensures the text appears.
@@ -128,6 +150,47 @@ func runStandardizedKeyboardCopyPasteTest(ctx context.Context, s *testing.State,
 
 	if err := testParameters.Device.Object(ui.ID(textDestinationID), ui.Text(sourceText)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatalf("Unable to confirm: %v was pasted into the destination, info: %v", sourceText, err)
+	}
+}
+
+// runStandardizedKeyboardKeysTest verifies that all the provided keys are handled by
+// the android application's layout when it is focused. This ensures they can all be
+// handled by android applications.
+func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams, kbd *input.KeyboardEventWriter) {
+	// Setup the selector ids
+	btnStartKeysTestID := testParameters.AppPkgName + ":id/btnStartKeysTest"
+	layoutMainID := testParameters.AppPkgName + ":id/layoutMain"
+
+	if err := testParameters.Device.Object(ui.ID(btnStartKeysTestID)).Click(ctx); err != nil {
+		s.Fatal("Unable to start the keys test, info: ", err)
+	}
+
+	isFocused, err := testParameters.Device.Object(ui.ID(layoutMainID)).IsFocused(ctx)
+	if err != nil {
+		s.Fatal("Unable to check focus of layout, info: ", err)
+	}
+
+	if isFocused == false {
+		s.Fatal("Unable to focus the layout, info: ", err)
+	}
+
+	for _, curTestKey := range allTestKeys {
+		if curTestKey.skipOnTablet == true && testParameters.InTabletMode == true {
+			s.Logf("Skipping test for key: %v while in tablet mode", curTestKey.displayName)
+			continue
+		}
+
+		if err := testParameters.Device.Object(ui.Text(curTestKey.displayName)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+			s.Fatalf("Element for key: %v does not exist, info: %v", curTestKey.displayName, err)
+		}
+
+		if err := kbd.TypeKey(ctx, curTestKey.key); err != nil {
+			s.Fatalf("Unable to send key: %v to app, info: %v", curTestKey.displayName, err)
+		}
+
+		if err := testParameters.Device.Object(ui.Text(curTestKey.displayName)).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+			s.Fatalf("%v element didn't get removed after key press, info: %v", curTestKey.displayName, err)
+		}
 	}
 }
 
