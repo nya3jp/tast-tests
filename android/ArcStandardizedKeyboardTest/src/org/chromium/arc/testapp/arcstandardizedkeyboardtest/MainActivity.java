@@ -7,7 +7,6 @@
 package org.chromium.arc.testapp.arcstandardizedkeyboardtest;
 
 import android.app.Activity;
-import android.widget.LinearLayout;
 import android.os.Bundle;
 
 public class MainActivity extends Activity {
