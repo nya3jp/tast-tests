@@ -27,7 +27,7 @@ func init() {
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"}, // Remove informational once crbug/1236679 is fixed.
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 	})
