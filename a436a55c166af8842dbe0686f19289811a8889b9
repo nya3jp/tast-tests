@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76279fc_f4f7b67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-04T20:38:49Z",
+      "side": 1,
+      "message": "Please let me know if anything is missing here. I\u0027ll be able to address this in a following CL if necessary. Thanks,",
+      "parentUuid": "33e9570d_53985494",
+      "revId": "a436a55c166af8842dbe0686f19289811a8889b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e47c5a6_08cba8db",
