@@ -16,6 +16,121 @@
       "message": "Hello,\nI have tried to implement the test, It is working.\nKindly check the behavior of extension and  review the test.\n\nThank you 😊",
       "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c76def6_bba95774",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:03:19Z",
+      "side": 1,
+      "message": "Is it needed?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6672922b_ff4fe4c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:03:19Z",
+      "side": 1,
+      "message": "why files app is tested here?",
+      "range": {
+        "startLine": 165,
+        "startChar": 9,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d904d5a_46f09eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:03:19Z",
+      "side": 1,
+      "message": "nit: please remove setUpExtension and start the line with \"Moves\", so if the function name got changed we don\u0027t need to update the comments as well.",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 17
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497492b0_09a30e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:03:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 23
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8c1342_60658484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:03:19Z",
+      "side": 1,
+      "message": "Thee extension shouldn\u0027t be allowed to access the data",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 98
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
