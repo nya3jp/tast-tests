@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cad9eaf_cea4f558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-04T23:36:31Z",
+      "side": 1,
+      "message": "If you just want to wrap the error information, maybe use NamedAction:\n\nuiauto.NamedAction(\"to detect camera button within 15 seconds\", ui.WatiUntilExists(cameraButton))",
+      "range": {
+        "startLine": 133,
+        "startChar": 18,
+        "endLine": 133,
+        "endChar": 22
+      },
+      "revId": "09f84f4e87e8a39f0dfb142b64a1f904ef57428f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
