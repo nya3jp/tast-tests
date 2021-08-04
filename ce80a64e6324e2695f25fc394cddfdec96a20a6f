@@ -16,6 +16,23 @@
       "message": "+alexanderhartl@, do we know if this is a test issue or a real failure? I\u0027m hesitant to demote it without more info, in case this is a real issue.",
       "revId": "ce80a64e6324e2695f25fc394cddfdec96a20a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e897281f_3415515d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-08-04T22:31:58Z",
+      "side": 1,
+      "message": "No longer needed: see b:195477101",
+      "revId": "ce80a64e6324e2695f25fc394cddfdec96a20a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
