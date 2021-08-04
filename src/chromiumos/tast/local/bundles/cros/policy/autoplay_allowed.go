@@ -29,9 +29,10 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Fixture:      "chromePolicyLoggedIn",
-		Data:         []string{"autoplay_allowed.html", "audio.mp3"},
+		Attr:         []string{"group:mainline", "informational"},
+		// Remove informational once crbug/1236679 is fixed.
+		Fixture: "chromePolicyLoggedIn",
+		Data:    []string{"autoplay_allowed.html", "audio.mp3"},
 	})
 }
 
