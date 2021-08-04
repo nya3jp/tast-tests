@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c8ebb1d_101db0e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data_leak_prevention_clipboard_crostini.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:06:40Z",
+      "side": 1,
+      "message": "destinations should have CROSTINI as a component.",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 6
+      },
+      "revId": "852560bc0ab83f3843f61c2a291cc3c12920e174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a26747f3_d58ea43e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data_leak_prevention_clipboard_crostini.go",
         "patchSetId": 3
@@ -31,6 +54,30 @@
       "writtenOn": "2021-07-29T10:44:23Z",
       "side": 1,
       "message": "how to set policy in chrome in this case? \n - Can\u0027t create a new chrome because there is precondition\n - ServeBlobAndReferesh doesn\u0027t sets this dlp policy I can confirm that\n - I searched for policy, fakeDMS etc keywords in crostini folder no result i.e there is no setting of policy in crostini",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "852560bc0ab83f3843f61c2a291cc3c12920e174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66618cee_db9e67a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data_leak_prevention_clipboard_crostini.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-04T21:06:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I understand the problem here. The policy should be set normally in Chrome and you should have Crostini running \u0026 try to copy-paste data from Chrome to Crostini.",
+      "parentUuid": "a26747f3_d58ea43e",
       "range": {
         "startLine": 138,
         "startChar": 1,
