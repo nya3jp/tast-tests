@@ -18,9 +18,21 @@ func (message voiceMessage) GetInputData(im ime.InputMethod) (InputData, bool) {
 
 // VoiceMessageHello defines hello voice messages of input methods.
 var VoiceMessageHello = voiceMessage{
+	ime.LanguageAr: {
+		VoiceFile:    "voice_ar_hello.wav",
+		ExpectedText: "سلام",
+	},
 	ime.LanguageEn: {
 		VoiceFile:    "voice_en_hello.wav",
 		ExpectedText: "hello",
+	},
+	ime.LanguageKo: {
+		VoiceFile:    "voice_ko_hello.wav",
+		ExpectedText: "안녕",
+	},
+	ime.LanguageJa: {
+		VoiceFile:    "voice_ja_hello.wav",
+		ExpectedText: "こんにちは",
 	},
 	ime.LanguageZhHans: {
 		VoiceFile:    "voice_zh_hans_hello.wav",
