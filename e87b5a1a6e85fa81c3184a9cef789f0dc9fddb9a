@@ -16,6 +16,23 @@
       "message": "Thank you for writing stable tests @jiwan.",
       "revId": "e87b5a1a6e85fa81c3184a9cef789f0dc9fddb9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd765a64_d1807434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-04T04:27:39Z",
+      "side": 1,
+      "message": "LGTM % defer to Jing\u0027s review",
+      "revId": "e87b5a1a6e85fa81c3184a9cef789f0dc9fddb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
