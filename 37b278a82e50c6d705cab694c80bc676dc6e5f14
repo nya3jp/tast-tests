@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d4bcaa_847eeb70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-08-04T20:15:03Z",
+      "side": 1,
+      "message": "can you add comment with the reference to bug, something like\n// remove \"information\" once crbug.com/xxx is fixed",
+      "revId": "37b278a82e50c6d705cab694c80bc676dc6e5f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
