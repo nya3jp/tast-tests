@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/shill"
@@ -24,6 +25,8 @@ const (
 	fwnmiPath     = "/iwlmvm/fw_nmi"
 	funcName      = `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`
 	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.\d+\.0`
+	messagesFile  = "/var/log/messages"
+	logName       = "filesystem_and_disk_status.txt"
 )
 
 var (
@@ -47,6 +50,37 @@ func init() {
 }
 
 func KernelIwlwifiError(ctx context.Context, s *testing.State) {
+	// TODO(b:193677828) Remove the filesystem and disk checks below when the issue with
+	// /var/log/messages being broken sometimes is fixed.
+	// Get filesystem/disks info for debugging"
+	dfOutput, err := testexec.CommandContext(ctx, "df", "-mP").Output()
+	if err != nil {
+		s.Error("Failed to run the command df -mP: ", err)
+	}
+	content := "Output of the command df -mP at the beginning of the test:\n" + string(dfOutput)
+	duOutput, err := testexec.CommandContext(ctx, "du", "-a", "/mnt/stateful_partition/encrypted").Output()
+	if err != nil {
+		s.Error("Failed to run the command du -a /mnt/stateful_partition/encrypted: ", err)
+	}
+	content = content + "\n\nOutput of the command du -a /mnt/stateful_partition/encrypted at the beginning of the test:\n" + string(duOutput)
+	// Write the filesystem/disks info logs to the file logName.
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		s.Error("Failed to get OutDir")
+	}
+
+	if err := ioutil.WriteFile(filepath.Join(dir, logName),
+		[]byte(content), 0644); err != nil {
+		s.Error("Failed to write filesystem/disks info outputs: ", err)
+	}
+
+	// Check that /var/log/messages exist.
+	s.Log("Checking for /var/log/messages existance")
+	_, err = os.Stat(messagesFile)
+	if os.IsNotExist(err) {
+		s.Errorf("File %s does not exists: %v", messagesFile, err)
+	}
+
 	// TODO(crbug.com/950346): Remove the below check and add dependency on Intel WiFi
 	// when hardware dependencies are implemented.
 	// Verify that DUT has Intel WiFi.
