@@ -74,7 +74,8 @@ func init() {
 			Name: "video_fake",
 			Pre:  testutil.ChromeWithFakeCamera(),
 			// TODO(b/191846403): Promote the test to Chrome CQ once it is stable enough.
-			ExtraAttr: []string{"informational"},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Val: smokeTestParams{
 				useCameraType: testutil.UseFakeCamera,
 				function:      videoRecoridng,
