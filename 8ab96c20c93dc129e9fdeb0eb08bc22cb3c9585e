@@ -16,6 +16,24 @@
       "message": "ditto",
       "revId": "8ab96c20c93dc129e9fdeb0eb08bc22cb3c9585e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed687cf5_cae5fbc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-08-04T21:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47348563_b9e54bf9",
+      "revId": "8ab96c20c93dc129e9fdeb0eb08bc22cb3c9585e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
