@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95847de7_770402b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/text_to_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-08-04T00:57:54Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Added TODO comment.",
+      "parentUuid": "98fbf38f_b2dde9bb",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 60
+      },
+      "revId": "c964c1488e8040dcecb8411343b7cc8cfbdb474d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ec63332_00d9d88f",
