@@ -16,6 +16,46 @@
       "message": "LGTM from tast side. Please also get approval from a team member before submitting.\n\n",
       "revId": "255307044fbd6bb23b9d37b1409679981dd6c1f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c95fdd_9798b706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:06:11Z",
+      "side": 1,
+      "message": "LGTM, sorry for delays!",
+      "revId": "255307044fbd6bb23b9d37b1409679981dd6c1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbe9c23_0d50bc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-04T14:06:11Z",
+      "side": 1,
+      "message": "nit: please split it into 2 errors:\n\nif err !\u003d nil {\n  ...\n}\nif e \u003d\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 15
+      },
+      "revId": "255307044fbd6bb23b9d37b1409679981dd6c1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
