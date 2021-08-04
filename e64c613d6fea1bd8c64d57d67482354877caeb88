@@ -50,6 +50,23 @@
       "message": "Thanks for the quick review Trent, I have owners-override powers for Chromium but it looks like that doesn\u0027t extend to this repo so I\u0027ve added the tast-owners alias to request approval.",
       "revId": "e64c613d6fea1bd8c64d57d67482354877caeb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7d9f08_8988f8d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133074
+      },
+      "writtenOn": "2021-08-04T16:50:14Z",
+      "side": 1,
+      "message": "CC\u0027ing today\u0027s branch sheriff.",
+      "revId": "e64c613d6fea1bd8c64d57d67482354877caeb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
