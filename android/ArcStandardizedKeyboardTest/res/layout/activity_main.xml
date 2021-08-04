@@ -10,6 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
     tools:context=".MainActivity">
 
   <!-- Typing test components -->
@@ -21,7 +22,7 @@
       android:inputType="text"
   />
 
-  <!-- Copy/Paste components -->
+  <!-- Copy/Paste test components -->
   <EditText
       android:id="@+id/textCopySource"
       android:layout_width="match_parent"
@@ -39,5 +40,11 @@
       android:inputType="text"
   />
 
+  <!-- Keys test components -->
+  <Button
+      android:id="@+id/btnStartKeysTest"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Start Keys Test" />
 
 </LinearLayout>

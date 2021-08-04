@@ -37,6 +37,7 @@ type StandardizedTestFuncParams struct {
 	AppPkgName      string
 	AppActivityName string
 	Activity        *arc.Activity
+	InTabletMode    bool
 }
 
 // StandardizedTestFunc represents the test function.
@@ -165,6 +166,11 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 				s.Fatal("Failed to wait until CPU idle after window change: ", err)
 			}
 
+			inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+			if err != nil {
+				s.Fatal("Unable to check tablet mode, info: ", err)
+			}
+
 			test.Fn(ctx, s, StandardizedTestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
@@ -172,6 +178,7 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 				AppPkgName:      appPkgName,
 				AppActivityName: appActivity,
 				Activity:        act,
+				InTabletMode:    inTabletMode,
 			})
 		})
 		cancel()
