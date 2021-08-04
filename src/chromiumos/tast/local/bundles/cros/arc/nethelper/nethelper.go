@@ -6,8 +6,9 @@
 // requests from various tests coming via network in context of ARC TAST test.
 // arc_eth0 on port 1235 is used as communication point. This helper currently
 // supports the following commands:
-//   * drop_caches - drops system caches, returns OK/FAILED
-//   * receive_payload - receives payload from client, return OK/FAILED and ACK
+//   * drop_caches - drops system caches, returns OK/FAILED.
+//   * receive_payload - receives payload from client, returns OK, ACK and payload.
+//   * get_total_memory_kb - gets total memory in KB from DUT, returns OK/FAILED and value.
 //
 // Usage pattern is following:
 // 	conn, err := nethelper.Start(ctx)
@@ -225,8 +226,9 @@ func handleClient(ctx context.Context, conn net.Conn) {
 
 	const (
 		// Supported commands (unrecognized ones are ignored).
-		cmdDropCaches     = "drop_caches"
-		cmdReceivePayload = "receive_payload"
+		cmdDropCaches       = "drop_caches"
+		cmdReceivePayload   = "receive_payload"
+		cmdGetTotalMemoryKB = "get_total_memory_kb"
 
 		tReadWaitTimeout = 1 * time.Minute
 	)
@@ -269,6 +271,16 @@ func handleClient(ctx context.Context, conn net.Conn) {
 			} else if result > 0 {
 				testing.ContextLogf(ctx, "Received %d bytes payload from %s", result, conn.RemoteAddr().String())
 			}
+		case cmdGetTotalMemoryKB:
+			value, result := handleGetTotalMemoryKB(ctx)
+			response := []byte(result + "\n" + strconv.Itoa(value) + "\n")
+			if _, err := conn.Write(response); err != nil {
+				testing.ContextLogf(ctx, "Failed to respond %q to %s, %s", response, conn.RemoteAddr().String(), err)
+				return
+			}
+			if result == okResponse {
+				testing.ContextLogf(ctx, "Sent total memory value of %dKB to %s", value, conn.RemoteAddr().String())
+			}
 		default:
 			testing.ContextLogf(ctx, "Unknown command from %s: %s", conn.RemoteAddr().String(), msg)
 		}
@@ -308,4 +320,24 @@ func handleReceivePayload(w io.Writer, r *bufio.Reader, resp string) (int64, err
 		return 0, errors.Errorf("failed to read with %d bytes of payload processed", bytesRead)
 	}
 	return payloadSize, nil
+}
+
+func handleGetTotalMemoryKB(ctx context.Context) (int, string) {
+	memInfo, err := ioutil.ReadFile("/proc/meminfo")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to read /proc/meminfo with error: ", err)
+		return 0, failedResponse
+	}
+	memTotal := regexp.MustCompile(`(\n|^)MemTotal:\s+(\d+)\s+kB(\n|$)`).FindSubmatch(memInfo)
+	if memTotal == nil {
+		testing.ContextLogf(ctx, "Failed to find required MemTotal string: %q", memInfo)
+		return 0, failedResponse
+	}
+	// Verify string is valid non-negative integer value.
+	memTotalInt, err := strconv.Atoi(string(memTotal[2]))
+	if err != nil || memTotalInt <= 0 {
+		testing.ContextLogf(ctx, "Failed to parse %q into valid value", memTotal[2])
+		return 0, failedResponse
+	}
+	return memTotalInt, okResponse
 }
