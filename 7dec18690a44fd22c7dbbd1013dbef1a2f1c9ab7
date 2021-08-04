@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1251fa9_a8a357c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-08-04T23:21:32Z",
+      "side": 1,
+      "message": "\u003e \"begining\" is a possible misspelling of \"beginning\".\n\nPlease fix.",
+      "parentUuid": "bef28c58_18190a64",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "7dec18690a44fd22c7dbbd1013dbef1a2f1c9ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
