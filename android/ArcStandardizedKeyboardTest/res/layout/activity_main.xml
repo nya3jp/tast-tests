@@ -12,6 +12,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+  <!-- Typing test components -->
   <EditText
       android:id="@+id/textKeyboardInput"
       android:layout_width="match_parent"
@@ -19,5 +20,24 @@
       android:ems="10"
       android:inputType="text"
   />
+
+  <!-- Copy/Paste components -->
+  <EditText
+      android:id="@+id/textCopySource"
+      android:layout_width="match_parent"
+      android:layout_height="53dp"
+      android:ems="10"
+      android:inputType="text"
+      android:text="SOURCE_TEXT_TO_COPY"
+  />
+
+  <EditText
+      android:id="@+id/textCopyDestination"
+      android:layout_width="match_parent"
+      android:layout_height="53dp"
+      android:ems="10"
+      android:inputType="text"
+  />
+
 
 </LinearLayout>
