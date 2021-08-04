@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -53,10 +54,10 @@ type StandardizedTestCase struct {
 // GetStandardizedClamshellTests returns the test cases required for clamshell devices.
 func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
+		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
 		{Name: "Normal", Fn: fn, WindowStateType: ash.WindowStateNormal},
 		{Name: "Snapped left", Fn: fn, WindowStateType: ash.WindowStateLeftSnapped},
 		{Name: "Snapped right", Fn: fn, WindowStateType: ash.WindowStateRightSnapped},
-		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
 	}
 }
 
@@ -68,8 +69,8 @@ func GetStandardizedClamshellHardwareDeps() hwdep.Deps {
 // GetStandardizedTabletTests returns the test cases required for tablet devices.
 func GetStandardizedTabletTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
-		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized},
 		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
+		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized},
 	}
 }
 
@@ -169,6 +170,28 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 		})
 		cancel()
 	}
+}
+
+// ClickInputAndGuaranteeFocus makes sure an input exists, clicks it, and ensures it is focused.
+func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error {
+	if err := selector.Exists(ctx); err != nil {
+		return errors.Wrap(err, "unable to find the input")
+	}
+
+	if err := selector.Click(ctx); err != nil {
+		return errors.Wrap(err, "unable to click the input")
+	}
+
+	isFocused, err := selector.IsFocused(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to check the inputs focus state")
+	}
+
+	if isFocused == false {
+		return errors.Wrap(err, "unable to focus the input")
+	}
+
+	return nil
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
