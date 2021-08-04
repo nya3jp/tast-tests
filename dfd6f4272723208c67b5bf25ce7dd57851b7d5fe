@@ -33,6 +33,24 @@
       "message": "ditto",
       "revId": "dfd6f4272723208c67b5bf25ce7dd57851b7d5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a910f3dc_3e8678c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-08-04T21:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1669f397_cd990e1c",
+      "revId": "dfd6f4272723208c67b5bf25ce7dd57851b7d5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
