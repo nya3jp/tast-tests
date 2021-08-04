@@ -149,7 +149,7 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
+		Timeout:  100 * time.Second,
 		Interval: time.Second,
 	}); err != nil {
 		s.Fatal("Failed to wait for BT to be powered: ", err)
