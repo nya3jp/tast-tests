@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f659b7_14fa0c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-08-04T16:42:33Z",
+      "side": 1,
+      "message": "maybe pass as KB to keep it aligned.",
+      "range": {
+        "startLine": 326,
+        "startChar": 25,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "7d74f64a3cb5bfc5979ff6f13de201a5ba467c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
