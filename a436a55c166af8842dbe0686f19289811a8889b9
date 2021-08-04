@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef7a7ba_86d174d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-04T04:41:46Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "a436a55c166af8842dbe0686f19289811a8889b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b3f923_6a0673bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-04T04:41:46Z",
+      "side": 1,
+      "message": "default: s.Fatal(...) ?",
+      "revId": "a436a55c166af8842dbe0686f19289811a8889b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e47c5a6_08cba8db",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-04T04:41:46Z",
+      "side": 1,
+      "message": "nit: nice to record the directory path. I also recommend to set \"lacros\" as a prefix.",
+      "revId": "a436a55c166af8842dbe0686f19289811a8889b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
