@@ -13,10 +13,13 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -28,6 +31,21 @@ const (
 	defaultTestCaseTimeout = 2 * time.Minute
 	ShortUITimeout         = 30 * time.Second
 )
+
+// StandardizedMouseButton abstracts the underlying mouse button implementation into a
+// standard type that can be used by callers.
+type StandardizedMouseButton string
+
+// Mouse buttons that can be used by standardized tests.
+const (
+	LeftMouseButton  StandardizedMouseButton = "LEFT"
+	RightMouseButton StandardizedMouseButton = "RIGHT"
+)
+
+var standardizedMouseButtonToMouseButton = map[StandardizedMouseButton]mouse.Button{
+	LeftMouseButton:  mouse.LeftButton,
+	RightMouseButton: mouse.RightButton,
+}
 
 // StandardizedTestFuncParams contains parameters that can be used by the standardized tests.
 type StandardizedTestFuncParams struct {
@@ -158,6 +176,13 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 				s.Fatal("Failed to set window state: ", err)
 			}
 
+			// In certain cases (maximized/full screen), the resizing of the window causes a large spike in
+			// cpu usage which impacts callers ability to run their tests. By waiting for the cpu
+			// to settle, callers are guaranteed the window is in a state that is ready to be tested.
+			if err := cpu.WaitUntilIdle(ctx); err != nil {
+				s.Fatal("Failed to wait until CPU idle after window change: ", err)
+			}
+
 			test.Fn(ctx, s, StandardizedTestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
@@ -169,6 +194,42 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 		})
 		cancel()
 	}
+}
+
+// StandardizedMouseClickObject implements a standard way to click the mouse button on an object.
+func StandardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, selector *ui.Object, standardizedButton StandardizedMouseButton) error {
+	// The device cannot be in tablet mode.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	if tabletModeEnabled {
+		return errors.New("Device is in tablet mode, cannot click with a mouse")
+	}
+
+	// Map the standardized map button to the corresponding mouse.button
+	buttonToUse, exists := standardizedMouseButtonToMouseButton[standardizedButton]
+	if exists == false {
+		return errors.Wrapf(err, "Unable to find button to click. Got: %v", standardizedButton)
+	}
+
+	// Get the bounds and click the point.
+	uiElementBounds, err := selector.GetBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	mouseClickPosition := coords.Point{
+		X: uiElementBounds.Left,
+		Y: uiElementBounds.Top,
+	}
+
+	if err = mouse.Click(tconn, mouseClickPosition, buttonToUse)(ctx); err != nil {
+		return errors.Wrapf(err, "Unable to click: %v at provided position", buttonToUse)
+	}
+
+	return nil
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
