@@ -22,6 +22,30 @@
       },
       "revId": "4b847ec3d71c27903eb9aed9a07e766e6d3334a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83073b8a_9d005d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-05T02:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a20b0b3_4580f1cf",
+      "range": {
+        "startLine": 87,
+        "startChar": 62,
+        "endLine": 87,
+        "endChar": 71
+      },
+      "revId": "4b847ec3d71c27903eb9aed9a07e766e6d3334a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
