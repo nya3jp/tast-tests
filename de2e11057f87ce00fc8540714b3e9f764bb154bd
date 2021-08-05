@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3508f9f0_3f433264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-05T00:23:59Z",
+      "side": 1,
+      "message": "I was half-tempted to suggest that this should consider only using /mnt/stateful_partition/var_overlay/log/ -- but I realized maybe the encrypted mount point might have issues, and maybe scooping up the whole thing isn\u0027t a terrible idea.",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 83
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f487d4_dd8608fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-05T00:23:59Z",
+      "side": 1,
+      "message": "What happens if this file doesn\u0027t exist? What\u0027s the next place to add instrumentation?",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
