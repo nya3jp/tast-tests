@@ -26,4 +26,10 @@
       android:layout_height="wrap_content"
       android:text="Right" />
 
+  <!-- Hover test -->
+  <Button
+      android:id="@+id/btnStartHoverTest"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Start Hover Test" />
 </LinearLayout>

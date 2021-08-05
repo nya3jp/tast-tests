@@ -47,6 +47,21 @@ var standardizedMouseButtonToMouseButton = map[StandardizedMouseButton]mouse.But
 	RightMouseButton: mouse.RightButton,
 }
 
+// VerifyState represents a state that can be verified on an object.
+type VerifyState string
+
+// States that can be used to verify objects.
+const (
+	VerifyExists    VerifyState = "EXISTS"
+	VerifyNotExists VerifyState = "NOT_EXISTS"
+)
+
+// VerifyObjectState represents a selector that is checked to be in a given state.
+type VerifyObjectState struct {
+	Selector *ui.Object
+	State    VerifyState
+}
+
 // StandardizedTestFuncParams contains parameters that can be used by the standardized tests.
 type StandardizedTestFuncParams struct {
 	TestConn        *chrome.TestConn
@@ -220,6 +235,49 @@ func StandardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, s
 
 	if err = mouse.Click(tconn, mouseClickPosition, buttonToUse)(ctx); err != nil {
 		return errors.Wrapf(err, "Unable to click: %v at provided position", buttonToUse)
+	}
+
+	return nil
+}
+
+// MouseResetLocation resets the position of the mouse to 0,0.
+func MouseResetLocation(ctx context.Context, tconn *chrome.TestConn) error {
+	return moveMouseToCoordinates(ctx, tconn, coords.NewPoint(0, 0))
+}
+
+// MouseMoveToCenterOfObject moves the mouse over the center of a given object.
+func MouseMoveToCenterOfObject(ctx context.Context, tconn *chrome.TestConn, selector *ui.Object) error {
+	location, err := selector.GetBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to get the bounds of the provided object")
+	}
+
+	return moveMouseToCoordinates(ctx, tconn, location.CenterPoint())
+}
+
+// moveMouseToCoordinates implements moving a mouse to a given set of coordinates.
+func moveMouseToCoordinates(ctx context.Context, tconn *chrome.TestConn, coords coords.Point) error {
+	return mouse.Move(tconn, coords, 0)(ctx)
+}
+
+// VerifyMultipleObjectStates verifies the state of multiple items and returns the first
+// error to occur.
+func VerifyMultipleObjectStates(ctx context.Context, itemsToCheck []VerifyObjectState) error {
+	for _, curItem := range itemsToCheck {
+		switch curItem.State {
+		case VerifyExists:
+			if err := curItem.Selector.Exists(ctx); err != nil {
+				return errors.Wrap(err, "unable to confirm object exists")
+			}
+			break
+		case VerifyNotExists:
+			if err := curItem.Selector.WaitUntilGone(ctx, 0); err != nil {
+				return errors.Wrap(err, "unable to confirm object does not exist")
+			}
+			break
+		default:
+			return errors.Errorf("invalid state provided: %v", curItem.State)
+		}
 	}
 
 	return nil

@@ -54,6 +54,7 @@ func StandardizedMouse(ctx context.Context, s *testing.State) {
 func runStandardizedMouseTests(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
 	runLeftClickTest(ctx, s, testParameters)
 	runRightClickTest(ctx, s, testParameters)
+	runHoverTest(ctx, s, testParameters)
 }
 
 // runLeftClickTest ensures that the left mouse click works.
@@ -68,6 +69,61 @@ func runRightClickTest(ctx context.Context, s *testing.State, testParameters sta
 	btnRightClickID := testParameters.AppPkgName + ":id/btnRightClick"
 	btnRightClickSelector := testParameters.Device.Object(ui.ID(btnRightClickID))
 	testSingleMouseClick(ctx, s, testParameters, btnRightClickSelector, standardizedtestutil.RightMouseButton)
+}
+
+// runHoverTest ensures that hovering, and exiting an element works.
+func runHoverTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+	// Setup the selectors
+	btnStartHoverTestID := testParameters.AppPkgName + ":id/btnStartHoverTest"
+	btnStartHoverSelector := testParameters.Device.Object(ui.ID(btnStartHoverTestID))
+	btnHoverSelector := testParameters.Device.Object(ui.Text("HOVER"))
+
+	// Setup an anonymous function for validating state to simplify the calls below.
+	isInValidState := func(expectedEnterExists, expectedExitExists standardizedtestutil.VerifyState) error {
+		// There should never be more than one hover enter/exit event. The rest can be determined by the caller.
+		return standardizedtestutil.VerifyMultipleObjectStates(ctx, []standardizedtestutil.VerifyObjectState{
+			{Selector: testParameters.Device.Object(ui.Text("HOVER ENTER (1)")), State: expectedEnterExists},
+			{Selector: testParameters.Device.Object(ui.Text("HOVER EXIT (1)")), State: expectedExitExists},
+			{Selector: testParameters.Device.Object(ui.Text("HOVER ENTER (2)")), State: standardizedtestutil.VerifyNotExists},
+			{Selector: testParameters.Device.Object(ui.Text("HOVER EXIT (2)")), State: standardizedtestutil.VerifyNotExists},
+		})
+	}
+
+	// Reset the position of the mouse so that the hover isn't accidentally triggered immediately.
+	if err := standardizedtestutil.MouseResetLocation(ctx, testParameters.TestConn); err != nil {
+		s.Fatal("Unable to reset the mouse's position, info: ", err)
+	}
+
+	// Start the test and make sure the view is in a valid state.
+	if err := btnStartHoverSelector.Click(ctx); err != nil {
+		s.Fatal("Unable to start the hover test, info: ", err)
+	}
+
+	if err := btnHoverSelector.WaitForExists(ctx, time.Second*10); err != nil {
+		s.Fatal("Unable to wait for hover selector to exist, info: ", err)
+	}
+
+	if err := isInValidState(standardizedtestutil.VerifyNotExists, standardizedtestutil.VerifyNotExists); err != nil {
+		s.Fatal("Unable to validate initial hover state, info: ", err)
+	}
+
+	// Hover over the element and make sure the hover event appeared.
+	if err := standardizedtestutil.MouseMoveToCenterOfObject(ctx, testParameters.TestConn, btnHoverSelector); err != nil {
+		s.Fatal("Unable to hover over the element, info: ", err)
+	}
+
+	if err := isInValidState(standardizedtestutil.VerifyExists, standardizedtestutil.VerifyNotExists); err != nil {
+		s.Fatal("Unable to validate hover enter action occurred, info: ", err)
+	}
+
+	// Leave the element and make sure the hover exit occurred
+	if err := standardizedtestutil.MouseResetLocation(ctx, testParameters.TestConn); err != nil {
+		s.Fatal("Unable to reset the mouse's position, info: ", err)
+	}
+
+	if err := isInValidState(standardizedtestutil.VerifyExists, standardizedtestutil.VerifyExists); err != nil {
+		s.Fatal("Unable to validate hover exit action occurred, info: ", err)
+	}
 }
 
 // testSingleMouseClick ensures that a single click works, and prints the expected `MOUSE <button> CLICK` text.
