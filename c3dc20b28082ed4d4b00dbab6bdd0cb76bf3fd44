@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8dcce0_7ab1e128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T09:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ecb031e_ddafe439",
+      "range": {
+        "startLine": 273,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 21
+      },
+      "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ee0c1c2_7cf2ca1a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-05T07:37:58Z",
       "side": 1,
       "message": "nit: You mean \"remove\"? As per line 273, it\u0027s already \"deprecated\".",
+      "range": {
+        "startLine": 274,
+        "startChar": 22,
+        "endLine": 274,
+        "endChar": 31
+      },
+      "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465a2457_0969f04d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T09:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ee0c1c2_7cf2ca1a",
       "range": {
         "startLine": 274,
         "startChar": 22,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6561a60_44b26e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T09:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "643e5901_135a86c1",
+      "range": {
+        "startLine": 417,
+        "startChar": 43,
+        "endLine": 417,
+        "endChar": 51
+      },
+      "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7fc3df1_e2438a04",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-05T07:37:58Z",
       "side": 1,
       "message": "e14s-test page has an \"exposed\" text field that has the password field\u0027s content in plaintext. QA has been using that to verify what\u0027s input into the password field. Can we also use that instead of verifying the masking dots?",
+      "range": {
+        "startLine": 418,
+        "startChar": 8,
+        "endLine": 418,
+        "endChar": 28
+      },
+      "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dead566_c2b1106f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T09:26:07Z",
+      "side": 1,
+      "message": "yes, we do test that in the following action: util.WaitForFieldTextToBeIgnoringCase(its.tconn, PasswordTextField.Finder(), expectedText.\n\nBasically what we are doing here is: count the number of dots and also validate the text in plaintext.",
+      "parentUuid": "d7fc3df1_e2438a04",
       "range": {
         "startLine": 418,
         "startChar": 8,
