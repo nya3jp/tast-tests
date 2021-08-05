@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8ade96_7921b644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T16:17:31Z",
+      "side": 1,
+      "message": "LGTM % remaining comments.",
+      "revId": "cce9450d5f4cd9dc7adfd9b5fd08bf132fb84661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e4a19d_ba26b96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T16:17:31Z",
+      "side": 1,
+      "message": "Print the last failure error as well. Store it in a variable. It\u0027s useful for debugging what went wrong.",
+      "range": {
+        "startLine": 50,
+        "startChar": 67,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "cce9450d5f4cd9dc7adfd9b5fd08bf132fb84661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b39c09b_41c33759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T16:17:31Z",
+      "side": 1,
+      "message": "Start at 1. Otherwise the first log statement says \"0 attempts to detect blocked site interstitial failed\".",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "cce9450d5f4cd9dc7adfd9b5fd08bf132fb84661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87e1587_91b120cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T16:17:31Z",
+      "side": 1,
+      "message": "No need for else.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "cce9450d5f4cd9dc7adfd9b5fd08bf132fb84661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
