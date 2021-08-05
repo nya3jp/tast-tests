@@ -173,6 +173,24 @@
       "parentUuid": "2be05d4f_a01b3a59",
       "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e3daad_545f92f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-05T09:57:57Z",
+      "side": 1,
+      "message": "The fix landed quite late on main/. It landed on 14120.0.0: https://crosland.corp.google.com/cl?q\u003d0928821cb65cd96b2a6eb783c84cc728d971c40a\n\nSo luckily the tests on stainless and tasboard are for prior versions (unless I\u0027m missing something else here...)",
+      "parentUuid": "7e4b819b_122a811f",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
