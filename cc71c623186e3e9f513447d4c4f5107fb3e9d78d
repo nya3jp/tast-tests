@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f3d111_f5e8a9f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T19:20:04Z",
+      "side": 1,
+      "message": "Hello, Removed the redundant test cases.\nPTAL\nThanks",
+      "revId": "cc71c623186e3e9f513447d4c4f5107fb3e9d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
