@@ -16,6 +16,24 @@
       "message": "Would it be possible for you to create expected dmiInfo and compare it with dmiInfo you have?\n\n```\nvar err error\ninfo :\u003d dmiInfo{\n  BiosVendor: readFile(path.Join(dmi, \"bios_vendor\"), \u0026err),\n  ...\n\n  SysVendor: readFile(path.Join(dmi, \"sys_vendor\"), \u0026err)\n}\nif err !\u003d nil {\n  return err\n}\n\n// otherwise compare structs\n```",
       "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2dd8c8_bc656716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-05T04:14:11Z",
+      "side": 1,
+      "message": "I have tried and IMO we should keep the current approach. Some reasons:\n1) DeepEqual doesn\u0027t show helpful info for error, it\u0027s hard to tell which feild is mismatched.\n2) Since we use *string to represent optional field, fmt.Printf(\"%+v\") will print their address instead of the string value.\n3) It doesn\u0027t save much lines.\n\nThough we can implement our own DeepEqual and provide clear error message, it may be too complicated for our usecase here, according to the discussion in patchset 1.",
+      "parentUuid": "17e0eeb0_091b3afe",
+      "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
