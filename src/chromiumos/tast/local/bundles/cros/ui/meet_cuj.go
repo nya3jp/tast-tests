@@ -402,7 +402,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, cdputil.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
@@ -472,15 +472,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Find the web view of Meet window.
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-	if err := action.Combine(
-		"click and type meeting code",
-		// Assume that the meeting code is the first textfield in the webpage.
-		ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview).First()),
-		kw.TypeAction(meetingCode),
-		kw.AccelAction("Enter"),
-	)(ctx); err != nil {
-		s.Fatal("Failed to input the meeting code: ", err)
-	}
 
 	bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
 	allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
