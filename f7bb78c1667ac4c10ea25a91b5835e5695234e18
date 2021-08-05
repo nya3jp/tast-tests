@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "817db9ec_4b6ba540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af80cf16_7aebc202",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae795f06_b7fa83ef",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-08-04T15:30:32Z",
       "side": 1,
       "message": "Could it be possible for a device to have a single back facing camera?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccba307_a3d0e18c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "Haven\u0027t seen or heard that kind of Chromebook till now, so we didn\u0027t consider that use case. Kindly let us know if that kind of device is available.",
+      "parentUuid": "ae795f06_b7fa83ef",
       "range": {
         "startLine": 81,
         "startChar": 5,
@@ -111,6 +159,30 @@
       "writtenOn": "2021-08-04T15:30:32Z",
       "side": 1,
       "message": "These two lines can be combined: \n\nif _, err :\u003d app.TakeSinglePhoto(ctx, cca.TimerOff); err !\u003d nil {",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 17
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96655442_51617940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8601fa77_378d0fb6",
       "range": {
         "startLine": 110,
         "startChar": 2,
@@ -167,6 +239,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5015d7_b0c20e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f0d9ea1_efb4b6c1",
+      "range": {
+        "startLine": 112,
+        "startChar": 40,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae711c03_f70ccf36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f5c0509_b7132b98",
+      "range": {
+        "startLine": 112,
+        "startChar": 30,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ab92da_939a8388",
@@ -192,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44c0bb27_32b7aed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "Yes I agree with you. Which ever camera is starting first, we can capture an image and then switch the camera to capture the image.",
+      "parentUuid": "a1ab92da_939a8388",
+      "range": {
+        "startLine": 119,
+        "startChar": 38,
+        "endLine": 119,
+        "endChar": 54
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fd5410b_7846d919",
         "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
         "patchSetId": 3
@@ -203,6 +347,30 @@
       "writtenOn": "2021-08-04T15:30:32Z",
       "side": 1,
       "message": "This this be Facing type as well?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7132ae03_be753040",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-05T02:43:15Z",
+      "side": 1,
+      "message": "yes this could be Facing type as well. But since we are not using this variable, we didn\u0027t intend to change it. Please let us know if you want to change it.",
+      "parentUuid": "1fd5410b_7846d919",
       "range": {
         "startLine": 42,
         "startChar": 1,
