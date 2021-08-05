@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc256538_290c5ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-05T23:20:44Z",
+      "side": 1,
+      "message": "I don\u0027t think there is one, I was just thinking it would be nice if we didn\u0027t have to make this assumption. You could check the number of cameras was one and if the current facing value was equal to what you are trying to test. But since this isn\u0027t a currently known use case, we can address it when it comes up.",
+      "parentUuid": "2ccba307_a3d0e18c",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb365995_da3c5bef",
@@ -352,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02bea83_893b4c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-05T23:20:44Z",
+      "side": 1,
+      "message": "Ack. Looks like the comment was changed.",
+      "parentUuid": "44c0bb27_32b7aed0",
+      "range": {
+        "startLine": 119,
+        "startChar": 38,
+        "endLine": 119,
+        "endChar": 54
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fd5410b_7846d919",
@@ -389,6 +437,30 @@
       "side": 1,
       "message": "yes this could be Facing type as well. But since we are not using this variable, we didn\u0027t intend to change it. Please let us know if you want to change it.",
       "parentUuid": "1fd5410b_7846d919",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79067603_fd280913",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-05T23:20:44Z",
+      "side": 1,
+      "message": "I checked the VideoFacingModeEnum and it looks like this one is not present. So I think it\u0027s fine to leave off the type.",
+      "parentUuid": "7132ae03_be753040",
       "range": {
         "startLine": 42,
         "startChar": 1,
