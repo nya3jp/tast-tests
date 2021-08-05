@@ -22,6 +22,30 @@
       },
       "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f12661_ec9c534d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-05T01:35:41Z",
+      "side": 1,
+      "message": "ui.WithTimeout(500*time.Millisecond).WaitUntilExists(showAccessPointsBtn) is basically saying \"wait 500ms for the show access points button, and if it doesn\u0027t exist by then, error\". It changes the timeout for all future commands, it doesn\u0027t sleep for that time.\n\nEach ui instance has a timeout and an interval. If a uiauto command hasn\u0027t completed by the timeout, it\u0027ll fail. Some commands like Poll and Retry also wait Interval between retries.",
+      "parentUuid": "3d4fed80_79d42afa",
+      "range": {
+        "startLine": 356,
+        "startChar": 13,
+        "endLine": 356,
+        "endChar": 46
+      },
+      "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
