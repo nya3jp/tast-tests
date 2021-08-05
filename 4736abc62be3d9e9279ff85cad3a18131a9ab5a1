@@ -16,6 +16,46 @@
       "message": "Thanks Ricardo, PTAL.",
       "revId": "4736abc62be3d9e9279ff85cad3a18131a9ab5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09af9166_7d6807a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-05T16:12:04Z",
+      "side": 1,
+      "message": "+2 % optional",
+      "revId": "4736abc62be3d9e9279ff85cad3a18131a9ab5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc34c27a_8841202b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-05T16:12:04Z",
+      "side": 1,
+      "message": "optional:  add:\n\n   s.Log(\"Failed to marshal slice: \", err) // or similar",
+      "range": {
+        "startLine": 257,
+        "startChar": 16,
+        "endLine": 257,
+        "endChar": 17
+      },
+      "revId": "4736abc62be3d9e9279ff85cad3a18131a9ab5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
