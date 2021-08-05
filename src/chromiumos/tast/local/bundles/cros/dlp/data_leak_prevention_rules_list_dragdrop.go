@@ -80,12 +80,6 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			content:     "Example Domain",
 		},
 		{
-			name:        "company",
-			wantAllowed: false,
-			url:         "www.company.com",
-			content:     "One Environment",
-		},
-		{
 			name:        "chromium",
 			wantAllowed: true,
 			url:         "www.chromium.org",
