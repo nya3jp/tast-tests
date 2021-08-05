@@ -33,6 +33,253 @@
       "message": "Looks good from tast point of view. Adding Kyle from Unicorn UI engprod team who has better context on this to check before submitting.",
       "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3387998b_bfbf7076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "Pretty cool test! I don\u0027t think there\u0027s a better solution than waiting 1.5 minutes for the test to run.",
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f868dd_b4073647",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9065,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "Instead of trying to omitempty, why not explicitly provide values for these fields?\n\nI don\u0027t think any changes are needed in this file.",
+      "range": {
+        "startLine": 9065,
+        "startChar": 70,
+        "endLine": 9065,
+        "endChar": 79
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732092a2_c34bdaeb",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "This function hard-codes the policy. Wouldn\u0027t this cause problems if we change the policy later?",
+      "range": {
+        "startLine": 460,
+        "startChar": 4,
+        "endLine": 460,
+        "endChar": 35
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bd023b_e9f25b91",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed.",
+      "range": {
+        "startLine": 564,
+        "startChar": 22,
+        "endLine": 564,
+        "endChar": 53
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d55d035_652c9e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "This timeout doesn\u0027t include the fixture runtime, so this isn\u0027t needed. You\u0027ll notice that the familyLinkUnicornPolicyLogin fixture already has the GAIALoginTimeout.",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60ee8aa_b5b23433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "because Family Link users have restrictions to prevent manipulating the system clock.",
+      "range": {
+        "startLine": 52,
+        "startChar": 90,
+        "endLine": 52,
+        "endChar": 91
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d44e97_b267f7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "Specify the other field values (Overrides and TimeUsageLimit). This way, you don\u0027t need the omitempty tags to pass the policy verification. Also, this provides a template for other UsageTimeLimit policy tests. It is a bit verbose but I think it\u0027s better than hard-coding the policy in policy_tast_struct_creator.py.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77a8cf0_fcfba4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "/*base\u003d*/10",
+      "range": {
+        "startLine": 60,
+        "startChar": 56,
+        "endLine": 60,
+        "endChar": 58
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f3dfbc_cfbfb9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "Nit: were",
+      "range": {
+        "startLine": 83,
+        "startChar": 27,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cacb8c2_c4f03e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "Nit: Waiting",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43163301_c250d711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-05T01:51:36Z",
+      "side": 1,
+      "message": "Nit: Waiting",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
