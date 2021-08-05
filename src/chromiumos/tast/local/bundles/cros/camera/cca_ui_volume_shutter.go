@@ -163,7 +163,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+			if err := cca.ClearSavedDir(ctx, cr); err != nil {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
 
@@ -209,7 +209,7 @@ func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *inp
 
 // testTakePicture tests scenario of taking a picture by volume button in tablet mode.
 func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
-	dirs, err := app.SavedDirs(ctx)
+	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
 	}
@@ -227,7 +227,7 @@ func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if _, err := app.WaitForFileSaved(ctx, dirs, cca.PhotoPattern, start); err != nil {
+		if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
 			return errors.Wrap(err, "cannot find captured result file")
 		}
 		if err := app.WaitForState(ctx, "taking", false); err != nil {
@@ -256,7 +256,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 	}
 	defer cleanup(cleanupCtx)
 
-	dirs, err := app.SavedDirs(ctx)
+	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
 	}
@@ -289,7 +289,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if _, err := app.WaitForFileSaved(ctx, dirs, cca.VideoPattern, start); err != nil {
+		if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 			return errors.Wrap(err, "cannot find result video")
 		}
 		if err := app.WaitForState(ctx, "taking", false); err != nil {

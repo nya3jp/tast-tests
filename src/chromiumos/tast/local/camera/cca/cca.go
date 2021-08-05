@@ -525,26 +525,16 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 
 // WaitForFileSaved waits for the presence of the captured file with file name matching the specified
 // pattern, size larger than zero, and modified time after the specified timestamp.
-func (a *App) WaitForFileSaved(ctx context.Context, dirs []string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
+func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
 	const timeout = 5 * time.Second
 	var result os.FileInfo
 	seen := make(map[string]struct{})
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var allFiles []os.FileInfo
-		var lastErr error
-		for _, dir := range dirs {
-			files, err := ioutil.ReadDir(dir)
-			if err != nil {
-				lastErr = err
-				continue
-			}
-			allFiles = append(allFiles, files...)
+		files, err := ioutil.ReadDir(dir)
+		if err != nil {
+			return errors.Wrap(err, "failed to read the camera directory")
 		}
-		if lastErr != nil && len(allFiles) == 0 {
-			return errors.Wrap(lastErr, "failed to read the directory where media files are saved")
-		}
-
-		for _, file := range allFiles {
+		for _, file := range files {
 			if file.Size() == 0 || file.ModTime().Before(ts) {
 				continue
 			}
@@ -711,14 +701,14 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		return nil, errors.Wrap(err, "capturing hasn't ended")
 	}
 
-	dirs, err := a.SavedDirs(ctx)
+	dir, err := a.SavedDir(ctx)
 	if err != nil {
 		return nil, err
 	}
 
 	var fileInfos []os.FileInfo
 	for _, pattern := range patterns {
-		info, err := a.WaitForFileSaved(ctx, dirs, pattern, start)
+		info, err := a.WaitForFileSaved(ctx, dir, pattern, start)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", pattern)
 		}
@@ -742,7 +732,7 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 
 	metadataPatterns := getMetadataPatterns(fileInfos)
 	for _, pattern := range metadataPatterns {
-		info, err := a.WaitForFileSaved(ctx, dirs, pattern, start)
+		info, err := a.WaitForFileSaved(ctx, dir, pattern, start)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot find result metadata with regexp: %v", pattern)
 		}
@@ -755,7 +745,7 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 			return nil, err
 		}
 
-		path, err := a.FilePathInSavedDirs(ctx, info.Name())
+		path, err := a.FilePathInSavedDir(ctx, info.Name())
 		if err != nil {
 			return nil, err
 		}
@@ -826,11 +816,11 @@ func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTim
 	if err := a.WaitForState(ctx, "taking", false); err != nil {
 		return nil, time.Time{}, errors.Wrap(err, "shutter is not ended")
 	}
-	dirs, err := a.SavedDirs(ctx)
+	dir, err := a.SavedDir(ctx)
 	if err != nil {
 		return nil, time.Time{}, err
 	}
-	info, err := a.WaitForFileSaved(ctx, dirs, VideoPattern, startTime)
+	info, err := a.WaitForFileSaved(ctx, dir, VideoPattern, startTime)
 	if err != nil {
 		return nil, time.Time{}, errors.Wrap(err, "cannot find result video")
 	} else if elapsed := info.ModTime().Sub(startTime); timerState == TimerOn && elapsed < TimerDelay {
@@ -857,85 +847,44 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 	return info, err
 }
 
-// savedDirs returns the paths to the folder where captured files might be saved.
-func savedDirs(ctx context.Context, cr *chrome.Chrome) ([]string, error) {
+// savedDir returns the path to the folder where captured files might be saved.
+func savedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
 	path, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	myFiles := filepath.Join(path, "MyFiles")
-	return []string{filepath.Join(myFiles, "Downloads"), filepath.Join(myFiles, "Camera")}, nil
+	return filepath.Join(path, "MyFiles", "Camera"), nil
 }
 
-// ClearSavedDirs clears all files in the folders where captured files might be saved.
-func ClearSavedDirs(ctx context.Context, cr *chrome.Chrome) error {
-	clearDir := func(ctx context.Context, cr *chrome.Chrome, dir string) error {
-		files, err := ioutil.ReadDir(dir)
-		if err != nil {
-			return errors.Wrap(err, "failed to read saved directory")
-		}
-
-		// Pattern for metadata files of all different kinds of photos.
-		metadataPattern := regexp.MustCompile(`^IMG_\d{8}_\d{6}.*\.json$`)
-		capturedPatterns := []*regexp.Regexp{PhotoPattern, VideoPattern, PortraitPattern, PortraitRefPattern, metadataPattern}
-		for _, file := range files {
-			for _, pat := range capturedPatterns {
-				if pat.MatchString(file.Name()) {
-					path := filepath.Join(dir, file.Name())
-					if err := os.Remove(path); err != nil {
-						return errors.Wrapf(err, "failed to remove file %v from saved directory", path)
-					}
-					break
-				}
-			}
-		}
-
-		return nil
-	}
-
-	dirs, err := savedDirs(ctx, cr)
+// ClearSavedDir clears all files in the folder where captured files might be saved.
+func ClearSavedDir(ctx context.Context, cr *chrome.Chrome) error {
+	dir, err := savedDir(ctx, cr)
 	if err != nil {
-		return errors.Wrap(err, "failed to get saved directorys")
+		return errors.Wrap(err, "failed to get saved directory")
 	}
-	for _, dir := range dirs {
-		if _, err := os.Stat(dir); err != nil {
-			if os.IsNotExist(err) {
-				continue
-			} else {
-				return err
-			}
-		}
-
-		if err := clearDir(ctx, cr, dir); err != nil {
-			return err
-		}
-	}
-	return nil
+	return os.RemoveAll(dir)
 }
 
-// SavedDirs returns the path to the folder where captured files are saved.
-func (a *App) SavedDirs(ctx context.Context) ([]string, error) {
-	return savedDirs(ctx, a.cr)
+// SavedDir returns the path to the folder where captured files are saved.
+func (a *App) SavedDir(ctx context.Context) (string, error) {
+	return savedDir(ctx, a.cr)
 }
 
-// FilePathInSavedDirs finds and returns the path of the target file in saved directories.
-func (a *App) FilePathInSavedDirs(ctx context.Context, name string) (string, error) {
-	dirs, err := savedDirs(ctx, a.cr)
+// FilePathInSavedDir finds and returns the path of the target file in saved directory.
+func (a *App) FilePathInSavedDir(ctx context.Context, name string) (string, error) {
+	dir, err := savedDir(ctx, a.cr)
 	if err != nil {
 		return "", err
 	}
 
-	for _, dir := range dirs {
-		path := filepath.Join(dir, name)
-		_, err := os.Stat(path)
-		if err == nil {
-			return path, nil
+	path := filepath.Join(dir, name)
+	if _, err := os.Stat(path); err != nil {
+		if os.IsNotExist(err) {
+			return "", errors.New("file not found in saved path")
 		}
-		if !os.IsNotExist(err) {
-			return "", err
-		}
+		return "", err
 	}
-	return "", errors.New("file not found in saved path")
+	return path, nil
 }
 
 // CheckFacing returns an error if the active camera facing is not expected.

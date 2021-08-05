@@ -146,7 +146,7 @@ func (v *video) stop(ctx context.Context, app *cca.App) error {
 	v.last = t
 
 	// Check duration from result video file with expected duration.
-	path, err := app.FilePathInSavedDirs(ctx, info.Name())
+	path, err := app.FilePathInSavedDir(ctx, info.Name())
 	if err != nil {
 		return errors.Wrap(err, "failed to get file path in saved path")
 	}
@@ -188,7 +188,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 			defer cancel()
 
-			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+			if err := cca.ClearSavedDir(ctx, cr); err != nil {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
 
@@ -231,7 +231,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 }
 
 func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
-	dirs, err := app.SavedDirs(ctx)
+	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get CCA default saved path")
 	}
@@ -264,7 +264,7 @@ func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if _, err := app.WaitForFileSaved(ctx, dirs, cca.VideoPattern, start); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
@@ -273,7 +273,7 @@ func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
 func testVideoProfile(ctx context.Context, app *cca.App) error {
 	file, err := app.RecordVideo(ctx, cca.TimerOn, time.Second)
 
-	path, err := app.FilePathInSavedDirs(ctx, file.Name())
+	path, err := app.FilePathInSavedDir(ctx, file.Name())
 	if err != nil {
 		return err
 	}
@@ -323,11 +323,11 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 	if err := app.Click(ctx, cca.VideoSnapshotButton); err != nil {
 		return err
 	}
-	dirs, err := app.SavedDirs(ctx)
+	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get saved directories")
 	}
-	if _, err := app.WaitForFileSaved(ctx, dirs, cca.PhotoPattern, startTime); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, startTime); err != nil {
 		return errors.Wrap(err, "failed find saved video snapshot file")
 	}
 

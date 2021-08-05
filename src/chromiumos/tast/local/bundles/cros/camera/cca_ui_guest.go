@@ -35,8 +35,8 @@ func CCAUIGuest(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	// TODO(pihsun): We should call cca.ClearSavedDirs(ctx, cr) here to prevent
-	// past tests from interfering this test, but currently cca.ClearSavedDirs
+	// TODO(pihsun): We should call cca.ClearSavedDir(ctx, cr) here to prevent
+	// past tests from interfering this test, but currently cca.ClearSavedDir
 	// doesn't work in guest mode.
 
 	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
