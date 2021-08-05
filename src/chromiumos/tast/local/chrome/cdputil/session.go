@@ -71,7 +71,7 @@ func NewSession(ctx context.Context, debuggingPortPath string, portWait PortWait
 		return nil, err
 	}
 
-	addr := fmt.Sprintf("127.0.0.1:%d", port)
+	addr := fmt.Sprintf("localhost:%d", port)
 
 	// The /json/version HTTP endpoint provides the browser's WebSocket URL.
 	// See https://chromedevtools.github.io/devtools-protocol/ for details.
