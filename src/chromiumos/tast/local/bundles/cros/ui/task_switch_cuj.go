@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -24,10 +25,17 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type taskSWitchCUJTestParam struct {
+	tablet    bool
+	useLacros bool // Whether to use lacros browser.
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -39,26 +47,51 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
 		Vars:         []string{"mute"},
-		Fixture:      "loggedInToCUJUser",
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               false,
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSWitchCUJTestParam{},
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               false,
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSWitchCUJTestParam{},
 			},
 			{
 				Name:              "tablet_mode",
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               true,
+				Fixture:           "loggedInToCUJUser",
+				Val: taskSWitchCUJTestParam{
+					tablet: true,
+				},
 			},
 			{
 				Name:              "tablet_mode_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               true,
+				Val: taskSWitchCUJTestParam{
+					tablet: true,
+				},
+			},
+			{
+				Name:              "lacros_clamshell",
+				ExtraSoftwareDeps: []string{"android_p", "lacros"},
+				ExtraData:         []string{launcher.DataArtifact},
+				Fixture:           "loggedInToCUJUserLacrosWithARC",
+				Val: taskSWitchCUJTestParam{
+					useLacros: true,
+				},
+			},
+			{
+				Name:              "lacros_tablet",
+				ExtraSoftwareDeps: []string{"android_p", "lacros"},
+				ExtraData:         []string{launcher.DataArtifact},
+				Fixture:           "loggedInToCUJUserLacrosWithARC",
+				Val: taskSWitchCUJTestParam{
+					useLacros: true,
+					tablet:    true,
+				},
 			},
 		},
 	})
@@ -81,12 +114,39 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	testParam := s.Param().(taskSWitchCUJTestParam)
+
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
+	var tconn *chrome.TestConn
+	var cs ash.ConnSource
+
+	{
+		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
+		// variation.
+		cr := s.FixtValue().(cuj.FixtureData).Chrome
+		if !testParam.useLacros {
+			cs = cr
+		}
+
+		var err error
+		tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to the test API connection: ", err)
+		}
+	}
+
+	if testParam.useLacros {
+		// Launch lacros via shelf.
+		f := s.FixtValue().(cuj.FixtureData).LacrosFixt
+
+		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+		l, err := lacros.ShelfLaunch(ctx, tconn, f, s.DataPath(launcher.DataArtifact))
+		if err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		defer l.Close(ctx)
+		cs = l
 	}
 
 	kw, err := input.Keyboard(ctx)
@@ -95,7 +155,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
-	tabletMode := s.Param().(bool)
+	tabletMode := testParam.tablet
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
 		s.Fatal("Failed to ensure the tablet mode state: ", err)
@@ -443,6 +503,10 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Whether to close "New Tab" window. Needed for lacros variation and need
+	// to do the close after creating other lacros browser windows.
+	needCloseNewTabWindow := testParam.useLacros
+
 	// Here adds browser windows:
 	// 1. webGL aquarium -- adding considerable load on graphics.
 	// 2. chromium issue tracker -- considerable amount of elements.
@@ -452,7 +516,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		"https://bugs.chromium.org/p/chromium/issues/list",
 		"https://youtube.com/",
 	} {
-		conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
+		conn, err := cs.NewConn(ctx, url, cdputil.WithNewWindow())
 		if err != nil {
 			s.Fatalf("Failed to open %s: %v", url, err)
 		}
@@ -460,8 +524,23 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		if err = conn.Close(); err != nil {
 			s.Fatalf("Failed to close the connection to %s: %v", url, err)
 		}
+
+		// Lacros specific setup to close "New Tab" window.
+		if needCloseNewTabWindow {
+			w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+				return strings.HasPrefix(w.Title, "New Tab") && strings.HasPrefix(w.Name, "ExoShellSurface")
+			})
+			if err != nil {
+				s.Fatal("Failed to find New Tab window: ", err)
+			}
+			if err := w.CloseWindow(ctx, tconn); err != nil {
+				s.Fatal("Failed to close New Tab window: ", err)
+			}
+			needCloseNewTabWindow = false
+		}
+
 		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			if w.WindowType != ash.WindowTypeBrowser {
+			if w.WindowType != ash.WindowTypeBrowser && w.WindowType != ash.WindowTypeLacros {
 				return false
 			}
 			return !browserWindows[w.ID]
