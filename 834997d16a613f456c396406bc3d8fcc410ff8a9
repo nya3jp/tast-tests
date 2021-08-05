@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb04753a_e605a523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-05T14:35:09Z",
+      "side": 1,
+      "message": "Why the message changed?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "834997d16a613f456c396406bc3d8fcc410ff8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a83335_5a540f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-05T14:35:09Z",
+      "side": 1,
+      "message": "Where did you add the sleep to wait for the ectool cmd to take effect?",
+      "revId": "834997d16a613f456c396406bc3d8fcc410ff8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
