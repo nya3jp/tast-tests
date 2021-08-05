@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cdb4c40_877616a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-05T11:57:40Z",
+      "side": 1,
+      "message": "I agree it should be a test case. Not related to this function. Still thanks Keith for the information.",
+      "parentUuid": "d80ee752_49e3b2b5",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "b595416a903fedfceba3f1006dea6285d9af364f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc74fc7_0ee6cdc6",
