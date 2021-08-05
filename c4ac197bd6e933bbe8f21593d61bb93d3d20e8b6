@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f12e91e_351f88ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a183822_98d86daa",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "c4ac197bd6e933bbe8f21593d61bb93d3d20e8b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3f6a8b1_a10b6224",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-03T19:33:29Z",
       "side": 1,
       "message": "Per go/inclusive-language, please avoid using the word \"sanity\" in this context. How about \"basic check\" or \"smoke test\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "c4ac197bd6e933bbe8f21593d61bb93d3d20e8b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90d3023_c9414182",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f6a8b1_a10b6224",
       "range": {
         "startLine": 20,
         "startChar": 17,
