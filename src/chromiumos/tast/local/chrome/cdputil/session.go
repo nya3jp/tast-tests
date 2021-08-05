@@ -71,12 +71,13 @@ func NewSession(ctx context.Context, debuggingPortPath string, portWait PortWait
 		return nil, err
 	}
 
-	addr := fmt.Sprintf("127.0.0.1:%d", port)
-
 	// The /json/version HTTP endpoint provides the browser's WebSocket URL.
 	// See https://chromedevtools.github.io/devtools-protocol/ for details.
 	// To avoid mixing HTTP and WS requests, we use only WS after this.
-	version, err := devtool.New("http://" + addr).Version(ctx)
+	//
+	// Note: Use "localhost" instead of "127.0.0.1" to workaround DNS
+	// resolution issues. See b/194628311 for details.
+	version, err := devtool.New(fmt.Sprintf("http://localhost:%d", port)).Version(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to query browser's HTTP endpoint")
 	}
@@ -101,7 +102,7 @@ func NewSession(ctx context.Context, debuggingPortPath string, portWait PortWait
 	}
 
 	return &Session{
-		addr:    addr,
+		addr:    fmt.Sprintf("127.0.0.1:%d", port),
 		wsConn:  co,
 		client:  cl,
 		manager: m,
