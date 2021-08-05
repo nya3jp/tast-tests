@@ -39,6 +39,30 @@
       },
       "revId": "d1d5bc835aa8517c700310006c590de1850c4dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d18eee_2fb2db34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_power_peak_shift.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-05T17:11:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "588b8483_3956d73f",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "d1d5bc835aa8517c700310006c590de1850c4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
