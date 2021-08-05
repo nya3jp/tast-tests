@@ -140,6 +140,7 @@ const (
 	WindowTypeCrostini  WindowType = "CrostiniApp"
 	WindowTypeSystem    WindowType = "SystemApp"
 	WindowTypeExtension WindowType = "ExtensionApp"
+	WindowTypeLacros    WindowType = "Lacros"
 )
 
 // OverviewInfo holds overview info of a window.
