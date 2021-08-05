@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5649aa35_bc699764",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-05T04:09:51Z",
+      "side": 1,
+      "message": "+Toshiki, FYI. This CL is also going to add a wait to ash.SetARCWindowState.\n\ncrrev.com/c/3061864 is going to add similar wait option to SetARCWindowState. It\u0027s worth taking a look.",
+      "revId": "586a6ed54212054f55fd0977c275a5c78e7bf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
