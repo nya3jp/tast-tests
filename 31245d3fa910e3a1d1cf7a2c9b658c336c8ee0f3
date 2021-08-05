@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5764eabb_be7f8180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T12:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c3d2edc_d558e050",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f242926_37428d82",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20621649_0d22cfbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_api_can_access_external_storage.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T12:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f242926_37428d82",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6993fafa_977a9997",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-05T11:52:42Z",
       "side": 1,
       "message": "ditto",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47623f72_3f761c50",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T12:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6993fafa_977a9997",
       "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e6d549_b23620b6",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T12:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c13fbe5_fd8770d5",
+      "range": {
+        "startLine": 859,
+        "startChar": 41,
+        "endLine": 859,
+        "endChar": 48
+      },
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "159871bc_5065b338",
@@ -88,6 +166,24 @@
       "writtenOn": "2021-08-05T11:52:42Z",
       "side": 1,
       "message": "Can we simplify the logic with os.RemoveAll()?",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fdf741_31820f67",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T12:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "159871bc_5065b338",
       "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
