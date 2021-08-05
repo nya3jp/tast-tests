@@ -16,6 +16,24 @@
       "message": "Please do not add data to voice test if you still want to promote it. It will go directly into CQ.\nYou might want to add an informational parameter to run new data.",
       "revId": "9e6c1ac2d547ea2412a21cccac111a469e176536",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594cc964_a318b5c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-05T10:34:56Z",
+      "side": 1,
+      "message": "If the data is not used in any test. Please note it in commit message.",
+      "parentUuid": "8547b55e_bd11bf09",
+      "revId": "9e6c1ac2d547ea2412a21cccac111a469e176536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
