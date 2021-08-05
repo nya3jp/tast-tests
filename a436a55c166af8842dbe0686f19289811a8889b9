@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c4fb40b_d0450b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-05T07:06:57Z",
+      "side": 1,
+      "message": "should we have \"default:\" section here, to avoid fallthgourh to L90 if unexpected value comes?",
+      "parentUuid": "e76279fc_f4f7b67c",
+      "revId": "a436a55c166af8842dbe0686f19289811a8889b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e47c5a6_08cba8db",
         "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
         "patchSetId": 11
