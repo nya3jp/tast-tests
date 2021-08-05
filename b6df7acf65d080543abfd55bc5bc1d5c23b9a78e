@@ -22,6 +22,30 @@
       },
       "revId": "b6df7acf65d080543abfd55bc5bc1d5c23b9a78e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a77eec_d69fbc74",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-05T10:28:40Z",
+      "side": 1,
+      "message": "Sorry, my bad. Latest repo upload failed locally. Done.",
+      "parentUuid": "3db73f79_fec92a20",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "b6df7acf65d080543abfd55bc5bc1d5c23b9a78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
