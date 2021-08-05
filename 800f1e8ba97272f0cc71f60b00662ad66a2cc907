@@ -16,6 +16,24 @@
       "message": "Will this reopen chrome for every subtest? Can we reuse it?",
       "revId": "800f1e8ba97272f0cc71f60b00662ad66a2cc907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40934f26_f48af1d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T11:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c695d4_50f509cb",
+      "revId": "800f1e8ba97272f0cc71f60b00662ad66a2cc907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
