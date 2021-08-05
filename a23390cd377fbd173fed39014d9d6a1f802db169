@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f71af59d_12a73335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:10:53Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 41
+      },
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc9154b6_6ea37211",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
         "patchSetId": 2
