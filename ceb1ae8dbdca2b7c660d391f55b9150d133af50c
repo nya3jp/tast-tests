@@ -22,6 +22,30 @@
       },
       "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd6a433_07f5cb7a",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-05T08:42:38Z",
+      "side": 1,
+      "message": "Yes. Sleep is a temp solution before we have a way to wait for a signal.\n\nEach input method takes different time period to download and install and warmup. I still suggest to have it in the struct, because it likes an attribute of the input method itself. In recent future, the installation of some IMEs can be expected because of the launch bug crbug/1194688. So this data might need to be adjusted case by case.",
+      "parentUuid": "2f03d96d_671bda85",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
