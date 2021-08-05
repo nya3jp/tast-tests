@@ -116,6 +116,30 @@
       },
       "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "682840f4_ff08a782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-08-05T20:31:49Z",
+      "side": 1,
+      "message": "https://stainless.corp.google.com/logview/chromeos-test-logs/test-runner/prod/2021-07-09/0f9d1e76-0c2f-4b45-87bf-67a715ea4b69",
+      "parentUuid": "60214d97_cf120d2c",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
