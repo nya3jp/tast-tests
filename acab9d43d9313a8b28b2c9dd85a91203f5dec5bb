@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f52fa907_6947ed27",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T09:07:59Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "31646ef4_42ce1f7a",
+      "revId": "acab9d43d9313a8b28b2c9dd85a91203f5dec5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a25c48d5_10d19385",
         "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
         "patchSetId": 2
