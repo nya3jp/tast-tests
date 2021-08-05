@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7611d3_524eef73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:02:10Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks Bisakh!",
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9154b6_6ea37211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:02:10Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 81,
+        "startChar": 57,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ac84cf_b04de205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:02:10Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 81,
+        "startChar": 66,
+        "endLine": 81,
+        "endChar": 67
+      },
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
