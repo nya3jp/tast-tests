@@ -40,7 +40,7 @@ func CCAUIGalleryButton(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -65,7 +65,7 @@ func CCAUIGalleryButton(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Failed to take a photo: ", err)
 	}
-	photoPath, err := app.FilePathInSavedDirs(ctx, infos[0].Name())
+	photoPath, err := app.FilePathInSavedDir(ctx, infos[0].Name())
 	if err != nil {
 		s.Error("Failed to get captured photo path: ", err)
 	}

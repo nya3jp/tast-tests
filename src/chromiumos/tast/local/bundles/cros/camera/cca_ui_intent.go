@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -141,6 +142,12 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	arcCameraFolderPathOnChromeOS := filepath.Join(androidDataDir, arcCameraFolderPath)
 
+	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user path: ", err)
+	}
+	downloadsFolder := filepath.Join(filepath.Join(userPath, "MyFiles"), "Downloads")
+
 	subTestTimeout := 20 * time.Second
 	for _, tc := range []struct {
 		Name          string
@@ -162,6 +169,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 				Mode:         cca.Photo,
 				TestBehavior: captureConfirmAndDone,
 				ResultInfo: resultInfo{
+					Dir:         downloadsFolder,
 					FilePattern: testPhotoPattern,
 				},
 			},
@@ -207,6 +215,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 				Mode:         cca.Video,
 				TestBehavior: captureConfirmAndDone,
 				ResultInfo: resultInfo{
+					Dir:         downloadsFolder,
 					FilePattern: testVideoPattern,
 				},
 			},
@@ -230,7 +239,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.Name, func(ctx context.Context, s *testing.State) {
-			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+			if err := cca.ClearSavedDir(ctx, cr); err != nil {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
 
@@ -243,7 +252,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 
 	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 	s.Run(subTestCtx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
-		if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+		if err := cca.ClearSavedDir(ctx, cr); err != nil {
 			s.Fatal("Failed to clear saved directory: ", err)
 		}
 
@@ -409,19 +418,19 @@ func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, startT
 		return nil
 	}
 
-	var dirs []string
+	var dir string
 	var err error
 	if info.Dir == "" {
-		dirs, err = app.SavedDirs(ctx)
+		dir, err = app.SavedDir(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get CCA default saved path")
 		}
 	} else {
-		dirs = []string{info.Dir}
+		dir = info.Dir
 	}
 	testing.ContextLog(ctx, "Checking capture result")
 	if shouldConfirm {
-		if fileInfo, err := app.WaitForFileSaved(ctx, dirs, info.FilePattern, startTime); err != nil {
+		if fileInfo, err := app.WaitForFileSaved(ctx, dir, info.FilePattern, startTime); err != nil {
 			return err
 		} else if fileInfo.Size() == 0 {
 			return errors.New("capture result is empty")

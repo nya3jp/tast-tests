@@ -77,7 +77,7 @@ func CCAUICoexistence(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+			if err := cca.ClearSavedDir(ctx, cr); err != nil {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
 

@@ -35,7 +35,7 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 

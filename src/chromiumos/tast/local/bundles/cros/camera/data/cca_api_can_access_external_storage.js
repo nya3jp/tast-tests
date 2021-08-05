@@ -33,9 +33,7 @@
       }
       for (const volume of volumes) {
         const {volumeId} = volume;
-        // downloads:Downloads and downloads:MyFiles do not coexist.
-        if (volumeId.includes('downloads:Downloads') ||
-            volumeId.includes('downloads:MyFiles')) {
+        if (volumeId.includes('downloads:MyFiles')) {
           chrome.fileSystem.requestFileSystem(
               volume, (fs) => {
                 if (fs) {
@@ -50,22 +48,5 @@
       reject(new Error('No local volume found'));
     });
   };
-
-  const verifyDownloadsDirAccessible = ([rootDir, volumeId]) => {
-    if (!rootDir) {
-      throw new Error('Root directory does not exist');
-    }
-    if (volumeId.includes('downloads:MyFiles')) {
-      return readDir(rootDir).then((entries) => {
-        if (entries.findIndex(({name, isDirectory}) =>
-                name === 'Downloads' && isDirectory) < 0) {
-          throw new Error('No Downloads folder under downloads:MyFiles');
-        }
-        return true;
-      });
-    }
-    return true;
-  };
-
-  return new Promise(getLocalVolumeRootDir).then(verifyDownloadsDirAccessible);
+  return new Promise(getLocalVolumeRootDir);
 })()

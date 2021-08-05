@@ -36,7 +36,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -60,7 +60,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 
 	isSquarePhoto := func(info os.FileInfo, ctx context.Context, app *cca.App) (bool, error) {
-		path, err := app.FilePathInSavedDirs(ctx, info.Name())
+		path, err := app.FilePathInSavedDir(ctx, info.Name())
 		if err != nil {
 			return false, err
 		}
