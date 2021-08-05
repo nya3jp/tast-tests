@@ -18,6 +18,10 @@ func (message handwritingMessage) GetInputData(im ime.InputMethod) (InputData, b
 
 // HandwritingMessageHello defines hello handwriting messages of input methods
 var HandwritingMessageHello = handwritingMessage{
+	ime.LanguageAr: {
+		HandwritingFile: "handwriting_ar_hello.svg",
+		ExpectedText:    "سلام",
+	},
 	ime.LanguageEn: {
 		HandwritingFile: "handwriting_en_hello.svg",
 		ExpectedText:    "hello",
@@ -25,6 +29,10 @@ var HandwritingMessageHello = handwritingMessage{
 	ime.LanguageJa: {
 		HandwritingFile: "handwriting_ja_hello.svg",
 		ExpectedText:    "こんにちは",
+	},
+	ime.LanguageKo: {
+		HandwritingFile: "handwriting_ko_hello.svg",
+		ExpectedText:    "안녕",
 	},
 	ime.LanguageZhHans: {
 		HandwritingFile: "handwriting_zh_hans_hello.svg",
