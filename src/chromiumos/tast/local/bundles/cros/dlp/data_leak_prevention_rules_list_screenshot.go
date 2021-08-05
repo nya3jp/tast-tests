@@ -45,9 +45,7 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 				Description: "User should not be able to take screen of confidential content",
 				Sources: &policy.DataLeakPreventionRulesListSources{
 					Urls: []string{
-						"salesforce.com",
-						"google.com",
-						"company.com",
+						"example.com",
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
@@ -93,22 +91,10 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		url              string
 	}{
 		{
-			name:             "salesforce",
+			name:             "example",
 			wantAllowed:      false,
 			wantNotification: captureNotAllowed,
-			url:              "https://www.salesforce.com/",
-		},
-		{
-			name:             "google",
-			wantAllowed:      false,
-			wantNotification: captureNotAllowed,
-			url:              "https://www.google.com/",
-		},
-		{
-			name:             "company",
-			wantAllowed:      false,
-			wantNotification: captureNotAllowed,
-			url:              "https://www.company.com/",
+			url:              "https://www.example.com/",
 		},
 		{
 			name:             "chromium",

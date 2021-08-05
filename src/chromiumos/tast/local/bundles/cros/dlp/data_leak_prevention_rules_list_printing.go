@@ -49,9 +49,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 				Description: "User should not be able to print confidential content",
 				Sources: &policy.DataLeakPreventionRulesListSources{
 					Urls: []string{
-						"salesforce.com",
-						"google.com",
-						"company.com",
+						"example.com",
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
@@ -95,21 +93,9 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 		wantNotification string
 	}{
 		{
-			name:             "salesforce",
+			name:             "example",
 			printingAllowed:  false,
-			url:              "https://www.salesforce.com/",
-			wantNotification: printingNotAllowed,
-		},
-		{
-			name:             "google",
-			printingAllowed:  false,
-			url:              "https://www.google.com/",
-			wantNotification: printingNotAllowed,
-		},
-		{
-			name:             "company",
-			printingAllowed:  false,
-			url:              "https://www.company.com/",
+			url:              "https://www.example.com/",
 			wantNotification: printingNotAllowed,
 		},
 		{
