@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde88a09_8cadf886",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2dea7ac_29e9b406",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7583d6f5_05a1f40c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac84bfbc_c3db572f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7583d6f5_05a1f40c",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7860792e_2056f605",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-08-03T20:23:09Z",
       "side": 1,
       "message": "nit: remove space at end of line",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90796f87_23f780e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7860792e_2056f605",
       "range": {
         "startLine": 49,
         "startChar": 10,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb7034a_9f9190dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d3a4094_00454263",
+      "range": {
+        "startLine": 78,
+        "startChar": 15,
+        "endLine": 78,
+        "endChar": 63
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c99d35e_9f36b484",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-08-03T20:23:09Z",
       "side": 1,
       "message": "nit/naming: As before, this name is unclear. It reads as if this is an actual value, where it\u0027s actually a filepath. How about batteryVoltageFP?\n\nSame thing for batteryCurrent.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f6dc36_9c7b436a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c99d35e_9f36b484",
       "range": {
         "startLine": 84,
         "startChar": 1,
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f590a8a_c450e35e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200e96af_94d98346",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95aac8e1_1f320e88",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-08-03T20:23:09Z",
       "side": 1,
       "message": "nit: kernelVoltageReadingStr is already a string. No need to re-cast to a string.\n\nOr, even simpler, you could avoid creating kernelVoltageReadingStr at all by operating directly on the []byte.\n\n    kernelVoltageReadingOut \u003d bytes.TrimSuffix(kernelVoltageReadingOut, []byte(\"\\n\"))\n    kernelVoltageReading, err :\u003d strconv.ParseInt(string(kernelVoltageReadingOut), 10, 64)\n    \nThe same applies to the the kernelCurrentReading, below.",
+      "range": {
+        "startLine": 99,
+        "startChar": 47,
+        "endLine": 99,
+        "endChar": 53
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "847c5fb6_e89a7e86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95aac8e1_1f320e88",
       "range": {
         "startLine": 99,
         "startChar": 47,
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "443cb030_4b1dfff1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f807a0_ffc018d0",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31fba163_0a2eea06",
@@ -178,6 +346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd00a110_aaaa83e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31fba163_0a2eea06",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ef14abc_ecd4f7f2",
@@ -191,6 +377,30 @@
       "writtenOn": "2021-08-03T20:23:09Z",
       "side": 1,
       "message": "Please create a constant for this in the servo package, as you did for ppvar_vbat_mv.",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d4c6c9_fd028b74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ef14abc_ecd4f7f2",
       "range": {
         "startLine": 118,
         "startChar": 50,
