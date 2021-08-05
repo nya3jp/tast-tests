@@ -33,6 +33,69 @@
       "message": "mohamedaomar@: Please take a look (assigning as a related CL was assigned to you by gwsq). Thank you.",
       "revId": "03ef8ae2c68a24effa9e8af521f9dbb0318067f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb54b9e_5a98c147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-05T08:44:59Z",
+      "side": 1,
+      "message": "LGTM % minor nits",
+      "revId": "03ef8ae2c68a24effa9e8af521f9dbb0318067f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d1e83f_35f132e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_drop_from_downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-05T08:44:59Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be drag?",
+      "range": {
+        "startLine": 91,
+        "startChar": 30,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "03ef8ae2c68a24effa9e8af521f9dbb0318067f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a3dfd1_1a1e29e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_drop_from_downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-05T08:44:59Z",
+      "side": 1,
+      "message": "should this be dropped?",
+      "range": {
+        "startLine": 128,
+        "startChar": 24,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "03ef8ae2c68a24effa9e8af521f9dbb0318067f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
