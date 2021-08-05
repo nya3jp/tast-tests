@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11612229_b0d1db51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-08-05T07:31:47Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "f01058ea_542ae30d",
+      "revId": "5817112086ce2c70a52c4b646decf23efe313c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cd90423_5fbad0b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/fixture.go",
         "patchSetId": 2
@@ -54,6 +72,30 @@
       "writtenOn": "2021-08-04T19:59:06Z",
       "side": 1,
       "message": "can we add current serviceproperty state if wait failed(not connected) in log, to help timedout or wrong state",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "5817112086ce2c70a52c4b646decf23efe313c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4508e48_8cfd30dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-08-05T07:31:47Z",
+      "side": 1,
+      "message": "Sure. Let me add that.\nAlso since the debug level is now set to a higher level we should see this in net.log",
+      "parentUuid": "fd4f893e_fd458544",
       "range": {
         "startLine": 80,
         "startChar": 22,
