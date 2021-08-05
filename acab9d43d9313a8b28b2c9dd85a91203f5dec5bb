@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31646ef4_42ce1f7a",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-05T07:24:35Z",
+      "side": 1,
+      "message": "Can we have these as two separate things, one for voice, one for handwriting? Just that the current test cases always \"happen\" to have them equal to each other. In reality, they can be different, as they\u0027re two different things under the hood.",
+      "revId": "acab9d43d9313a8b28b2c9dd85a91203f5dec5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25c48d5_10d19385",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-05T07:24:35Z",
+      "side": 1,
+      "message": "FYI. This is a good example where it\u0027s worth splitting voice vs handwriting language. You may not see the need now because of crbug/1212998.",
+      "revId": "acab9d43d9313a8b28b2c9dd85a91203f5dec5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
