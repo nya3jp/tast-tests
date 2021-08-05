@@ -75,7 +75,7 @@ func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect Test API: ", err)
 		}
 
-		alertDialog := nodewith.NameStartingWith("Restore apps & pages?").Role(role.AlertDialog)
+		alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
 		restoreButton := nodewith.Name("RESTORE").Role(role.Button).Ancestor(alertDialog)
 		downloads := nodewith.Name(filesapp.Downloads).Role(role.TreeItem).Ancestor(filesapp.WindowFinder)
 
