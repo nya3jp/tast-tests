@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d934eb1_a7b92132",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-05T23:26:49Z",
+      "side": 1,
+      "message": "nit: ISO code for Cantonese is just \"yue\", or \"yue-Hant\" if we want Cantonese written in Traditional Chinese script (e.g. Hong Kong) vs \"yue-Hans\" if Simplified Chinese (e.g. Guangdong, mainland China). There\u0027s no \"zh-yue\"; \"zh\" is generic Chinese that covers all Chinese incl. Mandarin and Cantonese, but typically interpreted as Mandarin (Standard Chinese) if not specified further. \"zh\" is an ISO code for a \"macro language\".",
+      "revId": "cb9adadbee6c9044fa84a68a7304483e9bd2beb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
