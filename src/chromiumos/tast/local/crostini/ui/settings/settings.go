@@ -274,6 +274,7 @@ var ResizeDiskDialog = resizeDiskDialogStruct{
 // ClickChange clicks Change to launch the resize dialog.
 func (s *Settings) ClickChange() uiauto.Action {
 	return uiauto.Combine("click button resize and wait for resize dialog and slider",
+		s.tconn.ResetAutomation,
 		s.ui.LeftClick(resizeButton),
 		s.ui.WaitUntilExists(ResizeDiskDialog.Self),
 		s.ui.WithTimeout(time.Minute).WaitUntilExists(ResizeDiskDialog.Slider))
@@ -393,15 +394,16 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 		return 0, 0, errors.Wrap(err, "failed to get initial disk size")
 	}
 
-	// Get the minimum size.
-	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, false, 0)
-	if err != nil {
-		return 0, 0, errors.Wrap(err, "failed to resize to the minimum disk size")
-	}
 	// Get the maximum size.
 	maxSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, true, 500*SizeGB)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to resize to the maximum disk size")
+	}
+
+	// Get the minimum size.
+	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, false, 0)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to resize to the minimum disk size")
 	}
 
 	targetSize = minSize + (maxSize-minSize)/2
