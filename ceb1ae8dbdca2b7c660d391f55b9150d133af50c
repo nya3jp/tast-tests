@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f03d96d_671bda85",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T08:34:48Z",
+      "side": 1,
+      "message": "It is probably not a good idea to make the warmup time a field in input method. How about using a function WaitForInputMethodReady like:\nfunc WaitForInputMethodReady(ime)... {\n    waitTime \u003d 10 * time.Second // default\n    if ime \u003d\u003d Swedish { // or use a switch here\n        waitTime \u003d 20 * time.Second\n    } else if ...\n    testing.Sleep(ctx, waitTime)\n}\n\nAlso, I assume sleeping is a temporary solution and this function can be easily extended to a waitForSignal version.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
