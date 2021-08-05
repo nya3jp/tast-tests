@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4fed80_79d42afa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-05T01:23:39Z",
+      "side": 1,
+      "message": "why do we need this timeout if we call \"WaitUntilExists\"?",
+      "range": {
+        "startLine": 356,
+        "startChar": 13,
+        "endLine": 356,
+        "endChar": 46
+      },
+      "revId": "c3dc20b28082ed4d4b00dbab6bdd0cb76bf3fd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
