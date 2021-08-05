@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -33,6 +34,7 @@ import (
 type chromePIPEnergyAndPowerTestParams struct {
 	bigPIP       bool
 	layerOverPIP bool
+	chromeType   lacros.ChromeType
 }
 
 func init() {
@@ -43,31 +45,69 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
-		Fixture:      "chromeLoggedIn",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "small",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false},
+			Name:    "small",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 		}, {
-			Name: "big",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false},
+			Name:    "big",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 		}, {
-			Name: "small_blend",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true},
+			Name:    "small_blend",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 		}, {
-			Name: "big_blend",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true},
+			Name:    "big_blend",
+			Fixture: "chromeLoggedIn",
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+		}, {
+			Name:              "small_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false, chromeType: lacros.ChromeTypeLacros},
+		}, {
+			Name:              "big_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false, chromeType: lacros.ChromeTypeLacros},
+		}, {
+			Name:              "small_blend_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true, chromeType: lacros.ChromeTypeLacros},
+		}, {
+			Name:              "big_blend_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true, chromeType: lacros.ChromeTypeLacros},
 		}},
 	})
 }
 
 func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
+	params := s.Param().(chromePIPEnergyAndPowerTestParams)
+	var pipClassName, settingsTitle string
+	switch params.chromeType {
+	case lacros.ChromeTypeChromeOS:
+		pipClassName = "PictureInPictureWindow"
+		settingsTitle = "Chrome - Settings"
+	case lacros.ChromeTypeLacros:
+		pipClassName = "Widget"
+		settingsTitle = "Settings - Google Chrome"
+	}
+
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), params.chromeType)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -108,7 +148,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	conn, err := cr.NewConn(ctx, srv.URL+"/pip_video.html")
+	conn, err := cs.NewConn(ctx, srv.URL+"/pip_video.html")
 	if err != nil {
 		s.Fatal("Failed to load pip_video.html: ", err)
 	}
@@ -121,7 +161,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	ac := uiauto.New(tconn)
 
 	pipButton := nodewith.Name("PIP").Role(role.Button)
-	pipWindow := nodewith.Name("Picture in picture").ClassName("PictureInPictureWindow")
+	pipWindow := nodewith.Name("Picture in picture").ClassName(pipClassName).Onscreen().First()
 
 	if err := action.Combine(
 		"show PIP window",
@@ -131,9 +171,11 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the PIP window: ", err)
 	}
 
-	resizeHandle := nodewith.Name("Resize").ClassName("ResizeHandleButton")
+	pipWindowBounds, err := ac.Location(ctx, pipWindow)
+	if err != nil {
+		s.Fatal("Failed to get the PIP window location (before resize): ", err)
+	}
 
-	params := s.Param().(chromePIPEnergyAndPowerTestParams)
 	workAreaTopLeft := info.WorkArea.TopLeft()
 	var resizeEnd coords.Point
 	if params.bigPIP {
@@ -144,8 +186,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 
 	if err := action.Combine(
 		"resize the PIP window",
-		ac.MouseMoveTo(pipWindow, 0),
-		ac.MouseMoveTo(resizeHandle, time.Second),
+		mouse.Move(tconn, pipWindowBounds.TopLeft(), 0),
 		mouse.Press(tconn, mouse.LeftButton),
 		mouse.Move(tconn, resizeEnd, time.Second),
 		mouse.Release(tconn, mouse.LeftButton),
@@ -157,23 +198,30 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to resize the PIP window: ", err)
 	}
 
-	pipWindowBounds, err := ac.Location(ctx, pipWindow)
+	pipWindowBounds, err = ac.Location(ctx, pipWindow)
 	if err != nil {
-		s.Fatal("Failed to get the PIP window location: ", err)
+		s.Fatal("Failed to get the PIP window location (after resize): ", err)
 	}
 
 	if params.bigPIP {
-		maxWidth := info.WorkArea.Width / 2
-		maxHeight := info.WorkArea.Height / 2
-		// Expect the PIP window to have either the maximum width or the maximum
-		// height, depending on how their ratio compares with 4x3.
-		if maxWidth*3 <= maxHeight*4 {
-			if pipWindowBounds.Width != maxWidth {
-				s.Fatalf("PIP window is %v (after resize attempt). It should have width %d", pipWindowBounds.Size(), maxWidth)
+		switch params.chromeType {
+		case lacros.ChromeTypeChromeOS:
+			maxWidth := info.WorkArea.Width / 2
+			maxHeight := info.WorkArea.Height / 2
+			// Expect the PIP window to have either the maximum width or the maximum
+			// height, depending on how their ratio compares with 4x3.
+			if maxWidth*3 <= maxHeight*4 {
+				if pipWindowBounds.Width != maxWidth {
+					s.Fatalf("PIP window is %v (after resize attempt). It should have width %d", pipWindowBounds.Size(), maxWidth)
+				}
+			} else {
+				if pipWindowBounds.Height != maxHeight {
+					s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindowBounds.Size(), maxHeight)
+				}
 			}
-		} else {
-			if pipWindowBounds.Height != maxHeight {
-				s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindowBounds.Size(), maxHeight)
+		case lacros.ChromeTypeLacros:
+			if pipWindowBounds.Width != 400 || pipWindowBounds.Height != 300 {
+				s.Fatalf("PIP window is %v (after resize attempt). It should be (400 x 300)", pipWindowBounds.Size())
 			}
 		}
 	} else {
@@ -206,7 +254,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	extraConn, err := cr.NewConn(ctx, "chrome://settings")
+	extraConn, err := cs.NewConn(ctx, "chrome://settings")
 	if err != nil {
 		s.Fatal("Failed to load chrome://settings: ", err)
 	}
@@ -220,6 +268,15 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	// there will be no blinking cursor.
 	if err := kw.Accel(ctx, "Tab"); err != nil {
 		s.Fatal("Failed to send Tab: ", err)
+	}
+
+	browser, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.Title == settingsTitle })
+	if err != nil {
+		s.Fatal("Failed to get main browser window: ", err)
+	}
+
+	if err := ash.SetWindowStateAndWait(ctx, tconn, browser.ID, ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize main browser window: ", err)
 	}
 
 	// triedToStopTracing means that cr.StopTracing(cleanupCtx)
