@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc66ea5_d707f144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T19:05:09Z",
+      "side": 1,
+      "message": "Sadly, It could be better to revert the test to informational due their flaky behavior.\n\nPTAL",
+      "revId": "04cf461cd09242d3afd30b58e7c4909b345fc1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
