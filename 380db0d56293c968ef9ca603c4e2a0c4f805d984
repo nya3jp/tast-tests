@@ -98,6 +98,24 @@
       "parentUuid": "1929fbeb_375f279b",
       "revId": "380db0d56293c968ef9ca603c4e2a0c4f805d984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6785a81d_838de9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-05T03:32:22Z",
+      "side": 1,
+      "message": "Added a method to verify the blocked apps and used it",
+      "parentUuid": "1744b20d_46c7f36a",
+      "revId": "380db0d56293c968ef9ca603c4e2a0c4f805d984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
