@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1648870_a50ff6e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T21:04:26Z",
+      "side": 1,
+      "message": "I am not familiar with cswitch. I have a question. Do you need to restore the switch status when the test finishes? Thanks.",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e789270_44fe7dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T21:04:26Z",
+      "side": 1,
+      "message": "Should you check if \"device_name\" actually exists in usb4Val first?",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60970168_fb0f2c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T21:04:26Z",
+      "side": 1,
+      "message": "Should you check if \"tx_speed\" actually exists in usb4Val first?",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d754bc2_bd58e5d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T21:04:26Z",
+      "side": 1,
+      "message": "Should you check if \"rx_speed\" actually exists in usb4Val first? Similar questions to all the places assign usb4Val",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
