@@ -95,5 +95,5 @@ dp size=${dp_width}x${dp_height} dpr=${dpr} angle=${angle}`;
   c2.restore();
 
   // don't use requestAnimationFrame
-  setTimeout(draw, 166);
+  setTimeout(draw, 16);
 }
