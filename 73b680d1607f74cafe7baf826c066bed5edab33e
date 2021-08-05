@@ -103,6 +103,23 @@
       "message": "Removing myself from the attention set. Please add me back once we\u0027re sure the test is stable.",
       "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01296036_b9501f3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-05T02:14:07Z",
+      "side": 1,
+      "message": "Confirmed test flakiness is gone (tests are clean over last couple of days since CL landed on main) - ready to go!\n\n(no failures since July 29)\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2021-07-23\u0026last_date\u003d2021-08-05\u0026test\u003d%5Etast%5C.arc%5C.ContainerMount%24\u0026build\u003d%5ER94.*%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003dFailed+to+get+mountinfo+list*\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
