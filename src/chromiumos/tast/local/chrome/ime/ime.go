@@ -68,16 +68,28 @@ func RemoveInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string
 // SetCurrentInputMethod sets the current input method to the IME identified imeID
 // via chrome.inputMethodPrivate.setCurrentInputMethod API.
 func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
+	return SetCurrentInputMethodAndWarmingUp(ctx, tconn, imeID, 0)
+}
+
+// SetCurrentInputMethodAndWarmingUp sets the current input method to the IME identified imeID
+// via chrome.inputMethodPrivate.setCurrentInputMethod API.
+// It sleeps a certain time to wait for IME warming up.
+// It waits for 10s by default.
+func SetCurrentInputMethodAndWarmingUp(ctx context.Context, tconn *chrome.TestConn, imeID string, warmUpTime time.Duration) error {
+	if warmUpTime == 0 {
+		warmUpTime = 10 * time.Second
+	}
+
 	if err := tconn.Call(ctx, nil, `chrome.inputMethodPrivate.setCurrentInputMethod`, imeID); err != nil {
 		return errors.Wrapf(err, "failed to set current input method to %q", imeID)
 	}
 	if err := WaitForInputMethodMatches(ctx, tconn, imeID, 20*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to wait for IME to be %q", imeID)
 	}
-	// Change IME takes up to 10s to install. There is no method to verify readiness of IME decoder.
+	// Change IME takes time to install. There is no method to verify readiness of IME decoder.
 	// This problem will be solved once decoder moved from Nacl to IME service.
 	// TODO(b/157686038): Use API to identify completion of changing language
-	return testing.Sleep(ctx, 10*time.Second)
+	return testing.Sleep(ctx, warmUpTime)
 }
 
 // CurrentInputMethod returns the ID of current IME obtained

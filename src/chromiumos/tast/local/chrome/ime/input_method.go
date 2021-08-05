@@ -26,7 +26,7 @@ import (
 // InputMethod represents an input method.
 type InputMethod struct {
 	Name string // The displayed name of the IME in OS Settings.
-	ID   string // The code / id of the IME, e.g. "xkb:us::eng"
+	ID   string // The id of the IME, e.g. "xkb:us::eng"
 }
 
 // DefaultInputMethod is the default input method enabled for new users.
@@ -52,8 +52,9 @@ var EnglishUK = InputMethod{
 
 // SpanishSpain represents the input method of Spanish (Spain).
 var SpanishSpain = InputMethod{
-	Name: "Spanish (Spain)",
-	ID:   "xkb:es::spa",
+	Name:       "Spanish (Spain)",
+	ID:         "xkb:es::spa",
+	WarmupTime: 15 * time.Second,
 }
 
 // Swedish represents the input method of Swedish.
@@ -254,7 +255,17 @@ func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
 		if activeIME.Equal(im) {
 			return nil
 		}
-		return SetCurrentInputMethod(ctx, tconn, fullyQualifiedIMEID)
+
+		// Use 10s as warming up time by default.
+		imWarmingUpTime := 10 * time.Second
+
+		// SW, FR, SP takes longer time.
+		switch im {
+		case Swedish, FrenchFrance, SpanishSpain:
+			imWarmingUpTime = 15 * time.Second
+		}
+
+		return SetCurrentInputMethodAndWarmingUp(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
