@@ -34,6 +34,24 @@
       "parentUuid": "17e0eeb0_091b3afe",
       "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c716a4d_89fac80a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T09:54:05Z",
+      "side": 1,
+      "message": "re 1 and 2:\nFortunately, DeepEqual compares values, not pointers, so the only problem is clear error message. To make it somewhat readable, you can define String() method for each struct and just put 2 full structs into error message. Since you pretty rare should face some issues, long error message shouldn\u0027t be a huge problem for you, you can even use some online tools to show difference between 2 strings.\n\nSo the only thing you need is String() method for each struct.",
+      "parentUuid": "3f2dd8c8_bc656716",
+      "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
