@@ -112,6 +112,8 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("open Resize dialog and click button Cancel",
 		st.ClickChange(),
 		ui.LeftClick(settings.ResizeDiskDialog.Cancel),
+		// TODO (crbug/1232877): remove this line when crbug/1232877 is resolved.
+		tconn.ResetAutomation,
 		ui.WaitUntilGone(settings.ResizeDiskDialog.Self))(ctx); err != nil {
 		s.Fatal("Failed to cancel resize: ", err)
 	}
