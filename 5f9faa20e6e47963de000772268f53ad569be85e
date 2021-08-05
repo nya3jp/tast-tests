@@ -33,6 +33,24 @@
       "message": "Will we run this test on 2g rootfs devices which does not have the doc scan library installed?",
       "revId": "5f9faa20e6e47963de000772268f53ad569be85e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1191449b_4809521a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T04:30:05Z",
+      "side": 1,
+      "message": "Done by depending on \"ondevice_document_scanner\", which requires the following CLs to land first:\nhttps://crrev.com/c/3070962/\nhttps://crrev.com/c/3071508/",
+      "parentUuid": "085a4053_7d66b9b9",
+      "revId": "5f9faa20e6e47963de000772268f53ad569be85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
