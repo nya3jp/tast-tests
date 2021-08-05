@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "091748b6_27d00ddc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36fa6598_d5ba6b63",
+      "revId": "82ea9f31a0433d8012a6061ab1806766fbe760c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08792ad8_112e5718",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-03T19:55:59Z",
       "side": 1,
       "message": "This appears to be a typo which fails at compile-time. When I try to run unit tests, I get the following errors:\n\n    remote/bundles/cros/firmware/ec_reboot.go:30:3: h.DUT undefined (type *pre.Value has no field or method DUT)                                                                                                                           \n    remote/bundles/cros/firmware/ec_reboot.go:51:13: h.Helper undefined (type *\"chromiumos/tast/remote/firmware\".Helper has no field or method Helper)                                                                                     \n    remote/bundles/cros/firmware/ec_reboot.go:75:13: h.Helper undefined (type *\"chromiumos/tast/remote/firmware\".Helper has no field or method Helper)                                                                                     \n    remote/bundles/cros/firmware/ec_reboot.go:99:13: h.Helper undefined (type *\"chromiumos/tast/remote/firmware\".Helper has no field or method Helper)\n\nAre you intending h to be the Helper, or the pre.Value? Given the name, I assume that it\u0027s meant to be the Helper. To that end, I recommend the following changes:\n\n1. Replace any instances of h.Helper with just h. (L51, L75, L99)\n2. In the parameters for syncOnDUT (L28), take a DUT object instead of Helper or a Value. Then when calling syncOnDUT, call it with h.DUT.\n3. Make sure you run the code after making any modifications, before uploading. If you run this code as it is, it fails to compile.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "82ea9f31a0433d8012a6061ab1806766fbe760c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7641a236_1595becb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08792ad8_112e5718",
       "range": {
         "startLine": 51,
         "startChar": 11,
