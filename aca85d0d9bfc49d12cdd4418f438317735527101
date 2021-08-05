@@ -87,6 +87,75 @@
       "message": "Please use `repo upload` to upload the change. It runs pre-upload checks that catch popular issues before reviews.\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Upload-changes",
       "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cbc3d0_5d36ce56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-05T14:08:29Z",
+      "side": 1,
+      "message": "Could you switch this to https://pkg.go.dev/os/exec#Cmd.Start and in this way you don\u0027t need to create a go subroutine.",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec34ddfa_5407f3cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-05T14:08:29Z",
+      "side": 1,
+      "message": "One last idea if the fsnotify does not work. Using Start instead of Run you could get a pipe to the Stdout with https://pkg.go.dev/os/exec#Cmd.StdoutPipe and parse it until you see the file is created so you can do the following check.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80095ae9_ecd8f42f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-05T14:08:29Z",
+      "side": 1,
+      "message": "Change this to https://pkg.go.dev/os/exec#Cmd.Wait after using Start instead of Run",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
