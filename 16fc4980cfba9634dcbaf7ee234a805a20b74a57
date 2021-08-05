@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dcb3a20_c7f6ac44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T02:01:51Z",
+      "side": 1,
+      "message": "I just have a nit comment.",
+      "revId": "16fc4980cfba9634dcbaf7ee234a805a20b74a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ebc2fb3_0517c2d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T02:01:51Z",
+      "side": 1,
+      "message": "nit: Do you really need the three log statement in this loop? I think you can just add iteration information to s.Fatalf when it fail.",
+      "revId": "16fc4980cfba9634dcbaf7ee234a805a20b74a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
