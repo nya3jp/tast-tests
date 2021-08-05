@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb14be8_1dce994c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T02:05:39Z",
+      "side": 1,
+      "message": "I only have one nit commit. Generally, I think it has too many logs which I don\u0027t think they are helpful, but it is just my preference.",
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af80cf16_7aebc202",
@@ -60,6 +77,23 @@
         "endLine": 81,
         "endChar": 34
       },
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb365995_da3c5bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T02:05:39Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this log message is helpful.",
       "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
