@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eae1fba4_6578f0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-05T09:57:08Z",
+      "side": 1,
+      "message": "It\u0027s much easier to use json.Unmarshal.\nhttps://play.golang.org/p/Jg3W82k8SPj",
+      "parentUuid": "700c41e0_f60dfcff",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "a35358ced0dc6d148e7068c0daabfcb012c6a2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9effb5f_42afa329",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
         "patchSetId": 12
