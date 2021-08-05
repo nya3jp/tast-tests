@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5d24ea1_dadfe76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-05T16:07:06Z",
+      "side": 1,
+      "message": "I removed the \"restart fwupd\" command, but I have to restart it before running each test (since the first command is a regular update). Will Tast run these tests more than one on each build?\n\nIf so, it will have to restart before each run.",
+      "parentUuid": "a7e1acf0_c7c05945",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "a93df571419c5050ee3c852d656c23ee7880e0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a08d38b_cb2ed27f",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 6
