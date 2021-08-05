@@ -81,6 +81,30 @@
       },
       "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142bc906_4600315d",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T08:56:22Z",
+      "side": 1,
+      "message": "Yes, I understand that different input methods need different installation time requirements, but this may be better adjusted/maintained using a switch clause in a single function, which can be easily revised to use the coming features. or we can simply define the customized time in SetCurrentInputMethod if there are not too many variants. \n\nI don\u0027t think this should be an instrinsic property of input method, which is defined according to https://docs.google.com/spreadsheets/d/1PMA4GExxDo-B5LOqFDJqCV1gh-eZKT1JNFardnj35xA/edit?resourcekey\u003d0-kMei1mB1pLIW8LybAj2jzA#gid\u003d0",
+      "parentUuid": "ddd6a433_07f5cb7a",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
