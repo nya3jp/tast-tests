@@ -228,6 +228,24 @@
       "parentUuid": "ee88b83e_c914d7c3",
       "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c209ef_010e2989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T09:32:01Z",
+      "side": 1,
+      "message": "It\u0027s hard to say whether there is a problem in some Tast libraries or in your test. You can try to lease failing boards in the skylab: go/skylab-cli#leasing-by-model-ctp\n\nOnce you will be confident that issue is not test related, feel free to submit this CL.",
+      "parentUuid": "54612b84_608c4f1f",
+      "revId": "e4a8d90e5dbe5a0de9ae3302bd8991f34bca1346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
