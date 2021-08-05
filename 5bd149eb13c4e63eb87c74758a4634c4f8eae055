@@ -70,6 +70,30 @@
       },
       "revId": "5bd149eb13c4e63eb87c74758a4634c4f8eae055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b507a0_8d17f906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-08-05T22:30:39Z",
+      "side": 1,
+      "message": "Looking at the history, and I probably just picked something ~ 6fps (originally was 300)",
+      "parentUuid": "19665373_b8895ac4",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "5bd149eb13c4e63eb87c74758a4634c4f8eae055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
