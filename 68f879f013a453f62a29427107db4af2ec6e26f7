@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "651aafb3_ab947cd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-08-05T23:16:18Z",
+      "side": 1,
+      "message": "Please review thoroughly.. it\u0027s my first time writing Go",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
