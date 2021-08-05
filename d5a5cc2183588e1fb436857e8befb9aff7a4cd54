@@ -16,6 +16,115 @@
       "message": "Oleh, please share you review when you get some time. Thanks.",
       "revId": "d5a5cc2183588e1fb436857e8befb9aff7a4cd54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e19230f_c945bd6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:12:27Z",
+      "side": 1,
+      "message": "LGMT % nits, thanks!",
+      "revId": "d5a5cc2183588e1fb436857e8befb9aff7a4cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90583e7_76b27447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_advanced_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:12:27Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think we need it",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "d5a5cc2183588e1fb436857e8befb9aff7a4cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae85e8e_f298daf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_advanced_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:12:27Z",
+      "side": 1,
+      "message": "nit: lets",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "d5a5cc2183588e1fb436857e8befb9aff7a4cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778ee70a_4ef2a76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_advanced_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:12:27Z",
+      "side": 1,
+      "message": "nit: add %% for consistency within tests",
+      "range": {
+        "startLine": 76,
+        "startChar": 57,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "d5a5cc2183588e1fb436857e8befb9aff7a4cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73444be_fbdb4eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_advanced_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:12:27Z",
+      "side": 1,
+      "message": "nit: update",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "d5a5cc2183588e1fb436857e8befb9aff7a4cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
