@@ -69,6 +69,24 @@
       "parentUuid": "9b82c65f_e95ff958",
       "revId": "c6548a2931331e2e396d3c74eb9562d6e79472d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42591521_3f97665b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-05T18:05:13Z",
+      "side": 1,
+      "message": "I changed it to 30 sec. Once it detects the correct state, the polling will terminate.",
+      "parentUuid": "0e70c756_eccb6a1c",
+      "revId": "c6548a2931331e2e396d3c74eb9562d6e79472d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
