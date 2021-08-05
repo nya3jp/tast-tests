@@ -16,6 +16,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	traceConfigFile = "chrome_trace_cfg.pbtxt"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GpuCUJ,
@@ -24,7 +28,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      120 * time.Minute,
-		Data:         []string{launcher.DataArtifact, "video.html", "bbb_1080p60_yuv.vp9.webm"},
+		Data:         []string{traceConfigFile, launcher.DataArtifact, "video.html", "bbb_1080p60_yuv.vp9.webm"},
 		Params: []testing.Param{{
 			Name: "maximized",
 			Val: gpucuj.TestParams{
@@ -140,7 +144,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	pv, cleanup, err := gpucuj.RunGpuCUJ(ctx, s.FixtValue().(launcher.FixtData),
-		s.DataPath(launcher.DataArtifact), s.Param().(gpucuj.TestParams), server.URL, s.OutDir())
+		s.DataPath(launcher.DataArtifact), s.DataPath(traceConfigFile), s.Param().(gpucuj.TestParams), server.URL, s.OutDir())
 	if err != nil {
 		s.Fatal("Could not run GpuCUJ test: ", err)
 	}

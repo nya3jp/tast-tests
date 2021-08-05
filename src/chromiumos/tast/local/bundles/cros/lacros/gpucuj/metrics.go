@@ -16,6 +16,7 @@ import (
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -201,7 +202,7 @@ var metricMap = map[string]metricInfo{
 }
 
 // These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
-var tracingCategories = []string{"benchmark", "cc", "exo", "gpu", "input", "toplevel", "ui", "views", "viz", "wayland"}
+// var tracingCategories = []string{"benchmark", "cc", "exo", "gpu", "input", "toplevel", "ui", "views", "viz", "wayland"}
 
 type statType string
 
@@ -395,7 +396,7 @@ func shouldOutputTraceStats() (bool, error) {
 	return board == "eve", nil
 }
 
-func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
+func runHistogram(ctx context.Context, tconn *chrome.TestConn, traceConfigPath string, tracer traceable,
 	invoc *testInvocation, perfFn func(ctx context.Context) error) error {
 	if s, err := os.Stat(invoc.traceDir); err != nil || !s.IsDir() {
 		return errors.Wrap(err, "given trace directory does not appear to be a directory")
@@ -417,25 +418,14 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 		return errors.Wrap(err, "failed to get RAPL snapshot")
 	}
 
-	// TODO(https://crbug.com/1162385, b/177636800): Enable systrace again
-	if err := tracer.StartTracing(ctx, tracingCategories, cdputil.DisableSystrace()); err != nil {
-		return err
-	}
-
 	histograms, err := metrics.Run(ctx, tconn, perfFn, keys...)
 	if err != nil {
-		if _, err := tracer.StopTracing(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
-		}
 		return errors.Wrap(err, "failed to get histograms")
 	}
 
 	// Collect temperature first in case it decreases after the test finishes.
 	temps, err := thermal.SnapshotValues(ctx)
 	if err != nil {
-		if _, err := tracer.StopTracing(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
-		}
 		return errors.Wrap(err, "failed to get temperature data")
 	}
 
@@ -444,17 +434,19 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	if rapl != nil {
 		rd, err := rapl.DiffWithCurrentRAPL()
 		if err != nil {
-			if _, err := tracer.StopTracing(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
-			}
 			return errors.Wrap(err, "failed to compute RAPL diffs")
 		}
 		raplv = rd
 	}
 
-	tr, err := tracer.StopTracing(ctx)
+	cmd := testexec.CommandContext(ctx, "perfetto", "-c", traceConfigPath, "--txt", "-o", "-")
+	out, err := cmd.Output()
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to run the tracing session")
+	}
+	tr := &trace.Trace{}
+	if err := tr.XXX_Unmarshal(out); err != nil {
+		return errors.Wrap(err, "failed to unmarshal trace result")
 	}
 
 	filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.crt), invoc.page.name)
