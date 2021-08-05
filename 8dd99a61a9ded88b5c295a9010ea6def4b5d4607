@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e952602e_435bc597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T10:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c76def6_bba95774",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6672922b_ff4fe4c5",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac93b37_cbf7a0c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T10:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6672922b_ff4fe4c5",
+      "range": {
+        "startLine": 165,
+        "startChar": 9,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d904d5a_46f09eb1",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-04T21:03:19Z",
       "side": 1,
       "message": "nit: please remove setUpExtension and start the line with \"Moves\", so if the function name got changed we don\u0027t need to update the comments as well.",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 17
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e2187e_7fe23386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T10:46:08Z",
+      "side": 1,
+      "message": "tast lint demands it to be that way: provides this link for reference - https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "parentUuid": "6d904d5a_46f09eb1",
       "range": {
         "startLine": 174,
         "startChar": 3,
@@ -147,6 +219,54 @@
       "side": 1,
       "message": "Hey, I would like to share a video of this test running(With very small changes): https://drive.google.com/file/d/1PHFPc7hZr1EEKYXINISadIpafVT-HceC/view?usp\u003dsharing\n\nIs this a bug? or am I doing something wrong\n\nIn video following is happening : -\n\nExtension is able to access the content but when it is pasted in a new omni box it shows notification\n\nCommands are as follows --\nCtrl + A\nCtrl + C\nClick in the middle of the tab\nCtrl + Z\nCtrl + T\nCtrl + V",
       "parentUuid": "ee8c1342_60658484",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 98
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea856b68_9544d47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T10:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "497492b0_09a30e73",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 23
+      },
+      "revId": "8dd99a61a9ded88b5c295a9010ea6def4b5d4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "267be4d1_2f9fd8f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_misc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-05T10:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ca98df_0f4e737d",
       "range": {
         "startLine": 190,
         "startChar": 0,
