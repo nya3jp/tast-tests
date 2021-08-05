@@ -48,7 +48,7 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -138,7 +138,7 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return err
 				}
-				path, err := app.FilePathInSavedDirs(ctx, file.Name())
+				path, err := app.FilePathInSavedDir(ctx, file.Name())
 				if err != nil {
 					return err
 				}

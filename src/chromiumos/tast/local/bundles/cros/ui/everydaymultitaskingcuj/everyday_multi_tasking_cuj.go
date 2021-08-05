@@ -448,7 +448,7 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		return errors.Wrap(err, "failed to clear saved directory")
 	}
 

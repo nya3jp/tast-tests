@@ -49,7 +49,7 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -85,7 +85,7 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+			if err := cca.ClearSavedDir(ctx, cr); err != nil {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
 
@@ -180,7 +180,7 @@ func testPhotoResolution(ctx context.Context, app *cca.App) error {
 			if err != nil {
 				return errors.Wrap(err, "failed to take photo")
 			}
-			path, err := app.FilePathInSavedDirs(ctx, info[0].Name())
+			path, err := app.FilePathInSavedDir(ctx, info[0].Name())
 			if err != nil {
 				return errors.Wrap(err, "failed to get file path")
 			}
@@ -273,7 +273,7 @@ func testVideoResolution(ctx context.Context, app *cca.App) error {
 			if err != nil {
 				return errors.Wrap(err, "failed to record video")
 			}
-			path, err := app.FilePathInSavedDirs(ctx, info.Name())
+			path, err := app.FilePathInSavedDir(ctx, info.Name())
 			if err != nil {
 				return errors.Wrap(err, "failed to get file path")
 			}
