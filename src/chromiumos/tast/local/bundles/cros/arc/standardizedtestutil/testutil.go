@@ -32,6 +32,21 @@ const (
 	ShortUITimeout         = 30 * time.Second
 )
 
+// StandardizedMouseButton abstracts the underlying mouse button implementation into a
+// standard type that can be used by callers.
+type StandardizedMouseButton string
+
+// Mouse buttons that can be used by standardized tests.
+const (
+	LeftMouseButton  StandardizedMouseButton = "LEFT"
+	RightMouseButton StandardizedMouseButton = "RIGHT"
+)
+
+var standardizedMouseButtonToMouseButton = map[StandardizedMouseButton]mouse.Button{
+	LeftMouseButton:  mouse.LeftButton,
+	RightMouseButton: mouse.RightButton,
+}
+
 // StandardizedTestFuncParams contains parameters that can be used by the standardized tests.
 type StandardizedTestFuncParams struct {
 	TestConn        *chrome.TestConn
@@ -174,13 +189,8 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 	}
 }
 
-// StandardizedMouseLeftClickObject provides a standard way to left click the mouse on an object.
-func StandardizedMouseLeftClickObject(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object) error {
-	return standardizedMouseClickObject(ctx, testParameters.TestConn, selector, mouse.LeftButton)
-}
-
-// standardizedMouseClickObject implements a standard way to click the mouse button on an object.
-func standardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, selector *ui.Object, button mouse.Button) error {
+// StandardizedMouseClickObject implements a standard way to click the mouse button on an object.
+func StandardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, selector *ui.Object, standardizedButton StandardizedMouseButton) error {
 	// The device cannot be in tablet mode.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -189,6 +199,12 @@ func standardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, s
 
 	if tabletModeEnabled {
 		return errors.New("Device is in tablet mode, cannot click with a mouse")
+	}
+
+	// Map the standardized map button to the corresponding mouse.button
+	buttonToUse, exists := standardizedMouseButtonToMouseButton[standardizedButton]
+	if exists == false {
+		return errors.Wrapf(err, "Unable to find button to click. Got: %v", standardizedButton)
 	}
 
 	// Get the bounds and click the point.
@@ -202,8 +218,8 @@ func standardizedMouseClickObject(ctx context.Context, tconn *chrome.TestConn, s
 		Y: uiElementBounds.Top,
 	}
 
-	if err = mouse.Click(tconn, mouseClickPosition, button)(ctx); err != nil {
-		return errors.Wrapf(err, "Unable to click: %v at provided position", button)
+	if err = mouse.Click(tconn, mouseClickPosition, buttonToUse)(ctx); err != nil {
+		return errors.Wrapf(err, "Unable to click: %v at provided position", buttonToUse)
 	}
 
 	return nil

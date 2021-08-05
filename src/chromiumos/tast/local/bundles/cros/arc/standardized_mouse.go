@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/android/ui"
@@ -52,30 +53,47 @@ func StandardizedMouse(ctx context.Context, s *testing.State) {
 // standardized mouse input suite.
 func runStandardizedMouseTests(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
 	runLeftClickTest(ctx, s, testParameters)
+	runRightClickTest(ctx, s, testParameters)
 }
 
 // runLeftClickTest ensures that the left mouse click works.
 func runLeftClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
 	btnLeftClickID := testParameters.AppPkgName + ":id/btnLeftClick"
 	btnLeftClickSelector := testParameters.Device.Object(ui.ID(btnLeftClickID))
+	testSingleMouseClick(ctx, s, testParameters, btnLeftClickSelector, standardizedtestutil.LeftMouseButton)
+}
 
-	if err := btnLeftClickSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+// runRightClickTest ensures that the right mouse click works.
+func runRightClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+	btnRightClickID := testParameters.AppPkgName + ":id/btnRightClick"
+	btnRightClickSelector := testParameters.Device.Object(ui.ID(btnRightClickID))
+	testSingleMouseClick(ctx, s, testParameters, btnRightClickSelector, standardizedtestutil.RightMouseButton)
+}
+
+// testSingleMouseClick ensures that a single click works, and prints the expected `MOUSE <button> CLICK` text.
+func testSingleMouseClick(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams, buttonSelector *ui.Object, standardizedMouseButton standardizedtestutil.StandardizedMouseButton) {
+	// Setup the expected text. The button should only be clicked once so that's the entry being looked for.
+	expectedSingleClick := fmt.Sprintf("MOUSE %v CLICK (1)", standardizedMouseButton)
+
+	if err := buttonSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Unable to find the button to click, info: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.Text("MOUSE LEFT CLICK (1)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+	if err := testParameters.Device.Object(ui.Text(expectedSingleClick)).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.StandardizedMouseLeftClickObject(ctx, testParameters, btnLeftClickSelector); err != nil {
+	if err := standardizedtestutil.StandardizedMouseClickObject(ctx, testParameters.TestConn, buttonSelector, standardizedMouseButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.Text("MOUSE LEFT CLICK (1)")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+	if err := testParameters.Device.Object(ui.Text(expectedSingleClick)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("The success label should exist, info: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.Text("MOUSE LEFT CLICK (2)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+	// Make sure a single click didn't fire two events.
+	invalidDoubleClick := fmt.Sprintf("MOUSE %v CLICK (2)", standardizedMouseButton)
+	if err := testParameters.Device.Object(ui.Text(invalidDoubleClick)).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("A single mouse click triggered two click events, info: ", err)
 	}
 }

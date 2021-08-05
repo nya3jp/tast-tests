@@ -17,6 +17,10 @@ public class MainActivity extends Activity {
     private Button btnLeftClick;
     private Integer btnLeftClickCounter = 1;
 
+    private Button btnRightClick;
+    private Integer btnRightClickCounter = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,19 @@ public class MainActivity extends Activity {
             el.setText(String.format("MOUSE LEFT CLICK (%d)", this.btnLeftClickCounter));
             this.btnLeftClickCounter++;
             this.layoutMain.addView(el);
+        });
+
+        // Add the text 'Mouse Right Click' when the right click button is pressed.
+        // Always add the click counter so the tast test can make sure a single click
+        // doesn't fire two events.
+        // 'OnContextClick' is fired natively when the mouse right clicks a button.
+        this.btnRightClick = findViewById(R.id.btnRightClick);
+        this.btnRightClick.setOnContextClickListener((v) -> {
+            TextView el = new TextView(this);
+            el.setText(String.format("MOUSE RIGHT CLICK (%d)", this.btnRightClickCounter));
+            this.btnRightClickCounter++;
+            this.layoutMain.addView(el);
+            return true;
         });
     }
 }
