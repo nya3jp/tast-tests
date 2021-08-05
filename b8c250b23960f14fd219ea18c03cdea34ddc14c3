@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "023b1edb_197aaf75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a146d751_84373852",
+      "revId": "b8c250b23960f14fd219ea18c03cdea34ddc14c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "848862d2_b6ba116e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-03T20:27:15Z",
       "side": 1,
       "message": "I left a similar comment in another one of your CLs, but...\n\nCommand() doesn\u0027t actually run the command; it just creates a Cmd object. See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec.go;drc\u003d8693219e729963f5cf65894f7bc3386b005b9007;l\u003d63\n\nAdditionally, Command() is deprecated in favor of CommandContext(). See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go;drc\u003d8693219e729963f5cf65894f7bc3386b005b9007;l\u003d110\n\nI recommend the following:\n\n    err :\u003d h.DUT.Conn().CommandContext(ctx, \"sync\").Run()\n\nor:\n\n    err :\u003d h.DUT.Conn().CommandContext(ctx, \"sync\").Run(ssh.DumpLogOnError)",
+      "revId": "b8c250b23960f14fd219ea18c03cdea34ddc14c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78371efb_62ca9a49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-05T23:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848862d2_b6ba116e",
       "revId": "b8c250b23960f14fd219ea18c03cdea34ddc14c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
