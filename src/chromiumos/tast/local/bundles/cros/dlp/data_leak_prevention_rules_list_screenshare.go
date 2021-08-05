@@ -103,9 +103,9 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 			url:         "https://www.example.com/",
 		},
 		{
-			name:        "company",
+			name:        "chromium",
 			wantAllowed: true,
-			url:         "https://www.company.com/",
+			url:         "https://www.chromium.org/",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
