@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0fbea81_e4dce0f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-05T22:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd87015_0ef7f898",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "38977947f40e159545c6ae9a99042073534f54af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc2f6d29_01f1d527",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-05T10:11:44Z",
       "side": 1,
       "message": "t.arc should be closed as well (after making sure it\u0027s not closed in NewARCClient).",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "38977947f40e159545c6ae9a99042073534f54af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7ed4c9_76ec5fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-05T22:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2f6d29_01f1d527",
       "range": {
         "startLine": 125,
         "startChar": 1,
