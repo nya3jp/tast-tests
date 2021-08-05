@@ -20,7 +20,6 @@ func RestrictiveDLPPolicyForClipboard() []policy.Policy {
 				Sources: &policy.DataLeakPreventionRulesListSources{
 					Urls: []string{
 						"example.com",
-						"company.com",
 					},
 				},
 				Destinations: &policy.DataLeakPreventionRulesListDestinations{
@@ -50,7 +49,6 @@ func StandardDLPPolicyForClipboard() []policy.Policy {
 				Sources: &policy.DataLeakPreventionRulesListSources{
 					Urls: []string{
 						"example.com",
-						"company.com",
 					},
 				},
 				Destinations: &policy.DataLeakPreventionRulesListDestinations{

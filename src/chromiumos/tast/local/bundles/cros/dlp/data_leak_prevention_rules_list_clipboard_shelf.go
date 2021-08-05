@@ -79,11 +79,6 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 			wantAllowed: false,
 		},
 		{
-			name:        "company",
-			url:         "www.company.com",
-			wantAllowed: false,
-		},
-		{
 			name:        "chromium",
 			url:         "www.chromium.org",
 			wantAllowed: true,
