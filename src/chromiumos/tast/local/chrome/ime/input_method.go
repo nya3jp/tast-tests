@@ -25,8 +25,9 @@ import (
 
 // InputMethod represents an input method.
 type InputMethod struct {
-	Name string // The displayed name of the IME in OS Settings.
-	ID   string // The code / id of the IME, e.g. "xkb:us::eng"
+	Name       string        // The displayed name of the IME in OS Settings.
+	ID         string        // The id of the IME, e.g. "xkb:us::eng".
+	WarmupTime time.Duration // Time delay to install / warm the input method. It overwrites the time wait in Install function.
 }
 
 // DefaultInputMethod is the default input method enabled for new users.
@@ -52,14 +53,16 @@ var EnglishUK = InputMethod{
 
 // SpanishSpain represents the input method of Spanish (Spain).
 var SpanishSpain = InputMethod{
-	Name: "Spanish (Spain)",
-	ID:   "xkb:es::spa",
+	Name:       "Spanish (Spain)",
+	ID:         "xkb:es::spa",
+	WarmupTime: 15 * time.Second,
 }
 
 // Swedish represents the input method of Swedish.
 var Swedish = InputMethod{
-	Name: "Swedish",
-	ID:   "xkb:se::swe",
+	Name:       "Swedish",
+	ID:         "xkb:se::swe",
+	WarmupTime: 15 * time.Second,
 }
 
 // AlphanumericWithJapaneseKeyboard represents the input method of Alphanumeric with Japanese keyboard.
@@ -82,8 +85,9 @@ var Japanese = InputMethod{
 
 // FrenchFrance represents the input method of French (France).
 var FrenchFrance = InputMethod{
-	Name: "French (France)",
-	ID:   "xkb:fr::fra",
+	Name:       "French (France)",
+	ID:         "xkb:fr::fra",
+	WarmupTime: 15 * time.Second,
 }
 
 // JapaneseWithUSKeyboard represents the input method of Japanese with US keyboard.
@@ -254,7 +258,7 @@ func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
 		if activeIME.Equal(im) {
 			return nil
 		}
-		return SetCurrentInputMethod(ctx, tconn, fullyQualifiedIMEID)
+		return SetCurrentInputMethodAndWarmingUp(ctx, tconn, fullyQualifiedIMEID, im.WarmupTime)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
