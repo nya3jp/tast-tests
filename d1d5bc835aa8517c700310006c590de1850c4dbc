@@ -16,6 +16,29 @@
       "message": "Thanks",
       "revId": "d1d5bc835aa8517c700310006c590de1850c4dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588b8483_3956d73f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_power_peak_shift.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-05T15:11:08Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "d1d5bc835aa8517c700310006c590de1850c4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
