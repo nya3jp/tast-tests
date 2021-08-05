@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a1db1c_ddbc3f4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-05T10:11:44Z",
+      "side": 1,
+      "message": "Oh, sorry, I realized I mixed up t.d and t.act when I made this comment. Please ignore this comment.",
+      "parentUuid": "89574eb1_d9a64199",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81196b20_f17f13a6",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "1. Added a check errors for this method.\n2. Added a comment in the method reflecting that this method create notification and verify that it is created.\n3. The logic below actually does not verify that non-ARC notification are correctly shown. WaitForNotifcation() is called only to make sure that we don\u0027t open the Uber tray and start the perf test before all notifications are created. To make this more consistently with the verification logic (and also to make sure that all notifications are created successfully), I have moved this logic to after notification creation. Thus, we always verify that a notification is created for each notification.",
       "parentUuid": "81196b20_f17f13a6",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 92
+      },
+      "revId": "bff458c3cf7046ad7678a1d65b66ad2cc9a65d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2cb322_d1289fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_scrolling_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-05T10:11:44Z",
+      "side": 1,
+      "message": "Thanks, this is now easier to understand!",
+      "parentUuid": "05f2da09_d52a3b4c",
       "range": {
         "startLine": 96,
         "startChar": 3,
