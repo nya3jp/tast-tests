@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8576ef6c_da8afaea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-05T16:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c4fb40b_d0450b34",
+      "revId": "a436a55c166af8842dbe0686f19289811a8889b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e47c5a6_08cba8db",
