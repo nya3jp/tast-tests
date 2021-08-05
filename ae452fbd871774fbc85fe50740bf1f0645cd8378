@@ -50,6 +50,23 @@
       "message": "Sorry for the delay. LGTM.",
       "revId": "ae452fbd871774fbc85fe50740bf1f0645cd8378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60c7138_a2a31e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-08-05T17:37:26Z",
+      "side": 1,
+      "message": "ty",
+      "revId": "ae452fbd871774fbc85fe50740bf1f0645cd8378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
