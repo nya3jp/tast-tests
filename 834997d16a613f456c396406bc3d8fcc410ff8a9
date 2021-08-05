@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95725e4b_1e485af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-05T15:26:13Z",
+      "side": 1,
+      "message": "The actual failure message from fwupd (i.e. \"Cannot install update when not on AC power unless forced\") is uncaptured by Tast, so regex would never find that message.\n\nHowever, this new message only shows up when the update is about to fail, so it should still be good to use.",
+      "parentUuid": "bb04753a_e605a523",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "834997d16a613f456c396406bc3d8fcc410ff8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43a83335_5a540f6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 8
@@ -37,6 +61,24 @@
       "writtenOn": "2021-08-05T14:35:09Z",
       "side": 1,
       "message": "Where did you add the sleep to wait for the ectool cmd to take effect?",
+      "revId": "834997d16a613f456c396406bc3d8fcc410ff8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6257608_6d5823df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-05T15:26:13Z",
+      "side": 1,
+      "message": "This will be included in the next patch set.",
+      "parentUuid": "43a83335_5a540f6f",
       "revId": "834997d16a613f456c396406bc3d8fcc410ff8a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
