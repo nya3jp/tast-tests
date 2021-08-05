@@ -28,7 +28,6 @@ func init() {
 		Contacts: []string{"kmoed@google.com", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_scanning",
 		},
