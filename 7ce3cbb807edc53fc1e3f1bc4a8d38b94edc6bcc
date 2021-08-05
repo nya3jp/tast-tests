@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "7ce3cbb807edc53fc1e3f1bc4a8d38b94edc6bcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acac5317_a3d3fd12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-05T22:59:58Z",
+      "side": 1,
+      "message": "nit: Since this is a verbose log, can you put a TODO above with the bug number to remove it when the root cause is found?",
+      "revId": "7ce3cbb807edc53fc1e3f1bc4a8d38b94edc6bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
