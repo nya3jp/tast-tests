@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be70ae62_17edd02c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-05T07:14:27Z",
+      "side": 1,
+      "message": "not sure if the content could be too large to also specify \"-a\" here?\n\n  -a, --all\n      write counts for all files, not just directories\n      \nthen we can gain more information from this output, like, if /var/log/messages exists or not, if other logs are also missing, or etc. And then the later /var/log/messages check can be omitted.\n\nWDYT?",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f487d4_dd8608fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 2
