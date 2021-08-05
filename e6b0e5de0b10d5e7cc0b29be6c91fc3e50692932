@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be86564d_355d83d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "LGTM, just a few minor comments",
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b932f109_510a2694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "there should be at least 1 personal email contact https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration",
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790d3110_c3e13290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9cfd5e_77938a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "If there\u0027s any latency between removing the last item and the folder disappearing, WaitUntilGone could be a more stable option, Gone checks immediately with no built-in waiting I believe.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d434?q\u003dwaituntilgone",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c29fffa_86186137",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "same here, could consider WaitUntilGone if there\u0027s an animation for the folder closing.",
+      "range": {
+        "startLine": 279,
+        "startChar": 11,
+        "endLine": 279,
+        "endChar": 15
+      },
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82dd3dea_04696453",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "nit: could merge with the above line",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 17
+      },
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f8a085_40218e94",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "nit: can merge these",
+      "range": {
+        "startLine": 309,
+        "startChar": 3,
+        "endLine": 310,
+        "endChar": 18
+      },
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537c55fd_a2290598",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-05T18:10:20Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 17
+      },
+      "revId": "e6b0e5de0b10d5e7cc0b29be6c91fc3e50692932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
