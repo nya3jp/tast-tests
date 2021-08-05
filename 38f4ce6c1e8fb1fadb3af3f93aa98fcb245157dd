@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a820034_cb0b7e6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-05T01:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14d6a3c_43ca71ea",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "38f4ce6c1e8fb1fadb3af3f93aa98fcb245157dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e580401e_90f81ae3",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fb949a_ed1b9a35",
+        "filename": "src/chromiumos/tast/local/meta/data/fixture_data_external.txt.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-05T01:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e580401e_90f81ae3",
+      "revId": "38f4ce6c1e8fb1fadb3af3f93aa98fcb245157dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2f0087_5532abf1",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-08-03T06:55:48Z",
       "side": 1,
       "message": "Same here: do we want to make this a symlink?",
+      "revId": "38f4ce6c1e8fb1fadb3af3f93aa98fcb245157dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3afdf36b_d7483d99",
+        "filename": "src/chromiumos/tast/remote/meta/data/fixture_data_internal.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-05T01:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2f0087_5532abf1",
       "revId": "38f4ce6c1e8fb1fadb3af3f93aa98fcb245157dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

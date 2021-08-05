@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52f0735_8a8484bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/data/remote_files_external.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-05T01:50:42Z",
+      "side": 1,
+      "message": "Done\nFiled https://b.corp.google.com/issues/195602026 .",
+      "parentUuid": "beee81b1_505fd1cb",
+      "revId": "ba6d61cfcdd11ef4405d9201e3a8833adf92d5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d205ae8e_95b2b29e",
