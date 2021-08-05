@@ -259,6 +259,8 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 			}
 		}
 
+		// TODO(b/179504225): Remove this message once the issue is fixed.
+		s.Logf("Going to type key %d", scancode)
 		if err := kb.TypeKey(ctx, scancode); err != nil {
 			s.Fatalf("Failed to send the scancode %d: %v", scancode, err)
 		}
