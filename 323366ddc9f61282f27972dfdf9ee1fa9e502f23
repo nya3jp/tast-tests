@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f454d8_aa045015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-05T10:41:48Z",
+      "side": 1,
+      "message": "LGTM % defer to inputs team\u0027s review",
+      "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
