@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11cf9401_696e7a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-05T17:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f71af59d_12a73335",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 41
+      },
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc9154b6_6ea37211",
@@ -82,6 +106,54 @@
         "startChar": 66,
         "endLine": 81,
         "endChar": 67
+      },
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d205811f_ce89b18a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-05T17:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93ac84cf_b04de205",
+      "range": {
+        "startLine": 81,
+        "startChar": 66,
+        "endLine": 81,
+        "endChar": 67
+      },
+      "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "778eb6db_b1de2fce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-05T17:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc9154b6_6ea37211",
+      "range": {
+        "startLine": 81,
+        "startChar": 57,
+        "endLine": 81,
+        "endChar": 58
       },
       "revId": "a23390cd377fbd173fed39014d9d6a1f802db169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
