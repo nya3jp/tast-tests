@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c105b590_3c1180a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-08-05T20:29:58Z",
+      "side": 1,
+      "message": "I agree with you, I just replaced -m with -a. However, the file \"filesystem_and_disk_status.txt\" has significantly increased.\n\nwith -m:\ntotal 2.5M\n-rw-r--r-- 1 arowa primarygroup 2.4M Aug  5 13:01 filesystem_and_disk_status.txt\n-rw-r--r-- 1 arowa primarygroup  472 Aug  5 13:01 log.txt\n-rw-r--r-- 1 arowa primarygroup  11K Aug  5 13:01 messages\n\nwith -a:\ntotal 21M\n-rw-r--r-- 1 arowa primarygroup 21M Aug  5 12:54 filesystem_and_disk_status.txt\n-rw-r--r-- 1 arowa primarygroup 585 Aug  5 12:54 log.txt\n-rw-r--r-- 1 arowa primarygroup 11K Aug  5 12:54 messages\n\n@harpreet, is this too large?\n\nAlso, I kept \"/var/log/messages\" to track the failure in stainless.",
+      "parentUuid": "be70ae62_17edd02c",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f487d4_dd8608fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2021-08-05T00:23:59Z",
       "side": 1,
       "message": "What happens if this file doesn\u0027t exist? What\u0027s the next place to add instrumentation?",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60214d97_cf120d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-08-05T20:29:58Z",
+      "side": 1,
+      "message": "I was thinking to add a similar check between connecting to DUT and starting running the tests in bundles for wifi_matfunc. However, it would just log the faiure.\n\n07/09 06:54:58.559INFO|utils:0304|[stdout]Connecting to chromeos15-row2-rack10-host6:22\n.\n.\n.\n07/09 06:54:59.682INFO|utils:0304| [stdout] Running tests in bundle cros",
+      "parentUuid": "65f487d4_dd8608fd",
       "range": {
         "startLine": 79,
         "startChar": 18,
