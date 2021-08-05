@@ -132,7 +132,7 @@ type windowStateChange struct {
 type WindowType string
 
 // As defined in ash::AppType here:
-// https://cs.chromium.org/chromium/src/ash/public/cpp/app_types.h
+// https://cs.chromium.org/chromium/src/ash/constants/app_types.h
 const (
 	WindowTypeBrowser   WindowType = "Browser"
 	WindowTypeChromeApp WindowType = "ChromeApp"
@@ -140,6 +140,7 @@ const (
 	WindowTypeCrostini  WindowType = "CrostiniApp"
 	WindowTypeSystem    WindowType = "SystemApp"
 	WindowTypeExtension WindowType = "ExtensionApp"
+	WindowTypeLacros    WindowType = "Lacros"
 )
 
 // OverviewInfo holds overview info of a window.
