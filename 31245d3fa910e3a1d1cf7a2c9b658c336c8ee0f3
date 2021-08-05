@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3d2edc_d558e050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-05T11:52:42Z",
+      "side": 1,
+      "message": "filepath.Join() can take multiple args",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f242926_37428d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_api_can_access_external_storage.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-05T11:52:42Z",
+      "side": 1,
+      "message": "This looks like a pre-SWA thing? Is there any usage? Maybe we can delete this now?",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6993fafa_977a9997",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-05T11:52:42Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c13fbe5_fd8770d5",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-05T11:52:42Z",
+      "side": 1,
+      "message": "There is only one folder now?",
+      "range": {
+        "startLine": 859,
+        "startChar": 41,
+        "endLine": 859,
+        "endChar": 48
+      },
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159871bc_5065b338",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-05T11:52:42Z",
+      "side": 1,
+      "message": "Can we simplify the logic with os.RemoveAll()?",
+      "revId": "31245d3fa910e3a1d1cf7a2c9b658c336c8ee0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
