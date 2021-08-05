@@ -402,27 +402,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
-	if err != nil {
-		s.Fatal("Failed to open the hangout meet website: ", err)
-	}
-	defer meetConn.Close()
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Lacros specific setup.
-	if meet.useLacros {
-		// Close "New Tab" window after creating the meet window.
-		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
-		})
-		if err != nil {
-			s.Fatal("Failed to find New Tab window: ", err)
-		}
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Fatal("Failed to close New Tab window: ", err)
-		}
-	}
-
 	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	s.Logf("Is in tablet-mode: %t", inTabletMode)
 	if err != nil {
@@ -462,6 +441,27 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, cdputil.WithNewWindow())
+	if err != nil {
+		s.Fatal("Failed to open the hangout meet website: ", err)
+	}
+	defer meetConn.Close()
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Lacros specific setup.
+	if meet.useLacros {
+		// Close "New Tab" window after creating the meet window.
+		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
+		})
+		if err != nil {
+			s.Fatal("Failed to find New Tab window: ", err)
+		}
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			s.Fatal("Failed to close New Tab window: ", err)
+		}
+	}
+
 	ui := uiauto.New(tconn)
 
 	kw, err := input.Keyboard(ctx)
@@ -472,15 +472,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Find the web view of Meet window.
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-	if err := action.Combine(
-		"click and type meeting code",
-		// Assume that the meeting code is the first textfield in the webpage.
-		ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview).First()),
-		kw.TypeAction(meetingCode),
-		kw.AccelAction("Enter"),
-	)(ctx); err != nil {
-		s.Fatal("Failed to input the meeting code: ", err)
-	}
 
 	bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
 	allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
