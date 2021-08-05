@@ -39,6 +39,30 @@
       },
       "revId": "26601c677006e4c1bdf7b7f8f89d0b26f085e5bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73972a0_75008327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-05T19:43:27Z",
+      "side": 1,
+      "message": "Yes, thanks for asking. It will write the captured file to Downloads folder so I added some codes in L440 to remove the added file after confirmation if there is any.",
+      "parentUuid": "7b0dd9db_a2401421",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 33
+      },
+      "revId": "26601c677006e4c1bdf7b7f8f89d0b26f085e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
