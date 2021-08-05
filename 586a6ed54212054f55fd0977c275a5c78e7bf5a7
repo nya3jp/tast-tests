@@ -16,6 +16,47 @@
       "message": "+Toshiki, FYI. This CL is also going to add a wait to ash.SetARCWindowState.\n\ncrrev.com/c/3061864 is going to add similar wait option to SetARCWindowState. It\u0027s worth taking a look.",
       "revId": "586a6ed54212054f55fd0977c275a5c78e7bf5a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "728e57a3_779b57e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-05T05:11:57Z",
+      "side": 1,
+      "message": "\u003e +Toshiki, FYI. This CL is also going to add a wait to ash.SetARCWindowState.\n\u003e \n\u003e crrev.com/c/3061864 is going to add similar wait option to SetARCWindowState. It\u0027s worth taking a look.\n\nThanks for letting me know.\nTo be clear, the current impl of SetARCWindowState already waits for the window state change. My new option will allow *not* to wait for the window state change. \n\nNaming are a bit confusing but in the current impl,\nSetWindowState waits for the window state change.\nSetWindowStateAndWait waits for the window state change *and the animation*.\nSet*ARCApp*WindowState waits for the window state change.\n\nAnd this CL adds Set*ARCApp*WindowStateAndWait as an ARC version of SetWindowStateAndWait and it waits for the window state change *and the animation*.",
+      "parentUuid": "5649aa35_bc699764",
+      "revId": "586a6ed54212054f55fd0977c275a5c78e7bf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe219ef_e343133b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-05T05:11:57Z",
+      "side": 1,
+      "message": "How about replacing this part with SetWindowStateAndWait? SetWindowStateAndWait do the same things.",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 0
+      },
+      "revId": "586a6ed54212054f55fd0977c275a5c78e7bf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
