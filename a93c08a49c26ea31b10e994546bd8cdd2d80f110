@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8975a439_a718ac36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T20:42:12Z",
+      "side": 1,
+      "message": "I have a few questions regarding this test. Please take a look. Thanks.",
+      "revId": "a93c08a49c26ea31b10e994546bd8cdd2d80f110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4738992_6be74825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T20:42:12Z",
+      "side": 1,
+      "message": "It is just a question. Why do you need this check?",
+      "revId": "a93c08a49c26ea31b10e994546bd8cdd2d80f110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96f37b3_6332bd8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T20:42:12Z",
+      "side": 1,
+      "message": "Why is err is not used for the message? Do you want to see the error?",
+      "revId": "a93c08a49c26ea31b10e994546bd8cdd2d80f110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5cd8b17_1d38569d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-05T20:42:12Z",
+      "side": 1,
+      "message": "This poll is pretty much same as the previous, right? Why don\u0027t use make a function and make the expected wifi status as parameter?",
+      "revId": "a93c08a49c26ea31b10e994546bd8cdd2d80f110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
