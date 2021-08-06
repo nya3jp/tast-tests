@@ -22,6 +22,30 @@
       },
       "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d21d79b_31a708c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-06T18:06:04Z",
+      "side": 1,
+      "message": "I think that, in that case, the function would send the whole output at the end. However, I need the output as it\u0027s coming.\n\nI think the ideal case for me would be that the function, instead of running the update, just gets it to a ready position and returns whether it needs a reinstall or an update (ie; run get-updates, return either \"update\" or \"reinstall\" based on context)",
+      "parentUuid": "4b569418_7b53a0d2",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
