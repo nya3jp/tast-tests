@@ -6,9 +6,13 @@ package health
 
 import (
 	"context"
+	"strings"
 
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -68,10 +72,76 @@ type systemInfo struct {
 	DmiInfo *dmiInfo `json:"dmi_info"`
 }
 
+func (info *osVersion) expected(ctx context.Context, errOut *error) osVersion {
+	lsb, err := lsbrelease.Load()
+	if err != nil {
+		err = errors.Wrap(err, "failed to get lsb-release info")
+		errOut = &err
+		return osVersion{}
+	}
+	return osVersion{
+		ReleaseMilestone: lsb[lsbrelease.Milestone],
+		BuildNumber:      lsb[lsbrelease.BuildNumber],
+		PatchNumber:      lsb[lsbrelease.PatchNumber],
+		ReleaseChannel:   lsb[lsbrelease.ReleaseTrack],
+	}
+}
+
+func expectedBootMode(got string, errOut *error) string {
+	var err error
+	v := utils.ReadFile("/proc/cmdline", &err)
+	if err != nil {
+		errOut = &err
+		return ""
+	}
+	if got == "Unknown" || v == nil || !strings.Contains(*v, got) {
+		err = errors.Errorf("BootMode is not in /proc/cmdline, got: %v, /proc/cmdline: %v", got, utils.PtrToElem(v))
+		errOut = &err
+		return ""
+	}
+	return got
+}
+
+func (info *osInfo) expected(ctx context.Context, errOut *error) osInfo {
+	const (
+		cfgCodeName      = "/name"
+		cfgMarketingName = "/arc/build-properties/marketing-name"
+	)
+	var err error
+	cn := utils.GetCrosConfig(ctx, cfgCodeName, &err)
+	if cn == nil {
+		err = errors.Wrap(err, "CodeName is required field but cannot get it from cros config")
+		errOut = &err
+		return osInfo{}
+	}
+	return osInfo{
+		CodeName:      *cn,
+		MarketingName: utils.GetCrosConfig(ctx, cfgMarketingName, errOut),
+		OsVersion:     info.OsVersion.expected(ctx, errOut),
+		BootMode:      expectedBootMode(info.BootMode, errOut),
+	}
+}
+
+func (info *systemInfo) expected(ctx context.Context, errOut *error) systemInfo {
+	return systemInfo{
+		OsInfo:  info.OsInfo.expected(ctx, errOut),
+		VpdInfo: info.VpdInfo,
+		DmiInfo: info.DmiInfo,
+	}
+}
+
 func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategorySystem2}
 	var info systemInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to get system info v2 telemetry info: ", err)
+	}
+	var err error
+	e := info.expected(ctx, &err)
+	if err != nil {
+		s.Fatal("Validation failed: ", err)
+	}
+	if err := utils.Compare(e, info); err != nil {
+		s.Fatal("Validation failed: ", err)
 	}
 }
