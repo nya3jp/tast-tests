@@ -124,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1844b348_c2756854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-06T15:08:22Z",
+      "side": 1,
+      "message": "Here is an example for how to do this: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "parentUuid": "a6c48bbf_e83931d0",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "5c5239bb839e5179701a5d584ad69c1b04f0daff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51fb1c69_5dd5c499",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
         "patchSetId": 3
