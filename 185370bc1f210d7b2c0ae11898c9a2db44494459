@@ -426,6 +426,24 @@
       "message": "nit/style: please alphabetize in this list",
       "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2dc8d5_48e1eb70",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-06T11:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e2f3291_1453734f",
+      "revId": "185370bc1f210d7b2c0ae11898c9a2db44494459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

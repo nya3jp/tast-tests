@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdb1d66a_baba0d68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-08-06T11:44:18Z",
+      "side": 1,
+      "message": "`math.Abs` only accepts `float64`s and while it\u0027s somewhat more elegant to use standard library, I wanted to avoid unnecessary conversions back and forth which I did before.",
+      "parentUuid": "f73282d5_636c18bc",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "ca7f67c5bdff6e5696304b5c931bcc8d1eb487e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47f8b612_2911ca44",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 5
