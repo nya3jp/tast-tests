@@ -8,13 +8,14 @@ import (
 	"context"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: FwupdInstallRemote,
-		Desc: "Checks that fwupd can install using a remote repository",
+		Desc: "Checks that fwupdmgr can install using a remote repository",
 		Contacts: []string{
 			"campello@chromium.org",     // Test Author
 			"chromeos-fwupd@google.com", // CrOS FWUPD
@@ -28,8 +29,13 @@ func init() {
 // can update a device in the system using a remote repository.
 func FwupdInstallRemote(ctx context.Context, s *testing.State) {
 	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device.
+	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
+		s.Error("Failed to restart fwupd: ", err)
+	}
+
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "update", "-v", "b585990a-003e-5270-89d5-3705a17f9a43", "--ignore-power")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("%q failed: %v", cmd.Args, err)
+	err := cmd.Run(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatalf("%s failed: %v", cmd.Args, err)
 	}
 }
