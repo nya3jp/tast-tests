@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"path"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -122,10 +123,49 @@ func (info *osInfo) expected(ctx context.Context, errOut *error) osInfo {
 	}
 }
 
+func getExpectedSkuNumber(ctx context.Context, fpath string, errOut *error) *string {
+	const (
+		cfgSkuNumber = "/cros-healthd/cached-vpd/has-sku-number"
+	)
+	c, err := utils.IsCrosConfigTrue(ctx, cfgSkuNumber)
+	if err != nil {
+		errOut = &err
+		return nil
+	}
+	if !c {
+		return nil
+	}
+	e := utils.ReadFile(fpath, &err)
+	if e == nil {
+		if err == nil {
+			err = errors.New("this board must have sku_number, but sku_number doesn't exist")
+		}
+		errOut = &err
+		return nil
+	}
+	return e
+}
+
+func (info *vpdInfo) expected(ctx context.Context, errOut *error) *vpdInfo {
+	const (
+		ro = "/sys/firmware/vpd/ro/"
+		rw = "/sys/firmware/vpd/rw/"
+	)
+	e := vpdInfo{
+		ActivateDate: utils.ReadFile(path.Join(rw, "ActivateDate"), errOut),
+		MfgDate:      utils.ReadFile(path.Join(ro, "mfg_date"), errOut),
+		ModelName:    utils.ReadFile(path.Join(ro, "model_name"), errOut),
+		Region:       utils.ReadFile(path.Join(ro, "region"), errOut),
+		SerialNumber: utils.ReadFile(path.Join(ro, "serial_number"), errOut),
+		SkuNumber:    getExpectedSkuNumber(ctx, path.Join(ro, "sku_number"), errOut),
+	}
+	return &e
+}
+
 func (info *systemInfo) expected(ctx context.Context, errOut *error) systemInfo {
 	return systemInfo{
 		OsInfo:  info.OsInfo.expected(ctx, errOut),
-		VpdInfo: info.VpdInfo,
+		VpdInfo: info.VpdInfo.expected(ctx, errOut),
 		DmiInfo: info.DmiInfo,
 	}
 }
