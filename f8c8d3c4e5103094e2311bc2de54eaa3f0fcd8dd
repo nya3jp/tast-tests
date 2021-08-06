@@ -52,6 +52,24 @@
       "parentUuid": "3f2dd8c8_bc656716",
       "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83fa173_d0eac5e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-06T02:48:07Z",
+      "side": 1,
+      "message": "What is the benifit of listing all the fields in String function instead of listing all the fields in validate function? Because these struct are only used here for parsing json result, I think the String functions won\u0027t be too reusable.",
+      "parentUuid": "4c716a4d_89fac80a",
+      "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
