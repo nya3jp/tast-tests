@@ -321,6 +321,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20b9c867_0c498c2e",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-06T09:07:48Z",
+      "side": 1,
+      "message": "My original thought was to verify against the stderr message. Namely, if the screen was turned off successfully, the returned stderr from screen capture would be \"CRTC not found. Is the screen on?\". This match is checked inside the turnDisplayOffAndOn function in ec_tablet_mode.go.\n\nJust to be sure, and please correct me if this is wrong, but it seems that DumpLog only logs the details of the executed command via testing.ContextLog. To return stderr, instead of CaptureWithStderr, I\u0027ve thought about changing line #29 in Capture() to:\n\n`return errors.Errorf(\"failed running %q, and received stderr: %q\", strings.Join(cmd.Args, \" \"), cmd.Stderr)`\n\nHowever, I\u0027m wondering if there\u0027re other suggested ways to extract this stderr message.",
+      "parentUuid": "41567f06_162c4676",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3718ed74_f6966c10",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 2
@@ -733,6 +757,30 @@
       "side": 1,
       "message": "I have it in pre.DevMode() at the moment. Our DUT appeared to have some troubles converting to NormalMode. I\u0027ll be doing some more testing under the NormalMode.\n\nAlso, I\u0027ve noticed that both preparing and closing the precondition took on average about 5 minutes each. Is this expected? I\u0027ve had a few failed attempts in the closing part. But, this seems to have been resolved after updating DUT\u0027s test image to the latest release.",
       "parentUuid": "5c536793_75171e5b",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3552c7_0cd0635b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-06T09:07:48Z",
+      "side": 1,
+      "message": "As mentioned elsewhere, DevModeGBB() was implemented, and the test has appeared to be more stable.",
+      "parentUuid": "e51c928a_25f6bfda",
       "range": {
         "startLine": 50,
         "startChar": 1,

@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88222aee_b48b1a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-06T09:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b017d05_da2507b2",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d55a407a_5de40e84",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-08-02T17:18:33Z",
       "side": 1,
       "message": "nit/style: Ditto the above: if/else is simpler",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085bfa4a_c435b2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-06T09:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d55a407a_5de40e84",
       "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f71e512_3985773f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-06T09:07:48Z",
+      "side": 1,
+      "message": "I\u0027ve implemented DevModeGBB, and was able to have successful runs thus far.",
+      "parentUuid": "79552a12_13538aa3",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "854e7ba5_254e4b80",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 3
@@ -105,6 +165,24 @@
       "writtenOn": "2021-08-02T17:18:33Z",
       "side": 1,
       "message": "nit: Per go/tast-writing#When-to-log, avoid logging unnecessary information that would clutter the logs. In this case, I do not think we will ever need the original boot ID for debugging.",
+      "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55d24b9_b9b26b30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-06T09:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854e7ba5_254e4b80",
       "revId": "591a07cc22bb13d4b18a50e011557ffc34869878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
