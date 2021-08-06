@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84b68fb_02954058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-06T11:20:18Z",
+      "side": 1,
+      "message": "Ready for review, please do confirm the behavior for clipboard bubble in this case",
+      "revId": "e4582fa27c8bad55fa06f9efe67a59307570556f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1343c49_c98b4dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_ext.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-06T11:20:18Z",
+      "side": 1,
+      "message": "I am getting notification bubble when site is restricted in the document it said that no toast should show.\nI can confirm that when I use navigator.clipboard.read() then also same behavior.\nIs this expected?",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "e4582fa27c8bad55fa06f9efe67a59307570556f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
