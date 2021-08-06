@@ -20,6 +20,15 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type volumeShutterSubTest struct {
+	// name is test name.
+	name string
+	// testFunc contains test body.
+	testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
+	// tablet specifies the test to be run under tablet mode or clamshell mode.
+	tablet bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIVolumeShutter,
@@ -30,6 +39,20 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Name: "common",
+			Val: []volumeShutterSubTest{
+				{"testClamshell", testClamshell, false},
+				{"testTakePicture", testTakePicture, true},
+				{"testAppInBackground", testAppInBackground, true},
+			},
+		}, {
+			Name:              "video",
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
+			Val: []volumeShutterSubTest{
+				{"testRecordVideo", testRecordVideo, true},
+			},
+		}},
 	})
 }
 
@@ -147,16 +170,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	subTestTimeout := 30 * time.Second
-	for _, tst := range []struct {
-		name     string
-		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
-		tablet   bool
-	}{
-		{"testClamshell", testClamshell, false},
-		{"testTakePicture", testTakePicture, true},
-		{"testRecordVideo", testRecordVideo, true},
-		{"testAppInBackground", testAppInBackground, true},
-	} {
+	for _, tst := range s.Param().([]volumeShutterSubTest) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
