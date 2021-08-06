@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eadc467_51e2b6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-06T09:56:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ca7f67c5bdff6e5696304b5c931bcc8d1eb487e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73282d5_636c18bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-06T09:56:50Z",
+      "side": 1,
+      "message": "maybe use math.Abs instead?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "ca7f67c5bdff6e5696304b5c931bcc8d1eb487e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f8b612_2911ca44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-06T09:56:50Z",
+      "side": 1,
+      "message": "missin . at the end of the comment.",
+      "revId": "ca7f67c5bdff6e5696304b5c931bcc8d1eb487e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
