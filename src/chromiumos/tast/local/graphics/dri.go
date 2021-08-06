@@ -22,8 +22,9 @@ const (
 	// The debugfs file with the information on allocated framebuffers for Intel i915 GPUs.
 	i915FramebufferFile = "/sys/kernel/debug/dri/0/i915_gem_framebuffer"
 	// The debugfs file with the information on allocated framebuffers for generic
-	// implementations, e.g. AMD and modern Intel GPUs.
-	genericFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
+	// implementations, e.g. AMD, modern Intel GPUs, ARM-based devices.
+	genericFramebufferFile    = "/sys/kernel/debug/dri/0/framebuffer"
+	genericFramebufferFileAlt = "/sys/kernel/debug/dri/1/framebuffer"
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
@@ -96,7 +97,9 @@ func (g I915Backend) ReadFramebufferCount(ctx context.Context, width, height int
 type GenericBackend struct{}
 
 func genericBackend() *GenericBackend {
-	if _, err := os.Stat(genericFramebufferFile); err != nil {
+	_, err := os.Stat(genericFramebufferFile)
+	_, errAlt := os.Stat(genericFramebufferFileAlt)
+	if err != nil && errAlt != nil {
 		return nil
 	}
 	return &GenericBackend{}
@@ -116,8 +119,13 @@ func (g GenericBackend) Round(value int) int {
 func (g GenericBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
 	f, err := os.Open(genericFramebufferFile)
 	if err != nil {
-		return framebuffers, errors.Wrap(err, "failed to open dri file")
+		fAlt, errAlt := os.Open(genericFramebufferFileAlt)
+		if errAlt != nil {
+			return framebuffers, errors.Wrap(err, "failed to open dri file")
+		}
+		f = fAlt
 	}
+
 	text, err := ioutil.ReadAll(f)
 	if err != nil {
 		return framebuffers, errors.Wrap(err, "failed to read dri file")
