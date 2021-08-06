@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"path"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -162,11 +163,49 @@ func (info *vpdInfo) expected(ctx context.Context, errOut *error) *vpdInfo {
 	return &e
 }
 
+func getExpectedChassisType(fpath string, errOut *error) *jsontypes.Uint64 {
+	var err error
+	v := utils.ReadFile(fpath, &err)
+	if v == nil {
+		if err != nil {
+			errOut = &err
+		}
+		return nil
+	}
+	i, err := strconv.Atoi(*v)
+	if err != nil {
+		errOut = &err
+		return nil
+	}
+	r := jsontypes.Uint64(i)
+	return &r
+}
+
+func (info *dmiInfo) expected(ctx context.Context, errOut *error) *dmiInfo {
+	const (
+		dmi = "/sys/class/dmi/id"
+	)
+	e := dmiInfo{
+		BiosVendor:     utils.ReadFile(path.Join(dmi, "bios_vendor"), errOut),
+		BiosVersion:    utils.ReadFile(path.Join(dmi, "bios_version"), errOut),
+		BoardName:      utils.ReadFile(path.Join(dmi, "board_name"), errOut),
+		BoardVender:    utils.ReadFile(path.Join(dmi, "board_vendor"), errOut),
+		BoardVersion:   utils.ReadFile(path.Join(dmi, "board_version"), errOut),
+		ChassisVendor:  utils.ReadFile(path.Join(dmi, "chassis_vendor"), errOut),
+		ChassisType:    getExpectedChassisType(path.Join(dmi, "chassis_type"), errOut),
+		ProductFamily:  utils.ReadFile(path.Join(dmi, "product_family"), errOut),
+		ProductName:    utils.ReadFile(path.Join(dmi, "product_name"), errOut),
+		ProductVersion: utils.ReadFile(path.Join(dmi, "product_version"), errOut),
+		SysVendor:      utils.ReadFile(path.Join(dmi, "sys_vendor"), errOut),
+	}
+	return &e
+}
+
 func (info *systemInfo) expected(ctx context.Context, errOut *error) systemInfo {
 	return systemInfo{
 		OsInfo:  info.OsInfo.expected(ctx, errOut),
 		VpdInfo: info.VpdInfo.expected(ctx, errOut),
-		DmiInfo: info.DmiInfo,
+		DmiInfo: info.DmiInfo.expected(ctx, errOut),
 	}
 }
 
