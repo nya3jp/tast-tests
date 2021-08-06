@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49d56f6_5000e583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0e724f_a8871444",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3827c709_2758bf11",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-28T17:20:21Z",
       "side": 1,
       "message": "We use the term \"Holding Space\" rather than \"Tote\" in code. Let\u0027s do the same in this CL to be consistent :)",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62cb8d69_65a069a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3827c709_2758bf11",
       "range": {
         "startLine": 24,
         "startChar": 13,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de11dbc8_1625f1a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "New tests are required to be informational by the linter. I think we\u0027re meant to let them be informational at first, then eventually remove this and let them be required. I\u0027ll make sure the bug stays open until this attribute is remove, and I\u0027ll try to find some guidance on when it\u0027s correct to remove it.",
+      "parentUuid": "09435ff6_42a477c8",
+      "range": {
+        "startLine": 32,
+        "startChar": 43,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8651b3f7_48c6e219",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-07-28T17:20:21Z",
       "side": 1,
       "message": "nit: End comments with period, here and elsewhere :)",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bdbfa3e_f413a173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8651b3f7_48c6e219",
       "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "613e8425_4d807684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e647cb_a28d99dc",
+      "range": {
+        "startLine": 59,
+        "startChar": 67,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3f8b055_b5677050",
@@ -117,6 +225,24 @@
       "writtenOn": "2021-07-28T17:20:21Z",
       "side": 1,
       "message": "Consider splitting pin via context menu and pin via drag-and-drop into separate tests",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "205429d6_420b76d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f8b055_b5677050",
       "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c0a2b9_a4f1e8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/pin_to_tote_from_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2359ab4_80768c7e",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa96cfb0_b8f7ffa6",
@@ -151,6 +295,24 @@
       "writtenOn": "2021-07-28T17:20:21Z",
       "side": 1,
       "message": "Reads strangely?",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba9b868_2cd3b3e9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa96cfb0_b8f7ffa6",
       "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15adbe8_9904727b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "732a1d54_f8dfc747",
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfbebdd2_392a8baf",
@@ -185,6 +365,30 @@
       "writtenOn": "2021-07-28T17:20:21Z",
       "side": 1,
       "message": "Is it a style thing to always preface function docs w/ the name of the function?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325d5b65_4ed00e7d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Yes, required by linter.",
+      "parentUuid": "bfbebdd2_392a8baf",
       "range": {
         "startLine": 46,
         "startChar": 3,
@@ -218,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "318234ef_6dcf414c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "I went ahead and put this into its own package after all. Turns out I quickly got into circular dependencies with the filesapp and ash otherwise, so this makes the most sense.",
+      "parentUuid": "071bd4a3_a3356a0c",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65698e27_cf6f6d38",
@@ -231,6 +459,30 @@
       "writtenOn": "2021-07-28T17:20:21Z",
       "side": 1,
       "message": "Why do we want the tray icon as opposed to just the tray?",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "452a28cafaa21a17b119b80cc01a42d43f454724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f6d3a0_35aae7f8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-08-06T21:26:40Z",
+      "side": 1,
+      "message": "Because I did not notice the node containing this one in the hierarchy. :D",
+      "parentUuid": "65698e27_cf6f6d38",
       "range": {
         "startLine": 89,
         "startChar": 5,
