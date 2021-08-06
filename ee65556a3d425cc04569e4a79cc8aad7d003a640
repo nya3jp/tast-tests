@@ -16,6 +16,23 @@
       "message": "@Judy can you please provide +2 for this patch?\n\nThanks\nJilani",
       "revId": "ee65556a3d425cc04569e4a79cc8aad7d003a640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f137556_fb8656c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:05:37Z",
+      "side": 1,
+      "message": "Larger level comment: Why does this need to be a separate file?\n\nCan\u0027t we just add it as another config to the test_config.json for tbt_hotplug_unplug?\n\nThere seems to be significant portions (perhaps the entire code structure) which is in common with that test.",
+      "revId": "ee65556a3d425cc04569e4a79cc8aad7d003a640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
