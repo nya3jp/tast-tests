@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbb2a81_f8160f9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430497
+      },
+      "writtenOn": "2021-08-06T12:00:52Z",
+      "side": 1,
+      "message": "@Judy  can you please provide +2 for this patch?",
+      "revId": "6fa4a6eb8d5b79e7db4b857420759777c951da10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
