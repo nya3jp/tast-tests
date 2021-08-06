@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25297061_44de84e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-06T15:10:26Z",
+      "side": 1,
+      "message": "Also please do not +1 Code Review the change as the change author.  It\u0027s implied that you have reviewed it since you uploaded it 😊.",
+      "revId": "92771a9260807cd885aef85fb9b18a8d80160ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
