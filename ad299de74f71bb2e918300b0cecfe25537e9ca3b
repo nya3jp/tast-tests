@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e11c15c_59763c19",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-06T14:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a67b88ef_4b70bc19",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d4edcf6_1fcd8ba9",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15c67c6_4d2b9839",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-06T14:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d4edcf6_1fcd8ba9",
+      "range": {
+        "startLine": 115,
+        "startChar": 38,
+        "endLine": 115,
+        "endChar": 51
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "478d6c0e_32024d94",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-06T13:54:18Z",
       "side": 1,
       "message": "Use append here. It will make the option additive like other Chrome options.",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4019f06_6a350376",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-06T14:17:48Z",
+      "side": 1,
+      "message": "Was thinking about that. But what the case we would want to remove some policies that were linked with account?\n\nNormally I would want to convey how assignment is structures by the name of the function, like:\nSetPoliciesForPublicAccount\nAddPoliciesForPublicAccount\n\nbut I believe that is too imperative for golang.\n\nI am also fine with appending policies with highlighting in the comment that policies cannot be removed from the blob but should be `unset`.",
+      "parentUuid": "478d6c0e_32024d94",
       "range": {
         "startLine": 55,
         "startChar": 38,
