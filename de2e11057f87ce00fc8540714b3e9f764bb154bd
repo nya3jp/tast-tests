@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0e73a25_f5278ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-08-06T04:24:48Z",
+      "side": 1,
+      "message": "Not sure who the right person is to get input on this. Adding dbeckett@ and ayatane@ for now, please add others if needed.",
+      "parentUuid": "c105b590_3c1180a6",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f487d4_dd8608fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 2
