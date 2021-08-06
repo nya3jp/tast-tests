@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6da88e_10d4731e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T19:52:52Z",
+      "side": 1,
+      "message": "why calling twice?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "604a82c984264fe244897fb86ef6d6fc932c875b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32bfe4c6_1169372e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T19:52:52Z",
+      "side": 1,
+      "message": "leave this outside the if... it is repeated...",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "604a82c984264fe244897fb86ef6d6fc932c875b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
