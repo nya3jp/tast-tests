@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba43a92b_d644867a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:43:13Z",
+      "side": 1,
+      "message": "Sorry. My bad. I checked the drawing function, it checks ctx in every single step such as mouse click, drag. It will terminate the function if timeout.",
+      "parentUuid": "6755b628_c61e40c9",
+      "range": {
+        "startLine": 362,
+        "startChar": 48,
+        "endLine": 362,
+        "endChar": 63
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf68cae2_8c7ea77c",
