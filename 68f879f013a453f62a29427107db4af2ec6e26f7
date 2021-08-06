@@ -16,6 +16,142 @@
       "message": "Please review thoroughly.. it\u0027s my first time writing Go",
       "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5dcc85_a25cf2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/firmware_manifest_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "I had to dig through the code to figure out that this was generated from a proto. Maybe add a comment above this?",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2f54d3_25781e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/firmware_manifest_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "Make this a sentence and describe the return value (it\u0027s not obvious to me what |message| actually represents).",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87ca9ae_6bfab090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/firmware_manifest_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "Is this needed? i.e. will testexec.CommandContext fail with a descriptve error if the file does not exist?",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d78557_ec431d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/firmware_manifest_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "Merge the if with the testexec.CommandContext.",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a50527d_fc6b5487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "Is this ever expected? I added a test that \"passes\" if no SIM slots are available, but we actually always expect a slot to be available, so it gives time impression that boards without a SIM or with a bad SIM are \"passing\", which caused some confusion.\n\nI have been meaning to investigate whether there is a \"not run\" or \"warning\" option, I will let you know what I learn. I think maybe using s.Error?",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a5b26cb_9eac4924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "Combine lines",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74bb6b2_8cb65c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "No else after Fatal or return",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4ebd6c_6ded4a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-06T16:23:22Z",
+      "side": 1,
+      "message": "From: https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#naming\n\"the length of a name should be proportional to the size of its scope and inversely proportional to the number of times that it is used within that scope\"\n\ni.e. maybe use a shorter name here :-)",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
