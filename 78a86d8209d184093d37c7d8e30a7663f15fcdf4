@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6883b9c_fe768306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-06T06:27:41Z",
+      "side": 1,
+      "message": "Maybe we can add this to the whole test for simplicity? Since we already require hwdep.InternalDisplay(), there might be little value for adding a new subtest.",
+      "revId": "78a86d8209d184093d37c7d8e30a7663f15fcdf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
