@@ -30,6 +30,7 @@ const (
 	textID   = idPrefix + "notification_text"
 	idID     = idPrefix + "notification_id"
 	sendID   = idPrefix + "send_button"
+	removeID = idPrefix + "remove_button"
 )
 
 // ARCClient holds the resource that needed across ARC notification tast test steps.
@@ -124,6 +125,40 @@ func (t *ARCClient) CreateOrUpdateTestNotification(ctx context.Context, tconn *c
 		return errors.New("generated notification not found")
 	}, pollOpts); err != nil {
 		return errors.Wrap(err, "notification created unsuccessfully")
+	}
+
+	return nil
+}
+
+// RemoveNotification removes an ARC notification with the given msgID.
+func (t *ARCClient) RemoveNotification(ctx context.Context, tconn *chrome.TestConn, msgID string) error {
+	// Remove notification by interacting with the testing app.
+	if err := t.d.Object(ui.ID(idID)).SetText(ctx, msgID); err != nil {
+		return errors.Wrapf(err, "failed to set message ID to %s", msgID)
+	}
+	if err := t.d.Object(ui.ID(removeID)).Click(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click %s button", removeID)
+	}
+
+	// Make sure that the notification removed successfully.
+	pollOpts := &testing.PollOptions{Timeout: 10 * time.Second}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ns, err := ash.Notifications(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get notifications")
+		}
+
+		// Notification ID on Android is composed of many components.
+		// This is the substring to match the generated notification.
+		notificationID := "|" + pkg + "|" + msgID + "|"
+		for _, n := range ns {
+			if strings.Contains(n.ID, notificationID) {
+				return errors.New("notification with given msgID still exist")
+			}
+		}
+		return nil
+	}, pollOpts); err != nil {
+		return errors.Wrap(err, "notification removed unsuccessfully")
 	}
 
 	return nil
