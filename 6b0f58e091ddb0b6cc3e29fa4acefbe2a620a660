@@ -70,6 +70,30 @@
       },
       "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d23dd0b_4cc63c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T20:09:45Z",
+      "side": 1,
+      "message": "If the function returns \"update\" or \"reinstall\" you could do:\n\n  subcmd :\u003d updateCheck()\n  cmd :\u003d testexec.CommandContext(ctx, \"/usr/bin/fwupdmgr\", subcmd, \"-v\", \"b585990a-003e-5270-89d5-3705a17f9a43\")",
+      "parentUuid": "b569c542_24765476",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
