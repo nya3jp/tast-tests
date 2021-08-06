@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75d4fa7_52e2ff19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:19:12Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m lacking the complete context but: Is the test assuming that this file is already present in /home/chronos/user/Downloads? \n\nI don\u0027t think we should assume that. Is it possible to just have a file just for this test?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd2fdf2_76d2afc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:19:12Z",
+      "side": 1,
+      "message": "I suspect it is better to just calculate this from the file itself dynamically rather than hardcoding it here (that way even if the file changes later, we don\u0027t need to update this variable).",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4422bdfc_35af3eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:19:12Z",
+      "side": 1,
+      "message": "Isn\u0027t this stuff being tested by another test? It seems repetitive to test this here too.\n\nSounds like we should either remove these checks here, or then eliminate the other test (tbt_hotplug_unplug.go)",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d4dd9c_c5e84033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:19:12Z",
+      "side": 1,
+      "message": "nit: camelcase is preferred for local variables in golang: https://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 20
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2583d691_1836671d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:19:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like a sufficient check, if we\u0027re trying to test a file transfer.\n\nHow do we know the file was transfered successfully and wasn\u0027t corrupted?\n\nI would suggest to do the following:\n- A custom \"known\" file.\n- Calculate the SHA1 hash of the file contents at the source location.\n- Perform the transfer.\n- Calculate the SHA1 has of the file contents at the destination location.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019bbe00_bcd0448d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:19:12Z",
+      "side": 1,
+      "message": "Please add an additional string clarifying the error here: we aren\u0027t expecting to see a device, and the calling function only surfaces an error string when a device wasn\u0027t enumerated.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
