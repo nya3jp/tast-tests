@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2750c57_9b7ebeb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-08-06T00:33:18Z",
+      "side": 1,
+      "message": "This is just a move, right? Hard to tell if any code has changed",
+      "revId": "f75baee649009c120629700f82d112f3a8235609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
