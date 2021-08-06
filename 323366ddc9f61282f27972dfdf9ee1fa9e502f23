@@ -16,6 +16,69 @@
       "message": "LGTM % defer to inputs team\u0027s review",
       "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb92d9f_a0abd012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-06T07:57:09Z",
+      "side": 1,
+      "message": "Looks fine to be, but think Leo might know better about if there is a better way to wait for it to be ready in tests.",
+      "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d55bec_677904b7",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-06T07:57:09Z",
+      "side": 1,
+      "message": "nit: andWaitWarmUpTime()\n\nMight be personal pref, but think it\u0027s more explicit.",
+      "range": {
+        "startLine": 78,
+        "startChar": 29,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab2ae28_72e71855",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-08-06T07:57:09Z",
+      "side": 1,
+      "message": "googleo@ Is there going to be a way in the future to tell when the decoder is ready so we don\u0027t need to just have a long timeout?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 74
+      },
+      "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
