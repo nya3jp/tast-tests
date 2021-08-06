@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afd11cf_3b87512a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-06T01:27:33Z",
+      "side": 1,
+      "message": "\u003e WARNING: gwsq was unable to find a reviewer who is not on vacation. As a fallback, gwsq is ignoring vacations and assigning jbettis (shadowed).\n\u003e From chrome_platform/tast/gerrit.gwsq:\n\u003e Note: A shadow reviewer was assigned to this CL.\n\u003e Shadowed: jbettis\n\u003e \n\u003e Reviewer source(s):\n\u003e jbettis, yamaguchi is from context\n\nFYI, I skipped the shadow review process this time because jbettis will be absent for several days.",
+      "revId": "8297a126734fd2920e71fe975898acb3c1aa8018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7217f7f7_7ba43598",
