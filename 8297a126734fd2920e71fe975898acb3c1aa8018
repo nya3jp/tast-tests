@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7217f7f7_7ba43598",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-06T01:22:39Z",
+      "side": 1,
+      "message": "add another %s (for err) at the end",
+      "range": {
+        "startLine": 63,
+        "startChar": 61,
+        "endLine": 63,
+        "endChar": 68
+      },
+      "revId": "8297a126734fd2920e71fe975898acb3c1aa8018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
