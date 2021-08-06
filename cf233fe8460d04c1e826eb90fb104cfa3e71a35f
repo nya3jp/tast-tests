@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3036491_7bf79db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-06T22:46:40Z",
+      "side": 1,
+      "message": "If we check for that though, we wouldn\u0027t know whether the battery was also full. That\u0027s why I used the method call.\n\nAnd if the system doesn\u0027t have a battery, should I have the test run an update still?",
+      "parentUuid": "7e580e81_ddc6c592",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bfb61bb_1b195e49",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 15
