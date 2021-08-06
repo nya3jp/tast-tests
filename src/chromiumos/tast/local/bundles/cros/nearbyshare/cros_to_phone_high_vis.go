@@ -8,6 +8,9 @@ import (
 	"context"
 	"path/filepath"
 
+	//"regexp"
+	//"time"
+
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/android"
@@ -16,6 +19,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	// "chromiumos/tast/local/chrome/ash"
+	// "chromiumos/tast/local/chrome/uiauto"
+	// "chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
 func init() {
@@ -119,9 +125,19 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	s.Log("Cancel the transfer before SelectShareTarget")
+	if err := sender.Cancel(ctx); err != nil {
+		s.Fatal("CrOS device failed to cancel the transfer: ", err)
+	}
+
 	s.Log("Waiting for CrOS sender to detect Android receiver")
 	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbycommon.DetectShareTargetTimeout); err != nil {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
+	}
+
+	s.Log("Cancel the transfer after SelectShareTarget")
+	if err := sender.CancelSelect(ctx); err != nil {
+		s.Log("CrOS device failed to cancel the transfer: ", err)
 	}
 
 	s.Log("Waiting for Android receiver to detect the incoming share from CrOS sender")
@@ -139,6 +155,19 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	if err := androidDevice.AcceptTheSharing(ctx, token); err != nil {
 		s.Fatal("Failed to accept the share on the Android device: ", err)
 	}
+
+	// if _, err := ash.WaitForNotification(ctx, tconn, 10*time.Second,
+	// 	ash.WaitTitleContains("Nearby Share"),
+	// ); err != nil {
+	// 	s.Fatal("Failed to wait for notification : ", err)
+	// }
+
+	// r := regexp.MustCompile("(CANCEL)")
+	// ui := uiauto.New(tconn)
+	// btn := nodewith.ClassName("NotificationMdTextButton").NameRegex(r)
+	// if err := ui.LeftClick(btn)(ctx); err != nil {
+	// 	s.Fatal("Failed to click Cancel : ", err)
+	// }
 
 	s.Log("Waiting for the Android receiver to signal that sharing has completed")
 	if err := androidDevice.AwaitSharingStopped(ctx, testData.TransferTimeout); err != nil {
