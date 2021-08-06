@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173b9746_e8eed411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-06T01:50:17Z",
+      "side": 1,
+      "message": "Agree. I do not see +2 from a team member yet. I\u0027ll wait for that and then start to review.",
+      "parentUuid": "7c85f814_24d30f94",
+      "revId": "f7bb78c1667ac4c10ea25a91b5835e5695234e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af80cf16_7aebc202",
