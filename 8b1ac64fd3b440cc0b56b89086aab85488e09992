@@ -16,6 +16,29 @@
       "message": "@Alex can you please provide CQ+2 for this patch?\n\nThanks",
       "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814feaf9_6b584e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:24:45Z",
+      "side": 1,
+      "message": "How are you ensuring that the peripheral switches to TBT mode after login? Are you ensuring that the DevicePciPeripheralDataAccessEnabled Device setting is set to true, prior to login? If not, then a TBT device which *does* support USB+DP alt mode will never enter TBT mode.\n\nCan you verify this works with such a dock, for example, Dell WD19TB ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
