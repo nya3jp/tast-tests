@@ -22,6 +22,30 @@
       },
       "revId": "e9a495b6923eb6841335546be5724822093b10d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708cb011_f05d2038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-06T23:02:25Z",
+      "side": 1,
+      "message": "Not yet. The json looks like one entry that contains an array of json entries, so I tried to parse it that way, but its still coming back empty. \n\nI referred to this strategy: https://www.sohamkamani.com/golang/parsing-json/#embedded-objects.",
+      "parentUuid": "a2afcac1_6c61036c",
+      "range": {
+        "startLine": 87,
+        "startChar": 35,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "e9a495b6923eb6841335546be5724822093b10d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
