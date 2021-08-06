@@ -55,6 +55,16 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
+			Name:              "h264_720p_l1t2",
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.H264BaselineProf, "L1T2"),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+			ExtraData:         encode.TestData(tulip720P),
+		}, {
+			Name:              "h264_720p_l1t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.H264BaselineProf, "L1T3"),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+			ExtraData:         encode.TestData(tulip720P),
+		}, {
 			Name:              "h264_1080p",
 			Val:               encode.MakeTestOptions(crowd1080P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
