@@ -22,8 +22,10 @@ const (
 	// The debugfs file with the information on allocated framebuffers for Intel i915 GPUs.
 	i915FramebufferFile = "/sys/kernel/debug/dri/0/i915_gem_framebuffer"
 	// The debugfs file with the information on allocated framebuffers for generic
-	// implementations, e.g. AMD and modern Intel GPUs.
-	genericFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
+	// implementations, e.g. AMD, modern Intel GPUs, ARM-based devices.
+	genericFramebufferFilePattern = "/sys/kernel/debug/dri/%d/framebuffer"
+	// Maximum DRM device minor number.
+	maxDRMDeviceNumber = 64
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
@@ -93,13 +95,18 @@ func (g I915Backend) ReadFramebufferCount(ctx context.Context, width, height int
 }
 
 // GenericBackend implements Backend for the Generic case (Intel and AMD).
-type GenericBackend struct{}
+type GenericBackend struct {
+	// Index of the DRM card device file (X in /dev/dri/cardX).
+	Index int
+}
 
 func genericBackend() *GenericBackend {
-	if _, err := os.Stat(genericFramebufferFile); err != nil {
-		return nil
+	for i := 0; i < maxDRMDeviceNumber; i++ {
+		if _, err := os.Stat(fmt.Sprintf(genericFramebufferFilePattern, i)); err == nil {
+			return &GenericBackend{i}
+		}
 	}
-	return &GenericBackend{}
+	return nil
 }
 
 // Round rounds up value for the Generic Debugfs platforms and all codecs.
@@ -109,15 +116,16 @@ func (g GenericBackend) Round(value int) int {
 	return (value + genericAlignment - 1) & ^(genericAlignment - 1)
 }
 
-// ReadFramebufferCount tries to open the genericFramebufferFile and count the
-// amount of lines of dimensions width x height, which corresponds to the amount
-// of framebuffers allocated in the system.
-// See https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
+// ReadFramebufferCount tries to open the DRM device file and count the amount
+// of lines of dimensions width x height, which corresponds to the amount of
+// framebuffers allocated in the system. See
+// https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
 func (g GenericBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
-	f, err := os.Open(genericFramebufferFile)
+	f, err := os.Open(fmt.Sprintf(genericFramebufferFilePattern, g.Index))
 	if err != nil {
 		return framebuffers, errors.Wrap(err, "failed to open dri file")
 	}
+
 	text, err := ioutil.ReadAll(f)
 	if err != nil {
 		return framebuffers, errors.Wrap(err, "failed to read dri file")
