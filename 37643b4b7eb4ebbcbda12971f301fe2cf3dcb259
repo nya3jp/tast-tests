@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0d5672_084bc22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-06T16:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b4e2d9_5ff0f9a3",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "37643b4b7eb4ebbcbda12971f301fe2cf3dcb259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b448a1fd_eda9b13a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-05T16:13:40Z",
       "side": 1,
       "message": "This is the delay for the computer to register the discharge. I have yet to add the wait time in the case of a full battery, as it will be ~20 minutes.\n\nTherefore, I will wait until the final patchset so this delay does not slow down testing.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "37643b4b7eb4ebbcbda12971f301fe2cf3dcb259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9059ac20_ae4571c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-06T16:17:33Z",
+      "side": 1,
+      "message": "Decided to repeatedly query battery information until we know its discharging, and then wait 10 seconds for fwupd to register the discharge. This way, we don\u0027t need to hard code a 20 minute sleep.",
+      "parentUuid": "b448a1fd_eda9b13a",
       "range": {
         "startLine": 80,
         "startChar": 2,
