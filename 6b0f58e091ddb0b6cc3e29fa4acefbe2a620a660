@@ -46,6 +46,30 @@
       },
       "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b569c542_24765476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-06T18:31:44Z",
+      "side": 1,
+      "message": "In that case, it probably isn\u0027t worth calling the function, and you could just copy it into your code. Taking out the lines running the commands basically just leaves a couple of lines to run \"fwupdmgr get-plugins\", which you could just add into your test. By this I mean:\n\n\n\n   cmd :\u003d testexec.CommandContext(ctx, \"/usr/bin/fwupdmgr\", \"get-updates\")\n\toutput, err :\u003d cmd.Output(testexec.DumpLogOnError)\n\n\tvar upd1 *testexec.Cmd\n\tvar stdout io.ReadCloser\n\n\tif err \u003d\u003d nil \u0026\u0026 output !\u003d nil {\n\t        ***Lines 67 to 71***\n        } else {\n                ***Lines 67 to 71 [but reinstall]***\n        }\n}",
+      "parentUuid": "6d21d79b_31a708c1",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
