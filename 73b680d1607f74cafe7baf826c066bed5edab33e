@@ -191,6 +191,24 @@
       "parentUuid": "7e4b819b_122a811f",
       "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e316cbe4_66b4b801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-06T05:58:26Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t notice that recent failures were for fixture failures, which are unrelated to this issue.\n\nGiven that we don\u0027t see the failure for a week, I think it\u0027s ready to go. Thanks for clarification.",
+      "parentUuid": "b7e3daad_545f92f6",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
