@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928aae97_6fafdc82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-06T21:59:08Z",
+      "side": 0,
+      "message": "Presubmit script no longer like this. I could not figure out a way to share the list Looking at https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/tast-lint/check/declarations_test.go;l\u003d199\n\n`foo.BarList` looks promissing but I could not get it to work. 😞\n\nSo expand the list in-place to make presubmit script happy.",
+      "revId": "ef34cd96f4462afc8cac0dd34e665eb812e9af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
