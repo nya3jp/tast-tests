@@ -39,6 +39,30 @@
       },
       "revId": "e4582fa27c8bad55fa06f9efe67a59307570556f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef128706_dae851f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_ext.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-06T11:22:17Z",
+      "side": 1,
+      "message": "site is restricted, in the document shared for test cases*",
+      "parentUuid": "a1343c49_c98b4dfe",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "e4582fa27c8bad55fa06f9efe67a59307570556f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
