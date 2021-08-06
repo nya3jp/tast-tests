@@ -16,6 +16,29 @@
       "message": "This is just a move, right? Hard to tell if any code has changed",
       "revId": "f75baee649009c120629700f82d112f3a8235609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af64facb_549f084a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-08-06T00:34:23Z",
+      "side": 1,
+      "message": "+meetingCode is the only new part I guess? Is it normal in go to not have whitespace around \u0027+\u0027?",
+      "range": {
+        "startLine": 444,
+        "startChar": 60,
+        "endLine": 444,
+        "endChar": 72
+      },
+      "revId": "f75baee649009c120629700f82d112f3a8235609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
