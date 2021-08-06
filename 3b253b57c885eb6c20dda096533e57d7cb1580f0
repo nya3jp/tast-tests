@@ -16,6 +16,167 @@
       "message": "Hi Alex and Jun, this is another CL that is required by moblab launch of CUJ test. Could you review it as high priority? Thank you.",
       "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7965c3ea_de768311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "Please add a comment where the source is from. For example go/speara-metrics.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13637396_dd74bcff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e9ea245_c2061b14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3411bcf_9d710918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92c4c31_52cdc8ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd713df_d63fd863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c253a7d0_3e494e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:08:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
