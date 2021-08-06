@@ -21,6 +21,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -65,6 +66,8 @@ const (
 	Expert string = "expert"
 	// SaveMetadata is the state used to indicate save metadata.
 	SaveMetadata = "save-metadata"
+
+	arcCameraFolderPath = "data/media/0/DCIM/Camera"
 )
 
 // TimerState is the information of whether shutter timer is on.
@@ -916,6 +919,15 @@ func ClearSavedDirs(ctx context.Context, cr *chrome.Chrome) error {
 // SavedDirs returns the path to the folder where captured files are saved.
 func (a *App) SavedDirs(ctx context.Context) ([]string, error) {
 	return savedDirs(ctx, a.cr)
+}
+
+// AndroidDataDir returns the path to the folder saving intent result passed to Android app.
+func (a *App) AndroidDataDir(ctx context.Context) ([]string, error) {
+	androidDataDir, err := arc.AndroidDataDir(a.cr.NormalizedUser())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android data dir")
+	}
+	return []string{filepath.Join(androidDataDir, arcCameraFolderPath)}, nil
 }
 
 // FilePathInSavedDirs finds and returns the path of the target file in saved directories.

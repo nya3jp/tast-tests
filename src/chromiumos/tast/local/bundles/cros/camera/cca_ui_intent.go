@@ -7,7 +7,6 @@ package camera
 import (
 	"context"
 	"fmt"
-	"path/filepath"
 	"regexp"
 	"time"
 
@@ -38,8 +37,16 @@ type testBehavior struct {
 	ShouldShowResultInApp     bool
 }
 
+// resultDirType is the type of directory saving result file.
+type resultDirType int
+
+const (
+	cameraDir resultDirType = iota
+	arcDataDir
+)
+
 type resultInfo struct {
-	Dir         string
+	dirType     resultDirType
 	FilePattern *regexp.Regexp
 }
 
@@ -51,14 +58,13 @@ const (
 	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
 	// TODO(https://crbug.com/1058325): Change all mkv to mp4 once the migration is done.
 	// The content of test.mkv might be mp4 during the mkv to mp4 migration period.
-	testVideoURI        = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
-	arcCameraFolderPath = "data/media/0/DCIM/Camera"
-	testAppAPK          = "ArcCameraIntentTest.apk"
-	testAppPkg          = "org.chromium.arc.testapp.cameraintent"
-	testAppActivity     = "org.chromium.arc.testapp.cameraintent.MainActivity"
-	testAppTextFieldID  = "org.chromium.arc.testapp.cameraintent:id/text"
-	resultOK            = "-1"
-	resultCanceled      = "0"
+	testVideoURI       = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	testAppAPK         = "ArcCameraIntentTest.apk"
+	testAppPkg         = "org.chromium.arc.testapp.cameraintent"
+	testAppActivity    = "org.chromium.arc.testapp.cameraintent.MainActivity"
+	testAppTextFieldID = "org.chromium.arc.testapp.cameraintent:id/text"
+	resultOK           = "-1"
+	resultCanceled     = "0"
 )
 
 var (
@@ -85,6 +91,98 @@ var (
 	}
 )
 
+type intentSubTest struct {
+	Name          string
+	IntentOptions intentOptions
+}
+
+var commonSubTests = []intentSubTest{{
+	Name: "take photo (no extra)",
+	IntentOptions: intentOptions{
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureConfirmAndDone,
+	},
+}, {
+	Name: "take photo (has extra)",
+	IntentOptions: intentOptions{
+		Action:       takePhotoAction,
+		URI:          testPhotoURI,
+		Mode:         cca.Photo,
+		TestBehavior: captureConfirmAndDone,
+		ResultInfo: resultInfo{
+			FilePattern: testPhotoPattern,
+		},
+	},
+}, {
+	Name: "launch camera on photo mode",
+	IntentOptions: intentOptions{
+		Action:       launchOnPhotoModeAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureAndAlive,
+		ResultInfo: resultInfo{
+			FilePattern: cca.PhotoPattern,
+		},
+	},
+}, {
+	Name: "launch camera on video mode",
+	IntentOptions: intentOptions{
+		Action:       launchOnVideoModeAction,
+		URI:          "",
+		Mode:         cca.Video,
+		TestBehavior: captureAndAlive,
+		ResultInfo: resultInfo{
+			FilePattern: cca.VideoPattern,
+		},
+	},
+}, {
+	Name: "close app",
+	IntentOptions: intentOptions{
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: closeApp,
+	},
+}, {
+	Name: "cancel when review",
+	IntentOptions: intentOptions{
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureCancelAndAlive,
+	},
+},
+}
+
+var videoSubTests = []intentSubTest{
+	{
+		Name: "record video (no extras)",
+		IntentOptions: intentOptions{
+			Action:       recordVideoAction,
+			URI:          "",
+			Mode:         cca.Video,
+			TestBehavior: captureConfirmAndDone,
+			ResultInfo: resultInfo{
+				dirType:     arcDataDir,
+				FilePattern: cca.VideoPattern,
+			},
+		},
+	}, {
+		Name: "record video (has extras)",
+		IntentOptions: intentOptions{
+			Action:       recordVideoAction,
+			URI:          testVideoURI,
+			Mode:         cca.Video,
+			TestBehavior: captureConfirmAndDone,
+			ResultInfo: resultInfo{
+				FilePattern: testVideoPattern,
+			},
+		},
+	},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIIntent,
@@ -97,10 +195,22 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
+			Val:               commonSubTests,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.Booted(),
+			Val:               commonSubTests,
+		}, {
+			Name:              "video",
+			ExtraSoftwareDeps: []string{"android_p", "proprietary_codecs"},
+			Pre:               arc.Booted(),
+			Val:               videoSubTests,
+		}, {
+			Name:              "vm_video",
+			ExtraSoftwareDeps: []string{"android_vm", "proprietary_codecs"},
+			Pre:               arc.Booted(),
+			Val:               videoSubTests,
 		}},
 	})
 }
@@ -135,99 +245,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
-	if err != nil {
-		s.Fatal("Failed to get Android data dir: ", err)
-	}
-	arcCameraFolderPathOnChromeOS := filepath.Join(androidDataDir, arcCameraFolderPath)
-
 	subTestTimeout := 20 * time.Second
-	for _, tc := range []struct {
-		Name          string
-		IntentOptions intentOptions
-	}{
-		{
-			Name: "take photo (no extra)",
-			IntentOptions: intentOptions{
-				Action:       takePhotoAction,
-				URI:          "",
-				Mode:         cca.Photo,
-				TestBehavior: captureConfirmAndDone,
-			},
-		}, {
-			Name: "take photo (has extra)",
-			IntentOptions: intentOptions{
-				Action:       takePhotoAction,
-				URI:          testPhotoURI,
-				Mode:         cca.Photo,
-				TestBehavior: captureConfirmAndDone,
-				ResultInfo: resultInfo{
-					FilePattern: testPhotoPattern,
-				},
-			},
-		}, {
-			Name: "launch camera on photo mode",
-			IntentOptions: intentOptions{
-				Action:       launchOnPhotoModeAction,
-				URI:          "",
-				Mode:         cca.Photo,
-				TestBehavior: captureAndAlive,
-				ResultInfo: resultInfo{
-					FilePattern: cca.PhotoPattern,
-				},
-			},
-		}, {
-			Name: "launch camera on video mode",
-			IntentOptions: intentOptions{
-				Action:       launchOnVideoModeAction,
-				URI:          "",
-				Mode:         cca.Video,
-				TestBehavior: captureAndAlive,
-				ResultInfo: resultInfo{
-					FilePattern: cca.VideoPattern,
-				},
-			},
-		}, {
-			Name: "record video (no extras)",
-			IntentOptions: intentOptions{
-				Action:       recordVideoAction,
-				URI:          "",
-				Mode:         cca.Video,
-				TestBehavior: captureConfirmAndDone,
-				ResultInfo: resultInfo{
-					Dir:         arcCameraFolderPathOnChromeOS,
-					FilePattern: cca.VideoPattern,
-				},
-			},
-		}, {
-			Name: "record video (has extras)",
-			IntentOptions: intentOptions{
-				Action:       recordVideoAction,
-				URI:          testVideoURI,
-				Mode:         cca.Video,
-				TestBehavior: captureConfirmAndDone,
-				ResultInfo: resultInfo{
-					FilePattern: testVideoPattern,
-				},
-			},
-		}, {
-			Name: "close app",
-			IntentOptions: intentOptions{
-				Action:       takePhotoAction,
-				URI:          "",
-				Mode:         cca.Photo,
-				TestBehavior: closeApp,
-			},
-		}, {
-			Name: "cancel when review",
-			IntentOptions: intentOptions{
-				Action:       takePhotoAction,
-				URI:          "",
-				Mode:         cca.Photo,
-				TestBehavior: captureCancelAndAlive,
-			},
-		},
-	} {
+	for _, tc := range s.Param().([]intentSubTest) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.Name, func(ctx context.Context, s *testing.State) {
 			if err := cca.ClearSavedDirs(ctx, cr); err != nil {
@@ -411,13 +430,17 @@ func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, startT
 
 	var dirs []string
 	var err error
-	if info.Dir == "" {
+
+	if info.dirType == cameraDir {
 		dirs, err = app.SavedDirs(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get CCA default saved path")
 		}
 	} else {
-		dirs = []string{info.Dir}
+		dirs, err = app.AndroidDataDir(ctx)
+		if err != nil {
+			return err
+		}
 	}
 	testing.ContextLog(ctx, "Checking capture result")
 	if shouldConfirm {
