@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69b4e2d9_5ff0f9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T04:40:26Z",
+      "side": 1,
+      "message": "Get rid of the output pattern matching and just check expected return values of the executions",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "37643b4b7eb4ebbcbda12971f301fe2cf3dcb259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b448a1fd_eda9b13a",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 10
