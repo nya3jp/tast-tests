@@ -16,6 +16,75 @@
       "message": "checked the change with applying policies to none and to more than one public local account",
       "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67b88ef_4b70bc19",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-06T13:54:18Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4edcf6_1fcd8ba9",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-06T13:54:18Z",
+      "side": 1,
+      "message": "Is this constant used anywhere else? If not move the const inside the function.",
+      "range": {
+        "startLine": 115,
+        "startChar": 38,
+        "endLine": 115,
+        "endChar": 51
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "478d6c0e_32024d94",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-06T13:54:18Z",
+      "side": 1,
+      "message": "Use append here. It will make the option additive like other Chrome options.",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
