@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af607f35_2f42e25b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T17:29:22Z",
+      "side": 1,
+      "message": "nit: inconsistent indentation -- L53 is indented twice more than L52. Either unindent L53-60, or add one additional indent to L52.",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cebc170_de623f27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T17:29:22Z",
+      "side": 1,
+      "message": "Why do we need this line? Would the servo ever report a negative voltage or current?",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb71f699_6a466ef9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T17:29:22Z",
+      "side": 1,
+      "message": "Why do we need this line? Would the kernel ever report a negative voltage or current?",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52169f9d_84898c3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T17:29:22Z",
+      "side": 1,
+      "message": "I think we need to take abs(servoReading - kernelReading). Otherwise, if servoReading is too low, this won\u0027t throw an error.\n\nFor example, if servoReading\u003d\u003d1 and kernelReading\u003d\u003d10000, then we would see (servoReading - kernelReading) \u003d\u003d -9999, which is much less than tc.errorMargin. But if we took abs(), then we\u0027d have 9999, which is higher than tc.errorMargin, so would throw an error, as expected.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
