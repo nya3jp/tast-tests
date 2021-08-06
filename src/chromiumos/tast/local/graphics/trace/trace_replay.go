@@ -53,13 +53,17 @@ const (
 func logGuestInfo(ctx context.Context, guest IGuestOS, file string) error {
 	f, err := os.Create(file)
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "unable to create %s", file)
 	}
 	defer f.Close()
 
 	cmd := guest.Command(ctx, "glxinfo", "-display", ":0")
 	cmd.Stdout, cmd.Stderr = f, f
-	return cmd.Run()
+	err = cmd.Run()
+	if err != nil {
+		return errors.Wrapf(err, "unable to run glxinfo (check %s for stderr output)", glxInfoFile)
+	}
+	return nil
 }
 
 func getSystemInfo(sysInfo *comm.SystemInfo) error {
