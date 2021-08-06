@@ -111,7 +111,7 @@ func GetRootPID() (int, error) {
 }
 
 // getProcesses returns Chrome processes with the --type=${t} flag.
-func getProcesses(t string) ([]process.Process, error) {
+func getProcesses(t string) ([]*process.Process, error) {
 	ps, err := process.Processes()
 	if err != nil {
 		return nil, err
@@ -121,7 +121,7 @@ func getProcesses(t string) ([]process.Process, error) {
 	flg := " --type=" + t + " "
 	// Or accept the --type= flag on the end of the command line.
 	endFlg := " --type=" + t
-	var ret []process.Process
+	var ret []*process.Process
 	for _, proc := range ps {
 		if exe, err := proc.Exe(); err != nil || exe != ExecPath {
 			continue
@@ -141,28 +141,28 @@ func getProcesses(t string) ([]process.Process, error) {
 			continue
 		}
 		if strings.Contains(cmd, flg) || strings.HasSuffix(cmd, endFlg) {
-			ret = append(ret, *proc)
+			ret = append(ret, proc)
 		}
 	}
 	return ret, nil
 }
 
 // GetPluginProcesses returns Chrome plugin processes.
-func GetPluginProcesses() ([]process.Process, error) {
+func GetPluginProcesses() ([]*process.Process, error) {
 	return getProcesses("plugin")
 }
 
 // GetRendererProcesses returns Chrome renderer processes.
-func GetRendererProcesses() ([]process.Process, error) {
+func GetRendererProcesses() ([]*process.Process, error) {
 	return getProcesses("renderer")
 }
 
 // GetGPUProcesses returns Chrome gpu-process processes.
-func GetGPUProcesses() ([]process.Process, error) {
+func GetGPUProcesses() ([]*process.Process, error) {
 	return getProcesses("gpu-process")
 }
 
 // GetBrokerProcesses returns Chrome broker processes.
-func GetBrokerProcesses() ([]process.Process, error) {
+func GetBrokerProcesses() ([]*process.Process, error) {
 	return getProcesses("broker")
 }

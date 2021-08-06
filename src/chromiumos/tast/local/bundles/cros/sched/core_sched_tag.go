@@ -113,7 +113,7 @@ func verifyTags() error {
 	}
 
 	for _, proc := range procs {
-		parentCookie, _ := getProcCookie(&proc)
+		parentCookie, _ := getProcCookie(proc)
 		if parentCookie == 0 {
 			return errors.Errorf("main thread of %d not tagged", proc.Pid)
 		}
@@ -123,7 +123,7 @@ func verifyTags() error {
 		}
 		cookieMap[parentCookie] = true
 
-		threads, err := getThreadsFromProcess(&proc)
+		threads, err := getThreadsFromProcess(proc)
 		if err != nil {
 			return errors.Wrap(err, "failed to get threads in process")
 		}
