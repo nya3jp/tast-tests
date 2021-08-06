@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e459d71_8be3b654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T02:59:20Z",
+      "side": 1,
+      "message": "Hi reviewers, the failed cases in tastboard is not test related.",
+      "revId": "99df45968a23e7815f2b894a6ba4720ccdf3d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
