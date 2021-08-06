@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e5f1825a_57a961a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-06T01:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b904557b_27643ef3",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 273,
+        "endChar": 61
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1e0adc25_641ace94",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 6
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0c496c_485d8be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-06T01:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9508075_eebacf7a",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 348,
+        "endChar": 3
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdb1265f_84c17d5b",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-08-05T11:57:40Z",
       "side": 1,
       "message": "This takes too much time to check warm up. Is it possible to still use warmup file?",
+      "range": {
+        "startLine": 362,
+        "startChar": 48,
+        "endLine": 362,
+        "endChar": 63
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316d77aa_804cdc4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-06T01:17:04Z",
+      "side": 1,
+      "message": "probably not a good idea, since there is no guarantte that the warmup file has been downloaded. Revise it to limit the time of handwriting for warming up, since it only checks if the field is empty.",
+      "parentUuid": "fdb1265f_84c17d5b",
       "range": {
         "startLine": 362,
         "startChar": 48,
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e9ea31_f6f8df02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-06T01:17:04Z",
+      "side": 1,
+      "message": "Revised to inputField.isSupport(inputModality).\nDoing inputModality.isSupported(inputField) adds unnecessary dependency of test_server.go to util.go",
+      "parentUuid": "bf68cae2_8c7ea77c",
+      "range": {
+        "startLine": 398,
+        "startChar": 29,
+        "endLine": 398,
+        "endChar": 40
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bce9be3_6aabfc27",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-08-05T11:57:40Z",
       "side": 1,
       "message": "This is too long. \n{Timeout: 1 * time.Second} with default interval is enough.",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d87b0b50_24a7c27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-06T01:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bce9be3_6aabfc27",
       "range": {
         "startLine": 90,
         "startChar": 4,
