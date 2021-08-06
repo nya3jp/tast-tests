@@ -209,6 +209,23 @@
       "parentUuid": "b7e3daad_545f92f6",
       "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c552b39b_2bc5c282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-06T07:34:42Z",
+      "side": 1,
+      "message": "All outstanding questions + issues resolved. Ready to go for reenabling the test!",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
