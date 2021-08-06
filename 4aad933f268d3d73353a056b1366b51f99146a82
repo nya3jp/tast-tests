@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a3e797_336e52f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-06T14:44:07Z",
+      "side": 1,
+      "message": "LGTM % last nit 😊",
+      "revId": "4aad933f268d3d73353a056b1366b51f99146a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81eacc53_b8de4bca",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-06T14:44:07Z",
+      "side": 1,
+      "message": "minor nit: policies\n\nLets use a longer name in the argument list.",
+      "range": {
+        "startLine": 50,
+        "startChar": 45,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "4aad933f268d3d73353a056b1366b51f99146a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
