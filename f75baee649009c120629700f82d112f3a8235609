@@ -39,6 +39,48 @@
       },
       "revId": "f75baee649009c120629700f82d112f3a8235609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578e48e3_7b301bc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-06T15:56:26Z",
+      "side": 1,
+      "message": "Yep, the code is formatted by \"gofmt\" and it strips the spaces around \"+\".",
+      "parentUuid": "af64facb_549f084a",
+      "range": {
+        "startLine": 444,
+        "startChar": 60,
+        "endLine": 444,
+        "endChar": 72
+      },
+      "revId": "f75baee649009c120629700f82d112f3a8235609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71763cfd_acfd566a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-06T15:56:26Z",
+      "side": 1,
+      "message": "I moved it back. We don\u0027t have to change the order.",
+      "parentUuid": "b2750c57_9b7ebeb3",
+      "revId": "f75baee649009c120629700f82d112f3a8235609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
