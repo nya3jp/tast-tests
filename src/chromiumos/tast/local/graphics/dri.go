@@ -22,8 +22,9 @@ const (
 	// The debugfs file with the information on allocated framebuffers for Intel i915 GPUs.
 	i915FramebufferFile = "/sys/kernel/debug/dri/0/i915_gem_framebuffer"
 	// The debugfs file with the information on allocated framebuffers for generic
-	// implementations, e.g. AMD and modern Intel GPUs.
-	genericFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
+	// implementations, e.g. AMD, modern Intel GPUs, ARM-based devices.
+	genericFramebufferFile0 = "/sys/kernel/debug/dri/0/framebuffer"
+	genericFramebufferFile1 = "/sys/kernel/debug/dri/1/framebuffer"
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
@@ -96,7 +97,9 @@ func (g I915Backend) ReadFramebufferCount(ctx context.Context, width, height int
 type GenericBackend struct{}
 
 func genericBackend() *GenericBackend {
-	if _, err := os.Stat(genericFramebufferFile); err != nil {
+	_, errFile0 := os.Stat(genericFramebufferFile0)
+	_, errFile1 := os.Stat(genericFramebufferFile1)
+	if errFile0 != nil && errFile1 != nil {
 		return nil
 	}
 	return &GenericBackend{}
@@ -109,15 +112,20 @@ func (g GenericBackend) Round(value int) int {
 	return (value + genericAlignment - 1) & ^(genericAlignment - 1)
 }
 
-// ReadFramebufferCount tries to open the genericFramebufferFile and count the
-// amount of lines of dimensions width x height, which corresponds to the amount
-// of framebuffers allocated in the system.
-// See https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
+// ReadFramebufferCount tries to open the genericFramebufferFile0/1 and count
+// the amount of lines of dimensions width x height, which corresponds to the
+// amount of framebuffers allocated in the system. See
+// https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
 func (g GenericBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
-	f, err := os.Open(genericFramebufferFile)
-	if err != nil {
-		return framebuffers, errors.Wrap(err, "failed to open dri file")
+	f, errFile0 := os.Open(genericFramebufferFile0)
+	if errFile0 != nil {
+		f1, errFile1 := os.Open(genericFramebufferFile1)
+		if errFile1 != nil {
+			return framebuffers, errors.Wrap(errFile1, "failed to open dri file")
+		}
+		f = f1
 	}
+
 	text, err := ioutil.ReadAll(f)
 	if err != nil {
 		return framebuffers, errors.Wrap(err, "failed to read dri file")
