@@ -81,7 +81,7 @@ func SecChange(ctx context.Context, s *testing.State) {
 	}
 
 	apOps := []hostapd.Option{
-		hostapd.SSID("TAST_TEST_SecChange"),
+		hostapd.SSID(hostapd.RandomSSID("TAST_TEST_SecChange")),
 		hostapd.Mode(hostapd.Mode80211nMixed),
 		hostapd.Channel(48),
 		hostapd.HTCaps(hostapd.HTCapHT40),

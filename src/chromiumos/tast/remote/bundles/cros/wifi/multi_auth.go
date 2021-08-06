@@ -29,7 +29,7 @@ func init() {
 func MultiAuth(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	apOpts := []hostapd.Option{hostapd.SSID("an ssid"), hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}
+	apOpts := []hostapd.Option{hostapd.SSID(hostapd.RandomSSID("TAST_TEST_MultiAuth")), hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}
 	wpaCfg := wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP))
 
 	s.Log("Configuring AP 0 (Open)")
