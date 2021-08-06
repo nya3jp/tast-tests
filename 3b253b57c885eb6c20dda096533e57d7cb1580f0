@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32d877f_8c6722d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7965c3ea_de768311",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13637396_dd74bcff",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-06T03:08:13Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "401c59dc_8098c2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13637396_dd74bcff",
       "range": {
         "startLine": 12,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27066ab_9582d448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e9ea245_c2061b14",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3411bcf_9d710918",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-06T03:08:13Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c67f4a_acb1c389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3411bcf_9d710918",
       "range": {
         "startLine": 66,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8800ae2_039d33ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92c4c31_52cdc8ba",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd713df_d63fd863",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "637e4ba4_2490fcad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd713df_d63fd863",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c253a7d0_3e494e34",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-08-06T03:08:13Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "3b253b57c885eb6c20dda096533e57d7cb1580f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c10bd25_82b29301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-06T03:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c253a7d0_3e494e34",
       "range": {
         "startLine": 78,
         "startChar": 5,
