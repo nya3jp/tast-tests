@@ -39,6 +39,30 @@
       },
       "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5b830d_f70e9dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T20:11:38Z",
+      "side": 1,
+      "message": "Better yet, get rid of the if. If the function returns \"update\" or \"reinstall\" you could do:\n\n  subcmd :\u003d updateCheck()\n  cmd :\u003d testexec.CommandContext(ctx, \"/usr/bin/fwupdmgr\", subcmd, \"-v\", \"b585990a-003e-5270-89d5-3705a17f9a43\" ...)",
+      "parentUuid": "8bfb61bb_1b195e49",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
