@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abeaac44_f602b8d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430497
+      },
+      "writtenOn": "2021-08-06T11:58:51Z",
+      "side": 1,
+      "message": "@Alex can you please provide CQ+2 for this patch?\n\nThanks",
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
