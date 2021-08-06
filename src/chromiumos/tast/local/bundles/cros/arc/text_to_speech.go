@@ -7,10 +7,6 @@ package arc
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
@@ -18,7 +14,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -41,13 +36,15 @@ func init() {
 
 func TextToSpeech(ctx context.Context, s *testing.State) {
 	const (
-		apk           = "ArcTtsTest.apk"
-		enginePackage = "org.chromium.arc.testapp.tts"
-		rate          = 2.0
-		speakText     = "hello world"
-		voiceName     = "Android org.chromium.arc.testapp.tts.ArcTtsTestService en"
-		volume        = 0.0
-		debugFilePath = "files-under-cryptohome.txt"
+		apk = "ArcTtsTest.apk"
+		pkg = "org.chromium.arc.testapp.tts"
+
+		rate      = 2.0
+		volume    = 0.0
+		voiceName = "Android org.chromium.arc.testapp.tts.ArcTtsTestService en"
+		speakText = "hello world"
+
+		resultFilePath = "/data/user/0/org.chromium.arc.testapp.tts/ttsoutput.txt"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -62,7 +59,7 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to install %s: %v", apk, err)
 	}
 
-	if err := a.Command(ctx, "settings", "put", "secure", "tts_default_synth", enginePackage).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "settings", "put", "secure", "tts_default_synth", pkg).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to set TTS engine: ", err)
 	}
 
@@ -116,30 +113,8 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify all events were dispatched from Android TTS engine")
 	}
 
-	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
+	actual, err := a.Command(ctx, "run-as", pkg, "cat", resultFilePath).Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.User(), err)
-	}
-	targetPathInCros := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads", "ttsoutput.txt")
-
-	actual, err := ioutil.ReadFile(targetPathInCros)
-	if err != nil {
-		// TODO(b/194309104): Remove debug logs once flakiness is resolved.
-		var b strings.Builder
-		if err := filepath.Walk(cryptohomeUserPath, func(path string, info os.FileInfo, err error) error {
-			fmt.Fprintf(&b, "%s %+v\n", path, info)
-			if err != nil {
-				s.Error("Error on walking files: ", err)
-			}
-			return nil
-		}); err != nil {
-			s.Errorf("Failed to walk files under %q: %v", cryptohomeUserPath, err)
-		}
-		path := filepath.Join(s.OutDir(), debugFilePath)
-		s.Logf("Writing a list of files under %q to %q", cryptohomeUserPath, debugFilePath)
-		if writeErr := ioutil.WriteFile(path, []byte(b.String()), 0644); writeErr != nil {
-			s.Error("Error on writing a file list: ", err)
-		}
 		s.Fatal("Failed to read TTS output file: ", err)
 	}
 
