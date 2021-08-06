@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Verify CCA volume button shutter related use cases",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", "proprietary_codecs", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
