@@ -157,6 +157,30 @@
       },
       "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ac2437_986b848a",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-06T14:23:30Z",
+      "side": 1,
+      "message": "I don\u0027t see a need to remove policies using an option. If we ever need to do it, we can add a ClearPoliciesForPublicAccount option.\n\n+ you can clear the value of a policy by setting Stat: policy.StatusUnset.",
+      "parentUuid": "c4019f06_6a350376",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "ad299de74f71bb2e918300b0cecfe25537e9ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
