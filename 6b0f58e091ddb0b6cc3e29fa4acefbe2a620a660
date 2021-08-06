@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b569418_7b53a0d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-06T18:00:07Z",
+      "side": 1,
+      "message": "You could replace this for the updateCheck function and I could have it return the output so you can use it in the \"streamOutput\" function",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "6b0f58e091ddb0b6cc3e29fa4acefbe2a620a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
