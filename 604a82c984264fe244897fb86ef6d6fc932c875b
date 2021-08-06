@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88190000_9da4044c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T19:53:24Z",
+      "side": 1,
+      "message": "revert",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "604a82c984264fe244897fb86ef6d6fc932c875b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b6da88e_10d4731e",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
         "patchSetId": 3
