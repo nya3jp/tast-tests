@@ -16,6 +16,24 @@
       "message": "I\u0027d prefer if this can be called multiple times and be additive. It will be more in line with the existing Chrome options like adding flags. + add an option to set a single flag.\n\nTo keep things simple move setting the account for these policies to a separate option. That will make it clear that you can only set policies for one account.\n\nEither add a TODO (with a bug) or add support here for setting policies for multiple accounts (so we can then check what happens in odd cases).",
       "revId": "f52ab8ac6e0ba82caa0e996b4af30e5bdf30ec28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18085ba_0f67cd71",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-06T13:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66b1c55_2b00897e",
+      "revId": "f52ab8ac6e0ba82caa0e996b4af30e5bdf30ec28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
