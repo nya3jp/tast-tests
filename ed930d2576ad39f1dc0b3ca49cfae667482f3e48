@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6755b628_c61e40c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T03:22:31Z",
+      "side": 1,
+      "message": "The idea makes more sense. But I am afraid it does not work in the way you expected. Inside the DrawStrokesFromFile function (might takes 10s+), it does not check the context until the next step. https://stackoverflow.com/questions/61042141/stopping-running-function-using-context-timeout-in-golang.\n\nHopefully you can find a better way to do this. I have not faced this problem before, but happy to explore a bit or discuss offline for a good solution.",
+      "parentUuid": "316d77aa_804cdc4c",
+      "range": {
+        "startLine": 362,
+        "startChar": 48,
+        "endLine": 362,
+        "endChar": 63
+      },
+      "revId": "ed930d2576ad39f1dc0b3ca49cfae667482f3e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf68cae2_8c7ea77c",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 6
