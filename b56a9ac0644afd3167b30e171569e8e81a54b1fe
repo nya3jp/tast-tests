@@ -345,6 +345,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a286f5c0_74995c3d",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T18:24:29Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t realize we were checking stderr. Sorry for my misguided comment.\n\nIn that case, this LGTM. You could optionally avoid adding a new function by using the existing SeparatedOutput:\n\n    // CaptureWithStderr returns stderr output when taking a screenshot fails.\nfunc CaptureWithStderr(ctx context.Context, path string) error {\n\t_, stderr, err :\u003d testexec.CommandContext(ctx, \"screenshot\", path).SeparatedOutput()\n\n\nIf you prefer to keep the new OutputStderr function, then I\u0027d like to think about the name a bit: I find it a little confusing that Output() returns stdout, while OutputStderr() returns stderr. On the other hand, we can\u0027t name it Stderr, because Cmd already a field called Stderr. So unfortunately, I don\u0027t have a better suggestion... if you like to keep the new function, current name SGTM unless you have an alternative suggestion :)",
+      "parentUuid": "20b9c867_0c498c2e",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3718ed74_f6966c10",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 2
@@ -791,6 +815,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "944531a7_ce88b560",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T18:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3552c7_0cd0635b",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4940037_1a223e83",
@@ -967,6 +1015,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65180ea9_0cb04ab9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T18:24:29Z",
+      "side": 1,
+      "message": "Combining this discussion into the other comment thread at L88 of this PS",
+      "parentUuid": "0315ff13_5361ae34",
+      "range": {
+        "startLine": 76,
+        "startChar": 49,
+        "endLine": 76,
+        "endChar": 54
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f1a5512_2fe21b5e",
@@ -1040,6 +1112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "777562e1_0f226f30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T18:24:29Z",
+      "side": 1,
+      "message": "That said, I see 1*time.Minute here. Did you intend 2 minutes?",
+      "parentUuid": "405ad8f4_6a77d424",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd74558b_acfd8276",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -1087,6 +1183,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d81a189_caabbcda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T18:24:29Z",
+      "side": 1,
+      "message": "I think this would work, but it\u0027s simpler to use servo.PowerStateReset or servo.PowerStateWarmReset, as Jeremy suggested. Servo already implements resetting logic, so let\u0027s avoid reinventing the wheel.\n\nAnd, nit: the logs stating \"press power key\" at L88 and L101 of the latest PS might be inaccurate.",
+      "parentUuid": "f14bd117_a24e56a0",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66de40f6_fa483e5f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -1122,6 +1242,30 @@
       "side": 1,
       "message": "ditto.",
       "parentUuid": "66de40f6_fa483e5f",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22623f07_cfdc86b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-06T18:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2efa0d8_0c8061d3",
       "range": {
         "startLine": 91,
         "startChar": 1,
