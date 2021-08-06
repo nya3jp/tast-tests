@@ -362,28 +362,28 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 // of the indicated type. If more than one such process exists, the first one is
 // returned. Does not wait for the process to come up -- if none exist, this
 // just returns an error.
-func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Process, error) {
+func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (*process.Process, error) {
 	switch ct.ptype {
 	case GPUProcess:
 		processes, err := chromeproc.GetGPUProcesses()
 		if err != nil {
-			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
+			return nil, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
 		}
 		if len(processes) == 0 {
-			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
+			return nil, errors.Errorf("no Chrome %s's found", ct.ptype)
 		}
 		return processes[0], nil
 	case Broker:
 		processes, err := chromeproc.GetBrokerProcesses()
 		if err != nil {
-			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
+			return nil, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
 		}
 		if len(processes) == 0 {
-			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
+			return nil, errors.Errorf("no Chrome %s's found", ct.ptype)
 		}
 		return processes[0], nil
 	default:
-		return process.Process{}, errors.Errorf("unexpected ProcessType %s", ct.ptype)
+		return nil, errors.Errorf("unexpected ProcessType %s", ct.ptype)
 	}
 }
 
@@ -450,7 +450,7 @@ func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs []string) error {
 // process type OTHER than the root Browser type.
 func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error {
 	testing.ContextLog(ctx, "Hunting for a ", ct.ptype)
-	var toKill process.Process
+	var toKill *process.Process
 	// It's possible that the root browser process just started and hasn't created
 	// the GPU or broker process yet. Also, if the target process disappears during
 	// the 3 second stabilization period, we'd be willing to try a different one.
