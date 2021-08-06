@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63f365d7_befce1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-06T08:34:55Z",
+      "side": 1,
+      "message": "As a prerequisites it is expected to be update \"USB4\" key values in json file.So we are not checking device name existed or not.",
+      "parentUuid": "2e789270_44fe7dde",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60970168_fb0f2c37",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e82f56a_2ab74ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-06T08:34:55Z",
+      "side": 1,
+      "message": "As a prerequisites it is expected to be update \"USB4\" key values in json file.So we are not checking tx_speed existed or not.",
+      "parentUuid": "60970168_fb0f2c37",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d754bc2_bd58e5d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -65,6 +101,24 @@
       "writtenOn": "2021-08-05T21:04:26Z",
       "side": 1,
       "message": "Should you check if \"rx_speed\" actually exists in usb4Val first? Similar questions to all the places assign usb4Val",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04a4b5a_2685960c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-06T08:34:55Z",
+      "side": 1,
+      "message": "As a prerequisites it is expected to be update \"USB4\" key values in json file.So we are not checking rx_speed existed or not.",
+      "parentUuid": "2d754bc2_bd58e5d8",
       "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
