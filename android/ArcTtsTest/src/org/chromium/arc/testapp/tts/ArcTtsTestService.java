@@ -6,14 +6,12 @@
 
 package org.chromium.arc.testapp.tts;
 
-import android.os.Environment;
 import android.speech.tts.SynthesisCallback;
 import android.speech.tts.SynthesisRequest;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeechService;
 import android.util.Log;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -70,24 +68,18 @@ public class ArcTtsTestService extends TextToSpeechService {
             return;
         }
 
+        CharSequence text = request.getCharSequenceText();
+        Path path = Paths.get(getDataDir().getPath(), OUTPUT_FILENAME);
+        Log.d(TAG, "Writing request '" + text + "'' to '" + path + "'");
         try {
-            Path path =
-                    Paths.get(
-                            Environment.getExternalStoragePublicDirectory(
-                                            Environment.DIRECTORY_DOWNLOADS)
-                                    .getPath(),
-                            OUTPUT_FILENAME);
-            Files.createFile(path);
-            byte[] bytes = request.getText().getBytes();
-            Log.d(TAG, "Writing synthesize text to '" + path + "'");
             Files.write(
                     path,
-                    bytes,
+                    text.toString().getBytes(),
                     StandardOpenOption.WRITE,
                     StandardOpenOption.TRUNCATE_EXISTING,
                     StandardOpenOption.CREATE,
                     StandardOpenOption.SYNC);
-        } catch (IOException e) {
+        } catch (Exception e) {
             callback.error();
             throw new RuntimeException(e);
         }
