@@ -33,6 +33,24 @@
       "message": "Please have a team member review first.",
       "revId": "5c5239bb839e5179701a5d584ad69c1b04f0daff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32929d5c_e374f573",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-06T04:22:55Z",
+      "side": 1,
+      "message": "yes Jilani from my team have reviewed this patch already and gave CR+1",
+      "parentUuid": "e516b9e8_e2d3598c",
+      "revId": "5c5239bb839e5179701a5d584ad69c1b04f0daff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
