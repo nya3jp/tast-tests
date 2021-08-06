@@ -79,6 +79,30 @@
       },
       "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335d493f_1206fb06",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-06T09:40:08Z",
+      "side": 1,
+      "message": "I have discussed with Leo already. And this is definitely in our backlog. Currently sleep is the only thing we can do.",
+      "parentUuid": "aab2ae28_72e71855",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 74
+      },
+      "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
