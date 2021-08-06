@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e580e81_ddc6c592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T19:57:39Z",
+      "side": 1,
+      "message": "I guess you could check for /sys/class/power_supply/BAT0/status instead and like this you could skip the test entirely if the system does not have a battery",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfb61bb_1b195e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-06T19:57:39Z",
+      "side": 1,
+      "message": "All of this is repeated... Leave it outside the if",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
