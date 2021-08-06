@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04bcf347_e46c412e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-06T20:11:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1827e51b_3debdf11",
+      "revId": "a93c08a49c26ea31b10e994546bd8cdd2d80f110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96f37b3_6332bd8d",
