@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a93bbfe_cee43b40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-06T20:13:56Z",
+      "side": 1,
+      "message": "I have one more comment. Please take a look.",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e789270_44fe7dde",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "As a prerequisites it is expected to be update \"USB4\" key values in json file.So we are not checking device name existed or not.",
       "parentUuid": "2e789270_44fe7dde",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7612e94c_68e59631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-06T20:13:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63f365d7_befce1c0",
       "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edfe5613_1675a031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-06T20:13:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e82f56a_2ab74ae5",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d754bc2_bd58e5d8",
@@ -119,6 +172,41 @@
       "side": 1,
       "message": "As a prerequisites it is expected to be update \"USB4\" key values in json file.So we are not checking rx_speed existed or not.",
       "parentUuid": "2d754bc2_bd58e5d8",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a90e12_81989f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-06T20:13:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e04a4b5a_2685960c",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e79457_90b84440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-06T20:13:56Z",
+      "side": 1,
+      "message": "Should you check for err or both instead of just isConnected?",
       "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
