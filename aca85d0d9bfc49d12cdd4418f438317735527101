@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "295f5122_e5d59460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-06T15:58:47Z",
+      "side": 1,
+      "message": "Daniel helped me figure out a way to solve the problem without using fsnotify. Thank you for your help!",
+      "parentUuid": "d433542c_c893621c",
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e86d14c_a2eba08e",
@@ -89,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c6893f_ae74918b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-06T15:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e86d14c_a2eba08e",
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3cbc3d0_5d36ce56",
@@ -102,6 +138,30 @@
       "writtenOn": "2021-08-05T14:08:29Z",
       "side": 1,
       "message": "Could you switch this to https://pkg.go.dev/os/exec#Cmd.Start and in this way you don\u0027t need to create a go subroutine.",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2315b100_5c28afa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-06T15:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3cbc3d0_5d36ce56",
       "range": {
         "startLine": 37,
         "startChar": 15,
@@ -135,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1697ab65_a594985b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-06T15:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec34ddfa_5407f3cc",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80095ae9_ecd8f42f",
@@ -148,6 +232,30 @@
       "writtenOn": "2021-08-05T14:08:29Z",
       "side": 1,
       "message": "Change this to https://pkg.go.dev/os/exec#Cmd.Wait after using Start instead of Run",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "aca85d0d9bfc49d12cdd4418f438317735527101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "418ff3e6_73ff08f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-06T15:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80095ae9_ecd8f42f",
       "range": {
         "startLine": 61,
         "startChar": 0,
