@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3b41f5_72fa5dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "we don\u0027t need to add \"tast-tests\", but do need to add \"typec\" as a tag.\n\nSo this should be :\n typec: Add ChargingThroughUSB4 test",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73282701_77918a31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "Please phrase this as a proper descriptive sentence (you can look at other commit messages in this directory for examples).",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1648870_a50ff6e6",
@@ -31,6 +77,167 @@
       "writtenOn": "2021-08-06T20:13:56Z",
       "side": 1,
       "message": "I have one more comment. Please take a look.",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcba10e_bd61c592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "Why does this need to be a pre-requisite? We should enter USB4 regardless of whether the device is logged in or not, so this should not be necessary.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0b3558_db3c463c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "nit: device removal detection.",
+      "range": {
+        "startLine": 42,
+        "startChar": 58,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928b0cdc_f16b6f4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "nit:DUT (let us be consistent in the capitalization)",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076f80a1_d098ed60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "nit: DUT",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494295ad_bbe9af10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "Why does this need to be wrapped in a local function? We can just call pow.GetStatus()\n\n status, err :\u003d power.GetStatus(ctx)\n if err !\u003d nil {\n     s.Fatal(\"Failed to get power status: \", err)\n }\n if !status.BatteryPresent {\n     s.Fatal(\"Battery is not connected\")\n }\n \nIt looks like overkill to add this.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8410d8c0_12f5bb02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "Is this check really necessary? Isn\u0027t it implicitly checked on L173 (when we expect BatteryDischarging to be true, which is only the case if a battery is present) ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4312f23_dd5da219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "jsonData: https://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 10
+      },
       "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -196,6 +403,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f9ceedc_4bbf1e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "Some comment as in the other test. All these fields are being checked in another test already. I don\u0027t think it is necessary to test them again here (otherwise we should just remove the other test).\n\nPlease drop all these repeated checks, and let the test check what is being specified in the description.\n\nPerhaps the only check that really matters is \"Generation\" which can confirm whether the connected peripheral is USB4 or not.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f7fdfa_5fc01a25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "nit: charging",
+      "range": {
+        "startLine": 152,
+        "startChar": 22,
+        "endLine": 152,
+        "endChar": 31
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35e79457_90b84440",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -207,6 +460,29 @@
       "writtenOn": "2021-08-06T20:13:56Z",
       "side": 1,
       "message": "Should you check for err or both instead of just isConnected?",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe7f5a9_20a8758f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-06T22:50:56Z",
+      "side": 1,
+      "message": "nit: discharging",
+      "range": {
+        "startLine": 172,
+        "startChar": 22,
+        "endLine": 172,
+        "endChar": 34
+      },
       "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
