@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d869061e_c9b1b950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-07T01:22:03Z",
+      "side": 1,
+      "message": "If the battery is full: \n$ cat /sys/class/power_supply/BAT0/status \nFull\n\nIf the test does not have a battery, the no_acpower case does not make sense.",
+      "parentUuid": "b3036491_7bf79db9",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bfb61bb_1b195e49",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 15
