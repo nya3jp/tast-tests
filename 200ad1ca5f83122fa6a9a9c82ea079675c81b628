@@ -16,6 +16,40 @@
       "message": "frkoenig@ PTAL (whoever files the bug has to review the code ;)\npwang@ PTAL as Tast owner\n\nOthers FYI",
       "revId": "200ad1ca5f83122fa6a9a9c82ea079675c81b628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1edab7_34cd291e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-08-07T03:05:49Z",
+      "side": 1,
+      "message": "There might be some dependence on kernel version.  Is there a try job that will run this against the fleet?",
+      "revId": "200ad1ca5f83122fa6a9a9c82ea079675c81b628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f7625a_d8906af1",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-08-07T03:05:49Z",
+      "side": 1,
+      "message": "I think the names are confusing.  They should be:\ngenericFramebufferFile0 \u003d \ngenericFramebufferFile1 \u003d\n\nthat way we don\u0027t have to reference back to here to see which is which.",
+      "revId": "200ad1ca5f83122fa6a9a9c82ea079675c81b628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
