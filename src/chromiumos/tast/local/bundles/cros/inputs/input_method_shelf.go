@@ -30,11 +30,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "stable",
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
-			Name:              "unstable",
+			Name:              "informational",
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			ExtraAttr:         []string{"informational"},
 		}},
