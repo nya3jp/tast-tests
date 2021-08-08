@@ -164,6 +164,43 @@ func (s *fileServer) log(ctx context.Context, format string, args ...interface{}
 	testing.ContextLogf(ctx, "[Proxy Server] "+format, args...)
 }
 
+
+type PassThruReader struct {
+	io.Reader
+	err error
+	bytes int64
+	usecs int64
+}
+
+func (pt *PassThruReader) Read(p []byte) (int, error) {
+	startTime := time.Now()
+	n, err := pt.Reader.Read(p)
+	pt.usecs += time.Since(startTime).Microseconds()
+	pt.bytes += int64(n)
+	if err != nil {
+		pt.err = err
+	}
+	return n, err
+}
+
+type PassThruWriter struct {
+	io.Writer
+	err error
+	bytes int64
+	usecs int64
+}
+
+func (pt *PassThruWriter) Write(p []byte) (int, error) {
+	startTime := time.Now()
+	n, err := pt.Writer.Write(p)
+	pt.usecs += time.Since(startTime).Microseconds()
+	pt.bytes += int64(n)
+	if err != nil {
+		pt.err = err
+	}
+	return n, err
+}
+
 // serveDownloadRequest tries to download a file and transmit it via the http response.
 func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseWriter, filePath string) error {
 	// The requested path is specified relative to the repository root URL to restrict access to arbitrary files via this request.
@@ -192,11 +229,29 @@ func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseW
 	wr.Header().Set("Content-Disposition", "attachment; filename="+path.Base(filePath))
 	wr.WriteHeader(http.StatusOK)
 
-	copied, err := io.Copy(wr, r)
+	ptReader := &PassThruReader{Reader: r}
+	ptWriter := &PassThruWriter{Writer: wr}
+
+	copied, err := io.Copy(ptWriter, ptReader)
+	if err != nil {
+		s.log(ctx, "io.Copy failed. %s", err.Error())
+	} else {
+		s.log(ctx, "io.Copy finished successfully. %d bytes copied", copied)
+	}
+
+	formatStats := func(e error, bytes int64, usecs int64) string {
+		res := fmt.Sprintf("%d bytes in %d msec", bytes, usecs/1000);
+		if e != nil && e != io.EOF {
+			res += fmt.Sprintf(". Error: %s", e.Error());
+		}
+		return res
+	}
+	s.log(ctx, "Reader stats: %s", formatStats(ptReader.err, ptReader.bytes, ptReader.usecs));
+	s.log(ctx, "Writer stats: %s", formatStats(ptWriter.err, ptWriter.bytes, ptWriter.usecs));
+
 	if err != nil {
 		return errors.Wrap(err, "io.Copy() failed")
 	}
-	s.log(ctx, "%d byte(s) copied", copied)
 	return nil
 }
 
