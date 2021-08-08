@@ -5,6 +5,7 @@
 package servo
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"io"
@@ -12,7 +13,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
+
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/client"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -28,14 +33,20 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 type Proxy struct {
 	svo  *Servo
 	hst  *ssh.Conn      // nil if servod is running locally
-	fwd  *ssh.Forwarder // nil if servod is running locally
+	fwd  *ssh.Forwarder // nil if servod is running locally or inside a docker container
 	port int
+	dcl  *client.Client // nil if servod is not running inside a docker container
 }
 
 func splitHostPort(servoHostPort string) (string, int, int, error) {
 	host := "localhost"
 	port := 9999
 	sshPort := 22
+
+	if strings.Contains(servoHostPort, "docker_servod") {
+		hostInfo := strings.Split(servoHostPort, ":")
+		return hostInfo[0], port, 0, nil
+	}
 
 	hostport := servoHostPort
 	sshParts := strings.SplitN(hostport, ":ssh:", 2)
@@ -108,6 +119,10 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 // to the host running servod and servod connections will be forwarded through it.
 // keyFile and keyDir are used for establishing the SSH connection and should
 // typically come from dut.DUT's KeyFile and KeyDir methods.
+//
+// If the servod is running in a docker container, the serverHostPort expected to be in form "${CONTAINER_NAME}:9999:docker:".
+// The port of the servod host is defaulted to 9999, user only needs to provide the container name.
+// CONTAINER_NAME must end with docker_servod.
 func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newProxy *Proxy, retErr error) {
 	var pxy Proxy
 	toClose := &pxy
@@ -123,7 +138,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	}
 	pxy.port = port
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
-	if (host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22 {
+	if (host != "localhost" && host != "127.0.0.1" && host != "::1" && !strings.Contains(host, "docker_servod")) || sshPort != 22 {
 		// First, create an SSH connection to the remote system running servod.
 		sopt := ssh.Options{
 			KeyFile:        keyFile,
@@ -165,6 +180,13 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	if err != nil {
 		return nil, err
 	}
+	if strings.Contains(host, "docker_servod") {
+		pxy.dcl, err = client.NewClientWithOpts(client.FromEnv)
+		if err != nil {
+			return nil, err
+		}
+		pxy.hst = host
+	}
 	toClose = nil // disarm cleanup
 	return &pxy, nil
 }
@@ -200,14 +222,22 @@ func (p *Proxy) Close(ctx context.Context) {
 		p.hst.Close(ctx)
 		p.hst = nil
 	}
+	if p.dcl != nil {
+		p.dcl.Close()
+		p.dcl = nil
+	}
 }
 
 func (p *Proxy) isLocal() bool {
-	return p.hst == nil
+	return p.hst == nil || p.isDockerized()
 }
 
 func (p *Proxy) isClosed() bool {
 	return p.svo == nil
+}
+
+func (p *Proxy) isDockerized() bool {
+	return p.dcl != nil || strings.Contains(p.hst, "docker_servod")
 }
 
 // Servo returns the proxy's encapsulated Servo object.
@@ -224,6 +254,10 @@ func (p *Proxy) runCommandImpl(ctx context.Context, dumpLogOnError, asRoot bool,
 		return errors.New("connection to servo is closed")
 	}
 	if p.isLocal() {
+		if p.isDockerized() {
+			_, err := p.dockerExec(ctx, nil, name, args...)
+			return err
+		}
 		if asRoot {
 			sudoargs := append([]string{name}, args...)
 			testing.ContextLog(ctx, "Running sudo ", sudoargs)
@@ -250,6 +284,9 @@ func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, arg
 		return nil, errors.New("connection to servo is closed")
 	}
 	if p.isLocal() {
+		if p.isDockerized() {
+			return p.dockerExec(ctx, nil, name, args...)
+		}
 		if asRoot {
 			sudoargs := append([]string{name}, args...)
 			testing.ContextLog(ctx, "Running sudo ", sudoargs)
@@ -266,6 +303,12 @@ func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, 
 		return errors.New("connection to servo is closed")
 	}
 	if p.isLocal() {
+		if p.isDockerized() {
+			_, err := p.dockerExec(ctx, stdin, name, args...)
+			if err != nil {
+				return err
+			}
+		}
 		if asRoot {
 			sudoargs := append([]string{name}, args...)
 			testing.ContextLog(ctx, "Running sudo ", sudoargs)
@@ -288,6 +331,21 @@ func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile 
 		return errors.New("connection to servo is closed")
 	}
 	if p.isLocal() {
+		if p.isDockerized() {
+			outFile, err := os.OpenFile(localFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+			if err != nil {
+				return errors.Wrap(err, "could not create local file")
+			}
+			r, _, err := p.dcl.CopyFromContainer(p.hst, remoteFile)
+			if err != nil {
+				return errors.Wrap(err, "could not copy remote file")
+			}
+			_, err = io.Copy(outFile, r)
+			if err != nil {
+				return errors.Wrap(err, "could not write to local file")
+			}
+			return outFile.Close()
+		}
 		if asRoot {
 			// This is effectively copying the file from root to the user running the test.
 			cmd := testexec.CommandContext(ctx, "sudo", "cat", remoteFile)
@@ -314,6 +372,14 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 	}
 	if p.isLocal() {
 		for l, r := range fileMap {
+			if p.isDockerized() {
+				f, err := os.Open(l)
+				if err != nil {
+					return errors.Wrap(err, "could not open local file")
+				}
+				defer f.Close()
+				return p.dcl.CopyToContainer(ctx, p.hst, r, f, types.CopyToContainerOptions{AllowOverwriteDirWithFile: true})
+			}
 			if asRoot {
 				testing.ContextLog(ctx, "Running sudo cp ", l, r)
 				if err := testexec.CommandContext(ctx, "sudo", "cp", l, r).Run(testexec.DumpLogOnError); err != nil {
@@ -333,3 +399,63 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 
 // GetPort returns the port where servod is running on the server.
 func (p *Proxy) GetPort() int { return p.port }
+
+// dockerExec execs a command with Docker SDK
+func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, args ...string) ([]byte, error) {
+	execConfig := types.ExecConfig{
+		AttachStdout: true,
+		AttachStderr: true,
+		Privileged:   true,
+	}
+
+	// Attach stdin if provided.
+	if stdin != nil {
+		err := errors.New("cannot direct input to docker exec command")
+		return nil, err
+	}
+
+	// The only user within servod container is root, no sudo needed.
+	execConfig.Cmd = append([]string{name}, args...)
+
+	r, err := p.dcl.ContainerExecCreate(ctx, p.hst, execConfig)
+	if err != nil {
+		return nil, err
+	}
+
+	var wg sync.WaitGroup
+	// Wait for cmd to finish within the Docker container.
+	go func(dcl *client.Client) {
+		wg.Add(1)
+		running := true
+		defer wg.Done()
+		for running {
+			iRes, err := dcl.ContainerExecInspect(ctx, r.ID)
+			if err != nil {
+				break
+			}
+			running = iRes.Running
+			testing.Sleep(250 * time.Millisecond)
+		}
+	}(p.dcl)
+
+	var out []byte
+
+	// Get the stdout of the cmd.
+	go func(dcl *client.Client) {
+		wg.Add(1)
+		defer wg.Done()
+		hRes, err := dcl.ContainerExecAttach(ctx, r.ID, types.ExecStartCheck{})
+		if err != nil {
+			return
+		}
+		defer hRes.Close()
+		scanner := bufio.NewScanner(hRes.Reader)
+		for scanner.Scan() {
+			out = append(out, scanner.Bytes()...)
+			out = append(out, '\n')
+		}
+	}(p.dcl)
+
+	wg.Wait()
+	return out, err
+}
