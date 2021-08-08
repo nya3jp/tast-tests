@@ -34,6 +34,9 @@ func TestSplitHostPort(t *testing.T) {
 		{"[::2]:localhost:1234", "", 0, 0, true},
 		{"::2", "", 0, 0, true},
 		{"::2:1234", "", 0, 0, true},
+		{"dut1-docker_servod", "dut1-docker_servod", 9999, 0, false},
+		{"dut1-docker_servod:9998", "dut1-docker_servod", 9999, 0, false},
+		{"dut1-docker_servod:9998::", "dut1-docker_servod", 9999, 0, false},
 	} {
 		actualHost, actualPort, actualSSHPort, err := splitHostPort(tc.input)
 		if err != nil && !tc.expectErr {
