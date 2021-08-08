@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc32a56_30f4d059",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-08T23:52:22Z",
+      "side": 1,
+      "message": "Done. To avoid too long name. I named it as `SetCurrentInputMethodAndWaitWarmUp`",
+      "parentUuid": "68d55bec_677904b7",
+      "range": {
+        "startLine": 78,
+        "startChar": 29,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "323366ddc9f61282f27972dfdf9ee1fa9e502f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aab2ae28_72e71855",
