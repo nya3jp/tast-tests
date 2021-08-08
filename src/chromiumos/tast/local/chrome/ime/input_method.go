@@ -286,7 +286,17 @@ func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
 		if activeIME.Equal(im) {
 			return nil
 		}
-		return SetCurrentInputMethod(ctx, tconn, fullyQualifiedIMEID)
+
+		// Use 10s as warming up time by default.
+		imWarmingUpTime := 10 * time.Second
+
+		// SW, FR, SP takes longer time.
+		switch im {
+		case Swedish, FrenchFrance, SpanishSpain:
+			imWarmingUpTime = 15 * time.Second
+		}
+
+		return SetCurrentInputMethodAndWaitWarmUp(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
