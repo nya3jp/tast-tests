@@ -33,7 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
-				Name:              "es_stable",
+				Name:              "es",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
@@ -41,7 +41,7 @@ func init() {
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 				},
 			}, {
-				Name:              "es_unstable",
+				Name:              "es_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
@@ -49,7 +49,7 @@ func init() {
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 				},
 			}, {
-				Name:              "fr_stable",
+				Name:              "fr",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
@@ -57,7 +57,7 @@ func init() {
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 				},
 			}, {
-				Name:              "fr_unstable",
+				Name:              "fr_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
@@ -65,7 +65,7 @@ func init() {
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 				},
 			}, {
-				Name:              "jp_stable",
+				Name:              "jp",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
@@ -73,7 +73,7 @@ func init() {
 					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),
 				},
 			}, {
-				Name:              "jp_unstable",
+				Name:              "jp_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
