@@ -39,6 +39,30 @@
       },
       "revId": "cb00cd455918746d19d445590d4e0381c4aee986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "962654a7_b6791924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-08T23:37:12Z",
+      "side": 1,
+      "message": "No sure where is the standard from. In this test the code is country code, not language code. \n\nhttps://www.iso.org/obp/ui/#iso:code:3166:JP",
+      "parentUuid": "582a059c_8bda663c",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "cb00cd455918746d19d445590d4e0381c4aee986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
