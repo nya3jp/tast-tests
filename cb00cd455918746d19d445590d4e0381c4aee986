@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "259d9e75_bd4f9268",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-08T23:25:52Z",
+      "side": 1,
+      "message": "Rebase from master. Only rename tests that are already in CQ or not yet for promotion.",
+      "revId": "cb00cd455918746d19d445590d4e0381c4aee986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
