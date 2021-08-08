@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4901c1a0_c7eeea48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-08T23:54:44Z",
+      "side": 1,
+      "message": "super-nit:I guess I am OK with this, but maybe we might consider enum based for the future (since it might be hard for a SWE to figure out what this should be)",
+      "parentUuid": "9fac7a39_903ee210",
+      "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f03d96d_671bda85",
