@@ -18,27 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
-
-type ptkParam struct {
-	rekeyPeriod      int
-	pingCount        int
-	pingInterval     float64
-	allowedLossCount int
-}
-
-// The ping configuration gives us around 75 seconds to ping,
-// which covers around 15 rekeys with 5 seconds period.
-var defaultPTKParam = ptkParam{
-	rekeyPeriod:      5,
-	pingCount:        150,
-	pingInterval:     0.5,
-	allowedLossCount: 30, // Allow 20% ping loss.
-}
-
-// TODO(b/183463918): remove the restriction once the bug is solved.
-var ptkBuggyPlatform = []string{"kukui", "jacuzzi"}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -51,26 +31,18 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixtWithCapture",
-		Params: []testing.Param{
-			{
-				// Default case.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(ptkBuggyPlatform...)),
-				Val:               defaultPTKParam,
-			},
-			{
-				// Qualcomm QCA6174A-3 case.
-				// TODO(b/183463918): remove this once the issue is fixed.
-				Name:              "qca6174a3",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform(ptkBuggyPlatform...)),
-				ExtraAttr:         []string{"wificell_unstable"},
-				Val:               defaultPTKParam,
-			},
-		},
 	})
 }
 
 func PTK(ctx context.Context, s *testing.State) {
-	param := s.Param().(ptkParam)
+	// The ping configuration gives us around 75 seconds to ping,
+	// which covers around 15 rekeys with 5 seconds period and allow 20% ping loss.
+	const (
+		rekeyPeriod      = 5
+		pingCount        = 150
+		pingInterval     = 0.5
+		allowedLossCount = 30
+	)
 
 	tf := s.FixtValue().(*wificell.TestFixture)
 
@@ -82,7 +54,7 @@ func PTK(ctx context.Context, s *testing.State) {
 		"chromeos", wpa.Mode(wpa.ModeMixed),
 		wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 		wpa.Ciphers2(wpa.CipherCCMP),
-		wpa.PTKRekeyPeriod(param.rekeyPeriod),
+		wpa.PTKRekeyPeriod(rekeyPeriod),
 	)
 	ap, err := tf.ConfigureAP(ctx, apOps, secConfFac)
 	if err != nil {
@@ -112,7 +84,7 @@ func PTK(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Total rekey count less 2 for a buffer. We expect 2 transitions (false -> true, true -> false) for each rekey
-	rekeyCount := int(float64(param.pingCount)*param.pingInterval/float64(param.rekeyPeriod)) - 2
+	rekeyCount := int(float64(pingCount)*pingInterval/float64(rekeyPeriod)) - 2
 	if rekeyCount <= 0 {
 		s.Fatal("Ping duration is too short")
 	}
@@ -127,25 +99,25 @@ func PTK(ctx context.Context, s *testing.State) {
 	monitorProps := []string{shillconst.ServicePropertyIsConnected}
 	pingBuffer := 5 * time.Second
 	waitBuffer := 5 * time.Second
-	waitCtx, cancel := context.WithTimeout(ctx, time.Duration(float64(param.pingCount)*param.pingInterval)*time.Second+pingBuffer+waitBuffer)
+	waitCtx, cancel := context.WithTimeout(ctx, time.Duration(float64(pingCount)*pingInterval)*time.Second+pingBuffer+waitBuffer)
 	defer cancel()
 	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 
-	s.Logf("Pinging with count=%d interval=%g second(s)", param.pingCount, param.pingInterval)
+	s.Logf("Pinging with count=%d interval=%g second(s)", pingCount, pingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
 	pingCtx, cancel := ctxutil.Shorten(waitCtx, waitBuffer)
 	defer cancel()
 	pr := remoteping.NewRemoteRunner(s.DUT().Conn())
-	res, err := pr.Ping(pingCtx, ap.ServerIP().String(), ping.Count(param.pingCount),
-		ping.Interval(param.pingInterval), ping.SaveOutput("ptk_ping.log"))
+	res, err := pr.Ping(pingCtx, ap.ServerIP().String(), ping.Count(pingCount),
+		ping.Interval(pingInterval), ping.SaveOutput("ptk_ping.log"))
 	if err != nil {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}
 	s.Logf("Ping result=%+v", res)
 
 	lossCount := res.Sent - res.Received
-	if lossCount > param.allowedLossCount {
-		s.Errorf("Unexpected packet loss: got %d, want <= %d", lossCount, param.allowedLossCount)
+	if lossCount > allowedLossCount {
+		s.Errorf("Unexpected packet loss: got %d, want <= %d", lossCount, allowedLossCount)
 	}
 
 	monitorResult, err := waitForProps()
