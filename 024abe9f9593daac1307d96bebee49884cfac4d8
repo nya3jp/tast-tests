@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f27ce80f_4255828b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-08-09T16:46:01Z",
+      "side": 1,
+      "message": "Good catch!",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 53
+      },
+      "revId": "024abe9f9593daac1307d96bebee49884cfac4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
