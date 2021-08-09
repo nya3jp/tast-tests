@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "8809610056ec129e3b21457d0d176146b206ad07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b866b2_32d151d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T18:01:36Z",
+      "side": 1,
+      "message": "LGTM % adding the contact email",
+      "revId": "8809610056ec129e3b21457d0d176146b206ad07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
