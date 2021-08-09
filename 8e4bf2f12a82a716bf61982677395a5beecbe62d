@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9553cea7_d166957a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-09T21:07:43Z",
+      "side": 1,
+      "message": "These parentheses are causing WaitForExpr to fail. You want to wait for the function to exist, not the result.",
+      "range": {
+        "startLine": 76,
+        "startChar": 108,
+        "endLine": 76,
+        "endChar": 110
+      },
+      "revId": "8e4bf2f12a82a716bf61982677395a5beecbe62d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
