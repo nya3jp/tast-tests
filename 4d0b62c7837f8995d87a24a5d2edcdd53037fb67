@@ -51,6 +51,24 @@
       "parentUuid": "bae5dda1_8d651a15",
       "revId": "4d0b62c7837f8995d87a24a5d2edcdd53037fb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1283fe3_b3777650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-09T12:15:07Z",
+      "side": 1,
+      "message": "Even after ProbeSystemInfoV2",
+      "parentUuid": "db88284a_854b35a2",
+      "revId": "4d0b62c7837f8995d87a24a5d2edcdd53037fb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
