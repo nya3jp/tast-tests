@@ -1182,6 +1182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff999f3_3b89246f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-09T16:05:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdfca3f8_f560302c",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd74558b_acfd8276",
@@ -1267,6 +1291,30 @@
       "side": 1,
       "message": "I\u0027ve deployed servo.PowerWarmReset here, and removed servo.PowerStateOff/servo.PowerStateOn, as they would duplicate what a reset does. \n\nIt appears that servo.PowerStateReset would reset the EC, and default DUT\u0027s tablet_mode_angle to the original Clamshell mode settings when reboot completes. Since the goal is to have DUT boot from tablet mode into tablet mode, I\u0027m choosing servo.PowerWarmReset over servo.PowerStateReset.\n\nFor the logs, I\u0027ve re-modified the message as \"Power-cycle DUT with a warm reset\".",
       "parentUuid": "7d81a189_caabbcda",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335b6153_592f923c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-09T16:05:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df80389_554409bb",
       "range": {
         "startLine": 85,
         "startChar": 1,
