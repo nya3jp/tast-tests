@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61aa115b_16649816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: ContextMenuPinAndUnpin?",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01617950_a8269a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: Group w/ lines 50-51 rather than 44-47",
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2533c8_abd9d012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "The *only* item?",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05bc9121_a1369af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "Do we need to do anything to ensure that this device is running an English locale?",
+      "range": {
+        "startLine": 54,
+        "startChar": 48,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc2d0d9_f046e13f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "Maybe we can abstract this away and keep it inside of a util api. e.g.:\n\n```\nfunc SetupInitialState() {\n  // Take and remove a screenshot to force holding space to show\n  // in the shelf but to keep it in an empty state.\n  const file \u003d TakeScreenshot();\n  Remove(file);\n  assert IsVisibleInShelf();\n}\n```\n\nI think it may be painful to always have to create a \"filler\" file :)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fb4121_09f5aaab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1c8163_b4ea7856",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: Remove, redundant",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7dc9403_227a284a",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: \"Confirm\" to me just implies a check. \"OpenBubble\" would probably suffice :)",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a9c9b2_293e81d7",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "Will this find the node even if its not visible?",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6301ca8_0c961066",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: GetPinnedItemNode, to be consistent w/ your other GetXNode method below",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9716ae48_64748f52",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "You\u0027ll want to confirm we are looking at the pinned files section, `HoldingSpaceItemChipView` is also in the downloads section and may not be pinned :)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 85
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5d4b51_3776825b",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "Similar to above, you\u0027ll want to make sure you\u0027re inspecting the pinned file section",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 85
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb40395e_76f1cae9",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "You may want to wait after it disappears and reconfirm that it doesn\u0027t come back. When an item is added/removed, all other existing items are animated out, destroyed, and recreated so this might not indicate actual removal from holding space. UI may just be in transition :)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eff3b53_7cbc5121",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: UnpinItemViaContextMenu\nItems can also be unpinned via the pin toggle that exists when hovering over an item",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 14
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48da49f8_109ad085",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "nit: Remove, redundant",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1c7152_3a691ef1",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-08-09T20:38:56Z",
+      "side": 1,
+      "message": "We have the need to create files elsewhere, I\u0027d recommend splitting out two APIs:\n1. CreateFile\n2. PinViaFilesAppContextMenu",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
