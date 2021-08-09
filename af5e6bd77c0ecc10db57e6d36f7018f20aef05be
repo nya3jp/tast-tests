@@ -22,6 +22,30 @@
       },
       "revId": "af5e6bd77c0ecc10db57e6d36f7018f20aef05be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa1368b_205ec99e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-09T02:13:10Z",
+      "side": 1,
+      "message": "\u003e ARC is already internal only. Maybe we don\u0027t need to split the test (?) Generally I am ok to simply add \"proprietary_codecs\" to existing test without split unless there is a strong reason to do so.\n\nAgree",
+      "parentUuid": "8fedc015_dd58930f",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "af5e6bd77c0ecc10db57e6d36f7018f20aef05be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
