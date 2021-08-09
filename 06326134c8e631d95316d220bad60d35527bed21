@@ -16,6 +16,23 @@
       "message": "PTAL, this CL is built on top of this CL and also pretty similar: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3056753\n\nThank you!",
       "revId": "06326134c8e631d95316d220bad60d35527bed21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3622caec_ec8f47bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:51:18Z",
+      "side": 1,
+      "message": "Please merge the conflict.\n\nAlso, please get +2 from a team member beform adding tast owners.",
+      "revId": "06326134c8e631d95316d220bad60d35527bed21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
