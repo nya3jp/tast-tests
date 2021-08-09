@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ff0e482_7f6b01f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-09T02:38:42Z",
+      "side": 1,
+      "message": "I think we should remove this for now. We don\u0027t want this running in the typec_lab since the right infrastructure is not in place yet, so we should not schedule it just yet.",
+      "range": {
+        "startLine": 31,
+        "startChar": 40,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "814feaf9_6b584e9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 13
