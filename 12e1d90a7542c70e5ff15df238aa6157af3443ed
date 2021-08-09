@@ -33,6 +33,24 @@
       "message": "Isn\u0027t this just going to pick the highest index?  I\u0027m failing to see how this iterates through the available crtcs.",
       "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb647e9_379ecef2",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-09T22:14:24Z",
+      "side": 1,
+      "message": "g.Index will contain the |i| selected in l.105-106 out of the for\nloop that iterates over indexes. Object oriented programming in Go\nis bizarre.\n\nBut there\u0027s a bug! l.104 should start from 0 and go up to 63. Let\nme fix it.",
+      "parentUuid": "a322b46a_6ab0b6ce",
+      "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
