@@ -38,6 +38,9 @@ service PolicyService {
   // Creates a new connection to the Chrome URL in the request and evaluates the expression in the request on it.
   rpc EvalExpressionInChromeURL(EvalExpressionInChromeUrlRequest)
       returns (google.protobuf.Empty) {}
+
+  rpc PerformUIShutdown(PerformUIShutdownRequest)
+      returns (google.protobuf.Empty) {}
 }
 
 message EnrollUsingChromeRequest {
@@ -96,4 +99,9 @@ message VerifyVisibleNotificationRequest {
 message EvalExpressionInChromeUrlRequest {
   string url = 1;
   string expression = 2;
+}
+
+message PerformUIShutdownRequest {
+  string node_name = 1;
+  string ui_dump_dir = 2;
 }
