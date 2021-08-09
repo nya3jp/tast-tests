@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type ptkParam struct {
@@ -27,18 +26,6 @@ type ptkParam struct {
 	pingInterval     float64
 	allowedLossCount int
 }
-
-// The ping configuration gives us around 75 seconds to ping,
-// which covers around 15 rekeys with 5 seconds period.
-var defaultPTKParam = ptkParam{
-	rekeyPeriod:      5,
-	pingCount:        150,
-	pingInterval:     0.5,
-	allowedLossCount: 30, // Allow 20% ping loss.
-}
-
-// TODO(b/183463918): remove the restriction once the bug is solved.
-var ptkBuggyPlatform = []string{"kukui", "jacuzzi"}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -51,20 +38,13 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixtWithCapture",
-		Params: []testing.Param{
-			{
-				// Default case.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(ptkBuggyPlatform...)),
-				Val:               defaultPTKParam,
-			},
-			{
-				// Qualcomm QCA6174A-3 case.
-				// TODO(b/183463918): remove this once the issue is fixed.
-				Name:              "qca6174a3",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform(ptkBuggyPlatform...)),
-				ExtraAttr:         []string{"wificell_unstable"},
-				Val:               defaultPTKParam,
-			},
+		Val: ptkParam{
+			// The ping configuration gives us around 75 seconds to ping,
+			// which covers around 15 rekeys with 5 seconds period.
+			rekeyPeriod:      5,
+			pingCount:        150,
+			pingInterval:     0.5,
+			allowedLossCount: 30, // Allow 20% ping loss.
 		},
 	})
 }
