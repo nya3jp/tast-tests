@@ -16,6 +16,23 @@
       "message": "frkoenig@, pwang@ PTAL",
       "revId": "391e88d9cb9ec7ab1e48fc0975745a13ea2443b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f19c13d_a650a66d",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T20:41:36Z",
+      "side": 1,
+      "message": "How about iterate through all /sys/kernel/debug/dri/*/framebuffer?",
+      "revId": "391e88d9cb9ec7ab1e48fc0975745a13ea2443b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
