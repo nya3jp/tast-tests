@@ -87,6 +87,24 @@
       "parentUuid": "23ca9fb4_517e3077",
       "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5675233_5a010a48",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-08-09T23:30:26Z",
+      "side": 1,
+      "message": "My mistake.  For some reason I was thinking that it had to open and check the |framebuffer| file for the data.  But in actuality, only |/sys/kernel/debug/dri/0/framebuffer| OR |/sys/kernel/debug/dri/1/framebuffer| exist.  So we are taking the first one.",
+      "parentUuid": "603e7dbd_e33381be",
+      "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
