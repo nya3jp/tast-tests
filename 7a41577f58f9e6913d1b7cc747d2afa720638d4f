@@ -3,6 +3,114 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9260e712_d4bdc2f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-09T16:57:20Z",
+      "side": 1,
+      "message": "Have you considered using VarDeps?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a2d19e_fe0d9117",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-09T16:57:20Z",
+      "side": 1,
+      "message": "nit: define inside the for loop",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f44628_a1dd9508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-09T16:57:20Z",
+      "side": 1,
+      "message": "nit: define only in the block it is used.",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811c55aa_17f0c6b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-09T16:57:20Z",
+      "side": 1,
+      "message": "nit: define only in the block it is used",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c84172_9078afc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-09T16:57:20Z",
+      "side": 1,
+      "message": "nit: define everywhere it is used.",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787f6e96_6b19d64d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-09T16:57:20Z",
+      "side": 1,
+      "message": "minor nit: this is only used once, move it inline.",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "667edf66_400c20ee",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
         "patchSetId": 3
