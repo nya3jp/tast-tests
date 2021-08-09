@@ -22,6 +22,30 @@
       },
       "revId": "362b69828eb264950fd82ef7ea141f143c950e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e0b5f7_e7854c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:22:57Z",
+      "side": 1,
+      "message": "I learnt that the default timeout of 2 minutes is sufficient for this test. Hence removing this line.",
+      "parentUuid": "75d1c765_b2ff7179",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "362b69828eb264950fd82ef7ea141f143c950e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
