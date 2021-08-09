@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a4dde5_658fc492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-09T15:41:55Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "5b7a358865c5567eb1e38261e27cfde14c3dbd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7b55bb_de43ac45",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-09T15:41:55Z",
+      "side": 1,
+      "message": "nit: while you are here, could you add docstring to this function\n\n// removeTestConfig removes the test config directory, including all files contained in it. (or similar)",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "5b7a358865c5567eb1e38261e27cfde14c3dbd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfb5865_2cbb31ff",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-09T15:41:55Z",
+      "side": 1,
+      "message": "nit: not clear whey RemoveAll() is being used instead of Remove().\n\nYou can describe it in commit body",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "5b7a358865c5567eb1e38261e27cfde14c3dbd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
