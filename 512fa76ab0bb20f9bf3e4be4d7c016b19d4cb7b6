@@ -86,6 +86,24 @@
       "parentUuid": "8ed2dd62_fd445b5d",
       "revId": "512fa76ab0bb20f9bf3e4be4d7c016b19d4cb7b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "521ded82_cf8bfc08",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-09T06:11:29Z",
+      "side": 1,
+      "message": "I see. I did misunderstand. Modified as your suggestion. Thanks!",
+      "parentUuid": "0b87f416_cf144a42",
+      "revId": "512fa76ab0bb20f9bf3e4be4d7c016b19d4cb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
