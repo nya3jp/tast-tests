@@ -186,17 +186,30 @@ type TestFixture struct {
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
-func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, retry bool) (*ssh.Conn, error) {
+func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, retryDNSNotFound bool) (*ssh.Conn, error) {
 	var sopt ssh.Options
 	ssh.ParseTarget(hostname, &sopt)
 	sopt.KeyDir = tf.dut.KeyDir()
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
-	if retry {
-		sopt.ConnectRetries = 5
-		sopt.ConnectRetryInterval = 10 * time.Second
+
+	var conn *ssh.Conn
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		var dnsErr *net.DNSError
+
+		conn, err = ssh.New(ctx, &sopt)
+		if !retryDNSNotFound && errors.As(err, &dnsErr) && dnsErr.IsNotFound {
+			// Don't retry DNS not found case.
+			return testing.PollBreak(err)
+		}
+		return err
+	}, &testing.PollOptions{
+		Timeout: time.Minute,
+	}); err != nil {
+		return nil, err
 	}
-	return ssh.New(ctx, &sopt)
+	return conn, nil
 }
 
 // setupNetCertStore sets up tf.netCertStore for EAP-related tests.
@@ -365,7 +378,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 
 	// If pcap name is available and unique, try to connect it.
 	if tf.pcapHost == nil && tf.pcapTarget != "" {
-		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget, false /* no retry */)
+		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget, false /* no retry when DNS not found */)
 		if err != nil {
 			// We want to fallback to use router as pcap iff the default
 			// pcap hostname is invalid. Fail here if it's not the case.
