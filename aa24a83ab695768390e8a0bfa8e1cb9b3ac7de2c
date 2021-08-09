@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb16f98_b4cdc21d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "nit: WiFi",
+      "range": {
+        "startLine": 23,
+        "startChar": 36,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bcb58f_1f81c94d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "nit: Chrome OS",
+      "range": {
+        "startLine": 23,
+        "startChar": 46,
+        "endLine": 23,
+        "endChar": 54
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c824cb5_64725832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "nit: Chrome OS",
+      "range": {
+        "startLine": 31,
+        "startChar": 87,
+        "endLine": 31,
+        "endChar": 95
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c472e9_d2831d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "nit: WiFi here and elsewhere in comments and error strings",
+      "range": {
+        "startLine": 31,
+        "startChar": 53,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db5ae54_eb059559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "nit: Capitalize comments for consistency, here and elsewhere in this file.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27063e4c_1ec39b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "nit: shill Manager object",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3313b733_70c13612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "Should this function be named something like \"checkWifiEnabled\"? It seems like it\u0027s only checking and not doing any toggling.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f3f366_193f9871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-09T16:31:13Z",
+      "side": 1,
+      "message": "\"error checking if WiFi is enabled\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "aa24a83ab695768390e8a0bfa8e1cb9b3ac7de2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
