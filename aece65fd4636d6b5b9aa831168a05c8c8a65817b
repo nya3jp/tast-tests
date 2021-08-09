@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28979509_e9e0051b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb859462_a78746f9",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 87
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5ffb2fc_53790959",
@@ -104,6 +128,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64425349_25cdc261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88252518_5b0a07b9",
+      "range": {
+        "startLine": 43,
+        "startChar": 52,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebef96d_7b5435b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ffb2fc_53790959",
+      "range": {
+        "startLine": 43,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebd921b0_f78c8318",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e8c1d0_2a536afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd921b0_f78c8318",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b810f6d_8e977bab",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-08-09T00:42:05Z",
       "side": 1,
       "message": "nit: Failed to\n\nThe generaly format of the erros msg is \"Failed to \". Please check all the error msg.",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d30f58_11f7977d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b810f6d_8e977bab",
       "range": {
         "startLine": 72,
         "startChar": 11,
@@ -175,6 +295,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c1409f6_e4ad417d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "when facingParam is env and numCameras is 1, we intend to fail the test, as env camera doesn\u0027t exist. If env camera exists, then numCameras will be 2.",
+      "parentUuid": "9c7f9259_db1e150b",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7101f179_463bc80b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
         "patchSetId": 5
@@ -186,6 +330,30 @@
       "writtenOn": "2021-08-09T00:42:05Z",
       "side": 1,
       "message": "just return facing \u003d\u003d facingParam?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e3b877_1f9d1bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-09T17:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7101f179_463bc80b",
       "range": {
         "startLine": 92,
         "startChar": 2,
