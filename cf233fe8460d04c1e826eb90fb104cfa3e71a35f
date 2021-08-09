@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99c90fd2_edfac4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-09T15:00:55Z",
+      "side": 1,
+      "message": "I think we would want this to be stuck in a loop until power_manager specifically knows that we are discharging. \n\nThis is to fix the corner case where cat /sys/class/power_supply/BAT0/status reports discharging but powerd reports full and updates pass wrongly because fwupd only talks to powerd.",
+      "parentUuid": "d869061e_c9b1b950",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bfb61bb_1b195e49",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 15
