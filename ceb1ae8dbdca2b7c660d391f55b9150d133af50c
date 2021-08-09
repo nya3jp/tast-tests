@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14eaaf05_6c1e92f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-09T00:34:30Z",
+      "side": 1,
+      "message": "This is a definitely a temp solution to deflake some tests. The long-term solution will be discussed with Leo on how to determine the IME readiness.",
+      "parentUuid": "4901c1a0_c7eeea48",
+      "revId": "ceb1ae8dbdca2b7c660d391f55b9150d133af50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f03d96d_671bda85",
