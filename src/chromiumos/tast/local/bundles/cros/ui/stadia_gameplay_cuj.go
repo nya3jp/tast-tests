@@ -15,12 +15,15 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -35,7 +38,16 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
-		Fixture:      "loggedInToCUJUser",
+		Params: []testing.Param{{
+			Val:     false,
+			Fixture: "loggedInToCUJUser",
+		}, {
+			Name:              "lacros",
+			Val:               true,
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -55,11 +67,40 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	useLacros := s.Param().(bool)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to the test API connection: ", err)
+	var tconn *chrome.TestConn
+	var cs ash.ConnSource
+
+	{
+		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
+		// variation.
+		var cr *chrome.Chrome
+		if useLacros {
+			cr = s.FixtValue().(launcher.FixtData).Chrome
+		} else {
+			cr = s.FixtValue().(cuj.FixtureData).Chrome
+			cs = cr
+		}
+
+		var err error
+		tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to the test API connection: ", err)
+		}
+	}
+
+	if useLacros {
+		// Launch lacros via shelf.
+		f := s.FixtValue().(launcher.FixtData)
+
+		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+		l, err := lacros.ShelfLaunch(ctx, tconn, f, s.DataPath(launcher.DataArtifact))
+		if err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		defer l.Close(ctx)
+		cs = l
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -98,7 +139,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	conn, err := cr.NewConn(ctx, stadiacuj.StadiaGameURL)
+	conn, err := cs.NewConn(ctx, stadiacuj.StadiaGameURL)
 	if err != nil {
 		s.Fatal("Failed to open the stadia staging instance: ", err)
 	}
