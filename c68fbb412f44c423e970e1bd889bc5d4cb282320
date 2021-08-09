@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af56b99b_f489c8aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-09T15:41:40Z",
+      "side": 1,
+      "message": "LGTM with recommendation.",
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c98357_0477030f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-09T15:41:40Z",
+      "side": 1,
+      "message": "nit/optional: could you record err, too?",
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da66187_8125be89",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-09T15:41:40Z",
+      "side": 1,
+      "message": "optional: maybe \"fmtStats\"?",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 12
+      },
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0a4523_e76effb7",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-09T15:41:40Z",
+      "side": 1,
+      "message": "nit/style: can be in a line.",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 22
+      },
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
