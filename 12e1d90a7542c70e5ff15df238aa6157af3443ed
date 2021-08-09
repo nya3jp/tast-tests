@@ -69,6 +69,24 @@
       "parentUuid": "0fb647e9_379ecef2",
       "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603e7dbd_e33381be",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-09T23:12:25Z",
+      "side": 1,
+      "message": "mem_check.go logic creates a Backend object once [1] (by calling\nGetBackend() [2] which creates the GenericBackend object). The\ncode in this CL\u0027s\n  func genericBackend() *GenericBackend\n  \niterates over all /sys/kernel/debug/dri/%d/framebuffer files \n(with %d from 0 upwards) until it finds one, then it just saves\nthe index in the created GenericBackend so it can be used in the\ncalls to GenericBackend.ReadFramebufferCount() [3]. Also note how\ngenericBackend() bundles statement and condition in one single\nline (which is go-isms).\n\n  if _, err :\u003d os.Stat(fmt.Sprintf(genericFramebufferFilePattern, i)); err \u003d\u003d nil {\n    // .. found it!\n  }\n\nAlso in general we\u0027d pick the first one we see existing,\nwhich should be OK until we have systems with two GPU\ncards (there\u0027s more code in graphics/ with a similar\nlimitation).\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/mem_check.go;l\u003d114?q\u003dmem_check.go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/graphics/dri.go;l\u003d141?q\u003ddri.go%20GetBackend\n[3] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/graphics/dri.go;l\u003d178?q\u003ddri.go%20GetBackend",
+      "parentUuid": "23ca9fb4_517e3077",
+      "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
