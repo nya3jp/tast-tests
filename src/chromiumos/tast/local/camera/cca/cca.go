@@ -862,7 +862,25 @@ func ClearSavedDir(ctx context.Context, cr *chrome.Chrome) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get saved directory")
 	}
-	return os.RemoveAll(dir)
+
+	// Since "MyFiles/Camera" folder is not deletable by users once it is
+	// created by CCA, we have assumption in CCA that it won't be deleted during
+	// user session. Therefore, instead of completely deleting the it, we clear
+	// all the contents inside if it exists.
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return errors.Wrap(err, "failed to read saved directory")
+	}
+	for _, file := range files {
+		path := filepath.Join(dir, file.Name())
+		if err := os.RemoveAll(path); err != nil {
+			return errors.Wrapf(err, "failed to remove file %v from saved directory", path)
+		}
+	}
+	return nil
 }
 
 // SavedDir returns the path to the folder where captured files are saved.
