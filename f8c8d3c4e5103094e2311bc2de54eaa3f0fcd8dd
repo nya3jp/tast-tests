@@ -88,6 +88,24 @@
       "parentUuid": "e83fa173_d0eac5e4",
       "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68f58e9_9a26a596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-09T12:42:55Z",
+      "side": 1,
+      "message": "String() method can be used for visual representation of structure when you log in error case scenario.\n\nOf course, if you want detailed error message, you have to write your own method using reflect, which should be well unit test covered.\n\nI think for simplicity it should be enough to just have String() methods + reflect.DeepEqual for comparison.",
+      "parentUuid": "c5f65a68_7fc1ab20",
+      "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
