@@ -13,10 +13,14 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -169,6 +173,56 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 		})
 		cancel()
 	}
+}
+
+// StandardizedTouchscreenClick performs a click on the touchscreen.
+func StandardizedTouchscreenClick(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object) error {
+	touchScreen, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize touchscreen")
+	}
+	defer touchScreen.Close()
+
+	touchScreenSingleEventWriter, err := touchScreen.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize touchscreen single event writer")
+	}
+
+	// Get the center of the element in touchscreen coordinates.
+	uiElementBounds, err := selector.GetBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	uiElementBoundsCenter := uiElementBounds.CenterPoint()
+
+	x, y, err := getTouchScreenCords(ctx, testParameters.TestConn, touchScreen, coords.NewPoint(uiElementBoundsCenter.X, uiElementBoundsCenter.Y))
+	if err != nil {
+		return errors.Wrap(err, "Unable to get touch screen coords")
+	}
+
+	// Move to the given point and end the write to simulate a click.
+	if err := touchScreenSingleEventWriter.Move(*x, *y); err != nil {
+		return errors.Wrap(err, "Unable to move into position")
+	}
+
+	if err := touchScreenSingleEventWriter.End(); err != nil {
+		return errors.Wrap(err, "Unable to end click")
+	}
+
+	return nil
+}
+
+// getTouchScreenCords converts the provided points to the corresponding Touchscreen coordinates.
+func getTouchScreenCords(ctx context.Context, tconn *chrome.TestConn, touchScreen *input.TouchscreenEventWriter, point coords.Point) (*input.TouchCoord, *input.TouchCoord, error) {
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get the internal display info")
+	}
+
+	tcc := touchScreen.NewTouchCoordConverter(info.Bounds.Size())
+	xCord, yCord := tcc.ConvertLocation(point)
+	return &xCord, &yCord, nil
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
