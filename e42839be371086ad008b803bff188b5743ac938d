@@ -93,6 +93,54 @@
       },
       "revId": "e42839be371086ad008b803bff188b5743ac938d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2096c13b_919d6f57",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T04:42:58Z",
+      "side": 1,
+      "message": "My bad, it thought it is a *testing.State. I guess it is because *testing.State should not be modified.",
+      "parentUuid": "f5354060_1fbf38af",
+      "range": {
+        "startLine": 208,
+        "startChar": 39,
+        "endLine": 208,
+        "endChar": 53
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c967a18b_9e851ef6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T04:42:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to use it. The defer func in this func closes the record inside this func, which means it just records the screen when this func is active. Therefore, it does not record other part of the test case. Correct me if I\u0027m wrong.",
+      "parentUuid": "265efc83_fd6e46b3",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
