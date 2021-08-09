@@ -16,6 +16,149 @@
       "message": "geohsu@ PTAL.  Thank yoU!",
       "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a02bcc_d1115b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "\"errors\"",
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0dfc858_5bf546e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "Remove this. Include \"errors\" in the first section instead.",
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6558e51_ed70b5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "This can be the empty string \"\".",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ccf2ae_ae3173cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "Nit: colon and space after \"user: \"",
+      "range": {
+        "startLine": 52,
+        "startChar": 62,
+        "endLine": 52,
+        "endChar": 66
+      },
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9132a60e_e125d3b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "finalError",
+      "range": {
+        "startLine": 63,
+        "startChar": 93,
+        "endLine": 63,
+        "endChar": 96
+      },
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f744ff3f_8b348128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "finalError \u003d ui.WaitUntilExists()",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69636338_5480e76b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-09T23:26:53Z",
+      "side": 1,
+      "message": "Remove this line. This line basically sets finalError \u003d err, but you can already do that in the if statement.",
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
