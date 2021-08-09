@@ -367,6 +367,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb2e2a9_a1d1d1cc",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-09T14:51:34Z",
+      "side": 1,
+      "message": "I think I\u0027ll make use of the existing SeparatedOutput() instead of creating new functions to read stderr.",
+      "parentUuid": "a286f5c0_74995c3d",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3718ed74_f6966c10",
@@ -1136,6 +1160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdfca3f8_f560302c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-09T14:51:34Z",
+      "side": 1,
+      "message": "Thanks for catching this! I\u0027ve removed servo.PowerStateOff, and its context deadline, as this would duplicate partially with PowerStateWarmReset.",
+      "parentUuid": "777562e1_0f226f30",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd74558b_acfd8276",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 2
@@ -1195,6 +1243,30 @@
       "side": 1,
       "message": "I think this would work, but it\u0027s simpler to use servo.PowerStateReset or servo.PowerStateWarmReset, as Jeremy suggested. Servo already implements resetting logic, so let\u0027s avoid reinventing the wheel.\n\nAnd, nit: the logs stating \"press power key\" at L88 and L101 of the latest PS might be inaccurate.",
       "parentUuid": "f14bd117_a24e56a0",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b56a9ac0644afd3167b30e171569e8e81a54b1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df80389_554409bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-09T14:51:34Z",
+      "side": 1,
+      "message": "I\u0027ve deployed servo.PowerWarmReset here, and removed servo.PowerStateOff/servo.PowerStateOn, as they would duplicate what a reset does. \n\nIt appears that servo.PowerStateReset would reset the EC, and default DUT\u0027s tablet_mode_angle to the original Clamshell mode settings when reboot completes. Since the goal is to have DUT boot from tablet mode into tablet mode, I\u0027m choosing servo.PowerWarmReset over servo.PowerStateReset.\n\nFor the logs, I\u0027ve re-modified the message as \"Power-cycle DUT with a warm reset\".",
+      "parentUuid": "7d81a189_caabbcda",
       "range": {
         "startLine": 85,
         "startChar": 1,
