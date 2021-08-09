@@ -58,8 +58,9 @@ func setupTestConfig(ctx context.Context) error {
 	return nil
 }
 
+// removeTestConfig removes the test config if it exists or returns nil otherwise.
 func removeTestConfig(ctx context.Context) error {
-	return os.Remove(jsonConfigPath)
+	return os.RemoveAll(jsonConfigPath)
 }
 
 // NewTestBridge returns a new test bridge instance.
@@ -71,6 +72,22 @@ func NewTestBridge(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraT
 		if err := upstart.RestartJob(ctx, "cros-camera"); err != nil {
 			return nil, errors.Wrap(err, "failed to restart cros-camera after test config setup")
 		}
+	}
+
+	pageConn, bridge, err := setUpTestBridge(ctx, cr)
+	if err != nil {
+		return nil, err
+	}
+	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
+}
+
+// NewTestBridgeWithoutTestConfig returns a new test bridge instance without test config.
+func NewTestBridgeWithoutTestConfig(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraType) (*TestBridge, error) {
+	if err := removeTestConfig(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to remove test config")
+	}
+	if err := upstart.RestartJob(ctx, "cros-camera"); err != nil {
+		return nil, errors.Wrap(err, "failed to restart cros-camera after removing test config")
 	}
 
 	pageConn, bridge, err := setUpTestBridge(ctx, cr)
