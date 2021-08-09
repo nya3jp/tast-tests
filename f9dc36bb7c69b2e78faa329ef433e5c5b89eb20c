@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2276c2c4_36c2203d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:25:51Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "f9dc36bb7c69b2e78faa329ef433e5c5b89eb20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799a9126_e1938416",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:25:51Z",
+      "side": 1,
+      "message": "index \n\nYou don\u0027t need to expose it.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f9dc36bb7c69b2e78faa329ef433e5c5b89eb20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902b919a_6aebaebd",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:25:51Z",
+      "side": 1,
+      "message": "optional, GenericBackend{Index: i}",
+      "revId": "f9dc36bb7c69b2e78faa329ef433e5c5b89eb20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
