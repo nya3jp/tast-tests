@@ -45,6 +45,54 @@
       },
       "revId": "e42839be371086ad008b803bff188b5743ac938d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265efc83_fd6e46b3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-09T01:16:39Z",
+      "side": 1,
+      "message": "At the moment, it\u0027s not used. This is just the function I expect people to use to debug their code, since it\u0027s much easier than having to call NewScreenRecorder, Start, and deferring the stopsaverelease.",
+      "parentUuid": "4ed80a24_cf07195f",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5354060_1fbf38af",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-09T01:16:39Z",
+      "side": 1,
+      "message": "The suggestion that I heard was that you should create your own interface with a subset of functions and pass testing.state through as that interface instead.\neg. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go;l\u003d176?q\u003dGetInstallerOptions\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F\n\nIs there anything wrong with this? Why is it not recommended to pass s around? I looked, but couldn\u0027t seem to find any rationale in documentation (though searching for testing and state gives a lot of false positives, so I may have missed it).",
+      "parentUuid": "e6e4456b_295facfc",
+      "range": {
+        "startLine": 208,
+        "startChar": 39,
+        "endLine": 208,
+        "endChar": 53
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
