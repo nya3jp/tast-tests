@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "645ecaea_47cb89c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-08-09T07:19:34Z",
+      "side": 1,
+      "message": "I changed the command to (du -a /mnt/stateful_partition/encrypted) The file size has been reduced by a lot:\ncr) arowa@arowa /tmp/tast/results/20210809-001351/tests/crash.KernelIwlwifiError $ ls -lh\ntotal 84K\n-rw-r--r-- 1 arowa primarygroup  66K Aug  9 00:13 filesystem_and_disk_status.txt\n-rw-r--r-- 1 arowa primarygroup  382 Aug  9 00:14 log.txt\n-rw-r--r-- 1 arowa primarygroup 9.7K Aug  9 00:14 messages\n\nThe reason to use \"-a\" because it shows the files such as /var/log/messages and the issue I am trying to debug is \"messages\" being broken.",
+      "parentUuid": "ef6eef6a_a61d254e",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f487d4_dd8608fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 2
