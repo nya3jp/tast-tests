@@ -79,9 +79,9 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		}
 	}
 
-	adsButton := nodewith.Name("Skip Ads").Role(role.Button)
-	if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(adsButton), y.uiHdl.Click(adsButton))(ctx); err != nil {
-		return errors.Wrap(err, "failed to find ads and skip ads")
+	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
+	if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+		return errors.Wrap(err, "failed to click 'Skip Ad' button")
 	}
 
 	switchQuality := func(resolution string) error {
@@ -99,18 +99,25 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// Dut to the different response time of different DUTs, we need to combine these actions in Poll() to
 		// make quality switch works reliably.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := uiauto.Combine("show the setting panel and click it",
-				y.uiHdl.Click(videoPlayer),
-				y.uiHdl.ClickUntil(settings, y.ui.WithTimeout(10*time.Second).WaitUntilExists(quality)),
-			)(ctx); err != nil {
+			if err := y.uiHdl.Click(videoPlayer)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
+			}
+
+			// If an ad is playing, skip it before proceeding.
+			if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+				return errors.Wrap(err, "failed to click 'Skip Ad' button")
+			}
+
+			if err := y.uiHdl.ClickUntil(settings, y.ui.WithTimeout(10*time.Second).WaitUntilExists(quality))(ctx); err != nil {
 				if y.extendedDisplay {
 					return errors.Wrap(err, "failed to show the setting panel and click it on extended display")
 				}
 				return errors.Wrap(err, "failed to show the setting panel and click it on internal display")
 			}
+
 			testing.ContextLogf(ctx, "Elapsed time to click setting panel: %.3f s", time.Since(startTime).Seconds())
 			return nil
-		}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 20 * time.Second}); err != nil {
+		}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 30 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to click setting panel")
 		}
 

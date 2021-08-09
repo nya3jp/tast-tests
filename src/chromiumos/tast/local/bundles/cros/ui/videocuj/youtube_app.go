@@ -181,8 +181,12 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 			}
 
 			targetQuality := y.d.Object(androidui.Text(resolution), androidui.ID(qualityListItemID))
+			qualitySelectionPopup := y.d.Object(androidui.Text("Quality for current video"))
+			if err := qualitySelectionPopup.WaitForExists(ctx, 2*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for quality selection popup")
+			}
 			if err := targetQuality.WaitForExists(ctx, 2*time.Second); err != nil {
-				return errors.Wrap(err, "failed to find the target quality")
+				return testing.PollBreak(errors.New("the requested resolution is not supported on this device"))
 			}
 
 			// Immediately clicking the target button sometimes doesn't work.
