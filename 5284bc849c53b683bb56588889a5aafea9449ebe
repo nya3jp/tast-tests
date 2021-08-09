@@ -33,6 +33,23 @@
       "message": "failure is unrelated",
       "revId": "5284bc849c53b683bb56588889a5aafea9449ebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd88cd2a_fd6f2870",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-08-09T23:21:31Z",
+      "side": 1,
+      "message": "unrelated failure",
+      "revId": "5284bc849c53b683bb56588889a5aafea9449ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
