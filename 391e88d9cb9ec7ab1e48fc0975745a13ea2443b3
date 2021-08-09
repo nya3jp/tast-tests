@@ -51,6 +51,24 @@
       "parentUuid": "0f19c13d_a650a66d",
       "revId": "391e88d9cb9ec7ab1e48fc0975745a13ea2443b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555eb312_b5b79811",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-09T21:05:27Z",
+      "side": 1,
+      "message": "I incorrectly thought that only 2 such dev files would be available\nbut it seems like this is not the case, see \"Initialisation and Driver \nRegistration\" in http://moi.vonos.net/linux/drm-and-kms/. Let\nme fix it...",
+      "parentUuid": "0f19c13d_a650a66d",
+      "revId": "391e88d9cb9ec7ab1e48fc0975745a13ea2443b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
