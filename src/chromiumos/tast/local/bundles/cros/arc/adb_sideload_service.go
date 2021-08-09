@@ -94,7 +94,7 @@ func (*AdbSideloadService) ConfirmEnablingAdbSideloading(ctx context.Context, re
 
 	// Code variable decides which button to click and decide based on the request received by the service
 	var code string
-	const codeTmpl = "document.activeElement.shadowRoot.getElementById(%s).shadowRoot.getElementById('textButton').click()"
+	const codeTmpl = "document.activeElement.shadowRoot.getElementById(%s).click()"
 	if request.Action == "confirm" {
 		code = fmt.Sprintf(codeTmpl, "'enable-adb-sideloading-ok-button'")
 	} else if request.Action == "cancel" {
