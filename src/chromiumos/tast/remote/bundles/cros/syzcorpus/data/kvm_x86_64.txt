@@ -91,7 +91,6 @@ d5d780ebdea00d45e7dcca8b25d9d7d2aff7da6c
 d5f1d9a688ae7edbefca711fd5c4aae4f148bc3a
 d889b59b2bb87d4047a2
 622c9551604469392d671881a0fce20adb1327a2
-62fd75d1e63266d74869565ae225732095d75396
 63e667bfb17070bdafd95b7953c87ed5726d6cbf
 660979a565b805fc214fa586775ea2a14adcdc86
 676eeda0c763817c7d8ec3f899fd23bdc45b5d1c
@@ -115,7 +114,6 @@ fad3ea9c2911a7bd3e92dac63a00b2afbf0453ed
 824f609ea50e2c2cd161cb64758c95c0e114ce6e
 a5b4439d910b7d90345304431d9d9faecaf47686
 d6e4dd59a9b708895738b9cc59e6bdcb3a43ff14
-f690f901034c9e96038f9c5fa539f614023dc087
 3c2bc6358072ede0f11b
 42a71c84ef04577f1aef
 6987f3b2dbd9eda95f12
@@ -123,29 +121,44 @@ f690f901034c9e96038f9c5fa539f614023dc087
 9a89b866d3fc11acc3b6
 ae488dc136a4cc6ba32b
 b282b65c2c68492df769
+98be80110b9043885626
 
-# Repros below are disabled as they cause bugs/warnings on octopus(4.14).
+# kasan: GPF could be caused by NULL-ptr deref or user memory access (on octopus).
+# 15c235f85dbec4a3568f46c7a1b97f4a1832ac6a
+# f690f901034c9e96038f9c5fa539f614023dc087
+
+# WARNING: CPU: 1 PID: 10366 at lib/debugobjects.c:488 debug_print_object+0x155/0x1bc
+# from __tun_chr_ioctl (on octopus).
+# 62fd75d1e63266d74869565ae225732095d75396
+
+# Fixed by b97f07458373 ("KVM: x86: determine if an exception has an error code only when injecting it.").
+# 4c9043f20d7397012c9bc1652ab381104a706004
+# 7c53ccce361435608a7596592038dc845293ede5
+# 4d7de0e6a195b6a5ffef01d2776e737a52c7de60
+
+# WARNING: CPU: 2 PID: 3600 at net/bluetooth/hci_core.c:1477 hci_dev_do_open+0x4fd/0x6d6
 # 70cbd1b4257a8631183e
 # 24107bdc68de466d5c18
 # 3b3b94e0b7309423adfc
-# 180b7996c153940c91a299fc979af74ad8d6960a
-# 4c9043f20d7397012c9bc1652ab381104a706004
-# 7c53ccce361435608a7596592038dc845293ede5
-# a94332ddaa78ffc1dfbfc613a63f210d365e9dff
-# 4d7de0e6a195b6a5ffef01d2776e737a52c7de60
-
-# Repros below are disabled as they cause bugs/warnings on VMs.
 # 05017ad275a64a3246f8
-# 41e0a5eed02e2971ae90
 # 7f064ba1704c2466e36d
-# 98be80110b9043885626
 # d98704e1f65e44589b68
+
+# WARNING in handle_ept_misconfig
+# Fix is to remove the WARN; see 95e057e25892 and 2c151b25441a.
+# 180b7996c153940c91a299fc979af74ad8d6960a
+# a94332ddaa78ffc1dfbfc613a63f210d365e9dff
+
+# BUG: KASAN: use-after-free in kvm_vm_ioctl_unregister_coalesced_mmio ; unfixed upstream
+# 41e0a5eed02e2971ae90
 # 77c67c409dad0ba32099
 # 0a54a840b5c4790624a7
 
+# Causes OOM on VM.
+# b4f9b1a41ad57a31a9e3b50c71145c971f51f8a5
+
 # reboot chunk 1 (further testing required)
 # b2aafe337dc5a8a0cda9575fd53ba960ad614c31
-# b4f9b1a41ad57a31a9e3b50c71145c971f51f8a5
 # b67fcc95c0d84ea5424813a0d8703fc5c06de7ee
 # b72c8498b69ebcb93ac1605aa8e231e271dc0798
 
