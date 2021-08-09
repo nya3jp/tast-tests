@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90575750_fd42393f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:06:08Z",
+      "side": 1,
+      "message": "There\u0027s fixture for this\n\"ensureNoUI\" or \"graphicsNoChrome\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 49
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacb7d9e_05b8495f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:06:08Z",
+      "side": 1,
+      "message": "tast doesn\u0027t require 80 line width, you don\u0027t have to wrap your line.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ee8952_92197c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:06:08Z",
+      "side": 1,
+      "message": "Any reason not just copies the file to the current directory?",
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559b0f3c_ae5dfca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:06:08Z",
+      "side": 1,
+      "message": "In general tast doesn\u0027t have a very good check/verify stage after each test as autotest did. It solely relies on the test owner to leave a good environment. \n\nIt is good to have the defer here. But I think it\u0027s better to have the binary to accept argument.",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
