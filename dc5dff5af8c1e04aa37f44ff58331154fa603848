@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1f623e_0b17ae27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-09T15:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "231039a0_6ac271ce",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 49
+      },
+      "revId": "dc5dff5af8c1e04aa37f44ff58331154fa603848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f51a6e1_c1cf76cd",
@@ -89,6 +113,24 @@
       "writtenOn": "2021-08-07T07:48:06Z",
       "side": 1,
       "message": "no hatch devices with android_vm and lacros?",
+      "revId": "dc5dff5af8c1e04aa37f44ff58331154fa603848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c6264f_9b62ba6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-09T15:58:30Z",
+      "side": 1,
+      "message": "Done. I was not sure whether we want a complete mirror of the tests.",
+      "parentUuid": "3f51a6e1_c1cf76cd",
       "revId": "dc5dff5af8c1e04aa37f44ff58331154fa603848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
