@@ -80,6 +80,15 @@ func NewTestBridge(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraT
 	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
 }
 
+// NewTestBridgeWithoutTestConfig returns a new test bridge instance with test config so cros camera service will treat it as a normal user.
+func NewTestBridgeWithoutTestConfig(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraType) (*TestBridge, error) {
+	pageConn, bridge, err := setUpTestBridge(ctx, cr)
+	if err != nil {
+		return nil, err
+	}
+	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
+}
+
 func getPageConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	conn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
 	if err != nil {
