@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type ptkParam struct {
@@ -37,9 +36,6 @@ var defaultPTKParam = ptkParam{
 	allowedLossCount: 30, // Allow 20% ping loss.
 }
 
-// TODO(b/183463918): remove the restriction once the bug is solved.
-var ptkBuggyPlatform = []string{"kukui", "jacuzzi"}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PTK,
@@ -51,19 +47,11 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixtWithCapture",
+		// TODO(b/183463918): move the testing parameters to PTK().
 		Params: []testing.Param{
 			{
 				// Default case.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(ptkBuggyPlatform...)),
-				Val:               defaultPTKParam,
-			},
-			{
-				// Qualcomm QCA6174A-3 case.
-				// TODO(b/183463918): remove this once the issue is fixed.
-				Name:              "qca6174a3",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform(ptkBuggyPlatform...)),
-				ExtraAttr:         []string{"wificell_unstable"},
-				Val:               defaultPTKParam,
+				Val: defaultPTKParam,
 			},
 		},
 	})
