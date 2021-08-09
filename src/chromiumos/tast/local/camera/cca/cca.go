@@ -862,7 +862,23 @@ func ClearSavedDir(ctx context.Context, cr *chrome.Chrome) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get saved directory")
 	}
-	return os.RemoveAll(dir)
+	if _, err := os.Stat(dir); err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return errors.Wrap(err, "failed to read saved directory")
+	}
+	for _, file := range files {
+		path := filepath.Join(dir, file.Name())
+		if err := os.RemoveAll(path); err != nil {
+			return errors.Wrapf(err, "failed to remove file %v from saved directory", path)
+		}
+	}
+	return nil
 }
 
 // SavedDir returns the path to the folder where captured files are saved.
