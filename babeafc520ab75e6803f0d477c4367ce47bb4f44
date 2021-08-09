@@ -16,6 +16,24 @@
       "message": "nit: let\u0027s have some comment here about why we cannot simply remove the whole dir",
       "revId": "babeafc520ab75e6803f0d477c4367ce47bb4f44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e190d93_065ad8a9",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-09T05:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1cb598_e1203a15",
+      "revId": "babeafc520ab75e6803f0d477c4367ce47bb4f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
