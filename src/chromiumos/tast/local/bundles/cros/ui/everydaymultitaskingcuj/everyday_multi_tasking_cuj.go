@@ -442,7 +442,7 @@ func switchWindows(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 }
 
 func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) error {
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
+	tb, err := testutil.NewTestBridgeWithoutTestConfig(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		return errors.Wrap(err, "failed to construct test bridge")
 	}
