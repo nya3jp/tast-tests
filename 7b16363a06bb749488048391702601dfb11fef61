@@ -22,6 +22,30 @@
       },
       "revId": "7b16363a06bb749488048391702601dfb11fef61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b041c43_1a3ce36c",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-09T06:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd7d26a_eed7cac6",
+      "range": {
+        "startLine": 83,
+        "startChar": 69,
+        "endLine": 83,
+        "endChar": 73
+      },
+      "revId": "7b16363a06bb749488048391702601dfb11fef61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
