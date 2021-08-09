@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61098a4d_c9e112b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-09T16:56:22Z",
+      "side": 1,
+      "message": "Not that I know of, but \"video_overlays\" is pegged to \"drm_atomic\"\nand that has an intrinsic kernel version dependency, since old kernels\n(\u003c4.4 IIRC ?) don\u0027t have it.",
+      "parentUuid": "6f1edab7_34cd291e",
+      "revId": "200ad1ca5f83122fa6a9a9c82ea079675c81b628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f7625a_d8906af1",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-07T03:05:49Z",
       "side": 1,
       "message": "I think the names are confusing.  They should be:\ngenericFramebufferFile0 \u003d \ngenericFramebufferFile1 \u003d\n\nthat way we don\u0027t have to reference back to here to see which is which.",
+      "revId": "200ad1ca5f83122fa6a9a9c82ea079675c81b628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22dc51b_9ab8cd91",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-09T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f7625a_d8906af1",
       "revId": "200ad1ca5f83122fa6a9a9c82ea079675c81b628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
