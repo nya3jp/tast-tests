@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b331ed2c_bca7a469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:09:34Z",
+      "side": 1,
+      "message": "Thanks Trent for the link.",
+      "parentUuid": "1844b348_c2756854",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "5c5239bb839e5179701a5d584ad69c1b04f0daff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51fb1c69_5dd5c499",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
         "patchSetId": 3
