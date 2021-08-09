@@ -33,6 +33,29 @@
       "message": "LGTM % adding the contact email",
       "revId": "8809610056ec129e3b21457d0d176146b206ad07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d560451_12d35c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-09T18:59:03Z",
+      "side": 1,
+      "message": "I think it would be useful to have a recovery mechanism to attempt to restore the device back to its original state such that wifi state is restored after the test finishes whether it succeeds or fails. I don\u0027t quite remember if the wifi setting is restored once the chrome session ends, but if it isn\u0027t, recovering the wifi state would be useful. WDYT?\n\nAlso, my understanding of this test is that the test expects the initial wifi state to be off for it to not error out. I\u0027m not sure if you can assume this is the case for every DUT in case another test left the DUT in a different configuration state.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nIf you can\u0027t assume this, what do you think about attempting to get the machine into your desired initial state before executing the for loop?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "8809610056ec129e3b21457d0d176146b206ad07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
