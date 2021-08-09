@@ -20,6 +20,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil/externaldata"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
@@ -420,5 +424,43 @@ func (c *PolicyService) EvalExpressionInChromeURL(ctx context.Context, req *ppb.
 		return nil, errors.Wrapf(err, "failed to evaluate expression on %s", req.Url)
 	}
 
+	return &empty.Empty{}, nil
+}
+
+// PerformUIShutdown clicks shut down button on DUT ui system tray.
+func (c *PolicyService) PerformUIShutdown(ctx context.Context, req *ppb.PerformUIShutdownRequest) (*empty.Empty, error) {
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	dumpLog := true
+	defer func(ctx context.Context) {
+		if !dumpLog {
+			return
+		}
+		// Dumping faillog to the directory name provided through request.
+		os.RemoveAll(req.UiDumpDir)
+		if err := os.Mkdir(req.UiDumpDir, os.ModePerm); err != nil {
+			testing.ContextLog(ctx, "Failed to create dump directory inside /tmp: ", err)
+			return
+		}
+		faillog.DumpUITreeWithScreenshotOnError(ctx, req.UiDumpDir, func() bool { return true }, c.chrome, "ui_tree")
+	}(ctx)
+
+	systemTray := nodewith.ClassName("UnifiedSystemTray").Role(role.Button)
+	shutDown := nodewith.Name(req.NodeName).First()
+
+	ui := uiauto.New(tconn)
+	// Clicking the system tray, waiting till the system tray opens and then clicking the shutdown node.
+	if err := uiauto.Combine("performing shutdown",
+		ui.LeftClick(systemTray),
+		ui.WithTimeout(5*time.Second).WaitUntilExists(shutDown),
+		ui.LeftClick(shutDown))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to shut down the device from system ui")
+	}
+
+	// Disarm ui tree dump and screenshot.
+	dumpLog = false
 	return &empty.Empty{}, nil
 }
