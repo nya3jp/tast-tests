@@ -51,6 +51,24 @@
       "parentUuid": "a322b46a_6ab0b6ce",
       "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ca9fb4_517e3077",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-08-09T22:28:54Z",
+      "side": 1,
+      "message": "I see g.Index getting the largest crtc.  But we need to open each crtc and try and read to see if it has the data we are looking for.  It looks like if there were 10 crtcs: |/sys/kernel/debug/dri/[0-9]/framebuffer| then g.Index would end up with 9 and only that one would get through the os.Open call.  Or is ReadFramebufferCount called after each os.Stat?",
+      "parentUuid": "0fb647e9_379ecef2",
+      "revId": "12e1d90a7542c70e5ff15df238aa6157af3443ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
