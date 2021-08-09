@@ -37,9 +37,18 @@ func init() {
 }
 
 func BedTimeLimit(ctx context.Context, s *testing.State) {
-	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+
+	// Make sure screen is not locked.
+	s.Log("Assert the screen is not locked")
+	if _, err := lockscreen.WaitState(ctx, tconn,
+		func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
+		s.Fatal("Waiting for screen to be unlocked failed: ", err)
+	}
+
+	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
+
 	now := time.Now()
 	bedTimeDuration := time.Minute
 	timeBeforeLocked := 30 * time.Second
