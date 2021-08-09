@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad86462_b0177290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:19:01Z",
+      "side": 1,
+      "message": "generally looks good. \n\nBack to the question of changing the directory is OK or not in tast. If I remember correctly, tast doesn\u0027t prohitbit individual test to change the directory and none of the tast tests I know of requires to be run in certain directory. It should be OK to change it here.",
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90575750_fd42393f",
@@ -19,6 +36,29 @@
         "startChar": 1,
         "endLine": 96,
         "endChar": 49
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4d174e_e7aa3ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:19:01Z",
+      "side": 1,
+      "message": "testing.State is available here. You should consider calling s.Logf\n\n\n// If testing.State is available, just call State.Log or State.Logf instead.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 20
       },
       "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -82,6 +122,52 @@
         "startChar": 7,
         "endLine": 114,
         "endChar": 19
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f392f8_e645fc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:19:01Z",
+      "side": 1,
+      "message": "consider put into a new line for readability.\n\nBTW, any specific reason for putting the exec name and time in the log?\nThe test entries should contain them already.",
+      "range": {
+        "startLine": 129,
+        "startChar": 38,
+        "endLine": 129,
+        "endChar": 109
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b92db9_4f7b6c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-09T22:19:01Z",
+      "side": 1,
+      "message": "In tast, it generally checks err instead of the command here.\nSo, it should looks like\n\nif command, err :\u003d t.Args(); err !\u003d nil {\n    s.Log(\"Running %s\", ...)\n}",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 11
       },
       "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
