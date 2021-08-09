@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ddc3e1_cd3b8e93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-09T13:35:04Z",
+      "side": 1,
+      "message": "Similar to the keyboard tests, this adds the initial APK for testing mouse functionality, and implements the left click test.",
+      "revId": "df0b4046c88049a34801e5b85b9df91a1704479b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
