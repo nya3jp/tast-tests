@@ -33,6 +33,167 @@
       "message": "LGTM",
       "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb859462_a78746f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "It is a bit vague to me and it is not quite consistent with the comment for the func CCAUIMultiCameraTakePicture.",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 87
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ffb2fc_53790959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "end with .\nPlease check all the comments.",
+      "range": {
+        "startLine": 43,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88252518_5b0a07b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "\"and\" or \"or\"?",
+      "range": {
+        "startLine": 43,
+        "startChar": 52,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd921b0_f78c8318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "Please leave sometime for cleanup.",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b810f6d_8e977bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "nit: Failed to\n\nThe generaly format of the erros msg is \"Failed to \". Please check all the error msg.",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7f9259_db1e150b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "Is this msg correct? It will be false no matter what is facingParam if numCameras is not 1.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7101f179_463bc80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-09T00:42:05Z",
+      "side": 1,
+      "message": "just return facing \u003d\u003d facingParam?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
