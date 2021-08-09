@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b864712_45bd9a21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-09T05:24:33Z",
+      "side": 1,
+      "message": "I just have one nit comment. Please take a look. Thanks.",
+      "revId": "512fa76ab0bb20f9bf3e4be4d7c016b19d4cb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e695e2_440bc9f3",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-09T05:24:33Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this check is necessary. If the directory is not readable, I think ioutil.ReadDir will give you error\n\n\tfiles, err :\u003d ioutil.ReadDir(dir)\n\tif err !\u003d nil {\n\t        if os.IsNotExist(err) {\n\t            return nil\n\t        }\n\t\treturn errors.Wrap(err, \"failed to read saved directory\")\n\t}",
+      "revId": "512fa76ab0bb20f9bf3e4be4d7c016b19d4cb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
