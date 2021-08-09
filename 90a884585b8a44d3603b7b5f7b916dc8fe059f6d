@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c38e055_07a353c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-09T03:20:15Z",
+      "side": 1,
+      "message": "Duplicate :",
+      "range": {
+        "startLine": 65,
+        "startChar": 108,
+        "endLine": 65,
+        "endChar": 109
+      },
+      "revId": "90a884585b8a44d3603b7b5f7b916dc8fe059f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cdfe650_02b6fe55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-09T03:20:15Z",
+      "side": 1,
+      "message": "Redundant whitespace.",
+      "range": {
+        "startLine": 65,
+        "startChar": 26,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "90a884585b8a44d3603b7b5f7b916dc8fe059f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

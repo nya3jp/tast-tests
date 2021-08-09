@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef6eef6a_a61d254e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-09T03:20:15Z",
+      "side": 1,
+      "message": "What info in particular you want to inspect from \"du -a\"? It is too large to output 21M data for each test run. As far as I remember, it would reduce the space used for other tests to store the result.",
+      "parentUuid": "a0e73a25_f5278ff8",
+      "range": {
+        "startLine": 61,
+        "startChar": 54,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "de2e11057f87ce00fc8540714b3e9f764bb154bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f487d4_dd8608fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 2
