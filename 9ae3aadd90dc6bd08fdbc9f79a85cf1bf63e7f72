@@ -16,6 +16,224 @@
       "message": "- tested with no log files (error:  Failed to read upstart logs: open /var/log/upstart.log: no such file or directory) \n- tested with violation in files  ([ FAIL ] bio_crypto_init string found in upstart.log)\n- tested passing case\n",
       "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57ba1ae_9d360a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "This should probably go in the biod directory.\n\nsource.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/biod\n\nIf that happens, you can probably drop the \"Fp\" prefix.",
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461afe45_1567b72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "Do you have/use a chromium.org account or just google.com?\n\nYou have been committing code as google.com.",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233a5570_9d66cc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "Do you use this?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e5e13d_1200859c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "Maybe replace with |Succeeds|, since we are looking end-to-end that bio_crypto_init doesn\u0027t violate things and succeeds?",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cdc6e4_f53a5702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "This is |n*log(n)| and then another |log(n)| to search those sorted lines. \n\nI don\u0027t think this is very efficient, since it is larger than a simple |n| search.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66fa773_c0e38320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "When using Search, you then need to check the real value that it found to know it it is valid.\n\nSee https://pkg.go.dev/sort#example-Search",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4587fe9e_b2c71d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "Unless I\u0027m missing some lines transformation somewhere, this won\u0027t find lines that contain bio_crypto_init, only lines that happen to start with something close to bio_crypto_init.\n\nhttps://pkg.go.dev/sort#SearchStrings\n\n\"The return value is the index to insert x if x is not present (it could be len(a)).\"\n\nMeaning that it is going to give you an index of where the line should be OR the index where you should insert it.\n\nCheckout my example at https://play.golang.org/p/Hp-qaLvFkSx",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c7f1c7_4b2da373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "Can we explain a bit about why that is bad?\n\nLike,",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 55
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5e6432_5c01251c",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "This file should probably go in some local/common directory at some point. Maybe the following directory:\n\nsource.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/syslog\n\nAlso, I think the name can be genericized, like audit_log_since_boot.go.",
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581976e1_1409300a",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-10T03:16:49Z",
+      "side": 1,
+      "message": "You probably want to just return |nil| here.\n\nSee https://tour.golang.org/moretypes/12 or my goofy example https://play.golang.org/p/9s5GTkPh5GQ .",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
