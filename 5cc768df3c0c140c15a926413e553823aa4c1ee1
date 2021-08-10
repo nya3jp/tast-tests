@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99595a88_17ebead0",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9065,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "(Also see other comments for error log.)\n\nFor UsageTimeLimitValueOverrides, it\u0027s able to create a empty array instead.\n\nFor UsageTimeLimitValueTimeUsageLimit, I guest some fields(weekday value) cannot be null? In production[1], the weekday value are omit instead of null if no value set.\n\n[1]https://drive.google.com/file/d/1cDymQKj1uHRknBjDFUjS-WqlrcVWcGhC/view",
+      "parentUuid": "d4f868dd_b4073647",
+      "range": {
+        "startLine": 9065,
+        "startChar": 70,
+        "endLine": 9065,
+        "endChar": 79
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "732092a2_c34bdaeb",
         "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
@@ -88,6 +112,30 @@
       "writtenOn": "2021-08-05T01:51:36Z",
       "side": 1,
       "message": "This function hard-codes the policy. Wouldn\u0027t this cause problems if we change the policy later?",
+      "range": {
+        "startLine": 460,
+        "startChar": 4,
+        "endLine": 460,
+        "endChar": 35
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86fb873_64f51d83",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "If we change the policy in policy_templates.json, this function should also be change. Any code related to this policy might have to change.",
+      "parentUuid": "732092a2_c34bdaeb",
       "range": {
         "startLine": 460,
         "startChar": 4,
@@ -144,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1520fd_be9644fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d55d035_652c9e0f",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a60ee8aa_b5b23433",
@@ -157,6 +229,30 @@
       "writtenOn": "2021-08-05T01:51:36Z",
       "side": 1,
       "message": "because Family Link users have restrictions to prevent manipulating the system clock.",
+      "range": {
+        "startLine": 52,
+        "startChar": 90,
+        "endLine": 52,
+        "endChar": 91
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6068cbe_8e05246e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a60ee8aa_b5b23433",
       "range": {
         "startLine": 52,
         "startChar": 90,
@@ -192,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c59c8dd4_d470ba30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "I tried that before. The error happens on Friday/Monday/Tuesday/..values[1]\n\nI set those value to be nil, while the error says \u0027Schema validation error at \"time_usage_limit.friday\": The value type doesn\u0027t match the schema type\u0027. See full log in [2]. \n\nIn production, if parent don\u0027t set daily limit on Friday, the Friday field will be omit. \n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/defs.go;l\u003d9082;drc\u003d4d3517ee46afc053ba325b57a7af7268bcb3c061\n\n[2]https://paste.googleplex.com/6136973535215616",
+      "parentUuid": "20d44e97_b267f7f4",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a77a8cf0_fcfba4cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
         "patchSetId": 2
@@ -203,6 +323,30 @@
       "writtenOn": "2021-08-05T01:51:36Z",
       "side": 1,
       "message": "/*base\u003d*/10",
+      "range": {
+        "startLine": 60,
+        "startChar": 56,
+        "endLine": 60,
+        "endChar": 58
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bf1855_43b19cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a77a8cf0_fcfba4cf",
       "range": {
         "startLine": 60,
         "startChar": 56,
@@ -236,6 +380,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7dbda9_ea25cf11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f3dfbc_cfbfb9e0",
+      "range": {
+        "startLine": 83,
+        "startChar": 27,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cacb8c2_c4f03e77",
@@ -259,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e18cf4_f6694b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cacb8c2_c4f03e77",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43163301_c250d711",
@@ -272,6 +464,30 @@
       "writtenOn": "2021-08-05T01:51:36Z",
       "side": 1,
       "message": "Nit: Waiting",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2794a3a_75e7c93b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-10T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43163301_c250d711",
       "range": {
         "startLine": 117,
         "startChar": 23,
