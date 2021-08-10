@@ -253,9 +253,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			// _unstable tests can never be CQ critical.
-			// bullseye is informational while in development
+			// stretch is informational while we phase it out.
 			var extraAttr []string
-			if (!i.stable || i.debianVersion == vm.DebianBullseye) && canBeCritical {
+			if (!i.stable || i.debianVersion == vm.DebianStretch) && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 
