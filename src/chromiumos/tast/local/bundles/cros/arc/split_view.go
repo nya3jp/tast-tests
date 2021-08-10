@@ -90,6 +90,12 @@ func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, 
 	if err := stw.LongPressAt(ctx, centerX, centerY); err != nil {
 		return errors.Wrap(err, "failed to long-press to start dragging window")
 	}
+
+	// Validity check to ensure there is one dragging item.
+	if _, err := ash.DraggedWindowInOverview(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get dragged overview item")
+	}
+
 	if err := stw.Swipe(ctx, centerX, centerY, targetX, tew.Height()/2, time.Second); err != nil {
 		return errors.Wrap(err, "failed to swipe for snapping window")
 	}
