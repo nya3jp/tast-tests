@@ -206,6 +206,30 @@
       },
       "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413576a6_db1b6067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-10T17:10:23Z",
+      "side": 1,
+      "message": "Thanks.\n\n\u003e \u003e Can you verify this works with such a dock, for example, Dell WD19TB ?\n\u003e Verified it is working as expected.\n\nThis also should require The device policy to be set explicitly. Can you confirm that is the case?\n\n\nWhat you tested with is an NVMe SSD which perhaps doesn\u0027t have a DP alternate mode, and so it always enteres Thunderbolt mode.",
+      "parentUuid": "1e4b4bff_8c13f0e1",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
