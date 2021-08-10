@@ -16,6 +16,74 @@
       "message": "niwa@, could you ptal? kansho@ FYI",
       "revId": "2fe8cbae8e1145289eca3c10478b9943e0d5c876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244598fc_80868105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-10T17:22:44Z",
+      "side": 1,
+      "message": "Please take a look at my comments. Thanks.",
+      "revId": "2fe8cbae8e1145289eca3c10478b9943e0d5c876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff71d5c_9d980802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-10T17:22:44Z",
+      "side": 1,
+      "message": "Call s.Fatal instead of s.Error+return",
+      "revId": "2fe8cbae8e1145289eca3c10478b9943e0d5c876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92f441f_73ec29ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-10T17:22:44Z",
+      "side": 1,
+      "message": "Why do you need to do it inside the loop? Is it going to be different from type to type? \n\nI suggest to remove numAdditionalGuestCpus and declare numExpectedGuestCpus outside the loop. \n\n```\n    numExpectedGuestCpus :\u003d runtime.NumCPU()\n    if isVMEnabled {\n\tnumExpectedGuestCpus++\n    }\n    for _, t :\u003d range types {\n        ...\n    }\n```",
+      "revId": "2fe8cbae8e1145289eca3c10478b9943e0d5c876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af284e42_b518c2d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-10T17:22:44Z",
+      "side": 1,
+      "message": "Call s.Fatal instead of s.Error+return",
+      "revId": "2fe8cbae8e1145289eca3c10478b9943e0d5c876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
