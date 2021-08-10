@@ -89,7 +89,8 @@ type mediaControl interface {
 	getValidTestValues(mediaSettingRange) []float64
 	getInvalidTestValues(mediaSettingRange) []float64
 	// getConstraints gets constraint for setting |value| to control |c|.
-	getConstraints(value *float64) mediaTrackConstraints
+	getConstraints(*float64) mediaTrackConstraints
+	getConstraintsBySettings(*mediaTrackSettings) mediaTrackConstraints
 }
 
 type defaultControl struct {
@@ -139,6 +140,10 @@ func (c *brightnessControl) getConstraints(value *float64) mediaTrackConstraints
 	}
 }
 
+func (c *brightnessControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Brightness)
+}
+
 type colorTemperatureControl struct {
 	defaultControl
 }
@@ -176,6 +181,17 @@ func (c *colorTemperatureControl) getConstraints(value *float64) mediaTrackConst
 	}
 }
 
+func (c *colorTemperatureControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	if *(*s).WhiteBalanceMode == "continuous" {
+		return mediaTrackConstraints{
+			Advanced: [1]mediaTrackSettings{
+				mediaTrackSettings{WhiteBalanceMode: (*s).WhiteBalanceMode},
+			},
+		}
+	}
+	return c.getConstraints((*s).ColorTemperature)
+}
+
 type contrastControl struct {
 	defaultControl
 }
@@ -198,6 +214,10 @@ func (c *contrastControl) getConstraints(value *float64) mediaTrackConstraints {
 			mediaTrackSettings{Contrast: value},
 		},
 	}
+}
+
+func (c *contrastControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Contrast)
 }
 
 type exposureCompensationControl struct {
@@ -225,6 +245,14 @@ func (c *exposureCompensationControl) getConstraints(value *float64) mediaTrackC
 	}
 }
 
+func (c *exposureCompensationControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return mediaTrackConstraints{
+		Advanced: [1]mediaTrackSettings{
+			mediaTrackSettings{ExposureMode: (*s).ExposureMode, ExposureCompensation: (*s).ExposureCompensation},
+		},
+	}
+}
+
 type exposureTimeControl struct {
 	defaultControl
 }
@@ -239,6 +267,12 @@ func (c *exposureTimeControl) getValue(settings *mediaTrackSettings) float64 {
 
 func (c *exposureTimeControl) getSettingRange(capabilities *mediaTrackCapabilities) *mediaSettingRange {
 	return (*capabilities).ExposureTime
+}
+
+func (c *exposureTimeControl) getValidTestValues(r mediaSettingRange) []float64 {
+	// Chrome treat the track as invalid if frame duration is too large.
+	// Only tests reasonable exposure time. for 15, 24 and 30 fps.
+	return []float64{333.0, 416.0, 666.0}
 }
 
 func (c *exposureTimeControl) getTolerance() float64 {
@@ -257,6 +291,17 @@ func (c *exposureTimeControl) getConstraints(value *float64) mediaTrackConstrain
 			mediaTrackSettings{ExposureMode: &manual, ExposureTime: value},
 		},
 	}
+}
+
+func (c *exposureTimeControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	if *(*s).ExposureMode == "continuous" {
+		return mediaTrackConstraints{
+			Advanced: [1]mediaTrackSettings{
+				mediaTrackSettings{ExposureMode: (*s).ExposureMode},
+			},
+		}
+	}
+	return c.getConstraints((*s).ExposureTime)
 }
 
 type focusDistanceControl struct {
@@ -298,6 +343,17 @@ func (c *focusDistanceControl) getConstraints(value *float64) mediaTrackConstrai
 	}
 }
 
+func (c *focusDistanceControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	if *(*s).FocusMode == "continuous" {
+		return mediaTrackConstraints{
+			Advanced: [1]mediaTrackSettings{
+				mediaTrackSettings{FocusMode: (*s).FocusMode},
+			},
+		}
+	}
+	return c.getConstraints((*s).FocusDistance)
+}
+
 type isoControl struct {
 	defaultControl
 }
@@ -333,6 +389,22 @@ func (c *isoControl) getConstraints(value *float64) mediaTrackConstraints {
 	}
 }
 
+func (c *isoControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	if *(*s).ExposureMode == "continuous" {
+		return mediaTrackConstraints{
+			Advanced: [1]mediaTrackSettings{
+				mediaTrackSettings{ExposureMode: (*s).ExposureMode},
+			},
+		}
+	}
+	manual := "manual"
+	return mediaTrackConstraints{
+		Advanced: [1]mediaTrackSettings{
+			mediaTrackSettings{ExposureMode: &manual, ExposureTime: (*s).ExposureTime, Iso: (*s).Iso},
+		},
+	}
+}
+
 type panControl struct {
 	defaultControl
 }
@@ -351,6 +423,10 @@ func (c *panControl) getConstraints(value *float64) mediaTrackConstraints {
 			mediaTrackSettings{Pan: value},
 		},
 	}
+}
+
+func (c *panControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Pan)
 }
 
 type saturationControl struct {
@@ -377,6 +453,10 @@ func (c *saturationControl) getConstraints(value *float64) mediaTrackConstraints
 	}
 }
 
+func (c *saturationControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Saturation)
+}
+
 type sharpnessControl struct {
 	defaultControl
 }
@@ -399,6 +479,10 @@ func (c *sharpnessControl) getConstraints(value *float64) mediaTrackConstraints 
 			mediaTrackSettings{Sharpness: value},
 		},
 	}
+}
+
+func (c *sharpnessControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Sharpness)
 }
 
 type tiltControl struct {
@@ -425,6 +509,10 @@ func (c *tiltControl) getConstraints(value *float64) mediaTrackConstraints {
 	}
 }
 
+func (c *tiltControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Tilt)
+}
+
 type zoomControl struct {
 	defaultControl
 }
@@ -447,6 +535,10 @@ func (c *zoomControl) getConstraints(value *float64) mediaTrackConstraints {
 			mediaTrackSettings{Zoom: value},
 		},
 	}
+}
+
+func (c *zoomControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
+	return c.getConstraints((*s).Zoom)
 }
 
 type exposureModeControl struct {
@@ -560,6 +652,10 @@ func verifyAdvancedControls(ctx context.Context, s *testing.State, conn *chrome.
 		s.Fatal("Can't get capabilities: ", err)
 		return
 	}
+	origSettings, err := getMediaTrackSettings(ctx, conn)
+	if err != nil {
+		s.Fatal("Can't get settings: ", err)
+	}
 	for _, control := range testMediaControls {
 		settingRangeAddr := control.getSettingRange(&capabilities)
 		if settingRangeAddr == nil {
@@ -574,6 +670,10 @@ func verifyAdvancedControls(ctx context.Context, s *testing.State, conn *chrome.
 
 		// Verify validvalues.
 		verifyControl(ctx, s, conn, control, settingRange, true)
+		err := applyMediaTrackConstraints(ctx, conn, control.getConstraintsBySettings(&origSettings))
+		if err != nil {
+			s.Fatal("Can't apply original constraints: ", err)
+		}
 	}
 }
 
