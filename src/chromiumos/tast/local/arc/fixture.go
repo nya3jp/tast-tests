@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
@@ -40,6 +41,27 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	// arcBootedWithPlayStore is a fixture similar to arcBooted along with GAIA login and Play Store Optin.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithPlayStore",
+		Desc: "ARC is booted with disabling sync flags",
+		Vars: []string{"ui.gaiaPoolDefault"},
+		Contacts: []string{
+			"rnanjappan@chromium.org",
+			"arc-eng@google.com",
+		},
+		Impl: NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(DisableSyncFlags()...),
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
 		TearDownTimeout: resetTimeout,
