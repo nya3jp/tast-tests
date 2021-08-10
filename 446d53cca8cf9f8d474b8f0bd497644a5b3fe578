@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e475566b_d89c243e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T01:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a868c8c2_6e648ebe",
+      "range": {
+        "startLine": 56,
+        "startChar": 28,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "446d53cca8cf9f8d474b8f0bd497644a5b3fe578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d4e3c9_d8ca2e0c",
@@ -60,6 +84,54 @@
       "writtenOn": "2021-08-09T15:48:18Z",
       "side": 1,
       "message": "is stderr expected to be one line?\nif not, could you use yet another file for logging?\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 65,
+        "startChar": 65,
+        "endLine": 65,
+        "endChar": 80
+      },
+      "revId": "446d53cca8cf9f8d474b8f0bd497644a5b3fe578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6112ae90_3292810e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T01:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d4e3c9_d8ca2e0c",
+      "range": {
+        "startLine": 65,
+        "startChar": 49,
+        "endLine": 65,
+        "endChar": 57
+      },
+      "revId": "446d53cca8cf9f8d474b8f0bd497644a5b3fe578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "722d9bf6_a4232378",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T01:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce0823de_001901fc",
       "range": {
         "startLine": 65,
         "startChar": 65,
