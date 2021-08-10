@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbf106b_f9de14e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-10T06:27:20Z",
+      "side": 1,
+      "message": "How do you derive the relation between Min/Max and default constraint here?\nCan we simply record the control settings right after first preview open and use it as default?",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 38
+      },
+      "revId": "82dcb28217c2211a674bf08f157ced248beb76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
