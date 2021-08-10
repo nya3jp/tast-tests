@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a90e4f0a_348002fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1430497
+      },
+      "writtenOn": "2021-08-10T07:50:06Z",
+      "side": 1,
+      "message": "Can you please suggest right group?",
+      "parentUuid": "3ff0e482_7f6b01f7",
+      "range": {
+        "startLine": 31,
+        "startChar": 40,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "814feaf9_6b584e9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 13
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-06T22:24:45Z",
       "side": 1,
       "message": "How are you ensuring that the peripheral switches to TBT mode after login? Are you ensuring that the DevicePciPeripheralDataAccessEnabled Device setting is set to true, prior to login? If not, then a TBT device which *does* support USB+DP alt mode will never enter TBT mode.\n\nCan you verify this works with such a dock, for example, Dell WD19TB ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00733c18_d4a0013e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1430497
+      },
+      "writtenOn": "2021-08-10T07:50:06Z",
+      "side": 1,
+      "message": "No, Test case performs only hot-plug/unplug through cswitch. We validate only basic enumeration of the device for the performed action.\n\n\nCan you verify this works with such a dock, for example, Dell WD19TB ?\nVerified it is working as expected.",
+      "parentUuid": "814feaf9_6b584e9e",
       "range": {
         "startLine": 36,
         "startChar": 16,
