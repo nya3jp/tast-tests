@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b927c5e2_c98e96b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-10T00:04:37Z",
+      "side": 1,
+      "message": "Might become inactive on gerrit so move the review to Dean. Still keep myself on cc so I can still receive mail and check from time to time.",
+      "revId": "dc933d3986c921cba32d768702036399d8d72664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
