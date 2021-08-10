@@ -178,6 +178,16 @@ func CPUSet(ctx context.Context, s *testing.State) {
 	types := []string{"foreground", "background", "system-background", "top-app", "restricted"}
 	numOtherCores := 0
 
+	numExpectedGuestCpus := runtime.NumCPU()
+	isVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to determine guest type: ", err)
+	}
+	if isVMEnabled {
+		// ARCVM always has one additional vCPU for supporting RT processes.
+		numExpectedGuestCpus++
+	}
+
 	for _, t := range types {
 		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
 		// accessible via adb shell user in P. Access by procfs instead.
@@ -197,15 +207,15 @@ func CPUSet(ctx context.Context, s *testing.State) {
 		if t == "foreground" || t == "top-app" {
 			// Even after full boot, these processes should be able
 			// to use all CPU cores.
-			if len(cpusInUse) != runtime.NumCPU() {
+			if len(cpusInUse) != numExpectedGuestCpus {
 				s.Errorf("Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
-					len(cpusInUse), runtime.NumCPU())
+					len(cpusInUse), numExpectedGuestCpus)
 			}
 		} else {
 			// Other processes should not.
-			if len(cpusInUse) == runtime.NumCPU() {
+			if len(cpusInUse) == numExpectedGuestCpus {
 				s.Errorf("Unexpected CPU setting %q for %s: should not be %d CPUs", val, path,
-					runtime.NumCPU())
+					numExpectedGuestCpus)
 			}
 			numOtherCores += len(cpusInUse)
 		}
@@ -213,8 +223,7 @@ func CPUSet(ctx context.Context, s *testing.State) {
 
 	heterogeneousCores, err := isHeterogeneousCores(ctx)
 	if err != nil {
-		s.Error("Failed to determine core type: ", err)
-		return
+		s.Fatal("Failed to determine core type: ", err)
 	}
 	if heterogeneousCores {
 		// The cpuset settings done in init.{cheets,bertha}.rc work fine
