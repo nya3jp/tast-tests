@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32aacd37_e64f6da0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:41:09Z",
+      "side": 1,
+      "message": "Please apply some comments from boot on ac CL to this one ",
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0bd67f_6638f0a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:41:09Z",
+      "side": 1,
+      "message": "nit: this looks more like a debugging log, please remove it",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 49
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e376b5fa_4602a83d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:41:09Z",
+      "side": 1,
+      "message": "nit: wrap it",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a54809_a4d64212",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:41:09Z",
+      "side": 1,
+      "message": "same: there is the same logic in boot on ac",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 48
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4286aa01_92111f75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:41:09Z",
+      "side": 1,
+      "message": "This logic very similar from boot on ac, can we reuse it?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 30
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
