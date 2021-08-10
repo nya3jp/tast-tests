@@ -16,6 +16,23 @@
       "message": "Thanks Seewai. Please take another look.",
       "revId": "a66c0f2f037475a4b8840f81804dd63fddbe74e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58274a91_e41cc202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-10T20:26:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a66c0f2f037475a4b8840f81804dd63fddbe74e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
