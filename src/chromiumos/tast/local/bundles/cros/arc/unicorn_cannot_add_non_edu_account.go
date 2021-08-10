@@ -91,7 +91,7 @@ func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 	gellerParentPass := s.RequiredVar("geller.parentPassword")
 	parentPassword := s.RequiredVar("arc.parentPassword")
 	s.Log("Add non-EDU ARC account and verify")
-	if err := addAndroidAccount(ctx, d, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
+	if err := addAndroidAccount(ctx, d, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
 		s.Fatal("Failed to Add Account: ", err)
 	}
 }
@@ -115,7 +115,7 @@ func openAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 }
 
 // addAndroidAccount adds a second ARC account from ARC Settings->Accounts Screen.
-func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn, parentPassword, gellerParentUser, gellerParentPass string) error {
+func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, cr *chrome.Chrome, tconn *chrome.TestConn, parentPassword, gellerParentUser, gellerParentPass string) error {
 	const (
 		scrollClassName   = "android.widget.ScrollView"
 		textViewClassName = "android.widget.TextView"
@@ -151,7 +151,7 @@ func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, tconn *
 		return errors.Wrap(err, "failed to click Google")
 	}
 
-	if err := familylink.NavigateEduCoexistenceFlow(ctx, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
+	if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
 		return errors.Wrap(err, "failed entering geller account details in add school acount flow")
 	}
 

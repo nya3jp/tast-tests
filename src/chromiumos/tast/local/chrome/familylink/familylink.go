@@ -7,6 +7,7 @@ package familylink
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -59,7 +60,7 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 		return errors.Wrap(err, "failed to click button that matches parent email")
 	}
 
-	if err := NavigateEduCoexistenceFlow(ctx, tconn, parentPass, secondUser, secondPass); err != nil {
+	if err := NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPass, secondUser, secondPass); err != nil {
 		return errors.Wrap(err, "failed to navigate in-session Edu Coexistence flow")
 	}
 
@@ -72,8 +73,8 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 // accounts. Trying to add other account types will fail.
 // Precondition: The current logged in user must be FL (such as Geller
 // or Unicorn).
-func NavigateEduCoexistenceFlow(ctx context.Context, tconn *chrome.TestConn, parentPass,
-	secondUser, secondPass string) error {
+func NavigateEduCoexistenceFlow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn,
+	parentPass, secondUser, secondPass string) error {
 	ui := uiauto.New(tconn)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
@@ -109,26 +110,42 @@ func NavigateEduCoexistenceFlow(ctx context.Context, tconn *chrome.TestConn, par
 		return errors.Wrap(err, "failed to click Next button")
 	}
 
-	testing.ContextLog(ctx, "Clicking school email text field")
-	if err := ui.LeftClick(enterSchoolEmailText)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click school email text field")
+	gaiaConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURLPrefix("https://accounts.google.com/"))
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to GAIA webview target")
+	}
+	defer gaiaConn.Close()
+
+	testing.ContextLog(ctx, "Authenticating secondary EDU account")
+	if err := InsertFieldVal(ctx, gaiaConn, "input[name=identifier]", secondUser); err != nil {
+		return errors.Wrap(err, "failed to fill in school email")
+	}
+	if err := ui.LeftClick(nextButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click next on school email page")
 	}
 
-	testing.ContextLog(ctx, "Typing school account email")
-	if err := kb.Type(ctx, secondUser+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type Geller parent email")
+	if err := InsertFieldVal(ctx, gaiaConn, "input[name=password]", secondPass); err != nil {
+		return errors.Wrap(err, "failed to fill in school password")
+	}
+	if err := ui.LeftClick(nextButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click next on school password page")
 	}
 
-	testing.ContextLog(ctx, "Clicking school account password text field")
-	schoolPasswordText := nodewith.Name("School password").Role(role.TextField)
-	if err := uiauto.Combine("Clicking school account password text field",
-		ui.WaitUntilExists(schoolPasswordText), ui.LeftClick(schoolPasswordText))(ctx); err != nil {
-		return errors.Wrap(err, "failed to click school account password text field")
+	return nil
+}
+
+// InsertFieldVal directly sets the value of an input field using JS.
+func InsertFieldVal(ctx context.Context, conn *chrome.Conn, selector, value string) error {
+	if err := conn.WaitForExpr(ctx, fmt.Sprintf(
+		"document.querySelector(%q)", selector)); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q", selector)
 	}
 
-	testing.ContextLog(ctx, "Typing school account password")
-	if err := kb.Type(ctx, secondPass+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type edu user password")
+	if err := conn.Call(ctx, nil, `(selector, value) => {
+	  const field = document.querySelector(selector);
+	  field.value = value;
+	}`, selector, value); err != nil {
+		return errors.Wrapf(err, "failed to set the value for field %q", selector)
 	}
 
 	return nil
