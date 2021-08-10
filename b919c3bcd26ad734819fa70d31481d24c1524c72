@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13b64fe_85981f27",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-08-10T23:44:38Z",
+      "side": 1,
+      "message": "if you end up having to retry cl, one of these should now be at least 10\n(a recent change of mine changed the timing of when launcher-app-paging is triggered; it only gets triggered if the drag exceeds a certain threshold)\n\nIf not, I\u0027ll send out another cl",
+      "range": {
+        "startLine": 221,
+        "startChar": 70,
+        "endLine": 221,
+        "endChar": 71
+      },
+      "revId": "b919c3bcd26ad734819fa70d31481d24c1524c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
