@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b63395_0071ce5d",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-10T02:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7b55bb_de43ac45",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "5b7a358865c5567eb1e38261e27cfde14c3dbd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbfb5865_2cbb31ff",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-09T15:41:55Z",
       "side": 1,
       "message": "nit: not clear whey RemoveAll() is being used instead of Remove().\n\nYou can describe it in commit body",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "5b7a358865c5567eb1e38261e27cfde14c3dbd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5eec36a_9b0a918c",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-10T02:49:53Z",
+      "side": 1,
+      "message": "Added comments and commit messages to make it clearer.",
+      "parentUuid": "fbfb5865_2cbb31ff",
       "range": {
         "startLine": 62,
         "startChar": 11,
