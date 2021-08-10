@@ -796,6 +796,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39203437_183a9f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-10T17:47:32Z",
+      "side": 1,
+      "message": "I think the approprate way should be\n\n```\n    if _, err :\u003d cswitch.IsDeviceEnumerated(ctx, usb4Val[\"device_name\"].(string), tbtPort); err !\u003d nil {\n        s.Fatal(err)\n    }\n```",
+      "parentUuid": "d16845c6_adaf05b7",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbe7f5a9_20a8758f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
