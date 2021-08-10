@@ -34,6 +34,23 @@
       "parentUuid": "661ab9c5_6d1a073d",
       "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a87b26_671bf4cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-10T17:07:10Z",
+      "side": 1,
+      "message": "Just noticed that my conflicting CL is reverted in CL:3085091, so I think this one is no longer needed.",
+      "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
