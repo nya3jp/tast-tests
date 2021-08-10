@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01aa5d62_98ef0198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-10T01:55:37Z",
+      "side": 1,
+      "message": "you are missing a \u0027s\u0027 here",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "720d06adebdff7232eafdab5ed9f0f7e1c1046d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
