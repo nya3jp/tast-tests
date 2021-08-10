@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88dfe46_ebf52514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461afe45_1567b72c",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "233a5570_9d66cc37",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-08-10T03:16:49Z",
       "side": 1,
       "message": "Do you use this?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a73ad4a_6a512704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "233a5570_9d66cc37",
       "range": {
         "startLine": 38,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a751273_8e379b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e5e13d_1200859c",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72cdc6e4_f53a5702",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-08-10T03:16:49Z",
       "side": 1,
       "message": "This is |n*log(n)| and then another |log(n)| to search those sorted lines. \n\nI don\u0027t think this is very efficient, since it is larger than a simple |n| search.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac64f567_3f33176c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72cdc6e4_f53a5702",
       "range": {
         "startLine": 46,
         "startChar": 1,
@@ -168,6 +264,54 @@
         "startChar": 4,
         "endLine": 48,
         "endChar": 41
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da15e26_251bdad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4587fe9e_b2c71d28",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbe2c82_b3b82440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66fa773_c0e38320",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 55
       },
       "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -226,6 +370,30 @@
       "writtenOn": "2021-08-10T03:16:49Z",
       "side": 1,
       "message": "You probably want to just return |nil| here.\n\nSee https://tour.golang.org/moretypes/12 or my goofy example https://play.golang.org/p/9s5GTkPh5GQ .",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6931337_73648dd3",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581976e1_1409300a",
       "range": {
         "startLine": 31,
         "startChar": 9,
