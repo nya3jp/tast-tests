@@ -37,9 +37,6 @@ service WilcoService {
   rpc TestGetAvailableRoutines(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}
 
-  rpc TestGetStatefulPartitionAvailableCapacity(google.protobuf.Empty)
-    returns (google.protobuf.Empty) {}
-
   rpc StartDPSLListener(StartDPSLListenerRequest)
     returns (google.protobuf.Empty) {}
   rpc StopDPSLListener(google.protobuf.Empty)
