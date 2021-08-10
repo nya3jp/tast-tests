@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c60b933_cd953bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2021-08-10T19:13:53Z",
+      "side": 1,
+      "message": "Are there any ARC++ apps that should be installed? Sound like we should check that?\n\nIt\u0027s suspicious if all ARC++ apps are uninstaller.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "c5eee359ca699dd4ed941e56fe514b2a83362c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd55655_7d6f2018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2021-08-10T19:13:53Z",
+      "side": 1,
+      "message": "Tiny nit: Uninstall\n(Also in the comment)",
+      "range": {
+        "startLine": 87,
+        "startChar": 15,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "revId": "c5eee359ca699dd4ed941e56fe514b2a83362c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
