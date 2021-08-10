@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5840f1_253981da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-08-10T06:49:57Z",
+      "side": 1,
+      "message": "niwa@, could you ptal? kansho@ FYI",
+      "revId": "2fe8cbae8e1145289eca3c10478b9943e0d5c876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
