@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0416c0c1_1093f5ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-10T23:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0bd67f_6638f0a8",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 49
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e376b5fa_4602a83d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-10T12:41:09Z",
       "side": 1,
       "message": "nit: wrap it",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1112403d_267ffaa1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-10T23:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e376b5fa_4602a83d",
       "range": {
         "startLine": 75,
         "startChar": 16,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fdbd391_e9b218ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-10T23:19:07Z",
+      "side": 1,
+      "message": "Definitely we can modularize it. I am afraid it might reduce code readability.\n\nI am thinking kinda like\n\n```go\nfunc ExecuteInDeviceShutDown(ctx, ..., execute func(ctx)error ) error{\n// line 136-145\n\nif err :\u003d execute(ctx); err !\u003d nil{\nreturn err\n}\n\n// line162-171 [However this segment is test specific]\nreturn nil\n}\n```\n\nlet me know if you are okay with it.",
+      "parentUuid": "95a54809_a4d64212",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 48
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4286aa01_92111f75",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-10T12:41:09Z",
       "side": 1,
       "message": "This logic very similar from boot on ac, can we reuse it?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 30
+      },
+      "revId": "88b0ae283dcaeefdd3a962e68e29e9061bb8c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1e2e13_c9358102",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-10T23:19:07Z",
+      "side": 1,
+      "message": "Hi thanks for pointing out, this is similar to CL:3080647\nPlease see my previous comment, thanks.",
+      "parentUuid": "4286aa01_92111f75",
       "range": {
         "startLine": 162,
         "startChar": 0,
