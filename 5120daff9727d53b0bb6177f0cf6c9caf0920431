@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47939f3_4be23f40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T22:59:29Z",
+      "side": 1,
+      "message": "Thanks for the pre-review. I\u0027m working in your feedback and will push for changing the binary to accept a test files directory argument.",
+      "parentUuid": "8ad86462_b0177290",
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90575750_fd42393f",
@@ -129,6 +147,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02d60edd_fd4e0a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T22:59:29Z",
+      "side": 1,
+      "message": "\u003e ... I think it\u0027s better to have the binary to accept argument.\n\nThanks for confirming my feeling. I\u0027ll go forward with this approach.",
+      "parentUuid": "559b0f3c_ae5dfca7",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79f18d4_4c38a901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T22:59:29Z",
+      "side": 1,
+      "message": "The file \"deploy test files\" code is already baked into tast and I didn\u0027t want to duplicate it.",
+      "parentUuid": "c0ee8952_92197c11",
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2f392f8_e645fc7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
         "patchSetId": 2
@@ -152,6 +212,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e7ef5ef_e3577478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T22:59:29Z",
+      "side": 1,
+      "message": "Re: time in the log filename, this was copy-pasted from another tast test.\n\nI\u0027ll clean it up for readability and simplify the log filename.",
+      "parentUuid": "e2f392f8_e645fc7d",
+      "range": {
+        "startLine": 129,
+        "startChar": 38,
+        "endLine": 129,
+        "endChar": 109
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5b92db9_4f7b6c96",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
         "patchSetId": 2
@@ -163,6 +247,30 @@
       "writtenOn": "2021-08-09T22:19:01Z",
       "side": 1,
       "message": "In tast, it generally checks err instead of the command here.\nSo, it should looks like\n\nif command, err :\u003d t.Args(); err !\u003d nil {\n    s.Log(\"Running %s\", ...)\n}",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3355a983_c6cda54e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T22:59:29Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "f5b92db9_4f7b6c96",
       "range": {
         "startLine": 136,
         "startChar": 4,
