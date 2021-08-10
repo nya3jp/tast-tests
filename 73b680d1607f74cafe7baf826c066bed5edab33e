@@ -226,6 +226,23 @@
       "message": "All outstanding questions + issues resolved. Ready to go for reenabling the test!",
       "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d67371_6af3411a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-10T00:59:04Z",
+      "side": 1,
+      "message": "Reattempt",
+      "revId": "73b680d1607f74cafe7baf826c066bed5edab33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
