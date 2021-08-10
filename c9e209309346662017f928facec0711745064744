@@ -51,6 +51,24 @@
       "parentUuid": "94e8ca50_f4696d1d",
       "revId": "c9e209309346662017f928facec0711745064744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66e51ab_ebcb0cba",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-08-10T23:08:44Z",
+      "side": 1,
+      "message": "ahh, right.  the flag is present, but it isn\u0027t default in the test binary.",
+      "parentUuid": "5f8444ed_4ae4a9ca",
+      "revId": "c9e209309346662017f928facec0711745064744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
