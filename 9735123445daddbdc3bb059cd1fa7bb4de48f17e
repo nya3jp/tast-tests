@@ -50,6 +50,23 @@
       "message": "Nice.",
       "revId": "9735123445daddbdc3bb059cd1fa7bb4de48f17e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4063c1f_408c45d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-10T15:16:51Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "9735123445daddbdc3bb059cd1fa7bb4de48f17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
