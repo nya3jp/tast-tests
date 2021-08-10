@@ -33,7 +33,6 @@ import (
 	"chromiumos/tast/local/network/cmd"
 	network_iface "chromiumos/tast/local/network/iface"
 	local_ping "chromiumos/tast/local/network/ping"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/wpasupplicant"
@@ -2765,43 +2764,4 @@ func (s *ShillService) CheckLastWakeReason(ctx context.Context, req *wifi.CheckL
 		return nil, errors.Wrapf(err, "unexpected LastWakeReason, got %s, want %s", reason, req.Reason)
 	}
 	return &empty.Empty{}, nil
-}
-
-// WatchDarkResume is a streaming gRPC which watchers power manager's D-Bus
-// signals until next resume (SuspendDone), and returns the count of dark
-// resumes.
-// Note that it sends back an empty response first to notify the caller that
-// the D-Bus watcher is ready.
-func (s *ShillService) WatchDarkResume(_ *empty.Empty, sender wifi.ShillService_WatchDarkResumeServer) error {
-	ctx, cancel := reserveForReturn(sender.Context())
-	defer cancel()
-
-	watcher, err := power.NewSignalWatcher(ctx, power.SignalDarkSuspendImminent, power.SignalSuspendDone)
-	if err != nil {
-		return errors.Wrap(err, "failed to create power manager signal watcher")
-	}
-	defer watcher.Close(ctx)
-
-	// Send an empty response to notify that the watcher is ready.
-	if err := sender.Send(&wifi.WatchDarkResumeResponse{}); err != nil {
-		return errors.Wrap(err, "failed to send a ready signal")
-	}
-	darkResumeCount := uint32(0)
-	for {
-		var s *dbus.Signal
-		select {
-		case s = <-watcher.Signals:
-		case <-ctx.Done():
-			return errors.Wrap(ctx.Err(), "failed to wait for signal")
-		}
-		switch signalName := power.SignalName(s); signalName {
-		case power.SignalDarkSuspendImminent:
-			darkResumeCount++
-		case power.SignalSuspendDone:
-			// DUT resumed, return result.
-			return sender.Send(&wifi.WatchDarkResumeResponse{Count: darkResumeCount})
-		default:
-			return errors.Errorf("unexpected signal name: %s", signalName)
-		}
-	}
 }
