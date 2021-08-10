@@ -117,6 +117,30 @@
       },
       "revId": "37643b4b7eb4ebbcbda12971f301fe2cf3dcb259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9cca14_2bdc8009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-10T20:41:30Z",
+      "side": 1,
+      "message": "I thought so too, but if we run the update the instant powerd knows we are discharging, we may be too fast for fwupd (since there is a delay until requeries).",
+      "parentUuid": "9bcf7911_e5880200",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "37643b4b7eb4ebbcbda12971f301fe2cf3dcb259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
