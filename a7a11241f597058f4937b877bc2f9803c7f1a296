@@ -51,6 +51,24 @@
       "message": "Just noticed that my conflicting CL is reverted in CL:3085091, so I think this one is no longer needed.",
       "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9653a121_54c3251d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-10T17:11:26Z",
+      "side": 1,
+      "message": "\u003e Just noticed that my conflicting CL is reverted in CL:3085091, so I think this one is no longer needed.\n\nHey, sorry for the trouble. I am abandoning it.\nThanks everyone.",
+      "parentUuid": "31a87b26_671bf4cf",
+      "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
