@@ -167,7 +167,9 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
 		ui.LeftClickUntil(joinButton, ui.WithTimeout(1*time.Second).WaitUntilGone(joinButton)),
-		ui.WithTimeout(30*time.Second).WaitUntilExists(joinAudioButton),
+		// Use 1 minute timeout value because it may take longer to wait for page loading,
+		// especially for some low end DUTs.
+		ui.WithTimeout(time.Minute).WaitUntilExists(joinAudioButton),
 		checkParticipantsNum,
 		ui.WithTimeout(30*time.Second).LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton)),
 		// Launch Meeting page is useless so close it.
