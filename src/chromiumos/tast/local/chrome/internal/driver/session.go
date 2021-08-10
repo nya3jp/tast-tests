@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/mafredri/cdp/protocol/target"
@@ -158,6 +159,12 @@ func MatchTargetID(id TargetID) TargetMatcher {
 // MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
 func MatchTargetURL(url string) TargetMatcher {
 	return func(t *Target) bool { return t.URL == url }
+}
+
+// MatchTargetURLPrefix returns a TargetMatcher that matches targets whose URL starts with the
+// supplied prefix.
+func MatchTargetURLPrefix(prefix string) TargetMatcher {
+	return func(t *Target) bool { return strings.HasPrefix(t.URL, prefix) }
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the

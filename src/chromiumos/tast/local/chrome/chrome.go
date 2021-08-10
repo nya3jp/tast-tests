@@ -536,6 +536,12 @@ func MatchTargetURL(url string) TargetMatcher {
 	return driver.MatchTargetURL(url)
 }
 
+// MatchTargetURLPrefix returns a TargetMatcher that matches targets whose URL starts with the
+// supplied prefix.
+func MatchTargetURLPrefix(prefix string) TargetMatcher {
+	return driver.MatchTargetURLPrefix(prefix)
+}
+
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm. It polls until the target is found or ctx's deadline expires.
 // An error is returned if no target is found, tm matches multiple targets, or the connection cannot
