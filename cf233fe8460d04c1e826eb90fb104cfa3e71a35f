@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6eb6c1a_ec49f0bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-10T21:36:27Z",
+      "side": 1,
+      "message": "The reinstall command succeeds without AC power, even though I confirm with the method call we are discharging.",
+      "parentUuid": "c6ccf95c_188f94d3",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e580e81_ddc6c592",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 15
