@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68659652_17509b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-10T07:11:31Z",
+      "side": 1,
+      "message": "To avoid cross timezone iteration, marking CR+2, but could you take a look at my comment below before submitting and fix it.",
+      "revId": "e44a3ef4df1bdbc4959ea00daf92060690ee835b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f20ba94_102ca2e2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-10T07:11:31Z",
+      "side": 1,
+      "message": "nit: file\n\nin this function scope, this is the path.",
+      "range": {
+        "startLine": 64,
+        "startChar": 81,
+        "endLine": 64,
+        "endChar": 92
+      },
+      "revId": "e44a3ef4df1bdbc4959ea00daf92060690ee835b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
