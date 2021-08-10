@@ -178,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27710b61_b0712e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-10T17:38:23Z",
+      "side": 1,
+      "message": "Yeah, but it should not matter. Since this test is specifically testing a *USB4* charge through it should always enumerate as USB4. In fact, requiring a login might be:\na. hiding some other bug related to USB4 not enumerating pre-login.\nb. *Potentially* increases the test run time by requiring a login.\n\nIf the test is still passing without this pre-requisite, I\u0027d prefer you omit it.",
+      "parentUuid": "a272f88c_e80bc524",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b0b3558_db3c463c",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -654,6 +678,30 @@
       "side": 1,
       "message": "As part of our test steps we are validating.\nPlease confirm if really not required will drop the checks.",
       "parentUuid": "8f9ceedc_4bbf1e11",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009efc7b_de89ee95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-10T17:38:23Z",
+      "side": 1,
+      "message": "Yeah, I think everything apart from the \"Generation\" can be left out. There is another test which is checking that, so we should either combine everything into 1 test, or drop the checks here.",
+      "parentUuid": "827b4612_955f4cd8",
       "range": {
         "startLine": 117,
         "startChar": 0,
