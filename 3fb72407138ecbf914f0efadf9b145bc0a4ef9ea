@@ -70,6 +70,30 @@
       },
       "revId": "3fb72407138ecbf914f0efadf9b145bc0a4ef9ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5696da83_730e6b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-10T20:40:45Z",
+      "side": 1,
+      "message": "What is the output of the error being raised?",
+      "parentUuid": "d45618da_a57304da",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "3fb72407138ecbf914f0efadf9b145bc0a4ef9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
