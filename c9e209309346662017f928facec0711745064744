@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8404df_2168c0f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T21:55:21Z",
+      "side": 1,
+      "message": "I have manually verified that Chrome has up-revved since the argument |--use-legacy| landed in the |video_accelerator_tests| and |video_accelerator_perf_tests| binaries in https://crrev/c/3069789.",
+      "revId": "c9e209309346662017f928facec0711745064744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
