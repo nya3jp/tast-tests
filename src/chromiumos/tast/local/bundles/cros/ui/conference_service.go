@@ -430,10 +430,19 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// with participants via Chrome Devtools Protocols. And "endaio" means close
 	// the conference which opened by "createaio".
 	prepare := func(ctx context.Context) (string, conference.Cleanup, error) {
-		// Creates a Zoom conference on remote server dynamically and get
-		// conference room link.
+		var data *responseData
 		roomSize := strconv.FormatInt(req.RoomSize-1, 10)
-		data, err := runConferenceAPI(ctx, sessionToken, host, "createaio", "?count="+roomSize)
+		// Create a Zoom conference on remote server dynamically and get conference room
+		// link. Retry three times until it successfully gets a conference room link.
+		const retryCount = 3
+		for i := 0; i < retryCount; i++ {
+			testing.ContextLogf(ctx, "Attempt #%d to get conference room API", i+1)
+			if data, err = runConferenceAPI(ctx, sessionToken, host, "createaio", "?count="+roomSize); err == nil {
+				break
+			}
+			testing.ContextLog(ctx, "Failed to get conference room: ", err)
+
+		}
 		if err != nil {
 			return "", nil, errors.Wrap(err, "failed to create multiple participants room")
 		}

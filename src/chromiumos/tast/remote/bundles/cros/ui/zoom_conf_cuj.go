@@ -49,28 +49,28 @@ func init() {
 				},
 			}, {
 				Name:    "basic_class",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 15,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "plus_large",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 12,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "plus_class",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 15,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "premium_large",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 12,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.LargeRoomSize,
