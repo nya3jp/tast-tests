@@ -342,6 +342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5180e67_de4cf615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-10T18:39:39Z",
+      "side": 1,
+      "message": "ah, no. The only bad line is `WARNING kernel: [  125.139826] init: bio_crypto_init main process (4036) terminated with status 254`\n\nIf you run `start bio_crypt_init` if will print a bunch of INFO statements to upstart.log. I\u0027ll make a change to look for that warning line",
+      "parentUuid": "10c7f1c7_4b2da373",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 55
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce5e6432_5c01251c",
         "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
         "patchSetId": 3
