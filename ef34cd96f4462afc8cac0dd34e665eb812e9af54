@@ -34,6 +34,24 @@
       "parentUuid": "928aae97_6fafdc82",
       "revId": "ef34cd96f4462afc8cac0dd34e665eb812e9af54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c1c103_474d52f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-10T00:50:07Z",
+      "side": 0,
+      "message": "Invited @oka to answer this question.",
+      "parentUuid": "6fc68d42_5e32f7f7",
+      "revId": "ef34cd96f4462afc8cac0dd34e665eb812e9af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
