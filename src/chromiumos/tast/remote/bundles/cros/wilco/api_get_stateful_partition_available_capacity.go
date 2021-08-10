@@ -38,6 +38,8 @@ func init() {
 	})
 }
 
+// APIGetStatefulPartitionAvailableCapacity tests GetStatefulPartitionAvailableCapacity gRPC API.
+// TODO(b/189457904): remove once wilco.APIGetStatefulPartitionAvailableCapacityEnrolled will be stable enough.
 func APIGetStatefulPartitionAvailableCapacity(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
