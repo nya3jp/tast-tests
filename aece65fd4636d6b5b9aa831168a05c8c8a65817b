@@ -317,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3d0c1b_d0170c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-10T03:32:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c1409f6_e4ad417d",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "aece65fd4636d6b5b9aa831168a05c8c8a65817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7101f179_463bc80b",
