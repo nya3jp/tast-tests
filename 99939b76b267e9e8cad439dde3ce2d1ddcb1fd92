@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23f95916_ddebdafe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-08-10T04:50:24Z",
+      "side": 1,
+      "message": "firmware.ECVersion shouldn\u0027t need to depend on a servo. It\u0027s just running `ectool --name\u003dcros_ec version`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "99939b76b267e9e8cad439dde3ce2d1ddcb1fd92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77e7b979_8ce8993e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
