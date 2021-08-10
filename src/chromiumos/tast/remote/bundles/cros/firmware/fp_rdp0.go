@@ -25,7 +25,6 @@ func init() {
 		Func: FpRDP0,
 		Desc: "Validate read protection (RDP) level 0 of the fingerprint firmware works as expected",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},

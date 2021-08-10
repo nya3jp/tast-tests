@@ -54,7 +54,6 @@ func init() {
 		Func: FpmcuUnittest,
 		Desc: "Flashes a unittest binary to the FPMCU and verifies it passes",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},

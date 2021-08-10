@@ -17,7 +17,6 @@ func init() {
 		Func: Running,
 		Desc: "Checks that biod is running on devices with fingerprint sensor",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
