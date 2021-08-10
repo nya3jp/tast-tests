@@ -195,7 +195,6 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 // PauseAndPlayVideo verifies video playback on youtube web.
 func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
 	testing.ContextLog(ctx, "Pause and play video")
-
 	const (
 		playButton  = "Play (k)"
 		pauseButton = "Pause (k)"
@@ -205,6 +204,15 @@ func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
 
 	pauseBtn := nodewith.Name(pauseButton).Role(role.Button)
 	playBtn := nodewith.Name(playButton).Role(role.Button)
+
+	// The video should be playing at this point. However, we'll double check to make sure
+	// as we have seen a few cases when the video became paused automatically.
+	if err := y.ui.IfSuccessThen(
+		y.ui.WithTimeout(waitTime).WaitUntilExists(playBtn),
+		y.uiHdl.Click(playBtn),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to ensure video is playing before pausing")
+	}
 
 	ui := uiauto.New(y.tconn).WithTimeout(timeout)
 	return uiauto.Combine("check the playing status of youtube video",
