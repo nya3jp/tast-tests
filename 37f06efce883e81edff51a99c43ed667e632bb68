@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b439fe_02636656",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-10T20:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caaecb91_074acdc0",
+      "revId": "37f06efce883e81edff51a99c43ed667e632bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30595c16_cb14e64f",

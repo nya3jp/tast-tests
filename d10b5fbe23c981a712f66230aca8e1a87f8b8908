@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37d03b5_b9fb67df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-10T20:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0d019b_ba11ccef",
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "585788ed_ce237a19",
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "I\u0027m not sure that we need to do this, since all newly created folders can be referenced by launcher.UnnamedFolderFinder, since new folders always start out at unnamed.",
       "parentUuid": "f785ae6b_402b14a7",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0881fc_32f991dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-10T20:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3590a54_3dd04e75",
       "range": {
         "startLine": 50,
         "startChar": 20,
@@ -259,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8b2b4e_dd028905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-10T20:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca3d77d_97f6368d",
+      "range": {
+        "startLine": 74,
+        "startChar": 29,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4664e4_791413fd",
@@ -296,6 +362,30 @@
       "side": 1,
       "message": "This does simplify code. I changed to use ui.LeftClick here and in one other place that clicks on a specific node.",
       "parentUuid": "8f4664e4_791413fd",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 0
+      },
+      "revId": "d10b5fbe23c981a712f66230aca8e1a87f8b8908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6ef5e8_6ee2da0a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-08-10T20:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11bd26b7_4d87b619",
       "range": {
         "startLine": 396,
         "startChar": 1,
