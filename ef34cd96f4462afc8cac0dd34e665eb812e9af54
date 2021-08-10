@@ -70,6 +70,24 @@
       "parentUuid": "81c1c103_474d52f6",
       "revId": "ef34cd96f4462afc8cac0dd34e665eb812e9af54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e83f81_10f20627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-10T15:25:56Z",
+      "side": 0,
+      "message": "Thanks. Let\u0027s keep this version for now as suggested then.",
+      "parentUuid": "04102c28_b86407cd",
+      "revId": "ef34cd96f4462afc8cac0dd34e665eb812e9af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

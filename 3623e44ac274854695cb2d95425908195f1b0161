@@ -39,6 +39,30 @@
       },
       "revId": "3623e44ac274854695cb2d95425908195f1b0161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa4b477_a75c4480",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-10T15:25:56Z",
+      "side": 1,
+      "message": "The file has been moved. Updated the link to:\n\n  https://cs.chromium.org/chromium/src/ash/constants/app_types.h",
+      "parentUuid": "1a80c871_09bab791",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 66
+      },
+      "revId": "3623e44ac274854695cb2d95425908195f1b0161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
