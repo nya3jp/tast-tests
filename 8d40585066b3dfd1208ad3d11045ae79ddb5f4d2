@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd8bc9a_b3d27cae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-10T14:04:01Z",
+      "side": 1,
+      "message": "This is the implementation of the touch screen application for standardized testing, as well as the \u0027click\u0027 test written against the application.",
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
