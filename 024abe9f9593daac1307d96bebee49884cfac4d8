@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "27d93518_8c758e95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-10T16:04:20Z",
+      "side": 1,
+      "message": "Hi Judy, I have resolved the merge conflict and have a teammates reviewed. Can you take a look? Thank you!",
+      "revId": "024abe9f9593daac1307d96bebee49884cfac4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f27ce80f_4255828b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
         "patchSetId": 2
