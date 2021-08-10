@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06dacc9_dd17e8ef",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-10T21:12:24Z",
+      "side": 1,
+      "message": "please use one line.\nif err :\u003d cmd.Run(); err !\u003d nil {\n   return xxx\n}\n\n\nAlso, no harm to add testexec.DumpLogOnError",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 16
+      },
+      "revId": "4251adb5238faec4363680b290450fb448ca0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
