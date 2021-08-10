@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56cccaf_ae961c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-10T02:01:48Z",
+      "side": 1,
+      "message": "Twain could you move that method here so your test does not depend on the other CL and we can get it landed ASAP?",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "e6962190fb3f116423c203bee6b02467abcbc380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
