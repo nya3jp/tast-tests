@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b8f9ee_0486f189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3b41f5_72fa5dfd",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73282701_77918a31",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-06T22:50:56Z",
       "side": 1,
       "message": "Please phrase this as a proper descriptive sentence (you can look at other commit messages in this directory for examples).",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecef2982_ce2de082",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73282701_77918a31",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a272f88c_e80bc524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "As per our test steps we are doing chrome login as per-requisite.",
+      "parentUuid": "4dcba10e_bd61c592",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b0b3558_db3c463c",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -117,6 +189,30 @@
       "writtenOn": "2021-08-06T22:50:56Z",
       "side": 1,
       "message": "nit: device removal detection.",
+      "range": {
+        "startLine": 42,
+        "startChar": 58,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac615a7_b9508bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b0b3558_db3c463c",
       "range": {
         "startLine": 42,
         "startChar": 58,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27df5e20_2073aea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "928b0cdc_f16b6f4f",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "076f80a1_d098ed60",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-08-06T22:50:56Z",
       "side": 1,
       "message": "nit: DUT",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a188562d_94c54b14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076f80a1_d098ed60",
       "range": {
         "startLine": 49,
         "startChar": 38,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7c6f7b_a5b491cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "494295ad_bbe9af10",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8410d8c0_12f5bb02",
@@ -219,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493ce041_f03c4391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8410d8c0_12f5bb02",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4312f23_dd5da219",
@@ -232,6 +424,30 @@
       "writtenOn": "2021-08-06T22:50:56Z",
       "side": 1,
       "message": "jsonData: https://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16883cf4_16992ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4312f23_dd5da219",
       "range": {
         "startLine": 80,
         "startChar": 1,
@@ -426,6 +642,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "827b4612_955f4cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "As part of our test steps we are validating.\nPlease confirm if really not required will drop the checks.",
+      "parentUuid": "8f9ceedc_4bbf1e11",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0f7fdfa_5fc01a25",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -437,6 +677,30 @@
       "writtenOn": "2021-08-06T22:50:56Z",
       "side": 1,
       "message": "nit: charging",
+      "range": {
+        "startLine": 152,
+        "startChar": 22,
+        "endLine": 152,
+        "endChar": 31
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afcf4741_5b13c3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f7fdfa_5fc01a25",
       "range": {
         "startLine": 152,
         "startChar": 22,
@@ -466,6 +730,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d16845c6_adaf05b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2951467/comment/c656f755_b8a6c9a9/\n\nIf device is not connected we are acknowledging appropriate error.",
+      "parentUuid": "35e79457_90b84440",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbe7f5a9_20a8758f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
         "patchSetId": 5
@@ -477,6 +759,30 @@
       "writtenOn": "2021-08-06T22:50:56Z",
       "side": 1,
       "message": "nit: discharging",
+      "range": {
+        "startLine": 172,
+        "startChar": 22,
+        "endLine": 172,
+        "endChar": 34
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "760c0b69_24f12bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T16:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe7f5a9_20a8758f",
       "range": {
         "startLine": 172,
         "startChar": 22,
