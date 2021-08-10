@@ -35,13 +35,12 @@ func init() {
 		SoftwareDeps: []string{
 			"chrome",
 		},
-		Attr:    []string{"group:mainline"},
+		Attr:    []string{"group:mainline", "informational"},
 		Fixture: "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
