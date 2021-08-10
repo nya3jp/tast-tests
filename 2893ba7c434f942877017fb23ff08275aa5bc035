@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d82409_9efacc7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-10T14:53:08Z",
+      "side": 1,
+      "message": "nit: directory?",
+      "range": {
+        "startLine": 15,
+        "startChar": 46,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "2893ba7c434f942877017fb23ff08275aa5bc035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "242b8c3d_3c74ca7c",
