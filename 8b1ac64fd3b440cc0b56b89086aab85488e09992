@@ -158,6 +158,30 @@
       },
       "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4b4bff_8c13f0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-10T09:28:25Z",
+      "side": 1,
+      "message": "Verified without setting device policy and able to enumerate the device manually.\n\nObservation: In order to mount TBT device and performed data transfer we required to enable device policy explicitly.",
+      "parentUuid": "9932deed_7e14ee23",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
