@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b699414_aa6a9549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-08-10T00:45:06Z",
+      "side": 1,
+      "message": "You will also need to create a tast control file for cellular-cq. Here is the wifi example..\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.wificell-cq",
+      "revId": "d9862b6c53ce840129eaef84f9f797b879b28468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19aef807_9a18b522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slots.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-08-10T00:45:06Z",
+      "side": 1,
+      "message": "I don\u0027t think should be a group. Here is an example of wificell_cq\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/beacon_interval.go;l\u003d26",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "d9862b6c53ce840129eaef84f9f797b879b28468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
