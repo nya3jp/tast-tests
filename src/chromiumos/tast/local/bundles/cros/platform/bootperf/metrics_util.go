@@ -376,7 +376,10 @@ func parseSyncRtc(rtcPath string) (float64, float64, int64, error) {
 	if err != nil {
 		return 0, 0, 0, errors.Wrap(err, "failed to read timestamp")
 	}
-	timesStr := strings.Split(strings.TrimSuffix(string(c), "\n"), " ")
+	// In rare cases the sync-rtc-* files contain multiple entries (likely because tlsdated was restarted), parse the most recent entry (the last line) of the file.
+	lines := strings.Split(strings.TrimSpace(string(c)), "\n")
+	lastLine := strings.TrimSpace(lines[len(lines)-1])
+	timesStr := strings.Split(lastLine, " ")
 	uptime0, err := strconv.ParseFloat(timesStr[0], 64)
 	if err != nil {
 		return 0, 0, 0, errors.Wrapf(err, "error in parsing timestamp value %s", timesStr[0])
