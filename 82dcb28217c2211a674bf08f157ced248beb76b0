@@ -46,6 +46,30 @@
       },
       "revId": "82dcb28217c2211a674bf08f157ced248beb76b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b5d78b6_91b6a176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-08-10T06:45:03Z",
+      "side": 1,
+      "message": "ah, the default constraint I mean is used in this test. not the default value of the camera.",
+      "parentUuid": "55204741_dafd67e2",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 38
+      },
+      "revId": "82dcb28217c2211a674bf08f157ced248beb76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
