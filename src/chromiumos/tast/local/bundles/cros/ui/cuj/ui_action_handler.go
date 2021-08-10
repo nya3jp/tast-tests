@@ -867,7 +867,10 @@ func (cl *ClamshellActionHandler) SwitchToChromeTabByIndex(tabIdxDest int) actio
 	return func(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Switching to chrome tab, by index (%d)", tabIdxDest)
 		tabFinder := nodewith.Role(role.Tab).ClassName("Tab").Nth(tabIdxDest)
-		return cl.switchChromeTab(ctx, tabFinder)
+		if err := cl.switchChromeTab(ctx, tabFinder); err != nil {
+			return errors.Wrapf(err, "failed to switch to tab index %d", tabIdxDest)
+		}
+		return nil
 	}
 }
 
@@ -879,7 +882,10 @@ func (cl *ClamshellActionHandler) SwitchToChromeTabByName(tabNameDest string) ac
 	return func(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Switching Chrome tab, by name (%s)", tabNameDest)
 		tabFinder := nodewith.Name(tabNameDest).Role(role.Tab).First()
-		return cl.switchChromeTab(ctx, tabFinder)
+		if err := cl.switchChromeTab(ctx, tabFinder); err != nil {
+			return errors.Wrapf(err, "failed to switch to tab with name %q", tabNameDest)
+		}
+		return nil
 	}
 }
 
@@ -938,7 +944,10 @@ func (cl *ClamshellActionHandler) switchChromeTab(ctx context.Context, tabFinder
 		)(ctx)
 
 	}
-	return testing.Poll(ctx, findActiveChromeWindowAndClickTab, &defaultPollOpts)
+	if err := testing.Poll(ctx, findActiveChromeWindowAndClickTab, &defaultPollOpts); err != nil {
+		return errors.Wrapf(err, "failed to switch Chrome tab within %v", defaultPollOpts.Timeout)
+	}
+	return nil
 }
 
 // ScrollChromePage generate the scroll action.
