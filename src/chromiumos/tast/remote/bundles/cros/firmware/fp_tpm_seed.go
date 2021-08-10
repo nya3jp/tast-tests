@@ -23,7 +23,6 @@ func init() {
 		Func: FpTpmSeed,
 		Desc: "Check using ectool if bio_crypto_init set the TPM seed",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
