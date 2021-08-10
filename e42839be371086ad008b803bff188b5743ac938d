@@ -189,6 +189,30 @@
       },
       "revId": "e42839be371086ad008b803bff188b5743ac938d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176a4cfa_9180183c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-10T06:02:09Z",
+      "side": 1,
+      "message": "That code was copied and pasted from my working example, so it should be correct. Not sure what you mean by \"not correct\" in this case?\n\nAnd I\u0027d prefer to not have a way to customize the file name. This API should be as simple and easy to use as possible, and changing the filename adds unnecessary parameters (there\u0027s no reason to do it, especially since taking multiple videos won\u0027t work with the subtitles). It\u0027s preferable to just take one longer video.",
+      "parentUuid": "df0d0606_48a3c256",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "e42839be371086ad008b803bff188b5743ac938d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
