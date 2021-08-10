@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9978afed_da90aaaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-08-10T22:30:24Z",
+      "side": 1,
+      "message": "Hi Toby, change is ready for review.",
+      "revId": "41b49c401680cc7fa1a9aca64d9ac13aece81985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
