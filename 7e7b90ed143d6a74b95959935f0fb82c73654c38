@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c134e4_da00692d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/device_boot_on_ac.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "this we can see from SoftwareDeps. Instead please specify briefly what it does",
+      "range": {
+        "startLine": 29,
+        "startChar": 63,
+        "endLine": 29,
+        "endChar": 88
+      },
+      "revId": "7e7b90ed143d6a74b95959935f0fb82c73654c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

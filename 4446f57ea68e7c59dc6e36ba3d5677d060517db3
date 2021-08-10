@@ -1,0 +1,458 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54f6b34_ec13bd95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "In general looks good, but with minor comments",
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d9a8cd_ca0216f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "Maybe rename them to servo-v41 and servo-micro?",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfabfe5_a3b9fa3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "Let\u0027s put it into the test description",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1660c90_0230b387",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: we can compare upper case as well",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 59
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fca550e_f048a135",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "if we use contains, there is no need to trimming i think. If you use trimming, maybe it makes sense to just compare strings?",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341c7e0d_33bd5657",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "same: proxyV41 / proxyMicro",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c308eb44_de4bbd3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "this method wraps only 1 call to servo, do we really need to put it into a separate function?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7dac1d_3bf409f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "I see that you need this method in another CL, so please move it into some power utils package under src/chromiumos/tast/remote/bundles/cros/policy/ package",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 51
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920c9d0f_f28f197c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: timeout",
+      "range": {
+        "startLine": 91,
+        "startChar": 33,
+        "endLine": 91,
+        "endChar": 40
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a360e1_ca40dc35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "I am a bit worried that we might shut it down by pressing power button. Is there a way to get whether DUT is booted with probably micro servo?",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4824e2_f70575fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: name",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6dd04cc_11839194",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: wantBootUp?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082560d9_40e31319",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: unset?",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8eafb5e_c8196643",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992fc8d3_c9e1f2c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: let\u0027s src role in some defer statement at the end of the test to make just that we don\u0027t leave servo with snk pd role",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 0
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75485e5_47b5e75b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: discharging",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806fd874_b1177af8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "nit: do we need \"(\" and \")\" ?",
+      "range": {
+        "startLine": 189,
+        "startChar": 33,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f549e81_d2193e82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "Don\u0027t ignore error",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 16
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de78834f_11680c59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "There is no need to such prefix, tast will add it automatically",
+      "range": {
+        "startLine": 210,
+        "startChar": 14,
+        "endLine": 210,
+        "endChar": 30
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5d19ea_2411968d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-10T12:32:03Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 216,
+        "startChar": 13,
+        "endLine": 216,
+        "endChar": 27
+      },
+      "revId": "4446f57ea68e7c59dc6e36ba3d5677d060517db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
