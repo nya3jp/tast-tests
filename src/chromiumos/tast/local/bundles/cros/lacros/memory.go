@@ -129,12 +129,12 @@ func measureProcesses(ctx context.Context, path string) (int, int, error) {
 }
 
 // measureBothChrome measures the current memory usage of both lacros-chrome and
-// chromeos-chrome. Returns (pmf, pss) in bytes.
+// ash-chrome. Returns (pmf, pss) in bytes.
 func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// As a rule of thumb, we wait 60 seconds before taking any
 	// measurements. This gives time for previous operations to finish and
 	// the system to quiesce. In particular, both lacros-chrome and
-	// chromeos-chrome will sometimes spawn/keep around unnecessary
+	// ash-chrome will sometimes spawn/keep around unnecessary
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
@@ -145,17 +145,17 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	chromeosChromePath := "/opt/google/chrome"
 	pmf1, pss1, err := measureProcesses(ctx, chromeosChromePath)
 	if err != nil {
-		s.Fatal("Failed to measure memory of chromeos-chrome: ", err)
+		s.Fatal("Failed to measure memory of ash-chrome: ", err)
 	}
 	return pmf + pmf1, pss + pss1
 }
 
 // Memory is a basic test for lacros memory usage. It measures the PMF and PSS
 // overhead for lacros-chrome with a single about:blank tab. It also makes the
-// same measurements for chromeos-chrome. This estimate is not perfect. For
-// example, this test does not measure the size of the chromeos-chrome test API
+// same measurements for ash-chrome. This estimate is not perfect. For
+// example, this test does not measure the size of the ash-chrome test API
 // extension, but it does include the extension for lacros-chrome.
-// Furthermore, this test does not have fine control over chromeos-chrome,
+// Furthermore, this test does not have fine control over ash-chrome,
 // which may choose to spawn/kill utility or renderer processes for its own
 // purposes. My running the same code 10 times, outliers become obvious.
 func Memory(ctx context.Context, s *testing.State) {
@@ -189,20 +189,20 @@ func Memory(ctx context.Context, s *testing.State) {
 		// Close lacros-chrome
 		l.Close(ctx)
 
-		// Measure memory before launching chromeos-chrome.
+		// Measure memory before launching ash-chrome.
 		pmf3, pss3 := measureBothChrome(ctx, s)
 
 		var conns []*chrome.Conn
 		if params.mode == openTabMode {
 			conns, err = openTabsChromeOS(ctx, s.FixtValue().(launcher.FixtData).Chrome, params.numTabs)
 			if err != nil {
-				s.Fatal("Failed to open chromeos-chrome tabs: ", err)
+				s.Fatal("Failed to open ash-chrome tabs: ", err)
 			}
 		} else {
 			// Open a new tab to url.
 			conn, err := s.FixtValue().(launcher.FixtData).Chrome.NewConn(ctx, url)
 			if err != nil {
-				s.Fatal("Failed to open chromeos-chrome tab: ", err)
+				s.Fatal("Failed to open ash-chrome tab: ", err)
 			}
 			conns = append(conns, conn)
 		}
@@ -218,11 +218,11 @@ func Memory(ctx context.Context, s *testing.State) {
 			s.Fatal("Setting window size failed: ", err)
 		}
 
-		// Measure memory after launching chromeos-chrome.
+		// Measure memory after launching ash-chrome.
 		pmf4, pss4 := measureBothChrome(ctx, s)
-		testing.ContextLogf(ctx, "chromeos-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf4-pmf3)/1024/1024, (pss4-pss3)/1024/1024)
+		testing.ContextLogf(ctx, "ash-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf4-pmf3)/1024/1024, (pss4-pss3)/1024/1024)
 
-		// Close chromeos-chrome
+		// Close ash-chrome
 		for _, conn := range conns {
 			conn.CloseTarget(ctx)
 		}
@@ -270,7 +270,7 @@ func openTabsLacros(ctx context.Context, l *launcher.LacrosChrome, numTabs int) 
 	return nil
 }
 
-// openTabsChromeOS assumes that chromeos-chrome is running, but that
+// openTabsChromeOS assumes that ash-chrome is running, but that
 // there is no open window.
 func openTabsChromeOS(ctx context.Context, c *chrome.Chrome, numTabs int) ([]*chrome.Conn, error) {
 	var conns []*chrome.Conn
