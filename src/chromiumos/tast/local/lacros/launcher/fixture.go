@@ -63,7 +63,7 @@ func init() {
 	})
 
 	// lacrosStartedByDataWith100FakeApps is the same as lacrosStartedByData but
-	// creates 100 fake apps that are shown in the ChromeOS-chrome launcher.
+	// creates 100 fake apps that are shown in the ash-chrome launcher.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosStartedByDataWith100FakeApps",
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
@@ -79,7 +79,7 @@ func init() {
 	})
 
 	// lacrosStartedByDataForceComposition is the same as lacrosStartedByData but
-	// forces composition for ChromeOS-chrome.
+	// forces composition for ash-chrome.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosStartedByDataForceComposition",
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
