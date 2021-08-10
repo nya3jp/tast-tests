@@ -20,8 +20,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FpSensor,
-		Desc: "Checks that ectool commands for fingerprint sensor behave as expected",
+		Func: FpTpmSeed,
+		Desc: "Check using ectool if bio_crypto_init set the TPM seed",
 		Contacts: []string{
 			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
@@ -35,7 +35,7 @@ func init() {
 	})
 }
 
-func FpSensor(ctx context.Context, s *testing.State) {
+func FpTpmSeed(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 	servoSpec, _ := s.Var("servo")
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
