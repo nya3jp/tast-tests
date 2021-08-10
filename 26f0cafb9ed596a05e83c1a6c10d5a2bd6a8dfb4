@@ -16,6 +16,29 @@
       "message": "This adds the \u0027Copy/Paste\u0027 keyboard test, and standardizes the name of the Android app to be more generic since it will be covering the remaining tests.",
       "revId": "26f0cafb9ed596a05e83c1a6c10d5a2bd6a8dfb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd27c65_9754c86e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-10T14:20:18Z",
+      "side": 1,
+      "message": "Is it needed now? Waiting for animation end is not enough?",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 8
+      },
+      "revId": "26f0cafb9ed596a05e83c1a6c10d5a2bd6a8dfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
