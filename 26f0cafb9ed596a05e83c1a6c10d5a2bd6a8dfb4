@@ -39,6 +39,30 @@
       },
       "revId": "26f0cafb9ed596a05e83c1a6c10d5a2bd6a8dfb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "449b874d_f896279c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-10T19:21:56Z",
+      "side": 1,
+      "message": "I was running into a few cases where going from the Snapped Right to Full screen was coming back as \u0027Animated\u0027 but still in the process of rendering on the Betty VM I run locally. After reviewing TastBoard, it looks  like it does occasionally hang here on real devices (like you said previously) so I\u0027ve removed it, and also optimized the ordering of the tests to speed up the full run.",
+      "parentUuid": "2dd27c65_9754c86e",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 8
+      },
+      "revId": "26f0cafb9ed596a05e83c1a6c10d5a2bd6a8dfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
