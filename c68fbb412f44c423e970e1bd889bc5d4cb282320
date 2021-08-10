@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32259f6_87af82b4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c98357_0477030f",
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da66187_8125be89",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "859b25fe_345e17f5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da66187_8125be89",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 12
+      },
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e0a4523_e76effb7",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-08-09T15:41:40Z",
       "side": 1,
       "message": "nit/style: can be in a line.",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 22
+      },
+      "revId": "c68fbb412f44c423e970e1bd889bc5d4cb282320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e4992c_a0c7b700",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0a4523_e76effb7",
       "range": {
         "startLine": 244,
         "startChar": 2,
