@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "2879c27f7c7d68c45c9e8e999053bf48c4e59adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27addbcf_0df91306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-10T08:17:16Z",
+      "side": 1,
+      "message": "`ChromeTypeAsh` if we would want to be consistent with this renaming?.",
+      "range": {
+        "startLine": 80,
+        "startChar": 13,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "2879c27f7c7d68c45c9e8e999053bf48c4e59adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
