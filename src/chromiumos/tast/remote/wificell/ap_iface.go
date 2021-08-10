@@ -245,8 +245,3 @@ func (h *APIface) Set(ctx context.Context, prop hostapd.Property, val string) er
 func (h *APIface) ListSTA(ctx context.Context) ([]string, error) {
 	return h.hostapd.ListSTA(ctx)
 }
-
-// STAInfo queries information of the connected STA.
-func (h *APIface) STAInfo(ctx context.Context, staMAC string) (*hostapd.STAInfo, error) {
-	return h.hostapd.STAInfo(ctx, staMAC)
-}
