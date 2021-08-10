@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cec5bf9_6fe6b50a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-10T00:31:05Z",
+      "side": 1,
+      "message": "You can replace whole block with ime.EnglishUS.Activate(tconn).\nIt does nothing if English US is in use.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ime/input_method.go?l\u003d279",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "6b87958e3e7859ef68f0cf6d3bce4fabfc97039b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
