@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57060678_75a88e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-10T22:04:48Z",
+      "side": 1,
+      "message": "@yhanada I just talked to Renuga and she had some concerns about using uiauto/mouse (which I used in this CL) vs input/mouse. Her question was about whether or not uiauto/mouse would bypass the functionality we are trying to test since it makes a call to the chrome.autotestPrivate method directly, rather than spinning up a virtual mouse, and simulating the input/click actions. I saw examples of both in the code (and even a combination of using uiauto/mouse to move a mouse into position, and then input/mouse to actually perform the click) so I wasn\u0027t sure which would be best. \n\nMy thought is that we can use a combination of the two for testing:\n\n1. use uiauto/mouse to move to 0,0\n2. use input/mouse to move to the position (it only accepts relative positions so [1] is necessary unless we determine a way to get the virtual mouse\u0027s position and calculate a delta between it and the button)\n3. use input/mouse to send the click event (to simulate a real click -- this is what the test is actually after)\n\nbut wanted to get your feedback and see if you had additional information/thoughts?",
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
