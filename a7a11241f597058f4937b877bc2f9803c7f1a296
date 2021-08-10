@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661ab9c5_6d1a073d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-10T16:20:16Z",
+      "side": 1,
+      "message": "Add one more Tast reviewer in US timezone for quicker owner approval.",
+      "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
