@@ -20,7 +20,6 @@ func init() {
 		Func: FpAddEntropy,
 		Desc: "Validate adding entropy only succeeds when running RO",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},

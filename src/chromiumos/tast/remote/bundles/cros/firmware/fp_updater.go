@@ -39,7 +39,6 @@ func init() {
 		Func: FpUpdater,
 		Desc: "Checks that the fingerprint firmware updater succeeds when an update is needed",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},

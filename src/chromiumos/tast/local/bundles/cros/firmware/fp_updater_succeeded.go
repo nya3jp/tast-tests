@@ -18,7 +18,6 @@ func init() {
 		Func: FpUpdaterSucceeded,
 		Desc: "Checks that the fingerprint firmware updater did not fail at boot",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test Author
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
