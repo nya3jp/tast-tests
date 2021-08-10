@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -19,11 +20,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VerifyDefaultApps,
 		Desc:         "Verifies Default arc apps are installed",
-		Contacts:     []string{"vkrishan@google.com", "arc-eng@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"rnanjappan@chromium.org", "arc-eng@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
+		Fixture:      "arcBootedWithPlayStore",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -44,6 +45,7 @@ func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Lookup for ARC++ default apps
 	apps := []apps.App{
@@ -57,7 +59,7 @@ func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 	}
 	for _, app := range apps {
 		if err := ash.WaitForChromeAppInstalled(ctx, tconn, app.ID, ctxutil.MaxTimeout); err != nil {
-			s.Fatalf("Failed to wait for %s (%s) to be installed: %v", app.Name, app.ID, err)
+			s.Errorf("Failed to wait for %s (%s) to be installed: %v", app.Name, app.ID, err)
 		}
 	}
 }

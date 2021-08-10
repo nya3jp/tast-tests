@@ -45,6 +45,27 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedWithPlayStore is a fixture similar to arcBooted along with GAIA login and Play Store Optin.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithPlayStore",
+		Desc: "ARC is booted with disabling sync flags",
+		Vars: []string{"ui.gaiaPoolDefault"},
+		Contacts: []string{
+			"rnanjappan@chromium.org",
+			"arc-eng@google.com",
+		},
+		Impl: NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(DisableSyncFlags()...),
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// arcBootedInTabletMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in tablet mode in this fixture.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedInTabletMode",
