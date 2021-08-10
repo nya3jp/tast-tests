@@ -54,7 +54,7 @@ func init() {
 		}, {
 			Name: "malformed_name_servers",
 			Val: &dnsResolverPresentParams{
-				NameServers:     []string{"0.0.0.0"},
+				NameServers:     []string{"bad.ip.address"},
 				ExpectedProblem: problemMalformedNameServers,
 			},
 			ExtraAttr: []string{"informational"},
@@ -62,7 +62,15 @@ func init() {
 			Name: "empty_name_servers",
 			Val: &dnsResolverPresentParams{
 				NameServers:     []string{""},
-				ExpectedProblem: problemEmptyNameServers,
+				ExpectedProblem: problemNoNameServersFound,
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
+
+			Name: "default_name_servers",
+			Val: &dnsResolverPresentParams{
+				NameServers:     []string{"0.0.0.0"},
+				ExpectedProblem: problemNoNameServersFound,
 			},
 			ExtraAttr: []string{"informational"},
 		}},
