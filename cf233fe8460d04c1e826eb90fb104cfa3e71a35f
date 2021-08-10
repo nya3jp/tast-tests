@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dcaea0b_97e8b31e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-10T20:46:12Z",
+      "side": 1,
+      "message": "go/tast-deps https://chromium.googlesource.com/chromiumos/platform/tast/+/main/src/chromiumos/tast/testing/hwdep/hwdep.go#511",
+      "parentUuid": "3225d5b5_f464e71a",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e580e81_ddc6c592",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 15
