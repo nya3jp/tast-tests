@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e532bd1_5df4ad2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-10T20:23:15Z",
+      "side": 1,
+      "message": "You\u0027re checking the previous err variable. The test would\u0027ve already failed on line 59 if err was non-nil. Therefore, this test always passes on the first attempt regardless of whether the website was blocked or not.\n\nReplacing this with finalError won\u0027t fix the issue either, because finalError is never nil, so the test will always time out.\n\nI didn\u0027t know about the linter errors. We should just revert to patch set 8. Sorry for the hassle.",
+      "range": {
+        "startLine": 64,
+        "startChar": 122,
+        "endLine": 64,
+        "endChar": 125
+      },
+      "revId": "8bbf37d11c2eeaa5f29f32cba9919d06a417c0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

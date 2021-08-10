@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "066e3e1b_37d4d660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-10T20:23:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00be3916_d856d86c",
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0dfc858_5bf546e5",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "the repo upload presubmits said I have to use this instead of the go system library errors package.",
       "parentUuid": "c0dfc858_5bf546e5",
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721aa75a_30822e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-10T20:23:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a019f450_e0afa63f",
       "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -125,6 +161,30 @@
       "side": 1,
       "message": "According to the linter, it can\u0027t be empty:\n\n$ repo upload --cbr .\n[COMMIT 1/1 dd989122574c] Tast: Add familylink.DeniedSitesBlocked TAST test\n[FAILED] chromiumos/platform/tast-tests: tast_lint                         \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go:48:16: Error message should have some surrounding context, so must not empty\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-fmt",
       "parentUuid": "b6558e51_ed70b5be",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cad6c2_449f5b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-10T20:23:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef53ab21_f3fd31ce",
       "range": {
         "startLine": 48,
         "startChar": 27,
@@ -278,6 +338,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8f07882_4725d931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-10T20:23:15Z",
+      "side": 1,
+      "message": "Never mind about moving finalError \u003d ui.WaitUntilExists() into the if statement. The previous err :\u003d ui.WaitUntilExists() was fine.",
+      "parentUuid": "b6c23a40_3e84b1b8",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69636338_5480e76b",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
         "patchSetId": 8
@@ -307,6 +391,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "69636338_5480e76b",
+      "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4f6d4c_94b653ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-10T20:23:15Z",
+      "side": 1,
+      "message": "You can restore this line.",
+      "parentUuid": "089804a6_2e8615d5",
       "revId": "9c8c1758a181f5b5c2c4fc7a4cee74dd37441d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
