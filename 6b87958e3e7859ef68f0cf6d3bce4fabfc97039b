@@ -22,6 +22,30 @@
       },
       "revId": "6b87958e3e7859ef68f0cf6d3bce4fabfc97039b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57836729_c401aaae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-10T18:46:52Z",
+      "side": 1,
+      "message": "Thanks Jun. Changed with ime.EnglishUS.Activate(tconn).",
+      "parentUuid": "6cec5bf9_6fe6b50a",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "6b87958e3e7859ef68f0cf6d3bce4fabfc97039b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
