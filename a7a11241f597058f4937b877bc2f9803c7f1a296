@@ -16,6 +16,24 @@
       "message": "Add one more Tast reviewer in US timezone for quicker owner approval.",
       "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb27113_34938d94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-10T16:28:19Z",
+      "side": 1,
+      "message": "Thanks Yen :)\nHi Ricardo, it would be awesome if you could approve it. Thanks.",
+      "parentUuid": "661ab9c5_6d1a073d",
+      "revId": "a7a11241f597058f4937b877bc2f9803c7f1a296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
