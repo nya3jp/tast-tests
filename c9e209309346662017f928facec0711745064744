@@ -33,6 +33,24 @@
       "message": "can we drop this in this CL?  the test binary should be defaulting to VD now.\n\nthat way we can drop \u0027--use_vd\u0027 from the test binaries.",
       "revId": "c9e209309346662017f928facec0711745064744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8444ed_4ae4a9ca",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T22:22:54Z",
+      "side": 1,
+      "message": "No, we can\u0027t drop this yet. The test binary default is still VDA.\n\nI think we need to add |--use-legacy| to tast in this CL, then change the default in the test binary in another CL, then remove |--use_vd| from tast in yet another CL.",
+      "parentUuid": "94e8ca50_f4696d1d",
+      "revId": "c9e209309346662017f928facec0711745064744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
