@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b88a0b4a_891d220d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-10T07:57:27Z",
+      "side": 1,
+      "message": "You can leave it without the `typec_lab` group for now (not just this test, but the other tests in this series too). The type C \"lab\" lacks the appropriate infrastructure to run these tests (and the invocations aren\u0027t straightforward either). Frank Lin (flin@) will need to take a look to see how these can be supported.",
+      "parentUuid": "a90e4f0a_348002fc",
+      "range": {
+        "startLine": 31,
+        "startChar": 40,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "814feaf9_6b584e9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
         "patchSetId": 13
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "No, Test case performs only hot-plug/unplug through cswitch. We validate only basic enumeration of the device for the performed action.\n\n\nCan you verify this works with such a dock, for example, Dell WD19TB ?\nVerified it is working as expected.",
       "parentUuid": "814feaf9_6b584e9e",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9932deed_7e14ee23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-10T07:57:27Z",
+      "side": 1,
+      "message": "\u003e No, Test case performs only hot-plug/unplug through cswitch. We validate only basic enumeration of the device for the performed action.\n\nRight, but if the device policy setting isn\u0027t explicitly set, the peripheral won\u0027t enumerate as a Thunderbolt device; it will enumerate as a USB+DP alternate mode device if it has the option.\n\nThis test shouldn\u0027t be pasing by itself without that settting being set, otherwise it is likely just accidentally passing because of a pre-existing setting on a system.",
+      "parentUuid": "00733c18_d4a0013e",
       "range": {
         "startLine": 36,
         "startChar": 16,
