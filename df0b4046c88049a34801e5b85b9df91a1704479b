@@ -16,6 +16,52 @@
       "message": "Similar to the keyboard tests, this adds the initial APK for testing mouse functionality, and implements the left click test.",
       "revId": "df0b4046c88049a34801e5b85b9df91a1704479b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f36921_44b831b5",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-10T14:29:12Z",
+      "side": 1,
+      "message": "Please use the primitive |int| type unless the boxed type is absolutely needed.",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "df0b4046c88049a34801e5b85b9df91a1704479b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc715f3_d1c595b0",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-10T14:29:12Z",
+      "side": 1,
+      "message": "You don\u0027t need |this.| to access the member variables. Same for the following accesses.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "df0b4046c88049a34801e5b85b9df91a1704479b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
