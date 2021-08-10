@@ -21,7 +21,7 @@ func init() {
 			"arc-core@google.com",
 			"hidehiko@chromium.org", // Tast port.
 		},
-		Attr: []string{"group:mainline"},
+		Attr: []string{"group:mainline", "informational"},
 		// TODO(crbug.com/952125): Consider to relax the SoftwareDeps.
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
