@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -139,6 +140,23 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 	return act, nil
 }
 
+// waitForArcAppWindowAnimation waits for an ARC app window's animation.
+func waitForArcAppWindowAnimation(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, pkgName string) error {
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for Android to be idle")
+	}
+
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window info")
+	}
+
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for the window animation")
+	}
+	return nil
+}
+
 func SplitView(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
@@ -147,6 +165,12 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(ctx)
 
 	params := s.Param().(splitViewTestParams)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, params.tabletMode)
@@ -191,11 +215,18 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer rightAct.Close()
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle: ", err)
+	}
+
 	leftAct, err := showActivityForSplitViewTest(ctx, tconn, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer leftAct.Close()
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle: ", err)
+	}
 
 	stw, err := tew.NewSingleTouchWriter()
 	if err != nil {
@@ -215,24 +246,38 @@ func SplitView(ctx context.Context, s *testing.State) {
 			// If you see this error, check if https://crbug.com/1109250 has been reintroduced.
 			s.Fatal("Failed to wait until window state change: ", err)
 		}
+		if err := waitForArcAppWindowAnimation(ctx, tconn, d, leftAct.PackageName()); err != nil {
+			s.Fatal("Failed to wait for the left snapped window animation: ", err)
+		}
+		if err := waitForArcAppWindowAnimation(ctx, tconn, d, rightAct.PackageName()); err != nil {
+			s.Fatal("Failed to wait for the right snapped window animation: ", err)
+		}
 	}
 
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter overview: ", err)
 	}
 
-	// Snap activities to left and right.
+	// Snap activity to left.
 	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, 0); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
 	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped}}); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
 	}
+	if err := waitForArcAppWindowAnimation(ctx, tconn, d, leftAct.PackageName()); err != nil {
+		s.Fatal("Failed to wait for the left snapped window animation: ", err)
+	}
+
+	// Snap activity to right.
 	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, tew.Width()-1); err != nil {
 		s.Fatal("Failed to drag window from overview and snap right: ", err)
 	}
 	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped}}); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
+	}
+	if err := waitForArcAppWindowAnimation(ctx, tconn, d, rightAct.PackageName()); err != nil {
+		s.Fatal("Failed to wait for the right snapped window animation: ", err)
 	}
 
 	if params.tabletMode {
