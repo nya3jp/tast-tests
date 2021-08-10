@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -46,6 +47,10 @@ const (
 	// Suspend indicates to suspend the DUT during test.
 	Suspend
 )
+
+// retryTimes defines the key UI operation retry times after the DUT is resumed or unlocked.
+// Retry is needed because the UI might be unstable, for example, when an external display is connected.
+const retryTimes = 3
 
 // Run runs the QuickCheckCUJ2 test. The lock is the function that suspends or locks
 // the DUT. The lockInRecorder flag indicates if the lock function should be executed
@@ -211,8 +216,11 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		}
 
 		// Launch browser and track the elapsed time.
-		if browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode); err != nil {
-			return errors.Wrap(err, "failed to launch Chrome")
+		if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
+			browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
+			return err
+		})(ctx); err != nil {
+			return errors.Wrapf(err, "failed to launch Chrome with retryTimes %d", retryTimes)
 		}
 		testing.ContextLogf(ctx, "Browser start time %d ms", browserStartTime.Milliseconds())
 
@@ -244,8 +252,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 			// Switch back to the first tab.
 			if len(tabs) > 1 {
-				if err := uiActionHandler.SwitchToChromeTabByIndex(0)(ctx); err != nil {
-					return errors.Wrap(err, "failed to switch back to first tab")
+				// Retry few times to ensure UI action can be done.
+				if err := uiauto.Retry(retryTimes, uiActionHandler.SwitchToChromeTabByIndex(0))(ctx); err != nil {
+					return errors.Wrapf(err, "failed to switch back to first tab with retryTimes %d", retryTimes)
 				}
 			}
 		}
@@ -278,8 +287,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 					switchDesc = "tabs"
 				}
 
-				if err := switchFunc(ctx); err != nil {
-					return errors.Wrapf(err, "failed to switch between %s", switchDesc)
+				// Retry few times to ensure UI action can be done.
+				if err := uiauto.Retry(retryTimes, switchFunc)(ctx); err != nil {
+					return errors.Wrapf(err, "failed to switch between %s with retryTimes %d", switchDesc, retryTimes)
 				}
 				if err := webutil.WaitForRender(ctx, tab.conn, 10*time.Second); err != nil {
 					return errors.Wrapf(err, "failed to wait for finish render [%s]", tab.url)
