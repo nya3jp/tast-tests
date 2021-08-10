@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0adab39d_45764c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-10T21:50:03Z",
+      "side": 1,
+      "message": "I added this as a way to debug new test cases with multiple files. The naming convention was copied from another test [1], so it wouldn\u0027t hurt my feelings if the variable name needs to change.\n\nIf reviewers don\u0027t like this construct or want it in a separate CL for easier reverts, let me know!\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go;l\u003d25;drc\u003d18b3ce28df8b9c159bf49a40b78fb9583608d3a1",
+      "revId": "a845d244fbead2441eed80b2a82ea741c1b5e82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
