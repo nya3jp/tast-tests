@@ -69,6 +69,30 @@
       },
       "revId": "c5eee359ca699dd4ed941e56fe514b2a83362c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e5ce3d_3ab5fb32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-10T22:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd55655_7d6f2018",
+      "range": {
+        "startLine": 87,
+        "startChar": 15,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "revId": "c5eee359ca699dd4ed941e56fe514b2a83362c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
