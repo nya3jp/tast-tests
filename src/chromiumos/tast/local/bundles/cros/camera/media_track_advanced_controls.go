@@ -90,6 +90,7 @@ type mediaControl interface {
 	getInvalidTestValues(mediaSettingRange) []float64
 	// getConstraints gets constraint for setting |value| to control |c|.
 	getConstraints(value *float64) mediaTrackConstraints
+	getDefaultConstraints(mediaSettingRange) mediaTrackConstraints
 }
 
 type defaultControl struct {
@@ -139,6 +140,12 @@ func (c *brightnessControl) getConstraints(value *float64) mediaTrackConstraints
 	}
 }
 
+func (c *brightnessControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
+}
+
 type colorTemperatureControl struct {
 	defaultControl
 }
@@ -176,6 +183,15 @@ func (c *colorTemperatureControl) getConstraints(value *float64) mediaTrackConst
 	}
 }
 
+func (c *colorTemperatureControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	continuous := "continuous"
+	return mediaTrackConstraints{
+		Advanced: [1]mediaTrackSettings{
+			mediaTrackSettings{WhiteBalanceMode: &continuous},
+		},
+	}
+}
+
 type contrastControl struct {
 	defaultControl
 }
@@ -198,6 +214,12 @@ func (c *contrastControl) getConstraints(value *float64) mediaTrackConstraints {
 			mediaTrackSettings{Contrast: value},
 		},
 	}
+}
+
+func (c *contrastControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
 }
 
 type exposureCompensationControl struct {
@@ -223,6 +245,12 @@ func (c *exposureCompensationControl) getConstraints(value *float64) mediaTrackC
 			mediaTrackSettings{ExposureMode: &continuous, ExposureCompensation: value},
 		},
 	}
+}
+
+func (c *exposureCompensationControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
 }
 
 type exposureTimeControl struct {
@@ -255,6 +283,15 @@ func (c *exposureTimeControl) getConstraints(value *float64) mediaTrackConstrain
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
 			mediaTrackSettings{ExposureMode: &manual, ExposureTime: value},
+		},
+	}
+}
+
+func (c *exposureTimeControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	continuous := "continuous"
+	return mediaTrackConstraints{
+		Advanced: [1]mediaTrackSettings{
+			mediaTrackSettings{ExposureMode: &continuous},
 		},
 	}
 }
@@ -298,6 +335,15 @@ func (c *focusDistanceControl) getConstraints(value *float64) mediaTrackConstrai
 	}
 }
 
+func (c *focusDistanceControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	continuous := "continuous"
+	return mediaTrackConstraints{
+		Advanced: [1]mediaTrackSettings{
+			mediaTrackSettings{FocusMode: &continuous},
+		},
+	}
+}
+
 type isoControl struct {
 	defaultControl
 }
@@ -333,6 +379,15 @@ func (c *isoControl) getConstraints(value *float64) mediaTrackConstraints {
 	}
 }
 
+func (c *isoControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	continuous := "continuous"
+	return mediaTrackConstraints{
+		Advanced: [1]mediaTrackSettings{
+			mediaTrackSettings{ExposureMode: &continuous},
+		},
+	}
+}
+
 type panControl struct {
 	defaultControl
 }
@@ -351,6 +406,12 @@ func (c *panControl) getConstraints(value *float64) mediaTrackConstraints {
 			mediaTrackSettings{Pan: value},
 		},
 	}
+}
+
+func (c *panControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
 }
 
 type saturationControl struct {
@@ -377,6 +438,12 @@ func (c *saturationControl) getConstraints(value *float64) mediaTrackConstraints
 	}
 }
 
+func (c *saturationControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
+}
+
 type sharpnessControl struct {
 	defaultControl
 }
@@ -399,6 +466,12 @@ func (c *sharpnessControl) getConstraints(value *float64) mediaTrackConstraints 
 			mediaTrackSettings{Sharpness: value},
 		},
 	}
+}
+
+func (c *sharpnessControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
 }
 
 type tiltControl struct {
@@ -425,6 +498,12 @@ func (c *tiltControl) getConstraints(value *float64) mediaTrackConstraints {
 	}
 }
 
+func (c *tiltControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
+}
+
 type zoomControl struct {
 	defaultControl
 }
@@ -447,6 +526,12 @@ func (c *zoomControl) getConstraints(value *float64) mediaTrackConstraints {
 			mediaTrackSettings{Zoom: value},
 		},
 	}
+}
+
+func (c *zoomControl) getDefaultConstraints(r mediaSettingRange) mediaTrackConstraints {
+	totalSteps := (r.Max - r.Min) / r.Step
+	middleValue := r.Min + r.Step*math.Round(totalSteps/2)
+	return c.getConstraints(&middleValue)
 }
 
 type exposureModeControl struct {
@@ -612,6 +697,10 @@ func verifyControl(ctx context.Context, s *testing.State, conn *chrome.Conn, con
 			if origValue != getValue {
 				s.Errorf("Invalid %v control changed after applied, want %v; got %v", control.getName(), origValue, getValue)
 			}
+		}
+		err = applyMediaTrackConstraints(ctx, conn, control.getDefaultConstraints(r))
+		if err != nil {
+			s.Fatal("Can't apply default constraints: ", err)
 		}
 	}
 }
