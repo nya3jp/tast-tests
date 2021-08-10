@@ -531,6 +531,8 @@ var chromeVideoArgs = []string{
 	"--autoplay-policy=no-user-gesture-required",
 	// Do not show message center notifications.
 	"--suppress-message-center-popups",
+	// Make sure ARC++ is not running.
+	"--arc-availability=none",
 }
 
 var chromeBypassPermissionsArgs = []string{
