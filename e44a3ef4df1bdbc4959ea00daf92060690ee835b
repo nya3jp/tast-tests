@@ -39,6 +39,30 @@
       },
       "revId": "e44a3ef4df1bdbc4959ea00daf92060690ee835b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b0fcbc_fdd28676",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-10T15:21:49Z",
+      "side": 1,
+      "message": "This is what I wanted to do in the beginning, but I thought that providing only the file name without long path would be better since this file is in the list of result artifacts.",
+      "parentUuid": "2f20ba94_102ca2e2",
+      "range": {
+        "startLine": 64,
+        "startChar": 81,
+        "endLine": 64,
+        "endChar": 92
+      },
+      "revId": "e44a3ef4df1bdbc4959ea00daf92060690ee835b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
