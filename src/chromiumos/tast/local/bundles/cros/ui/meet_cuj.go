@@ -392,7 +392,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			jankCriteria))
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, nil, "", configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
