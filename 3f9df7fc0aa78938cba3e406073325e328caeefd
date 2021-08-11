@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cebd2838_0566f63e",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T00:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfb27a85_93599eff",
+      "range": {
+        "startLine": 141,
+        "startChar": 69,
+        "endLine": 141,
+        "endChar": 85
+      },
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d65b825c_8a9cc3da",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-08-10T00:38:40Z",
       "side": 1,
       "message": "p.dcl !\u003d nil check is redundant.",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d601914b_90bfbf6c",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T00:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65b825c_8a9cc3da",
       "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54dbeff_fd03f753",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T00:06:17Z",
+      "side": 1,
+      "message": "The servod container has only root user, all docker cmd will be done with sudo.",
+      "parentUuid": "5a91ba4c_08ec7bfe",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b604798_7bf014f5",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-08-10T00:38:40Z",
       "side": 1,
       "message": "Is there a supposed to be a todo to enable this?  Otherwise the comment should be deleted.",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad62a51_056694b2",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T00:06:17Z",
+      "side": 1,
+      "message": "Added the TODO.",
+      "parentUuid": "1b604798_7bf014f5",
       "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52557c16_b0e900e1",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T00:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7550e62_3fad0f88",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35708f38_e554b601",
@@ -122,6 +218,24 @@
       "writtenOn": "2021-08-10T00:38:40Z",
       "side": 1,
       "message": "If not iRes.Running, can just exit the loop instead of waiting another 250ms.",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f891cb_0ce21784",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T00:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35708f38_e554b601",
       "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
