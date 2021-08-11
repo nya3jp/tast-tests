@@ -153,6 +153,106 @@ var metricMap = map[string]metricInfo{
 		direction: perf.SmallerIsBetter,
 		uma:       true,
 	},
+	"Graphics.Smoothness.Jank.AllAnimations": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.AllInteractions": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.AllSequences": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.CompositorAnimation": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.PinchZoom": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.RAF": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.ScrollbarScroll": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.TouchScroll": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.Video": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Compositor.WheelScroll": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.CanvasAnimation": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.CompositorAnimation": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.JSAnimation": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.MainThreadAnimation": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.PinchZoom": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.RAF": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.ScrollbarScroll": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.TouchScroll": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.Video": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Jank.Main.WheelScroll": {
+		unit:      "count",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
 	"Compositing.Display.DrawToSwapUs": {
 		unit:      "us",
 		direction: perf.SmallerIsBetter,
