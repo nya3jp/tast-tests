@@ -18,5 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".InMemoryContentProvider"
+            android:authorities="org.chromium.arc.testapp.chromewebapk.content"
+            android:grantUriPermissions="true"
+            android:exported="true" />
     </application>
 </manifest>
