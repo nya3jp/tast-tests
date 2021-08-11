@@ -188,7 +188,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		)
 	}
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, nil, "", configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
