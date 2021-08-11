@@ -12,9 +12,7 @@ import (
 	"crypto/x509"
 	"io/ioutil"
 	"os"
-	"os/user"
 	"path/filepath"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -76,7 +74,7 @@ func deviceSetUp(ctx context.Context, user, pass, p12Path string, key *rsa.Publi
 
 // createOwnerKey creates ownership data of the DUT. Specifically, this
 // pushes PKCS #12 certification data into NSS database, and creates
-// /var/lib/whitelist/owner.key file.
+// /var/lib/devicesettings/owner.key file.
 func createOwnerKey(ctx context.Context, user, p12Path string, pubkey *rsa.PublicKey) error {
 	testing.ContextLog(ctx, "Creating owner.key file")
 
@@ -114,47 +112,18 @@ func pushToNSS(ctx context.Context, user, p12Path string) error {
 	return nil
 }
 
-// setupOwnerKey creates /var/lib/whitelist/owner.key file with given DER.
+// setupOwnerKey creates /var/lib/devicesettings/owner.key file with given DER.
 func setupOwnerKey(der []byte) error {
 	// Ensure parent dir exists.
-	const allowlistDir = "/var/lib/whitelist"
-	if _, err := os.Stat(allowlistDir); err != nil {
+	const devicesettingsDir = "/var/lib/devicesettings"
+	if _, err := os.Stat(devicesettingsDir); err != nil {
 		if !os.IsNotExist(err) {
-			return errors.Wrapf(err, "failed to stat %s", allowlistDir)
+			return errors.Wrapf(err, "failed to stat %s", devicesettingsDir)
 		}
-		group, err := user.LookupGroup("policy-readers")
-		if err != nil {
-			return errors.Wrap(err, "policy-readers group not found")
-		}
-		gid, err := strconv.Atoi(group.Gid)
-		if err != nil {
-			return errors.Wrapf(err, "unexpected gid: %v", group)
-		}
-
-		// In order not to leave the intermediate dir on error,
-		// create a temp directory, then rename.
-		dir, err := ioutil.TempDir("/var/lib", ".whitelist.")
-		if err != nil {
-			return errors.Wrap(err, "failed to create a temp dir")
-		}
-		defer func() {
-			if dir != "" {
-				os.Remove(dir)
-			}
-		}()
-		if err = os.Chmod(dir, 0750); err != nil {
-			return errors.Wrap(err, "failed to set permission")
-		}
-		if err = os.Chown(dir, -1, gid); err != nil {
-			return errors.Wrap(err, "failed to chown")
-		}
-		if err = os.Rename(dir, allowlistDir); err != nil {
-			return errors.Wrap(err, "failed to rename a temporaly dir")
-		}
-		dir = "" // Not to fire os.Remove(dir) in defer.
+		return errors.Wrapf(err, "directory for owner key does not exists %s", devicesettingsDir)
 	}
 
-	ownerKeyPath := filepath.Join(allowlistDir, "owner.key")
+	ownerKeyPath := filepath.Join(devicesettingsDir, "owner.key")
 	if err := ioutil.WriteFile(ownerKeyPath, der, 0604); err != nil {
 		return errors.Wrapf(err, "failed to write to %s", ownerKeyPath)
 	}
