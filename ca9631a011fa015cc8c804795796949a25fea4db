@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8fa28a_9a8ed986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-11T02:03:54Z",
+      "side": 1,
+      "message": "For tast review, it\u0027s generally preferred to add tast-owners@google.com instead of manually selecting a reviewer.",
+      "revId": "ca9631a011fa015cc8c804795796949a25fea4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
