@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410bce1d_95ef20e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "Can you add a function \"im.WaitUntilActive\" in input_method.go",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 105
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79dfda7_a297b328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "As suggested by Bao-Duy, imeCode is not a valid term in inputs. So it also needs to be deprecated. Please refactor the below function ime.AddAndSetInputMethod with ime.EnglishUS.InstallAndActivate",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4660a044_c47e450a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc44613_fbd9be82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf26a451_1896889e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b3ab3f_a35f6344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_input_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 98
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aecbed5_0eca8437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:29:19Z",
+      "side": 1,
+      "message": "As suggested in another comment. It can be refactored with function im.WaitUntilActive().\n\nThe whole idea of build inputmethod structure is to hide ime details and only refer to structure type.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 138
+      },
+      "revId": "8e9a382c1954fceac5560ad0e916c0c4dc38cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
