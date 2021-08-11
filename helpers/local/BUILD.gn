@@ -4,6 +4,18 @@
 
 import("//common-mk/pkg_config.gni")
 
+executable("arc.Suspend.readclocks") {
+  cflags = [
+    "-g",
+  ]
+  ldflags = [
+    "-static",  # So we can run inside ARCVM without worrying about libraries.
+  ]
+  sources = [
+    "arc.Suspend.readclocks.c",
+  ]
+}
+
 executable("graphics.GBM.gbmtest") {
   pkg_deps = [
     "gbm",
@@ -173,6 +185,7 @@ group("all") {
   # Sanitizer builds do not support static linking.
   if (!(use.asan || use.msan || use.ubsan)) {
     deps += [
+      ":arc.Suspend.readclocks",
       ":multivm.Lifecycle.crostini",
       ":security.Minijail.staticbashexec",
     ]
