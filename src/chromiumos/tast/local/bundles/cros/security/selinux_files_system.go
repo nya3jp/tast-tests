@@ -204,7 +204,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/var/lib/power_manager", Context: "cros_var_lib_power_manager", Recursive: true},
 		{Path: "/var/lib/shill", Context: "cros_var_lib_shill", Recursive: true},
 		{Path: "/var/lib/update_engine", Context: "cros_var_lib_update_engine", Recursive: true},
-		{Path: "/var/lib/whitelist", Context: "cros_var_lib_devicesettings", Recursive: true},
+		{Path: "/var/lib/devicesettings", Context: "cros_var_lib_devicesettings", Recursive: true},
 		{Path: "/var/log", Context: "cros_var_log", Log: true},
 		{Path: "/var/log/asan", Context: "cros_var_log_asan", Recursive: true, Log: true},
 		{Path: "/var/log/authpolicy.log", Context: "cros_authpolicy_log", Log: true},

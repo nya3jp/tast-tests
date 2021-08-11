@@ -12,6 +12,7 @@ import (
 	"crypto/x509"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -27,7 +28,7 @@ import (
 
 const (
 	// PolicyPath is a directory containing policy files.
-	PolicyPath = "/var/lib/whitelist"
+	PolicyPath = "/var/lib/devicesettings"
 
 	// localStatePath is a file containing local state JSON.
 	localStatePath = "/home/chronos/Local State"
@@ -81,8 +82,15 @@ func ClearDeviceOwnership(ctx context.Context) error {
 		return errors.Errorf("device ownership is being cleared while ui is not stopped: %v/%v", goal, state)
 	}
 
-	if err := os.RemoveAll(PolicyPath); err != nil {
+	policyPattern := PolicyPath + "/*"
+	policyFiles, err := filepath.Glob(policyPattern)
+	if err != nil {
 		return errors.Wrapf(err, "failed to remove %s", PolicyPath)
+	}
+	for _, policyFile := range policyFiles {
+		if err := os.Remove(policyFile); err != nil {
+			return errors.Wrapf(err, "failed to remove %s", policyFile)
+		}
 	}
 
 	if err := os.Remove(localStatePath); err != nil && !os.IsNotExist(err) {
