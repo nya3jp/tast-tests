@@ -31,7 +31,7 @@ type ChromeCleanUpFunc func(ctx context.Context) error
 type CloseAboutBlankFunc func(ctx context.Context) error
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
-func SetupChrome(ctx context.Context, s *testing.State) (ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, error) {
+func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, error) {
 	testParam := s.Param().(TestParam)
 
 	var cr *chrome.Chrome
@@ -45,7 +45,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (ash.ConnSource, *chrome
 		if testParam.Tablet {
 			var err error
 			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
-				return nil, nil, nil, nil, errors.Wrap(err, "failed to init chrome")
+				return nil, nil, nil, nil, nil, errors.Wrap(err, "failed to init chrome")
 			}
 			cleanup = func(ctx context.Context) error {
 				return cr.Close(ctx)
@@ -61,7 +61,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (ash.ConnSource, *chrome
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, testParam.ChromeType)
 		if err != nil {
-			return nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
+			return nil, nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
 		}
 		cleanup = func(ctx context.Context) error {
 			lacros.CloseLacrosChrome(ctx, l)
@@ -71,7 +71,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (ash.ConnSource, *chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
+		return nil, nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
 	}
 
 	if testParam.ChromeType == lacros.ChromeTypeLacros {
@@ -79,5 +79,5 @@ func SetupChrome(ctx context.Context, s *testing.State) (ash.ConnSource, *chrome
 			return lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 0)
 		}
 	}
-	return cs, tconn, cleanup, closeAboutBlank, nil
+	return cr, cs, tconn, cleanup, closeAboutBlank, nil
 }
