@@ -22,7 +22,7 @@ const ExecPath = "/opt/google/chrome/chrome"
 // crashpadExecPath contains the path to crashpad's binary. Though it is not
 // the same executable as Chrome, it is spawned from Chrome and we consider as
 // one of the Chrome processes.
-const crashpadExecPath = "/opt/google/chrome/crashpad_handler"
+const crashpadExecPath = "/opt/google/chrome/chrome_crashpad_handler"
 
 // Version returns the Chrome browser version. E.g. Chrome version W.X.Y.Z will be reported as a list of strings.
 func Version(ctx context.Context) ([]string, error) {
