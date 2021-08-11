@@ -72,10 +72,9 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 	var tconn *chrome.TestConn
 
+	var cr *chrome.Chrome
 	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		var cr *chrome.Chrome
+
 		var err error
 
 		if ct == lacros.ChromeTypeChromeOS {
@@ -101,7 +100,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 	password := s.RequiredVar("ui.cuj_password")
 
-	recorder, err := cuj.NewRecorder(ctx, tconn)
+	recorder, err := cuj.NewRecorder(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}

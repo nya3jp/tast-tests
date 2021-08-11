@@ -62,7 +62,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 	testing.ContextLog(ctx, "Start recording actions")
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(ctx, cr, cuj.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}

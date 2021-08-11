@@ -140,10 +140,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	var tconn *chrome.TestConn
 	var cs ash.ConnSource
 
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		cr := s.FixtValue().(cuj.FixtureData).Chrome
 		if !testParam.useLacros {
 			cs = cr
 		}
@@ -413,7 +411,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		configs = append(configs,
 			cuj.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
 	}
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
