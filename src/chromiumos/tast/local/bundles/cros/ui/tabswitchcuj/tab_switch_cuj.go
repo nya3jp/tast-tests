@@ -141,7 +141,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.NewCustomMetricConfig(
+	recorder, err := cuj.NewRecorder(ctx, tconn, nil, "", cuj.NewCustomMetricConfig(
 		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)

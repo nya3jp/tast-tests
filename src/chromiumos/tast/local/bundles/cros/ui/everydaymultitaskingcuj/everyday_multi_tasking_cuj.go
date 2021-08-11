@@ -131,7 +131,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, nil, "", cuj.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
