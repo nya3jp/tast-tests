@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af744015_20bf7bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-08-11T17:53:05Z",
+      "side": 1,
+      "message": "Thanks Nathan, and Kamil for that info!",
+      "parentUuid": "a56c616d_ca18540b",
+      "revId": "a845d244fbead2441eed80b2a82ea741c1b5e82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14d19e28_3879f179",
