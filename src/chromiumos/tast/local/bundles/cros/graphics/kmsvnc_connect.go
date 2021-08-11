@@ -46,9 +46,16 @@ func KmsvncConnect(ctx context.Context, s *testing.State) {
 
 	// Verify server parameters.
 	gotW, gotH := int(serverInit.FramebufferWidth), int(serverInit.FramebufferHeight)
-	if wantW, wantH, err := findDisplayWidthHeight(ctx, cr); err != nil {
+	wantW, wantH, err := findDisplayWidthHeight(ctx, cr)
+	if err != nil {
 		s.Error("Failed to find primary display size: ", err)
-	} else if gotW != wantW || gotH != wantH {
+	}
+
+	if wantW%4 != 0 {
+		s.Logf("Screen width %d will be padded to be a multiple of 4", wantW)
+		wantW += (4 - (wantW % 4))
+	}
+	if gotW != wantW || gotH != wantH {
 		s.Errorf("Unexpected framebuffer size, got %dx%d, want %dx%d", gotW, gotH, wantW, wantH)
 	}
 
