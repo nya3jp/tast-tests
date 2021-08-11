@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16fd1117_57e63907",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T02:06:52Z",
+      "side": 1,
+      "message": "LGTM with relatively minor comments.\n",
+      "revId": "676e2d5a22063a478a0d63fbe54117d82f7b808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0056d0_ec3555ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T02:06:52Z",
+      "side": 1,
+      "message": "There are many different cases where err !\u003d nil, e.g. /usr/bin/fwupdmgr does not exist, so it\u0027s risky to handle all err !\u003d nil cases as \"reinstall\".\n\nIf hwupdmgr is designed to return a consistent exit code, I\u0027d recommend checking for it. For example:\n\n func updateChecker(...) (string, error) {\n   ...\n   err :\u003d cmd.Run(...)\n   if code, ok :\u003d testexec.ExitCode(err); ok {\n     if code \u003d\u003d 0 {\n       return \"update\", nil\n     }\n     if code \u003d\u003d 1 {\n       return \"reinstall\", nil\n     }\n   }\n   return \"\", err\n }",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "676e2d5a22063a478a0d63fbe54117d82f7b808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ff2e4c_ab8bf5bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T02:06:52Z",
+      "side": 1,
+      "message": "You can remove this check - scanner.Scan() will return false when scanner.Err() will return non-nil.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "676e2d5a22063a478a0d63fbe54117d82f7b808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
