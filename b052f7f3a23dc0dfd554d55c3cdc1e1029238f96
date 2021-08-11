@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f3e08fe_658a19e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T14:22:01Z",
+      "side": 1,
+      "message": "Nya, can you please help with this CL review? Thanks!",
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f9c393_f3cdcc0a",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "I want to keep this for the feasibility of leaving some field being unchecked. With this design most of the result can be checked by the Compare function, while parts of them can be skipped by returning the same value. Some time we also want to just do some easy checks (e.g. check value \u003e 0). Also, some fields (or the fields which will be added) are not easy/worth to generate the expected value.\n\nI would like to know if there is any concern on the tast side about this desgin.",
       "parentUuid": "bb03ab2a_d9829e76",
+      "range": {
+        "startLine": 90,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001a9e04_a2d73ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T14:22:01Z",
+      "side": 1,
+      "message": "Nya, what you will suggest here?",
+      "parentUuid": "10ce1b2b_3fa8db84",
       "range": {
         "startLine": 90,
         "startChar": 22,
