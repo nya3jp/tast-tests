@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6bf3429_1df945e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T11:27:09Z",
+      "side": 1,
+      "message": "Remove LGTM until comment resolved",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de57473a_f1d4c85a",
@@ -139,6 +156,29 @@
         "startChar": 4,
         "endLine": 159,
         "endChar": 22
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8051823a_5b12bcf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T11:27:09Z",
+      "side": 1,
+      "message": "for safety reason, this should receive a separate clean up context",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 8
       },
       "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
