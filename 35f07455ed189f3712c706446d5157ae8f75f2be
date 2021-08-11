@@ -33,6 +33,41 @@
       "message": "Hi Katherine, friendly ping for review.\nI hope we can land this CL soon to fix our tests, many thanks!",
       "revId": "35f07455ed189f3712c706446d5157ae8f75f2be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf25e80_96619684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-11T03:17:25Z",
+      "side": 1,
+      "message": "Katherine has not been feeling well in last few days. I suggest you get another reviewer for this CL.",
+      "parentUuid": "e326a92d_ea3454ba",
+      "revId": "35f07455ed189f3712c706446d5157ae8f75f2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3e0808_9460ee15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-11T03:17:25Z",
+      "side": 1,
+      "message": "I tthink it will be better to get another owner to approve. Katherine is currently OOO.",
+      "revId": "35f07455ed189f3712c706446d5157ae8f75f2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
