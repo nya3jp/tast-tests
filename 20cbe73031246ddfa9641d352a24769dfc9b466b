@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4d1491_a073b82c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done.\n\nI was trying to be consistent with https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/defs.go;l\u003d11098",
+      "parentUuid": "de57473a_f1d4c85a",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a6f955_edc4f345",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-08-11T10:41:02Z",
       "side": 1,
       "message": "nit: add a blank line before",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af70ac8f_e33c5946",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a6f955_edc4f345",
       "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e0c151_4e5f903f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Okay, The second one, it is. Actually I was trying to be convention neutral (title case).",
+      "parentUuid": "eca04934_26bf831e",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 70
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a0fbe98_e51f5aa9",
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a9eb3e_68ed54cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a0fbe98_e51f5aa9",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd84649b_494aeb89",
@@ -128,6 +212,30 @@
       "writtenOn": "2021-08-11T10:41:02Z",
       "side": 1,
       "message": "nit: this actually can have full name \"policy\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04992a1d_7f688fcb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd84649b_494aeb89",
       "range": {
         "startLine": 89,
         "startChar": 2,
@@ -161,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "454d5045_b2d12b23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7138c17c_5d68757a",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 22
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8051823a_5b12bcf6",
@@ -174,6 +306,30 @@
       "writtenOn": "2021-08-11T11:27:09Z",
       "side": 1,
       "message": "for safety reason, this should receive a separate clean up context",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a833707_b6d859cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8051823a_5b12bcf6",
       "range": {
         "startLine": 179,
         "startChar": 5,
@@ -201,6 +357,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f350fd_0f4667bf",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Tried updating that, Power policy DeviceRebootOnShutdown (CL:3080647) which is inside power bundles package issues linting error\n\n`import of \u003cpkg\u003e is only allowed from \u003cpkg\u003e or its descendant`\n\nWe need this method, multiple times in different bundle packages. So kept it in the shared package.",
+      "parentUuid": "4a62a504_42a14e63",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04db1c61_6bdbb842",
@@ -224,6 +398,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe9fab4_55871489",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04db1c61_6bdbb842",
+      "range": {
+        "startLine": 18,
+        "startChar": 79,
+        "endLine": 18,
+        "endChar": 81
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d7e0ea8_0d0a1cf5",
@@ -237,6 +435,30 @@
       "writtenOn": "2021-08-11T10:41:02Z",
       "side": 1,
       "message": "nit: EnsureDUTisOn",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48578d41_cbf28866",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d7e0ea8_0d0a1cf5",
       "range": {
         "startLine": 19,
         "startChar": 5,
