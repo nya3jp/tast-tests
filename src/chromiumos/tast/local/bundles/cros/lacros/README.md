@@ -37,7 +37,7 @@ ninja -C out/Lacros -j 16000 -l 400 chrome
 export LACROS_OUTDIR=<your out dir> # e.g. out/Lacros
 cd $LACROS_OUTDIR
 mkdir /tmp/lacros_binary
-cp -r {chrome,nacl_helper,nacl_irt_x86_64.nexe,locales,*.pak,icudtl.dat,snapshot_blob.bin,swiftshader,crashpad_handler,WidevineCdm} /tmp/lacros_binary
+cp -r {chrome,nacl_helper,nacl_irt_x86_64.nexe,locales,*.pak,icudtl.dat,snapshot_blob.bin,swiftshader,chrome_crashpad_handler,WidevineCdm} /tmp/lacros_binary
 tar -C /tmp -cf - lacros_binary  | xz -ce --threads 0 - > /tmp/lacros_binary.tar
 ```
 
