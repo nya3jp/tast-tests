@@ -38,7 +38,7 @@ func init() {
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
 					regionCode:           "es",
-					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
+					defaultInputMethodID: ime.SpanishSpain.ID,
 				},
 			}, {
 				Name:              "es_informational",
@@ -46,7 +46,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "es",
-					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
+					defaultInputMethodID: ime.SpanishSpain.ID,
 				},
 			}, {
 				Name:              "fr",
@@ -54,7 +54,7 @@ func init() {
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
 					regionCode:           "fr",
-					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
+					defaultInputMethodID: ime.FrenchFrance.ID,
 				},
 			}, {
 				Name:              "fr_informational",
@@ -62,7 +62,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "fr",
-					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
+					defaultInputMethodID: ime.FrenchFrance.ID,
 				},
 			}, {
 				Name:              "jp",
@@ -70,7 +70,7 @@ func init() {
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
 					regionCode:           "jp",
-					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),
+					defaultInputMethodID: ime.AlphanumericWithJapaneseKeyboard.ID,
 				},
 			}, {
 				Name:              "jp_informational",
@@ -78,7 +78,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:           "jp",
-					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),
+					defaultInputMethodID: ime.AlphanumericWithJapaneseKeyboard.ID,
 				},
 			},
 		},

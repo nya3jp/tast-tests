@@ -34,11 +34,11 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "us",
-				Val:  ime.INPUTMETHOD_NACL_MOZC_US,
+				Val:  ime.JapaneseWithUSKeyboard,
 			},
 			{
 				Name: "jp",
-				Val:  ime.INPUTMETHOD_NACL_MOZC_JP,
+				Val:  ime.Japanese,
 			},
 		},
 	})
@@ -84,7 +84,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Add IME for testing.
-	imeCode := ime.ChromeIMEPrefix + string(s.Param().(ime.InputMethodCode))
+	imeCode := ime.ChromeIMEPrefix + s.Param().(ime.InputMethod).ID
 
 	s.Logf("Set current input method to: %s", imeCode)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {

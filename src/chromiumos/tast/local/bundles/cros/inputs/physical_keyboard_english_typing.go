@@ -48,7 +48,7 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Add IME for testing.
-	imeCode := ime.ChromeIMEPrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
+	imeCode := ime.ChromeIMEPrefix + ime.EnglishUS.ID
 
 	s.Logf("Set current input method to: %s", imeCode)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {

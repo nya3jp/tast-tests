@@ -32,7 +32,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "us_en",
-				Val:  ime.INPUTMETHOD_XKB_US_ENG,
+				Val:  ime.EnglishUS,
 			},
 		},
 	})
@@ -52,7 +52,7 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Add IME for testing.
-	imeCode := ime.ChromeIMEPrefix + string(s.Param().(ime.InputMethodCode))
+	imeCode := ime.ChromeIMEPrefix + s.Param().(ime.InputMethod).ID
 
 	s.Logf("Set current input method to: %s", imeCode)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
@@ -73,8 +73,8 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 
 	var subtests []testserver.FieldInputEval
 
-	switch s.Param().(ime.InputMethodCode) {
-	case ime.INPUTMETHOD_XKB_US_ENG:
+	switch s.Param().(ime.InputMethod) {
+	case ime.EnglishUS:
 		subtests = []testserver.FieldInputEval{
 			{
 				InputField:   testserver.TextAreaInputField,
