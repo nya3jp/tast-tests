@@ -238,6 +238,24 @@
       "parentUuid": "35708f38_e554b601",
       "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efccbc2_ac46a87d",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-08-11T06:50:16Z",
+      "side": 1,
+      "message": "ps3 same as ps2?",
+      "parentUuid": "48f891cb_0ce21784",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
