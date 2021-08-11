@@ -12,7 +12,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
@@ -26,13 +25,6 @@ import (
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
-
-// RollbackState is the state of the anti-rollback block.
-type RollbackState struct {
-	BlockID    int
-	MinVersion int
-	RWVersion  int
-}
 
 // FWImageType is the type of firmware (RO or RW).
 type FWImageType string
@@ -615,17 +607,6 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *dut.DUT, expecte
 	return nil
 }
 
-// RollbackInfo returns the rollbackinfo of the fingerprint MCU.
-func RollbackInfo(ctx context.Context, d *dut.DUT) ([]byte, error) {
-	cmd := []string{"ectool", "--name=cros_fp", "rollbackinfo"}
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
-	out, err := d.Conn().Command(cmd[0], cmd[1:]...).Output(ctx, ssh.DumpLogOnError)
-	if err != nil {
-		return []byte{}, errors.Wrap(err, "failed to query FPMCU rollbackinfo")
-	}
-	return out, nil
-}
-
 // CheckRollbackSetToInitialValue checks the anti-rollback block is set to initial values.
 func CheckRollbackSetToInitialValue(ctx context.Context, d *dut.DUT) error {
 	return CheckRollbackState(ctx, d, RollbackState{
@@ -637,30 +618,10 @@ func CheckRollbackSetToInitialValue(ctx context.Context, d *dut.DUT) error {
 
 // CheckRollbackState checks that the anti-rollback block is set to expected values.
 func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState) error {
-	rollbackInfo, err := RollbackInfo(ctx, d)
+	actual, err := RollbackInfo(ctx, d)
 	if err != nil {
 		return err
 	}
-	rollbackInfoMap := parseColonDelimitedOutput(string(rollbackInfo))
-
-	var actual RollbackState
-	blockID, err := strconv.Atoi(rollbackInfoMap["Rollback block id"])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert rollback block id")
-	}
-	actual.BlockID = blockID
-
-	minVersion, err := strconv.Atoi(rollbackInfoMap["Rollback min version"])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert rollback min version")
-	}
-	actual.MinVersion = minVersion
-
-	rwVersion, err := strconv.Atoi(rollbackInfoMap["RW rollback version"])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert RW rollback version")
-	}
-	actual.RWVersion = rwVersion
 
 	if actual != expected {
 		return errors.Errorf("Rollback not set correctly, expected: %q, actual: %q", expected, actual)
