@@ -63,6 +63,30 @@
       },
       "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa984609_db1f08a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-11T23:05:21Z",
+      "side": 1,
+      "message": "emm, in such case, we need a name other than `err`, or get rid of the `:\u003d` in L255, L265 in the deferred func code. Think they would eclipse the `err` of return value.",
+      "parentUuid": "d703d897_2404bb74",
+      "range": {
+        "startLine": 242,
+        "startChar": 79,
+        "endLine": 242,
+        "endChar": 91
+      },
+      "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
