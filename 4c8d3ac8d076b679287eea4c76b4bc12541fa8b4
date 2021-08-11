@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22e88f3_f513b6bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-11T16:53:59Z",
+      "side": 1,
+      "message": "What are you doing with err?",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0394eb09_0d8278b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-11T16:53:59Z",
+      "side": 1,
+      "message": "How do you know this is matching the BatteryState and not the ExternalPowerType ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8c8809_14f194f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-11T16:53:59Z",
+      "side": 1,
+      "message": "What is this sleep for?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
