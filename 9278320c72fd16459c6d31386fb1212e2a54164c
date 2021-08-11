@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f231792_28d52714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T12:24:28Z",
+      "side": 1,
+      "message": "PTAL. Only failures are fixture related: https://cros-health-prod.googleplex.com/test/policy.AudioOutputAllowed",
+      "revId": "9278320c72fd16459c6d31386fb1212e2a54164c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
