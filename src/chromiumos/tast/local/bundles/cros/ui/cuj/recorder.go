@@ -10,11 +10,14 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
@@ -90,9 +93,12 @@ type record struct {
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
 	tconn *chrome.TestConn
+	cr    *chrome.Chrome
 
 	names   []string
 	records map[string]*record
+
+	traceDir string
 
 	// duration is the total running time of the recorder.
 	duration time.Duration
@@ -219,6 +225,12 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	return r, nil
 }
 
+// EnableTracing enables tracing when the recorder running test scenario.
+func (r *Recorder) EnableTracing(cr *chrome.Chrome, traceDir string) {
+	r.cr = cr
+	r.traceDir = traceDir
+}
+
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
 	r.gpuDataSource.Close()
@@ -227,7 +239,37 @@ func (r *Recorder) Close(ctx context.Context) error {
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) error {
+func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {
+	const traceCleanupDuration = 2 * time.Second
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
+	defer cancel()
+
+	if r.traceDir != "" {
+		if err := r.cr.StartTracing(ctx,
+			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
+			cdputil.DisableSystrace()); err != nil {
+			return errors.Wrap(err, "failed to start tracing")
+		}
+		defer func() {
+			tr, err := r.cr.StopTracing(closeCtx)
+			if e == nil && err != nil {
+				e = errors.Wrap(err, "failed to stop tracing")
+				return
+			}
+			if tr == nil || len(tr.Packet) == 0 {
+				e = errors.New("no trace data is collected")
+				return
+			}
+			filename := "trace.data.gz"
+			if err := chrome.SaveTraceToFile(closeCtx, tr, filepath.Join(r.traceDir, filename)); err != nil {
+				e = errors.Wrap(err, "failed to save trace to file")
+				return
+			}
+			return
+		}()
+	}
+
 	tm := time.Now()
 	hists, err := metrics.Run(ctx, r.tconn, f, r.names...)
 	if err != nil {
