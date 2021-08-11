@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1770ccbe_9d9e158b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-11T02:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a999d7fd_983a8a78",
+      "range": {
+        "startLine": 161,
+        "startChar": 27,
+        "endLine": 161,
+        "endChar": 62
+      },
+      "revId": "024abe9f9593daac1307d96bebee49884cfac4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "358b6e89_101f3f2b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-10T23:30:28Z",
       "side": 1,
       "message": "nit: end with .",
+      "range": {
+        "startLine": 29,
+        "startChar": 96,
+        "endLine": 29,
+        "endChar": 100
+      },
+      "revId": "024abe9f9593daac1307d96bebee49884cfac4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca0cd6b_69bf95d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-11T02:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "358b6e89_101f3f2b",
       "range": {
         "startLine": 29,
         "startChar": 96,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "Why it fails the test case with an error immediately inside a testing.Poll?",
       "parentUuid": "f27ce80f_4255828b",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 53
+      },
+      "revId": "024abe9f9593daac1307d96bebee49884cfac4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b2c5b31_b4c498e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_close_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-08-11T02:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dacb22e_6ed0266d",
       "range": {
         "startLine": 189,
         "startChar": 7,
