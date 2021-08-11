@@ -16,6 +16,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type tracingMode bool
+
+const (
+	tracingOn  tracingMode = true
+	tracingOff tracingMode = false
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IdlePerf,
@@ -26,14 +33,26 @@ func init() {
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               tracingOff,
+		}, {
+			Name:              "trace",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               tracingOn,
 		}, {
 			Name:              "arcvm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               tracingOff,
+		}, {
+			Name:              "arcvm_trace",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               tracingOn,
 		}},
 	})
 }
 
 func IdlePerf(ctx context.Context, s *testing.State) {
+	tracing := s.Param().(tracingMode)
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -62,6 +81,9 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop recorder: ", err)
 		}
 	}()
+	if tracing {
+		recorder.EnableTracing(cr, s.OutDir())
+	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		s.Log("Just wait for 30 seconds to check the load of idle status")
