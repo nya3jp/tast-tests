@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56c616d_ca18540b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-11T16:18:12Z",
+      "side": 1,
+      "message": "Kamil, thanks for the link and context! \n\nI\u0027ve pulled the debug \"mode\" out of this CL.",
+      "parentUuid": "329730e2_8df0435e",
+      "revId": "a845d244fbead2441eed80b2a82ea741c1b5e82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14d19e28_3879f179",
@@ -84,6 +102,30 @@
       "writtenOn": "2021-08-10T23:24:32Z",
       "side": 1,
       "message": "nit: Would it make sense to s/vp9decodeV4L2args/vpxdecodeV4L2args/\nand reuse? I don\u0027t know if the arguments are expected to diverge\nthough.",
+      "range": {
+        "startLine": 1217,
+        "startChar": 5,
+        "endLine": 1217,
+        "endChar": 22
+      },
+      "revId": "a845d244fbead2441eed80b2a82ea741c1b5e82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5659c03f_6f7693d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-11T16:18:12Z",
+      "side": 1,
+      "message": "True. At this point having codec-specific arguments for v4l2_stateful_decoder (or even the upcoming |v4l2_stateless_decoder|) feels like YAGNI code. I renamed the function to be more generic - |v4l2DecodeArgs|.",
+      "parentUuid": "14d19e28_3879f179",
       "range": {
         "startLine": 1217,
         "startChar": 5,
