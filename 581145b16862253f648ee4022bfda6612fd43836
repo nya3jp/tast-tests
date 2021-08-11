@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba043ece_4ee38e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-11T23:17:47Z",
+      "side": 1,
+      "message": "Actually I\u0027ll get rid of the secondaryTarget arg ",
+      "revId": "581145b16862253f648ee4022bfda6612fd43836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
