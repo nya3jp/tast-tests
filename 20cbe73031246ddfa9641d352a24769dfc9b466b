@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4442690_d4f80743",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T18:38:19Z",
+      "side": 1,
+      "message": "ACK.",
+      "parentUuid": "31614fa8_b316f4b3",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a6f955_edc4f345",
@@ -413,6 +437,24 @@
       "side": 1,
       "message": "I think this is because you put src/chromiumos/tast/remote/bundles/cros/power/device_reboot_on_shutdown.go into \"cros/power\" package, but it probably should be under \"cros/policy\" package, because the main goal is to test a policy.",
       "parentUuid": "69f350fd_0f4667bf",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cccd36_9876411f",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T18:38:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4369c52d_7b4b72d3",
       "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

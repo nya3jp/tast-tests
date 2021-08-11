@@ -22,6 +22,30 @@
       },
       "revId": "da2972526cbf9c9588d3b2257a7745fd39c65220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c94bb9_9846b19f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T18:38:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b55514d7_1b8b1f99",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 10
+      },
+      "revId": "da2972526cbf9c9588d3b2257a7745fd39c65220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
