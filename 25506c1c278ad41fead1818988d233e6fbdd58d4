@@ -34,6 +34,75 @@
       "parentUuid": "57060678_75a88e7e",
       "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d0f4bd_8f7ca749",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-11T00:55:22Z",
+      "side": 1,
+      "message": "As I mentioned in the other CL, please use 4 spaces for indentation.\ncf. https://source.android.com/setup/contribute/code-style#use-spaces-for-indentation",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec6ce19_08935867",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-11T00:55:22Z",
+      "side": 1,
+      "message": "nit: Please remove |this.|.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f139f9a0_7ff3457c",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-11T00:55:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
