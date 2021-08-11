@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. suspend_service.proto
 //go:generate protoc -I . -I ../../../common/perf/perfpb --go_out=plugins=grpc:../../../../.. perf_boot_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. gmscore_cache_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. ureadahead_pack_service.proto
