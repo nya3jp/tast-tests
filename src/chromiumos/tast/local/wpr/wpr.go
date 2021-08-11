@@ -93,7 +93,7 @@ func waitForServerSocket(ctx context.Context, addr string, server *testexec.Cmd)
 		return nil
 	}, &testing.PollOptions{
 		Interval: time.Second,
-		Timeout:  60 * time.Second,
+		Timeout:  120 * time.Second,
 	})
 	return err
 }
