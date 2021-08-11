@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da729465_0c542601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:19:08Z",
+      "side": 1,
+      "message": "Thanks for adding this test, but I am concerned with the amount of UI interaction.\n\nIs the UI for this feature in Chrome. If yes, there is a problem when the test is added to the Cq as it can\u0027t easily be disabled for changes to land.\n\nAs an alternative is it possible to add javascript helpers to fill in the forms here and proceed to the next page? The UI itself can be tested on the Chrome side.\n",
+      "revId": "eac18e4d73097d910699b0724a440bf17a88cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee48bf6_49895e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/gellerization.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:19:08Z",
+      "side": 1,
+      "message": "Create a cleanup context and defer a Close for chrome.",
+      "revId": "eac18e4d73097d910699b0724a440bf17a88cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f1d0770_4a9d8861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/gellerization.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:19:08Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "eac18e4d73097d910699b0724a440bf17a88cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba017161_88acfadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/gellerization.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:19:08Z",
+      "side": 1,
+      "message": "nit : Make this a sentence:\n\nScroll the button into view.",
+      "range": {
+        "startLine": 78,
+        "startChar": 35,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "revId": "eac18e4d73097d910699b0724a440bf17a88cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
