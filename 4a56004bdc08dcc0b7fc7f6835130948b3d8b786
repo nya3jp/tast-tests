@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc492821_5785d2a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-11T05:33:09Z",
+      "side": 1,
+      "message": "This test seems pretty robust and not flaky, good work.",
+      "revId": "4a56004bdc08dcc0b7fc7f6835130948b3d8b786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00788096_fd5e4ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-11T05:33:09Z",
+      "side": 1,
+      "message": "This test locks the screen after 30 seconds and unlocks it after another minute. (List events in chronological order)",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 51,
+        "endChar": 89
+      },
+      "revId": "4a56004bdc08dcc0b7fc7f6835130948b3d8b786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdf8449_c59773aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-11T05:33:09Z",
+      "side": 1,
+      "message": "Nit: put this comment after the comma.",
+      "range": {
+        "startLine": 60,
+        "startChar": 55,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "4a56004bdc08dcc0b7fc7f6835130948b3d8b786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
