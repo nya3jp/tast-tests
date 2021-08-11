@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9bdaeac_ed7414c0",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-08-11T23:00:21Z",
+      "side": 1,
+      "message": "nit, can eliminate running variable:\nfor {\n ...\n if !iRes.Running {\n     break\n }\n ...\n}",
+      "revId": "10316dd04f9eec297107ff5145ab33a0dc56c9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
