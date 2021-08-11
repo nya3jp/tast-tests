@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44591106_87a2762e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T11:23:19Z",
+      "side": 1,
+      "message": "nti: please document which servo should be connected and to which port on DUT",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "e55671765f3306e93f53bc5cd654335c9f21e20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7af78d4d_cd879ed7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T11:23:19Z",
+      "side": 1,
+      "message": "nit: this is always 0, so no need to log it i think",
+      "range": {
+        "startLine": 148,
+        "startChar": 54,
+        "endLine": 148,
+        "endChar": 92
+      },
+      "revId": "e55671765f3306e93f53bc5cd654335c9f21e20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4d172a_dfa5182d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T11:23:19Z",
+      "side": 1,
+      "message": "It looks like you might left DUT powered off after the test. Please make sure that DUT will be turned on after the test and ideally between subtests.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 30
+      },
+      "revId": "e55671765f3306e93f53bc5cd654335c9f21e20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
