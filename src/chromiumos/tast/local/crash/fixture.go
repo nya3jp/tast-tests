@@ -72,7 +72,7 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	//    taken where consent is reset to false. See
 	//    https://crbug.com/1041062#c23
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := os.Stat("/var/lib/whitelist/owner.key"); err != nil {
+		if _, err := os.Stat("/var/lib/devicesettings/owner.key"); err != nil {
 			if os.IsNotExist(err) {
 				return err
 			}
