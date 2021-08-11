@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb1f3ec_a876c631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T13:16:51Z",
+      "side": 1,
+      "message": "nit: add TODO and link to bug",
+      "revId": "c4d252ec876ff891cbda1223717a7c4a88797012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
