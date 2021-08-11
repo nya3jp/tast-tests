@@ -10,11 +10,14 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
@@ -89,10 +92,13 @@ type record struct {
 
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
+	cr    *chrome.Chrome
 	tconn *chrome.TestConn
 
 	names   []string
 	records map[string]*record
+
+	traceDir string
 
 	// duration is the total running time of the recorder.
 	duration time.Duration
@@ -130,7 +136,12 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig) (*Recorder, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to test API")
+	}
+
 	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
 		NewCPUUsageSource("CPU"),
@@ -162,6 +173,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	}
 
 	r := &Recorder{
+		cr:                 cr,
 		tconn:              tconn,
 		names:              make([]string, 0, len(configs)),
 		records:            make(map[string]*record, len(configs)+2),
@@ -219,6 +231,11 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	return r, nil
 }
 
+// EnableTracing enables tracing when the recorder running test scenario.
+func (r *Recorder) EnableTracing(traceDir string) {
+	r.traceDir = traceDir
+}
+
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
 	r.gpuDataSource.Close()
@@ -227,7 +244,46 @@ func (r *Recorder) Close(ctx context.Context) error {
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) error {
+func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {
+	const traceCleanupDuration = 2 * time.Second
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
+	defer cancel()
+
+	if r.traceDir != "" {
+		if err := r.cr.StartTracing(ctx,
+			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
+			cdputil.DisableSystrace()); err != nil {
+			testing.ContextLog(ctx, "Failed to start tracing: ", err)
+			return errors.Wrap(err, "failed to start tracing")
+		}
+		defer func() {
+			tr, err := r.cr.StopTracing(closeCtx)
+			if err != nil {
+				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+				if e == nil {
+					e = errors.Wrap(err, "failed to stop tracing")
+				}
+				return
+			}
+			if tr == nil || len(tr.Packet) == 0 {
+				testing.ContextLog(ctx, "No trace data is collected")
+				if e == nil {
+					e = errors.New("no trace data is collected")
+				}
+				return
+			}
+			filename := "trace.data.gz"
+			if err := chrome.SaveTraceToFile(closeCtx, tr, filepath.Join(r.traceDir, filename)); err != nil {
+				testing.ContextLog(ctx, "Failed to save trace to file: ", err)
+				if e == nil {
+					e = errors.Wrap(err, "failed to save trace to file")
+				}
+				return
+			}
+		}()
+	}
+
 	tm := time.Now()
 	hists, err := metrics.Run(ctx, r.tconn, f, r.names...)
 	if err != nil {

@@ -244,25 +244,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	var tconn *chrome.TestConn
 	var cs ash.ConnSource
+	var cr *chrome.Chrome
 
-	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		var cr *chrome.Chrome
-		if meet.useLacros {
-			cr = s.FixtValue().(launcher.FixtData).Chrome
-		} else {
-			cr = s.FixtValue().(cuj.FixtureData).Chrome
-			cs = cr
-		}
+	if meet.useLacros {
+		cr = s.FixtValue().(launcher.FixtData).Chrome
+	} else {
+		cr = s.FixtValue().(cuj.FixtureData).Chrome
+		cs = cr
+	}
 
-		var err error
-		tconn, err = cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect to the test API connection: ", err)
-		}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
 	if meet.useLacros {
@@ -392,7 +386,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			jankCriteria))
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
