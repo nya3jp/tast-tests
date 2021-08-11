@@ -89,7 +89,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	testParam := s.Param().(windowarrangementcuj.TestParam)
 	tabletMode := testParam.Tablet
 
-	cs, tconn, chromeCleanUp, closeAboutBlank, err := windowarrangementcuj.SetupChrome(ctx, s)
+	cr, cs, tconn, chromeCleanUp, closeAboutBlank, err := windowarrangementcuj.SetupChrome(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -152,7 +152,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

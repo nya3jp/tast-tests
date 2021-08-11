@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -152,22 +151,15 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
-	var tconn *chrome.TestConn
 	var cs ash.ConnSource
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	if !testParam.useLacros {
+		cs = cr
+	}
 
-	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		cr := s.FixtValue().(cuj.FixtureData).Chrome
-		if !testParam.useLacros {
-			cs = cr
-		}
-
-		var err error
-		tconn, err = cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect to the test API connection: ", err)
-		}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
 	if testParam.useLacros {
@@ -428,7 +420,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		configs = append(configs,
 			cuj.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
 	}
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
