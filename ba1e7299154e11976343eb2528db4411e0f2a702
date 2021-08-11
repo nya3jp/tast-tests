@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea9bb80_37846ab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-08-11T07:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95b0340_ec30d90d",
+      "revId": "ba1e7299154e11976343eb2528db4411e0f2a702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e98d64_44a7c77b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-08-11T04:04:51Z",
       "side": 1,
       "message": "maybe nice to use a common message pattern.\n\n\"unexpected %s state: want %s, got %s\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 26,
+        "endLine": 155,
+        "endChar": 73
+      },
+      "revId": "ba1e7299154e11976343eb2528db4411e0f2a702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba548de_947e2b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-08-11T07:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e98d64_44a7c77b",
       "range": {
         "startLine": 155,
         "startChar": 26,
