@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "789c1b9e_0203ea20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-11T15:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0056d0_ec3555ee",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "676e2d5a22063a478a0d63fbe54117d82f7b808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25ff2e4c_ab8bf5bc",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-11T02:06:52Z",
       "side": 1,
       "message": "You can remove this check - scanner.Scan() will return false when scanner.Err() will return non-nil.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "676e2d5a22063a478a0d63fbe54117d82f7b808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d9b343_12afb805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-11T15:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ff2e4c_ab8bf5bc",
       "range": {
         "startLine": 51,
         "startChar": 3,
