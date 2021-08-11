@@ -122,11 +122,13 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
+	// Check FPMCU state and reflash if needed.
 	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
-	if err := CheckInitialState(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
+	// Double check our work in the previous step.
+	if err := CheckValidState(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
 		return nil, err
 	}
 
