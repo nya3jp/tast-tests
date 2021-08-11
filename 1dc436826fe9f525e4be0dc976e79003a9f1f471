@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea69789_d64761c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-08-11T21:01:07Z",
+      "side": 1,
+      "message": "We could add a comment here stating that when running this tast test locally, this could be toggled to true to communicate with the local syz-hub instance.",
+      "revId": "1dc436826fe9f525e4be0dc976e79003a9f1f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd9ddc5_eecb924c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-08-11T21:01:07Z",
+      "side": 1,
+      "message": "They should be initialized to \"\" by default, so can we avoid having these lines?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 16
+      },
+      "revId": "1dc436826fe9f525e4be0dc976e79003a9f1f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363cb9e9_9ccde991",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-08-11T21:01:07Z",
+      "side": 1,
+      "message": "Could you run the tast wrapper for 30 minutes, and then re-run it once more? As we re-use the same client name, syz-hub might not send corpus info to syz-manager the second time around. Can you verify? We\u0027d need to verify that:\n* corpus is sent to syz-manager at the start both times.\n* corpus is sent from syz-manager to hub every 3 minutes; so about 8-9 times overall.",
+      "revId": "1dc436826fe9f525e4be0dc976e79003a9f1f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c927ca7f_cb8b5f2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-08-11T21:01:07Z",
+      "side": 1,
+      "message": "Perhaps something like:\n\n  cmdArgs :\u003d []string{\"-config\", , configFile.Name(), \"-vv\", \"10\"}\n  if useHub {\n      cmdArgs \u003d append(cmdArgs, \"-hub\")\n  }\n  managerCmd :\u003d testexec.CommandContext(ctx, syzManager, cmdArgs...)",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "1dc436826fe9f525e4be0dc976e79003a9f1f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
