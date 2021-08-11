@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6e7e0b6_f893e11e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-11T15:54:41Z",
+      "side": 1,
+      "message": "Does the same thing happens if you use reinstall outside tast? Can you confirm that the issue is present with `reinstall` and not `update` outside tast. There might be a bug in fwupd",
+      "parentUuid": "a6eb6c1a_ec49f0bf",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e580e81_ddc6c592",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 15
