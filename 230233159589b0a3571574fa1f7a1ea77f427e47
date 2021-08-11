@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd11740e_abf32bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-11T16:01:50Z",
+      "side": 1,
+      "message": "Given that this exists... I would add one of this for the fwupd daemon at the beginning of the test. If the API allows for calling this on an already running service then this will help get rid of some of the flakes related to service D-bus activation deadline exceeded. Context: https://tastboard.corp.google.com/test?contact\u0026testname\u003dfirmware.Fwupd",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "230233159589b0a3571574fa1f7a1ea77f427e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
