@@ -34,7 +34,7 @@ func init() {
 
 func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 	const (
-		ownerKeyFile = "/var/lib/whitelist/owner.key"
+		ownerKeyFile = "/var/lib/devicesettings/owner.key"
 		testUser     = "example@chromium.org"
 		testPass     = "testme"
 
