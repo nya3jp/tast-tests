@@ -254,6 +254,30 @@
       },
       "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb2fbb7_54d128bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-11T22:22:04Z",
+      "side": 1,
+      "message": "\u003e Yes we verified on Dell WD19TB device enumerated(able to get device generation ,device_name etc..)  without enabling device policy.\n\nThat shouldn\u0027t be the case. Can you power wash your device and try again? There could be some pre-existing policy setting that was manually set earlier.\n\n\u003e As per our test steps we are not validating in script whether device is in TBT mode or in USB+DP mode.\n\nIf the dock comes up in USB+DP mode, it won\u0027t enumerate all under the `/sys/bus/thunderbolt/devices` directory and won\u0027t have any of the sysfs file attributes (generation, tx_speed etc.)",
+      "parentUuid": "8441f52a_4c99c620",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
