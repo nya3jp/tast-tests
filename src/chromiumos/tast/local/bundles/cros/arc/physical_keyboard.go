@@ -283,7 +283,7 @@ func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestStat
 		s.Fatal("Failed to get the current IME ID: ", err)
 	}
 
-	frImeID := imePrefix + string(ime.INPUTMETHOD_XKB_FR_FRA)
+	frImeID := imePrefix + ime.FrenchFrance.ID
 	if err := ime.AddAndSetInputMethod(ctx, st.tconn, frImeID); err != nil {
 		s.Fatal("Failed to switch to the French IME: ", err)
 	}
