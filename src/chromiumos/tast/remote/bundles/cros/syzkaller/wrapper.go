@@ -25,6 +25,9 @@ import (
 
 const (
 	syzkallerRunDuration = 30 * time.Minute
+
+	// When running this tast test locally, useHub can be set to true to communicate with a local syz-hub instance.
+	useHub = false
 )
 
 const startupScriptContents = `
@@ -54,6 +57,9 @@ type dutConfig struct {
 
 type syzkallerConfig struct {
 	Name           string    `json:"name"`
+	HubClient      string    `json:"hub_client"`
+	HubAddr        string    `json:"hub_addr"`
+	HubKey         string    `json:"hub_key"`
 	Target         string    `json:"target"`
 	Reproduce      bool      `json:"reproduce"`
 	HTTP           string    `json:"http"`
@@ -98,7 +104,7 @@ func init() {
 func Wrapper(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
-	syzArch, err := findSyzkallerArch(ctx, d)
+	board, syzArch, err := findSyzkallerBoardAndArch(ctx, d)
 	if err != nil {
 		s.Fatal("Unable to find syzkaller arch: ", err)
 	}
@@ -125,14 +131,16 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatal("Unable to create temp workdir: ", err)
 	}
-	cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
-	if err := cmd.Run(); err != nil {
-		s.Fatal("Failed to copy seed corpus to workdir: ", err)
+	if !useHub {
+		cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
+		if err := cmd.Run(); err != nil {
+			s.Fatal("Failed to copy seed corpus to workdir: ", err)
+		}
 	}
 
 	// Chmod the keyfile so that ssh connections do not fail due to
 	// open permissions.
-	cmd = exec.Command("cp", s.DataPath("testing_rsa"), syzkallerTastDir)
+	cmd := exec.Command("cp", s.DataPath("testing_rsa"), syzkallerTastDir)
 	if err := cmd.Run(); err != nil {
 		s.Fatal("Failed to copy testing_rsa to tast temp dir: ", err)
 	}
@@ -161,7 +169,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	// [2] A test is run for a short duration(30 minutes).
 	// Hence, set Reproduce:false.
 	config := syzkallerConfig{
-		Name:      "syzkaller_tast",
+		Name:      board,
 		Target:    fmt.Sprintf("linux/%v", syzArch),
 		Reproduce: false,
 		HTTP:      "localhost:56700",
@@ -178,6 +186,12 @@ func Wrapper(ctx context.Context, s *testing.State) {
 			Pstore:        true,
 		},
 		EnableSyscalls: enabledSyscalls,
+	}
+
+	if useHub {
+		config.HubClient = board
+		config.HubAddr = "localhost:56500"
+		config.HubKey = "6sCFsJVfyFQVhWVKJpKhHcHxpCH0gAxL"
 	}
 
 	configFile, err := os.Create(filepath.Join(syzkallerTastDir, "config"))
@@ -205,7 +219,11 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	s.Log("Starting syzkaller with logfile at ", logFile.Name())
 	syzManager := filepath.Join(artifactsDir, "syz-manager")
-	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10")
+	cmdArgs := []string{"-config", configFile.Name(), "-vv", "10"}
+	if useHub {
+		cmdArgs = append(cmdArgs, "-hub")
+	}
+	managerCmd := testexec.CommandContext(ctx, syzManager, cmdArgs...)
 	managerCmd.Stdout = logFile
 	managerCmd.Stderr = logFile
 
@@ -242,15 +260,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Done fuzzing, exiting")
 }
 
-func findSyzkallerArch(ctx context.Context, d *dut.DUT) (string, error) {
-	board, err := reporters.New(d).Board(ctx)
+func findSyzkallerBoardAndArch(ctx context.Context, d *dut.DUT) (board, arch string, err error) {
+	board, err = reporters.New(d).Board(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "unable to find board")
+		return "", "", errors.Wrap(err, "unable to find board")
 	}
 	if _, ok := boardArchMapping[board]; !ok {
-		return "", errors.Wrapf(err, "unexpected board: %v", board)
+		return "", "", errors.Wrapf(err, "unexpected board: %v", board)
 	}
-	return boardArchMapping[board], nil
+	return board, boardArchMapping[board], nil
 }
 
 func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir, syzArch string) error {
