@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f1deaa6_9b8c3c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T12:31:05Z",
+      "side": 1,
+      "message": "Please use ime.FrenchFrance.InstallAndActivate() function instead.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "7da4d387bf3b3a793b3eaaaa10cf29f59fb5e33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
