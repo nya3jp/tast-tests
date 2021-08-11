@@ -41,11 +41,7 @@ func init() {
 }
 
 func InputMethodShelf(ctx context.Context, s *testing.State) {
-	const (
-		searchKeyword   = "japanese"                           // Keyword used to search input method.
-		inputMethodName = "Japanese with US keyboard"          // Input method should be displayed after search.
-		inputMethodCode = string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
-	)
+	inputMethodCode := ime.JapaneseWithUSKeyboard.ID // Input method code of the input method.
 
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("LanguageSettingsUpdate2"))
 	if err != nil {
@@ -102,7 +98,7 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		ui.LeftClick(imeMenuTrayButtonFinder),
 		ui.LeftClick(usOptionFinder),
 		func(ctx context.Context) error {
-			return ime.WaitForInputMethodMatches(ctx, tconn, ime.ChromeIMEPrefix+string(ime.INPUTMETHOD_XKB_US_ENG), 10*time.Second)
+			return ime.WaitForInputMethodMatches(ctx, tconn, ime.ChromeIMEPrefix+ime.EnglishUS.ID, 10*time.Second)
 		},
 
 		// Toggle off the option. IME tray should be gone.

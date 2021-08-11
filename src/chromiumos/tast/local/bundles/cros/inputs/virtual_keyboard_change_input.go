@@ -49,14 +49,11 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	const (
-		defaultInputMethod       = string(ime.INPUTMETHOD_XKB_US_ENG)
-		defaultInputMethodLabel  = "US"
-		defaultInputMethodOption = "English (US)"
-		language                 = "fr-FR"
-		inputMethod              = string(ime.INPUTMETHOD_XKB_FR_FRA)
-		InputMethodLabel         = "FR"
-	)
+	defaultInputMethod := ime.EnglishUS.ID
+	defaultInputMethodLabel := "US"
+	defaultInputMethodOption := "English (US)"
+	inputMethod := ime.FrenchFrance.ID
+	InputMethodLabel := "FR"
 
 	if err := ime.AddInputMethod(ctx, tconn, ime.ChromeIMEPrefix+inputMethod); err != nil {
 		s.Fatal("Failed to add input method: ", err)
