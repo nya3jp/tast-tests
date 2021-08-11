@@ -56,7 +56,13 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Not running RW firmware")
 	}
 
-	if err := fingerprint.CheckRollbackSetToInitialValue(ctx, d); err != nil {
+	testing.ContextLog(ctx, "Validating initial rollback info")
+	rollbackPrev, err := fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo")
+	}
+
+	if !rollbackPrev.IsEntropySet() || rollbackPrev.IsAntiRollbackSet() {
 		s.Fatal("Failed to validate rollback state: ", err)
 	}
 
@@ -66,39 +72,60 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Validating rollback didn't change")
-	if err := fingerprint.CheckRollbackSetToInitialValue(ctx, d); err != nil {
-		s.Fatal("Failed to validate rollback state: ", err)
+	rollbackCur, err := fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo")
+	}
+	if rollbackPrev != rollbackCur {
+		s.Fatal("Rollback changed when adding entropy from RW")
 	}
 
 	testing.ContextLog(ctx, "Adding entropy from RO should succeed")
+	rollbackPrev = rollbackCur
 	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
 	_ = fingerprint.AddEntropy(ctx, d, false)
 	testing.ContextLog(ctx, "Validating Block ID changes, but nothing else")
-	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
-		BlockID: 2, MinVersion: 0, RWVersion: 0}); err != nil {
-		s.Fatal("Unexpected rollback state: ", err)
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo")
+	}
+	if rollbackPrev.BlockID+1 != rollbackCur.BlockID ||
+		rollbackPrev.MinVersion != rollbackCur.MinVersion ||
+		rollbackPrev.RWVersion != rollbackCur.RWVersion {
+		s.Fatal("Rollback block did not have the correct value")
 	}
 
 	testing.ContextLog(ctx, "Adding entropy with reset (double write) from RO should succeed")
+	rollbackPrev = rollbackCur
 	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
 	_ = fingerprint.AddEntropy(ctx, d, true)
 	testing.ContextLog(ctx, "Validating Block ID increases by 2, but nothing else")
-	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
-		BlockID: 4, MinVersion: 0, RWVersion: 0}); err != nil {
-		s.Fatal("Unexpected rollback state: ", err)
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo")
+	}
+	if rollbackPrev.BlockID+2 != rollbackCur.BlockID ||
+		rollbackPrev.MinVersion != rollbackCur.MinVersion ||
+		rollbackPrev.RWVersion != rollbackCur.RWVersion {
+		s.Fatal("Rollback block did not have the correct value")
 	}
 
 	testing.ContextLog(ctx, "Switching back to RW")
+	rollbackPrev = rollbackCur
 	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to reboot to RW: ", err)
 	}
 	testing.ContextLog(ctx, "Validating nothing changed")
-	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
-		BlockID: 4, MinVersion: 0, RWVersion: 0}); err != nil {
-		s.Fatal("Unexpected rollback state: ", err)
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo")
 	}
+	if rollbackPrev != rollbackCur {
+		s.Fatal("Rollback changed when adding entropy from RW")
+	}
+
 }
