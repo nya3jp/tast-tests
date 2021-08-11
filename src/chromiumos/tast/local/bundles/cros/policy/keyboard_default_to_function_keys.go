@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test the KeyboardDefaultToFunctionKeys policy: check that the behavior of function keys is swapped",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

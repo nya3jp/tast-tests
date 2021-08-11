@@ -25,7 +25,7 @@ func init() {
 		Desc: "Enroll a device without checking policies",
 		Contacts: []string{
 			"vsavu@chromium.org", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"reboot", "chrome"},

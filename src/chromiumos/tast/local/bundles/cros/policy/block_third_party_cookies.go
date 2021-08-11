@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test the behavior of BlockThirdPartyCookies policy: check if third party cookies are allowed based on policy value",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

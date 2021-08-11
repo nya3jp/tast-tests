@@ -21,7 +21,7 @@ func init() {
 		Desc: "Check that the JavaScriptBlockedForUrls policy blocks execution of JavaScript on the given sites",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

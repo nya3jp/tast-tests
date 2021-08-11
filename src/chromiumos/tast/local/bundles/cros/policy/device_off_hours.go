@@ -21,7 +21,7 @@ func init() {
 		Desc: "Behavior of DeviceOffHours policy",
 		Contacts: []string{
 			"rbock@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -22,7 +22,7 @@ func init() {
 		Desc: "Behavior of ManagedBookmarks policy",
 		Contacts: []string{
 			"ayaelattar@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

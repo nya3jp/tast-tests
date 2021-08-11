@@ -41,7 +41,7 @@ func init() {
 		Desc: "Behavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged.",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"policy.ExtensionInstallEventLoggingEnabled.username", "policy.ExtensionInstallEventLoggingEnabled.password"},

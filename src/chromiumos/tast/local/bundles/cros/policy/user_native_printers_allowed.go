@@ -23,7 +23,7 @@ func init() {
 		Desc: "Test behavior of UserNativePrintersAllowed policy: check if Add printer button is restricted based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr: []string{

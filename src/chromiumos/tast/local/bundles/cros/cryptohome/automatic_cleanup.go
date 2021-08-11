@@ -24,7 +24,7 @@ func init() {
 		Contacts: []string{
 			"vsavu@google.com",     // Test author
 			"gwendal@chromium.com", // Lead for Chrome OS Storage
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})

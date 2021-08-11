@@ -25,7 +25,7 @@ func init() {
 		Desc: "Test the behavior of BookmarkBarEnabled policy: check if bookmark bar is shown based on the value of the policy",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

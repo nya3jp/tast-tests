@@ -29,7 +29,7 @@ func init() {
 		Desc: "Checks the behavior of 3rd part resources on pages whether it shows auth prompt or not",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
