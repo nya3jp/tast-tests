@@ -28,6 +28,14 @@ var voiceTestIMEs = []ime.InputMethod{
 	ime.ChinesePinyin,
 	ime.EnglishUS,
 }
+var voiceTestIMEsExtra = []ime.InputMethod{
+	ime.AlphanumericWithJapaneseKeyboard,
+	ime.Arabic,
+	ime.EnglishUK,
+	ime.EnglishUSWithInternationalKeyboard,
+	ime.Japanese,
+	ime.Korean,
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,13 +46,22 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEs),
 		Pre:          pre.VKEnabledReset,
-		Timeout:      time.Duration(len(voiceTestIMEs)) * time.Duration(len(voiceTestMessages)) * time.Minute,
+		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsExtra)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				Val:               voiceTestIMEs,
+			},
+			{
+				Name:              "newdata", // This test will be merged into CQ once it is proved to be stable.
+				Val:               voiceTestIMEsExtra,
+				ExtraData:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEsExtra),
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "informational",
+				Val:               voiceTestIMEs,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 			},
@@ -55,6 +72,8 @@ func init() {
 func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+
+	testIMEs := s.Param().([]ime.InputMethod)
 
 	// Setup CRAS Aloop for audio test.
 	cleanup, err := voice.EnableAloop(ctx, tconn)
@@ -106,5 +125,5 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 		}
 	}
 	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, voiceTestIMEs, voiceTestMessages, subtest)
+	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, voiceTestMessages, subtest)
 }
