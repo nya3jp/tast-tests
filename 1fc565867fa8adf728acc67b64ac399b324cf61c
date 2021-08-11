@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d13f19f_4405937f",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-11T05:57:35Z",
+      "side": 1,
+      "message": "Sorry, my bad, there might also be issues using \"omitempty\", it igores all zero values, which is not expected.",
+      "parentUuid": "a8cec75b_f1787648",
+      "range": {
+        "startLine": 334,
+        "startChar": 67,
+        "endLine": 334,
+        "endChar": 89
+      },
+      "revId": "1fc565867fa8adf728acc67b64ac399b324cf61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0fdbb84_274dafa7",
