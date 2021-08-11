@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0668c5c9_7aeeafa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-11T07:57:08Z",
+      "side": 1,
+      "message": "Note for future commits. You don\u0027t need a dot at the end of the subject line, but you should add a space after the component prefix, like:\n\"tast-tests: Add test to check child cannot install blocked apps\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "d20d2b2d1c835cfd263fd0090fc96dd8152b016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
