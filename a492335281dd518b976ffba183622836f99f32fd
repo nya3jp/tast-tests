@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02ecacf5_a0e28e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T01:58:58Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t notice this in earlier iteration, but we have a library to manipulate upstart jobs already. Please try upstart.StopJob and upstart.EnsureJobRunning.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "a492335281dd518b976ffba183622836f99f32fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a484052c_9f464145",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
         "patchSetId": 19
@@ -41,6 +64,75 @@
         "startLine": 59,
         "startChar": 0,
         "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "a492335281dd518b976ffba183622836f99f32fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab8a670_7fddc85d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T01:58:58Z",
+      "side": 1,
+      "message": "It\u0027s odd that checkForPowerdDisabled has two ways to report errors - return value and via testing.State.\n\nI do recommend avoid passing testing.State to this function and making it consistently report errors by a return value.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "a492335281dd518b976ffba183622836f99f32fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61bd7aac_82c93729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T01:58:58Z",
+      "side": 1,
+      "message": "When we don\u0027t need indices, it\u0027s more readable to take values instead.\n\n for _, p :\u003d range w.Plugins {\n   if p.Name \u003d\u003d \"powerd\" {\n     for _, f :\u003d range p.Flags {\n       if f \u003d\u003d \"disabled\" {\n         return nil\n       }\n     }\n   }\n }",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "a492335281dd518b976ffba183622836f99f32fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94b0a45_3b82603a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-11T01:58:58Z",
+      "side": 1,
+      "message": "powerd might be left stopped if the test panicks. To avoid it I recommend using a defer statement:\n\n if err :\u003d upstart.StopJob(ctx, \"powerd\"); err !\u003d nil {\n   s.Fatal(...)\n }\n defer func() {\n   if err :\u003d upstart.EnsureJobRunning(ctx, \"powerd\"); err !\u003d nil {\n     s.Error(...)\n   }\n }()",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 99,
         "endChar": 2
       },
       "revId": "a492335281dd518b976ffba183622836f99f32fd",
