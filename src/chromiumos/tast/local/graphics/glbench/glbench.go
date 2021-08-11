@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -79,7 +78,7 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 			SaveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
 			testing.ContextLog(ctx, "Unable get cool machine by default setting: ", err)
-			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
+			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
 				SaveFailLog(ctx, filepath.Join(outDir, "before_tests2"))
 				appendErr(err, "unable to get cool machine to reach 60C")
 			}
@@ -246,7 +245,7 @@ func analyzeSummary(summary, resultPath string, pv *perf.Values) ([]string, erro
 
 // ReportTemperature set the current temperature to pv. If there's problem reading the value, it sets -1000 as the temperature.
 func ReportTemperature(ctx context.Context, pv *perf.Values, name string) error {
-	temp, err := sysutil.TemperatureInputMax()
+	temp, err := power.MaxObservedTemperature(ctx)
 	if err != nil {
 		temp = -1000.0
 		testing.ContextLog(ctx, "Can't read maximum temperature: ", err)

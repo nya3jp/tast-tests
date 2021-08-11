@@ -74,7 +74,7 @@ func Run(ctx context.Context, outDir string, fixtValue interface{}, config Confi
 		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
 			glbench.SaveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
 			testing.ContextLog(ctx, "Unable get cool machine by default setting: ", err)
-			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
+			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
 				glbench.SaveFailLog(ctx, filepath.Join(outDir, "before_tests2"))
 				appendErr(err, "unable to get cool machine to reach 60C")
 			}
