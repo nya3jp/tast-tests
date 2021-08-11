@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55514d7_1b8b1f99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T13:23:31Z",
+      "side": 1,
+      "message": "Sorry for didn\u0027t catch this early, but this is not the right way to handle error from WaitConnect. For example, after 1 second you might get context deadline error and will assume that subtest passed which is not correct.\n\nThe correct way will be to periodically poll and verify that DUT is unreachable during some period of time.",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 10
+      },
+      "revId": "da2972526cbf9c9588d3b2257a7745fd39c65220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
