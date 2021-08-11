@@ -691,7 +691,8 @@ func BioWash(ctx context.Context, d *dut.DUT, reset bool) error {
 func parseColonDelimitedOutput(output string) map[string]string {
 	ret := map[string]string{}
 	for _, line := range strings.Split(output, "\n") {
-		splits := strings.Split(line, ":")
+		// Note that the build info line uses ':'s as time of date delimiters.
+		splits := strings.SplitN(line, ":", 2)
 		if len(splits) != 2 {
 			continue
 		}
