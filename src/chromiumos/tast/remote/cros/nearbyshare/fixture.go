@@ -191,21 +191,27 @@ type FixtData struct {
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	d1 := s.DUT()
 	f.d1 = d1
+	var d2 *dut.DUT
 	secondary, ok := s.Var("secondaryTarget")
 	if !ok {
 		secondary = ""
 	}
 	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName(), secondary)
 	if err != nil {
-		s.Fatal("Failed to find hostname for DUT2: ", err)
-	}
-	s.Log("Ensuring we can connect to DUT2: ", secondaryDUT)
-	d2, err := d1.NewSecondaryDevice(secondaryDUT)
-	if err != nil {
-		s.Fatal("Failed to create secondary device: ", err)
-	}
-	if err := d2.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to secondary DUT: ", err)
+		s.Log("No secondary DUT found with secondaryTarget arg or hardcoded pairs. Trying companion duts")
+		d2 = s.CompanionDUT("cd1")
+		if d2 == nil {
+			s.Fatal("Failed to get companion DUT cd1")
+		}
+	} else {
+		s.Log("Ensuring we can connect to DUT2: ", secondaryDUT)
+		d2, err = d1.NewSecondaryDevice(secondaryDUT)
+		if err != nil {
+			s.Fatal("Failed to create secondary device: ", err)
+		}
+		if err := d2.Connect(ctx); err != nil {
+			s.Fatal("Failed to connect to secondary DUT: ", err)
+		}
 	}
 	f.d2 = d2
 	s.Log("Preparing to move remote data files to DUT1 (Sender)")
