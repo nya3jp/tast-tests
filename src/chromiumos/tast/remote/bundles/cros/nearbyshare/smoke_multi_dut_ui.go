@@ -30,29 +30,31 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		// TODO(crbug/1127165): Move to fixture when data is available in fixtures.
 		Data: []string{"small_jpg.zip", "small_png.zip", "big_txt.zip"},
-		Vars: []string{"secondaryTarget", nearbycommon.KeepStateVar},
+		Vars: []string{nearbycommon.KeepStateVar},
 	})
 }
 
 // SmokeMultiDUTUI tests that we can enable Nearby Share on two DUTs in a single test.
 func SmokeMultiDUTUI(ctx context.Context, s *testing.State) {
 	d1 := s.DUT()
-	secondary, ok := s.Var("secondaryTarget")
-	if !ok {
-		secondary = ""
-	}
-	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName(), secondary)
-	if err != nil {
-		s.Fatal("Failed to find hostname for DUT2: ", err)
-	}
-
-	s.Log("Connecting to secondary DUT: ", secondaryDUT)
-	d2, err := d1.NewSecondaryDevice(secondaryDUT)
-	if err != nil {
-		s.Fatal("Failed to create secondary device: ", err)
-	}
-	if err := d2.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to secondary DUT: ", err)
+	var d2 *dut.DUT
+	// Check if there is a hardcoded secondary DUT assigned to the current host.
+	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName())
+	if err == nil {
+		s.Log("Ensuring we can connect to DUT2 from the hardcoded pairs: ", secondaryDUT)
+		d2, err = d1.NewSecondaryDevice(secondaryDUT)
+		if err != nil {
+			s.Fatal("Failed to create secondary device: ", err)
+		}
+		if err := d2.Connect(ctx); err != nil {
+			s.Fatal("Failed to connect to secondary DUT: ", err)
+		}
+	} else {
+		s.Log("No secondary DUT found in hardcoded pairs. Checking if a companion DUT was passed")
+		d2 = s.CompanionDUT("cd1")
+		if d2 == nil {
+			s.Fatal("Failed to get companion DUT cd1")
+		}
 	}
 
 	var keepState bool
