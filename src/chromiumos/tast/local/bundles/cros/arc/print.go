@@ -199,6 +199,7 @@ func Print(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start MainActivity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	// Maximize the app window to ensure print preview is visible. Since the
 	// test can often pass without the window being maximized, log errors

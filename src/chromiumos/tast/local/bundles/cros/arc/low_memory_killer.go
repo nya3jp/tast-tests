@@ -107,6 +107,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatalf("Could not start %v: %v", exampleApp, err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	s.Log("Retrieving PID of app ", exampleApp)
 	actPID, err := getNewestPID(exampleApp)

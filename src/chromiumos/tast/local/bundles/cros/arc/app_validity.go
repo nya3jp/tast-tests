@@ -60,6 +60,7 @@ func AppValidity(ctx context.Context, s *testing.State) {
 	if err = act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		bounds, err := act.SurfaceBounds(ctx)

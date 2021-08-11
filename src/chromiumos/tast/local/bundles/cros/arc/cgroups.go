@@ -92,6 +92,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
 		s.Fatal("Failed to maximize the activity: ", err)

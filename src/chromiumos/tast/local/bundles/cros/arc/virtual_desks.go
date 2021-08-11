@@ -97,6 +97,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	// Put the activity in "normal" (non-maximized mode).
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {

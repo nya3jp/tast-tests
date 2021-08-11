@@ -84,6 +84,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	// Switch to the "Plant list" tab, which contains many widgets, they cover the entire screen,
 	// and they relayout when the screen rotates.
