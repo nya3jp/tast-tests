@@ -138,6 +138,24 @@
       "parentUuid": "afc34c31_f90b6dbf",
       "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5787d011_2992854b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-08-11T06:45:48Z",
+      "side": 1,
+      "message": "I think it\u0027s difficult to rewrite test since we needs to use CRAS.\n\nOn the real device, lacros connect to CRAS with the same way. Does it also have --no-sandbox flag? Maybe we can follow the this environment.",
+      "parentUuid": "1d8698a2_20c3cfdb",
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
