@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec74a04_0217340c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-11T14:50:12Z",
+      "side": 1,
+      "message": "Wanted to wait for CQ dry run but it looks like the CQ is stuck/broken once again :/ Could you have a look already?",
+      "revId": "c7f6c4a058d619264a4572a8681140a17da70a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
