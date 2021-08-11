@@ -97,8 +97,8 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get ime prefix: ", err)
 	}
 
-	usIMEID := imePrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
-	intlIMEID := imePrefix + string(ime.INPUTMETHOD_XKB_US_INTL)
+	usIMEID := imePrefix + ime.EnglishUS.ID
+	intlIMEID := imePrefix + ime.EnglishUSWithInternationalKeyboard.ID
 
 	if imeID != usIMEID {
 		s.Fatalf("US keyboard is not default: got %q; want %q", imeID, usIMEID)
