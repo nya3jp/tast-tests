@@ -43,11 +43,11 @@ func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbyset
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "nearbyShareRemoteDataUsageOfflineAllContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts),
+		Name:     "nearbyShareRemoteDataUsageOfflineAllContacts",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
-			"secondaryTarget",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
@@ -62,11 +62,11 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "nearbyShareRemoteDataUsageOfflineSomeContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts),
+		Name:     "nearbyShareRemoteDataUsageOfflineSomeContacts",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
-			"secondaryTarget",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
@@ -81,11 +81,11 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "nearbyShareRemoteDataUsageOnlineAllContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts),
+		Name:     "nearbyShareRemoteDataUsageOnlineAllContacts",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
-			"secondaryTarget",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
@@ -100,11 +100,11 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "nearbyShareRemoteDataUsageOnlineSomeContacts",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilitySelectedContacts),
+		Name:     "nearbyShareRemoteDataUsageOnlineSomeContacts",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilitySelectedContacts),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
-			"secondaryTarget",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
@@ -119,11 +119,11 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "nearbyShareRemoteDataUsageOnlineNoOne",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne),
+		Name:     "nearbyShareRemoteDataUsageOnlineNoOne",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
-			"secondaryTarget",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
@@ -138,11 +138,11 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "nearbyShareRemoteDataUsageOfflineNoOne",
-		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne),
+		Name:     "nearbyShareRemoteDataUsageOfflineNoOne",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
-			"secondaryTarget",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
 			"nearbyshare.cros2_username",
@@ -191,21 +191,24 @@ type FixtData struct {
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	d1 := s.DUT()
 	f.d1 = d1
-	secondary, ok := s.Var("secondaryTarget")
-	if !ok {
-		secondary = ""
-	}
-	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName(), secondary)
-	if err != nil {
-		s.Fatal("Failed to find hostname for DUT2: ", err)
-	}
-	s.Log("Ensuring we can connect to DUT2: ", secondaryDUT)
-	d2, err := d1.NewSecondaryDevice(secondaryDUT)
-	if err != nil {
-		s.Fatal("Failed to create secondary device: ", err)
-	}
-	if err := d2.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to secondary DUT: ", err)
+	var d2 *dut.DUT
+	// Check if there is a hardcoded secondary DUT assigned to the current host.
+	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName())
+	if err == nil {
+		s.Log("Ensuring we can connect to DUT2 from the hardcoded pairs: ", secondaryDUT)
+		d2, err = d1.NewSecondaryDevice(secondaryDUT)
+		if err != nil {
+			s.Fatal("Failed to create secondary device: ", err)
+		}
+		if err := d2.Connect(ctx); err != nil {
+			s.Fatal("Failed to connect to secondary DUT: ", err)
+		}
+	} else {
+		s.Log("No secondary DUT found in hardcoded pairs. Checking if a companion DUT was passed")
+		d2 = s.CompanionDUT("cd1")
+		if d2 == nil {
+			s.Fatal("Failed to get companion DUT cd1")
+		}
 	}
 	f.d2 = d2
 	s.Log("Preparing to move remote data files to DUT1 (Sender)")
