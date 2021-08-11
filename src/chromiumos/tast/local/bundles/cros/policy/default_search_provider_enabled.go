@@ -24,7 +24,7 @@ func init() {
 		Desc: "Behavior of DefaultSearchProviderEnabled policy: check if a search provider is being automatically used",
 		Contacts: []string{
 			"anastasiian@chromium.org",
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

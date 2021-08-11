@@ -23,7 +23,7 @@ func init() {
 		Desc: "Test the behavior of PinnedLauncherApps policy: apps in the policy are pinned on the shelf and cannot be unpinned",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

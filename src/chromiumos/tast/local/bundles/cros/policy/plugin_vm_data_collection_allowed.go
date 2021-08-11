@@ -24,7 +24,7 @@ func init() {
 		Desc: "Behavior of PluginVmDataCollectionAllowed policy",
 		Contacts: []string{
 			"okalitova@chromium.org", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "plugin_vm"},
 		Attr:         []string{"group:mainline"},

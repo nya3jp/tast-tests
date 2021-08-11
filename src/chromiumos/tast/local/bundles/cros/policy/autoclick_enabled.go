@@ -27,7 +27,7 @@ func init() {
 		Desc: "Behavior of AutoclickEnabled policy: checking if autoclick is enabled or not",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

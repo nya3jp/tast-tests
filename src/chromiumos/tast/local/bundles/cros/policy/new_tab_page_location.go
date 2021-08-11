@@ -19,7 +19,7 @@ func init() {
 		Desc: "Behavior of the NewTabPageLocation policy",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

@@ -24,7 +24,7 @@ func init() {
 		Desc: "Check if AudioOutputAllowed forces the device to be muted",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),

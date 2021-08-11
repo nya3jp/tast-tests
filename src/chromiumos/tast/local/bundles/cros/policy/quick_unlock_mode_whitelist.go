@@ -26,7 +26,7 @@ func init() {
 		Desc: "Checks that the deprecated policy still works",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

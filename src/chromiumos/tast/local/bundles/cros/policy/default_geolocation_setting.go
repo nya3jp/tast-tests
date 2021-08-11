@@ -28,7 +28,7 @@ func init() {
 		Desc: "Behavior of DefaultGeolocationSetting policy, checking the location site settings after setting the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

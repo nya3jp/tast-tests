@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test the DeviceGuestModeEnabled policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

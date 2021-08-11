@@ -21,7 +21,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "fakeDMS",
 		Desc:            "Fixture for a running FakeDMS",
-		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &fakeDMSFixture{},
 		SetUpTimeout:    15 * time.Second,
 		ResetTimeout:    5 * time.Second,
@@ -32,7 +32,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "fakeDMSEnrolled",
 		Desc:     "Fixture for a running FakeDMS",
-		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &fakeDMSFixture{
 			importState: filepath.Join(fakedms.EnrollmentFakeDMSDir, fakedms.StateFile),
 		},
@@ -46,7 +46,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "fakeDMSFamilyLink",
 		Desc:     "Fixture for a running FakeDMS of Family Link account",
-		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{
 			"unicorn.childUser",
 		},
@@ -62,7 +62,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "fakeDMSFamilyLinkArc",
 		Desc:     "Fixture for a running FakeDMS of Family Link account",
-		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{
 			"arc.childUser",
 		},

@@ -26,7 +26,7 @@ func init() {
 		Desc: "Behavior of AllowWakeLocks policy check whether it shows idle window or not for pages with wake locks requests",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

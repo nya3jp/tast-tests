@@ -26,7 +26,7 @@ func init() {
 		Desc: "Verify the user cannot set a weak PIN if disallowed by policy",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

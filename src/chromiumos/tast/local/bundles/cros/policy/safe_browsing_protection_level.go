@@ -22,7 +22,7 @@ func init() {
 		Desc: "Checks if Google Chrome's Safe Browsing feature is enabled and the mode it operates in",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},

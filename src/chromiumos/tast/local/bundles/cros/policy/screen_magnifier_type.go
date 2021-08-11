@@ -19,7 +19,7 @@ func init() {
 		Desc: "Behavior of ScreenMagnifierType policy",
 		Contacts: []string{
 			"anastasiian@chromium.org", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

@@ -23,7 +23,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromePolicyLoggedIn",
 		Desc:            "Logged into a user session",
-		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &policyChromeFixture{},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -35,7 +35,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeEnrolledLoggedIn",
 		Desc:     "Logged into a user session with enrollment",
-		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
 			extraOpts: []chrome.Option{chrome.KeepEnrollment()},
 		},
@@ -49,7 +49,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeEnrolledLoggedInARC",
 		Desc:     "Logged into a user session with enrollment with ARC support",
-		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
 			extraOpts: []chrome.Option{chrome.KeepEnrollment(), chrome.ARCEnabled(),
 				chrome.ExtraArgs("--arc-availability=officially-supported")},

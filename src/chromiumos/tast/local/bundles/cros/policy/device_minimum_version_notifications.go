@@ -24,7 +24,7 @@ func init() {
 		Desc: "Notifications of DeviceMinimumVersion policy when device has reached auto update expiration",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

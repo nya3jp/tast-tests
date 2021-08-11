@@ -22,7 +22,7 @@ func init() {
 		Desc: "Behavior of NotificationsBlockedForUrls policy: checking if notifications are blocked for a specified url",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

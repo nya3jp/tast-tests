@@ -29,7 +29,7 @@ func init() {
 			"vsavu@google.com", // Test author
 			"kathrelkeld@chromium.org",
 			"gabormagda@google.com",
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

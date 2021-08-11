@@ -21,7 +21,7 @@ func init() {
 		Desc: "Behavior of FullscreenAllowed policy: checking if fullscreen is allowed or not",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

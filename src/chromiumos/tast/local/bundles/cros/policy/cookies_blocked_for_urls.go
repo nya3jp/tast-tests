@@ -21,7 +21,7 @@ func init() {
 		Desc: "Check that the CookiesBlockedForUrls policy blocks setting cookies on the given sites",
 		Contacts: []string{
 			"nikitapodguzov@chromium.org", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
