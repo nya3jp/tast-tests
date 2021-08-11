@@ -39,6 +39,30 @@
       },
       "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d703d897_2404bb74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-11T22:58:40Z",
+      "side": 1,
+      "message": "I am using this named return value to get the error message in the defer function[1]. If error happens inside the defer func then the error message will get caught.\n\n[1] https://golangbyexample.com/defer-named-return-values-golang/",
+      "parentUuid": "4da88bcc_00f08b53",
+      "range": {
+        "startLine": 242,
+        "startChar": 79,
+        "endLine": 242,
+        "endChar": 91
+      },
+      "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
