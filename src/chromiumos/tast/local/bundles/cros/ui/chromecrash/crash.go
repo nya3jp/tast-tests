@@ -53,7 +53,7 @@ const (
 	crashReporterExecPath = "/sbin/crash_reporter"
 
 	// crashpadExecPath is the path to the crashpad binary.
-	crashpadExecPath = "/opt/google/chrome/crashpad_handler"
+	crashpadExecPath = "/opt/google/chrome/chrome_crashpad_handler"
 
 	// chromeCrashFilePatternWithPid contains fmt.Sprintf format string that
 	// expects an integer PID of a chrome process. fmt.Sprintf will return a regex
@@ -76,7 +76,7 @@ const (
 	// is an in-process crash handler.
 	Breakpad CrashHandler = iota
 	// Crashpad indicates Chrome should install the new crashpad crash handler. Crashpad
-	// runs as a separate "crashpad_handler" process which monitors the chrome processes.
+	// runs as a separate "chrome_crashpad_handler" process which monitors the chrome processes.
 	Crashpad
 )
 
@@ -554,8 +554,8 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 
 	// Wait for all the processes to die (not just the root one). This avoids
 	// messing up other killNonBrowser tests that might try to kill an orphaned
-	// process. It also ensures that crashpad_handler has exited; this is
-	// important since crashpad_handler can survive the root Chrome process and
+	// process. It also ensures that chrome_crashpad_handler has exited; this is
+	// important since chrome_crashpad_handler can survive the root Chrome process and
 	// still be in the middle of spawning crash_reporter.
 	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
 	err = testing.Poll(ctx, func(ctx context.Context) error {
@@ -569,7 +569,7 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	}
 
 	// Now wait for all running crash_reporter processes to exit. It's possible
-	// for crashpad_handler to exit before crash_reporter is finished, and if
+	// for chrome_crashpad_handler to exit before crash_reporter is finished, and if
 	// crash_reporter is still running, the meta file might not exist yet.
 	// Fortunately, crash_reporter never takes too long to run.
 	testing.ContextLog(ctx, "Waiting for all crash_reporters to exit")
@@ -665,10 +665,10 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 	return files, nil
 }
 
-// KillCrashpad kills all crashpad_handler processes running in the system. It
-// returns when there are no more crashpad_handler processes running.
+// KillCrashpad kills all chrome_crashpad_handler processes running in the system. It
+// returns when there are no more chrome_crashpad_handler processes running.
 func KillCrashpad(ctx context.Context) error {
-	testing.ContextLog(ctx, "Hunting and killing crashpad_handler proceesses")
+	testing.ContextLog(ctx, "Hunting and killing chrome_crashpad_handler proceesses")
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		all, err := process.ProcessesWithContext(ctx)
 		if err != nil {
@@ -679,17 +679,18 @@ func KillCrashpad(ctx context.Context) error {
 		for _, process := range all {
 			if exe, err := process.Exe(); err == nil && exe == crashpadExecPath {
 				foundCrashpadProcess = true
+				testing.ContextLog(ctx, "Sending SIGKILL to chrome_crashpad_handler process ", process.Pid)
 				if err = syscall.Kill(int(process.Pid), syscall.SIGKILL); err != nil {
-					return errors.Wrap(err, "failed to kill crashpad_handler process")
+					return errors.Wrap(err, "failed to kill chrome_crashpad_handler process")
 				}
 			}
 			// else ignore the error. If a process exited, or we otherwise can't
 			// get its executable path, we want to keep going and looking for
-			// crashpad_handler processes.
+			// chrome_crashpad_handler processes.
 		}
 
 		if foundCrashpadProcess {
-			return errors.New("Some crashpad_handler processes still alive")
+			return errors.New("Some chrome_crashpad_handler processes still alive")
 		}
 		return nil
 	}, nil)

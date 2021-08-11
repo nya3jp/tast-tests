@@ -6,7 +6,9 @@ package ui
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
@@ -42,8 +44,8 @@ type chromeCrashReporterMetricsParams struct {
 	// wait on. As a side effect of the way we force a miss in the "miss" test,
 	// we expect breakpad dmp files instead of the normal .meta files.
 	crashFileType chromecrash.CrashFileType
-	// killCrashpad: If killCrashpad is true, kill crashpad_handler after starting
-	// chrome but before killing the GPU process.
+	// killCrashpad: If killCrashpad is true, kill chrome_crashpad_handler after
+	// starting chrome but before killing the GPU process.
 	killCrashpad bool
 	// expectMissing tells the test if we expect the missedCrashHistogramBucket
 	// to get an event. This is the main point of the test -- "miss" expects an
@@ -159,6 +161,10 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
+	// Give enough time for the anomaly_detector restart.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -178,6 +184,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	// We can't use metrics.WaitForHistogramUpdate because other buckets in
 	// Platform.CrOSEvent can be updated by other events in the system and we
 	// don't want to stop waiting because of those updates.
+	testing.ContextLog(ctx, "Waiting for Histogram to update")
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		newHistogram, err := metrics.GetHistogram(ctx, tconn, crashReporterHistogramName)
 		if err != nil {
