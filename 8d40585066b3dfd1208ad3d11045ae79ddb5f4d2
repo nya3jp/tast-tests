@@ -16,6 +16,75 @@
       "message": "This is the implementation of the touch screen application for standardized testing, as well as the \u0027click\u0027 test written against the application.",
       "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738b5179_e33bbf57",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-11T00:54:21Z",
+      "side": 1,
+      "message": "I\u0027m sorry I should have noticed this earlier, but could you use 4 spaces for indentation?\nhttps://source.android.com/setup/contribute/code-style#use-spaces-for-indentation\n\nPlease fix the other CLs as well.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6296e53_7994361c",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-11T00:54:21Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f3ef90_7b37f176",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-11T00:54:21Z",
+      "side": 1,
+      "message": "ditto for all following |this.|",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
