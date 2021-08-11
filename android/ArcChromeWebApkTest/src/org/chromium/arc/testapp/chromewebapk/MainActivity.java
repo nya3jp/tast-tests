@@ -10,8 +10,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +36,18 @@ public final class MainActivity extends Activity {
             textShareIntent.putExtra(Intent.EXTRA_TEXT, "Shared text");
 
             startActivity(getWebApkTargetedIntent(textShareIntent));
+        });
+
+        findViewById(R.id.share_files_button).setOnClickListener(v -> {
+            Intent fileShareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+
+            ArrayList<Uri> uris = new ArrayList<>();
+            uris.add(InMemoryContentProvider.getContentUri("file1.json"));
+            uris.add(InMemoryContentProvider.getContentUri("file2.json"));
+
+            fileShareIntent.setType("application/json");
+            fileShareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+            startActivity(getWebApkTargetedIntent(fileShareIntent));
         });
     }
 
