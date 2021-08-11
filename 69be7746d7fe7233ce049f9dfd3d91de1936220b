@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74b7bce_43d34790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-11T02:31:16Z",
+      "side": 1,
+      "message": "I\u0027m no longer in tast reviewers, so I\u0027ll drop myself from the reviewers list.",
+      "revId": "69be7746d7fe7233ce049f9dfd3d91de1936220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
