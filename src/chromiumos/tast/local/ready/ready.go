@@ -342,22 +342,31 @@ func errorLogAppendError(path, msg string) error {
 // Tests that do not work with policies might still be affected by them, so this brings the device back to the default state.
 // It is possible that device is already enrolled, but to unenroll the device we need a reboot, so we can do nothing here.
 func clearPolicies(ctx context.Context) {
-	// /var/lib/whitelist is a directory containing device policies.
+	// /var/lib/devicesettings is a directory containing device policies.
 	// /home/chronos/Local State is a file containing local state JSON including user policy data.
-	policyFiles := []string{"/var/lib/whitelist", "/home/chronos/Local State"}
+	policyPattern := "/var/lib/devicesettings/*"
+	policyFiles, err := filepath.Glob(policyPattern)
+	if err != nil {
+		testing.ContextLog(ctx, err.Error())
+	} else {
+		for _, policyFile := range policyFiles {
+			if err := os.Remove(policyFile); err != nil {
+				testing.ContextLog(ctx, err.Error())
+			}
+		}
+	}
 
 	// Clear error log for this function.
 	if err := os.RemoveAll(ClearPoliciesLogLocation); err != nil {
 		testing.ContextLogf(ctx, "Failed to remove error log %q: %v", ClearPoliciesLogLocation, err)
 	}
 
-	for _, path := range policyFiles {
-		if err := os.RemoveAll(path); err != nil {
-			msg := fmt.Sprintf("Failed to remove %q: %v", path, err)
-			testing.ContextLog(ctx, msg)
-			if err := errorLogAppendError(ClearPoliciesLogLocation, msg); err != nil {
-				testing.ContextLog(ctx, err.Error())
-			}
+	localState := "/home/chronos/Local State"
+	if err := os.RemoveAll(localState); err != nil {
+		msg := fmt.Sprintf("Failed to remove %q: %v", localState, err)
+		testing.ContextLog(ctx, msg)
+		if err := errorLogAppendError(ClearPoliciesLogLocation, msg); err != nil {
+			testing.ContextLog(ctx, err.Error())
 		}
 	}
 
