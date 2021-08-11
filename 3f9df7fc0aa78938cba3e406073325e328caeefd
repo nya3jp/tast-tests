@@ -256,6 +256,24 @@
       "parentUuid": "48f891cb_0ce21784",
       "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f4e4ef_fe46f5da",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-11T22:49:16Z",
+      "side": 1,
+      "message": "Sorry, miss the change in another branch.",
+      "parentUuid": "4efccbc2_ac46a87d",
+      "revId": "3f9df7fc0aa78938cba3e406073325e328caeefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
