@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdbbdb1_1bb7931d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T18:39:37Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "e6221bb3_a3abbcd5",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "d49f344010f6de488fbcaf6c33f1f75cb32fd82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e431aff3_872e7873",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T18:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb8c0e2_8933e7ef",
+      "range": {
+        "startLine": 38,
+        "startChar": 87,
+        "endLine": 38,
+        "endChar": 99
+      },
+      "revId": "d49f344010f6de488fbcaf6c33f1f75cb32fd82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097c8f84_4dd11db9",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-11T14:00:33Z",
       "side": 1,
       "message": "Shouldn\u0027t this be before line 139? What if we will fail in line 140, but will be able to press shutdown button?\n\nAlso we might fail in line 145 due to expired context or some other errors",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 16
+      },
+      "revId": "d49f344010f6de488fbcaf6c33f1f75cb32fd82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf9d124_d855d900",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_usb_powershare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-11T18:39:37Z",
+      "side": 1,
+      "message": "Yeah I noticed that earlier after you pointed that offline. Updated accordingly. Also we are preserving context. So definitely.\nAlso we don\u0027t need 172-181. as that will be taken care by deferred EnsureDUTisOn",
+      "parentUuid": "097c8f84_4dd11db9",
       "range": {
         "startLine": 148,
         "startChar": 0,
