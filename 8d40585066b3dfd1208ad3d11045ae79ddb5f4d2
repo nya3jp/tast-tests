@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d47229_d9719792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-11T18:45:55Z",
+      "side": 1,
+      "message": "LGTM from Tast Side. Please verify its working on device before merging the CL.",
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "738b5179_e33bbf57",
