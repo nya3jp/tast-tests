@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "086eb7cd_8d1a2bab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-08-11T08:46:13Z",
+      "side": 1,
+      "message": "Done (adjusted accordingly).",
+      "parentUuid": "23f95916_ddebdafe",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "99939b76b267e9e8cad439dde3ce2d1ddcb1fd92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77e7b979_8ce8993e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-10T04:20:28Z",
       "side": 1,
       "message": "Is there any chance to exercise the positive path (when /dev/cros_ec is missing)? That would be a confirmation that test can catch a bug.\n\nThis comment https://b.corp.google.com/issues/195345359#comment37 explains how to repro.\n\nAnd thank you for writing a test!",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 68
+      },
+      "revId": "99939b76b267e9e8cad439dde3ce2d1ddcb1fd92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d34cfc4_a8753d55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-08-11T08:46:13Z",
+      "side": 1,
+      "message": "Done (ran when /dev/cros_ec was not present and confirmed the test failed).",
+      "parentUuid": "77e7b979_8ce8993e",
       "range": {
         "startLine": 16,
         "startChar": 5,
