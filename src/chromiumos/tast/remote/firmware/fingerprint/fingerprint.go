@@ -400,9 +400,11 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsReboot
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
 func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+	// Check if the FPMCU even responds to a friendly hello (query version).
+	// Save the version string in a file for later.
 	out, err := CheckFirmwareIsFunctional(ctx, d)
 	if err != nil {
-		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
+		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
 			return err
 		}
@@ -413,31 +415,56 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 		// This is a nonfatal error that shouldn't kill the test.
 		testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
 	}
-	return CheckInitialState(ctx, d, fs, fpBoard, buildFWFile)
+
+	// Check all other standard FPMCU state.
+	if err := CheckValidState(ctx, d, fs, fpBoard, buildFWFile); err != nil {
+		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
-// CheckInitialState validates the rollback state and the running firmware versions (RW and RO).
+// CheckValidState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckInitialState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string) error {
-	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
-		return errors.Wrap(err, "RW firmware check failed")
-	}
-
-	if err := CheckRollbackSetToInitialValue(ctx, d); err != nil {
-		return errors.Wrap(err, "rollback check failed")
-	}
-
+func CheckValidState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string) error {
+	// Check that RO and RW versions are what we expect.
 	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFWFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RW version")
 	}
-
 	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RO version")
 	}
+	if err := CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion); err != nil {
+		return err
+	}
 
-	return CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion)
+	// Similar to bio_fw_updater, check is the active FW copy is RW. If it isn't
+	// that might mean that there is a firmware issue.
+	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
+		return errors.Wrapf(err, "FPMCU is not in RW (error: %v)", err)
+	}
+
+	// Check that no tests enabled anti-rollback and that entropy has been added
+	// (maybe multiple times).
+	rollback, err := RollbackInfo(ctx, d)
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve rollbackinfo")
+	}
+	if rollback.IsAntiRollbackSet() {
+		return errors.Wrap(err, "FPMCU has anti-rollback enabled")
+	}
+	if !rollback.IsEntropySet() {
+		// This might be overkill, but the known good sequence to add entropy and
+		// reboot device lives in ReimageFPMCU.
+		return errors.Wrap(err, "FPMCU doesn't have entropy set")
+	}
+
+	return nil
 }
 
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
