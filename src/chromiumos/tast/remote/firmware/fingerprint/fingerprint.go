@@ -34,6 +34,24 @@ type RollbackState struct {
 	RWVersion  int
 }
 
+// IsEntropySet checks that entropy has already been set based on the block ID.
+//
+// If the block ID is greater than 0, there is a very good chance that entropy
+// has been added. This is the same way that biod/bio_wash checks if entropy has
+// been set. That being said, this method can be fooled if some test simply
+// increments the anti-rollback version from a fresh flashing.
+func (r *RollbackState) IsEntropySet() bool {
+	return r.BlockID > 0
+}
+
+// IsAntiRollbackSet checks if version anti-rollback has been enabled.
+//
+// We currently do not have a minimum version number, thus this function
+// indicates if we are not in the normal rollback state.
+func (r *RollbackState) IsAntiRollbackSet() bool {
+	return r.MinVersion != 0 || r.RWVersion != 0
+}
+
 // FWImageType is the type of firmware (RO or RW).
 type FWImageType string
 
@@ -429,9 +447,11 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsReboot
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
 func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+	// Check if the FPMCU even responds to a friendly hello (query version).
+	// Save the version string in a file for later.
 	out, err := CheckFirmwareIsFunctional(ctx, d)
 	if err != nil {
-		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
+		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
 			return err
 		}
@@ -442,7 +462,51 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 		// This is a nonfatal error that shouldn't kill the test.
 		testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
 	}
-	return CheckInitialState(ctx, d, fs, fpBoard, buildFWFile)
+
+	// Check that RO and RW versions are what we expect.
+	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFWFile)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected RW version")
+	}
+	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected RO version")
+	}
+	if err := CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion); err != nil {
+		return err
+	}
+
+	// Similar to bio_fw_updater, check is the active FW copy is RW. If it isn't
+	// that might mean that there is a firmware issue.
+	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
+		testing.ContextLogf(ctx, "FPMCU is not in RW (error: %v). Reflashing FP firmware", err)
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+			return err
+		}
+	}
+
+	// Check that no tests enabled anti-rollback and that entropy has been added
+	// (maybe multiple times).
+	rollback, err := RollbackInfo(ctx, d)
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve rollbackinfo")
+	}
+	if rollback.IsAntiRollbackSet() {
+		testing.ContextLog(ctx, "FPMCU has anti-rollback enabled. Reflashing FP firmware")
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+			return err
+		}
+	}
+	if !rollback.IsEntropySet() {
+		// This might be overkill, but the known good sequence to add entropy and
+		// reboot device lives in ReimageFPMCU.
+		testing.ContextLog(ctx, "FPMCU doesn't have entropy set. Reflashing FP firmware")
+		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // CheckInitialState validates the rollback state and the running firmware versions (RW and RO).
@@ -616,14 +680,36 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *dut.DUT, expecte
 }
 
 // RollbackInfo returns the rollbackinfo of the fingerprint MCU.
-func RollbackInfo(ctx context.Context, d *dut.DUT) ([]byte, error) {
+func RollbackInfo(ctx context.Context, d *dut.DUT) (RollbackState, error) {
 	cmd := []string{"ectool", "--name=cros_fp", "rollbackinfo"}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
 	out, err := d.Conn().Command(cmd[0], cmd[1:]...).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
-		return []byte{}, errors.Wrap(err, "failed to query FPMCU rollbackinfo")
+		return RollbackState{}, errors.Wrap(err, "failed to query FPMCU rollbackinfo")
 	}
-	return out, nil
+
+	rollbackInfoMap := parseColonDelimitedOutput(string(out))
+
+	var state RollbackState
+	blockID, err := strconv.Atoi(rollbackInfoMap["Rollback block id"])
+	if err != nil {
+		return RollbackState{}, errors.Wrap(err, "failed to convert rollback block id")
+	}
+	state.BlockID = blockID
+
+	minVersion, err := strconv.Atoi(rollbackInfoMap["Rollback min version"])
+	if err != nil {
+		return RollbackState{}, errors.Wrap(err, "failed to convert rollback min version")
+	}
+	state.MinVersion = minVersion
+
+	rwVersion, err := strconv.Atoi(rollbackInfoMap["RW rollback version"])
+	if err != nil {
+		return RollbackState{}, errors.Wrap(err, "failed to convert RW rollback version")
+	}
+	state.RWVersion = rwVersion
+
+	return state, nil
 }
 
 // CheckRollbackSetToInitialValue checks the anti-rollback block is set to initial values.
@@ -637,30 +723,10 @@ func CheckRollbackSetToInitialValue(ctx context.Context, d *dut.DUT) error {
 
 // CheckRollbackState checks that the anti-rollback block is set to expected values.
 func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState) error {
-	rollbackInfo, err := RollbackInfo(ctx, d)
+	actual, err := RollbackInfo(ctx, d)
 	if err != nil {
 		return err
 	}
-	rollbackInfoMap := parseColonDelimitedOutput(string(rollbackInfo))
-
-	var actual RollbackState
-	blockID, err := strconv.Atoi(rollbackInfoMap["Rollback block id"])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert rollback block id")
-	}
-	actual.BlockID = blockID
-
-	minVersion, err := strconv.Atoi(rollbackInfoMap["Rollback min version"])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert rollback min version")
-	}
-	actual.MinVersion = minVersion
-
-	rwVersion, err := strconv.Atoi(rollbackInfoMap["RW rollback version"])
-	if err != nil {
-		return errors.Wrap(err, "failed to convert RW rollback version")
-	}
-	actual.RWVersion = rwVersion
 
 	if actual != expected {
 		return errors.Errorf("Rollback not set correctly, expected: %q, actual: %q", expected, actual)
