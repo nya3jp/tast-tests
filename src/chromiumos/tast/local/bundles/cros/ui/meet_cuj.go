@@ -247,10 +247,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	var tconn *chrome.TestConn
 	var cs ash.ConnSource
 
+	var cr *chrome.Chrome
 	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		var cr *chrome.Chrome
 		if meet.useLacros {
 			cr = s.FixtValue().(launcher.FixtData).Chrome
 		} else {
@@ -392,7 +390,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			jankCriteria))
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
