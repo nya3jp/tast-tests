@@ -28,8 +28,9 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
+		// TODO(crbug.com/1238027): Close dialog before the next test.
+		// Attr:         []string{"group:mainline", "informational"},
+		Fixture: "chromePolicyLoggedIn",
 	})
 }
 
