@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e452ace_3a0937b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de57473a_f1d4c85a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: DeviceBootOnAC\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a6f955_edc4f345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: add a blank line before",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca04934_26bf831e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "I think this looks a bit complicated that it should. Why it cannot be just\n\nstrings.TrimSpace(string(out)) \u003d\u003d \"DISCHARGING\"\n\nor \n\nstrings.TrimSpace(string(out)) \u003d\u003d \"Discharging\"\n\n?",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 70
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0fbe98_e51f5aa9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: please add blank line before",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd84649b_494aeb89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: this actually can have full name \"policy\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7138c17c_5d68757a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: move it to the previous line",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 22
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a62a504_42a14e63",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "As mentioned in [1], please move it under src/chromiumos/tast/remote/bundles/cros/policy/power package to limit the scope until this method will be useful for other tests.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2973093/6..7/src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go#b90",
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04db1c61_6bdbb842",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: DUT",
+      "range": {
+        "startLine": 18,
+        "startChar": 79,
+        "endLine": 18,
+        "endChar": 81
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7e0ea8_0d0a1cf5",
+        "filename": "src/chromiumos/tast/remote/power/dut_boot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-11T10:41:02Z",
+      "side": 1,
+      "message": "nit: EnsureDUTisOn",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "20cbe73031246ddfa9641d352a24769dfc9b466b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
