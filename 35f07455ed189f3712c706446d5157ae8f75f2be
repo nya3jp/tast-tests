@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "35f07455ed189f3712c706446d5157ae8f75f2be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e326a92d_ea3454ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-11T03:09:00Z",
+      "side": 1,
+      "message": "Hi Katherine, friendly ping for review.\nI hope we can land this CL soon to fix our tests, many thanks!",
+      "revId": "35f07455ed189f3712c706446d5157ae8f75f2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
