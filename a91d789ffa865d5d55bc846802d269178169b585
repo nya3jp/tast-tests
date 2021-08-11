@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a582ad2b_bcefc1ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-11T19:58:17Z",
+      "side": 1,
+      "message": "Just some nit comments.",
+      "revId": "a91d789ffa865d5d55bc846802d269178169b585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c84b04e_661fe7c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-11T19:58:17Z",
+      "side": 1,
+      "message": "nit: remove blank line.",
+      "revId": "a91d789ffa865d5d55bc846802d269178169b585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6505874_3cf58bf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-11T19:58:17Z",
+      "side": 1,
+      "message": "nit: remove blank line.",
+      "revId": "a91d789ffa865d5d55bc846802d269178169b585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
