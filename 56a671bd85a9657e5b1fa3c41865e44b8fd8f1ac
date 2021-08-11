@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ebc14d6_ecaf28df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-11T18:52:52Z",
+      "side": 1,
+      "message": "Let\u0027s put the 2 args in a separate method. By default, no tracing. Tests that want trace could call the method before Run to capture a trace during Run.\n\ne.g.\n\n  func (r *Recorder) EnableTracing(cr *chrome.Chrome, traceDir string)\n    r.cr \u003d cr\n    r.traceDir \u003d traceDir\n  }",
+      "range": {
+        "startLine": 138,
+        "startChar": 62,
+        "endLine": 138,
+        "endChar": 97
+      },
+      "revId": "56a671bd85a9657e5b1fa3c41865e44b8fd8f1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dee9554_221fba35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-11T18:52:52Z",
+      "side": 1,
+      "message": "Shorten ctx to leave sometime for saving trace.\n\ne.g.\n\n  const traceCleanupDuration \u003d 2 * time.Second\n  closeCtx \u003d ctx\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, traceCleanupDuration)\n  defer cancel()\n  \n  if err :\u003d r.cr.StartTracing(ctx,\n    ...\n  }\n  \n  defer func() {\n    tr, err :\u003d r.cr.StopTracing(closeCtx)\n    ...\n  }",
+      "range": {
+        "startLine": 239,
+        "startChar": 30,
+        "endLine": 239,
+        "endChar": 33
+      },
+      "revId": "56a671bd85a9657e5b1fa3c41865e44b8fd8f1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d80cf9_af5e2cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-11T18:52:52Z",
+      "side": 1,
+      "message": "Should we \"return errors.Wrap(err, \"failed to start tracing)\" instead? Or we want to ignore StartTracing error?",
+      "revId": "56a671bd85a9657e5b1fa3c41865e44b8fd8f1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
