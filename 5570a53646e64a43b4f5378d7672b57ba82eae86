@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fbe756_2a1cb390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-11T21:41:27Z",
+      "side": 1,
+      "message": "use VarDeps here instead, since these are required variables",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a12276dd_67447bc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-11T21:41:27Z",
+      "side": 1,
+      "message": "is there a better name for this? looks very similar to dailyLimit.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc139de4_98518283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-11T21:41:27Z",
+      "side": 1,
+      "message": "personally found it a little difficult to understand what this line is doing at a glance, but I\u0027m fine with it if it\u0027s the normal (or only) way of modifying these policies.",
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad5e346_8ccdc93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-11T21:41:27Z",
+      "side": 1,
+      "message": "I\u0027d recommend WaitUntilExists here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d387\n\nlockscreen.WaitState isn\u0027t directly tied to the UI state, so WaitUntilExists will likely be more stable.",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426489d3_30c7d95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-11T21:41:27Z",
+      "side": 1,
+      "message": "EnterPassword already adds \"\\n\" so no need to do it here\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go;l\u003d124",
+      "range": {
+        "startLine": 115,
+        "startChar": 41,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
