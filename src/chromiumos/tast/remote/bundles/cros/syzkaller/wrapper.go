@@ -25,6 +25,7 @@ import (
 
 const (
 	syzkallerRunDuration = 30 * time.Minute
+	useHub               = false
 )
 
 const startupScriptContents = `
@@ -54,6 +55,9 @@ type dutConfig struct {
 
 type syzkallerConfig struct {
 	Name           string    `json:"name"`
+	HubClient      string    `json:"hub_client"`
+	HubAddr        string    `json:"hub_addr"`
+	HubKey         string    `json:"hub_key"`
 	Target         string    `json:"target"`
 	Reproduce      bool      `json:"reproduce"`
 	HTTP           string    `json:"http"`
@@ -125,14 +129,16 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatal("Unable to create temp workdir: ", err)
 	}
-	cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
-	if err := cmd.Run(); err != nil {
-		s.Fatal("Failed to copy seed corpus to workdir: ", err)
+	if !useHub {
+		cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
+		if err := cmd.Run(); err != nil {
+			s.Fatal("Failed to copy seed corpus to workdir: ", err)
+		}
 	}
 
 	// Chmod the keyfile so that ssh connections do not fail due to
 	// open permissions.
-	cmd = exec.Command("cp", s.DataPath("testing_rsa"), syzkallerTastDir)
+	cmd := exec.Command("cp", s.DataPath("testing_rsa"), syzkallerTastDir)
 	if err := cmd.Run(); err != nil {
 		s.Fatal("Failed to copy testing_rsa to tast temp dir: ", err)
 	}
@@ -162,6 +168,9 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	// Hence, set Reproduce:false.
 	config := syzkallerConfig{
 		Name:      "syzkaller_tast",
+		HubClient: "",
+		HubAddr:   "",
+		HubKey:    "",
 		Target:    fmt.Sprintf("linux/%v", syzArch),
 		Reproduce: false,
 		HTTP:      "localhost:56700",
@@ -178,6 +187,12 @@ func Wrapper(ctx context.Context, s *testing.State) {
 			Pstore:        true,
 		},
 		EnableSyscalls: enabledSyscalls,
+	}
+
+	if useHub {
+		config.HubClient = "syzkaller_tast"
+		config.HubAddr = "localhost:56500"
+		config.HubKey = "6sCFsJVfyFQVhWVKJpKhHcHxpCH0gAxL"
 	}
 
 	configFile, err := os.Create(filepath.Join(syzkallerTastDir, "config"))
@@ -206,6 +221,9 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Starting syzkaller with logfile at ", logFile.Name())
 	syzManager := filepath.Join(artifactsDir, "syz-manager")
 	managerCmd := testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-vv", "10")
+	if useHub {
+		managerCmd = testexec.CommandContext(ctx, syzManager, "-config", configFile.Name(), "-hub", "-vv", "10")
+	}
 	managerCmd.Stdout = logFile
 	managerCmd.Stderr = logFile
 
