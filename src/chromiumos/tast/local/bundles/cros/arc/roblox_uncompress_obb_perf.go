@@ -106,6 +106,7 @@ func RobloxUncompressOBBPerf(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	// Set timeout for the logcat command below.
 	const logcatTimeout = 30 * time.Second

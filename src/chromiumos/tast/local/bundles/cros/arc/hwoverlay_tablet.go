@@ -71,6 +71,7 @@ func HWOverlayTablet(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start Settings activity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {

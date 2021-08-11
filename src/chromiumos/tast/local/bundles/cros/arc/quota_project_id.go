@@ -78,6 +78,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start MainActivity: ", err)
 	}
+	defer act.Stop(ctx, tconn)
 
 	// Check the project ID of the package data directory.
 	pkgDataDir, err := arc.PkgDataDir(cr.NormalizedUser(), pkgName)
