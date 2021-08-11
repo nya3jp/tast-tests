@@ -22,6 +22,30 @@
       },
       "revId": "9530ff779697262f89502ddb4719961e3f8d6774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55568169_31ae1858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-11T16:24:33Z",
+      "side": 1,
+      "message": "I thought I remembered that being the error code for get-updates if there were none available; testing it now on my DUT I get 2 though.\n\nI tested it twice on my computer (so it should have done an update and a reinstall) so that\u0027s weird that I\u0027m getting a 2 but that it worked with a 1.\n\nAnyway upon retesting (with the upstream inhibit suspend), it only works with the 2 and not the 1. It worked with the 1 on the fwupd branch I\u0027m still working so it probably has something to do with that.",
+      "parentUuid": "a6dd3b16_133c780d",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "9530ff779697262f89502ddb4719961e3f8d6774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
