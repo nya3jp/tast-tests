@@ -200,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36366a0f_8dfd9061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-11T07:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27710b61_b0712e7b",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b0b3558_db3c463c",
@@ -712,6 +736,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0d4a37_d678a546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-11T07:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "009efc7b_de89ee95",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0f7fdfa_5fc01a25",
@@ -808,6 +856,24 @@
       "side": 1,
       "message": "I think the approprate way should be\n\n```\n    if _, err :\u003d cswitch.IsDeviceEnumerated(ctx, usb4Val[\"device_name\"].(string), tbtPort); err !\u003d nil {\n        s.Fatal(err)\n    }\n```",
       "parentUuid": "d16845c6_adaf05b7",
+      "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755c5977_e7bc8ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-11T07:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39203437_183a9f02",
       "revId": "433d232328730d4b43dafb3e1ab3bec3a02e55d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
