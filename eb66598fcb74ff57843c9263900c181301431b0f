@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3965354_4897b204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-11T22:53:31Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da88bcc_00f08b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-11T22:53:31Z",
+      "side": 1,
+      "message": "nit: (err error) -\u003e error, seems unnecessary to change ?",
+      "range": {
+        "startLine": 242,
+        "startChar": 79,
+        "endLine": 242,
+        "endChar": 91
+      },
+      "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
