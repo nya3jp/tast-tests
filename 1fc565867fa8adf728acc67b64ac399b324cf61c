@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04d0375c_1776f9df",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T05:00:37Z",
+      "side": 1,
+      "message": "Got it your point now. \nFirstly Each input method has different configuration items. It is not a fixed struct., \n\nSecondly, If we use struct, each attribute will have a zero value. e.g. 0 for int, false for boolean. Some setting items they are default to enabled (Modest for VK AC). So just try to make this function much flexible to use.",
+      "parentUuid": "14305f5b_0598cf74",
+      "range": {
+        "startLine": 334,
+        "startChar": 67,
+        "endLine": 334,
+        "endChar": 89
+      },
+      "revId": "1fc565867fa8adf728acc67b64ac399b324cf61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0fdbb84_274dafa7",
         "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "writtenOn": "2021-08-11T04:48:55Z",
       "side": 1,
       "message": "nit: using %q instead?",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 10
+      },
+      "revId": "1fc565867fa8adf728acc67b64ac399b324cf61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb7f275_124bd7d4",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-11T05:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fdbb84_274dafa7",
       "range": {
         "startLine": 343,
         "startChar": 5,
