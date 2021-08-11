@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8cec75b_f1787648",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-11T05:52:01Z",
+      "side": 1,
+      "message": "1, I think it might also be good to list all the items when being used, to make it clear what is supposed to be passed.\n\n2, It is basically the same thing as what you are doing here, but with more readability and less error-prone. E.g, when you pass InputSetting{PhysicalKeyboardAutoCorrectionLevel: acLevel}, json.Marshal only serializes `PhysicalKeyboardAutoCorrectionLevel` if you add annotations `json:\"omitempty\"` to the fields.\n\nFor example:\ntype A struct {\n    Field string `json:\"field,omitempty\"`\n}\n\njson.Marshal ignores Field if it is not assigned any value and uses `field` as the key in json.\n\nI personally believe interface{} can\u0027t tell much about what\u0027s supposed to be passed. \n\n+Matt to review and see if he has a better idea on this.",
+      "parentUuid": "04d0375c_1776f9df",
+      "range": {
+        "startLine": 334,
+        "startChar": 67,
+        "endLine": 334,
+        "endChar": 89
+      },
+      "revId": "1fc565867fa8adf728acc67b64ac399b324cf61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0fdbb84_274dafa7",
         "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
         "patchSetId": 1
