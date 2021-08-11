@@ -141,7 +141,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(ctx, cr, cuj.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}

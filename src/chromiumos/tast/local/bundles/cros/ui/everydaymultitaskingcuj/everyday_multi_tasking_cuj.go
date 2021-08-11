@@ -131,7 +131,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(ctx, cr, cuj.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
@@ -442,7 +442,7 @@ func switchWindows(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 }
 
 func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) error {
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
+	tb, err := testutil.NewTestBridgeWithoutTestConfig(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		return errors.Wrap(err, "failed to construct test bridge")
 	}

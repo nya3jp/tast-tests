@@ -247,10 +247,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	var tconn *chrome.TestConn
 	var cs ash.ConnSource
 
+	var cr *chrome.Chrome
 	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		var cr *chrome.Chrome
 		if meet.useLacros {
 			cr = s.FixtValue().(launcher.FixtData).Chrome
 		} else {
@@ -392,7 +390,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			jankCriteria))
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
@@ -402,7 +400,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, cdputil.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
@@ -472,15 +470,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Find the web view of Meet window.
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
-	if err := action.Combine(
-		"click and type meeting code",
-		// Assume that the meeting code is the first textfield in the webpage.
-		ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview).First()),
-		kw.TypeAction(meetingCode),
-		kw.AccelAction("Enter"),
-	)(ctx); err != nil {
-		s.Fatal("Failed to input the meeting code: ", err)
-	}
 
 	bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
 	allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
