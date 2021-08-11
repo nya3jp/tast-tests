@@ -69,25 +69,20 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 
 	useLacros := s.Param().(bool)
 
-	var tconn *chrome.TestConn
 	var cs ash.ConnSource
+	var cr *chrome.Chrome
 
-	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		var cr *chrome.Chrome
-		if useLacros {
-			cr = s.FixtValue().(launcher.FixtData).Chrome
-		} else {
-			cr = s.FixtValue().(cuj.FixtureData).Chrome
-			cs = cr
-		}
+	if useLacros {
+		cr = s.FixtValue().(launcher.FixtData).Chrome
+	} else {
+		cr = s.FixtValue().(cuj.FixtureData).Chrome
+		cs = cr
+	}
 
-		var err error
-		tconn, err = cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect to the test API connection: ", err)
-		}
+	var err error
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
 	if useLacros {
@@ -133,7 +128,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 		"percent", perf.SmallerIsBetter, []int64{50, 80})}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

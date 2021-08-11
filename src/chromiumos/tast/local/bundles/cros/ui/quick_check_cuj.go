@@ -70,38 +70,32 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	ct := s.Param().(lacros.ChromeType)
 
 	var cs ash.ConnSource
-	var tconn *chrome.TestConn
+	var cr *chrome.Chrome
+	var err error
 
-	{
-		// Keep `cr` inside to avoid accidental access of ash-chrome in lacros
-		// variation.
-		var cr *chrome.Chrome
-		var err error
+	if ct == lacros.ChromeTypeChromeOS {
+		cr = s.FixtValue().(cuj.FixtureData).Chrome
+		cs = cr
+	} else {
+		// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+		artifactPath := s.DataPath(launcher.DataArtifact)
 
-		if ct == lacros.ChromeTypeChromeOS {
-			cr = s.FixtValue().(cuj.FixtureData).Chrome
-			cs = cr
-		} else {
-			// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
-			artifactPath := s.DataPath(launcher.DataArtifact)
-
-			var l *launcher.LacrosChrome
-			cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, ct)
-			if err != nil {
-				s.Fatal("Failed to initialize test: ", err)
-			}
-			defer lacros.CloseLacrosChrome(ctx, l)
-		}
-
-		tconn, err = cr.TestAPIConn(ctx)
+		var l *launcher.LacrosChrome
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), artifactPath, ct)
 		if err != nil {
-			s.Fatal("Failed to connect to test API: ", err)
+			s.Fatal("Failed to initialize test: ", err)
 		}
+		defer lacros.CloseLacrosChrome(ctx, l)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
 	}
 
 	password := s.RequiredVar("ui.cuj_password")
 
-	recorder, err := cuj.NewRecorder(ctx, tconn)
+	recorder, err := cuj.NewRecorder(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
