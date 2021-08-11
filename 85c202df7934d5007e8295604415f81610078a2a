@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a942a1_3603f421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "Please add a group as a secondary contact.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21d746a_a2528aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "nit: add this as a shared constant, maybe in the spaced package if it does not fit anywhere else.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae14cfa_ed23329b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "nit: Don\u0027t log unless you are waiting for something.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0fe3ff_51462408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "nit: Same as above.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f1c15f_b6a1fb7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "Please check if the returned values are actually sane.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3f8473_8095756f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "nit: move function inline, having it as a separate function does not help in this case.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b510628_c56a2ccc",
+        "filename": "src/chromiumos/tast/local/spaced/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-08-11T08:10:26Z",
+      "side": 1,
+      "message": "If you don\u0027t plan on adding more files, you can move the package documentation in the client.go file.",
+      "revId": "85c202df7934d5007e8295604415f81610078a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
