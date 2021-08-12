@@ -3,6 +3,253 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "964e5574_d24986db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: This type is not necessary. You can directly use boolean in Val to indicate discharge.\n\nIf more params upcoming and a struct is required, please build a struct in the cl.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2519d60d_63013db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: This can be done in one line.\nconst dischargeString \u003d `uint32 [0-9]\\s+uint32 2`",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9985b6_9530687b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: wrap this in one line. \nhwdep.D(hwdep.Battery())",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 24
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5144d35_1fedc928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: Comment should be full sentence. \n\nTest doesn\u0027t run on ChromeOS devices without a battery.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 60
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab2f2b7_005bebcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "continue from another comment. This can be \nVal: true",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abf6a4a_0cdecf03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b815890c_241a1aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: remove the empty line.",
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ba76c4_5b81e6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "If this function failed, I reckon there is no need to continue the test. So it should fail the test immediately.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66fce5f3_93a9415e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "This function accepts float64. Please use 20.0 to avoid a implicit conversion.",
+      "range": {
+        "startLine": 72,
+        "startChar": 58,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c662ddc9_75fcb95a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed to force battery to discharge: \", err)\n\nerr is unusual to be formatted with %q.",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74671224_5b0ace14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "This can be a dead loop until context timeout.s.Error does not terminate the execution.\n\nCan you use testing.Poll?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e156bce_53343dbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 21
@@ -49,6 +296,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4631a65f_5034a7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "nit: Comment should be full sentence. \n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 70
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58072498_38ecf55d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long). \n\nInstead of sleep, can you find a better identifier to check the result?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 36
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a178faa8_a0802237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "Do not know what does this mean. Nice to move this to a constant and comment it for readability.",
+      "range": {
+        "startLine": 104,
+        "startChar": 74,
+        "endLine": 104,
+        "endChar": 110
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bb2c7eb_053f0e02",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 21
@@ -65,6 +381,29 @@
         "startChar": 55,
         "endLine": 111,
         "endChar": 64
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954d8ab5_927f8797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T23:54:01Z",
+      "side": 1,
+      "message": "Why always dump the output in the end of test? If it is only for debugging purpose. It should only print on error. For example:\n\ndefer func(){\n    if s.HasError(){\n        ....\n    }\n}()",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 2
       },
       "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
