@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed70fa5_269895f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:27:03Z",
+      "side": 1,
+      "message": "use SetVKAutoCorrection()? add and use setVKEnableCapitalization()?",
+      "range": {
+        "startLine": 128,
+        "startChar": 23,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "53417967ff0273a663dfa63408e174f0a6f69977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47222572_316da7ec",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:27:03Z",
+      "side": 1,
+      "message": "nit: Add note that settings change won\u0027t take effect until the next input session (e.g. focus on a text field, or change input method), i.e. this should be done in the prep step before focusing on a text field, or changing input method?\n\nIn prod, settings can never change midway during an input session, because to change settings, the human users have to unfocus from the current text field and go to the settings app to do it. React to live settings change isn\u0027t a requirements so not supported.",
+      "revId": "53417967ff0273a663dfa63408e174f0a6f69977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
