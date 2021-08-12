@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -26,21 +27,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
 	})
-}
-
-// updateChecker checks if an update is available and determines whether to update if there is or to reinstall one if there isn't
-func updateChecker(ctx context.Context) (string, error) {
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "get-updates")
-	err := cmd.Run(testexec.DumpLogOnError)
-	if code, ok := testexec.ExitCode(err); ok {
-		if code == 0 {
-			return "update", nil
-		}
-		if code == 2 {
-			return "reinstall", nil
-		}
-	}
-	return "", err
 }
 
 // streamOutput sends back messages as they occur
@@ -62,18 +48,19 @@ func streamOutput(rc io.ReadCloser) <-chan string {
 // FwupdInhibitSuspend runs the fwupdtool utility and makes sure
 // that the system can suspend before and after, but not during an update.
 func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
+	// restart upstart to reset fake device version
+	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
+		s.Fatal("fwupd unable to be (re)started: ", err)
+	}
+
 	// make sure file does not exist before update
 	if _, err := os.Stat("/run/lock/power_override/fwupd.lock"); err == nil {
 		s.Fatal("System cannot suspend but no update has started")
 	}
 
 	// run the update
-	updtype, err := updateChecker(ctx)
-	if err != nil {
-		s.Fatal("update check failed: ", err)
-	}
 	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", updtype, "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "update", "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)
