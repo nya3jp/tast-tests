@@ -418,7 +418,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to find New Tab window: ", err)
 		}
-		if err := w.CloseWindow(ctx, tconn); err != nil {
+		if err := w.CloseWindowAndWait(ctx, tconn); err != nil {
 			s.Fatal("Failed to close New Tab window: ", err)
 		}
 	}
