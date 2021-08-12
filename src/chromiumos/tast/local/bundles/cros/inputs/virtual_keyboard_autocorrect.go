@@ -6,10 +6,10 @@ package inputs
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/autocorrect"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -100,7 +100,11 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	inputMethod := testCase.InputMethod
 	s.Logf("Set current input method to: %q", inputMethod)
@@ -116,39 +120,20 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	setEnabledVKSettings := func(entryID, value string) {
-		var settingsAPICall = fmt.Sprintf(
-			`chrome.inputMethodPrivate.setSettings(
-						 "%s", { "%s": %s})`,
-			testCase.InputMethod.ID, entryID, value)
-
-		tconn := s.PreValue().(pre.PreData).TestAPIConn
-		if err := tconn.Eval(ctx, settingsAPICall, nil); err != nil {
-			s.Fatal("Failed to set settings: ", err)
-		}
+	// Enable VK auto correction and disable auto capitalization.
+	if err := uiauto.Combine("enable VK auto correction while disable auto shift",
+		inputMethod.SetVKAutoCorrection(tconn, ime.AutoCorrectionModest),
+		inputMethod.SetVKEnableCapitalization(tconn, false),
+	)(ctx); err != nil {
+		s.Fatal("Failed to change IME settings: ", err)
 	}
 
-	setEnabledVKAutocorrectSettings := func(enabled bool) {
-		var level = "0"
-		if enabled {
-			level = "1"
+	defer func() {
+		if err := inputMethod.ResetSettings(tconn)(cleanupCtx); err != nil {
+			// Only log errors in cleanup.
+			s.Log("Failed to reset IME settings: ", err)
 		}
-		setEnabledVKSettings("virtualKeyboardAutoCorrectionLevel", level)
-	}
-
-	setEnabledVKAutocapSettings := func(enabled bool) {
-		var enabledStr = "false"
-		if enabled {
-			enabledStr = "true"
-		}
-		setEnabledVKSettings("virtualKeyboardEnableCapitalization", enabledStr)
-	}
-
-	setEnabledVKAutocorrectSettings(true)
-	defer setEnabledVKAutocorrectSettings(false)
-
-	setEnabledVKAutocapSettings(false)
-	defer setEnabledVKAutocapSettings(true)
+	}()
 
 	const inputField = testserver.TextAreaInputField
 	if err := uiauto.Combine("validate VK autocorrect",
