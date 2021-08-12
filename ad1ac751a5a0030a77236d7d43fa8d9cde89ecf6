@@ -22,6 +22,30 @@
       },
       "revId": "ad1ac751a5a0030a77236d7d43fa8d9cde89ecf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e19d797_086115ec",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-08-12T06:59:06Z",
+      "side": 0,
+      "message": "Nope I\u0027m not sure if this is less flaky, let\u0027s land and see how that goes.\n\nlockscreen.EnterPassword waits for the field to be focused first before entering the password (`field.State[ui.StateTypeFocused]`). If this change doesn\u0027t help, our next option would be to revert to using the keyboard and adding that wait.",
+      "parentUuid": "0d089997_5c640756",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "ad1ac751a5a0030a77236d7d43fa8d9cde89ecf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
