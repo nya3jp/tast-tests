@@ -46,6 +46,30 @@
       },
       "revId": "3295fe141a8072ec42bbc0d7530c8ebbc3da02e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c68fff_b74ec757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/document_2448x3264.jpg.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T07:43:19Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation, lgtm.",
+      "parentUuid": "c495a07f_f8367027",
+      "range": {
+        "startLine": 2,
+        "startChar": 71,
+        "endLine": 2,
+        "endChar": 80
+      },
+      "revId": "3295fe141a8072ec42bbc0d7530c8ebbc3da02e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
