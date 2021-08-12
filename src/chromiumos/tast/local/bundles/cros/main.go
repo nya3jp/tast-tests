@@ -88,6 +88,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
 	_ "chromiumos/tast/local/bundles/cros/wallpaper"
+	_ "chromiumos/tast/local/bundles/cros/webcodecs"
 	_ "chromiumos/tast/local/bundles/cros/webrtc"
 	_ "chromiumos/tast/local/bundles/cros/wifi"
 	_ "chromiumos/tast/local/bundles/cros/wilco"
