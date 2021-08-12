@@ -33,6 +33,23 @@
       "message": "+Renuga, thank you!",
       "revId": "fa0dc15c7b5aaee5ed2aef3f295af402459d68a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d29aba_afe1f00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-12T21:31:12Z",
+      "side": 1,
+      "message": "You can check the stability by multiple runs (Example: 30 Times) with below command.\n\n../platform/tast-tests/tools/repeat-test.sh -s -r 30 \u003cDUT\u003e \u003cTEST\u003e",
+      "revId": "fa0dc15c7b5aaee5ed2aef3f295af402459d68a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
