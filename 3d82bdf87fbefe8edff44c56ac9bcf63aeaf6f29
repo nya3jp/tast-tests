@@ -46,6 +46,30 @@
       },
       "revId": "3d82bdf87fbefe8edff44c56ac9bcf63aeaf6f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ac7dfff_065fb626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-12T15:39:02Z",
+      "side": 1,
+      "message": "logically I think it should go after the defer to restart powerd",
+      "parentUuid": "fd782515_0982a67a",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "3d82bdf87fbefe8edff44c56ac9bcf63aeaf6f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
