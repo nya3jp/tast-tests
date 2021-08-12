@@ -95,6 +95,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cd9c78_95522282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-12T13:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e1ddc0_bf474c89",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c429ce_54cbc18b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-12T13:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e512d736_61d752bc",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d8c8809_14f194f0",
