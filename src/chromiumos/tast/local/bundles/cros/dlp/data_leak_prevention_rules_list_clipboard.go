@@ -150,7 +150,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 func clipBoardText(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var clipData string
 	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
-		return "", errors.Wrap(err, "failed to get clipboard content: ")
+		return "", errors.Wrap(err, "failed to get clipboard content")
 	}
 	return clipData, nil
 }
@@ -165,7 +165,7 @@ func checkPastedContent(ctx context.Context, ui *uiauto.Context, content string)
 
 	if err := uiauto.Combine("Pasted ",
 		ui.WaitUntilExists(contentNode))(ctx); err != nil {
-		return errors.Wrap(err, "failed to check for pasted content: ")
+		return errors.Wrap(err, "failed to check for pasted content")
 	}
 
 	return nil
