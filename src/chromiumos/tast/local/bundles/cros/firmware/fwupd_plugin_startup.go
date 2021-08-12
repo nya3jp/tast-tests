@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FwupdPowerdStartup,
+		Func: FwupdPluginStartup,
 		Desc: "Checks that the powerd plugin is enabled",
 		Contacts: []string{
 			"gpopoola@google.com",       // Test Author
@@ -30,8 +30,9 @@ func init() {
 	})
 }
 
-// checkForPowerdStr verifies that powerd was found among enabled plugins
-func checkForPowerdStr(output []byte) error {
+func parsePluginStates(output []byte) (map[string][]string, error) {
+	m := make(map[string][]string)
+
 	var wp struct {
 		Plugins []struct {
 			Name  string
@@ -40,25 +41,19 @@ func checkForPowerdStr(output []byte) error {
 	}
 
 	if err := json.Unmarshal(output, &wp); err != nil {
-		return errors.New("failed to parse command output")
+		return nil, errors.New("failed to parse command output")
 	}
 
 	for _, p := range wp.Plugins {
-		if p.Name == "powerd" {
-			for _, f := range p.Flags {
-				if f == "disabled" {
-					return errors.New("plugin was found to be disabled")
-				}
-			}
-		}
+		m[p.Name] = p.Flags
 	}
 
-	return nil
+	return m, nil
 }
 
-// FwupdPowerdStartup runs fwupdmgr get-plugins, retrieves the output, and
-// checks for powerd
-func FwupdPowerdStartup(ctx context.Context, s *testing.State) {
+// FwupdPluginStartup runs fwupdmgr get-plugins, retrieves the output, and
+// checks that the expected plugins are enabled
+func FwupdPluginStartup(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
 		s.Fatal("Failed to restart fwupd: ", err)
 	}
@@ -72,7 +67,41 @@ func FwupdPowerdStartup(ctx context.Context, s *testing.State) {
 		s.Error("Failed dumping fwupdmgr output: ", err)
 	}
 
-	if err := checkForPowerdStr(output); err != nil {
+	m, err := parsePluginStates(output)
+	if err != nil {
 		s.Fatal("search unsuccessful: ", err)
+	}
+
+	for _, plugin := range []string{
+		"analogix",
+		"ccgx",
+		"cros_ec",
+		"dell_dock",
+		"dfu",
+		"emmc",
+		"nvme",
+		"parade_lspcon",
+		"pixart_rf",
+		"powerd",
+		"realtek_mst",
+		"synaptics_cxaudio",
+		"synaptics_mst",
+		"test",
+		"thunderbolt",
+		"vli",
+		"wacom_raw",
+		"wacom_usb",
+	} {
+		s.Run(ctx, plugin, func(ctx context.Context, s *testing.State) {
+			flags, prs := m[plugin]
+			if !prs {
+				s.Fatal("plugin was not found")
+			}
+			for _, f := range flags {
+				if f == "disabled" {
+					s.Fatal("plugin was found to be disabled")
+				}
+			}
+		})
 	}
 }
