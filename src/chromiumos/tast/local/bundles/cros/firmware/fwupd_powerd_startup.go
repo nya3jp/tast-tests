@@ -6,18 +6,14 @@ package firmware
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
-	"regexp"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
-)
-
-const (
-	targetStr = `.*powerd:\s{1,}Flags:.*Enabled`
 )
 
 func init() {
@@ -35,29 +31,36 @@ func init() {
 
 // checkForPowerdStr verifies that powerd was found among enabled plugins */
 func checkForPowerdStr(output []byte) error {
-	matched, err := regexp.Match(targetStr, output)
-	if err != nil {
-		return err
+
+	var wp wrapper
+
+	if err := json.Unmarshal(output, &wp); err != nil {
+		return errors.New("failed to parse command output")
 	}
-	if !matched {
-		return errors.New("powerd was not found among enabled plugins")
+
+	for _, p := range wp.Plugins {
+		if p.Name == "powerd" {
+			for _, f := range p.Flags {
+				s.Log(f)
+				return nil
+			}
+		}
 	}
-	return nil
+
+	return errors.New("powerd was not found among enabled plugins")
 }
 
 // FwupdPowerdStartup runs fwupdmgr get-plugins, retrieves the output, and
 // checks for powerd
 func FwupdPowerdStartup(ctx context.Context, s *testing.State) {
-	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-plugins")
 
+	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-plugins", "--json")
 	output, err := cmd.Output(testexec.DumpLogOnError)
-
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
-
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "fwupdmgr.txt"), output, 0644); err != nil {
-		s.Fatal("Failed dumping fwupdmgr output: ", err)
+		s.Error("Failed dumping fwupdmgr output: ", err)
 	}
 
 	if err := checkForPowerdStr(output); err != nil {
