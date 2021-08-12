@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -173,19 +174,27 @@ func (vkbCtx *VirtualKeyboardContext) TapKeyIgnoringCase(keyName string) uiauto.
 }
 
 func (vkbCtx *VirtualKeyboardContext) tapKeyFunc(keyName string, ignoreCase bool) uiauto.Action {
+	keyFinder := KeyFinder.Name(keyName)
+	if ignoreCase {
+		keyFinder = KeyByNameIgnoringCase(keyName)
+	}
+
+	return vkbCtx.TapNode(keyFinder)
+}
+
+// TapNode returns an action to tap on a node.
+// In most cases, TapKey should be primary function for tapping key.
+// This function should only be used when a node can not be unique identified by Name.
+// TODO(b/196273235): Refactor vkb.TapKey function to distinguish keyboard, suggestion bar, node.
+func (vkbCtx *VirtualKeyboardContext) TapNode(finder *nodewith.Finder) uiauto.Action {
 	// Note: Must use mouse Move + Press + Sleep + Release here instead of Click.
 	// Mouse click is simulated by calling Chrome private api `chrome.autotestPrivate.mouseClick`.
 	// It works for most cases except virtual keyboard.
 	// In vkb extension, it listens to keyPress to send vk layout event to decoder
 	// before sending the actual key tap event.
 	// Mouse click is too quick and causes a racing issue that decoder receives tap key without layout info.
-	keyFinder := KeyFinder.Name(keyName)
-	if ignoreCase {
-		keyFinder = KeyByNameIgnoringCase(keyName)
-	}
-
-	return uiauto.Combine("move mouse to key center point and click",
-		vkbCtx.ui.MouseMoveTo(keyFinder, 10*time.Millisecond),
+	return uiauto.Combine("move mouse to node center point and click",
+		vkbCtx.ui.MouseMoveTo(finder, 10*time.Millisecond),
 		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
 		vkbCtx.ui.Sleep(50*time.Millisecond),
 		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
@@ -475,4 +484,73 @@ func (vkbCtx *VirtualKeyboardContext) leftClickIfExist(finder *nodewith.Finder) 
 	return vkbCtx.ui.IfSuccessThen(
 		vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(finder),
 		vkbCtx.ui.LeftClick(finder))
+}
+
+// ShiftState describes the shift state of the virtual keyboard.
+type ShiftState int
+
+// Available virtual keyboard shift state.
+// Use ShiftStateUnknown when any errors happen in fetching shift state.
+const (
+	ShiftStateNone ShiftState = iota
+	ShiftStateShifted
+	ShiftStateLocked
+	ShiftStateUnknown
+)
+
+// String returns the key representative string content of the shift state.
+func (shiftState ShiftState) String() string {
+	switch shiftState {
+	case ShiftStateNone:
+		return "none"
+	case ShiftStateShifted:
+		return "shifted"
+	case ShiftStateLocked:
+		return "shift-locked"
+	}
+	return "unknown"
+}
+
+// ShiftState identifies and returns the current VK shift state using left-shift key 'data-key' attribute.
+// Note: It only works on English(US).
+// It works even the VK is not on screen.
+// ShiftLeft: VK is not shifted.
+// ShiftLeft-shift: Vk is Shifted.
+// ShiftLeft-shiftlock: Vk is Shift locked.
+// TODO(b/196272947): Support other input methods other than English(US).
+func (vkbCtx *VirtualKeyboardContext) ShiftState(ctx context.Context) (ShiftState, error) {
+	inputViewConn, err := vkbCtx.UIConn(ctx)
+	if err != nil {
+		return ShiftStateUnknown, errors.Wrap(err, "failed to connect to input view page")
+	}
+	var shiftLeftKeyAttr string
+	expr := fmt.Sprintf(`shadowPiercingQuery(%q).getAttribute("data-key")`, `div.shift-key`)
+	if err := webutil.EvalWithShadowPiercer(ctx, inputViewConn, expr, &shiftLeftKeyAttr); err != nil {
+		return ShiftStateUnknown, errors.Wrap(err, "failed to get ShiftLeftKey status")
+	}
+
+	switch shiftLeftKeyAttr {
+	case "ShiftLeft":
+		return ShiftStateNone, nil
+	case "ShiftLeft-shift":
+		return ShiftStateShifted, nil
+	case "ShiftLeft-shiftlock":
+		return ShiftStateLocked, nil
+	}
+	return ShiftStateUnknown, errors.Wrapf(err, "VK shift status %q is unknown", shiftLeftKeyAttr)
+}
+
+// WaitUntilShiftStatus waits for up to 5s until the expected VK shift state.
+// Note: It only works on US-en.
+func (vkbCtx *VirtualKeyboardContext) WaitUntilShiftStatus(expectedShiftState ShiftState) uiauto.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if currentShiftState, err := vkbCtx.ShiftState(ctx); err != nil {
+				return errors.Wrap(err, "failed to get current VK shift status")
+			} else if currentShiftState != expectedShiftState {
+				return errors.Errorf("unexpected VK shift status: got %q, want %q", currentShiftState, expectedShiftState)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second})
+	}
 }
