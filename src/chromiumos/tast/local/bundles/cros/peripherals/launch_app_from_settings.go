@@ -36,7 +36,7 @@ func init() {
 			"joonbug@chromium.org",
 			"cros-peripherals@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
