@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "321096dc_f66c0747",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-12T22:16:11Z",
+      "side": 1,
+      "message": "I\u0027m ok with this CL, but in general, it is recommended to make sure the testing environment is appropriate, instead teared-down correctly.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown\n\nDo you have any examples of the failure scenarios?\nAlso, could you fix those set up? (If you\u0027d like to work on in another CL, it works for me, too, but at least could you file a tracking bug?)",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 112
+      },
+      "revId": "e03ff931ef5f2a00a5b2f8e6af36c6bfcdfe09b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ad47c17a_20651e1d",
