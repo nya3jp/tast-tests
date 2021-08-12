@@ -22,6 +22,30 @@
       },
       "revId": "7da4d387bf3b3a793b3eaaaa10cf29f59fb5e33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136d24d3_f3de37d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T00:01:32Z",
+      "side": 1,
+      "message": "This will be handled in other CLs. This is irrelevant to thie CL, as this CL is about on deprecating the use of InputMethodCode type and removing the constants.",
+      "parentUuid": "1f1deaa6_9b8c3c4c",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "7da4d387bf3b3a793b3eaaaa10cf29f59fb5e33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
