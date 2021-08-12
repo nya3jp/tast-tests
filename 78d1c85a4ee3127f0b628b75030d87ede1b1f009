@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6ba7de28_0bcb304e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-12T16:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f93ea5b_92649e96",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "efd41876_6529ecd9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "601e4e13_33b103ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-12T16:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10da3864_3f97a407",
+      "range": {
+        "startLine": 119,
+        "startChar": 42,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e6b6afc_36beeec6",
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4d36b1_bc4abf3a",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-12T16:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6b6afc_36beeec6",
+      "range": {
+        "startLine": 350,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 38
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35d29bda_66c542c2",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-08-12T11:18:50Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 40
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8e5a6d_49dc0aad",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-12T16:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35d29bda_66c542c2",
       "range": {
         "startLine": 354,
         "startChar": 0,
