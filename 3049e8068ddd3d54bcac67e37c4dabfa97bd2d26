@@ -16,6 +16,41 @@
       "message": "I wonder whether we should just make this CloseWindow. Callers of CloseWindow probably expect the window being synchronously closed.",
       "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019079b2_c846d324",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-08-12T17:04:08Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s do that. You can just replace the CloseWindow implementation with this one. If we really want, we can add an additional async param to avoid waiting?",
+      "parentUuid": "55005e27_5a647de5",
+      "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc04b7b_7eceb59b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-08-12T17:04:08Z",
+      "side": 1,
+      "message": "is this line too long?",
+      "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
