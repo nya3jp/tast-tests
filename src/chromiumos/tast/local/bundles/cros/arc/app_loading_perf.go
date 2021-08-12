@@ -181,9 +181,9 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// TODO(b/169947243): Add initial traffic control queuing discipline settings
-	// for traffic shaping based on experiments with netem, RTT latency, and iperf3
-	// bandwidth measurements.  Only kernel version 4.4+ with ARCVM supports tc-tbf.
+	// Add initial traffic control queuing discipline settings (b/169947243) for
+	// traffic shaping based on experiments with netem, RTT latency, and iperf3
+	// bandwidth measurements. Only kernel version 4.4+ supports tc-tbf.
 	if ver, _, err := sysutil.KernelVersionAndArch(); err != nil {
 		s.Fatal("Failed to get kernel version: ", err)
 	} else if ver.IsOrLater(4, 4) {
@@ -329,11 +329,10 @@ func calcGeometricMean(scores []float64) (float64, error) {
 
 // runAppLoadingTest will test each app loading subflow with timeout.
 func runAppLoadingTest(ctx context.Context, config apploading.TestConfig, a *arc.ARC, cr *chrome.Chrome) (float64, error) {
-	shorterCtx, cancel := context.WithTimeout(ctx, 5*time.Minute)
+	shorterCtx, cancel := context.WithTimeout(ctx, 390*time.Second)
 	defer cancel()
 
-	// Each subflow should take no longer than 5 minutes based on stainless data.
-	// If it takes longer, very likely the app is stuck (e.g. b/169367367).
-	// TODO(b/169341324): Reduce subflow test timeout and overall context timeout.
+	// Each subflow should take no longer than 6.5 minutes based on stainless
+	// data. If it takes longer, very likely the app is stuck (e.g. b/169367367).
 	return apploading.RunTest(shorterCtx, config, a, cr)
 }
