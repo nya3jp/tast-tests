@@ -50,6 +50,24 @@
       "message": "You can check the stability by multiple runs (Example: 30 Times) with below command.\n\n../platform/tast-tests/tools/repeat-test.sh -s -r 30 \u003cDUT\u003e \u003cTEST\u003e",
       "revId": "fa0dc15c7b5aaee5ed2aef3f295af402459d68a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abeea8a2_8bb791bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-08-12T22:31:00Z",
+      "side": 1,
+      "message": "Ack,thank you! I had some failures when running locally, but not at this particular part (text entry). Going to submit to CQ to see how it performs with lab devices.",
+      "parentUuid": "a6d29aba_afe1f00b",
+      "revId": "fa0dc15c7b5aaee5ed2aef3f295af402459d68a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
