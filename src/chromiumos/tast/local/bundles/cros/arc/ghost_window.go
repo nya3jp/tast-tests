@@ -124,7 +124,7 @@ func GhostWindow(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to create test API connection: ", err)
 		}
 
-		alertDialog := nodewith.NameStartingWith("Restore apps & pages?").Role(role.AlertDialog)
+		alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
 		restoreButton := nodewith.Name("RESTORE").Role(role.Button).Ancestor(alertDialog)
 
 		ui := uiauto.New(tconn)
