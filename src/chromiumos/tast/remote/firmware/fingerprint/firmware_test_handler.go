@@ -9,6 +9,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"google.golang.org/grpc/connectivity"
+
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/dut"
@@ -54,6 +56,19 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
+
+	go func() {
+		for {
+			before := cl.Conn.GetState().String()
+			if cl.Conn.WaitForStateChange(ctx, connectivity.Ready) {
+				after := cl.Conn.GetState().String()
+				if before != after {
+					testing.ContextLog(ctx, "MONITOR: State change ", before, " to ", after)
+				}
+			}
+
+		}
+	}()
 
 	upstartService := platform.NewUpstartServiceClient(cl.Conn)
 
@@ -127,35 +142,53 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
+	t := FirmwareTest{
+		d:                        d,
+		servo:                    pxy,
+		cl:                       cl,
+		rpcHint:                  hint,
+		fpBoard:                  fpBoard,
+		buildFwFile:              buildFwFile,
+		upstartService:           upstartService,
+		daemonState:              daemonState,
+		needsRebootAfterFlashing: needsReboot,
+		dutfsClient:              dutfsClient,
+		cleanupTime:              cleanupTime,
+		dutTempDir:               dutTempDir,
+	}
+
+	/*  Prepare the FPMCU FW */
+
+	// If we need to remove software write protect, we must reflash here.
+	testing.ContextLog(ctx, "Checking if software write protect needs to be removed")
+	fp, err := GetFlashProtect(ctx, d)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read flash protect")
+	}
+	if !enableSWWP && fp.IsSoftwareReadOutProtected() {
+		testing.ContextLog(ctx, "Software write protect had previously been enabled. Reflashing FP firmware")
+		if err := t.ReimageFPMCU(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to remove software write protect")
+		}
+	}
+
+	t.DebugCL(ctx)
+
 	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, d, dutfsClient, outDir, pxy, fpBoard, buildFwFile, needsReboot); err != nil {
+	if err := InitializeKnownState(ctx, t.d, t.dutfsClient, outDir, t.servo, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
 	// Double check our work in the previous step.
-	if err := CheckValidState(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
+	if err := CheckValidState(ctx, t.d, t.dutfsClient, t.fpBoard, t.buildFwFile); err != nil {
 		return nil, err
 	}
 
-	if err := InitializeHWAndSWWriteProtect(ctx, d, pxy, fpBoard, enableHWWP, enableSWWP); err != nil {
+	if err := InitializeHWAndSWWriteProtect(ctx, t.d, pxy, fpBoard, enableHWWP, enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing write protect failed")
 	}
 
-	return &FirmwareTest{
-			d:                        d,
-			servo:                    pxy,
-			cl:                       cl,
-			rpcHint:                  hint,
-			fpBoard:                  fpBoard,
-			buildFwFile:              buildFwFile,
-			upstartService:           upstartService,
-			daemonState:              daemonState,
-			needsRebootAfterFlashing: needsReboot,
-			dutfsClient:              dutfsClient,
-			cleanupTime:              cleanupTime,
-			dutTempDir:               dutTempDir,
-		},
-		nil
+	return &t, nil
 }
 
 // Close cleans up the fingerprint test and restore the FPMCU firmware to the
@@ -164,9 +197,9 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
-		firstErr = err
-	}
+	// if err := t.ReimageFPMCU(ctx); err != nil {
+	// 	firstErr = err
+	// }
 
 	// TODO(https://crbug.com/1195936): ReimageFPMCU reboots, which causes gRPC
 	//  to lose its connection.
@@ -270,6 +303,28 @@ func (t *FirmwareTest) DUTTempDir() string {
 // FPBoard gets the fingerprint board name.
 func (t *FirmwareTest) FPBoard() FPBoardName {
 	return t.fpBoard
+}
+
+// FPBoard gets the fingerprint board name.
+func (t *FirmwareTest) ReimageFPMCU(ctx context.Context) error {
+	return ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing())
+}
+
+func (t *FirmwareTest) DebugCL(ctx context.Context) error {
+	testing.ContextLog(ctx, "Connection state is ", t.cl.Conn.GetState())
+	if t.cl.Conn.GetState() != connectivity.Ready {
+		testing.ContextLog(ctx, "Closing existing connection: ", t.cl.Close(ctx))
+
+		testing.ContextLog(ctx, "Reconnecting")
+		cl, err := rpc.Dial(ctx, t.d, t.rpcHint, "cros")
+		if err != nil {
+			testing.ContextLog(ctx, "failed to connect to the RPC service on the DUT: ", err)
+			return err
+		}
+		t.cl = cl
+		t.dutfsClient = dutfs.NewClient(t.cl.Conn)
+	}
+	return nil
 }
 
 type daemonState struct {
