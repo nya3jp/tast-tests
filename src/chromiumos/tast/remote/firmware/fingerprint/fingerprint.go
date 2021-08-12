@@ -420,6 +420,7 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 	}
 
 	// Check all other standard FPMCU state.
+	testing.ContextLog(ctx, "Checking other FPMCU state")
 	if err := CheckValidState(ctx, d, fs, fpBoard, buildFWFile); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
