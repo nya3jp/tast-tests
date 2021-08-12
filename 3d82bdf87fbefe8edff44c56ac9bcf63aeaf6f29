@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c5f3f6_e8677f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-12T14:03:30Z",
+      "side": 1,
+      "message": "Given crrev.com/c/3045776 this should go after you stop powerd (and update the comment to reflect this too so we don\u0027t reorder back in the future)",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "3d82bdf87fbefe8edff44c56ac9bcf63aeaf6f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
