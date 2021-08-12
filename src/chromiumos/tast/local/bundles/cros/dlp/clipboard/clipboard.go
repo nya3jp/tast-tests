@@ -23,7 +23,7 @@ func CheckGreyPasteNode(ctx context.Context, ui *uiauto.Context) error {
 	if err := uiauto.Combine("Check paste node greyed ",
 		ui.WaitUntilExists(pasteNode),
 		ui.WaitUntilGone(pasteActiveNode))(ctx); err != nil {
-		return errors.Wrap(err, "failed to check paste node greyed: ")
+		return errors.Wrap(err, "failed to check paste node greyed")
 	}
 
 	return nil
@@ -31,6 +31,7 @@ func CheckGreyPasteNode(ctx context.Context, ui *uiauto.Context) error {
 
 // CheckClipboardBubble checks if clipboard restriction bubble exists.
 func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) error {
+	// Message name - IDS_POLICY_DLP_CLIPBOARD_BLOCKED_ON_PASTE
 	bubbleView := nodewith.ClassName("ClipboardDlpBubble").Role(role.Window)
 	bubbleClass := nodewith.ClassName("ClipboardBlockBubble").Ancestor(bubbleView)
 	bubbleButton := nodewith.Name("Got it").Role(role.Button).Ancestor(bubbleClass)
@@ -41,7 +42,7 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 		ui.WaitUntilExists(bubbleView),
 		ui.WaitUntilExists(bubbleButton),
 		ui.WaitUntilExists(bubble))(ctx); err != nil {
-		return errors.Wrap(err, "failed to check for notification bubble existence: ")
+		return errors.Wrap(err, "failed to check for notification bubble existence")
 	}
 
 	return nil

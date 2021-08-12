@@ -101,16 +101,15 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 
 			conn, err := cr.NewConn(ctx, "https://"+param.url)
 			if err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 			defer conn.Close()
 
 			if err := checkPrivacyScreenOnBubble(ctx, ui, param.wantAllowed); err != nil {
-				s.Fatal("Couldn't check for notification: ", err)
+				s.Error("Couldn't check for notification: ", err)
 			}
 
 			value, err := privacyScreenValue(ctx)
-
 			if err != nil {
 				s.Fatal("Couldn't check value for privacy screen prop: ", err)
 			}
@@ -128,7 +127,7 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 			}
 
 			if err := checkPrivacyScreenOffBubble(ctx, ui, param.wantAllowed); err != nil {
-				s.Fatal("Couldn't check for notification: ", err)
+				s.Error("Couldn't check for notification: ", err)
 			}
 
 			// Wait for privacy screen to be disabled.
@@ -137,7 +136,7 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 			}
 
 			value, err = privacyScreenValue(ctx)
-
+			// Privacy screen should be disabled.
 			if value {
 				s.Errorf("Privacy screen prop value: got %q; want false", value)
 			}
@@ -146,12 +145,13 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 }
 
 func checkPrivacyScreenOnBubble(ctx context.Context, ui *uiauto.Context, wantAllowed bool) error {
+	// Message name - IDS_ASH_STATUS_TRAY_PRIVACY_SCREEN_TOAST_ACCESSIBILITY_TEXT
 	bubbleMessage := nodewith.NameContaining("Privacy screen is on. Enforced by your administrator").First()
 
 	err := ui.WaitUntilExists(bubbleMessage)(ctx)
 
 	if err != nil && !wantAllowed {
-		return errors.Wrap(err, "failed to check for privacy screen on bubble existence: ")
+		return errors.Wrap(err, "failed to check for privacy screen on bubble")
 	}
 
 	if err == nil && wantAllowed {
@@ -162,12 +162,13 @@ func checkPrivacyScreenOnBubble(ctx context.Context, ui *uiauto.Context, wantAll
 }
 
 func checkPrivacyScreenOffBubble(ctx context.Context, ui *uiauto.Context, wantAllowed bool) error {
+	// Message name - IDS_ASH_STATUS_TRAY_PRIVACY_SCREEN_OFF_STATE
 	bubbleMessage := nodewith.NameContaining("Privacy screen is off").First()
 
 	err := ui.WaitUntilExists(bubbleMessage)(ctx)
 
 	if err != nil && !wantAllowed {
-		return errors.Wrap(err, "failed to check for privacy screen off bubble bubble existence: ")
+		return errors.Wrap(err, "failed to check for privacy screen off bubble bubble existence")
 	}
 
 	if err == nil && wantAllowed {
@@ -179,11 +180,13 @@ func checkPrivacyScreenOffBubble(ctx context.Context, ui *uiauto.Context, wantAl
 
 // privacyScreenValue retrieves value of privacy screen prop.
 func privacyScreenValue(ctx context.Context) (bool, error) {
+	// modetest -c get list of connectors
 	output, err := testexec.CommandContext(ctx, "modetest", "-c").Output()
 	if err != nil {
 		return false, err
 	}
 
+	// Get privacy-screen connector.
 	outputSlice := strings.Split(string(output), "privacy-screen:")
 
 	if len(outputSlice) <= 1 {
@@ -191,6 +194,7 @@ func privacyScreenValue(ctx context.Context) (bool, error) {
 	}
 
 	for _, line := range strings.Split(outputSlice[1], "\n") {
+		// Check for prop value.
 		matches := strings.Contains(line, "value:")
 		if matches {
 			if found := strings.Contains(line, "1"); found {
@@ -201,8 +205,8 @@ func privacyScreenValue(ctx context.Context) (bool, error) {
 				return false, nil
 			}
 
+			// Need to check for prop value only once.
 			return false, errors.New("failed to find value for privacy screen prop")
-
 		}
 	}
 
