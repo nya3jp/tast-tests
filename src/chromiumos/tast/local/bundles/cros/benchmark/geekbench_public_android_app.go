@@ -207,6 +207,10 @@ func openGeekbench(ctx context.Context, tconn *chrome.TestConn, device *androidu
 		return errors.Wrap(err, "failed to wait for the Geekbench APP window")
 	}
 
+	if err := setup.DismissMobilePrompt(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to dismiss 'designed for mobile' prompt")
+	}
+
 	// Click the "ACCEPT" button if it shows up.
 	if err := findUIObjAndClick(ctx, device.Object(androidui.TextContains("ACCEPT")), false); err != nil {
 		return errors.Wrap(err, "failed to find button ACCEPT and click it")
