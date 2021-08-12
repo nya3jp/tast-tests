@@ -16,6 +16,98 @@
       "message": "+yhanada@, please take a look!",
       "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fcc8b8_c595da8e",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/InMemoryContentProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-12T07:53:07Z",
+      "side": 1,
+      "message": "How about using try-with-resource?\n\n```\ntry (OutputStream stream \u003d new ParcelFileDescriptor.AutoCloseOutputStream(writeFd)) {\n    stream.write(getFileBytes(uri.getLastPathSegment());\n}\n```",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d0951e_774b07c8",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/InMemoryContentProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-12T07:53:07Z",
+      "side": 1,
+      "message": "If rethrowing the exception makes sense here, how about declaring \u0027throws IOException\u0027 simply? Then, you don\u0027t need the outer try clause.\n\n```\npublic ParcelFileDescriptor openFile(URi uri, String mode) throws IOException {\n...\n```",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660ec9c5_d1bcae8a",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-12T07:53:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc8ed16_be8080c4",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-12T07:53:07Z",
+      "side": 1,
+      "message": "nit: Could you sort imports?",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
