@@ -87,6 +87,30 @@
       },
       "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4789fbd_d57479e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-12T00:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa984609_db1f08a7",
+      "range": {
+        "startLine": 242,
+        "startChar": 79,
+        "endLine": 242,
+        "endChar": 91
+      },
+      "revId": "eb66598fcb74ff57843c9263900c181301431b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
