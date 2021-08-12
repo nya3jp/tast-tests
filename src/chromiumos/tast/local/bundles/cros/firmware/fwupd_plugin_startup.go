@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FwupdPowerdStartup,
+		Func: FwupdPluginStartup,
 		Desc: "Checks that the powerd plugin is enabled",
 		Contacts: []string{
 			"gpopoola@google.com",       // Test Author
@@ -30,8 +30,8 @@ func init() {
 	})
 }
 
-// checkForPowerdStr verifies that powerd was found among enabled plugins
-func checkForPowerdStr(output []byte) error {
+// checkForPluginStr verifies through the output that a plugin was not disabled
+func checkForPluginStr(output []byte, plugin string) error {
 	var wp struct {
 		Plugins []struct {
 			Name  string
@@ -44,21 +44,22 @@ func checkForPowerdStr(output []byte) error {
 	}
 
 	for _, p := range wp.Plugins {
-		if p.Name == "powerd" {
+		if p.Name == plugin {
 			for _, f := range p.Flags {
 				if f == "disabled" {
 					return errors.New("plugin was found to be disabled")
 				}
 			}
+			return nil
 		}
 	}
 
-	return nil
+	return errors.New("plugin was not found")
 }
 
-// FwupdPowerdStartup runs fwupdmgr get-plugins, retrieves the output, and
-// checks for powerd
-func FwupdPowerdStartup(ctx context.Context, s *testing.State) {
+// FwupdPluginStartup runs fwupdmgr get-plugins, retrieves the output, and
+// checks that the expected plugins are enabled
+func FwupdPluginStartup(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
 		s.Fatal("Failed to restart fwupd: ", err)
 	}
@@ -72,7 +73,30 @@ func FwupdPowerdStartup(ctx context.Context, s *testing.State) {
 		s.Error("Failed dumping fwupdmgr output: ", err)
 	}
 
-	if err := checkForPowerdStr(output); err != nil {
-		s.Fatal("search unsuccessful: ", err)
+	for _, plugin := range []string{
+		"analogix",
+		"ccgx",
+		"cros_ec",
+		"dell_dock",
+		"dfu",
+		"emmc",
+		"nvme",
+		"parade_lspcon",
+		"pixart_rf",
+		"powerd",
+		"realtek_mst",
+		"synaptics_cxaudio",
+		"synaptics_mst",
+		"test",
+		"thunderbolt",
+		"vli",
+		"wacom_raw",
+		"wacom_usb",
+	} {
+		s.Run(ctx, plugin, func(ctx context.Context, s *testing.State) {
+			if err := checkForPluginStr(output, plugin); err != nil {
+				s.Fatal("search unsuccessful: ", err)
+			}
+		})
 	}
 }
