@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24f02c5_71b98be8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-12T17:30:29Z",
+      "side": 1,
+      "message": "Done and update CL description.",
+      "parentUuid": "019079b2_c846d324",
+      "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cc04b7b_7eceb59b",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-08-12T17:04:08Z",
       "side": 1,
       "message": "is this line too long?",
+      "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f417349_60bea833",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-12T17:30:29Z",
+      "side": 1,
+      "message": "I wrapped a bit. But it seems tast-lint or gofmt does not require to wrap at 80 chars.",
+      "parentUuid": "3cc04b7b_7eceb59b",
       "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
