@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e156bce_53343dbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-12T23:44:00Z",
+      "side": 1,
+      "message": "You may want to rename this",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 69
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d938a6b3_2197c0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-12T23:44:00Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb2c7eb_053f0e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-12T23:44:00Z",
+      "side": 1,
+      "message": "the 2 suffix is not needed",
+      "range": {
+        "startLine": 111,
+        "startChar": 55,
+        "endLine": 111,
+        "endChar": 64
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
