@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd41876_6529ecd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-12T08:29:03Z",
+      "side": 1,
+      "message": "There was a mistake in the init script, I\u0027ve uploaded the fix here: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3088869 and made this CL depend on it. Let\u0027s see if the CQ runs through this time.",
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
