@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f7510f_cd648e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T06:45:11Z",
+      "side": 1,
+      "message": "super-super-nit: consider ref to https://sites.google.com/corp/view/e14s-test here to clarify that this should always be in sync with that.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caefbe6_b19677e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T06:45:11Z",
+      "side": 1,
+      "message": "super-super-nit: different order to \"official\" page",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc55ed6_efbd814e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T06:45:11Z",
+      "side": 1,
+      "message": "nit: can we remove the shiftStateLocked check from here to match manualShift?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84cd74d_e9607440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T06:45:11Z",
+      "side": 1,
+      "message": "/second/third/",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 54
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15808f8d_1fcd26ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T06:45:11Z",
+      "side": 1,
+      "message": "consideration: use the same raw values of the text for all these tests?\n\n(e.g. all are say \"Hello World. H\\n\" or something)",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 75
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3d93eb_b53b5c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T06:45:11Z",
+      "side": 1,
+      "message": "nit: rename url-field or similar",
+      "range": {
+        "startLine": 276,
+        "startChar": 18,
+        "endLine": 276,
+        "endChar": 30
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
