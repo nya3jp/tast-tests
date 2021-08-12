@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a574386c_49ce842d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-12T03:06:27Z",
+      "side": 1,
+      "message": "PTAL.\n\nAt the end, I decided not to add ectool and hwmon to WaitCPUCoolDown as it only adds noise. But I think it is good to provide if one want to get the current maximum temperature for all sensors. (e.g. glbench?)",
+      "revId": "81e4cd890ae3224e2c77d51e1bfb6c6d0bf22a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
