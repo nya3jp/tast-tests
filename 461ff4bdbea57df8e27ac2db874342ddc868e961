@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f54b62_5400b94a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T19:57:41Z",
+      "side": 1,
+      "message": "Addressing comments, I believe they are resolved but let me know if I missed something or you had additional feedback!",
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2259c6d5_d94a9897",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-08-12T19:34:58Z",
       "side": 1,
       "message": "Here copy paste is dependent on typing. If typing fails then copy paste won\u0027t run. Is there a way to de-couple it. May be by having some text with static content on the screen from app which we can use for copy paste.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98209be9_f6b61126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T19:57:41Z",
+      "side": 1,
+      "message": "This method uses the \u0027textCopySource\u0027 component from the Android app which is defined as:\n\n  \u003cEditText\n      android:id\u003d\"@+id/textCopySource\"\n      android:layout_width\u003d\"match_parent\"\n      android:layout_height\u003d\"53dp\"\n      android:ems\u003d\"10\"\n      android:inputType\u003d\"text\"\n      android:text\u003d\"SOURCE_TEXT_TO_COPY\"\n  /\u003e\n  \nand is independent of the \u0027textKeyboardInput\u0027 component that the \u0027runStandardizedKeyboardTypingTest\u0027 test uses so I think we\u0027re OK here unless I\u0027m misunderstanding something?",
+      "parentUuid": "2259c6d5_d94a9897",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -66,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02528f40_0dc5c85b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T19:57:41Z",
+      "side": 1,
+      "message": "I originally had a cpu wait after the call to SetARCAppWindowStateAndWait because the redraw from snapped left to full screen would come back as \u0027ready\u0027 but in reality was a bit flakey on some devices. Additionally, Yuichiro asked me to remove the cpu wait because it could be problematic on some devices. I then did some research into the WM and realized on initial load it\u0027s biased towards opening in the maximized window state. From there, I realized going to Fullscreen would be a minor CPU drain so I start the test in Fullscreen mode to cut down on flakiness, and speed up the test suite.",
+      "parentUuid": "de8b3539_a1831734",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 76
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8841ebbe_638640c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
         "patchSetId": 5
@@ -77,6 +142,30 @@
       "writtenOn": "2021-08-12T19:34:58Z",
       "side": 1,
       "message": "This as well intentional?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22bff379_db9851b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T19:57:41Z",
+      "side": 1,
+      "message": "Same as above clamshell comment.",
+      "parentUuid": "8841ebbe_638640c8",
       "range": {
         "startLine": 72,
         "startChar": 0,
