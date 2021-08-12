@@ -29,6 +29,7 @@ var dpPlusModels = []string{
 	"guado",
 	"karma",
 	"lars",
+	"lili",
 	// nautilus family
 	"nautilus", "nautiluslte",
 	"nocturne",
@@ -47,7 +48,8 @@ var dpPlusModels = []string{
 	"arcada", "sarien",
 	"tidus",
 	// volteer family
-	"delbin", "volteer", "volteer2",
+	// TODO(b:190100059): Remove once VBT is fixed.
+	"delbin", "eldrid", "lillipup", "lindar", "volteer", "volteer2",
 }
 
 func init() {
