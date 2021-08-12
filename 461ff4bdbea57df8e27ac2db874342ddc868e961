@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5175cd_82013dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T23:56:08Z",
+      "side": 1,
+      "message": "Broke this out into two separate tests like we discussed via chat.",
+      "parentUuid": "98209be9_f6b61126",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de8b3539_a1831734",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67fba750_dcae9864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T23:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02528f40_0dc5c85b",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 76
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8841ebbe_638640c8",
@@ -166,6 +214,30 @@
       "side": 1,
       "message": "Same as above clamshell comment.",
       "parentUuid": "8841ebbe_638640c8",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af76ed6a_2a599225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-12T23:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22bff379_db9851b0",
       "range": {
         "startLine": 72,
         "startChar": 0,
