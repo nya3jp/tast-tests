@@ -22,6 +22,30 @@
       },
       "revId": "3295fe141a8072ec42bbc0d7530c8ebbc3da02e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c495a07f_f8367027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/document_2448x3264.jpg.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-12T06:21:29Z",
+      "side": 1,
+      "message": "Yes, I use a portrait document image since I think in most cases document are written/printed in portrait. For a tablet users, it makes sense for a user to hold the device in portrait orientation and take photo of a portrait document so that they don\u0027t need to rotate the image/document afterwards. But for end-to-end tests, since it is not very easy to put the lab devices in portrait orientation, I use landscape images as the fake scene.",
+      "parentUuid": "99abc9c9_4565f732",
+      "range": {
+        "startLine": 2,
+        "startChar": 71,
+        "endLine": 2,
+        "endChar": 80
+      },
+      "revId": "3295fe141a8072ec42bbc0d7530c8ebbc3da02e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
