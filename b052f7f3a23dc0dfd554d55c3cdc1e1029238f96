@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dafda7e_504ca635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:19:03Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3066788/comments/e3168a0b_19df37f9",
+      "range": {
+        "startLine": 75,
+        "startChar": 53,
+        "endLine": 75,
+        "endChar": 66
+      },
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74f9c393_f3cdcc0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
         "patchSetId": 3
@@ -103,6 +126,30 @@
       "side": 1,
       "message": "Nya, what you will suggest here?",
       "parentUuid": "10ce1b2b_3fa8db84",
+      "range": {
+        "startLine": 90,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93420a79_a9d5fb37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:19:03Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3066788/comments/2cc6aa4f_c082098c\n\nYou can use cmpopts.IgnoreFields to skip some fields for comparison. I believe it\u0027s more readable than generating expected values from actual values.\nhttps://pkg.go.dev/github.com/google/go-cmp@v0.5.6/cmp/cmpopts#IgnoreFields",
+      "parentUuid": "001a9e04_a2d73ac0",
       "range": {
         "startLine": 90,
         "startChar": 22,
