@@ -44,6 +44,8 @@ func init() {
 // that lets users maximize the battery health by using a standard charging algorithm and other techniques
 // during non-working hours. During work hours, it uses express charging to charge the battery as quickly
 // as possible. Setting the policy to disabled or leaving it unset keeps advanced battery charge mode off.
+// Setup guide:
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/wilco/docs/README.md#Plain-Servo-Type_C_Controlling-power-delivery
 func DeviceAdvancedBatteryChargeMode(ctx context.Context, s *testing.State) {
 	const (
 		// Minimum battery percentage requires in the DUT for successful sub testing.

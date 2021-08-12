@@ -50,6 +50,8 @@ func init() {
 // policy and the current time is in between "start_time" and "end_time", DUT uses battery even if it
 // is plugged into AC. Even after the "end_time", DUT runs on AC till "charge_start_time" but
 // doesn't charge the battery.
+// Setup guide:
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/wilco/docs/README.md#Plain-Servo-Type_C_Controlling-power-delivery
 func DevicePowerPeakShift(ctx context.Context, s *testing.State) {
 	const (
 		// The lowest DevicePowerPeakShift.battery_threshold can be set is 15%.

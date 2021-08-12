@@ -51,6 +51,8 @@ func init() {
 // 5 = Charge battery while it is within a fixed range.
 // If Custom battery charge mode (5) is selected, then DeviceBatteryChargeCustomStartCharging and
 // DeviceBatteryChargeCustomStopCharging values need to be specified alongside.
+// Setup guide:
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/wilco/docs/README.md#Plain-Servo-Type_C_Controlling-power-delivery
 func DeviceBatteryChargeMode(ctx context.Context, s *testing.State) {
 	const (
 		// Minimum battery percentage requires in DUT for successful sub testing.
