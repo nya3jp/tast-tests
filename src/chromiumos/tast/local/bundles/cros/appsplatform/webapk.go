@@ -6,6 +6,7 @@ package appsplatform
 
 import (
 	"context"
+	"io/ioutil"
 	"net/http"
 	"time"
 
@@ -22,6 +23,7 @@ import (
 type shareResult struct {
 	text  string
 	title string
+	files []string
 	err   error
 }
 
@@ -31,8 +33,10 @@ const (
 
 	localServerAddr = "localhost:8000"
 
-	testPackage = "org.chromium.arc.testapp.chromewebapk"
-	testClass   = "org.chromium.arc.testapp.chromewebapk.MainActivity"
+	testPackage        = "org.chromium.arc.testapp.chromewebapk"
+	testClass          = "org.chromium.arc.testapp.chromewebapk.MainActivity"
+	shareTextButtonID  = testPackage + ":id/share_text_button"
+	shareFilesButtonID = testPackage + ":id/share_files_button"
 )
 
 func init() {
@@ -89,9 +93,11 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	defer server.Shutdown(cleanupCtx)
 	defer close(shareChan)
 
-	if err := installTestApps(ctx, cr, a, tconn, s.DataPath(generatedWebAPK)); err != nil {
+	appID, err := installTestApps(ctx, cr, a, tconn, s.DataPath(generatedWebAPK))
+	if err != nil {
 		s.Fatal("Failed to install test apps: ", err)
 	}
+	defer apps.Close(ctx, tconn, appID)
 
 	activity, err := arc.NewActivity(a, testPackage, testClass)
 	if err != nil {
@@ -103,12 +109,20 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	}
 	defer activity.Stop(cleanupCtx, tconn)
 
-	if err := clickShareTextButton(ctx, a); err != nil {
-		s.Fatal("Failed to click share button in test app: ", err)
+	// Click the "Share Text" button and verify that text is received.
+	if err := clickShareButton(ctx, a, shareTextButtonID); err != nil {
+		s.Fatal("Failed to click share text button in test app: ", err)
 	}
-
 	if err := verifySharedText(ctx, shareChan); err != nil {
 		s.Fatal("Failed to share text from test app: ", err)
+	}
+
+	// Click the "Share Files" button and verify that files are received.
+	if err := clickShareButton(ctx, a, shareFilesButtonID); err != nil {
+		s.Fatal("Failed to click share files button in test app: ", err)
+	}
+	if err := verifySharedFiles(ctx, shareChan); err != nil {
+		s.Fatal("Failed to share files from test app: ", err)
 	}
 }
 
@@ -123,16 +137,32 @@ func startTestPWAServer(ctx context.Context, filesystem http.FileSystem) (*http.
 			return
 		}
 
-		sharedText := ""
+		var result shareResult
+
 		if len(r.MultipartForm.Value["text"]) == 1 {
-			sharedText = r.MultipartForm.Value["text"][0]
+			result.text = r.MultipartForm.Value["text"][0]
 		}
-		sharedTitle := ""
 		if len(r.MultipartForm.Value["title"]) == 1 {
-			sharedTitle = r.MultipartForm.Value["title"][0]
+			result.title = r.MultipartForm.Value["title"][0]
 		}
 
-		shareChan <- shareResult{text: sharedText, title: sharedTitle}
+		result.files = make([]string, len(r.MultipartForm.File["received_file"]))
+		for i, f := range r.MultipartForm.File["received_file"] {
+			filecontents, err := f.Open()
+			defer filecontents.Close()
+			if err != nil {
+				shareChan <- shareResult{err: errors.Wrap(err, "failed to open file")}
+				return
+			}
+			bytes, err := ioutil.ReadAll(filecontents)
+			if err != nil {
+				shareChan <- shareResult{err: errors.Wrap(err, "failed to read file")}
+				return
+			}
+			result.files[i] = string(bytes)
+		}
+
+		shareChan <- result
 	})
 
 	server := &http.Server{Addr: localServerAddr, Handler: mux}
@@ -145,7 +175,7 @@ func startTestPWAServer(ctx context.Context, filesystem http.FileSystem) (*http.
 	return server, shareChan
 }
 
-func installTestApps(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tconn *chrome.TestConn, webAPKPath string) error {
+func installTestApps(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tconn *chrome.TestConn, webAPKPath string) (string, error) {
 	const (
 		localServerIndex = "http://" + localServerAddr + "/webshare_index.html"
 		installTimeout   = 15 * time.Second
@@ -154,27 +184,23 @@ func installTestApps(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tconn *
 
 	appID, err := apps.InstallPWAForURL(ctx, cr, localServerIndex, installTimeout)
 	if err != nil {
-		return errors.Wrap(err, "failed to install PWA for URL")
+		return "", errors.Wrap(err, "failed to install PWA for URL")
 	}
 
 	if err := ash.WaitForChromeAppInstalled(ctx, tconn, appID, installTimeout); err != nil {
-		return errors.Wrap(err, "failed to wait for PWA to be installed")
+		return "", errors.Wrap(err, "failed to wait for PWA to be installed")
 	}
 	if err := a.Install(ctx, webAPKPath); err != nil {
-		return errors.Wrap(err, "failed to install WebAPK")
+		return "", errors.Wrap(err, "failed to install WebAPK")
 	}
 	if err := a.Install(ctx, arc.APKPath(testAPK)); err != nil {
-		return errors.Wrap(err, "failed to install test app")
+		return "", errors.Wrap(err, "failed to install test app")
 	}
-	return nil
+	return appID, nil
 
 }
 
-func clickShareTextButton(ctx context.Context, a *arc.ARC) error {
-	const (
-		shareTextButtonID = testPackage + ":id/share_text_button"
-	)
-
+func clickShareButton(ctx context.Context, a *arc.ARC, buttonID string) error {
 	device, err := a.NewUIDevice(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize UI Automator")
@@ -190,7 +216,7 @@ func clickShareTextButton(ctx context.Context, a *arc.ARC) error {
 
 	// Clicking the "Share Text" button will send share data directly to
 	// any installed WebAPK.
-	if err := device.Object(ui.ID(shareTextButtonID)).Click(ctx); err != nil {
+	if err := device.Object(ui.ID(buttonID)).Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click share button")
 	}
 	return nil
@@ -220,5 +246,32 @@ func verifySharedText(ctx context.Context, shareChan chan shareResult) error {
 	if receivedShare.text != expectedSharedText {
 		return errors.Errorf("failed to match shared title: got %q, want %q", receivedShare.text, expectedSharedText)
 	}
+	return nil
+}
+
+func verifySharedFiles(ctx context.Context, shareChan chan shareResult) error {
+	const (
+		expectedFile0 = "{\"text\": \"foobar\"}"
+		expectedFile1 = "{\"text\": \"lorem ipsum\"}"
+	)
+
+	var receivedShare shareResult
+	select {
+	case receivedShare = <-shareChan:
+	case <-ctx.Done():
+		return errors.New("timeout waiting to receive shared text")
+	}
+
+	if receivedShare.err != nil {
+		return errors.Wrap(receivedShare.err, "error received from test server")
+	}
+
+	if receivedShare.files[0] != expectedFile0 {
+		return errors.Errorf("failed to match shared file: got %q, want %q", receivedShare.files[0], expectedFile0)
+	}
+	if receivedShare.files[1] != expectedFile1 {
+		return errors.Errorf("failed to match shared file: got %q, want %q", receivedShare.files[1], expectedFile1)
+	}
+
 	return nil
 }
