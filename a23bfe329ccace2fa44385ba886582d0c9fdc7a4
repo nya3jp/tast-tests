@@ -34,6 +34,24 @@
       "parentUuid": "ba44ac88_cdc45ef0",
       "revId": "a23bfe329ccace2fa44385ba886582d0c9fdc7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b63a806_d7a11041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-12T18:43:45Z",
+      "side": 1,
+      "message": "Sorry, think my example is not correct. We should make sure \"return\" happens.\n\ni.e.\n\n  if err !\u003d nil {\n    if e \u003d\u003d nil {\n      e \u003d errors.Wrap(...)\n    }\n    return\n  }\n  \nAlso, we should update other places at L261, L266 too.",
+      "parentUuid": "e1792841_2080db35",
+      "revId": "a23bfe329ccace2fa44385ba886582d0c9fdc7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
