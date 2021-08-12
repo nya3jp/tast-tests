@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47358c10_fdf73255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T04:58:45Z",
+      "side": 1,
+      "message": "Do we need any dep to make this only run on device with doc scan lib installed?",
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41fdb41_9c9fcefd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T04:58:45Z",
+      "side": 1,
+      "message": "There is a misleading comment [1] in SetUpBenchmark() said that it will wait cpu idle, but it actually doesn\u0027t. Could you help remove that comment?\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/media/cpu/cpu.go?l\u003d115\u0026rcl\u003d5c49945d293185975d03bcfca6f30bb0ad286bb4",
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a501b741_e5057f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T04:58:45Z",
+      "side": 1,
+      "message": "nit: maybe \"json\" to make it more clear",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fecdefe_609837ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T04:58:45Z",
+      "side": 1,
+      "message": "Parsing?",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c70741_45f9dac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T04:58:45Z",
+      "side": 1,
+      "message": "nit: let\u0027s log the metrics as well so we can easily see the result in `tast run`",
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
