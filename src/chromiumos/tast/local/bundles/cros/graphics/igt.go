@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -318,7 +319,7 @@ func init() {
 			Val: igtTest{
 				exe: "kms_vblank",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout: 15 * time.Minute,
 		}, {
 			Name: "kms_vrr",
 			Val: igtTest{
@@ -381,6 +382,18 @@ func IGT(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a log file: ", err)
 	}
 	defer f.Close()
+
+	// Tests such as kms_flip requires Suspend and Wake-up which are achieved using the RTC wake-up alarm.
+	// tlsdated is holding /dev/rtc so IGT fails to take the lock and set a wake up alarm. Hence, it
+	// is required to stop the tlsdated before running the IGT test.
+	if err := upstart.StopJob(ctx, "tlsdated"); err != nil {
+		s.Fatal("Failed to stop tlsdated: ", err)
+	}
+	defer func() {
+		if err := upstart.StartJob(ctx, "tlsdated"); err != nil {
+			s.Error("Failed to start tlsdated: ", err)
+		}
+	}()
 
 	exePath := filepath.Join("/usr/local/libexec/igt-gpu-tools", testOpt.exe)
 	cmd := testexec.CommandContext(ctx, exePath)
