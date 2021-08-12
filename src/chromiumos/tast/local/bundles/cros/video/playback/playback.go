@@ -224,10 +224,10 @@ func measureCPUUsage(ctx context.Context, p *perf.Values) error {
 // sampleDroppedFrames obtains the number of decoded and dropped frames.
 func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
 	var decodedFrameCount, droppedFrameCount int64
-	if err := conn.Eval(ctx, videoElement+".webkitDecodedFrameCount", &decodedFrameCount); err != nil {
+	if err := conn.Eval(ctx, videoElement+".getVideoPlaybackQuality().totalVideoFrames", &decodedFrameCount); err != nil {
 		return errors.Wrap(err, "failed to get number of decoded frames")
 	}
-	if err := conn.Eval(ctx, videoElement+".webkitDroppedFrameCount", &droppedFrameCount); err != nil {
+	if err := conn.Eval(ctx, videoElement+".getVideoPlaybackQuality().droppedVideoFrames", &droppedFrameCount); err != nil {
 		return errors.Wrap(err, "failed to get number of dropped frames")
 	}
 
