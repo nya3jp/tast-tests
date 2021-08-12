@@ -34,17 +34,15 @@ func init() {
 		SoftwareDeps: []string{"chrome", "wilco"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
 		Timeout:      20 * time.Minute,
-		// Var "servo" is a ServoV4 Type-A device paired with a Servo Micro via the micro USB port.
-		// Servo Micro as usual gets connected to the DUT motherboard debug header and the other cable
-		// with a USB-A head is attached to the DUT type A port having a lightning bolt or a battery icon.
-		// Note: both cables must be connected to the DUT.
-		Vars: []string{"servo"},
+		Vars:         []string{"servo"},
 	})
 }
 
 // DeviceUSBPowershare verifies DeviceUsbPowerShareEnabled policy that enables sharing power through USB
 // when DUT is in a power-off state. If the policy is disabled, no power through USB and if it is unset,
 // it acts as enabled.
+// Setup guide:
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/wilco/docs/README.md#servo-type_a-with-servo-micro-measuring-usb-vbus-output-with-dut-on_off-state
 func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 

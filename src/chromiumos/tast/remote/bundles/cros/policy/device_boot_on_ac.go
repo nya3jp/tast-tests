@@ -35,15 +35,14 @@ func init() {
 		Timeout:      30 * time.Minute,
 		Attr:         []string{"group:enrollment"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
-		// Var "servo" is a ServoV4 Type-C device paired with a Servo Micro via the micro USB port.
-		// Servo Micro as usual gets connected to the DUT motherboard debug header and the other cable with
-		// a USB-C head is attached to the DUT type C port. Note: both cables must be connected to the DUT.
-		Vars: []string{"servo"},
+		Vars:         []string{"servo"},
 	})
 }
 
 // DeviceBootOnAC verifies DeviceBootOnAcEnabled policy that boots the device from the off state by plugging
 // in a power supply. If the policy is disabled or not set, boot on AC is off.
+// Setup guide:
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/wilco/docs/README.md#servo-type_c-with-servo-micro-controlling-power-delivery-with-dut-on_off-state
 func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
