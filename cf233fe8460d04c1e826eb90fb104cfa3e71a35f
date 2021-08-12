@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf1bf97_2428d95b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-12T22:05:36Z",
+      "side": 1,
+      "message": "Got around the issue in this test.",
+      "parentUuid": "b6e7e0b6_f893e11e",
+      "revId": "cf233fe8460d04c1e826eb90fb104cfa3e71a35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e580e81_ddc6c592",
