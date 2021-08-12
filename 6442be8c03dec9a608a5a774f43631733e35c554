@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3df982_b7f6af7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1512627
+      },
+      "writtenOn": "2021-08-12T15:20:50Z",
+      "side": 1,
+      "message": "This function is no longer needed in this test; it landed in https://crrev.com/c/3053842",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "6442be8c03dec9a608a5a774f43631733e35c554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
