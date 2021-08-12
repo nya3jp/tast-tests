@@ -7,6 +7,7 @@ package inputs
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -14,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -23,17 +23,16 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// Documentation on file format can be found in go/tast-handwriting-svg-parsing.
-const (
-	handwritingWarmupFile  = "handwriting_digit_3.svg"
-	handwritingWarmupDigit = "3"
-)
-
 var hwTestMessages = []data.Message{data.HandwritingMessageHello}
 var hwTestIMEs = []ime.InputMethod{
-	ime.Japanese,
+	ime.AlphanumericWithJapaneseKeyboard,
+	ime.Arabic,
 	ime.ChinesePinyin,
+	ime.EnglishUK,
 	ime.EnglishUS,
+	ime.EnglishUSWithInternationalKeyboard,
+	ime.Japanese,
+	ime.Korean,
 }
 
 func init() {
@@ -43,27 +42,24 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
-		Data:         append(data.ExtractExternalFiles(hwTestMessages, hwTestIMEs), handwritingWarmupFile),
+		Data:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEs),
+		Pre:          pre.VKEnabledReset,
 		Timeout:      time.Duration(len(hwTestIMEs)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "docked",
-				Val:               false, // false for docked-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
 				Name:              "docked_informational",
-				Val:               false, // false for docked-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 			{
 				Name:              "floating",
-				Val:               true, // true for floating-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
 				Name:              "floating_informational",
-				Val:               true, // true for floating-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 		},
@@ -71,35 +67,13 @@ func init() {
 }
 
 func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
+
 	cleanupCtx := ctx
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	isFloating := s.Param().(bool)
-	// Options containing preconditions.
-	opts := []chrome.Option{
-		chrome.VKEnabled(),
-		chrome.ExtraArgs("--force-tablet-mode=touch_view"),
-	}
-
-	// Add precondition of requiring a floating keyboard if testing for floating handwriting input.
-	if isFloating {
-		opts = append(opts, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"))
-	}
-
-	// TODO(crbug/1173252): Clean up states within Chrome using preconditions.
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Failed to connect to new Chrome instance: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Launch inputs test web server.
@@ -112,6 +86,27 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	// Select the input field being tested.
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
+
+	// Switch to floating mode if needed.
+	isFloating := strings.Contains(s.TestName(), "floating")
+	if isFloating {
+		if err := uiauto.Combine("validate handwriting input",
+			its.ClickFieldUntilVKShown(inputField),
+			vkbCtx.SetFloatingMode(true),
+		)(ctx); err != nil {
+			s.Fatal("Failed to switch to floating mode: ", err)
+		}
+
+		defer func(ctx context.Context) {
+			if err := uiauto.Combine("switch back to docked mode and hide VK",
+				its.ClickFieldUntilVKShown(inputField),
+				vkbCtx.SetFloatingMode(false),
+				vkbCtx.HideVirtualKeyboard(),
+			)(ctx); err != nil {
+				s.Log("Failed to cleanup floating mode: ", err)
+			}
+		}(cleanupCtx)
+	}
 
 	// Creates subtest that runs the test logic using inputData.
 	subtest := func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State) {
@@ -130,30 +125,8 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
-				s.Fatal("Failed to show VK: ", err)
-			}
-
-			// Switch to handwriting layout.
-			hwCtx, err := vkbCtx.SwitchToHandwriting(ctx)
-			if err != nil {
-				s.Fatal("Failed to switch to handwriting: ", err)
-			}
-
-			// Warm-up steps to check handwriting engine ready.
-			checkEngineReady := uiauto.Combine("Wait for handwriting engine to be ready",
-				its.Clear(inputField),
-				hwCtx.DrawStrokesFromFile(s.DataPath(handwritingWarmupFile)),
-				util.WaitForFieldTextToBe(tconn, inputField.Finder(), handwritingWarmupDigit),
-				hwCtx.ClearHandwritingCanvas(),
-				its.Clear(inputField))
-
-			if err := uiauto.Combine("Test handwriting on virtual keyboard",
-				hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
-				hwCtx.DrawStrokesFromFile(s.DataPath(inputData.HandwritingFile)),
-				util.WaitForFieldTextToBe(tconn, inputField.Finder(), inputData.ExpectedText),
-			)(ctx); err != nil {
-				s.Fatal("Failed to verify handwriting input: ", err)
+			if err := its.ValidateInputFieldForMode(inputField, util.InputWithHandWriting, inputData, s.DataPath)(ctx); err != nil {
+				s.Fatal("Failed to validate handwriting input: ", err)
 			}
 		}
 	}
