@@ -16,6 +16,75 @@
       "message": "@Renuga, I missed adding you as a reviewer to this and you are an owner for some of the files. Can you check it when you get a moment? I ran it on eve, and eve-arc-r using crosfleet to verify it.",
       "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2259c6d5_d94a9897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-12T19:34:58Z",
+      "side": 1,
+      "message": "Here copy paste is dependent on typing. If typing fails then copy paste won\u0027t run. Is there a way to de-couple it. May be by having some text with static content on the screen from app which we can use for copy paste.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8b3539_a1831734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-12T19:34:58Z",
+      "side": 1,
+      "message": "Is this order change intentional?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 76
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8841ebbe_638640c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-12T19:34:58Z",
+      "side": 1,
+      "message": "This as well intentional?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "461ff4bdbea57df8e27ac2db874342ddc868e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
