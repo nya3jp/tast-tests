@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68a11dc5_e11b3533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-12T01:56:24Z",
+      "side": 1,
+      "message": "I guess I\u0027d defer the review mostly to Dean@ here. but still some reply:\n\n\u003e The ax_simple_connect leverages a fair number of functions that would have to be duplicated into a new test fixture if we created a AxTestFixture.\n\nI think in this case, code reuse is still possible to some extent. We can extract common DUT operations, setups, and etc. into common objects and let the Fixture objects to wrap and extend.\n\n(I didn\u0027t really try the refactor so I might overlook potential problems here)\n\n\u003e hopefully the interfaces provide clear boundaries over what is permitted\n\nNot sure but I feel like it is not clear that methods like tf.ConfigureAP are not usable in AX setup. Test writers have to look into the implementation to notice that it depends on LegacyOpenwrtShared.",
+      "parentUuid": "c74bcd28_d4849f86",
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d91a0848_471a5a47",
         "filename": "src/chromiumos/tast/remote/wificell/router/ax_config.go",
         "patchSetId": 6
