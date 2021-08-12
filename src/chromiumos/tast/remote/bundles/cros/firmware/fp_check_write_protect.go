@@ -92,10 +92,11 @@ func testWriteProtect(ctx context.Context, s *testing.State, t *fingerprint.Firm
 	}
 
 	testing.ContextLog(ctx, "Validating that FPMCU write protect state is correct")
-	fpmcuWpState, err := fingerprint.IsHardwareWriteProtected(ctx, t.DUT())
+	fp, err := fingerprint.GetFlashProtect(ctx, t.DUT())
 	if err != nil {
 		return errors.Wrap(err, "failed to get FPMCU write protect state")
 	}
+	fpmcuWpState := fp.IsHardwareWriteProtected()
 
 	testing.ContextLogf(ctx, "Write protect state reported by FPMCU is %t", fpmcuWpState)
 	if fpmcuWpState != writeProtectEnabled {
