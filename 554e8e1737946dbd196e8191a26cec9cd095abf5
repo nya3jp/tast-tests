@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c74bcd28_d4849f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-12T00:05:40Z",
+      "side": 1,
+      "message": "The design intention for the refactor design in go/tast-ap-refactor was to allow the ax specific behavior to exist rather independently from the legacy and future openwrt design while leveraging as much code reuse as possible. In this case, the only addition to the test fixture is to change the login username as well pull the router\u0027s IP. \n\nThe ax_simple_connect leverages a fair number of functions that would have to be duplicated into a new test fixture if we created a AxTestFixture.\n\nI do see how the testfixture file can be bloated, but hopefully the interfaces provide clear boundaries over what is permitted. If you or anyone else still thinks we should migrate ax specific test fixture functionality into another file, I can do that still.",
+      "parentUuid": "53c17a7b_7192fc25",
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d91a0848_471a5a47",
         "filename": "src/chromiumos/tast/remote/wificell/router/ax_config.go",
         "patchSetId": 6
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-02T04:10:13Z",
       "side": 1,
       "message": "I feel like the name is too general. It\u0027s router.Config but can only be used in AxRouter.ApplyRouterSettings. Maybe AxRouterConfig is more suitable.\n\nOr, maybe we should even move all these into a axrouter package. Quite a few enums or options could be confusing as we have similar ones in hostapd. If it\u0027s hard to unify the settings, we should make them clear that these are only for AxRouter and hostapd ones are for LegacyRouter.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc3d889_7bb0902f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-12T00:05:40Z",
+      "side": 1,
+      "message": "I moved the config into another package.",
+      "parentUuid": "d91a0848_471a5a47",
       "range": {
         "startLine": 30,
         "startChar": 3,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-08-02T04:10:13Z",
       "side": 1,
       "message": "It is quite implicit that the parameters to restore are stored here, especially when the input Config is passed by value instead of pointer.\n\nHow about having it as return value?",
+      "range": {
+        "startLine": 68,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "554e8e1737946dbd196e8191a26cec9cd095abf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "327e3ef9_43bdd502",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-12T00:05:40Z",
+      "side": 1,
+      "message": "I made this code snippet a bit confusing by not passing the address of the config into this function. Even though the config is copy by value, the value that contains the map is actually a reference.This means that the map used in each iteration of ApplyRouterSettings is always the same map which gets updated in this function.\n\nI have made the config pass by reference to be more efficient but since I want to update the recovery map with unique keys, I don\u0027t need to return the map.",
+      "parentUuid": "bb5281ec_cd45727e",
       "range": {
         "startLine": 68,
         "startChar": 18,
