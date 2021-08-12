@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba44ac88_cdc45ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-12T15:10:09Z",
+      "side": 1,
+      "message": "Think we might want to only re-assign `e` if it is nil so that we don\u0027t overwrite the test failures returned from Run. IMHO, the test failure error is more important.\n\ne.g.\n\n  if e \u003d\u003d nil \u0026\u0026 err !\u003d nil {\n    e \u003d errors.Wrap(...)\n    return\n  }",
+      "revId": "a23bfe329ccace2fa44385ba886582d0c9fdc7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
