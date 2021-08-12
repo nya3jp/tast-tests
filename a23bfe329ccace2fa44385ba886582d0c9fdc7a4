@@ -52,6 +52,24 @@
       "parentUuid": "e1792841_2080db35",
       "revId": "a23bfe329ccace2fa44385ba886582d0c9fdc7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6187d42_8cf0241f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-12T20:58:39Z",
+      "side": 1,
+      "message": "We can check e \u003d\u003d nil first, if not then just return, else we go on checking stop tracing errors and other errors",
+      "parentUuid": "6b63a806_d7a11041",
+      "revId": "a23bfe329ccace2fa44385ba886582d0c9fdc7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
