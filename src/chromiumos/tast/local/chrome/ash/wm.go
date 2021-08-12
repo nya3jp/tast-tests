@@ -266,6 +266,27 @@ func (w *Window) CloseWindow(ctx context.Context, tconn *chrome.TestConn) error 
 	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.closeAppWindow)", w.ID)
 }
 
+// CloseWindowAndWait requests to close this window and waits for the window to
+// be closed.
+func (w *Window) CloseWindowAndWait(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.closeAppWindow)", w.ID); err != nil {
+		return err
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err := GetAllWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
+		}
+		for _, window := range ws {
+			if window.ID == w.ID {
+				return errors.New("window is still present")
+			}
+		}
+		return nil
+	}, defaultPollOptions)
+}
+
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
 func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, et WMEventType) (WindowStateType, error) {
 	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
