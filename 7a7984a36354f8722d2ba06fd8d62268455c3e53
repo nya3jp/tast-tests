@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fd5676_fe1e5749",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-12T01:47:35Z",
+      "side": 1,
+      "message": "This stops short of hex digits.\n\n[[:xdigit:]]",
+      "range": {
+        "startLine": 112,
+        "startChar": 51,
+        "endLine": 112,
+        "endChar": 53
+      },
+      "revId": "7a7984a36354f8722d2ba06fd8d62268455c3e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
