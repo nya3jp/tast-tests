@@ -140,6 +140,10 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 }
 
 func SplitView(ctx context.Context, s *testing.State) {
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
 
