@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd2c13c_37b5cb09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-12T07:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a737532_cffbce59",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "8d771c06305da9e09d39097a60e911cb98f462ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dcec266_bd5db622",
@@ -37,6 +61,41 @@
       "writtenOn": "2021-08-12T07:38:57Z",
       "side": 1,
       "message": "Are the test and the external files related?",
+      "revId": "8d771c06305da9e09d39097a60e911cb98f462ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9efe71_1685ea10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-12T07:45:43Z",
+      "side": 1,
+      "message": "Yes, used by app_loading_perf.go through apploading.go here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go;rcl\u003de4e2b4d644ae730641724457ed92177aafb634c3;l\u003d122",
+      "parentUuid": "9dcec266_bd5db622",
+      "revId": "8d771c06305da9e09d39097a60e911cb98f462ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16ef93f_5aad8ec7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-12T07:45:43Z",
+      "side": 1,
+      "message": "Thanks for reviewing, PTALA.",
       "revId": "8d771c06305da9e09d39097a60e911cb98f462ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
