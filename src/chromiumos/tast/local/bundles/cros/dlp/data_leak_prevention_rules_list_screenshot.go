@@ -123,6 +123,8 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
 				s.Fatal("Failed to close notifications: ", err)
 			}
+
+			// Clean up previous screenshots.
 			if err := screenshot.RemoveScreenshots(); err != nil {
 				s.Fatal("Failed to remove screenshots: ", err)
 			}
@@ -141,6 +143,7 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 				s.Fatalf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
 			}
 
+			// Check if the screenshot is taken.
 			has, err := screenshot.HasScreenshots()
 			if err != nil {
 				s.Fatal("Failed to check whether screenshot is present: ", err)
