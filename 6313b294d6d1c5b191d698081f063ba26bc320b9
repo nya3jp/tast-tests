@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4c6d5390_bc776a43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-08-12T07:05:55Z",
+      "side": 1,
+      "message": "Thanks. Ghost window is a sibling project of full restore. So we keep the same tag for full restore and ghost window related stuff.",
+      "parentUuid": "de423a15_5f1ff0ca",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "6313b294d6d1c5b191d698081f063ba26bc320b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d6cf85db_55b571c5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +95,23 @@
       "writtenOn": "2021-08-12T04:57:12Z",
       "side": 1,
       "message": "Since victor is OOO until Sept, retry to find a reviewer.",
+      "revId": "6313b294d6d1c5b191d698081f063ba26bc320b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99942185_8262f841",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-08-12T07:05:55Z",
+      "side": 1,
+      "message": "Thanks for your review.",
       "revId": "6313b294d6d1c5b191d698081f063ba26bc320b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
