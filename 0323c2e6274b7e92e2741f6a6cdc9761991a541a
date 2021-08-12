@@ -1,0 +1,294 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6ce55c_72970da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: unrelated changes?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 82
+      },
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214dba62_89d7f262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating inline comments below? Add blank lines between steps in the code below instead.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4cc7d2e_592509b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating the self-explanatory code?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "981ef455_82b55760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating the self-explanatory code?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6670a957_bd9b93df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating the self-explanatory code?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321a1a05_0c6d33e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating the self-explanatory code?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ba4736_69448430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: no need for \"else\" after early-return; add blank line after early-out if-block.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208fb6b0_7fa95914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating inline comments below? Add blank lines between steps in the code below instead.",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b888d5_266dbe93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "should also test that manual shift/shiftlock will override the auto ones, i.e. it still takes effect if manual is done right after a shift state induced by auto?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa4b09e_df44610c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating inline comments below? Add blank lines between steps in the code below instead.",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f84662_98fd505c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "should also test that manual shift/shiftlock will override the auto ones, i.e. it still takes effect if manual is done right after a shift state induced by auto?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31a506d_29131679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: remove as it\u0027s repeating inline comments below? Add blank lines between steps in the code below instead.",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c6af1e_af22291d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "should also test that manual shift/shiftlock will override the auto ones, i.e. it still takes effect if manual is done right after a shift state induced by auto?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9481b2a_e0ccb5d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: incorrect comment",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3cbeba_d60a8214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: redundant comment; there\u0027s no autoshift here",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1ec9ba_e1123e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-12T09:20:07Z",
+      "side": 1,
+      "message": "nit: redundant comment? there\u0027s no autoshift here, everything the same as manual shift test?",
+      "revId": "0323c2e6274b7e92e2741f6a6cdc9761991a541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
