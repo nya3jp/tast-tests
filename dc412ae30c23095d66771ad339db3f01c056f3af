@@ -33,6 +33,24 @@
       "message": "Hello Greg,\n\nI\u0027ve noticed that the submit requirements seem to also require review from the Code Owners. I\u0027m wondering if you\u0027d have suggestions on who we should reach out to for this field. \n\nThanks!",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b0fde3_f9b6de22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-08-12T23:38:41Z",
+      "side": 1,
+      "message": "Yes, please assign tast-owners@ as a Reviewer for any CLs in this repository. That\u0027s an automated queue which will randomly assign an owner. You can read more about the process at go/tast-reviews.\n\nFor this CL, I\u0027m adding tast-owners@ directly.",
+      "parentUuid": "eb324af0_46c5548a",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
