@@ -275,11 +275,17 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Actio
 	var flipButtonFinder *nodewith.Finder
 	if enabled {
 		flipButtonFinder = KeyFinder.Name("make virtual keyboard movable")
-		return vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder))
+		return vkbCtx.ui.IfSuccessThen(
+			vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(flipButtonFinder),
+			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
+		)
 	}
 
 	flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
-	return vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder))
+	return vkbCtx.ui.IfSuccessThen(
+		vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(flipButtonFinder),
+		vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
+	)
 }
 
 // TapKeyboardLayout returns an action clicking keyboard layout to switch.
