@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f93ea5b_92649e96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T11:18:50Z",
+      "side": 1,
+      "message": "nit: tast-tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "efd41876_6529ecd9",
@@ -14,6 +37,92 @@
       "writtenOn": "2021-08-12T08:29:03Z",
       "side": 1,
       "message": "There was a mistake in the init script, I\u0027ve uploaded the fix here: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3088869 and made this CL depend on it. Let\u0027s see if the CQ runs through this time.",
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432a2666_3c66c00f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T11:18:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10da3864_3f97a407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T11:18:50Z",
+      "side": 1,
+      "message": "you actually need to check os.IsNotExist(err) to be sure about error",
+      "range": {
+        "startLine": 119,
+        "startChar": 42,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6b6afc_36beeec6",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T11:18:50Z",
+      "side": 1,
+      "message": "nit:\n\ntesting.ContextLog(ctx, \"Failed to get policy files: \", err)",
+      "range": {
+        "startLine": 350,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 38
+      },
+      "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d29bda_66c542c2",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T11:18:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 40
+      },
       "revId": "78d1c85a4ee3127f0b628b75030d87ede1b1f009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
