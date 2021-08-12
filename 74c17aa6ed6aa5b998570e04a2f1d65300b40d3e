@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1341f022_cc0f2fa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:22:05Z",
+      "side": 1,
+      "message": "LGTM with just one question. Please feel free to submit without waiting for another iteration.\n",
+      "revId": "74c17aa6ed6aa5b998570e04a2f1d65300b40d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a7fe3f_a8e2a54e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:22:05Z",
+      "side": 1,
+      "message": "Just a question: do we need to start fwupd even if we\u0027ll stop it soon?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "74c17aa6ed6aa5b998570e04a2f1d65300b40d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
