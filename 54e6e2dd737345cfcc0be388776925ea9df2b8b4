@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b636287_55794609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Sure. Got it. May I cover this in following cls? I also have some other scenarios to cover such as switching field.",
+      "parentUuid": "aa23a14e_1c36f72a",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08771914_c7d0eb60",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 4
@@ -111,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed6f25ef_3fc35f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8271c71d_a12805b3",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 68
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d4604a4_462cf748",
@@ -124,6 +166,24 @@
       "writtenOn": "2021-08-12T03:17:43Z",
       "side": 1,
       "message": "This is a function returning an action - ie. a function returning a function.\nShould be able to just do manualshift :\u003d vkbCtx.TapNode(leftshiftkey), then replace all manualshift() with manualshift",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a830ef8_ee8fe10b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4604a4_462cf748",
       "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4296f1e_4c8fbbf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c7cf0a0_ba4ef9e7",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "811b2042_f5cca8a9",
@@ -164,6 +248,24 @@
       "writtenOn": "2021-08-12T03:17:43Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "867116f4_4d0786dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811b2042_f5cca8a9",
       "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a748d5_ff3c22b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ef6be1_8a0c1aee",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d7fa03_dd2d2152",
@@ -204,6 +330,24 @@
       "writtenOn": "2021-08-12T03:17:43Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060b2fb2_09d1a9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d7fa03_dd2d2152",
       "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -231,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3bc2c2_4ff9ad35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd01c17c_9bc9d004",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd920dbd_2b91b4f5",
@@ -244,6 +412,24 @@
       "writtenOn": "2021-08-12T03:17:43Z",
       "side": 1,
       "message": "Does this need to be tested in non-english languages? Would Alvin\u0027s parameterisation work help here?",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c15f15_a4eb23e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Yes. It is nice to have. I confirmed it with Eng team, it only applies to latin language, and implemented the same across IMEs. \n\nUnfortunately the function to fetch shift state only works on English (US). So this cl only implements English (US)",
+      "parentUuid": "dd920dbd_2b91b4f5",
       "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -309,6 +495,30 @@
       "side": 1,
       "message": "yes, if the cleanupCtx is created withnin a subtest.",
       "parentUuid": "506e8ffd_acb8260c",
+      "range": {
+        "startLine": 236,
+        "startChar": 18,
+        "endLine": 236,
+        "endChar": 21
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ccf4a7_d1bea65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T06:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e52000_efe38c16",
       "range": {
         "startLine": 236,
         "startChar": 18,
