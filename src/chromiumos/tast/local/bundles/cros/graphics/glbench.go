@@ -39,13 +39,13 @@ func init() {
 				Val:       config{config: &glbench.CrosConfig{}},
 				Timeout:   3 * time.Hour,
 				ExtraAttr: []string{"group:graphics", "graphics_nightly"},
-				Fixture:   "gpuWatchHangs",
+				Fixture:   "graphicsNoChrome",
 			}, {
 				Name:      "hasty",
 				Val:       config{config: &glbench.CrosConfig{Hasty: true}},
 				ExtraAttr: []string{"group:mainline"},
 				Timeout:   5 * time.Minute,
-				Fixture:   "gpuWatchHangs",
+				Fixture:   "graphicsNoChrome",
 			}, {
 				Name:              "crostini",
 				ExtraAttr:         []string{"group:graphics", "graphics_nightly"},
@@ -79,7 +79,12 @@ func init() {
 
 func GLBench(ctx context.Context, s *testing.State) {
 	config := s.Param().(config).config
-	if err := glbench.Run(ctx, s.OutDir(), s.PreValue(), config); err != nil {
+	value := s.PreValue()
+	if value == nil {
+		value = s.FixtValue()
+	}
+
+	if err := glbench.Run(ctx, s.OutDir(), value, config); err != nil {
 		s.Fatal("GLBench fails: ", err)
 	}
 }
