@@ -39,6 +39,30 @@
       },
       "revId": "74c17aa6ed6aa5b998570e04a2f1d65300b40d3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a0d0335_e8539c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_disabled.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:23:30Z",
+      "side": 1,
+      "message": "Ah I found the answer here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3041173/comments/bd11740e_abf32bae\n\nIt might be nice to add a code comment here describing this intention, so that future readers are not confused.",
+      "parentUuid": "84a7fe3f_a8e2a54e",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "74c17aa6ed6aa5b998570e04a2f1d65300b40d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
