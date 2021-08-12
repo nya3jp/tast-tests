@@ -192,6 +192,24 @@
       "parentUuid": "33539b67_f329fbdb",
       "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ea57ff_5adb0e39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-08-12T12:26:28Z",
+      "side": 1,
+      "message": "The reason is that chronos doesn\u0027t belong to the cras group in this function. That\u0027s why it can not access the cras socket file.",
+      "parentUuid": "15ca0df7_b1dc4429",
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
