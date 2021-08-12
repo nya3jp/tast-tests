@@ -129,7 +129,7 @@ func rightClickOmnibox(ctx context.Context, tconn *chrome.TestConn, url string, 
 	addressBar := nodewith.Name("Address and search bar").First()
 
 	if err := ui.RightClick(addressBar)(ctx); err != nil {
-		return errors.Wrap(err, "failed to right click omni box: ")
+		return errors.Wrap(err, "failed to right click omni box")
 	}
 
 	err := clipboard.CheckGreyPasteNode(ctx, ui)
@@ -153,12 +153,13 @@ func rightClickOmnibox(ctx context.Context, tconn *chrome.TestConn, url string, 
 func pasteOmnibox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
+	// Select the omni box.
 	if err := keyboard.Accel(ctx, "Ctrl+L"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+L to select omni box: ")
+		return errors.Wrap(err, "failed to press Ctrl+L to select omni box")
 	}
 
 	if err := keyboard.Accel(ctx, "Ctrl+V"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+V to paste content: ")
+		return errors.Wrap(err, "failed to press Ctrl+V to paste content")
 	}
 
 	err := clipboard.CheckClipboardBubble(ctx, ui, url)
