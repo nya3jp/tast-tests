@@ -237,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "506e8ffd_acb8260c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-12T03:20:07Z",
+      "side": 1,
+      "message": "Does cleanupctx work within Run to teardown an individual subtest? I don\u0027t have any experience with subtests, so you\u0027re probably more familiar.",
+      "parentUuid": "af47dbe2_dbd6beeb",
+      "range": {
+        "startLine": 236,
+        "startChar": 18,
+        "endLine": 236,
+        "endChar": 21
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4da583c_a63f7f83",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 4
