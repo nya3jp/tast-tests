@@ -86,6 +86,30 @@
       },
       "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4732ea_d316ed8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T10:55:48Z",
+      "side": 1,
+      "message": "This was my idea to try avoid a lot of boilerplate in error checking:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3066791/3..5/src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go#190\n\nWe have to either do smth like:\n\n```\n\tif err :\u003d utils.CompareStringPtrWithFile(path.Join(dmi, \"bios_vendor\"), info.BiosVendor); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"BiosVendor\")\n\t}\n\tif err :\u003d utils.CompareStringPtrWithFile(path.Join(dmi, \"bios_version\"), info.BiosVersion); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"BiosVersion\")\n\t}\n\tif err :\u003d utils.CompareStringPtrWithFile(path.Join(dmi, \"board_name\"), info.BoardName); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"BoardName\")\n\t}\n\tif err :\u003d utils.CompareStringPtrWithFile(path.Join(dmi, \"board_vendor\"), info.BoardVender); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"BoardVender\")\n\t}\n\tif err :\u003d utils.CompareStringPtrWithFile(path.Join(dmi, \"board_version\"), info.BoardVersion); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"BoardVersion\")\n\t}\n\n``` \n\nor \n\n```\n\tvar err error\n\te :\u003d dmiInfo{\n\t\tBiosVendor:     utils.ReadFile(path.Join(dmi, \"bios_vendor\"), errOut),\n\t\tBiosVersion:    utils.ReadFile(path.Join(dmi, \"bios_version\"), errOut),\n\t\tBoardName:      utils.ReadFile(path.Join(dmi, \"board_name\"), errOut),\n\t\tBoardVender:    utils.ReadFile(path.Join(dmi, \"board_vendor\"), errOut),\n\t\tBoardVersion:   utils.ReadFile(path.Join(dmi, \"board_version\"), errOut),\n\t}\n\tif err !\u003d nil {\n\t\t// handler error\n\t}\n```",
+      "parentUuid": "e3168a0b_19df37f9",
+      "range": {
+        "startLine": 70,
+        "startChar": 28,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
