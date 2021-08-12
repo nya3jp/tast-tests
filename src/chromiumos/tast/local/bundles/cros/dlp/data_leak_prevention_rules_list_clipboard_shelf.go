@@ -134,12 +134,12 @@ func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string,
 	// Select shelf box first time.
 	if url == "www.example.com" {
 		if err := ui.LeftClick(searchNode)(ctx); err != nil {
-			return errors.Wrap(err, "failed finding shelf and clicking it: ")
+			return errors.Wrap(err, "failed finding shelf and clicking it")
 		}
 	}
 
 	if err := ui.RightClick(searchNode)(ctx); err != nil {
-		return errors.Wrap(err, "failed to right click shelf box: ")
+		return errors.Wrap(err, "failed to right click shelf box")
 	}
 
 	err := clipboard.CheckGreyPasteNode(ctx, ui)
@@ -166,7 +166,7 @@ func pasteShelfbox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.
 	if err := uiauto.Combine("Paste content in shelf box",
 		ui.LeftClick(searchNode),
 		keyboard.AccelAction("ctrl+V"))(ctx); err != nil {
-		return errors.Wrap(err, "failed to paste content in shelf box: ")
+		return errors.Wrap(err, "failed to paste content in shelf box")
 	}
 
 	err := clipboard.CheckClipboardBubble(ctx, ui, url)
