@@ -16,6 +16,109 @@
       "message": "Resolved. Thanks",
       "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7b4bbf_56e96d2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T15:04:22Z",
+      "side": 1,
+      "message": "nit: remove leftover",
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85005cef_94144fc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T15:04:22Z",
+      "side": 1,
+      "message": "What if \"err !\u003d nil \u0026\u0026 tc.wantBootUp\"?\n\nI don\u0027t think we should use dututils.EnsureDisconnected to verify both cases:\n1. device booted up\n2. device didn\u0027t boot up\n\nReturned error does not indicate that device booted up. It\u0027s a wrong assumption. Returned error indicated that you was not able to ensure that DUT is disconnected. Instead we should use a special function designed to check whether device is booted up (WaitConnect as example).",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd7c33b9_adee6825",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dututils/disconnected.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T15:04:22Z",
+      "side": 1,
+      "message": "Sorry for not catching this early when suggested using testing.Poll.\n\nDue to how testing.Poll handles context deadline exceeded, there is no way for you to figure out whether you was polling enough (the whole timeout duration), check [1].\n\nSo I think it makes sense to write just very similar for loop:\n\n```\ninterval :\u003d time.Second\nfor i :\u003d 0; i \u003c int(timeout / interval); i++ {\n  if err :\u003d d.Connect(ctx); err \u003d\u003d nil {\n    return errors.New(\"DUT booted up\")\n  }\n  \n  select {\n  case \u003c-time.After(interval):\n  case \u003c-ctx.Done():\n    return ctx.Err()\n  }\n}\n\nreturn nil\n```\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testingutil/poll.go;l\u003d82?q\u003dtestingutil.Poll",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4300088e_38e97dc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/power/dut_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T15:04:22Z",
+      "side": 1,
+      "message": "I think it makes sense to merge 2 newly introduced utils packages into one: dututils for simplicity.",
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2656f94_deac204c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/power/dut_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T15:04:22Z",
+      "side": 1,
+      "message": "nit: EnsureDUTIsOn",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
