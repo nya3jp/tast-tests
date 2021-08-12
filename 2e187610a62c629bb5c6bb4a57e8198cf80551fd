@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29cef20c_6e39bf74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-12T18:04:59Z",
+      "side": 1,
+      "message": "I have one comment. Please take a look.",
+      "revId": "2e187610a62c629bb5c6bb4a57e8198cf80551fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049cb13b_8ed4800d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-12T18:04:59Z",
+      "side": 1,
+      "message": "I think it will be better to do it with a \"defer\" instead of at the end of the end.",
+      "revId": "2e187610a62c629bb5c6bb4a57e8198cf80551fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
