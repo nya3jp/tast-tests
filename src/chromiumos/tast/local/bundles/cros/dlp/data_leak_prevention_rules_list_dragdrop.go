@@ -141,19 +141,19 @@ func dragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error
 	contentNode := nodewith.Name(content).First()
 	start, err := ui.Location(ctx, contentNode)
 	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for content: ")
+		return errors.Wrap(err, "failed to get locaton for content")
 	}
 
 	search := "Google Search"
 	searchTab := nodewith.Name(search).Role(role.InlineTextBox).First()
 	endLocation, err := ui.Location(ctx, searchTab)
 	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for google search: ")
+		return errors.Wrap(err, "failed to get locaton for google search")
 	}
 
 	if err := uiauto.Combine("Drag and Drop",
 		mouse.Drag(tconn, start.CenterPoint(), endLocation.CenterPoint(), time.Second*2))(ctx); err != nil {
-		return errors.Wrap(err, "failed to verify content preview for: ")
+		return errors.Wrap(err, "failed to verify content preview for")
 	}
 	return nil
 }
