@@ -6,18 +6,14 @@ package firmware
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
-	"regexp"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
-)
-
-const (
-	targetStr = `.*powerd:\s{1,}Flags:.*Enabled`
 )
 
 func init() {
@@ -33,34 +29,50 @@ func init() {
 	})
 }
 
-// checkForPowerdStr verifies that powerd was found among enabled plugins */
+// checkForPowerdStr verifies that powerd was found among enabled plugins
 func checkForPowerdStr(output []byte) error {
-	matched, err := regexp.Match(targetStr, output)
-	if err != nil {
-		return err
+	type wrapper struct {
+		Plugins []struct {
+			Name  string
+			Flags []string
+		}
 	}
-	if !matched {
-		return errors.New("powerd was not found among enabled plugins")
+	var wp wrapper
+
+	if err := json.Unmarshal(output, &wp); err != nil {
+		return errors.New("failed to parse command output")
 	}
+
+	for _, p := range wp.Plugins {
+		if p.Name == "powerd" {
+			for _, f := range p.Flags {
+				if f == "disabled" {
+					return errors.New("plugin was found to be disabled")
+				}
+			}
+		}
+	}
+
 	return nil
 }
 
 // FwupdPowerdStartup runs fwupdmgr get-plugins, retrieves the output, and
 // checks for powerd
 func FwupdPowerdStartup(ctx context.Context, s *testing.State) {
-	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-plugins")
+	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
+		s.Fatal("Failed to restart fwupd: ", err)
+	}
 
+	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-plugins", "--json")
 	output, err := cmd.Output(testexec.DumpLogOnError)
-
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
-
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "fwupdmgr.txt"), output, 0644); err != nil {
-		s.Fatal("Failed dumping fwupdmgr output: ", err)
+		s.Error("Failed dumping fwupdmgr output: ", err)
 	}
 
 	if err := checkForPowerdStr(output); err != nil {
-		s.Fatal("powerd was not compiled: ", err)
+		s.Fatal("search unsuccessful: ", err)
 	}
 }
