@@ -47,22 +47,22 @@ func init() {
 		Timeout:      time.Duration(len(hwTestIMEs)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:              "docked_stable",
+				Name:              "docked",
 				Val:               false, // false for docked-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
-				Name:              "docked_unstable",
+				Name:              "docked_informational",
 				Val:               false, // false for docked-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 			{
-				Name:              "floating_stable",
+				Name:              "floating",
 				Val:               true, // true for floating-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
-				Name:              "floating_unstable",
+				Name:              "floating_informational",
 				Val:               true, // true for floating-mode VK.
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
