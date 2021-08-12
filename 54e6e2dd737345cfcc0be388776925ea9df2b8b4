@@ -16,6 +16,144 @@
       "message": "Overall looks pretty good.\n\nAny though on adding some tests for manual intervention?\n\n(e.g. in autocap\u003dchars field, type \"HELLO\" (should be all shift) tap shift type \"world\"?",
       "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8271c71d_a12805b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T03:12:32Z",
+      "side": 1,
+      "message": "create a cleanupCtx for this?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 68
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7cf0a0_ba4ef9e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T03:12:32Z",
+      "side": 1,
+      "message": "Would it be better like this?\n\nleftShiftKey :\u003d nodewith.Name(\"shift\").Ancestor(vkb.NodeFinder.HasClass(\"key_pos_shift_left\")\nmanualShift :\u003d vkbCtx.TapNode(leftShiftKey)",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ef6be1_8a0c1aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T03:12:32Z",
+      "side": 1,
+      "message": "shiftLock :\u003d uiauto.Combine(\"double tap to lock shift state\",\n\t\t\t// Throws out error if VK is shifted already.\n\t\t\tvkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),\n\t\t\tmanualShift(),\n\t\t\tmanualShift(),\n\t\t\tvkbCtx.WaitUntilShiftStatus(vkb.ShiftStateLocked),\n\t\t)",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd01c17c_9bc9d004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T03:12:32Z",
+      "side": 1,
+      "message": "validateManualShiftAndShiftLock :\u003d uiauto.Combine(\"validate manual shift and shift-lock\",\n\t\t\t// This scenario should start in unshifted state.\n\t\t\tvkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),\n\t\t\t// VK should be shifted after manual shift.\n\t\t\tmanualShift(),\n\t\t\tvkbCtx.WaitUntilShiftStatus(vkb.ShiftStateShifted),\n\t\t\t// Sleep 1s to avoid double shift.\n\t\t\tui.Sleep(time.Second),\n\t\t\t// VK should be unshifted after second manual shift.\n\t\t\tmanualShift(),\n\t\t\tvkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),\n\t\t\tui.Sleep(time.Second),\n\t\t\t// Validate shift-lock.\n\t\t\tshiftLock(),\n\t\t\t// VK should be unshifted after second manual shift.\n\t\t\tmanualShift(),\n\t\t\tvkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),\n\t\t)",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af47dbe2_dbd6beeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T03:12:32Z",
+      "side": 1,
+      "message": "create a cleanupCtx for teardown?",
+      "range": {
+        "startLine": 236,
+        "startChar": 18,
+        "endLine": 236,
+        "endChar": 21
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4da583c_a63f7f83",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-12T03:12:32Z",
+      "side": 1,
+      "message": "nit: just \"ShiftState\"? suffix \"Type\" seems trivial.",
+      "range": {
+        "startLine": 490,
+        "startChar": 5,
+        "endLine": 490,
+        "endChar": 19
+      },
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
