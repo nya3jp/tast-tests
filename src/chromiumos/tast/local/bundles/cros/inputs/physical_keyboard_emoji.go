@@ -28,10 +28,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
 		Params: []testing.Param{{
+			Name:              "stable",
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
 		}, {
-			Name:              "informational",
+			Name:              "unstable",
 			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}}})
