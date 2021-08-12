@@ -16,6 +16,46 @@
       "message": "slgtm\n\nThanks.",
       "revId": "64fc8c943c55ab78cd9f51fc8c9bf694307fb7c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcfc69c8_61907a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-12T22:12:31Z",
+      "side": 1,
+      "message": "you can take tconn from Chrome.\nSo, how about taking chrome in New(), instead of tconn?",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 10
+      },
+      "revId": "64fc8c943c55ab78cd9f51fc8c9bf694307fb7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8594ee_89589524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-12T22:12:31Z",
+      "side": 1,
+      "message": "if returning error is not nil, could you record errors in log?",
+      "revId": "64fc8c943c55ab78cd9f51fc8c9bf694307fb7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
