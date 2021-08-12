@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55005e27_5a647de5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-12T16:56:10Z",
+      "side": 1,
+      "message": "I wonder whether we should just make this CloseWindow. Callers of CloseWindow probably expect the window being synchronously closed.",
+      "revId": "3049e8068ddd3d54bcac67e37c4dabfa97bd2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
