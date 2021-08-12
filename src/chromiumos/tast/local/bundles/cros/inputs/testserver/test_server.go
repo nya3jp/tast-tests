@@ -52,6 +52,11 @@ const (
 	DateTimeInputField             InputField = "dateTimeInputField"
 	TextInputNumericField          InputField = "textInputNumericField"
 	TextAreaNoCorrectionInputField InputField = "textArea disabled autocomplete, autocorrect, autocapitalize"
+	// These fields are used to test auto-shift (aka autocapitalize).
+	TextAreaAutoShiftInSentence InputField = "autocapitalize in sentence mode"
+	TextAreaAutoShiftInWord     InputField = "autocapitalize in words mode"
+	TextAreaAutoShiftInChar     InputField = "autocapitalize in characters mode"
+	TextAreaAutoShiftOff        InputField = "autocapitalize off"
 
 	// pageTitle is also the rootWebArea name in A11y to identify the scope of the page.
 	pageTitle = "E14s test page"
@@ -64,8 +69,8 @@ const html = `<!DOCTYPE html>
 <pre>No autocomplete</pre>
 <textarea aria-label="textArea disabled autocomplete, autocorrect, autocapitalize" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%"></textarea>
 <br /><br />
-<pre>&lt;<b>textarea</b> rows="7"&gt;&lt;/textarea&gt;</pre>
-<textarea rows="7" aria-label="textAreaInputField" style="width: 100%"></textarea>
+<pre>&lt;<b>textarea</b> rows="3"&gt;&lt;/textarea&gt;</pre>
+<textarea rows="3" aria-label="textAreaInputField" style="width: 100%"></textarea>
 <br /><br />
 <pre>&lt;input type="<b>text</b>"/&gt;</pre>
 <input type="text" aria-label="textInputField" style="width: 100%" />
@@ -113,7 +118,21 @@ const html = `<!DOCTYPE html>
 <input type="datetime-local" aria-label="dateTimeInputField" style="width: 100%" />
 <br /><br />
 <pre>&lt;input type=”text” inputmode=”numeric” pattern="[0-9]*"/&gt; (UK gov suggested numeric input for A11y)</pre>
-<input type="text" inputmode="numeric" aria-label="textInputNumericField"/>`
+<input type="text" inputmode="numeric" aria-label="textInputNumericField"/>
+<br /><br />
+<pre>&lt;autocapitalize: sentences"/&gt;</pre>
+<textarea rows="3" aria-label="autocapitalize in sentence mode" autocapitalize="sentences" style="width: 100%"></textarea>
+<br /><br />
+<pre>&lt;autocapitalize: words"/&gt;</pre>
+<textarea rows="3" aria-label="autocapitalize in words mode" autocapitalize="words" style="width: 100%"></textarea>
+<br /><br />
+<pre>&lt;autocapitalize: characters"/&gt;</pre>
+<textarea rows="3" aria-label="autocapitalize in characters mode" autocapitalize="characters" style="width: 100%"></textarea>
+<br /><br />
+<pre>&lt;autocapitalize: off"/&gt;</pre>
+<textarea rows="3" aria-label="autocapitalize off" autocapitalize="none" style="width: 100%"></textarea>
+<br /><br />
+`
 
 // InputsTestServer is an unified server instance being used to manage web server and connection.
 type InputsTestServer struct {
