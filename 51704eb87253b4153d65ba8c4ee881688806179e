@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "590cb01c_84eaefa3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T12:50:14Z",
+      "side": 1,
+      "message": "Please create separate CL for that. Made changes don\u0027t provide you exactly what you want and block this CL to be submitted.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "51704eb87253b4153d65ba8c4ee881688806179e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2614990b_931f51c8",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-08-12T01:17:41Z",
       "side": 1,
       "message": "Failure in iioservice seems unrelated",
+      "revId": "51704eb87253b4153d65ba8c4ee881688806179e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1366935_1e7a69eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T12:50:14Z",
+      "side": 1,
+      "message": "LGTM if move cleanup context changes to a separate CL.",
+      "revId": "51704eb87253b4153d65ba8c4ee881688806179e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ee10a6_385c8fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T12:50:14Z",
+      "side": 1,
+      "message": "If you really want to reserve enough time for anomaly detector, you should introduce new cleanup context in line 153:\n\n```\n\tcleanupCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n```",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 15
+      },
       "revId": "51704eb87253b4153d65ba8c4ee881688806179e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
