@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -52,19 +53,134 @@ Writable flags:      0x00000001 ro_at_boot
 `
 )
 
+// FlashProtectFlags represents a set of EC flash protect flags.
+type FlashProtectFlags uint64
+
+// Individual flash protect flags.
 const (
-	ecFlashProtectRoAtBoot          = 0x1   // RO flash code protected when the EC boots.
-	ecFlashProtectRoNow             = 0x2   // RO flash code protected now.  If this bit is set, at-boot status cannot be changed.
-	ecFlashProtectAllNow            = 0x4   // Entire flash code protected now, until reboot.
-	ecFlashProtectGpioAsserted      = 0x8   // Flash write protect GPIO is asserted now.
-	ecFlashProtectErrorStuck        = 0x10  // Error - at least one bank of flash is stuck locked, and cannot be unlocked.
-	ecFlashProtectErrorInconsistent = 0x20  // Error - flash protection is in inconsistent state.
-	ecFlashProtectAllAtBoot         = 0x40  // Entire flash code protected when the EC boots.
-	ecFlashProtectRwAtBoot          = 0x80  // RW flash code protected when the EC boots.
-	ecFlashProtectRwNow             = 0x100 // RW flash code protected now.
-	ecFlashProtectRollbackAtBoot    = 0x200 // Rollback information flash region protected when the EC boots.
-	ecFlashProtectRollbackNow       = 0x400 // Rollback information flash region protected now.
+	FlashProtectRoAtBoot          FlashProtectFlags = 0x1   // RO flash code protected when the EC boots.
+	FlashProtectRoNow             FlashProtectFlags = 0x2   // RO flash code protected now.  If this bit is set, at-boot status cannot be changed.
+	FlashProtectAllNow            FlashProtectFlags = 0x4   // Entire flash code protected now, until reboot.
+	FlashProtectGpioAsserted      FlashProtectFlags = 0x8   // Flash write protect GPIO is asserted now.
+	FlashProtectErrorStuck        FlashProtectFlags = 0x10  // Error - at least one bank of flash is stuck locked, and cannot be unlocked.
+	FlashProtectErrorInconsistent FlashProtectFlags = 0x20  // Error - flash protection is in inconsistent state.
+	FlashProtectAllAtBoot         FlashProtectFlags = 0x40  // Entire flash code protected when the EC boots.
+	FlashProtectRwAtBoot          FlashProtectFlags = 0x80  // RW flash code protected when the EC boots.
+	FlashProtectRwNow             FlashProtectFlags = 0x100 // RW flash code protected now.
+	FlashProtectRollbackAtBoot    FlashProtectFlags = 0x200 // Rollback information flash region protected when the EC boots.
+	FlashProtectRollbackNow       FlashProtectFlags = 0x400 // Rollback information flash region protected now.
 )
+
+// IsSet checks if the given flags are set.
+func (f FlashProtectFlags) IsSet(flags FlashProtectFlags) bool {
+	return (f & flags) == flags
+}
+
+// UnmarshalerEctool unmarshals part of the ectool output into a ECFlashProtectFlags.
+func (f *FlashProtectFlags) UnmarshalerEctool(data []byte) error {
+	flagString := string(data)
+	flags, err := strconv.ParseUint(flagString, 0, 32)
+	if err != nil {
+		return errors.Wrapf(err, "failed to convert flash protect flags (%s) to int", flagString)
+	}
+	*f = FlashProtectFlags(flags)
+	return nil
+}
+
+// FlashProtect hold the state of flash protect from an EC.
+type FlashProtect struct {
+	Active    FlashProtectFlags
+	Valid     FlashProtectFlags
+	Writeable FlashProtectFlags
+}
+
+// IsHardwareWriteProtected is used to obtain actual hardware write protection
+// state as reported by the FPMCU.
+func (f *FlashProtect) IsHardwareWriteProtected() bool {
+	return f.Active.IsSet(FlashProtectGpioAsserted)
+}
+
+// IsSoftwareReadOutProtected is used to obtain the RDP status.
+//
+// Software write protection is a bit ambiguous. We enable RDP on both
+// bloonchipper and dartmonkey, which corresponds to the irremovable
+// ro_at_boot flag. This flag, among other things, indicates that ro_now
+// will be enabled at boot. The ro_at_boot flag does not indicate whether
+// the RO is protected from on-chip flash modifications (because it isn't).
+func (f *FlashProtect) IsSoftwareReadOutProtected() bool {
+	return f.Active.IsSet(FlashProtectRoAtBoot)
+}
+
+// IsSoftwareWriteProtected is used to obtain the software write protect status
+// of RO.
+//
+// When ro_now is enabled, the RO flash cannot be written to. This is the
+// iconical software write protect, but the behavior of this mechanism differs
+// between dartmonkey and bloonchipper.
+//
+// For Dartmonkey, once this flag is set on boot, it cannot be removed without
+// flashing via the bootloader (flash_fp_mcu).
+// For bloonchipper, this flag can be removed, but the ro_at_boot cannot be
+// removed.
+//
+// See IsSoftwareReadOutProtected for a bit more detail.
+func (f *FlashProtect) IsSoftwareWriteProtected() bool {
+	return f.Active.IsSet(FlashProtectRoNow)
+}
+
+// UnmarshalerEctool unmarshals part of the ectool output into a FlashProtect.
+func (f *FlashProtect) UnmarshalerEctool(data []byte) error {
+	dataStr := string(data)
+	rActive := regexp.MustCompile(`Flash protect flags\:\s+(0x[[:xdigit:]]+)`)
+	rValid := regexp.MustCompile(`Valid flags\:\s+(0x[[:xdigit:]]+)`)
+	rWriteable := regexp.MustCompile(`Writable flags\:\s+(0x[[:xdigit:]]+)`)
+
+	var fp FlashProtect
+	var flags FlashProtectFlags
+
+	result := rActive.FindStringSubmatch(dataStr)
+	if result == nil || len(result) != 2 {
+		return errors.Errorf("can't find active flash protect flags in %q", dataStr)
+	}
+	if err := flags.UnmarshalerEctool([]byte(result[1])); err != nil {
+		return errors.Wrap(err, "failed to unmarshal active flags")
+	}
+	fp.Active = flags
+
+	result = rValid.FindStringSubmatch(dataStr)
+	if result == nil || len(result) != 2 {
+		return errors.Errorf("can't find valid flash protect flags in %q", dataStr)
+	}
+	if err := flags.UnmarshalerEctool([]byte(result[1])); err != nil {
+		return errors.Wrap(err, "failed to unmarshal valid flags")
+	}
+	fp.Valid = flags
+
+	result = rWriteable.FindStringSubmatch(dataStr)
+	if result == nil || len(result) != 2 {
+		return errors.Errorf("can't find writeable flash protect flags in %q", dataStr)
+	}
+	if err := flags.UnmarshalerEctool([]byte(result[1])); err != nil {
+		return errors.Wrap(err, "failed to unmarshal writeable flags")
+	}
+	fp.Writeable = flags
+
+	*f = fp
+	return nil
+}
+
+// GetFlashProtect is used to obtain actual flash protection state as
+// reported by the FPMCU using the 'ectool --name=cros_fp flashprotect'
+// command.
+func GetFlashProtect(ctx context.Context, d *dut.DUT) (FlashProtect, error) {
+	var fp FlashProtect
+	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(ctx, "flashprotect")
+	bytes, err := cmd.Output()
+	if err != nil {
+		return fp, errors.Wrap(err, "failed to get flashprotect state")
+	}
+	return fp, fp.UnmarshalerEctool(bytes)
+}
 
 func flashProtectState(ctx context.Context, d *dut.DUT) (string, error) {
 	bytes, err := EctoolCommand(ctx, d, "flashprotect").Output()
@@ -101,38 +217,6 @@ func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softw
 	}
 
 	return expectedOutput
-}
-
-func extractFlashProtectFlags(ctx context.Context, d *dut.DUT) (uint64, error) {
-	state, err := flashProtectState(ctx, d)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to get flashprotect state")
-	}
-
-	re := regexp.MustCompile(`Flash protect flags: (0x\d+)`)
-	result := re.FindStringSubmatch(state)
-	if result == nil {
-		return 0, errors.Errorf("can't find flash protect flags in %q", state)
-	}
-
-	flags, err := strconv.ParseUint(string(result[1]), 0, 32)
-	if err != nil {
-		return 0, errors.Wrapf(err, "failed to convert flash protect flags (%s) to int", result[1])
-	}
-
-	return flags, nil
-}
-
-// IsHardwareWriteProtected is used to obtain actual hardware write protection state as
-// reported by the FPMCU using 'ectool --name=cros_fp flashprotect' command.
-// This is not the opposite of SetHardwareWriteProtect
-func IsHardwareWriteProtected(ctx context.Context, d *dut.DUT) (bool, error) {
-	flags, err := extractFlashProtectFlags(ctx, d)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to get flash protect flags")
-	}
-
-	return (flags & ecFlashProtectGpioAsserted) != 0, nil
 }
 
 // SetHardwareWriteProtect sets the FPMCU's hardware write protection to the
