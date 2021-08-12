@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daddf8d3_beefde57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-12T17:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7b4bbf_56e96d2b",
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85005cef_94144fc6",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-08-12T15:04:22Z",
       "side": 1,
       "message": "What if \"err !\u003d nil \u0026\u0026 tc.wantBootUp\"?\n\nI don\u0027t think we should use dututils.EnsureDisconnected to verify both cases:\n1. device booted up\n2. device didn\u0027t boot up\n\nReturned error does not indicate that device booted up. It\u0027s a wrong assumption. Returned error indicated that you was not able to ensure that DUT is disconnected. Instead we should use a special function designed to check whether device is booted up (WaitConnect as example).",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34440f98_f906b56c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-12T17:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85005cef_94144fc6",
       "range": {
         "startLine": 192,
         "startChar": 6,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd062cb3_59e9d01b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dututils/disconnected.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-12T17:48:15Z",
+      "side": 1,
+      "message": "Ack.Updated",
+      "parentUuid": "fd7c33b9_adee6825",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4300088e_38e97dc6",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b34558_8cfa063d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/power/dut_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-12T17:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4300088e_38e97dc6",
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2656f94_deac204c",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-08-12T15:04:22Z",
       "side": 1,
       "message": "nit: EnsureDUTIsOn",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "1843763e01cdcbc0472c847c4cc55d4e8d7e6e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41470447_215226de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/power/dut_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-12T17:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2656f94_deac204c",
       "range": {
         "startLine": 19,
         "startChar": 5,
