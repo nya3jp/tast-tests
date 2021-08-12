@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f594edc_077bad85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:15:15Z",
+      "side": 1,
+      "message": "Drive-by.\n",
+      "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cc6aa4f_c082098c",
@@ -19,6 +36,53 @@
         "startChar": 0,
         "endLine": 60,
         "endChar": 47
+      },
+      "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b5c71a_3dfac24e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:15:15Z",
+      "side": 1,
+      "message": "I strongly recommend using github.com/google/go-cmp/cmp for comparison. It\u0027s battle-tested, customizable, and diffs are readable.\n\n if diff :\u003d cmp.Diff(got, want); diff !\u003d \"\" { ... }",
+      "parentUuid": "2cc6aa4f_c082098c",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3168a0b_19df37f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-12T07:15:15Z",
+      "side": 1,
+      "message": "Output parameters are rare in Go, and it\u0027s even more rare when it comes to errors (actually I have never seen such usage before). It\u0027s idiomatic to return an error as multiple return values.\nhttps://golang.org/doc/effective_go#multiple-returns\n\nAlso we should return string as a value. Copying a string does not copy memory region.\nhttps://github.com/golang/go/wiki/CodeReviewComments#pass-values\n\nIn the end, the signature will be:\n\n func ReadFile(fpath string) (string, error)",
+      "range": {
+        "startLine": 70,
+        "startChar": 28,
+        "endLine": 70,
+        "endChar": 41
       },
       "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
