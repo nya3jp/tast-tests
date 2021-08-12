@@ -140,7 +140,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 
 			if !param.printingAllowed {
 				if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle(param.wantNotification)); err != nil {
-					s.Fatalf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
+					s.Errorf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
 				}
 			}
 		})
@@ -151,14 +151,14 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) (bool, error) {
 	// Type the shortcut.
 	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
-		return false, errors.Wrap(err, "failed to type printing hotkey: ")
+		return false, errors.Wrap(err, "failed to type printing hotkey")
 	}
 
 	// Check if printing dialog has appeared.
 	ui := uiauto.New(tconn)
 
 	if err := ui.WaitUntilExists(nodewith.Name("Print").ClassName("RootView").Role(role.Window))(ctx); err != nil {
-		return false, errors.Wrap(err, "failed to check for printing windows existance: ")
+		return false, errors.Wrap(err, "failed to check for printing windows existence")
 	}
 
 	return true, nil
