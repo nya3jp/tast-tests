@@ -266,15 +266,20 @@ func readFmapSection(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFwF
 		}
 	}()
 
+	testing.ContextLog(ctx, "Phase A")
+
 	outputPath := filepath.Join(tempdirPath, section)
 	if err := d.Conn().Command("dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to run dump_fmap")
 	}
 
+	testing.ContextLog(ctx, "Phase B")
+
 	out, err := d.Conn().Command("cat", outputPath).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read dump_fmap output")
 	}
+	testing.ContextLog(ctx, "Phase C")
 	// dump_fmap writes NULL characters at the end.
 	return strings.Trim(string(out), "\x00"), nil
 }
@@ -417,6 +422,7 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 	}
 
 	// Check all other standard FPMCU state.
+	testing.ContextLog(ctx, "Checking other FPMCU state")
 	if err := CheckValidState(ctx, d, fs, fpBoard, buildFWFile); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
@@ -430,25 +436,30 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 // CheckValidState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
 func CheckValidState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string) error {
+	testing.ContextLog(ctx, "Phase 1")
 	// Check that RO and RW versions are what we expect.
 	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFWFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RW version")
 	}
+	testing.ContextLog(ctx, "Phase 2")
 	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RO version")
 	}
+	testing.ContextLog(ctx, "Phase 3")
 	if err := CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion); err != nil {
 		return err
 	}
 
+	testing.ContextLog(ctx, "Phase 4")
 	// Similar to bio_fw_updater, check is the active FW copy is RW. If it isn't
 	// that might mean that there is a firmware issue.
 	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
 		return errors.Wrapf(err, "FPMCU is not in RW (error: %v)", err)
 	}
 
+	testing.ContextLog(ctx, "Phase 5")
 	// Check that no tests enabled anti-rollback and that entropy has been added
 	// (maybe multiple times).
 	rollback, err := RollbackInfo(ctx, d)

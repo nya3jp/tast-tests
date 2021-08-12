@@ -35,7 +35,7 @@ const (
 // EctoolCommand constructs an "ectool" command for the FPMCU.
 func EctoolCommand(ctx context.Context, d *dut.DUT, args ...string) *ssh.Cmd {
 	cmd := firmware.NewECTool(d, firmware.ECToolNameFingerprint).Command(args...)
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd.Args))
+	// testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd.Args))
 	return cmd
 }
 
