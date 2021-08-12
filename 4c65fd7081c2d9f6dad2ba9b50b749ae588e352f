@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f78ec0a_1c053398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-12T08:56:58Z",
+      "side": 1,
+      "message": "No,We are creating the file in run time on L165.",
+      "parentUuid": "d75d4fa7_52e2ff19",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bd2fdf2_76d2afc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-06T22:19:12Z",
       "side": 1,
       "message": "I suspect it is better to just calculate this from the file itself dynamically rather than hardcoding it here (that way even if the file changes later, we don\u0027t need to update this variable).",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2468695b_d64252f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-12T08:56:58Z",
+      "side": 1,
+      "message": "As we are creating file in run time , so we are passing fileSize as a parameter.",
+      "parentUuid": "7bd2fdf2_76d2afc3",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe6db8b_82873497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-12T08:56:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4422bdfc_35af3eab",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d4dd9c_c5e84033",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-06T22:19:12Z",
       "side": 1,
       "message": "nit: camelcase is preferred for local variables in golang: https://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 20
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585d51f7_ee7898fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-12T08:56:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70d4dd9c_c5e84033",
       "range": {
         "startLine": 165,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682ea128_ecd8e658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-12T08:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2583d691_1836671d",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 2
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "019bbe00_bcd0448d",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-08-06T22:19:12Z",
       "side": 1,
       "message": "Please add an additional string clarifying the error here: we aren\u0027t expecting to see a device, and the calling function only surfaces an error string when a device wasn\u0027t enumerated.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "182bc6d1_30fa94df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-12T08:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019bbe00_bcd0448d",
       "range": {
         "startLine": 189,
         "startChar": 2,
