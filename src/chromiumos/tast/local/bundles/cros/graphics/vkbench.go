@@ -31,21 +31,22 @@ func init() {
 			Name:      "",
 			Val:       vkConfig{config: &vkbench.CrosConfig{}},
 			ExtraAttr: []string{"group:mainline", "informational", "group:graphics", "graphics_nightly"},
+			Fixture:   "graphicsNoChrome",
 			Timeout:   10 * time.Minute,
 		}, {
 			Name:      "hasty",
 			Val:       vkConfig{config: &vkbench.CrosConfig{Hasty: true}},
 			ExtraAttr: []string{"group:mainline", "informational"},
+			Fixture:   "graphicsNoChrome",
 			Timeout:   5 * time.Minute,
 		}},
-		Fixture: "gpuWatchHangs",
 	})
 }
 
 // VKBench benchmarks the vulkan performance.
 func VKBench(ctx context.Context, s *testing.State) {
 	config := s.Param().(vkConfig).config
-	if err := vkbench.Run(ctx, s.OutDir(), s.PreValue(), config); err != nil {
+	if err := vkbench.Run(ctx, s.OutDir(), s.FixtValue(), config); err != nil {
 		s.Fatal("Failed to run vkbench: ", err)
 	}
 }
