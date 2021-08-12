@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d089997_5c640756",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-12T00:32:59Z",
+      "side": 0,
+      "message": "Notice that even the lock screen utility function clicks the text field, types the password, and hits enter using \"\\n\" [1]. \n\nAre you sure this way is less flaky? From local testing over 10 runs each, the new fail rate is the same as the old fail rate (20%), so no improvement. Also, as you mentioned, this way depends more on implementation details, and is more prone to breaking when those implementation details change on the Chromium side.\n\nHowever, I am optimistic that this change can reduce flakiness, so let\u0027s land it and see if the typing errors disappear from the failure list. We can\u0027t make assumptions though. Through repeated testing, I showed that FocusAndWait() is not more robust than LeftClick(), even though the former intuitively seems better.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go;l\u003d124?q\u003dEnterPassword%20f:tast",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "ad1ac751a5a0030a77236d7d43fa8d9cde89ecf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
