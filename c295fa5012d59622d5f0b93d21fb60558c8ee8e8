@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87445188_766860c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-12T08:21:19Z",
+      "side": 1,
+      "message": "Looks fine from a tast perspective. Please also wait for approval from a teammate with context of the test before submitting.",
+      "revId": "c295fa5012d59622d5f0b93d21fb60558c8ee8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
