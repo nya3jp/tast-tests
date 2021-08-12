@@ -156,6 +156,24 @@
       "parentUuid": "1d8698a2_20c3cfdb",
       "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33539b67_f329fbdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-12T05:39:51Z",
+      "side": 1,
+      "message": "No, lacros is not launched with --no-sandbox on real devices. That\u0027s why I\u0027m trying to remove this flag. I\u0027m trying to make the environment the same.\n\nWhy does it work on real devices and not here?",
+      "parentUuid": "5787d011_2992854b",
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
