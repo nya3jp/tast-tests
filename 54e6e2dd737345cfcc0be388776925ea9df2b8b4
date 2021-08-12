@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a28799_220f13a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T01:34:40Z",
+      "side": 1,
+      "message": "Overall looks pretty good.\n\nAny though on adding some tests for manual intervention?\n\n(e.g. in autocap\u003dchars field, type \"HELLO\" (should be all shift) tap shift type \"world\"?",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
