@@ -218,7 +218,7 @@ func DragItemToItem(tconn *chrome.TestConn, src, dest *nodewith.Finder) uiauto.A
 		}
 
 		// Move a little bit first to trigger launcher-app-paging.
-		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 1, Y: 1}), time.Second)(ctx); err != nil {
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 10, Y: 10}), time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move the mouse")
 		}
 
