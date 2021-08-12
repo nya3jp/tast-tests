@@ -210,6 +210,19 @@ func DMSPolicy(url string) Option {
 	}
 }
 
+// EncryptedReportingAddr returns an option that can be passed to New to tell the device
+// to report Chrome real-time events to the Encrypted Reporting Server at the given url.
+// By default encrypted real-time event reporting is not enabled, and when enabled,
+// Chrome reports event to the Prod Reporting Server at
+// chromereporting-pa.googleapis.com.
+func EncryptedReportingAddr(url string) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.PolicyEnabled = true
+		cfg.EncryptedReportingAddr = url
+		return nil
+	}
+}
+
 // EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
 // Enrollment before login.
 func EnterpriseEnroll(creds Creds) Option {
