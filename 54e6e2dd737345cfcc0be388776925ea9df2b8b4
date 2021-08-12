@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "261fe52d_8eb71196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T05:54:09Z",
+      "side": 1,
+      "message": "IIUC, you are suggesting hold shift and type some keys?\nI worked on this half day and finished the script eventually. Last finding is that multi-touch does not work on VK atm.",
+      "parentUuid": "49a28799_220f13a9",
+      "revId": "54e6e2dd737345cfcc0be388776925ea9df2b8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08771914_c7d0eb60",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 4
