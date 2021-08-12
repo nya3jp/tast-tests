@@ -6,6 +6,7 @@ package ime
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -326,3 +327,58 @@ func (im InputMethod) actionWithFullyQualifiedID(tconn *chrome.TestConn, f func(
 		return f(ctx, fullyQualifiedIMEID)
 	}
 }
+
+// SetSettings changes the IME setting via chrome api.
+// `chrome.inputMethodPrivate.setSettings(
+//     "xkb:us::eng", { "physicalKeyboardAutoCorrectionLevel": 1})`,
+// Note: Settings change won't take effect until the next input session.
+// e.g. focus on a text field, or change input method.
+// Live setting change is not supported because it never happens in a real user environment.
+func (im InputMethod) SetSettings(tconn *chrome.TestConn, settings map[string]interface{}) action.Action {
+	return func(ctx context.Context) error {
+		settingJSON, err := json.Marshal(settings)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read settings: %+v", settings)
+		}
+
+		var settingsAPICall = fmt.Sprintf(
+			`chrome.inputMethodPrivate.setSettings(
+					 %q, %s)`,
+			im.ID, settingJSON)
+
+		return tconn.Eval(ctx, settingsAPICall, nil)
+	}
+}
+
+// ResetSettings empties IME settings to reset.
+func (im InputMethod) ResetSettings(tconn *chrome.TestConn) action.Action {
+	return im.SetSettings(tconn, map[string]interface{}{})
+}
+
+// SetPKAutoCorrection whether enables or disables the physical keyboard auto correction.
+func (im InputMethod) SetPKAutoCorrection(tconn *chrome.TestConn, acLevel AutoCorrectionLevel) action.Action {
+	settings := map[string]interface{}{"physicalKeyboardAutoCorrectionLevel": acLevel}
+	return im.SetSettings(tconn, settings)
+}
+
+// SetVKAutoCorrection whether enables or disables the physical keyboard auto correction.
+func (im InputMethod) SetVKAutoCorrection(tconn *chrome.TestConn, acLevel AutoCorrectionLevel) action.Action {
+	settings := map[string]interface{}{"virtualKeyboardAutoCorrectionLevel": acLevel}
+	return im.SetSettings(tconn, settings)
+}
+
+// SetVKEnableCapitalization whether enables or disables auto capitalization.
+func (im InputMethod) SetVKEnableCapitalization(tconn *chrome.TestConn, isEnabled bool) action.Action {
+	settings := map[string]interface{}{"virtualKeyboardEnableCapitalization": isEnabled}
+	return im.SetSettings(tconn, settings)
+}
+
+// AutoCorrectionLevel describes the auto correction level of an input method.
+type AutoCorrectionLevel int
+
+// Available auto correction levels.
+const (
+	AutoCorrectionOff AutoCorrectionLevel = iota
+	AutoCorrectionModest
+	AutoCorrectionProgressive
+)

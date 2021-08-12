@@ -6,9 +6,9 @@ package inputs
 
 import (
 	"context"
-	"fmt"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/autocorrect"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -62,7 +62,11 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	inputMethod := testCase.InputMethod
 	s.Logf("Set current input method to: %q", inputMethod)
@@ -83,27 +87,16 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	setEnabledPKAutocorrectSettings := func(enabled bool) {
-		var level = "0"
-		if enabled {
-			level = "1"
+	defer func() {
+		if err := inputMethod.ResetSettings(tconn)(cleanupCtx); err != nil {
+			// Only log errors in cleanup.
+			s.Log("Failed to reset IME settings: ", err)
 		}
-		var settingsAPICall = fmt.Sprintf(
-			`chrome.inputMethodPrivate.setSettings(
-						 "%s", { "physicalKeyboardAutoCorrectionLevel": %s})`,
-			testCase.InputMethod.ID, level)
-
-		tconn := s.PreValue().(pre.PreData).TestAPIConn
-		if err := tconn.Eval(ctx, settingsAPICall, nil); err != nil {
-			s.Fatal("Failed to set settings: ", err)
-		}
-	}
-
-	setEnabledPKAutocorrectSettings(true)
-	defer setEnabledPKAutocorrectSettings(false)
+	}()
 
 	const inputField = testserver.TextAreaInputField
 	if err := uiauto.Combine("validate PK autocorrect",
+		inputMethod.SetPKAutoCorrection(tconn, ime.AutoCorrectionModest),
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
 		keyboard.TypeAction(testCase.MisspeltWord),
