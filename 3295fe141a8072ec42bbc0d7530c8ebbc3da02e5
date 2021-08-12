@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99abc9c9_4565f732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/document_2448x3264.jpg.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-08-12T06:07:17Z",
+      "side": 1,
+      "message": "qq: Is it intended to use a portrait (W\u003cH) image?",
+      "range": {
+        "startLine": 2,
+        "startChar": 71,
+        "endLine": 2,
+        "endChar": 80
+      },
+      "revId": "3295fe141a8072ec42bbc0d7530c8ebbc3da02e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
