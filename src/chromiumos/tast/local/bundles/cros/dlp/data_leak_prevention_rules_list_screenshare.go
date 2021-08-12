@@ -75,6 +75,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	// Start screen recorder.
 	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create ScreenRecorder: ", err)
@@ -83,10 +84,8 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 	if screenRecorder == nil {
 		s.Fatal("Screen recorder was not found")
 	}
-
-	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "dlpScreenShare.mp4"))
-
 	screenRecorder.Start(ctx, tconn)
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "dlpScreenShare.mp4"))
 
 	const paused = "Screen capture paused"
 	const resumed = "Screen capture resumed"
@@ -112,39 +111,38 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if _, err = cr.NewConn(ctx, nonRestrictedSite); err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 
+			// Screenshare should be allowed.
 			if err := checkFrameStatus(ctx, screenRecorder, true); err != nil {
 				s.Fatal("Failed to check frame status: ", err)
 			}
 
 			if _, err = cr.NewConn(ctx, param.url); err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 
+			// Frame status value should be as per param.wantAllowed.
 			if err := checkFrameStatus(ctx, screenRecorder, param.wantAllowed); err != nil {
 				s.Fatal("Failed to check frame status: ", err)
 			}
 
 			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screen_capture_dlp_paused-"), ash.WaitTitle(paused)); err != nil && !param.wantAllowed {
-				s.Fatalf("Failed to wait for notification with title %q: %v", paused, err)
+				s.Errorf("Failed to wait for notification with title %q: %v", paused, err)
 			}
 
 			if _, err = cr.NewConn(ctx, nonRestrictedSite); err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 
+			// Screenshare should be allowed.
 			if err := checkFrameStatus(ctx, screenRecorder, true); err != nil {
 				s.Fatal("Failed to check frame status: ", err)
 			}
 
 			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screen_capture_dlp_resumed-"), ash.WaitTitle(resumed)); err != nil && !param.wantAllowed {
-				s.Fatalf("Failed to wait for notification with title %q: %v", resumed, err)
-			}
-
-			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screen_capture_dlp_paused-"), ash.WaitTitle(paused)); err == nil {
-				s.Fatalf("Notification with title %q found, expected none", paused)
+				s.Errorf("Failed to wait for notification with title %q: %v", resumed, err)
 			}
 
 			// Closing all windows.
@@ -169,7 +167,7 @@ func checkFrameStatus(ctx context.Context, screenRecorder *uiauto.ScreenRecorder
 
 	status, err := screenRecorder.FrameStatus(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get status of frame: ")
+		return errors.Wrap(err, "failed to get status of frame")
 	}
 
 	if status != "Success" && wantAllowed {
