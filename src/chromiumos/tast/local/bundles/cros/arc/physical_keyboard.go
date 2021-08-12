@@ -233,6 +233,8 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		// screenshot tool can cause subsequent tests to fail by intercepting
 		// mouse clicks.
 		0x63: struct{}{},
+		// Skip KEY_POWER which shuts down the machine.
+		0x74: struct{}{},
 		// Skip KEY_LEFTMETA (0x7d) and KEY_RIGHTMETA (0x7e) which are the search keys to avoid confusing the test.
 		0x7d: struct{}{},
 		0x7e: struct{}{},
