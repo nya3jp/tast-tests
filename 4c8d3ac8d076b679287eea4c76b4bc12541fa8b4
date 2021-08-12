@@ -49,6 +49,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7e1ddc0_bf474c89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-12T03:37:15Z",
+      "side": 1,
+      "message": "It\u0027s been put into an error message.",
+      "parentUuid": "a22e88f3_f513b6bf",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e512d736_61d752bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-12T03:37:15Z",
+      "side": 1,
+      "message": "The regex has been adjusted.",
+      "parentUuid": "0394eb09_0d8278b2",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d8c8809_14f194f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 17
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-11T16:53:59Z",
       "side": 1,
       "message": "What is this sleep for?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "4c8d3ac8d076b679287eea4c76b4bc12541fa8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61d1664_63a7a62e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-12T03:37:15Z",
+      "side": 1,
+      "message": "I found that if an update is run right after the test sets the battery to normal, it fails because there is a delay before the computer registers it (like with discharge. So this gives the computer time to readjust.",
+      "parentUuid": "4d8c8809_14f194f0",
       "range": {
         "startLine": 105,
         "startChar": 0,
