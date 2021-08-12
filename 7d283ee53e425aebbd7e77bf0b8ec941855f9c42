@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7d480a_6fda80ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-12T05:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47358c10_fdf73255",
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f41fdb41_9c9fcefd",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "018d48f9_c36d013e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-12T05:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f41fdb41_9c9fcefd",
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a501b741_e5057f7c",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-08-12T04:58:45Z",
       "side": 1,
       "message": "nit: maybe \"json\" to make it more clear",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e310e0e7_635ea38c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-12T05:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a501b741_e5057f7c",
       "range": {
         "startLine": 58,
         "startChar": 47,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c74196_b89d481c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-12T05:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fecdefe_609837ec",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61c70741_45f9dac6",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-08-12T04:58:45Z",
       "side": 1,
       "message": "nit: let\u0027s log the metrics as well so we can easily see the result in `tast run`",
+      "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e0f97b_1812a488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_document_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-12T05:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c70741_45f9dac6",
       "revId": "7d283ee53e425aebbd7e77bf0b8ec941855f9c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
