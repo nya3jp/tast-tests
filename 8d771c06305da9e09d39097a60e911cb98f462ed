@@ -98,6 +98,24 @@
       "message": "Thanks for reviewing, PTALA.",
       "revId": "8d771c06305da9e09d39097a60e911cb98f462ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938584db_3624e653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-12T08:57:15Z",
+      "side": 1,
+      "message": "Ack. The connection is not obvious, and I wanted to make sure these are not fully independent changes.",
+      "parentUuid": "cc9efe71_1685ea10",
+      "revId": "8d771c06305da9e09d39097a60e911cb98f462ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
