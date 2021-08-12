@@ -33,6 +33,24 @@
       "message": "I don\u0027t have any specific objection to closing activities at the end of a test, but I don\u0027t think it will fix the underlying problem.  If a following test is messed up by having a pre-existing activity, isn\u0027t it the responsibility of that test to close the unwanted activities or start itself in a known empty session?\n\nIf we do need to enforce closing activities at the end of every test, shouldn\u0027t that go into the framework instead of each test individually?",
       "revId": "e03ff931ef5f2a00a5b2f8e6af36c6bfcdfe09b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7b4bc0_b983f9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-12T16:21:54Z",
+      "side": 1,
+      "message": "ditto.\n\nThe ARC precondition will kill all the activities that were launched during the test lifetime.",
+      "parentUuid": "ae81ff90_ddc8cfef",
+      "revId": "e03ff931ef5f2a00a5b2f8e6af36c6bfcdfe09b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
