@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d55517_67a55729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-12T07:31:25Z",
+      "side": 1,
+      "message": "Maybe not raw data, but same chars then? (oh thats fixed now, all good)",
+      "parentUuid": "22f4a656_78803107",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 75
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a3d93eb_b53b5c1b",
