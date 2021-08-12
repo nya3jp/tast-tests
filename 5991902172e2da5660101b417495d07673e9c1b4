@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ab51455f_8f2ffe86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "There is no double tap event on touch screen, unlike Mouse which has double click.",
+      "parentUuid": "5af5e44f_fbf73b28",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 14
+      },
+      "revId": "5991902172e2da5660101b417495d07673e9c1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6d6054d1_31ec3283",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 7

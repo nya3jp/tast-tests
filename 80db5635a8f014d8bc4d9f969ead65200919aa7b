@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbcdf6b_99b98368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "Added a TODO bug b/196311371.",
+      "parentUuid": "32f7510f_cd648e97",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4caefbe6_b19677e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-12T06:45:11Z",
       "side": 1,
       "message": "super-super-nit: different order to \"official\" page",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd5dfb9_17ebccee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "Added a TODO bug b/196311371.",
+      "parentUuid": "4caefbe6_b19677e2",
       "range": {
         "startLine": 123,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84886f18_56f0d719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc55ed6_efbd814e",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a84cd74d_e9607440",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-12T06:45:11Z",
       "side": 1,
       "message": "/second/third/",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 54
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852b6d63_65960a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84cd74d_e9607440",
       "range": {
         "startLine": 97,
         "startChar": 2,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22f4a656_78803107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "This is a bit hard. Firstly on textarea supports new line, so `\\n` can not be used there.\n\nSecondly, TapKey[s] is used instead of TapKeyIgnoreCase in this test. It finds case sensitive key on VK and also checks output. Not easy to use same raw data.",
+      "parentUuid": "15808f8d_1fcd26ad",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 75
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a3d93eb_b53b5c1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
         "patchSetId": 5
@@ -129,6 +249,30 @@
       "writtenOn": "2021-08-12T06:45:11Z",
       "side": 1,
       "message": "nit: rename url-field or similar",
+      "range": {
+        "startLine": 276,
+        "startChar": 18,
+        "endLine": 276,
+        "endChar": 30
+      },
+      "revId": "80db5635a8f014d8bc4d9f969ead65200919aa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "528ffc63_f6e58ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-12T07:09:57Z",
+      "side": 1,
+      "message": "rename it as `url_inapplicable`. So it tells which field is tested and the expectation.",
+      "parentUuid": "5a3d93eb_b53b5c1b",
       "range": {
         "startLine": 276,
         "startChar": 18,
