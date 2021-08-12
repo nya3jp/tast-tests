@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 )
 
@@ -26,10 +25,6 @@ func (config *CrosConfig) IsHasty() bool {
 
 // SetUp initialized the environment to run glbench in ChromeOS.
 func (config *CrosConfig) SetUp(ctx context.Context) error {
-	// If UI is running, we must stop it and restore later.
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		return errors.Wrap(err, "failed to stop ui")
-	}
 	return nil
 }
 
@@ -52,8 +47,5 @@ func (config *CrosConfig) Run(ctx context.Context, preValue interface{}, outDir 
 
 // TearDown teardown the environment.
 func (config *CrosConfig) TearDown(ctx context.Context) error {
-	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
-		return errors.Wrap(err, "failed to start ui")
-	}
 	return nil
 }

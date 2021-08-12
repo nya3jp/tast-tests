@@ -24,13 +24,13 @@ func TestGlBenchParams(t *testing.T) {
 			Val:       config{config: &glbench.CrosConfig{}},
 			Timeout:   3 * time.Hour,
 			ExtraAttr: []string{"group:graphics", "graphics_nightly"},
-			Fixture:   "gpuWatchHangs",
+			Fixture:   "graphicsNoChrome",
 		}, {
 			Name:      "hasty",
 			Val:       config{config: &glbench.CrosConfig{Hasty: true}},
 			ExtraAttr: []string{"group:mainline"},
 			Timeout:   5 * time.Minute,
-			Fixture:   "gpuWatchHangs",
+			Fixture:   "graphicsNoChrome",
 		},`
 	params += crostini.MakeTestParamsFromList(t, []crostini.Param{
 		{
