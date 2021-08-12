@@ -16,6 +16,109 @@
       "message": "Resolved. Thanks.",
       "revId": "48b58fadaa642f282ef24aaaf3614998b9c7cb03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e1b6a5_4201172b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T18:28:23Z",
+      "side": 1,
+      "message": "Thanks Bisakh! LGTM % nits!",
+      "revId": "48b58fadaa642f282ef24aaaf3614998b9c7cb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266ba754_cd4c2350",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T18:28:23Z",
+      "side": 1,
+      "message": "nit: maybe we should give power to DUT first and then trying to boot it up just in extreme case when battery will be completely drained?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "48b58fadaa642f282ef24aaaf3614998b9c7cb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfb8885_6c62f239",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T18:28:23Z",
+      "side": 1,
+      "message": "Maybe device boot up here, but we received deadline exceeded or smth else. So log message should be:\n\n```\ns.Error(\"Failed to wait DUT to be connected: \", err)\n```",
+      "range": {
+        "startLine": 189,
+        "startChar": 21,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "48b58fadaa642f282ef24aaaf3614998b9c7cb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa51355_ccc5a21b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T18:28:23Z",
+      "side": 1,
+      "message": "Error message should describe what is the problem, no need to handle some errors differently and we should fail subtest if deadline exceeded.\n\nSo, please replace this block by:\n\n```\ns.Error(\"Failed to ensure DUT is disconnected: \", err)\n```",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 0
+      },
+      "revId": "48b58fadaa642f282ef24aaaf3614998b9c7cb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9566d3dd_e3d2c120",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/dututils/dut_boot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-12T18:28:23Z",
+      "side": 1,
+      "message": "nit: rename to boot.go to be consistent with disconnected.go",
+      "revId": "48b58fadaa642f282ef24aaaf3614998b9c7cb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
