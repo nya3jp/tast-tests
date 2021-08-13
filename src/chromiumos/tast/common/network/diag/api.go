@@ -37,52 +37,61 @@ function() {
       return this.networkDiagnostics_;
     },
 
+    // Simplifies the response from the network diagnostic routines to be
+    // easily converted to go structs.
+    parseResult_(response) {
+      const result = response.result;
+      let ret = {Verdict: result.verdict};
+      ret.Problems = Object.values(result.problems)[0];
+      return ret;
+    },
+
     async lanConnectivity() {
-      return await this.getNetworkDiagnostics().lanConnectivity();
+      return this.parseResult_(await this.getNetworkDiagnostics().runLanConnectivity());
     },
 
     async dnsResolverPresent() {
-      return await this.getNetworkDiagnostics().dnsResolverPresent();
+      return this.parseResult_(await this.getNetworkDiagnostics().runDnsResolverPresent());
     },
 
     async dnsResolution() {
-      return await this.getNetworkDiagnostics().dnsResolution();
+      return this.parseResult_(await this.getNetworkDiagnostics().runDnsResolution());
     },
 
     async dnsLatency() {
-      return await this.getNetworkDiagnostics().dnsLatency();
+      return this.parseResult_(await this.getNetworkDiagnostics().runDnsLatency());
     },
 
     async httpFirewall() {
-      return await this.getNetworkDiagnostics().httpFirewall();
+      return this.parseResult_(await this.getNetworkDiagnostics().runHttpFirewall());
     },
 
     async httpsFirewall() {
-      return await this.getNetworkDiagnostics().httpsFirewall();
+      return this.parseResult_(await this.getNetworkDiagnostics().runHttpsFirewall());
     },
 
     async httpsLatency() {
-      return await this.getNetworkDiagnostics().httpsLatency();
+      return this.parseResult_(await this.getNetworkDiagnostics().runHttpsLatency());
     },
 
     async hasSecureWiFiConnection() {
-      return await this.getNetworkDiagnostics().hasSecureWiFiConnection();
+      return this.parseResult_(await this.getNetworkDiagnostics().runHasSecureWiFiConnection());
     },
 
     async signalStrength() {
-      return await this.getNetworkDiagnostics().signalStrength();
+      return this.parseResult_(await this.getNetworkDiagnostics().runSignalStrength());
     },
 
     async gatewayCanBePinged() {
-      return await this.getNetworkDiagnostics().gatewayCanBePinged();
+      return this.parseResult_(await this.getNetworkDiagnostics().runGatewayCanBePinged());
     },
 
     async captivePortal() {
-      return await this.getNetworkDiagnostics().captivePortal();
+      return this.parseResult_(await this.getNetworkDiagnostics().runCaptivePortal());
     },
 
     async videoConferencing() {
-      return await this.getNetworkDiagnostics().videoConferencing();
+      return this.parseResult_(await this.getNetworkDiagnostics().runVideoConferencing());
     },
   }
 }
@@ -103,8 +112,9 @@ const (
 	VerdictNotRun = 2
 )
 
-// RoutineResult is a data structure to hold the result of running a network
-// diagnostic routine.
+// RoutineResult is a simplified data structure to hold the result of running a
+// network diagnostic routine. It collapses the mojo problems union to a single
+// Problems field for simplicity.
 type RoutineResult struct {
 	Verdict  RoutineVerdict
 	Problems []uint32
