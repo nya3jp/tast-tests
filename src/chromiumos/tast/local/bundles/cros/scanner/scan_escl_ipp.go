@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -41,7 +40,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 		Data:         []string{sourceImage, goldenImage},
 		Params: []testing.Param{{
 			Name: "usb",
