@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7ed8aa_8b33fc0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d79c94_f2ebb45d",
+      "range": {
+        "startLine": 24,
+        "startChar": 66,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "f0fe51cdebf758d1c43c92d2418f4fa4de309bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74ce7785_55b4b0d9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9176bf94_30b3145b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74ce7785_55b4b0d9",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "f0fe51cdebf758d1c43c92d2418f4fa4de309bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fee2c9b_d6cffeb9",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-13T22:37:25Z",
       "side": 1,
       "message": "be more specific on what do you mean? the powerd plugin in fwupd? powerd itself? the EC? sysfs entries for the battery?",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "f0fe51cdebf758d1c43c92d2418f4fa4de309bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57a367e_5c6a27ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fee2c9b_d6cffeb9",
       "range": {
         "startLine": 88,
         "startChar": 29,
