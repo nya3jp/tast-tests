@@ -36,6 +36,11 @@ type FirmwareTest struct {
 	dutTempDir               string
 }
 
+// FirmwareTestServiceDeps returns FirmwareTest's service dependencies.
+func FirmwareTestServiceDeps() []string {
+	return []string{"tast.cros.platform.UpstartService", dutfs.ServiceName}
+}
+
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
