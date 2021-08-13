@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -93,7 +94,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateVKInputOnField(vkbCtx, inputField, inputData)(ctx); err != nil {
+			if err := its.ValidateInputFieldForMode(inputField, util.InputWithVK, inputData, s.DataPath)(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
 		}

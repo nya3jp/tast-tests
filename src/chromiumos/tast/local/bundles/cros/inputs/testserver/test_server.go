@@ -288,36 +288,6 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	)
 }
 
-// ValidateVKInputOnField returns an action to test virtual keyboard input on given input field.
-// After input action, it checks whether the outcome equals to expected value.
-// TODO(b/195208831): Deprecate the use of ValidateVKInputOnField.
-func (its *InputsTestServer) ValidateVKInputOnField(vkbCtx *vkb.VirtualKeyboardContext, inputField InputField, inputData data.InputData) uiauto.Action {
-	validateField := util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), inputData.ExpectedText)
-	if inputField == PasswordInputField {
-		// Password input is a special case. The value is presented with placeholder "•".
-		// Using PasswordTextField field to verify the outcome.
-		validateField = uiauto.Combine("validate password field",
-			util.WaitForFieldTextToBe(its.tconn, inputField.Finder(), strings.Repeat("•", len(inputData.CharacterKeySeq))),
-			util.WaitForFieldTextToBeIgnoringCase(its.tconn, PasswordTextField.Finder(), inputData.ExpectedText),
-		)
-	}
-
-	return uiauto.Combine("validate vk input function on field "+string(inputField),
-		// Make sure virtual keyboard is not shown before action.
-		vkbCtx.HideVirtualKeyboard(),
-		its.Clear(inputField),
-		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.TapKeysIgnoringCase(inputData.CharacterKeySeq),
-		func(ctx context.Context) error {
-			if inputData.SubmitFromSuggestion {
-				return vkbCtx.SelectFromSuggestion(inputData.ExpectedText)(ctx)
-			}
-			return nil
-		},
-		validateField,
-	)
-}
-
 func (its *InputsTestServer) validateVKTypingInField(inputField InputField, inputData data.InputData) uiauto.Action {
 	vkbCtx := vkb.NewContext(its.cr, its.tconn)
 	return uiauto.Combine("validate vk input function on field "+string(inputField),
