@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fd55eca_de8961e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-13T09:41:47Z",
+      "side": 1,
+      "message": "What\u0027s the value of |ColorTemperature| read from |MediaTrackSettings| when WhiteBalanceMode is \"continuous\"? If it\u0027s undefined, we can check whether it exist and gather the value only when it exist.",
+      "parentUuid": "e43ee8e7_518dc6a1",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 44
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b210d604_ac3b314d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 2
