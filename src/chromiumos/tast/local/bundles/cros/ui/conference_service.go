@@ -245,7 +245,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword, outDir)
 		defer gmcli.End(ctx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
@@ -418,7 +418,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 	// Creates a Zoom conference instance which implements conference.Conference methods.
 	// which provides conference operations.
-	zmcli := conference.NewZoomConference(cr, tconn, tsAction, tabletMode, int(req.RoomSize), account)
+	zmcli := conference.NewZoomConference(cr, tconn, tsAction, tabletMode, int(req.RoomSize), account, outDir)
 	defer zmcli.End(ctx)
 	// Sends a http request that ask for creating a Zoom conferece with
 	// specified participants and also return clean up method for closing

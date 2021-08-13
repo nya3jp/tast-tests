@@ -6,6 +6,7 @@ package conference
 
 import (
 	"context"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
@@ -34,6 +36,7 @@ type GoogleMeetConference struct {
 	roomSize   int
 	account    string
 	password   string
+	outDir     string
 }
 
 // Join joins a new conference room.
@@ -446,7 +449,7 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 }
 
 // PresentSlide presents the slides to the conference.
-func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
+func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) (err error) {
 	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
 	kb, err := input.Keyboard(ctx)
@@ -479,6 +482,8 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	}
 	// Delete slide if any error occures.
 	defer func() {
+		// If presenting slide fails, dump the last screen before deleting the slide.
+		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(conf.outDir, "service"), func() bool { return err != nil }, conf.cr, "ui_dump_last")
 		if err := slideCleanup(cleanUpSlideCtx); err != nil {
 			// Only log the error.
 			testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
@@ -525,6 +530,8 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 		}
 		deletePerformed = true // Set it to true because we only try to delete once.
 		webArea := nodewith.Name(slideTitle).Role(role.RootWebArea)
+		// If presenting slide fails, dump the last screen before deleting the slide.
+		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(conf.outDir, "service"), func() bool { return err != nil }, conf.cr, "ui_dump_last")
 		testing.ContextLog(ctx, "Switch to the slide page and delete it")
 		return uiauto.Combine("switch to the slide page and delete it",
 			ui.IfSuccessThen(ui.Gone(webArea), kb.AccelAction("Alt+Tab")),
@@ -660,7 +667,7 @@ func (conf *GoogleMeetConference) shareScreen(tconn *chrome.TestConn, extendedDi
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
 func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, tabletMode bool,
-	roomSize int, account, password string) *GoogleMeetConference {
+	roomSize int, account, password, outDir string) *GoogleMeetConference {
 	return &GoogleMeetConference{
 		cr:         cr,
 		tconn:      tconn,
@@ -668,6 +675,7 @@ func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, tabletMo
 		roomSize:   roomSize,
 		account:    account,
 		password:   password,
+		outDir:     outDir,
 	}
 }
 
