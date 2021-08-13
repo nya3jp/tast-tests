@@ -209,7 +209,11 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 			Direction: perf.SmallerIsBetter,
 		}, float64(appStartTime))
 	}
-	if err = recorder.Record(ctx, pv); err != nil {
+
+	// Use a short timeout value so it can return fast in case of failure.
+	recordCtx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+	if err := recorder.Record(recordCtx, pv); err != nil {
 		return errors.Wrap(err, "failed to report")
 	}
 	if err = pv.Save(params.outDir); err != nil {
