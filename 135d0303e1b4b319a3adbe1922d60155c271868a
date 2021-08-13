@@ -16,6 +16,23 @@
       "message": "+tast-owners@google.com",
       "revId": "135d0303e1b4b319a3adbe1922d60155c271868a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74c6d0e_76f04849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-13T00:23:11Z",
+      "side": 1,
+      "message": "The cellular_cq attr needs to be added to src/platform/tast/src/chromiumos/tast/internal/testing/attr.go before it can be used in tasts.",
+      "revId": "135d0303e1b4b319a3adbe1922d60155c271868a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
