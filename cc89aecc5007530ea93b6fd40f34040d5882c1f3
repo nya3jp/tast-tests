@@ -46,6 +46,30 @@
       },
       "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca17252e_9d4a209b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-13T21:49:53Z",
+      "side": 1,
+      "message": "hidehiko@, wdyt? For lacros tests like meet_cuj, task_switch_cuj and window_arrangement_cuj, we have to move out cr out into the scope which might be accessed accidentally as nya@ said. We currently won\u0027t turn tracing on these three tests, so it won\u0027t be a problem if we still use tconn in cuj.NewRecorder(). If hidehiko san thinks it\u0027s ok to move it out then I will get rid of the scoping.",
+      "parentUuid": "fae7fe6f_41d1e605",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

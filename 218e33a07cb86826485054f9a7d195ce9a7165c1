@@ -16,6 +16,24 @@
       "message": "super nit: Prefer to have `cr` before `tconn` because `cr` is root of truth and `tconn` is derived.",
       "revId": "218e33a07cb86826485054f9a7d195ce9a7165c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53224a47_7e837063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-13T21:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65572dcb_5c8da7e5",
+      "revId": "218e33a07cb86826485054f9a7d195ce9a7165c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
