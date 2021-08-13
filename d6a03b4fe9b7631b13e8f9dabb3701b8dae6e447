@@ -188,6 +188,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc120a7_8c9de873",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-13T04:48:39Z",
+      "side": 1,
+      "message": "Ack. We can do the extraction after we really see duplication.",
+      "parentUuid": "27be307a_e45cf83e",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08cedb58_79621742",
@@ -266,6 +284,24 @@
       "side": 1,
       "message": "It may slightly simplify things here, but then we have to initialize the nested Header struct in the test, which looks a bit messier, and it\u0027s not even clear that these belong together as a \"header\" anyway (we\u0027d only call it that because they\u0027re the first consecutive fixed sized fields). IMO it\u0027s a little better to keep all the fields at the same level. WDYT?",
       "parentUuid": "2764749d_1ec2dc12",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41870218_20dae11f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-13T04:48:39Z",
+      "side": 1,
+      "message": "Ack. This also makes sense.",
+      "parentUuid": "53543db2_839fc81e",
       "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
