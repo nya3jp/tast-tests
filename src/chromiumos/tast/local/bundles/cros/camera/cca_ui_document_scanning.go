@@ -24,6 +24,7 @@ func init() {
 		Func:         CCAUIDocumentScanning,
 		Desc:         "Verifies that CCA can take a photo for document and generate the document file via file VCD",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "document_1280x960.y4m"},
 	})
