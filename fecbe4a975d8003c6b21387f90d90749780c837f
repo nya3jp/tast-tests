@@ -56,6 +56,24 @@
       "message": "Brian, what\u0027s the next step on this one?\n\nGabor, can you +2 ?",
       "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf85a7f_579ac7ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-13T18:50:29Z",
+      "side": 1,
+      "message": "\u003e Brian, what\u0027s the next step on this one?\n\nIt\u0027s ready for review, and has been for \u003e2 weeks. I dropped the previous owner/reviewer and let gwsq pick a new one, since they were apparently ignoring this CL. (TBF though, you left it outstanding for a while.)\n\nBTW, you can leave a sticky CR+2 on here even if you\u0027re not in OWNERS. That\u0027s standard practice.\n\n\u003e Gabor, can you +2 ?\n\nYes, please review :) I\u0027ll give them a day or two anyway, since they only got added today.\n\nIf this sits another week, I might escalate somewhere.",
+      "parentUuid": "40637e9c_5f201226",
+      "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
