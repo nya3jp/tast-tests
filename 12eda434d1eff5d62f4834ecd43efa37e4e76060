@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fb5844_e4c3dfb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_plugin_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-13T22:34:02Z",
+      "side": 1,
+      "message": "Use the list of plugins in go/cros-fwupd-plugins",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "12eda434d1eff5d62f4834ecd43efa37e4e76060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
