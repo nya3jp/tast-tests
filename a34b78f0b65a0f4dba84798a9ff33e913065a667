@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35ca43b_f5755c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-13T23:59:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure if extending the cleanup context will help with your test flakiness issues, I didn\u0027t see any failures on Tastboard related to timeout during the cleanup steps. If anything this could make the test flakier, since you\u0027ll be subtracting 5 seconds from the main test time. I don\u0027t know the full context, though, was there a particular reason for doing this?\n\nI took a look at the Tastboard failures and noticed a couple things:\n* LaunchAppFromSettings.diagnostics - it looks like the wrong element is being clicked, a lot of the screenshots show the feedback form being opened instead of the diagnostics app (https://screenshot.googleplex.com/BikjV3QSv9ALW7r.png). The buttons are right next to each other, so probably the button locations are not yet stable when the click goes through. You could improve this by extending the uiauto.Context\u0027s polling interval to something longer than the default (using ac.WithInterval).\n* LaunchAppFromAccelerator.diagnostics - sometimes the task manager is being opened instead of the diagnostics app (https://screenshot.googleplex.com/5D6zkiYzMrftQMT.png). The shortcut for that is Search+Esc, so there might be some flakiness going on with keyboard entry (missing the first \u0027Ctrl\u0027 key press).\n\nI think you\u0027ll have more luck addressing those issues, extending the ctxutil is unlikely to help",
+      "revId": "a34b78f0b65a0f4dba84798a9ff33e913065a667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
