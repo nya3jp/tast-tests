@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/inputs/voice_ja_hello_20210802.wav",
-  "size": 465486,
-  "sha256sum": "eefdf8ce3004d5fa8ec9e91fb9e11e1e4e5cf1366a9354eae891fd69cca03cd7"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/inputs/voice_ja_hello_20210812.wav",
+  "size": 178638,
+  "sha256sum": "7de708504392c149f989071d0d92343b031d70cecc93d7d62ac7097987985ff9"
 }
