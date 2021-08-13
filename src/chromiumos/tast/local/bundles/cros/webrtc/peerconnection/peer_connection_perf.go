@@ -43,6 +43,71 @@ const (
 	gpuMeasuring = 10 * time.Second
 )
 
+// RTCTestOptions is used to describe the config used to run RTCPeerConnectionPerf.
+type RTCTestOptions struct {
+	enableHWDecoding   bool   // Instruct to use hardware or software decoding.
+	enableHWEncoding   bool   // Instruct to use hardware or software encoding.
+	profile            string // Codec to try, e.g. VP8, VP9.
+	videoGridDimension int    // Dimension of the grid in which to embed the RTCPeerConnection <video>.
+	videoGridFile      string // Name of the video file to fill up the grid with, if needed.
+	// ScalableVideoCodec "scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	svc string
+}
+
+// MakeTestOptions creates RTCTestoptions for profile and with HW
+// Encoding/Decoding enabled.
+func MakeTestOptions(profile string) RTCTestOptions {
+	return RTCTestOptions{
+		enableHWDecoding:   true,
+		enableHWEncoding:   true,
+		profile:            profile,
+		videoGridDimension: 1,
+		videoGridFile:      "",
+		svc:                "",
+	}
+}
+
+// MakeSWTestOptions creates RTCTestoptions for profile and with HW
+// Encoding/Decoding disabled.
+func MakeSWTestOptions(profile string) RTCTestOptions {
+	return RTCTestOptions{
+		enableHWDecoding:   false,
+		enableHWEncoding:   false,
+		profile:            profile,
+		videoGridDimension: 1,
+		videoGridFile:      "",
+		svc:                "",
+	}
+}
+
+// MakeTestOptionsWithSVC creates RTCTestoptions for profile, with HW
+// Encoding/Decoding enabled and with a layer structure as per svc definition.
+func MakeTestOptionsWithSVC(profile, svc string) RTCTestOptions {
+	return RTCTestOptions{
+		enableHWDecoding:   false,
+		enableHWEncoding:   false,
+		profile:            profile,
+		videoGridDimension: 1,
+		videoGridFile:      "",
+		svc:                svc,
+	}
+}
+
+// MakeTestOptionsWithVideoGrid creates RTCTestoptions for profile, with HW
+// Encoding/Decoding enabled and embedding the RTCPeerConnection in a grid of
+// videoGridDimension x videoGridDimension videoGridFiles.
+func MakeTestOptionsWithVideoGrid(profile string, videoGridDimension int, videoGridFile string) RTCTestOptions {
+	return RTCTestOptions{
+		enableHWDecoding:   true,
+		enableHWEncoding:   true,
+		profile:            profile,
+		videoGridDimension: videoGridDimension,
+		videoGridFile:      videoGridFile,
+		svc:                "",
+	}
+}
+
 // WebRTC Stats collected on transmission side.
 type txMeas struct {
 	// From https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime:
@@ -312,7 +377,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, profile string, enableHWDecoding, enableHWEncoding bool, videoGridDimension int, videoGridFilename, svc string) error {
+func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir string, opts RTCTestOptions) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -331,11 +396,11 @@ func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 	defer cancel()
 
 	var videoGridURL string
-	if videoGridDimension > 1 {
-		videoGridURL = server.URL + "/" + videoGridFilename
+	if opts.videoGridDimension > 1 {
+		videoGridURL = server.URL + "/" + opts.videoGridFile
 	}
 	p := perf.NewValues()
-	if err := decodePerf(ctx, cr, profile, loopbackURL, enableHWDecoding, enableHWEncoding, videoGridDimension, videoGridURL, svc, outDir, p); err != nil {
+	if err := decodePerf(ctx, cr, opts.profile, loopbackURL, opts.enableHWDecoding, opts.enableHWEncoding, opts.videoGridDimension, videoGridURL, opts.svc, outDir, p); err != nil {
 		return err
 	}
 
