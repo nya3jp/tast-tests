@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f781e84_d6163ab7",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/InMemoryContentProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-13T04:44:57Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e7885dad_77fcae20",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "660ec9c5_d1bcae8a",
