@@ -16,6 +16,24 @@
       "message": "tast: Fix typo.",
       "revId": "fe93171413d4333ac7544f7f83b36a1c43f7806a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3e61aa_96e08683",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-13T04:51:33Z",
+      "side": 1,
+      "message": "sgtm.\nnit: Ending period may not be needed. Also, I\u0027d add the file name. i.e.\n\ntast-tests: Fix typo in diag.go",
+      "parentUuid": "c00beb25_42a22076",
+      "revId": "fe93171413d4333ac7544f7f83b36a1c43f7806a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
