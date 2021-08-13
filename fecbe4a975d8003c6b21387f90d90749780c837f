@@ -39,6 +39,23 @@
       "message": "This is ready now I think, PTAL.",
       "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40637e9c_5f201226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2021-08-13T18:41:47Z",
+      "side": 1,
+      "message": "Brian, what\u0027s the next step on this one?\n\nGabor, can you +2 ?",
+      "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
