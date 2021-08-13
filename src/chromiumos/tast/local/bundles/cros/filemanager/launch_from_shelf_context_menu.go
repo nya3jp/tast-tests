@@ -6,6 +6,7 @@ package filemanager
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -65,18 +66,24 @@ func LaunchFromShelfContextMenu(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click New Window on Files app shelf icon: ", err)
 	}
 
-	// Check every second for 5 second that only one Files app window is open.
-	// Ensure no windows launching were delayed.
+	pollOpts := &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}
+	filesWindowMatcher := func(w *ash.Window) bool {
+		return strings.HasPrefix(w.Title, "Files")
+	}
+
+	if err := ash.WaitForCondition(ctx, tconn, filesWindowMatcher, pollOpts); err != nil {
+		s.Fatal("Failed to find initial Files app window: ", err)
+	}
+
+	// Ensure that no duplicate Files app windows appear after the first one.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool {
-			return w.Title == "Files"
-		}); errors.Is(err, ash.ErrMultipleWindowsFound) {
+		if _, err := ash.FindOnlyWindow(ctx, tconn, filesWindowMatcher); errors.Is(err, ash.ErrMultipleWindowsFound) {
 			return testing.PollBreak(errors.New("failed due to multiple Files app windows"))
 		} else if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to find only Files app window"))
+			return testing.PollBreak(errors.Wrap(err, "failed to find the only Files app window"))
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}); err != nil {
-		s.Fatal("Failed waiting for a single Files app window: ", err)
+	}, pollOpts); err != nil {
+		s.Fatal("Failed as multiple or no Files app windows visible: ", err)
 	}
 }
