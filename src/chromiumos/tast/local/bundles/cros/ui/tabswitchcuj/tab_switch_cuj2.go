@@ -9,6 +9,7 @@ package tabswitchcuj
 
 import (
 	"context"
+	"math/rand"
 	"strings"
 	"time"
 
@@ -281,6 +282,8 @@ func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
 	if len(targets) < winNum*tabNum {
 		return nil, errors.New("no enough web page targets to construct tabs")
 	}
+	// Shuffle the URLs to random order.
+	rand.Shuffle(len(targets), func(i, j int) { targets[i], targets[j] = targets[j], targets[i] })
 	idx := 0
 	windows := make([]*chromeWindow, winNum)
 	for i := range windows {
