@@ -33,6 +33,86 @@
       "message": "First of all apologies, I did not notice that I was bumped to reviewer so the notification kind of got filtered out mentally. I am looking at the CL, at high level everything looks good, looking at more closely now. I should be able to complete in some time today ....",
       "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2901891_39e1de90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T18:32:16Z",
+      "side": 1,
+      "message": "Overall LGTM, I have some questions for my clarification ",
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044a800e_6738f132",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T18:32:16Z",
+      "side": 1,
+      "message": "should we have a test config with hidden SSID as well ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629d5d93_c7e41d5a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T18:32:16Z",
+      "side": 1,
+      "message": "How these keys are generated ?",
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a1c51d_93b43ecd",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T18:32:16Z",
+      "side": 1,
+      "message": "Since you mentioned that these are some commonly used sub-elements, How do you define commonly here? why not specify all the sub-elements?",
+      "range": {
+        "startLine": 337,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 52
+      },
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
