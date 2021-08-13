@@ -271,6 +271,9 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 		if err := saveProcessList(ctx, f.arc, faillogDir); err != nil {
 			s.Error("Failed to save the process list in ARCVM: ", err)
 		}
+		if err := saveDumpsys(ctx, f.arc, faillogDir); err != nil {
+			s.Error("Failed to save dumpsys output in ARCVM: ", err)
+		}
 	}
 }
 
@@ -283,6 +286,19 @@ func saveProcessList(ctx context.Context, a *ARC, outDir string) error {
 	defer file.Close()
 
 	cmd := a.Command(ctx, "ps", "-AfZ")
+	cmd.Stdout = file
+	return cmd.Run()
+}
+
+func saveDumpsys(ctx context.Context, a *ARC, outDir string) error {
+	path := filepath.Join(outDir, "dumpsys.txt")
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	cmd := a.Command(ctx, "dumpsys")
 	cmd.Stdout = file
 	return cmd.Run()
 }
