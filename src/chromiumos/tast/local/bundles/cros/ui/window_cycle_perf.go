@@ -31,17 +31,24 @@ func init() {
 		Contacts:     []string{"yjliu@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val:     lacros.ChromeTypeChromeOS,
-			Fixture: "chromeLoggedIn",
+			Val:               lacros.ChromeTypeChromeOS,
+			Fixture:           "chromeLoggedIn",
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "lacrosStartedByData",
 			ExtraData:         []string{launcher.DataArtifact},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			// Pilot test on "noibat" that has HDMI dongle installed.
+			Name:              "noibat",
+			Val:               lacros.ChromeTypeChromeOS,
+			Fixture:           "chromeLoggedIn",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
 		}},
 	})
 }
