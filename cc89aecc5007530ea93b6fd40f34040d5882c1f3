@@ -22,6 +22,30 @@
       },
       "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae7fe6f_41d1e605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-13T15:12:57Z",
+      "side": 1,
+      "message": "It was suggested by nya@ in another CL to hide it [1]. The intention is to make devs less likely to accidentally use it.\n\nI am okay to move it out. And if we do that, let\u0027s refactor a bit to get rid of the scoping {} in L251 and L264. And get rid L247 and use :\u003d for `tconn` directly at L260. Same goes to other CUJs that have similar constructs.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3045486/3..7/src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go#b104",
+      "parentUuid": "9db0dca0_d3c1f158",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

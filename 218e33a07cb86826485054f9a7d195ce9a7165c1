@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65572dcb_5c8da7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-13T15:12:57Z",
+      "side": 1,
+      "message": "super nit: Prefer to have `cr` before `tconn` because `cr` is root of truth and `tconn` is derived.",
+      "revId": "218e33a07cb86826485054f9a7d195ce9a7165c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
