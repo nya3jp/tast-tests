@@ -63,7 +63,7 @@ const (
 	StatusNotRun               = "Not run"
 )
 
-// RoutineResult contains the the progress of the routine as a percentage and
+// RoutineResult contains the progress of the routine as a percentage and
 // the routine status.
 type RoutineResult struct {
 	Progress int
