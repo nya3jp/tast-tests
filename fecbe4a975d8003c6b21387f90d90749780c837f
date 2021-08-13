@@ -74,6 +74,24 @@
       "parentUuid": "40637e9c_5f201226",
       "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4099609_b464e74d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2021-08-13T18:52:00Z",
+      "side": 1,
+      "message": "The \"standard practice\" does give out a gerrit warning popup though ;)",
+      "parentUuid": "ebf85a7f_579ac7ce",
+      "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
