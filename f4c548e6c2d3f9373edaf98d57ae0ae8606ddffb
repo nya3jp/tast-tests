@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c1e406_e58a6bf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-13T17:17:02Z",
+      "side": 1,
+      "message": "LGTM. Reviewing the stack of the CLs. Please wait for the others before submitting the CL.",
+      "revId": "f4c548e6c2d3f9373edaf98d57ae0ae8606ddffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
