@@ -114,6 +114,12 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
+	ipr := remoteip.NewRemoteRunner(s.DUT().Conn())
+	dutStaMac, err := ipr.MAC(ctx, clientIface)
+	if err != nil {
+		s.Fatal("Failed to get MAC of WiFi interface: ", err)
+	}
+
 	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
@@ -205,9 +211,59 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Fatal("No Beacons Found")
 		}
 
-		// Analyze scan results
+		// Find the first probe request from the DUT.
+		// If there are no probe requests, fail.
+		probeReqFilter := []pcap.Filter{
+			pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
+			pcap.TransmitterAddress(dutStaMac),
+		}
+		probeReqPackets, err := pcap.ReadPackets(pcapPath, probeReqFilter...)
+		if err != nil {
+			s.Fatal("Failed to read probe requests from packet capture: ", err)
+		}
+		s.Logf("Received %d probe requests", len(probeReqPackets))
+		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
+		s.Log("Probe Request Time: ", probeReqTimestamp)
+
+		// Find the first test beacon after the first probe request.
+		// Note that beacons arriving *before* the probe request should not be counted.
+		beaconFilter := pcap.TypeFilter(layers.LayerTypeDot11MgmtBeacon, nil)
+		beaconPackets, err := pcap.ReadPackets(pcapPath, beaconFilter)
+		if err != nil {
+			s.Fatal("Failed to read beacons from packet capture: ", err)
+		}
+		beaconFirst := ""
+		for _, packet := range beaconPackets {
+
+			// If we've already found the first beacon, we're done
+			if beaconFirst != "" {
+				break
+			}
+
+			// Check to see if the beacon is before the probe.
+			// If the beacon follows the probe and matches the prefix, we're done.
+			if packet.Metadata().Timestamp.Before(probeReqTimestamp) {
+				continue
+			}
+			for _, layer := range packet.Layers() {
+				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
+					if elem.ID == layers.Dot11InformationElementIDSSID {
+						ssid := string(elem.Info)
+						if strings.HasPrefix(ssid, ssidPrefix) {
+							beaconFirst = ssid
+							s.Log("First beacon found: ", ssid)
+							break
+						}
+					}
+				}
+			}
+		}
+		if beaconFirst == "" {
+			s.Fatalf("Could not find beacon after probe request (ssid prefix %s)", ssidPrefix)
+		}
+
+		// Analyze scan results.
 		beaconCount := len(ssids)
-		beaconFirst := ssids[0]
 		beaconFinal := ssids[len(ssids)-1]
 		beaconFirstIdx, err := ssidIndex(beaconFirst)
 		if err != nil {
@@ -218,21 +274,15 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to parse beacon SSID: ", err)
 		}
 		beaconRange := beaconFinalIdx - beaconFirstIdx + 1
-		s.Logf("Found %d test beacons between %q and %q", beaconCount, beaconFirst, beaconFinal)
+		s.Logf("Found %d test beacons (initial %q), considering %q through %q",
+			beaconCount, ssids[0], beaconFirst, beaconFinal)
 		if beaconRange-beaconCount > missingBeaconThreshold {
 			s.Fatalf("Missed %d beacons: %v", beaconRange-beaconCount, ssids)
 		}
 
-		// Open Packet Capture and read beacons
-		beaconFilter := pcap.TypeFilter(layers.LayerTypeDot11MgmtBeacon, nil)
-		packets, err := pcap.ReadPackets(pcapPath, beaconFilter)
-		if err != nil {
-			s.Fatal("Failed to read beacons from packet capture: ", err)
-		}
-
 		// Construct a mapping from SSIDs to broadcast time
 		ssidTimestamps := make(map[string]time.Time)
-		for _, packet := range packets {
+		for _, packet := range beaconPackets {
 			for _, layer := range packet.Layers() {
 				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
 					if elem.ID == layers.Dot11InformationElementIDSSID {
