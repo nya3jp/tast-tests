@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ac01c6_d05074c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-13T03:31:35Z",
+      "side": 1,
+      "message": "As the func name is pretty descriptive, this log is not necessary.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 40
+      },
+      "revId": "02136e3ed2471c042dafba802bab88242f5bf632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c6a04c_7d0f4f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-13T03:31:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "02136e3ed2471c042dafba802bab88242f5bf632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e1c6e7_dc3994c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-13T03:31:35Z",
+      "side": 1,
+      "message": "Should this fail the test case?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "02136e3ed2471c042dafba802bab88242f5bf632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff1e1de_f3a48a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-13T03:31:35Z",
+      "side": 1,
+      "message": "Please move this into a func.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "02136e3ed2471c042dafba802bab88242f5bf632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a088dfa4_1c03e787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-13T03:31:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "02136e3ed2471c042dafba802bab88242f5bf632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf8f0c9_b7e339e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-13T03:31:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "02136e3ed2471c042dafba802bab88242f5bf632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
