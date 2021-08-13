@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e43ee8e7_518dc6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-08-13T09:37:14Z",
+      "side": 1,
+      "message": "No, we can\u0027t.\nIf WhiteBalanceMode is \"continuous\", the value of ColorTemperature is invalid.\nIf we put the invalid value into constraint, there will be a invalid value error.",
+      "parentUuid": "455f4c1e_a9222ac2",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 44
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b210d604_ac3b314d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2021-08-13T08:52:18Z",
       "side": 1,
       "message": "We may need |WhiteBalanceMode| also?",
+      "range": {
+        "startLine": 192,
+        "startChar": 46,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f40446c_2ba23fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-08-13T09:37:14Z",
+      "side": 1,
+      "message": "Yes, the value of WhiteBalanceMode is in the getConstraints().",
+      "parentUuid": "b210d604_ac3b314d",
       "range": {
         "startLine": 192,
         "startChar": 46,
