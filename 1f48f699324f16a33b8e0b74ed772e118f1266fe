@@ -210,6 +210,24 @@
       "parentUuid": "15ca0df7_b1dc4429",
       "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14e0e9c_3915de6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-13T02:24:04Z",
+      "side": 1,
+      "message": "Thanks for looking into it. Shelf launched lacros is run as the chronos user though, so I wonder why it wouldn\u0027t work in tast tests when it does in regular usage?",
+      "parentUuid": "c5ea57ff_5adb0e39",
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
