@@ -52,7 +52,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
-				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"),
+				chrome.ExtraArgs("--force-tablet-mode=touch_view"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
