@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d100315_7aff00bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T18:33:01Z",
+      "side": 1,
+      "message": "Also the CL is showing merge conflicts, so a new revision might be needed.",
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "044a800e_6738f132",
