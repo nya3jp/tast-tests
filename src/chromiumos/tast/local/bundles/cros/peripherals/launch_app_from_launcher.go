@@ -69,7 +69,7 @@ func init() {
 // LaunchAppFromLauncher verifies launching an app from the launcher.
 func LaunchAppFromLauncher(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	cr, ok := s.PreValue().(*chrome.Chrome) // Grab pre existing chrome instance

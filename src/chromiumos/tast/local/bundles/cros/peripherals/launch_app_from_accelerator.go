@@ -50,7 +50,7 @@ func init() {
 // LaunchAppFromAccelerator verifies launching an app with an accelerator.
 func LaunchAppFromAccelerator(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	params := s.Param().(accelTestParams)
