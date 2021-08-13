@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. policy.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. device_minimum_version_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. nebraska_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. policy.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. update_service.proto
 
 // Package policy provides the PolicyService
 package policy
