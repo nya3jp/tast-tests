@@ -134,6 +134,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7edb2b_af77c713",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T21:14:14Z",
+      "side": 1,
+      "message": "SG!",
+      "parentUuid": "f9b97279_dcd9e755",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "629d5d93_c7e41d5a",
@@ -165,6 +189,24 @@
       "side": 1,
       "message": "They weren\u0027t generated - if you take a close look, it\u0027s just a decreasing sequence of bytes. It doesn\u0027t really matter what these are for our purposes, as long as the key corresponds to the correct MAC of the destination AP. https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/current/hostapd/hostapd.conf;rcl\u003d6bb11c7a405616de9a2b3af395117ebe7bdc7047;l\u003d1837 is where the R0KH and R1KH are defined in hostapd.conf.\n\nThese were just c\u0026p-ed from the roam_ft test (which I c\u0026p-ed from a random hostapd.conf online).",
       "parentUuid": "629d5d93_c7e41d5a",
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4010796_9e9a8311",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T21:14:14Z",
+      "side": 1,
+      "message": "Thanks for clarification.",
+      "parentUuid": "7536d519_943a918d",
       "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
