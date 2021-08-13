@@ -442,6 +442,7 @@ func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error 
 func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
+	ui := uiauto.New(tconn)
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize keyboard input")
@@ -480,7 +481,7 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 
 	if err := uiauto.Combine("present slide",
 		conf.switchToChromeTab("Meet"),
-		conf.shareScreen(tconn, false),
+		ui.Retry(3, conf.shareScreen(tconn, false)),
 		conf.switchToChromeTab(slideTitle),
 		presentSlide(tconn, kb),
 		editSlide(tconn, kb),
@@ -500,7 +501,7 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 }
 
 // ExtendedDisplayPresenting presents the screen on dextended display.
-func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context) error {
+func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context) (err error) {
 	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
@@ -553,7 +554,7 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 	return uiauto.Combine("present slide",
 		kb.AccelAction("Alt+Tab"), // Press Alt+Tab to switch to conference page.
-		conf.shareScreen(tconn, true),
+		ui.Retry(3, conf.shareScreen(tconn, true)),
 		moveConferenceTab,
 		kb.AccelAction("Alt+Tab"), // Press Alt+Tab to switch to slide page.
 		presentSlide(tconn, kb),
@@ -614,6 +615,7 @@ func (conf *GoogleMeetConference) shareScreen(tconn *chrome.TestConn, extendedDi
 	meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 	menu := nodewith.Name("Presentation options").Role(role.Menu).Ancestor(meetWebArea)
 	presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
+	presentingButton := nodewith.NameContaining("presenting").Role(role.PopUpButton)
 	presentMode := nodewith.Name("A window").Role(role.MenuItem)
 	presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
 	shareButton := nodewith.Name("Share").Role(role.Button)
@@ -623,10 +625,24 @@ func (conf *GoogleMeetConference) shareScreen(tconn *chrome.TestConn, extendedDi
 		presentMode = nodewith.NameContaining("A tab").Role(role.MenuItem)
 		presentWindow = nodewith.ClassName("AXVirtualView").Role(role.Cell).Name(slideTitle)
 	}
-
+	// If another participant is presenting, wait for the presentation to stop.
+	checkPresentNowButton := func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := ui.WaitUntilExists(presentNowButton)(ctx); err == nil {
+				testing.ContextLog(ctx, `"Preset now" button is found`)
+				return nil
+			}
+			if err := ui.Exists(presentingButton)(ctx); err != nil {
+				return testing.PollBreak(errors.Wrap(err, `failed to find "Present now" button`))
+			}
+			testing.ContextLog(ctx, "Another participant is presenting now, wait for the presentation to stop")
+			return errors.New("Another participant is presenting now")
+		}, &testing.PollOptions{Timeout: time.Minute})
+	}
 	return func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start to share screen")
 		return uiauto.Combine("share screen",
+			checkPresentNowButton,
 			expandMenu(conf.tconn, presentNowButton, menu, 172),
 			ui.LeftClick(presentMode),
 			ui.LeftClick(presentWindow),
