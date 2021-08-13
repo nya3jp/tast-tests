@@ -134,7 +134,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		return errors.Wrap(err, "failed to conduct the recorder task")
 	}
 
-	if err := recorder.Record(ctx, pv); err != nil {
+	// Use a short timeout value so it can return fast in case of failure.
+	recordCtx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+	if err := recorder.Record(recordCtx, pv); err != nil {
 		return errors.Wrap(err, "failed to record the data")
 	}
 

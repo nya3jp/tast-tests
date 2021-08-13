@@ -406,7 +406,10 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		s.Fatal("Failed to execute tab switch action: ", err)
 	}
 
-	if err = recorder.Record(ctx, pv); err != nil {
+	// Use a short timeout value so it can return fast in case of failure.
+	recordCtx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+	if err := recorder.Record(recordCtx, pv); err != nil {
 		s.Fatal("Failed to report, error: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {
@@ -462,7 +465,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 	for idx, window := range windows {
 		testing.ContextLogf(ctx, "Switching to window #%d", idx+1)
 		if err := tsAction.SwitchToAppWindowByIndex(chromeApp.Name, idx)(ctx); err != nil {
-			return errors.Wrap(err, "failed to switch window: ")
+			return errors.Wrap(err, "failed to switch window")
 		}
 
 		tabTotalNum := len(window.tabs)

@@ -313,7 +313,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		testing.ContextLogf(ctx, "All page loaded, %d ms elapsed", totalElapsed.Milliseconds())
 
 		if err := uiActionHandler.MinimizeAllWindow()(ctx); err != nil {
-			return errors.Wrap(err, "failed to minimize all window: ")
+			return errors.Wrap(err, "failed to minimize all windows")
 		}
 
 		return nil
@@ -333,7 +333,10 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		Direction: perf.SmallerIsBetter,
 	}, float64(totalElapsed.Milliseconds()))
 
-	if err = recorder.Record(ctx, pv); err != nil {
+	// Use a short timeout value so it can return fast in case of failure.
+	recordCtx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+	if err := recorder.Record(recordCtx, pv); err != nil {
 		s.Fatal("Failed to collect the data from the recorder: ", err)
 	}
 	// We don't do pv.Save(), but will return and let the test case handle it.
