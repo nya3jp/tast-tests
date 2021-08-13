@@ -20,7 +20,7 @@ func (message voiceMessage) GetInputData(im ime.InputMethod) (InputData, bool) {
 var VoiceMessageHello = voiceMessage{
 	ime.LanguageAr: {
 		VoiceFile:    "voice_ar_hello.wav",
-		ExpectedText: "سلام",
+		ExpectedText: "السلام عليكم",
 	},
 	ime.LanguageEn: {
 		VoiceFile:    "voice_en_hello.wav",
@@ -32,7 +32,7 @@ var VoiceMessageHello = voiceMessage{
 	},
 	ime.LanguageKo: {
 		VoiceFile:    "voice_ko_hello.wav",
-		ExpectedText: "안녕",
+		ExpectedText: "안녕하세요",
 	},
 	ime.LanguageZhHans: {
 		VoiceFile:    "voice_zh_hans_hello.wav",
