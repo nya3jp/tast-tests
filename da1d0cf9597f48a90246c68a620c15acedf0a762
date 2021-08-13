@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31656ff_e4c157e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-13T09:49:47Z",
+      "side": 1,
+      "message": "Nice to name return values to distinguish two strings:\n\n (board, arch string, err error)",
+      "range": {
+        "startLine": 263,
+        "startChar": 64,
+        "endLine": 263,
+        "endChar": 89
+      },
+      "revId": "da1d0cf9597f48a90246c68a620c15acedf0a762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
