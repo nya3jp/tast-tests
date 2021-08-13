@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47940f2d_55849904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9a51f8_6b5eb1c0",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 79
+      },
+      "revId": "ec3e532660bfbdb97b9674c670de4b351fc33871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dca219f_dcf920a8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-13T20:13:39Z",
       "side": 1,
       "message": "a move descriptive name? \"discharge\" maybe?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "ec3e532660bfbdb97b9674c670de4b351fc33871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b793cf19_f17f30f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dca219f_dcf920a8",
       "range": {
         "startLine": 58,
         "startChar": 1,
