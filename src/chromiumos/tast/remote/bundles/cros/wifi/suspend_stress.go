@@ -40,6 +40,7 @@ func init() {
 			{
 				Name:      "80211g",
 				ExtraAttr: []string{"wificell_suspend", "wificell_unstable"},
+				Timeout:   time.Minute * 10,
 				Val: []suspendStressParam{
 					{suspendCount: 5, apOps: []hostapd.Option{hostapd.Channel(1), hostapd.Mode(hostapd.Mode80211g)}},
 					{suspendCount: 5, apOps: []hostapd.Option{hostapd.Channel(6), hostapd.Mode(hostapd.Mode80211g)}},
