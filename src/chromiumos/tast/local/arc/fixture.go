@@ -17,6 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// postTestTimeout is the timeout duration to save logs after each test.
+// It's intentionally set longer than resetTimeout because dumping 'dumpsys' takes around 20 seconds.
+const postTestTimeout = resetTimeout + 20*time.Second
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBooted",
@@ -26,7 +30,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -42,7 +46,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -63,7 +67,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -79,7 +83,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -97,7 +101,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 }
@@ -257,6 +261,9 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 		if err := saveProcessList(ctx, f.arc, faillogDir); err != nil {
 			s.Error("Failed to save the process list in ARCVM: ", err)
 		}
+		if err := saveDumpsys(ctx, f.arc, faillogDir); err != nil {
+			s.Error("Failed to save dumpsys output in ARCVM: ", err)
+		}
 	}
 }
 
@@ -269,6 +276,19 @@ func saveProcessList(ctx context.Context, a *ARC, outDir string) error {
 	defer file.Close()
 
 	cmd := a.Command(ctx, "ps", "-AfZ")
+	cmd.Stdout = file
+	return cmd.Run()
+}
+
+func saveDumpsys(ctx context.Context, a *ARC, outDir string) error {
+	path := filepath.Join(outDir, "dumpsys.txt")
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	cmd := a.Command(ctx, "dumpsys")
 	cmd.Stdout = file
 	return cmd.Run()
 }
