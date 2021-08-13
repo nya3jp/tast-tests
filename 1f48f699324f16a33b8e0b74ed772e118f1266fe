@@ -228,6 +228,29 @@
       "parentUuid": "c5ea57ff_5adb0e39",
       "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406a19df_1c26c235",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-08-13T04:13:08Z",
+      "side": 1,
+      "message": "l.cmd.Cred(syscall.Credential{Uid: sysutil.ChronosUID, Gid: sysutil.ChronosGID, Groups:[]uint32{600}})\n\nIt should be the easiest fix. 600 is the ID of CRAS group.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 83
+      },
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
