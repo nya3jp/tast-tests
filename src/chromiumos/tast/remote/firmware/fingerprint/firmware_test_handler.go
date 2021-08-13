@@ -20,6 +20,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// FirmwareTestServiceDeps holds FirmwareTest's service dependencies.
+var FirmwareTestServiceDeps = []string{
+	"tast.cros.platform.UpstartService",
+	dutfs.ServiceName,
+}
+
 // FirmwareTest provides a common framework for fingerprint firmware tests.
 type FirmwareTest struct {
 	d                        *dut.DUT

@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -28,7 +27,7 @@ func init() {
 		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
+		ServiceDeps:  fingerprint.FirmwareTestServiceDeps,
 		Vars:         []string{"servo"},
 	})
 }
