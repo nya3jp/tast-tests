@@ -6,6 +6,7 @@ package conference
 
 import (
 	"context"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -33,6 +35,7 @@ type ZoomConference struct {
 	tabletMode bool
 	roomSize   int
 	account    string
+	outDir     string
 }
 
 // Join joins a new conference room.
@@ -410,6 +413,8 @@ func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
 		return err
 	}
 	defer func() {
+		// If presenting slide fails, dump the last screen before deleting the slide.
+		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(conf.outDir, "service"), func() bool { return err != nil }, conf.cr, "ui_dump_last")
 		if err := slideCleanup(cleanUpSlideCtx); err != nil {
 			// Only log the error.
 			testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
@@ -508,7 +513,7 @@ func (conf *ZoomConference) switchToChromeTab(tabName string) action.Action {
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
 func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, tsAction cuj.UIActionHandler, tabletMode bool,
-	roomSize int, account string) *ZoomConference {
+	roomSize int, account, outDir string) *ZoomConference {
 	return &ZoomConference{
 		cr:         cr,
 		tconn:      tconn,
@@ -516,5 +521,6 @@ func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, tsAction cuj.U
 		tabletMode: tabletMode,
 		roomSize:   roomSize,
 		account:    account,
+		outDir:     outDir,
 	}
 }
