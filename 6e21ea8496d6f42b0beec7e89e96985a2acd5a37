@@ -16,6 +16,23 @@
       "message": "LGTM. I\u0027m not in Tast reviewer and CrOS WiFi reviewer now, so I\u0027ll defer approval to others.",
       "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "872729bc_225603d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2021-08-13T18:04:14Z",
+      "side": 1,
+      "message": "First of all apologies, I did not notice that I was bumped to reviewer so the notification kind of got filtered out mentally. I am looking at the CL, at high level everything looks good, looking at more closely now. I should be able to complete in some time today ....",
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
