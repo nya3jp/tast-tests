@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9c1be0_31a02c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Changed to pass in s.HasError. Also dump the CrOS a11y tree. And add procedure to close the APP after screenshot is taken.",
+      "parentUuid": "f2af06d6_df200e8d",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 97
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcd99148_3b09ed99",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-12T13:00:19Z",
       "side": 1,
       "message": "testing.State should not be passed around. I do not see a reason in the function. If you just want to log, please use testing.ContextLog instead.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20eca24_0ab964a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcd99148_3b09ed99",
       "range": {
         "startLine": 93,
         "startChar": 38,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f03d96_a6b3a331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71fe28b2_4767c54d",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6e1275_3515d9b5",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-12T13:00:19Z",
       "side": 1,
       "message": "WaitForVisible already waits for 20s. Is there a reason to do polling?",
+      "range": {
+        "startLine": 324,
+        "startChar": 2,
+        "endLine": 324,
+        "endChar": 56
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775c9d28_8c3321c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Thanks. Polling is removed.",
+      "parentUuid": "bd6e1275_3515d9b5",
       "range": {
         "startLine": 324,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b78cb4_33075846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Good catch. Thanks!",
+      "parentUuid": "6ea1387e_cf7f599d",
+      "range": {
+        "startLine": 331,
+        "startChar": 9,
+        "endLine": 331,
+        "endChar": 27
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e495ced_17124e0e",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-08-12T13:00:19Z",
       "side": 1,
       "message": "ditto and below.",
+      "range": {
+        "startLine": 336,
+        "startChar": 9,
+        "endLine": 336,
+        "endChar": 27
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6613caa_ae29e051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e495ced_17124e0e",
       "range": {
         "startLine": 336,
         "startChar": 9,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a1843b_e6d5ca3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96e1ed85_bb068b77",
+      "range": {
+        "startLine": 405,
+        "startChar": 13,
+        "endLine": 405,
+        "endChar": 22
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b7a20cd_49f60055",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "736db827_43223c41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7a20cd_49f60055",
+      "range": {
+        "startLine": 406,
+        "startChar": 4,
+        "endLine": 406,
+        "endChar": 61
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f7346ae_0f2a44a5",
@@ -215,6 +407,30 @@
       "writtenOn": "2021-08-12T13:00:19Z",
       "side": 1,
       "message": "Con you confirm this? I personally do not think the global 10s interval applies to all situations.",
+      "range": {
+        "startLine": 435,
+        "startChar": 12,
+        "endLine": 435,
+        "endChar": 24
+      },
+      "revId": "095663653e5f5eeae91034a05af48b10dfb77670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1a9d9a_817c74e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-13T22:25:21Z",
+      "side": 1,
+      "message": "This has been changed to 1 second.",
+      "parentUuid": "9f7346ae_0f2a44a5",
       "range": {
         "startLine": 435,
         "startChar": 12,
