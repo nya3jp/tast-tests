@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e233e04e_2bbd9ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:19:33Z",
+      "side": 1,
+      "message": "Done in follow-up CL",
+      "parentUuid": "ab471f0b_691cd905",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "e93df351d88d60eba5136c6a6aea814e8b55c6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a03116_d2277580",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-12T15:37:29Z",
       "side": 1,
       "message": "What is this logging doing here? You will need to make sure that \"disabled\" is not a flag present",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "e93df351d88d60eba5136c6a6aea814e8b55c6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b78664_fdbeb225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a03116_d2277580",
       "range": {
         "startLine": 44,
         "startChar": 4,
