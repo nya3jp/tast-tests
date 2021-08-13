@@ -163,6 +163,30 @@
       },
       "revId": "f0fe51cdebf758d1c43c92d2418f4fa4de309bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d07601_9381da1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T22:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82119ad7_8468db4d",
+      "range": {
+        "startLine": 91,
+        "startChar": 29,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "f0fe51cdebf758d1c43c92d2418f4fa4de309bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
