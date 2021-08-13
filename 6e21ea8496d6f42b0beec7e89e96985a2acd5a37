@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b97279_dcd9e755",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T20:58:22Z",
+      "side": 1,
+      "message": "IMO, we shouldn\u0027t test more than a small group of related features in one tast test, otherwise a test failure won\u0027t tell us what feature is actually breaking. RRM isn\u0027t really related to hidden SSIDs and we have separate tests that exercise that feature, so there\u0027s no reason to add that here.",
+      "parentUuid": "044a800e_6738f132",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "629d5d93_c7e41d5a",
@@ -109,6 +133,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7536d519_943a918d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T20:58:22Z",
+      "side": 1,
+      "message": "They weren\u0027t generated - if you take a close look, it\u0027s just a decreasing sequence of bytes. It doesn\u0027t really matter what these are for our purposes, as long as the key corresponds to the correct MAC of the destination AP. https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/current/hostapd/hostapd.conf;rcl\u003d6bb11c7a405616de9a2b3af395117ebe7bdc7047;l\u003d1837 is where the R0KH and R1KH are defined in hostapd.conf.\n\nThese were just c\u0026p-ed from the roam_ft test (which I c\u0026p-ed from a random hostapd.conf online).",
+      "parentUuid": "629d5d93_c7e41d5a",
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6a1c51d_93b43ecd",
@@ -122,6 +164,30 @@
       "writtenOn": "2021-08-13T18:32:16Z",
       "side": 1,
       "message": "Since you mentioned that these are some commonly used sub-elements, How do you define commonly here? why not specify all the sub-elements?",
+      "range": {
+        "startLine": 337,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 52
+      },
+      "revId": "6e21ea8496d6f42b0beec7e89e96985a2acd5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa377b4e_938a74b9",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T20:58:22Z",
+      "side": 1,
+      "message": "\u003e How do you define commonly here?\n\nWhatever I used in the test (which is guided by the MBO test plan)\n\n\u003e why not specify all the sub-elements?\n\nWe likely won\u0027t ever use them in any other test, so it\u0027d just be taking up space.",
+      "parentUuid": "c6a1c51d_93b43ecd",
       "range": {
         "startLine": 337,
         "startChar": 3,
