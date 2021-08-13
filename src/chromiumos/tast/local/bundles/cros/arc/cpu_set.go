@@ -171,6 +171,46 @@ func readCPUSetInfo(ctx context.Context, t string) (string, []byte, error) {
 	return path, out, err
 }
 
+// isCoreSchedulingAvailable returns true if CPU has MDS or L1TF vulnerabilities. Core scheduling does not
+// run on CPUs that are not vulnerable. This is a Go port of chromeos::system::IsCoreSchedulingAvailable
+// function in src/chromeos/system/core_scheduling.cc.
+func isCoreSchedulingAvailable() bool {
+	filenames := []string{"l1tf", "mds"}
+	for _, filename := range filenames {
+		path := fmt.Sprintf("/sys/devices/system/cpu/vulnerabilities/%s", filename)
+		body, err := ioutil.ReadFile(path)
+		if err != nil {
+			// Old kernels don't support the sysfs interface.
+			continue
+		}
+		if strings.Trim(string(body), " ") != "Not affected" {
+			// Core scheduling available
+			return true
+		}
+	}
+	// Core scheduling not available
+	return false
+}
+
+// numberOfProcessorsForCoreScheduling returns number of physical cores. This is a Go port of
+// chromeos::system::NumberOfProcessorsForCoreScheduling function in src/chromeos/system/core_scheduling.cc.
+func numberOfProcessorsForCoreScheduling() (int, error) {
+	lists := map[string]struct{}{}
+	for i := 0; i < runtime.NumCPU(); i++ {
+		path := fmt.Sprintf("/sys/devices/system/cpu/cpu%d/topology/thread_siblings_list", i)
+		body, err := ioutil.ReadFile(path)
+		if err != nil {
+			return 0, err
+		}
+		lists[string(body)] = struct{}{}
+	}
+	physicalCores := len(lists)
+	if physicalCores == 0 {
+		return 1, nil
+	}
+	return physicalCores, nil
+}
+
 func CPUSet(ctx context.Context, s *testing.State) {
 	s.Log("Running testCPUSet")
 
@@ -184,6 +224,13 @@ func CPUSet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to determine guest type: ", err)
 	}
 	if isVMEnabled {
+		if isCoreSchedulingAvailable() {
+			// When core scheduling is used, ARCVM cannot use all the CPU cores.
+			numExpectedGuestCpus, err = numberOfProcessorsForCoreScheduling()
+			if err != nil {
+				s.Fatal("Failed to determine num processors for core scheduling: ", err)
+			}
+		}
 		// ARCVM always has one additional vCPU for supporting RT processes.
 		numExpectedGuestCpus++
 	}
