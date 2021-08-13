@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0a88a0_1852260a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T02:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8779f400_349da549",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a46ad7fa_88385484",
@@ -93,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc68de88_e9d67946",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T02:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a46ad7fa_88385484",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6c00ea_15c61304",
@@ -106,6 +148,24 @@
       "writtenOn": "2021-07-29T09:26:06Z",
       "side": 1,
       "message": "minor nit: not sure if other test might also want to parse the packet. If so, perhaps it worth to extract the parsing here (+ related types) into a utility function?",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27be307a_e45cf83e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T02:08:25Z",
+      "side": 1,
+      "message": "Not sure what you had in mind here, but each Action packet can differ quite a bit (i.e. there\u0027s no standardized format or anything, other than the first few bytes), so I don\u0027t think there\u0027s any benefit to extracting this code here. WDYT?",
+      "parentUuid": "5f6c00ea_15c61304",
       "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c80d9c8_edcde0ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T02:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08cedb58_79621742",
+      "range": {
+        "startLine": 317,
+        "startChar": 28,
+        "endLine": 317,
+        "endChar": 32
+      },
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2764749d_1ec2dc12",
@@ -146,6 +230,24 @@
       "writtenOn": "2021-07-29T09:26:06Z",
       "side": 1,
       "message": "nit: The fields above are with fixed size, not sure if it might be simpler to have them in a single Header type and use binary.Write here?",
+      "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53543db2_839fc81e",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-13T02:08:25Z",
+      "side": 1,
+      "message": "It may slightly simplify things here, but then we have to initialize the nested Header struct in the test, which looks a bit messier, and it\u0027s not even clear that these belong together as a \"header\" anyway (we\u0027d only call it that because they\u0027re the first consecutive fixed sized fields). IMO it\u0027s a little better to keep all the fields at the same level. WDYT?",
+      "parentUuid": "2764749d_1ec2dc12",
       "revId": "d6a03b4fe9b7631b13e8f9dabb3701b8dae6e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
