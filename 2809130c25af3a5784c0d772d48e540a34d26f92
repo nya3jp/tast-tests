@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507bab34_d25ca8aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-13T14:25:19Z",
+      "side": 1,
+      "message": "powerd may have been compiled... it is just not enabled",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "2809130c25af3a5784c0d772d48e540a34d26f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
