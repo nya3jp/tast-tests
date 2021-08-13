@@ -182,6 +182,30 @@
       },
       "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77e1a61_6401a46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-13T12:35:58Z",
+      "side": 1,
+      "message": "It is not an exported function(at least I don\u0027t want it to be). The utils package should only be used inside health package as internal functions. The reason to put it into a package is, golang doesn\u0027t support internal function/namespace in file, which caused the function name collision in each test file under health package.\n\nI\u0027m considering something like a wrapper function/object which turns (res, err) \u003d\u003e res and chains those error so we can handle it later. If you think output parameters is really not the golang should do I can try to go this way.",
+      "parentUuid": "384834c8_e69db77f",
+      "range": {
+        "startLine": 70,
+        "startChar": 28,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
