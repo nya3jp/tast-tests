@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92890988_cc118fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_remote.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-13T20:04:53Z",
+      "side": 1,
+      "message": "This comment goes with cmd below",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "07090097458d569356c4c5ff63bb89afac01765c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
