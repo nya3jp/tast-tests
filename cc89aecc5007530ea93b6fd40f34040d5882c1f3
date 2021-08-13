@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db0dca0_d3c1f158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-13T10:27:44Z",
+      "side": 1,
+      "message": "@xiyuan: is it safe to take this out?",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
