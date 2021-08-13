@@ -15,7 +15,6 @@ import (
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
@@ -32,7 +31,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
