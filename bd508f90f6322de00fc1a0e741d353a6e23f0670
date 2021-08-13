@@ -16,6 +16,23 @@
       "message": "What is a gross estimate size of a typical dumpsys output on average?",
       "revId": "bd508f90f6322de00fc1a0e741d353a6e23f0670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2802e68b_8be07ae5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-13T15:16:12Z",
+      "side": 1,
+      "message": "The change looks correct, but I have concern on the runtime and disk usage. (I thought taking 20 seconds may mean very large file, but maybe not)\n\nTests with the same fixture may all fail simultaneously when something went wrong in the common logic.\nThere are 93 mainline tests using the fixture, in which 15 are critical.\nTherefore I am afraid the additional 20 seconds runtime may potentially affect CQ runtime significantly (especially after all informationals are promoted to critical). I would like to ask nya@ for another opinion on this.",
+      "revId": "bd508f90f6322de00fc1a0e741d353a6e23f0670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
