@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -144,6 +145,12 @@ func WindowState(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	// Restore tablet mode to its original state on exit.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -181,18 +188,18 @@ func WindowState(ctx context.Context, s *testing.State) {
 			defer act.Stop(ctx, tconn)
 
 			// Set the activity to the initial WindowState.
-			if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
+			if err := setAndVerifyWindowState(ctx, act, tconn, d, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
 				return errors.Wrap(err, "failed to set initial window state")
 			}
 
 			for i := 0; i < testParams.testIterations; i++ {
 				// Initial WindowState transition.
-				if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
+				if err := setAndVerifyWindowState(ctx, act, tconn, d, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
 					return errors.Wrapf(err, "failed to set the initial window state in iter %d", i)
 				}
 
 				// Final WindowState transition.
-				if err := setAndVerifyWindowState(ctx, act, tconn, test.finalWindowState, test.expectedFinalAshWindowState, test.expectedFinalArcWindowState); err != nil {
+				if err := setAndVerifyWindowState(ctx, act, tconn, d, test.finalWindowState, test.expectedFinalAshWindowState, test.expectedFinalArcWindowState); err != nil {
 					return errors.Wrapf(err, "failed to set the final window state in iter %d", i)
 				}
 			}
@@ -204,9 +211,19 @@ func WindowState(ctx context.Context, s *testing.State) {
 }
 
 // setAndVerifyWindowState sets and verifies the desired window state transition.
-func setAndVerifyWindowState(ctx context.Context, act *arc.Activity, tconn *chrome.TestConn, arcWindowState arc.WindowState, expectedAshWindowState ash.WindowStateType, expectedArcWindowState arc.WindowState) error {
+func setAndVerifyWindowState(ctx context.Context, act *arc.Activity, tconn *chrome.TestConn, d *ui.Device, arcWindowState arc.WindowState, expectedAshWindowState ash.WindowStateType, expectedArcWindowState arc.WindowState) error {
 	if err := act.SetWindowState(ctx, tconn, arcWindowState); err != nil {
 		return errors.Wrapf(err, "failed to set window state (%v)", arcWindowState)
+	}
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for Android to be idle")
+	}
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get window info")
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for the window animation")
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), expectedAshWindowState); err != nil {
 		return errors.Wrapf(err, "failed to wait for a window state to appear on the Chrome side (%v)", expectedAshWindowState)
