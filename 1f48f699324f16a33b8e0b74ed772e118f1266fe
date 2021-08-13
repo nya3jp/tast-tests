@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94cf48ab_471b2a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-08-13T04:15:16Z",
+      "side": 1,
+      "message": "I think the issue is that \"syscall.Credential\" doesn\u0027t include the groups of chronos. If you add group in this function, the issue will be fixed.",
+      "parentUuid": "e14e0e9c_3915de6c",
+      "revId": "1f48f699324f16a33b8e0b74ed772e118f1266fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "406a19df_1c26c235",
         "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
         "patchSetId": 1
