@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/testing"
@@ -32,8 +33,14 @@ func init() {
 }
 
 func FpSystemIsLocked(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.CloseRPC(ctx)
+
 	servoSpec, _ := s.Var("servo")
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), true, true)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -46,15 +53,13 @@ func FpSystemIsLocked(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
 	testing.ContextLog(ctx, "Checking that firmware is functional")
-	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
+	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d.DUT); err != nil {
 		s.Fatal("Firmware is not functional: ", err)
 	}
 
 	testing.ContextLog(ctx, "Checking that system is locked")
-	if err := fingerprint.CheckSystemIsLocked(ctx, d); err != nil {
+	if err := fingerprint.CheckSystemIsLocked(ctx, d.DUT); err != nil {
 		s.Fatal("System is not locked: ", err)
 	}
 

@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fingerprint"
@@ -34,9 +35,15 @@ func init() {
 }
 
 func FpBioWash(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.CloseRPC(ctx)
+
 	servoSpec, _ := s.Var("servo")
 	// HW wp must be disabled to flash_fp_mcu.
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), false, false)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -49,8 +56,6 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
 	// This test requires a forced flash without entropy
 	// initialization to clear entropy.
 	testing.ContextLog(ctx, "Force flashing original FP firmware")
@@ -60,7 +65,7 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 
 	// Wait for FPMCU to boot to RW. Fail if it does not.
 	testing.ContextLog(ctx, "Waiting for FPMCU to reboot to RW")
-	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d.DUT, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to boot to RW image: ", err)
 	}
 
@@ -79,12 +84,12 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 
 	// Enable software write protect.
 	testing.ContextLog(ctx, "Enabling software write protect")
-	if err := fingerprint.EctoolCommand(ctx, d, "flashprotect", "enable").Run(ctx); err == nil {
+	if err := fingerprint.EctoolCommand(ctx, d.DUT, "flashprotect", "enable").Run(ctx); err == nil {
 		s.Fatal("Failed to enable software write protect")
 	}
 
 	testing.ContextLog(ctx, "Checking that firmware is functional")
-	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
+	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d.DUT); err != nil {
 		s.Fatal("Firmware is not functional after initialization: ", err)
 	}
 

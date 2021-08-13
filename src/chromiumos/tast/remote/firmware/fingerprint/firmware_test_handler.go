@@ -9,11 +9,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"google.golang.org/grpc/connectivity"
-
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/common/upstart"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/sysutil"
@@ -24,16 +22,12 @@ import (
 
 // FirmwareTest provides a common framework for fingerprint firmware tests.
 type FirmwareTest struct {
-	d                        *dut.DUT
+	d                        *rpcdut.RPCDUT
 	servo                    *servo.Proxy
-	cl                       *rpc.Client
-	rpcHint                  *testing.RPCHint
 	fpBoard                  FPBoardName
 	buildFwFile              string
-	upstartService           platform.UpstartServiceClient
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
-	dutfsClient              *dutfs.Client
 	cleanupTime              time.Duration
 	dutTempDir               string
 }
@@ -46,33 +40,15 @@ func FirmwareTestServiceDeps() []string {
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
-func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP bool) (*FirmwareTest, error) {
+func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec string, outDir string, enableHWWP, enableSWWP bool) (*FirmwareTest, error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
 	}
 
-	cl, err := rpc.Dial(ctx, d, hint, "cros")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
-	}
+	t := &FirmwareTest{d: d, servo: pxy}
 
-	go func() {
-		for {
-			before := cl.Conn.GetState().String()
-			if cl.Conn.WaitForStateChange(ctx, connectivity.Ready) {
-				after := cl.Conn.GetState().String()
-				if before != after {
-					testing.ContextLog(ctx, "MONITOR: State change ", before, " to ", after)
-				}
-			}
-
-		}
-	}()
-
-	upstartService := platform.NewUpstartServiceClient(cl.Conn)
-
-	daemonState, err := stopDaemons(ctx, upstartService, []string{
+	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
 		//  Disabling powerd to prevent the display from turning off, which kills
@@ -83,32 +59,31 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		return nil, err
 	}
 
-	fpBoard, err := Board(ctx, d)
+	t.fpBoard, err = Board(ctx, t.d)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get fingerprint board")
 	}
 
-	buildFwFile, err := FirmwarePath(ctx, d, fpBoard)
+	t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get build firmware file path")
 	}
 
-	dutfsClient := dutfs.NewClient(cl.Conn)
-
-	if err := ValidateBuildFwFile(ctx, d, dutfsClient, fpBoard, buildFwFile); err != nil {
+	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
 		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
-	needsReboot, err := NeedsRebootAfterFlashing(ctx, d)
+	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
 	}
 
-	cleanupTime := timeForCleanup
+	t.cleanupTime = timeForCleanup
 
-	if needsReboot {
+	if t.needsRebootAfterFlashing {
+		upstartService := t.UpstartService()
 		// Rootfs must be writable in order to disable the upstart job
-		if err := sysutil.MakeRootfsWritable(ctx, d, hint); err != nil {
+		if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT, t.d.RPCHint()); err != nil {
 			return nil, errors.Wrap(err, "failed to make rootfs writable")
 		}
 
@@ -119,16 +94,16 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		}
 
 		// disable FP updater so that it doesn't interfere with the test when we reboot.
-		if err := disableFPUpdater(ctx, dutfsClient); err != nil {
+		if err := disableFPUpdater(ctx, t.d); err != nil {
 			return nil, errors.Wrap(err, "failed to disable updater")
 		}
 
 		// Account for the additional time that rebooting adds.
-		cleanupTime += 3 * time.Minute
+		t.cleanupTime += 3 * time.Minute
 	} else {
 		// If we're not on a device that needs to be rebooted, the rootfs should not
 		// be writable.
-		rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, cl)
+		rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, d.ConnRPC())
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to check if rootfs is writable")
 		}
@@ -137,31 +112,16 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		}
 	}
 
-	dutTempDir, err := dutfsClient.TempDir(ctx, "", dutTempPathPattern)
+	t.dutTempDir, err = t.DutfsClient().TempDir(ctx, "", dutTempPathPattern)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create remote working directory")
-	}
-
-	t := FirmwareTest{
-		d:                        d,
-		servo:                    pxy,
-		cl:                       cl,
-		rpcHint:                  hint,
-		fpBoard:                  fpBoard,
-		buildFwFile:              buildFwFile,
-		upstartService:           upstartService,
-		daemonState:              daemonState,
-		needsRebootAfterFlashing: needsReboot,
-		dutfsClient:              dutfsClient,
-		cleanupTime:              cleanupTime,
-		dutTempDir:               dutTempDir,
 	}
 
 	/*  Prepare the FPMCU FW */
 
 	// If we need to remove software write protect, we must reflash here.
 	testing.ContextLog(ctx, "Checking if software write protect needs to be removed")
-	fp, err := GetFlashProtect(ctx, d)
+	fp, err := GetFlashProtect(ctx, d.DUT)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read flash protect")
 	}
@@ -172,23 +132,29 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		}
 	}
 
-	t.DebugCL(ctx)
-
 	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, t.d, t.dutfsClient, outDir, t.servo, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
+	if err := InitializeKnownState(ctx, t.d, outDir, t.servo, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
 	// Double check our work in the previous step.
-	if err := CheckValidState(ctx, t.d, t.dutfsClient, t.fpBoard, t.buildFwFile); err != nil {
+	if err := CheckValidState(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
 		return nil, err
 	}
 
-	if err := InitializeHWAndSWWriteProtect(ctx, t.d, pxy, fpBoard, enableHWWP, enableSWWP); err != nil {
-		return nil, errors.Wrap(err, "initializing write protect failed")
+	if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
+		return nil, err
 	}
 
-	return &t, nil
+	if err := SetSoftwareWriteProtect(ctx, d.DUT, enableSWWP); err != nil {
+		return nil, err
+	}
+
+	if err := CheckWriteProtectStateCorrect(ctx, d.DUT, enableSWWP, enableHWWP); err != nil {
+		return nil, errors.Wrap(err, "failed to validate write protect settings")
+	}
+
+	return t, nil
 }
 
 // Close cleans up the fingerprint test and restore the FPMCU firmware to the
@@ -201,67 +167,50 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	// 	firstErr = err
 	// }
 
-	// TODO(https://crbug.com/1195936): ReimageFPMCU reboots, which causes gRPC
-	//  to lose its connection.
-	cl, err := rpc.Dial(ctx, t.d, t.rpcHint, "cros")
-	if err != nil && firstErr == nil {
-		firstErr = err
-	}
-
-	if cl != nil {
-		t.cl = cl
-		t.upstartService = platform.NewUpstartServiceClient(cl.Conn)
-		t.dutfsClient = dutfs.NewClient(cl.Conn)
-
-		if t.needsRebootAfterFlashing {
-			// If biod upstart job disabled, re-enable it
-			resp, err := t.upstartService.IsJobEnabled(ctx, &platform.IsJobEnabledRequest{JobName: biodUpstartJobName})
-			if err == nil && !resp.Enabled {
-				if _, err := t.upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil && firstErr == nil {
-					firstErr = err
-				}
-			} else if err != nil && firstErr == nil {
+	if t.needsRebootAfterFlashing {
+		// If biod upstart job disabled, re-enable it
+		resp, err := t.UpstartService().IsJobEnabled(ctx, &platform.IsJobEnabledRequest{JobName: biodUpstartJobName})
+		if err == nil && !resp.Enabled {
+			if _, err := t.UpstartService().EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil && firstErr == nil {
 				firstErr = err
 			}
-
-			// If FP updater disabled, re-enable it
-			fpUpdaterEnabled, err := isFPUpdaterEnabled(ctx, t.dutfsClient)
-			if err == nil && !fpUpdaterEnabled {
-				if err := enableFPUpdater(ctx, t.dutfsClient); err != nil && firstErr == nil {
-					firstErr = err
-				}
-			} else if err != nil && firstErr == nil {
-				firstErr = err
-			}
-
-			// Delete temporary working directory and contents
-			// If we rebooted, the directory may no longer exist.
-			tempDirExists, err := t.dutfsClient.Exists(ctx, t.dutTempDir)
-			if err == nil && tempDirExists {
-				if err := t.dutfsClient.RemoveAll(ctx, t.dutTempDir); err != nil && firstErr == nil {
-					firstErr = errors.Wrapf(err, "failed to remove temp directory: %q", t.dutTempDir)
-				}
-			} else if err != nil && firstErr == nil {
-				firstErr = errors.Wrapf(err, "failed to check existence of temp directory: %q", t.dutTempDir)
-			}
-		}
-
-		if err := restoreDaemons(ctx, t.upstartService, t.daemonState); err != nil && firstErr == nil {
+		} else if err != nil && firstErr == nil {
 			firstErr = err
 		}
+
+		// If FP updater disabled, re-enable it
+		fpUpdaterEnabled, err := isFPUpdaterEnabled(ctx, t.d)
+		if err == nil && !fpUpdaterEnabled {
+			if err := enableFPUpdater(ctx, t.d); err != nil && firstErr == nil {
+				firstErr = err
+			}
+		} else if err != nil && firstErr == nil {
+			firstErr = err
+		}
+
+		// Delete temporary working directory and contents
+		// If we rebooted, the directory may no longer exist.
+		tempDirExists, err := t.DutfsClient().Exists(ctx, t.dutTempDir)
+		if err == nil && tempDirExists {
+			if err := t.DutfsClient().RemoveAll(ctx, t.dutTempDir); err != nil && firstErr == nil {
+				firstErr = errors.Wrapf(err, "failed to remove temp directory: %q", t.dutTempDir)
+			}
+		} else if err != nil && firstErr == nil {
+			firstErr = errors.Wrapf(err, "failed to check existence of temp directory: %q", t.dutTempDir)
+		}
+	}
+
+	if err := restoreDaemons(ctx, t.UpstartService(), t.daemonState); err != nil && firstErr == nil {
+		firstErr = err
 	}
 
 	t.servo.Close(ctx)
 
-	if err := t.cl.Close(ctx); err != nil && firstErr == nil {
-		firstErr = err
-	}
-
 	return firstErr
 }
 
-// DUT gets the DUT.
-func (t *FirmwareTest) DUT() *dut.DUT {
+// DUT gets the RPCDUT.
+func (t *FirmwareTest) DUT() *rpcdut.RPCDUT {
 	return t.d
 }
 
@@ -272,7 +221,12 @@ func (t *FirmwareTest) Servo() *servo.Proxy {
 
 // RPCClient gets the RPC client.
 func (t *FirmwareTest) RPCClient() *rpc.Client {
-	return t.cl
+	return t.d.ConnRPC()
+}
+
+// RPCClient gets the RPC client.
+func (t *FirmwareTest) UpstartService() platform.UpstartServiceClient {
+	return platform.NewUpstartServiceClient(t.RPCClient().Conn)
 }
 
 // BuildFwFile gets the firmware file.
@@ -287,7 +241,7 @@ func (t *FirmwareTest) NeedsRebootAfterFlashing() bool {
 
 // DutfsClient gets the dutfs client.
 func (t *FirmwareTest) DutfsClient() *dutfs.Client {
-	return t.dutfsClient
+	return dutfs.NewClient(t.RPCClient().Conn)
 }
 
 // CleanupTime gets the amount of time needed for cleanup.
@@ -310,22 +264,22 @@ func (t *FirmwareTest) ReimageFPMCU(ctx context.Context) error {
 	return ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing())
 }
 
-func (t *FirmwareTest) DebugCL(ctx context.Context) error {
-	testing.ContextLog(ctx, "Connection state is ", t.cl.Conn.GetState())
-	if t.cl.Conn.GetState() != connectivity.Ready {
-		testing.ContextLog(ctx, "Closing existing connection: ", t.cl.Close(ctx))
+// func (t *FirmwareTest) DebugCL(ctx context.Context) error {
+// 	testing.ContextLog(ctx, "Connection state is ", t.cl.Conn.GetState())
+// 	if t.cl.Conn.GetState() != connectivity.Ready {
+// 		testing.ContextLog(ctx, "Closing existing connection: ", t.cl.Close(ctx))
 
-		testing.ContextLog(ctx, "Reconnecting")
-		cl, err := rpc.Dial(ctx, t.d, t.rpcHint, "cros")
-		if err != nil {
-			testing.ContextLog(ctx, "failed to connect to the RPC service on the DUT: ", err)
-			return err
-		}
-		t.cl = cl
-		t.dutfsClient = dutfs.NewClient(t.cl.Conn)
-	}
-	return nil
-}
+// 		testing.ContextLog(ctx, "Reconnecting")
+// 		cl, err := rpc.Dial(ctx, t.d, t.rpcHint, "cros")
+// 		if err != nil {
+// 			testing.ContextLog(ctx, "failed to connect to the RPC service on the DUT: ", err)
+// 			return err
+// 		}
+// 		t.cl = cl
+// 		t.dutfsClient = dutfs.NewClient(t.cl.Conn)
+// 	}
+// 	return nil
+// }
 
 type daemonState struct {
 	name       string
@@ -411,18 +365,21 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 }
 
 // isFPUpdaterEnabled returns true if the fingerprint updater is enabled.
-func isFPUpdaterEnabled(ctx context.Context, fs *dutfs.Client) (bool, error) {
+func isFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+	fs := dutfs.NewClient(d.ConnRPC().Conn)
 	return fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
 }
 
 // enableFPUpdater enables the fingerprint updater if it is disabled.
-func enableFPUpdater(ctx context.Context, fs *dutfs.Client) error {
+func enableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
+	fs := dutfs.NewClient(d.ConnRPC().Conn)
 	testing.ContextLog(ctx, "Enabling the fingerprint updater")
 	return fs.Remove(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
 }
 
 // disableFPUpdater disables the fingerprint updater if it is enabled.
-func disableFPUpdater(ctx context.Context, fs *dutfs.Client) error {
+func disableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
+	fs := dutfs.NewClient(d.ConnRPC().Conn)
 	testing.ContextLog(ctx, "Disabling the fingerprint updater")
 	return fs.WriteFile(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile), nil, 0)
 }

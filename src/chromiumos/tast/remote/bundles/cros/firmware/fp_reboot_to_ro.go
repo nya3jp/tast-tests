@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/testing"
@@ -32,8 +33,14 @@ func init() {
 }
 
 func FpRebootToRO(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.CloseRPC(ctx)
+
 	servoSpec, _ := s.Var("servo")
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), true, true)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -46,35 +53,33 @@ func FpRebootToRO(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
 	s.Log("Rebooting into RO image")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot into RO image: ", err)
 	}
 
 	s.Log("Validating that we're now running the RO image")
-	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d.DUT, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Not running RO image: ", err)
 	}
 
 	s.Log("Validating flash protection hasn't changed")
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d, t.FPBoard(), fingerprint.ImageTypeRO, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT, true, true); err != nil {
 		s.Fatal("Incorrect write protect state: ", err)
 	}
 
 	s.Log("Rebooting back into RW")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to reboot into RW image: ", err)
 	}
 
 	s.Log("Validating we're now running RW version")
-	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d.DUT, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Not running RW image: ", err)
 	}
 
 	s.Log("Validating flash protection hasn't changed")
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d, t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT, true, true); err != nil {
 		s.Fatal("Incorrect write protect state: ", err)
 	}
 }
