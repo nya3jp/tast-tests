@@ -44,23 +44,25 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
 		Vars:         []string{"mute"},
 		Params: []testing.Param{
 			{
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSWitchCUJTestParam{},
 			},
 			{
 				Name:              "vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSWitchCUJTestParam{},
 			},
 			{
 				Name:              "tablet_mode",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val: taskSWitchCUJTestParam{
@@ -69,6 +71,7 @@ func init() {
 			},
 			{
 				Name:              "tablet_mode_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val: taskSWitchCUJTestParam{
 					tablet: true,
@@ -76,6 +79,7 @@ func init() {
 			},
 			{
 				Name:              "lacros_clamshell",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
@@ -85,6 +89,7 @@ func init() {
 			},
 			{
 				Name:              "lacros_clamshell_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
@@ -94,6 +99,7 @@ func init() {
 			},
 			{
 				Name:              "lacros_tablet",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
@@ -104,6 +110,7 @@ func init() {
 			},
 			{
 				Name:              "lacros_tablet_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
@@ -111,6 +118,14 @@ func init() {
 					useLacros: true,
 					tablet:    true,
 				},
+			},
+			{
+				// Pilot test on "noibat" that has HDMI dongle installed.
+				Name:              "noibat",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSWitchCUJTestParam{},
 			},
 		},
 	})
