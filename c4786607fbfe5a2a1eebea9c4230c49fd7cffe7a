@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5d93d2_63a1cf6a",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/InMemoryContentProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-08-13T04:40:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4fcc8b8_c595da8e",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d0951e_774b07c8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-12T07:53:07Z",
       "side": 1,
       "message": "If rethrowing the exception makes sense here, how about declaring \u0027throws IOException\u0027 simply? Then, you don\u0027t need the outer try clause.\n\n```\npublic ParcelFileDescriptor openFile(URi uri, String mode) throws IOException {\n...\n```",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7885dad_77fcae20",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/InMemoryContentProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-08-13T04:40:36Z",
+      "side": 1,
+      "message": "This unfortunately doesn\u0027t work since we\u0027re overriding from ContentProvider#onFile which doesn\u0027t throw that exception.",
+      "parentUuid": "55d0951e_774b07c8",
       "range": {
         "startLine": 95,
         "startChar": 10,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abb308c_c53b6660",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-08-13T04:40:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "660ec9c5_d1bcae8a",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dc8ed16_be8080c4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-12T07:53:07Z",
       "side": 1,
       "message": "nit: Could you sort imports?",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "c4786607fbfe5a2a1eebea9c4230c49fd7cffe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba9c5ed_967585d1",
+        "filename": "android/ArcChromeWebApkTest/src/org/chromium/arc/testapp/chromewebapk/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2021-08-13T04:40:36Z",
+      "side": 1,
+      "message": "Oops, I sorted the other file but forgot to do this one.",
+      "parentUuid": "7dc8ed16_be8080c4",
       "range": {
         "startLine": 16,
         "startChar": 17,
