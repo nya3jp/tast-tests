@@ -6,7 +6,9 @@ package ui
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
@@ -109,6 +111,11 @@ func init() {
 }
 
 func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
+	// Give enough time for the anomaly_detector restart.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Make sure anomaly_detector isn't running, and then clear pending metrics.
 	// This ensures there's no events from before the test starts.
 	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
@@ -136,12 +143,12 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest(ctx)
+	defer crash.TearDownCrashTest(cleanupCtx)
 
 	if params.killCrashpad {
 		if err := chromecrash.KillCrashpad(ctx); err != nil {
@@ -157,7 +164,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 		if err := crash.RestartAnomalyDetector(ctx); err != nil {
 			s.Error("Could not restart anomaly detector: ", err)
 		}
-	}(ctx)
+	}(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
