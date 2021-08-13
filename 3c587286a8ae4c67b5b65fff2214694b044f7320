@@ -158,6 +158,30 @@
       },
       "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384834c8_e69db77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-13T09:53:13Z",
+      "side": 1,
+      "message": "If we could reduce a lot of boilerplates, it could be an option to use output parameters. However I don\u0027t think it\u0027s good idea to use such signatures in API boundaries, i.e. exported functions.\n\nPlease also see:\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "parentUuid": "2270c67b_5121ebb1",
+      "range": {
+        "startLine": 70,
+        "startChar": 28,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "3c587286a8ae4c67b5b65fff2214694b044f7320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
