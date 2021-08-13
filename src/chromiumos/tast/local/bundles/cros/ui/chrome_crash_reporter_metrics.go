@@ -6,7 +6,9 @@ package ui
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
@@ -158,6 +160,10 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 			s.Error("Could not restart anomaly detector: ", err)
 		}
 	}(ctx)
+
+	// Give enough time for the anomaly_detector restart.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
