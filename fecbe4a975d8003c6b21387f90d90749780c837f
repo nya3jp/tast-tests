@@ -92,6 +92,24 @@
       "parentUuid": "ebf85a7f_579ac7ce",
       "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c92394_858a5163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-13T18:59:03Z",
+      "side": 1,
+      "message": "Oh, haha, yeah--because this CL is partially \"yours\", and so it thinks this is self-approval. That\u0027s actually kind of annoying.\n\nAnyway, I guess it doesn\u0027t really matter.",
+      "parentUuid": "c4099609_b464e74d",
+      "revId": "fecbe4a975d8003c6b21387f90d90749780c837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
