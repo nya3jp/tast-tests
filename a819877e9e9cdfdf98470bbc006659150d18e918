@@ -16,6 +16,23 @@
       "message": "tast-owners@: Please take a look.",
       "revId": "a819877e9e9cdfdf98470bbc006659150d18e918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6854bb5_36a70250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-13T08:00:16Z",
+      "side": 1,
+      "message": "Looks good from Tast Side. Please get LGTM from someone within the team before submission.",
+      "revId": "a819877e9e9cdfdf98470bbc006659150d18e918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
