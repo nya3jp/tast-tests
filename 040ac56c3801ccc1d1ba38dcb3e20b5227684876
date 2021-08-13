@@ -16,6 +16,24 @@
       "message": "I think this CL is trying to do many unrelated stuff. Can you limit it to just changing:\n\n\"update\" to updateChecker(ctx)",
       "revId": "040ac56c3801ccc1d1ba38dcb3e20b5227684876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed2aca1_5944f761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-08-13T14:17:00Z",
+      "side": 1,
+      "message": "could you revert all other changes?",
+      "parentUuid": "19805a94_3161d24b",
+      "revId": "040ac56c3801ccc1d1ba38dcb3e20b5227684876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
