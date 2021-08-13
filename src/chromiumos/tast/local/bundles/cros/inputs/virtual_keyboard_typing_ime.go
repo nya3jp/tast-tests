@@ -82,7 +82,7 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateVKInputOnField(vkbCtx, inputField, inputData)(ctx); err != nil {
+			if err := its.ValidateInputFieldForMode(inputField, util.InputWithVK, inputData, s.DataPath)(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
 		}
