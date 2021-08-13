@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fbed0c9_283cc441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-13T11:55:20Z",
+      "side": 1,
+      "message": "Hi Leo, do we still need this test?",
+      "revId": "18f2da1e9898a3999baa5ecd3cd5d678c4434ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4620f4f_45214d37",
