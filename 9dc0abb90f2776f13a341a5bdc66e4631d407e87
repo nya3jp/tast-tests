@@ -22,6 +22,30 @@
       },
       "revId": "9dc0abb90f2776f13a341a5bdc66e4631d407e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a54bd34_be4e4fce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1512717
+      },
+      "writtenOn": "2021-08-13T23:22:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75dfc8a_9701f248",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 73
+      },
+      "revId": "9dc0abb90f2776f13a341a5bdc66e4631d407e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
