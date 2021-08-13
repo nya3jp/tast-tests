@@ -500,7 +500,7 @@ func (conf *GoogleMeetConference) PresentSlide(ctx context.Context) error {
 }
 
 // ExtendedDisplayPresenting presents the screen on dextended display.
-func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context) error {
+func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context) (err error) {
 	const slideTitle = "Untitled presentation - Google Slides"
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
@@ -614,6 +614,7 @@ func (conf *GoogleMeetConference) shareScreen(tconn *chrome.TestConn, extendedDi
 	meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 	menu := nodewith.Name("Presentation options").Role(role.Menu).Ancestor(meetWebArea)
 	presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
+	presentingButton := nodewith.NameContaining("presenting").Role(role.PopUpButton)
 	presentMode := nodewith.Name("A window").Role(role.MenuItem)
 	presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
 	shareButton := nodewith.Name("Share").Role(role.Button)
@@ -623,16 +624,30 @@ func (conf *GoogleMeetConference) shareScreen(tconn *chrome.TestConn, extendedDi
 		presentMode = nodewith.NameContaining("A tab").Role(role.MenuItem)
 		presentWindow = nodewith.ClassName("AXVirtualView").Role(role.Cell).Name(slideTitle)
 	}
-
+	// If another participant is presenting, wait for the presentation to stop.
+	checkPresentNowButton := func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := ui.WaitUntilExists(presentNowButton)(ctx); err == nil {
+				testing.ContextLog(ctx, `"Preset now" button is found`)
+				return nil
+			}
+			if err := ui.Exists(presentingButton)(ctx); err != nil {
+				return testing.PollBreak(errors.Wrap(err, `failed to find "Present now" button`))
+			}
+			testing.ContextLog(ctx, "Another participant is presenting now, wait for the presentation to stop")
+			return errors.New("Another participant is presenting now")
+		}, &testing.PollOptions{Timeout: time.Minute})
+	}
 	return func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start to share screen")
-		return uiauto.Combine("share screen",
+		return ui.Retry(3, uiauto.Combine("share screen",
+			checkPresentNowButton,
 			expandMenu(conf.tconn, presentNowButton, menu, 172),
 			ui.LeftClick(presentMode),
 			ui.LeftClick(presentWindow),
 			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
 			ui.WithTimeout(time.Minute).WaitUntilExists(stopPresenting),
-		)(ctx)
+		))(ctx)
 	}
 }
 
