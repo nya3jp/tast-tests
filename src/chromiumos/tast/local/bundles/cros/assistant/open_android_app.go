@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -25,7 +26,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		VarDeps:      []string{"assistant.username", "assistant.password"},
-		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
