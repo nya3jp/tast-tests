@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb205e3_f07cff80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-13T08:52:18Z",
+      "side": 1,
+      "message": "s.Brightness\n\nReadproof all similar usage in the CL.",
+      "range": {
+        "startLine": 144,
+        "startChar": 25,
+        "endLine": 144,
+        "endChar": 40
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455f4c1e_a9222ac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-13T08:52:18Z",
+      "side": 1,
+      "message": "Can we simply gather all constrains and combine them together?\ne.g.\n```\nconstraints :\u003d {}\n\nif s have WhiteBalanceMode {\n  constraints.Advanced.WhiteBalanceMode \u003d s.WhiteBalanceMode\n}\nif s have ColorTemperature {\n  constraints.Advanced.ColorTemperature \u003d s.ColorTemperature\n}\n...\n```\n\nSame as exposureTimeControl or other control",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 44
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b210d604_ac3b314d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-13T08:52:18Z",
+      "side": 1,
+      "message": "We may need |WhiteBalanceMode| also?",
+      "range": {
+        "startLine": 192,
+        "startChar": 46,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e07d99_57ee5d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-13T08:52:18Z",
+      "side": 1,
+      "message": "nits: original settings",
+      "range": {
+        "startLine": 657,
+        "startChar": 21,
+        "endLine": 657,
+        "endChar": 29
+      },
+      "revId": "aa298a9de0f07dd1ed480dc76a0fc3a161918280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
