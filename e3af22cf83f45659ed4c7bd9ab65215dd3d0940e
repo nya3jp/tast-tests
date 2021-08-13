@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67028888_d0aa56f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-13T09:13:31Z",
+      "side": 1,
+      "message": "Thanks all reviewers on this large cl. ",
+      "revId": "e3af22cf83f45659ed4c7bd9ab65215dd3d0940e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
