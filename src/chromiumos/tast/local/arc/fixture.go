@@ -78,20 +78,6 @@ func init() {
 		PostTestTimeout: resetTimeout,
 		TearDownTimeout: resetTimeout,
 	})
-
-	// arcBootedWithWebAppSharing is a fixture similar to arcBooted. The only difference is that the "ArcEnableWebAppShare" Chrome feature is enabled.
-	// TODO(crbug.com/1226730): Remove and reuse arcBooted once ArcEnableWebAppShare is enabled by default.
-	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedWithWebAppSharing",
-		Desc: "ARC is booted with Web App sharing enabled",
-		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcEnableWebAppShare")}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
-		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
-		TearDownTimeout: resetTimeout,
-	})
 }
 
 type bootedFixture struct {

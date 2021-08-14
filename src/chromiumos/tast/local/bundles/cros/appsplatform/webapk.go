@@ -44,8 +44,8 @@ func init() {
 			"jinrongwu@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
-		Attr:    []string{"group:mainline", "informational"},
-		Fixture: "arcBootedWithWebAppSharing",
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
 		Data: []string{
 			"webshare_icon.png",
 			"webshare_index.html",
@@ -65,14 +65,24 @@ func init() {
 // WebAPK verifies that sharing to a WebAPK launches the corresponding Web App
 // with the shared data attached.
 func WebAPK(ctx context.Context, s *testing.State) {
-	p := s.FixtValue().(*arc.PreData)
-	cr := p.Chrome
-	a := p.ARC
-
 	// Reserve time for cleanup operations.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	// TODO(crbug.com/1226730): Remove the ArcEnableWebAppShare flag once it is enabled by default.
+	// Due to the UI Automator flakiness, we still can't use the arcBooted fixture as it starts UI Automator automatically.
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcEnableWebAppShare"))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Could not start ARC: ", err)
+	}
+	defer a.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
