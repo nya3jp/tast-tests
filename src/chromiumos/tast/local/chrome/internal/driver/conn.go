@@ -224,6 +224,11 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError, 0)
 }
 
+// WaitForExprWithTimeout is the same as WaitForExpr but will fail if timeout is exceeded.
+func (c *Conn) WaitForExprWithTimeout(ctx context.Context, expr string, timeout time.Duration) error {
+	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError, timeout)
+}
+
 // WaitForExprFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // It returns immediately if Eval returns an error.
 func (c *Conn) WaitForExprFailOnErr(ctx context.Context, expr string) error {
