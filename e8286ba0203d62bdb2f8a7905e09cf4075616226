@@ -768,6 +768,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18be98fb_dbe23ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-14T08:57:37Z",
+      "side": 1,
+      "message": "Using sleep to wait for something happen is not promising. It can only result in more or less flakiness. Polling is commonly used to check a signal. I would recommend to find / create a method to identify it.",
+      "parentUuid": "a9ccfe4f_8eb2bfbe",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 36
+      },
+      "revId": "e8286ba0203d62bdb2f8a7905e09cf4075616226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a178faa8_a0802237",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
         "patchSetId": 21
