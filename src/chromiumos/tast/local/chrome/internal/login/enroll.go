@@ -139,8 +139,8 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 	return nil
 }
 
-// performEnrollment will perform enrollment and wait for it to complete.
-func performEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+// performFakeEnrollment will perform enterprise enrollment with a fake, local device management server and wait for it to complete.
+func performFakeEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
 	ctx, st := timing.Start(ctx, "enroll")
 	defer st.End()
 
@@ -158,6 +158,164 @@ func performEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Ses
 
 	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
 		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
+	}
+
+	return nil
+}
+
+// performEnrollment will enterprise enroll the test device using the OOBE screen.
+func performEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	ctx, st := timing.Start(ctx, "enroll")
+	defer st.End()
+
+	conn, err := WaitForOOBEConnection(ctx, sess)
+	if err != nil {
+		return errors.Wrap(err, "could not find OOBE connection for enrollment")
+	}
+	defer conn.Close()
+
+	creds := cfg.EnrollmentCreds()
+	testing.ContextLogf(ctx, "Performing enrollment with %s", creds.User)
+
+	if err := conn.Call(ctx, nil, "Oobe.skipToLoginForTesting"); err != nil {
+		return err
+	}
+
+	if err := conn.WaitForExpr(ctx, "OobeAPI.screens.GaiaScreen.isVisible()"); err != nil {
+		return errors.Wrap(err, "failed to wait for the OOBE Gaia sign in screen")
+	}
+
+	if err := conn.Call(ctx, nil, "Oobe.switchToEnterpriseEnrollmentForTesting"); err != nil {
+		return err
+	}
+
+	if err := performEnrollmentSignIn(ctx, conn, creds, sess, 5); err != nil {
+		return err
+	}
+
+	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
+	}
+
+	return nil
+}
+
+func performEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, creds config.Creds, sess *driver.Session, retries uint) error {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.isVisible()"); err != nil {
+		return errors.Wrap(err, "failed to wait for the OOBE enterprise enrollment signin screen to be ready")
+	}
+
+	// Get GaiaConn for automating login on the enrollment screen
+	isGAIAWebView := func(t *driver.Target) bool {
+		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
+	}
+
+	testing.ContextLog(ctx, "Waiting for GAIA webview")
+	var enterpriseTarget *driver.Target
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if targets, err := sess.FindTargets(ctx, isGAIAWebView); err != nil {
+			return err
+		}
+		for _, target := range targets {
+			u, err := url.Parse(target.URL)
+			if err != nil {
+				continue
+			}
+
+			q := u.Query()
+			flow := q.Get("flow")
+
+			if flow == "enterprise" {
+				enterpriseTarget = target
+				return nil
+			}
+		}
+		return errors.New("could not find the enterprise enrollment Gaia login webview")
+
+	}, pollOpts); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "GAIA webview not found")
+	}
+
+	gaiaConn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(enterpriseTarget.TargetID))
+	if err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to connect to GAIA webview")
+	}
+	defer gaiaConn.Close()
+
+	testing.ContextLog(ctx, "Type user name")
+	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", creds.User); err != nil {
+		return errors.Wrap(err, "failed to fill username field")
+	}
+
+	if err := oobeConn.WaitForExprFailOnErrWithTimeout(ctx,
+		"OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.waitAndClickNext()",
+		3*time.Second); err != nil {
+		return errors.Wrap(err, "failed to click the next button")
+	}
+
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.isVisible()"); err != nil {
+		return errors.Wrap(err, "failed to wait for the OOBE enterprise enrollment signin screen to be ready")
+	}
+
+	testing.ContextLog(ctx, "Type password")
+	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", creds.Pass); err != nil {
+		return errors.Wrap(err, "failed to fill in password field")
+	}
+
+	testing.ContextLog(ctx, "Click Next")
+
+	if err := oobeConn.WaitForExprFailOnErrWithTimeout(ctx,
+		"OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.waitAndClickNext()",
+		3*time.Second); err != nil {
+		return errors.Wrap(err, "failed to click the next button")
+	}
+
+	if err := oobeConn.WaitForExprFailOnErr(ctx,
+		"!OobeAPI.screens.EnterpriseEnrollmentScreen.isEnrollmentInProgress()"); err != nil {
+		return errors.Wrap(err, "failed to wait for enrollment to complete")
+	}
+
+	if err := oobeConn.WaitForExprFailOnErr(ctx,
+		"OobeAPI.screens.EnterpriseEnrollmentScreen.successScreen.isVisible()"); err != nil {
+		// Sometimes enrollment may fail due to one-off issues with the device management server.
+		// Check if enrollment maybe retried.
+
+		var isOnErrorStep bool
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorScreen.isVisible()", &isOnErrorStep); err != nil {
+			return errors.Wrap(err, "failed to check enrollment step")
+		}
+
+		if !isOnErrorStep {
+			return errors.New("unexpected step after enrollment signin failure")
+		}
+
+		var canRetry bool
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorScreen.canRetryEnrollment()", &canRetry); err != nil {
+			return errors.Wrap(err, "failed to check enrollment step")
+		}
+
+		if !canRetry {
+			var enrollmentErrorMsg string
+			if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorScreen.getErrorMsg()", &enrollmentErrorMsg); err != nil {
+				return errors.Wrap(err, "failed to get unretriable enrollment error msg")
+			}
+			return errors.Errorf("enrollment hit an unrecoverable error: %v", enrollmentErrorMsg)
+		}
+
+		retries--
+		if retries == 0 {
+			return errors.Wrap(err, "Exhausted retries")
+		}
+
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorScreen.clickRetryButton()", nil); err != nil {
+			return errors.Wrap(err, "failed to click the retry button")
+		}
+
+		return performEnrollmentSignIn(ctx, oobeConn, creds, sess, retries)
+	}
+
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.successScreen.clickNext()", nil); err != nil {
+		return errors.Wrap(err, "failed to click the enrollment done button")
 	}
 
 	return nil
