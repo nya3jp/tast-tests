@@ -6,6 +6,7 @@ package cuj
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -219,4 +220,22 @@ func UnsetMirrorDisplay(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return settings.Close(ctx)
+}
+
+// ExtendedDisplayWindowClassName obtains the class name of the root window on the extended display.
+// If multiple display windows are present, the first one will be returned.
+func ExtendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	ui := uiauto.New(tconn)
+
+	// Root window on extended display has the class name in RootWindow-<id> format.
+	// We found extended display window could be RootWindow-1, or RootWindow-2.
+	// Here we try 1 to 10.
+	for i := 1; i <= 10; i++ {
+		className := fmt.Sprintf("RootWindow-%d", i)
+		win := nodewith.ClassName(className).Role(role.Window)
+		if err := ui.Exists(win)(ctx); err == nil {
+			return className, nil
+		}
+	}
+	return "", errors.New("found no window with class name RootWindow-1 to RootWindow-10")
 }

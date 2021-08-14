@@ -67,14 +67,18 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	// Root window on built-in display.
 	targetWin := nodewith.ClassName("RootWindow-0").Role(role.Window)
 	if y.extendedDisplay {
+		className, err := cuj.ExtendedDisplayWindowClassName(ctx, y.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to find root window on extended display")
+		}
 		// Root window on extended display.
-		targetWin = nodewith.ClassName("RootWindow-1").Role(role.Window)
+		targetWin = nodewith.ClassName(className).Role(role.Window)
 		ytPlayerView := nodewith.Name("YouTube Video Player").Ancestor(targetWin)
 		if err := y.ui.Exists(ytPlayerView)(ctx); err != nil {
 			// Chrome is not on extended display.
 			testing.ContextLog(ctx, "Switch Youtube to extended display")
 			if err := y.kb.Accel(ctx, "Search+Alt+M"); err != nil {
-				return errors.Wrap(err, "failed to switch Youtube to the extended display: ")
+				return errors.Wrap(err, "failed to switch Youtube to the extended display")
 			}
 		}
 	}
