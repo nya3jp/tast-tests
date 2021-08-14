@@ -273,10 +273,10 @@ func performEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, creds c
 		return errors.Wrap(err, "failed to fill username field")
 	}
 
-	if err := oobeConn.WaitForExprFailOnErrWithTimeout(ctx,
-		"OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.checkIfNextButtonIsInteractableAndClick()",
-		3*time.Second); err != nil {
-		return errors.Wrap(err, "failed to click the next button")
+	testing.ContextLog(ctx, "Click Next")
+	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
+		return errors.Wrap(err, "failed to click on the primary action button")
+
 	}
 
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.isVisible()"); err != nil {
@@ -289,11 +289,8 @@ func performEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, creds c
 	}
 
 	testing.ContextLog(ctx, "Click Next")
-
-	if err := oobeConn.WaitForExprFailOnErrWithTimeout(ctx,
-		"OobeAPI.screens.EnterpriseEnrollmentScreen.signInScreen.checkIfNextButtonIsInteractableAndClick()",
-		3*time.Second); err != nil {
-		return errors.Wrap(err, "failed to click the next button")
+	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
+		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
 	testing.ContextLog(ctx, "Wait for enrollment to complete")
