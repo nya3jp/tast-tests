@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "172ec53c_0fb06c32",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cfcd559_66d5dfac",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00b33659_d5c5be9a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "This function is quite lightweight. Why it needs to reserve ctx for close?",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a7e8ee_4b16c2fc",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. Removed.",
+      "parentUuid": "00b33659_d5c5be9a",
       "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,48 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "Right now the function does nothing after timing.Start(). Would it be changed in the near future?",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184c9bc8_b8f81c0b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. Code segment has been removed.",
+      "parentUuid": "91999bea_9d571035",
+      "range": {
+        "startLine": 36,
+        "startChar": 36,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87924241_b692b20c",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. Removed since it\u0027s very lightweight.",
+      "parentUuid": "4d0e0264_936b491f",
       "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +199,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f30d85_3379db08",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Sorry I mistyped this comment. It actually saves the configuration change in memory.",
+      "parentUuid": "5b445c6e_8ed6e16c",
+      "range": {
+        "startLine": 41,
+        "startChar": 53,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bc0408_f275117a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a3a57e_66c2a375",
+      "range": {
+        "startLine": 41,
+        "startChar": 63,
+        "endLine": 41,
+        "endChar": 105
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a9f886_3869e4d7",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "WiFi or Wi-Fi. // Though the later is the official name, we see WiFi more often in the codebase.",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ddfad36_9ca8f6c6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a9f886_3869e4d7",
       "range": {
         "startLine": 47,
         "startChar": 48,
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a639304_b39fbce3",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. In this case default value refers to the setting\u0027s value at the start of the test. Within a subtest, the value can be changed multiple times so currentValue might be misleading as the value may have been changed by a previous subtest. The contents string that is passed in is the nvram state snapshotted at the beginning of the test.\n\nI have changed the function name to originalValue, updated the argument names, and added a comment.",
+      "parentUuid": "1919c6b9_503fad43",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fec85b4a_a61d21c2",
@@ -174,6 +342,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "In such simple case with only one submatch, do we need to use tag?\n\nFor simplicity, how about just\n\nreturn axrouter.ConfigParam{setting.Band, setting.Key, m[1]}, nil",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086dc5a1_4a72cc63",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec85b4a_a61d21c2",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -209,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cde7fc4_43137f16",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "When I tried to save all possible settings (hundreds of settings) and then restore it from a file, the Ax6100 router would fail and not be usable until a reboot. I think there were time sensitive settings that impacted the device. This is why I went with the minimal set change. It\u0027s possible for me to write a function that saves all the actuatable settings that I\u0027ve allowed to be modified in ax_config.go, but I don\u0027t know if that\u0027s more elegant.\n\n\nApplyRouterSettings is only invoked when all RouterConfigParams is fully populated. (it\u0027s only run once).",
+      "parentUuid": "7aeeef20_545fc029",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65eb8c53_c85f9453",
         "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
         "patchSetId": 7
@@ -220,6 +436,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "string",
+      "range": {
+        "startLine": 114,
+        "startChar": 72,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "406fd565_48389100",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65eb8c53_c85f9453",
       "range": {
         "startLine": 114,
         "startChar": 72,
@@ -247,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7285ace7_cb81b20a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466a5efb_1f20b9f8",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef581a5_c2736c3d",
@@ -260,6 +518,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "Iface",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "459fe1cc_f0042ddf",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ef581a5_c2736c3d",
       "range": {
         "startLine": 15,
         "startChar": 12,
@@ -293,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59181524_3f99ce8a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa633d3_7c8ac34d",
+      "range": {
+        "startLine": 20,
+        "startChar": 57,
+        "endLine": 20,
+        "endChar": 62
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93b7433e_45981490",
@@ -306,6 +612,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "SSID",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e67d103_7411b870",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93b7433e_45981490",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -339,6 +669,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39c82ab_6dcfb9e3",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585be3df_0c856c28",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0d796d_c26332ba",
@@ -352,6 +706,24 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "DUTConnOptions",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f5a681_75d381d1",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0d796d_c26332ba",
       "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -379,6 +751,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c19e35cb_91e42f29",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b7d7b4_766c2fa4",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 17
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1fe053a_9bb0725a",
@@ -392,6 +788,24 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "Ending period. Same below.",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4757a84a_12aacab5",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1fe053a_9bb0725a",
       "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -413,6 +827,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "258b70f2_25b041bf",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f67a5be_ee6b08e0",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "780ec2c0_48786889",
@@ -426,6 +858,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "KeyWPAPSK",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 10
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d884bd5_3803f9cd",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780ec2c0_48786889",
       "range": {
         "startLine": 108,
         "startChar": 1,
@@ -459,6 +915,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01da9563_bf5e2bad",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "566ddcc9_159e7eb1",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e59492f6_2e250d99",
@@ -472,6 +952,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "KeyOBSSCap",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 11
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed57ef1_b47ee4f6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59492f6_2e250d99",
       "range": {
         "startLine": 130,
         "startChar": 1,
@@ -505,6 +1009,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a620f0b_982d93ce",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf9f5c9_f561278c",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 20
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a1b160_8a2587c7",
@@ -518,6 +1046,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "SSID",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 9
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0687181b_cc66ac7b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a1b160_8a2587c7",
       "range": {
         "startLine": 145,
         "startChar": 5,
@@ -551,6 +1103,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "556989cb_735313f7",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. I think it\u0027s reasonable to remove the Get.",
+      "parentUuid": "20919000_da0fc261",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e9d66fa_7e72c54e",
@@ -564,6 +1140,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "IP",
+      "range": {
+        "startLine": 47,
+        "startChar": 34,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef8ba25_938946e5",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e9d66fa_7e72c54e",
       "range": {
         "startLine": 47,
         "startChar": 34,
@@ -591,6 +1191,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "343e329f_1506fb39",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800192dc_1250acd6",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3dfa110_a45c1317",
@@ -604,6 +1222,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "takes..., stages them, and then restarts...\n\nOne question: does the function wait for the wireless service\u0027 restart complete?",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d311c6a_0f009472",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. restart_wireless completes instantly as it launches an async job. We rely on polling on connectivity to verify if the state has successfully changed.",
+      "parentUuid": "f3dfa110_a45c1317",
       "range": {
         "startLine": 49,
         "startChar": 24,
@@ -662,6 +1304,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "502d8f0e_fed04e8a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "The string is derived from the stdout of \"nvram show\".\n\n\u003e Why SafeConfiguration() does not generate output used as RestoreConfiguration()\u0027s input?\n\nRefer to the comments in ApplyRouterSettings() in ax_router.go earlier in this review.",
+      "parentUuid": "b9ed1d20_e203697c",
+      "range": {
+        "startLine": 51,
+        "startChar": 73,
+        "endLine": 51,
+        "endChar": 79
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe674656_c63133f6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e28f62bb_69fdd14a",
+      "range": {
+        "startLine": 51,
+        "startChar": 59,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e183076_5f97766f",
         "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
         "patchSetId": 7
@@ -673,6 +1363,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "RAM",
+      "range": {
+        "startLine": 53,
+        "startChar": 83,
+        "endLine": 53,
+        "endChar": 86
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ce68de_140dc93b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e183076_5f97766f",
       "range": {
         "startLine": 53,
         "startChar": 83,
@@ -700,6 +1414,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b958d47_ca65bb61",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Yes. I have added the same public keys to the router. The only difference is the default superuser on this router is admin instead of root.",
+      "parentUuid": "4da5fbba_69f7328e",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82e39214_b581d276",
@@ -713,6 +1445,30 @@
       "writtenOn": "2021-08-13T19:14:25Z",
       "side": 1,
       "message": "What does it mean: \"router device of type LegacyAP does not have legacy/openwrt support\"?\n\nShouldn\u0027t it be \"GetAxRouterIPAddress(): unsupported router type LegacyAP\"",
+      "range": {
+        "startLine": 1222,
+        "startChar": 28,
+        "endLine": 1222,
+        "endChar": 89
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8a2114_fa8d3687",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-14T02:04:07Z",
+      "side": 1,
+      "message": "Done. I have just removed this function as the test gets the router object anyways.",
+      "parentUuid": "82e39214_b581d276",
       "range": {
         "startLine": 1222,
         "startChar": 28,
