@@ -16,6 +16,69 @@
       "message": "Please review",
       "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f56f833_e1e81d11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-14T02:10:13Z",
+      "side": 1,
+      "message": "lgtm. Just wondering if it\u0027s been useful to have captures from both router and pcap devices.",
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ed6160_9fd18f56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-14T02:10:13Z",
+      "side": 1,
+      "message": "packet?",
+      "range": {
+        "startLine": 263,
+        "startChar": 37,
+        "endLine": 263,
+        "endChar": 40
+      },
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0885ea_fb9dd77f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-14T02:10:13Z",
+      "side": 1,
+      "message": "packet?",
+      "range": {
+        "startLine": 331,
+        "startChar": 37,
+        "endLine": 331,
+        "endChar": 40
+      },
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
