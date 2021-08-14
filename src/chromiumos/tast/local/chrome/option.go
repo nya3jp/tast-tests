@@ -223,11 +223,21 @@ func EncryptedReportingAddr(url string) Option {
 	}
 }
 
-// EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
+// GAIAEnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
 // Enrollment before login.
-func EnterpriseEnroll(creds Creds) Option {
+func GAIAEnterpriseEnroll(creds Creds) Option {
 	return func(cfg *config.MutableConfig) error {
-		cfg.Enroll = true
+		cfg.EnrollMode = config.GAIAEnroll
+		cfg.EnrollmentCreds = creds
+		return nil
+	}
+}
+
+// FakeEnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
+// Enrollment with a fake local device management server before login.
+func FakeEnterpriseEnroll(creds Creds) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnrollMode = config.FakeEnroll
 		cfg.EnrollmentCreds = creds
 		cfg.DisablePolicyKeyVerification = true
 		return nil
