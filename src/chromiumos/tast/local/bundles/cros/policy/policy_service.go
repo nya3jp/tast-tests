@@ -132,7 +132,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 		user = "tast-user@managedchrome.com"
 	}
 
-	opts = append(opts, chrome.EnterpriseEnroll(chrome.Creds{User: user, Pass: "test0000"}))
+	opts = append(opts, chrome.FakeEnterpriseEnroll(chrome.Creds{User: user, Pass: "test0000"}))
 	if req.SkipLogin {
 		opts = append(opts, chrome.NoLogin())
 	} else {
