@@ -31,10 +31,21 @@ var ErrNeedNewSession = errors.New("Chrome restarted; need a new session")
 // in which case errNeedNewSession is returned.
 // Also performs enterprise enrollment before login when requested.
 func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	if cfg.Enroll() {
+	switch cfg.EnrollMode() {
+	case config.NoEnroll:
+		break
+	case config.FakeEnroll:
+		if err := performFakeEnrollment(ctx, cfg, sess); err != nil {
+			return err
+		}
+		break
+	case config.RealEnroll:
 		if err := performEnrollment(ctx, cfg, sess); err != nil {
 			return err
 		}
+		break
+	default:
+		return errors.Errorf("unknown enrollment mode: %v", cfg.EnrollMode())
 	}
 
 	switch cfg.LoginMode() {
@@ -69,8 +80,13 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 	}
 }
 
-// WaitForOOBEConnection establishes a connection to OOBE page.
+// WaitForOOBEConnection establishes a connection to a OOBE page.
 func WaitForOOBEConnection(ctx context.Context, sess *driver.Session) (*driver.Conn, error) {
+	return WaitForOOBEConnectionWithPrefix(ctx, sess, oobePrefix)
+}
+
+// WaitForOOBEConnectionWithPrefix establishes a connection to the OOBE page matching the specified prefix.
+func WaitForOOBEConnectionWithPrefix(ctx context.Context, sess *driver.Session, prefix string) (*driver.Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	ctx, st := timing.Start(ctx, "wait_for_oobe")
 	defer st.End()
@@ -78,7 +94,7 @@ func WaitForOOBEConnection(ctx context.Context, sess *driver.Session) (*driver.C
 	var target *driver.Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		if target, err = getFirstOOBETarget(ctx, sess); err != nil {
+		if target, err = getFirstOOBETarget(ctx, sess, prefix); err != nil {
 			return err
 		} else if target == nil {
 			return errors.Errorf("no %s target", oobePrefix)
@@ -112,11 +128,11 @@ func WaitForOOBEConnection(ctx context.Context, sess *driver.Session) (*driver.C
 	return connToRet, nil
 }
 
-// getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
-// nil is returned if no target is found.
-func getFirstOOBETarget(ctx context.Context, sess *driver.Session) (*driver.Target, error) {
+// getFirstOOBETarget returns the first OOBE-related DevTools target matching a specified prefix.
+// getFirstOOBETarget returns nil if no matching target is found.
+func getFirstOOBETarget(ctx context.Context, sess *driver.Session, urlPrefix string) (*driver.Target, error) {
 	targets, err := sess.FindTargets(ctx, func(t *driver.Target) bool {
-		return strings.HasPrefix(t.URL, oobePrefix)
+		return strings.HasPrefix(t.URL, urlPrefix)
 	})
 	if err != nil {
 		return nil, err
@@ -125,4 +141,25 @@ func getFirstOOBETarget(ctx context.Context, sess *driver.Session) (*driver.Targ
 		return nil, nil
 	}
 	return targets[0], nil
+}
+
+// waitForOOBEPageToBeDismissed waits for a OOBE page with a given prefix to disappear.
+func waitForOOBEPageToBeDismissed(ctx context.Context, sess *driver.Session, urlPrefix string) error {
+	testing.ContextLogf(ctx, "Waiting for OOBE %s to be dismissed", urlPrefix)
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if t, err := getFirstOOBETarget(ctx, sess, urlPrefix); err != nil {
+			// This is likely Chrome crash. So there's no chance that
+			// waiting for the dismiss succeeds later. Quit the polling now.
+			return testing.PollBreak(err)
+		} else if t != nil {
+			return errors.Errorf("%s target still exists", urlPrefix)
+		}
+		return nil
+	}, pollOpts)
+
+	if err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE not dismissed")
+	}
+
+	return nil
 }
