@@ -31,10 +31,21 @@ var ErrNeedNewSession = errors.New("Chrome restarted; need a new session")
 // in which case errNeedNewSession is returned.
 // Also performs enterprise enrollment before login when requested.
 func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	if cfg.Enroll() {
+	switch cfg.EnrollMode() {
+	case config.NoEnroll:
+		break
+	case config.FakeEnroll:
+		if err := performFakeEnrollment(ctx, cfg, sess); err != nil {
+			return err
+		}
+		break
+	case config.RealEnroll:
 		if err := performEnrollment(ctx, cfg, sess); err != nil {
 			return err
 		}
+		break
+	default:
+		return errors.Errorf("unknown enrollment mode: %v", cfg.EnrollMode())
 	}
 
 	switch cfg.LoginMode() {
