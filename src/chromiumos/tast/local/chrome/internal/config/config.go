@@ -46,6 +46,16 @@ const (
 	GuestLogin                  // sign in as ephemeral guest user
 )
 
+// EnrollMode describes how the test should enroll.
+type EnrollMode int
+
+// Valid values for EnrollMode.
+const (
+	NoEnroll   EnrollMode = iota // do not enroll device
+	FakeEnroll                   // enroll with a fake, local device management server
+	RealEnroll                   // enroll using a real, live device management server
+)
+
 // AuthType describes the type of authentication to be used in GAIA.
 type AuthType string
 
@@ -181,8 +191,8 @@ func (c *Config) RealtimeReportingAddr() string { return c.m.RealtimeReportingAd
 // EncryptedReportingAddr returns the address of a encrypted reporting endpoint.
 func (c *Config) EncryptedReportingAddr() string { return c.m.EncryptedReportingAddr }
 
-// Enroll returns whether to enroll the device.
-func (c *Config) Enroll() bool { return c.m.Enroll }
+// EnrollMode returns an enterprise enrollment mode.
+func (c *Config) EnrollMode() EnrollMode { return c.m.EnrollMode }
 
 // EnrollmentCreds returns the credential used to enroll the device.
 func (c *Config) EnrollmentCreds() Creds { return c.m.EnrollmentCreds }
@@ -248,41 +258,41 @@ func (c *Config) ForceLaunchBrowser() bool { return c.m.ForceLaunchBrowser }
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
 type MutableConfig struct {
-	Creds                           Creds     `reuse_match:"true"`
-	NormalizedUser                  string    `reuse_match:"true"`
-	KeepState                       bool      `reuse_match:"false"`
-	KeepOwnership                   bool      `reuse_match:"true"`
-	DeferLogin                      bool      `reuse_match:"customized"`
-	EnableRestoreTabs               bool      `reuse_match:"false"`
-	LoginMode                       LoginMode `reuse_match:"customized"`
-	TryReuseSession                 bool      `reuse_match:"false"`
-	EnableLoginVerboseLogs          bool      `reuse_match:"true"`
-	VKEnabled                       bool      `reuse_match:"true"`
-	SkipOOBEAfterLogin              bool      `reuse_match:"false"`
-	CustomLoginTimeout              int64     `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
-	InstallWebApp                   bool      `reuse_match:"true"`
-	Region                          string    `reuse_match:"true"`
-	PolicyEnabled                   bool      `reuse_match:"true"`
-	DMSAddr                         string    `reuse_match:"true"`
-	RealtimeReportingAddr           string    `reuse_match:"true"`
-	EncryptedReportingAddr          string    `reuse_match:"true"`
-	Enroll                          bool      `reuse_match:"true"`
-	EnrollmentCreds                 Creds     `reuse_match:"true"`
-	DisablePolicyKeyVerification    bool      `reuse_match:"true"`
-	ARCMode                         ARCMode   `reuse_match:"true"`
-	ARCUseHugePages                 bool      `reuse_match:"true"`
-	RestrictARCCPU                  bool      `reuse_match:"true"`
-	BreakpadTestMode                bool      `reuse_match:"true"`
-	ExtraArgs                       []string  `reuse_match:"true"`
-	LacrosExtraArgs                 []string  `reuse_match:"true"`
-	EnableFeatures                  []string  `reuse_match:"true"`
-	DisableFeatures                 []string  `reuse_match:"true"`
-	ExtraExtDirs                    []string  `reuse_match:"customized"`
-	SigninExtKey                    string    `reuse_match:"customized"`
-	SkipForceOnlineSignInForTesting bool      `reuse_match:"true"`
-	RemoveNotification              bool      `reuse_match:"true"`
-	HideCrashRestoreBubble          bool      `reuse_match:"true"`
-	ForceLaunchBrowser              bool      `reuse_match:"true"`
+	Creds                           Creds      `reuse_match:"true"`
+	NormalizedUser                  string     `reuse_match:"true"`
+	KeepState                       bool       `reuse_match:"false"`
+	KeepOwnership                   bool       `reuse_match:"true"`
+	DeferLogin                      bool       `reuse_match:"customized"`
+	EnableRestoreTabs               bool       `reuse_match:"false"`
+	LoginMode                       LoginMode  `reuse_match:"customized"`
+	TryReuseSession                 bool       `reuse_match:"false"`
+	EnableLoginVerboseLogs          bool       `reuse_match:"true"`
+	VKEnabled                       bool       `reuse_match:"true"`
+	SkipOOBEAfterLogin              bool       `reuse_match:"false"`
+	CustomLoginTimeout              int64      `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
+	InstallWebApp                   bool       `reuse_match:"true"`
+	Region                          string     `reuse_match:"true"`
+	PolicyEnabled                   bool       `reuse_match:"true"`
+	DMSAddr                         string     `reuse_match:"true"`
+	RealtimeReportingAddr           string     `reuse_match:"true"`
+	EncryptedReportingAddr          string     `reuse_match:"true"`
+	EnrollMode                      EnrollMode `reuse_match:"true"`
+	EnrollmentCreds                 Creds      `reuse_match:"true"`
+	DisablePolicyKeyVerification    bool       `reuse_match:"true"`
+	ARCMode                         ARCMode    `reuse_match:"true"`
+	ARCUseHugePages                 bool       `reuse_match:"true"`
+	RestrictARCCPU                  bool       `reuse_match:"true"`
+	BreakpadTestMode                bool       `reuse_match:"true"`
+	ExtraArgs                       []string   `reuse_match:"true"`
+	LacrosExtraArgs                 []string   `reuse_match:"true"`
+	EnableFeatures                  []string   `reuse_match:"true"`
+	DisableFeatures                 []string   `reuse_match:"true"`
+	ExtraExtDirs                    []string   `reuse_match:"customized"`
+	SigninExtKey                    string     `reuse_match:"customized"`
+	SkipForceOnlineSignInForTesting bool       `reuse_match:"true"`
+	RemoveNotification              bool       `reuse_match:"true"`
+	HideCrashRestoreBubble          bool       `reuse_match:"true"`
+	ForceLaunchBrowser              bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -305,7 +315,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			InstallWebApp:                   false,
 			Region:                          "us",
 			PolicyEnabled:                   false,
-			Enroll:                          false,
+			EnrollMode:                      NoEnroll,
 			EnrollmentCreds:                 Creds{},
 			DisablePolicyKeyVerification:    false,
 			BreakpadTestMode:                true,
