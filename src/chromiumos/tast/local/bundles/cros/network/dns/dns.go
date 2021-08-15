@@ -207,10 +207,8 @@ func InstallDigInContainer(ctx context.Context, cont *vm.Container) error {
 		return nil
 	}
 
-	// Run command sudo apt update in container.
-	if err := cont.Command(ctx, "sudo", "apt", "update").Run(); err != nil {
-		return errors.Wrap(err, "failed to run command sudo apt update in container")
-	}
+	// Run command sudo apt update in container. Ignore the error because this might fail for unrelated reasons.
+	cont.Command(ctx, "sudo", "apt", "update").Run(testexec.DumpLogOnError)
 
 	// Run command sudo apt install dnsutils in container.
 	if err := cont.Command(ctx, "sudo", "DEBIAN_FRONTEND=noninteractive", "apt-get", "-y", "install", "dnsutils").Run(testexec.DumpLogOnError); err != nil {
