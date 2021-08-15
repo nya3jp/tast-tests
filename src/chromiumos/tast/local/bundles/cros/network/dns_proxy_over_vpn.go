@@ -63,9 +63,13 @@ const vpnIfnamePrefix = "ppp"
 func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	const (
 		// Randomly generated domains to be resolved. Different domains are used to avoid caching.
-		domainDefault          = "c30c8b722af2d577.com"
-		domainVPNBlocked       = "d3251abbef91dcc1.com"
-		domainSecureDNSBlocked = "e8af12bffc0ae7a1.com"
+		domainDefaultDoHOff          = "c30c8b722af2d577.com"
+		domainDefaultDoHAutomatic    = "a14bd912acfe9d01.com"
+		domainDefaultDoHAlwaysOn     = "ff1deb9cc2d1a03d.com"
+		domainVPNBlockedDoHOff       = "d3251abbef91dcc1.com"
+		domainVPNBlockedDoHAutomatic = "cac2dcdfa1d4e290.com"
+		domainVPNBlockedDoHAlwaysOn  = "eab98dc5180aafda.com"
+		domainSecureDNSBlocked       = "e8af12bffc0ae7a1.com"
 	)
 
 	// If the main body of the test times out, we still want to reserve a few
@@ -89,6 +93,19 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	params := s.Param().(dnsProxyOverVPNTestParams)
 	if err := dns.SetDoHMode(ctx, cr, tconn, params.mode, dns.GoogleDoHProvider); err != nil {
 		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
+	}
+
+	var domainDefault, domainVPNBlocked string
+	switch params.mode {
+	case dns.DoHOff:
+		domainDefault = domainDefaultDoHOff
+		domainVPNBlocked = domainVPNBlockedDoHOff
+	case dns.DoHAutomatic:
+		domainDefault = domainDefaultDoHAutomatic
+		domainVPNBlocked = domainVPNBlockedDoHAutomatic
+	case dns.DoHAlwaysOn:
+		domainDefault = domainDefaultDoHAlwaysOn
+		domainVPNBlocked = domainVPNBlockedDoHAlwaysOn
 	}
 
 	// Connect to VPN.

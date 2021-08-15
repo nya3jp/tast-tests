@@ -59,8 +59,12 @@ func init() {
 func DNSProxy(ctx context.Context, s *testing.State) {
 	const (
 		// Randomly generated domains to be resolved. Different domains are used to avoid caching.
-		domainDefault    = "a2ffec2cb85be5e7.com"
-		domainDNSBlocked = "da39a3ee5e6b4b0d.com"
+		domainDefaultDoHOff          = "a2ffec2cb85be5e7.com"
+		domainDefaultDoHAutomatic    = "b3ae8819fed33ac3.com"
+		domainDefaultDoHAlwaysOn     = "c103afeaadbc112a.com"
+		domainDNSBlockedDoHOff       = "da39a3ee5e6b4b0d.com"
+		domainDNSBlockedDoHAutomatic = "eb39510b23affe12.com"
+		domainDNSBlockedDoHAlwaysOn  = "ff3e2abb9002aba1.com"
 	)
 
 	// If the main body of the test times out, we still want to reserve a few
@@ -84,6 +88,19 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	params := s.Param().(dnsProxyTestParams)
 	if err := dns.SetDoHMode(ctx, cr, tconn, params.mode, dns.GoogleDoHProvider); err != nil {
 		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
+	}
+
+	var domainDefault, domainDNSBlocked string
+	switch params.mode {
+	case dns.DoHOff:
+		domainDefault = domainDefaultDoHOff
+		domainDNSBlocked = domainDNSBlockedDoHOff
+	case dns.DoHAutomatic:
+		domainDefault = domainDefaultDoHAutomatic
+		domainDNSBlocked = domainDNSBlockedDoHAutomatic
+	case dns.DoHAlwaysOn:
+		domainDefault = domainDefaultDoHAlwaysOn
+		domainDNSBlocked = domainDNSBlockedDoHAlwaysOn
 	}
 
 	// By default, DNS query should work.
