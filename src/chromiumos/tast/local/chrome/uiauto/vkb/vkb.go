@@ -57,7 +57,9 @@ const (
 var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
 
 // NodeFinder returns a finder of node on virtual keyboard.
-var NodeFinder = nodewith.Ancestor(vkRootFinder)
+// It finds nodes with `offscreen:false` property to avoid
+// finding cached offscreen nodes.
+var NodeFinder = nodewith.Ancestor(vkRootFinder).Onscreen()
 
 // DragPointFinder returns the finder of the float VK drag button.
 var DragPointFinder = NodeFinder.Role(role.Button).NameContaining("drag to reposition the keyboard")
