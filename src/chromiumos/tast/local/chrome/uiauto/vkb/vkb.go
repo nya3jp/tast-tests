@@ -438,7 +438,7 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToHandwriting(ctx context.Context) (
 		return nil, err
 	}
 
-	if err := vkbCtx.ui.WaitUntilExists(NodeFinder.Role(role.Canvas))(ctx); err != nil {
+	if err := vkbCtx.ui.WaitUntilExists(NodeFinder.Role(role.Canvas).Onscreen())(ctx); err != nil {
 		return nil, err
 	}
 

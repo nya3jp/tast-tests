@@ -38,7 +38,7 @@ func (vkbCtx *VirtualKeyboardContext) NewHandwritingContext(ctx context.Context)
 	}
 
 	testing.Poll(ctx, func(ctx context.Context) error {
-		if err := hwCtx.ui.Exists(NodeFinder.HasClass("lf-keyboard"))(ctx); err != nil {
+		if err := hwCtx.ui.Exists(NodeFinder.HasClass("lf-keyboard").Onscreen())(ctx); err != nil {
 			return err
 		}
 		hwCtx.isLongForm = true
@@ -287,7 +287,7 @@ func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Act
 		sg := newStrokeGroup(svgFile, n)
 
 		// Find the handwriting canvas location.
-		hwCanvasFinder := NodeFinder.Role(role.Canvas)
+		hwCanvasFinder := NodeFinder.Role(role.Canvas).Onscreen()
 		loc, err := hwCtx.ui.Location(ctx, hwCanvasFinder)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get location of %v", hwCanvasFinder)
@@ -308,11 +308,12 @@ func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Act
 // ClearHandwritingCanvas returns an action that clears the handwriting canvas.
 // TODO(b/189277286): Add support to check whether a handwriting canvas is clear for a non-longform canvas.
 func (hwCtx *HandwritingContext) ClearHandwritingCanvas() uiauto.Action {
+	backspace := KeyFinder.Name("backspace").Onscreen()
 	if !hwCtx.isLongForm {
-		return hwCtx.TapKey("backspace")
+		return hwCtx.TapNode(backspace)
 	}
-	undoKey := KeyFinder.Name("undo")
-	waitForBackspaceAction := hwCtx.ui.WithTimeout(500 * time.Millisecond).WaitUntilExists(KeyFinder.Name("backspace"))
+	undoKey := KeyFinder.Name("undo").Onscreen()
+	waitForBackspaceAction := hwCtx.ui.WithTimeout(500 * time.Millisecond).WaitUntilExists(backspace)
 
 	// Undo key remains on the keyboard if the canvas is not clear in longform canvas.
 	return hwCtx.ui.IfSuccessThen(
