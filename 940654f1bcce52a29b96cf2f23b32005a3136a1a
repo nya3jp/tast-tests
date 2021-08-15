@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7817e956_936e5c20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "why not make it an action: validateEmojiSuggestion :\u003d func(shouldSuggest bool) uiauto.Action {...}\n\nThen you can put it inside of uiauto.Combine() later when it is used, instead of calling it separately.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 60
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666712a5_8f3a566a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "nit: just \"time.Second\"",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 36
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1bd48f_e4f4345d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "nit: no need to define a new func for the cleanup, as there is only one function call here.\n\ndefer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), testName), s.HasError, cr, \"ui_tree_\"+testName)",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e553ae2f_712acd84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "this cleanupCtx is defined outside of the subtest, I am not sure if it works as expected in the subtest. It might work, but it adds unnecessary dependencies of the subtests to this test-level cleanupCtx. Also, it is more clear/robust if a new cleanupCtx is created within the subtest.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b061f2d7_6373b157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 15
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a1ddfc_378dd784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "...\nimeSettings.Close(),\nvalidateEmojiSuggestion(false),\n}(ctx)...",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97580ebd_de94c478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 3
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c594eb_b29cd457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-15T21:35:53Z",
+      "side": 1,
+      "message": "nit: this is not very informational. Add details/examples?",
+      "range": {
+        "startLine": 154,
+        "startChar": 52,
+        "endLine": 154,
+        "endChar": 56
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
