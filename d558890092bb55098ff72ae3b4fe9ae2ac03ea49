@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd59c3b4_164aaa6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:13:44Z",
+      "side": 1,
+      "message": "Do you want to add OnScreen() on all VK NodeFinder and see how it goes?",
+      "revId": "d558890092bb55098ff72ae3b4fe9ae2ac03ea49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
