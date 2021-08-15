@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5543b8_22c1ca12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7817e956_936e5c20",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 60
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "666712a5_8f3a566a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-15T21:35:53Z",
       "side": 1,
       "message": "nit: just \"time.Second\"",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 36
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586f11a0_ed31d197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "666712a5_8f3a566a",
       "range": {
         "startLine": 116,
         "startChar": 23,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa65ff3b_d5f155a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d1bd48f_e4f4345d",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da3c1a4_6a8f4dd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e553ae2f_712acd84",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b061f2d7_6373b157",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-15T21:35:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 15
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd7e9f4_a963a4b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b061f2d7_6373b157",
       "range": {
         "startLine": 142,
         "startChar": 2,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "705c8c7e_4ce2bc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a1ddfc_378dd784",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97580ebd_de94c478",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-08-15T21:35:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 3
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6603690_c1692127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-15T23:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97580ebd_de94c478",
       "range": {
         "startLine": 197,
         "startChar": 3,
