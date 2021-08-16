@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee5b89f_f7962f50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T22:59:55Z",
+      "side": 1,
+      "message": "Just want to double check, did I miss any team member +2?",
+      "parentUuid": "b3370ce2_2cd1972c",
+      "revId": "a93c08a49c26ea31b10e994546bd8cdd2d80f110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4738992_6be74825",
