@@ -16,6 +16,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "a5e5646dc452d491f2c365fe10da19401560f6a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b756a78_5a895812",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2021-08-16T21:34:59Z",
+      "side": 1,
+      "message": "Just my 2cents: cryptohome.cc currently already uses hex in a few places, but not base64. Maybe it makes sense to be consistent in data formats.",
+      "range": {
+        "startLine": 236,
+        "startChar": 50,
+        "endLine": 236,
+        "endChar": 56
+      },
+      "revId": "a5e5646dc452d491f2c365fe10da19401560f6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
