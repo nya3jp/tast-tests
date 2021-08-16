@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bebe19ff_34e26335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-16T05:03:02Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dba0a5bc_b3093af7",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 15,
         "endLine": 58,
         "endChar": 20
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33ae3d0_0edb8543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-16T05:03:02Z",
+      "side": 1,
+      "message": "How about checking the short display names in the bottom-right corner tray as well? like \"あ\" for japanese, \"US\" for English(US), as it is very relevant. You may need to add an extra field \"ShortName\" or similar in the input method. \n\nSee the second column in https://docs.google.com/spreadsheets/d/1PMA4GExxDo-B5LOqFDJqCV1gh-eZKT1JNFardnj35xA/edit?resourcekey\u003d0-kMei1mB1pLIW8LybAj2jzA#gid\u003d0",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 52
       },
       "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
