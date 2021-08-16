@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a843311_58b9d580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6aeb31_ba8a774f",
+      "range": {
+        "startLine": 55,
+        "startChar": 101,
+        "endLine": 55,
+        "endChar": 106
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f5c07cf_2c391227",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-16T03:46:43Z",
       "side": 1,
       "message": "why return here?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e37483a_04ebfac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:05:57Z",
+      "side": 1,
+      "message": "Not sure when this is introduced. Fixed.",
+      "parentUuid": "9f5c07cf_2c391227",
       "range": {
         "startLine": 152,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55f32be_6a7290a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:05:57Z",
+      "side": 1,
+      "message": "Good catch. Fixed.",
+      "parentUuid": "82578e11_bea26e32",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 12
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9182b942_91d439bb",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-16T03:46:43Z",
       "side": 1,
       "message": "This func is the same as \"findInstallConfirmButton\" except the text, suggest to combine it to buttonWithText(ctx, d, text)",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 5
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5ceffb_8fdb440d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:05:57Z",
+      "side": 1,
+      "message": "Re-wrote the three find...Button functions to two:\n- buttonWithText and buttonWithRegex",
+      "parentUuid": "9182b942_91d439bb",
       "range": {
         "startLine": 272,
         "startChar": 1,
