@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
@@ -24,6 +23,7 @@ func init() {
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcBootedInClamshellMode",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -35,19 +35,15 @@ func init() {
 }
 
 func SurfaceInsets(ctx context.Context, s *testing.State) {
+	p := s.FixtValue().(*arc.PreData)
+	cr := p.Chrome
+	a := p.ARC
+
 	const (
 		apk = "ArcSurfaceInsetsTest.apk"
 		pkg = "org.chromium.arc.testapp.surfaceinsets"
 		cls = ".MainActivity"
 	)
-
-	// TODO(crbug.com/1002958) Replace with Ash API to enable clamshell mode once it gets fixed.
-	// With the Ash flag, we can also use precondition arc.Booted() and tast efficiency improves with it.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -68,12 +64,6 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get a new TouchEventWriter: ", err)
 	}
 	defer stw.Close()
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(ctx)
 
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
