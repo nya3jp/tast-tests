@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b1c8a2_fcc4ec66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-08-16T10:28:32Z",
+      "side": 1,
+      "message": "At this point, this test works with hatch-arc-r-userdebug image. This CL still needs some fix (splitting the addition of helper program, limiting the boards to run the test because only 4.19 and 5.4 host kernels have the virtual suspend time injection patches, etc...) but sharing this with you for early feedbacks. Thanks!",
+      "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
