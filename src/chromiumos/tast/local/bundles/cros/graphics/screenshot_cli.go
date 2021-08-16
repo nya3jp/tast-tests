@@ -19,7 +19,7 @@ func init() {
 		Func:         ScreenshotCLI,
 		Desc:         "Takes a screenshot using the CLI",
 		Contacts:     []string{"nya@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome", "screenshot"},
 		Fixture:      "chromeGraphics",
