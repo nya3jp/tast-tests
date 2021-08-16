@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dff69f1_63ccb6f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-16T15:25:49Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f990496_b8a49d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-16T15:25:49Z",
+      "side": 1,
+      "message": "nit: No longer necessary because of \":\u003d\" on the next line.",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086abfda_5a7ed880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-16T15:25:49Z",
+      "side": 1,
+      "message": "nit: This can be moved this L83 now.",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0b5e47_4512066d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-16T15:25:49Z",
+      "side": 1,
+      "message": "nit: ditto, can be removed now.",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9758749e_e9ea4d9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-16T15:25:49Z",
+      "side": 1,
+      "message": "nit: ditto, can be removed now.",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
