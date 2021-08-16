@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34dbd597_cd51fa81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-16T09:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6e2a765_8dc6174a",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 10
+      },
+      "revId": "64fc8c943c55ab78cd9f51fc8c9bf694307fb7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a8594ee_89589524",
