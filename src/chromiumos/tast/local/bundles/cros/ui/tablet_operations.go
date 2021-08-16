@@ -44,6 +44,9 @@ func init() {
 			// Scarlet devices are failing temporarily, possibly because of the display
 			// rotation failures. "gru" is the platform name for scarlet devices. See b/189704582.
 			hwdep.SkipOnPlatform("gru"),
+			// Exclude kohaku because "EnableNeuralPalmDetectionFilter" is enabled
+			// there and rejects touches for swiping right. See b/196859354.
+			hwdep.SkipOnModel("kohaku"),
 		),
 		Params: []testing.Param{
 			{
