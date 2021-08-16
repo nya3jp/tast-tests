@@ -86,7 +86,7 @@ func init() {
 				dataDir:   "/tmp/data_collector",
 			},
 		}},
-		VarDeps: []string{"ui.gaiaPoolDefault"},
+		VarDeps: []string{"arc.perfAccountPool"},
 	})
 }
 
@@ -240,7 +240,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
-			Creds: s.RequiredVar("ui.gaiaPoolDefault"),
+			Creds: s.RequiredVar("arc.perfAccountPool"),
 		}
 
 		// Shorten the total context by 5 seconds to allow for cleanup.
