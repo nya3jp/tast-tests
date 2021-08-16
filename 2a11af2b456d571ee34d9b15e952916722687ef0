@@ -16,6 +16,23 @@
       "message": "@Alex Please add power module owners for review.",
       "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca329172_82677078",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-16T17:27:54Z",
+      "side": 1,
+      "message": "As I\u0027ve said previously, please do not directly add tast reviewers by name. Use the alias \u0027tast-owners\u0027, and that will automatically assign a reviewer to your CL. I\u0027m removing myself and Judy from this CL so you can go through this process. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md for more details.",
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
