@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e5036e_d887c3eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:09:55Z",
+      "side": 1,
+      "message": "huge nit: you do not need this return.",
+      "revId": "e936e8b34823682e390f33e043f80d521034f4c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

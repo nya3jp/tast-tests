@@ -70,6 +70,30 @@
       },
       "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc642b3_32675001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:09:55Z",
+      "side": 1,
+      "message": "ok, I\u0027m convinced.",
+      "parentUuid": "ca17252e_9d4a209b",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "cc89aecc5007530ea93b6fd40f34040d5882c1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
