@@ -5,12 +5,17 @@
 package storage
 
 import (
+	"bytes"
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
@@ -26,6 +31,9 @@ import (
 const (
 	// Timeout to wait for UI item to appear.
 	uiTimeout = 10 * time.Second
+
+	// VolumeProviderContentURIPrefix is the prefix of VolumeProvider content URIs.
+	VolumeProviderContentURIPrefix = "content://org.chromium.arc.volumeprovider/"
 
 	// Labels to appear in the test app and their expected values.
 
@@ -57,9 +65,14 @@ type TestConfig struct {
 	SubDirectories []string
 	// Actual path of the directory on the file system.
 	DirPath string
-	// If set to true, create the test file at "DirPath". For directory where there is no actual
-	// file path, set this to false and create the file before running the test (e.g. MTP).
+	// If set to true, create the test file at "DirPath". The content of the
+	// created file is set to "ExpectedFileContent". For a directory where there is
+	// no actual file path, set this to false and create the file before running
+	// the test (e.g. MTP).
 	CreateTestFile bool
+	// Optional: If set to true, write the content of the test file with the
+	// ArcFileWriterTest app (regardless of whether "CreateTestFile" is true).
+	WriteFileContentWithApp bool
 	// Optional: If set to true, wait for file type to appear before opening the file.
 	// Currently used by DriveFS to ensure metadata has arrived.
 	CheckFileType bool
@@ -81,8 +94,12 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 
 	if config.CreateTestFile {
 		testing.ContextLog(ctx, "Setting up a test file")
+		content := ExpectedFileContent
+		if config.WriteFileContentWithApp {
+			content = ""
+		}
 		testFileLocation := filepath.Join(config.DirPath, config.FileName)
-		if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
+		if err := ioutil.WriteFile(testFileLocation, []byte(content), 0666); err != nil {
 			s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
 		}
 		defer os.Remove(testFileLocation)
@@ -97,7 +114,13 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 		s.Fatal("Failed to open Files App: ", err)
 	}
 
-	if err := openWithReaderApp(ctx, files, config); err != nil {
+	if config.WriteFileContentWithApp {
+		if err := writeFileContentWithApp(ctx, a, files, config); err != nil {
+			s.Fatal("Failed to write the test file content with ArcFileWriterTest: ", err)
+		}
+	}
+
+	if err := openWithApp(ctx, files, config, "ArcFileReaderTest"); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
 	}
 
@@ -125,11 +148,38 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 	return files, nil
 }
 
-// openWithReaderApp opens the test file with ArcFileReaderTest.
-func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, config TestConfig) error {
-	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
+// writeFileContentWithApp writes the test file content with ArcFileWriterTest.
+func writeFileContentWithApp(ctx context.Context, a *arc.ARC, files *filesapp.FilesApp, config TestConfig) error {
+	testFileLocation := filepath.Join(config.DirPath, config.FileName)
+	// The mode parameter specified in ioutil.WriteFile is affected by umask.
+	// Hence we apply chmod here so that the test app can write to the file.
+	if err := os.Chmod(testFileLocation, 0666); err != nil {
+		return errors.Wrapf(err, "failed to chmod %s", testFileLocation)
+	}
 
-	return uiauto.Combine("open the test file with ArcFileReaderTest",
+	testing.ContextLog(ctx, "Installing ArcFileWriterTest app")
+	if err := a.Install(ctx, arc.APKPath("ArcFileWriterTest.apk")); err != nil {
+		return errors.Wrap(err, "failed to install ArcFileWriterTest")
+	}
+
+	if err := openWithApp(ctx, files, config, "ArcFileWriterTest"); err != nil {
+		return errors.Wrap(err, "failed to open the test file with ArcFileWriterTest")
+	}
+
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed initializing UI Automator")
+	}
+	defer d.Close(ctx)
+
+	return validateLabel(ctx, d, "org.chromium.arc.testapp.filewriter:id/result", "Success")
+}
+
+// openWithApp opens the test file with the specified app.
+func openWithApp(ctx context.Context, files *filesapp.FilesApp, config TestConfig, appName string) error {
+	testing.ContextLogf(ctx, "Opening the test file with %s", appName)
+
+	return uiauto.Combine(fmt.Sprintf("open the test file with %s", appName),
 		files.OpenPath(config.DirTitle, config.DirName, config.SubDirectories...),
 		// Note: due to the banner loading, this may still be flaky.
 		// If that is the case, we may want to increase the interval and timeout for this next call.
@@ -146,7 +196,7 @@ func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, config Tes
 			return nil
 		},
 		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
-		files.LeftClick(nodewith.Name("ARC File Reader Test").Role(role.StaticText)),
+		files.LeftClick(nodewith.Name(appName).Role(role.StaticText)),
 	)(ctx)
 }
 
@@ -186,7 +236,7 @@ func validateResult(ctx context.Context, a *arc.ARC, expectations []Expectation)
 	defer d.Close(ctx)
 
 	for _, e := range expectations {
-		if err := validateLabel(ctx, d, e); err != nil {
+		if err := validateLabel(ctx, d, e.LabelID, e.Value); err != nil {
 			return err
 		}
 	}
@@ -195,21 +245,89 @@ func validateResult(ctx context.Context, a *arc.ARC, expectations []Expectation)
 }
 
 // validateLabel is a helper function to load app label texts and compare it with expectation.
-func validateLabel(ctx context.Context, d *androidui.Device, expectation Expectation) error {
-	uiObj := d.Object(androidui.ID(expectation.LabelID))
+func validateLabel(ctx context.Context, d *androidui.Device, label, expected string) error {
+	uiObj := d.Object(androidui.ID(label))
 	if err := uiObj.WaitForExists(ctx, uiTimeout); err != nil {
-		return errors.Wrapf(err, "failed to find the label id %s", expectation.LabelID)
+		return errors.Wrapf(err, "failed to find the label id %s", label)
 	}
 
 	actual, err := uiObj.GetText(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get text from the label id %s", expectation.LabelID)
+		return errors.Wrapf(err, "failed to get text from the label id %s", label)
 	}
 
-	if actual != expectation.Value {
-		return errors.Errorf("unexpected value in label %s: got %q, want %q", expectation.LabelID, actual, expectation.Value)
+	if actual != expected {
+		return errors.Errorf("unexpected value in label %s: got %q, want %q", label, actual, expected)
 	}
 
-	testing.ContextLogf(ctx, "Label content of %s = %s", expectation.LabelID, actual)
+	testing.ContextLogf(ctx, "Label content of %s = %s", label, actual)
 	return nil
+}
+
+// TestPushToARCAndReadFromCros pushes the content of sourcePath (in Chrome OS)
+// to androidPath (in Android) using adb, and then checks whether the file can
+// be accessed under crosPath (in Chrome OS).
+func TestPushToARCAndReadFromCros(ctx context.Context, a *arc.ARC, sourcePath, androidPath, crosPath string) (retErr error) {
+	// Shorten the context to make room for cleanup jobs.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	expected, err := ioutil.ReadFile(sourcePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read from %s in Chrome OS", sourcePath)
+	}
+
+	if err := a.WriteFile(ctx, androidPath, expected); err != nil {
+		return errors.Wrapf(err, "failed to write to %s in Android", androidPath)
+	}
+	defer func(ctx context.Context) {
+		if err := a.RemoveAll(ctx, androidPath); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrapf(err, "failed remove %s in Android", androidPath)
+			} else {
+				testing.ContextLogf(ctx, "Failed to remove %s in Android: %v", androidPath, err)
+			}
+		}
+	}(cleanupCtx)
+
+	actual, err := ioutil.ReadFile(crosPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read from %s in Chrome OS", crosPath)
+	}
+	if !bytes.Equal(actual, expected) {
+		return errors.Errorf("content mismatch between %s in Android and %s in Chrome OS", androidPath, crosPath)
+	}
+
+	return nil
+}
+
+// WaitForARCVolumeMount waits for the volume to be mounted in ARC using the sm command.
+// Just checking mountinfo is not sufficient here since it takes some
+// time for the FUSE layer in Android R+ to be ready after /storage/<UUID> has
+// become a mountpoint.
+func WaitForARCVolumeMount(ctx context.Context, a *arc.ARC, uuid string) error {
+	// Regular expression that matches the output line for the mounted
+	// volume. Each output line of the sm command is of the form:
+	// <volume id><space(s)><mount status><space(s)><volume UUID>.
+	// Examples:
+	//   1821167369 mounted 00000000000000000000000000000000DEADBEEF
+	//   stub:18446744073709551614 mounted 0000000000000000000000000000CAFEF00D2019
+	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+mounted\s+` + uuid + `$`)
+
+	testing.ContextLog(ctx, "Waiting for the volume to be mounted in ARC")
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "sm command failed"))
+		}
+		lines := bytes.Split(out, []byte("\n"))
+		for _, line := range lines {
+			if re.Find(bytes.TrimSpace(line)) != nil {
+				return nil
+			}
+		}
+		return errors.New("the volume is not yet mounted")
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 }

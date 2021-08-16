@@ -13,7 +13,6 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"time"
 
@@ -21,20 +20,19 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/crosdisks"
 	"chromiumos/tast/testing"
 )
 
 const (
-	// Prefix of content URIs used by ArcVolumeProvider.
-	contentURIPrefix = "content://org.chromium.arc.volumeprovider/"
-	// Fake UUID of removable device for testing.
-	// Defined in chromium:components/arc/volume_mounter/arc_volume_mounter_bridge.cc.
-	fakeUUID = "00000000000000000000000000000000DEADBEEF"
+	// FakeUUID is the UUID of a removable media device for testing, defined in
+	// chromium:components/arc/volume_mounter/arc_volume_mounter_bridge.cc.
+	FakeUUID = "00000000000000000000000000000000DEADBEEF"
 )
 
-// CreateZeroFile creates a file filled with size bytes of 0.
-func CreateZeroFile(size int64, name string) (string, error) {
+// createZeroFile creates a file filled with size bytes of 0.
+func createZeroFile(size int64, name string) (string, error) {
 	f, err := ioutil.TempFile("", name)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create an image file")
@@ -49,8 +47,8 @@ func CreateZeroFile(size int64, name string) (string, error) {
 	return f.Name(), nil
 }
 
-// AttachLoopDevice attaches to loop device.
-func AttachLoopDevice(ctx context.Context, path string) (string, error) {
+// attachLoopDevice attaches to loop device.
+func attachLoopDevice(ctx context.Context, path string) (string, error) {
 	b, err := testexec.CommandContext(ctx, "losetup", "-f", path, "--show").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to attach to loop device")
@@ -58,8 +56,8 @@ func AttachLoopDevice(ctx context.Context, path string) (string, error) {
 	return strings.TrimSpace(string(b)), nil
 }
 
-// DetachLoopDevice detaches from loop device.
-func DetachLoopDevice(ctx context.Context, devLoop string) error {
+// detachLoopDevice detaches from loop device.
+func detachLoopDevice(ctx context.Context, devLoop string) error {
 	if err := testexec.CommandContext(ctx, "losetup", "-d", devLoop).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to detach from loop device at %s", devLoop)
 	}
@@ -67,16 +65,16 @@ func DetachLoopDevice(ctx context.Context, devLoop string) error {
 	return nil
 }
 
-// FormatVFAT formats the vfat file system.
-func FormatVFAT(ctx context.Context, devLoop string) error {
+// formatVFAT formats the vfat file system.
+func formatVFAT(ctx context.Context, devLoop string) error {
 	if err := testexec.CommandContext(ctx, "mkfs", "-t", "vfat", "-F", "32", "-n", "MyDisk", devLoop).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to format vfat file system")
 	}
 	return nil
 }
 
-// Mount adds device to allowlist and mounts it.
-func Mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (mountPath string, retErr error) {
+// mount adds device to allowlist and mounts it.
+func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (mountPath string, retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
@@ -115,8 +113,8 @@ func Mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (
 	}
 }
 
-// Unmount unmounts the disk.
-func Unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error {
+// unmount unmounts the disk.
+func unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error {
 	if status, err := cd.Unmount(ctx, devLoop, []string{"lazy"}); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	} else if status != crosdisks.MountErrorNone {
@@ -125,34 +123,57 @@ func Unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error
 	return nil
 }
 
-// WaitForARCVolumeMount waits for the volume to be mounted in ARC using the sm command.
-// Just checking mountinfo is not sufficient here since it takes some
-// time for the FUSE layer in Android R+ to be ready after /storage/<UUID> has
-// become a mountpoint.
-func WaitForARCVolumeMount(ctx context.Context, a *arc.ARC) error {
-	// Regular expression that matches the output line for the mounted
-	// volume. Each output line of the sm command is of the form:
-	// <volume id><space(s)><mount status><space(s)><volume UUID>.
-	// Examples:
-	//   1821167369 mounted 00000000000000000000000000000000DEADBEEF
-	//   stub:18446744073709551614 mounted 00000000000000000000000000000000DEADBEEF
-	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+mounted\s+` + fakeUUID + `$`)
+// SetUpRemovableMediaForTesting sets up a removable media device for testing.
+// Returns the device's mount path, a function for cleanup, and error (if any).
+func SetUpRemovableMediaForTesting(ctx context.Context, diskName string, imageSize int64) (string, func(context.Context), error) {
+	// Set up a filesystem image.
+	image, err := createZeroFile(imageSize, "vfat.img")
+	if err != nil {
+		return "", nil, errors.Wrap(err, "failed to create image")
+	}
 
-	testing.ContextLog(ctx, "Waiting for the volume to be mounted in ARC")
+	devLoop, err := attachLoopDevice(ctx, image)
+	if err != nil {
+		os.Remove(image)
+		return "", nil, errors.Wrap(err, "failed to attach loop device")
+	}
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "sm command failed"))
+	detach := func(ctx context.Context) {
+		if err := detachLoopDevice(ctx, devLoop); err != nil {
+			testing.ContextLog(ctx, "Failed to detach from loop device: ", err)
 		}
-		lines := bytes.Split(out, []byte("\n"))
-		for _, line := range lines {
-			if re.Find(bytes.TrimSpace(line)) != nil {
-				return nil
-			}
+	}
+
+	if err := formatVFAT(ctx, devLoop); err != nil {
+		detach(ctx)
+		os.Remove(image)
+		return "", nil, errors.Wrap(err, "failed to fromat VFAT filesystem")
+	}
+
+	// Mount the image via CrosDisks.
+	cd, err := crosdisks.New(ctx)
+	if err != nil {
+		detach(ctx)
+		os.Remove(image)
+		return "", nil, errors.Wrap(err, "failed to find crosdisks D-Bus service")
+	}
+
+	mountPath, err := mount(ctx, cd, devLoop, diskName)
+	if err != nil {
+		detach(ctx)
+		os.Remove(image)
+		return "", nil, errors.Wrap(err, "failed to mount filesystem")
+	}
+
+	cleanupFunc := func(ctx context.Context) {
+		if err := unmount(ctx, cd, devLoop); err != nil {
+			testing.ContextLog(ctx, "Failed to unmount VFAT image: ", err)
 		}
-		return errors.New("the volume is not yet mounted")
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+		detach(ctx)
+		os.Remove(image)
+	}
+
+	return mountPath, cleanupFunc, nil
 }
 
 // RunTest executes the testing scenario of arc.RemovableMedia.
@@ -166,47 +187,18 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 		s.Fatalf("Failed to read %s: %v", testFile, err)
 	}
 
-	// Set up a filesystem image.
-	image, err := CreateZeroFile(imageSize, "vfat.img")
+	mountPath, cleanupFunc, err := SetUpRemovableMediaForTesting(ctx, diskName, imageSize)
 	if err != nil {
-		s.Fatal("Failed to create image: ", err)
+		s.Fatal("Failed to set up removable media for testing: ", err)
 	}
-	defer os.Remove(image)
+	defer cleanupFunc(ctx)
 
-	devLoop, err := AttachLoopDevice(ctx, image)
-	if err != nil {
-		s.Fatal("Failed to attach loop device: ", err)
-	}
-	defer func() {
-		if err := DetachLoopDevice(ctx, devLoop); err != nil {
-			s.Error("Failed to detach from loop device: ", err)
-		}
-	}()
-	if err := FormatVFAT(ctx, devLoop); err != nil {
-		s.Fatal("Failed to format VFAT file system: ", err)
-	}
-
-	// Mount the image via CrosDisks.
-	cd, err := crosdisks.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to find crosdisks D-Bus service: ", err)
-	}
-	mountDir, err := Mount(ctx, cd, devLoop, diskName)
-	if err != nil {
-		s.Fatal("Failed to mount file system: ", err)
-	}
-	defer func() {
-		if err := Unmount(ctx, cd, devLoop); err != nil {
-			s.Error("Failed to unmount VFAT image: ", err)
-		}
-	}()
-
-	if err := WaitForARCVolumeMount(ctx, a); err != nil {
+	if err := storage.WaitForARCVolumeMount(ctx, a, FakeUUID); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
 	}
 
 	// Create a picture in the removable media.
-	tpath := filepath.Join(mountDir, testFile)
+	tpath := filepath.Join(mountPath, testFile)
 	if err := ioutil.WriteFile(tpath, expected, 0644); err != nil {
 		s.Fatal("Failed to write a data file: ", err)
 	}
@@ -228,7 +220,7 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 		return nil
 	}
 
-	uri := contentURIPrefix + path.Join(fakeUUID, testFile)
+	uri := storage.VolumeProviderContentURIPrefix + path.Join(FakeUUID, testFile)
 	if err := verify(uri, filepath.Join(s.OutDir(), testFile)); err != nil {
 		s.Fatalf("Failed to read the file via VolumeProvider using content URI %s: %v", uri, err)
 	}

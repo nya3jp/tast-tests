@@ -13,13 +13,13 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/bundles/cros/arc/removablemedia"
+	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/crosdisks"
 	"chromiumos/tast/testing"
 )
 
@@ -75,43 +75,13 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		androidPath = "/media/removable/MyDisk/Android"
 	)
 
-	// Set up a filesystem image.
-	image, err := removablemedia.CreateZeroFile(imageSize, "vfat.img")
+	_, cleanupFunc, err := removablemedia.SetUpRemovableMediaForTesting(ctx, diskName, imageSize)
 	if err != nil {
-		s.Fatal("Failed to create image: ", err)
+		s.Fatal("Failed to set up removable media for testing: ", err)
 	}
-	defer os.Remove(image)
+	defer cleanupFunc(ctx)
 
-	devLoop, err := removablemedia.AttachLoopDevice(ctx, image)
-	if err != nil {
-		s.Fatal("Failed to attach loop device: ", err)
-	}
-	defer func() {
-		if err := removablemedia.DetachLoopDevice(ctx, devLoop); err != nil {
-			s.Error("Failed to detach from loop device: ", err)
-		}
-	}()
-
-	if err := removablemedia.FormatVFAT(ctx, devLoop); err != nil {
-		s.Fatal("Failed to format VFAT file system: ", err)
-	}
-
-	// Mount the image via CrosDisks.
-	cd, err := crosdisks.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to find crosdisks D-Bus service: ", err)
-	}
-	_, err = removablemedia.Mount(ctx, cd, devLoop, diskName)
-	if err != nil {
-		s.Fatal("Failed to mount file system: ", err)
-	}
-	defer func() {
-		if err := removablemedia.Unmount(ctx, cd, devLoop); err != nil {
-			s.Error("Failed to unmount VFAT image: ", err)
-		}
-	}()
-
-	if err := removablemedia.WaitForARCVolumeMount(ctx, a); err != nil {
+	if err := storage.WaitForARCVolumeMount(ctx, a, removablemedia.FakeUUID); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
 	}
 
@@ -165,7 +135,7 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Open Storage Settings : ", err)
 	}
 
-	if err := removablemedia.WaitForARCVolumeMount(ctx, a); err != nil {
+	if err := storage.WaitForARCVolumeMount(ctx, a, removablemedia.FakeUUID); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
 	}
 
