@@ -46,6 +46,30 @@
       },
       "revId": "91861f22744821544ee8a8fd240059c2f3f8686c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1024ce69_e58f1689",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-08-16T03:38:53Z",
+      "side": 1,
+      "message": "Ah in dnsmasq... ok thanks!",
+      "parentUuid": "e9d51465_00f4e536",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "91861f22744821544ee8a8fd240059c2f3f8686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
