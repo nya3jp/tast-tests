@@ -47,6 +47,12 @@ type OSSettings struct {
 	tconn *chrome.TestConn
 }
 
+// New returns a new ossettings context.
+// OSSettings can be launched from a page or app.
+func New(tconn *chrome.TestConn) *OSSettings {
+	return &OSSettings{ui: uiauto.New(tconn), tconn: tconn}
+}
+
 // Launch launches the Settings app.
 // An error is returned if the app fails to launch.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*OSSettings, error) {
