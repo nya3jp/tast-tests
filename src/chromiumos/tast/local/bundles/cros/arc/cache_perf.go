@@ -44,7 +44,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		VarDeps: []string{"ui.gaiaPoolDefault"},
+		VarDeps: []string{"arc.perfAccountPool"},
 	})
 }
 
@@ -179,7 +179,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	cr, err := chrome.New(ctx,
 		chrome.ARCSupported(),
 		chrome.RestrictARCCPU(),
-		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.GAIALoginPool(s.RequiredVar("arc.perfAccountPool")),
 		chrome.ExtraArgs(args...))
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to login to Chrome")
