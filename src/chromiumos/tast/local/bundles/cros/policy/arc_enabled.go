@@ -59,11 +59,17 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
-		chrome.ExtraArgs("--arc-availability=officially-supported"))
+		chrome.ExtraArgs("--arc-availability=officially-supported"),
+		chrome.DeferLogin(),
+	)
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Chrome startup failed: ", err)
 	}
 	defer cr.Close(ctx)
+
+	if err := cr.ContinueLogin(ctx); err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
