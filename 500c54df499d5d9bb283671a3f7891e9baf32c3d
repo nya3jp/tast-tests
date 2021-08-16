@@ -74,6 +74,30 @@
       },
       "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c423b2_b03d02d1",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T07:59:07Z",
+      "side": 1,
+      "message": "Thanks.\n\nBTW how does the /tmp/lacros logic work? Why would we get an error from ioutil.TempDir if we are using rootfs lacros?",
+      "parentUuid": "620f5c44_fb396e5f",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 2
+      },
+      "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
