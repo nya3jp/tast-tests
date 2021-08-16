@@ -16,6 +16,23 @@
       "message": "Thanks for the quick review.\n\nCalling owners...",
       "revId": "4c2782717b3b058ec1355a9b6b9b24c6c17431e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b3a956_ee8546e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-16T18:51:02Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "4c2782717b3b058ec1355a9b6b9b24c6c17431e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
