@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e3ce5e_5819a8e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-08-16T01:29:52Z",
+      "side": 1,
+      "message": "Correct - it\u0027s only safe to let the uprev occur now since it\u0027s after branch point, and the translation should appear before the next branch. It\u0027s typical for dev channel releases of Chrome to have untranslated strings, and a cherry-pick occurs for updated strings into beta channel once all the translations are in.\n\nFor us it means we need to take care landing strings changes around branch point. Typically strings first appear behind feature flags and get translated long before the feature is flipped, or we use `BACKUP_MESSAGE_ID` when a string is updated (e.g. http://google3/chrome/apps/backlight/client/strings/strings.ts?l\u003d1002\u0026rcl\u003d390288419)",
+      "parentUuid": "da1027f0_3bd70fee",
+      "range": {
+        "startLine": 31,
+        "startChar": 58,
+        "endLine": 31,
+        "endChar": 69
+      },
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7aed0b2_d66f3e14",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-16T01:24:02Z",
       "side": 1,
       "message": "You can change this locator to either A or B to accept new string.\n\nNameRegex(regexp.MustCompile(fmt.Sprintf(\"%s|%s\", openImageButtonName, newOpenImageButtonName))",
+      "range": {
+        "startLine": 74,
+        "startChar": 53,
+        "endLine": 74,
+        "endChar": 78
+      },
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb207bd0_ce34ef6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-08-16T01:29:52Z",
+      "side": 1,
+      "message": "We don\u0027t know what the new string will be - it\u0027s not translated yet - http://tc/Backlight/6966726256333214373 . So I don\u0027t think there\u0027s any way to write a check here that won\u0027t fail when the translation CL is force-committed.",
+      "parentUuid": "f7aed0b2_d66f3e14",
       "range": {
         "startLine": 74,
         "startChar": 53,
