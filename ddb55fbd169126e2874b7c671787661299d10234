@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "034e077e_e06ae971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-16T13:53:54Z",
+      "side": 1,
+      "message": "I don\u0027t think so, as I am not doing anything with a device that\u0027s not already done apart form starting oobe_config_save. I will investigate what happens if oobe_config_save does not terminate, i.e. wether it wil still be running on the device after the context timeout, if that is the case one should probably do \"stop oobe_config_save\" on the cleanup task.",
+      "parentUuid": "da3bf6d5_61ffc1f8",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3a771d3_3bcc33b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\nIt is not forbidden if it is not an exported function, just better to avoid it.\nAnd yes, it is possible to raise an error with s.Error(err).",
       "parentUuid": "0282e6cc_ce05835a",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc7fdca_2b1bb50e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-16T13:53:54Z",
+      "side": 1,
+      "message": "I see, so the argument is information hiding. For example here I could pass s.DUT() and return an error instead. That sounds very reasonable.\nMy original motiviation to pass testing.State was avoiding the additional boilerplate code for the errors, but I suppose that\u0027s something one has to live with when writing go code.",
+      "parentUuid": "4c34d22b_2382cc16",
       "range": {
         "startLine": 51,
         "startChar": 35,
