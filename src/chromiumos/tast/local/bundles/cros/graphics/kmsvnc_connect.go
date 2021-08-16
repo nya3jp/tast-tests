@@ -22,7 +22,7 @@ func init() {
 		Func:         KmsvncConnect,
 		Desc:         "Connects to kmsvnc server and verifies server parameters",
 		Contacts:     []string{"shaochuan@chromium.org", "uekawa@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeGraphics",
