@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f317b4de_cdace821",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-16T02:36:32Z",
+      "side": 1,
+      "message": "On which device did you measure this timing? resetTimeout is currently 30 seconds, so you might want to extend PostTestTimeout a bit more to save time for slower devices.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "bd508f90f6322de00fc1a0e741d353a6e23f0670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bac3ed5e_f5cc740e",
@@ -31,6 +54,24 @@
       "writtenOn": "2021-08-13T15:16:12Z",
       "side": 1,
       "message": "The change looks correct, but I have concern on the runtime and disk usage. (I thought taking 20 seconds may mean very large file, but maybe not)\n\nTests with the same fixture may all fail simultaneously when something went wrong in the common logic.\nThere are 93 mainline tests using the fixture, in which 15 are critical.\nTherefore I am afraid the additional 20 seconds runtime may potentially affect CQ runtime significantly (especially after all informationals are promoted to critical). I would like to ask nya@ for another opinion on this.",
+      "revId": "bd508f90f6322de00fc1a0e741d353a6e23f0670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e96329_026d6869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-16T02:36:32Z",
+      "side": 1,
+      "message": "Space-wise it sounds okay, I remember dumpsys output is not huge like gigabytes.\n\nTime-wise it also sounds okay since we save dumpsys only when a test failed. CQ run time will be usually unaffected since tests are supposed to succeed mostly. A common burst failure case is a failure during fixture setup, but it doesn\u0027t trigger PostTest.",
+      "parentUuid": "2802e68b_8be07ae5",
       "revId": "bd508f90f6322de00fc1a0e741d353a6e23f0670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
