@@ -28,7 +28,9 @@ func init() {
 			"backlight-swe@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		// Fails due to a new string that is not yet translated.
+		// TODO(b/196705842): Restore to "mainline" once translations are final.
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Fixture:      "chromeLoggedInForEAInJP",
