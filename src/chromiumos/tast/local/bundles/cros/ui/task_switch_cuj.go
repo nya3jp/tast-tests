@@ -70,6 +70,7 @@ func init() {
 			{
 				Name:              "tablet_mode_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "loggedInToCUJUser",
 				Val: taskSWitchCUJTestParam{
 					tablet: true,
 				},
