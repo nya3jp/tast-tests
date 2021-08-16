@@ -16,6 +16,24 @@
       "message": "nit, can eliminate running variable:\nfor {\n ...\n if !iRes.Running {\n     break\n }\n ...\n}",
       "revId": "10316dd04f9eec297107ff5145ab33a0dc56c9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11ae24c_1b2da85e",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-16T22:53:36Z",
+      "side": 1,
+      "message": "Fixed NIT, please take a look again.",
+      "parentUuid": "c9bdaeac_ed7414c0",
+      "revId": "10316dd04f9eec297107ff5145ab33a0dc56c9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
