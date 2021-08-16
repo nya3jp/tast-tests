@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e558424d_fbb24118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T16:17:22Z",
+      "side": 1,
+      "message": "nit: could you move this to L135?",
+      "revId": "3245d8a00f10c3667ec45541dc00ed8861ffd05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f01be63_a7053b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T16:17:22Z",
+      "side": 1,
+      "message": "can this loop be simplified into the definited number of iterations, like:\n\nif currVal \u003c gainMin {\n  ns :\u003d ... // calculate steps.\n  for i :\u003d 0; i \u003c ns; i++ {\n    ... IncreaseSlider(...)\n  }\n} else if currVal \u003e gainMin + 10 {\n  ... // ditto\n}\n\nit\u0027s a bit worried for me to check the condition for each iteration.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "3245d8a00f10c3667ec45541dc00ed8861ffd05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
