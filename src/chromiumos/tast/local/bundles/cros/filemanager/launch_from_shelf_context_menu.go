@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,7 +29,9 @@ func init() {
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "informational"},
+		// Files app icon is not pinned by default on kukui platform (crbug.com/1238131)
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kukui")),
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 	})
