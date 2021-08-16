@@ -275,6 +275,14 @@ func (im InputMethod) WaitUntilRemoved(tconn *chrome.TestConn) action.Action {
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
 
+// WaitUntilActivated waits for the input method to be activated.
+func (im InputMethod) WaitUntilActivated(tconn *chrome.TestConn) action.Action {
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return WaitForInputMethodMatches(ctx, tconn, fullyQualifiedIMEID, 20*time.Second)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
+
 // Activate sets the input method to use via Chrome API.
 // It does nothing if the IME is already in use.
 func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
