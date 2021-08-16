@@ -38,7 +38,7 @@ const (
 // It uses testPassword to change the password, and changePasswordShouldFail represents the action of changing password should fail or not.
 func createAccountAndChangePassword(ctx context.Context, cryptohome *hwsec.CryptohomeClient, testPassword string, changePasswordShouldFail bool) error {
 	// Create the account.
-	if err := cryptohome.MountVault(ctx, user, oldPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, oldPassword), true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount vault")
 	}
 	if _, err := cryptohome.Unmount(ctx, user); err != nil {
@@ -63,12 +63,12 @@ func migrateGoodKeyTest(ctx context.Context, s *testing.State, cryptohome *hwsec
 	}
 
 	// We expect the mount should fail, because we are using old password.
-	if err := cryptohome.MountVault(ctx, user, oldPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err == nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, oldPassword), true, hwsec.NewVaultConfig()); err == nil {
 		s.Fatal("Cryptohome was successfully mounted with the old password; want: should have failed")
 	}
 
 	// Try the correct password.
-	if err := cryptohome.MountVault(ctx, user, newPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, newPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault with correct password: ", err)
 	}
 }

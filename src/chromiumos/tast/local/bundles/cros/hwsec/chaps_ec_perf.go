@@ -84,7 +84,7 @@ func ChapsECPerf(ctx context.Context, s *testing.State) {
 
 	// Create a user vault for the slot/token.
 	// Mount the vault of the user, so that we can test user keys as well.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
 	defer func() {

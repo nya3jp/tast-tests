@@ -78,12 +78,12 @@ func IncreaseDAWithCheckVault(ctx context.Context, cryptohome *hwsec.CryptohomeC
 	}(cleanupCtx)
 
 	// Mount the test user account, which ensures that the vault is created, and that the mount succeeds.
-	if err := cryptohome.MountVault(ctx, user, password, label, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, label, hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount vault")
 	}
 
 	// Increase DA with incorrect password.
-	_, err := cryptohome.CheckVault(ctx, user, badPassword, label)
+	_, err := cryptohome.CheckVault(ctx, label, hwsec.NewPassAuthConfig(user, badPassword))
 	var exitErr *hwsec.CmdExitError
 	if !errors.As(err, &exitErr) {
 		return errors.Wrap(err, "should deny access the vault with the invalid credentials while mounted")

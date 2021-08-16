@@ -75,7 +75,7 @@ func setUpVaultAndUserAsOwner(ctx context.Context, certpath, username, password,
 	defer ws.Close(ctx)
 
 	// Now create the vault.
-	if err := utility.MountVault(ctx, username, password, label, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, label, hwsec.NewPassAuthConfig(username, password), true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to create user vault for testing")
 	}
 	// Note: Caller of this method is responsible for cleaning up the
@@ -99,7 +99,7 @@ func setUpVaultAndUserAsOwner(ctx context.Context, certpath, username, password,
 func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.CryptohomeClient) error {
 	config := hwsec.NewVaultConfig()
 	config.Ephemeral = true
-	if err := utility.MountVault(ctx, username, password, label, true, config); err != nil {
+	if err := utility.MountVault(ctx, label, hwsec.NewPassAuthConfig(username, password), true, config); err != nil {
 		return errors.Wrap(err, "failed to create ephemeral user vault for testing")
 	}
 
@@ -111,7 +111,7 @@ func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label s
 func setUpEcryptfsVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.CryptohomeClient) error {
 	config := hwsec.NewVaultConfig()
 	config.Ecryptfs = true
-	if err := utility.MountVault(ctx, username, password, label, true, config); err != nil {
+	if err := utility.MountVault(ctx, label, hwsec.NewPassAuthConfig(username, password), true, config); err != nil {
 		return errors.Wrap(err, "failed to create user vault for testing")
 	}
 

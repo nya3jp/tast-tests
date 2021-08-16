@@ -120,7 +120,7 @@ func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Uti
 // Note that a user may be created and its vault mounted in this method. Pass in RSAKey or ECKey for keyType.
 func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pkcs11.Chaps, cryptohome *hwsec.CryptohomeClient, scratchpadPath string, keyType KeyType) (keys []*pkcs11.KeyInfo, retErr error) {
 	// Mount the vault of the user, so that we can test user keys as well.
-	if err := cryptohome.MountVault(ctx, FirstUsername, FirstPassword, PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, PasswordLabel, hwsec.NewPassAuthConfig(FirstUsername, FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		return keys, errors.Wrap(err, "failed to mount vault")
 	}
 	defer func() {

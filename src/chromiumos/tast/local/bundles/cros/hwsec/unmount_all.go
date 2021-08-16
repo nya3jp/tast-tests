@@ -73,7 +73,7 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 	// At each of the Unmount(), we check that it's correctly unmounted through IsMounted() and existence of test file.
 
 	// Create 2 users for testing.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create first user vault: ", err)
 	}
 	defer func() {
@@ -85,7 +85,7 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove first user vault: ", err)
 		}
 	}()
-	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.SecondUsername, util.SecondPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create second user vault: ", err)
 	}
 	defer func() {
@@ -115,10 +115,10 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 	}
 
 	// Now remount.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount first user vault: ", err)
 	}
-	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.SecondUsername, util.SecondPassword), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount second user vault: ", err)
 	}
 
