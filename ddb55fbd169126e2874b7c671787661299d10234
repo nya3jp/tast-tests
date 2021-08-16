@@ -16,6 +16,127 @@
       "message": "Hi Gabor!\n\nWhile we can\u0027t really test anything after a real update (right?), I already wrote a test basically faking a rollback by triggering the respective script and faking clobber_state. So far it only checks whether the enrollment screen is automatically reached but we can extend it in the future.",
       "revId": "ddb55fbd169126e2874b7c671787661299d10234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2690e8_0591db05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T12:12:51Z",
+      "side": 1,
+      "message": "Right, right now we cannot test anything after a real update.",
+      "parentUuid": "0aa31391_8dd74a31",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f444429_17cf35f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T12:12:51Z",
+      "side": 1,
+      "message": "Is it urgent to merge this test, or can we wait until Victor is back?\nAs it touches enrollment, and it is a remote test, I\u0027d rather wait for him.",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a771d3_3bcc33b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T12:12:51Z",
+      "side": 1,
+      "message": "You shouldn\u0027t pass testing.State to a helper function.\nIf you have an error, you should Wrap() it, and return with it, and you can raise s.Error() or s.Fatal() in the main function.",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef521a5_64305e29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T12:12:51Z",
+      "side": 1,
+      "message": "Can you Dial once in the main function, and pass client as a parameter?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac5c2bd_f4777f6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T12:12:51Z",
+      "side": 1,
+      "message": "Use CommandContext() for every call.",
+      "range": {
+        "startLine": 80,
+        "startChar": 26,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b07b080_652eccf9",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T12:12:51Z",
+      "side": 1,
+      "message": "nit: add newline to the end of the file.",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
