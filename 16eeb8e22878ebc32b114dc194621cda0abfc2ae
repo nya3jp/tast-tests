@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7cec283_d9dc7a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-16T08:21:24Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "16eeb8e22878ebc32b114dc194621cda0abfc2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d33f8c_1cfc932b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-16T08:21:24Z",
+      "side": 1,
+      "message": "You might want to use DumpUITreeWithScreenshotOnError here too as there are some ui interactions before the subtests.",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "16eeb8e22878ebc32b114dc194621cda0abfc2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
