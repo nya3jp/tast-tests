@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -63,7 +63,7 @@ func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCa
 
 // GetStandardizedClamshellHardwareDeps returns the hardware dependencies all clamshell tests share.
 func GetStandardizedClamshellHardwareDeps() hwdep.Deps {
-	return hwdep.D(hwdep.SkipOnModel(TabletOnlyModels...))
+	return hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel(TabletOnlyModels...))
 }
 
 // GetStandardizedTabletTests returns the test cases required for tablet devices.
@@ -76,7 +76,7 @@ func GetStandardizedTabletTests(fn StandardizedTestFunc) []StandardizedTestCase 
 
 // GetStandardizedTabletHardwareDeps returns the hardware dependencies all tablet tests share.
 func GetStandardizedTabletHardwareDeps() hwdep.Deps {
-	return hwdep.D(hwdep.SkipOnModel(ClamshellOnlyModels...))
+	return hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel(ClamshellOnlyModels...))
 }
 
 // RunStandardizedTestCases runs the provided test cases and handles cleanup between tests.
@@ -88,12 +88,6 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 	}
 
 	a := s.FixtValue().(*arc.PreData).ARC
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Could not initialize UI Automator: ", err)
-	}
-	defer d.Close(ctx)
-
 	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
@@ -145,10 +139,6 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 				}
 			}(cleanupCtx)
 
-			if err := cpu.WaitUntilIdle(ctx); err != nil {
-				s.Fatal("Failed to wait until CPU idle: ", err)
-			}
-
 			d, err := a.NewUIDevice(ctx)
 			if err != nil {
 				s.Fatal("Failed initializing UI Automator: ", err)
@@ -170,6 +160,58 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 		})
 		cancel()
 	}
+}
+
+// StandardizedTouchscreenClick performs a click on the touchscreen.
+func StandardizedTouchscreenClick(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object) error {
+	touchScreen, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize touchscreen")
+	}
+	defer touchScreen.Close()
+
+	touchScreenSingleEventWriter, err := touchScreen.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize touchscreen single event writer")
+	}
+	defer touchScreenSingleEventWriter.Close()
+
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	if err != nil {
+		return errors.Wrap(err, "Unable to get touch screen coords")
+	}
+
+	// Move to the given point and end the write to simulate a click.
+	if err := touchScreenSingleEventWriter.Move(*x, *y); err != nil {
+		return errors.Wrap(err, "Unable to move into position")
+	}
+
+	if err := touchScreenSingleEventWriter.End(); err != nil {
+		return errors.Wrap(err, "Unable to end click")
+	}
+
+	return nil
+}
+
+// getTouchEventCoordinatesForElement converts the points of an element to the corresponding Touchscreen coordinates.
+func getTouchEventCoordinatesForElement(ctx context.Context, testParameters StandardizedTestFuncParams, touchScreen *input.TouchscreenEventWriter, selector *ui.Object) (*input.TouchCoord, *input.TouchCoord, error) {
+	// Get the center of the element to make sure the element is actually clicked.
+	uiElementBounds, err := selector.GetBounds(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	uiElementBoundsCenter := uiElementBounds.CenterPoint()
+
+	// Get the size of the display, according to the activity as that's what 'GetBounds' is referring to.
+	actSize, err := testParameters.Activity.DisplaySize(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	tcc := touchScreen.NewTouchCoordConverter(actSize)
+	xCord, yCord := tcc.ConvertLocation(uiElementBoundsCenter)
+	return &xCord, &yCord, nil
 }
 
 // ClickInputAndGuaranteeFocus makes sure an input exists, clicks it, and ensures it is focused.

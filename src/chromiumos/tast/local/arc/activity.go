@@ -704,6 +704,11 @@ func (ac *Activity) swipe(ctx context.Context, from, to coords.Point, t time.Dur
 	return nil
 }
 
+// DisplaySize returns the size of display associated with the activity.
+func (ac *Activity) DisplaySize(ctx context.Context) (s coords.Size, err error) {
+	return ac.disp.Size(ctx)
+}
+
 // initTouchscreenLazily lazily initializes the touchscreen.
 // Touchscreen initialization is not needed, unless swipe() is called.
 func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
