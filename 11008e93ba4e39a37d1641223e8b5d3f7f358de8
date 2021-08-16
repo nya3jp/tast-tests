@@ -310,6 +310,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88a18726_168ec2ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T07:52:52Z",
+      "side": 1,
+      "message": "Unfortunately, I do not think we have supported test location-based physical keyboard typing. \n\nThe reason I add this test is to refactor another existing test. It uses mixed PK \u0026 VK which is not encouraged at all. My intention is to split PK and VK tests. If the issue you mentioned around switching input methods but not related to shortcuts, do you think we can add typing validation in VK? We have already wrapped some functions can be used straight away.\n\n http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+      "parentUuid": "6c34e66e_29a49e05",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0572150_e8b90a22",
         "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
         "patchSetId": 1
