@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd0c051_8b0d2b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-16T18:19:04Z",
+      "side": 1,
+      "message": "I have two additional comments. Please take a look.",
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cca4bd2_e3b13b95",
@@ -53,6 +70,29 @@
         "startChar": 13,
         "endLine": 1,
         "endChar": 17
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47fb70c2_d61016a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-16T18:19:04Z",
+      "side": 1,
+      "message": "remove extra space.",
+      "range": {
+        "startLine": 50,
+        "startChar": 51,
+        "endLine": 50,
+        "endChar": 53
       },
       "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -169,6 +209,23 @@
         "endLine": 108,
         "endChar": 31
       },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825a2616_89dc1d35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-16T18:19:04Z",
+      "side": 1,
+      "message": "Are you doing a retry here? Please put some comment in it. I am a bit confused . If it is about retry, put the operation in a loop and specify number of tries allowed.",
       "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
