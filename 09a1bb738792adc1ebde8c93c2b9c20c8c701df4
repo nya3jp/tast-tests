@@ -16,6 +16,24 @@
       "message": "Thanks David! I don\u0027t have +2 power.",
       "revId": "09a1bb738792adc1ebde8c93c2b9c20c8c701df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70255c84_ca81f9c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-08-16T05:15:19Z",
+      "side": 1,
+      "message": "tast tests need the tast tests team to approve anyway for OWNERS, so don\u0027t worry about +2. I added you to show that the owning team wanted it :P.",
+      "parentUuid": "ed012c1d_94805743",
+      "revId": "09a1bb738792adc1ebde8c93c2b9c20c8c701df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
