@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa31391_8dd74a31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-16T10:17:47Z",
+      "side": 1,
+      "message": "Hi Gabor!\n\nWhile we can\u0027t really test anything after a real update (right?), I already wrote a test basically faking a rollback by triggering the respective script and faking clobber_state. So far it only checks whether the enrollment screen is automatically reached but we can extend it in the future.",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
