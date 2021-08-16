@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4766bb_cc851533",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-16T23:10:45Z",
+      "side": 1,
+      "message": "\u003e \"ammount\" is a possible misspelling of \"amount\".\n\nPlease fix.",
+      "parentUuid": "a913d4a1_a9954b3f",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "a3edcc0ac4b139156fd27f40e2e4b32a2002df37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
