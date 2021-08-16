@@ -22,6 +22,30 @@
       },
       "revId": "91861f22744821544ee8a8fd240059c2f3f8686c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d51465_00f4e536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-08-16T00:35:04Z",
+      "side": 1,
+      "message": "The caching is done by Crostini.",
+      "parentUuid": "6c1e49ca_61406b53",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "91861f22744821544ee8a8fd240059c2f3f8686c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
