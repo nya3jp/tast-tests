@@ -125,7 +125,8 @@ func (s *Spotify) Close(ctx context.Context, cr *chrome.Chrome, dump bool, dumpD
 
 // Play plays a song.
 func (s *Spotify) Play(ctx context.Context) error {
-	if err := s.login(ctx); err != nil {
+	// Because of the loggedInAndKeepState fixture, we do not need to log in to Spotify everytime.
+	if err := s.loginIfRequired(ctx); err != nil {
 		return errors.Wrap(err, "failed to login into Spotify")
 	}
 
@@ -165,33 +166,39 @@ func (s *Spotify) Play(ctx context.Context) error {
 	return nil
 }
 
-func (s *Spotify) login(ctx context.Context) error {
-	testing.ContextLog(ctx, "Signing into Spotify")
-
+func (s *Spotify) loginIfRequired(ctx context.Context) error {
 	// The "This app is designed for mobile" prompt needs to be dismissed to get to the log in page.
-	gotIt := s.d.Object(ui.Text("Got it"))
-	if err := cuj.ClickIfExist(gotIt, shortUITimeout)(ctx); err != nil {
+	if err := cuj.DismissMobilePrompt(ctx, s.tconn); err != nil {
 		return errors.Wrap(err, `failed to dismiss "This app is designed for mobile" prompt`)
 	}
 
-	// This is the new "Log in" button we need to click before we can sign in with Google.
-	signIn := s.d.Object(ui.Text("Log in"))
-	if err := cuj.ClickIfExist(signIn, shortUITimeout)(ctx); err != nil {
-		return errors.Wrap(err, `failed to click "Log in" button`)
+	logIn := s.d.Object(ui.Text("Log in"))
+	if err := logIn.WaitForExists(ctx, shortUITimeout); err != nil {
+		testing.ContextLog(ctx, "Already signed in to Spotify")
+		return nil
 	}
 
+	testing.ContextLog(ctx, "Signing into Spotify")
+
 	signInWithGoogle := s.d.Object(ui.Text("Continue with Google"))
+	// We have found two different UIs for Spotify's login page. In one version, you need to click
+	// the "Log in" button to get to the second page with the "Continue with Google" button. In
+	// the other version, the "Continue with Google" button is readily available after launching
+	// Spotify. Therefore, we have added extra logic here to determine which UI we are currently on.
 	if err := signInWithGoogle.WaitForExists(ctx, shortUITimeout); err != nil {
-		testing.ContextLog(ctx, `"Continue with Google" button not found, assuming splash screen has been dismissed already`)
-	} else if err := signInWithGoogle.Click(ctx); err != nil {
-		return errors.Wrap(err, `failed to click "Continue with Google" button`)
-	} else {
-		accountButton := s.d.Object(ui.Text(s.account))
-		if err := cuj.FindAndClick(accountButton, shortUITimeout)(ctx); err != nil {
-			testing.ContextLog(ctx, `The button "account button" not found, sign in directly`)
+		testing.ContextLog(ctx, `"Continue with Google" button not found, click "Log in" to continue`)
+		if err := logIn.Click(ctx); err != nil {
+			return errors.Wrap(err, `failed to click "Log in" button`)
 		}
-		s.firstLogin = true
 	}
+	if err := signInWithGoogle.Click(ctx); err != nil {
+		return errors.Wrap(err, `failed to click "Continue with Google" button`)
+	}
+	accountButton := s.d.Object(ui.Text(s.account))
+	if err := cuj.FindAndClick(accountButton, shortUITimeout)(ctx); err != nil {
+		testing.ContextLog(ctx, `The button "account button" not found, signed in directly`)
+	}
+	s.firstLogin = true
 
 	return nil
 }

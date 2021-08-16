@@ -239,3 +239,18 @@ func ExtendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn)
 	}
 	return "", errors.New("failed to find any window with class name RootWindow-1 to RootWindow-10")
 }
+
+// DismissMobilePrompt dismisses the prompt of "This app is designed for mobile".
+func DismissMobilePrompt(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+
+	prompt := nodewith.Name("This app is designed for mobile").Role(role.Window)
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(prompt)(ctx); err == nil {
+		testing.ContextLog(ctx, "Dismiss the app prompt")
+		gotIt := nodewith.Name("Got it").Role(role.Button).Ancestor(prompt)
+		if err := ui.LeftClickUntil(gotIt, ui.WithTimeout(time.Second).WaitUntilGone(gotIt))(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'Got it' button")
+		}
+	}
+	return nil
+}
