@@ -375,6 +375,30 @@
       },
       "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0c04e38_407dd29f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-16T00:28:20Z",
+      "side": 1,
+      "message": "I am not sure If I understand this correctly. Perhaps it refers to features like PersonalInfoSuggester or EmojiSuggester indicated in the file? Since testServer is used in many tests, you may also mention this enables specific tests like EmojiSuggestion.",
+      "parentUuid": "b763e269_3cb1052e",
+      "range": {
+        "startLine": 154,
+        "startChar": 52,
+        "endLine": 154,
+        "endChar": 56
+      },
+      "revId": "940654f1bcce52a29b96cf2f23b32005a3136a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
