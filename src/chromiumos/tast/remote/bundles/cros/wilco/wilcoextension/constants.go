@@ -4,6 +4,8 @@
 
 // Package wilcoextension contains constants and helpers to work with the
 // extension that can interact with the Wilco DTC VM.
+// TODO(b/189457904): remove once wilco.APISendMessageToUIEnrolled and
+// wilco.APIHandleMessageFromUIEnrolled will be stable enough.
 package wilcoextension
 
 // ID is hardcoded in Chrome to have access to the private API.
