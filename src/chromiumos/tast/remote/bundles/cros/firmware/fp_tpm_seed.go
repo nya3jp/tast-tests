@@ -8,10 +8,10 @@ import (
 	"context"
 	"regexp"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -35,20 +35,18 @@ func init() {
 }
 
 func FpTpmSeed(ctx context.Context, s *testing.State) {
-	d := s.DUT()
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.CloseRPC(ctx)
+
 	servoSpec, _ := s.Var("servo")
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 	defer pxy.Close(ctx)
-
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-
-	dutfsClient := dutfs.NewClient(cl.Conn)
 
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
@@ -65,21 +63,15 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to determine whether reboot is needed: ", err)
 	}
 
-	if err := fingerprint.InitializeKnownState(ctx, d, dutfsClient, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
-	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	upstartService := platform.NewUpstartServiceClient(cl.Conn)
 
 	// The seed is only set after bio_crypto_init runs. biod will only start after
 	// bio_crypto_init runs, so waiting for biod to be running is sufficient.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
+		upstartService := platform.NewUpstartServiceClient(d.ConnRPC().Conn)
 		_, err := upstartService.CheckJob(ctx, &platform.CheckJobRequest{JobName: "biod"})
 		return err
 	}, &testing.PollOptions{Timeout: fingerprint.WaitForBiodToStartTimeout})
@@ -88,7 +80,7 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 		s.Fatal("Timed out waiting for biod to start: ", err)
 	}
 
-	out, err := fingerprint.EctoolCommand(ctx, d, "fpencstatus").Output(ctx, ssh.DumpLogOnError)
+	out, err := fingerprint.EctoolCommand(ctx, d.DUT, "fpencstatus").Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to get encryption status: ", err)
 	}
