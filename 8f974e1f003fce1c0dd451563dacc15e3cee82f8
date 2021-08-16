@@ -16,6 +16,132 @@
       "message": "LGTM",
       "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc77f40_93d0d850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:54:02Z",
+      "side": 1,
+      "message": "Joel, you don\u0027t need to (and should not) add CR+2 to your commit.",
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d0cf2c_e7089632",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:54:02Z",
+      "side": 1,
+      "message": "nit: \"DUT.\"\nComments should be full sentences, so a dot is needed at the end.\nIt is the same for all the new comments, please fix those as well.",
+      "range": {
+        "startLine": 46,
+        "startChar": 46,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d375753a_f77de443",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:54:02Z",
+      "side": 1,
+      "message": "One letter variable names should be avoided, unless the scope it is used is really small, or it is obvious what it represents. Please change it to a longer one.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13081b1_2fb4b679",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:54:02Z",
+      "side": 1,
+      "message": "nit: perfSchedLatencyFile\nThis variable is not exported, so it should start with a lowercase letter.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c01cecd_aa6cfae5",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:54:02Z",
+      "side": 1,
+      "message": "I think it is safe to use regexp.MustCompile() here, this way you can omit the error handling.",
+      "range": {
+        "startLine": 211,
+        "startChar": 19,
+        "endLine": 211,
+        "endChar": 26
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83d26cd_772915ba",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:54:02Z",
+      "side": 1,
+      "message": "Did you make sure that you rewrote all the occurrences of end()?\nFor example with running fastbuild.sh -T.",
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
