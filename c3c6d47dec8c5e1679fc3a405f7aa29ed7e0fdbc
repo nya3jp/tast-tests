@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b87ab53_dc2f06a8",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T07:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68a648f_728d9cf4",
+      "revId": "c3c6d47dec8c5e1679fc3a405f7aa29ed7e0fdbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b83aaa91_ba953ef5",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92160479_db91fbb4",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T07:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b83aaa91_ba953ef5",
+      "revId": "c3c6d47dec8c5e1679fc3a405f7aa29ed7e0fdbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f62d03b_715b9c88",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-07-30T15:31:50Z",
       "side": 1,
       "message": "to be consistent lacrosRootPath (and could you remove |path| parameter)?\n\nAlso, could you update the comment of the constants to refer this logic somehow?\n\nOr, instead, could you update L19-L24 to respect the given path, and update the document?",
+      "range": {
+        "startLine": 37,
+        "startChar": 21,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "c3c6d47dec8c5e1679fc3a405f7aa29ed7e0fdbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c304b03a_669a5df9",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T07:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f62d03b_715b9c88",
       "range": {
         "startLine": 37,
         "startChar": 21,
