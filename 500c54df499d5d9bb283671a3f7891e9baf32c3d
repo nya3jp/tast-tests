@@ -51,6 +51,29 @@
       "message": "Thanks! Look good to me.",
       "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620f5c44_fb396e5f",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-16T07:20:07Z",
+      "side": 1,
+      "message": "My bad, I would have forgot to add you to https://crrev.com/c/3045219 that already copied these lines to line 207-210 in order to address one of the review comment about this. Would you remove them?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 2
+      },
+      "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
