@@ -16,6 +16,24 @@
       "message": "PTAL quickly since I\u0027m using sudo -u chronos now (for reasons)",
       "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37a9bcd_e0eea517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T07:05:46Z",
+      "side": 1,
+      "message": "By this I mean that taking a look shouldn\u0027t take that much time, not to hurry to take a look jfyi lmao\n\nCurrently it\u0027s hard to programmatically get all the groups a user is in because there is no non-cgo implementation of user.Groups() (or w/e it\u0027s called).",
+      "parentUuid": "e58079c7_58a6f0e1",
+      "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
