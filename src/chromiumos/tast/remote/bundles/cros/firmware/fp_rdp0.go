@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -157,7 +156,9 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *test
 			"--noremove_flash_read_protect", fileReadFromFlash}
 	}
 	cmd := d.Conn().CommandContext(ctx, "flash_fp_mcu", args...)
-	if err := cmd.Run(ssh.DumpLogOnError); err != nil {
+	out, err := cmd.CombinedOutput()
+	testing.ContextLog(ctx, "flash_fp_mcu output:", "\n", string(out))
+	if err != nil {
 		return errors.Wrap(err, "failed to read from flash")
 	}
 
