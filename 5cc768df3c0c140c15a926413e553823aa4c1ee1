@@ -141,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a074d09c_9778ed1a",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9065,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-16T21:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54eb3fff_899a6ec7",
+      "range": {
+        "startLine": 9065,
+        "startChar": 70,
+        "endLine": 9065,
+        "endChar": 79
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "732092a2_c34bdaeb",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "Don\u0027t set the daily values to nil. Specify a value for everything.",
       "parentUuid": "c59c8dd4_d470ba30",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067834b2_42bc625d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-16T21:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a0e0465_7919d894",
       "range": {
         "startLine": 56,
         "startChar": 4,
