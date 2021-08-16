@@ -72,6 +72,7 @@ func init() {
 				Name:              "tablet_mode_vm",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "loggedInToCUJUser",
 				Val: taskSWitchCUJTestParam{
 					tablet: true,
 				},
