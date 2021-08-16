@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8516b8e8_152a86f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/setup/arc_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:16Z",
+      "side": 1,
+      "message": "Thank your for giving sample code to use nodewith.ErrNotFound. This is very helpful.\nChanges made:\n- Added comments and return nil when node is not found\n- return error for other error cases.",
+      "parentUuid": "6b7e652d_c6ca8aca",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "9488ce8541eb2f146f386fde20baae8263700cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01bd30ce_9e0de035",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-16T04:20:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "9488ce8541eb2f146f386fde20baae8263700cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8534c350_15ce709d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/setup/arc_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01bd30ce_9e0de035",
       "range": {
         "startLine": 61,
         "startChar": 2,
