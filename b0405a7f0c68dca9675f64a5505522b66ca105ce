@@ -16,6 +16,52 @@
       "message": "I think I\u0027ve done this right.. (my repo was hosed this morning and it\u0027s still recovering)",
       "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1027f0_3bd70fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T01:24:02Z",
+      "side": 1,
+      "message": "qq: does this mean we are landing a string which not translated? If we open Backlight in Japanese, it shows \u0027Open file\u0027 instead of Japanese word.",
+      "range": {
+        "startLine": 31,
+        "startChar": 58,
+        "endLine": 31,
+        "endChar": 69
+      },
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7aed0b2_d66f3e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T01:24:02Z",
+      "side": 1,
+      "message": "You can change this locator to either A or B to accept new string.\n\nNameRegex(regexp.MustCompile(fmt.Sprintf(\"%s|%s\", openImageButtonName, newOpenImageButtonName))",
+      "range": {
+        "startLine": 74,
+        "startChar": 53,
+        "endLine": 74,
+        "endChar": 78
+      },
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
