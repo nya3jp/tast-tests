@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eec118c0_80dd55ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-16T07:41:14Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "aa7e29fa_398960c4",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a6fd277_e0885a1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 1
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I do not recommend to do much testing here. I assume the changing input method mechanism is the same. Add typing can make the scenario complicated and flaky. Such as decoder warming up. If typing test is important / special in changing IME via shortcut, I can add the validation part later. WDYT.",
       "parentUuid": "8a6fd277_e0885a1e",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a6653e_67e521d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-16T07:41:14Z",
+      "side": 1,
+      "message": "I think validating typing is useful - we had some bugs recently around switching inputs and everything seemed fine until you actually tried to type (without that, I feel like browser test is probably more appropriate for this test)",
+      "parentUuid": "bb546e09_9c724112",
       "range": {
         "startLine": 69,
         "startChar": 0,
