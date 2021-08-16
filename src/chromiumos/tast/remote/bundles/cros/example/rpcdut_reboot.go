@@ -27,7 +27,7 @@ func init() {
 }
 
 func readBootTime(ctx context.Context, d *rpcdut.RPCDUT) (int64, error) {
-	fs := dutfs.NewClient(d.ConnRPC().Conn)
+	fs := dutfs.NewClient(d.RPC().Conn)
 	bytes, err := fs.ReadFile(ctx, "/proc/stat")
 	if err != nil {
 		return 0, err
@@ -54,7 +54,7 @@ func RPCDUTReboot(ctx context.Context, s *testing.State) {
 	}
 	// We examine the error in this example simply to expose issues with Close.
 	defer func(ctx context.Context) {
-		if err := d.CloseRPC(ctx); err != nil {
+		if err := d.RPCClose(ctx); err != nil {
 			s.Fatal("Failed to close RPCDUT: ", err)
 		}
 	}(ctx)

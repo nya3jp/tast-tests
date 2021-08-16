@@ -15,8 +15,8 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/reporters"
@@ -147,8 +147,8 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 // NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
 // Zork cannot rebind cros-ec-uart after flashing, so an AP reboot is
 // needed to talk to FPMCU. See b/170213489.
-func NeedsRebootAfterFlashing(ctx context.Context, d *dut.DUT) (bool, error) {
-	hostBoard, err := reporters.New(d).Board(ctx)
+func NeedsRebootAfterFlashing(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+	hostBoard, err := reporters.New(d.DUT).Board(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to query host board")
 	}
@@ -180,7 +180,7 @@ func getExpectedFwInfo(fpBoard FPBoardName, buildFwFile string, infoType fwInfoT
 }
 
 // ValidateBuildFwFile checks that all attributes in the given firmware file match their expected values.
-func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFwFile string) error {
+func ValidateBuildFwFile(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFwFile string) error {
 	// Check hash on device.
 	actualHash, err := calculateSha256sum(ctx, d, buildFwFile)
 	if err != nil {
@@ -217,7 +217,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBo
 	}
 
 	// Check RO version.
-	actualRoVersion, err := readFmapSection(ctx, d, fs, buildFwFile, "RO_FRID")
+	actualRoVersion, err := readFmapSection(ctx, d, buildFwFile, "RO_FRID")
 	if err != nil {
 		return err
 	}
@@ -230,7 +230,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBo
 	}
 
 	// Check RW version.
-	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFwFile)
+	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFwFile)
 	if err != nil {
 		return err
 	}
@@ -247,12 +247,13 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBo
 }
 
 // GetBuildRWFirmwareVersion returns the RW version of a given build firmware file on DUT.
-func GetBuildRWFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFWFile string) (string, error) {
-	return readFmapSection(ctx, d, fs, buildFWFile, "RW_FWID")
+func GetBuildRWFirmwareVersion(ctx context.Context, d *rpcdut.RPCDUT, buildFWFile string) (string, error) {
+	return readFmapSection(ctx, d, buildFWFile, "RW_FWID")
 }
 
 // readFmapSection reads a section (e.g. RO_FRID) from a firmware file on device.
-func readFmapSection(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFwFile, section string) (s string, e error) {
+func readFmapSection(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile, section string) (s string, e error) {
+	fs := dutfs.NewClient(d.RPC().Conn)
 	// Prepare a temporary file because dump_map only writes the
 	// value read from a section to a file (will not just print it to
 	// stdout).
@@ -280,7 +281,7 @@ func readFmapSection(ctx context.Context, d *dut.DUT, fs *dutfs.Client, buildFwF
 }
 
 // readFirmwareKeyID reads the key id of a firmware file on device.
-func readFirmwareKeyID(ctx context.Context, d *dut.DUT, buildFwFile string) (string, error) {
+func readFirmwareKeyID(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile string) (string, error) {
 	out, err := d.Conn().Command("futility", "show", buildFwFile).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to run futility on device")
@@ -294,7 +295,7 @@ func readFirmwareKeyID(ctx context.Context, d *dut.DUT, buildFwFile string) (str
 }
 
 // calculateSha256sum calculates the sha256sum of a file on device.
-func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (string, error) {
+func calculateSha256sum(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile string) (string, error) {
 	out, err := d.Conn().Command("sha256sum", buildFwFile).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to calculate sha256sum on device")
@@ -303,18 +304,18 @@ func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (st
 }
 
 // boardFromCrosConfig returns the fingerprint board name from cros_config.
-func boardFromCrosConfig(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
+func boardFromCrosConfig(ctx context.Context, d *rpcdut.RPCDUT) (FPBoardName, error) {
 	out, err := d.Conn().Command("cros_config", "/fingerprint", "board").Output(ctx, ssh.DumpLogOnError)
 	return FPBoardName(out), err
 }
 
 // Board returns the name of the fingerprint EC on the DUT
-func Board(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
+func Board(ctx context.Context, d *rpcdut.RPCDUT) (FPBoardName, error) {
 	// For devices that don't have unibuild support (which is required to
 	// use cros_config).
 	// TODO(https://crbug.com/1030862): remove when nocturne has cros_config
 	// support.
-	board, err := reporters.New(d).Board(ctx)
+	board, err := reporters.New(d.DUT).Board(ctx)
 	if err != nil {
 		return FPBoardName(""), err
 	}
@@ -327,7 +328,7 @@ func Board(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
 }
 
 // FirmwarePath returns the path to the fingerprint firmware file on device.
-func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string, error) {
+func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName) (string, error) {
 	cmd := fmt.Sprintf("ls %s%s*.bin", fingerprintFirmwarePathBase, fpBoard)
 	out, err := d.Conn().Command("bash", "-c", cmd).Output(ctx, ssh.DumpLogOnError)
 	if err != nil {
@@ -341,7 +342,7 @@ func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string,
 }
 
 // FlashFirmware flashes the original fingerprint firmware in rootfs.
-func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing bool) error {
+func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, needsRebootAfterFlashing bool) error {
 	fpBoard, err := Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
@@ -372,7 +373,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing boo
 }
 
 // InitializeEntropy initializes the anti-rollback block in RO firmware.
-func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
+func InitializeEntropy(ctx context.Context, d *rpcdut.RPCDUT) error {
 	if err := d.Conn().Command("bio_wash", "--factory_init").Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to initialize entropy")
 	}
@@ -380,7 +381,7 @@ func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
+func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
@@ -402,10 +403,10 @@ func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, needsReboot
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
 	// Check if the FPMCU even responds to a friendly hello (query version).
 	// Save the version string in a file for later.
-	out, err := CheckFirmwareIsFunctional(ctx, d)
+	out, err := CheckFirmwareIsFunctional(ctx, d.DUT)
 	if err != nil {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
@@ -421,7 +422,7 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 
 	// Check all other standard FPMCU state.
 	testing.ContextLog(ctx, "Checking other FPMCU state")
-	if err := CheckValidFlashState(ctx, d, fs, fpBoard, buildFWFile); err != nil {
+	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
 			return err
@@ -433,9 +434,9 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, out
 
 // CheckValidFlashState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckValidFlashState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpBoard FPBoardName, buildFWFile string) error {
+func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFWFile string) error {
 	// Check that RO and RW versions are what we expect.
-	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, fs, buildFWFile)
+	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RW version")
 	}
@@ -449,13 +450,13 @@ func CheckValidFlashState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpB
 
 	// Similar to bio_fw_updater, check is the active FW copy is RW. If it isn't
 	// that might mean that there is a firmware issue.
-	if err := CheckRunningFirmwareCopy(ctx, d, ImageTypeRW); err != nil {
-		return errors.Wrapf(err, "FPMCU is not in RW (error: %v)", err)
+	if err := CheckRunningFirmwareCopy(ctx, d.DUT, ImageTypeRW); err != nil {
+		return errors.Wrap(err, "FPMCU is not in RW")
 	}
 
 	// Check that no tests enabled anti-rollback and that entropy has been added
 	// (maybe multiple times).
-	rollback, err := RollbackInfo(ctx, d)
+	rollback, err := RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve rollbackinfo")
 	}
@@ -474,7 +475,7 @@ func CheckValidFlashState(ctx context.Context, d *dut.DUT, fs *dutfs.Client, fpB
 }
 
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
-func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, fpBoard FPBoardName, enableHWWP, enableSWWP bool) error {
+func InitializeHWAndSWWriteProtect(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
 	// HW write protect must be disabled to disable SW write protect.
 	if !enableSWWP {
@@ -483,7 +484,7 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 		}
 	}
 
-	if err := SetSoftwareWriteProtect(ctx, d, enableSWWP); err != nil {
+	if err := SetSoftwareWriteProtect(ctx, d.DUT, enableSWWP); err != nil {
 		return err
 	}
 
@@ -491,7 +492,7 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 		return err
 	}
 
-	if err := CheckWriteProtectStateCorrect(ctx, d, fpBoard, ImageTypeRW, enableSWWP, enableHWWP); err != nil {
+	if err := CheckWriteProtectStateCorrect(ctx, d.DUT, enableSWWP, enableHWWP); err != nil {
 		return errors.Wrap(err, "failed to validate write protect settings")
 	}
 
@@ -499,19 +500,19 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.P
 }
 
 // RunningRWVersion returns the RW version running on FPMCU.
-func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
-	return runningFirmwareVersion(ctx, d, ImageTypeRW)
+func RunningRWVersion(ctx context.Context, d *rpcdut.RPCDUT) (string, error) {
+	return runningFirmwareVersion(ctx, d.DUT, ImageTypeRW)
 }
 
 // RunningROVersion returns the RO version running on FPMCU.
-func RunningROVersion(ctx context.Context, d *dut.DUT) (string, error) {
-	return runningFirmwareVersion(ctx, d, ImageTypeRO)
+func RunningROVersion(ctx context.Context, d *rpcdut.RPCDUT) (string, error) {
+	return runningFirmwareVersion(ctx, d.DUT, ImageTypeRO)
 }
 
 // CheckRunningFirmwareVersionMatches compares the running RO and RW firmware
 // versions to expectedROVersion and expectedRWVersion and returns an error if
 // they do not match.
-func CheckRunningFirmwareVersionMatches(ctx context.Context, d *dut.DUT, expectedROVersion, expectedRWVersion string) error {
+func CheckRunningFirmwareVersionMatches(ctx context.Context, d *rpcdut.RPCDUT, expectedROVersion, expectedRWVersion string) error {
 	runningRWVersion, err := RunningRWVersion(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get RW version")
@@ -534,7 +535,7 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *dut.DUT, expecte
 }
 
 // CheckRollbackSetToInitialValue checks the anti-rollback block is set to initial values.
-func CheckRollbackSetToInitialValue(ctx context.Context, d *dut.DUT) error {
+func CheckRollbackSetToInitialValue(ctx context.Context, d *rpcdut.RPCDUT) error {
 	return CheckRollbackState(ctx, d, RollbackState{
 		BlockID:    1,
 		MinVersion: 0,
@@ -543,8 +544,8 @@ func CheckRollbackSetToInitialValue(ctx context.Context, d *dut.DUT) error {
 }
 
 // CheckRollbackState checks that the anti-rollback block is set to expected values.
-func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState) error {
-	actual, err := RollbackInfo(ctx, d)
+func CheckRollbackState(ctx context.Context, d *rpcdut.RPCDUT, expected RollbackState) error {
+	actual, err := RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		return err
 	}
@@ -557,7 +558,7 @@ func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState)
 }
 
 // BioWash calls bio_wash to reset the entropy key material on the FPMCU.
-func BioWash(ctx context.Context, d *dut.DUT, reset bool) error {
+func BioWash(ctx context.Context, d *rpcdut.RPCDUT, reset bool) error {
 	cmd := []string{"bio_wash"}
 	if !reset {
 		cmd = append(cmd, "--factory_init")
@@ -567,13 +568,13 @@ func BioWash(ctx context.Context, d *dut.DUT, reset bool) error {
 
 // CheckRawFPFrameFails validates that a raw frame cannot be read from the FPMCU
 // and returns an error if a raw frame can be read.
-func CheckRawFPFrameFails(ctx context.Context, d *dut.DUT) error {
+func CheckRawFPFrameFails(ctx context.Context, d *rpcdut.RPCDUT) error {
 	const fpFrameRawAccessDeniedError = `EC result 4 (ACCESS_DENIED)
 Failed to get FP sensor frame
 `
 	var stderrBuf bytes.Buffer
 
-	cmd := rawFPFrameCommand(ctx, d)
+	cmd := rawFPFrameCommand(ctx, d.DUT)
 	cmd.Stderr = &stderrBuf
 
 	if err := cmd.Run(ctx); err == nil {
