@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bbfa924_6cd947c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-08-16T01:51:32Z",
+      "side": 1,
+      "message": "Yeah I\u0027m not sure what\u0027s best. I think until we have an alternative, this is a good test to have running to ensure there is coverage. cl/390939662 may help detect future problems (I\u0027ll update it based on the outcome of this CL).\n\nBut it the test _does_ need to fail for a while until the translation appears. I\u0027ve commented out the Attr: with a TODO to re-enable to reduce the number of nags that go out. But I\u0027m open to restoring to mainline/informational if it\u0027s acceptable to have those nags for a few days until it can be updated with the new string.\n\nwould be nicer if there was some other category that would just send emails to our team on failures, so we can use this like a smoke detector..",
+      "parentUuid": "f395615f_3b396381",
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da1027f0_3bd70fee",
