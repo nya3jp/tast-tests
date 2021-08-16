@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cdfd77_9b906296",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T12:28:19Z",
+      "side": 1,
+      "message": "Pointed @John and @Keith to review this cl since you are already on the context of https://crrev.com/c/3096510. Thanks.",
+      "revId": "f837131661e2d3f9c75276507715b6c2fc0a961b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
