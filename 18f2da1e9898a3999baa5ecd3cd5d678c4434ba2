@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ad7d39_fe5b7229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-08-16T03:22:38Z",
+      "side": 1,
+      "message": "i think there will be more complexity of verification of the completion of a download.\n\nFrom what I can tell from this CL. it only triggers the download, but didn\u0027t have clear logic to check it\u0027s finished. which includes 2 things\n\n1, when to check\n2, where to find the downloaded files\n3, how to figure out it\u0027s the file we want",
+      "revId": "18f2da1e9898a3999baa5ecd3cd5d678c4434ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4620f4f_45214d37",
