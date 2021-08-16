@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c410038e_f45ef7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T02:29:33Z",
+      "side": 1,
+      "message": "This file doesn\u0027t involve any uiauto package, but just use android ui. Maybe still keep the testing.Poll but leave the log outside of the loop?",
+      "parentUuid": "863351d3_d7022ebb",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ee42cff_f67c461b",
         "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
         "patchSetId": 36
@@ -175,6 +199,30 @@
       "writtenOn": "2021-08-16T00:58:53Z",
       "side": 1,
       "message": "IIUC This is lazy and poor implementation. It uses an error as the end of the loop.",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 382,
+        "endChar": 90
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd042c8f_458d7cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T02:29:33Z",
+      "side": 1,
+      "message": "Because we don\u0027t know the item number in the item list. So break until we have found all the interested scores, or there is no new item in the list - which can only be detected with an error.",
+      "parentUuid": "dc40ebe8_3d3caa58",
       "range": {
         "startLine": 382,
         "startChar": 3,
