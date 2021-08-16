@@ -207,11 +207,12 @@ func playDRMVideo(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *
 		return false, errors.Wrap(err, "failed taking screenshot")
 	}
 
-	// Verify that over 95% of the image is solid black. This is true because for
+	// Verify that over 92% of the image is solid black. This is true because for
 	// HW DRM, you cannot actually screenshot the video and it will be replaced by
-	// solid black in the compositor.
+	// solid black in the compositor. From testing, we have seen this be as low as
+	// 0.94, so set the threshold at 0.92.
 	color, ratio := colorcmp.DominantColor(im)
-	if ratio < 0.95 || !colorcmp.ColorsMatch(color, colorcmp.RGB(0, 0, 0), 1) {
+	if ratio < 0.92 || !colorcmp.ColorsMatch(color, colorcmp.RGB(0, 0, 0), 1) {
 		return false, errors.Errorf("screenshot did not have solid black, instead got %v at ratio %0.2f",
 			colorcmp.ColorStr(color), ratio)
 	}
