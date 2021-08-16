@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33cc8a9_8bf89fab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:56:50Z",
+      "side": 1,
+      "message": "scanner: is enough as a tag.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "6baff1039fd51391bd74425753a81e60d6490124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be82218_5f87894f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:56:50Z",
+      "side": 1,
+      "message": "minor nit: extra space.",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "6baff1039fd51391bd74425753a81e60d6490124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8262ae_56968e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-16T07:56:50Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "6baff1039fd51391bd74425753a81e60d6490124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
