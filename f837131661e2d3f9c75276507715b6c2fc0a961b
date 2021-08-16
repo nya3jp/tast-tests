@@ -39,6 +39,30 @@
       },
       "revId": "f837131661e2d3f9c75276507715b6c2fc0a961b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b760c1_cf244404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T23:23:45Z",
+      "side": 1,
+      "message": "Do not think so. If changing input method can affect auto-shift, it should be covered in autoshift test. I hope this is your expectation too.",
+      "parentUuid": "2fd936b2_83be726d",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 85
+      },
+      "revId": "f837131661e2d3f9c75276507715b6c2fc0a961b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
