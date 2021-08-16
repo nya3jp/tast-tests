@@ -113,16 +113,12 @@ func playAndCaptureToCalculateRMS(ctx context.Context, input, output audio.TestR
 
 func testInputGain(ctx context.Context, s *testing.State, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, input audio.TestRawData) {
 	const (
-		captureDuration = 1 // second(s)
-		lowSliderGain   = 30
-		sliderStepValue = 10
-		sliderStepDiffs = 5
-		highSliderGain  = lowSliderGain + sliderStepDiffs*sliderStepValue
-		// lowSliderGain = 30% --> -16dB
-		// highSliderGain = 80% --> +12dB
-		// expectedGain = dB2Linear(28dB) = 25.1188
-		expectedGain  = 25.1188
-		gainTolerance = 10.0
+		captureDuration   = 1 // second(s)
+		lowSliderGainMin  = 30
+		sliderStepValue   = 10
+		sliderStepDiffs   = 5
+		highSliderGainMin = lowSliderGainMin + sliderStepDiffs*sliderStepValue
+		gainTolerance     = 10.0
 	)
 
 	// Set input enabled(unmuted) by UI quicksettings.
@@ -130,35 +126,27 @@ func testInputGain(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		s.Fatal("Failed to set mic unmuted: ", err)
 	}
 
+	type RMSValue struct {
+		sliderVal int
+		rms       float64
+	}
+	var rmsValues []RMSValue
+
 	// Use loopback path to play and record data with specified input gain levels.
-	rmsValues := make(map[int]float64)
-	for _, gain := range []int{lowSliderGain, highSliderGain} {
-		s.Logf("Start testing loopback with expected mic gain slider value: %d", gain)
-
-		output := audio.TestRawData{
-			Path:          filepath.Join(s.OutDir(), fmt.Sprintf("cras_recorded_%d.raw", gain)),
-			BitsPerSample: 16,
-			Channels:      1,
-			Rate:          48000,
-			Duration:      captureDuration,
-		}
-
+	for _, gainMin := range []int{lowSliderGainMin, highSliderGainMin} {
 		currVal, err := quicksettings.SliderValue(ctx, tconn, quicksettings.SliderTypeMicGain)
 		if err != nil {
 			s.Fatal("Failed initial value check for mic gain slider: ", err)
 		}
 		s.Logf("Initial mic gain slider value: %d", currVal)
 
-		// quicksettings library only supports coarse slider value adjustment (+-10 per step), we need
-		// to check in advacne if the gain difference is adjustable (divisible by step). The initial
-		// gain value should be 50 while the device "Loopback Capture" is created by audio.loadAloop().
-		diff := int(math.Abs(float64(currVal - gain)))
-		if diff%sliderStepValue != 0 {
-			s.Fatalf("Failed to adjust gain slider from %d to %d (step = %d)", currVal, gain, sliderStepValue)
-		}
-
-		for i := 0; i < diff/sliderStepValue; i++ {
-			if currVal < gain {
+		// quicksettings library only supports coarse slider value adjustment (+-10 per step). We first
+		// adjust the initial slider value to be located within [lowSliderGainMin, lowSliderGainMin+10)
+		// for low gain, then increase the value until within [highSliderGainMin, highSliderGainMin+10)
+		// for high gain.
+		if currVal < gainMin {
+			steps := int(math.Ceil(float64(gainMin-currVal) / sliderStepValue))
+			for i := 0; i < steps; i++ {
 				increase, err := quicksettings.IncreaseSlider(ctx, tconn, kb, quicksettings.SliderTypeMicGain)
 				if err != nil {
 					s.Fatal("Failed to increase mic gain slider: ", err)
@@ -167,7 +155,10 @@ func testInputGain(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 					s.Fatalf("Failed to increase mic gain slider value; initial: %d, increased: %d", currVal, increase)
 				}
 				currVal = increase
-			} else {
+			}
+		} else {
+			steps := (currVal - gainMin) / sliderStepValue
+			for i := 0; i < steps; i++ {
 				decrease, err := quicksettings.DecreaseSlider(ctx, tconn, kb, quicksettings.SliderTypeMicGain)
 				if err != nil {
 					s.Fatal("Failed to decrease mic gain slider: ", err)
@@ -179,19 +170,35 @@ func testInputGain(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 			}
 		}
 
+		output := audio.TestRawData{
+			Path:          filepath.Join(s.OutDir(), fmt.Sprintf("cras_recorded_%d.raw", currVal)),
+			BitsPerSample: 16,
+			Channels:      1,
+			Rate:          48000,
+			Duration:      captureDuration,
+		}
+
 		rms, err := playAndCaptureToCalculateRMS(ctx, input, output)
 		if err != nil {
 			s.Fatal("Failed to playback and capture: ", err)
 		}
-		s.Logf("Signal RMS amplitude = %f", rms)
-		rmsValues[gain] = rms
+		s.Logf("Mic gain slider value = %d; Signal RMS amplitude = %f", currVal, rms)
+		rmsValues = append(rmsValues, RMSValue{currVal, rms})
 	}
 
-	// Check the relative input gain.
-	gain := rmsValues[highSliderGain] / rmsValues[lowSliderGain]
-	s.Logf("Calculated gain = %.4f", gain)
-	if math.Abs(gain-expectedGain) > gainTolerance {
-		s.Errorf("Gain is beyond expectation: got %.4f, expected %.4f, tolerance %.4f", gain, expectedGain, gainTolerance)
+	// Calculate the expected linear gain between the representative gains in decibel for the low and high
+	// slider value according to cras/README.dbus-api:
+	//         linearly maps [0, 50] to range [-40dB, 0dB] and [50, 100] to [0dB, 20dB]
+	lowGainDB := float64(rmsValues[0].sliderVal)*40.0/50.0 - 40.0
+	highGainDB := float64(rmsValues[1].sliderVal-50) * 20.0 / 50.0
+	expectedGainLinear := math.Pow(10.0, (highGainDB-lowGainDB)/20.0)
+	s.Logf("Expected gain = %.4f", expectedGainLinear)
+
+	gainLinear := rmsValues[1].rms / rmsValues[0].rms
+	s.Logf("Calculated gain = %.4f", gainLinear)
+
+	if math.Abs(gainLinear-expectedGainLinear) > gainTolerance {
+		s.Errorf("Gain is beyond expectation: got %.4f, expected %.4f, tolerance %.4f", gainLinear, expectedGainLinear, gainTolerance)
 	}
 }
 
@@ -241,7 +248,7 @@ func UIInput(ctx context.Context, s *testing.State) {
 	}
 
 	// Set up the keyboard, which is used to increment/decrement the slider.
-	// TODO(crbug/1123231): use better slider automation controls if possible, instead of keyboard controls.
+	// TODO(b/187793602): use better slider automation controls if possible, instead of keyboard controls.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
