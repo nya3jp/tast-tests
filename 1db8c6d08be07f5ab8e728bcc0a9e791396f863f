@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c1aa5a_4eb2acc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Changed to use DumpUITreeWithScreenshotOnError",
+      "parentUuid": "5bef57a5_275fe0be",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 63
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efd36214_94526884",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b9f72d_92687f99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "efd36214_94526884",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 109
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "988310c6_8c93d0b4",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-16T00:58:53Z",
       "side": 1,
       "message": "nit: This name is confused with normal tast test result. Can you rename it like `benchmark_result`",
+      "range": {
+        "startLine": 110,
+        "startChar": 72,
+        "endLine": 110,
+        "endChar": 78
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21be1b6c_7eebf57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988310c6_8c93d0b4",
       "range": {
         "startLine": 110,
         "startChar": 72,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0129d23e_5e076488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Moved the log out of polling.",
+      "parentUuid": "c410038e_f45ef7b3",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ee42cff_f67c461b",
@@ -130,6 +226,30 @@
       "writtenOn": "2021-08-16T00:58:53Z",
       "side": 1,
       "message": "nit: Can you rename the variable to make it more readable? title? window? label?\nI guess it is benchMarkResultLabel",
+      "range": {
+        "startLine": 305,
+        "startChar": 7,
+        "endLine": 305,
+        "endChar": 23
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a8d4a4_688c8612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "removed this variable and just use string in resultLabel variable in line 317.",
+      "parentUuid": "8ee42cff_f67c461b",
       "range": {
         "startLine": 305,
         "startChar": 7,
@@ -176,6 +296,54 @@
       "writtenOn": "2021-08-16T00:58:53Z",
       "side": 1,
       "message": "nit: only one double quote here. Besides comment should finish with full stop.",
+      "range": {
+        "startLine": 348,
+        "startChar": 159,
+        "endLine": 348,
+        "endChar": 160
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c5c1a5_e4f982aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a122d5f_9338cb4c",
+      "range": {
+        "startLine": 348,
+        "startChar": 77,
+        "endLine": 348,
+        "endChar": 78
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86681ac2_538be9ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Rephrased the comments.",
+      "parentUuid": "34511b13_97d2d486",
       "range": {
         "startLine": 348,
         "startChar": 159,
@@ -257,6 +425,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93698c10_89795c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "Thanks! Found a GetChildCount() function can serve the purposes. Now getting count before the loop.",
+      "parentUuid": "5c64cfb5_56aaab69",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 382,
+        "endChar": 90
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80d8906a_d7eade36",
@@ -270,6 +462,30 @@
       "writtenOn": "2021-08-16T00:58:53Z",
       "side": 1,
       "message": "nit: redundant comment.",
+      "range": {
+        "startLine": 424,
+        "startChar": 76,
+        "endLine": 424,
+        "endChar": 113
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4ecc55_d9ea1e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "80d8906a_d7eade36",
       "range": {
         "startLine": 424,
         "startChar": 76,
@@ -303,6 +519,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "801c6b23_61e8ebfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "8993bd34_3258a06e",
+      "range": {
+        "startLine": 433,
+        "startChar": 101,
+        "endLine": 433,
+        "endChar": 143
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "172fd004_f014bd16",
@@ -316,6 +556,30 @@
       "writtenOn": "2021-08-16T00:58:53Z",
       "side": 1,
       "message": "nit: double space",
+      "range": {
+        "startLine": 436,
+        "startChar": 52,
+        "endLine": 436,
+        "endChar": 54
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b072475a_564f4c29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-16T20:06:05Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "172fd004_f014bd16",
       "range": {
         "startLine": 436,
         "startChar": 52,
