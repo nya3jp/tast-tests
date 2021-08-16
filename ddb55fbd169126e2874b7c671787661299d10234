@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad7d9bfb_dfe7649c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-16T12:49:45Z",
+      "side": 1,
+      "message": "I would prefer to merge it before, because when Victor is back I will be gone until roughly end of September. That would make catching any errors in M94 tricky and we plan to start TT again with M96 -\u003e M94.\nI\u0027d say if you think the test may be problematic for infrastructure / break device, we should wait for Victor. If it\u0027s just a matter of how to write the test I\u0027d prefer to merge now and then ask Victor when I\u0027m back. Up to you.",
+      "parentUuid": "1f444429_17cf35f1",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3a771d3_3bcc33b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -78,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0282e6cc_ce05835a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-16T12:49:45Z",
+      "side": 1,
+      "message": "Am I allowed to not add anything to the error, i.e. just call s.Error(err.Error()) in the main test function?\n\nOut of curiousity, why shouldn\u0027t I do that?",
+      "parentUuid": "f3a771d3_3bcc33b8",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fef521a5_64305e29",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -89,6 +131,30 @@
       "writtenOn": "2021-08-16T12:12:51Z",
       "side": 1,
       "message": "Can you Dial once in the main function, and pass client as a parameter?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdef576d_88a0be14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-16T12:49:45Z",
+      "side": 1,
+      "message": "No because I lose the connection during reboot, I actually need to dial twice.",
+      "parentUuid": "fef521a5_64305e29",
       "range": {
         "startLine": 58,
         "startChar": 1,
