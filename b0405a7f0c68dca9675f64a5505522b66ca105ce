@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f395615f_3b396381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T01:40:54Z",
+      "side": 1,
+      "message": "Thanks for the clarification. Demote the test to informational level, will make the test consistently fail, results in alert to directors in stainless greenness project. We can remove the test (By remove the attribute `mainline`) if you see it is overlap to our unit / integration test and before we have a better approach to cover E2E scenario.",
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da1027f0_3bd70fee",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
         "patchSetId": 1
