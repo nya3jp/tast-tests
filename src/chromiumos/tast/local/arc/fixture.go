@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -45,17 +46,13 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
-	// arcBootedInTabletMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in tablet mode in this fixture.
+	// arcBootedInTabletMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is in tablet mode in this fixture.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedInTabletMode",
-		Desc: "ARC is booted in tablet mode",
-		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ARCEnabled(),
-				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"),
-			}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		Desc: "ARC is booted and in tablet mode",
+		Parent: "arcBooted",
+		Impl: &tabletModeFixture{},
+		SetUpTimeout:    BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -250,6 +247,60 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 			s.Error("Failed to save the process list in ARCVM: ", err)
 		}
 	}
+}
+
+type tabletModeFixture struct {
+	inTabletMode bool
+	preData *PreData
+}
+
+func (f *tabletModeFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	f.preData = s.ParentValue().(*PreData)
+	cr := f.preData.Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	if f.inTabletMode, err = ash.TabletModeEnabled(ctx, tconn); err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to set tablet mode: ", err)
+	}
+
+	return f.preData
+}
+
+func (f *tabletModeFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	cr := f.preData.Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	if err := ash.SetTabletModeEnabled(ctx, tconn, f.inTabletMode); err != nil {
+		s.Fatal("Failed to set tablet mode: ", err)
+	}
+}
+
+func (f *tabletModeFixture) Reset(ctx context.Context) error {
+	cr := f.preData.Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		return errors.Wrap(err, "failed to set tablet mode")
+	}
+	return nil
+}
+
+func (f *tabletModeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *tabletModeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
 func saveProcessList(ctx context.Context, a *ARC, outDir string) error {
