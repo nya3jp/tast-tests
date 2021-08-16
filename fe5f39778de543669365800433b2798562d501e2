@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19acb294_beee4d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-16T18:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f990496_b8a49d8a",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "086abfda_5a7ed880",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-16T15:25:49Z",
       "side": 1,
       "message": "nit: This can be moved this L83 now.",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7b4300_901c98d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-16T18:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "086abfda_5a7ed880",
       "revId": "fe5f39778de543669365800433b2798562d501e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5975b33d_fccb7f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-16T18:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b0b5e47_4512066d",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9758749e_e9ea4d9c",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-08-16T15:25:49Z",
       "side": 1,
       "message": "nit: ditto, can be removed now.",
+      "revId": "fe5f39778de543669365800433b2798562d501e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f454f1_3cd47b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-16T18:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9758749e_e9ea4d9c",
       "revId": "fe5f39778de543669365800433b2798562d501e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
