@@ -70,30 +70,30 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
-		name   string
-		choice reviewChoice
+		name    string
+		choices []reviewChoice
 	}{{
 		"testPDF",
-		pdf,
+		[]reviewChoice{pdf},
 	}, {
 		"testPhoto",
-		photo,
+		[]reviewChoice{photo},
 	}, {
-		"testRetake",
-		retake,
+		"testRetakeThenTakePhoto",
+		[]reviewChoice{retake, photo},
 	}} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		defer cancel()
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := runTakeDocumentPhoto(ctx, cr, tb, videoPath, scriptPaths, outDir, tst.choice); err != nil {
-				s.Fatalf("Failed to take document photo and choosing %v: %v", tst.choice, err)
+			if err := runTakeDocumentPhoto(ctx, cr, tb, videoPath, scriptPaths, outDir, tst.choices); err != nil {
+				s.Fatalf("Failed to take document photos under sub test %v: %v", tst.name, err)
 			}
 		})
 	}
 }
 
 // runTakeDocumentPhoto tests if CCA can take a document photo and generate document file correctly.
-func runTakeDocumentPhoto(ctx context.Context, cr *chrome.Chrome, tb *testutil.TestBridge, videoPath string, scriptPaths []string, outDir string, reviewChoice reviewChoice) (retErr error) {
+func runTakeDocumentPhoto(ctx context.Context, cr *chrome.Chrome, tb *testutil.TestBridge, videoPath string, scriptPaths []string, outDir string, reviewChoices []reviewChoice) (retErr error) {
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		return errors.Wrap(err, "failed to clear saved directory")
 	}
@@ -123,61 +123,70 @@ func runTakeDocumentPhoto(ctx context.Context, cr *chrome.Chrome, tb *testutil.T
 		return errors.New("failed to land on document mode by default")
 	}
 
-	if err := app.ClickShutter(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the shutter button")
-	}
-
-	// In review mode. Click the button according to the output type.
-	if err := app.WaitForVisibleState(ctx, cca.DocumentReviewView, true); err != nil {
-		return errors.Wrap(err, "failed to wait for review UI show up")
-	}
-	var button cca.UIComponent
-	switch reviewChoice {
-	case pdf:
-		button = cca.SaveAsPDFButton
-	case photo:
-		button = cca.SaveAsPhotoButton
-	case retake:
-		button = cca.RetakeButton
-	}
-	if err := app.WaitForVisibleState(ctx, button, true); err != nil {
-		return errors.Wrap(err, "failed to wait for review button show up")
-	}
-	start := time.Now()
-	if err := app.Click(ctx, button); err != nil {
-		return errors.Wrap(err, "failed to click the review button")
-	}
-
-	// Ensure that the result is successfully saved.
-	dir, err := app.SavedDir(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get CCA default saved path")
-	}
-	switch reviewChoice {
-	case pdf:
-		if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPDFPattern, start); err != nil {
-			return errors.Wrap(err, "failed to wait for document PDF file")
+	for _, reviewChoice := range reviewChoices {
+		if err := app.ClickShutter(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the shutter button")
 		}
-	case photo:
-		if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPhotoPattern, start); err != nil {
-			return errors.Wrap(err, "failed to wait for document photo file")
+
+		// In review mode. Click the button according to the output type.
+		if err := app.WaitForVisibleState(ctx, cca.DocumentReviewView, true); err != nil {
+			return errors.Wrap(err, "failed to wait for review UI show up")
 		}
-	case retake:
-		// When users click the "Retake" button, the captured data should be
-		// dropped and no files should be saved.
+		var button cca.UIComponent
+		switch reviewChoice {
+		case pdf:
+			button = cca.SaveAsPDFButton
+		case photo:
+			button = cca.SaveAsPhotoButton
+		case retake:
+			button = cca.RetakeButton
+		}
+		if err := app.WaitForVisibleState(ctx, button, true); err != nil {
+			return errors.Wrap(err, "failed to wait for review button show up")
+		}
+		start := time.Now()
+		if err := app.Click(ctx, button); err != nil {
+			return errors.Wrap(err, "failed to click the review button")
+		}
+
 		if err := app.WaitForState(ctx, "taking", false); err != nil {
 			return errors.Wrap(err, "failed to wait for taking state to be false after clicking retake")
 		}
-		if _, err := os.Stat(dir); err != nil {
-			if os.IsNotExist(err) {
-				return nil
-			}
-			return errors.Wrap(err, "failed when check camera folder")
+
+		// Ensure that the result is successfully saved.
+		dir, err := app.SavedDir(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get CCA default saved path")
 		}
-		if files, err := ioutil.ReadDir(dir); err != nil {
-			return errors.Wrap(err, "failed to read camera folder")
-		} else if len(files) > 0 {
-			return errors.New("file is saved unexpectedly when clicking retake button")
+		switch reviewChoice {
+		case pdf:
+			if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPDFPattern, start); err != nil {
+				return errors.Wrap(err, "failed to wait for document PDF file")
+			}
+		case photo:
+			if _, err := app.WaitForFileSaved(ctx, dir, cca.DocumentPhotoPattern, start); err != nil {
+				return errors.Wrap(err, "failed to wait for document photo file")
+			}
+		case retake:
+			// When users click the "Retake" button, the captured data should be
+			// dropped and no files should be saved.
+			if _, err := os.Stat(dir); err != nil {
+				if os.IsNotExist(err) {
+					return nil
+				}
+				return errors.Wrap(err, "failed when check camera folder")
+			}
+
+			files, err := ioutil.ReadDir(dir)
+			if err != nil {
+				return errors.Wrap(err, "failed to read camera folder")
+			}
+
+			for _, file := range files {
+				if file.ModTime().After(start) {
+					return errors.New("file is saved unexpectedly when clicking retake button")
+				}
+			}
 		}
 	}
 	return nil
