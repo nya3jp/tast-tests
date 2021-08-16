@@ -117,7 +117,7 @@ func init() {
 		VarDeps: []string{
 			"arc.AuthPerf.managed_username",
 			"arc.AuthPerf.managed_password",
-			"ui.gaiaPoolDefault",
+			"arc.perfAccountPool",
 		},
 	})
 }
@@ -154,7 +154,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	if param.username != "" {
 		gaia = chrome.GAIALogin(chrome.Creds{User: s.RequiredVar(param.username), Pass: s.RequiredVar(param.password)})
 	} else {
-		gaia = chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))
+		gaia = chrome.GAIALoginPool(s.RequiredVar("arc.perfAccountPool"))
 	}
 
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
