@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -40,8 +41,14 @@ func init() {
 // wpsw_cur value (from crossystem) reports WP state properly and check if
 // WP state reported by FPMCU is also correct.
 func FpCheckWriteProtect(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.CloseRPC(ctx)
+
 	servoSpec, _ := s.Var("servo")
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), false, false)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -92,7 +99,7 @@ func testWriteProtect(ctx context.Context, s *testing.State, t *fingerprint.Firm
 	}
 
 	testing.ContextLog(ctx, "Validating that FPMCU write protect state is correct")
-	fp, err := fingerprint.GetFlashProtect(ctx, t.DUT())
+	fp, err := fingerprint.GetFlashProtect(ctx, s.DUT())
 	if err != nil {
 		return errors.Wrap(err, "failed to get FPMCU write protect state")
 	}
