@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0928b226_f7e020a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_cli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-16T08:41:52Z",
+      "side": 0,
+      "message": "That\u0027s not right. Let me fix this",
+      "revId": "f2af4ac77f7f71983d57ebd9a15a962ab779fe9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
