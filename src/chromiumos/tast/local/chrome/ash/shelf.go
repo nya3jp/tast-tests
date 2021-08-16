@@ -895,3 +895,12 @@ func RightClickApp(tconn *chrome.TestConn, appName string) uiauto.Action {
 		ShowHotseatAction(tconn),
 		uiauto.New(tconn).RightClick(appOnShelf))
 }
+
+// GetDefaultPinnedAppIDs returns the expected default app IDs that are pinned to the shelf.
+func GetDefaultPinnedAppIDs(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
+	var pinnedAppIDs []string
+	if err := tconn.Call(ctx, &pinnedAppIDs, "tast.promisify(chrome.autotestPrivate.getDefaultPinnedAppIds)"); err != nil {
+		return nil, err
+	}
+	return pinnedAppIDs, nil
+}
