@@ -27,7 +27,8 @@ import (
 // InputMethod represents an input method.
 type InputMethod struct {
 	Name                string   // The displayed name of the IME in OS Settings.
-	ID                  string   // The code / id of the IME, e.g. "xkb:us::eng"
+	ID                  string   // The code / id of the IME, e.g. "xkb:us::eng".
+	ShortLabel          string   // The short label displayed in VK language menu & System IME tray to represent the input method.
 	HandwritingLanguage Language // The language for handwriting.
 	VoiceLanguage       Language // The language for voice dictation.
 }
@@ -39,6 +40,7 @@ var DefaultInputMethod = EnglishUS
 var EnglishUS = InputMethod{
 	Name:                "English (US)",
 	ID:                  "xkb:us::eng",
+	ShortLabel:          "US",
 	HandwritingLanguage: LanguageEn,
 	VoiceLanguage:       LanguageEn,
 }
@@ -47,6 +49,7 @@ var EnglishUS = InputMethod{
 var EnglishUSWithInternationalKeyboard = InputMethod{
 	Name:                "English (US) with International keyboard",
 	ID:                  "xkb:us:intl:eng",
+	ShortLabel:          "INTL",
 	HandwritingLanguage: LanguageEn,
 	VoiceLanguage:       LanguageEn,
 }
@@ -55,6 +58,7 @@ var EnglishUSWithInternationalKeyboard = InputMethod{
 var EnglishUK = InputMethod{
 	Name:                "English (UK)",
 	ID:                  "xkb:gb:extd:eng",
+	ShortLabel:          "GB",
 	HandwritingLanguage: LanguageEn,
 	VoiceLanguage:       LanguageEn,
 }
@@ -63,6 +67,7 @@ var EnglishUK = InputMethod{
 var SpanishSpain = InputMethod{
 	Name:                "Spanish (Spain)",
 	ID:                  "xkb:es::spa",
+	ShortLabel:          "ES",
 	HandwritingLanguage: LanguageEs,
 	VoiceLanguage:       LanguageEs,
 }
@@ -71,6 +76,7 @@ var SpanishSpain = InputMethod{
 var Swedish = InputMethod{
 	Name:                "Swedish",
 	ID:                  "xkb:se::swe",
+	ShortLabel:          "SE",
 	HandwritingLanguage: LanguageSv,
 	VoiceLanguage:       LanguageSv,
 }
@@ -79,6 +85,7 @@ var Swedish = InputMethod{
 var AlphanumericWithJapaneseKeyboard = InputMethod{
 	Name:                "Alphanumeric with Japanese keyboard",
 	ID:                  "xkb:jp::jpn",
+	ShortLabel:          "JA",
 	HandwritingLanguage: LanguageJa,
 	VoiceLanguage:       LanguageJa,
 }
@@ -87,6 +94,7 @@ var AlphanumericWithJapaneseKeyboard = InputMethod{
 var EnglishCanada = InputMethod{
 	Name:                "English (Canada)",
 	ID:                  "xkb:ca:eng:eng",
+	ShortLabel:          "CA",
 	HandwritingLanguage: LanguageEn,
 	VoiceLanguage:       LanguageEn,
 }
@@ -95,6 +103,7 @@ var EnglishCanada = InputMethod{
 var Japanese = InputMethod{
 	Name:                "Japanese",
 	ID:                  "nacl_mozc_jp",
+	ShortLabel:          "あ",
 	HandwritingLanguage: LanguageJa,
 	VoiceLanguage:       LanguageJa,
 }
@@ -103,6 +112,7 @@ var Japanese = InputMethod{
 var FrenchFrance = InputMethod{
 	Name:                "French (France)",
 	ID:                  "xkb:fr::fra",
+	ShortLabel:          "FR",
 	HandwritingLanguage: LanguageFr,
 	VoiceLanguage:       LanguageFr,
 }
@@ -111,6 +121,7 @@ var FrenchFrance = InputMethod{
 var JapaneseWithUSKeyboard = InputMethod{
 	Name:                "Japanese with US keyboard",
 	ID:                  "nacl_mozc_us",
+	ShortLabel:          "あ",
 	HandwritingLanguage: LanguageJa,
 	VoiceLanguage:       LanguageJa,
 }
@@ -119,6 +130,7 @@ var JapaneseWithUSKeyboard = InputMethod{
 var ChinesePinyin = InputMethod{
 	Name:                "Chinese Pinyin",
 	ID:                  "zh-t-i0-pinyin",
+	ShortLabel:          "拼",
 	HandwritingLanguage: LanguageZhHans,
 	VoiceLanguage:       LanguageZhHans,
 }
@@ -127,6 +139,7 @@ var ChinesePinyin = InputMethod{
 var Cantonese = InputMethod{
 	Name:                "Cantonese",
 	ID:                  "yue-hant-t-i0-und",
+	ShortLabel:          "粤",
 	HandwritingLanguage: LanguageZhHant,
 	VoiceLanguage:       LanguageYueHant,
 }
@@ -135,6 +148,7 @@ var Cantonese = InputMethod{
 var ChineseCangjie = InputMethod{
 	Name:                "Chinese Cangjie",
 	ID:                  "zh-hant-t-i0-cangjie-1987",
+	ShortLabel:          "倉",
 	HandwritingLanguage: LanguageZhHant,
 	VoiceLanguage:       LanguageZhHant,
 }
@@ -143,6 +157,7 @@ var ChineseCangjie = InputMethod{
 var Korean = InputMethod{
 	Name:                "Korean",
 	ID:                  "ko-t-i0-und",
+	ShortLabel:          "한",
 	HandwritingLanguage: LanguageKo,
 	VoiceLanguage:       LanguageKo,
 }
@@ -151,6 +166,7 @@ var Korean = InputMethod{
 var Arabic = InputMethod{
 	Name:                "Arabic",
 	ID:                  "vkd_ar",
+	ShortLabel:          "AR",
 	HandwritingLanguage: LanguageAr,
 	VoiceLanguage:       LanguageAr,
 }
@@ -283,21 +299,31 @@ func (im InputMethod) Activate(tconn *chrome.TestConn) action.Action {
 		if err != nil {
 			return errors.Wrap(err, "failed to get active input method")
 		}
-
 		if activeIME.Equal(im) {
 			return nil
 		}
 
-		// Use 10s as warming up time by default.
-		imWarmingUpTime := 10 * time.Second
-
-		// SW, FR, SP takes longer time.
-		switch im {
-		case Swedish, FrenchFrance, SpanishSpain:
-			imWarmingUpTime = 15 * time.Second
+		if err := tconn.Call(ctx, nil, `chrome.inputMethodPrivate.setCurrentInputMethod`, fullyQualifiedIMEID); err != nil {
+			return errors.Wrapf(err, "failed to set current input method to %q", fullyQualifiedIMEID)
 		}
+		return im.WaitUntilActivated(tconn)(ctx)
+	}
+	return im.actionWithFullyQualifiedID(tconn, f)
+}
 
-		return SetCurrentInputMethodAndWaitWarmUp(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
+// WaitUntilActivated waits until the certain input method to be activated.
+func (im InputMethod) WaitUntilActivated(tconn *chrome.TestConn) action.Action {
+	// Use 10s as warming up time by default.
+	imWarmingUpTime := 10 * time.Second
+
+	// SW, FR, SP takes longer time.
+	switch im {
+	case Swedish, FrenchFrance, SpanishSpain:
+		imWarmingUpTime = 15 * time.Second
+	}
+
+	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
+		return WaitForInputMethodActivated(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }

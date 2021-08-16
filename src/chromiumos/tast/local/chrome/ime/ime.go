@@ -74,11 +74,15 @@ func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID st
 
 // SetCurrentInputMethodAndWaitWarmUp sets the current input method to the IME identified imeID
 // via chrome.inputMethodPrivate.setCurrentInputMethod API.
-// It sleeps a certain time to wait for IME warming up.
 func SetCurrentInputMethodAndWaitWarmUp(ctx context.Context, tconn *chrome.TestConn, imeID string, warmUpTime time.Duration) error {
 	if err := tconn.Call(ctx, nil, `chrome.inputMethodPrivate.setCurrentInputMethod`, imeID); err != nil {
 		return errors.Wrapf(err, "failed to set current input method to %q", imeID)
 	}
+	return WaitForInputMethodActivated(ctx, tconn, imeID, warmUpTime)
+}
+
+// WaitForInputMethodActivated waits for expected input method and warming up.
+func WaitForInputMethodActivated(ctx context.Context, tconn *chrome.TestConn, imeID string, warmUpTime time.Duration) error {
 	if err := WaitForInputMethodMatches(ctx, tconn, imeID, 20*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to wait for IME to be %q", imeID)
 	}
