@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"path"
 	"strings"
 
 	"github.com/google/go-cmp/cmp"
@@ -42,7 +43,7 @@ func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get expected system info v2: ", err)
 	}
-	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "VpdInfo", "DmiInfo")); d != "" {
+	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "DmiInfo")); d != "" {
 		s.Fatal("SystemInfoV2 validation failed (-expected + got): ", d)
 	}
 }
@@ -143,11 +144,46 @@ func expectedOsInfo(ctx context.Context) (osInfo, error) {
 	}, eh.ToError()
 }
 
+func expectedSkuNumber(ctx context.Context, fpath string) (*string, error) {
+	const (
+		cfgSkuNumber = "/cros-healthd/cached-vpd/has-sku-number"
+	)
+	c, err := utils.IsCrosConfigTrue(ctx, cfgSkuNumber)
+	if err != nil {
+		return nil, err
+	}
+	if !c {
+		return nil, nil
+	}
+	e, err := utils.ReadStringFile(fpath)
+	if err != nil {
+		return nil, errors.Wrap(err, "this board must have sku_number, but failed to get")
+	}
+	return &e, nil
+}
+
+func expectedVpdInfo(ctx context.Context) (*vpdInfo, error) {
+	const (
+		ro = "/sys/firmware/vpd/ro/"
+		rw = "/sys/firmware/vpd/rw/"
+	)
+	var eh utils.ErrorHolder
+	e := vpdInfo{
+		ActivateDate: eh.Handle(utils.ReadOptionalStringFile(path.Join(rw, "ActivateDate"))).(*string),
+		MfgDate:      eh.Handle(utils.ReadOptionalStringFile(path.Join(ro, "mfg_date"))).(*string),
+		ModelName:    eh.Handle(utils.ReadOptionalStringFile(path.Join(ro, "model_name"))).(*string),
+		Region:       eh.Handle(utils.ReadOptionalStringFile(path.Join(ro, "region"))).(*string),
+		SerialNumber: eh.Handle(utils.ReadOptionalStringFile(path.Join(ro, "serial_number"))).(*string),
+		SkuNumber:    eh.Handle(expectedSkuNumber(ctx, path.Join(ro, "sku_number"))).(*string),
+	}
+	return &e, eh.ToError()
+}
+
 func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
 	var eh utils.ErrorHolder
 	return systemInfo{
 		OsInfo:  eh.Handle(expectedOsInfo(ctx)).(osInfo),
-		VpdInfo: nil,
+		VpdInfo: eh.Handle(expectedVpdInfo(ctx)).(*vpdInfo),
 		DmiInfo: nil,
 	}, eh.ToError()
 }
