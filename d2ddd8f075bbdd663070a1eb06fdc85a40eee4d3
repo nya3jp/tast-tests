@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6072eef9_449d7030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_plugin_startup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-16T02:42:59Z",
+      "side": 1,
+      "message": "Writing this test as a parameterized test is a bit inefficient since each test case requires restart fwupd. Also, test results might be a bit harder to monitor since we\u0027ll get tens of different test reports.\n\nIn a simple case like this I recommend table-driven tests. See:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "d2ddd8f075bbdd663070a1eb06fdc85a40eee4d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
