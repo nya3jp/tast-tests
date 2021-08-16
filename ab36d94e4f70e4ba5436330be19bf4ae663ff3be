@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2dd1db_842e32e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-16T14:08:49Z",
+      "side": 1,
+      "message": "Hi Oleh, Adding you as a reviewer. PTAL when you get some time. Thanks.",
+      "revId": "ab36d94e4f70e4ba5436330be19bf4ae663ff3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
