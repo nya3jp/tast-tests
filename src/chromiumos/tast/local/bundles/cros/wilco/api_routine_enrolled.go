@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,143 +6,106 @@ package wilco
 
 import (
 	"context"
-	"encoding/json"
 	"os"
 	"time"
 
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/policyutil"
-	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
-	"chromiumos/tast/services/cros/wilco"
+	"chromiumos/tast/local/bundles/cros/wilco/routines"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
+	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 	dtcpb "chromiumos/wilco_dtc"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIRoutine,
+		Func: APIRoutineEnrolled,
 		Desc: "Test sending RunRoutineRequest and GetRoutineUpdate gRPC requests from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
-			"vsavu@chromium.org",  // Test author
+			"vsavu@chromium.org", // Test author
+			"bisakhmondal00@gmail.com",
 			"pmoy@chromium.org",   // wilco_dtc_supportd author
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"group:enrollment"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"reboot", "vm_host", "wilco", "chrome"},
-		ServiceDeps:  []string{"tast.cros.wilco.WilcoService", "tast.cros.policy.PolicyService"},
+		Fixture:      "wilcoDTCEnrolled",
 		Timeout:      10 * time.Minute,
 	})
 }
 
-// APIRoutine tests RunRoutineRequest and GetRoutineUpdate gRPC API.
-// TODO(b/189457904): remove once wilco.APIRoutineEnrolled will be stable enough.
-func APIRoutine(ctx context.Context, s *testing.State) {
-	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM: ", err)
-		}
-	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
-	defer cancel()
-
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
-	}
-
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	wc := wilco.NewWilcoServiceClient(cl.Conn)
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+func APIRoutineEnrolled(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	pb := fakedms.NewPolicyBlob()
+	// wilco_dtc and wilco_dtc_supportd only run for affiliated users.
+	pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
+	pb.UserAffiliationIds = []string{"default_affiliation_id"}
+
+	// After this point, IsUserAffiliated flag should be updated.
+	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+		s.Fatal("Failed to serve and refresh: ", err)
+	}
+
+	// We should add policy value in the middle of 2 ServeBlobAndRefresh calls to be sure
+	// that IsUserAffiliated flag is updated and policy handler is triggered.
 	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
-	// wilco_dtc and wilco_dtc_supportd only run for affiliated users
-	pb.DeviceAffiliationIds = []string{"default"}
-	pb.UserAffiliationIds = []string{"default"}
 
-	pJSON, err := json.Marshal(pb)
-	if err != nil {
-		s.Fatal("Failed to serialize policies: ", err)
+	// After this point, the policy handler should be triggered.
+	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+		s.Fatal("Failed to serve and refresh: ", err)
 	}
 
-	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: pJSON,
-	}); err != nil {
-		s.Fatal("Failed to enroll using chrome: ", err)
-	}
-	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
+	// The function fetches all available routines and tests the existence of the diagnostic routines
+	// that the platform may support.
+	if err := func(ctx context.Context) error {
+		request := dtcpb.GetAvailableRoutinesRequest{}
+		response := dtcpb.GetAvailableRoutinesResponse{}
 
-	if _, err := wc.TestGetAvailableRoutines(ctx, &empty.Empty{}); err != nil {
-		s.Error("Get available routines test failed: ", err)
-	}
-
-	type validityCheckFn func() error
-
-	// testRoutineExecution sends the request in rrRequest, executing the routine,
-	// and checks the result against expectedStatus. Some routines would not get
-	// back to service right away, so shortening test time by cancelling them and
-	// check if they are in cancelled status respectively.
-	testRoutineExecution := func(ctx context.Context,
-		rrRequest dtcpb.RunRoutineRequest,
-		expectedStatus wilco.DiagnosticRoutineStatus,
-		postRoutineValidityCheck validityCheckFn) error {
-
-		ctx, cancel := context.WithTimeout(ctx, 35*time.Second)
-		defer cancel()
-
-		data, err := proto.Marshal(&rrRequest)
-		if err != nil {
-			return errors.Wrap(err, "failed to marshall")
+		if err := wilco.DPSLSendMessage(ctx, "GetAvailableRoutines", &request, &response); err != nil {
+			return errors.Wrap(err, "failed to get available routines")
 		}
 
-		if expectedStatus == wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
-			_, err = wc.TestRoutineCancellation(ctx, &wilco.ExecuteRoutineRequest{
-				Request: data,
-			})
-			if err != nil {
-				return errors.Wrap(err, "failed to cancel routine")
-			}
-
-			if postRoutineValidityCheck != nil {
-				if err := postRoutineValidityCheck(); err != nil {
-					return errors.Wrap(err, "post routine validity check failed")
+		contains := func(all []dtcpb.DiagnosticRoutine, expected dtcpb.DiagnosticRoutine) bool {
+			for _, e := range all {
+				if expected == e {
+					return true
 				}
 			}
-			return nil
+			return false
 		}
 
-		resp, err := wc.ExecuteRoutine(ctx, &wilco.ExecuteRoutineRequest{
-			Request: data,
-		})
-		if err != nil {
-			return errors.Wrap(err, "failed to execute routine")
+		for _, want := range []dtcpb.DiagnosticRoutine{
+			dtcpb.DiagnosticRoutine_ROUTINE_BATTERY,
+			dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
+			dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
+			dtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,
+			dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+			dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+			dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
+			dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
+			dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
+			dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
+		} {
+			if !contains(response.Routines, want) {
+				return errors.Errorf("routine %s missing", want)
+			}
 		}
-
-		if resp.Status != expectedStatus {
-			return errors.Errorf("unexpected status: got %s, want %s", resp.Status, expectedStatus)
-		}
-
 		return nil
+	}(ctx); err != nil {
+		s.Error("Failed to get available diagnostic routines: ", err)
 	}
 
-	for _, param := range []struct {
-		name                  string
-		request               dtcpb.RunRoutineRequest
-		expectedStatus        wilco.DiagnosticRoutineStatus
-		validityCheckFunction validityCheckFn
+	for _, tc := range []struct {
+		name                         string
+		request                      dtcpb.RunRoutineRequest
+		wantRoutineStatus            dtcpb.DiagnosticRoutineStatus
+		postRoutineValidityCheckFunc func() error
 	}{
 		{
 			name: "urandom",
@@ -154,7 +117,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "urandom_cancel",
@@ -166,7 +129,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		{
 			name: "battery",
@@ -176,7 +139,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					BatteryParams: &dtcpb.BatteryRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "battery_sysfs",
@@ -186,7 +149,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					BatterySysfsParams: &dtcpb.BatterySysfsRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "smartctl",
@@ -196,7 +159,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					SmartctlCheckParams: &dtcpb.SmartctlCheckRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		// Success is not tested because the CPU cache routine takes too much time.
 		{
@@ -211,7 +174,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// The length of seconds is zero (the length of seconds for the test
 			// should larger than zero).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
 		{
 			name: "cpu_cache_cancelled",
@@ -223,7 +186,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		// Success is not tested because the CPU stress routine takes too much time.
 		{
@@ -238,7 +201,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// The length of seconds is zero (the length of seconds for the test
 			// should larger than zero).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
 		{
 			name: "cpu_stress_cancelled",
@@ -250,7 +213,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		{
 			name: "floating_point_accuracy",
@@ -262,7 +225,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "floating_point_accuracy_cancelled",
@@ -274,7 +237,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		{
 			name: "nvme_wear_level",
@@ -286,7 +249,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "nvme_wear_level_failed",
@@ -300,7 +263,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// The result will fail due to the threshold of the wear level is zero as
 			// well as the wear level value always larger or equal to zero.
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
 		// Success is not tested because the NVMe short self-test routine takes too
 		// much time.
@@ -312,7 +275,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					NvmeShortSelfTestParams: &dtcpb.NvmeShortSelfTestRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		// Success is not tested because the NVMe long self-test routine takes too
 		// much time.
@@ -324,7 +287,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		{
 			name: "disk_read_linear",
@@ -337,7 +300,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "disk_read_random",
@@ -350,7 +313,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "disk_read_linear_cancelled",
@@ -363,10 +326,10 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 			// disk read test routine will create a test file
 			// ensure it is deleted after cancellation
-			validityCheckFunction: func() error {
+			postRoutineValidityCheckFunc: func() error {
 				const testFile = "/var/cache/diagnostics_disk_read_routine_data/fio-test-file"
 				if _, err := os.Stat(testFile); os.IsNotExist(err) {
 					return nil
@@ -376,9 +339,47 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 		},
 	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := testRoutineExecution(ctx, param.request, param.expectedStatus, param.validityCheckFunction); err != nil {
-				s.Error("Routine test failed: ", err)
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			rrResponse := dtcpb.RunRoutineResponse{}
+			// Sending the request and executing the routine.
+			if err := routines.CallRunRoutine(ctx, tc.request, &rrResponse); err != nil {
+				s.Fatal("Failed to call routine: ", err)
+			}
+
+			uuid := rrResponse.Uuid
+
+			defer func(ctx context.Context) {
+				if err := routines.RemoveRoutine(ctx, uuid); err != nil {
+					s.Error("Failed to remove routine: ", err)
+				}
+			}(ctx)
+
+			wantRoutineStatus := dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING
+			if tc.wantRoutineStatus == dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
+				if err := routines.CancelRoutine(ctx, uuid); err != nil {
+					s.Error("Unable to cancel routine: ", err)
+				}
+				wantRoutineStatus = dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING
+				if tc.postRoutineValidityCheckFunc != nil {
+					defer func() {
+						if err := tc.postRoutineValidityCheckFunc(); err != nil {
+							s.Error("Post routine validity check failed: ", err)
+						}
+					}()
+				}
+			}
+
+			if err := routines.WaitUntilRoutineChangesState(ctx, uuid, wantRoutineStatus, 30*time.Second); err != nil {
+				s.Fatalf("Routine not finished. Wanted routine status %s : %v", wantRoutineStatus, err)
+			}
+
+			response := dtcpb.GetRoutineUpdateResponse{}
+			if err := routines.GetRoutineStatus(ctx, uuid, true, &response); err != nil {
+				s.Fatal("Failed to get routine status: ", err)
+			}
+
+			if response.Status != tc.wantRoutineStatus {
+				s.Errorf("Unexpected status: got %s, want %s", response.Status, tc.wantRoutineStatus)
 			}
 		})
 	}
