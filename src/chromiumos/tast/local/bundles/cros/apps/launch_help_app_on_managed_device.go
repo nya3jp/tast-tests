@@ -28,7 +28,7 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
