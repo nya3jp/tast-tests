@@ -257,6 +257,30 @@
       },
       "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf0f2c4_41c45656",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T07:18:04Z",
+      "side": 1,
+      "message": "Good catch. This one is actually different. If we do no involve typing validation in this test. We do not need to wait for downloading language model and decoder warming up. To avoid confusing, I moved this function to inline the test as `waitUntilCurrentInputMethod`",
+      "parentUuid": "f0572150_e8b90a22",
+      "range": {
+        "startLine": 281,
+        "startChar": 68,
+        "endLine": 281,
+        "endChar": 83
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
