@@ -74,6 +74,17 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	// TODO(crbug.com/1240344): Ensure the tablet mode is turned off until it is supported on Lacros.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to enter clamshell mode: ", err)
+	}
+	defer cleanup(ctx)
+
+	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownClamShell); err != nil {
+		s.Fatal("Failed to show clamshell shelf: ", err)
+	}
+
 	var app apps.App
 	var topWindowName string
 	switch ct {
