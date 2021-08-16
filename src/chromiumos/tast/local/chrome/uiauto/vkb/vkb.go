@@ -57,7 +57,9 @@ const (
 var vkRootFinder = nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
 
 // NodeFinder returns a finder of node on virtual keyboard.
-var NodeFinder = nodewith.Ancestor(vkRootFinder)
+// It finds nodes with `offscreen:false` property to avoid
+// finding cached offscreen nodes.
+var NodeFinder = nodewith.Ancestor(vkRootFinder).Onscreen()
 
 // DragPointFinder returns the finder of the float VK drag button.
 var DragPointFinder = NodeFinder.Role(role.Button).NameContaining("drag to reposition the keyboard")
@@ -285,14 +287,14 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Actio
 	if enabled {
 		flipButtonFinder = KeyFinder.Name("make virtual keyboard movable")
 		return vkbCtx.ui.IfSuccessThen(
-			vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(flipButtonFinder),
+			vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilExists(flipButtonFinder),
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
 		)
 	}
 
 	flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
 	return vkbCtx.ui.IfSuccessThen(
-		vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(flipButtonFinder),
+		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilExists(flipButtonFinder),
 		vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
 	)
 }
