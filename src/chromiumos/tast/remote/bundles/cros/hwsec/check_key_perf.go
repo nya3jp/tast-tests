@@ -47,7 +47,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 	s.Log("TPM is confirmed to be reset")
 
 	// Create and Mount vault.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user: ", err)
 	}
 
@@ -76,7 +76,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 	// Run |iterations| times CheckKeyEx.
 	for i := int64(0); i < iterations; i++ {
 		startTs := time.Now()
-		result, err := utility.CheckVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel)
+		result, err := utility.CheckVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword))
 		duration := time.Now().Sub(startTs)
 		if err != nil {
 			s.Fatal("Call to CheckKeyEx with the correct username and password resulted in an error: ", err)

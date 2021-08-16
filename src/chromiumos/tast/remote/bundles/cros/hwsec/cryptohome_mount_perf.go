@@ -95,7 +95,7 @@ func CryptohomeMountPerf(ctx context.Context, s *testing.State) {
 
 	// Create and Mount vault.
 	startTs := time.Now()
-	if err := cryptohome.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user: ", err)
 	}
 	createMountDuration := time.Now().Sub(startTs)
@@ -148,7 +148,7 @@ func CryptohomeMountPerf(ctx context.Context, s *testing.State) {
 	// Run normalMountIterations times MountVault.
 	for i := 0; i < normalMountIterations; i++ {
 		startTs := time.Now()
-		err := cryptohome.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig())
+		err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), false, hwsec.NewVaultConfig())
 		duration := time.Now().Sub(startTs)
 
 		if err != nil {
@@ -197,7 +197,7 @@ func CryptohomeMountPerf(ctx context.Context, s *testing.State) {
 		}
 
 		startTs := time.Now()
-		err := cryptohome.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig())
+		err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), false, hwsec.NewVaultConfig())
 		duration := time.Now().Sub(startTs)
 		if err != nil {
 			s.Fatal("Failed to mount vault: ", err)

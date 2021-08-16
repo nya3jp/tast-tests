@@ -58,17 +58,17 @@ func CryptohomeTestAuth(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	// Mount the test user account, which ensures that the vault is created, and that the mount succeeds.
-	if err := cryptohome.MountVault(ctx, user, password, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault: ", err)
 	}
 
 	// Test credentials when the user's directory is mounted.
-	if _, err := cryptohome.CheckVault(ctx, user, password, util.PasswordLabel); err != nil {
+	if _, err := cryptohome.CheckVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password)); err != nil {
 		s.Fatal("Should access the vault with the valid credentials while mounted: ", err)
 	}
 
 	// Make sure that an incorrect password fails.
-	_, err := cryptohome.CheckVault(ctx, user, badPassword, util.PasswordLabel)
+	_, err := cryptohome.CheckVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, badPassword))
 	var exitErr *hwsec.CmdExitError
 	if !errors.As(err, &exitErr) {
 		s.Fatal("Should deny access the vault with the invalid credentials while mounted: ", err)
@@ -92,12 +92,12 @@ func CryptohomeTestAuth(ctx context.Context, s *testing.State) {
 	}
 
 	// Test valid credentials when the user's directory is not mounted
-	if _, err := cryptohome.CheckVault(ctx, user, password, util.PasswordLabel); err != nil {
+	if _, err := cryptohome.CheckVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password)); err != nil {
 		s.Fatal("Should access the vault with the valid credentials while unmounted: ", err)
 	}
 
 	// Test invalid credentials fails while not mounted.
-	_, err = cryptohome.CheckVault(ctx, user, badPassword, util.PasswordLabel)
+	_, err = cryptohome.CheckVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, badPassword))
 	if !errors.As(err, &exitErr) {
 		s.Fatal("Should deny access the vault with the invalid credentials while unmounted: ", err)
 	}
@@ -106,7 +106,7 @@ func CryptohomeTestAuth(ctx context.Context, s *testing.State) {
 	}
 
 	// Re-mount existing test user vault, verifying that the mount succeeds.
-	if err := cryptohome.MountVault(ctx, user, password, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault: ", err)
 	}
 }

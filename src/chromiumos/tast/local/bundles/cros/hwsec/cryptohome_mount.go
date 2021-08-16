@@ -52,7 +52,7 @@ func CryptohomeMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Create the account.
-	if err := cryptohome.MountVault(ctx, user, goodPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, goodPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 
@@ -72,7 +72,7 @@ func CryptohomeMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Mount with bad password should fail.
-	err := cryptohome.MountVault(ctx, user, badPassword, util.PasswordLabel, false, hwsec.NewVaultConfig())
+	err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, badPassword), false, hwsec.NewVaultConfig())
 	var exitErr *hwsec.CmdExitError
 	if !errors.As(err, &exitErr) {
 		s.Fatalf("Unexpected mount error: got %q; want *hwsec.CmdExitError", err)
@@ -87,7 +87,7 @@ func CryptohomeMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Mount with good password should success.
-	if err := cryptohome.MountVault(ctx, user, goodPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, goodPassword), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
 

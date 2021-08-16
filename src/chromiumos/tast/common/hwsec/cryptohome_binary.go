@@ -123,8 +123,8 @@ func (c *cryptohomeBinary) isMounted(ctx context.Context) ([]byte, error) {
 }
 
 // mountEx calls "cryptohome --action=mount_ex".
-func (c *cryptohomeBinary) mountEx(ctx context.Context, username, password string, doesCreate bool, label string, extraFlags []string) ([]byte, error) {
-	args := []string{"--action=mount_ex", "--user=" + username, "--password=" + password, "--key_label=" + label}
+func (c *cryptohomeBinary) mountEx(ctx context.Context, username string, doesCreate bool, label string, extraFlags []string) ([]byte, error) {
+	args := []string{"--action=mount_ex", "--user=" + username, "--key_label=" + label}
 	if doesCreate {
 		args = append(args, "--create")
 	}
@@ -151,8 +151,10 @@ func (c *cryptohomeBinary) getSystemSalt(ctx context.Context, useDBus bool) ([]b
 }
 
 // checkKeyEx calls "cryptohome --action=check_key_ex".
-func (c *cryptohomeBinary) checkKeyEx(ctx context.Context, username, password, label string) ([]byte, error) {
-	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label="+label)
+func (c *cryptohomeBinary) checkKeyEx(ctx context.Context, username, label string, extraFlags []string) ([]byte, error) {
+	args := []string{"--action=check_key_ex", "--user=" + username, "--key_label=" + label}
+	args = append(args, extraFlags...)
+	return c.call(ctx, args...)
 }
 
 // listKeysEx calls "cryptohome --action=list_keys_ex".

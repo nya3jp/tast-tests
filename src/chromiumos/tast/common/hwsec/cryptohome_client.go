@@ -6,12 +6,14 @@ package hwsec
 
 import (
 	"context"
+	"encoding/hex"
 	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
+	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -197,9 +199,8 @@ func NewVaultConfig() *VaultConfig {
 	return &VaultConfig{}
 }
 
-// MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
-// For extraFlags, please see MountFlag* series of constants (ex: MountFlagEphemeral)
-func (u *CryptohomeClient) MountVault(ctx context.Context, username, password, label string, create bool, config *VaultConfig) error {
+// vaultConfigToExtraFlags converts VaultConfig to flags accepted by the cryptohome command line.
+func vaultConfigToExtraFlags(config *VaultConfig) []string {
 	const (
 		// mountFlagEphemeral is the flag passed to cryptohome command line when you want the vault to be ephemeral.
 		mountFlagEphemeral = "--ensure_ephemeral"
@@ -214,7 +215,90 @@ func (u *CryptohomeClient) MountVault(ctx context.Context, username, password, l
 	if config.Ecryptfs {
 		extraFlags = append(extraFlags, mountFlagEcryptfs)
 	}
-	if _, err := u.binary.mountEx(ctx, username, password, create, label, extraFlags); err != nil {
+	return extraFlags
+}
+
+const (
+	// PassAuth is the constant for AuthConfig.AuthType, representing password authentication.
+	PassAuth = iota
+	// ChallengeAuth is the constant for AuthConfig.AuthType, representing challenge-response authenticating.
+	ChallengeAuth = iota
+)
+
+// AuthConfig represents the data required to authenticate a user.
+// It could be password authentication or challenge-response authentication.
+type AuthConfig struct {
+	// AuthType is the type of authentication.
+	AuthType int
+
+	// Username is the username for authentication.
+	Username string
+
+	// Password is the user's password.
+	// Used only when AuthType is PassAuth
+	Password string
+
+	// KeyDelegateName is the dbus service name for the authentication delegate.
+	// Used only when AuthType is ChallengeAuth
+	KeyDelegateName string
+
+	// KeyDelegatePath is the dbus service path for the authentication delegate.
+	// Used only when AuthType is ChallengeAuth
+	KeyDelegatePath string
+
+	// ChallengeSPKI is the SPKI that contains the public key for challenge response. It's in DER format.
+	// Used only when AuthType is ChallengeAuth
+	ChallengeSPKI []byte
+
+	// ChallengeAlg is the cryptographic algorithm to use when
+	// Used only when AuthType is ChallengeAuth
+	ChallengeAlg cpb.ChallengeSignatureAlgorithm
+}
+
+// NewPassAuthConfig creates an AuthConfig for Password Authentication.
+func NewPassAuthConfig(username, password string) *AuthConfig {
+	config := &AuthConfig{}
+	config.AuthType = PassAuth
+	config.Username = username
+	config.Password = password
+	return config
+}
+
+// NewChallengeAuthConfig creates an AuthConfig for Challenge-Response Authentication.
+func NewChallengeAuthConfig(username, keyDelegateName, keyDelegatePath string, challengeSPKI []byte, challengeAlg cpb.ChallengeSignatureAlgorithm) *AuthConfig {
+	config := &AuthConfig{}
+	config.AuthType = ChallengeAuth
+	config.Username = username
+	config.KeyDelegateName = keyDelegateName
+	config.KeyDelegatePath = keyDelegatePath
+	config.ChallengeSPKI = challengeSPKI
+	config.ChallengeAlg = challengeAlg
+	return config
+}
+
+// authConfigToExtraFlags converts AuthConfig to flags accepted by the cryptohome command line.
+func authConfigToExtraFlags(config *AuthConfig) []string {
+	var extraFlags []string
+	if config.AuthType == PassAuth {
+		extraFlags = append(extraFlags, "--password="+config.Password)
+	} else if config.AuthType == ChallengeAuth {
+		extraFlags = append(extraFlags, "--challenge_alg="+config.ChallengeAlg.String())
+		extraFlags = append(extraFlags, "--challenge_spki="+hex.EncodeToString(config.ChallengeSPKI))
+		extraFlags = append(extraFlags, "--key_delegate_name="+config.KeyDelegateName)
+		extraFlags = append(extraFlags, "--key_delegate_path="+config.KeyDelegatePath)
+	} else {
+		panic("Invalid AuthType in CryptohomeClient")
+	}
+	return extraFlags
+}
+
+// MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
+// For extraFlags, please see MountFlag* series of constants (ex: MountFlagEphemeral)
+func (u *CryptohomeClient) MountVault(ctx context.Context, label string, authConfig *AuthConfig, create bool, config *VaultConfig) error {
+	extraFlags := vaultConfigToExtraFlags(config)
+	extraFlags = append(extraFlags, authConfigToExtraFlags(authConfig)...)
+
+	if _, err := u.binary.mountEx(ctx, authConfig.Username, create, label, extraFlags); err != nil {
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil
@@ -252,9 +336,10 @@ func (u *CryptohomeClient) GetSystemSalt(ctx context.Context, useDBus bool) (str
 	return outs, nil
 }
 
-// CheckVault checks the vault via |CheckKeyEx| dbus mehod.
-func (u *CryptohomeClient) CheckVault(ctx context.Context, username, password, label string) (bool, error) {
-	_, err := u.binary.checkKeyEx(ctx, username, password, label)
+// CheckVault checks the vault via |CheckKeyEx| dbus method.
+func (u *CryptohomeClient) CheckVault(ctx context.Context, label string, authConfig *AuthConfig) (bool, error) {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.checkKeyEx(ctx, authConfig.Username, label, extraFlags)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check key")
 	}
