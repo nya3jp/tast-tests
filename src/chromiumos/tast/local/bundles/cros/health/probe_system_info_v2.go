@@ -6,9 +6,16 @@ package health
 
 import (
 	"context"
+	"strings"
 
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -27,9 +34,16 @@ func init() {
 
 func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategorySystem2}
-	var info systemInfo
-	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
+	var g systemInfo
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &g); err != nil {
 		s.Fatal("Failed to get system info v2 telemetry info: ", err)
+	}
+	e, err := expectedSystemInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get expected system info v2: ", err)
+	}
+	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "VpdInfo", "DmiInfo")); d != "" {
+		s.Fatal("SystemInfoV2 validation failed (-expected + got): ", d)
 	}
 }
 
@@ -74,4 +88,74 @@ type systemInfo struct {
 	OsInfo  osInfo   `json:"os_info"`
 	VpdInfo *vpdInfo `json:"vpd_info"`
 	DmiInfo *dmiInfo `json:"dmi_info"`
+}
+
+func expectedOsVersion(ctx context.Context) (osVersion, error) {
+	lsb, err := lsbrelease.Load()
+	if err != nil {
+		return osVersion{}, errors.Wrap(err, "failed to get lsb-release info")
+	}
+	return osVersion{
+		ReleaseMilestone: lsb[lsbrelease.Milestone],
+		BuildNumber:      lsb[lsbrelease.BuildNumber],
+		PatchNumber:      lsb[lsbrelease.PatchNumber],
+		ReleaseChannel:   lsb[lsbrelease.ReleaseTrack],
+	}, nil
+}
+
+func expectedBootMode() (string, error) {
+	v, err := utils.ReadStringFile("/proc/cmdline")
+	if err != nil {
+		return "", err
+	}
+	modeStr := map[string]bool{
+		"cros_secure": true,
+		"cros_efi":    true,
+		"cros_legacy": true,
+	}
+	var r []string
+	for _, s := range strings.Fields(v) {
+		if modeStr[s] {
+			r = append(r, s)
+			modeStr[s] = false // Only add each type once.
+		}
+	}
+	if len(r) == 0 {
+		return "", errors.Errorf("BootMode is not in /proc/cmdline: %v", v)
+	}
+	if len(r) >= 2 {
+		return "", errors.Errorf("too many BootMode in /proc/cmdline, got %v, /proc/cmdline: %v", r, v)
+	}
+	return r[0], nil
+}
+
+func expectedOsInfo(ctx context.Context) (osInfo, error) {
+	const (
+		cfgCodeName      = "/name"
+		cfgMarketingName = "/arc/build-properties/marketing-name"
+	)
+	var r osInfo
+	var err error
+	if r.CodeName, err = utils.GetCrosConfig(ctx, cfgCodeName); err != nil {
+		return r, err
+	}
+	if r.MarketingName, err = utils.GetOptionalCrosConfig(ctx, cfgMarketingName); err != nil {
+		return r, err
+	}
+	if r.OsVersion, err = expectedOsVersion(ctx); err != nil {
+		return r, err
+	}
+	if r.BootMode, err = expectedBootMode(); err != nil {
+		return r, err
+	}
+	return r, nil
+}
+
+func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
+	var r systemInfo
+	var err error
+	if r.OsInfo, err = expectedOsInfo(ctx); err != nil {
+		return r, err
+	}
+	return r, nil
 }
