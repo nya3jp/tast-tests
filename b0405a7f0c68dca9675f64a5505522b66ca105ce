@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eff6cd1_4f074763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T01:59:56Z",
+      "side": 1,
+      "message": "There is no other category for this purpose. Directly using English in the alternative string can be compromising. Once it is translated, we can update the A / B to C.",
+      "parentUuid": "1bbfa924_6cd947c2",
+      "revId": "b0405a7f0c68dca9675f64a5505522b66ca105ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da1027f0_3bd70fee",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_language.go",
         "patchSetId": 1
