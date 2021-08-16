@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d44663_fcc9a277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T06:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bebe19ff_34e26335",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dba0a5bc_b3093af7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-16T04:47:12Z",
       "side": 1,
       "message": "why only log this? (maybe debug leftover?)",
+      "range": {
+        "startLine": 58,
+        "startChar": 15,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04f62bc_bb694301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T06:53:24Z",
+      "side": 1,
+      "message": "You are right 😊 Removed.",
+      "parentUuid": "dba0a5bc_b3093af7",
       "range": {
         "startLine": 58,
         "startChar": 15,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae826df2_ce5e545e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T06:53:24Z",
+      "side": 1,
+      "message": "When changing input method, a few places need to be reflected. System tray, input cursor, VK language menu.. Maybe we can write another test to cover this.\n\nThis test only focus on validating PK shortcuts to change input method at the moment. It is an implementation of b/190653318 and b/190653435.",
+      "parentUuid": "a33ae3d0_0edb8543",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbcc2ef7_46329546",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 1
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa7e29fa_398960c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T06:53:24Z",
+      "side": 1,
+      "message": "If that is the case. I probably only test 2 input methods switch in between since the order is not predicable. WDYT",
+      "parentUuid": "dbcc2ef7_46329546",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a6fd277_e0885a1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-16T04:47:12Z",
       "side": 1,
       "message": "any chance we actually do some typing with the different IMEs? (just to confirm that a functional switch has happened)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb546e09_9c724112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T06:53:24Z",
+      "side": 1,
+      "message": "I do not recommend to do much testing here. I assume the changing input method mechanism is the same. Add typing can make the scenario complicated and flaky. Such as decoder warming up. If typing test is important / special in changing IME via shortcut, I can add the validation part later. WDYT.",
+      "parentUuid": "8a6fd277_e0885a1e",
       "range": {
         "startLine": 69,
         "startChar": 0,
