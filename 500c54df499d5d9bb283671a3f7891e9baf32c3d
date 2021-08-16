@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e58079c7_58a6f0e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T07:04:17Z",
+      "side": 1,
+      "message": "PTAL quickly since I\u0027m using sudo -u chronos now (for reasons)",
+      "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
