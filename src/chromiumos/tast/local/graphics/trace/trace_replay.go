@@ -95,7 +95,7 @@ func setTCPPortState(ctx context.Context, port int, open bool) error {
 	err := checkCmd.Run()
 	exitCode, ok := testexec.ExitCode(err)
 	if !ok {
-		return err
+		return errors.Wrap(err, "failed to query iptable settings")
 	}
 	var iptablesActionArg string
 	if open == true && exitCode != 0 {
@@ -164,15 +164,14 @@ func (s *fileServer) log(ctx context.Context, format string, args ...interface{}
 	testing.ContextLogf(ctx, "[Proxy Server] "+format, args...)
 }
 
-
-type PassThruReader struct {
+type passThruReader struct {
 	io.Reader
-	err error
+	err   error
 	bytes int64
 	usecs int64
 }
 
-func (pt *PassThruReader) Read(p []byte) (int, error) {
+func (pt *passThruReader) Read(p []byte) (int, error) {
 	startTime := time.Now()
 	n, err := pt.Reader.Read(p)
 	pt.usecs += time.Since(startTime).Microseconds()
@@ -183,14 +182,14 @@ func (pt *PassThruReader) Read(p []byte) (int, error) {
 	return n, err
 }
 
-type PassThruWriter struct {
+type passThruWriter struct {
 	io.Writer
-	err error
+	err   error
 	bytes int64
 	usecs int64
 }
 
-func (pt *PassThruWriter) Write(p []byte) (int, error) {
+func (pt *passThruWriter) Write(p []byte) (int, error) {
 	startTime := time.Now()
 	n, err := pt.Writer.Write(p)
 	pt.usecs += time.Since(startTime).Microseconds()
@@ -229,8 +228,8 @@ func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseW
 	wr.Header().Set("Content-Disposition", "attachment; filename="+path.Base(filePath))
 	wr.WriteHeader(http.StatusOK)
 
-	ptReader := &PassThruReader{Reader: r}
-	ptWriter := &PassThruWriter{Writer: wr}
+	ptReader := &passThruReader{Reader: r}
+	ptWriter := &passThruWriter{Writer: wr}
 
 	copied, err := io.Copy(ptWriter, ptReader)
 	if err != nil {
@@ -239,15 +238,15 @@ func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseW
 		s.log(ctx, "io.Copy finished successfully. %d bytes copied", copied)
 	}
 
-	formatStats := func(e error, bytes int64, usecs int64) string {
-		res := fmt.Sprintf("%d bytes in %d msec", bytes, usecs/1000);
+	formatStats := func(e error, bytes, usecs int64) string {
+		res := fmt.Sprintf("%d bytes in %d msec", bytes, usecs/1000)
 		if e != nil && e != io.EOF {
-			res += fmt.Sprintf(". Error: %s", e.Error());
+			res += fmt.Sprintf(". Error: %s", e.Error())
 		}
 		return res
 	}
-	s.log(ctx, "Reader stats: %s", formatStats(ptReader.err, ptReader.bytes, ptReader.usecs));
-	s.log(ctx, "Writer stats: %s", formatStats(ptWriter.err, ptWriter.bytes, ptWriter.usecs));
+	s.log(ctx, "Reader stats: %s", formatStats(ptReader.err, ptReader.bytes, ptReader.usecs))
+	s.log(ctx, "Writer stats: %s", formatStats(ptWriter.err, ptWriter.bytes, ptWriter.usecs))
 
 	if err != nil {
 		return errors.Wrap(err, "io.Copy() failed")
@@ -365,13 +364,11 @@ func pushTraceReplayApp(ctx context.Context, guest IGuestOS, serverIP string, se
 		fmt.Sprintf("http://%s:%d/?type=getBinary", serverIP, serverPort),
 	}
 	testing.ContextLogf(ctx, "Invoking %q", cmdLine)
-	out, err := guest.Command(ctx, cmdLine...).CombinedOutput()
-	if err != nil {
+	if out, err := guest.Command(ctx, cmdLine...).CombinedOutput(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "unable to upload trace_replay binary to the guest. %s", string(out))
 	}
 
-	out, err = guest.Command(ctx, "chmod", "+x", path.Join(guest.GetBinPath(), replayAppName)).CombinedOutput()
-	if err != nil {
+	if out, err := guest.Command(ctx, "chmod", "+x", path.Join(guest.GetBinPath(), replayAppName)).CombinedOutput(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "unable to chmod trace_replay binary. %s", string(out))
 	}
 	return nil
@@ -381,8 +378,7 @@ func pushTraceReplayApp(ctx context.Context, guest IGuestOS, serverIP string, se
 // the comma separated list of process IDs which names exactly match the specified name
 // (see pgrep manual for details)
 func grepGuestProcesses(ctx context.Context, name string, guest IGuestOS) (string, error) {
-	cmd := guest.Command(ctx, "pgrep", "-d,", "-x", name)
-	out, err := cmd.Output()
+	out, err := guest.Command(ctx, "pgrep", "-d,", "-x", name).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "unable to invoke pgrep")
 	}
@@ -394,14 +390,13 @@ func grepGuestProcesses(ctx context.Context, name string, guest IGuestOS) (strin
 func runTraceReplayInVM(ctx context.Context, resultDir string, guest IGuestOS, group *comm.TestGroupConfig) error {
 	replayArgs, err := json.Marshal(*group)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to marshal TestGroupConfig")
 	}
 
 	testing.ContextLog(ctx, "Running replay with args: "+string(replayArgs))
-	replayCmd := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), string(replayArgs))
-	replayOutput, err := replayCmd.Output()
+	replayOutput, err := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), string(replayArgs)).Output(testexec.DumpLogOnError)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed while running trace_replay")
 	}
 
 	testing.ContextLog(ctx, "Replay output: "+string(replayOutput))
@@ -456,14 +451,13 @@ func runTraceReplayInVM(ctx context.Context, resultDir string, guest IGuestOS, g
 func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, guest IGuestOS, group *comm.TestGroupConfig) error {
 	replayArgs, err := json.Marshal(*group)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to marshal TestGroupConfig")
 	}
 
 	testing.ContextLog(ctx, "Running extended replay with args: "+string(replayArgs))
-	replayCmd := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), string(replayArgs))
-	replayOutput, err := replayCmd.Output()
+	replayOutput, err := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), string(replayArgs)).Output(testexec.DumpLogOnError)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed while running trace_replay")
 	}
 
 	testing.ContextLog(ctx, "Replay output: "+string(replayOutput))
@@ -512,7 +506,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	if err := getSystemInfo(&group.Host); err != nil {
-		return err
+		return errors.Wrap(err, "failed to get system info")
 	}
 
 	var gpi *graphicsPowerInterface
@@ -530,14 +524,13 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}()
 
 	if err := pushTraceReplayApp(ctx, guest, outboundIP, fileServerPort); err != nil {
-		return err
+		return errors.Wrap(err, "failed to push trace_replay to destination")
 	}
 
 	// Validate the protocol version of the guest trace_replay app
-	replayAppVersionCmd := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), "--version")
-	replayAppVersionOutput, err := replayAppVersionCmd.Output()
+	replayAppVersionOutput, err := guest.Command(ctx, path.Join(guest.GetBinPath(), replayAppName), "--version").Output(testexec.DumpLogOnError)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to get trace_replay version")
 	}
 	var replayAppVersionInfo comm.VersionInfo
 	if err := json.Unmarshal(replayAppVersionOutput, &replayAppVersionInfo); err != nil {
@@ -566,7 +559,6 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 		return runTraceReplayExtendedInVM(shortCtx, resultDir, guest, group)
 	}
 	err = runTraceReplayInVM(shortCtx, resultDir, guest, group)
-
 	// If shortContext is timed out then it means the guest application probably hangs
 	if errors.Is(err, context.DeadlineExceeded) {
 		testing.ContextLogf(ctx, "WARNING: guest side %s execution context timed out", replayAppName)
@@ -585,7 +577,5 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 			}
 		}
 	}
-
-	return err
-
+	return errors.Wrap(err, "failed to run trace_replay app in the VM")
 }
