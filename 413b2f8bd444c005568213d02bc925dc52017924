@@ -51,6 +51,23 @@
       "parentUuid": "1e065a34_ad0f39e8",
       "revId": "413b2f8bd444c005568213d02bc925dc52017924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69616696_db8fbe38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-08-16T08:04:20Z",
+      "side": 1,
+      "message": "Let gwsq to assign cros-wifi-reviewer, as I\u0027m no longer in cros-wifi-reviewer.",
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
