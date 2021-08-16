@@ -4,6 +4,7 @@
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. policy.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. device_minimum_version_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. rollback_service.proto
 
 // Package policy provides the PolicyService
 package policy
