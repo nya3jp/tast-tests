@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -24,6 +23,7 @@ func init() {
 		Desc:         "Ensures an ARC window can move outside the display",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcBootedInClamshellMode",
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -36,22 +36,14 @@ func init() {
 }
 
 func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	p := s.FixtValue().(*arc.PreData)
+	cr := p.Chrome
+	a := p.ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close(ctx)
 
 	const (
 		pkg          = "com.android.settings"

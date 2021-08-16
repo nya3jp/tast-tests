@@ -87,6 +87,22 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode in this fixture.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedInClamshellMode",
+		Desc: "ARC is booted in clamshell mode",
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// arcBootedWithVideoLogging is a fixture similar to arcBooted, but with additional Chrome video logging enabled.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithVideoLogging",
