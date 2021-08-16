@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832506f1_bce663a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-16T18:25:52Z",
+      "side": 1,
+      "message": "\u003e 1. Get boot time by reading /proc/stat file so time is in UTC (`uptime -s` returns local time)\n\nOh, nice!\n\n\u003e 2. Add function to get recent logs from upstart.log\n\nNice.",
+      "parentUuid": "0a17554d_3782c8c6",
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a57a4d6_24d3f0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-16T18:25:52Z",
+      "side": 1,
+      "message": "Waiting for changes from offline convo.",
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bbee3e1_2f4e84a9",
@@ -36,6 +71,53 @@
         "startChar": 0,
         "endLine": 79,
         "endChar": 0
+      },
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b30658_b479859d",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-16T18:25:52Z",
+      "side": 1,
+      "message": "Yes, that sounds great.",
+      "parentUuid": "1bbee3e1_2f4e84a9",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87aae6ca_b5727818",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-16T18:25:52Z",
+      "side": 1,
+      "message": "Do you need to recombine? I think returning the slice of lines is pretty convenient.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 46
       },
       "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
