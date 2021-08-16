@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5911cf5_418e063f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-16T10:17:39Z",
+      "side": 1,
+      "message": "LGTM, I defer to yamaguchi@.\n",
+      "revId": "efa7ebb65ba0c2f99ff24c36f107816b5aac8fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
