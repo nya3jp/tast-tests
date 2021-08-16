@@ -1,0 +1,20 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.policy;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/policy";
+
+// RollbackService provides a function to verify that an enterprise rollback was successful.
+service RollbackService {
+  rpc VerifyRollback (google.protobuf.Empty) returns (RollbackSuccessfulResponse);
+}
+
+message RollbackSuccessfulResponse {
+  bool successful = 1;
+}
