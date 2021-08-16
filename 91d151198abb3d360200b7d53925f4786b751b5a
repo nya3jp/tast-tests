@@ -16,6 +16,23 @@
       "message": "According to Eliot, it should be fine to remove the code now.\nShuhei, could you review as an owner? Thanks!\n\nReference: CL:2919149\n",
       "revId": "91d151198abb3d360200b7d53925f4786b751b5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14996713_fb8931d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-16T04:23:31Z",
+      "side": 1,
+      "message": "lgtm as long as the test still passes when it runs",
+      "revId": "91d151198abb3d360200b7d53925f4786b751b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
