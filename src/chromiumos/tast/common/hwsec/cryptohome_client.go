@@ -6,12 +6,14 @@ package hwsec
 
 import (
 	"context"
+	"encoding/hex"
 	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
+	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -197,9 +199,8 @@ func NewVaultConfig() *VaultConfig {
 	return &VaultConfig{}
 }
 
-// MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
-// For extraFlags, please see MountFlag* series of constants (ex: MountFlagEphemeral)
-func (u *CryptohomeClient) MountVault(ctx context.Context, username, password, label string, create bool, config *VaultConfig) error {
+// vaultConfigToExtraFlags converts VaultConfig to flags accepted by the cryptohome command line.
+func vaultConfigToExtraFlags(config *VaultConfig) []string {
 	const (
 		// mountFlagEphemeral is the flag passed to cryptohome command line when you want the vault to be ephemeral.
 		mountFlagEphemeral = "--ensure_ephemeral"
@@ -214,7 +215,29 @@ func (u *CryptohomeClient) MountVault(ctx context.Context, username, password, l
 	if config.Ecryptfs {
 		extraFlags = append(extraFlags, mountFlagEcryptfs)
 	}
-	if _, err := u.binary.mountEx(ctx, username, password, create, label, extraFlags); err != nil {
+	return extraFlags
+}
+
+// MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
+// For extraFlags, please see MountFlag* series of constants (ex: MountFlagEphemeral)
+func (u *CryptohomeClient) MountVault(ctx context.Context, username, password, label string, create bool, config *VaultConfig) error {
+	extraFlags := vaultConfigToExtraFlags(config)
+	extraFlags = append(extraFlags, "--password="+password)
+	if _, err := u.binary.mountEx(ctx, username, create, label, extraFlags); err != nil {
+		return errors.Wrap(err, "failed to mount")
+	}
+	return nil
+}
+
+// MountChallengeRespVault mounts the vault by authenticating through the challenge response method.
+func (u *CryptohomeClient) MountChallengeRespVault(ctx context.Context, username, label, keyDelegateName, keyDelegatePath string, challengeSPKI []byte, challengeAlg cpb.ChallengeSignatureAlgorithm, create bool, config *VaultConfig) error {
+	extraFlags := vaultConfigToExtraFlags(config)
+	extraFlags = append(extraFlags, "--challenge_alg="+challengeAlg.String())
+	extraFlags = append(extraFlags, "--challenge_spki="+hex.EncodeToString(challengeSPKI))
+	extraFlags = append(extraFlags, "--key_delegate_name="+keyDelegateName)
+	extraFlags = append(extraFlags, "--key_delegate_path="+keyDelegatePath)
+
+	if _, err := u.binary.mountEx(ctx, username, create, label, extraFlags); err != nil {
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil
@@ -252,9 +275,23 @@ func (u *CryptohomeClient) GetSystemSalt(ctx context.Context, useDBus bool) (str
 	return outs, nil
 }
 
-// CheckVault checks the vault via |CheckKeyEx| dbus mehod.
+// CheckVault checks the vault via |CheckKeyEx| dbus method with username/password auth.
 func (u *CryptohomeClient) CheckVault(ctx context.Context, username, password, label string) (bool, error) {
-	_, err := u.binary.checkKeyEx(ctx, username, password, label)
+	_, err := u.binary.checkKeyEx(ctx, username, label, []string{"--password=" + password})
+	if err != nil {
+		return false, errors.Wrap(err, "failed to check key")
+	}
+	return true, nil
+}
+
+// CheckChallengeRespVault checks the vault via |CheckKeyEx| dbus method with challenge-response auth.
+func (u *CryptohomeClient) CheckChallengeRespVault(ctx context.Context, username, label, keyDelegateName, keyDelegatePath string, challengeSPKI []byte, challengeAlg cpb.ChallengeSignatureAlgorithm) (bool, error) {
+	var extraFlags []string
+	extraFlags = append(extraFlags, "--challenge_alg="+challengeAlg.String())
+	extraFlags = append(extraFlags, "--challenge_spki="+hex.EncodeToString(challengeSPKI))
+	extraFlags = append(extraFlags, "--key_delegate_name="+keyDelegateName)
+	extraFlags = append(extraFlags, "--key_delegate_path="+keyDelegatePath)
+	_, err := u.binary.checkKeyEx(ctx, username, label, extraFlags)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check key")
 	}
