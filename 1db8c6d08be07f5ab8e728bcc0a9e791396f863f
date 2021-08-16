@@ -235,6 +235,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c64cfb5_56aaab69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T02:41:51Z",
+      "side": 1,
+      "message": "Is it possible to count the line numbers before loop? Then using i\u003crowRount in loop condition.\n\nOtherwise, it is not clear between `failed to find row` and `failed to read row`",
+      "parentUuid": "cd042c8f_458d7cb6",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 382,
+        "endChar": 90
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80d8906a_d7eade36",
         "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
         "patchSetId": 36
