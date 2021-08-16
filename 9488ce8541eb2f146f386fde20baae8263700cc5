@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7e652d_c6ca8aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/setup/arc_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T04:20:53Z",
+      "side": 1,
+      "message": "So if centerBtn does not exist, just return?\nIf yes, please add a comment to explain. In addition, please check the error: strings.Contains(err.Error(), nodewith.ErrNotFound)",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "9488ce8541eb2f146f386fde20baae8263700cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01bd30ce_9e0de035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/setup/arc_window.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T04:20:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "9488ce8541eb2f146f386fde20baae8263700cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
