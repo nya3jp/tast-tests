@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -84,6 +85,22 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode in this fixture.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedInClamshellMode",
+		Desc: "ARC is booted in clamshell mode",
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
