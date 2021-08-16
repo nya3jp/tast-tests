@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81f5b12_ab546d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/ec_device_node.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-16T21:10:53Z",
+      "side": 1,
+      "message": "Does hwdep.ChromeEC() match the situations where /dev/cros_ec should exist?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 110
+      },
+      "revId": "414221cab24c50e9b262e4e52aa2595173af9507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
