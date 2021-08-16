@@ -16,6 +16,69 @@
       "message": "LGTM",
       "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505f37e5_dae2207e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:59:18Z",
+      "side": 1,
+      "message": "nit/style:\n\nconst rtd2141InfoPattern \u003d ...\n\nalso could you add document? Nice to have some reference of this pattern.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f465e2d_70f64335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:59:18Z",
+      "side": 1,
+      "message": "hwdep.Platform/SkipOnModel is in general recommended not to use.\nCould you define an appropriate schema and dependency, instead?\n\nYou may want to talk to chromeos-infra engs, and yamaguchi@ from Tast framework team to figure out the details.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48b4ef1_fbf5c6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:59:18Z",
+      "side": 1,
+      "message": "does |output| multi-line?\nIf so, it is recommended to avoid putting on the log message, instead dump it into a file.",
+      "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
