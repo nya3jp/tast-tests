@@ -48,6 +48,14 @@ func LaunchFromShelfContextMenu(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "multiple_windows")
 
+	// Verify that the Files app should be pinned by default to the shelf for this device.
+	if pinned, err := isFilesAppPinnedByDefault(ctx, tconn); err != nil {
+		s.Fatal("Failed to retrieve list of pinned apps: ", err)
+	} else if !pinned {
+		s.Log("Files app is not pinned to the shelf by default on this device")
+		return
+	}
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
@@ -86,4 +94,24 @@ func LaunchFromShelfContextMenu(ctx context.Context, s *testing.State) {
 	}, pollOpts); err != nil {
 		s.Fatal("Failed as multiple or no Files app windows visible: ", err)
 	}
+}
+
+// isFilesAppPinnedByDefault verifies that Files app should be pinned by default
+// and is used to ensure Files app will appear in the shelf.
+func isFilesAppPinnedByDefault(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	appIDs, err := ash.GetDefaultPinnedAppIDs(ctx, tconn)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get the list of default pinned app IDs")
+	}
+	filesAppIsPinned := false
+	for _, id := range appIDs {
+		if id == apps.Files.ID {
+			filesAppIsPinned = true
+			break
+		}
+	}
+	if !filesAppIsPinned {
+		return false, nil
+	}
+	return true, nil
 }
