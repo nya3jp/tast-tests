@@ -17,9 +17,10 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
@@ -168,11 +169,19 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 		keyAlg      = cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1
 	)
 
+	cmdRunner := hwseclocal.NewCmdRunner()
+
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+
+	utility := helper.CryptohomeClient()
+
 	// Make sure the test starts from a missing cryptohome.
-	cryptohome.RemoveUserDir(ctx, testUser)
+	utility.UnmountAndRemoveVault(ctx, testUser)
 	// Clean up the cryptohome created by this test, if any, during shutdown.
-	defer cryptohome.RemoveUserDir(ctx, testUser)
-	defer cryptohome.UnmountVault(ctx, testUser)
+	defer utility.UnmountAndRemoveVault(ctx, testUser)
 
 	// Use a pseudorandom generator with a fixed seed, to make the values used by
 	// the test predictable.
@@ -180,7 +189,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 
 	// Make sure the ephemeral users device policy is not set.
 	// TODO(crbug.com/1054004); Remove after Tast starts to guarantee that.
-	err := clearDevicePolicy(ctx)
+	err = clearDevicePolicy(ctx)
 	if err != nil {
 		s.Fatal("Failed to clear device policy: ", err)
 	}
@@ -210,42 +219,8 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	}
 	defer keyDelegate.close()
 
-	cryptohomeClient, err := cryptohome.NewClient(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to cryptohome D-Bus object: ", err)
-	}
-
 	// Create the challenge-response protected cryptohome.
-	keyType := cpb.KeyData_KEY_TYPE_CHALLENGE_RESPONSE
-	localKeyLabel := keyLabel
-	dbusServiceName := dbusName
-	authReq := cpb.AuthorizationRequest{
-		Key: &cpb.Key{
-			Data: &cpb.KeyData{
-				Type:  &keyType,
-				Label: &localKeyLabel,
-				ChallengeResponseKey: []*cpb.ChallengePublicKeyInfo{
-					{
-						PublicKeySpkiDer: pubKeySPKIDER,
-						SignatureAlgorithm: []cpb.ChallengeSignatureAlgorithm{
-							keyAlg,
-						},
-					},
-				},
-			},
-		},
-		KeyDelegate: &cpb.KeyDelegate{
-			DbusServiceName: &dbusServiceName,
-			DbusObjectPath:  &keyDelegate.dbusPath,
-		},
-	}
-	copyAuthKey := true
-	mountReq := cpb.MountRequest{
-		Create: &cpb.CreateRequest{
-			CopyAuthorizationKey: &copyAuthKey,
-		},
-	}
-	if err := cryptohomeClient.Mount(ctx, testUser, &authReq, &mountReq); err != nil {
+	if err := utility.MountChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg, true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create cryptohome: ", err)
 	}
 	if keyDelegate.challengeCallCnt == 0 {
@@ -254,18 +229,17 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 
 	// Authenticate while the cryptohome is still mounted (modeling the case of
 	// the user unlocking the device from the Lock Screen).
-	if err := cryptohomeClient.CheckKey(ctx, testUser, &authReq); err != nil {
+	if _, err := utility.CheckChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg); err != nil {
 		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
 	}
 
-	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
+	if _, err := utility.Unmount(ctx, testUser); err != nil {
 		s.Fatal("Failed to unmount cryptohome: ", err)
 	}
 
 	// Mount the existing challenge-response protected cryptohome.
-	mountReq.Create = nil
 	keyDelegate.challengeCallCnt = 0
-	if err := cryptohomeClient.Mount(ctx, testUser, &authReq, &mountReq); err != nil {
+	if err := utility.MountChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg, false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount existing cryptohome: ", err)
 	}
 	if keyDelegate.challengeCallCnt == 0 {
