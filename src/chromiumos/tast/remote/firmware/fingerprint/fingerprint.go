@@ -359,7 +359,10 @@ func FlashFirmware(ctx context.Context, d *dut.DUT, needsRebootAfterFlashing boo
 	}
 	flashCmd := []string{"flash_fp_mcu", "--noservices", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
-	if err := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...).Run(ssh.DumpLogOnError); err != nil {
+	cmd := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...)
+	out, err := cmd.CombinedOutput()
+	testing.ContextLog(ctx, "flash_fp_mcu output:", "\n", string(out))
+	if err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")
 	}
 
