@@ -94,7 +94,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to cleanup: ", err)
 	}
 
-	if err := cryptohome.MountVault(ctx, username, "testpass", "fake_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, "fake_label", hwsec.NewPassAuthConfig(username, "testpass"), true /* create */, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 

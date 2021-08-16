@@ -107,7 +107,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 	}
 
 	// Now create the vault.
-	if err := cryptohome.MountVault(ctx, testUsername, testPassword, testKeyLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, testKeyLabel, hwsec.NewPassAuthConfig(testUsername, testPassword), true, hwsec.NewVaultConfig()); err != nil {
 		return nil, errors.Wrap(err, "failed to mount vault")
 	}
 	defer func() {

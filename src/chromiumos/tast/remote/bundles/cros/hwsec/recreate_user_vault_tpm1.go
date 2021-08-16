@@ -59,7 +59,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 
 	s.Log("Phase 1: mounts vault for the test user")
 
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
@@ -78,7 +78,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 	if err := helper.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot: ", err)
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
@@ -104,7 +104,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {

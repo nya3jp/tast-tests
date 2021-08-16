@@ -152,7 +152,7 @@ func CryptohomeNonDirs(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clobber the data: ", err)
 			}
 			// The mount vault operation should fail.
-			if err := cryptohome.MountVault(ctx, user, password, util.PasswordLabel, true, hwsec.NewVaultConfig()); err == nil {
+			if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err == nil {
 				s.Fatal("Mount unexpectedly succeeded")
 			}
 		})

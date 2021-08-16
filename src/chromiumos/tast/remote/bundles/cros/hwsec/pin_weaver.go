@@ -107,7 +107,7 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 			s.Fatal("Failed to unmountAll: ", err)
 		}
 
-		if err := cryptohomeHelper.MountVault(ctx, user1, testPassword, "default", true, hwsec.NewVaultConfig()); err != nil {
+		if err := cryptohomeHelper.MountVault(ctx, "default", hwsec.NewPassAuthConfig(user1, testPassword), true, hwsec.NewVaultConfig()); err != nil {
 			s.Fatal("Failed to create initial user: ", err)
 		}
 		if err := cryptohomeHelper.AddVaultKey(ctx, user1, testPassword, "default", goodPin, keyLabel1, true); err != nil {
@@ -127,7 +127,7 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 		}
 	}
 
-	if err := cryptohomeHelper.MountVault(ctx, user1, goodPin, keyLabel1, false, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user1, goodPin), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount with PIN: ", err)
 	}
 	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
@@ -136,12 +136,12 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 
 	// Supply invalid credentials five times to trigger firmware lockout of the credential.
 	for i := 0; i < 5; i++ {
-		if err := cryptohomeHelper.MountVault(ctx, user1, badPin, keyLabel1, false, hwsec.NewVaultConfig()); err == nil {
+		if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user1, badPin), false, hwsec.NewVaultConfig()); err == nil {
 			s.Fatal("Mount succeeded but should have failed")
 		}
 	}
 
-	if err := cryptohomeHelper.MountVault(ctx, user1, testPassword, "default", false, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohomeHelper.MountVault(ctx, "default", hwsec.NewPassAuthConfig(user1, testPassword), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user: ", err)
 	}
 	output, err := cryptohomeHelper.GetKeyData(ctx, user1, keyLabel1)
@@ -155,7 +155,7 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 		s.Fatal("Failed to unmountAll: ", err)
 	}
 
-	if err := cryptohomeHelper.MountVault(ctx, user1, goodPin, keyLabel1, false, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user1, goodPin), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount with PIN: ", err)
 	}
 	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
@@ -163,7 +163,7 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 	}
 
 	// Create a new user to test removing.
-	if err := cryptohomeHelper.MountVault(ctx, user2, testPassword, "default", true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohomeHelper.MountVault(ctx, "default", hwsec.NewPassAuthConfig(user2, testPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user2: ", err)
 	}
 

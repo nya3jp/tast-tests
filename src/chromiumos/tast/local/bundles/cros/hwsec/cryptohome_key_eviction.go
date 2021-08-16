@@ -69,7 +69,7 @@ func CryptohomeKeyEviction(ctx context.Context, s *testing.State) {
 	}
 
 	// Mount the user vault.
-	if err := cryptohome.MountVault(ctx, user, password, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault: ", err)
 	}
 
@@ -94,7 +94,7 @@ func CryptohomeKeyEviction(ctx context.Context, s *testing.State) {
 	if _, err := cryptohome.Unmount(ctx, user); err != nil {
 		s.Fatal("Failed to unmount: ", err)
 	}
-	if err := cryptohome.MountVault(ctx, user, password, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, password), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault: ", err)
 	}
 }
