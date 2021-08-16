@@ -271,6 +271,9 @@ func (h *CmdHelper) GetTPMVersion(ctx context.Context) (string, error) {
 	return strings.TrimSpace(string(out)), err
 }
 
+// ErrIneffectiveReset is returned if the TPM is owned after reset attempt.
+var ErrIneffectiveReset = errors.New("ineffective reset of TPM")
+
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
 // Optionally removes files from the DUT to simulate a powerwash.
@@ -359,7 +362,7 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 			testing.ContextLog(ctx, "Failed to save TPM clear logs: ", err)
 		}
 		// If the TPM is ready, the reset was not successful
-		return errors.New("ineffective reset of TPM")
+		return ErrIneffectiveReset
 	}
 
 	return nil
