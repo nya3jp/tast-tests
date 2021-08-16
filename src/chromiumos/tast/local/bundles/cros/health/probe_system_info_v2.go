@@ -7,10 +7,10 @@ package health
 import (
 	"context"
 	"path"
+	"strconv"
 	"strings"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/utils"
@@ -43,7 +43,7 @@ func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get expected system info v2: ", err)
 	}
-	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "DmiInfo")); d != "" {
+	if d := cmp.Diff(e, g); d != "" {
 		s.Fatal("SystemInfoV2 validation failed (-expected + got): ", d)
 	}
 }
@@ -179,11 +179,45 @@ func expectedVpdInfo(ctx context.Context) (*vpdInfo, error) {
 	return &e, eh.ToError()
 }
 
+func expectedChassisType(fpath string) (*jsontypes.Uint64, error) {
+	v, err := utils.ReadOptionalStringFile(fpath)
+	if v == nil {
+		return nil, err
+	}
+	i, err := strconv.Atoi(*v)
+	if err != nil {
+		return nil, err
+	}
+	r := jsontypes.Uint64(i)
+	return &r, nil
+}
+
+func expectedDmiInfo(ctx context.Context) (*dmiInfo, error) {
+	const (
+		dmi = "/sys/class/dmi/id"
+	)
+	var eh utils.ErrorHolder
+	e := dmiInfo{
+		BiosVendor:     eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "bios_vendor"))).(*string),
+		BiosVersion:    eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "bios_version"))).(*string),
+		BoardName:      eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "board_name"))).(*string),
+		BoardVender:    eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "board_vendor"))).(*string),
+		BoardVersion:   eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "board_version"))).(*string),
+		ChassisVendor:  eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "chassis_vendor"))).(*string),
+		ChassisType:    eh.Handle(expectedChassisType(path.Join(dmi, "chassis_type"))).(*jsontypes.Uint64),
+		ProductFamily:  eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "product_family"))).(*string),
+		ProductName:    eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "product_name"))).(*string),
+		ProductVersion: eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "product_version"))).(*string),
+		SysVendor:      eh.Handle(utils.ReadOptionalStringFile(path.Join(dmi, "sys_vendor"))).(*string),
+	}
+	return &e, eh.ToError()
+}
+
 func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
 	var eh utils.ErrorHolder
 	return systemInfo{
 		OsInfo:  eh.Handle(expectedOsInfo(ctx)).(osInfo),
 		VpdInfo: eh.Handle(expectedVpdInfo(ctx)).(*vpdInfo),
-		DmiInfo: nil,
+		DmiInfo: eh.Handle(expectedDmiInfo(ctx)).(*dmiInfo),
 	}, eh.ToError()
 }
