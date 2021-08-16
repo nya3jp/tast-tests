@@ -106,6 +106,24 @@
       "parentUuid": "c5f65a68_7fc1ab20",
       "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ec9683_c8faf20c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-16T09:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68f58e9_9a26a596",
+      "revId": "f8c8d3c4e5103094e2311bc2de54eaa3f0fcd8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
