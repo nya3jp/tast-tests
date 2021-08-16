@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa7dfdd_6d830cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-16T23:50:50Z",
+      "side": 1,
+      "message": "nit: consider adding a third IME here to ensure that ctrl+space is different to ctrl+shift+space?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
