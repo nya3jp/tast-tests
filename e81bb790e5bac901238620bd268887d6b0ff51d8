@@ -16,6 +16,24 @@
       "message": "CC+\u003dyamaguchi@.\n\nThe test metadata needs to be build-time constant.\nThe old code is clear, because it is string array. However, the new code is function call, so theoretically the function can \"calculate\" some value, which Tast should block.\n\nCould you share your intention of the CL so that I may make further suggestion.\n",
       "revId": "e81bb790e5bac901238620bd268887d6b0ff51d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4caa1ce_5c769d85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-16T18:40:20Z",
+      "side": 1,
+      "message": "The intent is to create a immutable string slice that holds the service deps for FirmwareTest, but you can\u0027t create an immutable string slice.\n\nWhat would you recommend?",
+      "parentUuid": "4ed25ef1_3a7899aa",
+      "revId": "e81bb790e5bac901238620bd268887d6b0ff51d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
