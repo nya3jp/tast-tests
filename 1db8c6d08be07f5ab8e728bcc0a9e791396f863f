@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bef57a5_275fe0be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: DumpUITreeWithScreenshotOnError",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 63
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd36214_94526884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: This comment is not necessary.",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 109
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988310c6_8c93d0b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: This name is confused with normal tast test result. Can you rename it like `benchmark_result`",
+      "range": {
+        "startLine": 110,
+        "startChar": 72,
+        "endLine": 110,
+        "endChar": 78
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863351d3_d7022ebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "when polling happens, it might repeatedly print `Click the start button`. The error is not printed except `Start button was clicked but no response`. Can you use uiauto.Retry for this logic. The attempt \u0026 error print is pretty clear.",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee42cff_f67c461b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: Can you rename the variable to make it more readable? title? window? label?\nI guess it is benchMarkResultLabel",
+      "range": {
+        "startLine": 305,
+        "startChar": 7,
+        "endLine": 305,
+        "endChar": 23
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a122d5f_9338cb4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit surround space on \u0027/\u0027.\nbtw, it should be `get result` for `/`, and `get results` for `\u0026`",
+      "range": {
+        "startLine": 348,
+        "startChar": 77,
+        "endLine": 348,
+        "endChar": 78
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34511b13_97d2d486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: only one double quote here. Besides comment should finish with full stop.",
+      "range": {
+        "startLine": 348,
+        "startChar": 159,
+        "endLine": 348,
+        "endChar": 160
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc40ebe8_3d3caa58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "IIUC This is lazy and poor implementation. It uses an error as the end of the loop.",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 382,
+        "endChar": 90
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d8906a_d7eade36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: redundant comment.",
+      "range": {
+        "startLine": 424,
+        "startChar": 76,
+        "endLine": 424,
+        "endChar": 113
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8993bd34_3258a06e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: redundant comment.",
+      "range": {
+        "startLine": 433,
+        "startChar": 101,
+        "endLine": 433,
+        "endChar": 143
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172fd004_f014bd16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/gfxbench_public_android_app.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T00:58:53Z",
+      "side": 1,
+      "message": "nit: double space",
+      "range": {
+        "startLine": 436,
+        "startChar": 52,
+        "endLine": 436,
+        "endChar": 54
+      },
+      "revId": "1db8c6d08be07f5ab8e728bcc0a9e791396f863f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
