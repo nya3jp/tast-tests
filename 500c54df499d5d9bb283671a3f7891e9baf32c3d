@@ -98,6 +98,30 @@
       },
       "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13aff78_d05a33e1",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-16T16:13:27Z",
+      "side": 1,
+      "message": "For the rootfs lacros, f.LacrosPath is set to /run/lacros which is mounted read only causing ioutil.TempDir to fail creating a user data directory.\nIn the future I think we could just open the rootfs lacros from the UI shelf with the default user data directory instead of from the python launch script with this temp dir by default.",
+      "parentUuid": "59c423b2_b03d02d1",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 2
+      },
+      "revId": "500c54df499d5d9bb283671a3f7891e9baf32c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
