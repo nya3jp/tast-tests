@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafdefef_53ea9454",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:06:11Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "d33a0669b806d58dfbdd9816c5e4a1cd09a50e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72daf611_204f613c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-16T06:06:11Z",
+      "side": 1,
+      "message": "nit/style.\n\nvar wp struct {\n  Plugins []struct {\n    ...\n  }\n}\n\ncan work.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "d33a0669b806d58dfbdd9816c5e4a1cd09a50e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
