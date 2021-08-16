@@ -8,16 +8,15 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -27,16 +26,21 @@ func init() {
 		Func:         VirtualKeyboardChangeInput,
 		Desc:         "Checks that changing input method in different ways",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Pre:               pre.VKEnabledTablet,
+			Name:              "tablet",
+			Pre:               pre.VKEnabledTabletReset,
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			ExtraAttr:         []string{"group:input-tools-upstream"},
+		}, {
+			Name:              "a11y",
+			Pre:               pre.VKEnabledClamshellReset,
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "informational",
-			ExtraAttr:         []string{"informational"},
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
@@ -49,14 +53,14 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	defaultInputMethod := ime.EnglishUS.ID
-	defaultInputMethodLabel := "US"
-	defaultInputMethodOption := "English (US)"
-	inputMethod := ime.FrenchFrance.ID
-	InputMethodLabel := "FR"
+	inputMethod := ime.Japanese
+	typingTestData, ok := data.TypingMessageHello.GetInputData(inputMethod)
+	if !ok {
+		s.Fatalf("Test Data for input method %v does not exist", inputMethod)
+	}
 
-	if err := ime.AddInputMethod(ctx, tconn, ime.ChromeIMEPrefix+inputMethod); err != nil {
-		s.Fatal("Failed to add input method: ", err)
+	if err := inputMethod.Install(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to install input method %q: %v", inputMethod, err)
 	}
 
 	its, err := testserver.Launch(ctx, cr, tconn)
@@ -65,50 +69,28 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	s.Log("Switch input method with keybaord shortcut Ctrl+Shift+Space")
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer keyboard.Close()
+	ui := uiauto.New(tconn)
+	vkbctx := vkb.NewContext(cr, tconn)
 
 	inputField := testserver.TextAreaInputField
-	defaultInputMethodOptionFinder := vkb.NodeFinder.Name(defaultInputMethodOption).Role(role.StaticText)
+	inputMethodOption := vkb.NodeFinder.Name(inputMethod.Name).Role(role.StaticText)
 	vkLanguageMenuFinder := vkb.KeyFinder.Name("open keyboard menu")
-	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("verify changing input method with shortcut and virtual keyboard UI",
-		// Trigger VK and assert default IME.
+
+	if err := uiauto.Combine("verify changing input method on virtual keyboard",
+		// Switch IME using virtual keyboard language menu.
 		its.ClickFieldUntilVKShown(inputField),
-		assertInputMethod(tconn, defaultInputMethod, defaultInputMethodLabel),
-		// Switch IME with shortcut and assert IME changed successfully.
-		keyboard.AccelAction("Ctrl+Shift+Space"),
-		assertInputMethod(tconn, inputMethod, InputMethodLabel),
-		// Switch back to default IME on virtual keyboard UI.
 		ui.LeftClick(vkLanguageMenuFinder),
-		ui.LeftClick(defaultInputMethodOptionFinder),
-		assertInputMethod(tconn, defaultInputMethod, defaultInputMethodLabel),
+		ui.LeftClick(inputMethodOption),
+		ui.WaitUntilExists(vkb.NodeFinder.Name(inputMethod.ShortLabel).Role(role.StaticText)),
+
+		// Validate current input method change.
+		inputMethod.WaitUntilActivated(tconn),
+
+		// Validate typing test.
+		vkbctx.TapKeysIgnoringCase(typingTestData.CharacterKeySeq),
+		vkbctx.SelectFromSuggestion(typingTestData.ExpectedText),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), typingTestData.ExpectedText),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify changing input method: ", err)
 	}
-}
-
-// assertInputMethod asserts current input method.
-// Input method changing is done async between front-end ui and background.
-// So nicely to assert both of them to make sure input method changed completely.
-func assertInputMethod(tconn *chrome.TestConn, inputMethod, inputMethodLabel string) uiauto.Action {
-	ui := uiauto.New(tconn)
-	assertAction := func(ctx context.Context) error {
-		currentInputMethod, err := ime.CurrentInputMethod(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get current input method")
-		} else if currentInputMethod != ime.ChromeIMEPrefix+inputMethod {
-			return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.ChromeIMEPrefix+inputMethod)
-		}
-
-		if err := ui.WaitUntilExists(vkb.NodeFinder.Name(inputMethodLabel).Role(role.StaticText))(ctx); err != nil {
-			return errors.Wrapf(err, "failed to wait for language menu label change to %s", inputMethodLabel)
-		}
-		return nil
-	}
-	return ui.WithInterval(1*time.Second).Retry(10, assertAction)
 }
