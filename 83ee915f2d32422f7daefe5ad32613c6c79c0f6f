@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73dcf438_4423ce69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-16T08:45:11Z",
+      "side": 1,
+      "message": "Fixed bad delete. Also trigger dry-run",
+      "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
