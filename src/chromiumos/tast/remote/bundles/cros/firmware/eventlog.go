@@ -20,9 +20,10 @@ import (
 
 // eventLogParams contains all the data needed to run a single test iteration.
 type eventLogParams struct {
-	resetType     firmware.ResetType
-	bootToMode    fwCommon.BootMode
-	suspendResume bool
+	resetType            firmware.ResetType
+	bootToMode           fwCommon.BootMode
+	suspendResume        bool
+	disableSuspendToIdle bool
 	// All of the regexes in one of the sets must be present. Ex.
 	// [][]string{[]string{`Case 1A`, `Case 1B`}, []string{`Case 2A`, `Case 2[BC]`}}
 	// Any of these events would pass:
@@ -136,7 +137,19 @@ func init() {
 					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
 				},
 			},
-			// TODO(b/174800291): Test eventlog upon suspend/resume w/ disable_suspend_to_idle
+			// Test eventlog upon suspend/resume w/ disable_suspend_to_idle
+			{
+				Name: "suspend_resume_noidle",
+				Pre:  pre.NormalMode(),
+				Val: eventLogParams{
+					suspendResume:        true,
+					disableSuspendToIdle: true,
+					requiredEventSets: [][]string{
+						[]string{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
+					},
+					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
+				},
+			},
 			// TODO(b/174800291): Test eventlog with hardware watchdog
 		},
 	})
@@ -172,21 +185,44 @@ func Eventlog(ctx context.Context, s *testing.State) {
 			s.Fatal("Error resetting DUT: ", err)
 		}
 	} else if param.bootToMode != "" {
+		if param.bootToMode == fwCommon.BootModeRecovery {
+			if err := h.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
+				s.Fatal("USBKey not working: ", err)
+			}
+		}
 		if err = ms.RebootToMode(ctx, param.bootToMode); err != nil {
 			s.Fatalf("Error during transition to %s: %+v", param.bootToMode, err)
 		}
 	} else if param.suspendResume {
+		if param.disableSuspendToIdle {
+			if err = h.DUT.Conn().CommandContext(ctx, "sh", "-c",
+				"mkdir -p /tmp/power_manager && "+
+					"echo 0 > /tmp/power_manager/suspend_to_idle && "+
+					"mount --bind /tmp/power_manager /var/lib/power_manager && "+
+					"restart powerd",
+			).Run(ssh.DumpLogOnError); err != nil {
+				s.Fatal("Failed to disable suspend to idle: ", err)
+			}
+			defer func(ctx context.Context) {
+				if err := h.DUT.Conn().CommandContext(ctx, "sh", "-c",
+					"umount /var/lib/power_manager && restart powerd",
+				).Run(ssh.DumpLogOnError); err != nil {
+					s.Fatal("Failed to restore suspend to idle: ", err)
+				}
+			}(ctx)
+		}
 		if err = h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", "-wakeup_timeout=10").Run(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to suspend: ", err)
 		}
-		if err = testing.Sleep(ctx, 5*time.Second); err != nil {
+		if err = testing.Sleep(ctx, 15*time.Second); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
 	}
 	events, err := r.EventlogListSince(ctx, cutoffTime)
 	if err != nil {
-		s.Fatal("Gathering events after normal reboot: ", err)
+		s.Fatal("Gathering events: ", err)
 	}
+	s.Logf("Events: %+v", events)
 	requiredEventsFound := false
 	for _, requiredEventSet := range param.requiredEventSets {
 		for _, requiredEvent := range requiredEventSet {
