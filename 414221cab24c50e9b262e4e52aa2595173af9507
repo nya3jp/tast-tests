@@ -22,6 +22,30 @@
       },
       "revId": "414221cab24c50e9b262e4e52aa2595173af9507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c2484e_631fee94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/ec_device_node.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-08-16T21:42:12Z",
+      "side": 1,
+      "message": "It should eventually, but it currently looks for for the existence of /dev/cros_ec as a proxy for whether the EC should exist: https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/runner/features.go;rcl\u003d948841f808fcb39f5fddd5976234da750b1072b4;l\u003d297\n\nThis workaround may be ready to remove based on the latest discussion in b/173741162 (since the required data has been backfilled).\n\nAdding hwdep.ChromeEC() here (once it no longer depends on the existence of /dev/cros_ec) will complete this TODO.",
+      "parentUuid": "a81f5b12_ab546d11",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 110
+      },
+      "revId": "414221cab24c50e9b262e4e52aa2595173af9507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
