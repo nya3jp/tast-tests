@@ -22,6 +22,30 @@
       },
       "revId": "88eb5169f5194cd91bb3c6789a64a5423ecd4868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b745f6_15c98935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T08:54:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "588bbc16_a91da485",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "88eb5169f5194cd91bb3c6789a64a5423ecd4868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9c6ad3_1fa0fcf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T08:54:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec118c0_80dd55ee",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a6fd277_e0885a1e",
@@ -346,6 +370,30 @@
       "side": 1,
       "message": "So maybe just add a TODO to add some quick PK location based typing once that feature is available?\n\n\n(If refactoring VK test, I would consider something similar over there as well but for VK typing)",
       "parentUuid": "88a18726_168ec2ea",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "11008e93ba4e39a37d1641223e8b5d3f7f358de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6bd9f0_731986e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-16T08:54:21Z",
+      "side": 1,
+      "message": "Added TODO(b/196771467). I will refactor VK test soon and add typing tests there.",
+      "parentUuid": "f07a919b_97774ff4",
       "range": {
         "startLine": 69,
         "startChar": 0,
