@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed012c1d_94805743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2021-08-16T05:12:20Z",
+      "side": 1,
+      "message": "Thanks David! I don\u0027t have +2 power.",
+      "revId": "09a1bb738792adc1ebde8c93c2b9c20c8c701df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
