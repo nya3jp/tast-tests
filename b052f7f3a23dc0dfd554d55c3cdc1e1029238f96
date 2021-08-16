@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e364c82_6ba5cfde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-16T09:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dafda7e_504ca635",
+      "range": {
+        "startLine": 75,
+        "startChar": 53,
+        "endLine": 75,
+        "endChar": 66
+      },
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f9c393_f3cdcc0a",
@@ -184,6 +208,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4ef855_79001f9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-16T09:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8f2938_5408edfc",
+      "range": {
+        "startLine": 90,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef7f1f64_4df45230",
@@ -197,6 +245,30 @@
       "writtenOn": "2021-08-09T13:59:23Z",
       "side": 1,
       "message": "same: \"expected\" should not be bound to info. Instead you can have method like NewOsInfo",
+      "range": {
+        "startLine": 105,
+        "startChar": 20,
+        "endLine": 105,
+        "endChar": 28
+      },
+      "revId": "b052f7f3a23dc0dfd554d55c3cdc1e1029238f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919d7a57_d7b6f7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-16T09:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7f1f64_4df45230",
       "range": {
         "startLine": 105,
         "startChar": 20,
