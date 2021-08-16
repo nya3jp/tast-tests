@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219f8104_bb868395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T03:46:43Z",
+      "side": 1,
+      "message": "Hi Xibin, Thanks for making this cl much more readable. ",
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6aeb31_ba8a774f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T03:46:43Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 55,
+        "startChar": 101,
+        "endLine": 55,
+        "endChar": 106
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5c07cf_2c391227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T03:46:43Z",
+      "side": 1,
+      "message": "why return here?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82578e11_bea26e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T03:46:43Z",
+      "side": 1,
+      "message": "Maybe just return obj.WaitForExists(ctx, 10*time.Second) \u003d\u003d nil?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 12
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9182b942_91d439bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/pcmark_work_android_app.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-16T03:46:43Z",
+      "side": 1,
+      "message": "This func is the same as \"findInstallConfirmButton\" except the text, suggest to combine it to buttonWithText(ctx, d, text)",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 5
+      },
+      "revId": "a744ce5f1b7c973c8da488568b9e678e1705020e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
