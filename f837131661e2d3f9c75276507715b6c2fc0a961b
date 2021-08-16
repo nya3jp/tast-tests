@@ -16,6 +16,29 @@
       "message": "Pointed @John and @Keith to review this cl since you are already on the context of https://crrev.com/c/3096510. Thanks.",
       "revId": "f837131661e2d3f9c75276507715b6c2fc0a961b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd936b2_83be726d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-16T23:11:17Z",
+      "side": 1,
+      "message": "super nit- do we need to worry about autoshift here?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 85
+      },
+      "revId": "f837131661e2d3f9c75276507715b6c2fc0a961b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
