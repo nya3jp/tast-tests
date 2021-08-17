@@ -48,9 +48,10 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForTuneIn,
-				CommonTests:      testutil.ClamshellCommonTests,
-				AppSpecificTests: clamshellAppSpecificTestsForTuneIn,
+				LaunchTests:       clamshellLaunchForTuneIn,
+				ARCPSpecificTests: testutil.ClamshellARCPCommonTests,
+				CommonTests:       testutil.ClamshellCommonTests,
+				AppSpecificTests:  clamshellAppSpecificTestsForTuneIn,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -73,6 +74,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForTuneIn,
+				VMSpecificTests:  testutil.ClamshellVMCommonTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForTuneIn,
 			},

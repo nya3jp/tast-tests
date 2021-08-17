@@ -39,8 +39,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForTwitch,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:       clamshellLaunchForTwitch,
+				ARCPSpecificTests: testutil.ClamshellARCPCommonTests,
+				CommonTests:       testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -61,8 +62,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForTwitch,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:     clamshellLaunchForTwitch,
+				VMSpecificTests: testutil.ClamshellVMCommonTests,
+				CommonTests:     testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
