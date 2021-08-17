@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88c9cf1_f5188319",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:14:20Z",
+      "side": 1,
+      "message": "also add attr firmware_experimental until this test is stable.",
+      "range": {
+        "startLine": 40,
+        "startChar": 26,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b5ffd0_785cc35c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:14:20Z",
+      "side": 1,
+      "message": "This probably is not necessary, since pre.NormalMode() will do this also at the end of the test.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252e235e_425000d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:14:20Z",
+      "side": 1,
+      "message": "What is the purpose of this? You never use the client after this, and it doesn\u0027t seem like it would matter if chrome is logged in or not.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
