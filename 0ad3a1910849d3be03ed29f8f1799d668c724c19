@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b6d4b2_92d78d38",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88d6bc9_4e5920c9",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03df6ddd_263f2ca2",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-17T09:01:17Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d095f8d0_259223c5",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03df6ddd_263f2ca2",
       "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3b3ea5_d5c11da5",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef6e752_62d7d5dc",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae3189b6_6ec71c95",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-08-17T09:01:17Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdeb359a_dd648343",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3189b6_6ec71c95",
       "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0e976a_f7f3ab59",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422bf8f3_83b3fb52",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff9ac022_b27e4311",
@@ -116,6 +206,24 @@
       "writtenOn": "2021-08-17T09:01:17Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea72e9e_e1a13b55",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff9ac022_b27e4311",
       "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77aed34_4e8ef600",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201b79d9_02e43ab8",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b611392e_888ca1fa",
@@ -150,6 +276,24 @@
       "writtenOn": "2021-08-17T09:01:17Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b8a7d7_ada18f5a",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b611392e_888ca1fa",
       "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
