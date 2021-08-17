@@ -92,6 +92,30 @@
       },
       "revId": "826c1d49eb323ab7615002ead221e444064f0316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e19a340_9af740e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-17T08:26:46Z",
+      "side": 1,
+      "message": "Ah that\u0027s right.",
+      "parentUuid": "2cfafbcc_734d7630",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "826c1d49eb323ab7615002ead221e444064f0316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
