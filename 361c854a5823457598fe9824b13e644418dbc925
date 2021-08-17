@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe60518_19272713",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-17T19:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2a53dd_36464a1d",
+      "range": {
+        "startLine": 66,
+        "startChar": 49,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "361c854a5823457598fe9824b13e644418dbc925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d865002_fcf9349e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-17T16:47:57Z",
       "side": 1,
       "message": "I\u0027d split it by 2 if conditions and 2 error messages:\n\nif !rollbackPrev.IsEntropySet() {\n  s.Fatal(\"error message ...\")\n}\nif rollbackPrev.IsAntiRollbackSet() {\n  s.Fatal(\"error message ...\")\n}\n\nThis helps you with debugging in the future.\n\n\nSame in other places",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "361c854a5823457598fe9824b13e644418dbc925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4c7bd2_3b7b1b3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-17T19:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d865002_fcf9349e",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c100829c_f11eae62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-17T19:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7780ab0d_99937bd8",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "361c854a5823457598fe9824b13e644418dbc925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b489061b_4d87fe7e",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af73f244_6dc21119",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-17T19:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b489061b_4d87fe7e",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "361c854a5823457598fe9824b13e644418dbc925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25006ca4_8264f503",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-17T16:47:57Z",
       "side": 1,
       "message": "Please log value you have and expected value following this pattern:\n\n\"Unexpected \u003cvalue name\u003e value: got %d; want %d\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "361c854a5823457598fe9824b13e644418dbc925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf562e23_1d05720e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-17T19:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25006ca4_8264f503",
       "range": {
         "startLine": 94,
         "startChar": 0,
