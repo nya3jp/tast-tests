@@ -39,7 +39,9 @@ func init() {
 			"pmoy@google.com",
 			"khegde@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		// Fails on a number of builders.
+		// TODO(crbug/1240478): Re-enable test when fix has landed.
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
