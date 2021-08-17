@@ -22,6 +22,30 @@
       },
       "revId": "f35196bbfbb52baabb2f99c84949c20c3a1c468d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adddf5e7_e89cb99c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T20:20:12Z",
+      "side": 1,
+      "message": "All I know is what is in the bug. It does seem like leona is the only platform where this happens.",
+      "parentUuid": "d7b0f859_59429e52",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 66
+      },
+      "revId": "f35196bbfbb52baabb2f99c84949c20c3a1c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
