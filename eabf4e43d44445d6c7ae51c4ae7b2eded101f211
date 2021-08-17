@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df43fc4_53f2e621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "This patch does not pass the tast-lint presubmit. Please do not skip the presubmits when uploading changes. Many of these mistakes could have been caught before uploading. \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#coding-style-and-best-practices",
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526ccf00_c73a600f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Can this be an enum instead of a string?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a205bb65_5cf2e5c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Is there a Google group we can add to the contacts list?",
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dffe0a0_0b423430",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Can this Pre value be moved to the test definition since it\u0027s the same in both parameterized tests?",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df83380_f67a1921",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Keep the failure language consistent in the file: \"Failed opening servo: \"",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1929de16_64f21b98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Remove space between fatal message and colon here and elsewhere in this file.",
+      "range": {
+        "startLine": 79,
+        "startChar": 50,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ab6fe7_581ce8c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "use s.Fatal here",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d313c9_8945e1fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Should this be \"with error\"? If so I think we can just remove that part and leave \"Failed to shutdown DUT: \"",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79d365e_e35e77d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Add colon and space",
+      "range": {
+        "startLine": 114,
+        "startChar": 33,
+        "endLine": 114,
+        "endChar": 34
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5551035_4ba17773",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "Do not capitalize error strings: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 138,
+        "startChar": 24,
+        "endLine": 138,
+        "endChar": 25
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7c9af6_3554a485",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-17T18:59:25Z",
+      "side": 1,
+      "message": "These can be combined in the form of \n\nif count, err :\u003d ....; if err !\u003d nil {\n  return err\n} else if count !\u003d sleepStateValue {\n  ...\n}",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
