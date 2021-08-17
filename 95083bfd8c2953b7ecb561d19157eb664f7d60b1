@@ -16,6 +16,23 @@
       "message": "Hello,\nSome minor improvements in the tests for better understanding and following tast lint convention.\n\nPTAL, Thanks",
       "revId": "95083bfd8c2953b7ecb561d19157eb664f7d60b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a76fdd_72a1e6e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-17T21:21:14Z",
+      "side": 1,
+      "message": "Tast LGTM",
+      "revId": "95083bfd8c2953b7ecb561d19157eb664f7d60b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
