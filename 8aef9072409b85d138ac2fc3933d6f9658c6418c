@@ -16,6 +16,23 @@
       "message": "stevecho@, tast-owners PTAL\n\nOthers FYI",
       "revId": "8aef9072409b85d138ac2fc3933d6f9658c6418c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c828dff8_32b8dc0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-17T00:52:15Z",
+      "side": 1,
+      "message": "Reviewers ping",
+      "revId": "8aef9072409b85d138ac2fc3933d6f9658c6418c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
