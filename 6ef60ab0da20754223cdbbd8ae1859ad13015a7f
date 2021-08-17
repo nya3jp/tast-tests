@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691f50dc_12972b8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-17T08:29:12Z",
+      "side": 1,
+      "message": "This one should only be run when oobe_config_save is still up. I will fix this as soon as I know where to best put those calls.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 69
+      },
+      "revId": "6ef60ab0da20754223cdbbd8ae1859ad13015a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -126,6 +126,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c702b499_7a9b7eec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-17T08:29:12Z",
+      "side": 1,
+      "message": "If and how do I best replace the CommandContext calls? Either by using existing services, e.g. daemon_control and dutfs or is it better to implement those myslef in rollback_service?",
+      "parentUuid": "ab569801_0f8b2c92",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4dad2f_5bac665a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-17T08:29:12Z",
+      "side": 1,
+      "message": "Added some more cleanup.",
+      "parentUuid": "034e077e_e06ae971",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3a771d3_3bcc33b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -221,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1aeabfb_2349ed2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-17T08:29:12Z",
+      "side": 1,
+      "message": "About the functions that receive *testing.State: I tried to rewrite that and really looks wrong. Also I found some examples in the code that do something similar: e.g. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go;l\u003d99?q\u003d%22s%20*testing.State%22\u0026sq\u003dpackage:chromeos_public\u0026start\u003d71\n\nI think the documentation also rather speaks for passing *testing.State:\n\"If a subpackage actually contains the test implementation (typically because it‘s shared across several tests), it’s okay to pass testing.State to it so it can report test errors itself.\" Here we don\u0027t even have a subpackages. The function is really in a test file. So I would argue that passing the state is fine.",
+      "parentUuid": "1bc7fdca_2b1bb50e",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fef521a5_64305e29",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -303,6 +363,30 @@
       "writtenOn": "2021-08-16T12:12:51Z",
       "side": 1,
       "message": "Use CommandContext() for every call.",
+      "range": {
+        "startLine": 80,
+        "startChar": 26,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb853d1e_71105a95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-17T08:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac5c2bd_f4777f6f",
       "range": {
         "startLine": 80,
         "startChar": 26,
