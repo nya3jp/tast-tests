@@ -6,9 +6,11 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -96,6 +98,17 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
 	defer st.Close(cleanupCtx)
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
