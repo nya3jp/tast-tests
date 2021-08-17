@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "660f1446_413fcd38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T19:46:42Z",
+      "side": 1,
+      "message": "This comment is in the python code:\n\n# The signs of the current values from servo and kernel are not\n# consistent across different devices. So we pick the absolute values.\n# TODO(victoryang@chromium.org): Investigate the sign issue.\n\nIt would be great to omit these abs calls, and then see if the comment is actually true.",
+      "parentUuid": "eb71f699_6a466ef9",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52169f9d_84898c3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 6
@@ -70,6 +88,29 @@
         "startChar": 5,
         "endLine": 127,
         "endChar": 35
+      },
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968d4088_019d66db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T19:46:42Z",
+      "side": 1,
+      "message": "Please change to servo.BatteryTemperatureCelsius",
+      "range": {
+        "startLine": 134,
+        "startChar": 51,
+        "endLine": 134,
+        "endChar": 64
       },
       "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
