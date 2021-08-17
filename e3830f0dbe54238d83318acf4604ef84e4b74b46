@@ -16,6 +16,75 @@
       "message": "Add Owners for review",
       "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7dcc76d_def5c4c8",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-17T01:55:48Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 407,
+        "startChar": 42,
+        "endLine": 407,
+        "endChar": 45
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9858fb_33a3f3e3",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-17T01:55:48Z",
+      "side": 1,
+      "message": "Wrap some info?",
+      "range": {
+        "startLine": 426,
+        "startChar": 14,
+        "endLine": 426,
+        "endChar": 17
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d0b40fa_67921b72",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-17T01:55:48Z",
+      "side": 1,
+      "message": "Give it a timeout? Maybe testing.Poll",
+      "range": {
+        "startLine": 431,
+        "startChar": 4,
+        "endLine": 431,
+        "endChar": 8
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
