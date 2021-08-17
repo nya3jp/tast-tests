@@ -76,6 +76,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForSpotify,
+				VMSpecificTests:  testutil.ClamshellVMCommonTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForSpotify,
 			},

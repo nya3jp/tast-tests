@@ -62,8 +62,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForAmazonKindle,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:     clamshellLaunchForAmazonKindle,
+				VMSpecificTests: testutil.ClamshellVMCommonTests,
+				CommonTests:     testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.

@@ -73,6 +73,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForIHeartRadio,
+				VMSpecificTests:  testutil.ClamshellVMCommonTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForIHeartRadio,
 			},
