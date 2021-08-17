@@ -33,6 +33,24 @@
       "message": "This patch does not pass the tast-lint presubmits. Please run and fix these issues before the tast review:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#coding-style-and-best-practices",
       "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea0d89b_b9d34a65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-17T23:32:41Z",
+      "side": 1,
+      "message": "Just out of curiosity, how was it uploaded without passing the tast-lint presubmits?",
+      "parentUuid": "a2105bf3_79cb6a89",
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
