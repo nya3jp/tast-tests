@@ -33,6 +33,23 @@
       "message": "tast-owners@: Please take a look. Thank you.",
       "revId": "a10412eeb13251a7916258f7198834f1d3f37371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ae4760_e51be4ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-17T08:03:20Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a10412eeb13251a7916258f7198834f1d3f37371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
