@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcaabcc_857bfb62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-17T17:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdf128a2_71ca07ae",
+      "range": {
+        "startLine": 119,
+        "startChar": 45,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "2ed1d07d8a5fd0cf61c0361f4498cd43217847dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f34d42_d48642c5",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff297c74_ddbec1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-17T17:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f34d42_d48642c5",
+      "range": {
+        "startLine": 123,
+        "startChar": 45,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "2ed1d07d8a5fd0cf61c0361f4498cd43217847dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb042e8_e6e9838d",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-17T15:40:11Z",
       "side": 1,
       "message": "Errorf format %q has arg value of wrong type bool",
+      "range": {
+        "startLine": 142,
+        "startChar": 46,
+        "endLine": 142,
+        "endChar": 47
+      },
+      "revId": "2ed1d07d8a5fd0cf61c0361f4498cd43217847dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbd44fe_d3b0e5a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_privacy_screen.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-17T17:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb042e8_e6e9838d",
       "range": {
         "startLine": 142,
         "startChar": 46,
