@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16374e13_f3fb49d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-17T23:24:37Z",
+      "side": 1,
+      "message": "nit: failed to find any",
+      "range": {
+        "startLine": 240,
+        "startChar": 24,
+        "endLine": 240,
+        "endChar": 32
+      },
+      "revId": "e01f788303a69a34610bb637b578e830889ded59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
