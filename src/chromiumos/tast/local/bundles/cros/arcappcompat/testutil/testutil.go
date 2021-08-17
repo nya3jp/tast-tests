@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
@@ -69,9 +70,10 @@ var ClamshellCommonTests = []TestCase{
 	//{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
 	{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
 	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
-	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
+	//{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+	//{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
+	{Name: "Clamshell: Resize Lock", Fn: ResizeLock},
 }
 
 // TouchviewCommonTests is a list of all tests common to all apps in touchview mode.
@@ -275,23 +277,30 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	return cr, tconn, a
 }
 
-// ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR.
+// ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR on ARC-P devices
 func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	s.Log("Setting the window to fullscreen")
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
-		s.Fatal(" Failed to set the window to fullscreen: ", err)
+	t, ok := arc.Type()
+	if !ok {
+		s.Fatal("Unable to determine arc type")
 	}
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
-		s.Fatal("The window is not in fullscreen: ", err)
-	}
-
-	if !isNApp(ctx, d) {
-		if err := restartApp(ctx, d, appPkgName); err != nil {
-			s.Fatal("Failed to restart app: ", err)
+	// If ARC-P.
+	if t == arc.Container {
+		s.Log("Setting the window to fullscreen")
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+			s.Fatal(" Failed to set the window to fullscreen: ", err)
 		}
-	}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+			s.Fatal("The window is not in fullscreen: ", err)
+		}
 
-	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		if !isNApp(ctx, d) {
+			if err := restartApp(ctx, d, appPkgName); err != nil {
+				s.Fatal("Failed to restart app: ", err)
+			}
+		}
+
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+	}
 }
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
@@ -328,31 +337,127 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 }
 
-// ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
+// ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR on ARC-P devices.
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+	t, ok := arc.Type()
+	if !ok {
+		s.Fatal("Unable to determine arc type")
 	}
-	if tabletModeEnabled {
-		s.Log("Device is in tablet mode. Skipping test")
-		return
+	// If ARC-P.
+	if t == arc.Container {
+		tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get tablet mode: ", err)
+		}
+		if tabletModeEnabled {
+			s.Log("Device is in tablet mode. Skipping test")
+			return
+		}
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+		if err != nil {
+			s.Error("Failed to get window info: ", err)
+		}
+		s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
+		if !info.CanResize {
+			s.Log("This app is not resizable. Skipping test")
+			return
+		}
+		goalState := ash.WindowStateMaximized
+		if info.State == ash.WindowStateFullscreen {
+			goalState = ash.WindowStateFullscreen
+		}
+
+		if isNApp(ctx, d) {
+			s.Log("N-apps start maximized. Reseting window to normal size")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Failed to reset window to normal size: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+
+			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		}
+
+		s.Log("Maximizing the window")
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventTypeForState(goalState)); err != nil {
+			s.Log("Failed to maximize the window: ", err)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, goalState); err != nil {
+			s.Log("The window is not maximized: ", err)
+		}
+
+		if !isNApp(ctx, d) {
+			if err := restartApp(ctx, d, appPkgName); err != nil {
+				s.Fatal("Failed to restart app: ", err)
+			}
+		}
+
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
+}
+
+const (
+	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
+	phoneButtonName       = "Phone"
+	tabletButtonName      = "Tablet"
+	resizableButtonName   = "Resizable"
+	centerButtonClassName = "FrameCenterButton"
+)
+
+// Represents the high-level state of the app from the resize-lock feature's perspective.
+type resizeLockMode int
+
+const (
+	phoneResizeLockMode resizeLockMode = iota
+	tabletResizeLockMode
+	resizableResizeLockMode
+)
+
+func (mode resizeLockMode) String() string {
+	switch mode {
+	case phoneResizeLockMode:
+		return phoneButtonName
+	case tabletResizeLockMode:
+		return tabletButtonName
+	case resizableResizeLockMode:
+		return resizableButtonName
+	default:
+		return ""
+	}
+}
+
+// ResizeLock Test verifies if app has resize lock feature available or not and verifies if app launch successfully without crash or ANR.
+func ResizeLock(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	t, ok := arc.Type()
+	if !ok {
+		s.Fatal("Unable to determine arc type")
+	}
+	// If ARC-VM.
+	if t == arc.VM {
+		if err := checkCompatModeButton(ctx, s, tconn, a, d, appPkgName, appActivity); err != nil {
+			s.Fatal("Failed to verify the window state and compat mode button availability: ", err)
+		}
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+	}
+}
+
+// checkCompatModeButton verifies the window state of app and also verifies compat mode button is available or not for the given app.
+func checkCompatModeButton(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) error {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
 		s.Error("Failed to get window info: ", err)
 	}
-	s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
-	if !info.CanResize {
-		s.Log("This app is not resizable. Skipping test")
-		return
-	}
-	goalState := ash.WindowStateMaximized
-	if info.State == ash.WindowStateFullscreen {
-		goalState = ash.WindowStateFullscreen
-	}
-
-	if isNApp(ctx, d) {
+	// Check if app is launched in maximized or in fullscreen state.
+	if info.State == ash.WindowStateMaximized || info.State == ash.WindowStateFullscreen {
+		s.Log("App is in maximized or full screen state")
+		// Check if app is resizable or not.
+		s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
+		if !info.CanResize {
+			s.Log("This app is not resizable. Skipping test")
+			return nil
+		}
+		// If resizable, on clicking resize button, check app shows up resize lock feature or not.
 		s.Log("N-apps start maximized. Reseting window to normal size")
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
 			s.Error("Failed to reset window to normal size: ", err)
@@ -360,25 +465,18 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
 			s.Error("The window is not normalized: ", err)
 		}
-
-		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
-
-	s.Log("Maximizing the window")
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventTypeForState(goalState)); err != nil {
-		s.Log("Failed to maximize the window: ", err)
+	// Check for compat-mode button.
+	button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	if err != nil {
+		s.Log("App isn't resize locked app. It can be an O4C app")
+	} else if button.Name == phoneButtonName || button.Name == tabletButtonName || button.Name == resizableButtonName {
+		s.Log("It is resize locked app")
+		s.Logf("button.Name:%s", button.Name)
+	} else {
+		return errors.Wrap(err, "failed to find the compat mode options")
 	}
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, goalState); err != nil {
-		s.Log("The window is not maximized: ", err)
-	}
-
-	if !isNApp(ctx, d) {
-		if err := restartApp(ctx, d, appPkgName); err != nil {
-			s.Fatal("Failed to restart app: ", err)
-		}
-	}
-
-	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+	return nil
 }
 
 // TouchAndTextInputs func verify touch and text inputs in the app are working properly without crash or ANR.
@@ -575,88 +673,101 @@ func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		phoneSize     = "Phone"
 		tabletSize    = "Tablet"
 	)
-	// TODO(b/188816051): Remove ash.TabletModeEnabled(ctx, tconn) if a solution is found for identifying the device in clamshell/ laptop mode using hardware/software dependency.
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+	t, ok := arc.Type()
+	if !ok {
+		s.Fatal("Unable to determine arc type")
 	}
-	if tabletModeEnabled {
-		s.Log("Device is in tablet mode. Skipping test")
-		return
-	}
-
-	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
-	if err != nil {
-		s.Fatal("Failed to get app coordinates: ", err)
-	}
-
-	info, err := d.GetInfo(ctx)
-	if err != nil {
-		s.Fatal("Failed to get device display: ", err)
-	}
-	deviceDisplayWidth := info.DisplayWidth
-	deviceDisplayHeight := info.DisplayHeight
-
-	windowInfo, err := getAppWindowInfo(ctx, s, a, d, appPkgName)
-
-	switch windowInfo {
-	case "freeform":
-		if appWidth == deviceDisplayWidth {
-			testing.ContextLogf(ctx, "Orientation size of an app is %+v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v ", maximizedSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-		} else if appWidth > deviceDisplayWidth/2 && appWidth <= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
-			testing.ContextLogf(ctx, "Orientation size of an app is %+v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v ", tabletSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-		} else if appWidth >= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
-			testing.ContextLogf(ctx, "Orientation size of an app: %v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v", tabletSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-		} else {
-			testing.ContextLogf(ctx, "Orientation size of an app is %+v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v ", phoneSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+	// If ARC-VM.
+	if t == arc.VM {
+		// TODO(b/188816051): Remove ash.TabletModeEnabled(ctx, tconn) if a solution is found for identifying the device in clamshell/ laptop mode using hardware/software dependency.
+		tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get tablet mode: ", err)
 		}
-	case "fullscreen":
-		if appWidth == deviceDisplayWidth {
-			testing.ContextLogf(ctx, "Orientation size of an app: %v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v", maximizedSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-		} else if appWidth < deviceDisplayWidth && appWidth != deviceDisplayWidth {
-			testing.ContextLogf(ctx, "appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-			s.Fatal("Failed to utilize the screen and app is in ", maximizedSize+" size with "+blackBars)
+		if tabletModeEnabled {
+			s.Log("Device is in tablet mode. Skipping test")
+			return
 		}
+
+		appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+		if err != nil {
+			s.Fatal("Failed to get app coordinates: ", err)
+		}
+
+		info, err := d.GetInfo(ctx)
+		if err != nil {
+			s.Fatal("Failed to get device display: ", err)
+		}
+		deviceDisplayWidth := info.DisplayWidth
+		deviceDisplayHeight := info.DisplayHeight
+
+		windowInfo, err := getAppWindowInfo(ctx, s, a, d, appPkgName)
+
+		switch windowInfo {
+		case "freeform":
+			if appWidth == deviceDisplayWidth {
+				testing.ContextLogf(ctx, "Orientation size of an app is %+v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v ", maximizedSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+			} else if appWidth > deviceDisplayWidth/2 && appWidth <= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
+				testing.ContextLogf(ctx, "Orientation size of an app is %+v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v ", tabletSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+			} else if appWidth >= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
+				testing.ContextLogf(ctx, "Orientation size of an app: %v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v", tabletSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+			} else {
+				testing.ContextLogf(ctx, "Orientation size of an app is %+v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v ", phoneSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+			}
+		case "fullscreen":
+			if appWidth == deviceDisplayWidth {
+				testing.ContextLogf(ctx, "Orientation size of an app: %v and its appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v", maximizedSize, appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+			} else if appWidth < deviceDisplayWidth && appWidth != deviceDisplayWidth {
+				testing.ContextLogf(ctx, "appWidth %+v appHeight %+v deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+				s.Fatal("Failed to utilize the screen and app is in ", maximizedSize+" size with "+blackBars)
+			}
+		}
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
-	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // Largescreenlayout Test verifies if app utilizes large screen after maximizing the app and without crash or ANR.
 func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+	t, ok := arc.Type()
+	if !ok {
+		s.Fatal("Unable to determine arc type")
 	}
-	if !tabletModeEnabled {
-		s.Log("Setting the window to fullscreen")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
-			s.Fatal("Failed to set the window to fullscreen: ", err)
+	// If ARC-P.
+	if t == arc.Container {
+		tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get tablet mode: ", err)
 		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
-			s.Fatal("The window is not in fullscreen: ", err)
+		if !tabletModeEnabled {
+			s.Log("Setting the window to fullscreen")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+				s.Fatal("Failed to set the window to fullscreen: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+				s.Fatal("The window is not in fullscreen: ", err)
+			}
 		}
-	}
 
-	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
-	if err != nil {
-		s.Fatal("Failed to get app coordinates: ", err)
-	}
+		appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+		if err != nil {
+			s.Fatal("Failed to get app coordinates: ", err)
+		}
 
-	info, err := d.GetInfo(ctx)
-	if err != nil {
-		s.Fatal("Failed to get device display: ", err)
-	}
-	deviceDisplayWidth := info.DisplayWidth
-	deviceDisplayHeight := info.DisplayHeight
+		info, err := d.GetInfo(ctx)
+		if err != nil {
+			s.Fatal("Failed to get device display: ", err)
+		}
+		deviceDisplayWidth := info.DisplayWidth
+		deviceDisplayHeight := info.DisplayHeight
 
-	if appWidth >= deviceDisplayWidth {
-		testing.ContextLogf(ctx, "App utilizes the device display screen and its appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-	} else {
-		testing.ContextLogf(ctx, "appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
-		s.Fatal("Failed to utilize the device display screen and black bars observed on both side of an app")
+		if appWidth >= deviceDisplayWidth {
+			testing.ContextLogf(ctx, "App utilizes the device display screen and its appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+		} else {
+			testing.ContextLogf(ctx, "appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+			s.Fatal("Failed to utilize the device display screen and black bars observed on both side of an app")
+		}
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
-	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
