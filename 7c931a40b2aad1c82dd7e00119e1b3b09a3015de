@@ -16,6 +16,23 @@
       "message": "hiroh@, tast-owners@, trivial renaming CL.\n\nOthers FYI.",
       "revId": "7c931a40b2aad1c82dd7e00119e1b3b09a3015de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032a37dd_46ce011e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-17T02:29:08Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "7c931a40b2aad1c82dd7e00119e1b3b09a3015de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
