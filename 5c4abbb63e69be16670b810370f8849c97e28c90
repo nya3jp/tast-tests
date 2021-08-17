@@ -34,6 +34,40 @@
       "parentUuid": "f613f893_441f5873",
       "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6e6c74_a8a54365",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-17T16:03:50Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61943f78_3daa9874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-17T16:03:50Z",
+      "side": 1,
+      "message": "micro-nit: maybe leave here a link to\n https://w3c.github.io/webrtc-svc/#scalabilitymodes\nas a reference of how |svc| is supposed to be ?",
+      "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
