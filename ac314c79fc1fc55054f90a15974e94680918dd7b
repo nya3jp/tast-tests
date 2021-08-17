@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42de797d_cf6c91d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-17T10:09:34Z",
+      "side": 1,
+      "message": "I strongly recommend sticking with idiomatic \"if err !\u003d nil { ... }\" checks.",
+      "revId": "ac314c79fc1fc55054f90a15974e94680918dd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe168fc_7c149e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-17T10:09:34Z",
+      "side": 1,
+      "message": "I know you don\u0027t want to avoid error-check boilerplates... but in Go, error checks are so universal and idiomatic. I recommend you to simply try \"if err !\u003d nil { ... }\" without introducing ErrorHolder.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "ac314c79fc1fc55054f90a15974e94680918dd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e3e98e_50577fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-17T10:09:34Z",
+      "side": 1,
+      "message": "This method unnecessarily requires type assertions, introducing a risk of panics.\n\nThis is a good example indicating that Go is not good at metaprogramming (but it\u0027s by design to some extent). Generics planned in Go 1.18+ may help.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 69
+      },
+      "revId": "ac314c79fc1fc55054f90a15974e94680918dd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
