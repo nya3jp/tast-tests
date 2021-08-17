@@ -43,11 +43,7 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Start Chrome with the "EnablePerfettoSystemTracing" feature flag.
-	// TODO(crbug/1194540, b/191235714): remove this after the feature is enabled by default.
-	cr, err := chrome.New(
-		ctx,
-		chrome.ExtraArgs("--enable-features=EnablePerfettoSystemTracing"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to enable Perfetto system tracing for Chrome: ", err)
 	}

@@ -10,10 +10,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/platform/perfetto"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -23,6 +22,7 @@ func init() {
 		Desc:         "Tests Chrome connecting to the Perfetto system tracing service",
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
 	})
 }
@@ -64,29 +64,10 @@ func waitForChromeProducer(ctx context.Context) error {
 func PerfettoChromeProducer(ctx context.Context, s *testing.State) {
 	const tracedJob = "traced"
 
-	cleanupCtx := ctx
-
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	// Make sure traced is running (and start it if not).
-	if err := upstart.EnsureJobRunning(ctx, tracedJob); err != nil {
-		s.Fatal("Job traced isn't running: ", err)
-	}
-	defer func() {
-		if err := upstart.StopJob(cleanupCtx, tracedJob); err != nil {
-			s.Fatal("Error in stopping traced: ", err)
-		}
-	}()
-
-	// Start Chrome with the "EnablePerfettoSystemTracing" feature flag.
-	cr, err := chrome.New(
-		ctx,
-		chrome.ExtraArgs("--enable-features=EnablePerfettoSystemTracing"))
+	_, _, err := perfetto.CheckTracingServices(ctx)
 	if err != nil {
-		s.Fatal("Failed to enable Perfetto system tracing for Chrome: ", err)
+		s.Fatal("Tracing services not running: ", err)
 	}
-	defer cr.Close(cleanupCtx)
 
 	if err = waitForChromeProducer(ctx); err != nil {
 		s.Fatal("Failed in waiting for Chrome producers: ", err)
