@@ -193,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6d7961_307db8ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T15:44:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de878d52_0b46898f",
+      "range": {
+        "startLine": 55,
+        "startChar": 13,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "035b72a5_a0868db8",
