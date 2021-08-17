@@ -16,6 +16,46 @@
       "message": "+Nicolas to confirm that the HE160 requirement is intentionally optional",
       "revId": "37671081946e80d49bbe9eca7c398f5cb6785fb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50eaad2c_50d3e7ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-17T21:30:48Z",
+      "side": 1,
+      "message": "would still like Nicolas\u0027s (or someone else\u0027s) opinion",
+      "revId": "37671081946e80d49bbe9eca7c398f5cb6785fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6997ed14_41822df8",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-17T21:30:48Z",
+      "side": 1,
+      "message": "The `iw` field (and underlying 802.11 capability?) you\u0027re matching is actually \"HE40/HE80/GHz\". Would it make sense to be precise, and call this \"supportHE40HE80\" or similar?\n\nThis way works too, even if it\u0027s a substring.",
+      "range": {
+        "startLine": 1068,
+        "startChar": 32,
+        "endLine": 1068,
+        "endChar": 41
+      },
+      "revId": "37671081946e80d49bbe9eca7c398f5cb6785fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
