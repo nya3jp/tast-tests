@@ -16,6 +16,23 @@
       "message": "Thanks.",
       "revId": "da06dba20bffc3799cadeb73dc34f51e29c68b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c96b19_788d8b7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-17T16:01:00Z",
+      "side": 1,
+      "message": "LGTM.\n\nEliot, your CL and this is conflicting (for Data fixture support).\nCould you include this, too?",
+      "revId": "da06dba20bffc3799cadeb73dc34f51e29c68b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
