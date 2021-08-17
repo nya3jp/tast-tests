@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9f6867_e5a98d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-17T08:10:03Z",
+      "side": 1,
+      "message": "Hello,\nSome minor improvements in the tests for better understanding and following tast lint convention.\n\nPTAL, Thanks",
+      "revId": "95083bfd8c2953b7ecb561d19157eb664f7d60b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
