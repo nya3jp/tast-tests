@@ -1,0 +1,1 @@
+failed to download gs://perfetto/trace_processor_shell-linux-a3ce2cbf4cbe4f86cc10b02957db727cecfafae8: failed to stage on http://127.0.0.1:34569: got status 500: &#34;gs://perfetto/trace_processor_shell-linux-a3ce2cbf4cbe4f86cc10b02957db727cecfafae8&#34; doesn&#39;t use an allowed bucket
