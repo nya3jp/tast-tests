@@ -96,6 +96,7 @@ type Phy struct {
 	RxAntenna, TxAntenna      int
 	MaxScanSSIDs              int
 	SupportHE                 bool
+	SupportHE40HE80           bool
 	SupportHE160              bool
 	SupportVHT                bool
 	SupportHT2040             bool
@@ -131,6 +132,7 @@ type sectionAttributes struct {
 	phyModes, phyCommands []string
 
 	supportHE       bool
+	supportHE40HE80 bool
 	supportHE160    bool
 	supportVHT      bool
 	supportHT2040   bool
@@ -917,6 +919,7 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		TxAntenna:       txAntenna,
 		MaxScanSSIDs:    maxScanSSIDs,
 		SupportHE:       attrs.supportHE,
+		SupportHE40HE80: attrs.supportHE40HE80,
 		SupportHE160:    attrs.supportHE160,
 		SupportVHT:      attrs.supportVHT,
 		SupportHT2040:   attrs.supportHT2040,
@@ -1061,6 +1064,9 @@ func parseThroughput(attrs *sectionAttributes, sectionName, contents string) err
 	// HE-MAC related.
 	if strings.Contains(contents, "HE MAC Capabilities") {
 		attrs.supportHE = true
+	}
+	if strings.Contains(contents, "HE40/HE80/5GHz") {
+		attrs.supportHE40HE80 = true
 	}
 	if strings.Contains(contents, "HE160/5GHz") {
 		attrs.supportHE160 = true

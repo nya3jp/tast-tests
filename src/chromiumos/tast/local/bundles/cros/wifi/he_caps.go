@@ -39,7 +39,7 @@ func HeCaps(ctx context.Context, s *testing.State) {
 	if !res[0].SupportHE {
 		s.Error("Device doesn't support HE-MAC capabilities")
 	}
-	if !res[0].SupportHE160 {
+	if !res[0].SupportHE40HE80 {
 		s.Error("Device doesn't support 5ghz HE-MAC capabilities")
 	}
 
