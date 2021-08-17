@@ -18,6 +18,74 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "690b4251_e9c67100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T10:09:43Z",
+      "side": 1,
+      "message": "LGTM % minor nits in addition to Judy\u0027s comments",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86b1eee_ebba3050",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T10:09:43Z",
+      "side": 1,
+      "message": "missing . at the end of the comment.",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94758a7_91b68237",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T10:09:43Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66210616_70feee11",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T10:09:43Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7dcc76d_def5c4c8",
