@@ -16,6 +16,24 @@
       "message": "Why did we add Eric directly here? We should respect the gwsq operation.",
       "revId": "0a70da0d006e37bd0173a96a2529c9678a26ce95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a34f442_423da490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2021-08-17T20:05:28Z",
+      "side": 1,
+      "message": "My fault, I missed that gwsq already added. Will be careful next time.",
+      "parentUuid": "6ae0278b_98424aaf",
+      "revId": "0a70da0d006e37bd0173a96a2529c9678a26ce95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
