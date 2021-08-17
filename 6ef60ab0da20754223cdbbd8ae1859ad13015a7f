@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f63704b8_32cc0fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-17T17:16:21Z",
+      "side": 1,
+      "message": "nit: \n\nit can be just\n\nresponse :\u003d \u0026ppb.RollbackSuccessfulResponse{\n  RollbackSuccessful: false\n}\n\nalso bool field is false by default, but up to you whether to make it explicit",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "6ef60ab0da20754223cdbbd8ae1859ad13015a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "691f50dc_12972b8b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 3

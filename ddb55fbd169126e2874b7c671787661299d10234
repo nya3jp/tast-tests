@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4737602_ec643d52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-17T17:16:21Z",
+      "side": 1,
+      "message": "I think it might be OK and simplest way to use exec.Commands to remove files in remote tests",
+      "parentUuid": "c702b499_7a9b7eec",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3a771d3_3bcc33b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -269,6 +287,30 @@
       "side": 1,
       "message": "About the functions that receive *testing.State: I tried to rewrite that and really looks wrong. Also I found some examples in the code that do something similar: e.g. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go;l\u003d99?q\u003d%22s%20*testing.State%22\u0026sq\u003dpackage:chromeos_public\u0026start\u003d71\n\nI think the documentation also rather speaks for passing *testing.State:\n\"If a subpackage actually contains the test implementation (typically because it‘s shared across several tests), it’s okay to pass testing.State to it so it can report test errors itself.\" Here we don\u0027t even have a subpackages. The function is really in a test file. So I would argue that passing the state is fine.",
       "parentUuid": "1bc7fdca_2b1bb50e",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3805b4c5_b96a2ab9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-17T17:16:21Z",
+      "side": 1,
+      "message": "Some tests ignore that rule, but you shouldn\u0027t follow that way. You should pass testing state to only \"main\" test functions.\n\nPassing testing state everywhere also makes harder to understand test failures especially if you call some function multiple times.",
+      "parentUuid": "f1aeabfb_2349ed2e",
       "range": {
         "startLine": 51,
         "startChar": 35,
