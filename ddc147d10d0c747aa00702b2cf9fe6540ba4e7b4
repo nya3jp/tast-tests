@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c86a72_dbd20117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9808f001_7db4ef84",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 3
+      },
+      "revId": "ddc147d10d0c747aa00702b2cf9fe6540ba4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d89fbd3_dd90aba8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-28T00:59:12Z",
       "side": 1,
       "message": "This should probably be inside the testing.Poll? The way I see it:\n1. set the arc app window state to snapped right\n2. Poll every 100ms until the window has successfully snapped right.\nIt seems for snapping left you\u0027re constantly snapping left but for snapping right you\u0027re only doing it once, getting the value once then polling until the value changes (which it won\u0027t because you\u0027ve already retrieved it)",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 2
+      },
+      "revId": "ddc147d10d0c747aa00702b2cf9fe6540ba4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afe137c_4c8dfa36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d89fbd3_dd90aba8",
       "range": {
         "startLine": 295,
         "startChar": 1,

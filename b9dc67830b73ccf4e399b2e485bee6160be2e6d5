@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14af1345_cb0d1a4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:27:57Z",
+      "side": 1,
+      "message": "Sorry for the delayed reply. PTAL again!",
+      "revId": "b9dc67830b73ccf4e399b2e485bee6160be2e6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
