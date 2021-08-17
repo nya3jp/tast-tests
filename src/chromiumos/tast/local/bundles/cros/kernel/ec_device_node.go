@@ -40,7 +40,6 @@ func init() {
 func ECDeviceNode(ctx context.Context, s *testing.State) {
 	// It is unknown whether the expectation of the creation for /dev/cros_ec is a longstanding convention, or if there is
 	// any formal requirement that the kernel name the device node for the primary EC in this fashion.
-	// TODO(kmshelton): Investigate whether Zephyr based EC's will use the "cros_ec" nomenclature.
 	const ECDeviceNode = "/dev/cros_ec"
 	// Checking the existence of the device node is selected over inspection of the kernel log for something like "Chrome EC device
 	// registered," as it is anticipated that changes to the device node nomenclature are rarer than logging tweaks.
