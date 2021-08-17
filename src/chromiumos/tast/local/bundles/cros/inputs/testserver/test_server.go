@@ -171,6 +171,9 @@ func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*In
 // LaunchInMode launches a local web server to serve inputs testing on different type of input fields.
 // It can be either normal user mode or incognito mode.
 func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, incognitoMode bool) (its *InputsTestServer, err error) {
+	// URL path needs to be in the allowlist to enable some features.
+	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
+	const urlPath = "e14s-test"
 	testing.ContextLog(ctx, "Start a local server to test inputs")
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -203,7 +206,7 @@ func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 		}
 	}()
 
-	if err = pc.Navigate(ctx, server.URL); err != nil {
+	if err = pc.Navigate(ctx, server.URL+"/"+urlPath); err != nil {
 		return nil, errors.Wrapf(err, "failed to navigate to %q", server.URL)
 	}
 

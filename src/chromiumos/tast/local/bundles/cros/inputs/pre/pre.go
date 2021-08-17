@@ -106,6 +106,10 @@ var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_cla
 // It forces device to be clamshell mode and vk disabled.
 var NonVKClamshell = inputsPreCondition("non_vk_clamshell_pre", clamshellMode, false, false)
 
+// NonVKClamshellInGuest creates a precondition for testing physical keyboard in guest mode.
+// It forces device to be clamshell mode and vk disabled.
+var NonVKClamshellInGuest = inputsPreCondition("non_vk_clamshell_guest_pre", clamshellMode, false, false, chrome.GuestLogin())
+
 // NonVKClamshellReset creates a precondition for testing physical keyboard.
 // It forces device to be clamshell mode and vk disabled.
 // It restarts Chrome session and logs in as new user for each test.
