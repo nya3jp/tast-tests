@@ -57,8 +57,16 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
+<<<<<<< HEAD   (0e2500 [M93] Skip PlatformEncoding tests on grunt)
 			Name:              "vm",
 			Val:               clamshellTestsForAdobeAcrobatReader,
+=======
+			Name: "vm_clamshell_mode",
+			Val: testutil.TestParams{
+				LaunchTests: clamshellLaunchForAdobeAcrobatReader,
+				CommonTests: testutil.ClamshellCommonTests,
+			},
+>>>>>>> CHANGE (030896 arcappcompat: Automate resize lock testcase for arcappcompat)
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
