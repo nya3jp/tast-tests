@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d2f3d59_925ad9e3",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2021-08-17T22:11:14Z",
+      "side": 1,
+      "message": "this one is changing. the host-info is going to have have of servod-docker which mean servod is running on the docker\n\nor maybe keep this logic only for moblab",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e86b1eee_ebba3050",
         "filename": "src/chromiumos/tast/common/servo/proxy.go",
         "patchSetId": 6
