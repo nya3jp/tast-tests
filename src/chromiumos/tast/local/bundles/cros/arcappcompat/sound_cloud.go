@@ -63,8 +63,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForSoundCloud,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:     clamshellLaunchForSoundCloud,
+				VMSpecificTests: testutil.ClamshellVMCommonTests,
+				CommonTests:     testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.

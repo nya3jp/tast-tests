@@ -74,6 +74,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForMicrosoftOnedrive,
+				VMSpecificTests:  testutil.ClamshellVMCommonTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForMicrosoftOnedrive,
 			},
