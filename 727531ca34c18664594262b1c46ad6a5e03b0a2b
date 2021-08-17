@@ -16,6 +16,23 @@
       "message": "Stop promoting this test due to http://b/195363848",
       "revId": "727531ca34c18664594262b1c46ad6a5e03b0a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183c9217_6518bbd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-17T03:56:09Z",
+      "side": 1,
+      "message": "Bug fixed. Good for promo",
+      "revId": "727531ca34c18664594262b1c46ad6a5e03b0a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
