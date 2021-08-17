@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7398bb1b_b05d509f",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "It is fine to land it as is right now, might not work for satlab. But it would not cause any trouble.",
+      "parentUuid": "5d2f3d59_925ad9e3",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e86b1eee_ebba3050",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-08-17T10:09:43Z",
       "side": 1,
       "message": "missing . at the end of the comment.",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43b9f82_5a44be04",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86b1eee_ebba3050",
       "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8053491f_6dbd00f8",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a94758a7_91b68237",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66210616_70feee11",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8267af80_373a4e22",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66210616_70feee11",
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7dcc76d_def5c4c8",
@@ -122,6 +200,30 @@
       "writtenOn": "2021-08-17T01:55:48Z",
       "side": 1,
       "message": "nit: end with .",
+      "range": {
+        "startLine": 407,
+        "startChar": 42,
+        "endLine": 407,
+        "endChar": 45
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c329835_6aab496e",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7dcc76d_def5c4c8",
       "range": {
         "startLine": 407,
         "startChar": 42,
@@ -155,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e7cd5b_32dc9ded",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "The error created by the library should provide enough info for debug if needed.",
+      "parentUuid": "bc9858fb_33a3f3e3",
+      "range": {
+        "startLine": 426,
+        "startChar": 14,
+        "endLine": 426,
+        "endChar": 17
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d0b40fa_67921b72",
@@ -168,6 +294,30 @@
       "writtenOn": "2021-08-17T01:55:48Z",
       "side": 1,
       "message": "Give it a timeout? Maybe testing.Poll",
+      "range": {
+        "startLine": 431,
+        "startChar": 4,
+        "endLine": 431,
+        "endChar": 8
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7409b29_c77f263d",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-08-17T22:55:11Z",
+      "side": 1,
+      "message": "I used testing.Sleep down bellow with ctx. That should handle timeout?",
+      "parentUuid": "4d0b40fa_67921b72",
       "range": {
         "startLine": 431,
         "startChar": 4,
