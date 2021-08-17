@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4123af55_3b6a7e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-17T18:54:51Z",
+      "side": 1,
+      "message": "LGTM % a few comments",
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97b2376_43cb0329",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-17T18:54:51Z",
+      "side": 1,
+      "message": "I think the fixture is already saving these logs in PostTest, so this might not be needed.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/fixture.go;l\u003d319",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 7
+      },
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530b94ff_c0fb6a05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-17T18:54:51Z",
+      "side": 1,
+      "message": "This way of setting aside time for cleanup seems to be discouraged now based on the docs:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task\n\nIt appears to be the norm for the rest of the wifi tests, but it might be good to consider switching to the preferred way suggested by the docs. Up to you though, as I\u0027m not familiar with these tests.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 15
+      },
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be89033_4d0cf05c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-17T18:54:51Z",
+      "side": 1,
+      "message": "noticed a few unwrapped errors here, are they clear enough to understand without providing additional info in an errors.Wrap?",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 13
+      },
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22caca8_f990cc61",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-17T18:54:51Z",
+      "side": 1,
+      "message": "nit: end comment with a period here and below as well\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
