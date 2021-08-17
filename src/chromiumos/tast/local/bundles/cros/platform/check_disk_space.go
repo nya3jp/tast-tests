@@ -35,9 +35,9 @@ func CheckDiskSpace(ctx context.Context, s *testing.State) {
 		s.Log("Not checking available space since it's always 0 with squashfs")
 		return
 	}
-	// Require the minimum of 40 MiB and 5% of total.
-	var req int64 = 40 * 1024 * 1024
-	if b := int64(0.05 * float64(info.Used+info.Avail)); b < req {
+	// Require the minimum of 32 MiB and 4% of total.
+	var req int64 = 32 * 1024 * 1024
+	if b := int64(0.04 * float64(info.Used+info.Avail)); b < req {
 		req = b
 	}
 	if info.Avail < req {
