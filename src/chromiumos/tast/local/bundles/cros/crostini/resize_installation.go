@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -139,8 +140,20 @@ func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chro
 	}
 	testing.ContextLog(ctx, dfOutStr)
 
-	if matched, err := regexp.MatchString(`16G`, dfOutStr); err != nil || !matched {
-		return errors.Wrap(err, "failed to match disk size 16G")
+	sizeStr := regexp.MustCompile("[0-9]+").FindAllString(dfOutStr, 1)
+	if len(sizeStr) == 0 {
+		return errors.Wrap(err, "failed to find disk size info")
+	}
+	sizeGB, err := strconv.ParseInt(sizeStr[0], 10, 64)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse disk size")
+	}
+
+	actualSize := (int64)(size / settings.SizeGB)
+
+	gap := sizeGB - actualSize
+	if gap > 1 || gap < -1 {
+		return errors.Wrapf(err, "failed to verify size, got %s, want %s", sizeGB, actualSize)
 	}
 
 	// Open the Linux settings.
