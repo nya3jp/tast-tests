@@ -35,6 +35,11 @@ type IMESettings struct {
 	settings *ossettings.OSSettings
 }
 
+// New returns a new IME settings context.
+func New(tconn *chrome.TestConn) *IMESettings {
+	return &IMESettings{settings: ossettings.New(tconn)}
+}
+
 // LaunchAtInputsSettingsPage launches Settings app at inputs setting page.
 func LaunchAtInputsSettingsPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*IMESettings, error) {
 	ui := uiauto.New(tconn)
@@ -133,6 +138,5 @@ func (i *IMESettings) ShowInputOptionsInShelfShouldBe(cr *chrome.Chrome, tconn *
 			return errors.Errorf(`'Show input options in shelf' option value is incorrect. got %v; want %v`, actual, expected)
 		}
 		return nil
-
 	})
 }
