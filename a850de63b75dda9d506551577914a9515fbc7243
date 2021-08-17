@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "889e5823_18a46bd7",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd651c5_6ca18e57",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 2
+      },
+      "revId": "a850de63b75dda9d506551577914a9515fbc7243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9b726d5_1b1cfdad",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-17T10:22:25Z",
       "side": 1,
       "message": "Please use shutil.Escape instead. %q is not a right escape for shell commands.",
+      "range": {
+        "startLine": 512,
+        "startChar": 139,
+        "endLine": 512,
+        "endChar": 145
+      },
+      "revId": "a850de63b75dda9d506551577914a9515fbc7243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f939a013_f5bf540a",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-17T15:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b726d5_1b1cfdad",
       "range": {
         "startLine": 512,
         "startChar": 139,
