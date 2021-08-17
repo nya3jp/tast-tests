@@ -16,6 +16,24 @@
       "message": "Why did you abandon this CL \u0026 create a new one?",
       "revId": "52ff9ef38677e52f6f5c7a932489c90aa3865367",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61ac7c5_cd804b13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512622
+      },
+      "writtenOn": "2021-08-17T07:45:57Z",
+      "side": 1,
+      "message": "My main branch got diverted due to some changes. By mistake, I added the patch 14 with wrong changes which I couldn\u0027t revert.\nSo I created a new branch for the changes.",
+      "parentUuid": "1106c8f9_7e29ab8a",
+      "revId": "52ff9ef38677e52f6f5c7a932489c90aa3865367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
