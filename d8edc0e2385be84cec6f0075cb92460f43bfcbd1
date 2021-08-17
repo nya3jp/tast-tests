@@ -16,6 +16,23 @@
       "message": "I will add a cl later in the stack that migrates out the testfixture utilities.",
       "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb74b31_f4e2f939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-17T06:41:15Z",
+      "side": 1,
+      "message": "Thanks for also moving legacy_router.go from router to router/legacyrouter folder. However, what\u0027s the reason to extract some router code to common.go and moved to router/common? Can\u0027t the content of common.go stay in router/router.go (or another file in router/)?  Also, package name \"common\" should be avoided (see go/go-style/decisions#package-names).\n\n\n",
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

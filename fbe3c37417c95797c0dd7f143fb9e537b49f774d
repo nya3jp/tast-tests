@@ -329,6 +329,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9659e38_359bdf95",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax_router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-17T06:41:15Z",
+      "side": 1,
+      "message": "Awesome! Thanks for improving the readability.",
+      "parentUuid": "2a639304_b39fbce3",
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fec85b4a_a61d21c2",
@@ -1345,6 +1363,30 @@
         "startChar": 59,
         "endLine": 51,
         "endChar": 65
+      },
+      "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d86f043_d0f71abe",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-17T06:41:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "502d8f0e_fed04e8a",
+      "range": {
+        "startLine": 51,
+        "startChar": 73,
+        "endLine": 51,
+        "endChar": 79
       },
       "revId": "fbe3c37417c95797c0dd7f143fb9e537b49f774d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
