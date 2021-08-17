@@ -16,6 +16,23 @@
       "message": "defer to CrOS WiFi reviewers",
       "revId": "1ecd2f27c957ef26408f302f4cb9849f766e5785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f995e3bb_ae36bf11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-17T01:20:13Z",
+      "side": 1,
+      "message": "It looks like .hidden doesn\u0027t have the same issues even though it also runs three iterations of the test: \nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2021-08-11\u0026last_date\u003d2021-08-17\u0026test\u003d%5Etast%5C.wifi%5C.SuspendStress%5C.hidden%24\u0026board\u003d%5Egrunt-kernelnext%7Cgrunt%24\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nI\u0027m not convinced that bandaging this up by increasing the timeout is the best way to resolve the problem. I think this might deserve a closer look by the WiFi team.",
+      "revId": "1ecd2f27c957ef26408f302f4cb9849f766e5785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
