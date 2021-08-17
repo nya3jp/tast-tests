@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2464d24f_bd38ede2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-17T03:39:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2fa74c_37e5f281",
+      "range": {
+        "startLine": 315,
+        "startChar": 6,
+        "endLine": 315,
+        "endChar": 9
+      },
+      "revId": "f2b5781b02bb6eedb259b6eb833ef74d0b38a2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1421ddef_de1eb821",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-13T17:17:40Z",
       "side": 1,
       "message": "Question: since there\u0027s no other SVC tests in this file, do we\nwant to have these names use the _LxTy nomenclature ? The \nnon-perf version of this test uses the fully expressed names [1]\nbut the webrtc/rtc_peer_connection* use LxTy. \n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode_accel.go;l\u003d138",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 51
+      },
+      "revId": "f2b5781b02bb6eedb259b6eb833ef74d0b38a2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20043752_18ff6333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-17T03:39:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1421ddef_de1eb821",
       "range": {
         "startLine": 161,
         "startChar": 31,
