@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "254bbb66_4a430c14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-08-17T06:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "505f37e5_dae2207e",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f465e2d_70f64335",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d411d06_9bb08eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-08-17T06:14:36Z",
+      "side": 1,
+      "message": "There\u0027s an existing bug for this, so I\u0027ve added a TODO.",
+      "parentUuid": "1f465e2d_70f64335",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d48b4ef1_fbf5c6b5",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-08-16T06:59:18Z",
       "side": 1,
       "message": "does |output| multi-line?\nIf so, it is recommended to avoid putting on the log message, instead dump it into a file.",
+      "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae646c9_fa323553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-08-17T06:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d48b4ef1_fbf5c6b5",
       "revId": "9cd2a46168b07b88ea602f23ed22496b4e716e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
