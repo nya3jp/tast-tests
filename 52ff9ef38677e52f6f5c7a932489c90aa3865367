@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1106c8f9_7e29ab8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-17T07:42:00Z",
+      "side": 1,
+      "message": "Why did you abandon this CL \u0026 create a new one?",
+      "revId": "52ff9ef38677e52f6f5c7a932489c90aa3865367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
