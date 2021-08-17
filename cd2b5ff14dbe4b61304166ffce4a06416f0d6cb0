@@ -16,6 +16,63 @@
       "message": "Thanks Jun! The utility functions look very useful in adding new tests.",
       "revId": "cd2b5ff14dbe4b61304166ffce4a06416f0d6cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "399d010e_1790c17d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-17T01:35:31Z",
+      "side": 1,
+      "message": "super-nit: consistent ordering",
+      "revId": "cd2b5ff14dbe4b61304166ffce4a06416f0d6cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7c5390_48b06255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-17T01:35:31Z",
+      "side": 1,
+      "message": "separate s.Run test for this \"Learn More\" test?",
+      "revId": "cd2b5ff14dbe4b61304166ffce4a06416f0d6cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c1f395_9197a289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-17T01:35:31Z",
+      "side": 1,
+      "message": "nit: Why not normal Chromium CS URL?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 102
+      },
+      "revId": "cd2b5ff14dbe4b61304166ffce4a06416f0d6cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
