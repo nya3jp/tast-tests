@@ -58,8 +58,16 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 		s.Fatal("Not running RW firmware")
 	}
 
-	if err := fingerprint.CheckRollbackSetToInitialValue(ctx, d); err != nil {
-		s.Fatal("Failed to validate rollback state: ", err)
+	// Ensure that entropy is set and that the state is normal.
+	rollback, err := fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo: ", err)
+	}
+	if rollback.IsAntiRollbackSet() {
+		s.Fatalf("Anti-rollback is set: %+v", rollback)
+	}
+	if !rollback.IsEntropySet() {
+		s.Fatalf("Entropy is unset: %+v", rollback)
 	}
 
 	testing.ContextLog(ctx, "Reading from flash while running RW firmware should fail")
