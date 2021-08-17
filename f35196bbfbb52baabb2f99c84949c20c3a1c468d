@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1d6aa7_9051a282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-17T20:37:35Z",
+      "side": 1,
+      "message": "I could not find any usage of additionalDevEvents. If it is not needed, please remove it and simple use a string for Val. ",
+      "revId": "f35196bbfbb52baabb2f99c84949c20c3a1c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b21dfc_bc58282a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-17T20:37:35Z",
+      "side": 1,
+      "message": "Where is additionalDevEvents used? I only found the usage of additionalDevEvents.",
+      "revId": "f35196bbfbb52baabb2f99c84949c20c3a1c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7b0f859_59429e52",
