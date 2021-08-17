@@ -16,6 +16,24 @@
       "message": "Lgtm as a tast owner. However, please get +2 from a team member first.",
       "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2df7b5_ef04a83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-17T06:55:59Z",
+      "side": 1,
+      "message": "Sure. I am definitely waiting for Miguel\u0027s review!",
+      "parentUuid": "f613f893_441f5873",
+      "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
