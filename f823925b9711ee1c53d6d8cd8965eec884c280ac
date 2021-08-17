@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d684892f_c6ecf7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-17T04:04:05Z",
+      "side": 1,
+      "message": "if conf.shareScreen is not stable. You can make the retry inside the function instead of explicitly retry every time use it.",
+      "range": {
+        "startLine": 484,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 12
+      },
+      "revId": "f823925b9711ee1c53d6d8cd8965eec884c280ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
