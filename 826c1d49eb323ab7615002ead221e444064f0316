@@ -45,6 +45,53 @@
       },
       "revId": "826c1d49eb323ab7615002ead221e444064f0316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffac64e_42c61050",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-17T08:18:58Z",
+      "side": 1,
+      "message": "I have run the test with my environment and confirmed it passes. So now we can just state that the test has passed.\nTEST\u003dtast run [DUT] ui.HotseatScrollPerf",
+      "parentUuid": "c9470df1_b2f378b1",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "826c1d49eb323ab7615002ead221e444064f0316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfafbcc_734d7630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-17T08:18:58Z",
+      "side": 1,
+      "message": "fast_build.sh",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "826c1d49eb323ab7615002ead221e444064f0316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
