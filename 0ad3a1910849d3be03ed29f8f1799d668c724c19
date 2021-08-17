@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e92d67_dcaba6f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88d6bc9_4e5920c9",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "missing . at the end of the comment.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03df6ddd_263f2ca2",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef6e752_62d7d5dc",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3189b6_6ec71c95",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422bf8f3_83b3fb52",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9ac022_b27e4311",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "201b79d9_02e43ab8",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b611392e_888ca1fa",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-17T09:01:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0ad3a1910849d3be03ed29f8f1799d668c724c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
