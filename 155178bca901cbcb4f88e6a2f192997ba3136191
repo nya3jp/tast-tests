@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "8e532a90_1cc17998",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "src/chromiumos/tast/remote/ is for tests that run on the workstation. You probably want\nsrc/chromiumos/tast/local/\n\nSee:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/README.md",
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64712891_bfb53ad1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-17T23:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e532a90_1cc17998",
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "acec6a58_c673b50c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
@@ -38,10 +57,34 @@
         "endChar": 28
       },
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5911f158_89337429",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-17T23:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acec6a58_c673b50c",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 28
+      },
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3c47b021_14eee694",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
@@ -55,10 +98,28 @@
       "side": 1,
       "message": "5.9, not 5.8. Since the actual LSM changes are going in 5.9",
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70433b6_bb1a9676",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-17T23:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c47b021_14eee694",
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8cbcb79c_63a6543a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
@@ -78,10 +139,34 @@
         "endChar": 33
       },
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b05734_dd6b8664",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-17T23:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbcb79c_63a6543a",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "c0828854_d95d59fc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
@@ -101,10 +186,10 @@
         "endChar": 97
       },
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3f96e777_65ce0a09",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
@@ -125,8 +210,31 @@
         "endChar": 97
       },
       "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2569ddfc_d97be6ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-17T23:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f96e777_65ce0a09",
+      "range": {
+        "startLine": 242,
+        "startChar": 8,
+        "endLine": 242,
+        "endChar": 97
+      },
+      "revId": "155178bca901cbcb4f88e6a2f192997ba3136191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
