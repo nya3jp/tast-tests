@@ -57,7 +57,7 @@ const (
 	// Video is the mode used to record video.
 	Video Mode = "video"
 	// Photo is the mode used to take photo.
-	Photo = "photo"
+	Photo Mode = "photo"
 	// Square is the mode used to take square photo.
 	Square = "square"
 	// Portrait is the mode used to take portrait photo.
