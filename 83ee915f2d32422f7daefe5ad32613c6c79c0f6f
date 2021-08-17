@@ -33,6 +33,23 @@
       "message": "https://tastboard.corp.google.com/test/graphics.KmsvncConnect\n\nLooks green.",
       "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12574d2_d1958032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-17T09:34:26Z",
+      "side": 1,
+      "message": "We observed 9 green builds so far, great!\n\nCould you wait a bit more until we observe 20 green builds? That\u0027s a typical threshold we use.\nhttps://tastboard.corp.google.com/test/graphics.ScreenshotCLI\n",
+      "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
