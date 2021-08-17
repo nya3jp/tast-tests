@@ -15,6 +15,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// eventLogParams contains all the data needed to run a single test iteration.
+type eventLogParams struct {
+	additionalNormalEvents string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Eventlog,
@@ -23,7 +28,7 @@ func init() {
 			"gredelston@google.com", // Test author
 			"cros-fw-engprod@google.com",
 		},
-		Attr: []string{"group:firmware", "firmware_ec"},
+		Attr: []string{"group:firmware", "firmware_experimental", "firmware_usb"},
 		Data: []string{firmware.ConfigFile},
 		HardwareDeps: hwdep.D(
 			// Eventlog is broken/wontfix on veyron devices.
@@ -35,6 +40,20 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Vars:         []string{"servo"},
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
+				Val:               eventLogParams{},
+			},
+			{
+				// Allow some normally disallowed events on lenoa. b/184778308
+				Name:              "leona",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
+				Val: eventLogParams{
+					additionalNormalEvents: `^ACPI Wake \| Deep S5$`,
+				},
+			},
+		},
 	})
 }
 
@@ -44,10 +63,10 @@ var (
 	reNotSystemBootMessage = regexp.MustCompile("Developer Mode|Recovery Mode|Sleep| Wake")
 )
 
-// eventMessagesContainReMatch returns true if any event's message matches the regexp.
-func eventMessagesContainReMatch(ctx context.Context, events []reporters.Event, re *regexp.Regexp) bool {
+// eventMessagesContainReMatch returns true if any event's message matches the regexp, and doesn't match the `exceptionRe`.
+func eventMessagesContainReMatch(ctx context.Context, events []reporters.Event, re, exceptionRe *regexp.Regexp) bool {
 	for _, event := range events {
-		if re.MatchString(event.Message) {
+		if re.MatchString(event.Message) && (exceptionRe == nil || !exceptionRe.MatchString(event.Message)) {
 			return true
 		}
 	}
@@ -63,6 +82,7 @@ func Eventlog(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating mode switcher: ", err)
 	}
 	r := h.Reporter
+	param := s.Param().(eventLogParams)
 
 	// Check eventlog behavior on normal boot
 	cutoffTime, err := r.Now(ctx)
@@ -76,16 +96,20 @@ func Eventlog(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Gathering events after normal reboot: ", err)
 	}
-	if !eventMessagesContainReMatch(ctx, events, reSystemBootMessage) {
+	if !eventMessagesContainReMatch(ctx, events, reSystemBootMessage /*exceptionRe=*/, nil) {
 		s.Error("No 'System boot' event on normal boot")
 	}
-	if eventMessagesContainReMatch(ctx, events, reNotSystemBootMessage) {
+	var exceptionRe *regexp.Regexp
+	if param.additionalNormalEvents != "" {
+		exceptionRe = regexp.MustCompile(param.additionalNormalEvents)
+	}
+	if eventMessagesContainReMatch(ctx, events, reNotSystemBootMessage, exceptionRe) {
 		s.Errorf("Incorrect event logged on normal boot: %+v", events)
 	}
 
-	// TODO(gredelston): Test eventlog upon dev->dev reboot
-	// TODO(gredelston): Test eventlog upon normal->rec reboot
-	// TODO(gredelston): Test eventlog upon rec->normal reboot
-	// TODO(gredelston): Test eventlog upon suspend/resume
-	// TODO(gredelston): Test eventlog with hardware watchdog
+	// TODO(b/174800291): Test eventlog upon dev->dev reboot
+	// TODO(b/174800291): Test eventlog upon normal->rec reboot
+	// TODO(b/174800291): Test eventlog upon rec->normal reboot
+	// TODO(b/174800291): Test eventlog upon suspend/resume
+	// TODO(b/174800291): Test eventlog with hardware watchdog
 }
