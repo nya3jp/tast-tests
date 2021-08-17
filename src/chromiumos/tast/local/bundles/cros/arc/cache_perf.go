@@ -23,8 +23,10 @@ type cacheMode int
 const (
 	// Use all caches.
 	cacheNormal cacheMode = iota
-	// Skip all caches.
-	cacheSkipAll
+	// Skip using app caches like packages and GMS Core.
+	cacheSkipApps
+	// Skip using disk caches like ureadahead.
+	cacheSkipDisk
 )
 
 func init() {
@@ -68,14 +70,16 @@ func CachePerf(ctx context.Context, s *testing.State) {
 	)
 
 	normalTime := time.Duration(0)
-	skipAllTime := time.Duration(0)
+	skipAppsTime := time.Duration(0)
+	skipDiskTime := time.Duration(0)
 	normalEnergy := float64(0)
-	skipAllEnergy := float64(0)
+	skipAppsEnergy := float64(0)
+	skipDiskEnergy := float64(0)
 	passedCount := 0
 	errorCount := 0
 
 	for passedCount < successBootCount {
-		normalTimeIter, skipAllTimeIter, normalEnergyIter, skipAllEneryIter, err := performIteration(ctx, s)
+		normalTimeIter, skipAppsTimeIter, skipDiskTimeIter, normalEnergyIter, skipAppsEnergyIter, skipDiskEnergyIter, err := performIteration(ctx, s)
 		if err != nil {
 			s.Log("Error found during the ARC boot: ", err)
 			errorCount++
@@ -86,47 +90,79 @@ func CachePerf(ctx context.Context, s *testing.State) {
 		}
 		passedCount++
 		normalTime += normalTimeIter
-		skipAllTime += skipAllTimeIter
+		skipAppsTime += skipAppsTimeIter
+		skipDiskTime += skipDiskTimeIter
 		normalEnergy += normalEnergyIter
-		skipAllEnergy += skipAllEneryIter
+		skipAppsEnergy += skipAppsEnergyIter
+		skipDiskEnergy += skipDiskEnergyIter
 	}
 
 	normalTime /= time.Duration(passedCount)
-	skipAllTime /= time.Duration(passedCount)
+	skipAppsTime /= time.Duration(passedCount)
+	skipDiskTime /= time.Duration(passedCount)
 	normalEnergy /= float64(passedCount)
-	skipAllEnergy /= float64(passedCount)
-	boost := skipAllTime - normalTime
-	percents := 100.0 * boost.Seconds() / normalTime.Seconds()
-	s.Logf("Cache time performance: %.1fs (%.1f%%) based on %d passed and %d skipped iterations",
-		boost.Seconds(), percents, passedCount, errorCount)
+	skipAppsEnergy /= float64(passedCount)
+	skipDiskEnergy /= float64(passedCount)
+	boostApps := skipAppsTime - normalTime
+	boostDisk := skipDiskTime - normalTime
+	percentsApps := 100.0 * boostApps.Seconds() / normalTime.Seconds()
+	percentsDisk := 100.0 * boostDisk.Seconds() / normalTime.Seconds()
+	s.Logf("Time performance: %.1fs (%.1f%%) for apps caches and %.1fs (%.1f%%) for disk caches  based on %d passed and %d skipped iterations",
+		boostApps.Seconds(), percentsApps,
+		boostDisk.Seconds(), percentsDisk,
+		passedCount, errorCount)
 
 	perfValues := perf.NewValues()
 	perfValues.Set(perf.Metric{
 		Name:      "boostTime",
 		Unit:      "seconds",
 		Direction: perf.BiggerIsBetter,
-	}, boost.Seconds())
+	}, boostApps.Seconds())
 	perfValues.Set(perf.Metric{
 		Name:      "boostTimePercents",
 		Unit:      "percents",
 		Direction: perf.BiggerIsBetter,
-	}, percents)
+	}, percentsApps)
+	perfValues.Set(perf.Metric{
+		Name:      "boostTimeDisk",
+		Unit:      "seconds",
+		Direction: perf.BiggerIsBetter,
+	}, boostDisk.Seconds())
+	perfValues.Set(perf.Metric{
+		Name:      "boostTimeDiskPercents",
+		Unit:      "percents",
+		Direction: perf.BiggerIsBetter,
+	}, percentsDisk)
 
 	if normalEnergy != 0 {
-		boostEnergy := skipAllEnergy - normalEnergy
-		percents = 100.0 * boostEnergy / normalEnergy
-		s.Logf("Cache energy performance: %.1f joules (%.1f%%) based on %d passed and %d skipped iterations",
-			boostEnergy, percents, passedCount, errorCount)
+		boostAppsEnergy := skipAppsEnergy - normalEnergy
+		percentsApps = 100.0 * boostAppsEnergy / normalEnergy
+		boostDiskEnergy := skipDiskEnergy - normalEnergy
+		percentsDisk = 100.0 * boostDiskEnergy / normalEnergy
+		s.Logf("Energy performance: %.1f joules (%.1f%%) for apps caches and %.1f joules (%.1f%%) for disk caches  based on %d passed and %d skipped iterations",
+			boostAppsEnergy, percentsApps,
+			boostDiskEnergy, percentsDisk,
+			passedCount, errorCount)
 		perfValues.Set(perf.Metric{
 			Name:      "boostEnergy",
 			Unit:      "joules",
 			Direction: perf.BiggerIsBetter,
-		}, boostEnergy)
+		}, boostAppsEnergy)
 		perfValues.Set(perf.Metric{
 			Name:      "boostEnergyPercents",
 			Unit:      "percents",
 			Direction: perf.BiggerIsBetter,
-		}, percents)
+		}, percentsApps)
+		perfValues.Set(perf.Metric{
+			Name:      "boostEnergyDisk",
+			Unit:      "joules",
+			Direction: perf.BiggerIsBetter,
+		}, boostDiskEnergy)
+		perfValues.Set(perf.Metric{
+			Name:      "boostEnergyDiskPercents",
+			Unit:      "percents",
+			Direction: perf.BiggerIsBetter,
+		}, percentsDisk)
 	}
 
 	if err := perfValues.Save(s.OutDir()); err != nil {
@@ -136,23 +172,29 @@ func CachePerf(ctx context.Context, s *testing.State) {
 
 // performIteration performs ARC provisioning in two modes, with and without caches.
 // It returns durations spent for each boot.
-func performIteration(ctx context.Context, s *testing.State) (normalTime, skipAllTime time.Duration, normalEnergy, skipAllEnergy float64, err error) {
-	skipAllTime, skipAllEnergy, err = bootARCCachePerf(ctx, s, cacheSkipAll)
+func performIteration(ctx context.Context, s *testing.State) (normalTime, skipAppsTime, skipDiskTime time.Duration, normalEnergy, skipAppsEnergy, skipDiskEnergy float64, err error) {
+	skipAppsTime, skipAppsEnergy, err = bootARCCachePerf(ctx, s, cacheSkipApps)
 	if err != nil {
-		return 0, 0, 0, 0, err
+		return 0, 0, 0, 0, 0, 0, err
+	}
+
+	skipDiskTime, skipDiskEnergy, err = bootARCCachePerf(ctx, s, cacheSkipDisk)
+	if err != nil {
+		return 0, 0, 0, 0, 0, 0, err
 	}
 
 	normalTime, normalEnergy, err = bootARCCachePerf(ctx, s, cacheNormal)
 	if err != nil {
-		return 0, 0, 0, 0, err
+		return 0, 0, 0, 0, 0, 0, err
 	}
 
-	s.Logf("Iteration done, normal time/energy: %.1fs/%.1fj, no caches time: %.1fs/%.1fj, boost %.1fs/%.1fj",
+	s.Logf("Iteration done, normal time/energy: %.1fs/%.1fj, boost apps %.1fs/%.1fj, boost disks %.1fs/%.1fj",
 		normalTime.Seconds(), normalEnergy,
-		skipAllTime.Seconds(), skipAllEnergy,
-		(skipAllTime - normalTime).Seconds(),
-		skipAllEnergy-normalEnergy)
-	return normalTime, skipAllTime, normalEnergy, skipAllEnergy, nil
+		(skipAppsTime - normalTime).Seconds(),
+		skipAppsEnergy-normalEnergy,
+		(skipDiskTime - normalTime).Seconds(),
+		skipDiskEnergy-normalEnergy)
+	return normalTime, skipAppsTime, skipDiskTime, normalEnergy, skipAppsEnergy, skipDiskEnergy, nil
 }
 
 // bootARCCachePerf performs Chrome login and boots ARC. It waits for Play Store is shown and
@@ -163,7 +205,10 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 
 	switch mode {
 	case cacheNormal:
-	case cacheSkipAll:
+	case cacheSkipDisk:
+		// Disabling ureadahead caches.
+		args = append(args, "--arc-disable-ureadahead")
+	case cacheSkipApps:
 		// Disabling package manager cache disables GMS Core cache as well.
 		args = append(args, "--arc-packages-cache-mode=skip-copy")
 	default:
@@ -179,7 +224,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	cr, err := chrome.New(ctx,
 		chrome.ARCSupported(),
 		chrome.RestrictARCCPU(),
-		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefaul")),
 		chrome.ExtraArgs(args...))
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to login to Chrome")
