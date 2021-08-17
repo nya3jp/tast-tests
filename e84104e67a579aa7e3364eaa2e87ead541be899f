@@ -16,6 +16,23 @@
       "message": "I have a bit confused about the condition of having requiredEvents to be set to true. Please take a look at my comments. Thanks.",
       "revId": "e84104e67a579aa7e3364eaa2e87ead541be899f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf603a2_02260345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-17T22:27:28Z",
+      "side": 1,
+      "message": "Oh, I just realized that your latest patch set removed the code that I comment on. Therefore, my comment no longer applies to this CL.",
+      "revId": "e84104e67a579aa7e3364eaa2e87ead541be899f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
