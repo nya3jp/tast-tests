@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b554d9_9302b2af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-17T10:11:40Z",
+      "side": 1,
+      "message": "Use of go-cmp looks nice.\n\nBut I\u0027m afraid that use of utils.ErrorHolder is not idiomatic while it doesn\u0027t reduce too much boilerplates. See my comments in crrev.com/c/3066788.\n",
+      "revId": "580f657272108b0a25a9df864bfb6051c28485b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
