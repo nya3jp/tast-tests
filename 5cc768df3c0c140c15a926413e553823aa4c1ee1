@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92145540_d8b1491b",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T02:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9831cbdc_8490687c",
+      "range": {
+        "startLine": 460,
+        "startChar": 4,
+        "endLine": 460,
+        "endChar": 35
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67bd023b_e9f25b91",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "Also, the screen time limit Tast test (crrev/c/3088098) doesn\u0027t need to depend on this CL if we don\u0027t change the policy files.",
       "parentUuid": "67bd023b_e9f25b91",
+      "range": {
+        "startLine": 564,
+        "startChar": 22,
+        "endLine": 564,
+        "endChar": 53
+      },
+      "revId": "5cc768df3c0c140c15a926413e553823aa4c1ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f665fd0c_057ef510",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T02:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf11b253_3d021f55",
       "range": {
         "startLine": 564,
         "startChar": 22,
