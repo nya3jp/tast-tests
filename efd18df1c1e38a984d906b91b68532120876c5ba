@@ -39,6 +39,30 @@
       },
       "revId": "efd18df1c1e38a984d906b91b68532120876c5ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e288a28_8b65bc33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:46:46Z",
+      "side": 1,
+      "message": "Done.\n(I\u0027ll add wmDisplayResolutionR once it becomes necessary.)",
+      "parentUuid": "fe515c29_c62ca0d2",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 928,
+        "endChar": 2
+      },
+      "revId": "efd18df1c1e38a984d906b91b68532120876c5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
