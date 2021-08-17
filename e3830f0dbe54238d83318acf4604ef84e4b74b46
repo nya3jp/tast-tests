@@ -326,6 +326,30 @@
       },
       "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32937c0_e493f909",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-17T23:36:01Z",
+      "side": 1,
+      "message": "Oh, I mean it seems that the folllowing code will keep running until \"err !\u003d nil || !iRes.Running\", what about give it a timeout?\n\nfor {\n\t\t\tiRes, err :\u003d dcl.ContainerExecInspect(ctx, r.ID)\n\t\t\tif err !\u003d nil || !iRes.Running {\n\t\t\t\tbreak\n\t\t\t}\n\t\t\terr \u003d testing.Sleep(ctx, 250*time.Millisecond)\n\t\t\tif err !\u003d nil {\n\t\t\t\tbreak\n\t\t\t}\n\t\t}",
+      "parentUuid": "a7409b29_c77f263d",
+      "range": {
+        "startLine": 431,
+        "startChar": 4,
+        "endLine": 431,
+        "endChar": 8
+      },
+      "revId": "e3830f0dbe54238d83318acf4604ef84e4b74b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
