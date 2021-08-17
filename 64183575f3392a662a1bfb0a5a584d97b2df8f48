@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c70864_5af2f1b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-17T07:59:28Z",
+      "side": 1,
+      "message": "It seems that we still need Tast owners approval to cherry-pick Tast CLs.\n\nHidehiko-san, could you help CR+2 this, https://crrev.com/c/3099225 and https://crrev.com/c/3096664 ?\n\nThey are pure cherry-pick CLs for camera app document scanning feature.\nThanks!",
+      "revId": "64183575f3392a662a1bfb0a5a584d97b2df8f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
