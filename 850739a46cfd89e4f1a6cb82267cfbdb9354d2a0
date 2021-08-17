@@ -16,6 +16,24 @@
       "message": "Hello, I missed the notification for the review which caused the delay.\nPlease take a look. Added the change\nThanks",
       "revId": "850739a46cfd89e4f1a6cb82267cfbdb9354d2a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391aeee4_2256f0d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-17T07:41:18Z",
+      "side": 1,
+      "message": "Isn\u0027t this a repeated CL?",
+      "parentUuid": "cf37c63f_c557bf50",
+      "revId": "850739a46cfd89e4f1a6cb82267cfbdb9354d2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
