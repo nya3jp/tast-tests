@@ -39,6 +39,30 @@
       },
       "revId": "d01fa535c87d6b5359d8d763217c8c6d12db58be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a193081c_0873de76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d571a6a_4d647daa",
+      "range": {
+        "startLine": 511,
+        "startChar": 1,
+        "endLine": 513,
+        "endChar": 2
+      },
+      "revId": "d01fa535c87d6b5359d8d763217c8c6d12db58be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
