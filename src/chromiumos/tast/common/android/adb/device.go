@@ -438,7 +438,14 @@ func (d *Device) GoogleAccount(ctx context.Context) (string, error) {
 
 // Root restarts adbd with root permissions.
 func (d *Device) Root(ctx context.Context) error {
-	return d.Command(ctx, "root").Run(testexec.DumpLogOnError)
+	res, err := d.Command(ctx, "root").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return err
+	}
+	if strings.Contains(string(res), "cannot run as root") {
+		return errors.New("adb root not available on this device")
+	}
+	return nil
 }
 
 // SetScreenOffTimeout sets the Android device's screen timeout. This function requires adb root access.

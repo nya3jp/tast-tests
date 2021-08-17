@@ -31,10 +31,12 @@ func init() {
 		defaultAndroidUsername = "nearbyshare.android_username"
 		defaultAndroidPassword = "nearbyshare.android_password"
 
-		// These vars can be used from the command line when running tests locally to configure the tests to run on non-rooted devices and personal GAIA accounts.
-		// Specify -var=rooted=false when running on an unrooted device to skip steps that require adb root access.
-		rooted = "rooted"
-		// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account. Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
+		// This is the username that we'll use for non-rooted devices in the lab.
+		unrootedAndroidUsername = "nearbyshare.unrooted_android_username"
+
+		// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
+		// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
+		// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
 		skipAndroidLogin = "skipAndroidLogin"
 	)
 	testing.AddFixture(&testing.Fixture{
@@ -47,7 +49,7 @@ func init() {
 		Vars: []string{
 			defaultAndroidUsername,
 			defaultAndroidPassword,
-			rooted,
+			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
 		SetUpTimeout:    2 * time.Minute,
@@ -65,15 +67,6 @@ type nearbyShareAndroidFixture struct {
 }
 
 func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	// Set up Nearby Share on the Android device. Don't override GMS Core flags or perform settings changes that require root access if specified in the runtime vars.
-	rooted := true
-	if val, ok := s.Var("rooted"); ok {
-		b, err := strconv.ParseBool(val)
-		if err != nil {
-			s.Fatal("Unable to convert rooted var to bool: ", err)
-		}
-		rooted = b
-	}
 	const androidBaseName = "android_test"
 	androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
 	// TODO(crbug/1127165): Replace with s.DataPath(nearbysnippet.ZipName) when data is supported in Fixtures.
@@ -95,8 +88,8 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	} else if err != nil {
 		s.Fatal("Failed to check if built local data path exists: ", err)
 	}
-	// Set up adb and connect to the Android phone.
-	adbDevice, err := nearbysetup.AdbSetup(ctx)
+	// Set up adb, connect to the Android phone, and check if ADB root access is available.
+	adbDevice, rooted, err := nearbysetup.AdbSetup(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up an adb device: ", err)
 	}
@@ -116,6 +109,12 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	}
 	androidUsername := s.RequiredVar("nearbyshare.android_username")
 	androidPassword := s.RequiredVar("nearbyshare.android_password")
+
+	// If the device is not rooted and skipAndroidLogin was not specified, we'll assume the test is running with an unrooted phone in the lab.
+	// This only affects the username that will be saved in the device_attributes.json log.
+	if !rooted && !loggedIn {
+		androidUsername = s.RequiredVar("nearbyshare.unrooted_android_username")
+	}
 
 	// Configure the Android phone and set up the Snippet library.
 	androidDevice, err := nearbysetup.AndroidSetup(
