@@ -33,6 +33,23 @@
       "message": "Oh, I just realized that your latest patch set removed the code that I comment on. Therefore, my comment no longer applies to this CL.",
       "revId": "e84104e67a579aa7e3364eaa2e87ead541be899f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "774c1f29_b2edf71a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-17T22:34:24Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e84104e67a579aa7e3364eaa2e87ead541be899f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
