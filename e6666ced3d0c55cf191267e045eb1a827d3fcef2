@@ -46,6 +46,30 @@
       },
       "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d9e14a_6cedda57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-17T00:29:55Z",
+      "side": 1,
+      "message": "Can we obtain the order of the installed input methods before the switches? I don\u0027t know if there is a backend API for this, but such information at least shows in the inputs settings in both the OS setting page and the quicksettings panel. \n\nThis may be robust and insensative to the backend ordering implementations.",
+      "parentUuid": "96edb2da_928240f4",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
