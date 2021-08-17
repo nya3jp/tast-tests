@@ -34,6 +34,24 @@
       "parentUuid": "4ed25ef1_3a7899aa",
       "revId": "e81bb790e5bac901238620bd268887d6b0ff51d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556324c9_9d357221",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-17T16:02:18Z",
+      "side": 1,
+      "message": "The recommendation is to use a variable, instead.\nIt\u0027s unfortunate that golang does not support the immutable array, but we have to go with the spec.",
+      "parentUuid": "d4caa1ce_5c769d85",
+      "revId": "e81bb790e5bac901238620bd268887d6b0ff51d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
