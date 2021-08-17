@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ca5c5d_57d63a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_suggestion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-17T02:12:42Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "747c0edd_596abdcb",
+      "revId": "cd2b5ff14dbe4b61304166ffce4a06416f0d6cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c1f395_9197a289",
