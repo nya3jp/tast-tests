@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71266f8a_47dbb0f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cca4bd2_e3b13b95",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47fb70c2_d61016a5",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-08-16T18:19:04Z",
       "side": 1,
       "message": "remove extra space.",
+      "range": {
+        "startLine": 50,
+        "startChar": 51,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2fe050_ce07a904",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47fb70c2_d61016a5",
       "range": {
         "startLine": 50,
         "startChar": 51,
@@ -123,6 +171,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de878d52_0b46898f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Thanks for suggestion we are moving this test case to firmware folder and we will utilize firmware helpers.",
+      "parentUuid": "003c3aa1_941ae656",
+      "range": {
+        "startLine": 55,
+        "startChar": 13,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "035b72a5_a0868db8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
         "patchSetId": 1
@@ -134,6 +206,30 @@
       "writtenOn": "2021-08-16T18:01:03Z",
       "side": 1,
       "message": "You can\u0027t call dut-control like this. 1) This will run on the machine where the test is running, not on the servo-host. 2) If it did run on the servo host you would need to pass the servo port.\n\nAnd you don\u0027t need to, because you have an xmlrpc connection to the servo already. pxy.Servo",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 57
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2ef3a8_1f260a43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "035b72a5_a0868db8",
       "range": {
         "startLine": 65,
         "startChar": 3,
@@ -167,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2ac86d_bcb18b91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c53580c0_8eb6069c",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3211c65_99d5363f",
@@ -180,6 +300,30 @@
       "writtenOn": "2021-08-16T18:01:03Z",
       "side": 1,
       "message": "dut.Command is deprecated, use dut.Conn().CommandContext()",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb679c0_1ef358d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3211c65_99d5363f",
       "range": {
         "startLine": 86,
         "startChar": 12,
@@ -213,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4421f3_8ea77bb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b293032_1f397b09",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "825a2616_89dc1d35",
@@ -226,6 +394,24 @@
       "writtenOn": "2021-08-16T18:19:04Z",
       "side": 1,
       "message": "Are you doing a retry here? Please put some comment in it. I am a bit confused . If it is about retry, put the operation in a loop and specify number of tries allowed.",
+      "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f74d1c1_78002aba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/power_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-17T14:07:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "825a2616_89dc1d35",
       "revId": "2a11af2b456d571ee34d9b15e952916722687ef0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
