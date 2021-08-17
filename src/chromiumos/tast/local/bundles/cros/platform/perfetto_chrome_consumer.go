@@ -25,6 +25,7 @@ func init() {
 		Desc:         "Tests Chrome DevTools protocol for collecting a system-wide trace via the system tracing service",
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedIn",
 		Data:         []string{perfetto.TraceConfigFile},
 		Attr:         []string{"group:mainline", "informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
 	})
@@ -43,15 +44,11 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Start Chrome with the "EnablePerfettoSystemTracing" feature flag.
-	// TODO(crbug/1194540, b/191235714): remove this after the feature is enabled by default.
-	cr, err := chrome.New(
-		ctx,
-		chrome.ExtraArgs("--enable-features=EnablePerfettoSystemTracing"))
+	cr := s.FixtValue().(*chrome.Chrome)
+	_, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to enable Perfetto system tracing for Chrome: ", err)
+		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer cr.Close(cleanupCtx)
 
 	// Create the binary protobuf TraceConfig: unmarshal from pbtxt and then marshal to binary protobuf.
 	traceConfigPath := s.DataPath(perfetto.TraceConfigFile)
