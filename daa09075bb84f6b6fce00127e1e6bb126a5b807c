@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12cee95f_13584f26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-17T22:25:47Z",
+      "side": 1,
+      "message": "Do you need ALL the requiredEvents to be matched?\n\nIf you need all requiredEvent inside requiredEventSet, I think the current code is wrong. It currently set requiredEventsFound to true as long as one of them is matched.\n\nIf you only need to need one to be matched, I think you should break out both loops once you find a match.",
+      "revId": "daa09075bb84f6b6fce00127e1e6bb126a5b807c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a611602c_38df9e49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-17T22:25:47Z",
+      "side": 1,
+      "message": "To consistent with reProhibitedEvents, I think it should be called reAllowedEvents or reProhibitedEvents should be renamed.",
+      "revId": "daa09075bb84f6b6fce00127e1e6bb126a5b807c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
