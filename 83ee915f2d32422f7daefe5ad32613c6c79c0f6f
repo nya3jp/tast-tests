@@ -16,6 +16,23 @@
       "message": "Fixed bad delete. Also trigger dry-run",
       "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d719fc18_693407a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-08-17T00:03:10Z",
+      "side": 1,
+      "message": "https://tastboard.corp.google.com/test/graphics.KmsvncConnect\n\nLooks green.",
+      "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
