@@ -34,6 +34,23 @@
       "parentUuid": "6ae0278b_98424aaf",
       "revId": "0a70da0d006e37bd0173a96a2529c9678a26ce95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1509ebe1_dca21ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-08-17T20:23:56Z",
+      "side": 1,
+      "message": "Thanks, Po-Hsien and Jeremy!",
+      "revId": "0a70da0d006e37bd0173a96a2529c9678a26ce95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
