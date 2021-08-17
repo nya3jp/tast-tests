@@ -166,6 +166,30 @@
       },
       "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33df9516_fe6ed840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-17T07:37:08Z",
+      "side": 1,
+      "message": "As I said, there\u0027s two kinds of switching shortcuts: Ctrl+Space and Ctrl+Shift+Space, one does toggle with last-used, one cycles through the list (I can\u0027t remember which is which).\n\nYour personal use case is most suited with the one that toggles with last-used, but people have reason to use the other one. The expectation for the other one is very clear: it cycles through input methods in the order shown to the user.\n\nThe user may just have a few enabled so probably remember the order (so knowing whether to do the shortcut once or twice to get to what they need). Cycling through the list is the specs of the shortcut.",
+      "parentUuid": "b136991d_a1af3784",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
