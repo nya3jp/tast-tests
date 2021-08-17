@@ -57,8 +57,16 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Not running RW firmware")
 	}
 
-	if err := fingerprint.CheckRollbackSetToInitialValue(ctx, d); err != nil {
-		s.Fatal("Failed to validate rollback state: ", err)
+	testing.ContextLog(ctx, "Validating initial rollback info")
+	rollbackPrev, err := fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo: ", err)
+	}
+	if rollbackPrev.IsAntiRollbackSet() {
+		s.Fatalf("Anti-rollback is set: %+v", rollbackPrev)
+	}
+	if !rollbackPrev.IsEntropySet() {
+		s.Fatalf("Entropy is unset: %+v", rollbackPrev)
 	}
 
 	testing.ContextLog(ctx, "Adding entropy should fail when running RW")
@@ -67,30 +75,55 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Validating rollback didn't change")
-	if err := fingerprint.CheckRollbackSetToInitialValue(ctx, d); err != nil {
-		s.Fatal("Failed to validate rollback state: ", err)
+	rollbackCur, err := fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo: ", err)
+	}
+	if rollbackPrev != rollbackCur {
+		s.Fatalf("Rollback changed when adding entropy from RW: got %+v; want %+v",
+			rollbackCur, rollbackPrev)
 	}
 
 	testing.ContextLog(ctx, "Adding entropy from RO should succeed")
 	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
-	_ = fingerprint.AddEntropy(ctx, d, false)
-	testing.ContextLog(ctx, "Validating Block ID changes, but nothing else")
-	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
-		BlockID: 2, MinVersion: 0, RWVersion: 0}); err != nil {
-		s.Fatal("Unexpected rollback state: ", err)
+	if err := fingerprint.AddEntropy(ctx, d, false); err != nil {
+		s.Fatal("Failed to add entropy: ", err)
+	}
+	testing.ContextLog(ctx, "Validating Block ID increases by 1, but nothing else")
+	rollbackPrev = rollbackCur
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo: ", err)
+	}
+	if rollbackCur.IsAntiRollbackSet() {
+		s.Fatalf("Anti-rollback is set: %+v", rollbackPrev)
+	}
+	if expect := rollbackPrev.BlockID + 1; expect != rollbackCur.BlockID {
+		s.Fatalf("Unexpected Rollback Block ID: got %d; want %d",
+			rollbackCur.BlockID, expect)
 	}
 
 	testing.ContextLog(ctx, "Adding entropy with reset (double write) from RO should succeed")
 	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
-	_ = fingerprint.AddEntropy(ctx, d, true)
+	if err := fingerprint.AddEntropy(ctx, d, true); err != nil {
+		s.Fatal("Failed to add entropy: ", err)
+	}
 	testing.ContextLog(ctx, "Validating Block ID increases by 2, but nothing else")
-	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
-		BlockID: 4, MinVersion: 0, RWVersion: 0}); err != nil {
-		s.Fatal("Unexpected rollback state: ", err)
+	rollbackPrev = rollbackCur
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo: ", err)
+	}
+	if rollbackCur.IsAntiRollbackSet() {
+		s.Fatalf("Anti-rollback is set: %+v", rollbackPrev)
+	}
+	if expect := rollbackPrev.BlockID + 2; expect != rollbackCur.BlockID {
+		s.Fatalf("Unexpected Rollback Block ID: got %d; want %d",
+			rollbackCur.BlockID, expect)
 	}
 
 	testing.ContextLog(ctx, "Switching back to RW")
@@ -98,8 +131,14 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reboot to RW: ", err)
 	}
 	testing.ContextLog(ctx, "Validating nothing changed")
-	if err := fingerprint.CheckRollbackState(ctx, d, fingerprint.RollbackState{
-		BlockID: 4, MinVersion: 0, RWVersion: 0}); err != nil {
-		s.Fatal("Unexpected rollback state: ", err)
+	rollbackPrev = rollbackCur
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
+	if rollbackPrev != rollbackCur {
+		s.Fatalf("Rollback changed when adding entropy from RW: got %+v; want %+v",
+			rollbackCur, rollbackPrev)
+	}
+
 }
