@@ -92,9 +92,15 @@ func MakeNV12TestOptions(webMName string, profile videotype.CodecProfile) TestOp
 	}
 }
 
-// MakeTestOptionsWithSVCLayers creates TestOptions from webMName, profile, spatialLayers and temporalLayers.
-// verifyNV12Input is set to false.
-func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfile, spatialLayers, temporalLayers int) TestOptions {
+// MakeTestOptionsWithSVCLayers creates TestOptions from webMName, profile, svc.
+// verifyNV12Input is set to true.
+// svc is the string defined in https://w3c.github.io/webrtc-svc/#scalabilitymodes.
+func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfile, svc string) TestOptions {
+	spatialLayers := 1
+	temporalLayers := 1
+	if _, err := fmt.Sscanf(svc, "L%dT%d", &spatialLayers, &temporalLayers); err != nil {
+		panic(fmt.Sprintf("Unknown svc format : %v", err))
+	}
 	return TestOptions{
 		webMName:        webMName,
 		profile:         profile,
