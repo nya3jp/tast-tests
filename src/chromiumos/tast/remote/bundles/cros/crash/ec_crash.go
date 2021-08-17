@@ -17,6 +17,8 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/ssh/linuxssh"
@@ -25,16 +27,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ECCrash,
-		Desc:     "Verify artificial EC crash creates crash files",
-		Contacts: []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:        ECCrash,
+		Desc:        "Verify artificial EC crash creates crash files",
+		Contacts:    []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
+		Attr:        []string{"group:mainline", "informational"},
+		Timeout:     10 * time.Minute,
+		Data:        []string{firmware.ConfigFile},
+		Pre:         pre.NormalMode(),
+		ServiceDeps: []string{"tast.cros.crash.FixtureService", "tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		// no_qemu because the servo is not available in VMs, and tast does
 		// not (yet) support skipping tests if required vars are not provided.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
-		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu"},
-		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
-		Timeout:      10 * time.Minute,
+		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu", "crossystem", "flashrom"},
 		Vars:         []string{"servo"},
 	})
 }
@@ -43,6 +47,12 @@ func init() {
 func ECCrash(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
 	d := s.DUT()
+
+	h := s.PreValue().(*pre.Value).Helper
+
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to init servo: ", err)
+	}
 
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
@@ -94,18 +104,19 @@ func ECCrash(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to sync filesystems: %s", out)
 	}
 
-	// This is expected to fail in VMs, since Servo is unusable there and the "servo" var won't
-	// be supplied. https://crbug.com/967901 tracks finding a way to skip tests when needed.
-	servoSpec, _ := s.Var("servo")
-	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+	// When we crash, these connections will break.
+	cl.Close(ctx)
+	cl = nil
+	fs = nil
+
+	// Rebooting the EC can make servod fail if the CCD watchdog is not removed.
+	if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		s.Fatal("Failed to remove CCD watchdog: ", err)
 	}
-	defer pxy.Close(ctx)
 
 	s.Log("Running crash command")
 	// This should reboot the device
-	if err := pxy.Servo().RunECCommand(ctx, "crash divzero"); err != nil {
+	if err := h.Servo.RunECCommand(ctx, "crash divzero"); err != nil {
 		s.Fatal("Failed to run EC command")
 	}
 
@@ -115,11 +126,6 @@ func ECCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for DUT to become unreachable: ", err)
 	}
 	s.Log("DUT became unreachable (as expected)")
-
-	// When we lost the connection, these connections broke.
-	cl.Close(ctx)
-	cl = nil
-	fs = nil
 
 	s.Log("Reconnecting to DUT")
 	if err := d.WaitConnect(ctx); err != nil {
