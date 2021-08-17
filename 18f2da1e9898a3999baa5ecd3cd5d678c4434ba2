@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63956666_51e9fa92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-17T23:17:45Z",
+      "side": 1,
+      "message": "Ye. This is the question I actually want to ask as input of this test.\n1. For checking, my understanding is that after install / switch IME, we can use polling to wait until it it happens. When language model download is triggered, install or switch? I need this for each IME.\n\nThe 2nd and 3rd questions I need input from you as well.\n\nBtw, this test looks very time consuming. \n1. It is hardly to cover them on all boards, because of time consuming and large traffic.\n2. What\u0027s the plan to run this test? We can add this test but trigger it manually.",
+      "parentUuid": "98ad7d39_fe5b7229",
+      "revId": "18f2da1e9898a3999baa5ecd3cd5d678c4434ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4620f4f_45214d37",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
         "patchSetId": 2
