@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5e29587_3547aabf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-17T22:32:04Z",
+      "side": 1,
+      "message": "The CL is intended to show how to apply what I did for TaskSwichCUJ to your CL. Do you want to take it over?",
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65836738_3037a83d",
@@ -77,6 +94,30 @@
       "writtenOn": "2021-08-17T22:05:33Z",
       "side": 1,
       "message": "Instead of adding this here, is it possible to use a separate struct that has just ARC and LacrosFixt? It would not need to have Chrome, because the lacros variations of the tests should get it from lacros.Setup(). Meanwhile the non-lacros tests would use arc.PreData as is (just Chrome and ARC). I think that will be much cleaner, if you can do it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41308924_1e53840a",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-17T22:32:04Z",
+      "side": 1,
+      "message": "Possible but to use a separate struct for fixture data, it means we could not piggyback on arc.bootedFixture. We would need to create a new fixture impl and implement Setup/TearDown/Reset with part of the arc.bootedFixture code.",
+      "parentUuid": "0a8f6dc5_94ab421e",
       "range": {
         "startLine": 30,
         "startChar": 0,
