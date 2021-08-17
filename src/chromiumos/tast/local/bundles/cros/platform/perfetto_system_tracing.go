@@ -11,17 +11,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/perfetto"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 const (
-	tracedJob       = "traced"
-	tracedProbesJob = "traced_probes"
-	waitDuration    = 10 * time.Second
 	// Trace data output in binary proto format.
 	traceOutputFile = "perfetto_trace.pb"
 )
@@ -34,25 +29,6 @@ func init() {
 		Data:     []string{perfetto.TraceConfigFile},
 		Attr:     []string{"group:mainline"},
 	})
-}
-
-// ensureJobsStopped stops traced and makes sure traced_probes is also stopped.
-func ensureJobsStopped(ctx context.Context) error {
-	// Use a short context for waiting job status.
-	wctx, wcancel := context.WithTimeout(ctx, 10*time.Second)
-	defer wcancel()
-
-	// Stop traced.
-	if err := upstart.StopJob(wctx, tracedJob); err != nil {
-		return errors.Wrap(err, "failed to stop the traced job")
-	}
-
-	// Check that traced_probes is also stopped with traced.
-	if err := upstart.WaitForJobStatus(wctx, tracedProbesJob, upstartcommon.StopGoal, upstartcommon.WaitingState, upstart.RejectWrongGoal, waitDuration); err != nil {
-		return errors.Wrap(err, "the traced_probes job isn't stopped")
-	}
-
-	return nil
 }
 
 // collectTraceData collect a system-wide trace using the perfetto command line
@@ -83,84 +59,29 @@ func collectTraceData(ctx context.Context, s *testing.State) error {
 	return nil
 }
 
-// waitForRunning waits until |job| is up and running.
-func waitForRunning(ctx context.Context, job string) error {
-	// Wait for the job to
-	return testing.Poll(ctx, func(context.Context) error {
-		return upstart.CheckJob(ctx, job)
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 500 * time.Millisecond,
-	})
-}
-
-// getRunningJobStatus checks the status of job traced and traced_probes.
-// Returns the traced and traced_probes process IDs on success or an error if
-// either job is not in the running state, or either jobs has crashed (and
-// remains in the zombie process status.
-func getRunningJobStatus(ctx context.Context) (int, int, error) {
-	// Use a short context for waiting job status.
-	wctx, wcancel := context.WithTimeout(ctx, 15*time.Second)
-	defer wcancel()
-
-	// Ensure traced is not in the zombie process state.
-	if err := upstart.CheckJob(wctx, tracedJob); err != nil {
-		return 0, 0, err
-	}
-	// Get the PID of traced.
-	_, _, tracedPid, err := upstart.JobStatus(wctx, tracedJob)
-	if err != nil {
-		return 0, 0, err
-	}
-
-	// Wait for traced_probes, which starts on traced started.
-	if err := waitForRunning(wctx, tracedProbesJob); err != nil {
-		return 0, 0, err
-	}
-
-	// Get the PID of traced_probes.
-	_, _, tracedProbesPid, err := upstart.JobStatus(wctx, tracedProbesJob)
-	if err != nil {
-		return 0, 0, err
-	}
-
-	return tracedPid, tracedProbesPid, nil
-}
-
 // PerfettoSystemTracing tests perfetto system-wide trace collection.
 func PerfettoSystemTracing(ctx context.Context, s *testing.State) {
-	wctx, wcancel := context.WithTimeout(ctx, 10*time.Second)
-	defer wcancel()
-	// Make sure traced is running (and start it if not).
-	if err := upstart.EnsureJobRunning(wctx, tracedJob); err != nil {
-		s.Fatalf("Job %s isn't running", tracedJob)
-	}
-	defer func() {
-		if err := ensureJobsStopped(ctx); err != nil {
-			s.Fatal("Error in stopping the jobs: ", err)
-		}
-	}()
-
+	// The tracing service daemons are started by default. Check their status.
 	// Remember the PID of both jobs to verify that the jobs didn't have seccomp crash during trace collection.
-	tracedPid, tracedProbesPid, err := getRunningJobStatus(ctx)
+	tracedPID, tracedProbesPID, err := perfetto.CheckTracingServices(ctx)
 	if err != nil {
-		s.Fatal("Error in getting job status: ", err)
+		s.Fatal("Tracing services not running: ", err)
 	}
 
 	if err := collectTraceData(ctx, s); err != nil {
 		s.Fatal("Failed to collect trace data: ", err)
 	}
 
-	tracedPid2, tracedProbesPid2, err := getRunningJobStatus(ctx)
+	tracedPID2, tracedProbesPID2, err := perfetto.CheckTracingServices(ctx)
 	if err != nil {
-		s.Fatal("Error in getting job status after trace collection: ", err)
+		s.Fatal("Tracing services not running after trace collection: ", err)
 	}
 
 	// Check that PID stays the same as a heuristic that the jobs didn't crash during the test.
-	if tracedPid != tracedPid2 {
-		s.Errorf("Unexpected respawn of job %s (PID changed from %d to %d)", tracedJob, tracedPid, tracedPid2)
+	if tracedPID != tracedPID2 {
+		s.Errorf("Unexpected respawn of job %s (PID changed from %d to %d)", perfetto.TracedJobName, tracedPID, tracedPID2)
 	}
-	if tracedProbesPid != tracedProbesPid2 {
-		s.Errorf("Unexpected respawn of job %s (PID changed from %d to %d)", tracedProbesJob, tracedProbesPid, tracedProbesPid2)
+	if tracedProbesPID != tracedProbesPID2 {
+		s.Errorf("Unexpected respawn of job %s (PID changed from %d to %d)", perfetto.TracedProbesJobName, tracedProbesPID, tracedProbesPID2)
 	}
 }
