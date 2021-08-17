@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d613bc_ed48a678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-17T22:05:33Z",
+      "side": 1,
+      "message": "Thank you for doing this.",
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65836738_3037a83d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-17T22:05:33Z",
+      "side": 1,
+      "message": "It seems the whole point of your CL is that the fixture starts ARC so the tests do not have to? Then I think this should just say \"started\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 55,
+        "endLine": 99,
+        "endChar": 100
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2fc087_647e7c87",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-17T22:05:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 110,
+        "startChar": 55,
+        "endLine": 110,
+        "endChar": 100
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8f6dc5_94ab421e",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-17T22:05:33Z",
+      "side": 1,
+      "message": "Instead of adding this here, is it possible to use a separate struct that has just ARC and LacrosFixt? It would not need to have Chrome, because the lacros variations of the tests should get it from lacros.Setup(). Meanwhile the non-lacros tests would use arc.PreData as is (just Chrome and ARC). I think that will be much cleaner, if you can do it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
