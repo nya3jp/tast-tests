@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
@@ -52,25 +53,23 @@ type TestCase struct {
 
 // TestParams represents the collection of tests to run in tablet mode or clamshell mode.
 type TestParams struct {
-	LaunchTests      []TestCase
-	CommonTests      []TestCase
-	AppSpecificTests []TestCase
+	LaunchTests       []TestCase
+	CommonTests       []TestCase
+	AppSpecificTests  []TestCase
+	ARCPSpecificTests []TestCase
+	VMSpecificTests   []TestCase
 }
 
 // ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
 var ClamshellCommonTests = []TestCase{
 	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
-	{Name: "Clamshell: Orientation", Fn: OrientationSize},
 	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
 	//{Name: "Clamshell: Mouse click", Fn: MouseClick},
 	//{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
 	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
 	//{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
 	//{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
-	{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
-	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: ReOpenWindow},
 }
 
@@ -84,6 +83,19 @@ var TouchviewCommonTests = []TestCase{
 	{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
 	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+}
+
+// ClamshellARCPCommonTests is a list of all ARCP specific tests common to all apps.
+var ClamshellARCPCommonTests = []TestCase{
+	{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenAppForARCP},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindowForARCP},
+}
+
+// ClamshellVMCommonTests is a list of all ARCVM specific tests common to all apps.
+var ClamshellVMCommonTests = []TestCase{
+	{Name: "Clamshell: Orientation", Fn: OrientationSize},
+	{Name: "Clamshell: Resize Lock", Fn: ResizeLock},
 }
 
 // RunTestCases setups the device and runs all app compat test cases.
@@ -117,6 +129,12 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
 	var AllTests = []TestCase{}
 	for _, curTest := range testCases.LaunchTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.ARCPSpecificTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.VMSpecificTests {
 		AllTests = append(AllTests, curTest)
 	}
 	for _, curTest := range testCases.CommonTests {
@@ -275,8 +293,8 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	return cr, tconn, a
 }
 
-// ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR.
-func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+// ClamshellFullscreenAppForARCP Test launches the app in full screen window and verifies launch successfully without crash or ANR on ARC-P devices
+func ClamshellFullscreenAppForARCP(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	s.Log("Setting the window to fullscreen")
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
 		s.Fatal(" Failed to set the window to fullscreen: ", err)
@@ -328,8 +346,8 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 }
 
-// ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
-func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+// ClamshellResizeWindowForARCP Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR on ARC-P devices.
+func ClamshellResizeWindowForARCP(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -379,6 +397,81 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
+const (
+	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
+	phoneButtonName       = "Phone"
+	tabletButtonName      = "Tablet"
+	resizableButtonName   = "Resizable"
+	centerButtonClassName = "FrameCenterButton"
+)
+
+// Represents the high-level state of the app from the resize-lock feature's perspective.
+type resizeLockMode int
+
+const (
+	phoneResizeLockMode resizeLockMode = iota
+	tabletResizeLockMode
+	resizableResizeLockMode
+)
+
+func (mode resizeLockMode) String() string {
+	switch mode {
+	case phoneResizeLockMode:
+		return phoneButtonName
+	case tabletResizeLockMode:
+		return tabletButtonName
+	case resizableResizeLockMode:
+		return resizableButtonName
+	default:
+		return ""
+	}
+}
+
+// ResizeLock Test verifies if app has resize lock feature available or not and verifies if app launch successfully without crash or ANR.
+func ResizeLock(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	if err := checkCompatModeButton(ctx, s, tconn, a, d, appPkgName, appActivity); err != nil {
+		s.Fatal("Failed to verify the window state and compat mode button availability: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
+// checkCompatModeButton verifies the window state of app and also verifies compat mode button is available or not for the given app.
+func checkCompatModeButton(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) error {
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Error("Failed to get window info: ", err)
+	}
+	// Check if app is launched in maximized or in fullscreen state.
+	if info.State == ash.WindowStateMaximized || info.State == ash.WindowStateFullscreen {
+		s.Log("App is in maximized or full screen state")
+		// Check if app is resizable or not.
+		s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
+		if !info.CanResize {
+			s.Log("This app is not resizable. Skipping test")
+			return nil
+		}
+		// If resizable, on clicking resize button, check app shows up resize lock feature or not.
+		s.Log("N-apps start maximized. Reseting window to normal size")
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+			s.Error("Failed to reset window to normal size: ", err)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+			s.Error("The window is not normalized: ", err)
+		}
+	}
+	// Check for compat-mode button.
+	button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	if err != nil {
+		s.Log("App isn't resize locked app. It can be an O4C app")
+	} else if button.Name == phoneButtonName || button.Name == tabletButtonName || button.Name == resizableButtonName {
+		s.Log("It is resize locked app")
+		s.Logf("button.Name:%s", button.Name)
+	} else {
+		return errors.Wrap(err, "failed to find the compat mode options")
+	}
+	return nil
 }
 
 // TouchAndTextInputs func verify touch and text inputs in the app are working properly without crash or ANR.
