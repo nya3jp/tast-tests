@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80e9ef3_e1e3ae02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-17T16:09:52Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nit\u0027s not a subpackage, but it is still recommended to avoid passing testing.State.\nIn this case, could you pass ctx context.Context, and use testing.ContextLogf() at L57?\nAnyways, in the case, error is reported and caller should handle it.",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "2f495458a956b1d43446cd72c9a01cd76b389574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
