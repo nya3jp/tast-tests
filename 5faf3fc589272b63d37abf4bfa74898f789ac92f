@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13396fc2_899bfddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Just nits now.",
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f880bc30_9d4d8649",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-08-17T02:16:54Z",
       "side": 1,
       "message": "No need for \u0026 here.",
+      "range": {
+        "startLine": 50,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1042edf_38fa60da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Never mind, I see that these are called composite literals in Go.",
+      "parentUuid": "f880bc30_9d4d8649",
       "range": {
         "startLine": 50,
         "startChar": 22,
@@ -87,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bbe117_23f60998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Never mind.",
+      "parentUuid": "55835d01_dc943aa9",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 72
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eafaf5d_20b9700c",
@@ -110,6 +175,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a00041_7986eaba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Never mind.",
+      "parentUuid": "8eafaf5d_20b9700c",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd656a2_593c672c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Nit: put a space after the colon and before the err",
+      "range": {
+        "startLine": 116,
+        "startChar": 82,
+        "endLine": 116,
+        "endChar": 83
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9047795_6c0a5ac0",
@@ -123,6 +235,30 @@
       "writtenOn": "2021-08-17T02:16:54Z",
       "side": 1,
       "message": "Nit: Remove the *. Returns the policy.UsageTimeLimit.",
+      "range": {
+        "startLine": 156,
+        "startChar": 42,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6e8e06_973c465f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Never mind.",
+      "parentUuid": "f9047795_6c0a5ac0",
       "range": {
         "startLine": 156,
         "startChar": 42,
@@ -202,6 +338,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "521f2e4f_3abfa3fb",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "So actually Go performs pointer escape analysis and automatically does heap allocation, unlike C++.",
+      "parentUuid": "a17947f3_c0d62d81",
+      "range": {
+        "startLine": 158,
+        "startChar": 34,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1767071a_193992d4",
@@ -238,6 +398,30 @@
       "writtenOn": "2021-08-17T02:16:54Z",
       "side": 1,
       "message": "No \u0026 here. Don\u0027t return a reference to local variables unless allocated on the heap with new(). Otherwise the memory is destroyed as soon as this stack frame exits.",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5204b998_7c791ca4",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Ah never mind. I see that Go works differently from C++.\n\n\"Note that, unlike in C, it\u0027s perfectly OK to return the address of a local variable; the storage associated with the variable survives after the function returns.\"\n\nhttps://golang.org/doc/effective_go#composite_literals",
+      "parentUuid": "ca485a4a_a170ae51",
       "range": {
         "startLine": 172,
         "startChar": 8,
