@@ -142,6 +142,30 @@
       },
       "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b136991d_a1af3784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-17T06:30:49Z",
+      "side": 1,
+      "message": "When I personally switch input method, I only remember which one is the most recent. User does not open a list to see how it is ordered. If we can know it from an api, we can probably use it to validate the next IME in Ctrl+Shift+Space. Otherwise to add more IMEs does not help without a clear expectation.",
+      "parentUuid": "8e486e5b_a6286736",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
