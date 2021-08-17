@@ -190,6 +190,30 @@
       },
       "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b81c745_5e2fb97a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-17T07:47:54Z",
+      "side": 1,
+      "message": "I think we all agreed that we need a third input method. The issue here is how to get the order list of the input methods? I can see there are three options here:\n\n1, assume the order is fixed (i.e, in the alphabetic order), and use this order when it is implemented in the backend.\n2, have a backend API to get the list.\n3, directly check from the UI, since we already have such information in the input settings page or the quicksettings panel. \n\nThe first two are backend-dependent while the third one is decoupled from the backend, which might be a better choice.\n\nAre we voting on these options? Please feel free to add any other options.",
+      "parentUuid": "33df9516_fe6ed840",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
