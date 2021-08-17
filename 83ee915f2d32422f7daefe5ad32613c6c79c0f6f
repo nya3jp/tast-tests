@@ -50,6 +50,24 @@
       "message": "We observed 9 green builds so far, great!\n\nCould you wait a bit more until we observe 20 green builds? That\u0027s a typical threshold we use.\nhttps://tastboard.corp.google.com/test/graphics.ScreenshotCLI\n",
       "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb3e468_b3b7f108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-17T09:37:33Z",
+      "side": 1,
+      "message": "Sounds good- I\u0027ll keep an eye on it and wait till we reach that threshold.",
+      "parentUuid": "e12574d2_d1958032",
+      "revId": "83ee915f2d32422f7daefe5ad32613c6c79c0f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
