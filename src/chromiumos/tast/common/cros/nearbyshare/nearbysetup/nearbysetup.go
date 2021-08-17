@@ -102,6 +102,11 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 
 // AndroidSetup prepares the connected Android device for Nearby Share tests.
 func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPath, username, password string, loggedIn bool, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
+	// Clear logcat so that logs start from this point on.
+	if err := testDevice.ClearLogcat(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to clear previous logcat logs")
+	}
+
 	// Clear the Android's default directory for receiving shares.
 	if err := testDevice.RemoveContents(ctx, android.DownloadDir); err != nil {
 		return nil, errors.Wrap(err, "failed to clear Android downloads directory")
@@ -115,6 +120,11 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 		return nil, errors.Wrap(err, "failed to wake screen")
 	}
 
+	// Enable verbose logging for Nearby Share.
+	if err := ConfigureNearbyLogging(ctx, testDevice, rooted); err != nil {
+		return nil, errors.Wrap(err, "failed to configure Android Nearby logs")
+	}
+
 	if rooted {
 		if err := testDevice.EnableBluetooth(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to enable bluetooth")
@@ -125,7 +135,8 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 	}
 
 	// Remove and re-add the specified account. A GAIA login is required to configure Nearby Share on the Android device.
-	if !loggedIn {
+	// Root access is required for adding and removing accounts.
+	if !loggedIn && rooted {
 		// Unzip the APK to a temp dir.
 		tempDir, err := ioutil.TempDir("", "account-util-apk")
 		if err != nil {
@@ -242,30 +253,28 @@ func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidN
 	return nil
 }
 
-// AdbSetup configures adb and connects to the Android device.
-func AdbSetup(ctx context.Context) (*adb.Device, error) {
+// AdbSetup configures adb and connects to the Android device with adb root if available.
+func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
 	if err := localadb.LaunchServer(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to launch adb server")
+		return nil, false, errors.Wrap(err, "failed to launch adb server")
 	}
 	// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
 	adbDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to list adb devices")
+		return nil, false, errors.Wrap(err, "failed to list adb devices")
 	}
-	// Clear logcat so that logs start from this point on.
-	if err := adbDevice.ClearLogcat(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to clear previous logcat logs")
+	// Check if adb root is available.
+	rooted := true
+	if err := adbDevice.Root(ctx); err != nil {
+		testing.ContextLog(ctx, "ADB root access not available; operations requiring root access will be skipped")
+		rooted = false
 	}
-	// Enable verbose logging for Nearby Share.
-	if err := ConfigureNearbyLogging(ctx, adbDevice); err != nil {
-		return nil, errors.Wrap(err, "failed to configure Android Nearby logs")
-	}
-	return adbDevice, nil
+	return adbDevice, rooted, nil
 }
 
 // ConfigureNearbyLogging enables verbose logging for Nearby modules, bluetooth, and wifi on Android.
-func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
+func ConfigureNearbyLogging(ctx context.Context, d *adb.Device, rooted bool) error {
 	tags := []string{
 		"Nearby",
 		"NearbyMessages",
@@ -284,11 +293,13 @@ func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 			return errors.Wrapf(err, "failed to enable verbose logging for tag %v", tag)
 		}
 	}
-	if err := d.EnableBluetoothHciLogging(ctx); err != nil {
-		return errors.Wrap(err, "failed to enable bluetooth hci logging")
-	}
-	if err := d.EnableVerboseWifiLogging(ctx); err != nil {
-		return errors.Wrap(err, "failed to enable verbose wifi logging")
+	if rooted {
+		if err := d.EnableBluetoothHciLogging(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable bluetooth hci logging")
+		}
+		if err := d.EnableVerboseWifiLogging(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable verbose wifi logging")
+		}
 	}
 	return nil
 }
