@@ -118,6 +118,30 @@
       },
       "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e486e5b_a6286736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-17T05:11:21Z",
+      "side": 1,
+      "message": "Yes, they will soon be sorted by their full display names, according to the system locale\u0027s sorting rules.\n\nHowever, don\u0027t think the ordering should be assumed in tests. The tests should \"read\" the list being displayed (just like a humans do), then use that info as the basis to verify if the input method being switched to is correct.\n\nNothing should be assumed; the system can decide to change the ordering at will. The only thing that\u0027s stable is the behaviour of Ctrl+Space and Ctrl+Shift+Space (one toggles between current and last-used, one cycles through the list; I don\u0027t remember which is which though).\n\n+1 to John\u0027s \"add a 3rd one\" to verify different behaviours between Ctrl+Space and Ctrl+Shift+Space.",
+      "parentUuid": "ba122629_ca065e88",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
