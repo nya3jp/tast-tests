@@ -16,6 +16,23 @@
       "message": "Sorry for the delayed reply. PTAL again!",
       "revId": "b9dc67830b73ccf4e399b2e485bee6160be2e6d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "435f0e69_cee95578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-17T08:29:11Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "b9dc67830b73ccf4e399b2e485bee6160be2e6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
