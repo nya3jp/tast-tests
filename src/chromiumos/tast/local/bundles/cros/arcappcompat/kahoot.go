@@ -50,9 +50,10 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForKahoot,
-				CommonTests:      testutil.ClamshellCommonTests,
-				AppSpecificTests: clamshellAppSpecificTestsForKahoot,
+				LaunchTests:       clamshellLaunchForKahoot,
+				ARCPSpecificTests: testutil.ClamshellARCPCommonTests,
+				CommonTests:       testutil.ClamshellCommonTests,
+				AppSpecificTests:  clamshellAppSpecificTestsForKahoot,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -75,6 +76,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForKahoot,
+				VMSpecificTests:  testutil.ClamshellVMCommonTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForKahoot,
 			},

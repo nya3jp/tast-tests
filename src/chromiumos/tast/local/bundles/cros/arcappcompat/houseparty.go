@@ -40,8 +40,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForHouseparty,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:       clamshellLaunchForHouseparty,
+				ARCPSpecificTests: testutil.ClamshellARCPCommonTests,
+				CommonTests:       testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
@@ -56,8 +57,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForHouseparty,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:     clamshellLaunchForHouseparty,
+				VMSpecificTests: testutil.ClamshellVMCommonTests,
+				CommonTests:     testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,

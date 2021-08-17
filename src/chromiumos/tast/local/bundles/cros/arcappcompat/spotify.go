@@ -51,9 +51,10 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForSpotify,
-				CommonTests:      testutil.ClamshellCommonTests,
-				AppSpecificTests: clamshellAppSpecificTestsForSpotify,
+				LaunchTests:       clamshellLaunchForSpotify,
+				CommonTests:       testutil.ClamshellCommonTests,
+				ARCPSpecificTests: testutil.ClamshellARCPCommonTests,
+				AppSpecificTests:  clamshellAppSpecificTestsForSpotify,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -76,6 +77,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForSpotify,
+				VMSpecificTests:  testutil.ClamshellVMCommonTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForSpotify,
 			},

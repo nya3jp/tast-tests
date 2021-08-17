@@ -38,8 +38,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForBitLife,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:       clamshellLaunchForBitLife,
+				ARCPSpecificTests: testutil.ClamshellARCPCommonTests,
+				CommonTests:       testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -60,8 +61,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForBitLife,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:     clamshellLaunchForBitLife,
+				VMSpecificTests: testutil.ClamshellVMCommonTests,
+				CommonTests:     testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
