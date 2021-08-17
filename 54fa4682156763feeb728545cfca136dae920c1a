@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4b573c_f8e740ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3054504_d66b15f0",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "54fa4682156763feeb728545cfca136dae920c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c907952b_5ac5ac3b",
@@ -39,6 +63,30 @@
       "side": 1,
       "message": "\u003e \"Previouly\" is a possible misspelling of \"Previously\".\n\nPlease fix.",
       "parentUuid": "cd3c2409_7a5c8b62",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "54fa4682156763feeb728545cfca136dae920c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f9338e_9db3fedd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-17T08:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c907952b_5ac5ac3b",
       "range": {
         "startLine": 12,
         "startChar": 12,
