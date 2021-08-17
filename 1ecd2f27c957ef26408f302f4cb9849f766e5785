@@ -51,6 +51,24 @@
       "parentUuid": "f995e3bb_ae36bf11",
       "revId": "1ecd2f27c957ef26408f302f4cb9849f766e5785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a92d6e_3f31204b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-17T02:00:40Z",
+      "side": 1,
+      "message": "Sure, but the bigger issue is that there\u0027s such a significant difference in pass rate between the current kernel and kernelnext.\n\nWe\u0027d still like to ensure that WiFi reconnects in a timely manner after each suspend/resume cycle, so doubling the timeout of the test seems less than ideal.\n\nI\u0027ve cc\u0027ed our champ this week and put the bug into our triage queue so someone from the WiFi team can take a look.",
+      "parentUuid": "8d8209b0_1915c50f",
+      "revId": "1ecd2f27c957ef26408f302f4cb9849f766e5785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
