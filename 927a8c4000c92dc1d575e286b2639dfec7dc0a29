@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7981c7a_d88bf2a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-17T07:30:21Z",
+      "side": 1,
+      "message": "This is simple addition of data.\nLGTM, assuming the merge conflict does not affect the code logic.\n",
+      "revId": "927a8c4000c92dc1d575e286b2639dfec7dc0a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
