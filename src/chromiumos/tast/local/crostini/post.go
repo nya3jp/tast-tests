@@ -20,6 +20,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// PostTimeout is the standard time reserved for post-test tasks.
+var PostTimeout = 30 * time.Second
+
 // RunCrostiniPostTest runs hooks that should run after every test but before
 // the precondition closes (if it's going to) e.g. collecting logs from the
 // container.

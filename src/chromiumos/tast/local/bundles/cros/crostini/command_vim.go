@@ -85,12 +85,12 @@ func CommandVim(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
 	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	// Open Terminal app.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)

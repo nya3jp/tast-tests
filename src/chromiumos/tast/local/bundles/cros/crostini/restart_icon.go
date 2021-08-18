@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/testing"
@@ -78,7 +79,12 @@ func RestartIcon(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cont := pre.Container
 	tconn := pre.TestAPIConn
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
