@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4bac5d_ec0ebdda",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-18T12:44:09Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 22
+      },
+      "revId": "084446dad25beb7cce784458b8b006a0d52483ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9e18e8_5192927c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-18T12:44:09Z",
+      "side": 1,
+      "message": "Does this function take only one flag? If so please add a comment about it.\nOtherwise in a case when (binary values f \u003d 0001 and flags \u003d 0011) then it means that both flags are set, even though only one of them is set.\nSo, it might be better to change it to\n(f \u0026 flags) \u003d\u003d flags\nAlso, is it necessary to export it? if the only usage is here, maybe make it private.\nWDYT?",
+      "revId": "084446dad25beb7cce784458b8b006a0d52483ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
