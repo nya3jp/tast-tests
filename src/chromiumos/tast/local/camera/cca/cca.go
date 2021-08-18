@@ -60,8 +60,8 @@ const (
 	Square = "square"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait"
-	// Scanner is the mode used to scan barcode/document.
-	Scanner = "scanner"
+	// Scan is the mode used to scan barcode/document.
+	Scan = "scan"
 
 	// Expert is the state used to indicate expert mode.
 	Expert string = "expert"
@@ -215,12 +215,17 @@ var (
 	// PTZResetAllButton is the button for reset PTZ to default value.
 	PTZResetAllButton = UIComponent{"ptz reset all button", []string{"#ptz-reset-all"}}
 
-	// ScannerModeButton is the button to enter scanner mode.
-	ScannerModeButton = UIComponent{"scanner mode button", []string{
-		".mode-item>input[data-mode=\"scanner\"]"}}
-	// ScannerDocumentModeOption is the document mode option of scanner mode.
-	ScannerDocumentModeOption = UIComponent{"document mode button", []string{
-		"#scanner-document"}}
+	// ScanModeButton is the button to enter scan mode.
+	ScanModeButton = UIComponent{"scan mode button", []string{
+		// TODO(b/196904871): Remove selector for old mode name after
+		// naming CL on app side fully landed.
+		".mode-item>input[data-mode=\"scanner\"]",
+		".mode-item>input[data-mode=\"scan\"]"}}
+	// ScanDocumentModeOption is the document mode option of scan mode.
+	ScanDocumentModeOption = UIComponent{"document mode button", []string{
+		// TODO(b/196904871): Remove selector for old mode name after
+		// naming CL on app side fully landed.
+		"#scanner-document", "#scan-document"}}
 	// DocumentReviewView is the review view after taking a photo under document mode.
 	DocumentReviewView = UIComponent{"document review view", []string{
 		"#view-review-document"}}
@@ -233,8 +238,8 @@ var (
 	// RetakeButton is the button to retake the document photo.
 	RetakeButton = UIComponent{"retake document photo button", []string{
 		"#retake-document"}}
-	// DocumentScannerOverlay is the overlay that CCA used to draw document corners on.
-	DocumentScannerOverlay = UIComponent{"document scanner overlay", []string{
+	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
+	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
 )
 
@@ -1319,12 +1324,23 @@ func (a *App) SwitchCamera(ctx context.Context) error {
 
 // SwitchMode switches to specified capture mode.
 func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
-	if active, err := a.GetState(ctx, string(mode)); err != nil {
+	// Name and alternative name of the new/old state.
+	// TODO(b/196904871): Remove the logic here for adapting new/old state
+	// after (crrev.com/c/3102669) fully landed.
+	modeName := string(mode)
+	if mode == Scan {
+		var err error
+		modeName, err = a.AttributeWithIndex(ctx, ScanModeButton, 0, "data-mode")
+		if err != nil {
+			return errors.Wrap(err, "failed to get mode name of scan mode")
+		}
+	}
+	if active, err := a.GetState(ctx, modeName); err != nil {
 		return err
 	} else if active {
 		return nil
 	}
-	if err := a.conn.Call(ctx, nil, "Tast.switchMode", mode); err != nil {
+	if err := a.conn.Call(ctx, nil, "Tast.switchMode", modeName); err != nil {
 		return errors.Wrapf(err, "failed to switch to mode %s", mode)
 	}
 	if err := a.WaitForState(ctx, "mode-switching", false); err != nil {
@@ -1335,7 +1351,7 @@ func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 	}
 	// Owing to the mode retry mechanism in CCA, it may fallback to other mode when failing to
 	// switch to specified mode. Verify the mode value again after switching.
-	if active, err := a.GetState(ctx, string(mode)); err != nil {
+	if active, err := a.GetState(ctx, modeName); err != nil {
 		return errors.Wrapf(err, "failed to get mode state after switching to mode %s", mode)
 	} else if !active {
 		return errors.Wrapf(err, "failed to switch to mode %s", mode)
@@ -1738,8 +1754,8 @@ func (a *App) EnableDocumentMode(ctx context.Context) error {
 		return errors.Wrap(err, "unexpected state after enabling document mode")
 	}
 
-	if err := a.WaitForVisibleState(ctx, ScannerModeButton, true); err != nil {
-		return errors.Wrap(err, "failed to wait for scanner mode button shows up")
+	if err := a.WaitForVisibleState(ctx, ScanModeButton, true); err != nil {
+		return errors.Wrap(err, "failed to wait for scan mode button shows up")
 	}
 
 	return nil

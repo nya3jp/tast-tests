@@ -66,13 +66,13 @@ func RunPreviewDocumentCornersDetection(ctx context.Context, scriptPaths []strin
 	}
 
 	// Switch to scanner mode.
-	if err := app.SwitchMode(ctx, Scanner); err != nil {
+	if err := app.SwitchMode(ctx, Scan); err != nil {
 		return errors.Wrap(err, "failed to switch to scanner mode")
 	}
 
 	// Verify that document corners are shown in the preview.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		result, err := app.HasClass(ctx, DocumentScannerOverlay, "show-corner-indicator")
+		result, err := app.HasClass(ctx, DocumentCornerOverlay, "show-corner-indicator")
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check class of the document scanner overlay"))
 		} else if !result {
