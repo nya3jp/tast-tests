@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704ee167_f4cfa293",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-18T21:37:01Z",
+      "side": 1,
+      "message": "Can you make this and ec_chip consts in servo/ec.go please.",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "447ad4588e93dd263108735cd3ecbc2f90bf8960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e162160e_15fe5e29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-18T21:37:01Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure that this will be sufficient to identify the unique chip. For example npcx-npcx7m7fc and npcx-npcx7m7wb look like they are different sizes, but will they both show up as npcx_uut? \n\nFor comparison, on my eldrid, ec version says the chip is Nuvoton NPCX796F C.02, and ec_chip returns npcx_int_spi.\n\nWe can find out, once this has run on more machines, but I am skeptical.",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "447ad4588e93dd263108735cd3ecbc2f90bf8960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
