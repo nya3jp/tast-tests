@@ -22,6 +22,30 @@
       },
       "revId": "c4e9715a7d1330941bc9d2ec442d6a38636769aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c284d698_31cf5a96",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-18T10:44:41Z",
+      "side": 1,
+      "message": "Right, added logic adapting new/old names.",
+      "parentUuid": "07fc1535_9d17a7ce",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "c4e9715a7d1330941bc9d2ec442d6a38636769aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
