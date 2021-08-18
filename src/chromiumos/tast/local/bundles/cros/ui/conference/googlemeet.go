@@ -302,7 +302,9 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 		} else {
 			testing.ContextLog(ctx, "Turn camera from on to off")
 		}
-		if err := ui.LeftClick(cameraButton)(ctx); err != nil {
+
+		cameraButton = nodewith.Name(info.Name).Role(role.Button)
+		if err := ui.LeftClickUntil(cameraButton, ui.WithTimeout(5*time.Second).WaitUntilGone(cameraButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch camera")
 		}
 		return nil
@@ -320,7 +322,9 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 		} else {
 			testing.ContextLog(ctx, "Turn microphone from on to off")
 		}
-		if err := ui.LeftClick(microphoneButton)(ctx); err != nil {
+
+		microphoneButton = nodewith.Name(info.Name).Role(role.Button)
+		if err := ui.LeftClickUntil(microphoneButton, ui.WithTimeout(5*time.Second).WaitUntilGone(microphoneButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch microphone")
 		}
 		return nil
