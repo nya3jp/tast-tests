@@ -32,6 +32,7 @@ const (
 	PowerState            StringControl = "power_state"
 	Type                  StringControl = "servo_type"
 	UARTCmd               StringControl = "servo_v4_uart_cmd"
+	UARTCmdV4p1           StringControl = "servo_v4p1_uart_cmd"
 	Watchdog              StringControl = "watchdog"
 	WatchdogAdd           StringControl = "watchdog_add"
 	WatchdogRemove        StringControl = "watchdog_remove"
@@ -765,7 +766,16 @@ func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
 
 // runUARTCommand runs the given command on the servo console.
 func (s *Servo) runUARTCommand(ctx context.Context, cmd string) error {
-	return s.SetString(ctx, UARTCmd, cmd)
+	cmdName := UARTCmd
+	// Servo v4p1 uses a different interface for UART commands, so check for that.
+	// TODO(b/194310192): Unify the interface name at servod.
+	if hasV4p1, err := s.HasControl(ctx, string(UARTCmdV4p1)); err != nil {
+		return errors.Wrapf(err, "failed to run HasControl for %s", string(UARTCmdV4p1))
+	} else if hasV4p1 {
+		cmdName = UARTCmdV4p1
+	}
+
+	return s.SetString(ctx, cmdName, cmd)
 }
 
 // RunUSBCDPConfigCommand executes the "usbc_action dp" command with the specified args on the servo
