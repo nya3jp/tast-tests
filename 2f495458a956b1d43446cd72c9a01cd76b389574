@@ -22,6 +22,30 @@
       },
       "revId": "2f495458a956b1d43446cd72c9a01cd76b389574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46373333_5da1b143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_detect_rtd2142.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-08-18T02:39:07Z",
+      "side": 1,
+      "message": "I got the direct use of State out of an example, but managed to bumble my way to something that works with Context instead.",
+      "parentUuid": "d80e9ef3_e1e3ae02",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "2f495458a956b1d43446cd72c9a01cd76b389574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
