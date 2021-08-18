@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1cecdf_636c4d15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-18T00:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97b2376_43cb0329",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 7
+      },
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "530b94ff_c0fb6a05",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-17T18:54:51Z",
       "side": 1,
       "message": "This way of setting aside time for cleanup seems to be discouraged now based on the docs:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task\n\nIt appears to be the norm for the rest of the wifi tests, but it might be good to consider switching to the preferred way suggested by the docs. Up to you though, as I\u0027m not familiar with these tests.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 15
+      },
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c9c5fb_6ecb6798",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-18T00:42:46Z",
+      "side": 1,
+      "message": "Ah, thanks for pointing that out. It doesn\u0027t seem like it\u0027s possible at the moment given that we need the AP interface, and I think it makes more sense to make the change for all WiFi tests at once if we decide to go that way.\n\nIf it\u0027s okay with you, I\u0027d prefer to leave it as is for now.",
+      "parentUuid": "530b94ff_c0fb6a05",
       "range": {
         "startLine": 200,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c374531b_09e68428",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-18T00:42:46Z",
+      "side": 1,
+      "message": "Yes, I think these should be fine. I didn\u0027t want to add any extra noise, and I don\u0027t think errors.Wrap adds much value here.",
+      "parentUuid": "3be89033_4d0cf05c",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 13
+      },
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22caca8_f990cc61",
@@ -100,6 +172,24 @@
       "writtenOn": "2021-08-17T18:54:51Z",
       "side": 1,
       "message": "nit: end comment with a period here and below as well\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4707f1_a7767335",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-18T00:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f22caca8_f990cc61",
       "revId": "51f049f41fcf21ae26da5857acf699be46c008cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
