@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4280baa3_d5163897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-08-18T20:18:52Z",
+      "side": 1,
+      "message": "Shao-Chuan, could you PTAL?",
+      "revId": "0ca5369c67e92e13e65ee282366e01c8c1377e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
