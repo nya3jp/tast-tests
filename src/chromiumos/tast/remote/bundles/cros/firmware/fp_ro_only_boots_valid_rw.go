@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
+	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -48,9 +48,9 @@ type testParams struct {
 	expectedRunningFirmwareCopy fingerprint.FWImageType
 }
 
-func testFlashingFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Client, params *testParams) error {
+func testFlashingFirmwareVersion(ctx context.Context, d *rpcdut.RPCDUT, params *testParams) error {
 	testing.ContextLog(ctx, "Flashing firmware: ", params.firmwarePath)
-	if err := fingerprint.FlashRWFirmware(ctx, d, fs, params.firmwarePath); err != nil {
+	if err := fingerprint.FlashRWFirmware(ctx, d, params.firmwarePath); err != nil {
 		return errors.Wrapf(err, "failed to flash firmware: %q", params.firmwarePath)
 	}
 
@@ -60,7 +60,7 @@ func testFlashingFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Clie
 	}
 
 	testing.ContextLog(ctx, "Checking that ", params.expectedRunningFirmwareCopy, " firmware is running")
-	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d, params.expectedRunningFirmwareCopy); err != nil {
+	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d.DUT(), params.expectedRunningFirmwareCopy); err != nil {
 		return errors.Wrap(err, "not running RO firmware")
 	}
 
@@ -73,7 +73,13 @@ func testFlashingFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Clie
 }
 
 func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), true, true)
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.Close(ctx)
+
+	t, err := fingerprint.NewFirmwareTest(ctx, d, s.RequiredVar("servo"), s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -86,19 +92,17 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
-	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
+	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
 	if err != nil {
 		s.Fatal("Failed to generate test images: ", err)
 	}
 
-	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d.DUT(), fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Test expects RW firmware copy to be running")
 	}
 
 	// Hardware write protect must be enabled for the test to work correctly.
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d, t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
 		s.Fatal("Failed to validate write protect settings: ", err)
 	}
 
@@ -107,7 +111,7 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 	// flash successfully, but fail to boot (i.e., stay in RO mode). Finally,
 	// flash an MP-signed version, which should successfully boot to RW.
 
-	if err := testFlashingFirmwareVersion(ctx, d, t.DutfsClient(),
+	if err := testFlashingFirmwareVersion(ctx, d,
 		&testParams{
 			firmwarePath: testImages[fingerprint.TestImageTypeDev].Path,
 			// RO version should remain unchanged.
@@ -121,7 +125,7 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 	}
 
 	// Note that the corrupted version has the same version string as the original version.
-	if err := testFlashingFirmwareVersion(ctx, d, t.DutfsClient(),
+	if err := testFlashingFirmwareVersion(ctx, d,
 		&testParams{
 			firmwarePath: testImages[fingerprint.TestImageTypeCorruptFirstByte].Path,
 			// RO version should remain unchanged.
@@ -134,7 +138,7 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 		s.Fatal("Corrupt first byte test failed: ", err)
 	}
 
-	if err := testFlashingFirmwareVersion(ctx, d, t.DutfsClient(),
+	if err := testFlashingFirmwareVersion(ctx, d,
 		&testParams{
 			firmwarePath: testImages[fingerprint.TestImageTypeCorruptLastByte].Path,
 			// RO version should remain unchanged.
@@ -147,7 +151,7 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 		s.Fatal("Corrupt last byte test failed: ", err)
 	}
 
-	if err := testFlashingFirmwareVersion(ctx, d, t.DutfsClient(),
+	if err := testFlashingFirmwareVersion(ctx, d,
 		&testParams{
 			firmwarePath: testImages[fingerprint.TestImageTypeOriginal].Path,
 			// RO version should remain unchanged.
