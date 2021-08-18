@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aca0931_2cf56047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-18T03:50:49Z",
+      "side": 1,
+      "message": "OWNERS file aren\u0027t respected in Tast [1] (like reviews aren\u0027t requested from OWNERS). They opt into a gwsq model instead (with individual tests having a Contacts array to specify an owner or team for the test).\n\nThe only usage I\u0027ve seen for OWNERS is if a team are actively managing the content in the folder [2] [3] which I for sure know we\u0027re not doing and I imagine having any tast-owners@ reviewer look at changes be more beneficial then any cros-disks owner.\n\nWDYT?\n\n[1] https://groups.google.com/a/google.com/g/tast-reviewers/c/4oGiPOwg_lI/m/XDn-bvm6BQAJ\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/data/OWNERS\n[3] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/android/OWNERS",
+      "revId": "20c610c71622236c2c8c89c552fb042beb8dc65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
