@@ -47,10 +47,16 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 
 	testing.ContextLog(ctx, "Opening the in-session EDU Coexistence flow")
 	addSchoolAccountButton := nodewith.Name("Add school account").Role(role.Button)
+	searchSettingsBox := nodewith.Name("Search settings").Role(role.SearchBox)
 	selectParentOption := nodewith.NameStartingWith(parentFirstName + " " + parentLastName).Role(role.ListBoxOption)
 	if err := uiauto.Combine("open in-session edu coexistence flow",
+		// Once loaded, the Settings app automatically puts focus on the Search box
+		// at the top. Wait for this focus event to happen first, before trying to
+		// scroll to the Google Accounts section (so that it doesn't scroll back up).
+		ui.WaitUntilExists(searchSettingsBox.Focused()),
 		ui.WaitUntilExists(googleAccountsButton),
-		ui.FocusAndWait(googleAccountsButton), // scroll the button into view
+		// Scroll the button into view.
+		ui.FocusAndWait(googleAccountsButton),
 		ui.WithInterval(time.Second).LeftClickUntil(googleAccountsButton, ui.Exists(addSchoolAccountButton)),
 		ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, ui.Exists(selectParentOption)),
 	)(ctx); err != nil {
