@@ -286,6 +286,30 @@
       },
       "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce679f2f_547a4e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-18T05:17:16Z",
+      "side": 1,
+      "message": "Hi reviewers, as suggested I added 3rd input method to test the difference between Ctrl+Shift+Space and Ctrl+Space. \n\nfindNextInputMethod() and prevInputMethod are stored across test for expectation. \n\nPK typing validation will be added later.\n\nCan you please review the latest patchset? Thanks.",
+      "parentUuid": "3cd182c9_b6995068",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "e6666ced3d0c55cf191267e045eb1a827d3fcef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
