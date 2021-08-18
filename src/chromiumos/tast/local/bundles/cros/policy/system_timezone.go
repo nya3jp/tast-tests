@@ -14,9 +14,11 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -60,30 +62,30 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	for _, param := range []struct {
-		name            string                 // name is the subtest name.
-		policy          *policy.SystemTimezone // policy is the policy we test.
-		timezone        string                 // timezone is a short string of the timezone set by the policy.
-		wantRestriction ui.RestrictionState
+		name            string                  // name is the subtest name.
+		policy          *policy.SystemTimezone  // policy is the policy we test.
+		timezone        string                  // timezone is a short string of the timezone set by the policy.
+		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the radio buttons.
 		selectedOption  string
 	}{
 		{
 			name:            "berlin",
 			policy:          &policy.SystemTimezone{Val: "Europe/Berlin"},
 			timezone:        "Europe/Berlin",
-			wantRestriction: ui.RestrictionDisabled,
+			wantRestriction: restriction.Disabled,
 			selectedOption:  "Choose from list",
 		},
 		{
 			name:            "tokyo",
 			policy:          &policy.SystemTimezone{Val: "Asia/Tokyo"},
 			timezone:        "Asia/Tokyo",
-			wantRestriction: ui.RestrictionDisabled,
+			wantRestriction: restriction.Disabled,
 			selectedOption:  "Choose from list",
 		},
 		{
 			name:            "unset",
 			policy:          &policy.SystemTimezone{Stat: policy.StatusUnset},
-			wantRestriction: ui.RestrictionNone,
+			wantRestriction: restriction.None,
 			selectedOption:  "Set automatically",
 		},
 	} {
@@ -128,40 +130,15 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			// Open the timezone settings page and check restrictions.
-			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/dateTime/timeZone")
-			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
-			}
-			defer conn.Close()
-
-			// Connect to Test API to use it with the UI library.
-			tconn, err := cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to create Test API connection: ", err)
-			}
-
-			// Find the radio group node.
-			rgNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRadioGroup}, 15*time.Second)
-			if err != nil {
-				s.Fatal("Finding radio group failed: ", err)
-			}
-			defer rgNode.Release(ctx)
-
-			// Find the selected radio button under the radio group.
-			srbNode, err := rgNode.FindSelectedRadioButton(ctx)
-			if err != nil {
-				s.Fatal("Finding the selected radio button failed: ", err)
-			}
-			defer srbNode.Release(ctx)
-
-			if err := policyutil.CheckNodeAttributes(srbNode, ui.FindParams{
-				Attributes: map[string]interface{}{
-					"restriction": param.wantRestriction,
-					"name":        param.selectedOption,
-				},
-			}); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			// Open the timeZone settings page.
+			if err := policyutil.OSSettingsPage(ctx, cr, "dateTime/timeZone").
+				SelectNode(ctx, nodewith.
+					Role(role.RadioButton).
+					Name(param.selectedOption)).
+				Checked(checked.True).
+				Restriction(param.wantRestriction).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
 			}
 		})
 	}
