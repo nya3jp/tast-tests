@@ -35,7 +35,7 @@ func init() {
 			Fixture: "chromeLoggedIn",
 			Val:     lacros.ChromeTypeChromeOS,
 		}, {
-			Name:              "lacros",
+			Name:              "lacros_external",
 			Fixture:           "lacrosStartedByDataUI",
 			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -43,6 +43,12 @@ func init() {
 		}, {
 			Name:              "lacros_rootfs",
 			Fixture:           "lacrosStartedFromRootfs",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               lacros.ChromeTypeLacros,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosStarted",
+			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               lacros.ChromeTypeLacros,
 		}},

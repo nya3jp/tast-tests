@@ -16,12 +16,30 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
-// This should be used by any lacros fixtures defined outside this file.
-const LacrosDeployedBinary = "lacrosDeployedBinary"
+// Constants for the global runtime Tast Vars.
+const (
+	// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
+	// This should be used by any lacros fixtures defined outside this file.
+	LacrosDeployedBinary = "lacrosDeployedBinary"
+
+	// LacrosSelection contains the Fixture Var necessary to select lacros
+	// between 'stateful', 'rootfs' and 'external' for the binary passed in with -lacrosDeployedBinary or from the GCS path in the lacros_binary.tar.external file
+	// If not specified, it will default to 'external'.
+	LacrosSelection = "lacrosSelection"
+)
+
+// NewStartedByVars creates a new fixture that can launch Lacros chrome specified with the Var lacrosSelection in runtime.
+// Note: NewStartedByVars is recommended over NewStartedByData in that it allows the same test to be run for multiple setup modes without adding boilerplate.
+func NewStartedByVars(fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return &fixtureImpl{
+		mode: Runtime,
+		fOpt: fOpt,
+	}
+}
 
 // NewStartedByData creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
+// TODO(hyungtaekim): Rename to NewStartedByMode
 func NewStartedByData(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &fixtureImpl{
 		mode: mode,
@@ -144,6 +162,19 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosStarted",
+		Desc:     "Open Lacros Chrome from the binary specified with the runtime Var lacrosSelection: (1) rootfs (default), (2) omaha or (3) external binary associated with the Var lacrosDeployedBinary",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: NewStartedByVars(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosSelection, LacrosDeployedBinary},
+	})
 }
 
 const (
@@ -183,7 +214,7 @@ type FixtData struct {
 // fixtureImpl is a fixture that allows Lacros chrome to be launched.
 type fixtureImpl struct {
 	mode       SetupMode              // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                 // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	lacrosPath string                 // Root directory for lacros-chrome.
 	cr         *chrome.Chrome         // Connection to CrOS-chrome.
 	tconn      *chrome.TestConn       // Test-connection for CrOS-chrome.
 	prepared   bool                   // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
@@ -191,16 +222,19 @@ type fixtureImpl struct {
 }
 
 // SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
-type SetupMode int
+type SetupMode string
 
 const (
-	// PreExist denotes that Lacros-chrome already exists during the fixture. It can be already downloaded per the
+	// Runtime denotes that the setup mode will be determined by the vars passed in at runtime. This could be one of the sources below - external|omaha|rootfs.
+	Runtime = "runtime"
+	// PreExist denotes that Lacros-chrome is set up from external source. It can be already downloaded per the
 	// external data dependency or pre-deployed by the caller site that invokes the tests.
-	PreExist SetupMode = iota
+	// TODO(hyungtaekim): Replace 'PreExist' with 'External' to avoid confusion
+	PreExist = "external"
 	// Omaha is used to get the lacros binary.
-	Omaha
+	Omaha = "omaha"
 	// Rootfs is used to force the rootfs version of lacros-chrome. No external data dependency is needed.
-	Rootfs
+	Rootfs = "rootfs"
 )
 
 // SetUp is called by tast before each test is run. We use this method to initialize
@@ -234,31 +268,18 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		s.Fatal("Failed to obtain fixture options: ", err)
 	}
 
+	// Check runtime Vars to determine the Lacros binary to select and extra Chrome options to use.
+	f.mode, opts = f.checkVars(ctx, s, opts...)
+
 	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath))
 
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
-	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
 	if err != nil {
 		s.Fatal("Failed to prepare extensions: ", err)
 	}
 	extList := strings.Join(extDirs, ",")
 	opts = append(opts, chrome.LacrosExtraArgs(extensionArgs(chrome.TestExtensionID, extList)...))
-
-	deployed := false
-	if f.mode == PreExist {
-		// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
-		// lacros-chrome instead of always downloading from a gcs location.
-		// This workaround is to be removed soon once lab provisioning is supported for Lacros.
-		var path string
-		path, deployed = s.Var(LacrosDeployedBinary)
-		if deployed {
-			f.lacrosPath = path
-		} else {
-			f.lacrosPath = lacrosRootPath
-		}
-		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
-	}
 
 	// If there's a parent fixture and the fixture supplies extra options, use them.
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
@@ -274,32 +295,28 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 
 	switch f.mode {
 	case PreExist:
+		path, deployed := s.Var(LacrosDeployedBinary)
 		if !deployed {
+			f.lacrosPath = lacrosRootPath
 			if err := prepareLacrosChromeBinary(ctx, s); err != nil {
 				s.Fatal("Failed to prepare lacros-chrome, err")
 			}
+		} else {
+			f.lacrosPath = path
 		}
 	case Omaha:
 		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
 		// It is ready when the image loader path is created with the chrome executable.
 		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			matches, err := filepath.Glob("/run/imageloader/lacros-dogfood*/*/chrome")
-			if err != nil {
-				return errors.Wrap(err, "binary path does not exist yet")
-			}
-			if len(matches) == 0 {
-				return errors.New("binary path does not exist yet")
-			}
-			f.lacrosPath = matches[0]
-			return nil
-		}, &testing.PollOptions{Interval: 5 * time.Second}); err != nil {
+		if f.lacrosPath, err = f.waitForMounted(ctx, "/run/imageloader/lacros-dogfood*/*/chrome"); err != nil {
 			s.Fatal("Failed to find lacros binary: ", err)
 		}
 	case Rootfs:
 		// When launched from the rootfs partition, the lacros-chrome is already located
 		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-		f.lacrosPath = "/run/lacros"
+		if f.lacrosPath, err = f.waitForMounted(ctx, "/run/lacros/chrome"); err != nil {
+			s.Fatal("Failed to find lacros binary: ", err)
+		}
 	default:
 		s.Fatal("Unrecognized mode: ", f.mode)
 	}
@@ -351,6 +368,22 @@ func (f *fixtureImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
 
 }
 
+// waitForMounted is a helper method that monitors the given binary path pattern and
+// returns the directory of the matching pattern or an error if the path matching pattern doesn't exist or timed out if the ctx's timeout is reached.
+func (f *fixtureImpl) waitForMounted(ctx context.Context, pattern string) (dir string, err error) {
+	return dir, testing.Poll(ctx, func(ctx context.Context) error {
+		matches, err := filepath.Glob(pattern)
+		if err != nil {
+			return errors.Wrapf(err, "binary path does not exist yet. expected: %v", pattern)
+		}
+		if len(matches) == 0 {
+			return errors.New("binary path does not exist yet. expected: " + pattern)
+		}
+		dir = filepath.Dir(matches[0])
+		return nil
+	}, &testing.PollOptions{Interval: 5 * time.Second})
+}
+
 // buildFixtData is a helper method that resets the machine state in
 // advance of building the fixture data for the actual tests.
 func (f *fixtureImpl) buildFixtData(ctx context.Context, s *testing.FixtState) FixtData {
@@ -358,4 +391,32 @@ func (f *fixtureImpl) buildFixtData(ctx context.Context, s *testing.FixtState) F
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return FixtData{f.cr, f.tconn, f.mode, f.lacrosPath}
+}
+
+// checkVars reads the Fixture Vars at runtime to determine the SetupMode and extra Chrome options to add.
+func (f *fixtureImpl) checkVars(ctx context.Context, s *testing.FixtState, opts ...chrome.Option) (SetupMode, []chrome.Option) {
+	// Reads the runtime Var only when f.mode is not specified by users.
+	if f.mode != Runtime {
+		return f.mode, opts
+	}
+
+	var mode SetupMode
+	selection, _ := s.Var(LacrosSelection)
+	switch selection {
+	case PreExist:
+		mode = PreExist
+		// TODO: Consider an option to decide whether to open by the launcher script or from the Shelf UI.
+		opts = append(opts, chrome.EnableFeatures("LacrosSupport"))
+	case Rootfs:
+		mode = Rootfs
+		opts = append(opts, chrome.EnableFeatures("LacrosSupport"), chrome.ExtraArgs("--lacros-selection=rootfs"))
+	case Omaha:
+		mode = Omaha
+		opts = append(opts, chrome.EnableFeatures("LacrosSupport"), chrome.ExtraArgs("--lacros-selection=stateful"))
+	default:
+		s.Log("Set the Var lacrosSelection to 'external' by default. expected: external|omaha|rootfs, but got: ", selection)
+		mode = PreExist
+	}
+	s.Logf("Vars: %v=%v", LacrosSelection, selection)
+	return mode, opts
 }
