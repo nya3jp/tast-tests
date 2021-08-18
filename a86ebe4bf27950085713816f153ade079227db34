@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8db9a2_8002fc49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-18T02:25:12Z",
+      "side": 1,
+      "message": "I recommend giving names to results so that we can easily distinguish two ints.\n\n func CheckTracingServices(...) (tracedPID, tracedProbesPID int, err error)",
+      "range": {
+        "startLine": 17,
+        "startChar": 47,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "a86ebe4bf27950085713816f153ade079227db34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce669da2_d1e4592b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-18T02:25:12Z",
+      "side": 1,
+      "message": "style: tracedPID\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "a86ebe4bf27950085713816f153ade079227db34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c8661a_1eb8f874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-18T02:25:12Z",
+      "side": 1,
+      "message": "Could you use the chromeLoggedIn fixture for new tests?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "a86ebe4bf27950085713816f153ade079227db34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e97bca03_976b64ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/data/trace_processor_shell-linux-a3ce2cbf4cbe4f86cc10b02957db727cecfafae8.external-error",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-18T02:25:12Z",
+      "side": 1,
+      "message": "This file is not to be commited.",
+      "revId": "a86ebe4bf27950085713816f153ade079227db34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
