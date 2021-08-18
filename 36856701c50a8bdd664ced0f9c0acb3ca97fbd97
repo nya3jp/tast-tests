@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd9542b_c41229d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-18T14:56:46Z",
+      "side": 0,
+      "message": "If we change the group at the same time these may start running on incorrect DUTs. I suggest:\n1. Add sim attrs\n2. Update control files\n3. Update cellular_multisim groups\n\nThat may briefly cause the inverse, but I\u0027d rather skip a test run than have false negatives.\n\nThat said if we land it all at once it may not matter, so I don\u0027t feel strongly here.",
+      "revId": "36856701c50a8bdd664ced0f9c0acb3ca97fbd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
