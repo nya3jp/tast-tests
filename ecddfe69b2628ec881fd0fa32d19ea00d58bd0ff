@@ -16,6 +16,29 @@
       "message": "moved \"ec_chip\" and \"ec_flash_size\" to servo/ec.go as it is with other constants",
       "revId": "ecddfe69b2628ec881fd0fa32d19ea00d58bd0ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afd08c7_7cf1ee10",
+        "filename": "src/chromiumos/tast/common/servo/ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-18T23:23:36Z",
+      "side": 1,
+      "message": "GetInteger?",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "ecddfe69b2628ec881fd0fa32d19ea00d58bd0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
