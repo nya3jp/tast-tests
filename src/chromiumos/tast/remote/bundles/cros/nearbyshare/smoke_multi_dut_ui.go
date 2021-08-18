@@ -12,7 +12,6 @@ import (
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
@@ -37,24 +36,9 @@ func init() {
 // SmokeMultiDUTUI tests that we can enable Nearby Share on two DUTs in a single test.
 func SmokeMultiDUTUI(ctx context.Context, s *testing.State) {
 	d1 := s.DUT()
-	var d2 *dut.DUT
-	// Check if there is a hardcoded secondary DUT assigned to the current host.
-	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName())
-	if err == nil {
-		s.Log("Ensuring we can connect to DUT2 from the hardcoded pairs: ", secondaryDUT)
-		d2, err = d1.NewSecondaryDevice(secondaryDUT)
-		if err != nil {
-			s.Fatal("Failed to create secondary device: ", err)
-		}
-		if err := d2.Connect(ctx); err != nil {
-			s.Fatal("Failed to connect to secondary DUT: ", err)
-		}
-	} else {
-		s.Log("No secondary DUT found in hardcoded pairs. Checking if a companion DUT was passed")
-		d2 = s.CompanionDUT("cd1")
-		if d2 == nil {
-			s.Fatal("Failed to get companion DUT cd1")
-		}
+	d2 := s.CompanionDUT("cd1")
+	if d2 == nil {
+		s.Fatal("Failed to get companion DUT cd1")
 	}
 
 	var keepState bool
