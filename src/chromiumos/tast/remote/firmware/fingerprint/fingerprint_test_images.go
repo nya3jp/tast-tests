@@ -15,10 +15,10 @@ import (
 	"strconv"
 	"strings"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/remote/dutfs"
+	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -396,7 +396,7 @@ func readFMAPSection(ctx context.Context, futilityPath, firmwareFilePath string,
 }
 
 // GenerateTestFirmwareImages generates a set of test firmware images from the firmware that is on the DUT.
-func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Client, futilityPath, keyFilePath string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
+func GenerateTestFirmwareImages(ctx context.Context, d *rpcdut.RPCDUT, futilityPath, keyFilePath string, fpBoard FPBoardName, buildFWFile, dutTempDir string) (ret TestImages, retErr error) {
 	testing.ContextLog(ctx, "Creating temp dir")
 	serverTmpDir, err := ioutil.TempDir("", "*")
 	if err != nil {
@@ -491,7 +491,7 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 
 	for _, imageData := range images {
 		// Make sure that images were actually copied to DUT.
-		exists, err := fs.Exists(ctx, imageData.Path)
+		exists, err := dutfs.NewClient(d.RPC().Conn).Exists(ctx, imageData.Path)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to check existence of %q", imageData.Path)
 		}
@@ -500,13 +500,13 @@ func GenerateTestFirmwareImages(ctx context.Context, d *dut.DUT, fs *dutfs.Clien
 		}
 
 		// Collect the version strings from each of the generated images.
-		version, err := GetBuildROFirmwareVersion(ctx, d, fs, imageData.Path)
+		version, err := GetBuildROFirmwareVersion(ctx, d, imageData.Path)
 		if err != nil {
 			return nil, errors.Wrapf(err, "unable to get RO version from firmware file: %q", imageData.Path)
 		}
 		imageData.ROVersion = version
 
-		version, err = GetBuildRWFirmwareVersion(ctx, d, fs, imageData.Path)
+		version, err = GetBuildRWFirmwareVersion(ctx, d, imageData.Path)
 		if err != nil {
 			return nil, errors.Wrapf(err, "unable to get RW version from firmware file: %q", imageData.Path)
 		}
