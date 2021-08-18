@@ -12,7 +12,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -36,15 +38,16 @@ func init() {
 
 // deskContainsWindow returns true if a window whose name is windowName was found as a child of the desk container whose name is deskContainerName.
 func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContainerName, windowName string) (bool, error) {
-	// Find the given desk container first.
-	deskContainer, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: deskContainerName})
-	if err != nil {
+
+	deskContainer := nodewith.HasClass(deskContainerName)
+	window := nodewith.HasClass(windowName).Ancestor(deskContainer)
+
+	ui := uiauto.New(tconn)
+	if err := ui.Exists(deskContainer)(ctx); err != nil {
 		return false, errors.Wrapf(err, "failed to locate the given desk container: %s", deskContainerName)
 	}
-	defer deskContainer.Release(ctx)
 
-	// Find the given window inside the desk container.
-	return deskContainer.DescendantExists(ctx, ui.FindParams{ClassName: windowName})
+	return ui.IsNodeFound(ctx, window)
 }
 
 func VirtualDesks(ctx context.Context, s *testing.State) {
@@ -58,6 +61,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
@@ -83,6 +87,8 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	if err := ki.Accel(ctx, "Search+Shift+="); err != nil {
 		s.Fatal("Failed to send the new desk accelerator: ", err)
 	}
+
+	testing.Sleep(ctx, 10*time.Second)
 
 	s.Log("Starting the android settings app")
 
