@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fc1535_9d17a7ce",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-18T06:55:22Z",
+      "side": 1,
+      "message": "Since we also changed the mode name, will it break camera.CCAUIDocumentScanning before the changes on Chrome side upreved?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "c4e9715a7d1330941bc9d2ec442d6a38636769aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
