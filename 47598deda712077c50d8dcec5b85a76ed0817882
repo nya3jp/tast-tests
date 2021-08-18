@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47490a16_c1a76e2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-08-18T07:00:21Z",
+      "side": 1,
+      "message": "Hi! Change is ready for review.\nI haven\u0027t managed to repro the \"FocusAndWait\" flakiness locally yet, but I think this might be the reason why.",
+      "revId": "47598deda712077c50d8dcec5b85a76ed0817882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
