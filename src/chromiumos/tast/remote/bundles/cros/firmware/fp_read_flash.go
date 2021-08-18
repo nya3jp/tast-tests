@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
+	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -34,8 +35,14 @@ func init() {
 }
 
 func FpReadFlash(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.RPCClose(ctx)
+
 	servoSpec, _ := s.Var("servo")
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), true, true)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -48,9 +55,7 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
-	firmwareCopy, err := fingerprint.RunningFirmwareCopy(ctx, d)
+	firmwareCopy, err := fingerprint.RunningFirmwareCopy(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to query running firmware copy: ", err)
 	}
@@ -59,7 +64,7 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure that entropy is set and that the state is normal.
-	rollback, err := fingerprint.RollbackInfo(ctx, d)
+	rollback, err := fingerprint.RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
@@ -71,22 +76,22 @@ func FpReadFlash(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Reading from flash while running RW firmware should fail")
-	if err := fingerprint.ReadFromRollbackFlash(ctx, d, t.FPBoard(), filepath.Join(t.DUTTempDir(), "test1.bin")); err == nil {
+	if err := fingerprint.ReadFromRollbackFlash(ctx, d.DUT, t.FPBoard(), filepath.Join(t.DUTTempDir(), "test1.bin")); err == nil {
 		s.Fatal("Should not be able to read from flash")
 	}
 
 	testing.ContextLog(ctx, "Reboot to RO")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
 
 	testing.ContextLog(ctx, "Reading from flash while running RO firmware should fail")
-	if err := fingerprint.ReadFromRollbackFlash(ctx, d, t.FPBoard(), filepath.Join(t.DUTTempDir(), "test2.bin")); err == nil {
+	if err := fingerprint.ReadFromRollbackFlash(ctx, d.DUT, t.FPBoard(), filepath.Join(t.DUTTempDir(), "test2.bin")); err == nil {
 		s.Fatal("Should not be able to read from flash")
 	}
 
 	testing.ContextLog(ctx, "Reboot to RW")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to reboot to RW: ", err)
 	}
 }

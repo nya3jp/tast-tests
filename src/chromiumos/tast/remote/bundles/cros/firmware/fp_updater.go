@@ -15,11 +15,10 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/rpc"
+	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -69,7 +68,7 @@ func getOldFirmwarePath(s *testing.State, fpBoard fingerprint.FPBoardName) (stri
 }
 
 // flashOldRWFirmware flashes a known out-dated version of firmware.
-func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT, fs *dutfs.Client) error {
+func flashOldRWFirmware(ctx context.Context, s *testing.State, d *rpcdut.RPCDUT) error {
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
@@ -86,11 +85,15 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *dut.DUT, fs *d
 		return errors.Wrap(err, "failed to send old firmware to DUT")
 	}
 
-	return fingerprint.FlashRWFirmware(ctx, d, fs, oldFirmwarePathOnDut)
+	return fingerprint.FlashRWFirmware(ctx, d, oldFirmwarePathOnDut)
 }
 
 func FpUpdater(ctx context.Context, s *testing.State) {
-	d := s.DUT()
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.RPCClose(ctx)
 
 	servoSpec, _ := s.Var("servo")
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
@@ -110,14 +113,6 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	dutfsClient := dutfs.NewClient(cl.Conn)
-
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
 		s.Fatal("Failed to get fingerprint board: ", err)
@@ -130,12 +125,12 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 
 	// InitializeKnownState enables HW write protect so that we are testing
 	// the same configuration as the end user.
-	if err := fingerprint.InitializeKnownState(ctx, d, dutfsClient, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
 	testing.ContextLog(ctx, "Flashing outdated FP firmware")
-	if err := flashOldRWFirmware(ctx, s, d, dutfsClient); err != nil {
+	if err := flashOldRWFirmware(ctx, s, d); err != nil {
 		s.Fatal("Failed to flash outdated RW firmware: ", err)
 	}
 
@@ -152,13 +147,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to DUT: ", err)
 	}
 
-	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	fpUpdaterService := firmware.NewFpUpdaterServiceClient(cl.Conn)
+	fpUpdaterService := firmware.NewFpUpdaterServiceClient(d.RPC().Conn)
 	response, err := fpUpdaterService.ReadUpdaterLogs(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Failed to read updater logs: ", err)
@@ -187,7 +176,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Updater did not succeed, please check output dir")
 	}
 
-	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, dutfs.NewClient(cl.Conn), buildFWFile)
+	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
 	if err != nil {
 		s.Fatal("Failed to query build RW version: ", err)
 	}
