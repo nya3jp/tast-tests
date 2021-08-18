@@ -29,7 +29,7 @@ func init() {
 		Desc:         "Verifies GBB flags state can be obtained and manipulated via the servo interface",
 		Timeout:      8 * time.Minute,
 		Contacts:     []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_cr50", "firmware_ccd"},
 		Data:         []string{firmware.ConfigFile},
 		Pre:          pre.NormalMode(),
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
@@ -72,6 +72,7 @@ func toggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
 
 // ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
+// Has not been tested with CCD closed (assumed to fail), nor with C2D2 (assumed to pass).
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	h := s.PreValue().(*pre.Value).Helper
 
