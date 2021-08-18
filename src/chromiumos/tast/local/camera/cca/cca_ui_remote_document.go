@@ -66,7 +66,7 @@ func RunPreviewDocumentCornersDetection(ctx context.Context, scriptPaths []strin
 	}
 
 	// Switch to scanner mode.
-	if err := app.SwitchMode(ctx, Scanner); err != nil {
+	if err := app.SwitchMode(ctx, Scan); err != nil {
 		return errors.Wrap(err, "failed to switch to scanner mode")
 	}
 
