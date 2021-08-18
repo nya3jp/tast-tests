@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e62517f_e52ce3e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-18T15:56:44Z",
+      "side": 1,
+      "message": "This patch still doesn\u0027t pass the tast-lint presubmits.",
+      "parentUuid": "0df43fc4_53f2e621",
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "526ccf00_c73a600f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
         "patchSetId": 4
@@ -96,6 +114,24 @@
       "side": 1,
       "message": "Can you please suggest contact list?",
       "parentUuid": "a205bb65_5cf2e5c1",
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908e0950_99c5f988",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-18T15:56:44Z",
+      "side": 1,
+      "message": "levinale@ do you know what team would be a good contact?",
+      "parentUuid": "5d18cde5_7b8dceae",
       "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
