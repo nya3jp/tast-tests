@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ff4855_be375f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22513fc6_6f9076df",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8bff199_e2f30191",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-17T11:46:22Z",
       "side": 1,
       "message": "nit: remove empty line.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb597858_0a18f40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8bff199_e2f30191",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "961851cb_fb09cadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44ce5fe_85f18162",
+      "range": {
+        "startLine": 96,
+        "startChar": 28,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97607200_db4e0440",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-17T11:46:22Z",
       "side": 1,
       "message": "nit: remove empty line.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c693eb0a_519fb3cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97607200_db4e0440",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d884dcf4_3282f33c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf330266_bfb5e47f",
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "313a2a4f_a7066fea",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-08-17T11:46:22Z",
       "side": 1,
       "message": "No idea how are switchCamera and getFacing implemented. It can be flaky if switchCamera has delay on low-end devices and checkFacing returns too quick.\n\nNormally I would prefer to use waitFor function or polling a short time until it happens.",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53e57ab_cb5f2304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "switchCamera() in cca.go calls the TriggerConfiguration() which will wait for the camera configuration to complete. Hence it should work fine on low-end devices too.",
+      "parentUuid": "313a2a4f_a7066fea",
       "range": {
         "startLine": 129,
         "startChar": 6,
@@ -179,6 +317,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28535d58_f0595213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85acc3e_888197ee",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "770aa699_2bed94f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98d10d4d_5e0a8806",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2c76ed1_a5a82767",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-08-17T11:46:22Z",
       "side": 1,
       "message": "nit: Failed to match screen orientation: got %q; want %q\nTo be consistent with other cases.",
+      "range": {
+        "startLine": 187,
+        "startChar": 13,
+        "endLine": 187,
+        "endChar": 64
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a175bd_70747047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-18T05:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2c76ed1_a5a82767",
       "range": {
         "startLine": 187,
         "startChar": 13,
