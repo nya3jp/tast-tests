@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d19e439_9507acf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "I tried to cover as much of the tast-owner type style related changes as possible, but there is a good chance when we add a tast-owner they will find style issues I didn\u0027t know to look for.",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0c42c8_1effafc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "Suggestion: You could possibly filter out kernel versions that do not support SafeSetID using software deps and matching kernel use flags, see:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go;l\u003d122?q\u003dsirenia\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2F",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ecc6009_90899ab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "Please move this to outside the function and use // instead of /**/\n\n```\nsrc/chromiumos/tasgolint src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.got/local/bundles/cros/security/safesetid_ensure_policy.go:33:1: exported function SafesetidEnsurePolicy should have comment or be unexported\n```\n\nAlso see:\nSee: https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819eb84e_d7dc10a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "* Add a space after the // and before \u0027Fetch\u0027.\n* Add a period at the end.\nAlso for all the other inline comments.",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee89872_bb6662f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "errors.Errorf(\"%q allowed to transition without permission to %q\", parent, child)",
+      "range": {
+        "startLine": 145,
+        "startChar": 9,
+        "endLine": 145,
+        "endChar": 85
+      },
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15a7230_50ae8269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "We can probably do a follow up to add an image test to make sure all the installed SafeSetID configurations are for users and groups that exist on the system. There is an example here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:chromite/cros/test/image_test.py;l\u003d979;drc\u003d16e6611a154ed735716f861ca629b14b3be39af2",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306a8d0a_8632fd78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "usersList\n\nSee:\nhttps://github.com/golang/go/wiki/CodeReviewComments#mixed-caps",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f4767b_cc0fd35f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "It might be worth generalizing a version of this and adding it to the sys_util module.",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019d2d64_5521098f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "listOfNames\n\nSee:\nhttps://github.com/golang/go/wiki/CodeReviewComments#mixed-caps",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdca459f_5eedde47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "tmpErr\n\nSee:\nhttps://github.com/golang/go/wiki/CodeReviewComments#mixed-caps",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76cff696_b4e7885b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-08-18T15:33:13Z",
+      "side": 1,
+      "message": "The kernel version logic has been added to the sys_util module after you originally wrote this and can replace this function. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/sysutil/sysutil.go;l\u003d120;drc\u003d26a8adf72730c09375eb2ba538c86a512cc9419b",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
