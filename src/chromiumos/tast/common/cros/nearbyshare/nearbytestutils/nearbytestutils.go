@@ -16,7 +16,6 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -43,33 +42,6 @@ const DownloadPath = "/home/chronos/user/Downloads/"
 
 // SendDir is the staging directory for test files when sending from CrOS.
 const SendDir = DownloadPath + "nearby_test_files"
-
-// Hostnames of the devices in our temporary Nearby Share lab deployment.
-const (
-	HatchHostname   = "chromeos15-row6a-rack12-host2a"
-	OctopusHostname = "chromeos15-row6a-rack12-host2b"
-	SarienHostname  = "chromeos15-row16-metro1-host1a"
-	CoralHostname   = "chromeos15-row16-metro1-host1b"
-)
-
-// ChooseSecondaryDUT figures out which DUT is primary and which is secondary in a Nearby Share CB->CB test.
-// TODO(b/175889133) Remove hardcoded hostnames when multi dut skylab support is available.
-func ChooseSecondaryDUT(hostname string) (string, error) {
-	// Switch on the DUTs in our lab setup first, then fall back to user supplied var.
-	var secondaryDUT string
-	if strings.Contains(hostname, HatchHostname) {
-		secondaryDUT = OctopusHostname
-	} else if strings.Contains(hostname, OctopusHostname) {
-		secondaryDUT = HatchHostname
-	} else if strings.Contains(hostname, SarienHostname) {
-		secondaryDUT = CoralHostname
-	} else if strings.Contains(hostname, CoralHostname) {
-		secondaryDUT = SarienHostname
-	} else {
-		return "", errors.New("Test is running on an unknown hostname and no secondaryTarget arg was supplied")
-	}
-	return secondaryDUT, nil
-}
 
 // UnzipTestFiles extracts test data files to a temporary directory. Returns an array of base filenames and the name of the temporary dir.
 // The extracted files can then be pushed to the Android device or copied to a user-accessible directory on CrOS, depending on which device is the sender.
