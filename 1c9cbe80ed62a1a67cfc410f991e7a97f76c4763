@@ -69,6 +69,24 @@
       "parentUuid": "dea0d89b_b9d34a65",
       "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec5c2bd_d3bce884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-18T15:53:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure how this passed tast-lint. When I download patchset 7 and run \n./tast-tests/tools/run_lint.sh -commit\u003dHEAD, I get errors. For example, this is one of a few errors:\n\nsrc/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go:90:5: Use s.Fatal(\"Something failed: \", err) instead of s.Fatal(err)\n\nThese should automatically run with `repo upload .` unless you are explicitly skipping them with the --no-verify flag.",
+      "parentUuid": "5c1b32d0_20070ab0",
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
