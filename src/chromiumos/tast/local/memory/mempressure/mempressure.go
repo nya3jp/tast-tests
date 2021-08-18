@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/memory/kernelmeter"
+	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -702,18 +703,23 @@ type RunParameters struct {
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
 // until the first tab discard occurs.  It takes various measurements as the
 // pressure increases (phase 1) and afterwards (phase 2).
-func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters) (errRet error) {
+func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p *RunParameters) (errRet error) {
 	const (
-		initialTabSetSize    = 5
-		recentTabSetSize     = 5
-		coldTabSetSize       = 10
+		initialTabSetSize    = 3
+		recentTabSetSize     = 3
+		coldTabSetSize       = 6
 		tabCycleDelay        = 300 * time.Millisecond
-		tabSwitchRepeatCount = 10
+		tabSwitchRepeatCount = 2
 	)
 
 	memInfo, err := kernelmeter.MemInfo()
 	if err != nil {
 		return errors.Wrap(err, "cannot obtain memory info")
+	}
+
+	basemem, err := multivm.NewBaseMetrics()
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize base metrics")
 	}
 
 	if p.Mode == wpr.Record {
@@ -749,6 +755,7 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 	}
 	testing.ContextLogf(ctx, "Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 
+	p.MaxTabCount = 20
 	// -----------------
 	// Phase 1: Open several pinned tabs, and then continue to open more tabs until a tab is discarded.
 	// -----------------
@@ -770,12 +777,24 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 	if err != nil {
 		return err
 	}
+	if err := multivm.MemoryMetrics(ctx, basemem, arc, perfValues, outDir, "_setup"); err != nil {
+		return errors.Wrap(err, "failed to collect setup memory metrics")
+	}
+	if err := multivm.ResetBaseMetrics(basemem); err != nil {
+		return errors.Wrap(err, "failed reset memory metrics post setup")
+	}
 
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
 	if err = runPhase2(ctx, outDir, workTabs, coldTabSetSize, fullMeter, perfValues); err != nil {
 		return err
+	}
+	if err := multivm.MemoryMetrics(ctx, basemem, arc, perfValues, outDir, "_cold"); err != nil {
+		return errors.Wrap(err, "failed to collect cold memory metrics")
+	}
+	if err := multivm.ResetBaseMetrics(basemem); err != nil {
+		return errors.Wrap(err, "failed reset memory metrics post cold")
 	}
 
 	// -----------------
@@ -785,6 +804,9 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 		return err
 	}
 
+	if err := multivm.MemoryMetrics(ctx, basemem, arc, perfValues, outDir, "_quiesce"); err != nil {
+		return errors.Wrap(err, "failed to collect quiesce memory metrics")
+	}
 	if err = perfValues.Save(outDir); err != nil {
 		return errors.Wrap(err, "cannot save perf data")
 	}
@@ -862,4 +884,9 @@ func (te *TestEnv) Close(ctx context.Context) {
 // Chrome returns the initialized Chrome object in TestEnv.
 func (te *TestEnv) Chrome() *chrome.Chrome {
 	return te.cr
+}
+
+// ARC returns the initialized ARC object in TestEnv (may be nil when no VM)
+func (te *TestEnv) ARC() *arc.ARC {
+	return te.arc
 }

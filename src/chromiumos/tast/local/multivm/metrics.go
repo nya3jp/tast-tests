@@ -9,8 +9,9 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/memory"
-	"chromiumos/tast/local/memory/arc"
+	memoryarc "chromiumos/tast/local/memory/arc"
 )
 
 // BaseMetrics holds initial metrics, which can be used as a baseline
@@ -33,19 +34,26 @@ func NewBaseMetrics() (*BaseMetrics, error) {
 	return &BaseMetrics{memstats: basezram}, nil
 }
 
+// ResetBaseMetrics sets the base metrics values to "now", so they can be
+// a new baseline reflecting the time of "now"
+func ResetBaseMetrics(base *BaseMetrics) error {
+	basezram, err := memory.NewZramStats()
+	if err != nil {
+		return errors.Wrap(err, "unable to get baseline memory stats for reset")
+	}
+	base.memstats = basezram
+	return nil
+}
+
 // MemoryMetrics generates log files detailing the memory from the following:
 // * smaps_rollup per process.
 // * fincore per file used as a disk by crsovm.
 // * zram compressed swap memory use and zram overall usage stats
 // * Android adb dumpsys meminfo.
 // If p != nil, summaries are added as perf.Values.
-func MemoryMetrics(ctx context.Context, base *BaseMetrics, pre *PreData, p *perf.Values, outdir, suffix string) error {
-	if err := memory.SmapsMetrics(ctx, p, outdir, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect smaps_rollup metrics")
-	}
-	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
-	}
+func MemoryMetrics(ctx context.Context, base *BaseMetrics, preARC *arc.ARC, p *perf.Values, outdir, suffix string) error {
+
+	// these metrics are relatively cheap to get
 	if err := memory.ZramMmStatMetrics(ctx, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect zram mm_stats metrics")
 	}
@@ -53,9 +61,17 @@ func MemoryMetrics(ctx context.Context, base *BaseMetrics, pre *PreData, p *perf
 		return errors.Wrap(err, "failed to collect zram stats metrics")
 	}
 
-	preARC := ARCFromPre(pre)
+	// order is critical here: SmapsMetrics and CrosvmFincoreMetrics do heavy processing,
+	// we don't want that processing to interfere in the earlier, cheaper stats
+	if err := memory.SmapsMetrics(ctx, p, outdir, suffix); err != nil {
+		return errors.Wrap(err, "failed to collect smaps_rollup metrics")
+	}
+	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
+		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
+	}
+
 	if preARC != nil {
-		if err := arc.DumpsysMeminfoMetrics(ctx, preARC, p, outdir, suffix); err != nil {
+		if err := memoryarc.DumpsysMeminfoMetrics(ctx, preARC, p, outdir, suffix); err != nil {
 			return errors.Wrap(err, "failed to collect ARC dumpsys meminfo metrics")
 		}
 	}
