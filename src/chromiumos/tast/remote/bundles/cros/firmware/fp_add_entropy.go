@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/rpcdut"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
@@ -33,8 +34,14 @@ func init() {
 }
 
 func FpAddEntropy(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.RPCClose(ctx)
+
 	servoSpec, _ := s.Var("servo")
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), true, true)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -47,9 +54,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
-	firmwareCopy, err := fingerprint.RunningFirmwareCopy(ctx, d)
+	firmwareCopy, err := fingerprint.RunningFirmwareCopy(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to query running firmware copy: ", err)
 	}
@@ -58,7 +63,7 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Validating initial rollback info")
-	rollbackPrev, err := fingerprint.RollbackInfo(ctx, d)
+	rollbackPrev, err := fingerprint.RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
@@ -70,12 +75,12 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Adding entropy should fail when running RW")
-	if err := fingerprint.AddEntropy(ctx, d, false); err == nil {
+	if err := fingerprint.AddEntropy(ctx, d.DUT, false); err == nil {
 		s.Fatal("Adding entropy succeeded when running RW")
 	}
 
 	testing.ContextLog(ctx, "Validating rollback didn't change")
-	rollbackCur, err := fingerprint.RollbackInfo(ctx, d)
+	rollbackCur, err := fingerprint.RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
@@ -85,15 +90,15 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Adding entropy from RO should succeed")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
-	if err := fingerprint.AddEntropy(ctx, d, false); err != nil {
+	if err := fingerprint.AddEntropy(ctx, d.DUT, false); err != nil {
 		s.Fatal("Failed to add entropy: ", err)
 	}
 	testing.ContextLog(ctx, "Validating Block ID increases by 1, but nothing else")
 	rollbackPrev = rollbackCur
-	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
@@ -106,15 +111,15 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Adding entropy with reset (double write) from RO should succeed")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRO); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRO); err != nil {
 		s.Fatal("Failed to reboot to RO: ", err)
 	}
-	if err := fingerprint.AddEntropy(ctx, d, true); err != nil {
+	if err := fingerprint.AddEntropy(ctx, d.DUT, true); err != nil {
 		s.Fatal("Failed to add entropy: ", err)
 	}
 	testing.ContextLog(ctx, "Validating Block ID increases by 2, but nothing else")
 	rollbackPrev = rollbackCur
-	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
@@ -127,12 +132,12 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Switching back to RW")
-	if err := fingerprint.RebootFpmcu(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.RebootFpmcu(ctx, d.DUT, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to reboot to RW: ", err)
 	}
 	testing.ContextLog(ctx, "Validating nothing changed")
 	rollbackPrev = rollbackCur
-	rollbackCur, err = fingerprint.RollbackInfo(ctx, d)
+	rollbackCur, err = fingerprint.RollbackInfo(ctx, d.DUT)
 	if err != nil {
 		s.Fatal("Failed to get rollbackinfo: ", err)
 	}
