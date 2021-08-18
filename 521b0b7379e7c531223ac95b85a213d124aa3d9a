@@ -33,6 +33,23 @@
       "message": "We might have a fix soon...",
       "revId": "521b0b7379e7c531223ac95b85a213d124aa3d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27eccb2_90352062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-18T22:25:59Z",
+      "side": 1,
+      "message": "Let me still land this while we figure out a fix. We need to somehow adjust touch.go to make the neural_palm_detection not filtering the generated touches on kohaku.",
+      "revId": "521b0b7379e7c531223ac95b85a213d124aa3d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
