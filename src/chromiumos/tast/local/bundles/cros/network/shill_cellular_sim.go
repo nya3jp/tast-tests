@@ -19,7 +19,7 @@ func init() {
 		Func:     ShillCellularSim,
 		Desc:     "Verifies that Cellular Device and Service properties match ModemManager SIM properties",
 		Contacts: []string{"stevenjb@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular"},
+		Attr:     []string{"group:cellular", "cellular_sim_active"},
 		Fixture:  "cellular",
 	})
 }
