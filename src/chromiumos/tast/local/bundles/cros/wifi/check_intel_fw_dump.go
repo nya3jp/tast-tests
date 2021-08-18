@@ -42,7 +42,7 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	const (
 		iwlwifiDir       = "/sys/kernel/debug/iwlwifi"
 		crashDir         = "/var/spool/crash"
-		devCoreDumpName  = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore`
+		devCoreDumpName  = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore.gz`
 		fwDbgCollectPath = "/iwlmvm/fw_dbg_collect"
 	)
 
@@ -52,7 +52,7 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	}
 
 	// This test uses crash.DevImage because it is designed to test device
-	// coredump handling on developer images.  Without it, no .devcore
+	// coredump handling on developer images.  Without it, no .devcore.gz
 	// files would be created.
 	ctxForTearingDownCrashTest := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
@@ -93,7 +93,7 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	ctxForRemovingAllFiles := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
-	s.Log("Waiting for .devcore file to be added to crash directory")
+	s.Log("Waiting for .devcore.gz file to be added to crash directory")
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
 		[]string{devCoreDumpName})
 	if err != nil {
@@ -133,8 +133,8 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 
 	// Check that the fw dump is not empty.
 	// TODO(b:169152720): Confirm the expected size of a firmware dump
-	// and replace the 1MB value.
-	if currentFileSize <= 1000000 {
-		s.Fatalf("Unexpected fw dump size; got %f MB, want > 1 MB", float64(currentFileSize)/1000000)
+	// and replace the 500kB value.
+	if currentFileSize <= 500000 {
+		s.Fatalf("Unexpected fw dump size; got %f kB, want > 500 kB", float64(currentFileSize)/1000)
 	}
 }
