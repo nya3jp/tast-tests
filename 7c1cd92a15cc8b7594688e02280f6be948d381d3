@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c737e0f6_b174cc24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-18T05:19:46Z",
+      "side": 1,
+      "message": "Ack. Thanks for clarification.",
+      "parentUuid": "e53e57ab_cb5f2304",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "7c1cd92a15cc8b7594688e02280f6be948d381d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98d10d4d_5e0a8806",
