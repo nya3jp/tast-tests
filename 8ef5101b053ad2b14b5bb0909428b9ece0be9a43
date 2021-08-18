@@ -46,6 +46,30 @@
       },
       "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56a2ec7_7e4d7810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-08-18T23:29:49Z",
+      "side": 1,
+      "message": "I think as long as this Cq-Depends on the other change it shouldn\u0027t be necessary to accept both here.",
+      "parentUuid": "0e1fe225_a8d14efb",
+      "range": {
+        "startLine": 68,
+        "startChar": 64,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
