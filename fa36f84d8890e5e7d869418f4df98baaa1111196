@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d10194_a46e0039",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-18T01:16:49Z",
+      "side": 1,
+      "message": "Well, I think it\u0027s understood because the Repo is tast-tests.",
+      "parentUuid": "ca4b8eeb_6c32109f",
+      "revId": "fa36f84d8890e5e7d869418f4df98baaa1111196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "430df63c_f7edeaca",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-17T20:19:03Z",
       "side": 1,
       "message": "having no space is intentional? or do we want NV12 Overlays?",
+      "revId": "fa36f84d8890e5e7d869418f4df98baaa1111196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2218e41a_5d19908f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-18T01:16:49Z",
+      "side": 1,
+      "message": "My bad, the method is called SupportsNV12Overlays()\nand I caught by it.",
+      "parentUuid": "430df63c_f7edeaca",
       "revId": "fa36f84d8890e5e7d869418f4df98baaa1111196",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb98091_24aa68ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-18T01:16:49Z",
+      "side": 1,
+      "message": "Sure, why not?",
+      "parentUuid": "5b044ea7_4cd010e2",
+      "revId": "fa36f84d8890e5e7d869418f4df98baaa1111196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e066762b_8dae5783",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-08-17T20:19:03Z",
       "side": 1,
       "message": "nit: . in the end?",
+      "revId": "fa36f84d8890e5e7d869418f4df98baaa1111196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bb99e4_ead8bd54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-18T01:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e066762b_8dae5783",
       "revId": "fa36f84d8890e5e7d869418f4df98baaa1111196",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
