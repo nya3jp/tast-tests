@@ -81,6 +81,24 @@
       "parentUuid": "3a9e18e8_5192927c",
       "revId": "084446dad25beb7cce784458b8b006a0d52483ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc09bfc_b9a554e6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-18T23:10:20Z",
+      "side": 1,
+      "message": "Added a unit test for this.",
+      "parentUuid": "c80af74f_030cc8de",
+      "revId": "084446dad25beb7cce784458b8b006a0d52483ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
