@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0838f2e_8bef2032",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "What does axrouter.Radio() option do? Enable radio? If so, any test case that sets Radio off? How about having its default value to true so that we don\u0027t have to set it everytime?",
+      "range": {
+        "startLine": 42,
+        "startChar": 179,
+        "endLine": 42,
+        "endChar": 184
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6c102e_ae0e5f3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "Do we plan to test 2.4ghz band on 802.11ax? The test cases here are all 5ghz.",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70eb078_afe1dcf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "Does the channel 100 work on 40mhz, 80mhz and 160mhz?",
+      "range": {
+        "startLine": 93,
+        "startChar": 149,
+        "endLine": 93,
+        "endChar": 152
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e695ad_7982e8b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "Ending period. Same below.",
+      "range": {
+        "startLine": 168,
+        "startChar": 38,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9415fa_e239ac4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "Back up",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 10
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb4c11a_213b8675",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "Based on the context, how about naming it as rt.RetrieveConfiguration(). \n\nWhen we say \"save configuration on some device\", it often means the configuration is applied and stored to the device.\n\nI\u0027ll copy the comment to the CL that defines the function.",
+      "range": {
+        "startLine": 169,
+        "startChar": 25,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988dcee6_56ba47f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "Reserve some time for RestoreConfiguration().",
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60975ddf_152283fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T06:35:09Z",
+      "side": 1,
+      "message": "We do the polling for AP connection below. Do we still need this?\n\nMaybe we just need an extra 10 seconds sleep for expectedFailure \u003d\u003d true case.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 36
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
