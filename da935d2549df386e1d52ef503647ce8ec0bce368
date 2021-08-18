@@ -22,6 +22,30 @@
       },
       "revId": "da935d2549df386e1d52ef503647ce8ec0bce368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2431abb2_8b2e1385",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-18T00:19:56Z",
+      "side": 1,
+      "message": "It\u0027s a product decision. See crbug.com/1238131#c4",
+      "parentUuid": "18e675d0_a1b48e3f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "da935d2549df386e1d52ef503647ce8ec0bce368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
