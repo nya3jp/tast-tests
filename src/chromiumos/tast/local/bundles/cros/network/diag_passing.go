@@ -48,8 +48,6 @@ func init() {
 		}, {
 			Name: "dns_latency",
 			Val:  newNetDiagParams(diagcommon.RoutineDNSLatency),
-			// TODO(crbug/1203776): Promote test when stable.
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "http_firewall",
 			Val:  newNetDiagParams(diagcommon.RoutineHTTPFirewall),
@@ -59,17 +57,13 @@ func init() {
 		}, {
 			Name: "https_latency",
 			Val:  newNetDiagParams(diagcommon.RoutineHTTPSLatency),
-			// TODO(crbug/1203776): Promote test when stable.
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "captive_portal",
 			Val:  newNetDiagParams(diagcommon.RoutineCaptivePortal),
 		}, {
-			Name: "video_conferencing",
-			Val:  newNetDiagParams(diagcommon.RoutineVideoConferencing),
-			// TODO(crbug/1178896): Promote test when stable.
-			ExtraAttr: []string{"informational"},
-			Timeout:   10 * time.Minute,
+			Name:    "video_conferencing",
+			Val:     newNetDiagParams(diagcommon.RoutineVideoConferencing),
+			Timeout: 10 * time.Minute,
 		}},
 	})
 }
