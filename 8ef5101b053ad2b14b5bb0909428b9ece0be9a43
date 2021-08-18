@@ -22,6 +22,30 @@
       },
       "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1fe225_a8d14efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-08-18T22:12:23Z",
+      "side": 1,
+      "message": "That could be \"nicer\" for transition purposes, but then uncompressed files may slip through if this breaks later? I\u0027m not sure how strict we want to be.",
+      "parentUuid": "31406606_b8cfbb94",
+      "range": {
+        "startLine": 68,
+        "startChar": 64,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
