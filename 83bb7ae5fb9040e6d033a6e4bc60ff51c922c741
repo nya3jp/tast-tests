@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aae39ff_89b0f7dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-18T16:49:20Z",
+      "side": 1,
+      "message": "Resolved the comments and adjusted the way the element\u0027s positions are found. I make use of the selector.GetBounds() returns the coordinates of an element relative to the activity, which is why on real devices the touch events weren\u0027t firing. ",
+      "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

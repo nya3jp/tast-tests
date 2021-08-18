@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d5213b_b5d7f078",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-18T16:49:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "738b5179_e33bbf57",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6296e53_7994361c",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb86d694_f61b3774",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-18T16:49:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6296e53_7994361c",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30f3ef90_7b37f176",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-08-11T00:54:21Z",
       "side": 1,
       "message": "ditto for all following |this.|",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "8d40585066b3dfd1208ad3d11045ae79ddb5f4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74dfcd4_d0322777",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-18T16:49:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30f3ef90_7b37f176",
       "range": {
         "startLine": 31,
         "startChar": 4,
