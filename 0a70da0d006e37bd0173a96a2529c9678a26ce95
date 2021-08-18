@@ -51,6 +51,23 @@
       "message": "Thanks, Po-Hsien and Jeremy!",
       "revId": "0a70da0d006e37bd0173a96a2529c9678a26ce95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19c94b8_d3369080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-08-18T16:20:41Z",
+      "side": 1,
+      "message": "Test failure is due to:\n\n   Failed to stat /sbin/featured: lstat /sbin/featured: no such file or directory\n\nI guess we\u0027re missing the appropriate ebuilds. We need to depend on chromium:2991308",
+      "revId": "0a70da0d006e37bd0173a96a2529c9678a26ce95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
