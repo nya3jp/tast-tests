@@ -105,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "064d392a_6ea6ffd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/bed_time_limit.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-18T19:08:34Z",
+      "side": 1,
+      "message": "Done by moving the comment after arg. gofmt error if put comment before arg.",
+      "parentUuid": "ecff27f8_a0dd3ac1",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55835d01_dc943aa9",
@@ -339,6 +363,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "111edf44_443a5442",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-18T19:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faa315ef_cb03bd5a",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 10
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1014cdcb_dcfcdd10",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-18T19:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b1be9d_031d9172",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 16
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a17947f3_c0d62d81",
@@ -399,6 +471,30 @@
       "writtenOn": "2021-08-17T02:16:54Z",
       "side": 1,
       "message": "Nit: move this comment after the comma\n\nstrconv.FormatInt(now.Unix(), /*base\u003d*/10)",
+      "range": {
+        "startLine": 161,
+        "startChar": 50,
+        "endLine": 161,
+        "endChar": 59
+      },
+      "revId": "5faf3fc589272b63d37abf4bfa74898f789ac92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4d09b7_4fee97e7",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-18T19:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1767071a_193992d4",
       "range": {
         "startLine": 161,
         "startChar": 50,
