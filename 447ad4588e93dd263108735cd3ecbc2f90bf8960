@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f991fda5_8af812f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-08-18T23:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704ee167_f4cfa293",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "447ad4588e93dd263108735cd3ecbc2f90bf8960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e162160e_15fe5e29",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
         "patchSetId": 3

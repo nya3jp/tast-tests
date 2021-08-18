@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231582d0_21ebbace",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-08-18T23:20:34Z",
+      "side": 1,
+      "message": "moved \"ec_chip\" and \"ec_flash_size\" to servo/ec.go as it is with other constants",
+      "revId": "ecddfe69b2628ec881fd0fa32d19ea00d58bd0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
