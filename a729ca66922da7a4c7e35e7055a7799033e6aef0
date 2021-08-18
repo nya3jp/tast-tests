@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "169897b8_f3c3bd4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2021-08-18T03:29:54Z",
+      "side": 1,
+      "message": "And both the Chrome feature and its matching Chrome flag are going to get removed.",
+      "parentUuid": "44727f18_dd944d53",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "a729ca66922da7a4c7e35e7055a7799033e6aef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "faf8a1f4_41780709",
