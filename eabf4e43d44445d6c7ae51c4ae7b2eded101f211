@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35b5b440_d1df3a59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2021-08-18T17:43:06Z",
+      "side": 1,
+      "message": "the firmware team. jbettis@ can help",
+      "parentUuid": "908e0950_99c5f988",
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dffe0a0_0b423430",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
         "patchSetId": 4
