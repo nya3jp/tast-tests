@@ -52,7 +52,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesZipMount"), chrome.DisableFeatures("FilesZipPack"))
+	cr, err := chrome.New(ctx, chrome.DisableFeatures("FilesZipPack"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}

@@ -88,7 +88,7 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
 	// enabled-by-default (scheduled for M94) and before the feature flag
 	// expires (scheduled for M100). crbug.com/1216245
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount", "FilesZipMount"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
