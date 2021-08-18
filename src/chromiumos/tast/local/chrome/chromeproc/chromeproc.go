@@ -7,6 +7,7 @@ package chromeproc
 
 import (
 	"context"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -16,13 +17,18 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// installDir is the path to the directory that contains Chrome executable.
+const installDir = "/opt/google/chrome"
+
 // ExecPath contains the path to the Chrome executable.
 const ExecPath = "/opt/google/chrome/chrome"
 
-// crashpadExecPath contains the path to crashpad's binary. Though it is not
+const chromeExe = "chrome"
+
+// crashpadHandlerExe is the name of executable. Though it is not
 // the same executable as Chrome, it is spawned from Chrome and we consider as
 // one of the Chrome processes.
-const crashpadExecPath = "/opt/google/chrome/chrome_crashpad_handler"
+const crashpadHandlerExe = "chrome_crashpad_handler"
 
 // Version returns the Chrome browser version. E.g. Chrome version W.X.Y.Z will be reported as a list of strings.
 func Version(ctx context.Context) ([]string, error) {
@@ -39,22 +45,55 @@ func Version(ctx context.Context) ([]string, error) {
 	return matches[1:], nil
 }
 
+// processes returns an array of Processes that satisfies the given filter.
+func processes(filter func(p *process.Process) bool) ([]*process.Process, error) {
+	ps, err := process.Processes()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain processes")
+	}
+
+	var ret []*process.Process
+	for _, p := range ps {
+		if filter(p) {
+			ret = append(ret, p)
+		}
+	}
+	return ret, nil
+}
+
+// Processes returns all Chrome related processes, which includes "chrome" processes
+// and "chrome_crashpad_handler" processes.
+// dir is the path to the directory containing those executables.
+// TODO(crbug.com/1237972): This is being moved to internal package, so nobody
+// outside of the package should depend on this.
+func Processes(dir string) ([]*process.Process, error) {
+	absdir, err := filepath.Abs(dir)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to convert %q to abs path", dir)
+	}
+
+	crPath := filepath.Join(absdir, chromeExe)
+	cphPath := filepath.Join(absdir, crashpadHandlerExe)
+	return processes(func(p *process.Process) bool {
+		exe, err := p.Exe()
+		if err != nil {
+			return false
+		}
+		return exe == crPath || exe == cphPath
+	})
+}
+
 // GetPIDs returns all PIDs corresponding to Chrome processes (including
 // crashpad's handler).
 func GetPIDs() ([]int, error) {
-	all, err := process.Pids()
+	ps, err := Processes(installDir)
 	if err != nil {
 		return nil, err
 	}
 
-	pids := make([]int, 0)
-	for _, pid := range all {
-		if proc, err := process.NewProcess(pid); err != nil {
-			// Assume that the process exited.
-			continue
-		} else if exe, err := proc.Exe(); err == nil && (exe == ExecPath || exe == crashpadExecPath) {
-			pids = append(pids, int(pid))
-		}
+	var pids []int
+	for _, p := range ps {
+		pids = append(pids, int(p.Pid))
 	}
 	return pids, nil
 }
@@ -62,28 +101,35 @@ func GetPIDs() ([]int, error) {
 // GetRootPID returns the PID of the root Chrome process.
 // This corresponds to the browser process.
 func GetRootPID() (int, error) {
-	pids, err := GetPIDs()
+	p, err := Root(installDir)
 	if err != nil {
 		return -1, err
 	}
 
-	for _, pid := range pids {
-		// If we see errors, assume that the process exited.
-		proc, err := process.NewProcess(int32(pid))
-		if err != nil {
-			continue
-		}
+	return int(p.Pid), nil
+}
 
-		// crashpad is never the root browser process.
-		if exe, err := proc.Exe(); err != nil || exe == crashpadExecPath {
-			continue
+// Root returns Process instance for Chrome's root process (i.e. Browser process).
+// TODO(crbug.com/1237972): This is being moved to internal package, so nobody
+// outside of the package should depend on this.
+func Root(dir string) (*process.Process, error) {
+	absdir, err := filepath.Abs(dir)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to convert %q to abs path", dir)
+	}
+
+	path := filepath.Join(absdir, chromeExe)
+	ps, err := processes(func(p *process.Process) bool {
+		// The exec path should match.
+		if exe, err := p.Exe(); err != nil || exe != path {
+			return false
 		}
 
 		// A browser process should not have --type= flag.
 		// This check alone is not enough to determine that proc is a browser process;
 		// it might be a brand-new process that just forked from the browser process.
-		if cmdline, err := proc.Cmdline(); err != nil || strings.Contains(cmdline, " --type=") {
-			continue
+		if cmdline, err := p.Cmdline(); err != nil || strings.Contains(cmdline, " --type=") {
+			return false
 		}
 
 		// A browser process should have session_manager as its parent process.
@@ -91,78 +137,118 @@ func GetRootPID() (int, error) {
 		// due to the use of prctl(PR_SET_CHILD_SUBREAPER) in session_manager,
 		// when the browser process exits, non-browser processes can temporarily
 		// become children of session_manager.
-		ppid, err := proc.Ppid()
+		ppid, err := p.Ppid()
 		if err != nil || ppid <= 0 {
-			continue
+			return false
 		}
+
 		pproc, err := process.NewProcess(ppid)
 		if err != nil {
-			continue
+			return false
 		}
 		if exe, err := pproc.Exe(); err != nil || exe != "/sbin/session_manager" {
-			continue
+			return false
 		}
 
 		// It is still possible that proc is not a browser process if the browser
 		// process exited immediately after it forked, but it is fairly unlikely.
-		return pid, nil
-	}
-	return -1, errors.New("root not found")
-}
-
-// getProcesses returns Chrome processes with the --type=${t} flag.
-func getProcesses(t string) ([]*process.Process, error) {
-	ps, err := process.Processes()
+		return true
+	})
 	if err != nil {
 		return nil, err
 	}
+	if len(ps) == 0 {
+		return nil, errors.New("root not found")
+	}
+	if len(ps) != 1 {
+		// This is the case explained at the end of the filter function.
+		return nil, errors.Errorf("unexpected number of chrome root processes: got %d, want 1", len(ps))
+	}
 
-	// Wrap by whitespaces. Please see the comment below.
-	flg := " --type=" + t + " "
-	// Or accept the --type= flag on the end of the command line.
-	endFlg := " --type=" + t
-	var ret []*process.Process
-	for _, proc := range ps {
-		if exe, err := proc.Exe(); err != nil || exe != ExecPath {
-			continue
+	return ps[0], nil
+}
+
+// processesByArgs returns Chrome processes whose command line args match the given re.
+func processesByArgs(dir string, re *regexp.Regexp) ([]*process.Process, error) {
+	absdir, err := filepath.Abs(dir)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to convert %q to abs path", dir)
+	}
+
+	path := filepath.Join(absdir, chromeExe)
+	return processes(func(p *process.Process) bool {
+		if exe, err := p.Exe(); err != nil || exe != path {
+			return false
 		}
 
 		// Process.CmdlineSliceWithContext() is more appropriate, but
 		// 1) Chrome's /proc/*/cmdline is whitespace separated, so
-		//    proc.CmdlineSlice/CmdlineSliceWithContext won't work.
+		//    p.CmdlineSlice/CmdlineSliceWithContext won't work.
 		//    cf) https://bugs.gentoo.org/477538
 		// 2) Our gopsutil is too old so that CmdlineSliceWithContext
 		//    is not supported.
 		// Thus, instead Cmdline() is used here. Please also find
 		// whitespaces in |flg|.
 		// cf) crbug.com/887875
-		cmd, err := proc.Cmdline()
+		cmd, err := p.Cmdline()
 		if err != nil {
-			continue
+			return false
 		}
-		if strings.Contains(cmd, flg) || strings.HasSuffix(cmd, endFlg) {
-			ret = append(ret, proc)
-		}
-	}
-	return ret, nil
+		return re.MatchString(cmd)
+	})
+}
+
+var (
+	pluginRE   = regexp.MustCompile(` --type=plugin(?: |$)`)
+	rendererRE = regexp.MustCompile(` --type=renderer(?: |$)`)
+	gpuRE      = regexp.MustCompile(` --type=gpu-process(?: |$)`)
+	brokerRE   = regexp.MustCompile(` --type=broker(?: |$)`)
+)
+
+// PluginProcesses returns Chrome plugin processes.
+// TODO(crbug.com/1237972): This is being moved to internal package, so nobody
+// outside of the package should depend on this.
+func PluginProcesses(dir string) ([]*process.Process, error) {
+	return processesByArgs(dir, pluginRE)
+}
+
+// RendererProcesses returns Chrome renderer processes.
+// TODO(crbug.com/1237972): This is being moved to internal package, so nobody
+// outside of the package should depend on this.
+func RendererProcesses(dir string) ([]*process.Process, error) {
+	return processesByArgs(dir, rendererRE)
+}
+
+// GPUProcesses returns Chrome gpu-process processes.
+// TODO(crbug.com/1237972): This is being moved to internal package, so nobody
+// outside of the package should depend on this.
+func GPUProcesses(dir string) ([]*process.Process, error) {
+	return processesByArgs(dir, gpuRE)
+}
+
+// BrokerProcesses returns Chrome broker processes.
+// TODO(crbug.com/1237972): This is being moved to internal package, so nobody
+// outside of the package should depend on this.
+func BrokerProcesses(dir string) ([]*process.Process, error) {
+	return processesByArgs(dir, brokerRE)
 }
 
 // GetPluginProcesses returns Chrome plugin processes.
 func GetPluginProcesses() ([]*process.Process, error) {
-	return getProcesses("plugin")
+	return PluginProcesses(installDir)
 }
 
 // GetRendererProcesses returns Chrome renderer processes.
 func GetRendererProcesses() ([]*process.Process, error) {
-	return getProcesses("renderer")
+	return RendererProcesses(installDir)
 }
 
 // GetGPUProcesses returns Chrome gpu-process processes.
 func GetGPUProcesses() ([]*process.Process, error) {
-	return getProcesses("gpu-process")
+	return GPUProcesses(installDir)
 }
 
 // GetBrokerProcesses returns Chrome broker processes.
 func GetBrokerProcesses() ([]*process.Process, error) {
-	return getProcesses("broker")
+	return BrokerProcesses(installDir)
 }
