@@ -1,0 +1,28 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.autoupdate;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/autoupdate";
+
+// UpdateService provides functions to interact with the update client on the test device,
+// and get data needed for the update.
+service UpdateService {
+  rpc CheckForUpdate (UpdateRequest) returns (google.protobuf.Empty) {}
+  rpc LSBReleaseContent (google.protobuf.Empty) returns (LSBRelease) {}
+  rpc StatefulLSBReleaseContent (google.protobuf.Empty) returns (LSBRelease) {}
+  rpc OverwriteStatefulLSBRelease (LSBRelease) returns (google.protobuf.Empty) {}
+}
+
+message UpdateRequest {
+  string omaha_url = 1;
+}
+
+message LSBRelease {
+  bytes content_json = 1;
+}
