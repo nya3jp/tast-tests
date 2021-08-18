@@ -27,7 +27,7 @@ func init() {
 		Func:     ShillCellularSimSlots,
 		Desc:     "Verifies that Shill receives SimSlot information from ModemManager and can set the primary sim slot",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
-		Attr:     []string{"group:cellular_multisim"},
+		Attr:     []string{"group:cellular", "cellular_sim_dual_active"},
 	})
 }
 
