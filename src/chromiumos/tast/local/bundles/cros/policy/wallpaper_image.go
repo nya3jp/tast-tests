@@ -15,12 +15,13 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/policyutil"
@@ -136,19 +137,19 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name            string
-		wantRestriction ui.RestrictionState    // wantRestriction is the wanted restriction state of the wallpaper app link.
-		wantImageCheck  bool                   // wantImageCheck is a flag to check the image pixels.
-		value           *policy.WallpaperImage // value is the value of the policy.
+		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the wallpaper app link.
+		wantImageCheck  bool                    // wantImageCheck is a flag to check the image pixels.
+		value           *policy.WallpaperImage  // value is the value of the policy.
 	}{
 		{
 			name:            "nonempty",
-			wantRestriction: ui.RestrictionDisabled,
+			wantRestriction: restriction.Disabled,
 			wantImageCheck:  true,
 			value:           &policy.WallpaperImage{Val: &policy.WallpaperImageValue{Url: iurl, Hash: ihash}},
 		},
 		{
 			name:            "unset",
-			wantRestriction: ui.RestrictionNone,
+			wantRestriction: restriction.None,
 			wantImageCheck:  false,
 			value:           &policy.WallpaperImage{Stat: policy.StatusUnset},
 		},
@@ -173,26 +174,14 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			// Open the os settings personalization page.
-			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/personalization")
-			if err != nil {
-				s.Fatal("Failed to open the personalization setting page: ", err)
-			}
-			defer conn.Close()
-
-			// Find the Wallpaper app link node.
-			if err := policyutil.VerifySettingsNode(ctx, tconn,
-				ui.FindParams{
-					Role: ui.RoleTypeLink,
-					Name: "Wallpaper Open the wallpaper app",
-				},
-				ui.FindParams{
-					Attributes: map[string]interface{}{
-						"restriction": param.wantRestriction,
-					},
-				},
-			); err != nil {
-				s.Error("Unexpected settings state: ", err)
+			// Open the personalization settings page.
+			if err := policyutil.OSSettingsPage(ctx, cr, "personalization").
+				SelectNode(ctx, nodewith.
+					Role(role.Link).
+					Name("Wallpaper Open the wallpaper app")).
+				Restriction(param.wantRestriction).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
 			}
 
 			if param.wantImageCheck {

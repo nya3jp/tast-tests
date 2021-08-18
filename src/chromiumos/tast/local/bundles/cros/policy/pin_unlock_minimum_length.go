@@ -6,12 +6,14 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -102,36 +104,28 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
+			ui := uiauto.New(tconn)
+
 			// Find and enter the password in the pop up window.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Password"}, 15*time.Second); err != nil {
+			if err := ui.LeftClick(nodewith.Name("Password").Role(role.TextField))(ctx); err != nil {
 				s.Fatal("Could not find the password field: ", err)
 			}
 			if err := kb.Type(ctx, fixtures.Password+"\n"); err != nil {
 				s.Fatal("Failed to type password: ", err)
 			}
 
-			// Find and click on radio button PIN or password.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeRadioButton,
-				Name: "PIN or password",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to find PIN or password radio button: ", err)
-			}
+			continueButton := nodewith.Name("Continue").Role(role.Button)
+			warningMessage := nodewith.Name(param.warning).Role(role.StaticText)
 
-			// Find and click on Set up PIN button.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Set up PIN",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to find Set up PIN button: ", err)
-			}
-
-			// Wait for the PIN pop up window to appear and the warning message to appear.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeStaticText,
-				Name: param.warning,
-			}, 15*time.Second); err != nil {
-				s.Fatal("Failed to find the warning message (1): ", err)
+			if err := uiauto.Combine("switch to PIN or password and wait for PIN dialog",
+				// Find and click on radio button "PIN or password".
+				ui.LeftClick(nodewith.Name("PIN or password").Role(role.RadioButton)),
+				// Find and click on "Set up PIN" button.
+				ui.LeftClick(nodewith.Name("Set up PIN").Role(role.Button)),
+				// Wait for the PIN pop up window to appear.
+				ui.WaitUntilExists(warningMessage),
+			)(ctx); err != nil {
+				s.Fatal("Failed to open PIN dialog with warning message (1): ", err)
 			}
 
 			// Entering a good PIN will make Continue button clickable and the warning message will disappear.
@@ -139,27 +133,25 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to type PIN: ", err)
 			}
 
+			// Find the Continue button node.
+			if err := ui.WaitUntilExists(continueButton)(ctx); err != nil {
+				s.Fatal("Could not find the Continue button: ", err)
+			}
+
 			// Wait for the warning message to disappear.
-			if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeStaticText,
-				Name: param.warning,
-			}, 15*time.Second); err != nil {
+			if err := ui.WaitUntilGone(warningMessage)(ctx); err != nil {
 				s.Fatal("The warning message isn't gone yet: ", err)
 			}
 
-			// Find the Continue button node.
-			cbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Continue",
-			}, 15*time.Second)
+			// Find the node info for the Continue button.
+			nodeInfo, err := ui.Info(ctx, continueButton)
 			if err != nil {
-				s.Fatal("Could not find Continue button: ", err)
+				s.Fatal("Could not get info for the Continue button: ", err)
 			}
-			defer cbNode.Release(ctx)
 
 			// Check Continue button state, it must be clickable with a good pin.
-			if cbNode.Restriction == ui.RestrictionDisabled {
-				s.Fatal("The continue button is disabled while the pin is good")
+			if nodeInfo.Restriction == restriction.Disabled {
+				s.Error("The continue button is disabled while the pin is good")
 			}
 
 			// Press backspace to remove 1 digit to get a bad pin.
@@ -168,17 +160,17 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for the warning message to appear again after removing 1 digit.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeStaticText,
-				Name: param.warning,
-			}, 15*time.Second); err != nil {
+			if err := ui.WaitUntilExists(warningMessage)(ctx); err != nil {
 				s.Fatal("Failed to find the warning message (2): ", err)
 			}
 
+			nodeInfo, err = ui.Info(ctx, continueButton)
+			if err != nil {
+				s.Fatal("Could not get new info for the Continue button: ", err)
+			}
 			// Check Continue button state, it must be disabled with a bad pin.
-			cbNode.Update(ctx)
-			if cbNode.Restriction != ui.RestrictionDisabled {
-				s.Fatal("The continue button is allowed while the pin is bad")
+			if nodeInfo.Restriction != restriction.Disabled {
+				s.Fatal("Continue button should be disabled")
 			}
 		})
 	}
