@@ -53,7 +53,7 @@ func RPCDUTReboot(ctx context.Context, s *testing.State) {
 	}
 	// We examine the error in this example simply to expose issues with Close.
 	defer func(ctx context.Context) {
-		if err := d.Close\(ctx); err != nil {
+		if err := d.Close(ctx); err != nil {
 			s.Fatal("Failed to close RPCDUT: ", err)
 		}
 	}(ctx)
