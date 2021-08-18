@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
@@ -278,6 +279,18 @@ func (f *loggedInToCUJUserFixture) TearDown(ctx context.Context, s *testing.Fixt
 }
 
 func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
+	// Check oauth2 token is still valid. If not, return an error to restart
+	// chrome and re-login.
+	tconn, err := f.cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the test conn")
+	}
+	if st, err := lockscreen.GetState(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get login status")
+	} else if !st.HasValidOauth2Token {
+		return errors.New("invalid oauth2 token")
+	}
+
 	// Stopping the running apps.
 	running, err := runningPackages(ctx, f.arc)
 	if err != nil {
@@ -303,10 +316,6 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 	}
 
 	// Ensures that there are no toplevel windows left open.
-	tconn, err := f.cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the test conn")
-	}
 	if all, err := ash.GetAllWindows(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to call ash.GetAllWindows")
 	} else if len(all) != 0 {

@@ -24,16 +24,17 @@ const uiTimeout = 10 * time.Second
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
 type State struct {
-	LoggedIn         bool   `json:"isLoggedIn"`
-	Owner            bool   `json:"isOwner"`
-	Locked           bool   `json:"isScreenLocked"`
-	ReadyForPassword bool   `json:"isReadyForPassword"` // Login screen may not be ready to receive a password, even if this is true (crbug/1109381)
-	RegularUser      bool   `json:"isRegularUser"`
-	Guest            bool   `json:"isGuest"`
-	Kiosk            bool   `json:"isKiosk"`
-	Email            string `json:"email"`
-	DisplayEmail     string `json:"displayEmail"`
-	UserImage        string `json:"userImage"`
+	LoggedIn            bool   `json:"isLoggedIn"`
+	Owner               bool   `json:"isOwner"`
+	Locked              bool   `json:"isScreenLocked"`
+	ReadyForPassword    bool   `json:"isReadyForPassword"` // Login screen may not be ready to receive a password, even if this is true (crbug/1109381)
+	RegularUser         bool   `json:"isRegularUser"`
+	Guest               bool   `json:"isGuest"`
+	Kiosk               bool   `json:"isKiosk"`
+	Email               string `json:"email"`
+	DisplayEmail        string `json:"displayEmail"`
+	UserImage           string `json:"userImage"`
+	HasValidOauth2Token bool   `json:"hasValidOauth2Token"`
 }
 
 // GetState returns the login status information from chrome.autotestPrivate.loginStatus
