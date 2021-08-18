@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0507485_1bcae163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-18T03:41:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29a056cc_f9151f2d",
+      "range": {
+        "startLine": 170,
+        "startChar": 22,
+        "endLine": 170,
+        "endChar": 28
+      },
+      "revId": "1004b3846b99d06746bd3fd336fa2cd372cfbf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96b6cf17_667134c9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-17T06:18:09Z",
       "side": 1,
       "message": "The test proceeds if there is error?",
+      "range": {
+        "startLine": 440,
+        "startChar": 6,
+        "endLine": 440,
+        "endChar": 10
+      },
+      "revId": "1004b3846b99d06746bd3fd336fa2cd372cfbf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a6893f_25726ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-18T03:41:47Z",
+      "side": 1,
+      "message": "If there is error, the error is handled in line 446.",
+      "parentUuid": "96b6cf17_667134c9",
       "range": {
         "startLine": 440,
         "startChar": 6,
