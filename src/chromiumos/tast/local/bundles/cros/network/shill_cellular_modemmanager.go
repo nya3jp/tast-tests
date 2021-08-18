@@ -20,7 +20,7 @@ func init() {
 		Func:     ShillCellularModemmanager,
 		Desc:     "Verifies that Shill behaves correctly when modemmanager is restarted",
 		Contacts: []string{"stevenjb@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular"},
+		Attr:     []string{"group:cellular", "cellular_sim_active"},
 		Fixture:  "cellular",
 	})
 }
