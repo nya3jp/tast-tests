@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596e7c67_f6e94c27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-18T22:50:38Z",
+      "side": 1,
+      "message": "Chromium side autotest change: CL:3105132",
+      "revId": "3dc052ca1ebfa47846ca33e2cfa29c1a17abf838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
