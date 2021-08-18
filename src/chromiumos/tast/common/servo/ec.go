@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -20,6 +21,8 @@ const (
 	ECUARTCmd          StringControl = "ec_uart_cmd"
 	ECUARTRegexp       StringControl = "ec_uart_regexp"
 	ECUARTStream       StringControl = "ec_uart_stream"
+	ECChip             StringControl = "ec_chip"
+	ECFlashSize        StringControl = "ec_flash_size"
 )
 
 // These controls accept only "on" and "off" as values.
@@ -77,4 +80,19 @@ func (s *Servo) ECHibernate(ctx context.Context) error {
 		return errors.Wrap(err, "unexpected EC error")
 	}
 	return nil
+}
+
+// GetECFlashSize returns the size of EC in KB e.g. 512
+func (s *Servo) GetECFlashSize(ctx context.Context) (int, error) {
+	sizeStr, err := s.GetString(ctx, ECFlashSize)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get value for ec size")
+	}
+	// ECFlashSize method matches an int regex so Atoi should always work
+	return strconv.Atoi(sizeStr)
+}
+
+// GetECChip returns the DUT chip e.g. "npcx_uut"
+func (s *Servo) GetECChip(ctx context.Context) (string, error) {
+	return s.GetString(ctx, ECChip)
 }
