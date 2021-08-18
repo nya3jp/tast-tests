@@ -17,6 +17,7 @@ import (
 )
 
 // installDir is the path to the directory that contains Chrome executable.
+// TODO(crbug.com/1237972): Merge into ashproc.installDir.
 const installDir = "/opt/google/chrome"
 
 // ExecPath contains the path to the Chrome executable.
@@ -35,21 +36,6 @@ func Version(ctx context.Context) ([]string, error) {
 		return nil, errors.Errorf("can't recognize version string: %s", string(versionStr))
 	}
 	return matches[1:], nil
-}
-
-// GetPIDs returns all PIDs corresponding to Chrome processes (including
-// crashpad's handler).
-func GetPIDs() ([]int, error) {
-	ps, err := chromeproc.Processes(installDir)
-	if err != nil {
-		return nil, err
-	}
-
-	var pids []int
-	for _, p := range ps {
-		pids = append(pids, int(p.Pid))
-	}
-	return pids, nil
 }
 
 // GetRootPID returns the PID of the root Chrome process.
