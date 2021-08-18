@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "eee75df2_d8330663",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-18T04:06:46Z",
+      "side": 1,
+      "message": "Ack. Thanks for the clarification 😊",
+      "parentUuid": "169897b8_f3c3bd4e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "a729ca66922da7a4c7e35e7055a7799033e6aef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "faf8a1f4_41780709",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
