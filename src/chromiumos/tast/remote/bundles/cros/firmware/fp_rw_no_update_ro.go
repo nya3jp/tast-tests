@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
+	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -41,7 +42,13 @@ func init() {
 }
 
 func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), s.RequiredVar("servo"), s.RPCHint(), s.OutDir(), true, true)
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.Close(ctx)
+
+	t, err := fingerprint.NewFirmwareTest(ctx, d, s.RequiredVar("servo"), s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -54,19 +61,17 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
-	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, t.DutfsClient(), s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
+	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
 	if err != nil {
 		s.Fatal("Failed to generate test images: ", err)
 	}
 
-	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.CheckRunningFirmwareCopy(ctx, d.DUT(), fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Test expects RW firmware copy to be running")
 	}
 
 	// Hardware write protect must be enabled for the test to work correctly.
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d, t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
 		s.Fatal("Failed to validate write protect settings: ", err)
 	}
 
