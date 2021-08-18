@@ -77,7 +77,7 @@ func Login(ctx context.Context, s *testing.State) {
 	}
 
 	p := perf.NewValues()
-	if err := multivm.MemoryMetrics(ctx, basemem, pre, p, s.OutDir(), ""); err != nil {
+	if err := multivm.MemoryMetrics(ctx, basemem, arc, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to collect memory metrics: ", err)
 	}
 	if err := p.Save(s.OutDir()); err != nil {
