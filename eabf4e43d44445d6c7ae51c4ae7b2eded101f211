@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b154b80_40cc41f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-18T17:47:46Z",
+      "side": 1,
+      "message": "cros-fw-engprod@google.com (4 people who work on testing, but mostly don\u0027t work on firmware) or chromeos-firmware@google.com (214 people who mostly don\u0027t work on tests)\n\nI\u0027m not sure which is better.",
+      "parentUuid": "35b5b440_d1df3a59",
+      "revId": "eabf4e43d44445d6c7ae51c4ae7b2eded101f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dffe0a0_0b423430",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
         "patchSetId": 4
