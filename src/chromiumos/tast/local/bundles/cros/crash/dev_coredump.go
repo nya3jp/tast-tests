@@ -40,7 +40,7 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	}
 
 	// This test uses crash.DevImage because it is designed to test device
-	// coredump handling on developer images.  Without it, no .devcore
+	// coredump handling on developer images.  Without it, no .devcore.gz
 	// files would be created.
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent(), crash.DevImage()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
@@ -61,11 +61,11 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to trigger device coredump: ", err)
 	}
 
-	s.Log("Waiting for .devcore file to be added to crash directory")
+	s.Log("Waiting for .devcore.gz file to be added to crash directory")
 
 	// Check that expected device coredump is copied to crash directory.
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
-		[]string{`devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore`})
+		[]string{`devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore.gz`})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)
 	}
