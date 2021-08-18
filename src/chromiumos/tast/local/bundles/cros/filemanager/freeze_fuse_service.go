@@ -50,8 +50,7 @@ func (f *FreezeFUSEService) TestMountZipAndSuspend(ctx context.Context, request 
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIALogin(chrome.Creds{User: request.GetUser(), Pass: request.GetPassword()}),
-		chrome.ARCDisabled(),
-		chrome.EnableFeatures("FilesZipMount"))
+		chrome.ARCDisabled())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start Chrome")
 	}
@@ -59,7 +58,7 @@ func (f *FreezeFUSEService) TestMountZipAndSuspend(ctx context.Context, request 
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create TestAPIConn for Chrome: ")
+		return nil, errors.Wrap(err, "failed to create TestAPIConn for Chrome")
 	}
 
 	// This command quickly reproduces freeze timeouts with archives.
