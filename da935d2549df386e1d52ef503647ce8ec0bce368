@@ -70,6 +70,30 @@
       },
       "revId": "da935d2549df386e1d52ef503647ce8ec0bce368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37fdfe79_81623404",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-18T00:42:43Z",
+      "side": 1,
+      "message": "This is configured here [1] I\u0027ve reached out to the team looking after default apps to see if there\u0027s an easy way to get this info via an autotestPrivate API, I\u0027ll circle back on this CL once I\u0027ve got a more robust solution other than exclude models\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ui/ash/default_pinned_apps.cc;l\u003d57;drc\u003d1f46798c5e5044a841da89a325892f3d86316cc2",
+      "parentUuid": "8f93547d_d5e0134b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "da935d2549df386e1d52ef503647ce8ec0bce368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
