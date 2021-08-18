@@ -46,6 +46,30 @@
       },
       "revId": "da935d2549df386e1d52ef503647ce8ec0bce368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f93547d_d5e0134b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-18T00:25:39Z",
+      "side": 1,
+      "message": "Thanks for the pointer. Do you know where this is configured? Is it difficult for tests to look at the same configuration as the product?",
+      "parentUuid": "2431abb2_8b2e1385",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "da935d2549df386e1d52ef503647ce8ec0bce368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
