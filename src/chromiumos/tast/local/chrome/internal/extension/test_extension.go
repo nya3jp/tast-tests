@@ -124,6 +124,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
     "management",
     "metricsPrivate",
     "notifications",
+    "printing",
     "processes",
     "proxy",
     "settingsPrivate",
