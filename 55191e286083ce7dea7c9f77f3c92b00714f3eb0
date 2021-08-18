@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68424de_9930601e",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-18T20:31:26Z",
+      "side": 1,
+      "message": "This API doesn\u0027t close the PlayStore like PerformAndClose,hence OptinTimeout should be enough.",
+      "range": {
+        "startLine": 260,
+        "startChar": 49,
+        "endLine": 260,
+        "endChar": 70
+      },
+      "revId": "55191e286083ce7dea7c9f77f3c92b00714f3eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
