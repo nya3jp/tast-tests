@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d750572_fd35ed8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-18T06:55:53Z",
+      "side": 1,
+      "message": "Done. I keep get confused in this area. Thanks for the code snippet.",
+      "parentUuid": "e457b749_fe82a7b1",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "55df8819118ba4ea7677fe39f57e1411c6eebd67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75a2b111_fb62df6b",
