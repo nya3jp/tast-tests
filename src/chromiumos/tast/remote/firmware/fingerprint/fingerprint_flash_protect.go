@@ -260,20 +260,22 @@ func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error
 
 // CheckWriteProtectStateCorrect correct returns an error if the FPMCU's current write
 // protection state does not match the expected state.
-func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
-	output, err := flashProtectState(ctx, d)
+func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
+	fp, err := GetFlashProtect(ctx, d)
 	if err != nil {
 		return err
 	}
 
-	expectedOutput := expectedFlashProtectOutput(fpBoard, curImage, softwareWriteProtectEnabled, hardwareWriteProtectEnabled)
-
-	if expectedOutput == "" {
-		return errors.Errorf("invalid state, hw wp: %t, sw wp: %t", hardwareWriteProtectEnabled, softwareWriteProtectEnabled)
+	if fp.IsHardwareWriteProtected() != hardwareWriteProtectEnabled {
+		return errors.Errorf("HW-WP state is incorrect: expect=%t actual=%t",
+			hardwareWriteProtectEnabled, fp.IsHardwareWriteProtected())
 	}
 
-	if expectedOutput != output {
-		return errors.Errorf("incorrect write protect state, expected: %q, actual: %q", expectedOutput, output)
+	if (fp.IsSoftwareReadOutProtected() && fp.IsSoftwareWriteProtected()) !=
+		softwareWriteProtectEnabled {
+		return errors.Errorf("SW-WP state is incorrect: expect=%t actual=(rdp-%t,now-%t)",
+			softwareWriteProtectEnabled, fp.IsSoftwareReadOutProtected(),
+			fp.IsSoftwareWriteProtected())
 	}
 
 	return nil
