@@ -49,7 +49,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 
 	// isDischarging checks if the DUT is in discharging state.
 	isDischarging := func(ctx context.Context) (bool, error) {
-		out, err := d.Conn().Command("cat", "/sys/class/power_supply/BAT0/status").Output(ctx)
+		out, err := d.Conn().CommandContext(ctx, "cat", "/sys/class/power_supply/BAT0/status").Output()
 		if err != nil {
 			return false, err
 		}
