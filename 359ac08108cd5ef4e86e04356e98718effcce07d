@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff968954_492967cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-18T14:43:04Z",
+      "side": 1,
+      "message": "PTAL.",
+      "revId": "359ac08108cd5ef4e86e04356e98718effcce07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361bd71c_80792c65",
+        "filename": "src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-18T14:43:04Z",
+      "side": 1,
+      "message": "Note: these will be moved in an immediate following CL, so let me keep the capitalization (visibilty).",
+      "revId": "359ac08108cd5ef4e86e04356e98718effcce07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
