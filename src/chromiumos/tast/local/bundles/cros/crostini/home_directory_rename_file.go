@@ -88,12 +88,12 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	cr := s.PreValue().(crostini.PreData).Chrome
 	kb := s.PreValue().(crostini.PreData).Keyboard
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 90*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
 	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)

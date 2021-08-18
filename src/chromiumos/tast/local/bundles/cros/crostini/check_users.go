@@ -10,6 +10,7 @@ import (
 	"time"
 
 	//"chromiumos/tast/errors"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -84,6 +85,12 @@ func init() {
 
 func CheckUsers(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -99,16 +106,16 @@ func CheckUsers(ctx context.Context, s *testing.State) {
 
 	// Cleanup.
 	defer func() {
-		crostini.RunCrostiniPostTest(ctx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb})
+		crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb})
 
 		// Open the Linux settings.
-		st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
+		st, err := settings.OpenLinuxSettings(cleanupCtx, tconn, cr)
 		if err != nil {
 			s.Fatal("Failed to open Linux Settings: ", err)
 		}
-		defer st.Close(ctx)
+		defer st.Close(cleanupCtx)
 
-		if err := st.Remove()(ctx); err != nil {
+		if err := st.Remove()(cleanupCtx); err != nil {
 			s.Error("Failed to remove Linux: ", err)
 		}
 	}()

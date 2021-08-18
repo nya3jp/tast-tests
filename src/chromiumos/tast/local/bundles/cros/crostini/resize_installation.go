@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -64,26 +65,31 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 	iOptions.MinDiskSize = 16 * settings.SizeGB
 	iOptions.IsSoftMinimum = true
 
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+
 	// Cleanup.
 	defer func() {
 		// Get the container.
-		cont, err := vm.DefaultContainer(ctx, iOptions.UserName)
+		cont, err := vm.DefaultContainer(cleanupCtx, iOptions.UserName)
 		if err != nil {
 			s.Fatal("Failed to connect to the container: ", err)
 		}
 
-		kb, err := input.Keyboard(ctx)
+		kb, err := input.Keyboard(cleanupCtx)
 		if err != nil {
 			s.Fatal("Failed to get keyboard: ", err)
 		}
 		defer kb.Close()
 
-		crostini.RunCrostiniPostTest(ctx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: cont, Keyboard: kb})
+		crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: cont, Keyboard: kb})
 
 		// Unmount the component.
-		vm.UnmountComponent(ctx)
+		vm.UnmountComponent(cleanupCtx)
 		if err := vm.DeleteImages(); err != nil {
-			testing.ContextLogf(ctx, "Error deleting images: %q", err)
+			testing.ContextLogf(cleanupCtx, "Error deleting images: %q", err)
 		}
 	}()
 	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "resize_installation", err) }()

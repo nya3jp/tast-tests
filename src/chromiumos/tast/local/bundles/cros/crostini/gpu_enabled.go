@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -138,7 +139,12 @@ func init() {
 func GPUEnabled(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	expectedDevice := s.Param().(string)
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	cmd := cont.Command(ctx, "sh", "-c", "glxinfo -B | grep Device:")
 	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
