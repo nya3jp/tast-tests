@@ -323,6 +323,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b538ae27_73ce4129",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-18T10:03:18Z",
+      "side": 1,
+      "message": "Ack, the \"calling function multiple times\" argument makes a lot of sense. I don\u0027t do that or plan to do it though. The functions are merely there to group the test into building blocks. This makes it much more readable for someone reading the file top to bottom to understand what the test is doing.\n\nYou all agree on this point so I\u0027ll rewrite it now. I had to move cleanup out of its own function because I want to call s.Error for each error. I\u0027d say this is another indicator that stricly following this rule here is too rigid. The last thing a style guide should do is prohibit clean code that separates different concerns into different functions.\n\nI\u0027d still like to discuss it for the sake of understanding. Is there any concrete reason for doing it this way?",
+      "parentUuid": "3805b4c5_b96a2ab9",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fef521a5_64305e29",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
@@ -452,6 +476,24 @@
       "writtenOn": "2021-08-16T12:12:51Z",
       "side": 1,
       "message": "nit: add newline to the end of the file.",
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27a89b5_4cd83dfa",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-18T10:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b07b080_652eccf9",
       "revId": "ddb55fbd169126e2874b7c671787661299d10234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

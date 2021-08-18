@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2781951d_19b928a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-18T10:03:18Z",
+      "side": 1,
+      "message": "huh? That\u0027s strange, the tests name is policy.EnterpriseRollbackInPlace and for me this command does work. I think you ran some update rollback tests when doing *rollback*. Btw. the test relies on a very recent Chrome patch (merged yesterday) you\u0027ll need that on your device for it to finish successfully. If you don\u0027t have it it will get stuck in the last step, which is fine for testing as well. You can just manually verify that you see the enrollment screen.",
+      "parentUuid": "1bb3cdd7_d30236b2",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "6ef60ab0da20754223cdbbd8ae1859ad13015a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f63704b8_32cc0fb1",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cd6020_ae8e6c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-18T10:03:18Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "f63704b8_32cc0fb1",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "6ef60ab0da20754223cdbbd8ae1859ad13015a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "691f50dc_12972b8b",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-08-17T08:29:12Z",
       "side": 1,
       "message": "This one should only be run when oobe_config_save is still up. I will fix this as soon as I know where to best put those calls.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 69
+      },
+      "revId": "6ef60ab0da20754223cdbbd8ae1859ad13015a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9a003f_d4f2d6eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-18T10:03:18Z",
+      "side": 1,
+      "message": "Actually I think it\u0027s fine to just always run it.",
+      "parentUuid": "691f50dc_12972b8b",
       "range": {
         "startLine": 119,
         "startChar": 1,
