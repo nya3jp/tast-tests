@@ -257,7 +257,7 @@ func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.TestConn) error {
 			return errors.New("Play Store app is not yet ready")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 90 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: OptinTimeout + PlayStoreCloseTimeout}); err != nil {
 		return errors.Wrap(err, "failed to wait for Play Store app to become ready")
 	}
 	return nil
