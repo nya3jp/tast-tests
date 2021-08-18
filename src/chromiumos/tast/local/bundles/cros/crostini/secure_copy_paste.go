@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -381,7 +382,12 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	// Initialize the clipboard data before the test.
 	if err := forceClipboard(ctx, tconn, ""); err != nil {

@@ -85,7 +85,12 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
 	if err != nil {
@@ -122,7 +127,7 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to exit Terminal window: ", err)
 		}
 	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	ctx, cancel = ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	if err := cont.WriteFile(ctx, testFileName, testFileContent); err != nil {

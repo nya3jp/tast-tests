@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -49,7 +50,12 @@ var alsaSinksPattern = regexp.MustCompile("1\talsa_output.hw_0_0\tmodule-alsa-si
 
 func PulseAudioBasic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	s.Log("List ALSA output devices")
 	if err := cont.Command(ctx, "aplay", "-l").Run(testexec.DumpLogOnError); err != nil {

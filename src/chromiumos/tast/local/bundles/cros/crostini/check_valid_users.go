@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -93,7 +94,11 @@ func CheckValidUsers(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	defer crostini.RunCrostiniPostTest(ctx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb})
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb})
 
 	for k, users := range validUsersMap {
 		testName := fmt.Sprintf("test_%s", k)

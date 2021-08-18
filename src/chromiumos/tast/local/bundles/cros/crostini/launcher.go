@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -405,7 +406,12 @@ func Launcher(ctx context.Context, s *testing.State) {
 	tconn := pre.TestAPIConn
 	cont := pre.Container
 	ownerID := cont.VM.Concierge.GetOwnerID()
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	// Confirm we don't have the application going-in or leaving.
 	if err := waitForIcon(ctx, ownerID, conf.launcherID, iconAbsent); err != nil {

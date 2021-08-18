@@ -46,7 +46,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 90*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 

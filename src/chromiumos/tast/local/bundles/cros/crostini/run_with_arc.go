@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
@@ -81,7 +82,12 @@ func RunWithARC(ctx context.Context, s *testing.State) {
 	if err := crostini.BasicCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
 	}
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {

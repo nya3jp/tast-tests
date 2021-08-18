@@ -14,6 +14,7 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -82,7 +83,12 @@ func init() {
 
 func ShareInvalidPaths(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
+	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	userData := filepath.Join("/home/user", pre.Container.VM.Concierge.GetOwnerID())
 	downloads := filepath.Join(userData, "MyFiles/Downloads")
