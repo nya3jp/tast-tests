@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31406606_b8cfbb94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-18T22:09:52Z",
+      "side": 1,
+      "message": "Do you need to handle both? It would be easy enough with (.gz)?",
+      "range": {
+        "startLine": 68,
+        "startChar": 64,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
