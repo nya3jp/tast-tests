@@ -10,11 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
-	"chromiumos/tast/rpc"
+	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -37,9 +36,15 @@ func init() {
 }
 
 func FpRDP0(ctx context.Context, s *testing.State) {
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer d.RPCClose(ctx)
+
 	// Set both HW and SW write protect to false to get RDP0 state.
 	servoSpec, _ := s.Var("servo")
-	t, err := fingerprint.NewFirmwareTest(ctx, s.DUT(), servoSpec, s.RPCHint(), s.OutDir(), false, false)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -52,8 +57,6 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	d := t.DUT()
-
 	// This test requires a forced flash without entropy
 	// initialization to ensure that we get an exact match between
 	// the original firmware that was flashed and the value that is
@@ -65,7 +68,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 
 	// Wait for FPMCU to boot to RW. Fail if it does not.
 	testing.ContextLog(ctx, "Waiting for FPMCU to reboot to RW")
-	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d, fingerprint.ImageTypeRW); err != nil {
+	if err := fingerprint.WaitForRunningFirmwareImage(ctx, d.DUT, fingerprint.ImageTypeRW); err != nil {
 		s.Fatal("Failed to boot to RW image: ", err)
 	}
 
@@ -77,7 +80,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Checking that firmware is functional")
-	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
+	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d.DUT); err != nil {
 		s.Fatal("Firmware is not functional after initialization: ", err)
 	}
 
@@ -92,7 +95,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), s.RPCHint(), t.DutfsClient(), false, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), false, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 without changing RDP level: ", err)
 	}
 
@@ -107,23 +110,17 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), s.RPCHint(), t.DutfsClient(), true, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.BuildFwFile(), true, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 while setting RDP to level 0: ", err)
 	}
 }
 
 // testRDP0 tests RDP0 functionality by trying to read from flash.
-func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *testing.RPCHint, fs *dutfs.Client, removeFlashReadProtect, needsReboot bool) (e error) {
+func testRDP0(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile string, removeFlashReadProtect, needsReboot bool) (e error) {
 	var fileReadFromFlash string
 	var args []string
 
-	// TODO(https://crbug.com/1195936): ReimageFPMCU reboots, which causes gRPC
-	//  to lose its connection.
-	cl, err := rpc.Dial(ctx, d, rpcHint, "cros")
-	if err != nil {
-		return err
-	}
-	fs = dutfs.NewClient(cl.Conn)
+	fs := dutfs.NewClient(d.RPC().Conn)
 
 	tempdirPath, err := fs.TempDir(ctx, "", "fingerprint_rdp0_*")
 	if err != nil {
@@ -173,17 +170,9 @@ func testRDP0(ctx context.Context, d *dut.DUT, buildFwFile string, rpcHint *test
 		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
-
-		// TODO(https://crbug.com/1195936): Rebooting causes gRPC
-		//  to lose its connection.
-		cl, err := rpc.Dial(ctx, d, rpcHint, "cros")
-		if err != nil {
-			return err
-		}
-		fs = dutfs.NewClient(cl.Conn)
 	}
 
-	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d); err != nil {
+	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d.DUT); err != nil {
 		return errors.Wrap(err, "firmware is not functional after reading flash")
 	}
 	return nil

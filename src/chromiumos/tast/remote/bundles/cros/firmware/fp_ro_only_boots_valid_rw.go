@@ -48,9 +48,9 @@ type testParams struct {
 	expectedRunningFirmwareCopy fingerprint.FWImageType
 }
 
-func testFlashingFirmwareVersion(ctx context.Context, d *dut.DUT, fs *dutfs.Client, params *testParams) error {
+func testFlashingFirmwareVersion(ctx context.Context, d *rpcdut.RPCDUT, fs *dutfs.Client, params *testParams) error {
 	testing.ContextLog(ctx, "Flashing firmware: ", params.firmwarePath)
-	if err := fingerprint.FlashRWFirmware(ctx, d, fs, params.firmwarePath); err != nil {
+	if err := fingerprint.FlashRWFirmware(ctx, d, params.firmwarePath); err != nil {
 		return errors.Wrapf(err, "failed to flash firmware: %q", params.firmwarePath)
 	}
 
