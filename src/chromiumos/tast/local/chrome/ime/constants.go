@@ -16,6 +16,7 @@ type Language string
 // List of languages, names are defined based on ISO 639.
 const (
 	LanguageAr      Language = "Arabic"
+	LanguageCa      Language = "Catalan"
 	LanguageEn      Language = "English"
 	LanguageEs      Language = "Spanish"
 	LanguageFr      Language = "French"

@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -21,9 +22,7 @@ import (
 
 // deadKeysTestCase struct encapsulates parameters for each Dead Keys test.
 type deadKeysTestCase struct {
-	inputMethodID        string
-	hasDecoder           bool
-	useA11yVk            bool
+	inputMethod          ime.InputMethod
 	typingKeys           []string
 	expectedTypingResult string
 }
@@ -55,8 +54,7 @@ func init() {
 				Val: deadKeysTestCase{
 					// "French - French keyboard" input method is decoder-backed. Dead keys
 					// are implemented differently from those of a no-frills input method.
-					inputMethodID: "xkb:fr::fra",
-					hasDecoder:    true,
+					inputMethod: ime.FrenchFrance,
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
 					// typing sequences to the test case.
@@ -69,8 +67,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledClamshell,
 				Val: deadKeysTestCase{
-					inputMethodID:        "xkb:fr::fra",
-					hasDecoder:           true,
+					inputMethod:          ime.FrenchFrance,
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
@@ -84,8 +81,7 @@ func init() {
 				Val: deadKeysTestCase{
 					// "Catalan keyboard" input method is no-frills. Dead keys are
 					// implemented differently from those of a decoder-backed input method.
-					inputMethodID: "xkb:es:cat:cat",
-					hasDecoder:    false,
+					inputMethod: ime.Catalan,
 
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
@@ -99,8 +95,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledTablet,
 				Val: deadKeysTestCase{
-					inputMethodID:        "xkb:es:cat:cat",
-					hasDecoder:           false,
+					inputMethod:          ime.Catalan,
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
@@ -114,7 +109,11 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
@@ -122,26 +121,14 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	s.Log("Set input method to: ", testCase.inputMethodID)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+testCase.inputMethodID); err != nil {
-		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
-	}
+	inputMethod := testCase.inputMethod
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 	inputField := testserver.TextAreaNoCorrectionInputField
 
-	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
-		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-	}
-
-	if testCase.hasDecoder {
-		s.Log("Wait for decoder running")
-		if err := vkbCtx.WaitForDecoderEnabled(true)(ctx); err != nil {
-			s.Fatal("Failed to wait for decoder running: ", err)
-		}
-	}
-
-	if err := uiauto.Combine("tap keys and validate outcome",
+	if err := uiauto.Combine("validate dead keys typing",
+		inputMethod.InstallAndActivate(tconn),
+		its.ClickFieldUntilVKShown(inputField),
 		vkbCtx.TapKeys(testCase.typingKeys),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.expectedTypingResult),
 	)(ctx); err != nil {
