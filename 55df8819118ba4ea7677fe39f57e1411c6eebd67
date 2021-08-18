@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bceccc5_7f5db236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-18T05:52:47Z",
+      "side": 1,
+      "message": "you probably don\u0027t need a param-free function that returns another function.\njust `switchToNextInputMethod :\u003d func(ctx) error {...}`",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "55df8819118ba4ea7677fe39f57e1411c6eebd67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a2b111_fb62df6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-18T05:52:47Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "55df8819118ba4ea7677fe39f57e1411c6eebd67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb907b7b_211ecf25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-18T05:52:47Z",
+      "side": 1,
+      "message": "super-nit: remove this empty line",
+      "revId": "55df8819118ba4ea7677fe39f57e1411c6eebd67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
