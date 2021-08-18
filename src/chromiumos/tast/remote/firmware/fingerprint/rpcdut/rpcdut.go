@@ -87,7 +87,7 @@ func (rd *RPCDUT) DUT() *dut.DUT {
 
 // Close closes the rpc connection without disconnecting the ssh connection.
 func (rd *RPCDUT) Close(ctx context.Context) error {
-	return rd.rpcClose(ctx)
+	return rd.Close(ctx)
 }
 
 // Reboot the dut and then reestablish the rpc connection.
@@ -101,7 +101,7 @@ func (rd *RPCDUT) Close(ctx context.Context) error {
 // ssh connection will be closing. When the ssh connection is reconnected,
 // we can restart the remote bundle rpc server.
 func (rd *RPCDUT) Reboot(ctx context.Context) error {
-	if err := rd.rpcClose(ctx); err != nil {
+	if err := rd.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close rpc connection before reboot: ", err)
 	}
 	if err := rd.d.Reboot(ctx); err != nil {
@@ -116,7 +116,7 @@ func (rd *RPCDUT) Reboot(ctx context.Context) error {
 
 // WaitUnreachable errors out, since we have not implemented this yet.
 func (rd *RPCDUT) WaitUnreachable(ctx context.Context) error {
-	if err := rd.rpcClose(ctx); err != nil {
+	if err := rd.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close rpc connection before disconnect: ", err)
 	}
 	if err := rd.d.WaitUnreachable(ctx); err != nil {
@@ -132,7 +132,7 @@ func (rd *RPCDUT) WaitUnreachable(ctx context.Context) error {
 
 // Connect the dut and rpc connection.
 func (rd *RPCDUT) Connect(ctx context.Context) error {
-	if err := rd.rpcClose(ctx); err != nil {
+	if err := rd.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close rpc connection before connect: ", err)
 	}
 	if err := rd.d.Connect(ctx); err != nil {
@@ -147,7 +147,7 @@ func (rd *RPCDUT) Connect(ctx context.Context) error {
 
 // Disconnect the dut and rpc connection.
 func (rd *RPCDUT) Disconnect(ctx context.Context) error {
-	if err := rd.rpcClose(ctx); err != nil {
+	if err := rd.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close rpc connection before disconnect: ", err)
 	}
 	if err := rd.d.Disconnect(ctx); err != nil {
