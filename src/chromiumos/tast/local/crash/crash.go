@@ -97,7 +97,7 @@ const (
 	// CompressedLogExt is an extension on the compressed log files written by crash_reporter.
 	CompressedLogExt = ".log.gz"
 	// DevCoredumpExt is an extension for device coredump files.
-	DevCoredumpExt = ".devcore"
+	DevCoredumpExt = ".devcore.gz"
 	// ECCrashExt is an extension for ec crash dumps
 	ECCrashExt = ".eccrash"
 	// JavaScriptStackExt is the extension for JavaScript stacks.
