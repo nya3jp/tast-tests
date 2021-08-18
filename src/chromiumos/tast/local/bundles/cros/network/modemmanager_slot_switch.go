@@ -22,7 +22,7 @@ func init() {
 		Func:     ModemmanagerSlotSwitch,
 		Desc:     "Verifies that modemmanager switches SIM slot",
 		Contacts: []string{"srikanthkumar@google.com", "cros-network-health@google.com"},
-		Attr:     []string{"group:cellular_multisim", "cellular_multisim_unstable"},
+		Attr:     []string{"group:cellular", "cellular_unstable", "sim_dual_active"},
 		Fixture:  "cellular",
 		Timeout:  5 * time.Minute,
 	})
