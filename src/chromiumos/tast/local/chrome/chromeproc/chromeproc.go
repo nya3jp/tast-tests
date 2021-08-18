@@ -37,21 +37,6 @@ func Version(ctx context.Context) ([]string, error) {
 	return matches[1:], nil
 }
 
-// GetPIDs returns all PIDs corresponding to Chrome processes (including
-// crashpad's handler).
-func GetPIDs() ([]int, error) {
-	ps, err := chromeproc.Processes(installDir)
-	if err != nil {
-		return nil, err
-	}
-
-	var pids []int
-	for _, p := range ps {
-		pids = append(pids, int(p.Pid))
-	}
-	return pids, nil
-}
-
 // GetRootPID returns the PID of the root Chrome process.
 // This corresponds to the browser process.
 func GetRootPID() (int, error) {

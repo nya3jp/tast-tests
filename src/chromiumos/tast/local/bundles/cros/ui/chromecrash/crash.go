@@ -21,6 +21,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
@@ -268,24 +269,6 @@ func deleteFiles(ctx context.Context, paths []string) {
 	}
 }
 
-// anyPIDsExist returns true if any PIDs in pids are still present. To avoid
-// PID races, only processes created before the indicated time are considered.
-func anyPIDsExist(pids []int, createdBefore time.Time) bool {
-	createdBeforeMS := createdBefore.UnixNano() / nanosecondsPerMillisecond
-	for _, pid := range pids {
-		proc, err := process.NewProcess(int32(pid))
-		if err != nil {
-			// Assume process exited.
-			continue
-		}
-		// If there are errors, again, assume the process exited.
-		if createTimeMS, err := proc.CreateTime(); err == nil && createTimeMS <= createdBeforeMS {
-			return true
-		}
-	}
-	return false
-}
-
 // FindCrashFilesIn looks through the list of files returned from KillAndGetCrashFiles,
 // expecting to find the crash output files written by crash_reporter after a Chrome crash.
 // In particular, it expects to find a .meta file and a matching .dmp file.
@@ -334,28 +317,25 @@ func FindBreakpadDmpFilesIn(dirPattern string, files []string) error {
 	return errors.Errorf("could not find breakpad's .dmp file in %s (possible files: %v)", dirPattern, files)
 }
 
-// getChromePIDs gets the process IDs of all Chrome processes running in the
-// system. This will wait for Chrome to be up before returning.
-func getChromePIDs(ctx context.Context) ([]int, error) {
-	var pids []int
-	// Don't just return the list of Chrome PIDs at the moment this is called.
-	// Instead, wait for Chrome to be up and then return the pids once it is up
-	// and running.
+// waitForChromeProcesses waits for the Chrome to be up and then
+// returns a list of Processes of ash-chrome and its crashpad_handlers.
+func waitForChromeProcesses(ctx context.Context) ([]*process.Process, error) {
+	var procs []*process.Process
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		pids, err = chromeproc.GetPIDs()
+		procs, err = ashproc.Processes()
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		if len(pids) == 0 {
+		if len(procs) == 0 {
 			return errors.New("no Chrome processes found")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		return nil, errors.Wrap(err, "failed to get Chrome PIDs")
+		return nil, errors.Wrap(err, "failed to get Chrome processes")
 	}
 
-	return pids, nil
+	return procs, nil
 }
 
 // getNonBrowserProcess returns a Process structure of a single Chrome process
@@ -524,8 +504,6 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 // .meta file. We can't wait for a file to be created because ChromeCrashLoop
 // doesn't create files at all on one of its kills.
 func (ct *CrashTester) killBrowser(ctx context.Context) error {
-	preSleepTime := time.Now()
-
 	// Sleep briefly after Chrome starts so it has time to set up breakpad or
 	// crashpad. (Also needed for https://crbug.com/906690)
 	const delay = 3 * time.Second
@@ -534,7 +512,7 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 		return errors.Wrap(err, "timed out while waiting for Chrome startup")
 	}
 
-	pids, err := getChromePIDs(ctx)
+	procs, err := waitForChromeProcesses(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to find Chrome process IDs")
 	}
@@ -557,15 +535,20 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	// process. It also ensures that chrome_crashpad_handler has exited; this is
 	// important since chrome_crashpad_handler can survive the root Chrome process and
 	// still be in the middle of spawning crash_reporter.
-	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if anyPIDsExist(pids, preSleepTime) {
-			return errors.New("processes still exist")
+	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(procs))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		for _, p := range procs {
+			r, err := p.IsRunning()
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to stat process"))
+			}
+			if r {
+				return errors.New("processes still exist")
+			}
 		}
 		return nil
-	}, nil)
-	if err != nil {
-		return errors.Wrap(err, "Chrome didn't exit")
+	}, nil); err != nil {
+		return err
 	}
 
 	// Now wait for all running crash_reporter processes to exit. It's possible
