@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcde3da_3c91bab6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-18T10:54:11Z",
+      "side": 1,
+      "message": "Please make sure it passes before/after applying https://crrev.com/c/3102669",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a05797dfe1e0e0c17c4b8ac28d251deaf38eafff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
