@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c26a111_fcf91082",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-18T10:07:14Z",
+      "side": 1,
+      "message": "Under normal circumstances I\u0027d put this in a function and call it four times to avoid repetition. If I am not allowed to pass testing.State as parameter I can\u0027t.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "185e3a2dc30b8e2352ca6bff40e15583245f7b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
