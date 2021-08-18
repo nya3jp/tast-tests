@@ -91,7 +91,7 @@ func init() {
 				num:      4,
 				layout:   meetLayoutTiled,
 				cam:      true,
-				duration: 30 * time.Minute,
+				duration: 10 * time.Minute,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
