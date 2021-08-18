@@ -60,8 +60,8 @@ const (
 	Square = "square"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait"
-	// Scanner is the mode used to scan barcode/document.
-	Scanner = "scanner"
+	// Scan is the mode used to scan barcode/document.
+	Scan = "scan"
 
 	// Expert is the state used to indicate expert mode.
 	Expert string = "expert"
@@ -215,12 +215,15 @@ var (
 	// PTZResetAllButton is the button for reset PTZ to default value.
 	PTZResetAllButton = UIComponent{"ptz reset all button", []string{"#ptz-reset-all"}}
 
-	// ScannerModeButton is the button to enter scanner mode.
-	ScannerModeButton = UIComponent{"scanner mode button", []string{
-		".mode-item>input[data-mode=\"scanner\"]"}}
-	// ScannerDocumentModeOption is the document mode option of scanner mode.
-	ScannerDocumentModeOption = UIComponent{"document mode button", []string{
-		"#scanner-document"}}
+	// ScanModeButton is the button to enter scan mode.
+	ScanModeButton = UIComponent{"scan mode button", []string{
+		// TODO(b/196904871): Remove selector for old mode name after
+		// naming CL on app side fully landed.
+		".mode-item>input[data-mode=\"scanner\"]",
+		".mode-item>input[data-mode=\"scan\"]"}}
+	// ScanDocumentModeOption is the document mode option of scan mode.
+	ScanDocumentModeOption = UIComponent{"document mode button", []string{
+		"#scan-document"}}
 	// DocumentReviewView is the review view after taking a photo under document mode.
 	DocumentReviewView = UIComponent{"document review view", []string{
 		"#view-review-document"}}
@@ -1671,8 +1674,8 @@ func (a *App) EnableDocumentMode(ctx context.Context) error {
 		return errors.Wrap(err, "unexpected state after enabling document mode")
 	}
 
-	if err := a.WaitForVisibleState(ctx, ScannerModeButton, true); err != nil {
-		return errors.Wrap(err, "failed to wait for scanner mode button shows up")
+	if err := a.WaitForVisibleState(ctx, ScanModeButton, true); err != nil {
+		return errors.Wrap(err, "failed to wait for scan mode button shows up")
 	}
 
 	return nil
