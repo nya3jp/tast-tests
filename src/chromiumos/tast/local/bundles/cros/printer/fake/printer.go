@@ -25,7 +25,7 @@ type Printer struct {
 
 // NewPrinter creates and starts a fake printer.
 func NewPrinter(ctx context.Context) (*Printer, error) {
-	const address = "localhost:9100"
+	address := "localhost:9100"
 	ln, err := net.Listen("tcp", address)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to listen on %s", address)
@@ -44,10 +44,13 @@ func (p *Printer) run() {
 		return
 	}
 	p.conn = conn
-	if atomic.AddInt32(&p.state, 1) > 1 {
+
+	// Close() has been called.
+	if atomic.SwapInt32(&p.state, 2) == 1 {
 		conn.Close()
 		return
 	}
+
 	data, err := ioutil.ReadAll(conn)
 	if err != nil {
 		return
@@ -55,13 +58,13 @@ func (p *Printer) run() {
 	p.ch <- data
 }
 
-// Close stops the fake printer.
+// Close stops the fake printer. This function is safe to call multiple times.
 func (p *Printer) Close() {
-	// This triggers to return an error by Accept() in run(). So,
-	// eventually the goroutine exits.
+	// This triggers Accept() in run() to return an error.
 	p.ln.Close()
-	// This triggers ioutil.ReadAll() in run() to return an error.
-	if atomic.AddInt32(&p.state, 1) > 1 {
+
+	if atomic.SwapInt32(&p.state, 1) == 2 {
+		// This triggers ioutil.ReadAll() in run() to return an error.
 		p.conn.Close()
 	}
 }
