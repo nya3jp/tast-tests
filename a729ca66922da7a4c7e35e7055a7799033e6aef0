@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "44727f18_dd944d53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2021-08-18T03:28:49Z",
+      "side": 1,
+      "message": "FilesZipMount is the name of the Chrome feature.\nThis feature is also toggled by a Chrome flag (called files-zip-mount), but obviously these Tast tests deal directly with the Chrome feature, and not with the Chrome flag.",
+      "parentUuid": "f9619bd8_aa5adc97",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "a729ca66922da7a4c7e35e7055a7799033e6aef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "faf8a1f4_41780709",
