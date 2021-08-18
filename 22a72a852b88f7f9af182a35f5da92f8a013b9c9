@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d775b471_ca7a8b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-18T22:55:44Z",
+      "side": 1,
+      "message": "https://cros-health-prod.googleplex.com/test?contact\u003d\u0026testname\u003dnetwork.Diag*\u0026dep\u003d",
+      "revId": "22a72a852b88f7f9af182a35f5da92f8a013b9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
