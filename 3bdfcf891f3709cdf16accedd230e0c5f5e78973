@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "477bdbbe_9a696f78",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axbase/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "AxConfigFactory\n\nHow about moving the static check right after the type definition?",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d4156a_0ebefb2a",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axbase/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "How about moving AxConfig methods\u0027 definitions after line 24?",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c8d5f1_0894fd91",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axwpa/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "Move the static check right after type definition.",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc60a8a_dc6c6315",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axwpa/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "Move AxConfig methods right after line 24.",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6a2b9b_70cd6bb5",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "Why not put it in common/wifi/security?",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ebbd00_4fe0fd93",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "Is the comment still valid?",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f828046c_aa43e720",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-18T03:34:00Z",
+      "side": 1,
+      "message": "Note",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
