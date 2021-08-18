@@ -50,6 +50,23 @@
       "message": "Prameet, could you take a look please as an original author?",
       "revId": "a819877e9e9cdfdf98470bbc006659150d18e918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c33cfa4_a1107734",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-18T00:57:46Z",
+      "side": 1,
+      "message": "Thank you all.",
+      "revId": "a819877e9e9cdfdf98470bbc006659150d18e918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
