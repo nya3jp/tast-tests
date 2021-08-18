@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7c3c4b_dd231411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-18T17:42:05Z",
+      "side": 1,
+      "message": "Sorry, I suggested that -- at this point, it\u0027s my CL, not his. But Gerrit doesn\u0027t like thinking that he self-approved.",
+      "parentUuid": "afc77f40_93d0d850",
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93d0cf2c_e7089632",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-08-16T07:54:02Z",
       "side": 1,
       "message": "nit: \"DUT.\"\nComments should be full sentences, so a dot is needed at the end.\nIt is the same for all the new comments, please fix those as well.",
+      "range": {
+        "startLine": 46,
+        "startChar": 46,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65e7115_bcd2e770",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-18T17:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d0cf2c_e7089632",
       "range": {
         "startLine": 46,
         "startChar": 46,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b967f2_6c74b9aa",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-18T17:42:05Z",
+      "side": 1,
+      "message": "Existing code, but done.",
+      "parentUuid": "d375753a_f77de443",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c13081b1_2fb4b679",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-08-16T07:54:02Z",
       "side": 1,
       "message": "nit: perfSchedLatencyFile\nThis variable is not exported, so it should start with a lowercase letter.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31719031_75313552",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-18T17:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13081b1_2fb4b679",
       "range": {
         "startLine": 200,
         "startChar": 1,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fca7341_7654dc9b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-18T17:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c01cecd_aa6cfae5",
+      "range": {
+        "startLine": 211,
+        "startChar": 19,
+        "endLine": 211,
+        "endChar": 26
+      },
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f83d26cd_772915ba",
@@ -140,6 +254,24 @@
       "writtenOn": "2021-08-16T07:54:02Z",
       "side": 1,
       "message": "Did you make sure that you rewrote all the occurrences of end()?\nFor example with running fastbuild.sh -T.",
+      "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d264e574_f901c6d0",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-18T17:42:05Z",
+      "side": 1,
+      "message": "Yes. Tast won\u0027t even compile if they didn\u0027t match.",
+      "parentUuid": "f83d26cd_772915ba",
       "revId": "8f974e1f003fce1c0dd451563dacc15e3cee82f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
