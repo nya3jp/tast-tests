@@ -32,8 +32,10 @@ func init() {
 			"arc-storage@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
+		// "no_qemu" is added for excluding betty from the target board list. b/196907826
 		SoftwareDeps: []string{
 			"chrome",
+			"no_qemu",
 		},
 		Attr:    []string{"group:mainline", "informational"},
 		Fixture: "arcBooted",
