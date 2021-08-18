@@ -6,12 +6,13 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -86,39 +87,27 @@ func AllowedLanguages(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the OS settings page: ", err)
 			}
 			defer conn.Close()
-			// Find and click on languages link.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeLink,
-				Name: "Languages English (United States)",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to find Languages English (United States) link: ", err)
-			}
 
-			// Find and clilck on Add languages button to select the preferred languages from the popup dialog.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Add languages",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to find Add languages button: ", err)
-			}
+			ui := uiauto.New(tconn)
 
-			// Wait for the last checkbox in the screen to appear.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeCheckBox,
-				Name: param.lastLang,
-			}, 15*time.Second); err != nil {
-				s.Fatal("Failed to find the last checkbox: ", err)
+			if err := uiauto.Combine("Add languages and wait for the dialog",
+				// Find and click on languages link.
+				ui.LeftClick(nodewith.Name("Languages English (United States)").Role(role.Link)),
+				// Find and clilck on Add languages button to select the preferred languages from the popup dialog.
+				ui.LeftClick(nodewith.Name("Add languages").Role(role.Button)),
+				// Wait for the last checkbox in the screen to appear.
+				ui.WaitUntilExists(nodewith.Name(param.lastLang).Role(role.CheckBox)),
+			)(ctx); err != nil {
+				s.Fatal("Failed to open PIN dialog with warning message (1): ", err)
 			}
 
 			// Count the number of checkboxes in the dialog.
-			nodeSlice, err := ui.FindAll(ctx, tconn, ui.FindParams{Role: ui.RoleTypeCheckBox})
+			langs, err := ui.NodesInfo(ctx, nodewith.Role(role.CheckBox))
 			if err != nil {
 				s.Fatal("Failed to find all checkboxes: ", err)
 			}
-			defer nodeSlice.Release(ctx)
-
-			if (param.minLangs > len(nodeSlice)) || (len(nodeSlice) > param.maxLangs) {
-				s.Errorf("The number of preferred languages doesn't match: got %d; want at least %d and at most %d", len(nodeSlice), param.minLangs, param.maxLangs)
+			if (param.minLangs > len(langs)) || (len(langs) > param.maxLangs) {
+				s.Errorf("The number of preferred languages doesn't match: got %d; want at least %d and at most %d", len(langs), param.minLangs, param.maxLangs)
 			}
 		})
 	}
