@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bb3cdd7_d30236b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-08-18T09:48:15Z",
+      "side": 1,
+      "message": "Nit: I think that should be *rollback*\nWhen I tested it like that it worked, otherwise no matched testcases :-)",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "6ef60ab0da20754223cdbbd8ae1859ad13015a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f63704b8_32cc0fb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
         "patchSetId": 3
