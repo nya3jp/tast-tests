@@ -171,6 +171,14 @@ var Arabic = InputMethod{
 	VoiceLanguage:       LanguageAr,
 }
 
+// Catalan represents the input method of Catalan.
+var Catalan = InputMethod{
+	Name:                "Catalan",
+	ID:                  "xkb:es:cat:cat",
+	HandwritingLanguage: LanguageCa,
+	VoiceLanguage:       LanguageCa,
+}
+
 // inputMethods represents in-use (available) IMEs in ChromeOS.
 // Only listed input methods are promised to be available.
 var inputMethods = []InputMethod{

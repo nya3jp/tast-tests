@@ -225,7 +225,7 @@ func (vkbCtx *VirtualKeyboardContext) tapKeysFunc(keys []string, ignoreCase bool
 				if err := vkbCtx.tapKeyFunc(key, ignoreCase)(ctx); err != nil {
 					return err
 				}
-				if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+				if err := testing.Sleep(ctx, 200*time.Millisecond); err != nil {
 					return errors.New("failed to sleep between taping keys")
 				}
 			}
