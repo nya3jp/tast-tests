@@ -27,17 +27,25 @@ var defaultPollOpts = testing.PollOptions{Timeout: 10 * time.Second, Interval: 1
 
 var addInputMethodButton = nodewith.Name("Add input methods").Role(role.Button)
 var searchInputMethodField = nodewith.Name("Search by language or input name").Role(role.SearchBox)
-var showInputOptionsInShelfButton = nodewith.Name("Show input options in the shelf").Role(role.ToggleButton)
-var autocap = nodewith.Name("Auto-capitalization").Role(role.ToggleButton)
+
+// settingOption represents an IME setting item shown in OS Settings.
+type settingOption string
+
+// Available IME setting items.
+const (
+	GlideTyping             settingOption = "Enable glide typing"
+	AutoCapitalization      settingOption = "Auto-capitalization"
+	ShowInputOptionsInShelf settingOption = "Show input options in the shelf"
+)
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
 type IMESettings struct {
-	settings *ossettings.OSSettings
+	*ossettings.OSSettings
 }
 
 // New returns a new IME settings context.
 func New(tconn *chrome.TestConn) *IMESettings {
-	return &IMESettings{settings: ossettings.New(tconn)}
+	return &IMESettings{ossettings.New(tconn)}
 }
 
 // LaunchAtInputsSettingsPage launches Settings app at inputs setting page.
@@ -48,21 +56,21 @@ func LaunchAtInputsSettingsPage(ctx context.Context, tconn *chrome.TestConn, cr 
 	if err != nil {
 		return nil, err
 	}
-	return &IMESettings{settings: settings.WithPollOpts(defaultPollOpts)}, nil
+	return &IMESettings{settings.WithPollOpts(defaultPollOpts)}, nil
 }
 
 // ClickAddInputMethodButton returns a function that clicks AddInputMethod button in inputs setting page.
 func (i *IMESettings) ClickAddInputMethodButton() uiauto.Action {
-	return i.settings.LeftClick(addInputMethodButton)
+	return i.LeftClick(addInputMethodButton)
 }
 
 // SearchInputMethod returns a function that searches input method by typing keyboard into searchbox.
 // SearchInputMethod also waits for expected IME displayed on screen.
 func (i *IMESettings) SearchInputMethod(kb *input.KeyboardEventWriter, searchKeyword, inputMethodName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("SearchInputMethod(%s, %s)", searchKeyword, inputMethodName),
-		i.settings.LeftClick(searchInputMethodField),
+		i.LeftClick(searchInputMethodField),
 		kb.TypeAction(searchKeyword),
-		i.settings.WaitUntilExists(nodewith.Name(inputMethodName).Role(role.CheckBox).Onscreen()),
+		i.WaitUntilExists(nodewith.Name(inputMethodName).Role(role.CheckBox).Onscreen()),
 	)
 }
 
@@ -70,19 +78,19 @@ func (i *IMESettings) SearchInputMethod(kb *input.KeyboardEventWriter, searchKey
 func (i *IMESettings) SelectInputMethod(inputMethodName string) uiauto.Action {
 	inputMethodOption := nodewith.Name(inputMethodName).Role(role.CheckBox)
 	return uiauto.Combine(fmt.Sprintf("SelectInputMethod(%s)", inputMethodName),
-		i.settings.MakeVisible(inputMethodOption),
-		i.settings.LeftClick(inputMethodOption),
+		i.MakeVisible(inputMethodOption),
+		i.LeftClick(inputMethodOption),
 	)
 }
 
 // ClickAddButtonToConfirm returns a function that clicks Add button to confirm adding one or more input methods.
 func (i *IMESettings) ClickAddButtonToConfirm() uiauto.Action {
-	return i.settings.LeftClick(nodewith.Name("Add").Role(role.Button))
+	return i.LeftClick(nodewith.Name("Add").Role(role.Button))
 }
 
 // RemoveInputMethod returns a function that removes the input method by clicking cross button next to the input method on UI.
 func (i *IMESettings) RemoveInputMethod(inputMethodName string) uiauto.Action {
-	return i.settings.LeftClick(nodewith.Name("Remove " + inputMethodName).Role(role.Button))
+	return i.LeftClick(nodewith.Name("Remove " + inputMethodName).Role(role.Button))
 }
 
 // OpenInputMethodSetting opens the input method setting page in OS settings.
@@ -97,46 +105,21 @@ func (i *IMESettings) OpenInputMethodSetting(tconn *chrome.TestConn, im ime.Inpu
 		imSettingButton := nodewith.Name("Open settings page for " + im.Name)
 		imeSettingHeading := nodewith.Name(im.Name).Role(role.Heading).Ancestor(ossettings.WindowFinder)
 		successCondition := uiauto.New(tconn).WithTimeout(5 * time.Second).WaitUntilExists(imeSettingHeading)
-		return i.settings.LeftClickUntil(imSettingButton, successCondition)(ctx)
+		return i.LeftClickUntil(imSettingButton, successCondition)(ctx)
 	}
 }
 
-// ToggleShowInputOptionsInShelf clicks the 'Show input options in the shelf' toggle button.
-func (i *IMESettings) ToggleShowInputOptionsInShelf() uiauto.Action {
-	return i.settings.LeftClick(showInputOptionsInShelfButton)
+// ToggleShowInputOptionsInShelf clicks the 'Show input options in the shelf' toggle button to enable/disable the setting.
+func (i *IMESettings) ToggleShowInputOptionsInShelf(cr *chrome.Chrome, expected bool) uiauto.Action {
+	return i.SetToggleOption(cr, string(ShowInputOptionsInShelf), expected)
 }
 
-// ClickAutoCap clicks the autocap setting for an ime.
-func (i *IMESettings) ClickAutoCap() uiauto.Action {
-	return i.settings.LeftClick(autocap)
+// ToggleGlideTyping clicks the 'Enable glide typing' toggle button to enable/disable the setting.
+func (i *IMESettings) ToggleGlideTyping(cr *chrome.Chrome, expected bool) uiauto.Action {
+	return i.SetToggleOption(cr, string(GlideTyping), expected)
 }
 
-// Close closes the settings app.
-func (i *IMESettings) Close() uiauto.Action {
-	return func(ctx context.Context) error {
-		return i.settings.Close(ctx)
-	}
-}
-
-// ShowInputOptionsInShelfShouldBe verifies the 'Show input options in the shelf' option.
-func (i *IMESettings) ShowInputOptionsInShelfShouldBe(cr *chrome.Chrome, tconn *chrome.TestConn, expected bool) uiauto.Action {
-	const toggleButtonCSSSelector = `cr-toggle[aria-label="Show input options in the shelf"]`
-	expr := fmt.Sprintf(`
-		var optionNode = shadowPiercingQuery(%q);
-		if(optionNode == undefined){
-			throw new Error("Show input options in shelf is not found.");
-		}
-		optionNode.getAttribute("aria-pressed")==="true";
-		`, toggleButtonCSSSelector)
-
-	return uiauto.New(tconn).WithInterval(time.Second).Retry(5, func(ctx context.Context) error {
-		var actual bool
-		if err := i.settings.EvalJSWithShadowPiercer(ctx, cr, expr, &actual); err != nil {
-			return testing.PollBreak(err)
-		}
-		if actual != expected {
-			return errors.Errorf(`'Show input options in shelf' option value is incorrect. got %v; want %v`, actual, expected)
-		}
-		return nil
-	})
+// ToggleAutoCap clicks the 'Auto-capitalization' toggle button to enable/disable the setting.
+func (i *IMESettings) ToggleAutoCap(cr *chrome.Chrome, expected bool) uiauto.Action {
+	return i.SetToggleOption(cr, string(AutoCapitalization), expected)
 }
