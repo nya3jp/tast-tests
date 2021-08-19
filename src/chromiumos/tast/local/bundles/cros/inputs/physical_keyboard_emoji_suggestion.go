@@ -175,7 +175,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("toggle off emoji suggestion and validate no emoji suggestion",
 			imeSettings.ToggleEmojiSuggestions(tconn),
 			imeSettings.WaitUntilEmojiSuggestion(cr, tconn, false),
-			imeSettings.Close(),
+			imeSettings.Close,
 			validateEmojiSuggestion(false),
 		)(ctx); err != nil {
 			s.Fatal("Failed to toggle off emoji suggestion and validate no emoji suggestion: ", err)
@@ -198,7 +198,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("toggle on emoji suggestion and validate emoji suggestion",
 			imeSettings.ToggleEmojiSuggestions(tconn),
 			imeSettings.WaitUntilEmojiSuggestion(cr, tconn, true),
-			imeSettings.Close(),
+			imeSettings.Close,
 			validateEmojiSuggestion(true),
 		)(ctx); err != nil {
 			s.Fatal("Failed to toggle on emoji suggestion and validate emoji suggestion: ", err)
