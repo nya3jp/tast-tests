@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ae17a0_f0f11e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T11:59:19Z",
+      "side": 1,
+      "message": "Ye. The result is from chrome.inputMethodPrivate.getInputMethods. I do not know what order it uses in Ctrl+Shift+Space, the API result or OS setting. I believe the order should be consistent everywhere. If it needs to be adjusted in future, we can update this test too.",
+      "parentUuid": "a21c42b2_8b22824f",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62a93dc7_8a0e2efb",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-08-19T10:39:24Z",
       "side": 1,
       "message": "nit: redundant comment? partially repeating the function\u0027s name. Maybe add \"in order\" to function name for clarify instead?",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08820013_80fd4a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T11:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a93dc7_8a0e2efb",
       "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de9ac47_82e24513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T11:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2142b360_ad829c98",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "292842e8_3bf4be12",
@@ -89,6 +149,24 @@
       "writtenOn": "2021-08-19T10:39:24Z",
       "side": 1,
       "message": "nit: redundant comment? repeating the function\u0027s name.",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab82ed7_4a8e5cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T11:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292842e8_3bf4be12",
       "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +196,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2921b132_76b0e2c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T11:59:19Z",
+      "side": 1,
+      "message": "3 switchToNextInputMethod grouped together completes the circle -- from last IME to first one. It will miss this coverage if we mixed them. Which one do you suggest? Alternatively we can append more iterations though a bit time consuming.",
+      "parentUuid": "c11a8408_86273a2f",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 28
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8abf7550_d195c016",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 8
@@ -129,6 +231,30 @@
       "writtenOn": "2021-08-19T10:39:24Z",
       "side": 1,
       "message": "Why some CapLocks stuff here?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a85e49_ea02c399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T11:59:19Z",
+      "side": 1,
+      "message": "We have not yet covered PK typing tests on different locale keyboards. We can only validates Caps notification without typing check. Are you okay to temporarily have it in this test? Otherwise we can move this to a separate script.",
+      "parentUuid": "8abf7550_d195c016",
       "range": {
         "startLine": 153,
         "startChar": 0,
