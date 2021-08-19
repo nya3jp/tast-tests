@@ -504,6 +504,22 @@ func (stw *SingleTouchEventWriter) LongPressAt(ctx context.Context, x, y TouchCo
 	return testing.Sleep(ctx, 1*time.Second)
 }
 
+// SetSize sets the major/minor appropriately for single touch events. Sets the
+// major/minor.
+func (stw *SingleTouchEventWriter) SetSize(ctx context.Context, major, minor int32) error {
+	if len(stw.touches) != 1 {
+		return errors.New("expected touches size to be 1, is ")
+	}
+	if major < 0 || minor < 0 {
+		return errors.New("major and minor must be positive")
+	} else if major < minor {
+		return errors.New("major must be greater than or equal to minor")
+	}
+	stw.touches[0].touchMajor = major
+	stw.touches[0].touchMinor = minor
+	return nil
+}
+
 // Swipe performs a swipe movement from x0/y0 to x1/y1.
 // t represents how long the swipe should last.
 // If t is less than 5 milliseconds, 5 milliseconds will be used instead.
