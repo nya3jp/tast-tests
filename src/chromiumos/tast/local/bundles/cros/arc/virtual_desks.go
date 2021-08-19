@@ -84,6 +84,8 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send the new desk accelerator: ", err)
 	}
 
+	testing.Sleep(ctx, 10*time.Second)
+
 	s.Log("Starting the android settings app")
 
 	// Create a Settings activity handle.
