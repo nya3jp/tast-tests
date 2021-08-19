@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13a13d1_ae41f4a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-19T10:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ba0867_52771d44",
+      "revId": "76457f892be81b86380fb1eb545b26cda32b978a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96a30a3c_72dff1f3",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-19T08:42:55Z",
       "side": 1,
       "message": "Ditto (same as above)\nBut if there is a flakiness that could be avoided by this hack, we may want to file another bug.",
+      "revId": "76457f892be81b86380fb1eb545b26cda32b978a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40997388_cbaf7f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-19T10:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a30a3c_72dff1f3",
       "revId": "76457f892be81b86380fb1eb545b26cda32b978a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

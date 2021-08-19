@@ -22,6 +22,30 @@
       },
       "revId": "2d04427ae363ffcc23d66bb56ffca54bab944c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f564119_eff51cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-19T10:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9897f8a_43f883ec",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "2d04427ae363ffcc23d66bb56ffca54bab944c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
