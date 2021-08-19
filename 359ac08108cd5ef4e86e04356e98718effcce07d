@@ -20,6 +20,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bc60b030_1223972f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-19T02:04:36Z",
+      "side": 1,
+      "message": "Thanks! LGTM with a nit.",
+      "revId": "359ac08108cd5ef4e86e04356e98718effcce07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9e9818_c0fe4146",
+        "filename": "src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-19T02:04:36Z",
+      "side": 1,
+      "message": "No action needed: I wonder why we consider this as a Chrome process. I guess it\u0027s a requirement specific to crash tests? We may want to move the logic to the crash package later.",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "359ac08108cd5ef4e86e04356e98718effcce07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "361bd71c_80792c65",
         "filename": "src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go",
         "patchSetId": 1
@@ -31,6 +71,29 @@
       "writtenOn": "2021-08-18T14:43:04Z",
       "side": 1,
       "message": "Note: these will be moved in an immediate following CL, so let me keep the capitalization (visibilty).",
+      "revId": "359ac08108cd5ef4e86e04356e98718effcce07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b288e8_c086fd8a",
+        "filename": "src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-19T02:04:36Z",
+      "side": 1,
+      "message": "nit: chromeExe",
+      "range": {
+        "startLine": 121,
+        "startChar": 31,
+        "endLine": 121,
+        "endChar": 39
+      },
       "revId": "359ac08108cd5ef4e86e04356e98718effcce07d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
