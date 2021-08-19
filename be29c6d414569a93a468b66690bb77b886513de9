@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71abe2a9_4a006256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-19T15:45:07Z",
+      "side": 1,
+      "message": "I am not sure this the correct way since the problem is not limited to just ui.TabletOperations. Any tests that do a long swipe on kohaku could hit it.\n\nFor example, I suspect \"ui.OverviewDragWindowPerf.drag_to_snap\" has similar problems:\n  https://tastboard.corp.google.com/test/ui.OverviewDragWindowPerf.drag_to_snap\n",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20eb7f65_a79f3be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-19T15:45:07Z",
+      "side": 1,
+      "message": "nit: Put this on its own line.",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a83f49b_144f1ec4",
@@ -14,6 +54,29 @@
       "writtenOn": "2021-08-19T08:25:47Z",
       "side": 1,
       "message": "How about using int type or a struct as the type of the parameter?",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8c7cb6_6d814210",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-19T15:45:07Z",
+      "side": 1,
+      "message": "Not sure this is correct.\n\nBefore initTouchState is called, stw.touches might be an empty array so stw.touches[0] could panic.\n\nThink we should set it as default touch size to be picked up in initTouchState later. For example, we make defaultTouchMajor/Minor data members of stw and here we set them instead of directly on the touches.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 34
+      },
       "revId": "be29c6d414569a93a468b66690bb77b886513de9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
