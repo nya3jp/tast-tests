@@ -54,9 +54,7 @@ func init() {
 
 // These models are known to fail this test, and are therefore only run in the
 // informational version. These failures are all tracked in the referenced bugs.
-var badModels = []string{
-	"leona", // TODO(b/181049667): Bad SAR table.
-}
+var badModels = []string{}
 
 // sarTableType is an enum that accounts for the different kinds of SAR tables
 // defined by Intel WiFi. We use the general names "profileA" and "profileB" to
