@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0a8e5a_0780a394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T22:13:43Z",
+      "side": 1,
+      "message": "Please make this a separate function.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8797d836_ecc699dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T22:13:43Z",
+      "side": 1,
+      "message": "I think we can improve the name here:\n- What is this field supposed to represent? \n- Can we assume it will always be the same for this TBT device?\n\nIf it is meant to represnt a file path, then I think it\u0027s better to use \"devicePath\" as the name.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 53
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389ad577_1ed63890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T22:13:43Z",
+      "side": 1,
+      "message": "You can use the golang tempdir functionality instead (that way you don\u0027t need to worry about |downloadsPath|:\nhttps://pkg.go.dev/os#MkdirTemp\n\nPlease remember to add a defer function to clean up the temp dir at the end of the test.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d5804f_e51c0921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T22:13:43Z",
+      "side": 1,
+      "message": "If you use a tempdir as specified above, this won\u0027t be necessary.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
