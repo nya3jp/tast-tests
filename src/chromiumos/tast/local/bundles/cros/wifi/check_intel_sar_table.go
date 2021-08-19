@@ -39,22 +39,8 @@ func init() {
 			// verify with this test, so we skip all versions of this test on eve.
 			// See b/181055964 for more details.
 			hwdep.SkipOnModel("eve")),
-		Params: []testing.Param{
-			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(badModels...)),
-			},
-			{
-				Name:              "informational",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(badModels...)),
-			},
-		},
 	})
 }
-
-// These models are known to fail this test, and are therefore only run in the
-// informational version. These failures are all tracked in the referenced bugs.
-var badModels = []string{}
 
 // sarTableType is an enum that accounts for the different kinds of SAR tables
 // defined by Intel WiFi. We use the general names "profileA" and "profileB" to
