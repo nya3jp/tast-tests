@@ -16,6 +16,24 @@
       "message": "Some previous refactoring must have lost this. It was used to distinguish the 1st and 2nd test cases below for example. Those two weren\u0027t meant to just differ in terms of stable vs unstable boards. They were mainly meant to use tablet vs a11y VK because the impls are different between the two. As of now, the two test cases look exactly the same; the only difference is the board. You can read the comment essays attached to the test cases for more details.",
       "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a98510_0c88a5a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T12:06:49Z",
+      "side": 0,
+      "message": "Actually it is not missed. As we discussed long time back, the precondition is built to align with most real user scenarios. \n\nTablet VK is the default VK in Tablet testing, while A11y VK is the default VK in clamshell mode. \n\nWhich means, if we use precondition pre.VKEnabledClamshell, it is A11y VK.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go?l\u003d229",
+      "parentUuid": "e8d73118_3df961c5",
+      "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

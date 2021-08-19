@@ -33,6 +33,24 @@
       "message": "I\u0027d prefer this kind of refactoring to be done separately if possible. It\u0027s not directly related to the \"deflake\", or is it?",
       "revId": "354d7fd331e7bdcba684214feeb627f8a8c08794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb93002_a3a10e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T12:06:49Z",
+      "side": 1,
+      "message": "Ye. I agree. That\u0027s not much we can do to deflake the test if it is caused by performance issue. We can only try to increase the interval to mitigate the issue. If you do not mind, I can change this cl to `refactor the test`.",
+      "parentUuid": "da3b8363_861298d8",
+      "revId": "354d7fd331e7bdcba684214feeb627f8a8c08794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
