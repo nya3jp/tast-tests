@@ -33,6 +33,23 @@
       "message": "Adding back Tast Owners since original reviewer removed themselves",
       "revId": "69be7746d7fe7233ce049f9dfd3d91de1936220b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26fccef_ced27c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-19T18:33:27Z",
+      "side": 1,
+      "message": "I think it failed the unit tests.\n\ntast-remote-tests-cros-0.0.2-r7320: src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go:257:28: not enough arguments in call to \"chromiumos/tast/ssh/linuxssh\".GetFile\ntast-remote-tests-cros-0.0.2-r7320: \thave (context.Context, *\"chromiumos/tast/ssh\".Conn, string, string)\ntast-remote-tests-cros-0.0.2-r7320: \twant (context.Context, *\"chromiumos/tast/ssh\".Conn, string, string, \"chromiumos/tast/internal/linuxssh\".SymlinkPolicy)\n\nPlease run \n\n./fast_build.sh -T\n\nin\n\n~/trunk/src/platform/tast\n\nto make sure all tast unit tests passed. ",
+      "revId": "69be7746d7fe7233ce049f9dfd3d91de1936220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
