@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bffce64e_4e0cc003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-19T01:38:57Z",
+      "side": 1,
+      "message": "comment is here",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 8
+      },
+      "revId": "16e10a7a6355822b4eb788289f2758872b021e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

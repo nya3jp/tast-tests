@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc833dc_c5570ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-19T01:38:57Z",
+      "side": 1,
+      "message": "updated to patch set 2",
+      "parentUuid": "01cfbe9e_23c8507c",
+      "range": {
+        "startLine": 170,
+        "startChar": 22,
+        "endLine": 170,
+        "endChar": 28
+      },
+      "revId": "1004b3846b99d06746bd3fd336fa2cd372cfbf29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96b6cf17_667134c9",
