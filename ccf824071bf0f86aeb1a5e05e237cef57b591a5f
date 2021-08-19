@@ -22,6 +22,30 @@
       },
       "revId": "ccf824071bf0f86aeb1a5e05e237cef57b591a5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573cc178_e8dfb450",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/unit_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2021-08-19T17:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468c2aaa_95d5df66",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "ccf824071bf0f86aeb1a5e05e237cef57b591a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
