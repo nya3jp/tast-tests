@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "776f74d1_712d715f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-08-19T05:10:51Z",
+      "side": 1,
+      "message": "hwsec-wise LGTM, assuming the answer to emaxx@\u0027s comment doesn\u0027t lead to significant change of plan.",
+      "revId": "a5e5646dc452d491f2c365fe10da19401560f6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b756a78_5a895812",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-08-16T21:34:59Z",
       "side": 1,
       "message": "Just my 2cents: cryptohome.cc currently already uses hex in a few places, but not base64. Maybe it makes sense to be consistent in data formats.",
+      "range": {
+        "startLine": 236,
+        "startChar": 50,
+        "endLine": 236,
+        "endChar": 56
+      },
+      "revId": "a5e5646dc452d491f2c365fe10da19401560f6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd9e000_37a19f41",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-08-19T05:10:51Z",
+      "side": 1,
+      "message": "True. \nIt also makes sense to hear from John elaborating why choose base64-encoding. If both are reasonable, i perfonally don\u0027t feel strongly about either option.",
+      "parentUuid": "0b756a78_5a895812",
       "range": {
         "startLine": 236,
         "startChar": 50,
