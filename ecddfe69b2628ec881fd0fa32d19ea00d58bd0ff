@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bbf600f_6075e20c",
+        "filename": "src/chromiumos/tast/common/servo/ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-08-19T17:59:23Z",
+      "side": 1,
+      "message": "Kept it GetString since ec_flash_size returns a string value, but moved the string to int conversion to ec.go function instead since it\u0027s always an int anyway.",
+      "parentUuid": "6afd08c7_7cf1ee10",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "ecddfe69b2628ec881fd0fa32d19ea00d58bd0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "241c2624_6aa249f9",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-19T01:12:47Z",
       "side": 1,
       "message": "Why not s.Fatalf?\nbtw, usually the error information format is: failed to verify ...: got %s, want %s",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 10
+      },
+      "revId": "ecddfe69b2628ec881fd0fa32d19ea00d58bd0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8476aa0b_f17dec0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-08-19T17:59:23Z",
+      "side": 1,
+      "message": "changed from Errorf to Fatalf, reformatted it to the suggested format",
+      "parentUuid": "241c2624_6aa249f9",
       "range": {
         "startLine": 65,
         "startChar": 4,
