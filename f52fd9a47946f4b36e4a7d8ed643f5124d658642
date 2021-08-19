@@ -46,6 +46,30 @@
       },
       "revId": "f52fd9a47946f4b36e4a7d8ed643f5124d658642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6addb8_3dcead68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-08-19T20:30:39Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "2888a7e0_a2885f3c",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "f52fd9a47946f4b36e4a7d8ed643f5124d658642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
