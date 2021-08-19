@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a83f49b_144f1ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-19T08:25:47Z",
+      "side": 1,
+      "message": "How about using int type or a struct as the type of the parameter?",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
