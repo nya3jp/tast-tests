@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca76079_4e1cd16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-19T14:52:31Z",
+      "side": 1,
+      "message": "We don\u0027t have SSH access in the official builds AFAIK, so we cannot run tests on those.",
+      "parentUuid": "d0357463_e7e3ccd0",
+      "range": {
+        "startLine": 37,
+        "startChar": 21,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72b2099_1d1c1b75",
@@ -117,6 +141,30 @@
       "writtenOn": "2021-08-19T14:40:36Z",
       "side": 1,
       "message": "Why aren\u0027t you using lsbrelease.LoadFrom(statefulPath) here? Wouldn\u0027t that help avoid the manual parsing below? Or do you need to preserve comments / malformated lines?\nI would not think there\u0027s anything in the file apart form key value pairs that is worth preserving, but maybe I\u0027m wrong.",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e52c61_9acbceb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-19T14:52:31Z",
+      "side": 1,
+      "message": "It is because I want to delete lines as well, if there is a key we want to overwrite. If I just append the new key, value pairs at the end of the file, I don\u0027t know how it handles if a key is there twice.",
+      "parentUuid": "e9565107_049516ac",
       "range": {
         "startLine": 110,
         "startChar": 22,
