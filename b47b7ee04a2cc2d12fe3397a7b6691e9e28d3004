@@ -33,6 +33,23 @@
       "message": "OK to chump.",
       "revId": "b47b7ee04a2cc2d12fe3397a7b6691e9e28d3004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd54114_06aa2239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-19T17:57:00Z",
+      "side": 1,
+      "message": "I\u0027d still recommend removing these systems from CQ, if they weren\u0027t properly vetted in the first place",
+      "revId": "b47b7ee04a2cc2d12fe3397a7b6691e9e28d3004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
