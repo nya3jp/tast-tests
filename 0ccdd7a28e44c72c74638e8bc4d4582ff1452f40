@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d004d1_fc706ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-19T08:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9844d683_233b4a02",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "0ccdd7a28e44c72c74638e8bc4d4582ff1452f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fbbfdaf_04408a98",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-19T08:27:30Z",
       "side": 1,
       "message": "minor nit: time zone\nJust to be the same as in the other test.",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 23
+      },
+      "revId": "0ccdd7a28e44c72c74638e8bc4d4582ff1452f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b453b7_6cf1c6dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_automatic_detection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-19T08:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fbbfdaf_04408a98",
       "range": {
         "startLine": 107,
         "startChar": 15,
