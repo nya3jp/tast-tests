@@ -34,6 +34,24 @@
       "parentUuid": "2c3b4356_675d93a3",
       "revId": "cec38c7f96651fe9fbe8926416e177a7734628e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca815ae_90b5bcb0",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-08-19T07:17:26Z",
+      "side": 1,
+      "message": "turned out I had to make it tast/local/memory/metrics to avoid a cyclic dependency with arc",
+      "parentUuid": "3ca2cdfb_b48b59d3",
+      "revId": "cec38c7f96651fe9fbe8926416e177a7734628e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
