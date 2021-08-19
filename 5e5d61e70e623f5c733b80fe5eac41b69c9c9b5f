@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2a6a8f_d402d93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-19T03:27:33Z",
+      "side": 1,
+      "message": "Try again as the underlying CQ failure issue should be fixed: http://b/issues/196362209?pli\u003d1",
+      "revId": "5e5d61e70e623f5c733b80fe5eac41b69c9c9b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
