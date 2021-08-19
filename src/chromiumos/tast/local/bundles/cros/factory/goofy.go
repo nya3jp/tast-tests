@@ -22,11 +22,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Goofy,
-		Desc:     "Setup factory toolkit and exercise Goofy with custom TestList",
-		Contacts: []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline"},
-		Timeout:  3 * time.Minute,
+		Func:         Goofy,
+		Desc:         "Setup factory toolkit and exercise Goofy with custom TestList",
+		Contacts:     []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
+		SoftwareDeps: []string{"factory_flow"},
+		Attr:         []string{"group:mainline"},
+		Timeout:      3 * time.Minute,
 	})
 }
 
