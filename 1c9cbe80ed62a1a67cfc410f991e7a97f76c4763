@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d740e13_ca63fccf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T10:49:42Z",
+      "side": 1,
+      "message": "Hi Trent,\n\nThanks for sharing the errors.\n\nstep1\nI have ran the same in my repo i am able to see the below errors \n# chromiumos/tast/errors\n../../tast/src/chromiumos/tast/errors/errors.go:149:16: error: reference to undefined identifier ‘errors.Unwrap’\n  return errors.Unwrap(err)\n                ^\n../../tast/src/chromiumos/tast/errors/errors.go:156:16: error: reference to undefined identifier ‘errors.As’\n  return errors.As(err, target)\n                ^\n../../tast/src/chromiumos/tast/errors/errors.go:162:16: error: reference to undefined identifier ‘errors.Is’\n  return errors.Is(err, target)\n                ^\n*** Failed to build tast-lint. Please run update_chroot\n\n\nstep2.\n\nI have updated the chroot,then ran the same command, still i can see the same errors\n# chromiumos/tast/errors\n../../tast/src/chromiumos/tast/errors/errors.go:149:16: error: reference to undefined identifier ‘errors.Unwrap’\n  return errors.Unwrap(err)\n                ^\n../../tast/src/chromiumos/tast/errors/errors.go:156:16: error: reference to undefined identifier ‘errors.As’\n  return errors.As(err, target)\n                ^\n../../tast/src/chromiumos/tast/errors/errors.go:162:16: error: reference to undefined identifier ‘errors.Is’\n  return errors.Is(err, target)\n                ^\n*** Failed to build tast-lint. Please run update_chroot\n\nPlease suggest we are missing any configuration.\n\n\nThanks,\nJilani",
+      "parentUuid": "6ec5c2bd_d3bce884",
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a993c8e5_2451012d",
@@ -102,6 +120,30 @@
       "writtenOn": "2021-08-19T00:54:50Z",
       "side": 1,
       "message": "Suggest to add .Ancestor(ossettings.WindowFinder) to make sure only the item on the Settings app is found.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f81460_1857728f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T10:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a993c8e5_2451012d",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -135,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9eaa88_fe152b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T10:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103e5103_afa92f88",
+      "range": {
+        "startLine": 64,
+        "startChar": 29,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b54a20b_66f4e525",
@@ -148,6 +214,30 @@
       "writtenOn": "2021-08-19T00:54:50Z",
       "side": 1,
       "message": "Just return testing.Poll",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "837486d8_533e3a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T10:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b54a20b_66f4e525",
       "range": {
         "startLine": 61,
         "startChar": 2,
@@ -181,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14776a8_eabf2921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T10:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca625d51_07555b47",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48e07eb8_a196f751",
@@ -194,6 +308,30 @@
       "writtenOn": "2021-08-19T00:54:50Z",
       "side": 1,
       "message": "Please leave some cleanup time. Please refer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8862fe63_0099c2c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T10:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e07eb8_a196f751",
       "range": {
         "startLine": 93,
         "startChar": 3,
