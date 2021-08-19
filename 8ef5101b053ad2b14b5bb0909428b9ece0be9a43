@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bab4d20a_dc985df0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-19T10:05:23Z",
+      "side": 1,
+      "message": "nit: tast-tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31406606_b8cfbb94",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
         "patchSetId": 1
