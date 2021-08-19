@@ -22,7 +22,7 @@ func init() {
 		Func:         Finalize,
 		Desc:         "Test finalize process in factory toolkit",
 		Contacts:     []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
-		SoftwareDeps: []string{"reboot"},
+		SoftwareDeps: []string{"reboot", "factory"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      8 * time.Minute,
 		// Skip "nyan_kitty" due to slow reboot speed.
