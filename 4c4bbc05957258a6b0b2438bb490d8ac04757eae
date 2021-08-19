@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a21c42b2_8b22824f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:40:16Z",
+      "side": 1,
+      "message": "My typo: \"... the listing in CrOS settings app (chrome://os-settings) does NOT seem to use this API ...\"",
+      "parentUuid": "0a46b4d0_15353cfd",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62a93dc7_8a0e2efb",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 8
