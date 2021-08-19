@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddac408d_ebe34906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-19T08:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84748358_c10864ee",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "ac19c8f03fd9beef0d5caad4511cfe395f6aa35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "031f4266_508d20f1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-19T07:33:50Z",
       "side": 1,
       "message": "There is a umbrella bug you can refer to here: b:190614781",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "ac19c8f03fd9beef0d5caad4511cfe395f6aa35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "092e9161_08756067",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-19T08:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031f4266_508d20f1",
       "range": {
         "startLine": 11,
         "startChar": 4,
