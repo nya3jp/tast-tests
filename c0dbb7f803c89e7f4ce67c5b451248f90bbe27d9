@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c21c8f9_ea783a1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-19T01:33:00Z",
+      "side": 1,
+      "message": "Per discussion, it is not suitable to run it in upstream kernel for now. So LGTM. Arowa, please comment the reason.",
+      "revId": "c0dbb7f803c89e7f4ce67c5b451248f90bbe27d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c5c4851_e5a5f089",
