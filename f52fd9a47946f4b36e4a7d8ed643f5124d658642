@@ -22,6 +22,30 @@
       },
       "revId": "f52fd9a47946f4b36e4a7d8ed643f5124d658642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2888a7e0_a2885f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-08-19T20:28:36Z",
+      "side": 1,
+      "message": "I agree with this approach. I\u0027ve uploaded it as a separate CL since it\u0027s a different purpose and change from this CL.",
+      "parentUuid": "d78a5026_52b696f2",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "f52fd9a47946f4b36e4a7d8ed643f5124d658642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
