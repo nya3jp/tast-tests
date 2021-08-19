@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361cceff_a761e688",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T09:58:24Z",
+      "side": 1,
+      "message": "This approach does not look good. Pass through test out dir to a function to dump function error is not ideal. Dump should only happen in the test, not lib functions.",
+      "revId": "28ae8f96c28ffa88fa833fd0ac927c0402ea47f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
