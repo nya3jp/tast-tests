@@ -8,6 +8,7 @@ import (
 	"context"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -44,19 +45,29 @@ func init() {
 			// Scarlet devices are failing temporarily, possibly because of the display
 			// rotation failures. "gru" is the platform name for scarlet devices. See b/189704582.
 			hwdep.SkipOnPlatform("gru"),
-			// Exclude kohaku because "EnableNeuralPalmDetectionFilter" is enabled
-			// there and rejects touches for swiping right. See b/196859354.
-			hwdep.SkipOnModel("kohaku"),
 		),
+		// Param val is size override used in touchscreen size.
 		Params: []testing.Param{
 			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
+				ExtraHardwareDeps: hwdep.D(
+					hwdep.SkipOnModel(perfutil.UnstableModels...),
+					// Exclude kohaku because "EnableNeuralPalmDetectionFilter" is enabled
+					// there and rejects touches for swiping right. See b/196859354.
+					hwdep.SkipOnModel("kohaku")), Val: "",
 			},
 			// TODO(crbug.com/1168774): remove "unstable" once we see stability on all platforms.
 			{
 				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
+				Val:               "",
+			},
+			// Run kohaku with specific size touch. See b/196859354.
+			{
+				Name:              "kohaku",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
+				ExtraAttr:         []string{"informational"},
+				Val:               "25",
 			},
 		},
 	})
@@ -313,6 +324,18 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 
 		// Swipe on the splitview divider to exit splitview.
+		paramVal := s.Param()
+		if paramVal != nil && len(paramVal.(string)) > 0 {
+			val64, err := strconv.ParseInt(paramVal.(string), 10, 32)
+			if err != nil {
+				return errors.Wrap(err, "Unable to parse param as int")
+			}
+			val32 := int32(val64)
+			if err := stw.SetSize(ctx, val32, val32); err != nul {
+				return errors.Wrap(err, "failed to set size for device")
+			}
+		}
+
 		if err := stw.Swipe(ctx, centerX, centerY, rightX, centerY, 750*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to swipe to right")
 		}
