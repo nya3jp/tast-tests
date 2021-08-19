@@ -326,6 +326,30 @@
       },
       "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef4992c_c9d4131a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-19T03:09:55Z",
+      "side": 1,
+      "message": "Thanks Prashant.\nCreated partner bug for this.",
+      "parentUuid": "d5117702_a0a79419",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
