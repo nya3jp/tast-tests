@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9897f8a_43f883ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-19T09:55:01Z",
+      "side": 1,
+      "message": "nit: Could you move the line to L48 (line 48)? window is not used until ui.IsNodeFound is called. (In general, let\u0027s keep the lifetime of a variable as short as possible)",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "2d04427ae363ffcc23d66bb56ffca54bab944c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
