@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f976d6d9_f9fdce18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1295906
+      },
+      "writtenOn": "2021-08-19T23:28:08Z",
+      "side": 1,
+      "message": "I think that we should work through by each error if they occur - the expected behavior is that there would be no error, ultimately we don\u0027t have hardware class info when running for this behavior.",
+      "parentUuid": "71abe2a9_4a006256",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20eb7f65_a79f3be5",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-19T15:45:07Z",
       "side": 1,
       "message": "nit: Put this on its own line.",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefb586e_85267758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1295906
+      },
+      "writtenOn": "2021-08-19T23:28:08Z",
+      "side": 1,
+      "message": "gofmt did this. Leaving as is.",
+      "parentUuid": "20eb7f65_a79f3be5",
       "range": {
         "startLine": 56,
         "startChar": 35,
@@ -71,6 +113,30 @@
       "writtenOn": "2021-08-19T15:45:07Z",
       "side": 1,
       "message": "Not sure this is correct.\n\nBefore initTouchState is called, stw.touches might be an empty array so stw.touches[0] could panic.\n\nThink we should set it as default touch size to be picked up in initTouchState later. For example, we make defaultTouchMajor/Minor data members of stw and here we set them instead of directly on the touches.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 34
+      },
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e62fd4b2_7f24278a",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1295906
+      },
+      "writtenOn": "2021-08-19T23:28:08Z",
+      "side": 1,
+      "message": "initTouchState(1) is called in the constructor to singletoucheventwriter, so this is pretty safe, but i\u0027ve added an errors.new to appropriately handle this. \n\nI\u0027m going to leave this as is since there\u0027s no way to detect hardware class in touch.go - and am of the opinion that we should only make the modification in response to errors.",
+      "parentUuid": "1c8c7cb6_6d814210",
       "range": {
         "startLine": 510,
         "startChar": 0,
