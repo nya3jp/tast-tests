@@ -50,6 +50,24 @@
       "message": "Do you think it a good idea to have a subtest \".kernel_upstream\" and let it run in unstable group for now so that we can observe when it has valid fw dumps?",
       "revId": "c0dbb7f803c89e7f4ce67c5b451248f90bbe27d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0159a96_ea47b36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-08-19T01:34:27Z",
+      "side": 1,
+      "message": "We are not planning to use iwl-debug-yoyo.bin, because we really want to test what we ship to our customers. So there is no point of testing upstream if it\u0027s different from what we have. +Nicolas",
+      "parentUuid": "5c5c4851_e5a5f089",
+      "revId": "c0dbb7f803c89e7f4ce67c5b451248f90bbe27d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
