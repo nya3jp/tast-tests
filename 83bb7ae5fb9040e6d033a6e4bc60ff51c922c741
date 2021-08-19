@@ -16,6 +16,69 @@
       "message": "Resolved the comments and adjusted the way the element\u0027s positions are found. I make use of the selector.GetBounds() returns the coordinates of an element relative to the activity, which is why on real devices the touch events weren\u0027t firing. ",
       "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3ca384_b7fbda54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-19T00:16:40Z",
+      "side": 1,
+      "message": "still lgtm with nits",
+      "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2565d9b4_f93db37b",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-19T00:16:40Z",
+      "side": 1,
+      "message": "JFYI: `google-java-format --aosp ${filepath}` should do the most part automatically.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 2,
+        "endChar": 4
+      },
+      "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb114d3a_71124412",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-19T00:16:40Z",
+      "side": 1,
+      "message": "nit: DisplaySize()? The other exposed functions seem to follow the naming rule not using \u0027Get\u0027 prefix.",
+      "range": {
+        "startLine": 708,
+        "startChar": 20,
+        "endLine": 708,
+        "endChar": 34
+      },
+      "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
