@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa0e032_504feed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-08-19T17:53:30Z",
+      "side": 1,
+      "message": "+1 owners-override, as it breaks on CQ for volteer (https://tastboard.corp.google.com/test/debugd.CoreScheduler)",
+      "revId": "b47b7ee04a2cc2d12fe3397a7b6691e9e28d3004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
