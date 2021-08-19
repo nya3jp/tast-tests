@@ -16,6 +16,23 @@
       "message": "Shao-Chuan, could you PTAL?",
       "revId": "0ca5369c67e92e13e65ee282366e01c8c1377e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530738e5_98c76e43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-08-19T01:43:20Z",
+      "side": 1,
+      "message": "Verified the test no longer runs on betty-arc-r.",
+      "revId": "0ca5369c67e92e13e65ee282366e01c8c1377e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
