@@ -46,6 +46,30 @@
       },
       "revId": "c0c57259bb71297aadade57463a7f0dfa8fd372c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe7f961_68ea3671",
+        "filename": "src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-19T02:31:03Z",
+      "side": 0,
+      "message": "I see, it makes sense.",
+      "parentUuid": "115d1bfa_ed358926",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "c0c57259bb71297aadade57463a7f0dfa8fd372c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
