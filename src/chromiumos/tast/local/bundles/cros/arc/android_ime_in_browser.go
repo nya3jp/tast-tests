@@ -176,7 +176,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		// It is better to press the keyboard from chromeui instead of UIAutomator for two reasons:
 		// - IME is not accessible from UIAutomator, so we're forced to use UiDevice.click.
 		// - chromeui can provide test coverage for window input region.
-		if err := keyboard.LeftClick(ctx); err != nil {
+		if err := keyboard.StableLeftClick(ctx, nil); err != nil {
 			s.Fatal("Failed to left click the keyboard")
 		}
 	}
