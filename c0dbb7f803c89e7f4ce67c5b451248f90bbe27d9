@@ -16,6 +16,23 @@
       "message": "Can we land that CL? The test is still failing on -kernelnext",
       "revId": "c0dbb7f803c89e7f4ce67c5b451248f90bbe27d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5c4851_e5a5f089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-19T01:23:36Z",
+      "side": 1,
+      "message": "Do you think it a good idea to have a subtest \".kernel_upstream\" and let it run in unstable group for now so that we can observe when it has valid fw dumps?",
+      "revId": "c0dbb7f803c89e7f4ce67c5b451248f90bbe27d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
