@@ -16,6 +16,24 @@
       "message": "Considering the semantics of this function, returning error here should be fine.\nCould you introduce a new error type and return from here, instead, and check it in the caller, instead returning nil.?",
       "revId": "6f8fc37721fe2cf6c88c072eb98a2c6823f68b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f669d2_4fda6b48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-19T21:43:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd2f962_a32233c0",
+      "revId": "6f8fc37721fe2cf6c88c072eb98a2c6823f68b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
