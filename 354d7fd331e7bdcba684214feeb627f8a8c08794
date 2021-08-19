@@ -16,6 +16,23 @@
       "message": "LGTM % defer to Bao-Duy\u0027s review",
       "revId": "354d7fd331e7bdcba684214feeb627f8a8c08794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3b8363_861298d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:27:47Z",
+      "side": 1,
+      "message": "I\u0027d prefer this kind of refactoring to be done separately if possible. It\u0027s not directly related to the \"deflake\", or is it?",
+      "revId": "354d7fd331e7bdcba684214feeb627f8a8c08794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

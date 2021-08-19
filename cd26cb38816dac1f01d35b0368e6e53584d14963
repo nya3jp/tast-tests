@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d73118_3df961c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:27:47Z",
+      "side": 0,
+      "message": "Some previous refactoring must have lost this. It was used to distinguish the 1st and 2nd test cases below for example. Those two weren\u0027t meant to just differ in terms of stable vs unstable boards. They were mainly meant to use tablet vs a11y VK because the impls are different between the two. As of now, the two test cases look exactly the same; the only difference is the board. You can read the comment essays attached to the test cases for more details.",
+      "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
