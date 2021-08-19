@@ -16,6 +16,24 @@
       "message": "This does not seem like a safe assumption. If HasControl returns an error, we should report that error. https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
       "revId": "7836bbdd66a5566a881232752da9c944a7ee34b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aabbfcb_76707488",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T03:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25bbc2fc_03276c82",
+      "revId": "7836bbdd66a5566a881232752da9c944a7ee34b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
