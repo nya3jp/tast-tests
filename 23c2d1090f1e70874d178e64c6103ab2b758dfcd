@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "200bf485_8bfe7002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "From my understanding, this would require adding a new \"safesetid\" feature/dependency check in tast, tast-tests, and chromiumos-overlay, see the example at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md ,under \"New Features\". Would adding these additional CL\u0027s be worth it if a sysutil method can check the kernel version?",
+      "parentUuid": "0d0c42c8_1effafc9",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ecc6009_90899ab5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2021-08-18T15:33:13Z",
       "side": 1,
       "message": "Please move this to outside the function and use // instead of /**/\n\n```\nsrc/chromiumos/tasgolint src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.got/local/bundles/cros/security/safesetid_ensure_policy.go:33:1: exported function SafesetidEnsurePolicy should have comment or be unexported\n```\n\nAlso see:\nSee: https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa43c449_f0d7839f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ecc6009_90899ab5",
       "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "381be359_ea10e0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "819eb84e_d7dc10a0",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aee89872_bb6662f2",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-08-18T15:33:13Z",
       "side": 1,
       "message": "errors.Errorf(\"%q allowed to transition without permission to %q\", parent, child)",
+      "range": {
+        "startLine": 145,
+        "startChar": 9,
+        "endLine": 145,
+        "endChar": 85
+      },
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6902fd71_a3db5d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee89872_bb6662f2",
       "range": {
         "startLine": 145,
         "startChar": 9,
@@ -134,6 +218,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "836a1180_9c98e927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "306a8d0a_8632fd78",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "57f4767b_cc0fd35f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
         "patchSetId": 3
@@ -166,6 +268,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82487d1d_777f59de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019d2d64_5521098f",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdca459f_5eedde47",
@@ -183,6 +303,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a672f179_dc354b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdca459f_5eedde47",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76cff696_b4e7885b",
@@ -196,6 +334,24 @@
       "writtenOn": "2021-08-18T15:33:13Z",
       "side": 1,
       "message": "The kernel version logic has been added to the sys_util module after you originally wrote this and can replace this function. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/sysutil/sysutil.go;l\u003d120;drc\u003d26a8adf72730c09375eb2ba538c86a512cc9419b",
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41408038_2ff764a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2021-08-19T19:58:43Z",
+      "side": 1,
+      "message": "lol the code in sysutil is almost a duplicate of mine - someone must have found it useful!",
+      "parentUuid": "76cff696_b4e7885b",
       "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
