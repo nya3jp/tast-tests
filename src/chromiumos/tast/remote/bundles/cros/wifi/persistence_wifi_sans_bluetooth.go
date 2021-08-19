@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
@@ -113,18 +115,31 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 	defer r.Close(ctx)
 
 	// Assert Bluetooth is down.
+	s.Log("Getting BT pref")
 	btClient := network.NewBluetoothServiceClient(r.Conn)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
-			return errors.Wrap(err, "could not get Bluetooth status after boot")
+		if response, err := btClient.GetBluetoothBootPref(ctx, &network.GetBluetoothBootPrefRequest{Credentials: credKey}); err != nil {
+			return errors.Wrap(err, "could not get Bluetooth boot pref after boot")
 		} else if response.Persistent {
 			return testing.PollBreak(errors.Wrap(err, "Bluetooth is set to start on boot, should be off on boot"))
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to wait for BT boot pref: ", err)
+	}
+	s.Log("Getting BT powered status")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if response, err := btClient.GetBluetoothPoweredFast(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "could not get Bluetooth boot pref after boot")
 		} else if response.Powered {
 			return errors.New("Bluetooth is on, expected to be off after boot")
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
+		Timeout:  30 * time.Second,
 		Interval: time.Second,
 	}); err != nil {
 		s.Fatal("Failed to wait for BT to be powered: ", err)
