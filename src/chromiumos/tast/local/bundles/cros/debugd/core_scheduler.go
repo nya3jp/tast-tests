@@ -25,7 +25,8 @@ func init() {
 			"mnissler@chromium.org",
 		},
 		SoftwareDeps: []string{"amd64"},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/197182645): re-enable when CQ issues are cleared up.
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
