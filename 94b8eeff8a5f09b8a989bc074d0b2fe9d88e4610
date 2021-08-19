@@ -34,6 +34,24 @@
       "parentUuid": "42e67d0d_8d581a19",
       "revId": "94b8eeff8a5f09b8a989bc074d0b2fe9d88e4610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010fd0e3_cc7abb35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456821
+      },
+      "writtenOn": "2021-08-19T21:40:38Z",
+      "side": 1,
+      "message": "Likely affected by b/197182645, hopefully this can get through now that volteer-borealis-cq has been disabled.",
+      "parentUuid": "156e1342_daa7ac54",
+      "revId": "94b8eeff8a5f09b8a989bc074d0b2fe9d88e4610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
