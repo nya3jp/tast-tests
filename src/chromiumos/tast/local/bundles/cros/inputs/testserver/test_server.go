@@ -346,20 +346,11 @@ func (its *InputsTestServer) validateHandwritingInField(inputField InputField, i
 
 		// Warm-up steps to check handwriting engine ready.
 		checkEngineReady := uiauto.Combine("wait for handwriting engine to be ready",
-			its.Clear(inputField),
-			func(ctx context.Context) error {
-				warmCtx, cancel := context.WithTimeout(ctx, 2*time.Second)
-				defer cancel()
-				err := hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile))(warmCtx)
-				// Ignore the context timeout error that is intended.
-				if strings.Contains(err.Error(), "context deadline exceeded") {
-					return nil
-				}
-				return err
-			},
+			hwCtx.DrawFirstStrokeFromFile(dataPath(inputData.HandwritingFile)),
 			util.WaitForFieldNotEmpty(its.tconn, inputField.Finder()),
 			hwCtx.ClearHandwritingCanvas(),
-			its.Clear(inputField))
+			its.Clear(inputField),
+		)
 
 		return uiauto.Combine("handwriting input on virtual keyboard",
 			hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
