@@ -475,9 +475,21 @@ func (vkbCtx *VirtualKeyboardContext) EnableA11yVirtualKeyboard(enabled bool) ui
 	}
 }
 
-// SelectFromSuggestion returns an action waiting for suggestion candidate to appear and clicks it to select.
+// SelectFromSuggestion returns an action waiting for suggestion candidate (Case Sensitive) to appear and clicks it to select.
 func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestion(candidateText string) uiauto.Action {
+	return vkbCtx.selectFromSuggestionFunc(candidateText, false)
+}
+
+// SelectFromSuggestionIgnoringCase returns an action waiting for suggestion candidate (Case Insensitive) to appear and clicks it to select.
+func (vkbCtx *VirtualKeyboardContext) SelectFromSuggestionIgnoringCase(candidateText string) uiauto.Action {
+	return vkbCtx.selectFromSuggestionFunc(candidateText, false)
+}
+
+func (vkbCtx *VirtualKeyboardContext) selectFromSuggestionFunc(candidateText string, ignoringCase bool) uiauto.Action {
 	suggestionFinder := KeyFinder.Name(candidateText).ClassName("sk")
+	if ignoringCase {
+		suggestionFinder = KeyByNameIgnoringCase(candidateText).ClassName("sk")
+	}
 	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
 	ac := vkbCtx.ui.WithPollOpts(opts)
 

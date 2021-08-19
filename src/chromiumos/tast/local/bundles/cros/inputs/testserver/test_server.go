@@ -302,7 +302,7 @@ func (its *InputsTestServer) validateVKTypingInField(inputField InputField, inpu
 			}
 			return nil
 		},
-		its.validateResult(inputField, inputData.ExpectedText),
+		its.ValidateResult(inputField, inputData.ExpectedText),
 	)
 }
 
@@ -322,7 +322,7 @@ func (its *InputsTestServer) validateVoiceInField(inputField InputField, inputDa
 			func(ctx context.Context) error {
 				return voice.AudioFromFile(ctx, dataPath(inputData.VoiceFile))
 			},
-			its.validateResult(inputField, inputData.ExpectedText),
+			its.ValidateResult(inputField, inputData.ExpectedText),
 		)(ctx)
 	}
 }
@@ -364,7 +364,7 @@ func (its *InputsTestServer) validateHandwritingInField(inputField InputField, i
 		return uiauto.Combine("handwriting input on virtual keyboard",
 			hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
 			hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile)),
-			its.validateResult(inputField, inputData.ExpectedText),
+			its.ValidateResult(inputField, inputData.ExpectedText),
 		)(ctx)
 	}
 }
@@ -410,7 +410,9 @@ func (its *InputsTestServer) cleanFieldAndTriggerVK(inputField InputField) uiaut
 	)
 }
 
-func (its *InputsTestServer) validateResult(inputField InputField, expectedText string) uiauto.Action {
+// ValidateResult returns an action to validate input field text on test server.
+// It deals with Password field especially to validate both displayed placebolder and actual text.
+func (its *InputsTestServer) ValidateResult(inputField InputField, expectedText string) uiauto.Action {
 	validateField := util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), expectedText)
 	if inputField == PasswordInputField {
 		// Password input is a special case. The value is presented with placeholder "•".

@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -158,4 +160,42 @@ func ExtractExternalFilesFromMap(messages map[InputModality]data.Message, inputM
 		messageList = append(messageList, message)
 	}
 	return data.ExtractExternalFiles(messageList, inputMethods)
+}
+
+// GlideTyping returns an action to simulate glide typing on virtual keyboard.
+// It works on both tablet VK and A11y VK.
+func GlideTyping(tconn *chrome.TestConn, keys []string) uiauto.Action {
+	return func(ctx context.Context) error {
+		if len(keys) < 2 {
+			return errors.New("glide typing only works on multiple keys")
+		}
+
+		touchCtx, err := touch.New(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "fail to get touch screen")
+		}
+		defer touchCtx.Close()
+
+		ui := uiauto.New(tconn)
+
+		initKeyLoc, err := ui.Location(ctx, vkb.KeyByNameIgnoringCase(keys[0]))
+		if err != nil {
+			return errors.Wrap(err, "fail to find the location of first key")
+		}
+
+		var gestures []uiauto.Action
+		for i := 1; i < len(keys); i++ {
+			// Stop 100ms on each key.
+			gestures = append(gestures, ui.Sleep(200*time.Millisecond))
+			if keys[i] == keys[i-1] {
+				keyLoc, err := ui.Location(ctx, vkb.KeyByNameIgnoringCase(keys[i]))
+				if err != nil {
+					return errors.Wrapf(err, "fail to find the location of key: %q", keys[i])
+				}
+				gestures = append(gestures, touchCtx.SwipeTo(keyLoc.TopLeft(), 20*time.Millisecond))
+			}
+			gestures = append(gestures, touchCtx.SwipeToNode(vkb.KeyByNameIgnoringCase(keys[i]), 20*time.Millisecond))
+		}
+		return touchCtx.Swipe(initKeyLoc.CenterPoint(), gestures...)(ctx)
+	}
 }
