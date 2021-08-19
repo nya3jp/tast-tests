@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/inputs/voice_ko_hello_20210812.wav",
+  "size": 188238,
+  "sha256sum": "8f1c324c9360a00250f38b8873f954d7f4467cd33cbf15982eb63d24b4c6ace5"
+}
