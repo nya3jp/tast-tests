@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59442f7_7a50fc1c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-08-19T08:01:15Z",
+      "side": 1,
+      "message": "if?",
+      "range": {
+        "startLine": 465,
+        "startChar": 9,
+        "endLine": 465,
+        "endChar": 12
+      },
+      "revId": "c42da9be7c787ed895fbedd254ce3d80e3acaac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
