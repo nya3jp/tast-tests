@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1843cc40_243ae3b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:40:36Z",
+      "side": 1,
+      "message": "Thanks for writing this, Gabor!",
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0357463_e7e3ccd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:40:36Z",
+      "side": 1,
+      "message": "I learned that this only works in dev mode and on unofficial builds, just to double check, we don\u0027t run any tests on official builds, right?\n\nhttps://source.corp.google.com/chromeos_public/src/aosp/system/update_engine/cros/image_properties_chromeos.cc;l\u003d101?q\u003dLoadLsbRelease\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Faosp%2Fsystem%2Fupdate_engine%2Fcros%2F",
+      "range": {
+        "startLine": 37,
+        "startChar": 21,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72b2099_1d1c1b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:40:36Z",
+      "side": 1,
+      "message": "Should this error be distinguishable from the on line 64, or is it already?",
+      "range": {
+        "startLine": 87,
+        "startChar": 46,
+        "endLine": 87,
+        "endChar": 88
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "336bced4_72424eb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:40:36Z",
+      "side": 1,
+      "message": "It only overrides the board as far as I see?",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 92
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb9d308_f3c51d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:40:36Z",
+      "side": 1,
+      "message": "nit: Could this have a more meaningful name, or is that a quirk of tast? I see the empty.Empty above is also req, so I suppose it has something to do with rpc service.",
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9565107_049516ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:40:36Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using lsbrelease.LoadFrom(statefulPath) here? Wouldn\u0027t that help avoid the manual parsing below? Or do you need to preserve comments / malformated lines?\nI would not think there\u0027s anything in the file apart form key value pairs that is worth preserving, but maybe I\u0027m wrong.",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
