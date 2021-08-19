@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10d2d93_0da2f036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-08-19T19:02:06Z",
+      "side": 1,
+      "message": "Quick question: 540/4 \u003d 135 which is an even number, which we know\nto troublesome for hardware oftentimes. Is that intended for this \ntest case? If so, we could add a comment here for future devs/\nguards so that they know there is more than meets the eye to \nthis test case.",
+      "range": {
+        "startLine": 178,
+        "startChar": 32,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "b899577b035ef48bb79d56e503a6dafcf8b8b529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
