@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab05a78_fd0f4ed0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-08-19T18:34:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bab4d20a_dc985df0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31406606_b8cfbb94",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think as long as this Cq-Depends on the other change it shouldn\u0027t be necessary to accept both here.",
       "parentUuid": "0e1fe225_a8d14efb",
+      "range": {
+        "startLine": 68,
+        "startChar": 64,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "8ef5101b053ad2b14b5bb0909428b9ece0be9a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427640d8_1b5a3085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-08-19T18:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56a2ec7_7e4d7810",
       "range": {
         "startLine": 68,
         "startChar": 64,
