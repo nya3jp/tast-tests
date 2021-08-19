@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b913e4ae_457d9e82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-19T10:23:59Z",
+      "side": 1,
+      "message": "Sorry for the delayed review. I was thinking about this CL for a while...\n\nI agree it\u0027s a bit annoying that we have to re-establish RPC connections when we reboot the DUT. Your proposed RPCDUT somehow solves the issue indeed. On the other hand I see some suboptimality in the approach and wonder if it is a solution general enough to be provided as a common library.\n\nIIUC, the approach is to couple dut.DUT and rpc.Dial into a single object rpcdut.RPCDUT so that it can hook into Reboot calls to reestablish RPC connections. However this approach have several pitfalls, such as:\n\n- If the user directly calls DUT.Reboot, RPC connections will fail even if they\u0027re obtained from RPCDUT.\n- If the user keeps grpc.ClientConn or its derived client stubs, method calls will fail even after RPCDUT.Reboot.\n\nI\u0027m more concerned about the second problem because it places undesirable design restrictions to users of RPCDUT.\n\nIn my opinion, the reconnection issue is better to be solved within gRPC, rather than wrapping gRPC. Actually gRPC has a mechanism to reconnect to the target. However it is not available because rpc.Dial takes only one SSH connection to establish a gRPC channel.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/rpc/rpc.go;drc\u003d131294f666cacbaee65c7394e7094e87475c3cd3;l\u003d71\n\nIdeally we introduce a new function rpc.DialPersistent which passes a connection source to gRPC, rather than a single connection, to allow reconnecting.\n\nBut this is not easy. rpc.Dial does not just create a gRPC channel to the DUT but may also start several side channels to provide rich functionalities to user-defined gRPC services (e.g. log passthrough from gRPC services to tests). When reconnecting to the DUT, we have to recover those side channels as well.\n\nSo... if you want to try the cleaner but harder approach, that\u0027s be cool. But otherwise, it\u0027s great if you could keep this library internal to fingerprint tests.\n",
+      "revId": "3953cac896d15da652c63ff5f807e833cece94e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
