@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d48742_9e3ae8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_ext.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2021-08-19T15:18:14Z",
+      "side": 1,
+      "message": "Fatal or Error?",
+      "range": {
+        "startLine": 154,
+        "startChar": 6,
+        "endLine": 154,
+        "endChar": 11
+      },
+      "revId": "b985dde0aca7f096cd57c319f56e149860d26e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
