@@ -52,6 +52,24 @@
       "parentUuid": "a5856efe_30f1e559",
       "revId": "36856701c50a8bdd664ced0f9c0acb3ca97fbd97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c62131_d7648297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-08-19T14:37:15Z",
+      "side": 0,
+      "message": "Steven and Seewei have agreed that timing will not be an issue if all cl\u0027s mentioned in Cq-Depend land together. \nejcaruso@ - I am waiting for the final +2",
+      "parentUuid": "0ba45505_d130e65f",
+      "revId": "36856701c50a8bdd664ced0f9c0acb3ca97fbd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
