@@ -31,8 +31,8 @@ const DownloadPath = "/home/chronos/user/Downloads/"
 // MyFilesPath is the location of My files for the user.
 const MyFilesPath = "/home/chronos/user/MyFiles"
 
-// filesTitlePrefix is the prefix of the Ash window title.
-const filesTitlePrefix = "Files - "
+// FilesTitlePrefix is the prefix of the Ash window title.
+const FilesTitlePrefix = "Files - "
 
 // Context menu items for a file, values are the a11y name.
 const (
@@ -54,6 +54,7 @@ const (
 	Downloads   = "Downloads"
 	GoogleDrive = "Google Drive"
 	MyDrive     = "My Drive"
+	MyFiles     = "My files"
 	Playfiles   = "Play files"
 )
 
@@ -121,19 +122,19 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 // OpenDownloads returns a function that opens the Downloads folder in the Files App.
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads() uiauto.Action {
-	return f.OpenDir(Downloads, filesTitlePrefix+Downloads)
+	return f.OpenDir(Downloads, FilesTitlePrefix+Downloads)
 }
 
 // OpenDrive returns a function that opens the Google Drive folder in the Files App.
 // An error is returned if Drive is not found or does not open.
 func (f *FilesApp) OpenDrive() uiauto.Action {
-	return f.OpenDir(GoogleDrive, filesTitlePrefix+MyDrive)
+	return f.OpenDir(GoogleDrive, FilesTitlePrefix+MyDrive)
 }
 
 // OpenLinuxFiles returns a function that opens the Linux files folder in the Files App.
 // An error is returned if Linux files is not found or does not open.
 func (f *FilesApp) OpenLinuxFiles() uiauto.Action {
-	return f.OpenDir("Linux files", filesTitlePrefix+"Linux files")
+	return f.OpenDir("Linux files", FilesTitlePrefix+"Linux files")
 }
 
 // file returns a nodewith.Finder for a file with the specified name.
@@ -243,7 +244,7 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 // CreateFolder returns a function that creates a new folder named dirName in the current directory.
 func (f *FilesApp) CreateFolder(kb *input.KeyboardEventWriter, dirName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("CreateFolder(%s)", dirName),
-		f.FocusAndWait(nodewith.Role(role.ListBox)),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
 		kb.AccelAction("Ctrl+E"), // Press Ctrl+E to create a new folder.
 		// Wait for rename text field.
 		f.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
@@ -357,7 +358,7 @@ func (f *FilesApp) PerformActionAndRetryMaximizedOnFail(action uiauto.Action) ui
 		testing.ContextLog(ctx, "Supplied action failed, resizing window and trying again: ", err)
 
 		window, err := ash.FindWindow(ctx, f.tconn, func(w *ash.Window) bool {
-			return strings.HasPrefix(w.Title, filesTitlePrefix)
+			return strings.HasPrefix(w.Title, FilesTitlePrefix)
 		})
 		if err != nil {
 			return err
