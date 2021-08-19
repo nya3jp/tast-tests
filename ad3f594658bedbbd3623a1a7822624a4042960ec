@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1e17e0_d0b24f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-19T06:16:50Z",
+      "side": 1,
+      "message": "thank you for review, submitting.",
+      "revId": "ad3f594658bedbbd3623a1a7822624a4042960ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e74835a_3170b288",
+        "filename": "src/chromiumos/tast/local/chrome/chromeproc/chromeproc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-19T06:16:50Z",
+      "side": 1,
+      "message": "note: I had mistake on cherry-pick from original CL here.\nFixed, and this is you already LGTM\u0027ed in the following CL.",
+      "revId": "ad3f594658bedbbd3623a1a7822624a4042960ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
