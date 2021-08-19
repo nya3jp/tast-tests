@@ -106,7 +106,7 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 		MaxTabCount:              maxTab,
 	}
 
-	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Chrome(), p); err != nil {
+	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Chrome(), testEnv.ARC(), p); err != nil {
 		s.Fatal("Run failed: ", err)
 	}
 }
