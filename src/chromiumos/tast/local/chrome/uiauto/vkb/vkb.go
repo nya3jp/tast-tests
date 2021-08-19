@@ -287,14 +287,14 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Actio
 	if enabled {
 		flipButtonFinder = KeyFinder.Name("make virtual keyboard movable")
 		return vkbCtx.ui.IfSuccessThen(
-			vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilExists(flipButtonFinder),
+			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
 		)
 	}
 
 	flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
 	return vkbCtx.ui.IfSuccessThen(
-		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilExists(flipButtonFinder),
+		vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 		vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
 	)
 }
