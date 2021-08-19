@@ -157,6 +157,11 @@ func (f *FilesApp) FileExists(fileName string) uiauto.Action {
 	return f.ui.Exists(file(fileName))
 }
 
+// FileGone calls ui.Gone to check whether a folder or a file Gone in the Files App.
+func (f *FilesApp) FileGone(fileName string) uiauto.Action {
+	return f.ui.Gone(file(fileName))
+}
+
 // SelectFile returns a function that selects a file by clicking on it.
 func (f *FilesApp) SelectFile(fileName string) uiauto.Action {
 	return f.LeftClick(file(fileName))
@@ -243,7 +248,7 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 // CreateFolder returns a function that creates a new folder named dirName in the current directory.
 func (f *FilesApp) CreateFolder(kb *input.KeyboardEventWriter, dirName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("CreateFolder(%s)", dirName),
-		f.FocusAndWait(nodewith.Role(role.ListBox)),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
 		kb.AccelAction("Ctrl+E"), // Press Ctrl+E to create a new folder.
 		// Wait for rename text field.
 		f.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
