@@ -364,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca8c0d2_e13f9255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_bio_crypto_init_audit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-19T19:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5180e67_de4cf615",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 55
+      },
+      "revId": "9ae3aadd90dc6bd08fdbc9f79a85cf1bf63e7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce5e6432_5c01251c",

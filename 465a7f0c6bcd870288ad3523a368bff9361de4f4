@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1a677f_1a7b6ba7",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-19T19:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b30658_b479859d",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87aae6ca_b5727818",
@@ -123,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fe630a_beda7678",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-19T19:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87aae6ca_b5727818",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11b92b02_37864513",
@@ -136,6 +184,30 @@
       "writtenOn": "2021-08-10T20:31:59Z",
       "side": 1,
       "message": "should this be a helper function called ReturnLogsAfterTime?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "465a7f0c6bcd870288ad3523a368bff9361de4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041f5151_d5d4b633",
+        "filename": "src/chromiumos/tast/local/firmware/fp_read_logs_since_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-19T19:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b92b02_37864513",
       "range": {
         "startLine": 84,
         "startChar": 0,
