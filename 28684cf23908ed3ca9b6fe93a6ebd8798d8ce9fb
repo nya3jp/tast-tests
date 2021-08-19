@@ -173,6 +173,30 @@
       },
       "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780dd9e2_3dd5b187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T14:55:39Z",
+      "side": 1,
+      "message": "My idea was reading with lsbrelease.LoadFrom(statefulPath), then replace the key value pairs you want to replace, and the write the whole file the same way you do now.",
+      "parentUuid": "01e52c61_9acbceb9",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
