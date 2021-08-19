@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5914eba6_d4aa85c2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T07:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea97a7e_891635a6",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "cd94b7be8905f34ee6496f4efd656e7ade171d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "297d74a0_16e3caed",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-19T06:59:38Z",
       "side": 1,
       "message": "super-nit: enable/disable (no space in between)",
+      "range": {
+        "startLine": 112,
+        "startChar": 95,
+        "endLine": 112,
+        "endChar": 111
+      },
+      "revId": "cd94b7be8905f34ee6496f4efd656e7ade171d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a39441_a16e2187",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T07:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "297d74a0_16e3caed",
       "range": {
         "startLine": 112,
         "startChar": 95,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "429d26f7_ca3c1f62",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T07:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85d1fa2_333e16fc",
+      "range": {
+        "startLine": 117,
+        "startChar": 71,
+        "endLine": 117,
+        "endChar": 88
+      },
+      "revId": "cd94b7be8905f34ee6496f4efd656e7ade171d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1cf6edf_de8b6ab8",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-19T06:59:38Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 122,
+        "startChar": 67,
+        "endLine": 122,
+        "endChar": 83
+      },
+      "revId": "cd94b7be8905f34ee6496f4efd656e7ade171d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55721e52_265807d3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-19T07:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1cf6edf_de8b6ab8",
       "range": {
         "startLine": 122,
         "startChar": 67,
