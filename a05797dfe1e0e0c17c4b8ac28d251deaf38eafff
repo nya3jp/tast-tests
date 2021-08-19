@@ -22,6 +22,30 @@
       },
       "revId": "a05797dfe1e0e0c17c4b8ac28d251deaf38eafff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "811fa59a_dcdb9636",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-19T05:49:03Z",
+      "side": 1,
+      "message": "Yes, it pass before and after the CL.",
+      "parentUuid": "efcde3da_3c91bab6",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a05797dfe1e0e0c17c4b8ac28d251deaf38eafff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
