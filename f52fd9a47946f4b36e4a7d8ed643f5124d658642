@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78a5026_52b696f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-08-19T20:14:52Z",
+      "side": 1,
+      "message": "I think we should get rid of this altogether. Now that we\u0027ve fixed \"legacy\" devices, we shouldn\u0027t need the mechanism going forward. If/when new devices are introduced with bad SAR tables we\u0027ll handle them differently (possibly b/195881584, possibly making the device check the validity of the SAR table at runtime itself).\n\nIn the meantime, moving devices in/out of the badModels list will be one less step to forget.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "f52fd9a47946f4b36e4a7d8ed643f5124d658642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
