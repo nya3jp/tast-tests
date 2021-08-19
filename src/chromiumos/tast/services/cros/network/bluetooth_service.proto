@@ -17,8 +17,8 @@ service BluetoothService {
   // SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
   rpc SetBluetoothPoweredFast(SetBluetoothPoweredFastRequest) returns (google.protobuf.Empty) {}
 
-  // GetBluetoothPowered checks whether the Bluetooth adapter is enabled as well as the Bluetooth boot preference.
-  rpc GetBluetoothPowered(GetBluetoothPoweredRequest) returns (GetBluetoothPoweredResponse) {}
+  // GetBluetoothBootPref gets the Bluetooth boot preference.
+  rpc GetBluetoothBootPref(GetBluetoothBootPrefRequest) returns (GetBluetoothBootPrefResponse) {}
   // GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
   rpc GetBluetoothPoweredFast(google.protobuf.Empty) returns (GetBluetoothPoweredFastResponse) {}
 
@@ -33,12 +33,11 @@ message SetBluetoothPoweredRequest {
 message SetBluetoothPoweredFastRequest {
     bool powered = 1;
 }
-message GetBluetoothPoweredRequest {
+message GetBluetoothBootPrefRequest {
     string credentials = 1;
 }
-message GetBluetoothPoweredResponse {
-    bool powered = 1;
-    bool persistent = 2;
+message GetBluetoothBootPrefResponse {
+    bool persistent = 1;
 }
 message GetBluetoothPoweredFastResponse {
     bool powered = 1;

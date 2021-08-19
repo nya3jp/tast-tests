@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/rpc"
@@ -113,20 +112,13 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 	defer r.Close(ctx)
 
 	// Assert Bluetooth is down.
+	s.Log("Getting BT pref")
 	btClient := network.NewBluetoothServiceClient(r.Conn)
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
-			return errors.Wrap(err, "could not get Bluetooth status after boot")
-		} else if response.Persistent {
-			return testing.PollBreak(errors.Wrap(err, "Bluetooth is set to start on boot, should be off on boot"))
-		} else if response.Powered {
-			return errors.New("Bluetooth is on, expected to be off after boot")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
-		Interval: time.Second,
-	}); err != nil {
+	if err := wifiutil.PollBluetoothBootPref(ctx, btClient, wifiutil.BtOff, credKey); err != nil {
+		s.Fatal("Failed to wait for BT boot pref: ", err)
+	}
+	s.Log("Getting BT powered status")
+	if err := wifiutil.PollBluetoothPoweredStatus(ctx, btClient, wifiutil.BtOff); err != nil {
 		s.Fatal("Failed to wait for BT to be powered: ", err)
 	}
 
