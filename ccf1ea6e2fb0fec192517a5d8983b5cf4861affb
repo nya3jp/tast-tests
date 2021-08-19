@@ -16,6 +16,24 @@
       "message": "FWIW, we have a fix for this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3102615, but I can submit a CL to remove the \"informational\" after that lands, if this is urgent.",
       "revId": "ccf1ea6e2fb0fec192517a5d8983b5cf4861affb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4514bd0e_61f4a087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-08-19T05:46:10Z",
+      "side": 1,
+      "message": "yes, please remove the \"informational\" after that the fix lands.",
+      "parentUuid": "4ad9b006_19f5f4a9",
+      "revId": "ccf1ea6e2fb0fec192517a5d8983b5cf4861affb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
