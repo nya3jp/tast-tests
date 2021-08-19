@@ -87,6 +87,121 @@
       "parentUuid": "5c1b32d0_20070ab0",
       "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a993c8e5_2451012d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-19T00:54:50Z",
+      "side": 1,
+      "message": "Suggest to add .Ancestor(ossettings.WindowFinder) to make sure only the item on the Settings app is found.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103e5103_afa92f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-19T00:54:50Z",
+      "side": 1,
+      "message": "nit: usually the error information format is: failed to ...\n\nPlease check the other error information as well.",
+      "range": {
+        "startLine": 64,
+        "startChar": 29,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b54a20b_66f4e525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-19T00:54:50Z",
+      "side": 1,
+      "message": "Just return testing.Poll",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca625d51_07555b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-19T00:54:50Z",
+      "side": 1,
+      "message": "I guess this is where the presubmit fails. \nUsually it is like this: s.Fatal(\"Failed to ...\", err).\nPlease check the rest s.Fatal(err)",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e07eb8_a196f751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ui_toggle_from_wifi_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-19T00:54:50Z",
+      "side": 1,
+      "message": "Please leave some cleanup time. Please refer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "1c9cbe80ed62a1a67cfc410f991e7a97f76c4763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
