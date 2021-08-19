@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8d25ad_cb9ba55b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "inconsistent, 100ms or 200ms?",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 62
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b44b631_a28c5a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "20 or 200? the numbers in the function are a little confusing.",
+      "range": {
+        "startLine": 195,
+        "startChar": 67,
+        "endLine": 195,
+        "endChar": 69
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a4ef66_37035dec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 197,
+        "startChar": 88,
+        "endLine": 197,
+        "endChar": 90
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "669325b9_4448cbc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "no need to use a separate struct here. whether it is floating mode can be inferred from the test name (e.g., whether the test name contains \"floating\").",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0460530d_ce91511e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "Val: ime.EnglishUS,",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ccd2f9_3b5eaec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "nit: \"floating\" to align with the e14s glossory.",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8ac4aa_9c32cce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7ddd84_c76b920a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "do you need a screenshot as well?",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b6dd49_6bccce0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "There are a lot of duplicated codes in the following subtests, create a factory function based on the specific validation?\n\nsubtest:\u003d func (validate uiauto.Action) func(ctx context.Context, s *testing.State) {\n    return func(ctx context.Context, s *testing.State) {\n                cleanupCtx :\u003d ctx\n\t\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\t\tdefer cancel()\n\t\tdefer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), testName), s.HasError, cr, \"ui_tree_\"+testName)\n\n\t\t// Test default behavior in Textarea field.\n\t\tinputField :\u003d testserver.TextAreaInputField\n\t\tif err :\u003d validate(ctx); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to validate glide typing: \", err)\n\t\t}\n    }\n}\n\ns.Run(ctx, \"default\", validateGlideTyping(inputField, true))\ns.Run(ctx, \"not_applicable\", validateGlideTyping(inputField, false))\n...",
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d808100_439dba3d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "true?",
+      "range": {
+        "startLine": 485,
+        "startChar": 55,
+        "endLine": 485,
+        "endChar": 60
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740c7c6a_0a579e69",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "use HasClass, ClassName will be deprecated.",
+      "range": {
+        "startLine": 489,
+        "startChar": 51,
+        "endLine": 489,
+        "endChar": 60
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa90605_7fc11ed9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-19T07:50:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 491,
+        "startChar": 58,
+        "endLine": 491,
+        "endChar": 67
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
