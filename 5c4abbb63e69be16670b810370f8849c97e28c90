@@ -68,6 +68,24 @@
       "message": "micro-nit: maybe leave here a link to\n https://w3c.github.io/webrtc-svc/#scalabilitymodes\nas a reference of how |svc| is supposed to be ?",
       "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a412290d_962d053f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-19T12:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61943f78_3daa9874",
+      "revId": "5c4abbb63e69be16670b810370f8849c97e28c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
