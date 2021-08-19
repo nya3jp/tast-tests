@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad9b006_19f5f4a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T03:30:45Z",
+      "side": 1,
+      "message": "FWIW, we have a fix for this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3102615, but I can submit a CL to remove the \"informational\" after that lands, if this is urgent.",
+      "revId": "ccf1ea6e2fb0fec192517a5d8983b5cf4861affb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
