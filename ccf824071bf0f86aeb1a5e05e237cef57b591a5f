@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468c2aaa_95d5df66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/unit_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-19T15:29:52Z",
+      "side": 1,
+      "message": "could you close the conn?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "ccf824071bf0f86aeb1a5e05e237cef57b591a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
