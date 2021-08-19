@@ -276,6 +276,10 @@ func verifySharedFiles(ctx context.Context, shareChan chan shareResult) error {
 		return errors.Wrap(receivedShare.err, "error received from test server")
 	}
 
+	if len(receivedShare.files) != 2 {
+		return errors.Errorf("did not receive expected number of files: got %d, want: 2", len(receivedShare.files))
+	}
+
 	if receivedShare.files[0] != expectedFile0 {
 		return errors.Errorf("failed to match shared file: got %q, want %q", receivedShare.files[0], expectedFile0)
 	}
