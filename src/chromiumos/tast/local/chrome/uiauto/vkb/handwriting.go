@@ -14,7 +14,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -237,14 +236,6 @@ func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
 
 // drawStrokes draws the strokes into the handwriting input.
 func drawStrokes(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 500*time.Millisecond)
-	defer cancel()
-	defer func(ctx context.Context) {
-		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to release mouse: %s", err.Error())
-		}
-	}(cleanupCtx)
 	// Draw the strokes into the handwriting input.
 	for _, s := range sg.strokes {
 		for i, p := range s.points {
@@ -270,9 +261,11 @@ func drawStrokes(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) e
 	return nil
 }
 
-// DrawStrokesFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
-// populates the data into the struct, and drawing the strokes into the handwriting input.
-func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Action {
+// drawStrokesFromFile returns an action drawing the strokes into the handwriting input.
+// It draws a specific number of strokes if numStrokes is a valid number.
+// Typically, it draws the whole file when numStrokes = -1 and draws the first stoke
+// when numStrokes = 1.
+func (hwCtx *HandwritingContext) drawStrokesFromFile(filePath string, numStrokes int) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Number of points we would like per stroke.
 		const n = 50
@@ -285,6 +278,11 @@ func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Act
 
 		// Scan the handwriting file and return a strokeGroup with the populated data.
 		sg := newStrokeGroup(svgFile, n)
+
+		// Extract a specific number of strokes if numStrokes is valid.
+		if numStrokes > 0 && numStrokes <= len(sg.strokes) {
+			sg.strokes = sg.strokes[0:numStrokes]
+		}
 
 		// Find the handwriting canvas location.
 		hwCanvasFinder := NodeFinder.Role(role.Canvas)
@@ -303,6 +301,18 @@ func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Act
 
 		return nil
 	}
+}
+
+// DrawStrokesFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
+// populates the data into the struct, and drawing the strokes into the handwriting input.
+func (hwCtx *HandwritingContext) DrawStrokesFromFile(filePath string) uiauto.Action {
+	return hwCtx.drawStrokesFromFile(filePath, -1)
+}
+
+// DrawFirstStrokeFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
+// populates the data into the struct, and drawing the first stroke into the handwriting input.
+func (hwCtx *HandwritingContext) DrawFirstStrokeFromFile(filePath string) uiauto.Action {
+	return hwCtx.drawStrokesFromFile(filePath, 1)
 }
 
 // ClearHandwritingCanvas returns an action that clears the handwriting canvas.
