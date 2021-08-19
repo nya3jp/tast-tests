@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b687db_88b6b148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1295906
+      },
+      "writtenOn": "2021-08-19T23:45:58Z",
+      "side": 1,
+      "message": "I thought about something like this, but felt that representing \u0027nil\u0027 like this was super easy with a string, and didn\u0027t put strong designs into the var that\u0027s used in one spot. \n\nAny strong preferences? Can we keep as this string for simplicity?",
+      "parentUuid": "1a83f49b_144f1ec4",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c8c7cb6_6d814210",
