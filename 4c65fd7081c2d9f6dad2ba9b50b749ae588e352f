@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "999ce832_bbf40430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T03:48:48Z",
+      "side": 1,
+      "message": "Hmm. Ok, thanks for pointing that out. In that case:\n- Please use /dev/urandom; we\u0027d like a file with data instead of all zeros.\n- Please don\u0027t assume the existence of a sourcePath like /home/chronos/user/Downloads; you can use a tempdir instead.\n- Please do SHA1 checking at the destination after every file transfer. Without that we don\u0027t have a way of confirming that the data transfer was successful.",
+      "parentUuid": "7f78ec0a_1c053398",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bd2fdf2_76d2afc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "As we are creating file in run time , so we are passing fileSize as a parameter.",
       "parentUuid": "7bd2fdf2_76d2afc3",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "4c65fd7081c2d9f6dad2ba9b50b749ae588e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f977c465_da81b3d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-19T03:48:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2468695b_d64252f2",
       "range": {
         "startLine": 59,
         "startChar": 0,
