@@ -102,8 +102,8 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				}
 				if err := uiauto.Combine("test input method settings change",
 					settings.OpenInputMethodSetting(tconn, subTest.ime),
-					settings.ClickAutoCap(),
-					settings.Close(),
+					settings.ToggleAutoCap(cr, tconn, false),
+					settings.CloseAction(),
 				)(ctx); err != nil {
 					s.Fatal("Failed to change IME settings: ", err)
 				}

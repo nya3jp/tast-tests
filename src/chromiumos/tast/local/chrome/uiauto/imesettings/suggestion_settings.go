@@ -30,12 +30,12 @@ func LaunchAtSuggestionSettingsPage(ctx context.Context, tconn *chrome.TestConn,
 	if err != nil {
 		return nil, err
 	}
-	return &IMESettings{settings: settings.WithPollOpts(defaultPollOpts)}, nil
+	return &IMESettings{settings.WithPollOpts(defaultPollOpts)}, nil
 }
 
 // ToggleEmojiSuggestions returns an action to click the 'Emoji suggestions' toggle button.
 func (i *IMESettings) ToggleEmojiSuggestions(tconn *chrome.TestConn) uiauto.Action {
-	return i.settings.LeftClick(emojiSuggestionToggleButton)
+	return i.LeftClick(emojiSuggestionToggleButton)
 }
 
 // WaitUntilEmojiSuggestion returns an action waits until emoji suggestion in expected state.
@@ -51,7 +51,7 @@ func (i *IMESettings) WaitUntilEmojiSuggestion(cr *chrome.Chrome, tconn *chrome.
 
 	return uiauto.New(tconn).WithInterval(time.Second).Retry(5, func(ctx context.Context) error {
 		var actual bool
-		if err := i.settings.EvalJSWithShadowPiercer(ctx, cr, expr, &actual); err != nil {
+		if err := i.EvalJSWithShadowPiercer(ctx, cr, expr, &actual); err != nil {
 			return testing.PollBreak(err)
 		}
 		if actual != expected {

@@ -81,6 +81,13 @@ func (s *OSSettings) Close(ctx context.Context) error {
 	return nil
 }
 
+// CloseAction returns an action to close OS Settings.
+func (s *OSSettings) CloseAction() uiauto.Action {
+	return func(ctx context.Context) error {
+		return s.Close(ctx)
+	}
+}
+
 // LaunchAtPage launches the Settings app at a particular page.
 // An error is returned if the app fails to launch.
 // TODO (b/189055966): Fix the failure to launch the right subpage.
@@ -220,4 +227,54 @@ func (s *OSSettings) EvalJSWithShadowPiercer(ctx context.Context, cr *chrome.Chr
 	}
 	defer conn.Close()
 	return webutil.EvalWithShadowPiercer(ctx, conn, expr, out)
+}
+
+// SetToggleOption clicks toggle option to enable or disable an option.
+// It does nothing if the option is already expected.
+func (s *OSSettings) SetToggleOption(cr *chrome.Chrome, tconn *chrome.TestConn, optionName string, expected bool) uiauto.Action {
+	return func(ctx context.Context) error {
+		if isEnabled, err := s.IsToggleOptionEnabled(ctx, cr, tconn, optionName); err != nil {
+			return err
+		} else if isEnabled == expected {
+			return nil
+		}
+		optionFinder := nodewith.Name(optionName).Role(role.ToggleButton)
+		return uiauto.Combine("set toggle option",
+			s.LeftClick(optionFinder),
+			s.WaitUntilToggleOption(cr, tconn, optionName, expected),
+		)(ctx)
+	}
+}
+
+// IsToggleOptionEnabled checks whether the toggle option is enabled or not.
+func (s *OSSettings) IsToggleOptionEnabled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, optionName string) (bool, error) {
+	toggleButtonCSSSelector := fmt.Sprintf(`cr-toggle[aria-label=%q]`, optionName)
+	expr := fmt.Sprintf(`
+		var optionNode = shadowPiercingQuery(%q);
+		if(optionNode == undefined){
+			throw new Error("Enable glide typing setting item is not found.");
+		}
+		optionNode.getAttribute("aria-pressed")==="true";
+		`, toggleButtonCSSSelector)
+
+	var isEnabled bool
+	if err := s.EvalJSWithShadowPiercer(ctx, cr, expr, &isEnabled); err != nil {
+		return isEnabled, errors.Wrapf(err, "failed to get status of option: %q", optionName)
+	}
+	return isEnabled, nil
+}
+
+// WaitUntilToggleOption returns an action to wait until the toggle option enabled or disabled.
+func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, tconn *chrome.TestConn, optionName string, expected bool) uiauto.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if isEnabled, err := s.IsToggleOptionEnabled(ctx, cr, tconn, optionName); err != nil {
+				// JS evaluation is not always reliable. So do not break if failed.
+				return err
+			} else if isEnabled != expected {
+				return errors.Errorf("Option %q is unpected: got %q; want %q", optionName, isEnabled, expected)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 3 * time.Second})
+	}
 }
