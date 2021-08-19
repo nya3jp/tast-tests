@@ -79,6 +79,30 @@
       },
       "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772b3cd3_92948331",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-19T05:26:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb114d3a_71124412",
+      "range": {
+        "startLine": 708,
+        "startChar": 20,
+        "endLine": 708,
+        "endChar": 34
+      },
+      "revId": "83bb7ae5fb9040e6d033a6e4bc60ff51c922c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
