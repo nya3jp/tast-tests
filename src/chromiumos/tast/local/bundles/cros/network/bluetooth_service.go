@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 func init() {
@@ -113,8 +114,10 @@ func (s *BluetoothService) SetBluetoothPowered(ctx context.Context, req *network
 	return &empty.Empty{}, nil
 }
 
-// GetBluetoothPowered checks whether the Bluetooth adapter is enabled as well as the Bluetooth boot preference.
-func (s *BluetoothService) GetBluetoothPowered(ctx context.Context, req *network.GetBluetoothPoweredRequest) (*network.GetBluetoothPoweredResponse, error) {
+// GetBluetoothBootPref gets the Bluetooth boot preference.
+func (s *BluetoothService) GetBluetoothBootPref(ctx context.Context, req *network.GetBluetoothBootPrefRequest) (*network.GetBluetoothBootPrefResponse, error) {
+	ctx, st := timing.Start(ctx, "GetBluetoothBootPref")
+	defer st.End()
 	cr, err := chrome.New(
 		ctx,
 		chrome.KeepState(),
@@ -138,21 +141,7 @@ func (s *BluetoothService) GetBluetoothPowered(ctx context.Context, req *network
 	if err := tLoginConn.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", "ash.system.bluetooth.adapter_enabled"); err != nil {
 		return nil, err
 	}
-
-	// Get Bluetooth status.
-	adapters, err := bluetooth.Adapters(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
-	}
-
-	if len(adapters) != 1 {
-		return &network.GetBluetoothPoweredResponse{Powered: false, Persistent: enabled.Value}, nil
-	}
-	res, err := adapters[0].Powered(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not get Bluetooth power state")
-	}
-	return &network.GetBluetoothPoweredResponse{Powered: res, Persistent: enabled.Value}, nil
+	return &network.GetBluetoothBootPrefResponse{Persistent: enabled.Value}, nil
 }
 
 // SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
@@ -188,6 +177,8 @@ func (s *BluetoothService) SetBluetoothPoweredFast(ctx context.Context, req *net
 
 // GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
 func (s *BluetoothService) GetBluetoothPoweredFast(ctx context.Context, _ *empty.Empty) (*network.GetBluetoothPoweredFastResponse, error) {
+	ctx, st := timing.Start(ctx, "GetBluetoothPoweredFast")
+	defer st.End()
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")

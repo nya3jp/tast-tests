@@ -111,86 +111,78 @@ func (m *SetBluetoothPoweredFastRequest) GetPowered() bool {
 	return false
 }
 
-type GetBluetoothPoweredRequest struct {
+type GetBluetoothBootPrefRequest struct {
 	Credentials          string   `protobuf:"bytes,1,opt,name=credentials,proto3" json:"credentials,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetBluetoothPoweredRequest) Reset()         { *m = GetBluetoothPoweredRequest{} }
-func (m *GetBluetoothPoweredRequest) String() string { return proto.CompactTextString(m) }
-func (*GetBluetoothPoweredRequest) ProtoMessage()    {}
-func (*GetBluetoothPoweredRequest) Descriptor() ([]byte, []int) {
+func (m *GetBluetoothBootPrefRequest) Reset()         { *m = GetBluetoothBootPrefRequest{} }
+func (m *GetBluetoothBootPrefRequest) String() string { return proto.CompactTextString(m) }
+func (*GetBluetoothBootPrefRequest) ProtoMessage()    {}
+func (*GetBluetoothBootPrefRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d8a85ab5c487a308, []int{2}
 }
 
-func (m *GetBluetoothPoweredRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetBluetoothPoweredRequest.Unmarshal(m, b)
+func (m *GetBluetoothBootPrefRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetBluetoothBootPrefRequest.Unmarshal(m, b)
 }
-func (m *GetBluetoothPoweredRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetBluetoothPoweredRequest.Marshal(b, m, deterministic)
+func (m *GetBluetoothBootPrefRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetBluetoothBootPrefRequest.Marshal(b, m, deterministic)
 }
-func (m *GetBluetoothPoweredRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBluetoothPoweredRequest.Merge(m, src)
+func (m *GetBluetoothBootPrefRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBluetoothBootPrefRequest.Merge(m, src)
 }
-func (m *GetBluetoothPoweredRequest) XXX_Size() int {
-	return xxx_messageInfo_GetBluetoothPoweredRequest.Size(m)
+func (m *GetBluetoothBootPrefRequest) XXX_Size() int {
+	return xxx_messageInfo_GetBluetoothBootPrefRequest.Size(m)
 }
-func (m *GetBluetoothPoweredRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetBluetoothPoweredRequest.DiscardUnknown(m)
+func (m *GetBluetoothBootPrefRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetBluetoothBootPrefRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetBluetoothPoweredRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetBluetoothBootPrefRequest proto.InternalMessageInfo
 
-func (m *GetBluetoothPoweredRequest) GetCredentials() string {
+func (m *GetBluetoothBootPrefRequest) GetCredentials() string {
 	if m != nil {
 		return m.Credentials
 	}
 	return ""
 }
 
-type GetBluetoothPoweredResponse struct {
-	Powered              bool     `protobuf:"varint,1,opt,name=powered,proto3" json:"powered,omitempty"`
-	Persistent           bool     `protobuf:"varint,2,opt,name=persistent,proto3" json:"persistent,omitempty"`
+type GetBluetoothBootPrefResponse struct {
+	Persistent           bool     `protobuf:"varint,1,opt,name=persistent,proto3" json:"persistent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetBluetoothPoweredResponse) Reset()         { *m = GetBluetoothPoweredResponse{} }
-func (m *GetBluetoothPoweredResponse) String() string { return proto.CompactTextString(m) }
-func (*GetBluetoothPoweredResponse) ProtoMessage()    {}
-func (*GetBluetoothPoweredResponse) Descriptor() ([]byte, []int) {
+func (m *GetBluetoothBootPrefResponse) Reset()         { *m = GetBluetoothBootPrefResponse{} }
+func (m *GetBluetoothBootPrefResponse) String() string { return proto.CompactTextString(m) }
+func (*GetBluetoothBootPrefResponse) ProtoMessage()    {}
+func (*GetBluetoothBootPrefResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d8a85ab5c487a308, []int{3}
 }
 
-func (m *GetBluetoothPoweredResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetBluetoothPoweredResponse.Unmarshal(m, b)
+func (m *GetBluetoothBootPrefResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetBluetoothBootPrefResponse.Unmarshal(m, b)
 }
-func (m *GetBluetoothPoweredResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetBluetoothPoweredResponse.Marshal(b, m, deterministic)
+func (m *GetBluetoothBootPrefResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetBluetoothBootPrefResponse.Marshal(b, m, deterministic)
 }
-func (m *GetBluetoothPoweredResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBluetoothPoweredResponse.Merge(m, src)
+func (m *GetBluetoothBootPrefResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBluetoothBootPrefResponse.Merge(m, src)
 }
-func (m *GetBluetoothPoweredResponse) XXX_Size() int {
-	return xxx_messageInfo_GetBluetoothPoweredResponse.Size(m)
+func (m *GetBluetoothBootPrefResponse) XXX_Size() int {
+	return xxx_messageInfo_GetBluetoothBootPrefResponse.Size(m)
 }
-func (m *GetBluetoothPoweredResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetBluetoothPoweredResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetBluetoothPoweredResponse proto.InternalMessageInfo
-
-func (m *GetBluetoothPoweredResponse) GetPowered() bool {
-	if m != nil {
-		return m.Powered
-	}
-	return false
+func (m *GetBluetoothBootPrefResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetBluetoothBootPrefResponse.DiscardUnknown(m)
 }
 
-func (m *GetBluetoothPoweredResponse) GetPersistent() bool {
+var xxx_messageInfo_GetBluetoothBootPrefResponse proto.InternalMessageInfo
+
+func (m *GetBluetoothBootPrefResponse) GetPersistent() bool {
 	if m != nil {
 		return m.Persistent
 	}
@@ -239,38 +231,39 @@ func (m *GetBluetoothPoweredFastResponse) GetPowered() bool {
 func init() {
 	proto.RegisterType((*SetBluetoothPoweredRequest)(nil), "tast.cros.network.SetBluetoothPoweredRequest")
 	proto.RegisterType((*SetBluetoothPoweredFastRequest)(nil), "tast.cros.network.SetBluetoothPoweredFastRequest")
-	proto.RegisterType((*GetBluetoothPoweredRequest)(nil), "tast.cros.network.GetBluetoothPoweredRequest")
-	proto.RegisterType((*GetBluetoothPoweredResponse)(nil), "tast.cros.network.GetBluetoothPoweredResponse")
+	proto.RegisterType((*GetBluetoothBootPrefRequest)(nil), "tast.cros.network.GetBluetoothBootPrefRequest")
+	proto.RegisterType((*GetBluetoothBootPrefResponse)(nil), "tast.cros.network.GetBluetoothBootPrefResponse")
 	proto.RegisterType((*GetBluetoothPoweredFastResponse)(nil), "tast.cros.network.GetBluetoothPoweredFastResponse")
 }
 
 func init() { proto.RegisterFile("bluetooth_service.proto", fileDescriptor_d8a85ab5c487a308) }
 
 var fileDescriptor_d8a85ab5c487a308 = []byte{
-	// 359 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0x41, 0x4f, 0xfa, 0x40,
-	0x10, 0xc5, 0xe9, 0x3f, 0xff, 0x28, 0x8e, 0x17, 0x5d, 0x12, 0x21, 0x25, 0x41, 0xb2, 0x89, 0x91,
-	0x8b, 0xdb, 0x88, 0x37, 0x4d, 0x3c, 0x90, 0x08, 0x47, 0x4d, 0x49, 0xd4, 0x78, 0xd0, 0x94, 0x32,
-	0x40, 0x63, 0xe9, 0xd6, 0xdd, 0x29, 0xc4, 0xef, 0xe0, 0x87, 0x36, 0x50, 0x20, 0x8d, 0x74, 0xa1,
-	0xc7, 0x9d, 0xcc, 0xcc, 0x7b, 0x6f, 0x7e, 0x59, 0xa8, 0x0e, 0xc2, 0x04, 0x49, 0x4a, 0x9a, 0x7c,
-	0x68, 0x54, 0xb3, 0xc0, 0x47, 0x11, 0x2b, 0x49, 0x92, 0x9d, 0x92, 0xa7, 0x49, 0xf8, 0x4a, 0x6a,
-	0x11, 0x21, 0xcd, 0xa5, 0xfa, 0xb4, 0xeb, 0x63, 0x29, 0xc7, 0x21, 0x3a, 0xcb, 0x86, 0x41, 0x32,
-	0x72, 0x70, 0x1a, 0xd3, 0x77, 0xda, 0xcf, 0x5f, 0xc1, 0xee, 0x23, 0x75, 0xd6, 0xdb, 0x9e, 0xe4,
-	0x1c, 0x15, 0x0e, 0x5d, 0xfc, 0x4a, 0x50, 0x13, 0xab, 0xc1, 0x61, 0x9c, 0x56, 0x6a, 0x56, 0xd3,
-	0x6a, 0x95, 0xdd, 0xf5, 0x93, 0x35, 0xe1, 0xd8, 0x57, 0x38, 0xc4, 0x88, 0x02, 0x2f, 0xd4, 0xb5,
-	0x7f, 0x4d, 0xab, 0x75, 0xe4, 0x66, 0x4b, 0xfc, 0x16, 0x1a, 0x39, 0x9b, 0xbb, 0x9e, 0xa6, 0xbd,
-	0xdb, 0xf9, 0x3d, 0xd8, 0x3d, 0xb3, 0xab, 0x3f, 0xda, 0xd6, 0xb6, 0xf6, 0x0b, 0xd4, 0x73, 0xe7,
-	0x75, 0x2c, 0x23, 0x8d, 0x3b, 0x62, 0x35, 0x00, 0x62, 0x54, 0x3a, 0xd0, 0x84, 0x11, 0x2d, 0x53,
-	0x95, 0xdd, 0x4c, 0x85, 0xdf, 0xc1, 0x79, 0xcf, 0x14, 0x6a, 0xdf, 0xf2, 0xf6, 0xcf, 0x7f, 0x38,
-	0xd9, 0x8c, 0xf6, 0x53, 0x6c, 0xec, 0x1d, 0x2a, 0x39, 0x67, 0x62, 0x57, 0x62, 0x0b, 0xa4, 0x30,
-	0x83, 0xb2, 0xcf, 0x44, 0x0a, 0x59, 0xac, 0x21, 0x8b, 0x87, 0x05, 0x64, 0x5e, 0x62, 0x23, 0xa8,
-	0x1a, 0x30, 0xb0, 0xeb, 0x62, 0x1a, 0x19, 0x64, 0x3b, 0x74, 0x66, 0x50, 0xe9, 0x15, 0xcc, 0x61,
-	0x46, 0x6b, 0x8b, 0xa2, 0xed, 0xe9, 0xb1, 0x79, 0x89, 0x8d, 0xa1, 0x6a, 0x20, 0xc2, 0x0c, 0x66,
-	0xed, 0x76, 0x31, 0x91, 0x2c, 0x55, 0x5e, 0x62, 0x8f, 0x50, 0x7f, 0xf6, 0xc2, 0x60, 0xe8, 0x11,
-	0x6e, 0x3a, 0xbb, 0x49, 0xe4, 0x53, 0x20, 0x23, 0x2f, 0x34, 0x8a, 0x19, 0x2f, 0xd6, 0xb9, 0x7c,
-	0xbb, 0xf0, 0x27, 0x4a, 0x4e, 0x83, 0x64, 0x2a, 0xb5, 0xb3, 0xb0, 0xe4, 0xac, 0xfe, 0xb2, 0x76,
-	0x16, 0xde, 0x9c, 0x95, 0xb7, 0xc1, 0xc1, 0x72, 0xf4, 0xe6, 0x37, 0x00, 0x00, 0xff, 0xff, 0xd7,
-	0x91, 0x7a, 0x4f, 0xf5, 0x03, 0x00, 0x00,
+	// 370 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0x5f, 0x6b, 0xe2, 0x40,
+	0x14, 0xc5, 0xcd, 0xb2, 0xec, 0x9f, 0xbb, 0x2f, 0xbb, 0xb3, 0xcb, 0x2a, 0xb1, 0x58, 0x09, 0x94,
+	0xfa, 0xd2, 0x09, 0xb5, 0x6f, 0x2d, 0xb4, 0x20, 0x54, 0x1f, 0x2b, 0x0a, 0xa5, 0xf4, 0xa1, 0x25,
+	0xc6, 0xab, 0x86, 0xc6, 0xdc, 0x74, 0xe6, 0xa6, 0xe2, 0xa7, 0xe8, 0x57, 0x2e, 0x9a, 0x44, 0x42,
+	0xcd, 0xa8, 0x8f, 0x73, 0xb9, 0xf7, 0x9c, 0xc3, 0xf9, 0x31, 0x50, 0x1d, 0x85, 0x09, 0x32, 0x11,
+	0xcf, 0x9e, 0x35, 0xaa, 0xb7, 0xc0, 0x47, 0x19, 0x2b, 0x62, 0x12, 0x7f, 0xd8, 0xd3, 0x2c, 0x7d,
+	0x45, 0x5a, 0x46, 0xc8, 0x0b, 0x52, 0x2f, 0x76, 0x7d, 0x4a, 0x34, 0x0d, 0xd1, 0x5d, 0x2f, 0x8c,
+	0x92, 0x89, 0x8b, 0xf3, 0x98, 0x97, 0xe9, 0xbe, 0xf3, 0x00, 0xf6, 0x10, 0xb9, 0x93, 0xab, 0xf5,
+	0x69, 0x81, 0x0a, 0xc7, 0x03, 0x7c, 0x4d, 0x50, 0xb3, 0xa8, 0xc1, 0xf7, 0x38, 0x9d, 0xd4, 0xac,
+	0xa6, 0xd5, 0xfa, 0x31, 0xc8, 0x9f, 0xa2, 0x09, 0xbf, 0x7c, 0x85, 0x63, 0x8c, 0x38, 0xf0, 0x42,
+	0x5d, 0xfb, 0xd2, 0xb4, 0x5a, 0x3f, 0x07, 0xc5, 0x91, 0x73, 0x09, 0x8d, 0x12, 0xe5, 0xae, 0xa7,
+	0x79, 0xaf, 0xba, 0x73, 0x03, 0xf5, 0x5e, 0xe1, 0xb6, 0x43, 0xc4, 0x7d, 0x85, 0x93, 0xfc, 0xf0,
+	0x93, 0xb9, 0xb5, 0x6d, 0x7e, 0x0d, 0x47, 0xe5, 0x02, 0x3a, 0xa6, 0x48, 0xa3, 0x68, 0x00, 0xc4,
+	0xa8, 0x74, 0xa0, 0x19, 0x23, 0xce, 0xdc, 0x0b, 0x13, 0xe7, 0x0a, 0x8e, 0x7b, 0xa6, 0xf0, 0x99,
+	0x84, 0x31, 0x7d, 0xfb, 0xfd, 0x2b, 0xfc, 0xde, 0x9c, 0x0e, 0x53, 0x3c, 0xe2, 0x09, 0xfe, 0x96,
+	0xd4, 0x21, 0xce, 0xe4, 0x16, 0x30, 0x69, 0x06, 0x62, 0xff, 0x97, 0x29, 0x4c, 0x99, 0xc3, 0x94,
+	0xb7, 0x2b, 0x98, 0x4e, 0x45, 0x4c, 0xa0, 0x6a, 0xa8, 0x5b, 0x9c, 0x1f, 0xe6, 0x51, 0x40, 0xb3,
+	0xc3, 0x67, 0x09, 0xff, 0xca, 0x9a, 0x15, 0xb2, 0xc4, 0x64, 0x07, 0x43, 0xdb, 0x3d, 0x78, 0x3f,
+	0xed, 0xdb, 0xa9, 0x88, 0x29, 0x54, 0x0d, 0x50, 0x84, 0x21, 0xaf, 0xdd, 0xde, 0xe3, 0x52, 0x02,
+	0xd6, 0xa9, 0x88, 0x3b, 0xa8, 0xdf, 0x7b, 0x61, 0x30, 0xf6, 0x18, 0x37, 0x9b, 0xdd, 0x24, 0xf2,
+	0x39, 0xa0, 0xc8, 0x0b, 0x8d, 0x66, 0xc6, 0xd2, 0x3a, 0xa7, 0x8f, 0x27, 0xfe, 0x4c, 0xd1, 0x3c,
+	0x48, 0xe6, 0xa4, 0xdd, 0x55, 0x24, 0x37, 0xfb, 0xb6, 0xda, 0x5d, 0x65, 0x73, 0xb3, 0x6c, 0xa3,
+	0x6f, 0xeb, 0xd3, 0x8b, 0x8f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x08, 0xed, 0x85, 0x44, 0xe0, 0x03,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -289,8 +282,8 @@ type BluetoothServiceClient interface {
 	SetBluetoothPowered(ctx context.Context, in *SetBluetoothPoweredRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
 	SetBluetoothPoweredFast(ctx context.Context, in *SetBluetoothPoweredFastRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// GetBluetoothPowered checks whether the Bluetooth adapter is enabled as well as the Bluetooth boot preference.
-	GetBluetoothPowered(ctx context.Context, in *GetBluetoothPoweredRequest, opts ...grpc.CallOption) (*GetBluetoothPoweredResponse, error)
+	// GetBluetoothBootPref gets the Bluetooth boot preference.
+	GetBluetoothBootPref(ctx context.Context, in *GetBluetoothBootPrefRequest, opts ...grpc.CallOption) (*GetBluetoothBootPrefResponse, error)
 	// GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
 	GetBluetoothPoweredFast(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetBluetoothPoweredFastResponse, error)
 	// ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
@@ -323,9 +316,9 @@ func (c *bluetoothServiceClient) SetBluetoothPoweredFast(ctx context.Context, in
 	return out, nil
 }
 
-func (c *bluetoothServiceClient) GetBluetoothPowered(ctx context.Context, in *GetBluetoothPoweredRequest, opts ...grpc.CallOption) (*GetBluetoothPoweredResponse, error) {
-	out := new(GetBluetoothPoweredResponse)
-	err := c.cc.Invoke(ctx, "/tast.cros.network.BluetoothService/GetBluetoothPowered", in, out, opts...)
+func (c *bluetoothServiceClient) GetBluetoothBootPref(ctx context.Context, in *GetBluetoothBootPrefRequest, opts ...grpc.CallOption) (*GetBluetoothBootPrefResponse, error) {
+	out := new(GetBluetoothBootPrefResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.BluetoothService/GetBluetoothBootPref", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -356,8 +349,8 @@ type BluetoothServiceServer interface {
 	SetBluetoothPowered(context.Context, *SetBluetoothPoweredRequest) (*empty.Empty, error)
 	// SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
 	SetBluetoothPoweredFast(context.Context, *SetBluetoothPoweredFastRequest) (*empty.Empty, error)
-	// GetBluetoothPowered checks whether the Bluetooth adapter is enabled as well as the Bluetooth boot preference.
-	GetBluetoothPowered(context.Context, *GetBluetoothPoweredRequest) (*GetBluetoothPoweredResponse, error)
+	// GetBluetoothBootPref gets the Bluetooth boot preference.
+	GetBluetoothBootPref(context.Context, *GetBluetoothBootPrefRequest) (*GetBluetoothBootPrefResponse, error)
 	// GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
 	GetBluetoothPoweredFast(context.Context, *empty.Empty) (*GetBluetoothPoweredFastResponse, error)
 	// ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
@@ -374,8 +367,8 @@ func (*UnimplementedBluetoothServiceServer) SetBluetoothPowered(ctx context.Cont
 func (*UnimplementedBluetoothServiceServer) SetBluetoothPoweredFast(ctx context.Context, req *SetBluetoothPoweredFastRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetBluetoothPoweredFast not implemented")
 }
-func (*UnimplementedBluetoothServiceServer) GetBluetoothPowered(ctx context.Context, req *GetBluetoothPoweredRequest) (*GetBluetoothPoweredResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBluetoothPowered not implemented")
+func (*UnimplementedBluetoothServiceServer) GetBluetoothBootPref(ctx context.Context, req *GetBluetoothBootPrefRequest) (*GetBluetoothBootPrefResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBluetoothBootPref not implemented")
 }
 func (*UnimplementedBluetoothServiceServer) GetBluetoothPoweredFast(ctx context.Context, req *empty.Empty) (*GetBluetoothPoweredFastResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBluetoothPoweredFast not implemented")
@@ -424,20 +417,20 @@ func _BluetoothService_SetBluetoothPoweredFast_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BluetoothService_GetBluetoothPowered_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBluetoothPoweredRequest)
+func _BluetoothService_GetBluetoothBootPref_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBluetoothBootPrefRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BluetoothServiceServer).GetBluetoothPowered(ctx, in)
+		return srv.(BluetoothServiceServer).GetBluetoothBootPref(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.network.BluetoothService/GetBluetoothPowered",
+		FullMethod: "/tast.cros.network.BluetoothService/GetBluetoothBootPref",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BluetoothServiceServer).GetBluetoothPowered(ctx, req.(*GetBluetoothPoweredRequest))
+		return srv.(BluetoothServiceServer).GetBluetoothBootPref(ctx, req.(*GetBluetoothBootPrefRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -491,8 +484,8 @@ var _BluetoothService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _BluetoothService_SetBluetoothPoweredFast_Handler,
 		},
 		{
-			MethodName: "GetBluetoothPowered",
-			Handler:    _BluetoothService_GetBluetoothPowered_Handler,
+			MethodName: "GetBluetoothBootPref",
+			Handler:    _BluetoothService_GetBluetoothBootPref_Handler,
 		},
 		{
 			MethodName: "GetBluetoothPoweredFast",

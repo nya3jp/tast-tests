@@ -91,15 +91,36 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 			s.Fatal("Wifi not functioning: ", err)
 		}
 
-		// Assert bluetooth is up.
+		// Assert Bluetooth is up. We need to poll a little bit here as it might
+		// not yet get initialized after reboot.
 		btClient := network.NewBluetoothServiceClient(r.Conn)
-		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
-			s.Fatal("Could not get Bluetooth status: ", err)
-		} else if !response.Powered {
-			s.Fatal("Bluetooth is off, expected to be on ")
+		s.Log("Getting BT pref")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if response, err := btClient.GetBluetoothBootPref(ctx, &network.GetBluetoothBootPrefRequest{Credentials: credKey}); err != nil {
+				return errors.Wrap(err, "could not get Bluetooth status")
+			} else if !response.Persistent {
+				return testing.PollBreak(errors.Wrap(err, "Bluetooth is set be off off on boot, should be up on boot"))
+			}
+			return nil
+		}, &testing.PollOptions{
+			Timeout:  30 * time.Second,
+			Interval: time.Second,
+		}); err != nil {
+			s.Fatal("Failed to wait for BT boot pref: ", err)
 		}
-		if _, err := btClient.ValidateBluetoothFunctional(ctx, &empty.Empty{}); err != nil {
-			s.Fatal("Could not get validate Bluetooth status: ", err)
+		s.Log("Getting BT powered status")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if response, err := btClient.GetBluetoothPoweredFast(ctx, &empty.Empty{}); err != nil {
+				return errors.Wrap(err, "could not get Bluetooth status")
+			} else if !response.Powered {
+				return errors.New("Bluetooth is off, expected to be on after boot")
+			}
+			return nil
+		}, &testing.PollOptions{
+			Timeout:  30 * time.Second,
+			Interval: time.Second,
+		}); err != nil {
+			s.Fatal("Failed to wait for BT to be powered: ", err)
 		}
 
 		// Disable WiFi.
@@ -141,11 +162,26 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	// Assert Bluetooth is up. We need to poll a little bit here as it might
 	// not yet get initialized after reboot.
 	btClient := network.NewBluetoothServiceClient(r.Conn)
+	s.Log("Getting BT pref")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
+		if response, err := btClient.GetBluetoothBootPref(ctx, &network.GetBluetoothBootPrefRequest{Credentials: credKey}); err != nil {
+			return errors.Wrap(err, "could not get Bluetooth status")
+		} else if !response.Persistent {
+			return testing.PollBreak(errors.Wrap(err, "Bluetooth is set be off off on boot, should be up on boot"))
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to wait for BT boot pref: ", err)
+	}
+	s.Log("Getting BT powered status")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if response, err := btClient.GetBluetoothPoweredFast(ctx, &empty.Empty{}); err != nil {
 			return errors.Wrap(err, "could not get Bluetooth status")
 		} else if !response.Powered {
-			return errors.New("Bluetooth is off, expected to be on")
+			return errors.New("Bluetooth is off, expected to be on after boot")
 		}
 		return nil
 	}, &testing.PollOptions{
@@ -154,6 +190,7 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	}); err != nil {
 		s.Fatal("Failed to wait for BT to be powered: ", err)
 	}
+
 	if _, err := btClient.ValidateBluetoothFunctional(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Could not get validate Bluetooth status: ", err)
 	}
