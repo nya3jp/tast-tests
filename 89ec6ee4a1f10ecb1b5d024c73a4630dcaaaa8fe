@@ -16,6 +16,52 @@
       "message": "LGTM",
       "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a642473f_93f4d7f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T15:13:44Z",
+      "side": 1,
+      "message": "Should that be, \"Failed to read lsb release: \"?",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 39
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f324249_1a79d9d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-19T15:13:44Z",
+      "side": 1,
+      "message": "\"Failed to write lsb release\"?",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
