@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a46b4d0_15353cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:39:24Z",
+      "side": 1,
+      "message": "The API this is using should be a good one for the purpose of Tast, if I spot it correctly: chrome.inputMethodPrivate.getInputMethods [1].\n\nPlease note though, there\u0027s a known issue (that I\u0027m gonna fix soon) whereby most of our stuff use this API (hence consistent ordering) but the listing in CrOS settings app (chrome://os-settings) seems to use this API (so may get a different order in some scenarios, not sure which scenarios exactly at this point, to be confirmed).\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ime/ime.go;l\u003d189;drc\u003d8aa23bf002b1f5296bdce58cdd02c36fde4830a2",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a93dc7_8a0e2efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:39:24Z",
+      "side": 1,
+      "message": "nit: redundant comment? partially repeating the function\u0027s name. Maybe add \"in order\" to function name for clarify instead?",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2142b360_ad829c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:39:24Z",
+      "side": 1,
+      "message": "nit: (here and everywhere) \"last-used\" or \"last-active\" for less ambiguity",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292842e8_3bf4be12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:39:24Z",
+      "side": 1,
+      "message": "nit: redundant comment? repeating the function\u0027s name.",
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11a8408_86273a2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:39:24Z",
+      "side": 1,
+      "message": "nit: Mix two kinds of switching \"randomly\", instead of two groups",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 28
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abf7550_d195c016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-19T10:39:24Z",
+      "side": 1,
+      "message": "Why some CapLocks stuff here?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
