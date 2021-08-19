@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a635526_6ecd47f0",
+        "filename": "src/chromiumos/tast/local/camera/cca/remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-19T13:58:45Z",
+      "side": 1,
+      "message": "I assume it\u0027s because people may reassign cleanupCtx later and this leads to a circumstance where the identifier is referring to multiple things in different parts of the body.\n\nIf you\u0027ve gotten such advice before, then this is fine to keep like this. But I would suggest renaming the \"ctx\" parameter then so readers don\u0027t accidentally think we are using \"ctx\" rather than \"cleanupCtx\" there.",
+      "parentUuid": "4e2f9651_1d551564",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "b1edadf1e1c1416ac1de2239b8744cb953dfaedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "533f234e_e2ef0285",
         "filename": "src/chromiumos/tast/local/camera/cca/remote.go",
         "patchSetId": 2
