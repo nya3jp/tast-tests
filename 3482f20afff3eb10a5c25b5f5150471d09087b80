@@ -16,6 +16,23 @@
       "message": "[[1ducdung9295@gmail.com]]",
       "revId": "3482f20afff3eb10a5c25b5f5150471d09087b80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "855d5b5f_cf93e0ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516147
+      },
+      "writtenOn": "2021-08-19T09:04:42Z",
+      "side": 1,
+      "message": "[[1Đức_Trân]]\n[[1ducdung9295@gmail.com]]",
+      "revId": "3482f20afff3eb10a5c25b5f5150471d09087b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
