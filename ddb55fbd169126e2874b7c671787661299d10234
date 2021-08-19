@@ -347,6 +347,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2de80a23_a2487f5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-19T09:49:26Z",
+      "side": 1,
+      "message": "When it comes to passing testing state it may create confusion - since that object is passed one could expect that function uses various data/calls from it. I know that passing state and then calling s.Fatal() is very convenient - I\u0027ve done it myself that way when I started writing tests in Tast.\n\nCurrent calls\u0027 signatures covey clearly what they do and what they need.\n\n\n\u003e\u003e You all agree on this point so I\u0027ll rewrite it now. I had to move cleanup out of its own function because I want to call s.Error for each error. I\u0027d say this is another indicator that stricly following this rule here is too rigid. The last thing a style guide should do is prohibit clean code that separates different concerns into different functions.\n\nI faced the same situation Miriam. I always try to arrange tests into Arrange/Act/Asserts blocks with a high level functions describing the execution flow - so, the person looking at the functions that are called knows what a test does. It also makes test following single layer of abstraction principle.\nThough the convention in Tast (or golang) does not make it easy to follow clean code principles.\nAt the same time I heard that tests in Autotest were difficult to maintain due to too much abstraction in them.",
+      "parentUuid": "b538ae27_73ce4129",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fef521a5_64305e29",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 1
