@@ -197,6 +197,30 @@
       },
       "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db4031e_bde9f552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-19T15:27:53Z",
+      "side": 1,
+      "message": "I am not sure that all of the possible keys are parsed, so recreating the whole file content might not be possible in every case.",
+      "parentUuid": "780dd9e2_3dd5b187",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
