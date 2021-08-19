@@ -24,6 +24,14 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testParam struct {
+	// If set to true, whether or not to override touches with major/minor as set
+	touchRadiusOverride bool
+	// the major/minor values, only used if touchRadiusOverride is set to true.
+	touchMajorValue uint32
+	touchMinorValue uint32
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: TabletOperations,
@@ -44,19 +52,32 @@ func init() {
 			// Scarlet devices are failing temporarily, possibly because of the display
 			// rotation failures. "gru" is the platform name for scarlet devices. See b/189704582.
 			hwdep.SkipOnPlatform("gru"),
-			// Exclude kohaku because "EnableNeuralPalmDetectionFilter" is enabled
-			// there and rejects touches for swiping right. See b/196859354.
-			hwdep.SkipOnModel("kohaku"),
 		),
 		Params: []testing.Param{
 			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
+				ExtraHardwareDeps: hwdep.D(
+					hwdep.SkipOnModel(perfutil.UnstableModels...),
+					// Exclude kohaku because "EnableNeuralPalmDetectionFilter" is enabled
+					// there and rejects touches for swiping right. See b/196859354.
+					hwdep.SkipOnModel("kohaku")),
+				Val: testParam{},
 			},
 			// TODO(crbug.com/1168774): remove "unstable" once we see stability on all platforms.
 			{
 				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
+				Val:               testParam{},
+			},
+			// Run kohaku with specific size touch. See b/196859354.
+			{
+				Name:              "kohaku",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
+				ExtraAttr:         []string{"informational"},
+				Val: testParam{
+					touchRadiusOverride: true,
+					touchMajorValue:     25,
+					touchMinorValue:     24},
 			},
 		},
 	})
@@ -313,6 +334,13 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 
 		// Swipe on the splitview divider to exit splitview.
+		paramVal := s.Param().(testParam)
+		if paramVal.touchRadiusOverride {
+			if err := stw.SetSize(ctx, paramVal.touchMajorValue, paramVal.touchMinorValue); err != nil {
+				return errors.Wrap(err, "failed to set size for device")
+			}
+		}
+
 		if err := stw.Swipe(ctx, centerX, centerY, rightX, centerY, 750*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to swipe to right")
 		}
