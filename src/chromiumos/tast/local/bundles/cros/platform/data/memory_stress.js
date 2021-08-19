@@ -32,9 +32,9 @@ function main() {
   const startTime = new Date();
   // Assigns the content to document to avoid optimization of unused data.
   document.out = alloc(allocMb, randomRatio);
-  const ellapse = (new Date() - startTime) / 1000;
+  const ellapsed = (new Date() - startTime) / 1000;
   // Shows the loading time for manual test.
-  const content = `Allocating ${allocMb} MB takes ${ellapse} seconds`;
+  const content = `Allocating ${allocMb} MB takes ${ellapsed} seconds`;
   document.getElementById('display').textContent = content;
 }
 
