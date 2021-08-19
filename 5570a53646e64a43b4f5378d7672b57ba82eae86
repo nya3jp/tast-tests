@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a424d1f_62f2f8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-19T22:54:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19fbe756_2a1cb390",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a12276dd_67447bc4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-11T21:41:27Z",
       "side": 1,
       "message": "is there a better name for this? looks very similar to dailyLimit.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb98752e_356c13cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-19T22:54:07Z",
+      "side": 1,
+      "message": "Done. Typo there.",
+      "parentUuid": "a12276dd_67447bc4",
       "range": {
         "startLine": 59,
         "startChar": 1,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45269a68_2cfc2f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-19T22:54:07Z",
+      "side": 1,
+      "message": "We could bypass this by setting all weekday fields[1] for same 1 min limit.\nWDYT @Toby?\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/defs.go;l\u003d9082;drc\u003dabc5123516b1e6df8673dd78e606e1fc526691ad",
+      "parentUuid": "dc139de4_98518283",
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dad5e346_8ccdc93f",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2021-08-11T21:41:27Z",
       "side": 1,
       "message": "I\u0027d recommend WaitUntilExists here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d387\n\nlockscreen.WaitState isn\u0027t directly tied to the UI state, so WaitUntilExists will likely be more stable.",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92de2454_081388d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-19T22:54:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad5e346_8ccdc93f",
       "range": {
         "startLine": 98,
         "startChar": 14,
@@ -100,6 +190,30 @@
       "writtenOn": "2021-08-11T21:41:27Z",
       "side": 1,
       "message": "EnterPassword already adds \"\\n\" so no need to do it here\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go;l\u003d124",
+      "range": {
+        "startLine": 115,
+        "startChar": 41,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f00fbc_02ee9413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-08-19T22:54:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "426489d3_30c7d95f",
       "range": {
         "startLine": 115,
         "startChar": 41,
