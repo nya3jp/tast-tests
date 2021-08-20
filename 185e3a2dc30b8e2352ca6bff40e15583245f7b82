@@ -22,6 +22,30 @@
       },
       "revId": "185e3a2dc30b8e2352ca6bff40e15583245f7b82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dda8418_2dcceacd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T10:31:24Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. What do you want to call 4 times?",
+      "parentUuid": "2c26a111_fcf91082",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "185e3a2dc30b8e2352ca6bff40e15583245f7b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

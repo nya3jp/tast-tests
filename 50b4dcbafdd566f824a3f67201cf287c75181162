@@ -16,6 +16,52 @@
       "message": "Alright, back to code review. :) \nWhat do you think about the current version of this CL?",
       "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4deccc9_b246ad65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T10:31:24Z",
+      "side": 1,
+      "message": "nit: in most tests, it is called cleanupCtx.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa7bb74_b6e5f9d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T10:31:24Z",
+      "side": 1,
+      "message": "nit: err should be enough.",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
