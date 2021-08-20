@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"path"
 	"strings"
 
 	"github.com/google/go-cmp/cmp"
@@ -42,7 +43,7 @@ func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get expected system info v2: ", err)
 	}
-	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "VpdInfo", "DmiInfo")); d != "" {
+	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "DmiInfo")); d != "" {
 		s.Fatal("SystemInfoV2 validation failed (-expected + got): ", d)
 	}
 }
@@ -151,10 +152,59 @@ func expectedOsInfo(ctx context.Context) (osInfo, error) {
 	return r, nil
 }
 
+func expectedSkuNumber(ctx context.Context, fpath string) (*string, error) {
+	const (
+		cfgSkuNumber = "/cros-healthd/cached-vpd/has-sku-number"
+	)
+	c, err := utils.IsCrosConfigTrue(ctx, cfgSkuNumber)
+	if err != nil {
+		return nil, err
+	}
+	if !c {
+		return nil, nil
+	}
+	e, err := utils.ReadStringFile(fpath)
+	if err != nil {
+		return nil, errors.Wrap(err, "this board must have sku_number, but failed to get")
+	}
+	return &e, nil
+}
+
+func expectedVpdInfo(ctx context.Context) (*vpdInfo, error) {
+	const (
+		ro = "/sys/firmware/vpd/ro/"
+		rw = "/sys/firmware/vpd/rw/"
+	)
+	var r vpdInfo
+	var err error
+	if r.ActivateDate, err = utils.ReadOptionalStringFile(path.Join(rw, "ActivateDate")); err != nil {
+		return nil, err
+	}
+	if r.MfgDate, err = utils.ReadOptionalStringFile(path.Join(ro, "mfg_date")); err != nil {
+		return nil, err
+	}
+	if r.ModelName, err = utils.ReadOptionalStringFile(path.Join(ro, "model_name")); err != nil {
+		return nil, err
+	}
+	if r.Region, err = utils.ReadOptionalStringFile(path.Join(ro, "region")); err != nil {
+		return nil, err
+	}
+	if r.SerialNumber, err = utils.ReadOptionalStringFile(path.Join(ro, "serial_number")); err != nil {
+		return nil, err
+	}
+	if r.SkuNumber, err = expectedSkuNumber(ctx, path.Join(ro, "sku_number")); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
 func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
 	var r systemInfo
 	var err error
 	if r.OsInfo, err = expectedOsInfo(ctx); err != nil {
+		return r, err
+	}
+	if r.VpdInfo, err = expectedVpdInfo(ctx); err != nil {
 		return r, err
 	}
 	return r, nil
