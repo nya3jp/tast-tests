@@ -56,6 +56,30 @@
       },
       "revId": "2ba450bf755d4e008c48c69215a40abc94c07c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8463e94_46e4ff20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:39:38Z",
+      "side": 1,
+      "message": "Yes, and I realised that it was quite fragile for any change. Or if a key is not there for some reason.",
+      "parentUuid": "878d75fd_155018b9",
+      "range": {
+        "startLine": 72,
+        "startChar": 25,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "2ba450bf755d4e008c48c69215a40abc94c07c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
