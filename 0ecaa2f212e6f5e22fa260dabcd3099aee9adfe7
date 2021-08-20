@@ -16,6 +16,24 @@
       "message": "Let me find out why the previous one didn\u0027t caught by glxgears.",
       "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2acfe737_5ec253ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-08-20T18:15:02Z",
+      "side": 1,
+      "message": "I think glxgears isn\u0027t part of tast.critical-crostini\nAlso if it was some glxgears is marked stable, some not, so it could slip.\nAlso borealis was removed from CQ.\nSo glxgears never ran.\n\nAlso it doesn\u0027t run on ARM say on scarlet for tast.critical-chrome\n2021-08-17T01:12:11.642855Z Started test graphics.TraceReplay.glxgears_stable\n2021-08-17T01:12:11.642877Z Skipped test graphics.TraceReplay.glxgears_stable due to missing dependencies: missing SoftwareDeps: crosvm_gpu, ModelId did not match\nhttps://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2021-08-17/8869165b-35b1-4b8b-b1c3-9ab8332e8d94/\n\nSo it fell through the many holes.",
+      "parentUuid": "dba71fdd_3ba16d8a",
+      "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
