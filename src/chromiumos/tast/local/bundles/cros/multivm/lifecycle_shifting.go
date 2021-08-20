@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
+	"chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/testing"
 )
@@ -75,7 +76,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get /proc/meminfo: ", err)
 	}
-	basemem, err := multivm.NewBaseMetrics()
+	basemem, err := metrics.NewBaseMetrics()
 	if err != nil {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
@@ -193,7 +194,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		s.Fatal("RunTest failed: ", err)
 	}
 
-	if err := multivm.MemoryMetrics(ctx, basemem, pre, p, s.OutDir(), ""); err != nil {
+	if err := metrics.MemoryMetrics(ctx, basemem, preARC, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to collect memory metrics")
 	}
 	if err := p.Save(s.OutDir()); err != nil {
