@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3535a7cf_c634d218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-20T03:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a2c46c7_3e46c901",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 13
+      },
+      "revId": "5ad1dd0f7ce769c738fbe0bc6d2d71fa084eef02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135c067d_4ef8cbb2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-19T09:55:04Z",
       "side": 1,
       "message": "nit: How about inline the function.\n\nfunc(ctx context.Context) error {\n    return ash.CloseNotifications(ctx, tconn)\n}",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "5ad1dd0f7ce769c738fbe0bc6d2d71fa084eef02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88fb3144_5acb8403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-20T03:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "135c067d_4ef8cbb2",
       "range": {
         "startLine": 128,
         "startChar": 3,
