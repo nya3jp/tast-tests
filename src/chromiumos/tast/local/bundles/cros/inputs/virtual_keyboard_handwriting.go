@@ -41,7 +41,7 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools", "group:input-tools-upstream"},
 		Data:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEs),
 		Pre:          pre.VKEnabledReset,
 		Timeout:      time.Duration(len(hwTestIMEs)) * time.Duration(len(hwTestMessages)) * time.Minute,
