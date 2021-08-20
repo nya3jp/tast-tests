@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0087871_73b7145d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-20T00:47:35Z",
+      "side": 1,
+      "message": "Is 9100 a well known port, or is it just an arbitrary port that the fake printer uses? If it\u0027s just an arbitrary port, it might be worth pulling out into a constant in the fake package.",
+      "range": {
+        "startLine": 111,
+        "startChar": 43,
+        "endLine": 111,
+        "endChar": 47
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcaac656_bac01ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-20T00:47:35Z",
+      "side": 1,
+      "message": "Where does this constant come from? Is it guaranteed to be 10 as part of the test/API?",
+      "range": {
+        "startLine": 130,
+        "startChar": 38,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fee5194_a9a4ce9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-20T00:47:35Z",
+      "side": 1,
+      "message": "This is a very specific constant value. Are there guarantees it won\u0027t change and break this test?",
+      "range": {
+        "startLine": 191,
+        "startChar": 20,
+        "endLine": 191,
+        "endChar": 26
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ec55e1_64ede557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-20T00:47:35Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the printer APIs, but is fake.Close() what triggers the print job to complete? Otherwise the cancel test seems racy.",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363bf3a3_0646b59a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-20T00:47:35Z",
+      "side": 1,
+      "message": "Is calling close twice safe (here + defer)?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 14
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
