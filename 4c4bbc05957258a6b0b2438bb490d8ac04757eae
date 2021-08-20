@@ -242,6 +242,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9201c99_f67b0fde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:20:50Z",
+      "side": 1,
+      "message": "Thanks for my robust implementation 😎 It does not take me any time to mix them.",
+      "parentUuid": "207789d9_5312c39b",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 28
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abf7550_d195c016",
@@ -303,6 +327,30 @@
       "side": 1,
       "message": "Please separate. It\u0027s weird to have \"CapsLock\" tests mingling in the test suite for \"change input method shortcuts\"...",
       "parentUuid": "98a85e49_ea02c399",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef902a97_8f2dfb5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:20:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f22a88e_d2cbb955",
       "range": {
         "startLine": 153,
         "startChar": 0,
