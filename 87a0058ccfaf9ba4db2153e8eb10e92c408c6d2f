@@ -16,6 +16,23 @@
       "message": "clean cherry-pick",
       "revId": "87a0058ccfaf9ba4db2153e8eb10e92c408c6d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6960ee6a_42c2b803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-08-20T22:55:05Z",
+      "side": 1,
+      "message": "ptal (I think I need separate reviewer even for clean cherry-pick to release branch?)",
+      "revId": "87a0058ccfaf9ba4db2153e8eb10e92c408c6d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
