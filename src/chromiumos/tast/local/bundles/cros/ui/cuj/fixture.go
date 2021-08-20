@@ -26,42 +26,49 @@ const resetTimeout = 30 * time.Second
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "loggedInToCUJUser",
-		Desc:            "The main fixture used for UI CUJ tests",
-		Contacts:        []string{"xiyuan@chromium.org"},
+		Name: "loggedInToCUJUser",
+		Desc: "The main fixture used for UI CUJ tests",
+		Contacts: []string{
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
 		Impl:            &loggedInToCUJUserFixture{},
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"ui.cujAccountPool",
 			"cuj_username",
 			"cuj_password",
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:            "loggedInAndKeepState",
-		Desc:            "The CUJ test fixture which keeps login state",
-		Contacts:        []string{"xiyuan@chromium.org"},
+		Name: "loggedInAndKeepState",
+		Desc: "The CUJ test fixture which keeps login state",
+		Contacts: []string{
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
 		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"ui.cujAccountPool",
 			"cuj_username",
 			"cuj_password",
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:     "loggedInToCUJUserLacros",
-		Desc:     "Fixture used for lacros variation of UI CUJ tests",
-		Contacts: []string{"xiyuan@chromium.org"},
+		Name: "loggedInToCUJUserLacros",
+		Desc: "Fixture used for lacros variation of UI CUJ tests",
+		Contacts: []string{
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
 		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
-				chrome.GAIALogin(getCreds(s)),
+				getLoginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 				chrome.EnableFeatures("LacrosSupport"),
@@ -72,17 +79,19 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Data:            []string{launcher.DataArtifact},
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"ui.cujAccountPool",
 			"cuj_username",
 			"cuj_password",
 			launcher.LacrosDeployedBinary,
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:            "loggedInToCUJUserLacrosWithARC",
-		Desc:            "Fixture used for lacros variation of UI CUJ tests that also need ARC",
-		Contacts:        []string{"xiyuan@chromium.org"},
+		Name: "loggedInToCUJUserLacrosWithARC",
+		Desc: "Fixture used for lacros variation of UI CUJ tests that also need ARC",
+		Contacts: []string{
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
 		Impl:            &loggedInToCUJUserFixture{},
 		Parent:          "loggedInToCUJUserLacros",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
@@ -91,7 +100,7 @@ func init() {
 	})
 }
 
-func getCreds(s *testing.FixtState) chrome.Creds {
+func getLoginOption(s *testing.FixtState) chrome.Option {
 	var username string
 	var password string
 
@@ -100,12 +109,10 @@ func getCreds(s *testing.FixtState) chrome.Creds {
 	if userOk && passOk {
 		username = cujUser
 		password = cujPass
-	} else {
-		username = s.RequiredVar("ui.cuj_username")
-		password = s.RequiredVar("ui.cuj_password")
+		return chrome.GAIALogin(chrome.Creds{User: username, Pass: password})
 	}
 
-	return chrome.Creds{User: username, Pass: password}
+	return chrome.GAIALoginPool(s.RequiredVar("ui.cujAccountPool"))
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
@@ -156,7 +163,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 			defer cancel()
 
 			opts := []chrome.Option{
-				chrome.GAIALogin(getCreds(s)),
+				getLoginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}
