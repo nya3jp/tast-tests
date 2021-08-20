@@ -7,10 +7,10 @@ package health
 import (
 	"context"
 	"path"
+	"strconv"
 	"strings"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/utils"
@@ -43,7 +43,7 @@ func ProbeSystemInfoV2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get expected system info v2: ", err)
 	}
-	if d := cmp.Diff(e, g, cmpopts.IgnoreFields(systemInfo{}, "DmiInfo")); d != "" {
+	if d := cmp.Diff(e, g); d != "" {
 		s.Fatal("SystemInfoV2 validation failed (-expected + got): ", d)
 	}
 }
@@ -198,6 +198,61 @@ func expectedVpdInfo(ctx context.Context) (*vpdInfo, error) {
 	return &r, nil
 }
 
+func expectedChassisType(fpath string) (*jsontypes.Uint64, error) {
+	v, err := utils.ReadOptionalStringFile(fpath)
+	if v == nil {
+		return nil, err
+	}
+	i, err := strconv.Atoi(*v)
+	if err != nil {
+		return nil, err
+	}
+	r := jsontypes.Uint64(i)
+	return &r, nil
+}
+
+func expectedDmiInfo(ctx context.Context) (*dmiInfo, error) {
+	const (
+		dmi = "/sys/class/dmi/id"
+	)
+	var r dmiInfo
+	var err error
+	if r.BiosVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "bios_vendor")); err != nil {
+		return nil, err
+	}
+	if r.BiosVersion, err = utils.ReadOptionalStringFile(path.Join(dmi, "bios_version")); err != nil {
+		return nil, err
+	}
+	if r.BoardName, err = utils.ReadOptionalStringFile(path.Join(dmi, "board_name")); err != nil {
+		return nil, err
+	}
+	if r.BoardVender, err = utils.ReadOptionalStringFile(path.Join(dmi, "board_vendor")); err != nil {
+		return nil, err
+	}
+	if r.BoardVersion, err = utils.ReadOptionalStringFile(path.Join(dmi, "board_version")); err != nil {
+		return nil, err
+	}
+	if r.ChassisVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "chassis_vendor")); err != nil {
+		return nil, err
+	}
+	if r.ChassisType, err = expectedChassisType(path.Join(dmi, "chassis_type")); err != nil {
+		return nil, err
+	}
+	if r.ProductFamily, err = utils.ReadOptionalStringFile(path.Join(dmi, "product_family")); err != nil {
+		return nil, err
+	}
+	if r.ProductName, err = utils.ReadOptionalStringFile(path.Join(dmi, "product_name")); err != nil {
+		return nil, err
+	}
+	if r.ProductVersion, err = utils.ReadOptionalStringFile(path.Join(dmi, "product_version")); err != nil {
+		return nil, err
+	}
+	if r.SysVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "sys_vendor")); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
 func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
 	var r systemInfo
 	var err error
@@ -205,6 +260,9 @@ func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
 		return r, err
 	}
 	if r.VpdInfo, err = expectedVpdInfo(ctx); err != nil {
+		return r, err
+	}
+	if r.DmiInfo, err = expectedDmiInfo(ctx); err != nil {
 		return r, err
 	}
 	return r, nil
