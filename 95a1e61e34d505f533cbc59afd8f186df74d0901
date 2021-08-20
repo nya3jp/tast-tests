@@ -69,6 +69,24 @@
       "parentUuid": "d19f6290_23e5ed70",
       "revId": "95a1e61e34d505f533cbc59afd8f186df74d0901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a982b6ce_4a045a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-20T03:51:04Z",
+      "side": 1,
+      "message": "Add a TODO? (I\u0027ll comment in the split CL).",
+      "parentUuid": "73471429_e7ec8cfa",
+      "revId": "95a1e61e34d505f533cbc59afd8f186df74d0901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

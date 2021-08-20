@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c257b3_4a82790d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-20T03:51:04Z",
+      "side": 1,
+      "message": "remove...",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 2
+      },
+      "revId": "ed8c91a5733eefd84e61734a8185b5098e305941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
