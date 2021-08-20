@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4e15d9_ac009494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecdfbdb2_825cbb15",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c6c6da_60a94a08",
@@ -100,6 +118,30 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "style: \"output\" (starts from lower case letter).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d2d5c9_e4aee34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c6c6da_60a94a08",
       "range": {
         "startLine": 37,
         "startChar": 26,
@@ -133,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ab8ba5_530a5bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51121483_0b57944e",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bd8e662_dc9df897",
@@ -146,6 +212,30 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "nit: maybe \"loginRequested\" ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77dd909_526b10dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd8e662_dc9df897",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -179,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "061bc036_266e2e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49a1f2b_288bcc60",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "787481fb_6969ddaf",
@@ -192,6 +306,24 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "Go often avoid getter prefixes like Get, Is, Has etc.\nMaybe just \"PowerMenuPresent\"",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8237af85_5ec4b29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Changed to PowerMenuPresent. The associated files, check_power_menu_service.proto and check_power_menu_service.pb.go, have been modified accordingly.",
+      "parentUuid": "787481fb_6969ddaf",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b9bf1b_b17d2aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_power_menu_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f79a90b_2f4c9af5",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb545d7d_0e82d617",
@@ -226,6 +376,24 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "ditto for document",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179b96ac_302e9e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screenlock_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb545d7d_0e82d617",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -249,6 +417,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33ff4c53_7fa66fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screenlock_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "As documented in option.go, using TryReuseSession() would also check if the current session is reusable, and if not, it\u0027d start a new Chrome session. My original thought was that checking p.cr here would be in duplicate partially with this logic. But, please correct me if I\u0027ve incorrectly interpreted anything.",
+      "parentUuid": "f3f30222_e226648b",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a021c64_fdcb4b45",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 5
@@ -266,6 +452,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fcebf0d_5a3eefb8",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "My thought was to verify against the stderr message. Namely, if the screen was turned off successfully, the returned stderr from screen capture would be \"CRTC not found. Is the screen on?\". This match is checked inside the turnDisplayOffAndOn function in ec_tablet_mode.go.\n\nFor this reason, I created CaptureWithStderr for implementation of SeparatedOutput() to extract stderr. But, I\u0027d welcome any suggestions if this could be handled better in alternative ways.",
+      "parentUuid": "2a021c64_fdcb4b45",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56afde8f_aeea3ecf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 5
@@ -277,6 +481,24 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "nit/style: unneeded empty line. COuld you remove?",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a315bc10_a5549402",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56afde8f_aeea3ecf",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -300,6 +522,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36a04492_44b2bc63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "checkDisplay would check whether the display is on or off by attempting to capture a screenshot. If the display is off, the returned stderr from screen capture would be \"CRTC not found. Is the screen on?\". My thought was to verify against this stderr. Also, since the screenshot isn\u0027t really needed, it\u0027d always get deleted immediately.",
+      "parentUuid": "f6db9ea1_eb8dfad4",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d791ff01_53956fba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 5
@@ -317,6 +557,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a63da2e5_292bfbd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "To elaborate, checkPowerMenu will check whether the power menu is present after holding the power button for about one second. Also, IsPowerMenuPresent here has been changed to PowerMenuPresent.",
+      "parentUuid": "d791ff01_53956fba",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a92cc65b_d56527d9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 5
@@ -328,6 +586,30 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "power",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 128,
+        "endChar": 26
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1bc754c_00e0a6f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a92cc65b_d56527d9",
       "range": {
         "startLine": 128,
         "startChar": 22,
@@ -361,6 +643,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5e4b3a_5a16f424",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2580104_ed11e956",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e6baa2_35c73663",
@@ -380,6 +686,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6037f016_96a8dc19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Removed testing.Sleep. Instead, KeyPressWithDuration and checkDisplay have been placed into testing.Poll, such that there\u0027d be some buffer between two back-to-back key presses, and their respective verifications.",
+      "parentUuid": "a0e6baa2_35c73663",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03164ac7_b21c0555",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 5
@@ -391,6 +715,24 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "style: else is not needed could you remove?",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "660e2315_b864c7f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03164ac7_b21c0555",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -414,6 +756,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b59ffc8_5c009313",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Similar to the above, I\u0027ve replaced sleep with the testing.Poll function, which would allow some buffer for KeypressWithDuration to propagate to DUT, and for DUT\u0027s behavior to be verified upon completion of the key press action.",
+      "parentUuid": "203edeb0_12ce2d8c",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4046440c_df62b95d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 5
@@ -425,6 +785,24 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "same",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ee7eb2_4df6adcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4046440c_df62b95d",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -442,6 +820,30 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "nit: NewChrome",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219711ff_7e5a31bf",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94bfb3b5_6b499e73",
       "range": {
         "startLine": 19,
         "startChar": 46,
@@ -471,6 +873,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbeeb2eb_9b9ec324",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "PowerMenuPresent is used in verifying that in tablet mode, after holding the power button for about one second, the power menu would be presented on the screen. \n\nShould I add more details to elaborate on the documented message here?",
+      "parentUuid": "3284676b_c4f14b16",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8d57215_5f95407d",
         "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
         "patchSetId": 5
@@ -482,6 +902,24 @@
       "writtenOn": "2021-08-16T06:52:01Z",
       "side": 1,
       "message": "Could you describe the conditions that this can be used?",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f977558_4d54bd03",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Part of this test is to verify that when the session is locked, holding the power button at various lengths would result in different behaviors. Implementing Lock here would be equivalent to pressing \"Search+L\" on DUT.\n\nShould I add more details to the documented message for clarification?",
+      "parentUuid": "d8d57215_5f95407d",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

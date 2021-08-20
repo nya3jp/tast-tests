@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fc2db8_a49be367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-20T08:51:14Z",
+      "side": 1,
+      "message": "Hello Hidehiko,\n\nThanks for reviewing this CL, and providing feedback. I\u0027ve addressed each with relevant changes and comments.",
+      "revId": "ab48223f64fa48e4bf7d2a99ee874db3cdadfbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
