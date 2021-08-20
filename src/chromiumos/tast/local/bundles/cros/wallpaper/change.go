@@ -6,13 +6,10 @@ package wallpaper
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/wallpaper"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +22,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		VarDeps:      []string{"unicorn.syncWallpaperCategory", "unicorn.syncWallpaperName"},
 		Fixture:      "chromeLoggedIn",
 	})
 }
@@ -37,19 +35,13 @@ func Change(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn)
-	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	if err := uiauto.Combine("change the wallpaper",
-		ui.RightClick(nodewith.ClassName("WallpaperView")),
-		// This button takes a bit before it is clickable.
-		// Keep clicking it until the click is received and the menu closes.
-		ui.WithInterval(500*time.Millisecond).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu)),
-		ui.LeftClick(nodewith.Name("Solid colors").Role(role.StaticText)),
-		ui.LeftClick(nodewith.Name("Deep Purple").Role(role.ListItem)),
-		// Ensure that "Deep Purple" text is displayed.
-		// The UI displays the name of the currently set wallpaper.
-		ui.WaitUntilExists(nodewith.Name("Deep Purple").Role(role.StaticText)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to change the wallpaper: ", err)
+	if err := wallpaper.OpenWallpaper(ctx, tconn); err != nil {
+		s.Fatal("Failed to open the wallpaper picker: ", err)
+	}
+
+	syncWallpaperCategory := s.RequiredVar("unicorn.syncWallpaperCategory")
+	syncWallpaperName := s.RequiredVar("unicorn.syncWallpaperName")
+	if err := wallpaper.ChangeWallpaper(ctx, tconn, syncWallpaperCategory, syncWallpaperName); err != nil {
+		s.Fatalf("Failed to change the wallpaper to %s %s: %v", syncWallpaperCategory, syncWallpaperName, err)
 	}
 }
