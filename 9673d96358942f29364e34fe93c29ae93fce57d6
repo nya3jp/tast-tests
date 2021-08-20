@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2420c4_329b003a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/immersive_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-20T16:29:46Z",
+      "side": 1,
+      "message": "I suspect this could be flaky as key event and window state change might not happen synchronously. We probably should use ash.WaitForCondition like your WindowArrangementCUJ:\n\n  https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go;l\u003d107",
+      "revId": "9673d96358942f29364e34fe93c29ae93fce57d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
