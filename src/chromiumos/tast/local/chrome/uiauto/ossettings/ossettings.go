@@ -9,6 +9,7 @@ package ossettings
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -20,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -283,6 +285,37 @@ func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string,
 			return nil
 		}, &testing.PollOptions{Timeout: 3 * time.Second})
 	}
+}
+
+// SearchWithKeyword searches the demand keyword by input text in the `SearchBox`.
+func (s *OSSettings) SearchWithKeyword(ctx context.Context, kb *input.KeyboardEventWriter,
+	keyword string) (results []uiauto.NodeInfo, mismatched bool, err error) {
+
+	if err := uiauto.Combine(fmt.Sprintf("query with keywords %q", keyword),
+		kb.TypeAction(keyword),
+		s.WaitUntilExists(nodewith.HasClass("ContentsWebView").Focused()),
+		s.WaitUntilExists(searchResultFinder.First()), // Wait for search results be stabled.
+	)(ctx); err != nil {
+		return nil, false, err
+	}
+
+	results, err = s.NodesInfo(ctx, searchResultFinder)
+	if len(results) <= 0 {
+		return nil, false, errors.New("no search result found")
+	} else if regexp.MustCompile(searchMismatched).MatchString(results[0].Name) {
+		mismatched = true
+	}
+	return results, mismatched, err
+}
+
+// ClearSearch clears text in `SearchBox` and waits for the search results to be gone.
+func (s *OSSettings) ClearSearch() uiauto.Action {
+	clearSearchBtn := nodewith.NameContaining("Clear search").Role(role.Button)
+	return uiauto.Combine("clear text in search box",
+		s.ui.IfSuccessThen(s.ui.WaitUntilExists(clearSearchBtn), s.LeftClick(clearSearchBtn)),
+		s.WaitUntilGone(clearSearchBtn),
+		s.WaitUntilGone(searchResultFinder),
+	)
 }
 
 // UninstallApp uninstalls an app from the Settings app.
