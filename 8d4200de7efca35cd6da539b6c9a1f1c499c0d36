@@ -39,6 +39,30 @@
       },
       "revId": "8d4200de7efca35cd6da539b6c9a1f1c499c0d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5fd33a_551a7925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-20T04:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc83cabe_084f6763",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 97
+      },
+      "revId": "8d4200de7efca35cd6da539b6c9a1f1c499c0d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
