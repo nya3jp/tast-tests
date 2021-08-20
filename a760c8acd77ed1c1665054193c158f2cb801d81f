@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3743ce0c_22488765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-20T02:57:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1bdf6fe_c82d97e9",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0460530d_ce91511e",

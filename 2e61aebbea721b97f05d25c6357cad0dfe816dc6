@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483ba7c6_d1cf50a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-20T02:57:09Z",
+      "side": 1,
+      "message": "nit: add a comment for the use of 50 ms, it helps to clarify the different choice of time intervals.",
+      "range": {
+        "startLine": 198,
+        "startChar": 67,
+        "endLine": 198,
+        "endChar": 69
+      },
+      "revId": "2e61aebbea721b97f05d25c6357cad0dfe816dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
