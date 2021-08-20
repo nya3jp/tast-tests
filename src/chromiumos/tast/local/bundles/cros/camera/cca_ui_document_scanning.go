@@ -102,7 +102,7 @@ func runTakeDocumentPhoto(ctx context.Context, cr *chrome.Chrome, tb *testutil.T
 		return errors.Wrap(err, "failed to open CCA")
 	}
 	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
+		if err := app.CloseAndMaybeSaveCameraFolder(ctx); err != nil {
 			if retErr == nil {
 				retErr = errors.Wrap(err, "failed to close app")
 			}

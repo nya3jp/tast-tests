@@ -389,8 +389,10 @@ func (a *App) ClosingItself(ctx context.Context) (bool, error) {
 	return a.appWindow.ClosingItself(ctx)
 }
 
-// checkJSError checks javascript error emitted by CCA error callback.
-func (a *App) checkJSError(ctx context.Context) error {
+// checkJSError checks javascript error emitted by CCA error callback. If
+// |saveCameraFolderWhenFail| is true, copies files in the camera folder to
+// output directory if there is any JS errors found.
+func (a *App) checkJSError(ctx context.Context, saveCameraFolderWhenFail bool) error {
 	if a.appWindow == nil {
 		// It might be closed already. Do nothing.
 		return nil
@@ -435,6 +437,9 @@ func (a *App) checkJSError(ctx context.Context) error {
 		return err
 	}
 	if len(jsErrors) > 0 {
+		if saveCameraFolderWhenFail {
+			a.SaveCameraFolder(ctx)
+		}
 		return &ErrJS{fmt.Sprintf("there are %d JS errors, first error: type=%v. name=%v",
 			len(jsErrors), jsErrors[0].ErrorType, jsErrors[0].ErrorName)}
 	}
@@ -442,7 +447,16 @@ func (a *App) checkJSError(ctx context.Context) error {
 }
 
 // Close closes the App and the associated connection.
-func (a *App) Close(ctx context.Context) (retErr error) {
+func (a *App) Close(ctx context.Context) error {
+	return a.close(ctx, false)
+}
+
+// CloseAndMaybeSaveCameraFolder closes the app and also saves the camera folder if there is any JS errors found
+func (a *App) CloseAndMaybeSaveCameraFolder(ctx context.Context) error {
+	return a.close(ctx, true)
+}
+
+func (a *App) close(ctx context.Context, saveCameraFolderWhenFail bool) (retErr error) {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
 		return nil
@@ -466,7 +480,7 @@ func (a *App) Close(ctx context.Context) (retErr error) {
 		if err := a.appWindow.WaitUntilClosed(ctx); err != nil {
 			reportOrLogError(errors.Wrap(err, "failed to wait for appWindow close"))
 		}
-		if err := a.checkJSError(ctx); err != nil {
+		if err := a.checkJSError(ctx, saveCameraFolderWhenFail); err != nil {
 			reportOrLogError(errors.Wrap(err, "There are JS errors when running CCA"))
 		}
 		if err := a.appWindow.Release(ctx); err != nil {
@@ -928,6 +942,43 @@ func (a *App) FilePathInSavedDir(ctx context.Context, name string) (string, erro
 		return "", err
 	}
 	return path, nil
+}
+
+// SaveCameraFolder saves the camera folder to the output directory to make debug easier.
+func (a *App) SaveCameraFolder(ctx context.Context) error {
+	cameraFolderPath, err := savedDir(ctx, a.cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to get camera folder path")
+	}
+	if _, err := os.Stat(cameraFolderPath); err != nil {
+		if os.IsNotExist(err) {
+			// Nothing to do.
+			return nil
+		}
+		return errors.Wrap(err, "failed to stat camera folder")
+	}
+
+	targetFolderPath := filepath.Join(a.outDir, fmt.Sprintf("cameraFolder"))
+	if err := os.MkdirAll(targetFolderPath, 0755); err != nil {
+		return errors.Wrap(err, "failed to make folder to save camera folder")
+	}
+
+	files, err := ioutil.ReadDir(cameraFolderPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read camera folder")
+	}
+	for _, file := range files {
+		srcFilePath := filepath.Join(cameraFolderPath, file.Name())
+		dstFilePath := filepath.Join(targetFolderPath, file.Name())
+		data, err := ioutil.ReadFile(srcFilePath)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read file: %v", srcFilePath)
+		}
+		if err := ioutil.WriteFile(dstFilePath, data, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write file: %v", dstFilePath)
+		}
+	}
+	return nil
 }
 
 // CheckFacing returns an error if the active camera facing is not expected.

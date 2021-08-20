@@ -102,7 +102,7 @@ func CCAUISmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
+		if err := app.CloseAndMaybeSaveCameraFolder(ctx); err != nil {
 			s.Error("Failed to close app: ", err)
 		}
 	}(ctx)
