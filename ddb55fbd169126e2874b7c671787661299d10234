@@ -369,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf89ee1_67277fea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-20T07:16:40Z",
+      "side": 1,
+      "message": "Thanks for the long comment! I think it\u0027s unfortunate the tast/go make it so hard to write clean code.",
+      "parentUuid": "2de80a23_a2487f5f",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "ddb55fbd169126e2874b7c671787661299d10234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fef521a5_64305e29",
