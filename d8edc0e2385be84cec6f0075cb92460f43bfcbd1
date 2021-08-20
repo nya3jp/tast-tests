@@ -33,6 +33,24 @@
       "message": "Thanks for also moving legacy_router.go from router to router/legacyrouter folder. However, what\u0027s the reason to extract some router code to common.go and moved to router/common? Can\u0027t the content of common.go stay in router/router.go (or another file in router/)?  Also, package name \"common\" should be avoided (see go/go-style/decisions#package-names).\n\n\n",
       "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0d20eb_f7c2ed9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:57:19Z",
+      "side": 1,
+      "message": "i have moved the package to sharedrouter after reading the style guidelines.\n\nThe reason why the content could not stay in router.go was due to an import cycle issue which is also what is making the testfixture refactor a bit more difficult.\n\nrouter.go (A) has all the interface composition definitions and some of those definitions depend on structures defined in legacy_router and ax_router (B). (B) does not know about the interface defintions, thus only (A) depends on (B) or A\u003c-B. legacy_router and ax_router have some shared code, this has been isolated to sharedrouter.go (previously common.go) (C). Thus B\u003c-C. This common code does not depend on anything thus we do not have a import loop. A\u003c-B\u003c-C.\n\nIf C was merged into A, then we have an import cycle with A\u003c-\u003eB",
+      "parentUuid": "adb74b31_f4e2f939",
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
