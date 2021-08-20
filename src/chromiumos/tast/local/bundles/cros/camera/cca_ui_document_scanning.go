@@ -66,6 +66,7 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
+	tb.EnableSaveCameraFolderWhenFail()
 	defer tb.TearDown(cleanupCtx)
 
 	subTestTimeout := 30 * time.Second

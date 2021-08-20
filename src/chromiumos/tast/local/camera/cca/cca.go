@@ -247,13 +247,14 @@ const (
 
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
-	conn        *chrome.Conn
-	cr          *chrome.Chrome
-	scriptPaths []string
-	outDir      string // Output directory to save the execution result
-	appLauncher testutil.AppLauncher
-	appWindow   *testutil.AppWindow
-	cameraType  testutil.UseCameraType
+	conn                     *chrome.Conn
+	cr                       *chrome.Chrome
+	scriptPaths              []string
+	outDir                   string // Output directory to save the execution result
+	appLauncher              testutil.AppLauncher
+	appWindow                *testutil.AppWindow
+	cameraType               testutil.UseCameraType
+	saveCameraFolderWhenFail bool
 }
 
 // ErrJS represents an error occurs when executing JavaScript.
@@ -335,7 +336,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType}
+	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType, tb.SaveCameraFolderWhenFail}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, ErrVideoNotActive)
@@ -435,6 +436,9 @@ func (a *App) checkJSError(ctx context.Context) error {
 		return err
 	}
 	if len(jsErrors) > 0 {
+		if a.saveCameraFolderWhenFail {
+			a.SaveCameraFolder(ctx)
+		}
 		return &ErrJS{fmt.Sprintf("there are %d JS errors, first error: type=%v. name=%v",
 			len(jsErrors), jsErrors[0].ErrorType, jsErrors[0].ErrorName)}
 	}
@@ -928,6 +932,49 @@ func (a *App) FilePathInSavedDir(ctx context.Context, name string) (string, erro
 		return "", err
 	}
 	return path, nil
+}
+
+// SaveCameraFolder saves the camera folder to the output directory to make debug easier.
+func (a *App) SaveCameraFolder(ctx context.Context) error {
+	cameraFolderPath, err := savedDir(ctx, a.cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to get camera folder path")
+	}
+	if _, err := os.Stat(cameraFolderPath); err != nil {
+		if os.IsNotExist(err) {
+			// Nothing to do.
+			return nil
+		}
+		return errors.Wrap(err, "failed to stat camera folder")
+	}
+
+	targetFolderPath := filepath.Join(a.outDir, fmt.Sprintf("cameraFolder"))
+	if _, err := os.Stat(targetFolderPath); err != nil {
+		if os.IsNotExist(err) {
+			if err := os.MkdirAll(targetFolderPath, 0755); err != nil {
+				return errors.Wrap(err, "failed to make folder to save camera folder")
+			}
+		} else {
+			return errors.Wrap(err, "failed to stat folder to save camera folder")
+		}
+	}
+
+	files, err := ioutil.ReadDir(cameraFolderPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read camera folder")
+	}
+	for _, file := range files {
+		srcFilePath := filepath.Join(cameraFolderPath, file.Name())
+		dstFilePath := filepath.Join(targetFolderPath, file.Name())
+		data, err := ioutil.ReadFile(srcFilePath)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read file: %v", srcFilePath)
+		}
+		if err := ioutil.WriteFile(dstFilePath, data, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write file: %v", dstFilePath)
+		}
+	}
+	return nil
 }
 
 // CheckFacing returns an error if the active camera facing is not expected.
