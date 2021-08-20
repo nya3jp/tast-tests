@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbb936c7_5034a15d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-20T06:09:05Z",
+      "side": 1,
+      "message": "Concretely, I\u0027d declare two parameters 1. whether to override as bool, 2: override value as int e.g.\n\ntype testParam struct {\n  sizeOverride bool\n  sizeOverrideValue int\n}\n\nI think you probably come up with better names, but I\u0027d do something along this line.\n\nVal: testParam{sizeOverride: true, sizeOverrideValue: 25} // koharu\nVal: testParam{}, // others",
+      "parentUuid": "9a3e8f96_a3b9f696",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c8c7cb6_6d814210",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
