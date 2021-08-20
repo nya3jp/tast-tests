@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,8 +26,9 @@ func init() {
 			"mnissler@chromium.org",
 		},
 		SoftwareDeps: []string{"amd64"},
-		// TODO(b/197182645): re-enable when CQ issues are cleared up.
-		Attr: []string{"group:mainline", "informational"},
+		// TODO(b/197182645): re-enable Volteer once CPU offlining issues are resolved.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
+		Attr:         []string{"group:mainline"},
 	})
 }
 
