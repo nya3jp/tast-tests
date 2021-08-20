@@ -82,12 +82,7 @@ func Basic(ctx context.Context, s *testing.State) {
 	defer pxy.Close(ctxForCleanUp)
 
 	// Configure Servo to be OK with CC being off.
-	// TODO(pmalani): ccd_keepalive_en set commands don't always "take" so we have to repeat it.
 	svo := pxy.Servo()
-	if err := svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.Off); err != nil {
-		s.Fatal("Failed to disable CCD keepalive: ", err)
-	}
-
 	if err := svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.Off); err != nil {
 		s.Fatal("Failed to disable CCD keepalive: ", err)
 	}
@@ -96,6 +91,11 @@ func Basic(ctx context.Context, s *testing.State) {
 			s.Error("Unable to enable CCD keepalive: ", err)
 		}
 	}()
+
+	// Wait for servo control to take effect.
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		s.Fatal("Failed to sleep after CCD keepalive disable: ", err)
+	}
 
 	if err := svo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
 		s.Fatal("Failed to switch CCD watchdog off: ", err)
@@ -106,6 +106,11 @@ func Basic(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Wait for servo control to take effect.
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		s.Fatal("Failed to sleep after CCD watchdog off: ", err)
+	}
+
 	// Servo DTS mode needs to be off to configure enable DP alternate mode support.
 	if err := svo.SetOnOff(ctx, servo.DTSMode, servo.Off); err != nil {
 		s.Fatal("Failed to disable Servo DTS mode: ", err)
@@ -115,6 +120,11 @@ func Basic(ctx context.Context, s *testing.State) {
 			s.Error("Unable to enable Servo DTS mode: ", err)
 		}
 	}()
+
+	// Wait for DTS-off PD negotation to complete.
+	if err := testing.Sleep(ctx, 2500*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep for DTS-off power negotiation: ", err)
+	}
 
 	// Make sure that CC is switched on at the end of the test.
 	defer func() {
@@ -155,6 +165,13 @@ func runDPTest(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.Sta
 		return errors.Wrap(err, "failed to switch off CC")
 	}
 
+	// Wait for VBUS to discharge in Servo.
+	// Request = tRequest(24ms) + tSenderResponse(24ms) + tSrcTransition(35ms) + PSTransitionTimer(550ms) = 633ms (rounded up to 650ms)
+	// Hard Reset = 650ms + tSrcRecover(1s) + tSrcTurnOn(275ms) = 1925ms
+	if err := testing.Sleep(ctx, 1925*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to sleep after CC off")
+	}
+
 	s.Log("Configuring Servo to enable DP")
 	if err := setServoDPMode(ctx, svo, pinAssign); err != nil {
 		return errors.Wrap(err, "failed to configure servo for DP")
@@ -169,6 +186,11 @@ func runDPTest(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.Sta
 		return d.Connect(ctx)
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to connect to DUT")
+	}
+
+	// Wait for PD negotiation to stabilize.
+	if err := testing.Sleep(ctx, 2500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to sleep for PD negotiation")
 	}
 
 	// Check that the partner DP alternate mode is found.
