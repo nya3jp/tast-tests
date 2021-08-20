@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ee2e3d_a8a0d829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-20T08:12:05Z",
+      "side": 1,
+      "message": "IIRC, the actual Save action is executed within app.Close(ctx)\n\nFor readability, I\u0027d suggest moving the enable statement to app instead of tb.\n\napp.EnableSaveCameraFolderWhenFail()\nor \napp.Close(ctx, SaveCameraFolderWhenFail)\n\nWDYT?",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fd3b32_972bc3a6",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-20T08:12:05Z",
+      "side": 1,
+      "message": "MkdirAll checks the existence of targetFolderPath . You can simplify the code here.\n\nhttps://github.com/golang/go/blob/b634f5d97a6e65f19057c00ed2095a1a872c7fa8/src/os/path.go#L18-L26",
+      "range": {
+        "startLine": 954,
+        "startChar": 16,
+        "endLine": 954,
+        "endChar": 24
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f200aba_a7a6870c",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-20T08:12:05Z",
+      "side": 1,
+      "message": "Consider using the field name for constructing the literal.\n\ngo/go-style/decisions#literal-field-names",
+      "range": {
+        "startLine": 82,
+        "startChar": 84,
+        "endLine": 82,
+        "endChar": 89
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a42d54_3edd0b31",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-08-20T08:12:05Z",
+      "side": 1,
+      "message": "SaveCameraFolderWhenFail is exported. You don\u0027t need this function to modify the flag.",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
