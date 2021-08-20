@@ -435,6 +435,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14c42186_89eca814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screenlock_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T16:07:26Z",
+      "side": 1,
+      "message": "chrome itself will be possibly reused, but chrome instance kept by p won\u0027T be.\nAlso, I expect CloseChomre is called, right?",
+      "parentUuid": "33ff4c53_7fa66fe8",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a021c64_fdcb4b45",
         "filename": "src/chromiumos/tast/local/screenshot/capture.go",
         "patchSetId": 5
@@ -464,6 +482,24 @@
       "side": 1,
       "message": "My thought was to verify against the stderr message. Namely, if the screen was turned off successfully, the returned stderr from screen capture would be \"CRTC not found. Is the screen on?\". This match is checked inside the turnDisplayOffAndOn function in ec_tablet_mode.go.\n\nFor this reason, I created CaptureWithStderr for implementation of SeparatedOutput() to extract stderr. But, I\u0027d welcome any suggestions if this could be handled better in alternative ways.",
       "parentUuid": "2a021c64_fdcb4b45",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8cc87e_6394e0fd",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T16:07:26Z",
+      "side": 1,
+      "message": "Could you explicitly eraborate it in the comment?",
+      "parentUuid": "1fcebf0d_5a3eefb8",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -540,6 +576,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54725245_27e033b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T16:07:26Z",
+      "side": 1,
+      "message": "Could you comment more details, then?",
+      "parentUuid": "36a04492_44b2bc63",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d791ff01_53956fba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
         "patchSetId": 5
@@ -569,6 +623,24 @@
       "side": 1,
       "message": "To elaborate, checkPowerMenu will check whether the power menu is present after holding the power button for about one second. Also, IsPowerMenuPresent here has been changed to PowerMenuPresent.",
       "parentUuid": "d791ff01_53956fba",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9242fbac_5a9f4932",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T16:07:26Z",
+      "side": 1,
+      "message": "ditto to have comments.",
+      "parentUuid": "a63da2e5_292bfbd5",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -891,6 +963,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e604ebe0_d8bd350f",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T16:07:26Z",
+      "side": 1,
+      "message": "\u003e Should I add more details to elaborate on the documented message here?\n\nYes please.",
+      "parentUuid": "bbeeb2eb_9b9ec324",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8d57215_5f95407d",
         "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
         "patchSetId": 5
@@ -920,6 +1010,24 @@
       "side": 1,
       "message": "Part of this test is to verify that when the session is locked, holding the power button at various lengths would result in different behaviors. Implementing Lock here would be equivalent to pressing \"Search+L\" on DUT.\n\nShould I add more details to the documented message for clarification?",
       "parentUuid": "d8d57215_5f95407d",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e697bc8_48d5bbc4",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T16:07:26Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "1f977558_4d54bd03",
       "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
