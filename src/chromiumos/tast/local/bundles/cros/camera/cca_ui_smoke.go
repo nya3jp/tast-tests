@@ -91,6 +91,7 @@ func CCAUISmoke(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
+	tb.EnableSaveCameraFolderWhenFail()
 	defer tb.TearDown(ctx)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {

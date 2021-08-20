@@ -42,7 +42,8 @@ type TestBridge struct {
 	bridge   *chrome.JSObject
 
 	// TODO(b/177800595): Store this information in fixture.
-	CameraType UseCameraType
+	CameraType               UseCameraType
+	SaveCameraFolderWhenFail bool
 }
 
 func setupTestConfig(ctx context.Context) error {
@@ -78,7 +79,7 @@ func NewTestBridge(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraT
 	if err != nil {
 		return nil, err
 	}
-	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
+	return &TestBridge{cr, pageConn, bridge, cameraType /*SaveCameraFolderWhenFail=*/, false}, nil
 }
 
 // NewTestBridgeWithoutTestConfig returns a new test bridge instance without test config.
@@ -94,7 +95,7 @@ func NewTestBridgeWithoutTestConfig(ctx context.Context, cr *chrome.Chrome, came
 	if err != nil {
 		return nil, err
 	}
-	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
+	return &TestBridge{cr, pageConn, bridge, cameraType /*SaveCameraFolderWhenFail=*/, false}, nil
 }
 
 func getPageConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
@@ -174,6 +175,11 @@ func tearDownBridgePageConnection(ctx context.Context, cr *chrome.Chrome, conn *
 		return errors.Wrap(err, "failed to call Close() on the bridge page connection")
 	}
 	return nil
+}
+
+// EnableSaveCameraFolderWhenFail enables the flag to save camera folder when there is any JS errors when closing CCA.
+func (t *TestBridge) EnableSaveCameraFolderWhenFail() {
+	t.SaveCameraFolderWhenFail = true
 }
 
 // AppWindow registers and returns the app window which is used to communicate with the foreground window of CCA instance.
