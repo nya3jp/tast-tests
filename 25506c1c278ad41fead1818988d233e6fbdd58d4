@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "669952ab_8836aeec",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-20T17:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d0f4bd_8f7ca749",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bec6ce19_08935867",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67033c9f_1728f83b",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-20T17:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec6ce19_08935867",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f139f9a0_7ff3457c",
@@ -95,6 +143,30 @@
       "writtenOn": "2021-08-11T00:55:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "25506c1c278ad41fead1818988d233e6fbdd58d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c099f4b8_2c217a87",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-20T17:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f139f9a0_7ff3457c",
       "range": {
         "startLine": 32,
         "startChar": 4,
