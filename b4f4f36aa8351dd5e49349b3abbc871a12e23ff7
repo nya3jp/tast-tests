@@ -39,6 +39,30 @@
       },
       "revId": "b4f4f36aa8351dd5e49349b3abbc871a12e23ff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96c40e5_32bf6cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-20T20:35:30Z",
+      "side": 1,
+      "message": "Good point. Done.\n\nNote the spacing change in new PS is done by gofmt...",
+      "parentUuid": "74801e03_d603dd42",
+      "range": {
+        "startLine": 80,
+        "startChar": 29,
+        "endLine": 80,
+        "endChar": 35
+      },
+      "revId": "b4f4f36aa8351dd5e49349b3abbc871a12e23ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
