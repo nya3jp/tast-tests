@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee45950c_52a5ec69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:18:03Z",
+      "side": 1,
+      "message": "I agree that it is nicer this way.",
+      "parentUuid": "f1d8d26f_53095656",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a642473f_93f4d7f3",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-08-19T15:13:44Z",
       "side": 1,
       "message": "Should that be, \"Failed to read lsb release: \"?",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 39
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff32e9b_2543720d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:18:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a642473f_93f4d7f3",
       "range": {
         "startLine": 82,
         "startChar": 12,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b93584_248377b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:18:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f324249_1a79d9d8",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee0f3187_1ecd63df",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-08-20T08:30:24Z",
       "side": 1,
       "message": "typo: rebooting",
+      "range": {
+        "startLine": 154,
+        "startChar": 32,
+        "endLine": 154,
+        "endChar": 40
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e305a973_125a500c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee0f3187_1ecd63df",
       "range": {
         "startLine": 154,
         "startChar": 32,

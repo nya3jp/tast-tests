@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bf27c5_32be1ddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:18:03Z",
+      "side": 1,
+      "message": "I reworked the part of the service that interacts with the lsb-release files.\nNow it restores the original state of the edited file.\nI moved this part into a function, as it will be reused in other tests as well.\nPTAL",
+      "revId": "7dba1e417083d9a9894b1f3dedbcd05d381df64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
