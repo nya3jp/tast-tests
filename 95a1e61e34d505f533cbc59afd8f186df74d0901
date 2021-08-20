@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "158cdee8_c1f4c255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c403f7_d7290d95",
+      "revId": "95a1e61e34d505f533cbc59afd8f186df74d0901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19f6290_23e5ed70",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-20T03:25:19Z",
       "side": 1,
       "message": "are we extending this to also test actual typing to verify CapsLock is really on, not just checking the notification?",
+      "revId": "95a1e61e34d505f533cbc59afd8f186df74d0901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73471429_e7ec8cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:32:23Z",
+      "side": 1,
+      "message": "Current keyboard simulates key event directly and handle Caps inside. For example, keyboard.Type(\"A\") or keyboard.Type(\"a\"). So we can now only validate the notification. But for sure, we will extend the test to typing once it is feasible.",
+      "parentUuid": "d19f6290_23e5ed70",
       "revId": "95a1e61e34d505f533cbc59afd8f186df74d0901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
