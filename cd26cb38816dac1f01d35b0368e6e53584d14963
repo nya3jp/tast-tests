@@ -34,6 +34,24 @@
       "parentUuid": "e8d73118_3df961c5",
       "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbca7814_a12eb537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-20T02:58:46Z",
+      "side": 0,
+      "message": "I think you haven\u0027t quite got what I meant. Test cases #1 and #2 look exactly the same now, except for stable vs unstable models right? They both have pre.VKEnabledClamshell (i.e. a11y VK). However, they were originally meant to test on tablet vs a11y VKs. You can check comments attached to the test cases for more info. This is a drive-by kinda unrelated to the current refactoring and deflake effort here, but I think it\u0027s an important issue to traceback and fix. We might\u0027ve lost test coverage at some point because of this.",
+      "parentUuid": "a3a98510_0c88a5a3",
+      "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
