@@ -33,6 +33,24 @@
       "message": "Would be better if we always sleep longer than guest RCU stall timeout (or whichever is larger - we have hard/soft lockup, RCU, stall task). I think RCU is the largest one. So that should we have tsc problems the watchdog will start yelling at us.",
       "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914ff891_6eec6e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-08-20T03:07:11Z",
+      "side": 1,
+      "message": "Thanks for the comment! yeah, I\u0027ll extend this to around 60 secs.\nCould you let me know where the RCU stall timeout threshold is defined? I want to mention about it here. (I found this watchdog_thresh \u003d 10 (sec) used from watchdog_timer_fn() but not sure if this is the thing you mentioned...) \nhttp://cs/chromeos_public/src/third_party/kernel/v3.18/kernel/watchdog.c?l\u003d28",
+      "parentUuid": "29e63036_7b070dff",
+      "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
