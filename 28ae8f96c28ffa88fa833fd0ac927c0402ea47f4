@@ -34,6 +34,41 @@
       "parentUuid": "361cceff_a761e688",
       "revId": "28ae8f96c28ffa88fa833fd0ac927c0402ea47f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b52154_98886da3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:38:16Z",
+      "side": 1,
+      "message": "It is a code structure problem then. IIUC, the slide is created outside, used to present in PresentSlide function. Then why delete it in PresentSlide function? They are not related at all.",
+      "parentUuid": "f4cb057f_519e8c3c",
+      "revId": "28ae8f96c28ffa88fa833fd0ac927c0402ea47f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "359e9282_dfa664dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:38:16Z",
+      "side": 1,
+      "message": "Ye. ",
+      "revId": "28ae8f96c28ffa88fa833fd0ac927c0402ea47f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
