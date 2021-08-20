@@ -36,7 +36,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
-		VarDeps:      []string{"ui.cuj_password"},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "loggedInToCUJUser",
@@ -89,7 +88,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	password := s.RequiredVar("ui.cuj_password")
+	password := cr.Creds().Pass
 
 	recorder, err := cuj.NewRecorder(ctx, cr)
 	if err != nil {
