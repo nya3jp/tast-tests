@@ -290,6 +290,30 @@
       },
       "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85351843_ab6312e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-20T07:10:23Z",
+      "side": 1,
+      "message": "All keys are parsed: https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/lsbrelease/lsbrelease.go;l\u003d139\n\nYou only lose content that\u0027s not key\u003dvalue format, but I think that\u0027s fine.",
+      "parentUuid": "0db4031e_bde9f552",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
