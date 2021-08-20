@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d2f9fa_1e119caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-20T19:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa529c1_37556d59",
+      "range": {
+        "startLine": 45,
+        "startChar": 149,
+        "endLine": 45,
+        "endChar": 150
+      },
+      "revId": "02f42b5c1a05b1d0bee20ef422f02b2746c9355f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e6b7689_d1280d29",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-20T06:43:13Z",
       "side": 1,
       "message": "This actually isn\u0027t being parsed correctly, since [ and ] are special characters in regex. It is being interpreted as any one of the following chars for the first wildcard \u0027 \u0027, \u0027[\u0027, \u00270\u0027, \u00271\u0027, ..., \u00279\u0027.\n\nIf we correct the literal brackets (like `\\[ [0-9]*\\.[0-9]*\\]`), then we have the issue of specifying precisely 1 space near the left \u0027[\u0027 and 0 spaces near the right \u0027]\u0027, which isn\u0027t what we want, since that timestamp may take up more or less space within those brackets. This can be corrected, but I think it might be advantageous to go even more generic with this matcher, maybe something that just looks for WARNING and then bio_crypto_init.\n\nMaybe like `WARNING.*bio_crypto_init`?\n\nhttps://play.golang.org/p/VW0HFXzeSN-",
+      "range": {
+        "startLine": 53,
+        "startChar": 43,
+        "endLine": 53,
+        "endChar": 60
+      },
+      "revId": "02f42b5c1a05b1d0bee20ef422f02b2746c9355f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7204cac3_d23b1c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-20T19:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6b7689_d1280d29",
       "range": {
         "startLine": 53,
         "startChar": 43,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "679c3c9a_a8002be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-20T19:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca6832c3_ff33c410",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "02f42b5c1a05b1d0bee20ef422f02b2746c9355f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9bd66a0_b5c0dad4",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5baed76e_be60c79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-20T19:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9bd66a0_b5c0dad4",
+      "range": {
+        "startLine": 56,
+        "startChar": 55,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "02f42b5c1a05b1d0bee20ef422f02b2746c9355f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "406eafe2_f3065316",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-08-20T06:43:13Z",
       "side": 1,
       "message": "I think this will always be true, since FPTPM_seed_set will be present in the \"Valid flags\" field?\n\n---\n\nYou might want to break this out into a function, similar to GetFlashProtect in https://crrev.com/c/3089521 with a tiny unit test that checks the behavior.",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "02f42b5c1a05b1d0bee20ef422f02b2746c9355f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3716446_b32eb2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-20T19:24:37Z",
+      "side": 1,
+      "message": "I think its easiest to parse the fpencstatus output and then search only the FPMCU encryption status line",
+      "parentUuid": "406eafe2_f3065316",
       "range": {
         "startLine": 65,
         "startChar": 5,
