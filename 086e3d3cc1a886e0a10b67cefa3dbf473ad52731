@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822e05e5_c3c36bbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "Nit: daily",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da0a282_27433e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "Does this test interact with the BedTimeLimit test when run together? Try running\n\ntast run -buildbundle\u003dcros localhost:2222 familylink.*TimeLimit\n\nTests that share the same fixture share the same login, and this also happens in the prod test environment.",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb289d0_062d6cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "\u0026policy.RefTimeUsageLimitEntry",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645fe9ed_711e0fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "Nit: /*base\u003d*/10",
+      "range": {
+        "startLine": 61,
+        "startChar": 51,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226006d4_60ce224a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "I don\u0027t think this test would pass if it runs at 11:59pm. Suppose now is 11:59pm on Tuesday. Reset time is 12:01am on Wednesday. Based on the logic below, we set the policy for Monday. That means the policy applies from 12:01am Monday to 12:01am Tuesday. But that\u0027s already in the past, so the policy wouldn\u0027t apply. To fix this, check reset.Weekday() instead.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c3771a_e3030cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "This is hard to read. Instead do:\n\n\tswitch weekday :\u003d reset.Weekday(); weekday {\n\tcase 0:\n\t\tusageLimitPolicy.Val.TimeUsageLimit.Saturday \u003d dailyLimitEntry\n\tcase 1:\n\t        usageLimitPolicy.Val.TimeUsageLimit.Sunday \u003d dailyLimitEntry\n\tcase 2:\n\t        ...\n\t}\n\t\nSince you\u0027re basically subtracting 24 hours, set the policy for the previous day. For example, 0 is Sunday but we\u0027re setting the policy for Saturday. It\u0027s important to use the reset time instead of now, as I explained in the previous comment.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 156
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

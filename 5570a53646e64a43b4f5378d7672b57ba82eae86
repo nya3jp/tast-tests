@@ -132,6 +132,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b6726c6_863e1a91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-20T17:37:02Z",
+      "side": 1,
+      "message": "You only need to set one weekday field. Use a switch statement to make it more readable. See comment below.",
+      "parentUuid": "45269a68_2cfc2f1e",
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dad5e346_8ccdc93f",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
         "patchSetId": 2
