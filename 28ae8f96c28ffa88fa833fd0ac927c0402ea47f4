@@ -16,6 +16,24 @@
       "message": "This approach does not look good. Pass through test out dir to a function to dump function error is not ideal. Dump should only happen in the test, not lib functions.",
       "revId": "28ae8f96c28ffa88fa833fd0ac927c0402ea47f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cb057f_519e8c3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-08-20T03:28:02Z",
+      "side": 1,
+      "message": "You are right. But there is a problem that the page will be switched when doing the cleanup. The screenshot taken is after the cleanup(not error page). We need the screenshot before the cleanup to help the debugging.",
+      "parentUuid": "361cceff_a761e688",
+      "revId": "28ae8f96c28ffa88fa833fd0ac927c0402ea47f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
