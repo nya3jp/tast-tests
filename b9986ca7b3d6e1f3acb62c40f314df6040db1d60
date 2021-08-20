@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d6e23d_934f49a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2021-08-20T19:18:21Z",
+      "side": 1,
+      "message": "The test turns to red on some arcvm boards  http://tastboard.corp.google.com/test/arc.Clipboard.vm. And it blocks PFQ-R now. Let bring it down for now.  http://b/197230972\n  ",
+      "revId": "b9986ca7b3d6e1f3acb62c40f314df6040db1d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
