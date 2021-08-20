@@ -5,6 +5,9 @@
 package ossettings
 
 import (
+	"fmt"
+	"regexp"
+
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
@@ -71,3 +74,10 @@ var ResetSettings = nodewith.Name("Reset settings").Role(role.Link).HasClass("it
 // AboutChromeOS is a subpage link.
 var AboutChromeOS = nodewith.MultilingualName("About Chrome OS", map[string]string{"de": "Über Chrome OS"}).
 	Role(role.Link)
+
+// searchMismatched is the pattern shown in search results
+// when the input keyword in `SearchBox` is mismatched with any existing option.
+var searchMismatched = `No search results found`
+
+// searchResultFinder is a finder of all possible search results.
+var searchResultFinder = nodewith.NameRegex(regexp.MustCompile(fmt.Sprintf(`(Search result \d+ of \d+: .*|%s)`, searchMismatched))).Onscreen()
