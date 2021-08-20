@@ -115,8 +115,10 @@ func init() {
 // - check that force-installed Android packages cannot be uninstalled.
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
-		searchBarTextStart = "Search for apps"
-		emptyPlayStoreText = "No results found."
+		searchBarTextStart     = "Search for apps"
+		emptyPlayStoreText     = "No results found."
+		somethingWentWrongText = "Something went wrong"
+		maxPlayStoreAttempt    = 5
 	)
 
 	user := s.RequiredVar(s.Param().(credentialKeys).user)
@@ -177,29 +179,50 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure Play Store is not empty.
-	s.Log("Starting Play Store")
-	act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
+	attempt := 0
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		attempt++
+		if attempt > maxPlayStoreAttempt {
+			return testing.PollBreak(errors.New("Maximum attempts reached"))
+		}
 
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed starting Play Store or Play Store is empty: ", err)
-	}
+		s.Log("Starting Play Store, attempt ", attempt)
+		act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to create new activity"))
+		}
+		defer func() {
+			if attempt < maxPlayStoreAttempt {
+				act.Stop(ctx, tconn)
+			}
+			act.Close()
+		}()
 
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close(ctx)
+		if err := act.Start(ctx, tconn); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed starting Play Store or Play Store is empty"))
+		}
 
-	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
-		s.Fatal("Unknown Play Store UI screen is shown: ", err)
-	}
+		d, err := a.NewUIDevice(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed initializing UI Automator"))
+		}
+		defer d.Close(ctx)
 
-	if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-		s.Fatal("Play Store is empty")
+		if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "unknown Play Store UI screen is shown")
+		}
+
+		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+			return testing.PollBreak(errors.New("Play Store is empty"))
+		}
+
+		if err := d.Object(ui.Text(somethingWentWrongText)).Exists(ctx); err == nil {
+			return testing.PollBreak(errors.New("Play Store shows error"))
+		}
+
+		return nil
+	}, &testing.PollOptions{Interval: 3 * time.Second}); err != nil {
+		s.Fatal("Failed to check Play Store: ", err)
 	}
 }
 
