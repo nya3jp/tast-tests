@@ -16,6 +16,23 @@
       "message": "Hi Polina,\n\nI think this flakiness is likely due to performance issue of ARCVM on GCE. Since it\u0027s not trivial solving that, the best we can do is probably to retry multiple times in the test. Please take a look! Thanks!",
       "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4de6ea4_e5d0740b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-08-20T16:39:23Z",
+      "side": 1,
+      "message": "Thanks, Yi",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
