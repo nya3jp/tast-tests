@@ -67,6 +67,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa3aa43a_89712f99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-20T06:45:41Z",
+      "side": 1,
+      "message": "Style: Shorter one as per - go/go-style/decisions#receiver-names",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d009a051_248cf4e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-20T06:45:41Z",
+      "side": 1,
+      "message": "Style: (URL or url) go/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0530b1e4_02e011b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-20T06:45:41Z",
+      "side": 1,
+      "message": "Same as above for all methods.",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b72b2099_1d1c1b75",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
         "patchSetId": 3
