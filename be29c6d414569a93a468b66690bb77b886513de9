@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a3e8f96_a3b9f696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-20T05:54:50Z",
+      "side": 1,
+      "message": "I agree with Tatsuhisa. Telling how to use Val only as a comment seems suboptimal for readability.\nI\u0027d decare a struct for parameters representing the intention as a code. e.g.\n\ntype testParam struct {\n  ...\n}",
+      "parentUuid": "54b687db_88b6b148",
+      "revId": "be29c6d414569a93a468b66690bb77b886513de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c8c7cb6_6d814210",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
