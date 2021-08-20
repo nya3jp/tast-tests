@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eaa2315_d0441d78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T21:31:53Z",
+      "side": 1,
+      "message": "Maybe don\u0027t report this in the actual error line, since this message will be propagated through UIs, like tastboard and gerritt CI.\n\nThis is nice to have, but I think you could achieve the same effect if you just log it normally, right before the Fatal line.",
+      "range": {
+        "startLine": 45,
+        "startChar": 57,
+        "endLine": 45,
+        "endChar": 149
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
