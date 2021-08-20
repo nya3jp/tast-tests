@@ -69,6 +69,24 @@
       "parentUuid": "dbb93002_a3a10e81",
       "revId": "354d7fd331e7bdcba684214feeb627f8a8c08794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b06b26_305c90e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:14:04Z",
+      "side": 1,
+      "message": "Done. Renamed the cl.",
+      "parentUuid": "f1cd8daf_44d79d4a",
+      "revId": "354d7fd331e7bdcba684214feeb627f8a8c08794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

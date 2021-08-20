@@ -52,6 +52,24 @@
       "parentUuid": "a3a98510_0c88a5a3",
       "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a989df_1f872038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T03:14:04Z",
+      "side": 0,
+      "message": "Ye. In the initial test you added https://crrev.com/c/2380901/11/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go, there were 2 tests verifying FR on A11y VK and CA on tablet VK. It is now split to 4 to separate stable vs unstable models. So we have not lost any coverage in refactoring 😊",
+      "parentUuid": "cbca7814_a12eb537",
+      "revId": "cd26cb38816dac1f01d35b0368e6e53584d14963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
