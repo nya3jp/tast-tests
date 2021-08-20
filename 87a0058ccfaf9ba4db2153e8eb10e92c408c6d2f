@@ -33,6 +33,23 @@
       "message": "ptal (I think I need separate reviewer even for clean cherry-pick to release branch?)",
       "revId": "87a0058ccfaf9ba4db2153e8eb10e92c408c6d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37a6f0f_729dbfda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-08-20T23:31:03Z",
+      "side": 1,
+      "message": "(removing my self+2 to avoid gerrit\u0027s warning dialog)",
+      "revId": "87a0058ccfaf9ba4db2153e8eb10e92c408c6d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
