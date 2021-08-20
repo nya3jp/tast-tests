@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4b87d7_10f6caf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-20T21:16:59Z",
+      "side": 1,
+      "message": "LGTM code-wise, but I am rudementary.\nDelays match up with tests in bug.\n\nWill sync with Prashant to see data.",
+      "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
