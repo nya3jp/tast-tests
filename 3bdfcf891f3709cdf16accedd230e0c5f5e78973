@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e5b9b9_b944def6",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axbase/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477bdbbe_9a696f78",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252857b0_4c8cd116",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axbase/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477bdbbe_9a696f78",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7d4156a_0ebefb2a",
@@ -37,6 +85,42 @@
       "writtenOn": "2021-08-18T03:34:00Z",
       "side": 1,
       "message": "How about moving AxConfig methods\u0027 definitions after line 24?",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76546d5b_67a8f381",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axbase/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d4156a_0ebefb2a",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6583455_988e68f7",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axbase/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d4156a_0ebefb2a",
       "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6948cf5d_a1d028e6",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axwpa/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c8d5f1_0894fd91",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbc60a8a_dc6c6315",
@@ -71,6 +173,24 @@
       "writtenOn": "2021-08-18T03:34:00Z",
       "side": 1,
       "message": "Move AxConfig methods right after line 24.",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e70791_87939b14",
+        "filename": "src/chromiumos/tast/remote/wificell/security/axwpa/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc60a8a_dc6c6315",
       "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "538921ce_7f8cc2af",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "I tried that initially and found that due to my design of having Hidden options in ax_config.go utilize dutcfg.ConnOption, this creates an import cycle. The import cycle is security.go -\u003e ax_config.go -\u003e conn_options.go -\u003e security.go\n\nI\u0027m getting bit a lot by these import cycles and i\u0027m not sure if it\u0027s because of bad design on my end but i don\u0027t immediately see a clean way out of this problem without doing more and more isolation.",
+      "parentUuid": "be6a2b9b_70cd6bb5",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8ebbd00_4fe0fd93",
         "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
         "patchSetId": 8
@@ -105,6 +243,24 @@
       "writtenOn": "2021-08-18T03:34:00Z",
       "side": 1,
       "message": "Is the comment still valid?",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a3dc90_e4496c66",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done. This comment has been changed (was copied from common/wifi/security before).",
+      "parentUuid": "a8ebbd00_4fe0fd93",
       "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +278,30 @@
       "writtenOn": "2021-08-18T03:34:00Z",
       "side": 1,
       "message": "Note",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e0d53b_876a7b45",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f828046c_aa43e720",
       "range": {
         "startLine": 30,
         "startChar": 3,
