@@ -76,6 +76,15 @@ func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string, op
 	return l.sess.StartTracing(ctx, categories, opts...)
 }
 
+// StartSystemTracing starts trace events collection from the system tracing
+// service using the marshaled binary protobuf trace config.
+// Note: StopTracing should be called even if StartTracing returns an error.
+// Sometimes, the request to start tracing reaches the browser process, but there
+// is a timeout while waiting for the reply.
+func (l *LacrosChrome) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
+	return l.sess.StartSystemTracing(ctx, perfettoConfig)
+}
+
 // StopTracing stops trace collection and returns the collected trace events.
 // This must not be called after Close().
 func (l *LacrosChrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
