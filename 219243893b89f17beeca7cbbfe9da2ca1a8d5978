@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "081d4a3b_a16fb009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-20T00:01:44Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "219243893b89f17beeca7cbbfe9da2ca1a8d5978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b4ea8c_d11b9983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-20T00:01:44Z",
+      "side": 1,
+      "message": "nit: remove the empty line.",
+      "revId": "219243893b89f17beeca7cbbfe9da2ca1a8d5978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
