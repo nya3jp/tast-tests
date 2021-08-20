@@ -220,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "207789d9_5312c39b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-20T02:49:06Z",
+      "side": 1,
+      "message": "I think we care less about completing the cycle on the enabled input methods; it\u0027s good to have though. I was thinking of also inter-mingling Next and Recent in a random ways; currently all Next first, then all Recent.",
+      "parentUuid": "2921b132_76b0e2c2",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 28
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8abf7550_d195c016",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
         "patchSetId": 8
@@ -255,6 +279,30 @@
       "side": 1,
       "message": "We have not yet covered PK typing tests on different locale keyboards. We can only validates Caps notification without typing check. Are you okay to temporarily have it in this test? Otherwise we can move this to a separate script.",
       "parentUuid": "8abf7550_d195c016",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "4c4bbc05957258a6b0b2438bb490d8ac04757eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f22a88e_d2cbb955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-08-20T02:49:06Z",
+      "side": 1,
+      "message": "Please separate. It\u0027s weird to have \"CapsLock\" tests mingling in the test suite for \"change input method shortcuts\"...",
+      "parentUuid": "98a85e49_ea02c399",
       "range": {
         "startLine": 153,
         "startChar": 0,
