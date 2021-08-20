@@ -41,11 +41,8 @@ func DeniedSitesBlocked(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// The allow/block list can take a while to sync so infinitely loop checking
-	// for the website to be blocked.  If it doesn't happen within the test timeout
-	// period, this will fail via the timeout.
 	success := false
-	finalError := errors.New("foo")
+	finalError := errors.New("failed to sync website blocklist")
 
 	defer func() {
 		if !success {
@@ -53,7 +50,9 @@ func DeniedSitesBlocked(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	for attempts := 1; ; attempts++ {
+	// The allow/block list can take a while to sync so loop checking
+	// for the website to be blocked.
+	for attempts := 1; attempts <= 20; attempts++ {
 		conn, err := cr.NewConn(ctx, blockedSite)
 		if err != nil {
 			s.Fatal("Failed to open browser to website: ", err)
@@ -62,7 +61,7 @@ func DeniedSitesBlocked(ctx context.Context, s *testing.State) {
 
 		if err := ui.WaitUntilExists(nodewith.Name("Ask your parent").Role(role.StaticText))(ctx); err != nil {
 			s.Logf("%d attempts to detect blocked site interstitial failed", attempts)
-			finalError = errors.Wrap(err, err.Error())
+			finalError = errors.Wrapf(err, "failed to sync website blocklist after %d attempts", attempts)
 			continue
 		}
 		success = true
