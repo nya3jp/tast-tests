@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/memory/kernelmeter"
+	"chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -271,8 +272,6 @@ func logAndResetStats(ctx context.Context, meter *kernelmeter.Meter, label strin
 	testing.ContextLogf(ctx, "Metrics: %s: total page fault count %d", label, stats.PageFault.Count)
 	testing.ContextLogf(ctx, "Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
 	testing.ContextLogf(ctx, "Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
-
-	logPSIStats(ctx, label)
 }
 
 // recordAndResetStats records the VM stats from meter, identifying them with
@@ -305,24 +304,7 @@ func recordAndResetStats(ctx context.Context, meter *kernelmeter.Meter, values *
 	testing.ContextLogf(ctx, "Metrics: %s: oom count %v", label, stats.OOM.Count)
 	testing.ContextLogf(ctx, "Metrics: %s: average page fault rate %v pf/second", label, stats.PageFault.AverageRate)
 	testing.ContextLogf(ctx, "Metrics: %s: max page fault rate %v pf/second", label, stats.PageFault.MaxRate)
-	logPSIStats(ctx, label)
 	return nil
-}
-
-// logPSIStats logs the content of /proc/pressure/memory.  If that file is not
-// present, this function does nothing.  Other errors are logged.
-func logPSIStats(ctx context.Context, label string) {
-	psi, err := kernelmeter.PSIMemoryLines()
-	if err != nil {
-		// Here we also don't want to fail the test, just log any error.
-		testing.ContextLog(ctx, "Cannot get PSI info: ", err)
-	}
-	if psi == nil {
-		return
-	}
-	for _, l := range psi {
-		testing.ContextLogf(ctx, "Metrics: PSI memory %s: %s", label, l)
-	}
 }
 
 // cycleTabs activates in turn each tab passed in tabs, then it wiggles it or
@@ -576,7 +558,6 @@ func runPhase1(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunPara
 			}, switchMeter); err != nil {
 				return nil, nil, err
 			}
-			logPSIStats(ctx, "phase_1")
 		}
 
 		t, err := newTab(ctx, cr, tabURLs[urlIndex])
@@ -702,7 +683,7 @@ type RunParameters struct {
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
 // until the first tab discard occurs.  It takes various measurements as the
 // pressure increases (phase 1) and afterwards (phase 2).
-func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters) (errRet error) {
+func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p *RunParameters) (errRet error) {
 	const (
 		initialTabSetSize    = 5
 		recentTabSetSize     = 5
@@ -714,6 +695,11 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 	memInfo, err := kernelmeter.MemInfo()
 	if err != nil {
 		return errors.Wrap(err, "cannot obtain memory info")
+	}
+
+	basemem, err := metrics.NewBaseMetrics()
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize base metrics")
 	}
 
 	if p.Mode == wpr.Record {
@@ -770,12 +756,24 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 	if err != nil {
 		return err
 	}
+	if err := metrics.MemoryMetrics(ctx, basemem, arc, perfValues, outDir, "_setup"); err != nil {
+		return errors.Wrap(err, "failed to collect setup memory metrics")
+	}
+	if err := metrics.ResetBaseMetrics(basemem); err != nil {
+		return errors.Wrap(err, "failed reset memory metrics post setup")
+	}
 
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
 	if err = runPhase2(ctx, outDir, workTabs, coldTabSetSize, fullMeter, perfValues); err != nil {
 		return err
+	}
+	if err := metrics.MemoryMetrics(ctx, basemem, arc, perfValues, outDir, "_cold"); err != nil {
+		return errors.Wrap(err, "failed to collect cold memory metrics")
+	}
+	if err := metrics.ResetBaseMetrics(basemem); err != nil {
+		return errors.Wrap(err, "failed reset memory metrics post cold")
 	}
 
 	// -----------------
@@ -785,6 +783,9 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 		return err
 	}
 
+	if err := metrics.MemoryMetrics(ctx, basemem, arc, perfValues, outDir, "_quiesce"); err != nil {
+		return errors.Wrap(err, "failed to collect quiesce memory metrics")
+	}
 	if err = perfValues.Save(outDir); err != nil {
 		return errors.Wrap(err, "cannot save perf data")
 	}
@@ -862,4 +863,9 @@ func (te *TestEnv) Close(ctx context.Context) {
 // Chrome returns the initialized Chrome object in TestEnv.
 func (te *TestEnv) Chrome() *chrome.Chrome {
 	return te.cr
+}
+
+// ARC returns the initialized ARC object in TestEnv (may be nil when no VM)
+func (te *TestEnv) ARC() *arc.ARC {
+	return te.arc
 }

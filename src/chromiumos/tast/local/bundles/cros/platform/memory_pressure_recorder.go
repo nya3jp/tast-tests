@@ -31,7 +31,7 @@ func MemoryPressureRecorder(ctx context.Context, s *testing.State) {
 		Mode: wpr.Record,
 	}
 
-	if err := mempressure.Run(ctx, s.OutDir(), s.PreValue().(*chrome.Chrome), p); err != nil {
+	if err := mempressure.Run(ctx, s.OutDir(), s.PreValue().(*chrome.Chrome), nil, p); err != nil {
 		s.Fatal("Run failed: ", err)
 	}
 }
