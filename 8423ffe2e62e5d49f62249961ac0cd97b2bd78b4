@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62426ddd_31c2d1f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-20T01:13:49Z",
+      "side": 1,
+      "message": "LGTM after handle the facing logic.",
+      "revId": "8423ffe2e62e5d49f62249961ac0cd97b2bd78b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

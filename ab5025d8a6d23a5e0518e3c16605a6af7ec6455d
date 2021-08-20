@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e13671a_f4c219b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-20T01:13:49Z",
+      "side": 1,
+      "message": "It recall me that the |cameraboxpb.Facing|, is passed from test itself.\nSuppose we won\u0027t expect to run something like CCARemote.document_scanning_not_set.\nCan you simply remove the item here so that it will fall into panic case?",
+      "parentUuid": "35d24177_0b45275b",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 50
+      },
+      "revId": "ab5025d8a6d23a5e0518e3c16605a6af7ec6455d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a66ffa_4e099abd",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_service.go",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think it is just like the regular err we returns from errors.New() or errors.Wrap(). Actually I just followed how we do in hal3_service.go:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3_service.go;rcl\u003da8426edc884b285a68e003781bce752cfbd9873e;l\u003d57\n\nMay I know what\u0027s your concerns?",
       "parentUuid": "f4a66ffa_4e099abd",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 32
+      },
+      "revId": "ab5025d8a6d23a5e0518e3c16605a6af7ec6455d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a642497_e02c2b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-20T01:13:49Z",
+      "side": 1,
+      "message": "Got it, then I think should already be addressed by hal3_service.go.",
+      "parentUuid": "bc91b907_9085e18a",
       "range": {
         "startLine": 103,
         "startChar": 2,
