@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "763b0928_df94d2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa3aa43a_89712f99",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d009a051_248cf4e6",
@@ -101,6 +125,30 @@
       "writtenOn": "2021-08-20T06:45:41Z",
       "side": 1,
       "message": "Style: (URL or url) go/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49cfe1e_7e114b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "This variable is defined in a protobuf file, which is a generated file, and should not be edited.",
+      "parentUuid": "d009a051_248cf4e6",
       "range": {
         "startLine": 44,
         "startChar": 8,
@@ -134,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbce8af_de7d787b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0530b1e4_02e011b6",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72b2099_1d1c1b75",
@@ -147,6 +219,30 @@
       "writtenOn": "2021-08-19T14:40:36Z",
       "side": 1,
       "message": "Should this error be distinguishable from the on line 64, or is it already?",
+      "range": {
+        "startLine": 87,
+        "startChar": 46,
+        "endLine": 87,
+        "endChar": 88
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0914de_cdd6e181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "Yes, this is a good idea. I changed it.",
+      "parentUuid": "b72b2099_1d1c1b75",
       "range": {
         "startLine": 87,
         "startChar": 46,
@@ -180,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e52525_df32a53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "Now it can overwrite anything.",
+      "parentUuid": "336bced4_72424eb5",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 92
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbb9d308_f3c51d24",
@@ -193,6 +313,24 @@
       "writtenOn": "2021-08-19T14:40:36Z",
       "side": 1,
       "message": "nit: Could this have a more meaningful name, or is that a quirk of tast? I see the empty.Empty above is also req, so I suppose it has something to do with rpc service.",
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44776d47_2c4872e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "It is short for request. As it is the same in most services, I would leave it as is.",
+      "parentUuid": "dbb9d308_f3c51d24",
       "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -306,6 +444,30 @@
       "side": 1,
       "message": "All keys are parsed: https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/lsbrelease/lsbrelease.go;l\u003d139\n\nYou only lose content that\u0027s not key\u003dvalue format, but I think that\u0027s fine.",
       "parentUuid": "0db4031e_bde9f552",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "28684cf23908ed3ca9b6fe93a6ebd8798d8ce9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "805c556b_7cbfc3eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "I see what you mean now. I reworked the whole service based on this.",
+      "parentUuid": "85351843_ab6312e7",
       "range": {
         "startLine": 110,
         "startChar": 22,

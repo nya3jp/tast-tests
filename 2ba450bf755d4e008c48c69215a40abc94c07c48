@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d50b3d_8f5d14d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-20T12:13:59Z",
+      "side": 1,
+      "message": "I reworked (almost) the whole service based on Miriam\u0027s input. PTAL.",
+      "revId": "2ba450bf755d4e008c48c69215a40abc94c07c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
