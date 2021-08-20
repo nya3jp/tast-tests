@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b1044c_eaa86a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-20T07:59:54Z",
+      "side": 1,
+      "message": "LGTM. Added afakhry@ to CC, who is an author of the test.\n\nHi Ahmed, we are sending this patch for the uiauto migration.\nI think this is mechanical change, but let me know if you have any questions.",
+      "revId": "09c942374ef9b07042dfd4895840bc98b979a029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
