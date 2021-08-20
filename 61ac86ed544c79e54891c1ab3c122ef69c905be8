@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5d6452_317b169d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-20T09:21:10Z",
+      "side": 1,
+      "message": "Done by moving it to app.CloseAndMaybeSaveCameraFolder()",
+      "parentUuid": "90ee2e3d_a8a0d829",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19fd3b32_972bc3a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-20T08:12:05Z",
       "side": 1,
       "message": "MkdirAll checks the existence of targetFolderPath . You can simplify the code here.\n\nhttps://github.com/golang/go/blob/b634f5d97a6e65f19057c00ed2095a1a872c7fa8/src/os/path.go#L18-L26",
+      "range": {
+        "startLine": 954,
+        "startChar": 16,
+        "endLine": 954,
+        "endChar": 24
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "174e0878_2e047dc9",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-20T09:21:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19fd3b32_972bc3a6",
       "range": {
         "startLine": 954,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72e48f0_e429694e",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-20T09:21:10Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "8f200aba_a7a6870c",
+      "range": {
+        "startLine": 82,
+        "startChar": 84,
+        "endLine": 82,
+        "endChar": 89
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62a42d54_3edd0b31",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-20T08:12:05Z",
       "side": 1,
       "message": "SaveCameraFolderWhenFail is exported. You don\u0027t need this function to modify the flag.",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "61ac86ed544c79e54891c1ab3c122ef69c905be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2278ca12_b5594d46",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-20T09:21:10Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "62a42d54_3edd0b31",
       "range": {
         "startLine": 182,
         "startChar": 3,
