@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe5e980_74a881ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:11:34Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "8d4200de7efca35cd6da539b6c9a1f1c499c0d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc83cabe_084f6763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:11:34Z",
+      "side": 1,
+      "message": "nit: Please do not comment as first-person narrator. You can say \u00272 different UIs are found for Spotify\u0027s login page\u0027, \u0027Therefore, an extra logic is added here to \u0027",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 97
+      },
+      "revId": "8d4200de7efca35cd6da539b6c9a1f1c499c0d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
