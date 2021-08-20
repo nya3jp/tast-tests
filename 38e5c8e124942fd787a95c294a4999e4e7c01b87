@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcfd9ae3_4cd38daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-20T13:18:52Z",
+      "side": 1,
+      "message": "errors.Is can be used here?\nIf so, I do not think you need wrapping type.",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 33
+      },
+      "revId": "38e5c8e124942fd787a95c294a4999e4e7c01b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
