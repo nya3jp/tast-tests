@@ -50,6 +50,46 @@
       "message": "I think it failed the unit tests.\n\ntast-remote-tests-cros-0.0.2-r7320: src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go:257:28: not enough arguments in call to \"chromiumos/tast/ssh/linuxssh\".GetFile\ntast-remote-tests-cros-0.0.2-r7320: \thave (context.Context, *\"chromiumos/tast/ssh\".Conn, string, string)\ntast-remote-tests-cros-0.0.2-r7320: \twant (context.Context, *\"chromiumos/tast/ssh\".Conn, string, string, \"chromiumos/tast/internal/linuxssh\".SymlinkPolicy)\n\nPlease run \n\n./fast_build.sh -T\n\nin\n\n~/trunk/src/platform/tast\n\nto make sure all tast unit tests passed. ",
       "revId": "69be7746d7fe7233ce049f9dfd3d91de1936220b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3887e4bc_c311efca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-20T04:52:33Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comment",
+      "revId": "69be7746d7fe7233ce049f9dfd3d91de1936220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737fe6e4_b9305e96",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-20T04:52:33Z",
+      "side": 1,
+      "message": "Unless output is always going to be very short, it is better to use something like:\n.Run(ctx, ssh.DumpLogOnError) as including large multi-line text blobs makes Tast test output hard to read.\n\nSee\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go;l\u003d88?q\u003dDumpLogOnError%20chromiumos%2Ftast%2Fssh%20package:chromeos_*%7Cchromium_*\n\nAlso see InitializeEntropy below.",
+      "range": {
+        "startLine": 755,
+        "startChar": 65,
+        "endLine": 755,
+        "endChar": 85
+      },
+      "revId": "69be7746d7fe7233ce049f9dfd3d91de1936220b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
