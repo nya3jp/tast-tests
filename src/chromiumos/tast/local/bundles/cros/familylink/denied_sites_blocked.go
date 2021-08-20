@@ -41,31 +41,20 @@ func DeniedSitesBlocked(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// The allow/block list can take a while to sync so infinitely loop checking
-	// for the website to be blocked.  If it doesn't happen within the test timeout
-	// period, this will fail via the timeout.
-	success := false
-	finalError := errors.New("foo")
-
-	defer func() {
-		if !success {
-			s.Fatal("Parent-blocked website is not blocked for Unicorn user: ", finalError)
-		}
-	}()
-
-	for attempts := 1; ; attempts++ {
+	// The allow/block list can take a while to sync so loop checking
+	// for the website to be blocked.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		conn, err := cr.NewConn(ctx, blockedSite)
 		if err != nil {
-			s.Fatal("Failed to open browser to website: ", err)
+			return testing.PollBreak(errors.Wrap(err, "failed to open browser to website"))
 		}
 		defer conn.Close()
 
 		if err := ui.WaitUntilExists(nodewith.Name("Ask your parent").Role(role.StaticText))(ctx); err != nil {
-			s.Logf("%d attempts to detect blocked site interstitial failed", attempts)
-			finalError = errors.Wrap(err, err.Error())
-			continue
+			return errors.Wrap(err, "failed to detect blocked site interstitial")
 		}
-		success = true
-		break
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Minute}); err != nil {
+		s.Fatal("Parent-blocked website is not blocked for Unicorn user: ", err)
 	}
 }
