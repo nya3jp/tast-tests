@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/platform/perfetto"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -25,10 +27,25 @@ func init() {
 		Desc:         "Tests Chrome DevTools protocol for collecting a system-wide trace via the system tracing service",
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
 		Data:         []string{perfetto.TraceConfigFile},
 		Attr:         []string{"group:mainline", "informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
+		Params: []testing.Param{{
+			Val:     lacros.ChromeTypeChromeOS,
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Fixture:           "lacrosStartedByData", // Note this test requires Lacros version >= 95.0.4617.0.
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
+}
+
+// systemTracer defines functions for collecting a system trace.
+type systemTracer interface {
+	StartSystemTracing(ctx context.Context, perfettoConfig []byte) error
+	StopTracing(ctx context.Context) (*trace.Trace, error)
 }
 
 // PerfettoChromeConsumer tests Chrome as a perfetto trace consumer.
@@ -44,10 +61,27 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
-	_, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
+	var tracer systemTracer
+
+	lacrosChromeType := s.Param().(lacros.ChromeType)
+	if lacrosChromeType == lacros.ChromeTypeLacros {
+		artifactPath := s.DataPath(launcher.DataArtifact)
+		_, l, _, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, lacrosChromeType)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacrosChrome(ctx, l)
+
+		// Trace using lacros-chrome.
+		tracer = l
+	} else {
+		cr := s.FixtValue().(*chrome.Chrome)
+		if _, err := cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to connect Test API: ", err)
+		}
+
+		// Trace using ash-chrome.
+		tracer = cr
 	}
 
 	// Create the binary protobuf TraceConfig: unmarshal from pbtxt and then marshal to binary protobuf.
@@ -72,12 +106,12 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 		if triedToStopTracing {
 			return
 		}
-		if _, err := cr.StopTracing(cleanupCtx); err != nil {
+		if _, err := tracer.StopTracing(cleanupCtx); err != nil {
 			s.Error("Failed to stop tracing in cleanup phase: ", err)
 		}
 	}()
 
-	if err := cr.StartSystemTracing(ctx, configPb); err != nil {
+	if err := tracer.StartSystemTracing(ctx, configPb); err != nil {
 		s.Fatal("Failed to start tracing: ", err)
 	}
 
@@ -88,7 +122,7 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 
 	// Set triedToStopTracing to true so we don't redo in the deferred cleanup phase.
 	triedToStopTracing = true
-	tr, err := cr.StopTracing(cleanupCtx)
+	tr, err := tracer.StopTracing(cleanupCtx)
 	if err != nil {
 		s.Fatal("Failed to stop tracing: ", err)
 	}
