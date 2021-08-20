@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7121b7a7_eab74509",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "There are no tests that turn it off yet, however, on my routers i have the radio turned off by default and have it only enabled when running the tests. I have made it on by default.",
+      "parentUuid": "b0838f2e_8bef2032",
+      "range": {
+        "startLine": 42,
+        "startChar": 179,
+        "endLine": 42,
+        "endChar": 184
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de6c102e_ae0e5f3e",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94abd22e_dc86c8dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "The ax6100 device can only use AX on 5ghz band. GT AX 11000 can use it on 2.4ghz band. Since the lab devices will use the AX6100 device, I have the tests only use the 5ghz band.",
+      "parentUuid": "de6c102e_ae0e5f3e",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70eb078_afe1dcf5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
         "patchSetId": 9
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-18T06:35:09Z",
       "side": 1,
       "message": "Does the channel 100 work on 40mhz, 80mhz and 160mhz?",
+      "range": {
+        "startLine": 93,
+        "startChar": 149,
+        "endLine": 93,
+        "endChar": 152
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08a1f6d_3304b4c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "yes. I just have channel 100 being used as I didn\u0027t want to introduce too many variables between the tests if possible.",
+      "parentUuid": "f70eb078_afe1dcf5",
       "range": {
         "startLine": 93,
         "startChar": 149,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d933e13_53779b01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9415fa_e239ac4f",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 10
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d4bc21_086589d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e695ad_7982e8b9",
+      "range": {
+        "startLine": 168,
+        "startChar": 38,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb4c11a_213b8675",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-08-18T06:35:09Z",
       "side": 1,
       "message": "Based on the context, how about naming it as rt.RetrieveConfiguration(). \n\nWhen we say \"save configuration on some device\", it often means the configuration is applied and stored to the device.\n\nI\u0027ll copy the comment to the CL that defines the function.",
+      "range": {
+        "startLine": 169,
+        "startChar": 25,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7c25dd_ad9c78c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb4c11a_213b8675",
       "range": {
         "startLine": 169,
         "startChar": 25,
@@ -156,6 +300,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4cc245_8c72364b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988dcee6_56ba47f1",
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60975ddf_152283fe",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-08-18T06:35:09Z",
       "side": 1,
       "message": "We do the polling for AP connection below. Do we still need this?\n\nMaybe we just need an extra 10 seconds sleep for expectedFailure \u003d\u003d true case.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 36
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fe3ca9_935a6ede",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-20T22:58:57Z",
+      "side": 1,
+      "message": "Done.\nFor context, I ran into an issue earlier where the router would sometimes connect too quickly to a stale configuration when it shouldn\u0027t have because the router would take time to update its configuration. Once the router actually finishes its configuration change, the connection would fail.\n\nThe exact scenario which caused me to add this sleep in the first place is descrbied below.\n\nTest 1: SSID googletest, channel 100\nTest 2: SSID googletest, channel 110\n\nWe run test1 and connect to googletest on channel 100, succeed, then disassociate.\nWe then run test2. We send the update to let the router\u0027s configuration become updated and then attempt to connect to googletest. We connect quickly since we connected before on the same AP. We then start the ping test. Sometime during this ping test, the router configuration updates to channel 110, no CSA is sent by the router, and then the ping test fails.\n\nWe mitigate this potential problem in 2 ways, we have each subtest require different ssids so that the DUT can\u0027t connect to a stale connection, and we give the router some time to update its configuration before attempting to connect.\n\nThe first solution should be enough, so I will remove the sleep, but I just wanted to give context as to why it\u0027s still relevant to some degree.",
+      "parentUuid": "60975ddf_152283fe",
       "range": {
         "startLine": 205,
         "startChar": 0,
