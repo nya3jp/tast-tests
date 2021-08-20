@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a186e19d_ac433579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-08-20T11:17:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac6766bd_058bd3d3",
+      "revId": "257e7596f467912914890228e3b18971d788515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88029f47_bbc8bc43",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-20T08:33:35Z",
       "side": 1,
       "message": "typo: tests",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "257e7596f467912914890228e3b18971d788515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae54301d_c297d755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-08-20T11:17:46Z",
+      "side": 1,
+      "message": "I actually meant to say \"tasts\", as in tast-tests, but I changed it to \"tests\" since that is clearer.",
+      "parentUuid": "88029f47_bbc8bc43",
       "range": {
         "startLine": 9,
         "startChar": 17,
