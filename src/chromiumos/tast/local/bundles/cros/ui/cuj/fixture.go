@@ -33,8 +33,7 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"ui.cujAccountPool",
 			"cuj_username",
 			"cuj_password",
 		},
@@ -48,8 +47,7 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"ui.cujAccountPool",
 			"cuj_username",
 			"cuj_password",
 		},
@@ -60,7 +58,7 @@ func init() {
 		Contacts: []string{"xiyuan@chromium.org"},
 		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
-				chrome.GAIALogin(getCreds(s)),
+				getLoginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 				chrome.EnableFeatures("LacrosSupport"),
@@ -70,8 +68,7 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"ui.cujAccountPool",
 			"cuj_username",
 			"cuj_password",
 			launcher.LacrosDeployedBinary,
@@ -89,7 +86,7 @@ func init() {
 	})
 }
 
-func getCreds(s *testing.FixtState) chrome.Creds {
+func getLoginOption(s *testing.FixtState) chrome.Option {
 	var username string
 	var password string
 
@@ -98,12 +95,10 @@ func getCreds(s *testing.FixtState) chrome.Creds {
 	if userOk && passOk {
 		username = cujUser
 		password = cujPass
-	} else {
-		username = s.RequiredVar("ui.cuj_username")
-		password = s.RequiredVar("ui.cuj_password")
+		return chrome.GAIALogin(chrome.Creds{User: username, Pass: password})
 	}
 
-	return chrome.Creds{User: username, Pass: password}
+	return chrome.GAIALoginPool(s.RequiredVar("ui.cujAccountPool"))
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
@@ -154,7 +149,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 			defer cancel()
 
 			opts := []chrome.Option{
-				chrome.GAIALogin(getCreds(s)),
+				getLoginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}
