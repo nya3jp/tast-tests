@@ -22,6 +22,144 @@
       },
       "revId": "a84f91508771421b8afbd57686f3948b8307810f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8483c757_b4b6900e",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T22:02:38Z",
+      "side": 1,
+      "message": "Did you intend to put \"err\" here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4db11a6_f22f5b7f",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T22:02:38Z",
+      "side": 1,
+      "message": "Any reason why you shouldn\u0027t use \"strconv.ParseInt(tout[1], 10, 64)\" instead? Then, you don\u0027t need to case to int64 later.\n\nhttps://pkg.go.dev/strconv#ParseInt",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da88cda0_813f0b24",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T22:02:38Z",
+      "side": 1,
+      "message": "seconds",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d83963_5dda4d78",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T22:02:38Z",
+      "side": 1,
+      "message": "Is index 1 always guaranteed to exist? Even if I give it a blank line or malformed line?",
+      "range": {
+        "startLine": 54,
+        "startChar": 30,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cb9f5e_16cbdaf2",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T22:02:38Z",
+      "side": 1,
+      "message": "Same thing. Is index 2 always present after attempted matching?",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7abed8d1_b8f297cf",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-20T22:02:38Z",
+      "side": 1,
+      "message": "Same comment about using ParseInt",
+      "range": {
+        "startLine": 58,
+        "startChar": 29,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
