@@ -35,7 +35,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{vm.ArtifactData(), runVhostUserNetTest},
-		SoftwareDeps: []string{"vm_host", "vhost_user_devices"},
+		SoftwareDeps: []string{"vm_host"},
 		Pre:          vm.Artifact(),
 	})
 }
@@ -181,14 +181,16 @@ func VhostUserNet(ctx context.Context, s *testing.State) {
 	clientSock := filepath.Join(td, "vhost-user-net-client.sock")
 
 	cmdArgs := []string{
+		"device",
+		"net",
 		"--tap-fd", fmt.Sprintf("%s,%d", serverSock, serverTap.fd),
 		"--tap-fd", fmt.Sprintf("%s,%d", clientSock, clientTap.fd),
 	}
-	devCmd := testexec.CommandContext(ctx, "vhost-user-net-device", cmdArgs...)
+	devCmd := testexec.CommandContext(ctx, "crosvm", cmdArgs...)
 	devCmd.Stdout = devlog
 	devCmd.Stderr = devlog
 	if err := devCmd.Start(); err != nil {
-		s.Fatal("Failed to start vhost-user-net-device: ", err)
+		s.Fatal("Failed to start vhost-user net device: ", err)
 	}
 
 	data := s.PreValue().(vm.PreData)
