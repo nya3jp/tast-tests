@@ -627,18 +627,6 @@ func (s *Servo) SetUSBMuxState(ctx context.Context, value USBMuxState) error {
 	if err := s.SetStringTimeout(ctx, ImageUSBKeyDirection, string(value), 90*time.Second); err != nil {
 		return err
 	}
-	// Because servod makes no guarantees when switching to the DUT side,
-	// add a detection delay here when facing the DUT.
-	// Polling until GetUSBMuxState returns USBMuxDUT is not sufficient, because
-	// servod will return USBMuxDUT immediately. We need to wait to ensure that the DUT
-	// has had time to enumerate the USB.
-	// TODO(b/157751281): Clean this up once servo_v3 has been removed.
-	if value == USBMuxDUT {
-		testing.ContextLog(ctx, "sleep 5 ", value)
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-			return errors.Wrap(err, "sleeping after switching usbkey direction")
-		}
-	}
 	return nil
 }
 
