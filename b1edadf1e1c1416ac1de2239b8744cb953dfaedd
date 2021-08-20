@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95b73cb_28f516fe",
+        "filename": "src/chromiumos/tast/local/camera/cca/remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-20T02:59:55Z",
+      "side": 1,
+      "message": "Thanks. Renamed it to |cleanupCtx|.",
+      "parentUuid": "7a635526_6ecd47f0",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "b1edadf1e1c1416ac1de2239b8744cb953dfaedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "533f234e_e2ef0285",
