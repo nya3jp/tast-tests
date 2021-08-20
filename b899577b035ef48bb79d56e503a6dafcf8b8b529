@@ -22,6 +22,30 @@
       },
       "revId": "b899577b035ef48bb79d56e503a6dafcf8b8b529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce49262_d163f1e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-08-20T06:22:08Z",
+      "side": 1,
+      "message": "Nice catch! I added odd dimesnion capability.",
+      "parentUuid": "a10d2d93_0da2f036",
+      "range": {
+        "startLine": 178,
+        "startChar": 32,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "b899577b035ef48bb79d56e503a6dafcf8b8b529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
