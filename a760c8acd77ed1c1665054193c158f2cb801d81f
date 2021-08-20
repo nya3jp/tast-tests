@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd9776c_f8212cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done. Fix the comment.",
+      "parentUuid": "8d8d25ad_cb9ba55b",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 62
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b44b631_a28c5a1d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a514545_aff848fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "This one is the time takes to draw. Similar to handwriting draws a stroke.",
+      "parentUuid": "9b44b631_a28c5a1d",
+      "range": {
+        "startLine": 195,
+        "startChar": 67,
+        "endLine": 195,
+        "endChar": 69
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a4ef66_37035dec",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-19T07:50:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 197,
+        "startChar": 88,
+        "endLine": 197,
+        "endChar": 90
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a2f362_2dd56494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9a4ef66_37035dec",
       "range": {
         "startLine": 197,
         "startChar": 88,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1bdf6fe_c82d97e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Personally I do not like to use name to pass params into the test.\nName is a string to represent a test, and a string can be formatted whatever you want. For example, \u0027clamshell_float_us_en\u0027 can parse device mode, VK layout and input method. However, it significant reduced the code readability.",
+      "parentUuid": "669325b9_4448cbc7",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0460530d_ce91511e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-19T07:50:22Z",
       "side": 1,
       "message": "Val: ime.EnglishUS,",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d27b5ff_4f090c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Answered above.",
+      "parentUuid": "0460530d_ce91511e",
       "range": {
         "startLine": 45,
         "startChar": 4,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdd6898_1f3339d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ccd2f9_3b5eaec8",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f8ac4aa_9c32cce4",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-08-19T07:50:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1fbd94_555e18ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f8ac4aa_9c32cce4",
       "range": {
         "startLine": 51,
         "startChar": 4,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc2e3ad_28594c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Fixed. I have seen this comment a couple of times recently. Actually it is not required because Tast infra tries to take screenshot on test failure (named screenshot_chrome.png) in faillog.",
+      "parentUuid": "cb7ddd84_c76b920a",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25b6dd49_6bccce0d",
@@ -202,6 +394,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9979f569_8728cf87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Good idea. I do find a lot of duplication in newly added tests. I created a util function and I believe it should work for mangy cases across inputs features.",
+      "parentUuid": "25b6dd49_6bccce0d",
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d808100_439dba3d",
@@ -215,6 +425,30 @@
       "writtenOn": "2021-08-19T07:50:22Z",
       "side": 1,
       "message": "true?",
+      "range": {
+        "startLine": 485,
+        "startChar": 55,
+        "endLine": 485,
+        "endChar": 60
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a92481_c808da77",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d808100_439dba3d",
       "range": {
         "startLine": 485,
         "startChar": 55,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a27f3d6_53eec94d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "740c7c6a_0a579e69",
+      "range": {
+        "startLine": 489,
+        "startChar": 51,
+        "endLine": 489,
+        "endChar": 60
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa90605_7fc11ed9",
@@ -261,6 +519,30 @@
       "writtenOn": "2021-08-19T07:50:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 491,
+        "startChar": 58,
+        "endLine": 491,
+        "endChar": 67
+      },
+      "revId": "a760c8acd77ed1c1665054193c158f2cb801d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12898ac5_064600c6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-20T00:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa90605_7fc11ed9",
       "range": {
         "startLine": 491,
         "startChar": 58,
