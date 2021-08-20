@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68369a9_07baef90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-20T13:39:47Z",
+      "side": 1,
+      "message": "If we choose to fix this way, we need to do it for ui.OverviewDragWindowPerf.drag_to_snap as well. Think it currently fails on kohaku for the similar reason.",
+      "revId": "7b54b2fdc36c0dacc70bd41cbc07707300a522b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8a66cd1_a1abed94",
