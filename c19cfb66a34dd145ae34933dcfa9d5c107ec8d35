@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dae882e_457e8319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-20T22:57:54Z",
+      "side": 1,
+      "message": "9100 is the standard port used for AppSocket printing.",
+      "parentUuid": "d0087871_73b7145d",
+      "range": {
+        "startLine": 111,
+        "startChar": 43,
+        "endLine": 111,
+        "endChar": 47
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcaac656_bac01ffb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-20T00:47:35Z",
       "side": 1,
       "message": "Where does this constant come from? Is it guaranteed to be 10 as part of the test/API?",
+      "range": {
+        "startLine": 130,
+        "startChar": 38,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f60c60b3_e70ac70b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-20T22:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcaac656_bac01ffb",
       "range": {
         "startLine": 130,
         "startChar": 38,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26122bfb_648360cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-20T22:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fee5194_a9a4ce9d",
+      "range": {
+        "startLine": 191,
+        "startChar": 20,
+        "endLine": 191,
+        "endChar": 26
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3ec55e1_64ede557",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64325ba9_dc4e5728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-20T22:57:54Z",
+      "side": 1,
+      "message": "Yup - the print job completes when the connection closes.",
+      "parentUuid": "d3ec55e1_64ede557",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "363bf3a3_0646b59a",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-20T00:47:35Z",
       "side": 1,
       "message": "Is calling close twice safe (here + defer)?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 14
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac078699_ca922cab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-20T22:57:54Z",
+      "side": 1,
+      "message": "It should now be safe to call Close() multiple times.",
+      "parentUuid": "363bf3a3_0646b59a",
       "range": {
         "startLine": 228,
         "startChar": 0,
