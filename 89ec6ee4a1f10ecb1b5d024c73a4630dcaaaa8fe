@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e3b239_c667ba3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-20T08:30:24Z",
+      "side": 1,
+      "message": "LGTM with nits.\n",
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d8d26f_53095656",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-20T08:30:24Z",
+      "side": 1,
+      "message": "Nice to avoid passing without performing anything. Can we call s.Fatal instead?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a642473f_93f4d7f3",
@@ -59,6 +99,29 @@
         "startChar": 12,
         "endLine": 88,
         "endChar": 39
+      },
+      "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0f3187_1ecd63df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-20T08:30:24Z",
+      "side": 1,
+      "message": "typo: rebooting",
+      "range": {
+        "startLine": 154,
+        "startChar": 32,
+        "endLine": 154,
+        "endChar": 40
       },
       "revId": "89ec6ee4a1f10ecb1b5d024c73a4630dcaaaa8fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
