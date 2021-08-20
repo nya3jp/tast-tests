@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fb3a2dd_a133a7a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-20T16:34:52Z",
+      "side": 1,
+      "message": "I think you need more comment inside the code to describe what this code does. It was not clear just by looking at the code. Otherwise, it looks ok. Please add more comments. Thanks.",
+      "revId": "ec7b2b9876ff96ce992041cdc5bbfa00afe5ddcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b14eae96_91fab6cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
         "patchSetId": 4
