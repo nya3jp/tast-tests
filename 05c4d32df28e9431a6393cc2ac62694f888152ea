@@ -16,6 +16,52 @@
       "message": "Hey, please take a look",
       "revId": "05c4d32df28e9431a6393cc2ac62694f888152ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0bba5c4_91c2ffff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-20T13:44:50Z",
+      "side": 1,
+      "message": "combine this with L42",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "05c4d32df28e9431a6393cc2ac62694f888152ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea07965b_d458e97d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-20T13:44:50Z",
+      "side": 1,
+      "message": "combine this with L47",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "05c4d32df28e9431a6393cc2ac62694f888152ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
