@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ba4bb0_ab59b867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-08-21T01:14:39Z",
+      "side": 1,
+      "message": "Oh no!\n\n```\nUnexpected fw dump size; got 0.858406 MB, want \u003e 1 MB\n```",
+      "revId": "3736ad424a1f509a349c610df91393cda10c18b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
