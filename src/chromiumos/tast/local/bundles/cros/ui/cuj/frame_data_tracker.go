@@ -33,7 +33,7 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 	}
 
 	if err := t.dsTracker.Start(ctx, tconn, ""); err != nil {
-		return errors.Wrap(err, "failed to start display smoothness tracking: ")
+		return errors.Wrap(err, "failed to start display smoothness tracking")
 	}
 	return nil
 }
@@ -121,4 +121,12 @@ func NewFrameDataTracker(metricPrefix string) (*FrameDataTracker, error) {
 		prefix:    metricPrefix,
 		dsTracker: perfutil.NewDisplaySmoothnessTracker(),
 	}, nil
+}
+
+// GetDisplaySmoothness returns display smoothness calculated by collected data.
+func (t *FrameDataTracker) GetDisplaySmoothness() float64 {
+	if float64(t.dsData.FramesExpected) == 0 {
+		return 100
+	}
+	return float64(t.dsData.FramesProduced) / float64(t.dsData.FramesExpected) * 100
 }
