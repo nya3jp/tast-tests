@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69685517_ae334663",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/cca_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-21T08:37:17Z",
+      "side": 1,
+      "message": "Also adding \"document_scanning_front\" since this feature is not limited to back camera now.",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "87b6e237ad4da488d1fe538741f8c725160a4565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
