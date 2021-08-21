@@ -33,6 +33,24 @@
       "message": "LGTM, but will the delays be stable at those values or would it make sense to add some buffer to make sure?\nI assume it is not possible to poll for any feedback if the test can continue.",
       "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b335b7_1c7782f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-21T01:19:43Z",
+      "side": 1,
+      "message": "I beleive they should be stable (they assume a worst case scenario, though Nathan can keep me honest).",
+      "parentUuid": "1f4984b8_ae5b058a",
+      "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
