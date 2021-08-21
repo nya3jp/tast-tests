@@ -16,6 +16,23 @@
       "message": "LGTM code-wise, but I am rudementary.\nDelays match up with tests in bug.\n\nWill sync with Prashant to see data.",
       "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4984b8_ae5b058a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-21T00:32:10Z",
+      "side": 1,
+      "message": "LGTM, but will the delays be stable at those values or would it make sense to add some buffer to make sure?\nI assume it is not possible to poll for any feedback if the test can continue.",
+      "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
