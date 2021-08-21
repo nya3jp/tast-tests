@@ -33,7 +33,7 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 	}
 
 	if err := t.dsTracker.Start(ctx, tconn, ""); err != nil {
-		return errors.Wrap(err, "failed to start display smoothness tracking: ")
+		return errors.Wrap(err, "failed to start display smoothness tracking")
 	}
 	return nil
 }
