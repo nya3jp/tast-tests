@@ -51,6 +51,24 @@
       "parentUuid": "1f4984b8_ae5b058a",
       "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2a3a26_8d02ebea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-21T21:12:43Z",
+      "side": 1,
+      "message": "The event to poll would be (a) stable PD contract on Port0 (DUTCHG) followed by (b) stable PD contract on Port1 (DUT).\n\nUnfortunately, there are state desync/timing errors in synchronization between the two ports. See bug. Servo passthrough code itself needs to be re-written from scratch as proper fix. Transition commands need to be blocking/callback (ideally). Then these delays would be unnecessary.\n\n\nI think we are moderately safe with these worst-case values (assuming desync, port HARD_RESET, renegotiation).",
+      "parentUuid": "26b335b7_1c7782f4",
+      "revId": "c6fd88bf1acba52c60840467b03bc105f34b6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
