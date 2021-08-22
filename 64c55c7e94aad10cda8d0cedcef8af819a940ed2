@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f28521_00df1fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-22T18:01:34Z",
+      "side": 1,
+      "message": "Marking LGTM, assuming you\u0027re ok with my comment inline, to avoid cross timezone iteration.",
+      "revId": "64c55c7e94aad10cda8d0cedcef8af819a940ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3ec9b8_0df1adc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-22T18:01:34Z",
+      "side": 1,
+      "message": "sorry, once more nit. error should be checked first before accessing sensor.\nSo,\n\nif err !\u003d nil {\n  if !errors.Is(...) {\n    testing.ContextLogf(...)\n  }\n  continue\n}\nret \u003d append(ret, sensor)",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "64c55c7e94aad10cda8d0cedcef8af819a940ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
