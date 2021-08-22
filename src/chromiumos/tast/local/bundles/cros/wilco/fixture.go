@@ -6,8 +6,15 @@ package wilco
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/wilco/wilcoextension"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
@@ -22,32 +29,49 @@ func init() {
 			"lamzin@google.com",        // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		Impl:            NewWilcoFixture(),
+		Impl:            NewWilcoFixture(false),
 		Parent:          "chromeEnrolledLoggedIn",
 		SetUpTimeout:    15 * time.Second,
 		PreTestTimeout:  10 * time.Second,
 		PostTestTimeout: 10 * time.Second,
 		TearDownTimeout: 15 * time.Second,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "wilcoDTCEnrolledExtensionSupport",
+		Desc: "Wilco DTC enrollment fixture with Wilco Test Extension, Wilco DTC VM and Supportd daemon and",
+		Contacts: []string{
+			"bisakhmondal00@gmail.com", // test author
+			"lamzin@google.com",        // wilco_dtc_supportd maintainer
+			"chromeos-wilco@google.com",
+		},
+		Impl:            NewWilcoFixture(true),
+		Parent:          "fakeDMSEnrolled",
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		PreTestTimeout:  10 * time.Second,
+		ResetTimeout:    chrome.ResetTimeout,
+		PostTestTimeout: 10 * time.Second,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 // NewWilcoFixture returns an object that implements FixtureImpl interface.
-func NewWilcoFixture() *wilcoEnrolledFixture {
-	return &wilcoEnrolledFixture{}
+func NewWilcoFixture(fdmsOnly bool) *wilcoEnrolledFixture {
+	return &wilcoEnrolledFixture{
+		onlyFakeDMS: fdmsOnly,
+	}
 }
 
 // wilcoEnrolledFixture implements testing.FixtureImpl.
 type wilcoEnrolledFixture struct {
 	wilcoDTCVMPID       int
 	wilcoDTCSupportdPID int
+	onlyFakeDMS         bool
+	extensionDir        string
+	cr                  *chrome.Chrome
 }
 
 func (w *wilcoEnrolledFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	fixtData, ok := s.ParentValue().(*fixtures.FixtData)
-	if !ok {
-		s.Fatal("Failed to access chromeEnrolledLoggedIn parent fixture")
-	}
-
 	// Starting wilco DTC vm.
 	if err := wilco.StartVM(ctx, &wilco.VMConfig{
 		StartProcesses: false,
@@ -74,7 +98,49 @@ func (w *wilcoEnrolledFixture) SetUp(ctx context.Context, s *testing.FixtState) 
 	}
 
 	w.wilcoDTCSupportdPID = pidD
-	return fixtData
+	// Return the parent fixtures.FixtData object.
+	if !w.onlyFakeDMS {
+		return s.ParentValue()
+	}
+
+	fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
+	if !ok {
+		s.Fatal("Parent is not a FakeDMS fixture")
+	}
+
+	extDir, err := ioutil.TempDir("", "tast.ChromeExtension.")
+	if err != nil {
+		s.Fatal("Failed to create temp dir: ", err)
+	}
+	w.extensionDir = extDir
+
+	s.Log("Writing unpacked extension to ", extDir)
+	if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(wilcoextension.Manifest), 0644); err != nil {
+		s.Fatal("Failed to write manifest.json: ", err)
+	}
+	if err := ioutil.WriteFile(filepath.Join(extDir, "background.js"), []byte{}, 0644); err != nil {
+		s.Fatal("Failed to write background.js: ", err)
+	}
+	if extID, err := chrome.ComputeExtensionID(extDir); err != nil {
+		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
+	} else if extID != wilcoextension.ID {
+		s.Fatalf("Unexpected extension id: got %s; want %s", extID, wilcoextension.ID)
+	}
+
+	cr, err := chrome.New(ctx, chrome.KeepEnrollment(),
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
+		chrome.UnpackedExtension(extDir))
+	if err != nil {
+		s.Fatal("Chrome startup failed: ", err)
+	}
+
+	w.cr = cr
+	return &fixtures.FixtData{
+		FakeDMS: fdms,
+		Chrome:  cr,
+	}
 }
 
 func (w *wilcoEnrolledFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
@@ -121,8 +187,33 @@ func (w *wilcoEnrolledFixture) TearDown(ctx context.Context, s *testing.FixtStat
 	if err := wilco.StopVM(ctx); err != nil {
 		s.Error("Failed to stop the Wilco DTC VM: ", err)
 	}
+
+	if w.cr != nil {
+		if err := w.cr.Close(ctx); err != nil {
+			s.Error("Failed to close Chrome connection: ", err)
+		}
+	}
+
+	if w.extensionDir != "" {
+		if err := os.RemoveAll(w.extensionDir); err != nil {
+			s.Error("Failed to remove Chrome extension dir: ", err)
+		}
+	}
 }
 
 func (w *wilcoEnrolledFixture) Reset(ctx context.Context) error {
+	if w.cr == nil {
+		return nil
+	}
+
+	// Check the connection to Chrome.
+	if err := w.cr.Responded(ctx); err != nil {
+		return errors.Wrap(err, "existing Chrome connection is unusable")
+	}
+	// Reset Chrome state.
+	if err := w.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed resetting existing Chrome session")
+	}
+
 	return nil
 }

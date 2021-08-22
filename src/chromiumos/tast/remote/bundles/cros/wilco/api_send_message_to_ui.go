@@ -39,6 +39,8 @@ func init() {
 	})
 }
 
+// APISendMessageToUI tests Wilco DTC SendMessageToUi gRPC API.
+// TODO(b/189457904): remove once wilco.APISendMessageToUIEnrolled will be stable enough.
 func APISendMessageToUI(ctx context.Context, s *testing.State) { // NOLINT
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
