@@ -7,7 +7,9 @@
 // local and remote tests.
 package mmconst
 
-import "time"
+import (
+	"time"
+)
 
 // ModemManager1.Modem properties
 const (
@@ -15,6 +17,8 @@ const (
 	ModemPropertySim            = "Sim"
 	ModemPropertySimSlots       = "SimSlots"
 	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
+	ModemPropertyState          = "State"
+	ModemPropertyPowered        = "PowerState"
 )
 
 // ModemManager1.Sim properties
@@ -30,4 +34,35 @@ const (
 // D-Bus path for empty sim slots
 const (
 	EmptySlotPath = "/"
+)
+
+// ModemState states from Modemmanager-enums.h
+type ModemState int32
+
+// All the modem states
+const (
+	ModemStateFailed        ModemState = -1
+	ModemStateUnknown       ModemState = 0
+	ModemStateInitializing  ModemState = 1
+	ModemStateLocked        ModemState = 2
+	ModemStateDisabled      ModemState = 3
+	ModemStateDisabling     ModemState = 4
+	ModemStateEnabling      ModemState = 5
+	ModemStateEnabled       ModemState = 6
+	ModemStateSearching     ModemState = 7
+	ModemStateRegistered    ModemState = 8
+	ModemStateDisconnecting ModemState = 9
+	ModemStateConnecting    ModemState = 10
+	ModemStateConnected     ModemState = 11
+)
+
+// ModemPowerState is states of MMModemPowerState
+type ModemPowerState int
+
+// All the modem power states
+const (
+	ModemPowerStateUnknown ModemPowerState = 0
+	ModemPowerStateOff     ModemPowerState = 1
+	ModemPowerStateLow     ModemPowerState = 2
+	ModemPowerStateOn      ModemPowerState = 3
 )

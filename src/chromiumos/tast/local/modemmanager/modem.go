@@ -58,6 +58,16 @@ func NewModem(ctx context.Context) (*Modem, error) {
 	return &Modem{ph}, nil
 }
 
+// GetSimpleModem creates a PropertyHolder for the SimpleModem object
+func (m *Modem) GetSimpleModem(ctx context.Context) (*Modem, error) {
+	modemPath := dbus.ObjectPath(m.String())
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimpleModemInterface, modemPath)
+	if err != nil {
+		return nil, err
+	}
+	return &Modem{ph}, nil
+}
+
 // GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
 func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (*dbusutil.Properties, error) {
 	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimInterface, simPath)
@@ -155,4 +165,85 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 		return PollModem(ctx, modem.String())
 	}
 	return nil, errors.New("failed to create modem: modemmanager D-Bus object has no valid SIM's")
+}
+
+// IsEnabled checks modem state and returns boolean
+func (m *Modem) IsEnabled(ctx context.Context) (bool, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	modemState, err := props.GetInt32(mmconst.ModemPropertyState)
+	if err != nil {
+		return false, errors.Wrap(err, "missing state property")
+	}
+	states := [6]mmconst.ModemState{
+		mmconst.ModemStateEnabled,
+		mmconst.ModemStateSearching,
+		mmconst.ModemStateRegistered,
+		mmconst.ModemStateDisconnecting,
+		mmconst.ModemStateConnecting,
+		mmconst.ModemStateConnected}
+
+	for _, value := range states {
+		if int32(value) == modemState {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// IsDisabled checks modem state and returns boolean
+func (m *Modem) IsDisabled(ctx context.Context) (bool, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	modemState, err := props.GetInt32(mmconst.ModemPropertyState)
+	if err != nil {
+		return false, errors.Wrap(err, "missing state property")
+	}
+	return (modemState == int32(mmconst.ModemStateDisabled)), nil
+}
+
+// IsPowered checks modem powerstate and returns true if powered on
+func (m *Modem) IsPowered(ctx context.Context) (bool, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	modemState, err := props.GetInt32(mmconst.ModemPropertyPowered)
+	if err != nil {
+		return false, errors.Wrap(err, "missing powerstate property")
+	}
+
+	if modemState == int32(mmconst.ModemPowerStateOn) {
+		return true, nil
+	}
+	return false, nil
+}
+
+// IsConnected checks modem state and returns boolean
+func (m *Modem) IsConnected(ctx context.Context) (bool, error) {
+	// for SimpleModem GetStatus returns properties
+	var props map[string]interface{}
+
+	if err := m.Call(ctx, "GetStatus").Store(&props); err != nil {
+		return false, errors.Wrapf(err, "failed getting properties of %v", m)
+	}
+	simpleProps := dbusutil.NewProperties(props)
+	modemState, err := simpleProps.GetInt32(mmconst.ModemPropertyState)
+	if err != nil {
+		return false, errors.Wrap(err, "missing state property")
+	}
+	states := [2]mmconst.ModemState{
+		mmconst.ModemStateConnecting,
+		mmconst.ModemStateConnected}
+
+	for _, value := range states {
+		if int32(value) == modemState {
+			return true, nil
+		}
+	}
+	return false, nil
 }
