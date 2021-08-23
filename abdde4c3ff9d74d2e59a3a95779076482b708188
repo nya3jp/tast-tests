@@ -16,6 +16,24 @@
       "message": "This test is pretty simple. It\u0027s essentially just running \"ectool --name\u003dcros_fp fpencstatus\", which queries the FPMCU to see if the TPM seed has been set.  I suppose it could be causing some weird side effects on your tests, but very likely not.",
       "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310f0ea6_56d6f3f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-08-23T16:08:04Z",
+      "side": 1,
+      "message": "Tom, please still consider disabling the test if it\u0027s all red. All-failed tests achieve very little.\nOr least, please take a look if FpUpdater is affected by this test before we draw conclusion. \nSee https://b.corp.google.com/issues/196924181#comment10 for more information. (i didn\u0027t see your comment so i suppose you haven\u0027t read that.) Even if they are just co-incidences as you think, it deserves more clarification i guess.",
+      "parentUuid": "89f93e26_53850b40",
+      "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
