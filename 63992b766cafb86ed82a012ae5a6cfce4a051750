@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18a8d63_22da3205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-23T22:54:02Z",
+      "side": 1,
+      "message": "I don\u0027t think this is particularly robust. If we use *any* other SSD or TBT device with downstream USB port other than \"Samsung_X5\", this test will fail.\n\nInstead I would recommend the following to determine the directory:\n- Before plugging in the TBT device, list the directories in /media/removable.\n- Plug in TBT device.\n- List directories in /media/removable again. There should be just 1 new directory, and that can be your destination dir.\n\nThis will at least let us use other device than just the \"Samsung_x5\". Also, you can then remove this field from the .json file.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 53
+      },
+      "revId": "63992b766cafb86ed82a012ae5a6cfce4a051750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
