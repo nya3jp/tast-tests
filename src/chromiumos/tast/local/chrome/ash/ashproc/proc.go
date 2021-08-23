@@ -11,10 +11,10 @@ import (
 	"chromiumos/tast/local/chrome/internal/chromeproc"
 )
 
-// installDir is the path to the directory that contains Chrome executable.
-const installDir = "/opt/google/chrome"
+// ExecPath contains the path to the Chrome executable.
+const ExecPath = "/opt/google/chrome/chrome"
 
 // Processes returns ash-chrome processes, including crashpad_handler processes, too.
 func Processes() ([]*process.Process, error) {
-	return chromeproc.Processes(installDir)
+	return chromeproc.Processes(ExecPath)
 }

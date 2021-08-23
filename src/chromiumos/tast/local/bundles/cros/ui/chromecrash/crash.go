@@ -338,6 +338,26 @@ func waitForChromeProcesses(ctx context.Context) ([]*process.Process, error) {
 	return procs, nil
 }
 
+// crashpadHandlerProcesses returns all ash-chrome's crashpad handler processes.
+func crashpadHandlerProcesses() ([]*process.Process, error) {
+	ps, err := process.Processes()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain processes")
+	}
+
+	var ret []*process.Process
+	for _, p := range ps {
+		// Identify by exec path. Ignore errors.
+		// Because of timing issue, the process may be gone between the
+		// Process instance creation and Exe invocation.
+		if exe, err := p.Exe(); err != nil || exe != crashpadExecPath {
+			continue
+		}
+		ret = append(ret, p)
+	}
+	return ret, nil
+}
+
 // getNonBrowserProcess returns a Process structure of a single Chrome process
 // of the indicated type. If more than one such process exists, the first one is
 // returned. Does not wait for the process to come up -- if none exist, this
@@ -516,6 +536,11 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to find Chrome process IDs")
 	}
+	chProcs, err := crashpadHandlerProcesses()
+	if err != nil {
+		return errors.Wrap(err, "failed to find crashpad_handler processes")
+	}
+	procs = append(procs, chProcs...)
 
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
 	// as its parent) is the browser process. It's not sandboxed, so it should be able

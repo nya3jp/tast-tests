@@ -13,19 +13,13 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/internal/chromeproc"
 )
 
-// installDir is the path to the directory that contains Chrome executable.
-// TODO(crbug.com/1237972): Merge into ashproc.installDir.
-const installDir = "/opt/google/chrome"
-
-// ExecPath contains the path to the Chrome executable.
-const ExecPath = "/opt/google/chrome/chrome"
-
 // Version returns the Chrome browser version. E.g. Chrome version W.X.Y.Z will be reported as a list of strings.
 func Version(ctx context.Context) ([]string, error) {
-	versionStr, err := testexec.CommandContext(ctx, ExecPath, "--version").Output(testexec.DumpLogOnError)
+	versionStr, err := testexec.CommandContext(ctx, ashproc.ExecPath, "--version").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get chrome version")
 	}
@@ -41,7 +35,7 @@ func Version(ctx context.Context) ([]string, error) {
 // GetRootPID returns the PID of the root Chrome process.
 // This corresponds to the browser process.
 func GetRootPID() (int, error) {
-	p, err := chromeproc.Root(installDir)
+	p, err := chromeproc.Root(ashproc.ExecPath)
 	if err != nil {
 		return -1, err
 	}
@@ -50,20 +44,20 @@ func GetRootPID() (int, error) {
 
 // GetPluginProcesses returns Chrome plugin processes.
 func GetPluginProcesses() ([]*process.Process, error) {
-	return chromeproc.PluginProcesses(installDir)
+	return chromeproc.PluginProcesses(ashproc.ExecPath)
 }
 
 // GetRendererProcesses returns Chrome renderer processes.
 func GetRendererProcesses() ([]*process.Process, error) {
-	return chromeproc.RendererProcesses(installDir)
+	return chromeproc.RendererProcesses(ashproc.ExecPath)
 }
 
 // GetGPUProcesses returns Chrome gpu-process processes.
 func GetGPUProcesses() ([]*process.Process, error) {
-	return chromeproc.GPUProcesses(installDir)
+	return chromeproc.GPUProcesses(ashproc.ExecPath)
 }
 
 // GetBrokerProcesses returns Chrome broker processes.
 func GetBrokerProcesses() ([]*process.Process, error) {
-	return chromeproc.BrokerProcesses(installDir)
+	return chromeproc.BrokerProcesses(ashproc.ExecPath)
 }
