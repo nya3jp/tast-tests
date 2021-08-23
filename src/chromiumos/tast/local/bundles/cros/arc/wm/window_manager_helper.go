@@ -563,6 +563,7 @@ func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.TestConn, dispID
 func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bool, testCases []TestCase) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	if err := a.Install(ctx, arc.APKPath(APKNameArcWMTestApp24)); err != nil {
 		s.Fatal("Failed to install APK: ", err)
@@ -572,12 +573,6 @@ func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bo
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
 	if err != nil {

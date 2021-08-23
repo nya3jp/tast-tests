@@ -61,6 +61,12 @@ func MTP(ctx context.Context, s *testing.State) {
 	//TODO(b/187740535): Investigate and reserve time for cleanup.
 	defer a.Close(ctx)
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	config := storage.TestConfig{DirName: "Nexus/Pixel (MTP+ADB)", DirTitle: "Files - Nexus/Pixel (MTP+ADB)",
@@ -70,5 +76,5 @@ func MTP(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: mtpURI + config.FileName},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
 }
