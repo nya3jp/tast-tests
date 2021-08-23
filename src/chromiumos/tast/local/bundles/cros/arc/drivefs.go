@@ -64,6 +64,12 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	vmEnabled, err := arc.VMEnabled()
 	if err != nil {
 		s.Fatal("Failed to check if VM is enabled: ", err)
@@ -82,7 +88,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: constructDriveFSURI(vmEnabled, drivefsRoot, config.FileName)},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
 }
 
 // randFileName generates a randomized test file name to avoid race condition among concurrently running tests.

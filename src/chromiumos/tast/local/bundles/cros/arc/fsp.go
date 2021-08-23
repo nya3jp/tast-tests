@@ -79,6 +79,12 @@ func Fsp(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
@@ -115,7 +121,7 @@ func Fsp(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: constructFSPURI(userPath, config.FileName)},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expect)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expect)
 }
 
 // unzipFile unzips the specified "zipFile" located at "folder" using the "unarchiver".

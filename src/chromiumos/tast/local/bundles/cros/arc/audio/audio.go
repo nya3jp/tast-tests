@@ -58,6 +58,7 @@ const (
 type ARCAudioTast struct {
 	arc   *arc.ARC
 	cr    *chrome.Chrome
+	d     *ui.Device
 	tconn *chrome.TestConn
 }
 
@@ -119,13 +120,13 @@ func (t *ARCAudioTast) RunAppAndPollStream(ctx context.Context, apkPath string, 
 }
 
 // NewARCAudioTast creates an ARCAudioTast.
-func NewARCAudioTast(ctx context.Context, a *arc.ARC, cr *chrome.Chrome) (*ARCAudioTast, error) {
+func NewARCAudioTast(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, d *ui.Device) (*ARCAudioTast, error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Test API connection")
 	}
 
-	return &ARCAudioTast{arc: a, cr: cr, tconn: tconn}, nil
+	return &ARCAudioTast{arc: a, cr: cr, d: d, tconn: tconn}, nil
 }
 
 func (t *ARCAudioTast) startActivity(ctx context.Context, param TestParameters) (*arc.Activity, error) {
@@ -147,22 +148,17 @@ func (t *ARCAudioTast) startActivity(ctx context.Context, param TestParameters) 
 }
 
 func (t *ARCAudioTast) verifyAppResult(ctx context.Context) error {
-	device, err := t.arc.NewUIDevice(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create ui.device")
-	}
-	defer device.Close(ctx)
-	if err := device.Object(ui.ID(resultID), ui.TextMatches("[01]")).WaitForExists(ctx, verifyUIResultTimeout); err != nil {
+	if err := t.d.Object(ui.ID(resultID), ui.TextMatches("[01]")).WaitForExists(ctx, verifyUIResultTimeout); err != nil {
 		return errors.Wrap(err, "timed out for waiting result updated")
 	}
-	result, err := device.Object(ui.ID(resultID)).GetText(ctx)
+	result, err := t.d.Object(ui.ID(resultID)).GetText(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the result")
 	}
 	if result != "1" {
 		// Note: failure reason reported from the app is one line,
 		// so directly print it here.
-		reason, err := device.Object(ui.ID(logID)).GetText(ctx)
+		reason, err := t.d.Object(ui.ID(logID)).GetText(ctx)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get failure reason for unexpected app result: got %s, want 1", result)
 		}

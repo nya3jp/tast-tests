@@ -43,6 +43,7 @@ func init() {
 func DownloadsFolder(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	expectations := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
 		{LabelID: storage.URIID, Value: downloadURI},
@@ -51,5 +52,5 @@ func DownloadsFolder(ctx context.Context, s *testing.State) {
 	config := storage.TestConfig{DirPath: filesapp.DownloadPath, DirName: "Downloads",
 		DirTitle: "Files - Downloads", CreateTestFile: true, FileName: "storage.txt"}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
 }

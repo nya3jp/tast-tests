@@ -37,12 +37,13 @@ func AudioAEC(ctx context.Context, s *testing.State) {
 
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	param := audio.TestParameters{
 		Permission: "android.permission.RECORD_AUDIO",
 		Class:      "org.chromium.arc.testapp.arcaudiotest.TestAECEffectActivity",
 	}
 
-	atast, err := audio.NewARCAudioTast(ctx, a, cr)
+	atast, err := audio.NewARCAudioTast(ctx, a, cr, d)
 	if err != nil {
 		s.Fatal("Failed to NewARCAudioTast: ", err)
 	}

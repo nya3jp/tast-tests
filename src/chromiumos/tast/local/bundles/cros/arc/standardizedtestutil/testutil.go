@@ -88,6 +88,7 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 	}
 
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
@@ -138,12 +139,6 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 					}
 				}
 			}(cleanupCtx)
-
-			d, err := a.NewUIDevice(ctx)
-			if err != nil {
-				s.Fatal("Failed initializing UI Automator: ", err)
-			}
-			defer d.Close(ctx)
 
 			if _, err := ash.SetARCAppWindowStateAndWait(ctx, tconn, appPkgName, test.WindowStateType); err != nil {
 				s.Fatal("Failed to set window state: ", err)

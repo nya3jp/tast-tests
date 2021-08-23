@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/chrome"
@@ -49,6 +50,7 @@ func init() {
 func MyFiles(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	if err := waitForARCMyFilesMount(ctx, a); err != nil {
 		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
@@ -62,7 +64,7 @@ func MyFiles(ctx context.Context, s *testing.State) {
 
 	testARCToCros(ctx, s, a, myFilesPath)
 
-	testCrosToARC(ctx, s, a, cr, myFilesPath)
+	testCrosToARC(ctx, s, a, cr, d, myFilesPath)
 }
 
 // waitForARCMyFilesMount waits for the MyFiles volume to be mounted in ARC
@@ -148,7 +150,7 @@ func testPushToARCAndReadFromCros(ctx context.Context, a *arc.ARC, sourcePath, a
 
 // testCrosToARC checks whether a file put in the Chrome OS MyFiles directory
 // can be read by Android apps.
-func testCrosToARC(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, myFilesPath string) {
+func testCrosToARC(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, myFilesPath string) {
 	config := storage.TestConfig{DirPath: myFilesPath, DirName: "My files", DirTitle: "Files - My files",
 		CreateTestFile: true, FileName: "storage.txt"}
 	testFileURI := "content://org.chromium.arc.volumeprovider/" + myFilesUUID + "/" + config.FileName
@@ -160,5 +162,5 @@ func testCrosToARC(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome
 		{LabelID: storage.URIID, Value: testFileURI},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
 }

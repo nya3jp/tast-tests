@@ -71,7 +71,7 @@ type TestConfig struct {
 // Downloads, MyFiles etc, using the test android app, ArcFileReaderTest. The app will display
 // the respective Action, URI and FileContent on its UI, to be validated against our
 // expected values.
-func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, config TestConfig, expectations []Expectation) {
+func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, d *androidui.Device, config TestConfig, expectations []Expectation) {
 	testing.ContextLogf(ctx, "Performing TestOpenWithAndroidApp on: %s", config.DirName)
 
 	testing.ContextLog(ctx, "Installing ArcFileReaderTest app")
@@ -101,7 +101,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
 	}
 
-	if err := validateResult(ctx, a, expectations); err != nil {
+	if err := validateResult(ctx, d, expectations); err != nil {
 		s.Fatal("ArcFileReaderTest's data is invalid: ", err)
 	}
 }
@@ -176,14 +176,8 @@ func waitForFileType(ctx context.Context, files *filesapp.FilesApp) error {
 }
 
 // validateResult validates the data read from ArcFileReaderTest app.
-func validateResult(ctx context.Context, a *arc.ARC, expectations []Expectation) error {
+func validateResult(ctx context.Context, d *androidui.Device, expectations []Expectation) error {
 	testing.ContextLog(ctx, "Validating result in ArcFileReaderTest")
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed initializing UI Automator")
-	}
-	defer d.Close(ctx)
 
 	for _, e := range expectations {
 		if err := validateLabel(ctx, d, e); err != nil {

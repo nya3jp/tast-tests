@@ -66,8 +66,9 @@ func init() {
 func AudioValidity(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 	param := s.Param().(audio.TestParameters)
-	atast, err := audio.NewARCAudioTast(ctx, a, cr)
+	atast, err := audio.NewARCAudioTast(ctx, a, cr, d)
 	if err != nil {
 		s.Fatal("Failed to NewARCAudioTast: ", err)
 	}
