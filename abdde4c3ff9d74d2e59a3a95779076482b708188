@@ -52,6 +52,23 @@
       "parentUuid": "310f0ea6_56d6f3f0",
       "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45448065_593b44f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-23T17:47:24Z",
+      "side": 1,
+      "message": "+2 for Tast, but please resolve any discussion about disabling the test with the owner before submitting.",
+      "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
