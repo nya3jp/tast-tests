@@ -16,6 +16,46 @@
       "message": "I reworked the part of the service that interacts with the lsb-release files.\nNow it restores the original state of the edited file.\nI moved this part into a function, as it will be reused in other tests as well.\nPTAL",
       "revId": "7dba1e417083d9a9894b1f3dedbcd05d381df64c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01311440_8ec0dd88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T07:28:15Z",
+      "side": 1,
+      "message": "Still LGTM from Tast review POV.\n",
+      "revId": "7dba1e417083d9a9894b1f3dedbcd05d381df64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dad0e65_cd864fba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T07:28:15Z",
+      "side": 1,
+      "message": "No need to cast: \"nil\" is enough.",
+      "range": {
+        "startLine": 170,
+        "startChar": 9,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "7dba1e417083d9a9894b1f3dedbcd05d381df64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
