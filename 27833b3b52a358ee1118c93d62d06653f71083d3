@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69dd6eb0_ab3cd299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-23T15:08:45Z",
+      "side": 1,
+      "message": "LGTM w/ a style fix request.",
+      "revId": "27833b3b52a358ee1118c93d62d06653f71083d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5692747_02e06d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-23T15:08:45Z",
+      "side": 1,
+      "message": "style: as you touch this line\n\nif err :\u003d clearDevicePolicy(ctx); err !\u003d nil {",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 16
+      },
+      "revId": "27833b3b52a358ee1118c93d62d06653f71083d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
