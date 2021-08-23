@@ -39,6 +39,30 @@
       },
       "revId": "64c55c7e94aad10cda8d0cedcef8af819a940ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d5f014_86d70147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-23T23:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f3ec9b8_0df1adc7",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "64c55c7e94aad10cda8d0cedcef8af819a940ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
