@@ -41,11 +41,6 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	a := p.ARC
 	d := p.UIDevice
 
-	isVMEnabled, err := arc.VMEnabled()
-	if err != nil {
-		s.Fatal("Failed to get whether ARCVM is enabled: ", err)
-	}
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
@@ -156,15 +151,18 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
 			s.Fatal("Failed to focus the field: ", err)
 		}
-		if isVMEnabled {
-			// On ARC R, another click is necessary to open the virtual keyboard i.e. the first click only
-			// focuses on the input field, which is different from ARC P.
-			if err := field.Click(ctx); err != nil {
-				s.Fatal("Failed to click the field: ", err)
+		// Depending on the timing, a few clicks might be needed.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var vkErr error
+			if vkErr = vkb.NewContext(nil, tconn).WaitLocationStable()(ctx); vkErr == nil {
+				return nil
 			}
-		}
-		if err := vkb.NewContext(nil, tconn).WaitLocationStable()(ctx); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+			if err := field.Click(ctx); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to click the field"))
+			}
+			return vkErr
+		}, nil); err != nil {
+			s.Fatal("Failed to open the virtual keyboard: ", err)
 		}
 		if err := field.Exists(ctx); err != nil {
 			s.Fatal("Could not find the field; probably hidden by the virtual keyboard?")
