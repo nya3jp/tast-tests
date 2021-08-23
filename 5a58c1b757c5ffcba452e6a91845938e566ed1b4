@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3954e0a_bafa4243",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-23T22:00:02Z",
+      "side": 1,
+      "message": "Implemented a long click touchscreen test and generalized the \u0027click\u0027 functionality to support both normal, and long clicks.",
+      "revId": "5a58c1b757c5ffcba452e6a91845938e566ed1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
