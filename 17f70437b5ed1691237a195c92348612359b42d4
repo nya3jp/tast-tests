@@ -39,6 +39,30 @@
       },
       "revId": "17f70437b5ed1691237a195c92348612359b42d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e815576b_66ed5007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2021-08-23T17:32:35Z",
+      "side": 1,
+      "message": "Yeah relying on selinux",
+      "parentUuid": "5f2301e3_946a03e3",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 34
+      },
+      "revId": "17f70437b5ed1691237a195c92348612359b42d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
