@@ -89,6 +89,16 @@ func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	return service.Files.Delete(fileID).Do()
 }
 
+// ListUserFiles lists all files in 'user' (files created by, opened by, or shared directly with the user).
+func (d *APIClient) ListUserFiles(ctx context.Context) (*drive.FileList, error) {
+	service, err := d.createNewDriveService(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return service.Files.List().Corpora("user").Do()
+}
+
 // RenewRefreshTokenForAccount obtains a new OAuth refresh token for an account logged in
 // on the chrome.Chrome instance. This is used by filemanager.DrivefsNewRefreshTokens
 // test to easily obtain a set of new refresh tokens for the pooled GAIA logins.
