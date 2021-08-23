@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234efdf9_fe3e72c5",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-23T23:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65836738_3037a83d",
+      "range": {
+        "startLine": 99,
+        "startChar": 55,
+        "endLine": 99,
+        "endChar": 100
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf2fc087_647e7c87",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-08-17T22:05:33Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 110,
+        "startChar": 55,
+        "endLine": 110,
+        "endChar": 100
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50f047c_61a3393f",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-23T23:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2fc087_647e7c87",
       "range": {
         "startLine": 110,
         "startChar": 55,
@@ -118,6 +166,30 @@
       "side": 1,
       "message": "Possible but to use a separate struct for fixture data, it means we could not piggyback on arc.bootedFixture. We would need to create a new fixture impl and implement Setup/TearDown/Reset with part of the arc.bootedFixture code.",
       "parentUuid": "0a8f6dc5_94ab421e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "6354a676febeeffe049c3f01020e24a6be81e592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "683036f9_c8be2bda",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-23T23:28:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41308924_1e53840a",
       "range": {
         "startLine": 30,
         "startChar": 0,
