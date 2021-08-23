@@ -169,6 +169,17 @@ func SearchAndRightClick(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, 
 	)
 }
 
+// SearchAndLeftClick searches a query in launcher and left click the searchResult.
+func SearchAndLeftClick(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query string, searchResult *nodewith.Finder) error {
+	ui := uiauto.New(tconn)
+
+	return uiauto.Combine(fmt.Sprintf("search %s and left click %v", query, searchResult),
+		Open(tconn),
+		Search(tconn, kb, query),
+		ui.LeftClick(searchResult),
+	)(ctx)
+}
+
 // Open return a function that opens the launcher.
 func Open(tconn *chrome.TestConn) uiauto.Action {
 	return OpenExpandedView(tconn)
