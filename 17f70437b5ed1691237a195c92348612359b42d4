@@ -16,6 +16,29 @@
       "message": "Fixed a test failure; Jorge - can you please take another look?",
       "revId": "17f70437b5ed1691237a195c92348612359b42d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2301e3_946a03e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-08-23T17:30:18Z",
+      "side": 1,
+      "message": "I forget, do we expect to ever change this, or not? Or are we going to rely solely on SELinux in enforcing mode for sandboxing?",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 34
+      },
+      "revId": "17f70437b5ed1691237a195c92348612359b42d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
