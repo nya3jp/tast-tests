@@ -16,7 +16,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/testing"
 )
 
@@ -118,7 +118,7 @@ func sshSessionProc(pid int32) (int32, error) {
 // Common returns well-known network listeners shared between all security.NetworkListeners* tests.
 func Common(cr *chrome.Chrome) map[string]string {
 	return map[string]string{
-		cr.DebugAddrPort(): chromeproc.ExecPath,
+		cr.DebugAddrPort(): ashproc.ExecPath,
 		// p2p-http-server may be running on production systems or have been started by an earlier test.
 		"*:16725": "/usr/sbin/p2p-http-server",
 	}

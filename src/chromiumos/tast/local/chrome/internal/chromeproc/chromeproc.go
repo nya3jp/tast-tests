@@ -24,8 +24,12 @@ const (
 	crashpadHandlerExe = "chrome_crashpad_handler"
 )
 
-// processes returns an array of Processes that satisfies the given filter.
-func processes(filter func(p *process.Process) bool) ([]*process.Process, error) {
+// processes returns an array of Chrome Processes at execPath that satisfies the given filter.
+func processes(execPath string, filter func(p *process.Process) bool) ([]*process.Process, error) {
+	if !filepath.IsAbs(execPath) {
+		return nil, errors.Errorf("execPath %q must be abs path", execPath)
+	}
+
 	ps, err := process.Processes()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to obtain processes")
@@ -33,6 +37,11 @@ func processes(filter func(p *process.Process) bool) ([]*process.Process, error)
 
 	var ret []*process.Process
 	for _, p := range ps {
+		// The exec path should match.
+		if exe, err := p.Exe(); err != nil || exe != execPath {
+			continue
+		}
+
 		if filter(p) {
 			ret = append(ret, p)
 		}
@@ -40,40 +49,17 @@ func processes(filter func(p *process.Process) bool) ([]*process.Process, error)
 	return ret, nil
 }
 
-// Processes returns all Chrome related processes, which includes "chrome" processes
-// and "chrome_crashpad_handler" processes.
-// dir is the path to the directory containing those executables.
-func Processes(dir string) ([]*process.Process, error) {
-	absdir, err := filepath.Abs(dir)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to convert %q to abs path", dir)
-	}
-
-	crPath := filepath.Join(absdir, chromeExe)
-	cphPath := filepath.Join(absdir, crashpadHandlerExe)
-	return processes(func(p *process.Process) bool {
-		exe, err := p.Exe()
-		if err != nil {
-			return false
-		}
-		return exe == crPath || exe == cphPath
+// Processes returns all Chrome processes.
+// execPath is the abspath to the chrome executable.
+func Processes(execPath string) ([]*process.Process, error) {
+	return processes(execPath, func(p *process.Process) bool {
+		return true
 	})
 }
 
 // Root returns Process instance for Chrome's root process (i.e. Browser process).
-func Root(dir string) (*process.Process, error) {
-	absdir, err := filepath.Abs(dir)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to convert %q to abs path", dir)
-	}
-
-	path := filepath.Join(absdir, "chrome")
-	ps, err := processes(func(p *process.Process) bool {
-		// The exec path should match.
-		if exe, err := p.Exe(); err != nil || exe != path {
-			return false
-		}
-
+func Root(execPath string) (*process.Process, error) {
+	ps, err := processes(execPath, func(p *process.Process) bool {
 		// A browser process should not have --type= flag.
 		// This check alone is not enough to determine that proc is a browser process;
 		// it might be a brand-new process that just forked from the browser process.
@@ -117,18 +103,8 @@ func Root(dir string) (*process.Process, error) {
 }
 
 // processesByArgs returns Chrome processes whose command line args match the given re.
-func processesByArgs(dir string, re *regexp.Regexp) ([]*process.Process, error) {
-	absdir, err := filepath.Abs(dir)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to convert %q to abs path", dir)
-	}
-
-	path := filepath.Join(absdir, chromeExe)
-	return processes(func(p *process.Process) bool {
-		if exe, err := p.Exe(); err != nil || exe != path {
-			return false
-		}
-
+func processesByArgs(execPath string, re *regexp.Regexp) ([]*process.Process, error) {
+	return processes(execPath, func(p *process.Process) bool {
 		// Process.CmdlineSliceWithContext() is more appropriate, but
 		// 1) Chrome's /proc/*/cmdline is whitespace separated, so
 		//    p.CmdlineSlice/CmdlineSliceWithContext won't work.
@@ -154,21 +130,21 @@ var (
 )
 
 // PluginProcesses returns Chrome plugin processes.
-func PluginProcesses(dir string) ([]*process.Process, error) {
-	return processesByArgs(dir, pluginRE)
+func PluginProcesses(execPath string) ([]*process.Process, error) {
+	return processesByArgs(execPath, pluginRE)
 }
 
 // RendererProcesses returns Chrome renderer processes.
-func RendererProcesses(dir string) ([]*process.Process, error) {
-	return processesByArgs(dir, rendererRE)
+func RendererProcesses(execPath string) ([]*process.Process, error) {
+	return processesByArgs(execPath, rendererRE)
 }
 
 // GPUProcesses returns Chrome gpu-process processes.
-func GPUProcesses(dir string) ([]*process.Process, error) {
-	return processesByArgs(dir, gpuRE)
+func GPUProcesses(execPath string) ([]*process.Process, error) {
+	return processesByArgs(execPath, gpuRE)
 }
 
 // BrokerProcesses returns Chrome broker processes.
-func BrokerProcesses(dir string) ([]*process.Process, error) {
-	return processesByArgs(dir, brokerRE)
+func BrokerProcesses(execPath string) ([]*process.Process, error) {
+	return processesByArgs(execPath, brokerRE)
 }
