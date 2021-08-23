@@ -33,6 +33,40 @@
       "message": "Thanks, Yi",
       "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e54596_fb6cf392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-23T20:48:55Z",
+      "side": 1,
+      "message": "Is it possible to encode this more simply by just shortening the Timeout in the testing.PollOptions to something like 12-15 seconds? How long does the body of this function take to run, generally?",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45f543c_dad96ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-23T20:48:55Z",
+      "side": 1,
+      "message": "Should this be \u003c\u003d?",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
