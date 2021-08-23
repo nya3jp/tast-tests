@@ -524,23 +524,13 @@ func functionalRunner(ctx context.Context, s *testing.State, rw *stress.FioResul
 			function: subTestFunc(suspendTestBlock),
 		},
 		{
-			name:     "retention",
-			function: subTestFunc(retentionTestBlock),
-		},
-		{
 			name:     "trim",
 			function: subTestFunc(trimTestBlock),
 		},
 	} {
-		for retries := 0; retries < maxSubtestRetry; retries++ {
-			s.Logf("Subtest: %s, retry: %d of %d", tc.name, retries+1, maxSubtestRetry)
-			passed := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-				tc.function(ctx, s, rw, testParam)
-			})
-			if passed {
-				break
-			}
-		}
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			tc.function(ctx, s, rw, testParam)
+		})
 	}
 }
 
