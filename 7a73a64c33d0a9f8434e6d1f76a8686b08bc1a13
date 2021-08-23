@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3aab1f9_1952c7c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-23T12:53:26Z",
+      "side": 1,
+      "message": "The scenario description https://testtracker.googleplex.com/testplans/testcase/detail/1876222?id\u003d25036\u0026revision\u003d49 says to verify \"Drag and drop should be smooth and clean\". I\u0027m not sure about using performance metrics to measure if the drag\u0026drop is \"smooth\" or not though.\n\nxdai@/sammiequon@: is the \"smooth\" verification really necessary here?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 64
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
