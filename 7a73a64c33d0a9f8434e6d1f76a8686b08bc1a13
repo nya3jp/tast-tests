@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef6416d8_526a2301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-23T15:59:52Z",
+      "side": 1,
+      "message": "nit: If we need display, we also need \"power.TurnOnDisplay(ctx)\" like [1] in addition to hwdep.InternalDisplay(). When display is powered off, we get 0 frames produced  hence 0 smoothness.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go;l\u003d57",
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3aab1f9_1952c7c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
         "patchSetId": 4
@@ -19,6 +36,29 @@
         "startChar": 0,
         "endLine": 65,
         "endChar": 64
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9019b669_f9d359cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-23T15:59:52Z",
+      "side": 1,
+      "message": "Would \"oldBounds \u003d\u003d newBounds\" work?",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 66
       },
       "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
