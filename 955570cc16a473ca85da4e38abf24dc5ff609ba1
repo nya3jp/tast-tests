@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9310979b_f9bba11c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-23T16:11:33Z",
+      "side": 1,
+      "message": "FYI: This test never actually runs in autotest, so if you don\u0027t already have it working, you might not want to bother.",
+      "revId": "955570cc16a473ca85da4e38abf24dc5ff609ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "662e80f3_96ae9539",
