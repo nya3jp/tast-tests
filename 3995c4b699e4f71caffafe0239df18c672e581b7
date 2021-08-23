@@ -39,6 +39,30 @@
       },
       "revId": "3995c4b699e4f71caffafe0239df18c672e581b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d308a444_75654da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/image_drop_from_downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-23T06:29:39Z",
+      "side": 1,
+      "message": "ash.SetARCAppWindowStateAndWait() is probably the way to do that properly.",
+      "parentUuid": "a075aefc_eae39e70",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "3995c4b699e4f71caffafe0239df18c672e581b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
