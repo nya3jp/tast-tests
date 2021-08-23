@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c86849_0c55d2a1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-23T09:09:25Z",
+      "side": 1,
+      "message": "Did you consider encapsulating username and password into UserAuthConfig? So API would not have multiple strings as parameters?",
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71b188e_4de21aa3",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-23T09:09:25Z",
+      "side": 1,
+      "message": "Did you think about having two functions like:\nMountVault\nCreateVaultAndVault\n\nor something similar (with proper names) to avoid having bool parameters?\n\nTake a look at the call of this fucntion\nutility.MountChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg, true, hwsec.NewVaultConfig())\n\nthe flag that is passed there makes sense now when creating CL. However, if someone is not familiar with the API they would need to check implementation and see how the flag is used.",
+      "range": {
+        "startLine": 233,
+        "startChar": 198,
+        "endLine": 233,
+        "endChar": 210
+      },
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
