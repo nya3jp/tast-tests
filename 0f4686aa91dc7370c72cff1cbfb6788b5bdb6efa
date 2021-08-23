@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14279fb2_fc437dd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-23T22:01:35Z",
+      "side": 1,
+      "message": "Added a new test for testing the use of keys on the keyboard (i.e. Arrow up, back, esc, tab, etc.). A new activity was created for the StandardizedKeyboardTest apk to support these tests.",
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
