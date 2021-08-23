@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6680061f_d2d04ba1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-08-23T23:18:30Z",
+      "side": 1,
+      "message": "nit: maintain the list order by moving this right before `.../crosint/pita` line",
+      "revId": "454b36c403862832f59ae7394847ab74de321b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
