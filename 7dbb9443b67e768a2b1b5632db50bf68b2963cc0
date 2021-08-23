@@ -46,6 +46,30 @@
       },
       "revId": "7dbb9443b67e768a2b1b5632db50bf68b2963cc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff91080a_2a58a561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1409117
+      },
+      "writtenOn": "2021-08-23T21:59:07Z",
+      "side": 1,
+      "message": "The test is supposed to stress the memory, not you 😮",
+      "parentUuid": "2ff05e49_482d746c",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "7dbb9443b67e768a2b1b5632db50bf68b2963cc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
