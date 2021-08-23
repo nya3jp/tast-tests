@@ -33,6 +33,23 @@
       "message": "android/ lgtm",
       "revId": "e5fc03584c15c4a91e75ba36f67bc7d171d8ff6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed3b235_a8c4a35c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-23T13:47:54Z",
+      "side": 1,
+      "message": "@Renuga, the logic has been updated to use the mouse driver as we discussed.",
+      "revId": "e5fc03584c15c4a91e75ba36f67bc7d171d8ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
