@@ -82,6 +82,7 @@ var locked = false
 // Lock and Unlock.
 var prePackages = []string{
 	"chromiumos/tast/local/arc",
+	"chromiumos/tast/local/bundles/crosint/arc",
 	"chromiumos/tast/local/multivm",
 }
 
