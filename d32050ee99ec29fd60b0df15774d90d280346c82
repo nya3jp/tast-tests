@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d166c980_06948ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-23T20:10:41Z",
+      "side": 1,
+      "message": "David, could you please take a look if the test is good enough to cover the manual case.",
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014fc97a_fe41d55f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-23T20:10:41Z",
+      "side": 1,
+      "message": "not sure which pages to open",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
