@@ -9,6 +9,7 @@ import (
 	"image"
 	"image/color"
 	"image/png"
+	"math"
 	"os"
 	"path/filepath"
 	"time"
@@ -152,12 +153,22 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to grab screenshot: ", err)
 		}
 
+		dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get display mode of the primary display: ", err)
+		}
+		windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+		if err != nil {
+			return errors.Wrapf(err, "failed to get arc app window info for %s", act.PackageName())
+		}
+		captionHeight := int(math.Round(float64(windowInfo.CaptionHeight) * dispMode.DeviceScaleFactor))
+
 		subImage := img.(interface {
 			SubImage(r image.Rectangle) image.Image
-		}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Width, bounds.Height))
+		}).SubImage(image.Rect(bounds.Left, bounds.Top+captionHeight, bounds.Width, bounds.Height))
 
 		rect := subImage.Bounds()
-		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
+		totalPixels := (rect.Max.Y - rect.Min.Y - captionHeight) * (rect.Max.X - rect.Min.X)
 
 		blackPixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
 		percent := blackPixels * 100 / totalPixels
