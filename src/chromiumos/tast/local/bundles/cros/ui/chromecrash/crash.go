@@ -327,6 +327,14 @@ func waitForChromeProcesses(ctx context.Context) ([]*process.Process, error) {
 		if err != nil {
 			return testing.PollBreak(err)
 		}
+		// TODO(hidehiko): Move this out from Chrome processes, because in precise
+		// crashpad handler is not chrome.
+		chProcs, err := crashpadHandlerProcesses()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		procs = append(procs, chProcs...)
+
 		if len(procs) == 0 {
 			return errors.New("no Chrome processes found")
 		}
@@ -336,6 +344,26 @@ func waitForChromeProcesses(ctx context.Context) ([]*process.Process, error) {
 	}
 
 	return procs, nil
+}
+
+// crashpadHandlerProcesses returns all ash-chrome's crashpad handler processes.
+func crashpadHandlerProcesses() ([]*process.Process, error) {
+	ps, err := process.Processes()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain processes")
+	}
+
+	var ret []*process.Process
+	for _, p := range ps {
+		// Identify by exec path. Ignore errors.
+		// Because of timing issue, the process may be gone between the
+		// Process instance creation and Exe invocation.
+		if exe, err := p.Exe(); err != nil || exe != crashpadExecPath {
+			continue
+		}
+		ret = append(ret, p)
+	}
+	return ret, nil
 }
 
 // getNonBrowserProcess returns a Process structure of a single Chrome process
