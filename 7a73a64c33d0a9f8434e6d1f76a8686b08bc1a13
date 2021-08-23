@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e14523_4e65d1c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-08-23T16:47:15Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef6416d8_526a2301",
@@ -36,6 +53,53 @@
         "startChar": 0,
         "endLine": 65,
         "endChar": 64
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a714a491_d3fb6eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-08-23T16:47:15Z",
+      "side": 1,
+      "message": "I don\u0027t think its really necessary. It should probably have a *_perf.go test if we want to track its performance. And I think drag and drop is pretty lightweight already.",
+      "parentUuid": "e3aab1f9_1952c7c2",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 64
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed15fd67_42d8f076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-08-23T16:47:15Z",
+      "side": 1,
+      "message": "nit: wrong error msg?",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 31
       },
       "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
