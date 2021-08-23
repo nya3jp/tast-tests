@@ -43,3 +43,31 @@ func GetModemFirmwarePath() string {
 func GetModemFirmwareManifestPath() string {
 	return filepath.Join(GetModemFirmwarePath(), "firmware_manifest.prototxt")
 }
+
+// ParseModemHelperManifest Parses the modem helper manifest and returns the HelperManifest proto object.
+func ParseModemHelperManifest(ctx context.Context, s *testing.State) (*mfwd.HelperManifest, error) {
+	modemHelperProtoPath := GetModemHelperManifestPath()
+	output, err := testexec.CommandContext(ctx, "cat", modemHelperProtoPath).Output()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to access the helper manifest: %s", modemHelperProtoPath)
+	}
+
+	s.Log("Parsing modem helper proto")
+	manifest := &mfwd.HelperManifest{}
+	if err := proto.UnmarshalText(string(output), manifest); err != nil {
+		return nil, errors.Wrapf(err, "failed to parse helper manifest: %s", modemHelperProtoPath)
+	}
+	s.Log("Parsed successfully")
+
+	return manifest, nil
+}
+
+// GetModemHelperPath Get the path where the modem helper files are located.
+func GetModemHelperPath() string {
+	return "/opt/google/modemfwd-helpers/"
+}
+
+// GetModemHelperManifestPath Get the path of the modem helper manifest.
+func GetModemHelperManifestPath() string {
+	return filepath.Join(GetModemHelperPath(), "helper_manifest.prototxt")
+}
