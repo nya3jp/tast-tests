@@ -58,6 +58,16 @@ func NewModem(ctx context.Context) (*Modem, error) {
 	return &Modem{ph}, nil
 }
 
+// GetSimpleModem creates a PropertyHolder for the SimpleModem object
+func (m *Modem) GetSimpleModem(ctx context.Context) (*Modem, error) {
+	modemPath := dbus.ObjectPath(m.String())
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimpleModemInterface, modemPath)
+	if err != nil {
+		return nil, err
+	}
+	return &Modem{ph}, nil
+}
+
 // GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
 func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (*dbusutil.Properties, error) {
 	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimInterface, simPath)
@@ -155,4 +165,194 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 		return PollModem(ctx, modem.String())
 	}
 	return nil, errors.New("failed to create modem: modemmanager D-Bus object has no valid SIM's")
+}
+
+// IsEnabled checks modem state and returns boolean
+func (m *Modem) IsEnabled(ctx context.Context) (bool, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	modemState, err := props.GetInt32(mmconst.ModemPropertyState)
+	if err != nil {
+		return false, errors.Wrap(err, "missing state property")
+	}
+	testing.ContextLogf(ctx, "modemState in IsEnabled is %d", modemState)
+	states := [6]mmconst.ModemState{
+		mmconst.ModemStateEnabled,
+		mmconst.ModemStateSearching,
+		mmconst.ModemStateRegistered,
+		mmconst.ModemStateDisconnecting,
+		mmconst.ModemStateConnecting,
+		mmconst.ModemStateConnected}
+
+	for _, value := range states {
+		if int32(value) == modemState {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// IsDisabled checks modem state and returns boolean
+func (m *Modem) IsDisabled(ctx context.Context) (bool, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	modemState, err := props.GetInt32(mmconst.ModemPropertyState)
+	if err != nil {
+		return false, errors.Wrap(err, "missing state property")
+	}
+	testing.ContextLogf(ctx, "modemState in IsDisabled is %d", modemState)
+	return (modemState == int32(mmconst.ModemStateDisabled)), nil
+}
+
+// IsPowered checks modem powerstate and returns true if powered on
+func (m *Modem) IsPowered(ctx context.Context) (bool, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call GetProperties on modem")
+	}
+	modemState, err := props.GetUint32(mmconst.ModemPropertyPowered)
+	if err != nil {
+		return false, errors.Wrap(err, "missing powerstate property")
+	}
+	testing.ContextLogf(ctx, "modemState in IsPowered is %d", modemState)
+	if modemState == uint32(mmconst.ModemPowerStateOn) {
+		return true, nil
+	}
+	return false, nil
+}
+
+// IsConnected checks modem state and returns boolean
+func (m *Modem) IsConnected(ctx context.Context) (bool, error) {
+	// for SimpleModem GetStatus returns properties
+	var props map[string]interface{}
+
+	if err := m.Call(ctx, "GetStatus").Store(&props); err != nil {
+		return false, errors.Wrapf(err, "failed getting properties of %v", m)
+	}
+	simpleProps := dbusutil.NewProperties(props)
+	modemState, err := simpleProps.GetInt32(mmconst.ModemPropertyState)
+	if err != nil {
+		return false, errors.Wrap(err, "missing state property")
+	}
+	states := [2]mmconst.ModemState{
+		mmconst.ModemStateConnecting,
+		mmconst.ModemStateConnected}
+
+	for _, value := range states {
+		if int32(value) == modemState {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// EnsureEnabled checks modem property enabled
+func EnsureEnabled(ctx context.Context, modem *Modem) error {
+	isPowered, err := modem.IsPowered(ctx)
+	if err != nil {
+		return errors.New("failed to read modem powered state")
+	}
+	if !isPowered {
+		return errors.New("modem not powered")
+	}
+
+	// poll for expected modem state
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		isEnabled, err := modem.IsEnabled(ctx)
+		if err != nil {
+			return errors.Errorf("failed to fetch enabled state: ", err)
+		}
+		if !isEnabled {
+			return errors.New("modem not enabled")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		return errors.Errorf("failed to enable modem: ", err)
+	}
+	return nil
+}
+
+// EnsureDisabled checks modem property disabled
+func EnsureDisabled(ctx context.Context, modem *Modem) error {
+	// TODO:This check needs validated across modems
+	isPowered, err := modem.IsPowered(ctx)
+	if err != nil {
+		return errors.Errorf("failed to read modem powered state: ", err)
+	}
+	if !isPowered {
+		return errors.New("modem not in powered state")
+	}
+
+	// poll for expected modem state
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		isEnabled, err := modem.IsEnabled(ctx)
+		if err != nil {
+			return errors.Errorf("failed to fetch enabled state: ", err)
+		}
+		isDisabled, err := modem.IsDisabled(ctx)
+		if err != nil {
+			return errors.Errorf("failed to fetch disabled state: ", err)
+		}
+		if isEnabled || !isDisabled {
+			return errors.New("still modem not disabled")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		return errors.Errorf("failed to disable modem: ", err)
+	}
+	return nil
+}
+
+// EnsureConnected checks modem state property from simple modem GetStatus
+func EnsureConnected(ctx context.Context, modem, simpleModem *Modem) error {
+	// poll for expected modem state
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		EnsureEnabled(ctx, modem)
+		isConnected, err := simpleModem.IsConnected(ctx)
+		if err != nil {
+			return errors.Errorf("failed to fetch connected state: ", err)
+		}
+		if !isConnected {
+			return errors.New("still not connected")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  60 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		return errors.Errorf("failed to connect modem: ", err)
+	}
+	return nil
+}
+
+// EnsureDisconnected checks modem property disconnected
+func EnsureDisconnected(ctx context.Context, modem, simpleModem *Modem) error {
+	// poll for expected modem state
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		EnsureEnabled(ctx, modem)
+		isConnected, err := simpleModem.IsConnected(ctx)
+		if err != nil {
+			return errors.Errorf("failed to fetch connected state: ", err)
+		}
+		if isConnected {
+			return errors.New("still not disconnected")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  60 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		return errors.Errorf("failed to disconnect modem: ", err)
+	}
+	return nil
 }
