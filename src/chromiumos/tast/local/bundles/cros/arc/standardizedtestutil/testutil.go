@@ -51,6 +51,15 @@ type StandardizedTestCase struct {
 	WindowStateType ash.WindowStateType
 }
 
+// StandardizedTouchscreenTapType represents the touch screen tap type to perform.
+type StandardizedTouchscreenTapType int
+
+// Holds all the tap types that can be performed on the touchscreen.
+const (
+	ShortTouchscreenTap StandardizedTouchscreenTapType = iota
+	LongTouchscreenTap
+)
+
 // GetStandardizedClamshellTests returns the test cases required for clamshell devices.
 func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
@@ -157,8 +166,8 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 	}
 }
 
-// StandardizedTouchscreenClick performs a click on the touchscreen.
-func StandardizedTouchscreenClick(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object) error {
+// StandardizedTouchscreenTap performs a tap on the touchscreen.
+func StandardizedTouchscreenTap(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object, tapType StandardizedTouchscreenTapType) error {
 	touchScreen, err := input.Touchscreen(ctx)
 	if err != nil {
 		return errors.Wrap(err, "Unable to initialize touchscreen")
@@ -176,13 +185,21 @@ func StandardizedTouchscreenClick(ctx context.Context, testParameters Standardiz
 		return errors.Wrap(err, "Unable to get touch screen coords")
 	}
 
-	// Move to the given point and end the write to simulate a click.
-	if err := touchScreenSingleEventWriter.Move(*x, *y); err != nil {
-		return errors.Wrap(err, "Unable to move into position")
-	}
+	if tapType == LongTouchscreenTap {
+		if err := touchScreenSingleEventWriter.LongPressAt(ctx, *x, *y); err != nil {
+			return errors.Wrap(err, "Unable to perform a long tap")
+		}
+	} else if tapType == ShortTouchscreenTap {
+		// Move to the given point and end the write to simulate a click.
+		if err := touchScreenSingleEventWriter.Move(*x, *y); err != nil {
+			return errors.Wrap(err, "Unable to move into position")
+		}
 
-	if err := touchScreenSingleEventWriter.End(); err != nil {
-		return errors.Wrap(err, "Unable to end click")
+		if err := touchScreenSingleEventWriter.End(); err != nil {
+			return errors.Wrap(err, "Unable to end tap")
+		}
+	} else {
+		return errors.Errorf("invalid tap type: %v", tapType)
 	}
 
 	return nil
