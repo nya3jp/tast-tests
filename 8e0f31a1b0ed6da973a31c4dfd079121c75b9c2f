@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d0ecb2_c602dc05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-23T10:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0a8e5a_0780a394",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8797d836_ecc699dd",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "526fd657_70f83996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-23T10:34:19Z",
+      "side": 1,
+      "message": "What is this field supposed to represent?\nIt represents, name of the device plugged in media removable. example : /media/removable/\u003cdevicePlugged\u003e.\nCan we assume it will always be the same for this TBT device?\nNo, it is not same for all devices, it depends on user defined name.",
+      "parentUuid": "8797d836_ecc699dd",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 53
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "389ad577_1ed63890",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
         "patchSetId": 7
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-19T22:13:43Z",
       "side": 1,
       "message": "You can use the golang tempdir functionality instead (that way you don\u0027t need to worry about |downloadsPath|:\nhttps://pkg.go.dev/os#MkdirTemp\n\nPlease remember to add a defer function to clean up the temp dir at the end of the test.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb730d7_80f172d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-23T10:34:19Z",
+      "side": 1,
+      "message": "We have tried above \"Mkdirtemp\" in R96 repo and R96 OS but we are facing below undefined error this \"mkdirTem\" supports from 1.16 go version.\n\"tbt_data_transfer_after_hotplug.go:156:21: undefined: os.MkdirTemp\"\n\ngoversion in repo:\n\n dev-lang/go\n      Latest version available: 1.15.7-r2\n      Latest version installed: 1.15.7-r2\n      Size of files: 34258 KiB\n      Homepage:      http://golang.org/\n      Description:   An expressive, concurrent, garbage-collected programming language\n      License:       BSD-Google",
+      "parentUuid": "389ad577_1ed63890",
       "range": {
         "startLine": 160,
         "startChar": 0,
