@@ -84,7 +84,7 @@ func ShillCellularRoaming(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctxForCleanUp, s)
 
-	if err := modem.WaitForState(ctx, mmconst.ModemStateRegistered, time.Minute); err != nil {
+	if err := modem.WaitForState(ctx, int32(mmconst.ModemStateRegistered), time.Minute); err != nil {
 		s.Fatal("Modem is not registered")
 	}
 
@@ -106,7 +106,7 @@ func ShillCellularRoaming(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not set AllowRoaming property to false: ", err)
 	}
 
-	if err := modem.WaitForState(ctx, mmconst.ModemStateRegistered, time.Minute); err != nil {
+	if err := modem.WaitForState(ctx, int32(mmconst.ModemStateRegistered), time.Minute); err != nil {
 		s.Fatal("Modem is not registered")
 	}
 
