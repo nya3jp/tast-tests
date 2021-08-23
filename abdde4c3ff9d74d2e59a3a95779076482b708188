@@ -34,6 +34,24 @@
       "parentUuid": "89f93e26_53850b40",
       "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0829faca_76f9102a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-23T17:31:26Z",
+      "side": 1,
+      "message": "Yes, to Tom\u0027s point, this specific test is unlikely to cause the issue, but we can disable temporarily.\n\nFixes for fingerprint tests are coming in chromium-review.googlesource.com/q/hashtag:fp-green-tast\n\nMaybe it has something to do with the fingerprint firmware updater (not related to this tast test) failing in some odd way.",
+      "parentUuid": "310f0ea6_56d6f3f0",
+      "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
