@@ -34,6 +34,24 @@
       "parentUuid": "280a4d53_0176633e",
       "revId": "f82a13eb7d261905313b23f49b407280f3280500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7e63e8_2d36abab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-23T15:48:58Z",
+      "side": 1,
+      "message": "Ok it\u0027s still failing to build.\n\n- Are you running this command in the tast-tests directory? \n- Can you post the output of tast/tools/go.sh build chromiumos/tast/cmd/tast-lint?\n- Can you post the output of equery l *tast*",
+      "parentUuid": "42bfe3f8_60007e45",
+      "revId": "f82a13eb7d261905313b23f49b407280f3280500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
