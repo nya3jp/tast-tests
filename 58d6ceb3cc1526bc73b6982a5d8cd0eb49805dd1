@@ -33,6 +33,23 @@
       "message": "tast-owners@: Please take a look. Thank you.\nyhanada@: Thank you for reviewing.",
       "revId": "58d6ceb3cc1526bc73b6982a5d8cd0eb49805dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8c2a99_637d6191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-08-23T08:53:57Z",
+      "side": 1,
+      "message": "oka@: Thank you for reviewing.",
+      "revId": "58d6ceb3cc1526bc73b6982a5d8cd0eb49805dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
