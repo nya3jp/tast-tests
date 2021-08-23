@@ -99,3 +99,26 @@ func (w *wilcoConn) WaitForMessage(ctx context.Context, message interface{}) err
 	}
 	return nil
 }
+
+// SendMessageAndGetReply sends a message over the built-in messaging port.
+// It waits for the response to arrive and saves it in the response parameter.
+func (w *wilcoConn) SendMessageAndGetReply(ctx context.Context, message, response interface{}) error {
+	marshaled, err := json.Marshal(&message)
+	if err != nil {
+		return errors.Wrapf(err, "failed to marshall %v", message)
+	}
+
+	if err := w.Eval(ctx, fmt.Sprintf(`new Promise(function(resolve, reject) {
+		chrome.runtime.sendNativeMessage('com.google.wilco_dtc', %s, function(response) {
+			if (!response) {
+				reject('No response')
+			} else {
+				resolve(response)
+			}
+		})
+	})`, string(marshaled)), response); err != nil {
+		return errors.Wrap(err, "failed to send message over buit-in messaging port")
+	}
+
+	return nil
+}
