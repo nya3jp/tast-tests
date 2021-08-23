@@ -56,6 +56,30 @@
       },
       "revId": "7dba1e417083d9a9894b1f3dedbcd05d381df64c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d39fd9e_cb0665c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-23T07:37:55Z",
+      "side": 1,
+      "message": "I was not sure in this, so I had to look up an example. Thanks for this comment!",
+      "parentUuid": "2dad0e65_cd864fba",
+      "range": {
+        "startLine": 170,
+        "startChar": 9,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "7dba1e417083d9a9894b1f3dedbcd05d381df64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
