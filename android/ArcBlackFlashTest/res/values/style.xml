@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<resources>
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
+    </style>
+
+    <style name="AppTheme.GreenColor" parent="@android:style/Theme.Holo.Light">
+        <item name="android:colorPrimary">#00ff00</item>
+        <item name="android:colorPrimaryDark">#00ff00</item>
+        <item name="android:navigationBarColor">#00ff00</item>
+        <item name="android:windowBackground">#00ff00</item>
+        <item name="android:textColorPrimary">#00ff00</item>
+        <item name="android:colorAccent">#00ff00</item>
+    </style>
+</resources>
