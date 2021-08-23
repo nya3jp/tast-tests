@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0937481_313313e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-23T23:07:12Z",
+      "side": 1,
+      "message": "Hi Jun. I did not consider that chan 100 is reserved for DFS in the test. I do not think the methodology I use to restart the radio (restarting the wireless service) respects the CAC period. Because of this, do you recommend switching the test to another channel?",
+      "parentUuid": "5463a40b_9a272bb5",
+      "range": {
+        "startLine": 93,
+        "startChar": 149,
+        "endLine": 93,
+        "endChar": 152
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5e695ad_7982e8b9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
         "patchSetId": 9
