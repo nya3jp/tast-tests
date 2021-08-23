@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a8722f_3bf1c5fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-23T21:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6fdd26_2faff29c",
+      "range": {
+        "startLine": 14,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d65fa67_f5e51bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-23T21:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "456c4bfe_9526173f",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 72
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f78d41d2_f146847d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-23T03:18:27Z",
       "side": 1,
       "message": "Optional: Maybe we don\u0027t need these lines as an example?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7937c15_95c23faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-23T21:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78d41d2_f146847d",
       "range": {
         "startLine": 20,
         "startChar": 1,
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2210e38e_b1dc0740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-23T21:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df55044d_384236de",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4602b901_957d523a",
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c50ef5_3d31c350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-23T21:53:35Z",
+      "side": 1,
+      "message": "I have changed the test. Please review.",
+      "parentUuid": "4602b901_957d523a",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e488e32_debe2101",
@@ -129,6 +249,24 @@
       "writtenOn": "2021-08-23T03:18:27Z",
       "side": 1,
       "message": "Now that we introduced default values in RegisterVarString, I think we no longer need this file.\n(We still need vars YAML files in tast-tests-private for secret runtime variables, but not for public repos).",
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8396a633_00532af1",
+        "filename": "vars/example.AccessVars.yaml",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-23T21:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e488e32_debe2101",
       "revId": "cdfe27762715ba6a8e672474659237d064003838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
