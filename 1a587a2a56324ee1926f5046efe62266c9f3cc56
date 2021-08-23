@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8117dc91_713a5df0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-23T07:56:18Z",
+      "side": 1,
+      "message": "Hi Hiroki-san can you take a quick look as an owner of the android dir?",
+      "revId": "1a587a2a56324ee1926f5046efe62266c9f3cc56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
