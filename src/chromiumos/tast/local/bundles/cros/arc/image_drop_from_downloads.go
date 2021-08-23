@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -25,7 +26,7 @@ func init() {
 		Desc:         "Checks image drag drop app compat from Files App",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Fixture:      "arcBooted",
+		Fixture:      "arcBootedInClamshellMode",
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"capybara.jpg"},
 		Timeout:      4 * time.Minute,
@@ -83,6 +84,10 @@ func ImageDropFromDownloads(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
+	if _, err := ash.SetARCAppWindowStateAndWait(ctx, tconn, pkg, ash.WindowStateRightSnapped); err != nil {
+		s.Fatal("Failed to snap the activity: ", err)
+	}
+
 	// Focus the input field and drag the image.
 	if err := d.Object(ui.ID(fieldID)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to find the input field: ", err)
@@ -110,6 +115,7 @@ func ImageDropFromDownloads(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed launching the Files App: ", err)
 	}
 	if err := uiauto.Combine("drag and drop capybara.jpg from Downloads",
+		keyboard.AccelAction("Alt+["),
 		files.OpenDownloads(),
 		files.DragAndDropFile(filename, rect.CenterPoint(), keyboard),
 	)(ctx); err != nil {
