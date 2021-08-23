@@ -39,7 +39,9 @@ func init() {
 	})
 }
 
-func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
+// APIHandleMessageFromUI tests Wilco DTC HandleMessageFromUi gRPC API.
+// TODO(b/189457904): remove once wilco.APIHandleMessageFromUIEnrolled will be stable enough.
+func APIHandleMessageFromUI(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
