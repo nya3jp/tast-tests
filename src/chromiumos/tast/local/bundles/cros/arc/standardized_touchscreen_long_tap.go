@@ -15,32 +15,32 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StandardizedTouchscreenClick,
-		Desc:         "Functional test that installs an app and tests that a standard touchscreen click works",
+		Func:         StandardizedTouchscreenLongTap,
+		Desc:         "Functional test that installs an app and tests that a standard touchscreen long tap works",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenClickTest),
+			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
 			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenClickTest),
+			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
 			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenClickTest),
+			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
 			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenClickTest),
+			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
 			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
@@ -48,8 +48,8 @@ func init() {
 	})
 }
 
-// StandardizedTouchscreenClick runs all the provided test cases.
-func StandardizedTouchscreenClick(ctx context.Context, s *testing.State) {
+// StandardizedTouchscreenLongTap runs all the provided test cases.
+func StandardizedTouchscreenLongTap(ctx context.Context, s *testing.State) {
 	const (
 		apkName      = "ArcStandardizedTouchscreenTest.apk"
 		appName      = "org.chromium.arc.testapp.arcstandardizedtouchscreentest"
@@ -60,32 +60,30 @@ func StandardizedTouchscreenClick(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-// runStandardizedTouchscreenClickTest runs all the tests that are part of the
-// standardized touchscreen input suite.
-func runStandardizedTouchscreenClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
-	btnClickID := testParameters.AppPkgName + ":id/btnClick"
-	btnClickSelector := testParameters.Device.Object(ui.ID(btnClickID))
+func runStandardizedTouchscreenLongTapTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+	btnLongTapID := testParameters.AppPkgName + ":id/btnLongTap"
+	btnLongTapSelector := testParameters.Device.Object(ui.ID(btnLongTapID))
 
-	successLabelSelector := testParameters.Device.Object(ui.Text("TOUCHSCREEN CLICK (1)"))
-	tooManyClicksLabelSelector := testParameters.Device.Object(ui.Text("TOUCHSCREEN CLICK (2)"))
+	successLabelSelector := testParameters.Device.Object(ui.Text("TOUCHSCREEN LONG TAP (1)"))
+	tooManyTapsLabelSelector := testParameters.Device.Object(ui.Text("TOUCHSCREEN LONG TAP (2)"))
 
-	if err := btnClickSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the button to click, info: ", err)
+	if err := btnLongTapSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+		s.Fatal("Unable to find the button to long tap, info: ", err)
 	}
 
 	if err := successLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.StandardizedTouchscreenClick(ctx, testParameters, btnClickSelector); err != nil {
-		s.Fatal("Unable to click the button, info: ", err)
+	if err := standardizedtestutil.StandardizedTouchscreenTap(ctx, testParameters, btnLongTapSelector, standardizedtestutil.LongTouchscreenTap); err != nil {
+		s.Fatal("Unable to long tap the button, info: ", err)
 	}
 
 	if err := successLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("The success label should exist, info: ", err)
 	}
 
-	if err := tooManyClicksLabelSelector.WaitUntilGone(ctx, 0); err != nil {
-		s.Fatal("A single click triggered two click events, info: ", err)
+	if err := tooManyTapsLabelSelector.WaitUntilGone(ctx, 0); err != nil {
+		s.Fatal("A single long tap triggered multiple events, info: ", err)
 	}
 }
