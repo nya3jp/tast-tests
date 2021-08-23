@@ -16,6 +16,24 @@
       "message": "This still doesn\u0027t pass tast-lint presubmits. Please do not upload changes unless the presubmit tests pass. Were you able to follow the instructions here: https://crrev.com/c/3073859?",
       "revId": "f82a13eb7d261905313b23f49b407280f3280500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42bfe3f8_60007e45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-23T15:36:57Z",
+      "side": 1,
+      "message": "did repo sync and updated the chroot,then ran the ./tast-tests/tools/run_lint.sh -commit\u003dHEAD, still i can see the below errors but i am not able to see the erros in my file\n# chromiumos/tast/errors\n../../tast/src/chromiumos/tast/errors/errors.go:149:16: error: reference to undefined identifier ‘errors.Unwrap’\nreturn errors.Unwrap(err)\n                ^\n../../tast/src/chromiumos/tast/errors/errors.go:156:16: error: reference to undefined identifier ‘errors.As’\n  return errors.As(err, target)\n                ^\n../../tast/src/chromiumos/tast/errors/errors.go:162:16: error: reference to undefined identifier ‘errors.Is’\n  return errors.Is(err, target)\n\n*** Failed to build tast-lint. Please run update_chroot",
+      "parentUuid": "280a4d53_0176633e",
+      "revId": "f82a13eb7d261905313b23f49b407280f3280500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
