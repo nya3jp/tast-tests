@@ -11,5 +11,6 @@ const (
 	DBusModemmanagerService        = "org.freedesktop.ModemManager1"
 	DBusModemmanagerInterface      = "org.freedesktop.ModemManager1"
 	DBusModemmanagerModemInterface = "org.freedesktop.ModemManager1.Modem"
+	DBusModemmanagerSimpleModemInterface = "org.freedesktop.ModemManager.Modem.Simple"
 	DBusModemmanagerSimInterface   = "org.freedesktop.ModemManager1.Sim"
 )
