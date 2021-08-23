@@ -415,7 +415,7 @@ func (s *Server) SendBeaconRequest(ctx context.Context, clientMAC string, param 
 		return errors.Wrap(err, "failed to serialize beacon request")
 	}
 	args := []string{"-p" + s.ctrlPath(), "REQ_BEACON", clientMAC, beaconReqStr}
-	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+	if err := s.host.CommandContext(ctx, hostapdCLI, args...).Run(); err != nil {
 		return errors.Wrapf(err, "failed to send Beacon Request to client %s", clientMAC)
 	}
 	return nil
