@@ -7,9 +7,11 @@ package modemmanager
 
 // ModemManager1 DBus constants
 const (
-	DBusModemmanagerPath           = "/org/freedesktop/ModemManager1"
-	DBusModemmanagerService        = "org.freedesktop.ModemManager1"
-	DBusModemmanagerInterface      = "org.freedesktop.ModemManager1"
-	DBusModemmanagerModemInterface = "org.freedesktop.ModemManager1.Modem"
-	DBusModemmanagerSimInterface   = "org.freedesktop.ModemManager1.Sim"
+	DBusModemmanagerPath                 = "/org/freedesktop/ModemManager1"
+	DBusModemmanagerService              = "org.freedesktop.ModemManager1"
+	DBusModemmanagerInterface            = "org.freedesktop.ModemManager1"
+	DBusModemmanagerModemInterface       = "org.freedesktop.ModemManager1.Modem"
+	DBusModemmanager3gppModemInterface   = "org.freedesktop.ModemManager1.Modem.Modem3gpp"
+	DBusModemmanagerSimpleModemInterface = "org.freedesktop.ModemManager1.Modem.Simple"
+	DBusModemmanagerSimInterface         = "org.freedesktop.ModemManager1.Sim"
 )
