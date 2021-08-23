@@ -158,7 +158,7 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 }
 
 // StandardizedTouchscreenClick performs a click on the touchscreen.
-func StandardizedTouchscreenClick(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object) error {
+func StandardizedTouchscreenClick(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object, isLongClick bool) error {
 	touchScreen, err := input.Touchscreen(ctx)
 	if err != nil {
 		return errors.Wrap(err, "Unable to initialize touchscreen")
@@ -176,13 +176,19 @@ func StandardizedTouchscreenClick(ctx context.Context, testParameters Standardiz
 		return errors.Wrap(err, "Unable to get touch screen coords")
 	}
 
-	// Move to the given point and end the write to simulate a click.
-	if err := touchScreenSingleEventWriter.Move(*x, *y); err != nil {
-		return errors.Wrap(err, "Unable to move into position")
-	}
+	if isLongClick {
+		if err := touchScreenSingleEventWriter.LongPressAt(ctx, *x, *y); err != nil {
+			return errors.Wrap(err, "Unable to perform a long click")
+		}
+	} else {
+		// Move to the given point and end the write to simulate a click.
+		if err := touchScreenSingleEventWriter.Move(*x, *y); err != nil {
+			return errors.Wrap(err, "Unable to move into position")
+		}
 
-	if err := touchScreenSingleEventWriter.End(); err != nil {
-		return errors.Wrap(err, "Unable to end click")
+		if err := touchScreenSingleEventWriter.End(); err != nil {
+			return errors.Wrap(err, "Unable to end click")
+		}
 	}
 
 	return nil

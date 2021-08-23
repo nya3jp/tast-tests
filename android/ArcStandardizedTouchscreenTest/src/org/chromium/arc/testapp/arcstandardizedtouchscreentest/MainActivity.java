@@ -7,9 +7,9 @@
 package org.chromium.arc.testapp.arcstandardizedtouchscreentest;
 
 import android.app.Activity;
-import android.widget.LinearLayout;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -18,6 +18,9 @@ public class MainActivity extends Activity {
 
     private Button btnClick;
     private int btnClickCounter = 1;
+
+    private Button btnLongClick;
+    private int btnLongClickCounter = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,15 @@ public class MainActivity extends Activity {
         btnClick.setOnClickListener(v -> {
             addTextViewToLayout(String.format("TOUCHSCREEN CLICK (%d)", btnClickCounter));
             btnClickCounter++;
+        });
+
+        // Add the text 'Touchscreen Long Click' when a long click is performed. Use the same
+        // counter logic as above to make sure multiple events aren't fired for a single event.
+        btnLongClick = findViewById(R.id.btnLongClick);
+        btnLongClick.setOnLongClickListener(v -> {
+            addTextViewToLayout(String.format("TOUCHSCREEN LONG CLICK (%d)", btnLongClickCounter));
+            btnLongClickCounter++;
+            return true;
         });
     }
 
