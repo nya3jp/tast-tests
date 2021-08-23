@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f93e26_53850b40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-23T15:23:35Z",
+      "side": 1,
+      "message": "This test is pretty simple. It\u0027s essentially just running \"ectool --name\u003dcros_fp fpencstatus\", which queries the FPMCU to see if the TPM seed has been set.  I suppose it could be causing some weird side effects on your tests, but very likely not.",
+      "revId": "abdde4c3ff9d74d2e59a3a95779076482b708188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
