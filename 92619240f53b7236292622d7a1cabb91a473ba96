@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5463a40b_9a272bb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1520377
+      },
+      "writtenOn": "2021-08-23T22:13:47Z",
+      "side": 1,
+      "message": "Hi Billy, channel 100 is DFS channel for most of the countries. When AP config this channel for the first time since bootup, it\u0027s required to perform a CAC period before transmitting any signal (in order to scan radars). The CAC period is usually 60 seconds and configurable. Is the the extra 60s radio silent period considered in the test cases? I am trying to catch up the framework still...",
+      "parentUuid": "f08a1f6d_3304b4c8",
+      "range": {
+        "startLine": 93,
+        "startChar": 149,
+        "endLine": 93,
+        "endChar": 152
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5e695ad_7982e8b9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
         "patchSetId": 9
