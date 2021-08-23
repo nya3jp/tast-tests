@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6fdd26_2faff29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T03:18:27Z",
+      "side": 1,
+      "message": "nit: I think we don\u0027t need to call them as \"global runtime variables\", but we can just call them \"runtime variables\".",
+      "range": {
+        "startLine": 14,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456c4bfe_9526173f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T03:18:27Z",
+      "side": 1,
+      "message": "I think it\u0027s helpful to add a comment describing the naming convention here.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 72
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78d41d2_f146847d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T03:18:27Z",
+      "side": 1,
+      "message": "Optional: Maybe we don\u0027t need these lines as an example?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df55044d_384236de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T03:18:27Z",
+      "side": 1,
+      "message": "nit: runtime variables",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4602b901_957d523a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/access_vars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T03:18:27Z",
+      "side": 1,
+      "message": "ditto: Got runtime variable value",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e488e32_debe2101",
+        "filename": "vars/example.AccessVars.yaml",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-23T03:18:27Z",
+      "side": 1,
+      "message": "Now that we introduced default values in RegisterVarString, I think we no longer need this file.\n(We still need vars YAML files in tast-tests-private for secret runtime variables, but not for public repos).",
+      "revId": "cdfe27762715ba6a8e672474659237d064003838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
