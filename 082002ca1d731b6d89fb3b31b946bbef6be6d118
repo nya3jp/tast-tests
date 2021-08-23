@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69daaa88_11b995cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-23T04:13:07Z",
+      "side": 1,
+      "message": "+2 from a tast perspective. Please also get a +1 from a team member before submitting.",
+      "revId": "082002ca1d731b6d89fb3b31b946bbef6be6d118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0db6033_36a52d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-23T04:13:07Z",
+      "side": 1,
+      "message": "Saving the incorrect output to a file called *golden is a little confusing.",
+      "range": {
+        "startLine": 208,
+        "startChar": 39,
+        "endLine": 208,
+        "endChar": 49
+      },
+      "revId": "082002ca1d731b6d89fb3b31b946bbef6be6d118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
