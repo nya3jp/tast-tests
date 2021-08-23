@@ -70,41 +70,44 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
-	// Open Terminal app.
-	terminalApp, err := terminalapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to open Terminal app: ", err)
-	}
-
-	restartIfError := true
-
-	defer func() {
-		// Restart Crostini in the end in case any error in the middle and Visual Studio Code is not closed.
-		// This also closes the Terminal window.
-		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
-				s.Log("Failed to restart Crostini: ", err)
-			}
-		} else {
-			terminalApp.Exit(keyboard)(cleanupCtx)
+	uiauto.RecordScreen(ctx, s, tconn, func() {
+		// Open Terminal app.
+		terminalApp, err := terminalapp.Launch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to open Terminal app: ", err)
 		}
-	}()
 
-	// Cursor blinking breaks screenshots.
-	cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}`)
+		restartIfError := true
 
-	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
-	if err != nil {
-		s.Fatal("Failed to start screen differ: ", err)
-	}
-	defer d.DieOnFailedDiffs()
-	// Since defers are executed in a stack, this needs to be the last defer so it doesn't close the window before dumping the tree.
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
-	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
-		s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
-	}
+		defer func() {
+			// Restart Crostini in the end in case any error in the middle and Visual Studio Code is not closed.
+			// This also closes the Terminal window.
+			if restartIfError {
+				if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
+					s.Log("Failed to restart Crostini: ", err)
+				}
+			} else {
+				terminalApp.Exit(keyboard)(cleanupCtx)
+			}
+		}()
+		s.Fatal("test failed")
 
-	restartIfError = false
+		// Cursor blinking breaks screenshots.
+		cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}`)
+
+		d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
+		if err != nil {
+			s.Fatal("Failed to start screen differ: ", err)
+		}
+		defer d.DieOnFailedDiffs()
+		// Since defers are executed in a stack, this needs to be the last defer so it doesn't close the window before dumping the tree.
+		defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+		if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
+			s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
+		}
+
+		restartIfError = false
+	})
 }
 
 func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {
