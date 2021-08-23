@@ -27,21 +27,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CoreSchedTag,
-		Desc:     "Ensures renderers scheduling cookies are assigned correctly",
-		Contacts: []string{"joelaf@google.com"},
-
-		// Make informational until this feature is launched through
-		// Finch.  I don't want to enable-features in this test since
-		// ultimately I want to make sure finch its can "launch" the
-		// feature. Once that happen, we can remove informational attr.
-		//
-		// NOTE: Until finch launches the feature, please pass to
-		// chrome for local testing:
-		// --enable-features=SchedulerConfiguration<Trial1,CoreSchedulingEnabled
-		// --force-fieldtrials=Trial1/Group1/
-		// --force-fieldtrial-params=Trial1.Group1:config/core-scheduling
-		Attr:         []string{"group:mainline", "informational"},
+		Func:         CoreSchedTag,
+		Desc:         "Ensures renderers scheduling cookies are assigned correctly",
+		Contacts:     []string{"joelaf@google.com", "briannorris@chromium.org"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "arc", "coresched"},
 		HardwareDeps: hwdep.D(hwdep.CPUSupportsSMT()),
 		Timeout:      3 * time.Minute,
