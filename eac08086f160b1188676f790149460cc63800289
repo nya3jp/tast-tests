@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37157436_6881dbb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-23T07:34:02Z",
+      "side": 1,
+      "message": "Tast LGTM with nit",
+      "revId": "eac08086f160b1188676f790149460cc63800289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a69d56b_da4934ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-23T07:34:02Z",
+      "side": 1,
+      "message": "nit: add a comma, and move the } to the next line.\ngo/go-style/decisions#literal-matching-braces",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "eac08086f160b1188676f790149460cc63800289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
