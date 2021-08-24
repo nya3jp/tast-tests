@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4e73a5_67bd9403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-08-24T00:49:17Z",
+      "side": 1,
+      "message": "You will probably want to go through Eric since he is a tast owner.",
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2852aa_a29dc698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/modem_manifests_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-08-24T00:49:17Z",
+      "side": 1,
+      "message": "Does it make sense to create a new package called modemfwdconst just like mmconst ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8549f82_ad7ac859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-08-24T00:49:17Z",
+      "side": 1,
+      "message": "you could probably convert this to a string and report it in the error when you find two helpers requested by the same variant.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079cc645_7c5555ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-08-24T00:49:17Z",
+      "side": 1,
+      "message": "can you check if the variant needs to be specified in the helper? I know that was the issue in b/193391006 , but when I look at \n~/trunk/src/private-overlays/overlay-octopus-private/chromeos-base/modemfwd-helpers-octopus/files , I don\u0027t see any variant names there.\n\nmodemfwd works fine for me on droid(octopus)",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
