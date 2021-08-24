@@ -52,6 +52,24 @@
       "parentUuid": "42bfe3f8_60007e45",
       "revId": "f82a13eb7d261905313b23f49b407280f3280500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c86a84_78b7dd2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-24T04:57:50Z",
+      "side": 1,
+      "message": "Are you running this command in the tast-tests directory?\nYes:/src/platform/tast-tests/tools$ ./run_lint.sh \nCan you post the output of tast/tools/go.sh build chromiumos/tast/cmd/tast-lint?\n/tast/tools$ ./go.sh  build  chromiumos/tast/cmd/tast-lint\n# chromiumos/tast/errors\n../src/chromiumos/tast/errors/errors.go:149:16: error: reference to undefined identifier ‘errors.Unwrap’\n  return errors.Unwrap(err)\n                ^\n../src/chromiumos/tast/errors/errors.go:156:16: error: reference to undefined identifier ‘errors.As’\n  return errors.As(err, target)\n                ^\n../src/chromiumos/tast/errors/errors.go:162:16: error: reference to undefined identifier ‘errors.Is’\n  return errors.Is(err, target)\n                ^\npgulavan@pgulavan-pc:~/ambala_repo/src/platform/tast/tools$ ./go.sh  build  chromiumos/tast/cmd/tast-lint\n# chromiumos/tast/errors\n../src/chromiumos/tast/errors/errors.go:149:16: error: reference to undefined identifier ‘errors.Unwrap’\n  return errors.Unwrap(err)\n                ^\n../src/chromiumos/tast/errors/errors.go:156:16: error: reference to undefined identifier ‘errors.As’\n  return errors.As(err, target)\n                ^\n../src/chromiumos/tast/errors/errors.go:162:16: error: reference to undefined identifier ‘errors.Is’\n  return errors.Is(err, target)\n                ^\nCan you post the output of equery | *tast*\ntried executing this command in chroot and tool folder but we are not getting any output.\n-bash: run_tast.sh: command not found\n\nThanks",
+      "parentUuid": "ce7e63e8_2d36abab",
+      "revId": "f82a13eb7d261905313b23f49b407280f3280500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
