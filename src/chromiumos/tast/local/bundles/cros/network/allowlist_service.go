@@ -16,7 +16,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/firewall"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -117,15 +119,12 @@ func (a *AllowlistService) CheckExtensionInstalled(ctx context.Context, req *net
 	}
 	defer sconn.Close()
 
-	desc := ui.FindParams{
-		Name: req.ExtensionTitle,
-		Role: ui.RoleTypeStaticText,
-	}
+	desc := nodewith.Name(req.ExtensionTitle).Role(role.StaticText)
+	ui := uiauto.New(tconn).WithTimeout(3 * time.Minute)
 
-	node, err := ui.FindWithTimeout(ctx, tconn, desc, 3*time.Minute)
-	if err != nil {
+	if err := ui.WaitUntilExists(desc)(ctx); err != nil {
 		return nil, err
 	}
-	defer node.Release(ctx)
+
 	return &empty.Empty{}, nil
 }
