@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c99eeea_8a47224e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T22:12:09Z",
+      "side": 1,
+      "message": "optional: I think you can inline it, but it might be the matter of taste.\n\nif err :\u003d ui.WaitUntilExists(nodewith.Name(\"User Action\").Role(role.ColumnHeader))(ctx); err !\u003d nil {",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9feed21_2e585012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T22:12:09Z",
+      "side": 1,
+      "message": "remove it.",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ecca43_48d68ae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T22:12:09Z",
+      "side": 1,
+      "message": "I know you followed existing code pattern, but we don\u0027t have to use switch here.\n\nif tc.wantAllowed {\n　 // true case\n} else {\n　 // false case\n}",
+      "range": {
+        "startLine": 128,
+        "startChar": 10,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4135fcd_be7dd0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T22:12:09Z",
+      "side": 1,
+      "message": "You can use exsiting ui here, instead of redefining it.",
+      "range": {
+        "startLine": 133,
+        "startChar": 6,
+        "endLine": 133,
+        "endChar": 50
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9ba1fe_1dcb210d",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T22:12:09Z",
+      "side": 1,
+      "message": "Hmm. It seems this entire code is redundant given ui.WaitUntilGone. \nWaitUntilGone does polling inside the function.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/70cbb348d0af/src/chromiumos/tast/local/chrome/uiauto/automation.go#435\n\nI think we can remove this.\n\nI think it means this function (UiautoVerifyNotExists) is actually no longer needed. Instead the test itself can call ui.WaitUntilGone and that would work.\n\nCould you update the test in that way and ask review for Jonathan (jonfan@chromium.org)?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
