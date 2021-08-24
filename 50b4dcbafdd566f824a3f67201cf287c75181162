@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de128671_2f14ad77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-24T12:59:20Z",
+      "side": 1,
+      "message": "\"r\" is enough here, you are not using this name in the funciton.",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4deccc9_b246ad65",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
         "patchSetId": 5
@@ -76,6 +99,98 @@
         "startChar": 10,
         "endLine": 64,
         "endChar": 21
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44f0506_f56b61c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-24T12:59:20Z",
+      "side": 1,
+      "message": "You are using it only once, you don\u0027t need to define a function for this.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb65619_cd8aa94a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-24T12:59:20Z",
+      "side": 1,
+      "message": "nit: resetTPM",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64316d91_1cb4acec",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-24T12:59:20Z",
+      "side": 1,
+      "message": "I created an autoupdate folder in the services, it is merged now.\nYou can use that as well, if you prefer.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac1e700_a773edf4",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-24T12:59:20Z",
+      "side": 1,
+      "message": "nit: if you name is RollbackResponse, and bool successful, it would still contain all the information.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
       },
       "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
