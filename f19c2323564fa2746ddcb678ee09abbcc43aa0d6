@@ -52,6 +52,69 @@
       "parentUuid": "56cec486_81d9aca2",
       "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9e0358_1ac5f8bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516957
+      },
+      "writtenOn": "2021-08-24T16:11:36Z",
+      "side": 1,
+      "message": "Two suggestions please consider them if there is time.",
+      "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80ed1bc_744ae7f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1516957
+      },
+      "writtenOn": "2021-08-24T16:11:36Z",
+      "side": 1,
+      "message": "Does this return an error if the filtering results in 0 packets, if so ensure we log the filtering mac here, to correlate with air traces, when captured.  If it\u0027s not an error to have 0 then log it on line 223 below.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 70
+      },
+      "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7beef621_fe90d1a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1516957
+      },
+      "writtenOn": "2021-08-24T16:11:36Z",
+      "side": 1,
+      "message": "I\u0027d recommend ssidPrefix being logged in failure too, not just ssid in success like here.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 42
+      },
+      "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
