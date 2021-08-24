@@ -69,6 +69,30 @@
       },
       "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7cf035_04099771",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/cca_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-24T07:15:11Z",
+      "side": 1,
+      "message": "Since we might have remote tests for things other than document scanning (e.g. tast.camera.CCARemote.some_other_functionality), I put this dep only for the document scanning variants.",
+      "parentUuid": "52fe7ce7_80a9a91d",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
