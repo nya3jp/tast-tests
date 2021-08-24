@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40d90d3_e9cf39aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:37:55Z",
+      "side": 1,
+      "message": "Please remember to run the linter scripts before uploading.",
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b3b3120_917826c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:37:55Z",
+      "side": 1,
+      "message": "Don\u0027t need this, just pass \"\" to the TempDir function.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f35cd91_87dcca4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:37:55Z",
+      "side": 1,
+      "message": "Inline this since it\u0027s only used in 1 location.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df88143_c6eed4af",
@@ -89,6 +152,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "193c110e_5ee8eb9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:37:55Z",
+      "side": 1,
+      "message": "can be replaced with \"\", which will use the default tempdir.",
+      "range": {
+        "startLine": 153,
+        "startChar": 35,
+        "endLine": 153,
+        "endChar": 48
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dda06b65_7f32882a",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
         "patchSetId": 9
@@ -151,6 +237,29 @@
         "startChar": 11,
         "endLine": 201,
         "endChar": 105
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87268f7f_5fb3574a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:37:55Z",
+      "side": 1,
+      "message": "Please add a comment.",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 24
       },
       "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
