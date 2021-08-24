@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcSurfaceOrientationTest_20211021.apk",
+  "size": 772797,
+  "sha256sum": "b0a0f5bc7b37e450fd1f600a9f7bc262e9a1056506eb551b88c3e52d7d1e778c"
+}
