@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "977e7720_3ba55e84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-24T15:19:00Z",
+      "side": 1,
+      "message": "I see. Thanks.",
+      "parentUuid": "c59017b3_197c3aa7",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b45f543c_dad96ab4",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "No. Here we want to keep the play store window open after the 5th attempt so that we can troubleshoot by looking at the the screenshot later.",
       "parentUuid": "b45f543c_dad96ab4",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257574a2_cea668ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-24T15:19:00Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "6120e07b_10dc7e56",
       "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
