@@ -108,14 +108,6 @@ func init() {
 }
 
 func PIP(ctx context.Context, s *testing.State) {
-
-	// TODO(takise): This can hide the line number on which the test actually fails. Remove this.
-	must := func(err error) {
-		if err != nil {
-			s.Fatal("Failed: ", err)
-		}
-	}
-
 	// For debugging, create a Chrome session with chrome.ExtraArgs("--show-taps")
 	cr := s.FixtValue().(*arc.PreData).Chrome
 
@@ -207,45 +199,51 @@ func PIP(ctx context.Context, s *testing.State) {
 			for idx, test := range s.Param().([]pipTestParams) {
 				testing.ContextLog(ctx, "About to run test: ", test.name)
 
-				if test.initMethod == startActivity || test.initMethod == enterPip {
-					if multiActivityPIP {
-						must(maPIPBaseAct.Start(ctx, tconn))
-					}
+				if err := func() error {
+					if test.initMethod == startActivity || test.initMethod == enterPip {
+						if multiActivityPIP {
+							if err := maPIPBaseAct.Start(ctx, tconn); err != nil {
+								return errors.Wrapf(err, "failed to start %s", maPIPBaseAct.ActivityName())
+							}
+							defer maPIPBaseAct.Stop(ctx, tconn)
+						}
 
-					must(pipAct.Start(ctx, tconn))
+						if err := pipAct.Start(ctx, tconn); err != nil {
+							return errors.Wrapf(err, "failed to start %s", pipAct.ActivityName())
+						}
+						defer pipAct.Stop(ctx, tconn)
 
-					if multiActivityPIP {
-						// Wait for pipAct to finish settling on top of the base activity. Minimize could be called before on the base activity
-						// otherwise.
-						if err := testing.Sleep(ctx, time.Second); err != nil {
-							s.Fatal("Failed to sleep waiting for MAPIP: ", err)
+						if multiActivityPIP {
+							// Wait for pipAct to finish settling on top of the base activity. Minimize could be called before on the base activity
+							// otherwise.
+							if err := testing.Sleep(ctx, time.Second); err != nil {
+								return errors.Wrap(err, "failed to sleep waiting for MAPIP")
+							}
 						}
 					}
-				}
 
-				if test.initMethod == enterPip {
-					// Make the app PIP via minimize.
-					// We have some other ways to PIP an app, but for now this is the most reliable.
-					testing.ContextLog(ctx, "Test requires PIP initial state, entering PIP via minimize")
-					if err := minimizePIP(ctx, tconn, pipAct); err != nil {
-						s.Fatal("Failed to minimize app into PIP: ", err)
+					if test.initMethod == enterPip {
+						// Make the app PIP via minimize.
+						// We have some other ways to PIP an app, but for now this is the most reliable.
+						testing.ContextLog(ctx, "Test requires PIP initial state, entering PIP via minimize")
+						if err := minimizePIP(ctx, tconn, pipAct); err != nil {
+							return errors.Wrap(err, "failed to minimize app into PIP")
+						}
+						if err := waitForPIPWindow(ctx, tconn); err != nil {
+							return errors.Wrap(err, "did not enter PIP mode")
+						}
 					}
-					if err := waitForPIPWindow(ctx, tconn); err != nil {
-						s.Fatal("Did not enter PIP mode: ", err)
-					}
-				}
 
-				if err := test.fn(ctx, cr, tconn, a, pipAct, dev, dispMode); err != nil {
-					path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
-					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-						s.Log("Failed to capture screenshot: ", err)
+					err := test.fn(ctx, cr, tconn, a, pipAct, dev, dispMode)
+					if err != nil {
+						path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
+						if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+							s.Log("Failed to capture screenshot: ", err)
+						}
 					}
+					return err
+				}(); err != nil {
 					s.Errorf("%s test with tablet mode(%t) and multi-activity(%t) failed: %v", test.name, tabletMode, multiActivityPIP, err)
-				}
-
-				must(pipAct.Stop(ctx, tconn))
-				if multiActivityPIP {
-					must(maPIPBaseAct.Stop(ctx, tconn))
 				}
 			}
 		}
