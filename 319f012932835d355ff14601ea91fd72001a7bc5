@@ -16,6 +16,24 @@
       "message": "As the Resize Lock is not applicable to Games and O4C apps, Do we need this change?. Similarly for other games and O4C Apps.",
       "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9593364_3b4d12a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-08-24T17:24:13Z",
+      "side": 1,
+      "message": "Resize lock feature is applicable for Games, (https://buganizer.corp.google.com/issues/196457740#comment2). Around 70% of tast.arcappcompat tests are non-O4C apps. So Resize lock test case is  needed.",
+      "parentUuid": "cbbbdbca_26df1caf",
+      "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
