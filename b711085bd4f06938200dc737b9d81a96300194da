@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "892cd119_2f8114f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-24T17:17:48Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b711085bd4f06938200dc737b9d81a96300194da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43af7c24_5373f575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-24T17:17:48Z",
+      "side": 1,
+      "message": "nit: this line might be worth wrapping",
+      "revId": "b711085bd4f06938200dc737b9d81a96300194da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
