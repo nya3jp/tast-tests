@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_oki_20210827.ppd.gz",
+  "size": 17071,
+  "sha256sum": "e379a7c41cdda74c223034ffa9e4d4dc5311271402e38d11e5632dc4fc3fae79"
+}
