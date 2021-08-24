@@ -15,7 +15,9 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -81,13 +83,15 @@ func WifiQueries(ctx context.Context, s *testing.State) {
 		// The "aria-pressed" htmlAttribute of the toggle buttons can be used to check the on/off status
 		s.Log("Checking wifi toggle button status")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			params := ui.FindParams{Name: "Wi-Fi enable", Role: ui.RoleTypeToggleButton}
-			wifiToggle, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-			if err != nil {
+
+			ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+			params := nodewith.Name("Wi-Fi enable").Role(role.ToggleButton)
+
+			if err := ui.WaitUntilExists(params)(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
-			defer wifiToggle.Release(ctx)
 
+			wifiToggle, _ := ui.Info(ctx, params)
 			if wifiToggle.HTMLAttributes["aria-pressed"] != strconv.FormatBool(status) {
 				return errors.Errorf("wifi not toggled yet, aria-pressed is %v, expected %v",
 					wifiToggle.HTMLAttributes["aria-pressed"], status)
