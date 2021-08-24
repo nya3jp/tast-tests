@@ -16,6 +16,23 @@
       "message": "Cleaned up nit\u0027s and renamed \u0027click\u0027 to \u0027tap\u0027 throughout the existing touchscreen tests.",
       "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c7d14c_39f2d4ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-24T18:42:24Z",
+      "side": 1,
+      "message": "Received initial review from @tetsui regarding domain specific implementation and Android application. ",
+      "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
