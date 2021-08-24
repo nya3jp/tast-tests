@@ -8,14 +8,17 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
-// VerifyNotExists checks if the element does not appear during timeout.
+// OldVerifyNotExists checks if the element does not appear during timeout.
 // The function first waits until the element disappears.
 // Note: this waits for the full timeout to check that the element does not appear.
-func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) error {
+func OldVerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) error {
 	start := time.Now()
 
 	// Wait for element to disappear.
@@ -33,6 +36,39 @@ func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params ui.Find
 			return err
 		} else if exists {
 			return ui.ErrNodeExists
+		}
+
+		select {
+		case <-time.After(100 * time.Millisecond):
+		case <-ctx.Done():
+			return ctx.Err()
+		case <-after:
+			// Node did not show up.
+			return nil
+		}
+	}
+}
+
+// VerifyNotExists is OldVerifyNotExists with its ui dependency removed.
+func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+	start := time.Now()
+
+	// Wait for element to disappear.
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(timeout).WaitUntilGone(finder)(ctx); err != nil {
+		return err
+	}
+
+	// Continue waiting for timeout.
+	var after = time.After(timeout - time.Since(start))
+
+	// Wait for the full timeout to see if the element shows up.
+	// Check periodically if it shows up.
+	for {
+		if exists, err := ui.IsNodeFound(ctx, finder); err != nil {
+			return err
+		} else if exists {
+			return errors.New("node still exists")
 		}
 
 		select {
@@ -66,5 +102,5 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, params ui.Find
 		return ui.WaitUntilExists(ctx, tconn, params, timeout)
 	}
 
-	return VerifyNotExists(ctx, tconn, params, timeout)
+	return OldVerifyNotExists(ctx, tconn, params, timeout)
 }
