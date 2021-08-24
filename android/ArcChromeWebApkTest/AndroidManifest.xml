@@ -20,7 +20,7 @@
         </activity>
 
         <provider
-            android:name=".InMemoryContentProvider"
+            android:name=".SimpleContentProvider"
             android:authorities="org.chromium.arc.testapp.chromewebapk.content"
             android:grantUriPermissions="true"
             android:exported="true" />
