@@ -37,7 +37,6 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Fixture:           "lacrosStartedByDataUI",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val:               lacros.ChromeTypeLacros,
 		}, {

@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -31,7 +30,6 @@ func init() {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "lacrosStartedByData",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})

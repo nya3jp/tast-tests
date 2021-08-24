@@ -176,7 +176,6 @@ func init() {
 				useLacros: true,
 			},
 			Fixture:           "loggedInToCUJUserLacros",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})

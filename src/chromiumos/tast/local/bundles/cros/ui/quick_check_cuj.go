@@ -44,7 +44,6 @@ func init() {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "loggedInToCUJUserLacros",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})

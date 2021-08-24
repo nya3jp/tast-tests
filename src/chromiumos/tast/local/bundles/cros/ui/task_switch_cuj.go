@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -81,7 +80,6 @@ func init() {
 				Name:              "lacros_clamshell",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
-				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSWitchCUJTestParam{
 					useLacros: true,
@@ -91,7 +89,6 @@ func init() {
 				Name:              "lacros_clamshell_vm",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSWitchCUJTestParam{
 					useLacros: true,
@@ -101,7 +98,6 @@ func init() {
 				Name:              "lacros_tablet",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
-				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSWitchCUJTestParam{
 					useLacros: true,
@@ -112,7 +108,6 @@ func init() {
 				Name:              "lacros_tablet_vm",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-				ExtraData:         []string{launcher.DataArtifact},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSWitchCUJTestParam{
 					useLacros: true,
