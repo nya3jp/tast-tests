@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfa2540_4ad17899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-24T20:16:46Z",
+      "side": 1,
+      "message": "Looks like this arg is no longer needed by lacros.Setup.",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 36
+      },
+      "revId": "b5a515bdfb14ad09a0898d438a46b4b938102467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
