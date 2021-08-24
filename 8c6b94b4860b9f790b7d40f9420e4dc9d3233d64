@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9ae71b_86f53a2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-24T05:37:48Z",
+      "side": 1,
+      "message": "Renamed more symbols are rebase, PTAL thanks.",
+      "revId": "8c6b94b4860b9f790b7d40f9420e4dc9d3233d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
