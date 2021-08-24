@@ -16,6 +16,69 @@
       "message": "PTAL!",
       "revId": "5276e14a2644c64364945cfe4cd6a53a1fde6990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effef988_6243aa84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-08-24T04:22:59Z",
+      "side": 1,
+      "message": "Please get approval from a team member for technical content",
+      "revId": "5276e14a2644c64364945cfe4cd6a53a1fde6990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378a5331_5f2e5d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-08-24T04:22:59Z",
+      "side": 1,
+      "message": "optional: Can you give this function a name and move it to a top level function?\n\nThe nesting is getting quite deep, and the test orchestration logic would be easier to see.",
+      "range": {
+        "startLine": 202,
+        "startChar": 15,
+        "endLine": 202,
+        "endChar": 28
+      },
+      "revId": "5276e14a2644c64364945cfe4cd6a53a1fde6990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80191720_2457f3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-08-24T04:22:59Z",
+      "side": 1,
+      "message": "nit: This should still be inside the if statement like the original code",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 61
+      },
+      "revId": "5276e14a2644c64364945cfe4cd6a53a1fde6990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
