@@ -21,6 +21,10 @@ import (
 // cryptohome instead.
 const localPassword = "test0000"
 
+// errLoginRetry is used to indicate the GAIA login procedure is currently at the retry page
+// and should be retried.
+var errLoginRetry = errors.New("Login needs retry")
+
 // performGAIALogin waits for and interacts with the GAIA webview to perform login.
 // This function is heavily based on NavigateGaiaLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
@@ -91,19 +95,34 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 	testing.ContextLog(ctx, "Performing GAIA login")
 	creds := cfg.Creds()
 
-	// Fill in username.
-	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", creds.User); err != nil {
-		return errors.Wrap(err, "failed to fill username field")
-	}
-	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
-		return errors.Wrap(err, "failed to click on the primary action button")
+	var authType config.AuthType
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Fill in username.
+		if err := insertGAIAField(ctx, gaiaConn, "#identifierId", creds.User); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to fill username field"))
+		}
+		if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to click on the primary action button"))
+		}
+
+		authType, err = getAuthType(ctx, gaiaConn)
+		if err == nil {
+			return nil
+		}
+		if err != errLoginRetry {
+			return testing.PollBreak(errors.Wrap(err, "could not determine the authentication type for this account"))
+		}
+		testing.ContextLog(ctx, "Try to sign in again")
+		// Click "Try again" button to go to sign-in screen.
+		if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to click the primary action button to go to sign-in page"))
+		}
+		return errors.New("couldn't sign the user in")
+	}, pollOpts); err != nil {
+		return err
 	}
 
 	// Fill in password / contact email.
-	authType, err := getAuthType(ctx, gaiaConn)
-	if err != nil {
-		return errors.Wrap(err, "could not determine the authentication type for this account")
-	}
 	if authType == config.PasswordAuth {
 		testing.ContextLog(ctx, "This account uses password authentication")
 		if creds.Pass == "" {
@@ -152,7 +171,10 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 
 // getAuthType determines the authentication type by checking whether the current page
 // is expecting a password or contact email input.
+// If the current page is at the login retry screen, it returns errLoginRetry error.
 func getAuthType(ctx context.Context, gaiaConn *driver.Conn) (config.AuthType, error) {
+	const retry = "retry"
+
 	const query = `
 	(function() {
 		if (document.getElementById('password')) {
@@ -160,6 +182,9 @@ func getAuthType(ctx context.Context, gaiaConn *driver.Conn) (config.AuthType, e
 		}
 		if (document.getElementsByName('email').length > 0) {
 			return 'contact';
+		}
+		if (document.querySelector('div[data-primary-action-label="Try again"]') != null) {
+			return 'retry';
 		}
 		return "";
 	})();
@@ -169,7 +194,7 @@ func getAuthType(ctx context.Context, gaiaConn *driver.Conn) (config.AuthType, e
 		if err := gaiaConn.Eval(ctx, query, &t); err != nil {
 			return err
 		}
-		if t == config.PasswordAuth || t == config.ContactAuth {
+		if t == config.PasswordAuth || t == config.ContactAuth || t == retry {
 			return nil
 		}
 		return errors.New("failed to locate password or contact input field")
@@ -177,6 +202,9 @@ func getAuthType(ctx context.Context, gaiaConn *driver.Conn) (config.AuthType, e
 		return config.UnknownAuth, err
 	}
 
+	if t == retry {
+		return config.UnknownAuth, errLoginRetry
+	}
 	return t, nil
 }
 
