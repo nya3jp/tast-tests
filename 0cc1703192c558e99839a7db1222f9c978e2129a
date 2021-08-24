@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea798a1_18716200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-08-24T20:37:34Z",
+      "side": 1,
+      "message": "Nit: I think it could be useful to future readers to add a quick message in $BUG about the motivation for this change, specifically on how it relates to helping investigate $BUG.",
+      "revId": "0cc1703192c558e99839a7db1222f9c978e2129a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
