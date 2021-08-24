@@ -70,6 +70,9 @@ func ConnectToSharingUI(ctx context.Context, cr *chrome.Chrome) (*SendSurface, e
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the share sheet")
 	}
+	if err := sendConn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, err
+	}
 	return &SendSurface{conn: sendConn}, nil
 }
 
