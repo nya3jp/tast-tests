@@ -17,39 +17,7 @@ import (
 // VerifyNotExists checks if the element does not appear during timeout.
 // The function first waits until the element disappears.
 // Note: this waits for the full timeout to check that the element does not appear.
-func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) error {
-	start := time.Now()
-
-	// Wait for element to disappear.
-	if err := ui.WaitUntilGone(ctx, tconn, params, timeout); err != nil {
-		return err
-	}
-
-	// Continue waiting for timeout.
-	var after = time.After(timeout - time.Since(start))
-
-	// Wait for the full timeout to see if the element shows up.
-	// Check periodically if it shows up.
-	for {
-		if exists, err := ui.Exists(ctx, tconn, params); err != nil {
-			return err
-		} else if exists {
-			return ui.ErrNodeExists
-		}
-
-		select {
-		case <-time.After(100 * time.Millisecond):
-		case <-ctx.Done():
-			return ctx.Err()
-		case <-after:
-			// Node did not show up.
-			return nil
-		}
-	}
-}
-
-// UiautoVerifyNotExists is new version of VerifyNotExists, not using ui library.
-func UiautoVerifyNotExists(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
 	start := time.Now()
 	// Wait for element to disappear.
 	ui := uiauto.New(tconn)
@@ -83,5 +51,5 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewi
 		return ui.WithTimeout(timeout).WaitUntilExists(finder)(ctx)
 	}
 
-	return UiautoVerifyNotExists(ctx, tconn, finder, timeout)
+	return VerifyNotExists(ctx, tconn, finder, timeout)
 }
