@@ -36,13 +36,31 @@ func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, erro
 
 // Rect returns a coords.Rect struct for the Quick Settings area, which contains
 // coordinate information about the rectangular region it occupies on the screen.
+// As clients of this function generally expect the bounds of the window, not the
+// "UnifiedSystemTrayView" view itself, this finds a not that has
+// UnifiedSystemTrayView as a child.
 func Rect(ctx context.Context, tconn *chrome.TestConn) (coords.Rect, error) {
-	quickSettings, err := ui.FindWithTimeout(ctx, tconn, quickSettingsParams, uiTimeout)
+	bubbleFrameViews, err := ui.FindAll(ctx, tconn, ui.FindParams{
+		ClassName: "BubbleFrameView",
+	})
 	if err != nil {
 		return coords.Rect{}, errors.Wrap(err, "failed to find quick settings")
 	}
-	defer quickSettings.Release(ctx)
-	return quickSettings.Location, nil
+	defer func() {
+		for _, bubbleFrameView := range bubbleFrameViews {
+			defer bubbleFrameView.Release(ctx)
+		}
+	}()
+
+	for _, bubbleFrameView := range bubbleFrameViews {
+		quickSettings, err := bubbleFrameView.Descendants(ctx, quickSettingsParams)
+		if err != nil {
+			continue
+		}
+		defer quickSettings.Release(ctx)
+		return bubbleFrameView.Location, nil
+	}
+	return coords.Rect{}, errors.Wrap(err, "failed to find quick settings")
 }
 
 // ClickStatusArea clicks the status area, which is the area on the shelf where info
