@@ -465,6 +465,15 @@ func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait until over activity is ready")
 	}
 
+	// This is intentionall put here (after two activities are launched).
+	// If this is called just after the device is set to tablet mode, this may fail as the tablet operation is async.
+	// Launching the activities ensures that all the important WM events are completed, and here we can safely rotate the display.
+	cleanupRotation, err = wm.RotateToLandscape(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanupRotation()
+
 	// Snap the over activity to the left.
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24Secondary, ash.WMEventSnapLeft); err != nil {
 		return errors.Wrapf(err, "failed to left snap %s", wm.Pkg24Secondary)
