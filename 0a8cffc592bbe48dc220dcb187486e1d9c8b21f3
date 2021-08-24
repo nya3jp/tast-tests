@@ -33,6 +33,24 @@
       "message": "Thank you for noticing and sorry for not noticing!\n\nWe should probably promote graphics.ScreenshotCLI too...",
       "revId": "0a8cffc592bbe48dc220dcb187486e1d9c8b21f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b868d6_d74ce4ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-24T03:52:55Z",
+      "side": 1,
+      "message": "That\u0027s a good point. It looks good for promotion as well:\nhttps://tastboard.corp.google.com/test/graphics.ScreenshotCLI\n\nAll the red \"new failures\" were before the fix was in place. Subsequent builds look good.\n\nLet me add that in",
+      "parentUuid": "6c970cbf_b2cb5d5d",
+      "revId": "0a8cffc592bbe48dc220dcb187486e1d9c8b21f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
