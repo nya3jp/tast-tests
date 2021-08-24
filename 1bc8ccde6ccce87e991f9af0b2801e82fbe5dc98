@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e645270a_5b407e92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-24T20:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45d7505_c2d65318",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "1bc8ccde6ccce87e991f9af0b2801e82fbe5dc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d14c92_c8d01f81",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-24T18:37:35Z",
       "side": 1,
       "message": "could we add a helper function somewhere for these polls (getting bt pref \u0026 getting bt powered status)? they\u0027re almost identical in this test and the next one, and quite lengthy.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "1bc8ccde6ccce87e991f9af0b2801e82fbe5dc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49820d57_f216e26a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-24T20:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d14c92_c8d01f81",
       "range": {
         "startLine": 111,
         "startChar": 2,
