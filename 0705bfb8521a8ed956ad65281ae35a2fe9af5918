@@ -34,6 +34,23 @@
       "parentUuid": "72818ae7_280d7475",
       "revId": "0705bfb8521a8ed956ad65281ae35a2fe9af5918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b825c30f_6f809bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-08-24T08:42:51Z",
+      "side": 1,
+      "message": "Update: Waiting for another fix to land: https://crrev.com/c/3115825",
+      "revId": "0705bfb8521a8ed956ad65281ae35a2fe9af5918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
