@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3aedbc83_bf21dcfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-24T13:31:50Z",
+      "side": 1,
+      "message": "maybe Fatalf?",
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "079cc645_7c5555ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
         "patchSetId": 1
@@ -83,6 +100,23 @@
         "endLine": 69,
         "endChar": 29
       },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b14da89_f2e8139f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-24T13:31:50Z",
+      "side": 1,
+      "message": "ditto re: Fatalf",
       "revId": "3a67bc41e07039c70c07b240276388e32368014d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
