@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3995c4de_9d824e95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-24T16:35:27Z",
+      "side": 1,
+      "message": "If there are no probe requests, the test has failed. The `s.Fatal(...)` will cause the test to fail at this point; no more test code is executed. I\u0027ll update the comment to explicitly point out that no probe requests means failure.",
+      "parentUuid": "e80ed1bc_744ae7f4",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 70
+      },
+      "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7beef621_fe90d1a8",
@@ -107,6 +131,30 @@
       "writtenOn": "2021-08-24T16:11:36Z",
       "side": 1,
       "message": "I\u0027d recommend ssidPrefix being logged in failure too, not just ssid in success like here.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 42
+      },
+      "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864b1528_f51c86cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-24T16:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7beef621_fe90d1a8",
       "range": {
         "startLine": 253,
         "startChar": 0,
