@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b765992_5b492947",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-24T20:01:17Z",
+      "side": 1,
+      "message": "Looking back and forth about this CL and the following CL that uses this, let\u0027s think a basic question: is it a good design binding both router config factory and DUT\u0027s security config factory together?\nLogically they can be defined separately. If you agree, then we can restructure the CL as:\n\n* wificell/axrouter/config_param_fac.go defines AxConfigParamFac that Gen() a []axrouter.ConfigParam. For SecConf factory, caller shall just use the existing one.\n\n* wificell/axrouter/wpa_config_param.go Either put the WPAConfigFactory in axrouter package or in wpaconf subpackage are fine. I would prefer the former one. \n\n* wificell/axrouter/open_config_param.go The AxBaseConfig shall be renamed as OpenConfigFactory as although it is named \"base\" but no config factory is derived from it. Also, it can be in axrouter package or in openconf subpackage are fine. I would prefer the former one.",
+      "parentUuid": "538921ce_7f8cc2af",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8ebbd00_4fe0fd93",
         "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
         "patchSetId": 8
