@@ -111,13 +111,13 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 						s.Fatalf("Failed to press %s: %v", keys, err)
 					}
 					timeout := 5 * time.Second
-					Elements := nodewith.Name("Elements").Role(role.Tab)
+					elements := nodewith.Name("Elements").Role(role.Tab)
 					if tc.wantAllowed {
-						if err := ui.WithTimeout(timeout).WaitUntilExists(Elements)(ctx); err != nil {
+						if err := ui.WithTimeout(timeout).WaitUntilExists(elements)(ctx); err != nil {
 							s.Error("Failed to wait for DevTools: ", err)
 						}
 					} else {
-						if err := policyutil.UiautoVerifyNotExists(ctx, tconn, Elements, timeout); err != nil {
+						if err := policyutil.VerifyNotExists(ctx, tconn, elements, timeout); err != nil {
 							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
 						}
 					}
