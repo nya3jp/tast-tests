@@ -16,6 +16,24 @@
       "message": "just a comment;\nI was thinking setting timeout here instead of line 123, like\nui.WithTimeout(...).WaitUntilExists(...)\nwould be closer to the original code -- if the timeout is specific to this action.\nHowever in this case, 3 minute timeout may be felt like the total timeout. So I think that should be OK.",
       "revId": "d87528416126cf166d95e88b65e664ea67a9f14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad6e24d3_8397ffb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T22:29:17Z",
+      "side": 1,
+      "message": "I agree that inlining ui or not is optional, but to correct your possible misunderstanding, the timeout in uiauto.Context is never a \"total timeout\". It\u0027s individual timeout for each action.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/70cbb348d0af/src/chromiumos/tast/local/chrome/uiauto/automation.go#65\nContext.WithTimeout just creates a context with the timeout option; it does not start ticking immediately.\n\ntl;dr to Haruka-san: your code is OK.",
+      "parentUuid": "47dca869_66a271fc",
+      "revId": "d87528416126cf166d95e88b65e664ea67a9f14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
