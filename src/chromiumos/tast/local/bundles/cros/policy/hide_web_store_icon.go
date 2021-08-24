@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -109,18 +108,12 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 			appName := apps.WebStore.Name
 
 			// Confirm the status of the Web Store icon in the application launcher
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Name:      appName,
-				ClassName: "AppListItemView",
-			}, param.wantIcon, 15*time.Second); err != nil {
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, nodewith.Name(appName).ClassName("AppListItemView"), param.wantIcon, 15*time.Second); err != nil {
 				s.Error("Could not confirm the desired status of the Web Store Icon in the application launcher: ", err)
 			}
 
 			// Confirm the status of the Web Store icon on the shelf
-			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
-				Name:      appName,
-				ClassName: "ash/ShelfAppButton",
-			}, param.wantIcon, 15*time.Second); err != nil {
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, nodewith.Name(appName).ClassName("ash/ShelfAppButton"), param.wantIcon, 15*time.Second); err != nil {
 				s.Error("Could not confirm the desired status of the Web Store Icon on the system shelf: ", err)
 			}
 		})
