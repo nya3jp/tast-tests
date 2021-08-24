@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5990acb_a16543f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/modem_manifests_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-08-24T16:03:06Z",
+      "side": 1,
+      "message": "maybe, but it seems overkill if it\u0027s not going to be outside cellular tests.\nLet me know if you can think of other use cases for these values and I\u0027ll move them if it makes sense",
+      "parentUuid": "ff2852aa_a29dc698",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8549f82_ad7ac859",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-24T00:49:17Z",
       "side": 1,
       "message": "you could probably convert this to a string and report it in the error when you find two helpers requested by the same variant.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b9a4ce_cbcbbc73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-08-24T16:03:06Z",
+      "side": 1,
+      "message": "this is just a way of implementing a \"set\" since Go doesn\u0027t have sets. the Variant is the key",
+      "parentUuid": "d8549f82_ad7ac859",
       "range": {
         "startLine": 51,
         "startChar": 29,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f775f8_9eb5db1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-08-24T16:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aedbc83_bf21dcfa",
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "079cc645_7c5555ac",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec04d133_3520894a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-08-24T16:03:06Z",
+      "side": 1,
+      "message": "good one. If the helper proto doesn\u0027t list any variant values, it applies to all variants",
+      "parentUuid": "079cc645_7c5555ac",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b14da89_f2e8139f",
@@ -117,6 +207,24 @@
       "writtenOn": "2021-08-24T13:31:50Z",
       "side": 1,
       "message": "ditto re: Fatalf",
+      "revId": "3a67bc41e07039c70c07b240276388e32368014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3232c559_e1b81856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-08-24T16:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b14da89_f2e8139f",
       "revId": "3a67bc41e07039c70c07b240276388e32368014d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
