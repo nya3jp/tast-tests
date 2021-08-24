@@ -113,7 +113,7 @@ func HideWebStoreIcon(ctx context.Context, s *testing.State) {
 				Name:      appName,
 				ClassName: "AppListItemView",
 			}, param.wantIcon, 15*time.Second); err != nil {
-				s.Error("Could not confirm the desired status of the Web Store Icon in the application launcher: ", err)
+				s.Error("Could not confirm the desired status of the Web Store Icin the application launcher: ", err)
 			}
 
 			// Confirm the status of the Web Store icon on the shelf

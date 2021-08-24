@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -107,29 +109,24 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 					}
 
 					// Check that we have access to chrome://user-actions accessability tree.
-					if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-						Name: "User Action",
-						Role: ui.RoleTypeColumnHeader,
-					}, 5*time.Second); err != nil {
+					ui := uiauto.New(tconn)
+					userAction := nodewith.Name("User Action").Role(role.ColumnHeader)
+					if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(userAction)(ctx); err != nil {
 						s.Fatal("Failed to wait for page nodes: ", err)
 					}
-
 					// Press keys combination to open DevTools.
 					if err := keyboard.Accel(ctx, keys); err != nil {
 						s.Fatalf("Failed to press %s: %v", keys, err)
 					}
-
 					timeout := 5 * time.Second
-					elementsParams := ui.FindParams{Name: "Elements", Role: ui.RoleTypeTab}
-
-					switch tc.wantAllowed {
-					case false:
-						if err := policyutil.VerifyNotExists(ctx, tconn, elementsParams, timeout); err != nil {
-							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
-						}
-					case true:
-						if err := ui.WaitUntilExists(ctx, tconn, elementsParams, timeout); err != nil {
+					elements := nodewith.Name("Elements").Role(role.Tab)
+					if tc.wantAllowed {
+						if err := ui.WithTimeout(timeout).WaitUntilExists(elements)(ctx); err != nil {
 							s.Error("Failed to wait for DevTools: ", err)
+						}
+					} else {
+						if err := policyutil.UiautoVerifyNotExists(ctx, tconn, elements, timeout); err != nil {
+							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
 						}
 					}
 				})
