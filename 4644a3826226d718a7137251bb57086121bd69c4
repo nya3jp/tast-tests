@@ -22,6 +22,30 @@
       },
       "revId": "4644a3826226d718a7137251bb57086121bd69c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25eb41e5_083ffe2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-08-24T00:43:46Z",
+      "side": 0,
+      "message": "No, I removed it because I do not want the retry behavior in the first place. I want to surface all the errors.",
+      "parentUuid": "075b1c73_27b6a133",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 535,
+        "endChar": 58
+      },
+      "revId": "4644a3826226d718a7137251bb57086121bd69c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
