@@ -215,9 +215,6 @@ func setAndVerifyWindowState(ctx context.Context, act *arc.Activity, tconn *chro
 	if err := act.SetWindowState(ctx, tconn, arcWindowState); err != nil {
 		return errors.Wrapf(err, "failed to set window state (%v)", arcWindowState)
 	}
-	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for Android to be idle")
-	}
 	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
 	if err != nil {
 		return errors.Wrap(err, "failed to get window info")
