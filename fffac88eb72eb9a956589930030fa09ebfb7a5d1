@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59017b3_197c3aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-08-24T14:45:31Z",
+      "side": 1,
+      "message": "A single attempt takes about 13-14 seconds. I think it\u0027s better keeping track of the number of attempts so that we can keep the play store window open in the last attempt, which should make troubleshooting easier.",
+      "parentUuid": "23e54596_fb6cf392",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b45f543c_dad96ab4",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-08-23T20:48:55Z",
       "side": 1,
       "message": "Should this be \u003c\u003d?",
+      "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6120e07b_10dc7e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-08-24T14:45:31Z",
+      "side": 1,
+      "message": "No. Here we want to keep the play store window open after the 5th attempt so that we can troubleshoot by looking at the the screenshot later.",
+      "parentUuid": "b45f543c_dad96ab4",
       "revId": "fffac88eb72eb9a956589930030fa09ebfb7a5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
