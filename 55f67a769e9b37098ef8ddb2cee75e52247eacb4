@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278cafdf_adc9c84a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-24T16:32:32Z",
+      "side": 1,
+      "message": "Is it worth packing the three non-error return values into a struct here?",
+      "revId": "55f67a769e9b37098ef8ddb2cee75e52247eacb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
