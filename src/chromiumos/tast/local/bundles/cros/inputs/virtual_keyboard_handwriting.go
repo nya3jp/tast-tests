@@ -41,7 +41,7 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEs),
 		Pre:          pre.VKEnabledReset,
 		Timeout:      time.Duration(len(hwTestIMEs)) * time.Duration(len(hwTestMessages)) * time.Minute,
@@ -49,6 +49,7 @@ func init() {
 			{
 				Name:              "docked",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "docked_informational",
@@ -57,6 +58,7 @@ func init() {
 			{
 				Name:              "floating",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "floating_informational",
