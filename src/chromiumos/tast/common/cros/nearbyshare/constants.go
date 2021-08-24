@@ -15,10 +15,16 @@ const DetectShareTargetTimeout = time.Minute
 // SmallFileTransferTimeout is the test timeout for small file (~10kb) transfer tests.
 const SmallFileTransferTimeout = 30 * time.Second
 
-// LargeFileOnlineTransferTimeout is the transfer timeout for large file (~30MB) online transfer tests.
+// MediumFileOnlineTransferTimeout is the transfer timeout for medium file (~5MB) online transfer tests.
 // Online transfers should be at least 10x faster than offline transfers.
 // Some extra time is required to account for the delay in upgrading the bandwidth.
+const MediumFileOnlineTransferTimeout = 15 * time.Second
+
+// LargeFileOnlineTransferTimeout is the transfer timeout for large file (~30MB) online transfer tests.
 const LargeFileOnlineTransferTimeout = time.Minute
+
+// ExtraLargeFileOnlineTransferTimeout is the transfer timeout for extra large file (~100MB) online transfer tests.
+const ExtraLargeFileOnlineTransferTimeout = 3 * time.Minute
 
 // AdditionalTestTime is the amount of time to add to the share target detection and file transfer timeouts to make up the global test timeout.
 // This is to account for any additional setup and non-sharing interactions performed by the test.
