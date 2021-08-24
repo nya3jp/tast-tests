@@ -42,8 +42,8 @@ public final class MainActivity extends Activity {
             Intent fileShareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
 
             ArrayList<Uri> uris = new ArrayList<>();
-            uris.add(InMemoryContentProvider.getContentUri("file1.json"));
-            uris.add(InMemoryContentProvider.getContentUri("file2.json"));
+            uris.add(SimpleContentProvider.getContentUri("file1.json"));
+            uris.add(SimpleContentProvider.getContentUri("file2.json"));
 
             fileShareIntent.setType("application/json");
             fileShareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);

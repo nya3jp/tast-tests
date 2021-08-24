@@ -14,16 +14,19 @@ import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.provider.OpenableColumns;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /**
- * A {@link ContentProvider} which serves simple files directly from memory.
+ * A {@link ContentProvider} which serves simple files with fixed content.
  *
- * <p>This is a simple alternative to {@code FileProvider} which does not require AndroidX
- * dependencies and does not perform disk access.
+ * <p>This is a basic alternative to {@code FileProvider} which does not require AndroidX
+ * dependencies.
  */
-public final class InMemoryContentProvider extends ContentProvider {
+public final class SimpleContentProvider extends ContentProvider {
 
     private static final String FILE_CONTENTS_1 = "{\"text\": \"foobar\"}";
     private static final String FILE_CONTENTS_2 = "{\"text\": \"lorem ipsum\"}";
@@ -81,22 +84,19 @@ public final class InMemoryContentProvider extends ContentProvider {
     }
 
     @Override
-    public ParcelFileDescriptor openFile(Uri uri, String mode) {
-        ParcelFileDescriptor readFd;
-        ParcelFileDescriptor writeFd;
-        try {
-            ParcelFileDescriptor[] pipe = ParcelFileDescriptor.createPipe();
-            readFd = pipe[0];
-            writeFd = pipe[1];
-
-            try(OutputStream stream = new ParcelFileDescriptor.AutoCloseOutputStream(writeFd)) {
-                stream.write(getFileBytes(uri.getLastPathSegment()));
-            }
+    public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
+        // Write the content to a file in our private data directly. Performing blocking file IO
+        // like this isn't ideal, but should be fast enough to avoid triggering an App Not
+        // Responding error.
+        String fileName = uri.getLastPathSegment();
+        File f = new File(getContext().getDataDir(), fileName);
+        try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f))) {
+            stream.write(getFileBytes(fileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        return readFd;
+        return ParcelFileDescriptor.open(f, ParcelFileDescriptor.MODE_READ_ONLY);
     }
 
     private byte[] getFileBytes(String fileName) {
