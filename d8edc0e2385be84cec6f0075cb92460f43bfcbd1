@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8774497_6c282043",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-24T17:46:06Z",
+      "side": 1,
+      "message": "Think again. Could this because we make a mistake that a base package router/router.go depends on axrouter? The base package should not depend on its child package.\n\nWhat\u0027s the reason we define Ax interface in router/router.go? It is the source that makes the base package depends on axrouter subpackage. If we move the interface to axrouter subpackage, do we solve the problem and the code in sharedrouter can be placed back in the router package. Please correct me if I\u0027m too naive.",
+      "parentUuid": "9bf2bf89_3a8d9fa7",
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e33a7651_4eaf6907",
