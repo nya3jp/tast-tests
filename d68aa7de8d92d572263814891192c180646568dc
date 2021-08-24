@@ -138,6 +138,29 @@
       },
       "revId": "d68aa7de8d92d572263814891192c180646568dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ecc931e_52219558",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T23:40:15Z",
+      "side": 1,
+      "message": "This code just checks the node doesn\u0027t exists for timeout period.\nIt seems we can use EnsureGoneFor() for this purpose.\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto@v0.0.0-20210824212705-70cbb348d0af#Context.EnsureGoneFor\n\nTherefore, I think we can simplify the code as follows.\n\nreturn uiauto.Combine(\"verify node is done\", \n  ui.WaitUntilGone(finder),\n  ui.EnsureGoneFor(finder, timeout),\n)(ctx)",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
