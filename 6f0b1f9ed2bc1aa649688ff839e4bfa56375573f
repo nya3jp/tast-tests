@@ -106,6 +106,24 @@
       "parentUuid": "9baf299d_74576c18",
       "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f93a065_21451063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-24T23:29:42Z",
+      "side": 1,
+      "message": "Sounds good. If a simple search scenario covers the E2E including LSS and we do not care much about the result from LSS. We can just change \u0027helpa\u0027 to \u0027help\u0027 to make it simpler. Btw, \u0027help\u0027 -\u003e \u0027help\u0027 should always work regardless of the change. So I do not think it needs to be demoted.",
+      "parentUuid": "6a4d6bea_c010e4bc",
+      "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
