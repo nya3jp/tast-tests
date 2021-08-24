@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b66b3ffb_52c641da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-24T18:32:20Z",
+      "side": 1,
+      "message": "see https://paste.googleplex.com/4669973701066752 from L112 onwards for sample usage",
+      "revId": "9a0673b6ec602403f8846420157478bc0d9f28fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
