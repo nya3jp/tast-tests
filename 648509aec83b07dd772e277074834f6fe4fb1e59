@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c95f621_70fa27c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/cca_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-24T03:00:49Z",
+      "side": 1,
+      "message": "On second thought, since we might use CCARemote for tests other than document scanning in the future, it would be better to move the \"ondevice_document_scanner\" dep to the subtest area.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 61
+      },
+      "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
