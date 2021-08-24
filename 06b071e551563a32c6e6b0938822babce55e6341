@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111fc566_44cff32e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T07:29:45Z",
+      "side": 1,
+      "message": "Could you handle the error? I think you can return testing.PollBreak(err) just as the above if clause.",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "06b071e551563a32c6e6b0938822babce55e6341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
