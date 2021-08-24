@@ -72,6 +72,10 @@ func TestAddParams(t *testing.T) {
 		test("lexmark_1200dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_1200dpi_golden.ps", ippprint.WithResolution("1200dpi")),
 		test("lexmark_2400x600dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_2400x600dpi_golden.ps", ippprint.WithResolution("2400x600dpi")),
 
+		// Verify common media-source values by-pass-tray (Multipurpose) and bottom (Lower).
+		iTest("media_source_by_pass_tray", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bypass_golden.ps", "media-source=by-pass-tray"),
+		iTest("media_source_bottom", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps", "media-source=bottom"),
+
 		// Add
 		test("dymo_lw", "printer_add_dymo_printer_lw450.ppd", "printer_add_dymo_lw_printer_golden.bin"),
 		test("dymo_lm", "printer_add_dymo_printer_lm450.ppd", "printer_add_dymo_lm_printer_golden.bin"),
