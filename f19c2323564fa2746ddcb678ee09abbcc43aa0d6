@@ -16,6 +16,24 @@
       "message": "I followed instructions on https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md and used cros-wifi-reviews@ for the \"Test owners\". While the test \"Contacts\" is chromeos-wifi-champs@ (https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go#43), this seemed more direct.\n\nIf you think this is is in error, please let me know. Thanks for your help!\n",
       "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56cec486_81d9aca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-08-24T04:30:21Z",
+      "side": 1,
+      "message": "Just dropping by to say that cros-wifi-reviews@ is correct 😊",
+      "parentUuid": "e512e714_8be627b3",
+      "revId": "f19c2323564fa2746ddcb678ee09abbcc43aa0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
