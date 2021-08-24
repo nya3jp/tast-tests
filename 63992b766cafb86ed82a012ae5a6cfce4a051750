@@ -22,6 +22,30 @@
       },
       "revId": "63992b766cafb86ed82a012ae5a6cfce4a051750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e9ca6b_d694070f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-24T17:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18a8d63_22da3205",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 53
+      },
+      "revId": "63992b766cafb86ed82a012ae5a6cfce4a051750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
