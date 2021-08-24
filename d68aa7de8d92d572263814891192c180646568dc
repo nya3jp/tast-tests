@@ -185,6 +185,30 @@
       },
       "revId": "d68aa7de8d92d572263814891192c180646568dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185f2fea_0ba3ca1d",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T23:43:17Z",
+      "side": 1,
+      "message": "(In case you haven\u0027t seen this notation, s/foo/bar/ means \"replace foo with bar in the previous comment\". In this case I wrote \"verify node is done\", but it should have been \"verify node is gone\")",
+      "parentUuid": "f0b8c954_07d38d07",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
