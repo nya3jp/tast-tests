@@ -28,6 +28,9 @@ const (
 
 	// When running this tast test locally, useHub can be set to true to communicate with a local syz-hub instance.
 	useHub = false
+
+	// GCS bucket for syzkaller artifacts.
+	gsURL = "gs://syzkaller-ctp-corpus"
 )
 
 const startupScriptContents = `
@@ -256,8 +259,22 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(); err != nil {
 		s.Fatal("Failed to copy syzkaller logfile: ", err)
 	}
+	if err := saveCorpus(ctx, board, filepath.Join(syzkallerWorkdir, "corpus.db")); err != nil {
+		s.Fatal("Failed to save corpus: ", err)
+	}
 
 	s.Log("Done fuzzing, exiting")
+}
+
+func saveCorpus(ctx context.Context, board, corpusPath string) error {
+	timestamp := time.Now().Format("2006-01-02-15:04:05")
+	url := fmt.Sprintf("%s/corpus-%v-%v.db", gsURL, board, timestamp)
+	testing.ContextLog(ctx, "Uploading ", url)
+	if err := testexec.CommandContext(ctx, "gsutil", "copy", corpusPath, url).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to save corpus.db")
+	}
+	testing.ContextLog(ctx, "Uploaded ", url)
+	return nil
 }
 
 func findSyzkallerBoardAndArch(ctx context.Context, d *dut.DUT) (board, arch string, err error) {
