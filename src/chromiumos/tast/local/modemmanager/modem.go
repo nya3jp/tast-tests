@@ -67,6 +67,29 @@ func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (
 	return ph.GetProperties(ctx)
 }
 
+// WaitForState creates a PropertyHolder for the Sim object and returns the associated Properties.
+func (m *Modem) WaitForState(ctx context.Context, state int, timeout time.Duration) (error) {
+
+	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
+		props, err := m.GetProperties(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get modem properties")
+		}
+		s, err := props.GetInt32(mmconst.ModemPropertyState)
+		if err != nil {
+			return errors.Wrap(err, "failed to get modem state")
+		}
+		if int(s) != state {
+			testing.ContextLogf(ctx, "state is %d %d" , s, state)
+			return errors.Wrapf(err, "expected state is %s, actual state is %s", state, s)
+		}
+		return nil // success
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return err
+	}
+	return nil
+}
+
 // GetSimSlots uses the Modem.SimSlots property to fetch SimProperties for each slot.
 // Returns the array of SimProperties and the array index of the primary slot on success.
 // If a slot path is empty, the entry for that slot will be nil.

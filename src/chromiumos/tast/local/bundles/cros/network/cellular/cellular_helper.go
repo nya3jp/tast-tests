@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -261,5 +262,42 @@ func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value inter
 	if err := pw.Expect(expectCtx, prop, value); err != nil {
 		return errors.Wrapf(err, "%s not set", prop)
 	}
+	return nil
+}
+
+// propertyCleanupTime provides enough time for a successful dbus operation at the end of the test.
+const propertyCleanupTime = 1 * time.Second
+
+// Sets a device property and restores the initial value at the end of the test
+func (h *Helper) InitDeviceProperty(ctx context.Context, s *testing.State, prop string, value interface{}) error {
+	return initPropertyAndDefer(ctx, s, h.Device.PropertyHolder, prop, value)
+}
+
+// Sets a service property and restores the initial value at the end of the test
+func (h *Helper) InitServiceProperty(ctx context.Context, s *testing.State, prop string, value interface{}) error {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get cellular service")
+	}
+	return initPropertyAndDefer(ctx, s, service.PropertyHolder, prop, value)
+}
+
+// Sets a property and restores the initial value at the end of the test
+func initPropertyAndDefer(ctx context.Context, s *testing.State, properties *shill.PropertyHolder, prop string, value interface{}) error {
+	ctxForCleanUp := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, propertyCleanupTime)
+	defer cancel()
+
+	prevValue, err := properties.GetAndSetProperty(ctx, prop, value)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read and initialize service property")
+	}
+
+	defer func() {
+	if err := properties.SetProperty(ctxForCleanUp, prop, prevValue); err != nil {
+			s.Fatalf("Failed to restore %s: ", prop, err)
+	}
+	}()
+
 	return nil
 }

@@ -48,6 +48,19 @@ func (h *PropertyHolder) SetProperty(ctx context.Context, prop string, value int
 	return h.Call(ctx, "SetProperty", prop, value).Err
 }
 
+// GetAndSetProperty gets SetProperties method of shill to set a property of the object.
+func (h *PropertyHolder) GetAndSetProperty(ctx context.Context, prop string, value interface{}) (interface{}, error) {
+	properties, err := h.GetProperties(ctx); 
+	if err!=nil {
+		return nil, errors.Wrapf(err, "unable to get properties of %v", h);
+	}
+	curValue, err := properties.Get(prop)
+	if err != nil {
+		return curValue, errors.Wrapf(err, "unable to get %s", prop)
+	}
+	return curValue, h.SetProperty(ctx, prop, value)
+}
+
 // GetShillProperties calls GetProperties method of shill and return properties of the object.
 // Deprecated: use GetProperties instead.
 func (h *PropertyHolder) GetShillProperties(ctx context.Context) (*dbusutil.Properties, error) {
