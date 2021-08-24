@@ -10,6 +10,8 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
 // VerifyNotExists checks if the element does not appear during timeout.
@@ -46,6 +48,20 @@ func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params ui.Find
 	}
 }
 
+// UiautoVerifyNotExists is new version of VerifyNotExists, not using ui library.
+func UiautoVerifyNotExists(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+	start := time.Now()
+	// Wait for element to disappear.
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("node still exists",
+		ui.WithTimeout(timeout).WaitUntilGone(finder),
+		ui.EnsureGoneFor(finder, timeout-time.Since(start)),
+	)(ctx); err != nil {
+		return err
+	}
+	return nil
+}
+
 // WaitUntilExistsStatus repeatedly checks the existence of a node
 // until the desired status is found or the timeout is reached.
 // If the JavaScript fails to execute, an error is returned.
@@ -61,10 +77,11 @@ func WaitUntilExistsStatus(ctx context.Context, tconn *chrome.TestConn, params u
 // reaches the desired status and stays in that state.
 // Fully waits until the timeout expires to ensure non-existence.
 // If the JavaScript fails to execute, an error is returned.
-func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, exists bool, timeout time.Duration) error {
+func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, exists bool, timeout time.Duration) error {
 	if exists {
-		return ui.WaitUntilExists(ctx, tconn, params, timeout)
+		ui := uiauto.New(tconn)
+		return ui.WithTimeout(timeout).WaitUntilExists(finder)(ctx)
 	}
 
-	return VerifyNotExists(ctx, tconn, params, timeout)
+	return UiautoVerifyNotExists(ctx, tconn, finder, timeout)
 }
