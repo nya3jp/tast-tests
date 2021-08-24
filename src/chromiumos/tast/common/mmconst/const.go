@@ -15,6 +15,7 @@ const (
 	ModemPropertySim            = "Sim"
 	ModemPropertySimSlots       = "SimSlots"
 	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
+	ModemPropertyState          = "State"
 )
 
 // ModemManager1.Sim properties
@@ -30,4 +31,21 @@ const (
 // D-Bus path for empty sim slots
 const (
 	EmptySlotPath = "/"
+)
+
+// States that a modem DBus object can be in
+const (
+	ModemStateFailed        = -1
+	ModemStateUnknown       = 0
+	ModemStateInitializing  = 1
+	ModemStateLocked        = 2
+	ModemStateDisabled      = 3
+	ModemStateDisabling     = 4
+	ModemStateEnabling      = 5
+	ModemStateEnabled       = 6
+	ModemStateSearching     = 7
+	ModemStateRegistered    = 8
+	ModemStateDisconnecting = 9
+	ModemStateConnecting    = 10
+	ModemStateConnected     = 11
 )
