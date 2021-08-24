@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5ebcea_7b77eb50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-24T13:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb3a2dd_a133a7a8",
+      "revId": "ec7b2b9876ff96ce992041cdc5bbfa00afe5ddcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b14eae96_91fab6cb",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-08-20T15:56:16Z",
       "side": 1,
       "message": "You don\u0027t need these lines. Just use :\u003d on line 44.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "ec7b2b9876ff96ce992041cdc5bbfa00afe5ddcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8bfbac_976b40cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-24T13:34:13Z",
+      "side": 1,
+      "message": "does not work for me:\n\n2021-08-24T13:24:30.083297Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go:45:10: undefined: cr\n2021-08-24T13:24:30.083318Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go:48:19: undefined: err\n\nI guess it\u0027s either\n\n\t\t\tvar cr *chrome.Chrome\n\t\t\tvar err error\n\t\t\tif cr, err \u003d chrome.New(....\n\t\t\t\n\t\t\t\nor\n\n\t\t\tcr, err :\u003d chrome.New(...)\n\t\t\tdefer cr.Close(ctx)\n\t\t\tif err !\u003d nil {\n\t\t\t\ts.Fatal(\"Failed to start Chrome: \", err)\n\t\t\t}\n\t\t\t\n?",
+      "parentUuid": "b14eae96_91fab6cb",
       "range": {
         "startLine": 42,
         "startChar": 0,
