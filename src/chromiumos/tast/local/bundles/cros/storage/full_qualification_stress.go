@@ -254,6 +254,7 @@ func runPeriodicPowerSuspend(ctx context.Context) {
 	// Indefinite loop of randomized sleeps and power suspends.
 	for {
 		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
+		testing.ContextLog(ctx, "Sleeping for ", sleepDuration)
 		if err := testing.Sleep(ctx, sleepDuration); errors.Is(err, context.DeadlineExceeded) {
 			return
 		}
@@ -448,12 +449,14 @@ func runTasksInParallel(ctx context.Context, timeout time.Duration, tasks []func
 	testing.ContextLog(ctx, "Starting parallel tasks at: ", time.Now())
 
 	var wg sync.WaitGroup
-	for _, task := range tasks {
+	for i, task := range tasks {
 		wg.Add(1)
-		go func(taskToRun func(ctx context.Context)) {
+		go func(taskToRun func(ctx context.Context), taskId int) {
+			testing.ContextLog(ctx, "Starting taskId: ", taskId)
 			taskToRun(ctx)
+			testing.ContextLog(ctx, "Finishing taskId: ", taskId)
 			wg.Done()
-		}(task)
+		}(task, i)
 	}
 	wg.Wait()
 	testing.ContextLog(ctx, "Finished parallel tasks at: ", time.Now())
