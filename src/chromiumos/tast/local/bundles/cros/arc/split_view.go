@@ -176,17 +176,12 @@ func SplitView(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-	defer d.Close(ctx)
 
 	params := s.Param().(splitViewTestParams)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, params.tabletMode)
