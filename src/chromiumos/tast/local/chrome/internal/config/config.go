@@ -54,6 +54,7 @@ const (
 	UnknownAuth  AuthType = ""         // cannot determine the authentication type
 	PasswordAuth AuthType = "password" // password based authentication
 	ContactAuth  AuthType = "contact"  // contact email approval based authentication
+	RetryAuth    AuthType = "retry"    // cannot determine the authentication type but prompted to retry
 )
 
 // Creds contains credentials to log into a Chrome user session.
