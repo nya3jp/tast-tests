@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1792f41e_7654b865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-24T13:40:27Z",
+      "side": 1,
+      "message": "Ah, forgot that cr was also being used later.\n\nThe second is the usual way to do it. (You don\u0027t need to defer cr.Close until after the error is checked, though.)",
+      "parentUuid": "4d8bfbac_976b40cb",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "ec7b2b9876ff96ce992041cdc5bbfa00afe5ddcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14d9aac3_e494ab41",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
         "patchSetId": 4
