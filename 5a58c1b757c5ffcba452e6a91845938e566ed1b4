@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7a28a3_9486d261",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-24T13:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dbf5ab3_5eddf0ff",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "5a58c1b757c5ffcba452e6a91845938e566ed1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ca24da_bfbf713d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-24T08:21:09Z",
       "side": 1,
       "message": "nit: make this iota?\n\n    type ClickType int\n    const (\n      ShortClick ClickType \u003d iota\n      LongClick\n    )\n\nalso as it\u0027s a touchscreen, \"press\" or \"tap\" might be a better term instead of \"click\".",
+      "range": {
+        "startLine": 161,
+        "startChar": 117,
+        "endLine": 161,
+        "endChar": 135
+      },
+      "revId": "5a58c1b757c5ffcba452e6a91845938e566ed1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db15572c_473da6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-24T13:21:45Z",
+      "side": 1,
+      "message": "Went ahead and added the enum and renamed everything to \u0027tap\u0027",
+      "parentUuid": "20ca24da_bfbf713d",
       "range": {
         "startLine": 161,
         "startChar": 117,
