@@ -1,0 +1,41 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.autoupdate;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/autoupdate";
+
+// NebraskaService provides functions to interact with a Nebraska instance on the test device.
+service NebraskaService {
+  rpc Start (StartRequest) returns (StartResponse) {}
+  rpc Stop (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc CreateTempDir (google.protobuf.Empty) returns (CreateTempDirResponse) {}
+  rpc RemoveTempDir (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message StartRequest {
+  string port = 1;
+  string host_log_path = 2;
+  Payload install = 3;
+  Payload update = 4;
+}
+
+message Payload {
+  string address = 1;
+  string metadata_folder = 2;
+}
+
+message StartResponse {
+  string port = 1;
+  string log_path =2;
+}
+
+message CreateTempDirResponse {
+  string path = 1;
+}
