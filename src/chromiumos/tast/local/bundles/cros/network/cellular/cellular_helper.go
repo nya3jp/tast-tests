@@ -263,3 +263,36 @@ func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value inter
 	}
 	return nil
 }
+
+// InitDeviceProperty sets a device property and returns a function to restore the initial value.
+func (h *Helper) InitDeviceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context, s *testing.State), error) {
+	return initPropertyAndDefer(ctx, h.Device.PropertyHolder, prop, value)
+}
+
+// InitServiceProperty sets a service property and returns a function to restore the initial value.
+func (h *Helper) InitServiceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context, s *testing.State), error) {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cellular service")
+	}
+	return initPropertyAndDefer(ctx, service.PropertyHolder, prop, value)
+}
+
+// PropertyCleanupTime provides enough time for a successful dbus operation at the end of the test.
+const PropertyCleanupTime = 1 * time.Second
+
+// initPropertyAndDefer sets a property and returns a function to restore the initial value.
+func initPropertyAndDefer(ctx context.Context, properties *shill.PropertyHolder, prop string, value interface{}) (func(ctx context.Context, s *testing.State), error) {
+
+	prevValue, err := properties.GetAndSetProperty(ctx, prop, value)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read and initialize property")
+	}
+
+	return func(ctx context.Context, s *testing.State) {
+		if err := properties.SetProperty(ctx, prop, prevValue); err != nil {
+			s.Fatalf("Failed to restore %s: %s", prop, err)
+		}
+	}, nil
+
+}
