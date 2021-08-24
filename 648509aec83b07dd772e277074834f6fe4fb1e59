@@ -93,6 +93,30 @@
       },
       "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a303ee6a_9dca57fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/cca_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-24T09:30:21Z",
+      "side": 1,
+      "message": "Do you already have CLs to do so, or will you send a CL within a few days?\nIf so, it\u0027s ok to keep the value here with TODO to add them.\nIf not, I do not think we\u0027d like to keep it in ExtraSoftwareDeps?",
+      "parentUuid": "7b7cf035_04099771",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
