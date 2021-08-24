@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cb0d28_df566240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "Getting close. Thanks for incorporating the review comments thus far.",
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df88143_c6eed4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "suggest using getRemovableDirs , and making this a separate function.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bda0845_994f409f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "Can use ioutil.ReadDir instead: https://pkg.go.dev/io/ioutil#ReadDir",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 95
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad2f351_f419ce4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "dirsBeforePlug",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda06b65_7f32882a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "dirsAfterPlug",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 10
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1b9b20_560e88bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s necessary to prepend the shell interpreter prefix.",
+      "range": {
+        "startLine": 176,
+        "startChar": 37,
+        "endLine": 176,
+        "endChar": 48
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022a7483_39e0f11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "I think you can just do this instead:\n testexec.CommandContext(ctx, \"rm\", \"-rf\", destinationFilePath).Run()",
+      "range": {
+        "startLine": 201,
+        "startChar": 11,
+        "endLine": 201,
+        "endChar": 105
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942d55b4_da3abff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "Please add a comment here.",
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac881dc_12f9ab98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T18:26:57Z",
+      "side": 1,
+      "message": "I didn\u0027t understand the logic of this outer for loop. Why is it needed? I\u0027d suggest just setting the arguments as:\n getTBTMountPaths(dirsBefore []string, dirsAfter []string) []string ...\n \nThen you can assume the first argument is always the list before the plug, and the second argument is the list of dirs after the plug.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
