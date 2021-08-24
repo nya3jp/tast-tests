@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -107,10 +109,9 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 					}
 
 					// Check that we have access to chrome://user-actions accessability tree.
-					if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-						Name: "User Action",
-						Role: ui.RoleTypeColumnHeader,
-					}, 5*time.Second); err != nil {
+					ui := uiauto.New(tconn).WithTimeout(5 * time.Second)
+					params := nodewith.Name("User Action").Role(role.ColumnHeader)
+					if err := ui.WaitUntilExists(params)(ctx); err != nil {
 						s.Fatal("Failed to wait for page nodes: ", err)
 					}
 
@@ -120,15 +121,17 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 					}
 
 					timeout := 5 * time.Second
-					elementsParams := ui.FindParams{Name: "Elements", Role: ui.RoleTypeTab}
+					//elementsParams := ui.FindParams{Name: "Elements", Role: ui.RoleTypeTab}
+					elementsParams := nodewith.Name("Elements").Role(role.Tab)
 
 					switch tc.wantAllowed {
 					case false:
-						if err := policyutil.VerifyNotExists(ctx, tconn, elementsParams, timeout); err != nil {
+						if err := policyutil.UiautoVerifyNotExists(ctx, tconn, elementsParams, timeout); err != nil {
 							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
 						}
 					case true:
-						if err := ui.WaitUntilExists(ctx, tconn, elementsParams, timeout); err != nil {
+						ui := uiauto.New(tconn).WithTimeout(timeout)
+						if err := ui.WaitUntilExists(elementsParams)(ctx); err != nil {
 							s.Error("Failed to wait for DevTools: ", err)
 						}
 					}

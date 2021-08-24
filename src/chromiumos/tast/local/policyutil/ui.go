@@ -8,8 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
 // VerifyNotExists checks if the element does not appear during timeout.
@@ -33,6 +36,39 @@ func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params ui.Find
 			return err
 		} else if exists {
 			return ui.ErrNodeExists
+		}
+
+		select {
+		case <-time.After(100 * time.Millisecond):
+		case <-ctx.Done():
+			return ctx.Err()
+		case <-after:
+			// Node did not show up.
+			return nil
+		}
+	}
+}
+
+// UiautoVerifyNotExists is VerifyNotExists with its ui dependency removed.
+func UiautoVerifyNotExists(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder, timeout time.Duration) error {
+	start := time.Now()
+
+	// Wait for element to disappear.
+	ui := uiauto.New(tconn).WithTimeout(timeout)
+	if err := ui.WaitUntilGone(finder)(ctx); err != nil {
+		return err
+	}
+
+	// Continue waiting for timeout.
+	var after = time.After(timeout - time.Since(start))
+
+	// Wait for the full timeout to see if the element shows up.
+	// Check periodically if it shows up.
+	for {
+		if exists, err := ui.IsNodeFound(ctx, finder); err != nil {
+			return err
+		} else if exists {
+			return errors.New("node still exists")
 		}
 
 		select {
