@@ -33,6 +33,24 @@
       "message": "Hmm, why don\u0027t we change waitForChromeProcesses itself? This patch seems to change the behavior slightly (e.g. waitForChromeProcesses used to return when it finds a crashpad handler, but it no longer does)",
       "revId": "dab7373a9c65157fc9e587fafa2d3c9f22f0e12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4543363c_c37b15d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-24T13:46:22Z",
+      "side": 1,
+      "message": "We can update waitForChromeProcesses directly, but conceptually this looks closer to what we want.\n\nThe diff can be observed in a following case: chrome processes are not running, but crashpad_handler processes are.\n\nwaitForChromeProcesses is waiting for Chrome to run here, so I do not think we want to return in the case.\nThough, practically it is very exceptional case, and anyways GetRootPID called below would return an error, so that overall this function behavior will be just reporting error anyways.\nWDYT?",
+      "parentUuid": "1af47a85_cba02cad",
+      "revId": "dab7373a9c65157fc9e587fafa2d3c9f22f0e12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
