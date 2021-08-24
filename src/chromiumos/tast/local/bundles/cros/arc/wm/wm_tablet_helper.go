@@ -593,9 +593,9 @@ func RotateToLandscape(ctx context.Context, tconn *chrome.TestConn) (func() erro
 		}
 		cleanupFunction, err := RotateDisplay(ctx, tconn, targetRotation)
 		if err != nil {
-			return cleanupFunction, err
+			return nil, err
 		}
-		return nil, nil
+		return cleanupFunction, nil
 	}
 	return func() error {
 		return nil
