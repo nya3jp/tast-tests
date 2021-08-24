@@ -55,6 +55,10 @@ func init() {
 				Name:              "informational",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			}, {
+				Name:              "informational",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"no_qemu"},
 			},
 		},
 	})
