@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -33,23 +35,19 @@ func init() {
 		Timeout:      3 * time.Minute,
 	})
 }
-
 func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
-
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
 	}
 	defer keyboard.Close()
-
 	for _, tc := range []struct {
 		name        string
 		value       []policy.Policy
@@ -81,12 +79,10 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
-
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
-
 			for _, keys := range []string{
 				"Ctrl+Shift+C",
 				"Ctrl+Shift+I",
@@ -95,7 +91,6 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 			} {
 				s.Run(ctx, keys, func(ctx context.Context, s *testing.State) {
 					defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, fmt.Sprintf("ui_tree_%s_%s.txt", tc.name, keys))
-
 					// Open new tab and navigate to chrome://user-actions.
 					// Here we cannot use cr.Conn, because Chrome DevTools Protocol
 					// relies on DevTools.
@@ -105,31 +100,25 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 					if err := keyboard.Type(ctx, "chrome://user-actions\n"); err != nil {
 						s.Fatal("Failed to type chrome://user-actions: ", err)
 					}
-
 					// Check that we have access to chrome://user-actions accessability tree.
-					if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-						Name: "User Action",
-						Role: ui.RoleTypeColumnHeader,
-					}, 5*time.Second); err != nil {
+					ui := uiauto.New(tconn)
+					userAction := nodewith.Name("User Action").Role(role.ColumnHeader)
+					if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(userAction)(ctx); err != nil {
 						s.Fatal("Failed to wait for page nodes: ", err)
 					}
-
 					// Press keys combination to open DevTools.
 					if err := keyboard.Accel(ctx, keys); err != nil {
 						s.Fatalf("Failed to press %s: %v", keys, err)
 					}
-
 					timeout := 5 * time.Second
-					elementsParams := ui.FindParams{Name: "Elements", Role: ui.RoleTypeTab}
-
-					switch tc.wantAllowed {
-					case false:
-						if err := policyutil.VerifyNotExists(ctx, tconn, elementsParams, timeout); err != nil {
-							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
-						}
-					case true:
-						if err := ui.WaitUntilExists(ctx, tconn, elementsParams, timeout); err != nil {
+					Elements := nodewith.Name("Elements").Role(role.Tab)
+					if tc.wantAllowed {
+						if err := ui.WithTimeout(timeout).WaitUntilExists(Elements)(ctx); err != nil {
 							s.Error("Failed to wait for DevTools: ", err)
+						}
+					} else {
+						if err := policyutil.UiautoVerifyNotExists(ctx, tconn, Elements, timeout); err != nil {
+							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
 						}
 					}
 				})
