@@ -125,7 +125,7 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 							s.Error("Failed to wait for DevTools: ", err)
 						}
 					} else {
-						if err := policyutil.UiautoVerifyNotExists(ctx, tconn, elements, timeout); err != nil {
+						if err := policyutil.VerifyNotExists(ctx, tconn, elements, timeout); err != nil {
 							s.Errorf("Failed to verify that DevTools are not available after %s: %s", timeout, err)
 						}
 					}
