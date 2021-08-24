@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -51,6 +52,20 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 
 		if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
 			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
+		}
+		// Maximize the zoom window to show all the browser UI elements for precise clicking.
+		if !conf.tabletMode {
+			testing.ContextLog(ctx, "Start to maximized the zoom window")
+			// Find the zoom browser window.
+			window, err := ash.FindWindow(ctx, conf.tconn, func(w *ash.Window) bool {
+				return (w.WindowType == ash.WindowTypeBrowser || w.WindowType == ash.WindowTypeLacros) && strings.Contains(w.Title, "Zoom")
+			})
+			if err != nil {
+				return errors.Wrap(err, "failed to find the zoom window")
+			}
+			if err := ash.SetWindowStateAndWait(ctx, conf.tconn, window.ID, ash.WindowStateMaximized); err != nil {
+				return errors.Wrap(err, "failed to maximize the zoom window")
+			}
 		}
 
 		if err := ui.WaitUntilExists(nodewith.Name("SIGN IN").Role(role.Link))(ctx); err == nil {
@@ -265,13 +280,16 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 	)
 	ui := uiauto.New(conf.tconn)
 	viewButton := nodewith.Name(view).First()
-
-	if err := uiauto.Combine("check view button",
+	speakerNode := nodewith.Name(speaker).Role(role.MenuItem)
+	// Sometimes the zoom's menu disappears too fast. Add retry to check whether the device supports
+	// speaker and gallery view.
+	if err := ui.Retry(3, uiauto.Combine("check view button",
 		conf.showInterface,
-		ui.WaitUntilExists(viewButton),
-	)(ctx); err != nil {
-		// Some DUTs don't show 'View' button
-		testing.ContextLog(ctx, "This DUT doesn't show View button and layout will not be changed")
+		ui.WithTimeout(time.Second).LeftClick(viewButton),
+		ui.WithTimeout(time.Second).WaitUntilExists(speakerNode),
+	))(ctx); err != nil {
+		// Some DUTs don't support 'Speacker View' and 'Gallery View'.
+		testing.ContextLog(ctx, "Speaker and Gallery View is not supported on this device, ignore changing the layout")
 		return nil
 	}
 
