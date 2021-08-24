@@ -36,6 +36,7 @@ func suspend(ctx context.Context, timeout, wakeup time.Duration) error {
 	if err != nil {
 		if errors.Is(err, context.DeadlineExceeded) {
 			// It is a normal behavior if suspend is interrupted by context deadline.
+			testing.ContextLog(ctx, "Deadline Exceeded")
 			return nil
 		}
 		// Device might still be trying to suspend, so need to restart.
