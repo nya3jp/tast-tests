@@ -131,21 +131,23 @@ func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait for frame to become visible")
 	}
 
-	windowInfoAfterTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		windowInfoAfterTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			// The window can disappear for a short period of time during tablet conversion, which is expected.
+			return err
+		}
 
-	if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
-		return err
-	}
+		if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
+			return err
+		}
 
-	// Activity should have same TargetBounds that it had before enabling tablet mode.
-	if windowInfoBeforeTabletMode.TargetBounds != windowInfoAfterTabletMode.TargetBounds {
-		return errors.Errorf("failed to retrieve original window bounds after switching back from tablet mode, got: %s, want: %s", windowInfoAfterTabletMode.TargetBounds, windowInfoBeforeTabletMode.TargetBounds)
-	}
-
-	return nil
+		// Activity should have same TargetBounds that it had before enabling tablet mode.
+		if windowInfoBeforeTabletMode.TargetBounds != windowInfoAfterTabletMode.TargetBounds {
+			return errors.Errorf("failed to retrieve original window bounds after switching back from tablet mode, got: %s, want: %s", windowInfoAfterTabletMode.TargetBounds, windowInfoBeforeTabletMode.TargetBounds)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // wmRV20 covers resizable/conversion behavior in portrait mode.
