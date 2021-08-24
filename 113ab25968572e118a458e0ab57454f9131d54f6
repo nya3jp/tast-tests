@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87159c2a_7dc689a2",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/mempressure_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-08-24T08:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b3c7f9_03b17afb",
+      "revId": "113ab25968572e118a458e0ab57454f9131d54f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a5c29dc_b002a27d",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-08-24T04:51:56Z",
       "side": 1,
       "message": "Comment that base is optional, and if nill, average PSI since boot will be computed instead.",
+      "revId": "113ab25968572e118a458e0ab57454f9131d54f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c0af6a_5a759d18",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-08-24T08:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5c29dc_b002a27d",
       "revId": "113ab25968572e118a458e0ab57454f9131d54f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
