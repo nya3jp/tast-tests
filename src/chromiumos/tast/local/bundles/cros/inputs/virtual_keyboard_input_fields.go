@@ -44,13 +44,14 @@ func init() {
 		Func:         VirtualKeyboardInputFields,
 		Desc:         "Checks that virtual keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools-upstream", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabledTabletReset,
 		Timeout:      time.Duration(len(inputFieldTestIMEs)) * time.Duration(len(inputFieldToMessage)) * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			}, {
 				Name:              "informational",
 				ExtraAttr:         []string{"informational"},

@@ -27,12 +27,13 @@ func init() {
 		Func:         VirtualKeyboardEnglishSettings,
 		Desc:         "Checks that the input settings works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabledTablet,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "informational",
 			ExtraAttr:         []string{"informational"},
