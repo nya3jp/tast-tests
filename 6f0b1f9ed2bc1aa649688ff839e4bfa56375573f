@@ -52,6 +52,24 @@
       "parentUuid": "5e8db25f_375da7ef",
       "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239041f5_e06829cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2021-08-24T22:57:01Z",
+      "side": 1,
+      "message": "The LSS change is causing this test to break. However, it\u0027s written specifically to improve scoring for Help App and we are trying to modify this Tast test so that it doesn\u0027t break when we land the LSS change. Do you have any tips for how to do this?",
+      "parentUuid": "17cf28b1_32256b0c",
+      "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
