@@ -113,7 +113,7 @@ func AudioOutputAllowed(ctx context.Context, s *testing.State) {
 				}
 
 				// Check if device is still muted.
-				if err := policyutil.UiautoVerifyNotExists(ctx, tconn, unmutedFinder, 2*time.Second); err != nil {
+				if err := policyutil.VerifyNotExists(ctx, tconn, unmutedFinder, 2*time.Second); err != nil {
 					s.Error("Could not confirm the device is muted: ", err)
 				}
 			}
