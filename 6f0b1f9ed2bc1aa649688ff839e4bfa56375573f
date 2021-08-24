@@ -70,6 +70,24 @@
       "parentUuid": "17cf28b1_32256b0c",
       "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9baf299d_74576c18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-24T23:08:30Z",
+      "side": 1,
+      "message": "Sounds great. Since LSS is a ChromeOS service, this is much easier.\n\n1. First option (Preferred): If we know the new expectation after the cl land. We can update the test data in the same cl or make them merge together. https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#cq-depend\n\n2. Second option: Change the test first to temporarily accept either A or B result. Then remove A after cl lands.\n\n3. If the search result is no longer deterministic. Then this test needs to be refactored / reconsidered. Please demote this test to informational level to unblock CL landing. The side effect is that we will lose test coverage.",
+      "parentUuid": "239041f5_e06829cc",
+      "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
