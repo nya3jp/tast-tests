@@ -22,6 +22,30 @@
       },
       "revId": "cf7b91139f16e9b3487a9292ccc7b21cbfde3538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e14e3c_16db5938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-24T02:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ee5d614_5a681ba0",
+      "range": {
+        "startLine": 168,
+        "startChar": 48,
+        "endLine": 168,
+        "endChar": 49
+      },
+      "revId": "cf7b91139f16e9b3487a9292ccc7b21cbfde3538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
