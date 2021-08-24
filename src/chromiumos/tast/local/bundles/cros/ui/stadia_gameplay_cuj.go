@@ -45,7 +45,6 @@ func init() {
 			Name:              "lacros",
 			Val:               true,
 			Fixture:           "loggedInToCUJUserLacros",
-			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})

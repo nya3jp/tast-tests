@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -63,7 +62,6 @@ func init() {
 					ChromeType: lacros.ChromeTypeLacros,
 				},
 				Fixture:           "lacrosStartedByDataUI",
-				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
