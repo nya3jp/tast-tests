@@ -114,6 +114,30 @@
       },
       "revId": "d68aa7de8d92d572263814891192c180646568dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5630920_c2ed661e",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-24T23:19:55Z",
+      "side": 1,
+      "message": "Oh sorry I completely misread the intention of this code...\nNever mind this comment.",
+      "parentUuid": "2a9ba1fe_1dcb210d",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
