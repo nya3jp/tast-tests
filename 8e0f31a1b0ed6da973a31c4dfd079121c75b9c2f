@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc746ae9_8c46390b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:33:07Z",
+      "side": 1,
+      "message": "Assuming this worked, marking this as resolved. Please re-open if necessary.",
+      "parentUuid": "dbe1d750_3486796b",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 53
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "389ad577_1ed63890",
@@ -190,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1d79c3_b0234d71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:33:07Z",
+      "side": 1,
+      "message": "Done, I assume this worked, so markign this as resolved.",
+      "parentUuid": "31bb9ced_8e8efd0e",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22d5804f_e51c0921",
@@ -203,6 +251,30 @@
       "writtenOn": "2021-08-19T22:13:43Z",
       "side": 1,
       "message": "If you use a tempdir as specified above, this won\u0027t be necessary.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "8e0f31a1b0ed6da973a31c4dfd079121c75b9c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cea7bc5_10ba6df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-24T20:33:07Z",
+      "side": 1,
+      "message": "Assuming the tempdir usage worked, so marking this as resolved.",
+      "parentUuid": "22d5804f_e51c0921",
       "range": {
         "startLine": 210,
         "startChar": 0,
