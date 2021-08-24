@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Verifies CCA behavior on remote DUT",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
-		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.CCAService"},
 		Data:         []string{pre.DocumentScene().DataPath(), "cca_ui.js"},
 		Vars:         []string{"chart"},
