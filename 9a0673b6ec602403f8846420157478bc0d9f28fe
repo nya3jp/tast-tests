@@ -33,6 +33,23 @@
       "message": "TY!",
       "revId": "9a0673b6ec602403f8846420157478bc0d9f28fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9ef88d_780bfe13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-24T20:45:03Z",
+      "side": 1,
+      "message": "Could also go in cros_send_ui.go to match with the receiving code layout ",
+      "revId": "9a0673b6ec602403f8846420157478bc0d9f28fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
