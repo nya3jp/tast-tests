@@ -16,6 +16,24 @@
       "message": "@yhanada@google.com Could you make a quick pass of the mouse movement implementation on the tast side when you get a moment? I believe using the real mouse (if available) through input/mouse.go, and sending the corresponding relative movements matches what we are after but I wanted to make sure I wasn\u0027t missing anything major that you could tell from the arc input side. My previous comments have more context around why I transitioned from uiauto/mouse.go.",
       "revId": "603e204cda42a4905c5651fcc2667de781389564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2c6332_0a61642d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-24T14:24:01Z",
+      "side": 1,
+      "message": "Oops, I missed the comment.\n\nI checked the implementation of autotestPrivate (https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d4543;drc\u003d0ce9df69ba9e32bafc53c3d90db8a707c243da40;bpv\u003d0;bpt\u003d1). It generates an event series, so from ARC++\u0027s input stack\u0027s point of view, uiauto/mouse.go and input/mouse.go should look similar as it doesn\u0027t care the event source.",
+      "parentUuid": "84e17d5f_d31c268b",
+      "revId": "603e204cda42a4905c5651fcc2667de781389564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
