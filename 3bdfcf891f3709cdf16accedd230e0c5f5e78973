@@ -250,6 +250,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35adb118_c927b47d",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-24T23:39:53Z",
+      "side": 1,
+      "message": "I think my coupling of the axrouter logic with the security logic makes a good case for combining the behavior into the ax package. In the future, I don\u0027t think this grouping will be mirrored for the openwrt case which is why I\u0027m a bit hesitant on implementing this.\n\nThat being said, I do think since the current security package is just being used as a wrapper and only exists separately to maintain a sense of parity to the common security package. I think it can be argued that my current solution isn\u0027t better than combining the axconfig logic with the security logic.\n\nI will implement this later tonight and see if the organization makes sense once it\u0027s done.",
+      "parentUuid": "1b765992_5b492947",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8ebbd00_4fe0fd93",
         "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
         "patchSetId": 8
