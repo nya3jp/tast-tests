@@ -38,16 +38,21 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
 // TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
 func Setup(ctx context.Context, f interface{}, artifactPath string, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
+	cr, err := GetChrome(ctx, f)
+	if err != nil {
+		return nil, nil, nil, err
+	}
+
 	switch crt {
 	case ChromeTypeChromeOS:
-		return f.(*chrome.Chrome), nil, f.(*chrome.Chrome), nil
+		return cr, nil, cr, nil
 	case ChromeTypeLacros:
 		f := f.(launcher.FixtData)
 		l, err := launcher.LaunchLacrosChrome(ctx, f, artifactPath)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
-		return f.Chrome, l, l, nil
+		return cr, l, l, nil
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized Chrome type %s", string(crt))
 	}
