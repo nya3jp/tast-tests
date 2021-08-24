@@ -148,7 +148,7 @@ func (mode inputMethodType) String() string {
 	}
 }
 
-type resizeLockTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device, *chrome.Chrome) error
+type resizeLockTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device, *chrome.Chrome, *input.KeyboardEventWriter) error
 
 type resizeLockTestCase struct {
 	name string
@@ -256,6 +256,12 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	// Be nice and restore tablet mode to its original state on exit.
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeStatus)
 
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a keyboard: ", err)
+	}
+	defer keyboard.Close()
+
 	// Place a maximized activity below to ensure that the display has a white background.
 	// This is necessary because currently checking the visibility of the translucent window border relies on taking a screenshot.
 	// The WM23 app is used here as the WM24 app is used for testing O4C (Optimized for Chromebook).
@@ -278,7 +284,7 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	for _, test := range testCases {
 		s.Logf("Running test %q", test.name)
 
-		if err := test.fn(ctx, tconn, a, dev, cr); err != nil {
+		if err := test.fn(ctx, tconn, a, dev, cr, keyboard); err != nil {
 			path := fmt.Sprintf("%s/screenshot-resize-lock-failed-test-%s.png", s.OutDir(), test.name)
 			if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 				s.Log("Failed to capture screenshot: ", err)
@@ -289,27 +295,27 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 }
 
 // testO4CApp verifies that an O4C app is not resize locked even if it's newly-installed.
-func testO4CApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, wm.Pkg24, wm.APKNameArcWMTestApp24, wm.ResizableUnspecifiedActivity, true /* fromPlayStore */, false /* checkRestoreMaximize */)
+func testO4CApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24, wm.APKNameArcWMTestApp24, wm.ResizableUnspecifiedActivity, true /* fromPlayStore */, false /* checkRestoreMaximize */)
 }
 
 // testUnresizableMaximizedApp verifies that an unresizable, maximized app is not resize locked even if it's newly-installed.
-func testUnresizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableUnspecifiedActivityName, true /* fromPlayStore */, false /* checkRestoreMaximize */)
+func testUnresizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableUnspecifiedActivityName, true /* fromPlayStore */, false /* checkRestoreMaximize */)
 }
 
 // testResizableMaximizedApp verifies that a resizable, maximized app is not resize locked even if it's newly-installed.
-func testResizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockResizableUnspecifiedMaximizedActivityName, true /* fromPlayStore */, true /* checkRestoreMaximize */)
+func testResizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockResizableUnspecifiedMaximizedActivityName, true /* fromPlayStore */, true /* checkRestoreMaximize */)
 }
 
 // testAppFromOutsideOfPlayStore verifies that an resize-lock-eligible app installed from outside of PlayStore is not resize locked even if it's newly-installed.
-func testAppFromOutsideOfPlayStore(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, resizeLockTestPkgName, resizeLockApkName, resizeLockMainActivityName, false /* fromPlayStore */, false /* checkRestoreMaximize */)
+func testAppFromOutsideOfPlayStore(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockMainActivityName, false /* fromPlayStore */, false /* checkRestoreMaximize */)
 }
 
 // testNonResizeLocked verifies that the given app is not resize locked.
-func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, packageName, apkName, activityName string, fromPlayStore, checkRestoreMaximize bool) error {
+func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, packageName, apkName, activityName string, fromPlayStore, checkRestoreMaximize bool) error {
 	if alreadyInstalled, err := reinstallAPK(ctx, a, packageName, apkName, fromPlayStore); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
@@ -344,7 +350,7 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 			return errors.Wrapf(err, "failed to verify resize lock state of %s", activityName)
 		}
 		// Make the app resizable to enable maximization.
-		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, resizableResizeLockMode, dialogActionConfirm, inputMethodClick); err != nil {
+		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, resizableResizeLockMode, dialogActionConfirm, inputMethodClick, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from tablet to resizable", apkName)
 		}
 		// Maximize the app and verify the app is not resize-locked.
@@ -362,7 +368,7 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 }
 
 // testFullyLockedApp verifies that the given app is fully locked.
-func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
+func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
 	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName, true /* fromPlayStore */); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
@@ -398,7 +404,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 
 	// Need some sleep here as we verify that nothing changes.
 	if err := testing.Sleep(ctx, time.Second); err != nil {
-		errors.Wrap(err, "failed to sleep after clicking on the compat-mode button: ")
+		return errors.Wrap(err, "failed to sleep after clicking on the compat-mode button")
 	}
 
 	if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false); err != nil {
@@ -415,7 +421,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 
 // testSplash installs 3 different resize-locked app, launches an activity twice, and verifies that the splash screen works as expected.
 // The spec of visibility: The splash must be shown twice per user, once per app at most.
-func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
+func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
 	const (
 		// The splash must be shown twice per user at most.
 		showSplashLimit = 2
@@ -456,7 +462,7 @@ func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		}
 
 		if i < showSplashLimit {
-			if err := closeSplash(ctx, tconn, test.method); err != nil {
+			if err := closeSplash(ctx, tconn, test.method, keyboard); err != nil {
 				return errors.Wrapf(err, "failed to close the splash screen of %s via %s", resizeLockMainActivityName, test.method)
 			}
 		}
@@ -483,7 +489,7 @@ func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 }
 
 // testResizeLockedAppCUJ goes though the critical user journey of a resize-locked app via both click and keyboard, and verifies the app behaves expectedly.
-func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome) error {
+func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
 	for _, test := range []struct {
 		packageName  string
 		apkName      string
@@ -493,7 +499,7 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		{resizeLockTestPkgName, resizeLockApkName, resizeLockMainActivityName, inputMethodClick},
 		{resizeLock2PkgName, resizeLock2ApkName, resizeLockMainActivityName, inputMethodKeyEvent},
 	} {
-		if err := testResizeLockedAppCUJInternal(ctx, tconn, a, d, cr, test.packageName, test.apkName, test.activityName, test.method); err != nil {
+		if err := testResizeLockedAppCUJInternal(ctx, tconn, a, d, cr, test.packageName, test.apkName, test.activityName, test.method, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to run the critical user journey for %s via %s", test.apkName, test.method)
 		}
 	}
@@ -501,7 +507,7 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 }
 
 // testResizeLockedAppCUJInternal goes though the critical user journey of the given resize-locked app via the given input method.
-func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, packageName, apkName, activityName string, method inputMethodType) error {
+func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, packageName, apkName, activityName string, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
 	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName, true /* fromPlayStore */); err != nil {
 		return errors.Wrap(err, "failed to reinstall APK")
 	} else if !alreadyInstalled {
@@ -542,7 +548,7 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		{resizableResizeLockMode, phoneResizeLockMode, dialogActionNoDialog},
 		{phoneResizeLockMode, resizableResizeLockMode, dialogActionNoDialog},
 	} {
-		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, test.currentMode, test.nextMode, test.action, method); err != nil {
+		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, test.currentMode, test.nextMode, test.action, method, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from %s to %s", resizeLockApkName, test.currentMode, test.nextMode)
 		}
 
@@ -570,7 +576,7 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		{phoneResizeLockMode, resizableResizeLockMode},
 	} {
 		// Toggle the resizability state via the Chrome OS setting toggle.
-		if err := toggleAppManagementSettingToggle(ctx, tconn, a, d, cr, activity, resizeLockAppName, test.currentMode, test.nextMode, method); err != nil {
+		if err := toggleAppManagementSettingToggle(ctx, tconn, a, d, cr, activity, resizeLockAppName, test.currentMode, test.nextMode, method, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to toggle the resizability state from %s to %s on the Chrome OS settings", test.currentMode, test.nextMode)
 		}
 	}
@@ -818,12 +824,12 @@ func reinstallAPK(ctx context.Context, a *arc.ARC, packageName, apkName string, 
 }
 
 // showCompatModeMenu shows the compat-mode menu via the given method.
-func showCompatModeMenu(ctx context.Context, tconn *chrome.TestConn, method inputMethodType) error {
+func showCompatModeMenu(ctx context.Context, tconn *chrome.TestConn, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
 	switch method {
 	case inputMethodClick:
 		return showCompatModeMenuViaButtonClick(ctx, tconn)
 	case inputMethodKeyEvent:
-		return showCompatModeMenuViaKeyboard(ctx, tconn)
+		return showCompatModeMenuViaKeyboard(ctx, tconn, keyboard)
 	}
 	return errors.Errorf("invalid inputMethodType is given: %s", method)
 }
@@ -844,15 +850,9 @@ func showCompatModeMenuViaButtonClick(ctx context.Context, tconn *chrome.TestCon
 }
 
 // showCompatModeMenuViaKeyboard injects the keyboard shortcut and shows the compat-mode menu.
-func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
+func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		kb, err := input.Keyboard(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the keyboard")
-		}
-		defer kb.Close()
-
-		if err := kb.Accel(ctx, "Search+Alt+C"); err != nil {
+		if err := keyboard.Accel(ctx, "Search+Alt+C"); err != nil {
 			return errors.Wrap(err, "failed to inject Search+Alt+C")
 		}
 
@@ -883,7 +883,7 @@ func waitForCompatModeMenuToDisappear(ctx context.Context, tconn *chrome.TestCon
 }
 
 // closeSplash closes the splash screen via the given method.
-func closeSplash(ctx context.Context, tconn *chrome.TestConn, method inputMethodType) error {
+func closeSplash(ctx context.Context, tconn *chrome.TestConn, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
 	splash, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: bubbleDialogClassName})
 	if err != nil {
 		return errors.Wrap(err, "failed to find the splash dialog")
@@ -894,18 +894,13 @@ func closeSplash(ctx context.Context, tconn *chrome.TestConn, method inputMethod
 	case inputMethodClick:
 		return closeSplashViaClick(ctx, tconn, splash)
 	case inputMethodKeyEvent:
-		return closeSplashViaKeyboard(ctx, tconn, splash)
+		return closeSplashViaKeyboard(ctx, tconn, splash, keyboard)
 	}
 	return nil
 }
 
 // closeSplashViaKeyboard presses the Enter key and closes the splash screen.
-func closeSplashViaKeyboard(ctx context.Context, tconn *chrome.TestConn, splash *chromeui.Node) error {
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a keyboard")
-	}
-	defer keyboard.Close()
+func closeSplashViaKeyboard(ctx context.Context, tconn *chrome.TestConn, splash *chromeui.Node, keyboard *input.KeyboardEventWriter) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := keyboard.Accel(ctx, "Enter"); err != nil {
 			return errors.Wrap(err, "failed to press the Enter key")
@@ -932,12 +927,12 @@ func closeSplashViaClick(ctx context.Context, tconn *chrome.TestConn, splash *ch
 }
 
 // toggleResizeLockMode shows the compat-mode menu, selects one of the resize lock mode buttons on the compat-mode menu via the given method, and verifies the post state.
-func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, currentMode, nextMode resizeLockMode, action confirmationDialogAction, method inputMethodType) error {
+func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, currentMode, nextMode resizeLockMode, action confirmationDialogAction, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
 	preToggleOrientation, err := activityOrientation(ctx, tconn, activity)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get the pre-toggle orientation of %s", activity.PackageName())
 	}
-	if err := showCompatModeMenu(ctx, tconn, method); err != nil {
+	if err := showCompatModeMenu(ctx, tconn, method, keyboard); err != nil {
 		return errors.Wrapf(err, "failed to show the compat-mode dialog of %s via %s", activity.ActivityName(), method)
 	}
 
@@ -953,7 +948,7 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 			return errors.Wrapf(err, "failed to click on the compat-mode dialog of %s via click", activity.ActivityName())
 		}
 	case inputMethodKeyEvent:
-		if err := shiftViaTabAndEnter(ctx, tconn, compatModeMenuDialog, chromeui.FindParams{Name: nextMode.String()}); err != nil {
+		if err := shiftViaTabAndEnter(ctx, tconn, compatModeMenuDialog, chromeui.FindParams{Name: nextMode.String()}, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to click on the compat-mode dialog of %s via keyboard", activity.ActivityName())
 		}
 	}
@@ -979,7 +974,7 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 				return errors.Wrapf(err, "failed to handle the confirmation dialog of %s via click", activity.ActivityName())
 			}
 		case inputMethodKeyEvent:
-			if err := handleConfirmationDialogViaKeyboard(ctx, tconn, nextMode, confirmationDialog, action); err != nil {
+			if err := handleConfirmationDialogViaKeyboard(ctx, tconn, nextMode, confirmationDialog, action, keyboard); err != nil {
 				return errors.Wrapf(err, "failed to handle the confirmation dialog of %s via keyboard", activity.ActivityName())
 			}
 		}
@@ -987,11 +982,6 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 
 	// The compat-mode dialog stays shown for two seconds by default after resize lock mode is toggled.
 	// Explicitly close the dialog using the Esc key.
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a keyboard")
-	}
-	defer keyboard.Close()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := keyboard.Accel(ctx, "Esc"); err != nil {
 			return errors.Wrap(err, "failed to press the Esc key")
@@ -1017,16 +1007,16 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 }
 
 // handleConfirmationDialogViaKeyboard does the given action for the confirmation dialog via keyboard.
-func handleConfirmationDialogViaKeyboard(ctx context.Context, tconn *chrome.TestConn, mode resizeLockMode, confirmationDialog *chromeui.Node, action confirmationDialogAction) error {
+func handleConfirmationDialogViaKeyboard(ctx context.Context, tconn *chrome.TestConn, mode resizeLockMode, confirmationDialog *chromeui.Node, action confirmationDialogAction, keyboard *input.KeyboardEventWriter) error {
 	if action == dialogActionCancel {
-		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: cancelButtonName})
+		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: cancelButtonName}, keyboard)
 	} else if action == dialogActionConfirm || action == dialogActionConfirmWithDoNotAskMeAgainChecked {
 		if action == dialogActionConfirmWithDoNotAskMeAgainChecked {
-			if err := shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{ClassName: checkBoxClassName}); err != nil {
+			if err := shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{ClassName: checkBoxClassName}, keyboard); err != nil {
 				return errors.Wrap(err, "failed to select the checkbox of the resizability confirmation dialog via keyboard")
 			}
 		}
-		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: confirmButtonName})
+		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: confirmButtonName}, keyboard)
 	}
 	return nil
 }
@@ -1074,17 +1064,14 @@ func selectResizeLockModeViaClick(ctx context.Context, mode resizeLockMode, comp
 }
 
 // shiftViaTabAndEnter keeps pressing the Tab key until the UI element of interest gets focus, and press the Enter key.
-func shiftViaTabAndEnter(ctx context.Context, tconn *chrome.TestConn, parent *chromeui.Node, params chromeui.FindParams) error {
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a keyboard")
-	}
+func shiftViaTabAndEnter(ctx context.Context, tconn *chrome.TestConn, parent *chromeui.Node, params chromeui.FindParams, keyboard *input.KeyboardEventWriter) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := keyboard.Accel(ctx, "Tab"); err != nil {
 			return errors.Wrap(err, "failed to press the Tab key")
 		}
 
 		var node *chromeui.Node
+		var err error
 		if parent != nil {
 			node, err = parent.DescendantWithTimeout(ctx, params, 10*time.Second)
 		} else {
@@ -1106,7 +1093,7 @@ func shiftViaTabAndEnter(ctx context.Context, tconn *chrome.TestConn, parent *ch
 }
 
 // toggleAppManagementSettingToggle opens the app-management page for the given app via the shelf icon, toggles the resize lock setting, and verifies the states of the app and the setting toggle.
-func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, appName string, currentMode, nextMode resizeLockMode, method inputMethodType) error {
+func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, appName string, currentMode, nextMode resizeLockMode, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
 	// This check must be done before opening the Chrome OS settings page so it won't affect the screenshot taken in one of the checks.
 	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, currentMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrapf(err, "failed to verify resize lock state of %s", appName)
@@ -1126,7 +1113,7 @@ func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the Chrome OS settings via click")
 		}
 	case inputMethodKeyEvent:
-		if err := shiftViaTabAndEnter(ctx, tconn, nil, chromeui.FindParams{Name: appManagementSettingToggleName}); err != nil {
+		if err := shiftViaTabAndEnter(ctx, tconn, nil, chromeui.FindParams{Name: appManagementSettingToggleName}, keyboard); err != nil {
 			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the Chrome OS settings via keyboard")
 		}
 	}
