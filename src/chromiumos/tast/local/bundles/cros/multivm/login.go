@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/testing"
 )
@@ -51,7 +52,7 @@ func Login(ctx context.Context, s *testing.State) {
 	if err := pre.Chrome.Responded(ctx); err != nil {
 		s.Fatal("Chrome did not respond: ", err)
 	}
-	basemem, err := multivm.NewBaseMetrics()
+	basemem, err := metrics.NewBaseMetrics()
 	if err != nil {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
@@ -77,7 +78,7 @@ func Login(ctx context.Context, s *testing.State) {
 	}
 
 	p := perf.NewValues()
-	if err := multivm.MemoryMetrics(ctx, basemem, pre, p, s.OutDir(), ""); err != nil {
+	if err := metrics.MemoryMetrics(ctx, basemem, arc, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to collect memory metrics: ", err)
 	}
 	if err := p.Save(s.OutDir()); err != nil {
