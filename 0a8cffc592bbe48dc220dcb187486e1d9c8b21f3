@@ -16,6 +16,23 @@
       "message": "Updated correct test now. That is my bad- misread the root bug",
       "revId": "0a8cffc592bbe48dc220dcb187486e1d9c8b21f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c970cbf_b2cb5d5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-08-24T02:22:10Z",
+      "side": 1,
+      "message": "Thank you for noticing and sorry for not noticing!\n\nWe should probably promote graphics.ScreenshotCLI too...",
+      "revId": "0a8cffc592bbe48dc220dcb187486e1d9c8b21f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
