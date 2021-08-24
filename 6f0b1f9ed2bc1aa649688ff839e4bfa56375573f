@@ -88,6 +88,24 @@
       "parentUuid": "239041f5_e06829cc",
       "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4d6bea_c010e4bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-08-24T23:24:41Z",
+      "side": 1,
+      "message": "Thanks for the advice, Jun.\n\nBased on the test failure in https://ci.chromium.org/ui/p/chrome/builders/ci/chromeos-betty-pi-arc-chrome/17515/test-results I think it failed because the search query \"helpa\" stopped matching anything due to the LSS change. This is a bit strange because last time we made sure to check that \"helpa\" does show results. But I didn\u0027t check it this time.\nAnother possible reason is this test is just bad (not deterministic).\n\nTo unblock the LSS change I think we could do both 2 and 3: Make the test informational. And also change the query from \"helpa\" to just \"help\" to make the matching even more lenient. This Tast test should just be testing that the full integration works. It doesn\u0027t need to test that fuzzy or prefix matching works.",
+      "parentUuid": "9baf299d_74576c18",
+      "revId": "6f0b1f9ed2bc1aa649688ff839e4bfa56375573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
