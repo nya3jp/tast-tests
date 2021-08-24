@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5382e73_b0f79ca6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-08-24T04:38:17Z",
+      "side": 1,
+      "message": "Instead of computing PSI metrics since boot, could you add PsiStats to BaseMetrics, and then compute the stats since the beginning of the test?",
+      "revId": "113ab25968572e118a458e0ab57454f9131d54f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b3c7f9_03b17afb",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/mempressure_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-08-24T04:38:17Z",
+      "side": 1,
+      "message": "testEnv.arc instead of nil. Some versions of the test have ARCVM running in the background.",
+      "revId": "113ab25968572e118a458e0ab57454f9131d54f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf2a80b_9168fff4",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-08-24T04:38:17Z",
+      "side": 1,
+      "message": "I think total since boot is bound to be a source of noise, since the order of tests isn\u0027t deterministic, and if someone adds a test that causes lots of PSI, that will regress every test that runs after.",
+      "revId": "113ab25968572e118a458e0ab57454f9131d54f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
