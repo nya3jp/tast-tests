@@ -51,6 +51,87 @@
       "parentUuid": "adb74b31_f4e2f939",
       "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf2bf89_3a8d9fa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-24T09:15:17Z",
+      "side": 1,
+      "message": "Thanks for your explanation. Let\u0027s put the explanation on sharedrouter/doc.go",
+      "parentUuid": "ec0d20eb_f7c2ed9b",
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33a7651_4eaf6907",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-24T09:15:17Z",
+      "side": 1,
+      "message": "After seeing the caller, how about naming it as RetrieveConfig?\n\nWhen we say \"save configuration on some device\", it often means the configuration is applied and stored to the device.",
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7af0100_d1a072f4",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-24T09:15:17Z",
+      "side": 1,
+      "message": "saves and applies the configuration to the router",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 108
+      },
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d295d5f_98d5b479",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-24T09:15:17Z",
+      "side": 1,
+      "message": "UpdateConfig() or just Update() as caller knows what to be updated according to the parameter type.",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
