@@ -685,38 +685,37 @@ func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 // checkClamshellSplit helps to assert window bounds in clamshell split mode.
 func checkClamshellSplit(ctx context.Context, tconn *chrome.TestConn) error {
-	// 7- Get app window info in clamshell mode - Start.
-	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return err
-	}
-
-	leftWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for left activity")
-	}
-
-	if leftWInfo.State != ash.WindowStateLeftSnapped {
-		return errors.Errorf("invlaid window state: got %+v; want LeftSnapped", leftWInfo.State)
-	}
-
-	rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for right activity")
-	}
-
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, rightWInfo.ID); err != nil {
-		return errors.Wrap(err, "failed to wait for window finish animating")
-	}
-
-	if rightWInfo.State != ash.WindowStateRightSnapped {
-		return errors.Errorf("invlaid window state: got %+v; want RightSnapped", rightWInfo.State)
-	}
-
-	lWant := coords.NewRect(0, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
-	rWant := coords.NewRect(pdInfo.WorkArea.Width/2, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
-
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get app window info in clamshell mode - Start.
+		pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return err
+		}
+
+		leftWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc app window info for left activity")
+		}
+
+		if leftWInfo.State != ash.WindowStateLeftSnapped {
+			return errors.Errorf("invlaid window state: got %+v; want LeftSnapped", leftWInfo.State)
+		}
+
+		rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc app window info for right activity")
+		}
+
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, rightWInfo.ID); err != nil {
+			return errors.Wrap(err, "failed to wait for window finish animating")
+		}
+
+		if rightWInfo.State != ash.WindowStateRightSnapped {
+			return errors.Errorf("invlaid window state: got %+v; want RightSnapped", rightWInfo.State)
+		}
+
+		lWant := coords.NewRect(0, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+		rWant := coords.NewRect(pdInfo.WorkArea.Width/2, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
 		if leftWInfo.BoundsInRoot != lWant {
 			return errors.Errorf("invalid snapped to the left activity bounds: got %+v; want %+v",
 				leftWInfo.BoundsInRoot, lWant)
