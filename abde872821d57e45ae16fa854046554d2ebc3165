@@ -16,6 +16,86 @@
       "message": "PTAL!",
       "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d64b199_b53a4d06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-24T23:36:10Z",
+      "side": 1,
+      "message": "Left a couple comments with a few cleaner ways to do things, although it doesn\u0027t matter too much since quicksettings.go will be migrated to uiauto soon. +2 so you don\u0027t have to wait due to timezone difference.",
+      "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f071ce5_547e91cc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-24T23:36:10Z",
+      "side": 1,
+      "message": "No need for a loop here, there\u0027s a Release method for NodeSlice too:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d139",
+      "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95a429e_9c4331a0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-24T23:36:10Z",
+      "side": 1,
+      "message": "I think it\u0027s a bit cleaner to use bubbleFrameView.DescendantExists to be more explicit with the error handling:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d452",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c68286_7c038d0a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-24T23:36:10Z",
+      "side": 1,
+      "message": "I think it\u0027s a bit cleaner and more explicit to use bubbleFrameView.DescendantExists:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d452",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
