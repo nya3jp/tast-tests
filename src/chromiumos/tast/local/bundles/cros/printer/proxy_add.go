@@ -93,6 +93,26 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_Lexmark.ppd", "printer_resolution_lexmark_2400x600dpi_golden.ps"},
 			}, {
+				Name: "media_source_by_pass_tray",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_generic_printer_GenericPostScript.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_media_source_bypass_golden.ps",
+					Options:      []string{"media-source=by-pass-tray"},
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bypass_golden.ps"},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name: "media_source_bottom",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_generic_printer_GenericPostScript.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_media_source_bottom_golden.ps",
+					Options:      []string{"media-source=bottom"},
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "dymo_lw",
 				Val: &ippprint.Params{
 					PPDFile:      "printer_add_dymo_printer_lw450.ppd",
