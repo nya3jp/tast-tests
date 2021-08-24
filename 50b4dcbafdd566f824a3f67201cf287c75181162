@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "936c8810_9030b91d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-08-24T12:46:40Z",
+      "side": 1,
+      "message": "Still waiting for review. :) Gabor, as you were the initial reviewer, could you take this or assign the task to someone specifically?",
+      "revId": "50b4dcbafdd566f824a3f67201cf287c75181162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4deccc9_b246ad65",
