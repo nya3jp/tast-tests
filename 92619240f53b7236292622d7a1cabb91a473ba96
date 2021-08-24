@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e318edb0_4a2a7c96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1520377
+      },
+      "writtenOn": "2021-08-24T00:31:19Z",
+      "side": 1,
+      "message": "As the test cases aim to 160MHz too, DFS must be taken into consideration. This is because all available 160MHz channels overlap with DFS channels.\nThere are only 2 160MHz channels available within 5G band. The first one is centered at ch48 (range ch36-ch64), the upper part (ch52-ch64) are DFS channels. The second 160MHz channel (range ch100-ch128) all falls in DFS. \n\nRefer to US FCC website for an example of how DFS channels defined\nhttps://apps.fcc.gov/kdb/GetAttachment.html?id\u003d1K3EcgPRatUcWMwkA%2BuROw%3D%3D\u0026desc\u003d905462%20D06%20802%2011%20Channel%20Plans%20%20New%20Rules%20v02\u0026tracking_number\u003d27155",
+      "parentUuid": "c0937481_313313e8",
+      "range": {
+        "startLine": 93,
+        "startChar": 149,
+        "endLine": 93,
+        "endChar": 152
+      },
+      "revId": "92619240f53b7236292622d7a1cabb91a473ba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5e695ad_7982e8b9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
         "patchSetId": 9
