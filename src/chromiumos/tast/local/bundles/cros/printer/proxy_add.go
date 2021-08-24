@@ -113,6 +113,16 @@ func init() {
 				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps"},
 				ExtraAttr: []string{"informational"},
 			}, {
+				Name: "oki_tray4",
+				Val: &ippprint.Params{
+					PPDFile:      "printer_add_oki.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_oki_tray4_golden.ps",
+					Options:      []string{"media-source=tray-4"},
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_oki.ppd.gz", "printer_add_oki_tray4_golden.ps"},
+				ExtraAttr: []string{"informational"},
+			}, {
 				Name: "dymo_lw",
 				Val: &ippprint.Params{
 					PPDFile:      "printer_add_dymo_printer_lw450.ppd",

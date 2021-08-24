@@ -76,6 +76,9 @@ func TestAddParams(t *testing.T) {
 		iTest("media_source_by_pass_tray", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bypass_golden.ps", "media-source=by-pass-tray"),
 		iTest("media_source_bottom", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps", "media-source=bottom"),
 
+		// Verify that the OKI PPD with Tray4 is handled correctly.
+		iTest("oki_tray4", "printer_add_oki.ppd.gz", "printer_add_oki_tray4_golden.ps", "media-source=tray-4"),
+
 		// Add
 		test("dymo_lw", "printer_add_dymo_printer_lw450.ppd", "printer_add_dymo_lw_printer_golden.bin"),
 		test("dymo_lm", "printer_add_dymo_printer_lm450.ppd", "printer_add_dymo_lm_printer_golden.bin"),
