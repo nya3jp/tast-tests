@@ -51,6 +51,15 @@ type StandardizedTestCase struct {
 	WindowStateType ash.WindowStateType
 }
 
+// StandardizedTouchscreenScrollDirection represents the scroll direction.
+type StandardizedTouchscreenScrollDirection int
+
+// Variables used to determine the scroll direction.
+const (
+	DownTouchscreenScroll StandardizedTouchscreenScrollDirection = iota
+	UpTouchscreenScroll
+)
+
 // GetStandardizedClamshellTests returns the test cases required for clamshell devices.
 func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
@@ -183,6 +192,53 @@ func StandardizedTouchscreenClick(ctx context.Context, testParameters Standardiz
 
 	if err := touchScreenSingleEventWriter.End(); err != nil {
 		return errors.Wrap(err, "Unable to end click")
+	}
+
+	return nil
+}
+
+// StandardizedTouchscreenScroll performs a scroll on the touchscreen. Due to
+// different device settings, the actual scroll amount in pixels will be imprecise.
+// Therefore, multiple iterations should be run, with a check for the desired output between each call.
+func StandardizedTouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters StandardizedTestFuncParams, selector *ui.Object, scrollDirection StandardizedTouchscreenScrollDirection) error {
+	const (
+		VerticalScrollAmount = 250
+		ScrollDuration       = 500 * time.Millisecond
+	)
+
+	touchScreenSingleEventWriter, err := touchScreen.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize touchscreen single event writer")
+	}
+	defer touchScreenSingleEventWriter.Close()
+
+	// Start the scroll on the provided element.
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	if err != nil {
+		return errors.Wrap(err, "Unable to get touch screen coords")
+	}
+
+	// Calculate where to scroll to based on the provided direction.
+	scrollToX := *x
+	scrollToY := *y
+	switch scrollDirection {
+	case DownTouchscreenScroll:
+		scrollToY = *y - VerticalScrollAmount
+		break
+	case UpTouchscreenScroll:
+		scrollToY = *y + VerticalScrollAmount
+		break
+	default:
+		return errors.Errorf("invalid scroll direction: %v", scrollDirection)
+	}
+
+	// Perform the scroll movement.
+	if err := touchScreenSingleEventWriter.Swipe(ctx, *x, *y, scrollToX, scrollToY, ScrollDuration); err != nil {
+		return errors.Wrap(err, "unable to perform the scroll")
+	}
+
+	if err := touchScreenSingleEventWriter.End(); err != nil {
+		return errors.Wrap(err, "unable to end the scroll")
 	}
 
 	return nil
