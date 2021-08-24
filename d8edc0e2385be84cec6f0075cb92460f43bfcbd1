@@ -91,6 +91,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e3aed75c_c51c5ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-24T23:34:33Z",
+      "side": 1,
+      "message": "Done. I think it\u0027s reasonable to separate the interfaces out if it allows us to break the import cycle.",
+      "parentUuid": "f8774497_6c282043",
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e33a7651_4eaf6907",
         "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_router.go",
         "patchSetId": 8
@@ -129,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c2bcb5_f323cda6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-24T23:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7af0100_d1a072f4",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 108
+      },
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d295d5f_98d5b479",
@@ -142,6 +184,30 @@
       "writtenOn": "2021-08-24T09:15:17Z",
       "side": 1,
       "message": "UpdateConfig() or just Update() as caller knows what to be updated according to the parameter type.",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "d8edc0e2385be84cec6f0075cb92460f43bfcbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0cd7aa_7cf1faaf",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-24T23:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d295d5f_98d5b479",
       "range": {
         "startLine": 115,
         "startChar": 25,
