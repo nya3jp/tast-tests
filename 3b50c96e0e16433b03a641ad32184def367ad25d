@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4ef5df_81dbcd8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-08-24T05:44:01Z",
+      "side": 1,
+      "message": "Please take a look :)\n\"arc.WindowState\" is also changed in parallel as Tetsui-san\u0027s change.",
+      "revId": "3b50c96e0e16433b03a641ad32184def367ad25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
