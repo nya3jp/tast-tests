@@ -117,6 +117,30 @@
       },
       "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d42fca1_f6b29c9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/cca_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-24T10:07:02Z",
+      "side": 1,
+      "message": "No, I currently don\u0027t have pending CLs. Moved it back to SoftwareDeps.",
+      "parentUuid": "a303ee6a_9dca57fb",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "648509aec83b07dd772e277074834f6fe4fb1e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
