@@ -85,8 +85,8 @@ func MakeSWTestOptions(profile string) RTCTestOptions {
 // Encoding/Decoding enabled and with a layer structure as per svc definition.
 func MakeTestOptionsWithSVC(profile, svc string) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   false,
-		verifyHWEncoding:   false,
+		verifyHWDecoding:   true,
+		verifyHWEncoding:   true,
 		profile:            profile,
 		videoGridDimension: 1,
 		videoGridFile:      "",
