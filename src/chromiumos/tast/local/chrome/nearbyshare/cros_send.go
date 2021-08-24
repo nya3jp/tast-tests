@@ -63,6 +63,16 @@ func StartSendFiles(ctx context.Context, cr *chrome.Chrome, filepaths []string) 
 	return &SendSurface{conn: sendConn}, nil
 }
 
+// ConnectToSharingUI connects to an existing Nearby Share UI to drive sharing, rather than navigating to chrome://nearby/share in a browser.
+// Sharing should be started independently from a sharing entry point ("Nearby Share" option from CrOS native share sheet, ARC++ sharesheet, etc.) before calling this function.
+func ConnectToSharingUI(ctx context.Context, cr *chrome.Chrome) (*SendSurface, error) {
+	sendConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURLPrefix("chrome://nearby"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the share sheet")
+	}
+	return &SendSurface{conn: sendConn}, nil
+}
+
 // JavaScript for interacting with the discovery page. All of the properties and methods defined by the page
 // are accessible through the nearby-discovery-page element.
 // TODO(crbug/1170815): Replace with public test functions when available.
