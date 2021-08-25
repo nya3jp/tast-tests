@@ -50,6 +50,24 @@
       "message": "Could also go in cros_send_ui.go to match with the receiving code layout ",
       "revId": "9a0673b6ec602403f8846420157478bc0d9f28fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2412fdb_2991cefc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-25T17:43:35Z",
+      "side": 1,
+      "message": "I\u0027ll just leave it here since it\u0027s still using JS to control it instead of UI automation like cros_receive_ui.go",
+      "parentUuid": "fb9ef88d_780bfe13",
+      "revId": "9a0673b6ec602403f8846420157478bc0d9f28fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
