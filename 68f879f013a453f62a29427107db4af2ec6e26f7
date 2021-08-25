@@ -158,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c613d929_a4a36597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/firmware_manifest_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-25T00:12:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bf50b70_07290734",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a50527d_fc6b5487",
@@ -193,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae7cfb5_8a1ba9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-25T00:12:34Z",
+      "side": 1,
+      "message": "If this is sometimes expected and we can\u0027t effectively limit when this is run, then an early exit seems fine, I was really just double checking that it was an expected scenario. If you add the early exit back in, maybe add more details for when it is valid in the log.",
+      "parentUuid": "34caa1ff_c73fd8a8",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a5b26cb_9eac4924",
@@ -224,6 +260,24 @@
       "side": 1,
       "message": "same comment as before. I need |manifest| later",
       "parentUuid": "1a5b26cb_9eac4924",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07fbb80_648665b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-25T00:12:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "816ceeca_68dcae70",
       "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -294,6 +348,24 @@
       "side": 1,
       "message": "That was my initial though, but because there are multiple loops and nested loops, there are many variables with similar names. Shorting the name might be confusing when making changes. I know, because I got the names confused and had a bug",
       "parentUuid": "1c4ebd6c_6ded4a73",
+      "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174dc0d1_a2ce709e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-25T00:12:34Z",
+      "side": 1,
+      "message": ":-) Maybe a compromise like oemVersion since this is looping over device.OemFirmware (i.e. there is context)? Consider it a nit, I don\u0027t feel strongly, but since golang scoping can be a bit subtle my first instinct was to look at where else this global looking variable was used.",
+      "parentUuid": "b4ae9029_f0e384b9",
       "revId": "68f879f013a453f62a29427107db4af2ec6e26f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
