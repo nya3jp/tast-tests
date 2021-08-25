@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415d67fe_2b50e42d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-25T14:27:40Z",
+      "side": 1,
+      "message": "Might want to leave a comment here explaining why we do this so that it\u0027s not just left in the commit message of this CL",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df17de15_51d3932c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-25T14:27:40Z",
+      "side": 1,
+      "message": "ditto re: leaving a comment here explaining why we do this so that it\u0027s not just left in the commit message of this CL",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26febc25_8fb316f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-25T14:27:40Z",
+      "side": 1,
+      "message": "...or rather, if we always want to sleep after svo.SetCC, maybe we should factor this out into a helper so it\u0027s clearer to new code readers that they always want to do this",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
