@@ -25,6 +25,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
+			ExtraAttr: []string{"group:mainline", "informational"},
 			Val: resourcedTestParams{
 				isBaseline: false,
 			},
