@@ -56,6 +56,30 @@
       },
       "revId": "082002ca1d731b6d89fb3b31b946bbef6be6d118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c291953c_d1c57e25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-25T23:17:24Z",
+      "side": 1,
+      "message": "It\u0027s a bit confusing, but makes it easier to update the golden file when the print output changes (just copy the output file into the data folder).",
+      "parentUuid": "e0db6033_36a52d6a",
+      "range": {
+        "startLine": 208,
+        "startChar": 39,
+        "endLine": 208,
+        "endChar": 49
+      },
+      "revId": "082002ca1d731b6d89fb3b31b946bbef6be6d118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

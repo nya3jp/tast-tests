@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a59c87_861cfb37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-08-25T23:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c91855f8_aa4f0594",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "c19cfb66a34dd145ae34933dcfa9d5c107ec8d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0087871_73b7145d",
