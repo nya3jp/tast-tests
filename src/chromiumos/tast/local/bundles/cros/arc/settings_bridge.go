@@ -50,7 +50,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
+		Fixture:      "arcBootedWithoutUIAutomator",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableSettingsBridgeParam,
