@@ -266,6 +266,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e31169_81a3ad16",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-25T10:07:13Z",
+      "side": 1,
+      "message": "Done. This manifests itself as a separate variable in the axtestcase for the normal sec fac that I have separated out.",
+      "parentUuid": "35adb118_c927b47d",
+      "revId": "3bdfcf891f3709cdf16accedd230e0c5f5e78973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8ebbd00_4fe0fd93",
