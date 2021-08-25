@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -102,46 +101,34 @@ func Docusign(ctx context.Context, s *testing.State) {
 // verify Docusign reached main activity page of the app.
 func launchAppForDocusign(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		enterEmailAddressText = "Email address"
-		continueButtonText    = "CONTINUE"
-		notNowID              = "android:id/autofill_save_no"
-		passwordText          = "Password"
-		signinText            = "LOG IN"
-		signinButtonText      = "Sign in"
-		passwordUITimeout     = 110 * time.Second
+		enterEmailAddressID = "username"
+		continueButtonText  = "CONTINUE"
+		notNowID            = "android:id/autofill_save_no"
+		passwordID          = "password"
+		signinText          = "LOG IN"
+		signinButtonText    = "Sign in"
 	)
 
 	// Click on signin button.
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signinText))
 	if err := signInButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("signInButton doesn't exists: ", err)
+		s.Fatal("signInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
 	}
 
-	enterEmailAddress := d.Object(ui.Text(enterEmailAddressText))
+	// Enter email address.
+	docusignUserName := s.RequiredVar("arcappcompat.Docusign.emailid")
+	enterEmailAddress := d.Object(ui.ID(enterEmailAddressID))
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("EnterEmailAddress does not exist: ", err)
+		s.Fatal("EnterEmailAddress does not exist: ", err)
 	}
 
-	// Press tab twice to click on enter email.
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-		s.Log("Failed to enter KEYCODE_TAB: ", err)
-	} else {
-		s.Log("Entered KEYCODE_TAB")
+	if err := enterEmailAddress.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	} else if err := enterEmailAddress.SetText(ctx, docusignUserName); err != nil {
+		s.Fatal("Failed to enterUserName: ", err)
 	}
-
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
-
-	emailAddress := s.RequiredVar("arcappcompat.Docusign.emailid")
-	if err := kb.Type(ctx, emailAddress); err != nil {
-		s.Fatal("Failed to enter emailAddress: ", err)
-	}
-	s.Log("Entered EmailAddress")
 
 	// Click on continue button
 	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+continueButtonText))
@@ -152,23 +139,22 @@ func launchAppForDocusign(ctx context.Context, s *testing.State, tconn *chrome.T
 	}
 
 	// Enter password.
-	enterPassword := d.Object(ui.Text(passwordText))
-	if err := enterPassword.WaitForExists(ctx, passwordUITimeout); err != nil {
-		s.Log("EnterPassword doesn't exists: ", err)
-	} else if err := enterPassword.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterPassword: ", err)
+	enterPassword := d.Object(ui.ID(passwordID))
+	docusignPassword := s.RequiredVar("arcappcompat.Docusign.password")
+	if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("EnterPassword doesn't exists: ", err)
 	}
 
-	password := s.RequiredVar("arcappcompat.Docusign.password")
-	if err := kb.Type(ctx, password); err != nil {
-		s.Fatal("Failed to enter password: ", err)
+	if err := enterPassword.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterPassword: ", err)
+	} else if err := enterPassword.SetText(ctx, docusignPassword); err != nil {
+		s.Fatal("Failed to enterUserName: ", err)
 	}
-	s.Log("Entered password")
 
 	// Click on Sign in button.
 	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signinText))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("SignInButton doesn't exists: ", err)
+		s.Fatal("SignInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
 	}
