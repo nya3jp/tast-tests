@@ -273,6 +273,9 @@ func getCryptohomedUptime() (time.Duration, error) {
 var tpmEnabledRegexp = regexp.MustCompile(`(?m)^\s*is_enabled:\s*true\s*$`)
 var tpmOwnedRegexp = regexp.MustCompile(`(?m)^\s*is_owned:\s*true\s*$`)
 
+// These match lines in the output from "tpm_manager_client get_supported_features".
+var tpmSupportRuntimeSelectionRegexp = regexp.MustCompile(`(?m)^\s*support_runtime_selection:\s*true\s*$`)
+
 // These match lines in the output from "attestation_client status".
 var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*prepared_for_enrollment:\s*true\s*$`)
 
@@ -282,23 +285,27 @@ func ensureTPMInitialized(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 	defer cancel()
 
-	tpmStatus := func(ctx context.Context) (enabled, initialized, owned bool, err error) {
+	tpmStatus := func(ctx context.Context) (enabled, initialized, owned, runtimeSelect bool, err error) {
 		tpmOut, err := testexec.CommandContext(ctx, "tpm_manager_client", "status", "--nonsensitive").Output()
 		if err != nil {
-			return false, false, false, err
+			return false, false, false, false, err
+		}
+		tpmFeaturesOut, err := testexec.CommandContext(ctx, "tpm_manager_client", "get_supported_features").Output()
+		if err != nil {
+			return false, false, false, false, err
 		}
 		attestOut, err := testexec.CommandContext(ctx, "attestation_client", "status").Output()
 		if err != nil {
-			return false, false, false, err
+			return false, false, false, false, err
 		}
-		return tpmEnabledRegexp.Match(tpmOut), tpmInitializedRegexp.Match(attestOut), tpmOwnedRegexp.Match(tpmOut), nil
+		return tpmEnabledRegexp.Match(tpmOut), tpmInitializedRegexp.Match(attestOut), tpmOwnedRegexp.Match(tpmOut), tpmSupportRuntimeSelectionRegexp.Match(tpmFeaturesOut), nil
 	}
 
 	// Check if the TPM is disabled or already initialized.
-	enabled, initialized, owned, err := tpmStatus(ctx)
+	enabled, initialized, owned, runtimeSelect, err := tpmStatus(ctx)
 	if err != nil {
 		return err
-	} else if !enabled || initialized {
+	} else if !enabled || (!runtimeSelect && initialized) {
 		return nil
 	}
 
@@ -309,9 +316,13 @@ func ensureTPMInitialized(ctx context.Context) error {
 	if err := testexec.CommandContext(ctx, "tpm_manager_client", "take_ownership").Run(); err != nil {
 		return err
 	}
+	// Don't wait for attestation prepared when we are using TPM runtime selection.
+	if runtimeSelect {
+		return nil
+	}
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if _, initialized, _, err := tpmStatus(ctx); err != nil {
-			// cryptohome error encountered while polling.
+		if _, initialized, _, _, err := tpmStatus(ctx); err != nil {
+			// attestation error encountered while polling.
 			return testing.PollBreak(err)
 		} else if !initialized {
 			return errors.New("TPM not initialized yet")
