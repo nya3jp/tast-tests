@@ -472,6 +472,99 @@ func (tw *TouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1, d TouchCo
 	return nil
 }
 
+// touchCoordPoint represents a point, expressed in TouchCoords.
+type touchCoordPoint struct {
+	X, Y TouchCoord
+}
+
+// getPointsBetweenCoords returns all the coordinates between two points, spread out
+// across the provided number of steps.
+func getPointsBetweenCoords(x0, y0, x1, y1 TouchCoord, steps int) []touchCoordPoint {
+	// A minimum of two steps are needed. One for the start point and another one for the end point.
+	stepsToUse := steps
+	if stepsToUse < 2 {
+		stepsToUse = 2
+	}
+
+	deltaX := float64(x1-x0) / float64(stepsToUse-1)
+	deltaY := float64(y1-y0) / float64(stepsToUse-1)
+
+	var result []touchCoordPoint
+	for i := 0; i < stepsToUse; i++ {
+		curPoint := touchCoordPoint{
+			X: x0 + TouchCoord(math.Round(deltaX*float64(i))),
+			Y: y0 + TouchCoord(math.Round(deltaY*float64(i))),
+		}
+
+		result = append(result, curPoint)
+	}
+
+	return result
+}
+
+// moveMultipleTouches moves a series of touches through multiple movements. Note that all touches
+// must have the same number of movements. The number of touches is equal to len(pointsPerTouch) and
+// the number of movements is equal to len(pointsPerTouch[0]).
+func (tw *TouchEventWriter) moveMultipleTouches(ctx context.Context, pointsPerTouch ...[]touchCoordPoint) error {
+	// If there are no items, exit.
+	if len(pointsPerTouch) <= 0 {
+		return nil
+	}
+
+	// All the points must have the same length.
+	requiredLength := len(pointsPerTouch[0])
+	for _, curTouch := range pointsPerTouch {
+		if len(curTouch) != requiredLength {
+			return errors.New("all pointsPerTouch must have the same length")
+		}
+	}
+
+	// Move all the points through their coordinates at the same rate.
+	for pointNum := 0; pointNum < requiredLength; pointNum++ {
+		for touchNum, curTouch := range pointsPerTouch {
+			if err := tw.touches[touchNum].SetPos(curTouch[pointNum].X, curTouch[pointNum].Y); err != nil {
+				return err
+			}
+		}
+
+		if err := tw.Send(); err != nil {
+			return err
+		}
+
+		if err := testing.Sleep(ctx, touchFrequency); err != nil {
+			return errors.Wrap(err, "timeout while doing sleep")
+		}
+	}
+
+	return nil
+}
+
+// ZoomIn performs a series of touches that start from centerX, centerY
+// and move both NE, and SW d away to simulate a pinch zoom in.
+func (tw *TouchEventWriter) ZoomIn(ctx context.Context, centerX, centerY, d TouchCoord, t time.Duration) error {
+	if len(tw.touches) < 2 {
+		return errors.New("must have at least two touches to perform a zoom")
+	}
+
+	steps := int(t/touchFrequency) + 1
+	leftFingerPoints := getPointsBetweenCoords(centerX, centerY, centerX-d, centerY-d, steps)
+	rightFingerPoints := getPointsBetweenCoords(centerX, centerY, centerX+d, centerY+d, steps)
+	return tw.moveMultipleTouches(ctx, leftFingerPoints, rightFingerPoints)
+}
+
+// ZoomOut performs a series of touches that start from the NE, and SW corners that are d
+// away from centerX, and centerY, and end at centerX, centerY to simulate a pinch zoom out.
+func (tw *TouchEventWriter) ZoomOut(ctx context.Context, centerX, centerY, d TouchCoord, t time.Duration) error {
+	if len(tw.touches) < 2 {
+		return errors.New("must have at least two touches to perform a zoom")
+	}
+
+	steps := int(t/touchFrequency) + 1
+	leftFingerPoints := getPointsBetweenCoords(centerX-d, centerY-d, centerX-d, centerY-d, steps)
+	rightFingerPoints := getPointsBetweenCoords(centerX+d, centerY+d, centerX, centerY, steps)
+	return tw.moveMultipleTouches(ctx, leftFingerPoints, rightFingerPoints)
+}
+
 // DoubleSwipe performs a swipe movement with two touches. One is from x0/y0 to x1/y1, and the other is x0+d/y0 to x1+d/y1.
 // t represents how long the swipe should last.
 // If t is less than 5 milliseconds, 5 milliseconds will be used instead.
@@ -514,6 +607,7 @@ func (stw *SingleTouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1 Tou
 	if steps < 2 {
 		steps = 2
 	}
+
 	deltaX := float64(x1-x0) / float64(steps-1)
 	deltaY := float64(y1-y0) / float64(steps-1)
 

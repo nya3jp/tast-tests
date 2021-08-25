@@ -51,6 +51,15 @@ type StandardizedTestCase struct {
 	WindowStateType ash.WindowStateType
 }
 
+// StandardizedTouchscreenZoomType represents the touchscreen zoom type to perform.
+type StandardizedTouchscreenZoomType int
+
+// Holds all of the zoom types that can be performed on the touchscreen.
+const (
+	TouchscreenZoomIn StandardizedTouchscreenZoomType = iota
+	TouchscreenZoomOut
+)
+
 // GetStandardizedClamshellTests returns the test cases required for clamshell devices.
 func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
@@ -183,6 +192,54 @@ func StandardizedTouchscreenClick(ctx context.Context, testParameters Standardiz
 
 	if err := touchScreenSingleEventWriter.End(); err != nil {
 		return errors.Wrap(err, "Unable to end click")
+	}
+
+	return nil
+}
+
+// StandardizedTouchscreenZoom performs a zoom on the touchscreen. Zoom in distance
+// varies per device but the function aims to zoom by 2x (i.e. a scale factor of 2.0
+// when zooming in, or .5 when zooming out).
+func StandardizedTouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters StandardizedTestFuncParams, selector *ui.Object, zoomType StandardizedTouchscreenZoomType) error {
+	const (
+		zoomDistancePerFinger = 600
+		zoomDuration          = 500 * time.Millisecond
+	)
+
+	// Zoom is implemented as a two finger pinch so it requires two touches.
+	mtw, err := touchScreen.NewMultiTouchWriter(2)
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize event writer")
+	}
+	defer mtw.Close()
+
+	// Get the coordinates of the element to perform the zoom gesture on.
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	if err != nil {
+		return errors.Wrap(err, "unable to get start coordinates")
+	}
+
+	// Perform the appropriate zoom.
+	switch zoomType {
+	case TouchscreenZoomIn:
+		if err := mtw.ZoomIn(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
+			return errors.Wrap(err, "unable to zoom in")
+		}
+
+		break
+	case TouchscreenZoomOut:
+		if err := mtw.ZoomOut(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
+			return errors.Wrap(err, "unable to zoom in")
+		}
+
+		break
+	default:
+		return errors.Errorf("invalid zoom type provided: %v", zoomType)
+	}
+
+	// End the gesture.
+	if err := mtw.End(); err != nil {
+		return errors.Wrap(err, "unable to end the zoom in")
 	}
 
 	return nil

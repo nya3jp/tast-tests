@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ZoomTestActivity">
+
+  <TextView
+      android:id="@+id/txtZoomInState"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="ZOOM IN: PENDING"/>
+
+  <TextView
+      android:id="@+id/txtZoomOutState"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/txtZoomInState"
+      android:text="ZOOM OUT: PENDING"/>
+
+  <TextView
+      android:id="@+id/txtDebugPreviousZoom"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/txtZoomOutState"
+      android:text="DEBUG PREVIOUS ZOOM: PENDING"/>
+
+  <!-- The actual element that zooming will be registered to. -->
+  <TextView
+      android:id="@+id/txtZoom"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/txtDebugPreviousZoom"
+      android:text="TextView"
+      android:gravity="center"
+  />
+</RelativeLayout>
