@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -27,8 +26,6 @@ func init() {
 		},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug/1127165) Move to fixture when data is available.
-		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
 		Params: []testing.Param{
 			{
 				Name:    "dataoffline_allcontacts_png5kb",
