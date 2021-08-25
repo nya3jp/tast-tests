@@ -33,6 +33,24 @@
       "message": "nit: Should be able to remove this TODO as well now 😊 thanks jinrongwu@!",
       "revId": "873039f7a75b809604f0f0e92a4ce779f4979571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e98f9f_1a73a346",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-25T03:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff4c163d_de9af488",
+      "revId": "873039f7a75b809604f0f0e92a4ce779f4979571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
