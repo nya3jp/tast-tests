@@ -28,6 +28,13 @@ const (
 	pinDBitMask = 0x800
 )
 
+// Wait for VBUS to discharge in Servo.
+// Request = tRequest(24ms) + tSenderResponse(24ms) + tSrcTransition(35ms) + PSTransitionTimer(550ms) = 633ms (rounded up to 650ms)
+// Hard Reset = 650ms + tSrcRecover(1s) + tSrcTurnOn(275ms) = 1925ms
+const (
+	tVBusDischargeCcOff = 1925 * time.Millisecond
+)
+
 // Filepath on the DUT for the servo Type C partner device.
 const partnerPath = "/sys/class/typec/port0-partner"
 
@@ -111,6 +118,15 @@ func Basic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep after CCD watchdog off: ", err)
 	}
 
+	// Turn CC Off before modifying DTS Mode.
+	if err := svo.SetCC(ctx, servo.Off); err != nil {
+		s.Fatal("Failed to switch off CC: ", err)
+	}
+
+	if err := testing.Sleep(ctx, tVBusDischargeCcOff); err != nil {
+		s.Fatal("Failed to sleep after CC off: ", err)
+	}
+
 	// Servo DTS mode needs to be off to configure enable DP alternate mode support.
 	if err := svo.SetOnOff(ctx, servo.DTSMode, servo.Off); err != nil {
 		s.Fatal("Failed to disable Servo DTS mode: ", err)
@@ -154,6 +170,15 @@ func Basic(ctx context.Context, s *testing.State) {
 	} else if endTime == 0 {
 		s.Fatal("DUT didn't return a valid uptime")
 	}
+
+	// Turn CC Off before modifying DTS Mode.
+	if err := svo.SetCC(ctx, servo.Off); err != nil {
+		s.Fatal("Failed to switch off CC: ", err)
+	}
+
+	if err := testing.Sleep(ctx, tVBusDischargeCcOff); err != nil {
+		s.Fatal("Failed to sleep after CC off: ", err)
+	}
 }
 
 // runDPTest performs the DP alternate mode detection test for a specified pin assignment.
@@ -165,10 +190,7 @@ func runDPTest(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.Sta
 		return errors.Wrap(err, "failed to switch off CC")
 	}
 
-	// Wait for VBUS to discharge in Servo.
-	// Request = tRequest(24ms) + tSenderResponse(24ms) + tSrcTransition(35ms) + PSTransitionTimer(550ms) = 633ms (rounded up to 650ms)
-	// Hard Reset = 650ms + tSrcRecover(1s) + tSrcTurnOn(275ms) = 1925ms
-	if err := testing.Sleep(ctx, 1925*time.Millisecond); err != nil {
+	if err := testing.Sleep(ctx, tVBusDischargeCcOff); err != nil {
 		return errors.Wrap(err, "failed to sleep after CC off")
 	}
 
