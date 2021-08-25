@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -99,6 +100,9 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
 		s.Fatal("Failed to wait for printer to be idle: ", err)
 	}
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(scanning.ScannerName)); err != nil {
+		s.Fatal("Failed to wait for printer notification: ", err)
+	}
 	if err = ippusbbridge.ContactPrinterEndpoint(ctx, devInfo, "/eSCL/ScannerCapabilities"); err != nil {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
 	}
@@ -121,6 +125,11 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close app: ", err)
 		}
 	}()
+
+	// Make sure printer connected notifications don't cover the Scan button.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to close notifications: ", err)
+	}
 
 	if err := uiauto.Combine("scan",
 		app.ClickMoreSettings(),
