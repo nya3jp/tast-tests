@@ -12,9 +12,11 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
+	ups "chromiumos/tast/common/upstart"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/sandboxing"
 	"chromiumos/tast/local/chrome"
@@ -86,6 +88,19 @@ func SharedFilesystemState(ctx context.Context, s *testing.State) {
 	if err := sm.StartSession(ctx, cryptohome.GuestUser, ""); err != nil {
 		s.Fatal("Failed to start guest session: ", err)
 	}
+
+	// vm_concierge starts in the guest session and creates its own mounts, so if
+	// vm_concierge is present, we should wait for the job to start (at best
+	// effort) to increase the likelihood that its mounts will be present by the
+	// time testBody runs. This can be removed once vm_concierge no longer
+	// starts in the guest session (tracked at b/197786414).
+	if upstart.JobExists(ctx, "vm_concierge") {
+		s.Log("Waiting for vm_concierge to start")
+		if err := upstart.WaitForJobStatus(ctx, "vm_concierge", ups.StartGoal, ups.RunningState, upstart.RejectWrongGoal, 1*time.Second); err != nil {
+			s.Log("Failed to wait for vm_concierge to start: ", err)
+		}
+	}
+
 	defer upstart.RestartJob(ctx, "ui")
 
 	testType := "guest"
@@ -132,28 +147,30 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		// Contains the unix domain socket for Android Debugging
 		// connection into the container.
 		"^/run/arc/adb$": true,
-	}
-
-	// ARCExpectedSharedMountsUser contains the names of all mountpoints that are
-	// expected to be shared when logged in as a user on an ARC++ device.
-	ARCExpectedSharedMountsUser := map[string]bool{
 		// Temporarily mounted to share cryptohome data with ARC++
 		"^/run/arc/shared_mounts$": true,
 		// Used to share Android's sdcard partition to ChromeOS
 		"^/run/arc/sdcard$": true,
 		// ARC OBB mounter uses /run/arc/obb to support Android OBB mount API.
 		"^/run/arc/obb$": true,
-		// This sets up the shadow user directory as a shared subtree.
-		"^/home/\\.shadow/\\w+?/mount/user$": true,
 		// /run/arc/media is used to share MyFiles and removable media with Android.
 		// Many subdir mounts are created under /run/arc/media, and we want to include all of those as well.
 		"^/run/arc/media(/|$)": true,
 		// Used for Android Debugging over USB.
 		"^/run/arc/adbd$": true,
-		// These mount points are to ensure that the root
-		// namespace's /home/root/<hash> is propagated into the mnt_concierge
-		// namespace even when the latter namespace is created before login.
+		// These mount points are to ensure that the root namespace's
+		// /home/root/<hash> is propagated into the mnt_concierge namespace even
+		// when the latter namespace is created before login. This mount is not
+		// actually used by ARC++ but will be present if vm_concierge is running
+		// (see b/197786414).
 		"^/run/arcvm$": true,
+	}
+
+	// ARCExpectedSharedMountsUser contains the names of all mountpoints that are
+	// expected to be shared when logged in as a user on an ARC++ device.
+	ARCExpectedSharedMountsUser := map[string]bool{
+		// This sets up the shadow user directory as a shared subtree.
+		"^/home/\\.shadow/\\w+?/mount/user$": true,
 		// See shared_mounts above.
 		"^/run/arc/shared_mounts/data$": true,
 		// See netns above.
