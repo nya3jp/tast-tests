@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0edff8_9148320e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-25T05:14:32Z",
+      "side": 1,
+      "message": "+Jonathan. Hi could you review this change? It looks OK to me, but in case you have ideas to improve it, it will be appreciated.",
+      "revId": "06b071e551563a32c6e6b0938822babce55e6341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111fc566_44cff32e",
