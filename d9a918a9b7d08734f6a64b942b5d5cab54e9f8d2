@@ -22,6 +22,40 @@
       },
       "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8c586a_888e0d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-08-25T21:23:59Z",
+      "side": 1,
+      "message": "Looks like /run/arc/media is also showing up (likely for the same reason?) so go ahead and add that too.",
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4011d162_fb16bca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-08-25T21:23:59Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
