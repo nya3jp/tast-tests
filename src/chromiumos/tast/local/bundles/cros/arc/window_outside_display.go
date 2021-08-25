@@ -46,11 +46,17 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		pkg          = "com.android.settings"
-		activityName = ".Settings"
+		apk          = "ArcKeyboardTest.apk"
+		pkg          = "org.chromium.arc.testapp.keyboard"
+		activityName = ".MainActivity"
 		dragDur      = time.Second
 		marginPX     = 2
 	)
+
+	s.Log("Installing app")
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
 
 	act, err := arc.NewActivity(a, pkg, activityName)
 	if err != nil {
