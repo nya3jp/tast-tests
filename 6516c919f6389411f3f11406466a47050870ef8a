@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "6516c919f6389411f3f11406466a47050870ef8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1187c71_228e879a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-25T04:02:46Z",
+      "side": 1,
+      "message": "Thanks for finding the stuff https://crrev.com/c/3058594 missed.\n\nLGTM assuming all the tests still work.",
+      "revId": "6516c919f6389411f3f11406466a47050870ef8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
