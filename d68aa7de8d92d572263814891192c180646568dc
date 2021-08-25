@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd713bd7_ea39294a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-25T04:25:06Z",
+      "side": 1,
+      "message": "It is more common to apply WithTimeout right before doing actions, so that other places that reuse ui is not affected.",
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c99eeea_8a47224e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
         "patchSetId": 1
@@ -14,6 +31,30 @@
       "writtenOn": "2021-08-24T22:12:09Z",
       "side": 1,
       "message": "optional: I think you can inline it, but it might be the matter of taste.\n\nif err :\u003d ui.WaitUntilExists(nodewith.Name(\"User Action\").Role(role.ColumnHeader))(ctx); err !\u003d nil {",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2edf02_de2174e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-25T04:25:06Z",
+      "side": 1,
+      "message": "If we go without inlining, the variable name might be made more informative like \"userAction\" or \"userActionHeader\".",
+      "parentUuid": "8c99eeea_8a47224e",
       "range": {
         "startLine": 113,
         "startChar": 5,
