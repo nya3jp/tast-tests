@@ -70,6 +70,29 @@
       "parentUuid": "b97a66e0_358fa429",
       "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28078335_d6ebffb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-25T18:56:24Z",
+      "side": 1,
+      "message": "I think creating ARCPSpecificTests and VMSpecificTests forces you to change the apps like Roblox which is not affected by this Resize Lock Feature.\n\nInstead can we check ARCVM/ARCP inside these tests say OrientationSize and return at the beggining and proceed only for valid case. By this no need to touch the apps and all the logic will remain in testutil?.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
