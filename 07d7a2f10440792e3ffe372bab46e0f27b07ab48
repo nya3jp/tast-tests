@@ -34,6 +34,24 @@
       "parentUuid": "cecc62c5_e88baf04",
       "revId": "07d7a2f10440792e3ffe372bab46e0f27b07ab48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d01777b_f9b12968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-08-25T06:22:38Z",
+      "side": 1,
+      "message": "They are not, so I\u0027ll remove them next time I\u0027m uploading a change :).",
+      "parentUuid": "fc55c740_68612469",
+      "revId": "07d7a2f10440792e3ffe372bab46e0f27b07ab48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
