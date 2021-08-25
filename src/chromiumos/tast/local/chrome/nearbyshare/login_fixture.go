@@ -11,19 +11,24 @@ import (
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
 // NewNearbyShareLogin creates a fixture that logs in and enables Nearby Share.
 // Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.
-func NewNearbyShareLogin() testing.FixtureImpl {
+func NewNearbyShareLogin(arcEnabled bool) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.DisableFeatures("SplitSettingsSync"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
 	}
+	if arcEnabled {
+		defaultNearbyOpts = append(defaultNearbyOpts, chrome.ARCEnabled(), chrome.EnableFeatures("ArcNearbySharing"), chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	}
 	return &nearbyShareLoginFixture{
-		opts: defaultNearbyOpts,
+		opts:       defaultNearbyOpts,
+		arcEnabled: arcEnabled,
 	}
 }
 
@@ -49,7 +54,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(),
+		Impl:   NewNearbyShareLogin(false),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
@@ -63,11 +68,36 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginARCEnabled",
+		Desc: "CrOS login with GAIA, Nearby Share flags enabled, and ARC enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+			"arc-app-dev@google.com",
+		},
+		Parent: "nearbyShareAndroidSetup",
+		Impl:   NewNearbyShareLogin(true),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			keepState,
+		},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type nearbyShareLoginFixture struct {
-	opts []chrome.Option
-	cr   *chrome.Chrome
+	opts       []chrome.Option
+	cr         *chrome.Chrome
+	arcEnabled bool
+	a          *arc.ARC
 }
 
 func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -118,6 +148,16 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 
+	// Starting ARC restarts ADB, which kills the connection to the snippet.
+	// Starting it here (before we check the connection and attempt a reconnect) will ensure the snippet connection is up.
+	if f.arcEnabled {
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+		f.a = a
+	}
+
 	// Sometimes during login the tcp connection to the snippet server on Android is lost.
 	// If we cannot do a simple rpc call, reconnect to the snippet server.
 	if _, err := androidDevice.GetNearbySharingVersion(ctx); err != nil {
@@ -134,6 +174,7 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 		AndroidDeviceName: androidDeviceName,
 		AndroidUsername:   androidUsername,
 		AndroidLoggedIn:   loggedIn,
+		ARC:               f.a,
 	}
 }
 
@@ -143,6 +184,10 @@ func (f *nearbyShareLoginFixture) TearDown(ctx context.Context, s *testing.FixtS
 		s.Log("Failed to close Chrome connection: ", err)
 	}
 	f.cr = nil
+	if f.a != nil {
+		f.a.Close(ctx)
+		f.a = nil
+	}
 }
 func (f *nearbyShareLoginFixture) Reset(ctx context.Context) error {
 	if err := f.cr.Responded(ctx); err != nil {
