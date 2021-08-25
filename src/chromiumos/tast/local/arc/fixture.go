@@ -259,6 +259,9 @@ func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *bootedFixture) Reset(ctx context.Context) error {
+	if f.d != nil && !f.d.Alive(ctx) {
+		return errors.New("UI Automator is dead")
+	}
 	if err := f.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset chrome")
 	}
