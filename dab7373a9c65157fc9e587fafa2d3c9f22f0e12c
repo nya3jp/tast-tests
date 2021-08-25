@@ -51,6 +51,24 @@
       "parentUuid": "1af47a85_cba02cad",
       "revId": "dab7373a9c65157fc9e587fafa2d3c9f22f0e12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8517e1_1fd31e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-25T02:41:40Z",
+      "side": 1,
+      "message": "I see. It\u0027s okay as long as you\u0027re aware of the behavior change. I just worried that it\u0027s out of scope from your original motivation and it can just increase the chance of your changes rolled back for test breakage. I would keep the behavior as-is, leaving a TODO for the original author to clean up... but it\u0027s up to you.",
+      "parentUuid": "4543363c_c37b15d6",
+      "revId": "dab7373a9c65157fc9e587fafa2d3c9f22f0e12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
