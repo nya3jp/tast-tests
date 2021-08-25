@@ -14,27 +14,44 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    private LinearLayout layoutMain;
-    private Button btnLeftClick;
-    private int btnLeftClickCounter = 1;
+    private LinearLayout mLayoutMain;
+    private Button mBtnLeftClick;
+    private int mBtnLeftClickCounter = 1;
+
+    private Button mBtnRightClick;
+    private int mBtnRightClickCounter = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layoutMain = findViewById(R.id.layoutMain);
+        mLayoutMain = findViewById(R.id.layoutMain);
 
         // Add the text 'Mouse Left Click' when the left click button is pressed.
         // Always add the click counter so the tast test can make sure a single click
         // doesn't fire two events.
-        btnLeftClick = findViewById(R.id.btnLeftClick);
-        btnLeftClick.setOnClickListener(
+        mBtnLeftClick = findViewById(R.id.btnLeftClick);
+        mBtnLeftClick.setOnClickListener(
                 (v) -> {
                     TextView el = new TextView(this);
-                    el.setText(String.format("MOUSE LEFT CLICK (%d)", btnLeftClickCounter));
-                    btnLeftClickCounter++;
-                    layoutMain.addView(el);
+                    el.setText(String.format("MOUSE LEFT CLICK (%d)", mBtnLeftClickCounter));
+                    mBtnLeftClickCounter++;
+                    mLayoutMain.addView(el);
+                });
+
+        // Add the text 'Mouse Right Click' when the right click button is pressed.
+        // Always add the click counter so the tast test can make sure a single click
+        // doesn't fire two events.
+        // 'OnContextClick' is fired natively when the user right clicks.
+        mBtnRightClick = findViewById(R.id.btnRightClick);
+        mBtnRightClick.setOnContextClickListener(
+                (v) -> {
+                    TextView el = new TextView(this);
+                    el.setText(String.format("MOUSE RIGHT CLICK (%d)", mBtnRightClickCounter));
+                    mBtnRightClickCounter++;
+                    mLayoutMain.addView(el);
+                    return true;
                 });
     }
 }

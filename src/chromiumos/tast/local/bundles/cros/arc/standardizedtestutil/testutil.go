@@ -33,11 +33,12 @@ const (
 
 // StandardizedMouseButton abstracts the underlying mouse button implementation into a
 // standard type that can be used by callers.
-type StandardizedMouseButton string
+type StandardizedMouseButton int
 
 // Mouse buttons that can be used by standardized tests.
 const (
-	LeftMouseButton StandardizedMouseButton = "LEFT"
+	LeftMouseButton StandardizedMouseButton = iota
+	RightMouseButton
 )
 
 // StandardizedTestFuncParams contains parameters that can be used by the standardized tests.
@@ -259,11 +260,20 @@ func StandardizedMouseClickObject(ctx context.Context, testParameters Standardiz
 	}
 
 	// Perform the correct click
-	if standardizedButton == LeftMouseButton {
+	switch standardizedButton {
+	case LeftMouseButton:
 		if err := mew.Click(); err != nil {
 			return errors.Wrap(err, "unable to perform left mouse click")
 		}
-	} else {
+
+		break
+	case RightMouseButton:
+		if err := mew.RightClick(); err != nil {
+			return errors.Wrap(err, "unable to perform right mouse click")
+		}
+
+		break
+	default:
 		return errors.Errorf("invalid button provided: %v", standardizedButton)
 	}
 
