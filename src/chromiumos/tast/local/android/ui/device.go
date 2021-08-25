@@ -127,12 +127,7 @@ func installServer(ctx context.Context, d *adb.Device) error {
 // waitServer waits for UI Automator server to come up.
 func (d *Device) waitServer(ctx context.Context) error {
 	for {
-		if ok := func() bool {
-			ctx, cancel := context.WithTimeout(ctx, 200*time.Millisecond)
-			defer cancel()
-			var res string
-			return d.call(ctx, "ping", &res) == nil && res == "pong"
-		}(); ok {
+		if ok := d.Alive(ctx); ok {
 			break
 		}
 
@@ -141,6 +136,14 @@ func (d *Device) waitServer(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+// Alive returns true if UI Automator server is responding.
+func (d *Device) Alive(ctx context.Context) bool {
+	ctx, cancel := context.WithTimeout(ctx, 200*time.Millisecond)
+	defer cancel()
+	var res string
+	return d.call(ctx, "ping", &res) == nil && res == "pong"
 }
 
 // EnableDebug enables verbose RPC logging.
