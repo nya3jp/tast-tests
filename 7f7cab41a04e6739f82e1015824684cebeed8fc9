@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eaefd0e_ac8ad743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T02:53:24Z",
+      "side": 1,
+      "message": "I agree on this one. It started out in another package which is where the \u0027Standardized\u0027 came from but has since moved out. For the time being, I\u0027ve just stayed consistent with all the naming but I\u0027ll go back and do a refactoring on the names. I think that\u0027s better suited in a separate CL, though.",
+      "parentUuid": "218e4723_5cb51807",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ddc97c2_dc344465",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-08-25T01:55:53Z",
       "side": 1,
       "message": "nit: use switch?",
+      "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f6ac7e_cb9a105a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T02:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ddc97c2_dc344465",
       "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

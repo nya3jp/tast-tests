@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db441871_d4710ff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T02:53:24Z",
+      "side": 1,
+      "message": "Went ahead and added the switch statement in place of the \u0027if/else\u0027. As noted, I\u0027ll do the renames in a separate CL to help separate it from implementation of tests.",
+      "revId": "ee4ead9da702c30eb8bb587e20e9162b8b95a341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
