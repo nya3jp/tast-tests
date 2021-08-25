@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d10a4f_af5f46ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T16:04:44Z",
+      "side": 1,
+      "message": "Fixed 2/3, wasn\u0027t sure about the usage of `this` when parameter names match member variable names as noted in the comment.",
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

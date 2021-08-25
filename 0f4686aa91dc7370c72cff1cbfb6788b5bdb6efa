@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b7ee818_e33a33ff",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T16:04:44Z",
+      "side": 1,
+      "message": "I actually misspelled the parameter, it should have been `int keyCode`. With that change, `this` is required for the first two to reference the member variables and the `this` on layoutId makes it consistent throughout the constructor. Do you suggest I change the parameter names (i.e. `int aKeyCode, String aDisplayName`) in order to eliminate `this` or is it OK in this context?",
+      "parentUuid": "4f59953d_66592a9e",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3e56077_07260b73",
         "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-25T12:45:40Z",
       "side": 1,
       "message": "nit: Please start private field name with \u0027m\u0027 like \u0027mKeyCodesToTest\u0027. cf. https://source.android.com/setup/contribute/code-style#follow-field-naming-conventions",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f59dc26_3c08d75c",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T16:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e56077_07260b73",
       "range": {
         "startLine": 38,
         "startChar": 29,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-25T12:45:40Z",
       "side": 1,
       "message": "ditto: mLayoutMain?",
+      "range": {
+        "startLine": 50,
+        "startChar": 25,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8692ac0e_1fd03918",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-25T16:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82168a2b_ec8ff732",
       "range": {
         "startLine": 50,
         "startChar": 25,
