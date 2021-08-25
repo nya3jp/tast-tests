@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebadf355_d21840c5",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-25T09:24:51Z",
+      "side": 1,
+      "message": "This fixture does not depend on the arc support library. What do you think about placing it in chromiumos/tast/local/lacros/launcher?",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "0a700ca19bd3690eec9e019ee3f4b264304355cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5a6f84_667ec79f",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-25T09:24:51Z",
+      "side": 1,
+      "message": "All other fixtures defined in this file uses NewArcBootedFixture to construct a fixture instance. Could you follow the pattern?",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "0a700ca19bd3690eec9e019ee3f4b264304355cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
