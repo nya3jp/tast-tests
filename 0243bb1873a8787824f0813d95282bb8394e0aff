@@ -16,6 +16,29 @@
       "message": "Hi Xiqi, this CL is ready for review.",
       "revId": "0243bb1873a8787824f0813d95282bb8394e0aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56112567_e16a7248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-25T18:59:32Z",
+      "side": 1,
+      "message": "There is already a test wallpaper.Change that does some of this.\n\nCan you extract this wallpaper stuff into a library for both tests to use?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "0243bb1873a8787824f0813d95282bb8394e0aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
