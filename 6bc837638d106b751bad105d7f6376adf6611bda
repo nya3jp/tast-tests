@@ -33,6 +33,29 @@
       "message": "nya@: Please take a look. Thank you.\nyhanada@: Thank you for reviewing.",
       "revId": "6bc837638d106b751bad105d7f6376adf6611bda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f924d9ed_dc621104",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-25T09:09:01Z",
+      "side": 1,
+      "message": "I\u0027m afraid 200ms is too short, e.g. when the device is overloaded, given that now this logic can be called without a polling loop.",
+      "range": {
+        "startLine": 143,
+        "startChar": 41,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "6bc837638d106b751bad105d7f6376adf6611bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
