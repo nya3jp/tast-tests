@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08101d62_05ecd820",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/ectool.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-25T21:03:17Z",
+      "side": 1,
+      "message": "Ahh, I see the conflicting CL that changed these to CommandContext.\n\nI integrated the change into this CL.",
+      "parentUuid": "79794044_a334afbf",
+      "range": {
+        "startLine": 74,
+        "startChar": 22,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "297f8b509d9bc5e75f91b6bacbe31898bb5df817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1f1541a_77245be4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13cd7915_bc5e7ef0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/ectool_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-25T21:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f1541a_77245be4",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "297f8b509d9bc5e75f91b6bacbe31898bb5df817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab253f4_a3e5ce02",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-24T18:14:53Z",
       "side": 1,
       "message": "nit: I think I understand what you mean (tabs on line 11, 12, etc. don\u0027t matter), but the wording here is somewhat confusing.",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "297f8b509d9bc5e75f91b6bacbe31898bb5df817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f283d36_a5cc0128",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/ectool_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-25T21:03:17Z",
+      "side": 1,
+      "message": "Fair.",
+      "parentUuid": "1ab253f4_a3e5ce02",
       "range": {
         "startLine": 10,
         "startChar": 52,
