@@ -34,6 +34,46 @@
       "parentUuid": "dba71fdd_3ba16d8a",
       "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7c36c8_8a5db12c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-08-25T00:35:17Z",
+      "side": 1,
+      "message": "Po-Hsien, could you please also run a b*.TraceReplay before submitting?",
+      "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d341dbcd_24687c7f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-08-25T00:35:17Z",
+      "side": 1,
+      "message": "Is this the only change?",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 580,
+        "endChar": 16
+      },
+      "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
