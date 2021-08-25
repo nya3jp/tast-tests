@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53396dad_919a119e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-25T19:11:04Z",
+      "side": 1,
+      "message": "Seems fine to me. Kyle has owners power so he\u0027ll give final signoff ",
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "014fc97a_fe41d55f",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
         "patchSetId": 2
@@ -36,6 +53,76 @@
         "startChar": 0,
         "endLine": 52,
         "endChar": 41
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8a3065_df248b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-25T19:11:04Z",
+      "side": 1,
+      "message": "Any of these are fine. I\u0027d avoid opening a real web page. Even just opening the settings app is probably fine.",
+      "parentUuid": "014fc97a_fe41d55f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70a9aa2_c42df900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-25T19:11:04Z",
+      "side": 1,
+      "message": "Code is pretty self explanatory. No need for that comment",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f80996e1_ae807fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-25T19:11:04Z",
+      "side": 1,
+      "message": "Can you add this to the lockscreen library",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
       },
       "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
