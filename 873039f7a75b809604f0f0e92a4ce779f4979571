@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69501afc_ff8c6402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-25T03:12:27Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "873039f7a75b809604f0f0e92a4ce779f4979571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4c163d_de9af488",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-25T03:12:27Z",
+      "side": 1,
+      "message": "nit: Should be able to remove this TODO as well now 😊 thanks jinrongwu@!",
+      "revId": "873039f7a75b809604f0f0e92a4ce779f4979571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
