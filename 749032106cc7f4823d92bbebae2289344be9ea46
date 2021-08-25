@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94e74d1_f5040be6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-25T01:56:52Z",
+      "side": 1,
+      "message": "The current dependency looks correct. Sorry that I didn\u0027t point it out in the previous review.",
+      "revId": "749032106cc7f4823d92bbebae2289344be9ea46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad43c219_a9479752",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-25T01:56:52Z",
+      "side": 1,
+      "message": "Let\u0027s move the Type type definition close to Base interface definition.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "749032106cc7f4823d92bbebae2289344be9ea46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
