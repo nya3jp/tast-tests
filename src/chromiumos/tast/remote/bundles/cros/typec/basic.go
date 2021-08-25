@@ -28,6 +28,16 @@ const (
 	pinDBitMask = 0x800
 )
 
+// Wait for VBUS to discharge in Servo.
+// We do this after a CC off, so that a subsequent CC on (either directly or implicitly through src dts changes) doesn't
+// confuse certain TCPCs, causing Cr50 UART to be wedged on servo.
+// Request = tRequest(24ms) + tSenderResponse(24ms) + tSrcTransition(35ms) + PSTransitionTimer(550ms) = 633ms (rounded up to 650ms)
+// Hard Reset = 650ms + tSrcRecover(1s) + tSrcTurnOn(275ms) = 1925ms
+// Total time = 1925ms * 1.5 (50% buffer) = 2887ms (rounded up to 3s)
+const (
+	tVBusDischargeCcOff = 3 * time.Second
+)
+
 // Filepath on the DUT for the servo Type C partner device.
 const partnerPath = "/sys/class/typec/port0-partner"
 
@@ -111,6 +121,18 @@ func Basic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep after CCD watchdog off: ", err)
 	}
 
+	// Make sure that CC is switched on at the end of the test.
+	defer func() {
+		if err := svo.SetCC(ctxForCleanUp, servo.On); err != nil {
+			s.Error("Unable to enable Servo CC: ", err)
+		}
+	}()
+
+	// Turn CC Off before modifying DTS Mode.
+	if err := ccOffAndWait(ctx, svo); err != nil {
+		s.Fatal("Failed CC off and wait: ", err)
+	}
+
 	// Servo DTS mode needs to be off to configure enable DP alternate mode support.
 	if err := svo.SetOnOff(ctx, servo.DTSMode, servo.Off); err != nil {
 		s.Fatal("Failed to disable Servo DTS mode: ", err)
@@ -125,13 +147,6 @@ func Basic(ctx context.Context, s *testing.State) {
 	if err := testing.Sleep(ctx, 2500*time.Millisecond); err != nil {
 		s.Fatal("Failed to sleep for DTS-off power negotiation: ", err)
 	}
-
-	// Make sure that CC is switched on at the end of the test.
-	defer func() {
-		if err := svo.SetCC(ctxForCleanUp, servo.On); err != nil {
-			s.Error("Unable to enable Servo CC: ", err)
-		}
-	}()
 
 	s.Log("Checking DP pin C")
 	if err := runDPTest(ctx, svo, d, s, "c"); err != nil {
@@ -154,6 +169,11 @@ func Basic(ctx context.Context, s *testing.State) {
 	} else if endTime == 0 {
 		s.Fatal("DUT didn't return a valid uptime")
 	}
+
+	// Turn CC Off before modifying DTS Mode in cleanup.
+	if err := ccOffAndWait(ctx, svo); err != nil {
+		s.Fatal("Failed CC off and wait: ", err)
+	}
 }
 
 // runDPTest performs the DP alternate mode detection test for a specified pin assignment.
@@ -161,15 +181,8 @@ func Basic(ctx context.Context, s *testing.State) {
 func runDPTest(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.State, pinAssign string) error {
 
 	s.Log("Simulating servo disconnect")
-	if err := svo.SetCC(ctx, servo.Off); err != nil {
-		return errors.Wrap(err, "failed to switch off CC")
-	}
-
-	// Wait for VBUS to discharge in Servo.
-	// Request = tRequest(24ms) + tSenderResponse(24ms) + tSrcTransition(35ms) + PSTransitionTimer(550ms) = 633ms (rounded up to 650ms)
-	// Hard Reset = 650ms + tSrcRecover(1s) + tSrcTurnOn(275ms) = 1925ms
-	if err := testing.Sleep(ctx, 1925*time.Millisecond); err != nil {
-		return errors.Wrap(err, "failed to sleep after CC off")
+	if err := ccOffAndWait(ctx, svo); err != nil {
+		return errors.Wrap(err, "failed CC off and wait")
 	}
 
 	s.Log("Configuring Servo to enable DP")
@@ -290,4 +303,17 @@ func checkForDPAltMode(ctx context.Context, d *dut.DUT, s *testing.State, pinAss
 	}
 
 	return errors.Errorf("didn't find the right DP alternate mode registered for partner for pin assignment %s", pinAssign)
+}
+
+// ccOffAndWait performs a CC Off command, followed by a sleep to ensure VBus discharges safely before any further modification.
+func ccOffAndWait(ctx context.Context, svo *servo.Servo) error {
+	if err := svo.SetCC(ctx, servo.Off); err != nil {
+		return errors.Wrap(err, "failed to switch off CC")
+	}
+
+	if err := testing.Sleep(ctx, tVBusDischargeCcOff); err != nil {
+		return errors.Wrap(err, "failed to sleep after CC off")
+	}
+
+	return nil
 }
