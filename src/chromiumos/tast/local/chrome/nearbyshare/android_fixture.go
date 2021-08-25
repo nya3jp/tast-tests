@@ -6,7 +6,6 @@ package nearbyshare
 
 import (
 	"context"
-	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -43,6 +42,7 @@ func init() {
 		Name: "nearbyShareAndroidSetup",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts)",
 		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts),
+		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -69,25 +69,9 @@ type nearbyShareAndroidFixture struct {
 func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	const androidBaseName = "android_test"
 	androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
-	// TODO(crbug/1127165): Replace with s.DataPath(nearbysnippet.ZipName) when data is supported in Fixtures.
-	// The data path changes based on whether -build=true or -build=false is supplied to `tast run`.
-	// Local test runs on your workstation use -build=true by default, while lab runs use -build=false.
-	const (
-		prebuiltLocalDataPath = "/usr/local/share/tast/data/chromiumos/tast/local/bundles/cros/nearbyshare/data"
-		builtLocalDataPath    = "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/nearbyshare/data"
-		apkZipName            = "nearby_snippet.zip"
-		accountUtilZipName    = "google_account_util.zip"
-	)
+	snippetZip := s.DataPath(nearbysnippet.ZipName)
+	accountUtilZip := s.DataPath(nearbysnippet.AccountUtilZip)
 
-	// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
-	apkZipPath := filepath.Join(builtLocalDataPath, apkZipName)
-	accountUtilZipPath := filepath.Join(builtLocalDataPath, accountUtilZipName)
-	if _, err := os.Stat(builtLocalDataPath); os.IsNotExist(err) {
-		apkZipPath = filepath.Join(prebuiltLocalDataPath, apkZipName)
-		accountUtilZipPath = filepath.Join(prebuiltLocalDataPath, accountUtilZipName)
-	} else if err != nil {
-		s.Fatal("Failed to check if built local data path exists: ", err)
-	}
 	// Set up adb, connect to the Android phone, and check if ADB root access is available.
 	adbDevice, rooted, err := nearbysetup.AdbSetup(ctx)
 	if err != nil {
@@ -118,7 +102,7 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 
 	// Configure the Android phone and set up the Snippet library.
 	androidDevice, err := nearbysetup.AndroidSetup(
-		ctx, adbDevice, accountUtilZipPath, androidUsername, androidPassword, loggedIn, apkZipPath, rooted,
+		ctx, adbDevice, accountUtilZip, androidUsername, androidPassword, loggedIn, snippetZip, rooted,
 		nearbysetup.DefaultScreenTimeout,
 		f.androidDataUsage,
 		f.androidVisibility,

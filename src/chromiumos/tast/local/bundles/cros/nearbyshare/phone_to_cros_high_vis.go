@@ -30,8 +30,6 @@ func init() {
 		},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug/1127165) Move to fixture when data is available.
-		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
 		Params: []testing.Param{
 			{
 				Name:    "dataoffline_allcontacts_jpg11kb",

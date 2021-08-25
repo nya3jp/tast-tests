@@ -23,12 +23,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr: []string{"group:nearby-share"},
-		// TODO(crbug/1127165) Move to fixture when data is available.
-		// nearbysnippet.AccountUtilZip is required for the transfer tests to work right now.
-		// They all use fixtures, which cannot load data files. The fixture tries to use the account util in its setup,
-		// but is unable to find the data file because the fixture setup runs before the tests can download their data files.
-		// This test always runs first, though, so we can include it here so it will be available for the fixture setup.
-		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
+		Data: []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices which
 		// have already overridden the GMS Core flags by other means.
 		Vars: []string{"rooted"},
