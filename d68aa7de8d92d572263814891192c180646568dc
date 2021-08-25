@@ -250,6 +250,30 @@
       },
       "revId": "d68aa7de8d92d572263814891192c180646568dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc403f0e_af011f51",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-25T05:13:40Z",
+      "side": 1,
+      "message": "EnsureGoneFor() actually returns success as soon as node disappear, without waiting for the timeout period.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/70cbb348d0af/src/chromiumos/tast/local/chrome/uiauto/automation.go#397\n\nIt is reported as an issue and still open.\nhttps://b.corp.google.com/issues/190596080",
+      "parentUuid": "185f2fea_0ba3ca1d",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
