@@ -29,7 +29,7 @@ import (
 )
 
 // resetTimeout is the timeout duration to trying reset of the current fixture.
-const resetTimeout = 30 * time.Second
+const resetTimeout = 1 * time.Minute
 
 // NewNearbyShareFixture creates a fixture for Nearby Share tests in different configurations.
 func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbysetup.Visibility) testing.FixtureImpl {
@@ -55,7 +55,7 @@ func init() {
 			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -74,7 +74,7 @@ func init() {
 			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -93,7 +93,7 @@ func init() {
 			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -112,7 +112,7 @@ func init() {
 			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -131,7 +131,7 @@ func init() {
 			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -150,7 +150,7 @@ func init() {
 			nearbycommon.KeepStateVar,
 		},
 		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
