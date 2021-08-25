@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
@@ -156,6 +157,39 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+
+	// ARC fixtures.
+	testing.AddFixture(&testing.Fixture{
+		Name:   "nearbyShareDataUsageOnlineNoOneARCEnabled",
+		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online', 'Visibility' set to 'No One', and ARC enabled",
+		Parent: "nearbyShareGAIALoginARCEnabled",
+		Impl:   NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+			"arc-app-dev@google.com",
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareDataUsageOfflineNoOneARCEnabled",
+		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline', 'Visibility' set to 'No One', and ARC enabled",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityNoOne, false),
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+			"arc-app-dev@google.com",
+		},
+		Parent:          "nearbyShareGAIALoginARCEnabled",
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type nearbyShareFixture struct {
@@ -201,6 +235,9 @@ type FixtData struct {
 
 	// AndroidUsername is the GAIA account logged in on Android.
 	AndroidUsername string
+
+	// ARC is the ARC instance, if enabled.
+	ARC *arc.ARC
 }
 
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -259,6 +296,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		CrOSDeviceName:    crosDisplayName,
 		AndroidDevice:     androidDevice,
 		AndroidDeviceName: androidDeviceName,
+		ARC:               s.ParentValue().(*FixtData).ARC,
 	}
 
 	// Store Android attributes for reporting.
