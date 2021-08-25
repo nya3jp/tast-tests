@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6419658d_069e5401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-08-25T20:41:13Z",
+      "side": 1,
+      "message": "This will cause flake if vm_concierge fails to start. I don\u0027t think we want to do this -- this test needs to be rock-solid.\n\nInstead this should be best effort -- if vm_concierge exists and it starts within one second or so, we should expect the mount, and if it exists but it doesn\u0027t start within one second, we should treat the mount existing as not an error.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
