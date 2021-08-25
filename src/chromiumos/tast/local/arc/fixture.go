@@ -35,6 +35,19 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that UI Automator is not enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithoutUIAutomator",
+		Desc: "ARC is booted without UI Automator",
+		Impl: NewArcBootedWithoutUIAutomatorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled()}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that ARC content sync is disabled to avoid noise during power/performance measurements.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithDisableSyncFlags",
@@ -129,7 +142,8 @@ type bootedFixture struct {
 	d    *ui.Device
 	init *Snapshot
 
-	playStoreOptin bool // Opt into PlayStore.
+	playStoreOptin    bool // Opt into PlayStore.
+	enableUIAutomator bool // Enable UI Automator
 
 	fOpt chrome.OptionsCallback // Function to return chrome options.
 }
@@ -138,6 +152,21 @@ type bootedFixture struct {
 // ARCEnabled() will always be added to the Chrome options returned by OptionsCallback.
 func NewArcBootedFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
 	return &bootedFixture{
+		enableUIAutomator: true,
+		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts, err := fOpts(ctx, s)
+			if err != nil {
+				return nil, err
+			}
+			return append(opts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock")), nil
+		},
+	}
+}
+
+// NewArcBootedWithoutUIAutomatorFixture is same as NewArcBootedFixture but does not install UIAutomator by default.
+func NewArcBootedWithoutUIAutomatorFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{
+		enableUIAutomator: false,
 		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts, err := fOpts(ctx, s)
 			if err != nil {
@@ -153,7 +182,8 @@ func NewArcBootedFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
 // ARCSupported() will always be added to the Chrome options returned by OptionsCallback.
 func NewArcBootedWithPlayStoreFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
 	return &bootedFixture{
-		playStoreOptin: true,
+		playStoreOptin:    true,
+		enableUIAutomator: true,
 		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts, err := fOpts(ctx, s)
 			if err != nil {
@@ -212,9 +242,11 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 		}
 	}()
 
-	d, err := arc.NewUIDevice(s.FixtContext())
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
+	var d *ui.Device
+	if f.enableUIAutomator {
+		if d, err = arc.NewUIDevice(s.FixtContext()); err != nil {
+			s.Fatal("Failed to initialize UI Automator: ", err)
+		}
 	}
 
 	init, err := NewSnapshot(ctx, arc)
@@ -240,10 +272,12 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 }
 
 func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := f.d.Close(ctx); err != nil {
-		s.Log("Failed to close UI Automator: ", err)
+	if f.d != nil {
+		if err := f.d.Close(ctx); err != nil {
+			s.Log("Failed to close UI Automator: ", err)
+		}
+		f.d = nil
 	}
-	f.d = nil
 
 	Unlock()
 	if err := f.arc.Close(ctx); err != nil {
