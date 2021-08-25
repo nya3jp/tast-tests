@@ -19,6 +19,7 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/camera/testutil"
@@ -295,7 +296,7 @@ func (r *Resolution) AspectRatio() float64 {
 // until its AppWindow interactable. The scriptPath should be the data path to
 // the helper script cca_ui.js. The returned App instance must be closed when
 // the test is finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge) (*App, error) {
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge) (_ *App, retErr error) {
 	// Since we don't use "cros-camera" service for fake camera, there is no need
 	// to ensure it is running.
 	if tb.CameraType != testutil.UseFakeCamera {
@@ -344,17 +345,27 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 	testing.ContextLog(ctx, "CCA launched")
 	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType}
-	waitForWindowReady := func() error {
-		if err := app.WaitForVideoActive(ctx); err != nil {
-			return errors.Wrap(err, ErrVideoNotActive)
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
+	defer func(cleanupCtx context.Context) {
+		if retErr == nil {
+			return
 		}
-		return app.WaitForState(ctx, "view-camera", true)
+
+		if err := app.Close(cleanupCtx); err != nil {
+			testing.ContextLog(cleanupCtx, "Failed to close app: ", err)
+		}
+	}(cleanupCtx)
+
+	if err := app.WaitForVideoActive(ctx); err != nil {
+		return nil, errors.Wrap(err, ErrVideoNotActive)
 	}
-	if err := waitForWindowReady(); err != nil {
-		if err2 := app.Close(ctx); err2 != nil {
-			testing.ContextLog(ctx, "Failed to close app: ", err2)
-		}
-		return nil, errors.Wrap(err, "CCA window is not ready after launching app")
+
+	if err := app.WaitForState(ctx, "view-camera", true); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for view-camera becomes true")
 	}
 	testing.ContextLog(ctx, "CCA window is ready")
 	return app, nil
