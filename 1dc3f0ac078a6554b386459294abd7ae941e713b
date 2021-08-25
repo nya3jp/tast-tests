@@ -16,6 +16,23 @@
       "message": "yhanada@: Please take a look. Thank you.",
       "revId": "1dc3f0ac078a6554b386459294abd7ae941e713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c04ba3_4af1220a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-08-25T12:27:06Z",
+      "side": 1,
+      "message": "tast-owners@: PTAL for OWNERS. Thank you.\nyhanada@: Thank you for reviewing.",
+      "revId": "1dc3f0ac078a6554b386459294abd7ae941e713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
