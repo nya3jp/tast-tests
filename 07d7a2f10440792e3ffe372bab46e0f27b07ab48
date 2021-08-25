@@ -16,6 +16,24 @@
       "message": "LGTM. Do you need to remove these files from original location as well?",
       "revId": "07d7a2f10440792e3ffe372bab46e0f27b07ab48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc55c740_68612469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-25T04:34:49Z",
+      "side": 1,
+      "message": "Not sure whether they are used by other tests. So just leave them there.",
+      "parentUuid": "cecc62c5_e88baf04",
+      "revId": "07d7a2f10440792e3ffe372bab46e0f27b07ab48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
