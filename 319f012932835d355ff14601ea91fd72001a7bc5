@@ -34,6 +34,24 @@
       "parentUuid": "cbbbdbca_26df1caf",
       "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97a66e0_358fa429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-25T00:29:45Z",
+      "side": 1,
+      "message": "But as per b/192485110 the top Games(Roblox) should not have Resize Lock Feature is my understanding.",
+      "parentUuid": "c9593364_3b4d12a3",
+      "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
