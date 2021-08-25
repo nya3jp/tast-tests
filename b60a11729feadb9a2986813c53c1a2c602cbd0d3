@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f735932_9d60b6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-25T21:49:29Z",
+      "side": 1,
+      "message": "super-nit: duplicated ExtraAttr of \"group:mainline\" in both tests. Consider specifying this tag in Test.Attr and only \"informational\" as ExtraAttr?",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "b60a11729feadb9a2986813c53c1a2c602cbd0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
