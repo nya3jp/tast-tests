@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ff5295_f6a9de62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-25T09:27:49Z",
+      "side": 1,
+      "message": "LGTM with a small request.\n",
+      "revId": "1f3c49ec19d0eb98e18d020b1c709a8a021e723b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8545ca8_97fd5c64",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-25T09:27:49Z",
+      "side": 1,
+      "message": "Could you close d in non-successful cases, as we do for \"arc\" above?",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "1f3c49ec19d0eb98e18d020b1c709a8a021e723b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
