@@ -12,9 +12,11 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
+	ups "chromiumos/tast/common/upstart"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/sandboxing"
 	"chromiumos/tast/local/chrome"
@@ -86,6 +88,14 @@ func SharedFilesystemState(ctx context.Context, s *testing.State) {
 	if err := sm.StartSession(ctx, cryptohome.GuestUser, ""); err != nil {
 		s.Fatal("Failed to start guest session: ", err)
 	}
+
+	if upstart.JobExists(ctx, "vm_concierge") {
+		s.Log("Waiting for vm_concierge to start")
+		if err := upstart.WaitForJobStatus(ctx, "vm_concierge", ups.StartGoal, ups.RunningState, upstart.RejectWrongGoal, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait for vm_concierge to start: ", err)
+		}
+	}
+
 	defer upstart.RestartJob(ctx, "ui")
 
 	testType := "guest"
@@ -132,6 +142,10 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		// Contains the unix domain socket for Android Debugging
 		// connection into the container.
 		"^/run/arc/adb$": true,
+		// These mount points are to ensure that the root
+		// namespace's /home/root/<hash> is propagated into the mnt_concierge
+		// namespace even when the latter namespace is created before login.
+		"^/run/arcvm$": true,
 	}
 
 	// ARCExpectedSharedMountsUser contains the names of all mountpoints that are
