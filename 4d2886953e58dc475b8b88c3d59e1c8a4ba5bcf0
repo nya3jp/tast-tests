@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b03180_95f2aca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-25T17:22:39Z",
+      "side": 1,
+      "message": "Mohamed: This cl lost it\u0027s CR+2. Can you re-approve please?",
+      "revId": "4d2886953e58dc475b8b88c3d59e1c8a4ba5bcf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
