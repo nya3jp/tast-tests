@@ -74,6 +74,30 @@
       },
       "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684a023c_2b4c497f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-08-25T01:25:01Z",
+      "side": 1,
+      "message": "yes this was the reason why it always fail.",
+      "parentUuid": "d341dbcd_24687c7f",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 580,
+        "endChar": 16
+      },
+      "revId": "0ecaa2f212e6f5e22fa260dabcd3099aee9adfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
