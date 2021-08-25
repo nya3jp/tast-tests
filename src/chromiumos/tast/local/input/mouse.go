@@ -36,7 +36,7 @@ func Mouse(ctx context.Context) (*MouseEventWriter, error) {
 	var evTypes uint32 = 1<<EV_KEY | 1<<EV_REL
 	if mw.dev, mw.virt, err = createVirtual(name, devID{usbBus, 0, 0, 0}, 0, evTypes,
 		map[EventType]*big.Int{
-			EV_KEY: makeBigIntFromEventCodes([]EventCode{BTN_LEFT}),
+			EV_KEY: makeBigIntFromEventCodes([]EventCode{BTN_LEFT, BTN_RIGHT}),
 			EV_REL: makeBigIntFromEventCodes([]EventCode{REL_X, REL_Y}),
 		}, nil); err != nil {
 		return nil, err
@@ -85,18 +85,12 @@ func (mw *MouseEventWriter) Move(relX, relY int32) error {
 
 // Press presses the mouse left button.
 func (mw *MouseEventWriter) Press() error {
-	if err := mw.rw.Event(EV_KEY, BTN_LEFT, 1); err != nil {
-		return err
-	}
-	return mw.rw.Sync()
+	return mw.pressButton(BTN_LEFT)
 }
 
 // Release releases the mouse left button.
 func (mw *MouseEventWriter) Release() error {
-	if err := mw.rw.Event(EV_KEY, BTN_LEFT, 0); err != nil {
-		return err
-	}
-	return mw.rw.Sync()
+	return mw.releaseButton(BTN_LEFT)
 }
 
 // Click presses and releases the mouse left button.
@@ -105,4 +99,33 @@ func (mw *MouseEventWriter) Click() error {
 		return err
 	}
 	return mw.Release()
+}
+
+// RightClick presses and releases the mouse right button.
+func (mw *MouseEventWriter) RightClick() error {
+	if err := mw.pressButton(BTN_RIGHT); err != nil {
+		return err
+	}
+
+	if err := mw.releaseButton(BTN_RIGHT); err != nil {
+		return err
+	}
+
+	return mw.rw.Sync()
+}
+
+func (mw *MouseEventWriter) pressButton(btn EventCode) error {
+	if err := mw.rw.Event(EV_KEY, btn, 1); err != nil {
+		return err
+	}
+
+	return mw.rw.Sync()
+}
+
+func (mw *MouseEventWriter) releaseButton(btn EventCode) error {
+	if err := mw.rw.Event(EV_KEY, btn, 0); err != nil {
+		return err
+	}
+
+	return mw.rw.Sync()
 }
