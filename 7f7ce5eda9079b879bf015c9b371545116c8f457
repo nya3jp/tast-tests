@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44201ade_0494f122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-25T17:26:32Z",
+      "side": 1,
+      "message": "Please take a look at my comment. Thanks.",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415d67fe_2b50e42d",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-08-25T14:27:40Z",
       "side": 1,
       "message": "Might want to leave a comment here explaining why we do this so that it\u0027s not just left in the commit message of this CL",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63293fe_75b7b86c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-25T17:26:32Z",
+      "side": 1,
+      "message": "Do you need to set CC back on at the end? I see have a defer at 146. However, there are a few situations that makes this function return before the defer.",
       "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
