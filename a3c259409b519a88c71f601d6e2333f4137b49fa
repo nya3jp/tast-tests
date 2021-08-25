@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378f6bc0_f73a790f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-25T14:25:27Z",
+      "side": 1,
+      "message": "We need to add a dep up here for USE\u003dmodemfwd, right? (That\u0027ll have to be in the tast repo, not tast-tests)",
+      "revId": "a3c259409b519a88c71f601d6e2333f4137b49fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
