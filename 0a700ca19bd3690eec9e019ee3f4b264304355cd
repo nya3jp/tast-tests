@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e325ef01_c088a62a",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-25T17:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebadf355_d21840c5",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "0a700ca19bd3690eec9e019ee3f4b264304355cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f5a6f84_667ec79f",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "I was a bit wrong here: some fixtures use NewArcBootedWithPlayStoreFixture. It\u0027s nice to introduce a constructor function similar to them.",
       "parentUuid": "4f5a6f84_667ec79f",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "0a700ca19bd3690eec9e019ee3f4b264304355cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec81bb1b_09b5e9ce",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-08-25T17:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d4bea72_3491b110",
       "range": {
         "startLine": 141,
         "startChar": 9,
