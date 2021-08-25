@@ -109,8 +109,13 @@ func runTakeDocumentPhoto(ctx context.Context, cr *chrome.Chrome, tb *testutil.T
 		}
 	}(ctx)
 
-	if err := app.EnableDocumentMode(ctx); err != nil {
-		return errors.Wrap(err, "failed to enable scan mode")
+	visible, err := app.Visible(ctx, cca.ScanModeButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to check visibility of scan mode button")
+	} else if !visible {
+		if err := app.EnableDocumentMode(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable scan mode")
+		}
 	}
 
 	if err := app.SwitchMode(ctx, cca.Scan); err != nil {
