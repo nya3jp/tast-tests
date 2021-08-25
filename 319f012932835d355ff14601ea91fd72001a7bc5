@@ -52,6 +52,24 @@
       "parentUuid": "c9593364_3b4d12a3",
       "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54397385_c0ce7dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/roblox.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-08-25T17:25:31Z",
+      "side": 1,
+      "message": "yes, Roblox doesn\u0027t have resize lock feature. Resize lock test will skip the test if app is maximized and unresizable by default as mentioned in the doc ( https://docs.google.com/document/d/1eXTaKRTVGXhd8vySbHAnlkm2ZxNLQPqkPfBcKZN06xQ/edit?resourcekey\u003d0-Rx4Xx6asjLm126XDF7OwtQ#heading\u003dh.sls1vp60y2di). Since Roblox is maximized and unresizable by default, resize lock test will skip the test.",
+      "parentUuid": "b97a66e0_358fa429",
+      "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
