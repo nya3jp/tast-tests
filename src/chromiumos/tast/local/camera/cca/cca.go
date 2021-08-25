@@ -19,6 +19,7 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/camera/testutil"
@@ -344,16 +345,33 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 	testing.ContextLog(ctx, "CCA launched")
 	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.CameraType}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
+	windowReady := false
+	defer func(cleanupCtx context.Context) {
+		if windowReady {
+			return
+		}
+
+		if err := app.Close(cleanupCtx); err != nil {
+			testing.ContextLog(cleanupCtx, "Failed to close app: ", err)
+		}
+	}(cleanupCtx)
+
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, ErrVideoNotActive)
 		}
-		return app.WaitForState(ctx, "view-camera", true)
+		if err := app.WaitForState(ctx, "view-camera", true); err != nil {
+			return errors.Wrap(err, "failed to wait for view-camera becomes true")
+		}
+		windowReady = true
+		return nil
 	}
 	if err := waitForWindowReady(); err != nil {
-		if err2 := app.Close(ctx); err2 != nil {
-			testing.ContextLog(ctx, "Failed to close app: ", err2)
-		}
 		return nil, errors.Wrap(err, "CCA window is not ready after launching app")
 	}
 	testing.ContextLog(ctx, "CCA window is ready")
