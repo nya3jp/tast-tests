@@ -17,7 +17,7 @@ type MemPressureTask struct {
 
 // Run starts the platform.MemoryPressure test, creating memory pressure by opening Chrome tabs
 func (mpt *MemPressureTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	return mempressure.Run(ctx, testEnv.outDir, testEnv.cr, mpt.Params)
+	return mempressure.Run(ctx, testEnv.outDir, testEnv.cr, testEnv.arc, mpt.Params)
 }
 
 // Close does nothing, the Run method of platform.MemoryPressure already closes the connections
