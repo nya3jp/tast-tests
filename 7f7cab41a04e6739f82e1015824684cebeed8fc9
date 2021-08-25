@@ -33,6 +33,46 @@
       "message": "Received initial review from @tetsui regarding domain specific implementation and Android application. ",
       "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218e4723_5cb51807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-08-25T01:55:53Z",
+      "side": 1,
+      "message": "nit: The package name already contains \"Standardized\". We can simply call it \"TouchscreenTapType\" or \"TapType\", as \"Tap\" implicitly indicates it\u0027s about touchscreen in this case. Same for others (StandardizedTestCase, StandardizedTestFunc, etc.)",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ddc97c2_dc344465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-08-25T01:55:53Z",
+      "side": 1,
+      "message": "nit: use switch?",
+      "revId": "7f7cab41a04e6739f82e1015824684cebeed8fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
