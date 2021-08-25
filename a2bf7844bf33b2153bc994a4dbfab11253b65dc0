@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf30e7df_f0db1ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-25T12:17:21Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a2bf7844bf33b2153bc994a4dbfab11253b65dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f82619_5b11721f",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-25T12:17:21Z",
+      "side": 1,
+      "message": "You can put these under one const:\n\u003e  const (\n\u003e    psiFilename \u003d \"/proc/pressure/memory\"\n\u003e    psiLineFormat \u003d \" avg10\u003d%f avg60\u003d%f avg300\u003d%f total\u003d%d\"\n\u003e    ...\n\u003e  )",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "a2bf7844bf33b2153bc994a4dbfab11253b65dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfacd7d_05f2e90d",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-25T12:17:21Z",
+      "side": 1,
+      "message": "Is this a typo?",
+      "range": {
+        "startLine": 109,
+        "startChar": 63,
+        "endLine": 109,
+        "endChar": 64
+      },
+      "revId": "a2bf7844bf33b2153bc994a4dbfab11253b65dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
