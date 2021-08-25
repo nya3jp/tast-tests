@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53bbdb7a_acadcf4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-25T17:42:51Z",
+      "side": 1,
+      "message": "I just made a comment. Please take a look. Thanks.",
+      "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8048c8_9d9c46cc",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-25T17:42:51Z",
+      "side": 1,
+      "message": "I don\u0027t think you need windowReady and waitForWindowReady. They just make the code more complicate. Will this do the same thing?\n```\nif err :\u003d app.WaitForVideoActive(ctx); err !\u003d nil {\n\treturn errors.Wrap(err, ErrVideoNotActive)\n}\nif err :\u003d app.WaitForState(ctx, \"view-camera\", true); err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to wait for view-camera becomes true\")\n}\ndefer func(cleanupCtx context.Context) {\n\tif err :\u003d app.Close(cleanupCtx); err !\u003d nil {\n\t    testing.ContextLog(cleanupCtx, \"Failed to close app: \", err)\n\t}\n}()",
+      "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
