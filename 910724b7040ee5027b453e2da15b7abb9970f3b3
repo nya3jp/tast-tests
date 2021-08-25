@@ -16,6 +16,23 @@
       "message": "hirokisato@: Please take a look. Thank you.",
       "revId": "910724b7040ee5027b453e2da15b7abb9970f3b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff8334e_dc6e8722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-08-25T02:59:16Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "910724b7040ee5027b453e2da15b7abb9970f3b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
