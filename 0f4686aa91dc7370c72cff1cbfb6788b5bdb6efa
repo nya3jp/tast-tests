@@ -16,6 +16,75 @@
       "message": "Added a new test for testing the use of keys on the keyboard (i.e. Arrow up, back, esc, tab, etc.). A new activity was created for the StandardizedKeyboardTest apk to support these tests.",
       "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f59953d_66592a9e",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-25T12:45:40Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need these \"this.\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e56077_07260b73",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-25T12:45:40Z",
+      "side": 1,
+      "message": "nit: Please start private field name with \u0027m\u0027 like \u0027mKeyCodesToTest\u0027. cf. https://source.android.com/setup/contribute/code-style#follow-field-naming-conventions",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82168a2b_ec8ff732",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-25T12:45:40Z",
+      "side": 1,
+      "message": "ditto: mLayoutMain?",
+      "range": {
+        "startLine": 50,
+        "startChar": 25,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
