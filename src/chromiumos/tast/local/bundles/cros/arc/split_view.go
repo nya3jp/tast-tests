@@ -21,11 +21,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type splitViewTestParams struct {
-	tabletMode            bool
-	startFromHomeLauncher bool
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     SplitView,
@@ -36,37 +31,42 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_mode",
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
+				Fixture:           "arcBootedInClamshellMode",
+				Val:               false,
 			},
 			{
 				Name:              "clamshell_mode_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
+				Fixture:           "arcBootedInClamshellMode",
+				Val:               false,
 			},
 			{
 				Name:              "tablet_mode",
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
+				Fixture:           "arcBootedInTabletMode",
+				Val:               false,
 			},
 			{
 				Name:              "tablet_mode_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
+				Fixture:           "arcBootedInTabletMode",
+				Val:               false,
 			},
 			{
 				Name:              "tablet_home_launcher",
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
+				Fixture:           "arcBootedInTabletMode",
+				Val:               true,
 			},
 			{
 				Name:              "tablet_home_launcher_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
+				Fixture:           "arcBootedInTabletMode",
+				Val:               true,
 			},
 		},
 	})
@@ -183,13 +183,6 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	params := s.Param().(splitViewTestParams)
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, params.tabletMode)
-	if err != nil {
-		s.Fatalf("Failed to ensure tablet-mode status to %t: %v", params.tabletMode, err)
-	}
-	defer cleanup(ctx)
-
 	tew, err := input.Touchscreen(ctx)
 	if err != nil {
 		s.Fatal("Failed to access to the touch screen: ", err)
@@ -247,7 +240,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	if params.startFromHomeLauncher {
+	if s.Param().(bool) { // arc.SplitView.tablet_home_launcher or arc.SplitView.tablet_home_launcher_vm
 		if err := ash.DragToShowHomescreen(ctx, tew.Width(), tew.Height(), stw, tconn); err != nil {
 			s.Fatal("Failed to drag to show home launcher: ", err)
 		}
@@ -293,7 +286,12 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the right snapped window animation: ", err)
 	}
 
-	if params.tabletMode {
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check whether tablet mode is active: ", err)
+	}
+
+	if tabletMode {
 		// Swap the left activity and the right activity.
 		if err := ash.SwapWindowsInSplitView(ctx, tconn); err != nil {
 			s.Fatal("Failed to swap windows in split view: ", err)
