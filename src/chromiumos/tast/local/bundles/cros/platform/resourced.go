@@ -22,15 +22,16 @@ func init() {
 		Func:         Resourced,
 		Desc:         "Checks that resourced works",
 		Contacts:     []string{"vovoy@chromium.org"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
+			ExtraAttr: []string{"informational"},
 			Val: resourcedTestParams{
 				isBaseline: false,
 			},
 		}, {
-			Name:      "baseline",
-			ExtraAttr: []string{"group:mainline"},
+			Name: "baseline",
 			Val: resourcedTestParams{
 				isBaseline: true,
 			},
