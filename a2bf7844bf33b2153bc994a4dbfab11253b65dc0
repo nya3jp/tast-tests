@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65390c6a_0ffb59a1",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-08-25T14:48:28Z",
+      "side": 1,
+      "message": "thanks for the tip!",
+      "parentUuid": "79f82619_5b11721f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "a2bf7844bf33b2153bc994a4dbfab11253b65dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcfacd7d_05f2e90d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-25T12:17:21Z",
       "side": 1,
       "message": "Is this a typo?",
+      "range": {
+        "startLine": 109,
+        "startChar": 63,
+        "endLine": 109,
+        "endChar": 64
+      },
+      "revId": "a2bf7844bf33b2153bc994a4dbfab11253b65dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5379d659_5c86de1e",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-08-25T14:48:28Z",
+      "side": 1,
+      "message": "indeed, thanks for catching!",
+      "parentUuid": "dcfacd7d_05f2e90d",
       "range": {
         "startLine": 109,
         "startChar": 63,
