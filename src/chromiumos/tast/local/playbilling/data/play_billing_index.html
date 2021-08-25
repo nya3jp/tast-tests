@@ -1,0 +1,23 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<head>
+  <title>Play Billing Test PWA</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icon.png" type="image/png" />
+  <script type="text/javascript" src="/payments.js"></script>
+</head>
+
+<body>
+  <h1>Play Billing Test PWA</h1>
+  <button type="button" onclick="buy('android.test.purchased')" id="android_test_purchased">Buy Test SKU</button>
+  <script type="text/javascript">
+    if (navigator.serviceWorker != null) {
+      navigator.serviceWorker.register('/service.js')
+      .then(function(registration) {
+        console.log('Registered events at scope: ', registration.scope);
+      });
+    }
+  </script>
+</body>

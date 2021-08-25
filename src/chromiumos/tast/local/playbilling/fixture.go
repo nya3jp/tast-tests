@@ -26,21 +26,24 @@ const (
 	passVar         = "arc.PlayBillingPass"
 	assetLinksVar   = "arc.PlayBillingAssetLinks"
 	apk             = "ArcPlayBillingTestPWA_20210517.apk"
+	icon            = "play_billing_icon.png"
+	index           = "play_billing_index.html"
+	manifest        = "play_billing_manifest.json"
+	payments        = "play_billing_payments.js"
+	service         = "play_billing_service.js"
 	localServerPort = 80
 )
 
 // pwaFiles are data files required to serve the Play Billing PWA.
-// TODO(b/187793648): Move this to the fixture once data is supported.
 var pwaFiles = []string{
-	"play_billing_icon.png",
-	"play_billing_index.html",
-	"play_billing_manifest.json",
-	"play_billing_payments.js",
-	"play_billing_service.js",
+	icon,
+	index,
+	manifest,
+	payments,
+	service,
 }
 
 // DataFiles are the files required for each Play Billing tests.
-// TODO(b/187793648): Move this to the fixture once data is supported.
 var DataFiles = append(pwaFiles, apk)
 
 func init() {
@@ -80,6 +83,7 @@ func init() {
 		Contacts:     []string{"benreich@chromium", "jshikaram@chromium.org"},
 		Parent:       "arcBootedForPlayBilling",
 		Vars:         []string{assetLinksVar},
+		Data:         []string{apk, icon, index, manifest, payments, service},
 		SetUpTimeout: 2 * time.Minute,
 	})
 }
@@ -105,24 +109,8 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	arcDevice := s.ParentValue().(*arc.PreData).ARC
 	cr := s.ParentValue().(*arc.PreData).Chrome
 
-	// TODO(b/187793648): Move this to the fixture once data is supported.
-	const prebuiltLocalDataPath = "/usr/local/share/tast/data/chromiumos/tast/local/bundles/cros/appsplatform/data"
-	const builtLocalDataPath = "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/appsplatform/data"
-
-	// TODO(b/187793648): Replace with s.DataPath(apk) when data is supported in Fixtures.
-	// The data path changes based on whether -build=true or -build=false is supplied to `tast run`.
-	// Local test runs on your workstation use -build=true by default, while lab runs use -build=false.
-
-	// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
-	localDataPath := builtLocalDataPath
-	if _, err := os.Stat(builtLocalDataPath); os.IsNotExist(err) {
-		localDataPath = prebuiltLocalDataPath
-	} else if err != nil {
-		s.Fatal("Failed to check if built local data path exists: ", err)
-	}
-
 	// Install the test APK.
-	if err := arcDevice.Install(ctx, filepath.Join(localDataPath, apk)); err != nil {
+	if err := arcDevice.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
@@ -133,7 +121,7 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	f.pwaDir = pwaDir
 	for _, name := range pwaFiles {
 		pwaFilePath := filepath.Join(f.pwaDir, strings.TrimPrefix(name, "play_billing_"))
-		if err := fsutil.CopyFile(filepath.Join(localDataPath, name), pwaFilePath); err != nil {
+		if err := fsutil.CopyFile(s.DataPath(name), pwaFilePath); err != nil {
 			s.Fatalf("Failed to copy extension file %q: %v", name, err)
 		}
 	}
