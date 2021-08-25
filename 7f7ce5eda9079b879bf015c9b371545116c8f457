@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26374d21_3c25bd35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-25T18:58:16Z",
+      "side": 1,
+      "message": "I think the defer for turning CC back on should happen right after you successfully turn CC off.",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415d67fe_2b50e42d",
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "I can move that defer to earlier than this call. i.e before L121.\n\nWould that work?",
       "parentUuid": "b63293fe_75b7b86c",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145092cd_39381e48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-25T18:58:16Z",
+      "side": 1,
+      "message": "Before 121? You set it off at Line 122. I think the defer should happen right after you successfully turn CC off.",
+      "parentUuid": "1b487904_bbff0d2e",
       "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
