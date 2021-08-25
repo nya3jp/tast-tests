@@ -36,7 +36,7 @@ const (
 )
 
 // PKCandidatesFinder is the finder for candidates in the IME candidates window.
-var PKCandidatesFinder = nodewith.Role(role.ImeCandidate)
+var PKCandidatesFinder = nodewith.Role(role.ImeCandidate).Onscreen()
 
 // InputEval is a data structure to define common input function and expected out.
 type InputEval struct {
