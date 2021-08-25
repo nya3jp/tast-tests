@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1147bb6_4d3c7e72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-25T08:27:31Z",
+      "side": 1,
+      "message": "TODOs:\n- Integrate cros_send new APIs to directly interact with Nearby Share Bubble UI.\n- Work with Kyle and figure out how skip Nearby Share onboarding prompts.\n- Add more test cases such as multiple files, text, etc.",
+      "revId": "1dda0396e84a36c41462b08fa05f432bf85cc928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
