@@ -75,6 +75,18 @@ var DxCancelledBadge = ui.FindParams{
 	Role: ui.RoleTypeStaticText,
 }
 
+// DxConnectivity export is used to find the Connectivity navigation item.
+var DxConnectivity = ui.FindParams{
+	Name: "Connectivity",
+	Role: ui.RoleTypeGenericContainer,
+}
+
+// DxNetworkList export is used to find the network list.
+var DxNetworkList = ui.FindParams{
+	ClassName: "diagnostics-cards-container",
+	Role: ui.RoleTypeGenericContainer,
+}
+
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
 func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	return ui.FindWithTimeout(ctx, tconn, diagnosticsRootNodeParams, 20*time.Second)
