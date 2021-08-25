@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"regexp"
+	"runtime"
 	"unicode/utf8"
 
 	"chromiumos/tast/common/testexec"
@@ -48,9 +49,19 @@ func VMPstoreDump(ctx context.Context, s *testing.State) {
 	if len(buf) > consoleBufferSize {
 		s.Errorf("The output is too long. It must be less than or equal to the buffer size (%d): %d", consoleBufferSize, len(buf))
 	}
-	if matched, err := regexp.MatchString(`^\[ *\d+\.\d+\] Linux version `, out); err != nil {
-		s.Error("Failed to check the output: ", err)
-	} else if !matched {
-		s.Error("Kernel's console output after booting should start with a string like \"[    0.000000] Linux version ...\" but it's not found in the result")
+	if runtime.GOARCH == "arm" || runtime.GOARCH == "arm64" {
+		if matched, err := regexp.MatchString(`^\[ *\d+\.\d+\] Booting Linux on physical CPU 0x`, out); err != nil {
+			s.Error("Failed to check the output: ", err)
+		} else if !matched {
+			s.Error("Kernel's console output after booting should start with a string like " +
+				"\"[    0.000000] Booting Linux on physical CPU 0x0000000000 ...\" but it's not found in the result")
+		}
+	} else {
+		if matched, err := regexp.MatchString(`^\[ *\d+\.\d+\] Linux version `, out); err != nil {
+			s.Error("Failed to check the output: ", err)
+		} else if !matched {
+			s.Error("Kernel's console output after booting should start with a string like " +
+				"\"[    0.000000] Linux version ...\" but it's not found in the result")
+		}
 	}
 }
