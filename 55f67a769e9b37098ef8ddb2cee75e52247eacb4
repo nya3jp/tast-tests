@@ -33,6 +33,23 @@
       "message": "LGTM, we may consider another approach that all the fixtures will implement its own GetChrome instead of modifying lacros.GetChrome()",
       "revId": "55f67a769e9b37098ef8ddb2cee75e52247eacb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b394bdb0_2928229b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-25T04:41:30Z",
+      "side": 1,
+      "message": "Great change. Thanks!",
+      "revId": "55f67a769e9b37098ef8ddb2cee75e52247eacb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
