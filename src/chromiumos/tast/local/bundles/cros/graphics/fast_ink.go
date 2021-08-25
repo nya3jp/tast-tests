@@ -79,7 +79,7 @@ func init() {
 			Name:              "arc_clamshell",
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{fastInkAPK},
-			Fixture:           "arcBooted",
+			Fixture:           "arcBootedInClamshellMode",
 			Val: fastInkTestParams{
 				arc:    true,
 				tablet: false,
@@ -116,7 +116,7 @@ func init() {
 			Name:              "arc_clamshell_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData:         []string{fastInkAPK},
-			Fixture:           "arcBooted",
+			Fixture:           "arcBootedInClamshellMode",
 			Val: fastInkTestParams{
 				arc:    true,
 				tablet: false,
