@@ -55,11 +55,19 @@ func create2VaultsForTesting(ctx context.Context, utility *hwsec.CryptohomeClien
 		return errors.Wrap(err, "failed to unmount vault before testing")
 	}
 
-	// Add a second vault key to simulate other login methods such as pin.
-	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false); err != nil {
+	// Add a second vault key.
+	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPassword2, util.Password2Label, false); err != nil {
 		return errors.Wrap(err, "failed to add key to vault for first user")
 	}
-	if err := utility.AddVaultKey(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, util.SecondPin, util.PinLabel, false); err != nil {
+	if err := utility.AddVaultKey(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, util.SecondPassword2, util.Password2Label, false); err != nil {
+		return errors.Wrap(err, "failed to add key to vault for second user")
+	}
+
+	// Add a third vault key, which is a le credential (PIN).
+	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, true); err != nil {
+		return errors.Wrap(err, "failed to add key to vault for first user")
+	}
+	if err := utility.AddVaultKey(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, util.SecondPin, util.PinLabel, true); err != nil {
 		return errors.Wrap(err, "failed to add key to vault for second user")
 	}
 
@@ -84,25 +92,33 @@ func cleanupVault(ctx context.Context, utility *hwsec.CryptohomeClient) (returne
 	return returnedErr
 }
 
-// checkVaultWorks will check that the vault specified by username, password and pin works in both mounting and unlock (CheckKeyEx).
-func checkVaultWorks(ctx context.Context, utility *hwsec.CryptohomeClient, username, password, pin string) error {
-	if err := utility.MountVault(ctx, username, password, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
-		return errors.Wrap(err, "failed to mount with password")
+// checkVaultWorks will check that the vault specified by username, both passwords and pin works in both mounting and unlock (CheckKeyEx).
+func checkVaultWorks(ctx context.Context, utility *hwsec.CryptohomeClient, username, password1, password2, pin string) error {
+	if err := utility.MountVault(ctx, username, password1, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+		return errors.Wrap(err, "failed to mount with password1")
+	}
+	if err := utility.UnmountAll(ctx); err != nil {
+		return errors.Wrap(err, "failed to unmount vault")
+	}
+	if err := utility.MountVault(ctx, username, password2, util.Password2Label, false, hwsec.NewVaultConfig()); err != nil {
+		return errors.Wrap(err, "failed to mount with password2")
 	}
 	if err := utility.UnmountAll(ctx); err != nil {
 		return errors.Wrap(err, "failed to unmount vault")
 	}
 	if err := utility.MountVault(ctx, username, pin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
-		return errors.Wrap(err, "failed to mount with password")
+		return errors.Wrap(err, "failed to mount with pin")
 	}
 	if err := utility.UnmountAll(ctx); err != nil {
 		return errors.Wrap(err, "failed to unmount vault")
 	}
 
-	if result, _ := utility.CheckVault(ctx, username, password, util.PasswordLabel); !result {
-		return errors.New("failed to check key with password")
+	if result, _ := utility.CheckVault(ctx, username, password1, util.PasswordLabel); !result {
+		return errors.New("failed to check key with password1")
 	}
-
+	if result, _ := utility.CheckVault(ctx, username, password2, util.Password2Label); !result {
+		return errors.New("failed to check key with password2")
+	}
 	if result, _ := utility.CheckVault(ctx, username, pin, util.PinLabel); !result {
 		return errors.New("failed to check key with pin")
 	}
@@ -113,10 +129,10 @@ func checkVaultWorks(ctx context.Context, utility *hwsec.CryptohomeClient, usern
 // checkBothVaultsAreOperational will check that both first user's vault and second user's vault are operational.
 func checkBothVaultsAreOperational(ctx context.Context, utility *hwsec.CryptohomeClient) error {
 	// Now test that logging in on both user works as expected.
-	if err := checkVaultWorks(ctx, utility, util.FirstUsername, util.FirstPassword, util.FirstPin); err != nil {
+	if err := checkVaultWorks(ctx, utility, util.FirstUsername, util.FirstPassword, util.FirstPassword2, util.FirstPin); err != nil {
 		return errors.Wrap(err, "first user's vault doesn't work")
 	}
-	if err := checkVaultWorks(ctx, utility, util.SecondUsername, util.SecondPassword, util.SecondPin); err != nil {
+	if err := checkVaultWorks(ctx, utility, util.SecondUsername, util.SecondPassword, util.SecondPassword2, util.SecondPin); err != nil {
 		return errors.Wrap(err, "second user's vault doesn't work")
 	}
 
@@ -127,7 +143,10 @@ func checkBothVaultsAreOperational(ctx context.Context, utility *hwsec.Cryptohom
 func checkOthersAreBlocked(ctx context.Context, utility *hwsec.CryptohomeClient) error {
 	// Mount should fail.
 	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err == nil {
-		return errors.Wrap(err, "second user is mountable with password after locking to single user")
+		return errors.Wrap(err, "second user is mountable with password1 after locking to single user")
+	}
+	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword2, util.Password2Label, false, hwsec.NewVaultConfig()); err == nil {
+		return errors.Wrap(err, "second user is mountable with password2 after locking to single user")
 	}
 	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPin, util.PinLabel, false, hwsec.NewVaultConfig()); err == nil {
 		return errors.Wrap(err, "second user is mountable with pin after locking to single user")
@@ -135,7 +154,10 @@ func checkOthersAreBlocked(ctx context.Context, utility *hwsec.CryptohomeClient)
 
 	// CheckKeyEx should fail too.
 	if result, _ := utility.CheckVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel); result {
-		return errors.New("check key succeeded after locking to single user")
+		return errors.New("check key succeeded with password1 after locking to single user")
+	}
+	if result, _ := utility.CheckVault(ctx, util.SecondUsername, util.SecondPassword2, util.Password2Label); result {
+		return errors.New("check key succeeded with password2 after locking to single user")
 	}
 	if result, _ := utility.CheckVault(ctx, util.SecondUsername, util.SecondPin, util.PinLabel); result {
 		return errors.New("check key succeeded with pin after locking to single user")
@@ -178,7 +200,7 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 	}
 
 	// Now mount the first user's vault and lock to single user mount.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword2, util.Password2Label, false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount the user for lock to single user mount: ", err)
 	}
 	if err := utility.LockToSingleUserMountUntilReboot(ctx, util.FirstUsername); err != nil {
@@ -196,7 +218,7 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 	}
 
 	// The first user's vault should still work (CheckKeyEx and MountEx).
-	if err := checkVaultWorks(ctx, utility, util.FirstUsername, util.FirstPassword, util.FirstPin); err != nil {
+	if err := checkVaultWorks(ctx, utility, util.FirstUsername, util.FirstPassword, util.FirstPassword2, util.FirstPin); err != nil {
 		s.Fatal("The first user's vault doesn't work after locking: ", err)
 	}
 

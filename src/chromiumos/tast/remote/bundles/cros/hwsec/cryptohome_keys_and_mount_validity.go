@@ -116,15 +116,15 @@ func testListKeysEx(ctx context.Context, utility *hwsec.CryptohomeClient) error 
 // testAddRemoveKeyEx tests that AddKeyEx() and RemoveKeyEx() work as expected.
 func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) error {
 	// AddKeyEx shouldn't work if password is incorrect.
-	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.IncorrectPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false); err == nil {
+	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.IncorrectPassword, util.PasswordLabel, util.FirstPassword2, util.Password2Label, false); err == nil {
 		return errors.New("add key succeeded when it shouldn't")
 	}
 
 	// AddKey should work if everything is correct.
-	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false); err != nil {
+	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPassword2, util.Password2Label, false); err != nil {
 		return errors.Wrap(err, "failed to add keys")
 	}
-	if err := checkKeysLabels(ctx, utility, []string{util.PasswordLabel, util.PinLabel}); err != nil {
+	if err := checkKeysLabels(ctx, utility, []string{util.PasswordLabel, util.Password2Label}); err != nil {
 		return errors.Wrap(err, "list of keys is incorrect after adding key")
 	}
 
@@ -132,7 +132,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	if err := checkMountState(ctx, utility, false); err != nil {
 		return errors.Wrap(err, "vault mounted before testing AddKeyEx")
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword2, util.Password2Label, false, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount vault with the added key")
 	}
 	if err := checkMountState(ctx, utility, true); err != nil {
@@ -143,7 +143,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstPassword, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "old key malfunctions while mounted with added key")
 	}
-	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PinLabel, util.FirstPin, util.IncorrectPassword); err != nil {
+	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.Password2Label, util.FirstPassword2, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "new key malfunctions while mounted with added key")
 	}
 	// Now unmount it.
@@ -153,16 +153,16 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 
 	// The old key should still work as expected.
 	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
-		return errors.Wrap(err, "failed to mount vault with the old key after adding pin")
+		return errors.Wrap(err, "failed to mount vault with the old key after adding new key")
 	}
 	if err := checkMountState(ctx, utility, true); err != nil {
-		return errors.Wrap(err, "vault not mounted after mounting with old key after adding pin")
+		return errors.Wrap(err, "vault not mounted after mounting with old key after adding new key")
 	}
 	// CheckKeyEx should work correctly with both the new and old key.
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstPassword, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "old key malfunctions while mounted with old key")
 	}
-	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PinLabel, util.FirstPin, util.IncorrectPassword); err != nil {
+	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.Password2Label, util.FirstPassword2, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "new key malfunctions while mounted with old key")
 	}
 	if err := unmountTestVault(ctx, utility); err != nil {
@@ -170,10 +170,10 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	}
 
 	// RemoveKeyEx should work, and test everything is alright after removing the key.
-	if err := utility.RemoveVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PinLabel); err != nil {
+	if err := utility.RemoveVaultKey(ctx, util.FirstUsername, util.FirstPassword2, util.Password2Label); err != nil {
 		return errors.Wrap(err, "failed to remove key")
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err == nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword2, util.Password2Label, false, hwsec.NewVaultConfig()); err == nil {
 		return errors.New("still can mount vault with removed key")
 	}
 	if err := checkMountState(ctx, utility, false); err != nil {

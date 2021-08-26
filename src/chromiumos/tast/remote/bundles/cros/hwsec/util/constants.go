@@ -8,19 +8,23 @@ package util
 const (
 	FirstUsername        = "pierredefermat@example.com"
 	FirstPassword        = "F131dTooSm@ll2C0nt@1nMyP@ssw0rd!!"
-	FirstChangedPassword = "a^n+b^n=c^n" // Got a great proof, but margin too small.
-	FirstPin             = "65537"       // 5th Fermat Number
+	FirstPassword2       = "F131dTooSm@ll2C0nt@1nMyP@ssw0rd2!!" // 5th Fermat Number
+	FirstChangedPassword = "a^n+b^n=c^n"                        // Got a great proof, but margin too small.
+	FirstPin             = "65537"                              // 5th Fermat Number
 
-	SecondUsername = "leonhardeuler@example.com"
-	SecondPassword = "e^(i*phi)=cos(phi)+i*sin(phi)"
-	SecondPin      = "271828" // e
-	ThirdUsername  = "pythagoras@example.com"
-	ThirdPassword  = "a^2+b^2=c^2"
+	SecondUsername  = "leonhardeuler@example.com"
+	SecondPassword  = "e^(i*phi)=cos(phi)+i*sin(phi)"
+	SecondPassword2 = "e^(i*theta)=cos(theta)+i*sin(theta)"
+	SecondPin       = "271828" // e
+	ThirdUsername   = "pythagoras@example.com"
+	ThirdPassword   = "a^2+b^2=c^2"
 
 	PasswordLabel        = "password"
 	ChangedPasswordLabel = "changed"
+	Password2Label       = "password2"
 	PinLabel             = "pin"
-	IncorrectPassword    = "ImJustGuessing~"
+
+	IncorrectPassword = "ImJustGuessing~"
 
 	TestFileName1   = "TESTFILE1"
 	TestFileContent = "TEST_CONTENT"
