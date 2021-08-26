@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9bcefbb_fa42325f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-26T07:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd713bd7_ea39294a",
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c99eeea_8a47224e",
@@ -65,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7b7733_d57e351e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-26T07:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be2edf02_de2174e6",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9feed21_2e585012",
@@ -88,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4deee311_19263586",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-26T07:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9feed21_2e585012",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49ecca43_48d68ae1",
@@ -101,6 +167,30 @@
       "writtenOn": "2021-08-24T22:12:09Z",
       "side": 1,
       "message": "I know you followed existing code pattern, but we don\u0027t have to use switch here.\n\nif tc.wantAllowed {\n　 // true case\n} else {\n　 // false case\n}",
+      "range": {
+        "startLine": 128,
+        "startChar": 10,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97047083_028dfbf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-26T07:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49ecca43_48d68ae1",
       "range": {
         "startLine": 128,
         "startChar": 10,
@@ -290,6 +380,30 @@
       "side": 1,
       "message": "EnsureGoneFor() actually returns success as soon as node disappear, without waiting for the timeout period.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/70cbb348d0af/src/chromiumos/tast/local/chrome/uiauto/automation.go#397\n\nIt is reported as an issue and still open.\nhttps://b.corp.google.com/issues/190596080",
       "parentUuid": "185f2fea_0ba3ca1d",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "532871a0_469a35fd",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-26T07:26:06Z",
+      "side": 1,
+      "message": "As the issue reported above, not using EnsureGoneFor() for now.",
+      "parentUuid": "bc403f0e_af011f51",
       "range": {
         "startLine": 61,
         "startChar": 0,
