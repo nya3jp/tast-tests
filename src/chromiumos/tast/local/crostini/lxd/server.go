@@ -203,9 +203,17 @@ func hashFile(h hash.Hash, file string) (hash.Hash, int64, error) {
 	return h, written, err
 }
 
+// flushResponse is required at the end of writing, to behave correctly as a streaming server.
+func flushResponse(w http.ResponseWriter) {
+	if fl, ok := w.(http.Flusher); ok {
+		fl.Flush()
+	}
+}
+
 // bytesHandler serves the given bytes to any HTTP requests.
 func bytesHandler(ctx context.Context, bytes []byte) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		defer flushResponse(w)
 		if _, err := w.Write(bytes); err != nil {
 			testing.ContextLogf(ctx, "Error: Couldn't write file requested from image server at url %s: %v", r.URL.Path, err)
 			return
@@ -217,6 +225,7 @@ func bytesHandler(ctx context.Context, bytes []byte) func(w http.ResponseWriter,
 // It ignores any directory in the request path, it only matches the filename.
 func fileHandler(ctx context.Context, metadataPath, rootfsPath string) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		defer flushResponse(w)
 		testing.ContextLogf(ctx, "File %s requested from tast lxd server", r.URL.Path)
 		_, filename := path.Split(r.URL.Path)
 		filepath := ""
