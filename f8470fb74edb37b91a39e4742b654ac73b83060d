@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb386b2_00272585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-26T13:17:34Z",
+      "side": 1,
+      "message": "PTAL\nVerification results\n2021-08-26T13:13:52.377937Z arc.ChromeVirtualKeyboard.unstable_vm                  [ SKIP ] missing SoftwareDeps: android_vm\n2021-08-26T13:13:52.377958Z arc.ChromeVirtualKeyboard.vm                           [ SKIP ] missing SoftwareDeps: android_vm\n2021-08-26T13:13:52.377977Z arc.ChromeVirtualKeyboard.unstable                     [ PASS ]\n2021-08-26T13:13:52.377996Z inputs.VirtualKeyboardJapaneseInputMode.informational  [ PASS ]\n",
+      "revId": "f8470fb74edb37b91a39e4742b654ac73b83060d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
