@@ -109,7 +109,7 @@ func ShareFilesCancel(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("click Share with Linux on My files and click button Cancel on the confirmation dialog",
 		sharedFolders.ShareMyFiles(ctx, filesApp),
 		ui.LeftClick(sharedfolders.ShareConfirmDialog.CancelButton),
-		ui.EnsureGoneFor(sharedfolders.ShareToastNotification.Toast, 5*time.Second),
+		ui.WaitUntilGone(sharedfolders.ShareToastNotification.Toast),
 		sharedFolders.CheckNoSharedFolders(cont, cr))(ctx); err != nil {
 		s.Fatal("Failed to test cancel share My files: ", err)
 	}
