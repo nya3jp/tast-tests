@@ -206,10 +206,28 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			// It is ok if the package is currently equal the installer package.
 			// It is also ok if the package is currently equal the play service package.
 			// It is also ok if the package is currently equal the android permission controller package
+			// It is also ok if the package is currently equal the settings package.
 			// This happens when you need to accept permissions.
+			var isPermissionApp bool
 			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
 				s.Fatal("Failed to get current app package: ", err)
-			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
+			} else if currentAppPkg != appPkgName {
+				for _, perAppPkg := range []struct {
+					permissionAppPkgNames string
+				}{
+					{"com.google.android.packageinstaller"}, {"com.google.android.gms"},
+					{"com.google.android.permissioncontroller"}, {"com.android.settings"},
+				} {
+					if currentAppPkg == perAppPkg.permissionAppPkgNames {
+						s.Log("Entered currentAppPkg check,", perAppPkg.permissionAppPkgNames)
+						isPermissionApp = true
+						break
+					}
+				}
+			}
+			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
+				s.Fatal("Failed to get current app package: ", err)
+			} else if !isPermissionApp && currentAppPkg != appPkgName {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)

@@ -100,16 +100,35 @@ func Inkredible(ctx context.Context, s *testing.State) {
 // verify Inkredible reached main activity page of the app.
 func launchAppForInkredible(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowButtonText    = "ALLOW"
-		noThanksButtonText = "No, thanks."
+		allowButtonText      = "ALLOW"
+		noThanksButtonText   = "No, thanks."
+		toggleButtonID       = "android:id/switch_widget"
+		imageButtonClassName = "android.widget.ImageButton"
+		navigationDes        = "Back"
 	)
 
 	// Click on allow button to access your photos, media and files.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+allowButtonText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := allowButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("Allow Button doesn't exist: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
+	}
+
+	// Enable on toggle button to allow access to manage file.
+	enableToggleButton := d.Object(ui.ID(toggleButtonID))
+	if err := enableToggleButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("enableToggleButton doesn't exist: ", err)
+	} else if err := enableToggleButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enableToggleButton: ", err)
+	}
+
+	// Click on navigation button to goto app screen.
+	clickOnNavigationButton := d.Object(ui.ClassName(imageButtonClassName), ui.DescriptionMatches("(?i)"+navigationDes))
+	if err := clickOnNavigationButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnNavigationButton doesn't exist: ", err)
+	} else if err := clickOnNavigationButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNavigationButton: ", err)
 	}
 
 	// Click on noThanks Button.
