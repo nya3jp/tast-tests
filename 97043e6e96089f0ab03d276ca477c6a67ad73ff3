@@ -103,6 +103,29 @@
       "parentUuid": "7f24c9a4_96b788bf",
       "revId": "97043e6e96089f0ab03d276ca477c6a67ad73ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f41e74b_6100c410",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-26T05:47:43Z",
+      "side": 1,
+      "message": "Or you can adopt the retErr checking pattern like: \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go;rcl\u003dc17c000abe1e498bfbab9283d5c2ca7f7b9645ed;l\u003d47\n\nSo not only windowReady, but any error thrown inside this function after defer will trigger clean up.",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 3
+      },
+      "revId": "97043e6e96089f0ab03d276ca477c6a67ad73ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
