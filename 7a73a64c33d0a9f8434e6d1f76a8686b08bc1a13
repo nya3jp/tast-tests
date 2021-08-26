@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f3ccb8_5af71979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-26T20:07:56Z",
+      "side": 1,
+      "message": "We decided to not verify the smoothness so we probably dont need to add display requirement here.",
+      "parentUuid": "ef6416d8_526a2301",
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3aab1f9_1952c7c2",
@@ -82,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b54fd0b_95b224d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-26T20:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a714a491_d3fb6eaf",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 64
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed15fd67_42d8f076",
@@ -105,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3aa126f_057b4f59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-26T20:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed15fd67_42d8f076",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9019b669_f9d359cb",
@@ -118,6 +184,30 @@
       "writtenOn": "2021-08-23T15:59:52Z",
       "side": 1,
       "message": "Would \"oldBounds \u003d\u003d newBounds\" work?",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 66
+      },
+      "revId": "7a73a64c33d0a9f8434e6d1f76a8686b08bc1a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a65bca_1752d057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-26T20:07:56Z",
+      "side": 1,
+      "message": "Just realized we can compare two structures with \u003d\u003d if fields are comparable..Thanks!",
+      "parentUuid": "9019b669_f9d359cb",
       "range": {
         "startLine": 90,
         "startChar": 4,
