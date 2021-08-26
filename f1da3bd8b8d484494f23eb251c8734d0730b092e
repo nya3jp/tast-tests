@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ed1c20_ce850bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-26T13:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84346ada_8c627101",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfa700ce_729c394f",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31787206_b91a13ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-26T13:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa700ce_729c394f",
+      "range": {
+        "startLine": 93,
+        "startChar": 23,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b263c9b_4884d36c",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-26T01:58:22Z",
       "side": 1,
       "message": "Usually just : is enough. The same comment for other info.",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 49
+      },
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c1461e_eb748ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-26T13:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b263c9b_4884d36c",
       "range": {
         "startLine": 98,
         "startChar": 42,
