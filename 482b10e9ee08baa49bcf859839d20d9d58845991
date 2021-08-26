@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92960c52_dcfdf2d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-26T18:26:21Z",
+      "side": 1,
+      "message": "The above looks a lot like what NewModemWithSim does already. Can we just use that?",
+      "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6486b8ee_43a524e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
         "patchSetId": 2
@@ -14,6 +31,58 @@
       "writtenOn": "2021-08-26T15:46:27Z",
       "side": 1,
       "message": "These D-Bus calls (disable, enable, connect, disconnect) are just one function call; it might be better if they were inlined.\n\nAlso, errors are not checked for any of them or any of the ensure*() functions.",
+      "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3c82a6_7db907a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-26T18:26:21Z",
+      "side": 1,
+      "message": "+1, inlined these would just look like:\n\n\tif err :\u003d modem.Call(ctx, mmconst.ModemDisable, true).Err; err !\u003d nil {\n\t\ts.Fatal(\"Disable failed: \", err)\n\t}\n\nAlso note that we should use an entry in mmconst for \"Disable\", etc.",
+      "parentUuid": "6486b8ee_43a524e9",
+      "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2df830_3574e894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-26T18:26:21Z",
+      "side": 1,
+      "message": "We will want to remove any commented out code before landing this. This seems like a good candidate for a Modem function eventually, but as-is we can just inline \"None\" in the test :-)",
+      "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a700fbc4_07165a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-26T18:26:21Z",
+      "side": 1,
+      "message": "We should make this a Modem helper function. Same with the \"ensure\" functions.",
       "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
