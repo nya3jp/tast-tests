@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2150b377_a4fc875a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-26T23:15:29Z",
+      "side": 1,
+      "message": "I think this might cause flakiness because it sometime takes time for an item to disappear. E.g, it takes an item 1 second to disappear, then the first round of poll would fail because it is still there.\nWe may have two ways to address this:\n1. Still use the current code for EnsureGoneFor, but document and ask the callers to call WaitUntilGone first.\n2. Change implementation for EnsureGoneFor to call WaitUntilGone first then make sure no item found in the rest of time. Then we might need to change the name from EnsureGoneFor to WaitAndEnsureGoneFor. It would be a bit tricky how to split the time for WaitUntilGone and the rest.\n\nWDYT?",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 61
+      },
+      "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50ffdcec_19e3fcc0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 3
