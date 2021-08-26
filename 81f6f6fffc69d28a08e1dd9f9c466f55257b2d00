@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654ad71e_9241a993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-26T20:11:29Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "81f6f6fffc69d28a08e1dd9f9c466f55257b2d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9f1f98_07b4ae9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_and_drop_window.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-26T20:11:29Z",
+      "side": 1,
+      "message": "nit: Nuke this empty line.",
+      "revId": "81f6f6fffc69d28a08e1dd9f9c466f55257b2d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
