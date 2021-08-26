@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6beb59_39288643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-08-26T01:44:23Z",
+      "side": 1,
+      "message": "Added an android application, and corresponding tast test for testing the zoom in/zoom out functionality on the touchscreen.",
+      "revId": "c415423036e8befd858126fdc4b1bc96cf060e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
