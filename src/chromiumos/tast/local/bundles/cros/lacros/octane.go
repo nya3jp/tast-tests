@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Fixture:      "lacrosStartedByData",
+		Fixture:      "lacros",
 	})
 }
 

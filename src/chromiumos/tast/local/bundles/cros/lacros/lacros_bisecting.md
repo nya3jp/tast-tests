@@ -51,7 +51,7 @@ Optionally, you may have to deploy the Chromium OS Chromium version as well:
 ```
 
 Then run the given Tast test. N.B. that the Tast test must use the
-lacrosStartedByData fixture or a variant of it for setting
+lacros fixture or a variant of it for setting
 `lacrosDeployedBinary` to work.
 
 ```sh
