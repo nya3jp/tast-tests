@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ash"
@@ -193,10 +194,8 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 					s.Errorf("Virtual keyboard did not show up: %s", err)
 				}
 			} else {
-				// TODO(b/190596080): Change to aui.EnsureGoreFor once the
-				// problem is resolved.
 				// Confirm that the virtual keyboard does not exist.
-				if err := uia.WaitUntilExists(vkNode)(ctx); err == nil {
+				if err := uia.EnsureGoneFor(vkNode, 15*time.Second)(ctx); err != nil {
 					s.Error("Virtual keyboard has shown")
 				}
 			}
