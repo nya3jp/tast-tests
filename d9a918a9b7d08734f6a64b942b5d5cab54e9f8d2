@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52902d2e_2176d889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-08-26T21:19:45Z",
+      "side": 1,
+      "message": "SGTM. The current behavior of the test is that if an expected mount is not found, it is logged but does not fail the test. In that case, we can add /run/arcvm to ARCExpectedSharedMountsCommon regardless of whether vm_concierge is present/running. \n\nI think we should still keep the WaitForJobStatus (with 1 second like you suggested) to make it less racy and catch the vm_concierge mounts more often.",
+      "parentUuid": "6419658d_069e5401",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d8c586a_888e0d7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
         "patchSetId": 2
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca42e776_078a50ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-08-26T21:19:45Z",
+      "side": 1,
+      "message": "So I added a testing.Sleep(30s) call right before testBody to see what other mounts we might be missing because we check right after starting the guest session. In addition to /run/arc/media and /run/arcvm, I also see (from guest-shared_mounts.txt):\n\n  /run/arc/shared_mounts\n  /run/arc/sdcard\n  /run/arc/obb\n  /run/arc/adbd\n  \nThis kinda makes sense because most of these are created in ArcSetup::OnSetup, which IIUC is called before login [1] to set up the mini-container. I guess we should move these from ARCExpectedSharedMountsUser to ARCExpectedSharedMountsCommon.\n\nIt appears that ArcSetup::OnSetup usually doesn\u0027t finish before the guest session is started, so the test usually misses these mounts (which is probably why we haven\u0027t detected them until now). \n\nTo address this, should I add any sort of wait/sleep after starting the session but before we call testBody? It\u0027s not strictly necessary because the test won\u0027t fail if the mounts are expected but absent, but it would allow us to get a more accurate snapshot of the mounts on the system.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform2/arc/setup/arc_setup.cc;rcl\u003d751b9acde5eafdffbc2acfb2df100bc38b9a3c9f;l\u003d1442",
+      "parentUuid": "6d8c586a_888e0d7b",
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4011d162_fb16bca0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
         "patchSetId": 2
@@ -54,6 +96,24 @@
       "writtenOn": "2021-08-25T21:23:59Z",
       "side": 1,
       "message": "Remove this.",
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53665416_19e65c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-08-26T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4011d162_fb16bca0",
       "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
