@@ -51,6 +51,24 @@
       "parentUuid": "29e63036_7b070dff",
       "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a3790b_96ba33dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-08-26T01:48:46Z",
+      "side": 1,
+      "message": "It\u0027s usually defined in .config, e.g. v5.10-arcvm/arch/x86/configs/x86_64_arcvm_defconfig\n\n\n`CONFIG_RCU_CPU_STALL_TIMEOUT\u003d60`",
+      "parentUuid": "914ff891_6eec6e73",
+      "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
