@@ -9,9 +9,9 @@ import (
 	"os"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	applauncher "chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 

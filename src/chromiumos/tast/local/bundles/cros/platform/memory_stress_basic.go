@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/memorystress"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )

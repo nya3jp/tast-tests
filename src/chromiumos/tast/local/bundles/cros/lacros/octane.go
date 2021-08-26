@@ -13,8 +13,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/lacros"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 

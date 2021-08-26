@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
-	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"

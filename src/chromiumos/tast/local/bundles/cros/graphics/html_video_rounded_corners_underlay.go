@@ -13,9 +13,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )

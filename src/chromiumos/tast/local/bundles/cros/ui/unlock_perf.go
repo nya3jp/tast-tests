@@ -14,9 +14,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )

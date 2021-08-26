@@ -10,9 +10,9 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/testing"
 )
 

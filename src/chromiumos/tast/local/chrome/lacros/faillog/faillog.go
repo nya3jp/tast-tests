@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 )
 
 // Save stores Lacros related log files into outdir.

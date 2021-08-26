@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
