@@ -16,6 +16,63 @@
       "message": "LGTM % comment. Thanks!",
       "revId": "5e3dbe9a7b27b3e690460d27baa4bd20a4b4150e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce73d8c_de8344f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-26T16:42:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "5e3dbe9a7b27b3e690460d27baa4bd20a4b4150e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8884dee4_b8de096a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-26T16:42:01Z",
+      "side": 1,
+      "message": "nit: what about including the name of the directory that was attempted to be created in the error message?",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 57
+      },
+      "revId": "5e3dbe9a7b27b3e690460d27baa4bd20a4b4150e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df7d281_66835969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-26T16:42:01Z",
+      "side": 1,
+      "message": "nit: In case graceful termination fails what about sending SIGKILL to force process to stop - as a clean up.",
+      "revId": "5e3dbe9a7b27b3e690460d27baa4bd20a4b4150e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
