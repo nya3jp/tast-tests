@@ -22,6 +22,30 @@
       },
       "revId": "cc30b5d74261af4f8e3b65e91d60f7371734a681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ddcf51_e2169ded",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-08-26T22:04:17Z",
+      "side": 1,
+      "message": "Hi Tatsuhisa, I think we can rely on some highlevel polling constructs on automation.go to achieve this. The correct implementation of `EnsureGoneFor` would be a perfect fit to this.",
+      "parentUuid": "ed10a9c4_a16fca58",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "cc30b5d74261af4f8e3b65e91d60f7371734a681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
