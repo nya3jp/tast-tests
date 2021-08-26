@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f8f446_f237d4b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "I copied it from another service, I thought it is needed here for some reason.\nRemoved.",
+      "parentUuid": "3f43cc47_f33a7f5a",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 39
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bc488a3_54230e1f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-25T21:07:32Z",
       "side": 1,
       "message": "This can be left as an empty string and it will default to tmp",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4d1f10_02130dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc488a3_54230e1f",
       "range": {
         "startLine": 43,
         "startChar": 29,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fda99fa_a053196a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "No reason, replaced it with nil.",
+      "parentUuid": "6e9dcb9f_4c221836",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb5db59d_9c17db7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-25T21:07:32Z",
       "side": 1,
       "message": "Should this be an error condition? Or is it possible for the process to stop after sending the signal?",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 76
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc012657_793861d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "I was only considering a case when it is run from a defer() call. But returning here makes sense.",
+      "parentUuid": "eb5db59d_9c17db7a",
       "range": {
         "startLine": 121,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d82d7c_8abd2faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "a5aa7868_4851a337",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 69
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4516a4a9_32ea13b7",
@@ -135,6 +255,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be019128_9457ff17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "ioutil.TempDir() says the cleanup is not automatic, and should be done from code.\nAlthough the dir is inside of /tmp/, I prefer to release a resource after it is no longer needed.",
+      "parentUuid": "4516a4a9_32ea13b7",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "362daa47_26d0a15e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
         "patchSetId": 1
@@ -146,6 +284,24 @@
       "writtenOn": "2021-08-25T21:07:32Z",
       "side": 1,
       "message": "You can just use s.Log here and remove the %s from the text.",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925937cf_82f724f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "362daa47_26d0a15e",
       "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -169,6 +325,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfaeb2d3_9684d22d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "It is separate function so the defer() calls are executed before DUT restart.",
+      "parentUuid": "2a081827_caa540aa",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "817114dd_1fa64d09",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
         "patchSetId": 1
@@ -180,6 +354,24 @@
       "writtenOn": "2021-08-25T21:07:32Z",
       "side": 1,
       "message": "optional: maybe wrap this line and some of the other very long lines in this file.",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bccfc0b_50fc0038",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817114dd_1fa64d09",
       "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +393,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4daea108_23975e3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d728512_ae616e29",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86ab4656_6f95636e",
@@ -214,6 +424,30 @@
       "writtenOn": "2021-08-25T21:07:32Z",
       "side": 1,
       "message": "nit: failed to get version from lsb-release content",
+      "range": {
+        "startLine": 283,
+        "startChar": 41,
+        "endLine": 283,
+        "endChar": 68
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dceb74_76873a03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86ab4656_6f95636e",
       "range": {
         "startLine": 283,
         "startChar": 41,
