@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "646484c6_fcd5ed62",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-26T21:14:00Z",
+      "side": 1,
+      "message": "High visibility should be good enough for ARC Nearby Share testing purposes.  We don\u0027t need to test in-contact sharing flows for ARC as that\u0027s already covered by CrOS nearby share tast tests and the ARC-specific code doesn\u0027t affect these flows.",
+      "parentUuid": "f29d67d0_25e40c01",
+      "range": {
+        "startLine": 163,
+        "startChar": 11,
+        "endLine": 163,
+        "endChar": 54
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69c9f636_2fe8ecab",
@@ -114,6 +138,53 @@
         "startChar": 1,
         "endLine": 152,
         "endChar": 119
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac07d73d_f8fb25c6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-26T21:14:00Z",
+      "side": 1,
+      "message": "Seems fine to use this for now and adjust as needed.",
+      "parentUuid": "8916f481_4e1429bc",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 119
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d052ff9_9b1080ae",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-26T21:14:00Z",
+      "side": 1,
+      "message": "optional nit:  Should `a` be `arc`?  I know tast tests doesn\u0027t emphasize descriptive naming but \"f.a\" seems a bit too ambiguous.",
+      "range": {
+        "startLine": 177,
+        "startChar": 21,
+        "endLine": 177,
+        "endChar": 24
       },
       "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
