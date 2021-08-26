@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "e8353cc958c4b8b13009cec96c4c793dc0334f19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca96614e_3807c881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-26T23:06:07Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m offline today. Anyway Alexander\u0027s +2 is sufficient for Tast reviews.",
+      "revId": "e8353cc958c4b8b13009cec96c4c793dc0334f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
