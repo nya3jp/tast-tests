@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be08d862_0a252d15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-08-26T13:25:52Z",
+      "side": 1,
+      "message": "Hi Polina,\n\nI noticed that this timeout issue happens very frequently on Tastboard. It should be fixed by retrying. Please take a look!",
+      "revId": "dafe2e893bcc8d0aba4890298ecdbb7d35ea1573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
