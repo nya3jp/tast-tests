@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	downloadURI = "content://org.chromium.arc.file_system.fileprovider/download/storage.txt"
+	downloadURI = "content://org.chromium.arc.volumeprovider/download/storage.txt"
 )
 
 func init() {
