@@ -16,6 +16,29 @@
       "message": "PTAL.\n\nVerification results;\n2021-08-26T13:06:11.772170Z crostini.ShareFolders.bullseye_unstable  [ SKIP ] ModelId did not match\n2021-08-26T13:06:11.772313Z crostini.ShareFolders.buster_unstable    [ SKIP ] ModelId did not match\n2021-08-26T13:06:11.772413Z crostini.ShareFolders.stretch_unstable   [ SKIP ] ModelId did not match\n2021-08-26T13:06:11.772427Z crostini.ShareFolders.bullseye_stable    [ PASS ]\n2021-08-26T13:06:11.772439Z crostini.ShareFolders.buster_stable      [ PASS ]\n2021-08-26T13:06:11.772450Z crostini.ShareFolders.stretch_stable     [ PASS ]",
       "revId": "86bba23c7cc758f9660c6669484ffea453cf6b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7a224d_3908aa51",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-26T23:21:33Z",
+      "side": 1,
+      "message": "I think we need both WaitUntilGone and EnsureGoneFor here if we keep the implementation of EnsureGoneFor as in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3122648.",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 20
+      },
+      "revId": "86bba23c7cc758f9660c6669484ffea453cf6b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
