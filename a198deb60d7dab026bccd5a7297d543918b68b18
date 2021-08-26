@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "022f85ab_bca95874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-26T15:50:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1fda99fa_a053196a",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb5db59d_9c17db7a",
@@ -271,6 +295,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b177da_1c4b6ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/nebraska_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-26T15:50:29Z",
+      "side": 1,
+      "message": "I think the cleanup will be preformed by the system if it\u0027s put in the correct place (which it currently is). But it\u0027s fine if you want to remove it explicitly.",
+      "parentUuid": "be019128_9457ff17",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "362daa47_26d0a15e",
@@ -337,6 +379,24 @@
       "side": 1,
       "message": "It is separate function so the defer() calls are executed before DUT restart.",
       "parentUuid": "2a081827_caa540aa",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1878ceb2_2bb29cb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-26T15:50:29Z",
+      "side": 1,
+      "message": "Ack. Could you add a comment on what the function does or make it a separate function in the file?",
+      "parentUuid": "bfaeb2d3_9684d22d",
       "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
