@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140e107d_3314bbd9",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T14:10:36Z",
+      "side": 1,
+      "message": "The function does not use ctx.\nThere are only 2 uses of this function outside of the package.\nEliot, what do you think? Can it be removed in the CL, or there should be a new one for this?",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "3454e9d27ad2235ca441c2c9908c24a6e75dd140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f89d7b94_9b074572",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T14:10:36Z",
+      "side": 1,
+      "message": "The function does not use ctx.",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "3454e9d27ad2235ca441c2c9908c24a6e75dd140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
