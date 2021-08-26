@@ -24,23 +24,23 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{
 			{
-				Fixture:           "lacrosStartedByDataUI",
+				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 			{
 				Name:              "unstable",
-				Fixture:           "lacrosStartedByDataUI",
+				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:      "rootfs",
-				Fixture:   "lacrosStartedFromRootfs",
+				Fixture:   "lacrosRootfs",
 				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:              "omaha",
-				Fixture:           "lacrosStartedByOmaha",
+				Fixture:           "lacrosOmaha",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 				ExtraAttr:         []string{"informational"},
 			}},

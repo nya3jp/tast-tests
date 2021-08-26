@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacrosStartedByData",
+		Fixture:      "lacros",
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},

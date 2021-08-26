@@ -62,7 +62,7 @@ func init() {
 		Desc:     "Logged into a user session for graphics testing (lacros)",
 		Contacts: []string{"lacros-team@google.com"},
 		Parent:   "gpuWatchDog",
-		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.NewFixture(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,

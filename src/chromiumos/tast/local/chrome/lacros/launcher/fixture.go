@@ -20,9 +20,9 @@ import (
 // This should be used by any lacros fixtures defined outside this file.
 const LacrosDeployedBinary = "lacrosDeployedBinary"
 
-// NewStartedByData creates a new fixture that can launch Lacros chrome with the given setup mode and
+// NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
-func NewStartedByData(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
+func NewFixture(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &fixtureImpl{
 		mode: mode,
 		fOpt: fOpt,
@@ -30,13 +30,13 @@ func NewStartedByData(mode SetupMode, fOpt chrome.OptionsCallback) testing.Fixtu
 }
 
 func init() {
-	// lacrosStartedByData uses a pre-built image downloaded from cloud storage as a
+	// lacros uses a pre-built image downloaded from cloud storage as a
 	// data-dependency. This fixture should be used by tests that start lacros from the lacros/launcher package.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByData",
+		Name:     "lacros",
 		Desc:     "Lacros Chrome from a pre-built image",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -46,13 +46,13 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosStartedByDataBypassPermissions is the same as lacrosStartedByData but
+	// lacrosBypassPermissions is the same as lacros but
 	// camera/microphone permissions are enabled by default.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByDataBypassPermissions",
+		Name:     "lacrosBypassPermissions",
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream")}, nil
 		}),
@@ -63,13 +63,13 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosStartedByDataWith100FakeApps is the same as lacrosStartedByData but
+	// lacrosWith100FakeApps is the same as lacros but
 	// creates 100 fake apps that are shown in the ash-chrome launcher.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByDataWith100FakeApps",
+		Name:     "lacrosWith100FakeApps",
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		Parent:          "install100Apps",
@@ -80,13 +80,13 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosStartedByDataForceComposition is the same as lacrosStartedByData but
+	// lacrosForceComposition is the same as lacros but
 	// forces composition for ash-chrome.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByDataForceComposition",
+		Name:     "lacrosForceComposition",
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -96,14 +96,14 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosStartedByDataUI is similar to lacrosStartedByData but should be used
+	// lacrosUI is similar to lacros but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByDataUI",
+		Name:     "lacrosUI",
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosSupport")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -113,14 +113,14 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosStartedByOmaha is a fixture to enable Lacros by feature flag in Chrome.
+	// lacrosOmaha is a fixture to enable Lacros by feature flag in Chrome.
 	// This does not require downloading a binary from Google Storage before the test.
 	// It will use the currently available fishfood release of Lacros from Omaha.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByOmaha",
+		Name:     "lacrosOmaha",
 		Desc:     "Lacros Chrome from omaha",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewStartedByData(Omaha, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(Omaha, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.EnableFeatures("LacrosSupport"),
 				chrome.ExtraArgs("--lacros-selection=stateful"),
@@ -131,13 +131,13 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	// lacrosStartedFromRootfs is a fixture to bring up Lacros from the rootfs partition.
+	// lacrosRootfs is a fixture to bring up Lacros from the rootfs partition.
 	// This does not require downloading a binary from Google Storage before the tests.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedFromRootfs",
+		Name:     "lacrosRootfs",
 		Desc:     "Lacros Chrome from rootfs",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
-		Impl: NewStartedByData(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.EnableFeatures("LacrosSupport"),
 				chrome.ExtraArgs("--lacros-selection=rootfs"),
@@ -156,7 +156,7 @@ const (
 	mojoSocketPath = "/tmp/lacros.socket"
 
 	// DataArtifact holds the name of the tarball which contains the lacros-chrome
-	// binary. When using the lacrosStartedByData fixture, you must list this as one
+	// binary. When using the lacros fixture, you must list this as one
 	// of the data dependencies of your test.
 	DataArtifact = "lacros_binary.tar"
 
