@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f753064f_7284a416",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T13:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33987e27_bd974909",
+      "range": {
+        "startLine": 296,
+        "startChar": 30,
+        "endLine": 298,
+        "endChar": 25
+      },
+      "revId": "59a16b1fc7c7a74af1891e22ab40fa076856387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "121a5335_987f6af6",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-26T13:17:08Z",
       "side": 1,
       "message": "I heard this policy is deprecated, and if the LacrosAvailability is set, that is enough. Can you try it without this?",
+      "range": {
+        "startLine": 302,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 47
+      },
+      "revId": "59a16b1fc7c7a74af1891e22ab40fa076856387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5183b7_d93219b0",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T13:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121a5335_987f6af6",
       "range": {
         "startLine": 302,
         "startChar": 2,
