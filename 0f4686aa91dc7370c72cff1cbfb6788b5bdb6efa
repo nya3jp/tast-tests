@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e37c6e6_75d846eb",
+        "filename": "android/ArcStandardizedKeyboardTest/src/org/chromium/arc/testapp/arcstandardizedkeyboardtest/KeysTestActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-26T00:21:59Z",
+      "side": 1,
+      "message": "Ah I see. I missed they are the same name. It\u0027s okay to use this in this context.",
+      "parentUuid": "0b7ee818_e33a33ff",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "0f4686aa91dc7370c72cff1cbfb6788b5bdb6efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3e56077_07260b73",
