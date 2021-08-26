@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c05db6a_6e80684a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-26T17:37:25Z",
+      "side": 1,
+      "message": "No code change. Just update the Cq-Depends because OTAs are updated.",
+      "revId": "066856c5f4d57ac8b20544582f40a45204c90286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
