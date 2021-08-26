@@ -39,6 +39,30 @@
       },
       "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ecd936_e654002a",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-08-26T16:13:00Z",
+      "side": 1,
+      "message": "Thanks for addressing this concern! \nIMHO it would be nice to consider having these naming/structure similar to ash-chrome as much as possible so that test writers can easily understand how to use them between ash or lacros in general. \n\nAn example in mind is that\nchrome.NewLogginInFixture (in ash-chrome chromiumos/tast/local/chrome/fixture.go)\ncould be matching\nlacros.New\u003cAnyDesiredStateOrNoneByDefault\u003eFixture (in lacros-chrome)\n\nI think changing the package name \u0027launcher\u0027 to \u0027lacros\u0027 makes it more clear, which could probably be done as a part of https://crbug.com/1237972 it seems.",
+      "parentUuid": "370b73ae_744f0bff",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
