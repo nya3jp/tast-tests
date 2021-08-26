@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69c62a7_f8790d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-26T05:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eec01cb_c2672e77",
+      "range": {
+        "startLine": 515,
+        "startChar": 4,
+        "endLine": 515,
+        "endChar": 31
+      },
+      "revId": "27a3cf3c74b4a08edff3e2832fd2cb953b729101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6daffc54_58b0b6b4",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "205e52e5_b06b07a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-26T05:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6daffc54_58b0b6b4",
+      "range": {
+        "startLine": 553,
+        "startChar": 4,
+        "endLine": 553,
+        "endChar": 29
+      },
+      "revId": "27a3cf3c74b4a08edff3e2832fd2cb953b729101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e991fe7f_d330b38c",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-08-24T09:16:15Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 565,
+        "startChar": 4,
+        "endLine": 565,
+        "endChar": 26
+      },
+      "revId": "27a3cf3c74b4a08edff3e2832fd2cb953b729101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03bae7a_db7da7e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-26T05:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e991fe7f_d330b38c",
       "range": {
         "startLine": 565,
         "startChar": 4,
