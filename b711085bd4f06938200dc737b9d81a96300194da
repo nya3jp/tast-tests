@@ -33,6 +33,24 @@
       "message": "nit: this line might be worth wrapping",
       "revId": "b711085bd4f06938200dc737b9d81a96300194da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f558d5_eabb703b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-26T05:56:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43af7c24_5373f575",
+      "revId": "b711085bd4f06938200dc737b9d81a96300194da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
