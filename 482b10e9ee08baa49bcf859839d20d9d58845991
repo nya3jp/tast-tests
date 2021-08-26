@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6486b8ee_43a524e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-26T15:46:27Z",
+      "side": 1,
+      "message": "These D-Bus calls (disable, enable, connect, disconnect) are just one function call; it might be better if they were inlined.\n\nAlso, errors are not checked for any of them or any of the ensure*() functions.",
+      "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87a3498_3523f850",
+        "filename": "src/chromiumos/tast/local/modemmanager/modemmanager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-08-26T15:46:27Z",
+      "side": 1,
+      "message": "ModemManager1",
+      "range": {
+        "startLine": 14,
+        "startChar": 57,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "482b10e9ee08baa49bcf859839d20d9d58845991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
