@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5976f95_1cc9abf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-26T01:12:21Z",
+      "side": 1,
+      "message": "LGTM as a Tast owners. How about adding another reviewer who knows more about the diagnostics?",
+      "revId": "5b224397c7b4424524bb702de1abd185de1af77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
