@@ -79,8 +79,12 @@ type PageSize string
 
 // The available page size options.
 const (
+	PageSizeA3            PageSize = "A3"
 	PageSizeA4            PageSize = "A4"
+	PageSizeB4            PageSize = "B4"
+	PageSizeLegal         PageSize = "Legal"
 	PageSizeLetter        PageSize = "Letter"
+	PageSizeTabloid       PageSize = "Tabloid"
 	PageSizeFitToScanArea PageSize = "Fit to scan area"
 )
 
