@@ -393,12 +393,31 @@ func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	}
 }
 
+// ErrNodeAppeared is returned if node is expected not to be visible
+var ErrNodeAppeared = errors.New("node appeared when it should not")
+
+// ErrNodeNotFound is returned if node is not found
+var ErrNodeNotFound = errors.New("node not found")
+
 // EnsureGoneFor returns a function that check the specified node does not exist for the timeout period.
 func (ac *Context) EnsureGoneFor(finder *nodewith.Finder, duration time.Duration) Action {
 	return func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			return ac.Gone(finder)(ctx)
-		}, &testing.PollOptions{Timeout: duration})
+		testing.ContextLogf(ctx, "Making sure node %v does not appear", finder.Pretty())
+		pollError := testing.Poll(ctx,
+			func(ctx context.Context) error {
+				if result := ac.Exists(finder)(ctx); result == nil {
+					// If node exists break the poll immediately with error.
+					return testing.PollBreak(ErrNodeAppeared)
+				}
+				return ErrNodeNotFound
+			},
+			&testing.PollOptions{Timeout: duration},
+		)
+
+		if errors.Is(pollError, ErrNodeAppeared) {
+			return pollError
+		}
+		return nil
 	}
 }
 
