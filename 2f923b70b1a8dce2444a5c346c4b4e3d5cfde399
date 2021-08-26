@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17349b55_2b6418c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-08-26T22:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19a19593_1dc55f62",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "2f923b70b1a8dce2444a5c346c4b4e3d5cfde399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1987dce1_7bd8abbf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T14:34:29Z",
       "side": 1,
       "message": "I would be a bit more explicit here for posterity and add \" because   the local server used in test terminates the TCP connection without using the PSH bit.\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "2f923b70b1a8dce2444a5c346c4b4e3d5cfde399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2346ab09_97423f8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-08-26T22:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1987dce1_7bd8abbf",
       "range": {
         "startLine": 11,
         "startChar": 0,
