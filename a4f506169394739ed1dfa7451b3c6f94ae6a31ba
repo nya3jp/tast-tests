@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef73e5d2_898f3c01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-26T21:49:03Z",
+      "side": 1,
+      "message": "We shouldn\u0027t do that. Adding sleep(/*seconds\u003d*/2) is the hallmark of bad code smell. And it could lead to more flakiness. Why 2 seconds? Why not 10?",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "a4f506169394739ed1dfa7451b3c6f94ae6a31ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "de59d9b9_10b914fc",
