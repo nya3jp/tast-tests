@@ -16,6 +16,23 @@
       "message": "This is a friendly ping for review. If I should pick another tast-owners@ to move forward, please let me know.",
       "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ffe212_aaa7125e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-26T15:54:14Z",
+      "side": 1,
+      "message": "Dean mentioned he\u0027d be able to review as an owner. Updating reviewers with this in mind.",
+      "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
