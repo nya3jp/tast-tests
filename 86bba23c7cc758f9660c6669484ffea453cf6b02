@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab8b885_643a1072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-26T13:07:29Z",
+      "side": 1,
+      "message": "PTAL.\n\nVerification results;\n2021-08-26T13:06:11.772170Z crostini.ShareFolders.bullseye_unstable  [ SKIP ] ModelId did not match\n2021-08-26T13:06:11.772313Z crostini.ShareFolders.buster_unstable    [ SKIP ] ModelId did not match\n2021-08-26T13:06:11.772413Z crostini.ShareFolders.stretch_unstable   [ SKIP ] ModelId did not match\n2021-08-26T13:06:11.772427Z crostini.ShareFolders.bullseye_stable    [ PASS ]\n2021-08-26T13:06:11.772439Z crostini.ShareFolders.buster_stable      [ PASS ]\n2021-08-26T13:06:11.772450Z crostini.ShareFolders.stretch_stable     [ PASS ]",
+      "revId": "86bba23c7cc758f9660c6669484ffea453cf6b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
