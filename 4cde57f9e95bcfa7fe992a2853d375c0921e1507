@@ -93,6 +93,30 @@
       },
       "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8916f481_4e1429bc",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-26T20:59:21Z",
+      "side": 1,
+      "message": "I see arcBooted is using a sum of Chrome Login + BootTimeout(2 Mins) + ui.StartTimeout \n https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go;l\u003d61?q\u003darcBooted\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F\n \nWe can start with this and see if there is any timeout failure when running on actual setup.",
+      "parentUuid": "5b8be9ca_bb92cb3d",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 119
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
