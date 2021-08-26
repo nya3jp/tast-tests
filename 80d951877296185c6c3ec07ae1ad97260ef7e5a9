@@ -184,6 +184,24 @@
       "message": "All these functions have really similar signatures. Please consider creating a generator structure that contains devKeyPair, origFWFileCopy, rwVersion and roVersion, and define these function on the generator. Examples\n\u003e  gen :\u003d generator.New(devKeyPair, origFWFileCopy, rwVersion, roVersion)\n\u003e  devFilePath, err :\u003d gen.DevSignedImage(ctx)\n\u003e  rollbackZeroFilePath, err :\u003d gen.RollbackImage(ctx, rollback, 0)\n\nI did not check the function implementations, so I am not sure that this approach can be used here, all I ask is to consider it.",
       "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4049d569_6443e35b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_test_images.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-26T21:48:35Z",
+      "side": 1,
+      "message": "Thanks. I created a followup CL to address this: https://crrev.com/c/3123309",
+      "parentUuid": "c2a234e6_334b364a",
+      "revId": "80d951877296185c6c3ec07ae1ad97260ef7e5a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
