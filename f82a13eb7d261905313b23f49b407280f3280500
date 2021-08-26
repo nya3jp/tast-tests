@@ -70,6 +70,24 @@
       "parentUuid": "ce7e63e8_2d36abab",
       "revId": "f82a13eb7d261905313b23f49b407280f3280500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a47ae8e_1c8d5c48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-08-26T15:59:43Z",
+      "side": 1,
+      "message": "Now we are able to run tast-lint.\n\nThanks a lot",
+      "parentUuid": "87c86a84_78b7dd2d",
+      "revId": "f82a13eb7d261905313b23f49b407280f3280500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
