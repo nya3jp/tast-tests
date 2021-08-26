@@ -69,6 +69,24 @@
       "parentUuid": "914ff891_6eec6e73",
       "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028dcfe7_045ce8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-08-26T01:50:07Z",
+      "side": 1,
+      "message": "`watchdog_thresh \u003d 10`\n\nthis is soft/hard lockup watchdog threshold. We have several independent watchdogs in the kernel.",
+      "parentUuid": "39a3790b_96ba33dd",
+      "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
