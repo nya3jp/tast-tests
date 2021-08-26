@@ -10,8 +10,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -60,6 +63,23 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Data:            []string{DataArtifact},
+		PostTestTimeout: 15 * time.Second,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPolicyLoggedIn",
+		Desc:     "Lacros Chrome logged into a user session",
+		Contacts: []string{"mohamedaomar@google.com", "chromeos-commercial-stability@google.com"},
+		Impl: NewStartedByData(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosSupport")}, nil
+		}),
+		Parent:          "fakeDMS",
+		Data:            []string{DataArtifact},
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -181,6 +201,7 @@ type FixtData struct {
 	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
 	Mode        SetupMode        // Mode used to get the lacros binary.
 	LacrosPath  string           // Root directory for lacros-chrome.
+	FakeDMS     *fakedms.FakeDMS // FakeDMS is an already running DMS  server.
 }
 
 // fixtureImpl is a fixture that allows Lacros chrome to be launched.
@@ -191,6 +212,7 @@ type fixtureImpl struct {
 	tconn      *chrome.TestConn       // Test-connection for CrOS-chrome.
 	prepared   bool                   // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
 	fOpt       chrome.OptionsCallback // Function to generate Chrome Options
+	fdms       *fakedms.FakeDMS       // fdms is the already running DMS server from the parent fixture.
 }
 
 // SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
@@ -264,6 +286,20 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	// If there's a parent fixture and the fixture supplies extra options, use them.
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
+	}
+
+	fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
+	if ok {
+		f.fdms = fdms
+		opts = append(opts,
+			chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+			chrome.DMSPolicy(fdms.URL),
+		)
+		pb := fakedms.NewPolicyBlob()
+		pb.AddPolicy(&policy.LacrosAvailability{Val: "side_by_side"})
+		if err := fdms.WritePolicyBlob(pb); err != nil {
+			s.Fatal("Failed to write policies to FakeDMS: ", err)
+		}
 	}
 
 	if f.cr, err = chrome.New(ctx, opts...); err != nil {
@@ -358,5 +394,5 @@ func (f *fixtureImpl) buildFixtData(ctx context.Context, s *testing.FixtState) F
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return FixtData{f.cr, f.tconn, f.mode, f.lacrosPath}
+	return FixtData{f.cr, f.tconn, f.mode, f.lacrosPath, f.fdms}
 }
