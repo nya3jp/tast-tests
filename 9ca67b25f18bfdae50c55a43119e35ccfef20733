@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59af1935_45096986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-26T07:41:54Z",
+      "side": 1,
+      "message": "How about reusing the existing the |ui| variable from the outer scope (line 112)?",
+      "revId": "9ca67b25f18bfdae50c55a43119e35ccfef20733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

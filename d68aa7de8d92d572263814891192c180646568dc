@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e885f4f2_79da4de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-26T07:41:54Z",
+      "side": 1,
+      "message": "Did you forget to include updates to this line and L.114? (seems not changed between patchsets 1 and 2)",
+      "parentUuid": "e9bcefbb_fa42325f",
+      "revId": "d68aa7de8d92d572263814891192c180646568dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c99eeea_8a47224e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
         "patchSetId": 1
