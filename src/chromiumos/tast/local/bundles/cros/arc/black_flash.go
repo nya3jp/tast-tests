@@ -159,8 +159,18 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 		rect := subImage.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 
+		bluePixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 255, 255})
+		percent := bluePixels * 100 / totalPixels
+
+		// When the activity gets maximized, most of the pixels become blue.
+		// However, the window can still have nav bar, caption, etc.
+		// So, we set the threshold 50% here, but this can be changed roughly between 5% and 80%
+		if percent <= 50 {
+			return errors.New("new buffer hasn't been shown completely yet")
+		}
+
 		blackPixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
-		percent := blackPixels * 100 / totalPixels
+		percent = blackPixels * 100 / totalPixels
 
 		// "10 percent" is arbitrary. It shouldn't have any black pixel.
 		if percent > 10 {
@@ -175,16 +185,6 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 				}
 			}
 			s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
-		}
-
-		bluePixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 255, 255})
-		percent = bluePixels * 100 / totalPixels
-
-		// When the activity gets maximized, most of the pixels become blue.
-		// However, the window can still have nav bar, caption, etc.
-		// So, we set the threshold 50% here, but this can be changed roughly between 5% and 80%
-		if percent <= 50 {
-			return errors.New("new buffer hasn't been shown completely yet")
 		}
 
 		return nil
