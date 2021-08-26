@@ -242,8 +242,8 @@ window.Tast = class Tast {
    */
   static async manualAlign(facing) {
     while (true) {
-      await Tast.waitForPassAlignN_(facing, AspectRatio.AR4X3, 5);
-      await Tast.waitForPassAlignN_(facing, AspectRatio.AR16X9, 5);
+      await Tast.waitForPassAlignN_(facing, AspectRatio.AR4X3, 5000);
+      await Tast.waitForPassAlignN_(facing, AspectRatio.AR16X9, 5000);
 
       if (!await Tast.checkAlign_(facing, AspectRatio.AR4X3)) {
         Tast.feedbackAlign_(false, 'Check 4x3 align failed');
