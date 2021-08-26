@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6402fe_4ccd6e4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:17:08Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "59a16b1fc7c7a74af1891e22ab40fa076856387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33987e27_bd974909",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:17:08Z",
+      "side": 1,
+      "message": "These comments should be removed.",
+      "range": {
+        "startLine": 296,
+        "startChar": 30,
+        "endLine": 298,
+        "endChar": 25
+      },
+      "revId": "59a16b1fc7c7a74af1891e22ab40fa076856387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121a5335_987f6af6",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:17:08Z",
+      "side": 1,
+      "message": "I heard this policy is deprecated, and if the LacrosAvailability is set, that is enough. Can you try it without this?",
+      "range": {
+        "startLine": 302,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 47
+      },
+      "revId": "59a16b1fc7c7a74af1891e22ab40fa076856387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803a1bcc_9ad28507",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-26T13:17:08Z",
+      "side": 1,
+      "message": "This is not policy related, but quite similar to the other function. I am not sure if there is a better way to name the file.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "59a16b1fc7c7a74af1891e22ab40fa076856387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
