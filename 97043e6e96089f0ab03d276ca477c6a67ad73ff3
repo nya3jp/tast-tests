@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bc3fa1_f6b21321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-26T04:03:16Z",
+      "side": 1,
+      "message": "I don\u0027t think I understand what is your condition for closing app. Please explain. thanks.",
+      "revId": "97043e6e96089f0ab03d276ca477c6a67ad73ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

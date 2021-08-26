@@ -51,6 +51,24 @@
       "parentUuid": "7c8048c8_9d9c46cc",
       "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6669da17_66ca0257",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-26T04:03:16Z",
+      "side": 1,
+      "message": "According to your original code, your defer func did nothing unless windowReady is true and windowReady is not going to equal to true unless both WaitForVideoActive and WaitForState are successful because you set it at the end of waitForWindowReady. Therefore, I suggest you to put it after. IF you need close app regardless the status of WaitForVideoActive and WaitForState, then you don\u0027t need line 355 to 358.",
+      "parentUuid": "8c77f3f4_2566a9ca",
+      "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
