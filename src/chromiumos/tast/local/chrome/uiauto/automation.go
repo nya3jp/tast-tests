@@ -393,12 +393,34 @@ func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	}
 }
 
-// EnsureGoneFor returns a function that check the specified node does not exist for the timeout period.
+// ErrNodeAppeared is returned if node is expected not to be visible
+var ErrNodeAppeared = errors.New("node appeared when it should not")
+
+// EnsureGoneFor returns a function that check the specified node does not
+// exist for the timeout period. Notice the usage of this function in your
+// code:
+// 1. If you expect an ui-node to go away and not to appear again use
+// WaitUntilGone succeeded with EnsureGoneFor.
+// 2. If you expect an ui-node not to appear at all use EnsureGoneFor.
 func (ac *Context) EnsureGoneFor(finder *nodewith.Finder, duration time.Duration) Action {
 	return func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			return ac.Gone(finder)(ctx)
-		}, &testing.PollOptions{Timeout: duration})
+		// Use custom timeout watchdog rather than relying on context due to
+		// possible race condition. More context is here https://groups.google.com/a/google.com/g/tast-reviewers/c/sGxqggEGVAg/
+		start := time.Now()
+		return testing.Poll(ctx,
+			func(ctx context.Context) error {
+				if err := ac.Exists(finder)(ctx); err == nil {
+					// If node exists break the poll immediately with error.
+					return testing.PollBreak(ErrNodeAppeared)
+				}
+				if time.Since(start) >= duration {
+					// Timeout is reached and element was not found.
+					return nil
+				}
+				return errors.Errorf("still waiting for the node for %.1fs", (duration - time.Since(start)).Seconds())
+			},
+			nil,
+		)
 	}
 }
 
