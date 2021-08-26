@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/lacros/faillog"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/faillog"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 

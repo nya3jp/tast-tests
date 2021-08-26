@@ -19,8 +19,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )

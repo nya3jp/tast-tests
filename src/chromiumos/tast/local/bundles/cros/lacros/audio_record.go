@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 

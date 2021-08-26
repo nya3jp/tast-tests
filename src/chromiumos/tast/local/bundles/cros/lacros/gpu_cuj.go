@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/lacros/gpucuj"
-	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
