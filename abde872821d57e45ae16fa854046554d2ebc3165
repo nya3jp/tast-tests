@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd3fccc_ffc2b2b4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-26T05:54:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f071ce5_547e91cc",
+      "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b95a429e_9c4331a0",
@@ -112,6 +130,30 @@
       "side": 1,
       "message": "accidentally commented twice",
       "parentUuid": "b95a429e_9c4331a0",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "abde872821d57e45ae16fa854046554d2ebc3165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "169c2157_d4cdccbb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-26T05:54:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c68286_7c038d0a",
       "range": {
         "startLine": 56,
         "startChar": 0,
