@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "175887e9_3fa87ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-26T21:40:19Z",
+      "side": 1,
+      "message": "Oh we decided to not track smoothness in this test. I updated that in b/190654801. Thanks!",
+      "parentUuid": "42400d5e_047b189d",
+      "revId": "3c11aebbde1a69908707adfaa0c3ab4e2ef1a321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a733dddf_da76d5be",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-26T20:53:50Z",
       "side": 1,
       "message": "Is this change related to b/190654801? I don\u0027t see Start is beginning used in the new test.",
+      "revId": "3c11aebbde1a69908707adfaa0c3ab4e2ef1a321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea44054e_1c205546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-08-26T21:40:19Z",
+      "side": 1,
+      "message": "I just found this format error, it was a mistake having \u0027:\u0027 at the end.",
+      "parentUuid": "a733dddf_da76d5be",
       "revId": "3c11aebbde1a69908707adfaa0c3ab4e2ef1a321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
