@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb5d9e0_35d48317",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-26T00:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415d67fe_2b50e42d",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b63293fe_75b7b86c",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Before 121? You set it off at Line 122. I think the defer should happen right after you successfully turn CC off.",
       "parentUuid": "1b487904_bbff0d2e",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df286ede_1b084388",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-26T00:23:46Z",
+      "side": 1,
+      "message": "If I do that, then I won\u0027t be able to use the factored out function, which Eric suggested I add (see L193)\n\nAdding a defer function before should be OK (it is just a Noop if CC is already ON).",
+      "parentUuid": "145092cd_39381e48",
       "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +225,24 @@
       "side": 1,
       "message": "We want to do it only after CC *off*. I tried to encapsulate that in the const name for the time (tVbusDischargeCcoff) but I can factor it out if that would be more helpful.",
       "parentUuid": "26febc25_8fb316f3",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6a1679_e90cb676",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-26T00:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef9debdc_6ae8b25d",
       "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
