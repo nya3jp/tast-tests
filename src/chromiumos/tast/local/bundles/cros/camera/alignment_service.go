@@ -73,3 +73,34 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 
 	return &empty.Empty{}, nil
 }
+
+func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignRequest) (*pb.CheckAlignResponse, error) {
+	srv := httptest.NewServer(http.FileServer(http.Dir(req.DataPath)))
+	defer srv.Close()
+
+	cr, err := chrome.New(ctx, chrome.ARCDisabled(), chrome.KeepState(),
+		// Avoid the need to grant camera/microphone permissions.
+		chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+	defer cr.Close(ctx)
+
+	conn, err := cr.NewConn(ctx, srv.URL+"/camerabox_align.html")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open camerabox_align.html")
+	}
+	defer func() {
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}()
+
+	if err := conn.Call(ctx, nil, "Tast.checkAlign", req.Facing); err != nil {
+		return &pb.CheckAlignResponse{
+			Result: pb.TestResult_TEST_RESULT_FAILED,
+			Error:  err.Error(),
+		}, nil
+	}
+
+	return &pb.CheckAlignResponse{Result: pb.TestResult_TEST_RESULT_PASSED}, nil
+}
