@@ -69,6 +69,24 @@
       "parentUuid": "8c77f3f4_2566a9ca",
       "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e86c09_0c568ef9",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-26T04:14:59Z",
+      "side": 1,
+      "message": "Let\u0027s assume we hit timeout when waiting for |app.WaitForVideoActive(ctx)|, since the |err| is not |nil| it will return an error and the remaining codes in the function won\u0027t be executed. If we put the defer function later than |app.WaitForVideoActive(ctx)|, since we haven\u0027t registered the defer function to close the app, the defer function will not be called so the app will not be closed properly.\n\nThe logic I wrote is like: Registering a defer function just in case if any of the following statements fails and returns \"(app) nil, (err) err\". If it indeed happened, we make sure the app can be closed. But if they all pass and reach the |windowReady \u003d true|, we don\u0027t do any cleanup.",
+      "parentUuid": "6669da17_66ca0257",
+      "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
