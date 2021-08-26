@@ -213,8 +213,7 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 	// of times to unshare and only return an error if that fails.
 	retryUnshare := uiauto.Combine("retry unsharing",
 		s.ui.LeftClick(tryAgainButton),
-		s.ui.WaitUntilGone(unshareFailDlg),
-		s.ui.EnsureGoneFor(unshareFailDlg, 5*time.Second))
+		s.ui.WaitUntilGone(unshareFailDlg))
 	retryIfFailed := s.ui.IfSuccessThen(
 		s.ui.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg),
 		s.ui.WithPollOpts(testing.PollOptions{Interval: 5 * time.Second}).Retry(4, retryUnshare))
