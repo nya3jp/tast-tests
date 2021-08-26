@@ -87,6 +87,24 @@
       "parentUuid": "6669da17_66ca0257",
       "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fe2907_c2033e62",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-26T04:20:09Z",
+      "side": 1,
+      "message": "I see. Then I have one more question. \nWhat will happen if we close app when WaitForState is successful? \n\nThanks.",
+      "parentUuid": "b6e86c09_0c568ef9",
+      "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
