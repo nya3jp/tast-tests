@@ -9,9 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -48,14 +50,9 @@ func AudioOutputAllowed(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to hide Quicksettings: ", err)
 	}
 
-	mutedFindParams := ui.FindParams{
-		Name: "Toggle Volume. Volume is muted.",
-		Role: ui.RoleTypeToggleButton,
-	}
-	unmutedFindParams := ui.FindParams{
-		Name: "Toggle Volume. Volume is on, toggling will mute audio.",
-		Role: ui.RoleTypeToggleButton,
-	}
+	mutedFinder := nodewith.Name("Toggle Volume. Volume is muted.").Role(role.ToggleButton)
+
+	unmutedFinder := nodewith.Name("Toggle Volume. Volume is on, toggling will mute audio.").Role(role.ToggleButton)
 
 	for _, param := range []struct {
 		// name is the subtest name.
@@ -63,25 +60,25 @@ func AudioOutputAllowed(ctx context.Context, s *testing.State) {
 		// value is the policy value.
 		value *policy.AudioOutputAllowed
 		// expectedElement contains search parameters for the audio element.
-		expectedElement ui.FindParams
+		expectedElement *nodewith.Finder
 		// expectDisabled checks if the output button is disabled.
 		expectDisabled bool
 	}{
 		{
 			name:            "true",
 			value:           &policy.AudioOutputAllowed{Val: true},
-			expectedElement: unmutedFindParams,
+			expectedElement: unmutedFinder,
 		},
 		{
 			name:            "false",
 			value:           &policy.AudioOutputAllowed{Val: false},
-			expectedElement: mutedFindParams,
+			expectedElement: mutedFinder,
 			expectDisabled:  true,
 		},
 		{
 			name:            "unset",
 			value:           &policy.AudioOutputAllowed{Stat: policy.StatusUnset},
-			expectedElement: unmutedFindParams,
+			expectedElement: unmutedFinder,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -104,18 +101,19 @@ func AudioOutputAllowed(ctx context.Context, s *testing.State) {
 			defer quicksettings.Hide(ctx, tconn)
 
 			// Check if device is not muted.
-			if err := ui.WaitUntilExists(ctx, tconn, param.expectedElement, 5*time.Second); err != nil {
+			ui := uiauto.New(tconn)
+			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(param.expectedElement)(ctx); err != nil {
 				s.Fatal("Audio output invalid state: ", err)
 			}
 
 			// Check if we can unmute with disabled audio.
 			if param.expectDisabled {
-				if err := ui.StableFindAndClick(ctx, tconn, mutedFindParams, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+				if err := ui.WithTimeout(1 * time.Second).LeftClick(mutedFinder)(ctx); err != nil {
 					s.Fatal("Failed to click the audio toggle: ", err)
 				}
 
 				// Check if device is still muted.
-				if err := policyutil.VerifyNotExists(ctx, tconn, unmutedFindParams, 2*time.Second); err != nil {
+				if err := policyutil.VerifyNotExists(ctx, tconn, unmutedFinder, 2*time.Second); err != nil {
 					s.Error("Could not confirm the device is muted: ", err)
 				}
 			}
