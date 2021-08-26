@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42400d5e_047b189d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-26T20:53:50Z",
+      "side": 1,
+      "message": "I just have a question. In b/190654801, it said, \"We can use Ash.InteractiveWindowResize.TimeToPresent.MaxLatency to determine the smoothness.\"\n\nI don\u0027t see it was used anywhere and I don\u0027t see any code related to measuring smoothness. Is it intended? It is only a question. Nothing wrong with the code.\n\nI do have one other comment. Please take a look.\n\nThanks.\n",
+      "revId": "3c11aebbde1a69908707adfaa0c3ab4e2ef1a321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a733dddf_da76d5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-26T20:53:50Z",
+      "side": 1,
+      "message": "Is this change related to b/190654801? I don\u0027t see Start is beginning used in the new test.",
+      "revId": "3c11aebbde1a69908707adfaa0c3ab4e2ef1a321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
