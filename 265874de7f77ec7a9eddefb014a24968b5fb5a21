@@ -16,6 +16,23 @@
       "message": "There is one failure on the test related to VM \npolicy.VirtualMachinesAllowed  [ FAIL ] unset: Crostini is installing and it should not be: node appeared when it should not\n\nbut I also see it on Tastboard.",
       "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ffdcec_19e3fcc0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-26T15:34:06Z",
+      "side": 1,
+      "message": "WDYT if nil would be returned only under condition errors.Is(pollError, ErrNodeNotFound) ?",
+      "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
