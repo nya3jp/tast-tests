@@ -199,7 +199,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}()
 
 		if err := act.Start(ctx, tconn); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed starting Play Store or Play Store is empty"))
+			return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
 		}
 
 		d, err := a.NewUIDevice(ctx)
