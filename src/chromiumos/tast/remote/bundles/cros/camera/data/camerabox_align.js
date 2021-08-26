@@ -98,6 +98,19 @@ async function sleep(ms) {
   });
 }
 
+class AlignTimeoutError extends Error {
+  /**
+   * @param {!Facing} facing
+   * @param {!AspectRatio} aspectRatio
+   */
+  constructor(facing, aspectRatio, timeout) {
+    super(`Can't align ${
+        facing == Facing.BACK ? 'back' : 'front'} facing camera with ${
+        aspectRatio} aspectRatio within ${timeout} ms`);
+    this.name = this.constructor.name;
+  }
+}
+
 /**
  * @suppress {strictMissingProperties}
  */
@@ -202,35 +215,41 @@ window.Tast = class Tast {
   };
 
   /**
-   * Waits for all sampled frames captured in last N milliseconds from |facing|
-   * camera in |aspectRatio| FOV passing alignment check.
+   * Waits for all sampled frames captured in last |passMs| milliseconds from
+   * |facing| camera in |aspectRatio| FOV passing alignment check.
    * @param {!Facing} facing
    * @param {!AspectRatio} aspectRatio
-   * @param {number} ms
+   * @param {number} passMs
+   * @param {number=} timeoutMs Timeout for wait checking criteria pass.
    * @return {!Promise}
    * @private
    */
-  static async waitForPassAlignN_(facing, aspectRatio, ms) {
+  static async waitForPassAlignN_(
+      facing, aspectRatio, passMs, timeoutMs = Infinity) {
     const aspectRatioName = aspectRatio === AspectRatio.AR4X3 ? '4x3' : '16x9';
-    let startTime = null;
+    let startCheckTime = Date.now();
+    let startPassTime = null;
     while (true) {
       await sleep(200);
       const currentTime = Date.now();
+      if (currentTime - startCheckTime > timeoutMs) {
+        throw new AlignTimeoutError(facing, aspectRatio, timeoutMs);
+      }
       if (!await Tast.checkAlign_(facing, aspectRatio)) {
         Tast.feedbackAlign_(false, `Check ${aspectRatioName} align failed`);
-        startTime = null;
+        startPassTime = null;
         continue;
       }
-      if (startTime === null) {
-        startTime = currentTime;
+      if (startPassTime === null) {
+        startPassTime = currentTime;
         Tast.feedbackAlign_(true, `Pass check ${aspectRatioName} align`);
         continue;
       }
-      const duration = currentTime - startTime;
+      const duration = currentTime - startPassTime;
       Tast.feedbackAlign_(
           true,
           `Pass check ${aspectRatioName} align ${duration / 1000} seconds`);
-      if (duration >= ms) {
+      if (duration >= passMs) {
         break;
       }
     }
@@ -276,6 +295,16 @@ window.Tast = class Tast {
       break;
     }
 
+    Tast.feedbackAlign_(true, 'All passed');
+  }
+
+  /**
+   * @param {!Facing} facing
+   * @return {!Promise}
+   */
+  static async checkAlign(facing) {
+    await Tast.waitForPassAlignN_(facing, AspectRatio.AR4X3, 5000, 15000);
+    await Tast.waitForPassAlignN_(facing, AspectRatio.AR16X9, 5000, 15000);
     Tast.feedbackAlign_(true, 'All passed');
   }
 };

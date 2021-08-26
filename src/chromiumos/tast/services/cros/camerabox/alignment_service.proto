@@ -16,6 +16,9 @@ option go_package = "chromiumos/tast/services/cros/camerabox";
 service AlignmentService {
   // ManualAlign opens preview page on DUT and wait until preview is aligned.
   rpc ManualAlign(ManualAlignRequest) returns (google.protobuf.Empty) {}
+
+  // CheckAlign opens preview page on DUT and check alignment from the preview.
+  rpc CheckAlign(CheckAlignRequest) returns (CheckAlignResponse) {}
 }
 
 message ManualAlignRequest {
@@ -27,4 +30,18 @@ message ManualAlignRequest {
   string password = 3;
   // DUT's target camera facing to be aligned.
   Facing facing = 4;
+}
+
+message CheckAlignRequest {
+  // Absolute path for saving data used on DUT.
+  string data_path = 1;
+  // DUT's target camera facing to be aligned.
+  Facing facing = 2;
+}
+
+message CheckAlignResponse {
+  // Check result.
+  TestResult result = 1;
+  // Error message from running check.
+  string error = 2;
 }
