@@ -23,6 +23,10 @@ func ChromeVmoduleFlag() string {
 		"*/media/gpu/*jpeg_encode_accelerator.cc=2",
 		"*/media/gpu/*image_processor.cc=2",
 		"*/media/gpu/*v4l2_device.cc=2",
+		"*/media/gpu/test/*.cc=5",
+		"*/media/gpu/test/video_player/*.cc=5",
+		"*/media/gpu/vaapi/*.cc=5",
+		"*/media/gpu/v4l2/*.cc=5",
 	}
 	return "--vmodule=" + strings.Join(loggingPatterns, ",")
 }

@@ -53,6 +53,7 @@ const (
 
 func generateCmdArgs(outDir, filename string, decoderType DecoderType) []string {
 	args := []string{
+		logging.ChromeVmoduleFlag(),
 		filename,
 		filename + ".json",
 		"--output_folder=" + outDir,
