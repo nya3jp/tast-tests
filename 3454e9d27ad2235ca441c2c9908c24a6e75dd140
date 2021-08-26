@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10eebd1e_d97f93d1",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T14:19:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140e107d_3314bbd9",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "3454e9d27ad2235ca441c2c9908c24a6e75dd140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f89d7b94_9b074572",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T14:10:36Z",
       "side": 1,
       "message": "The function does not use ctx.",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "3454e9d27ad2235ca441c2c9908c24a6e75dd140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf00117_4356bed4",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T14:19:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89d7b94_9b074572",
       "range": {
         "startLine": 33,
         "startChar": 16,
