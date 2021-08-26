@@ -37,7 +37,7 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // useful in tests. If the ChromeType is ChromeTypeLacros, it will return a non-nil LacrosChrome instance or an error.
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
 func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
-	cr, err := GetChrome(ctx, f)
+	cr, err := GetChrome(f)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -54,18 +54,6 @@ func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, 
 		return cr, l, l, nil
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized Chrome type %s", string(crt))
-	}
-}
-
-// GetChrome gets the *chrome.Chrome object given some FixtData, which may be lacros launcher.FixtData.
-func GetChrome(ctx context.Context, f interface{}) (*chrome.Chrome, error) {
-	switch f.(type) {
-	case *chrome.Chrome:
-		return f.(*chrome.Chrome), nil
-	case launcher.FixtData:
-		return f.(launcher.FixtData).Chrome, nil
-	default:
-		return nil, errors.Errorf("unrecognized FixtValue type: %v", f)
 	}
 }
 

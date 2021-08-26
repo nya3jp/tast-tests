@@ -808,7 +808,7 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 	defer lacros.CloseLacrosChrome(ctx, l)
 
 	f := s.FixtValue()
-	cr, err := lacros.GetChrome(ctx, f)
+	cr, err := lacros.GetChrome(f)
 	if err != nil {
 		s.Fatal("Failed to reconnect to Chrome: ", err)
 	}

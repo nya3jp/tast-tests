@@ -114,7 +114,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 
 	f := s.FixtValue()
-	cr, err := lacros.GetChrome(ctx, f)
+	cr, err := lacros.GetChrome(f)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
