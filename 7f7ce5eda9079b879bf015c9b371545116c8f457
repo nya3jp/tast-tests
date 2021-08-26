@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32450774_3778d9d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-26T00:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df286ede_1b084388",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df17de15_51d3932c",
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "That\u0027s fine, but I think that if we are always doing this after switching off CC then maybe that should all be in a single function that we use in each case here.",
       "parentUuid": "376e498f_503c5d31",
+      "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9c466a_68e6802d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-26T00:24:26Z",
+      "side": 1,
+      "message": "Right. I\u0027m going to do that, too.",
+      "parentUuid": "045f7a90_ac832742",
       "revId": "7f7ce5eda9079b879bf015c9b371545116c8f457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
