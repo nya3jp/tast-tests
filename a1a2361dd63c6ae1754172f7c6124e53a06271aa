@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6e0a179_c248cc47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-26T22:14:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83f6c7df_d74c568d",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe14b731_6dbbbe7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
         "patchSetId": 6
@@ -111,6 +135,30 @@
       "writtenOn": "2021-08-26T17:27:10Z",
       "side": 1,
       "message": "commented this out since I wasn\u0027t sure where to get this info from",
+      "range": {
+        "startLine": 238,
+        "startChar": 54,
+        "endLine": 238,
+        "endChar": 98
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59a4451_2efe3de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-26T22:14:55Z",
+      "side": 1,
+      "message": "JFYI, the file names are here:\n\nhttp://ag/c/platform/vendor/google_arc/+/15628315/4/packages/development/ArcShareTestApp/src/org/chromium/arc/testapp/share/MainActivity.java#b89",
+      "parentUuid": "c86aa89b_20faba9c",
       "range": {
         "startLine": 238,
         "startChar": 54,
