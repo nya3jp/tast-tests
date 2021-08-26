@@ -181,7 +181,7 @@ func CheckPortsForTBTPartner(ctx context.Context) (int, error) {
 func buildTestSettings() *enterprise_management.ChromeDeviceSettingsProto {
 	boolTrue := true
 	return &enterprise_management.ChromeDeviceSettingsProto{
-		DevicePciPeripheralDataAccessEnabled: &enterprise_management.DevicePciPeripheralDataAccessEnabledProto{
+		DevicePciPeripheralDataAccessEnabledV2: &enterprise_management.DevicePciPeripheralDataAccessEnabledProtoV2{
 			Enabled: &boolTrue,
 		},
 	}
