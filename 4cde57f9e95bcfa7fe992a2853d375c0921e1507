@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f29d67d0_25e40c01",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T20:50:44Z",
+      "side": 1,
+      "message": "I think so. @Alan, these fixtures will let you do high-visibility transfers with either Bluetooth or WiFi. Do you anticipate any other use-cases? I was thinking we probably didn\u0027t need to test in-contact sharing flows, but let me know if you think those might be needed.",
+      "parentUuid": "a4c53d2d_ff5ce621",
+      "range": {
+        "startLine": 163,
+        "startChar": 11,
+        "endLine": 163,
+        "endChar": 54
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69c9f636_2fe8ecab",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T20:27:43Z",
       "side": 1,
       "message": "Is the 1 extra min of fixture setup time enough to do ARC++ setup and a snippet reconnect? I remember that reconnect part wasn\u0027t that fast",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 119
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8be9ca_bb92cb3d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T20:50:44Z",
+      "side": 1,
+      "message": "Seemed OK when I tested on Eve (ARC setup + snippet reconnect added about 15 seconds).\n\nAlan or Renuga, does it ever take longer than a minute or so to set up ARC? Maybe on lower end devices or something?\n\nWe can increase this as much as we need, I just started off conservatively since it was pretty quick on my setup",
+      "parentUuid": "69c9f636_2fe8ecab",
       "range": {
         "startLine": 151,
         "startChar": 1,
