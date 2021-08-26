@@ -39,7 +39,7 @@ func init() {
 		Desc:         "Tests lacros memory usage",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "lacrosStartedByData",
+		Fixture:      "lacros",
 		Timeout:      60 * time.Minute,
 		Params: []testing.Param{{
 			Name: "blank",

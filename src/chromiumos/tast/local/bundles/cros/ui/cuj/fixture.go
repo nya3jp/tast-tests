@@ -59,7 +59,7 @@ func init() {
 		Name:     "loggedInToCUJUserLacros",
 		Desc:     "Fixture used for lacros variation of UI CUJ tests",
 		Contacts: []string{"xiyuan@chromium.org"},
-		Impl: launcher.NewStartedByData(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.New(launcher.PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.GAIALogin(getCreds(s)),
 				chrome.ARCSupported(),

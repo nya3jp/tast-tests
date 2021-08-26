@@ -60,7 +60,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           "lacrosStartedByData",
+			Fixture:           "lacros",
 			Val: testParams{
 				isLacros: true,
 			},

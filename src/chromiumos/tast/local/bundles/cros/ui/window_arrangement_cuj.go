@@ -62,7 +62,7 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					ChromeType: lacros.ChromeTypeLacros,
 				},
-				Fixture:           "lacrosStartedByDataUI",
+				Fixture:           "lacrosUI",
 				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
