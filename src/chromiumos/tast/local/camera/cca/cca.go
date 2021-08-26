@@ -456,15 +456,16 @@ func (a *App) checkJSError(ctx context.Context, saveCameraFolderWhenFail bool) e
 
 // Close closes the App and the associated connection.
 func (a *App) Close(ctx context.Context) error {
-	return a.close(ctx, false)
+	return a.CloseWithDebugParams(ctx, DebugParams{})
 }
 
 // CloseAndMaybeSaveCameraFolder closes the app and also saves the camera folder if there is any JS errors found
 func (a *App) CloseAndMaybeSaveCameraFolder(ctx context.Context) error {
-	return a.close(ctx, true)
+	return a.CloseWithDebugParams(ctx, DebugParams{SaveCameraFolderWhenFail: true})
 }
 
-func (a *App) close(ctx context.Context, saveCameraFolderWhenFail bool) (retErr error) {
+// CloseWithDebugParams closes the App and the associated connection with the debug parameters.
+func (a *App) CloseWithDebugParams(ctx context.Context, params DebugParams) (retErr error) {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
 		return nil
@@ -488,7 +489,7 @@ func (a *App) close(ctx context.Context, saveCameraFolderWhenFail bool) (retErr 
 		if err := a.appWindow.WaitUntilClosed(ctx); err != nil {
 			reportOrLogError(errors.Wrap(err, "failed to wait for appWindow close"))
 		}
-		if err := a.checkJSError(ctx, saveCameraFolderWhenFail); err != nil {
+		if err := a.checkJSError(ctx, params.SaveCameraFolderWhenFail); err != nil {
 			reportOrLogError(errors.Wrap(err, "There are JS errors when running CCA"))
 		}
 		if err := a.appWindow.Release(ctx); err != nil {
