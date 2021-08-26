@@ -170,11 +170,21 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 		rect := subImage.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y - captionHeight) * (rect.Max.X - rect.Min.X)
 
+		bluePixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 255, 255})
+		bluePercent := bluePixels * 100 / totalPixels
+
+		// When the activity gets maximized, most of the pixels become blue.
+		// However, the window can still have nav bar, caption, etc.
+		// So, we set the threshold 50% here, but this can be changed roughly between 5% and 80%
+		if bluePercent <= 50 {
+			return errors.Errorf("new buffer hasn't been shown completely yet: Contains %d / %d (%d%%) blue pixels", bluePixels, totalPixels, bluePercent)
+		}
+
 		blackPixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
-		percent := blackPixels * 100 / totalPixels
+		blackPercent := blackPixels * 100 / totalPixels
 
 		// "10 percent" is arbitrary. It shouldn't have any black pixel.
-		if percent > 10 {
+		if blackPercent > 10 {
 			// Save image with black pixels.
 			path := filepath.Join(s.OutDir(), "screenshot_fail.png")
 			if fd, err := os.Create(path); err != nil {
@@ -185,17 +195,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 					s.Error("Failed to encode screenshot to png format: ", err)
 				}
 			}
-			s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
-		}
-
-		bluePixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 255, 255})
-		percent = bluePixels * 100 / totalPixels
-
-		// When the activity gets maximized, most of the pixels become blue.
-		// However, the window can still have nav bar, caption, etc.
-		// So, we set the threshold 50% here, but this can be changed roughly between 5% and 80%
-		if percent <= 50 {
-			return errors.New("new buffer hasn't been shown completely yet")
+			s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, blackPercent)
 		}
 
 		return nil
