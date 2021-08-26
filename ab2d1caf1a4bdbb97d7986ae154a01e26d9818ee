@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "367fc270_1be23431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-26T03:59:46Z",
+      "side": 1,
+      "message": "[optional] Because this is no longer FindParams type, I suggest renaming these like mutedFinder or mutedButton. We don\u0027t have a written guideline, though.",
+      "revId": "ab2d1caf1a4bdbb97d7986ae154a01e26d9818ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbc09d6a_fffaf6b9",
