@@ -8,10 +8,12 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/crd"
@@ -72,4 +74,39 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 	}
 
 	return &empty.Empty{}, nil
+}
+
+func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignRequest) (*pb.CheckAlignResponse, error) {
+	srv := httptest.NewServer(http.FileServer(http.Dir(req.DataPath)))
+	defer srv.Close()
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cr, err := chrome.New(ctx, chrome.ARCDisabled(), chrome.KeepState(),
+		// Avoid the need to grant camera/microphone permissions.
+		chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+	defer cr.Close(cleanupCtx)
+
+	conn, err := cr.NewConn(ctx, srv.URL+"/camerabox_align.html")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open camerabox_align.html")
+	}
+	defer func(ctx context.Context) {
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}(cleanupCtx)
+
+	if err := conn.Call(ctx, nil, "Tast.checkAlign", req.Facing); err != nil {
+		return &pb.CheckAlignResponse{
+			Result: pb.TestResult_TEST_RESULT_FAILED,
+			Error:  err.Error(),
+		}, nil
+	}
+
+	return &pb.CheckAlignResponse{Result: pb.TestResult_TEST_RESULT_PASSED}, nil
 }
