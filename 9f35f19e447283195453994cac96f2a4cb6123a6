@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa68b7fd_04eba7cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-26T08:17:08Z",
+      "side": 1,
+      "message": "Sorry I missed it before, but I think it would be nice bif you can avoid exactly the same summary to other changes. For example,\n\npolicy: use uiauto in DeveloperToolsAvailability test",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "9f35f19e447283195453994cac96f2a4cb6123a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf1a54e_1f225e19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-26T08:17:08Z",
+      "side": 1,
+      "message": "Maybe something like the following reads better:\n\nUpdate developer_tools_availability.go to use uiauto instead of ui, adding an ui-independent function to ui.go .",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 106
+      },
+      "revId": "9f35f19e447283195453994cac96f2a4cb6123a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85472c46_19b752b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-26T08:17:08Z",
+      "side": 1,
+      "message": "Just like userAction above, we can name it elements.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 19
+      },
+      "revId": "9f35f19e447283195453994cac96f2a4cb6123a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bac7954_4aa390dc",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-26T08:17:08Z",
+      "side": 1,
+      "message": "If you go with renaming, please move the code comments of OldVerifyNotExists here.\nYou can update the comments for OldVerifyNotExists to something like:\n\n// OldVerifyNotExists is deprecated version of VerifyNotExists, having ui dependency.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "9f35f19e447283195453994cac96f2a4cb6123a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
