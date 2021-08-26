@@ -35,6 +35,63 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aae71ef_7f320bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:44:36Z",
+      "side": 1,
+      "message": "LGTM once comments are addressed",
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ea1f83_93c9f75f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:44:36Z",
+      "side": 1,
+      "message": "tast guidelines are to have at least 1 personal email contact here in addition to the aliases",
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8360315_99fa0d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:44:36Z",
+      "side": 1,
+      "message": "Looks like the PIN isn\u0027t being used so you can remove it. I think the default username and password are exported now:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/option.go;l\u003d16-20\n\nso you could use those instead of a custom password if you want",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "014fc97a_fe41d55f",
@@ -124,6 +181,23 @@
         "endLine": 73,
         "endChar": 2
       },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3697100b_ba41d7af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:44:36Z",
+      "side": 1,
+      "message": "So after signing out, we expect Chrome to restart and the PID to be the same? Maybe we can add a comment here about what we\u0027re checking",
       "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
