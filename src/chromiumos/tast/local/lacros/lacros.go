@@ -57,18 +57,6 @@ func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, 
 	}
 }
 
-// GetChrome gets the *chrome.Chrome object given some FixtData, which may be lacros launcher.FixtData.
-func GetChrome(ctx context.Context, f interface{}) (*chrome.Chrome, error) {
-	switch f.(type) {
-	case *chrome.Chrome:
-		return f.(*chrome.Chrome), nil
-	case launcher.FixtData:
-		return f.(launcher.FixtData).Chrome, nil
-	default:
-		return nil, errors.Errorf("unrecognized FixtValue type: %v", f)
-	}
-}
-
 // CloseLacrosChrome closes the given lacros-chrome, if it is non-nil. Otherwise, it does nothing.
 func CloseLacrosChrome(ctx context.Context, l *launcher.LacrosChrome) {
 	if l != nil {
