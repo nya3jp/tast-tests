@@ -40,26 +40,13 @@ func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	}
 
 	testing.ContextLog(ctx, "Launching the settings app")
-	googleAccountsButton := nodewith.Name("Google Accounts").Role(role.Button)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "people", ui.Exists(googleAccountsButton)); err != nil {
+	addSchoolAccountButton := nodewith.Name("Add school account").Role(role.Button)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addSchoolAccountButton)); err != nil {
 		return errors.Wrap(err, "failed to launch people settings page")
 	}
 
-	testing.ContextLog(ctx, "Opening the in-session EDU Coexistence flow")
-	addSchoolAccountButton := nodewith.Name("Add school account").Role(role.Button)
-	searchSettingsBox := nodewith.Name("Search settings").Role(role.SearchBox)
 	selectParentOption := nodewith.NameStartingWith(parentFirstName + " " + parentLastName).Role(role.ListBoxOption)
-	if err := uiauto.Combine("open in-session edu coexistence flow",
-		// Once loaded, the Settings app automatically puts focus on the Search box
-		// at the top. Wait for this focus event to happen first, before trying to
-		// scroll to the Google Accounts section (so that it doesn't scroll back up).
-		ui.WaitUntilExists(searchSettingsBox.Focused()),
-		ui.WaitUntilExists(googleAccountsButton),
-		// Scroll the button into view.
-		ui.FocusAndWait(googleAccountsButton),
-		ui.WithInterval(time.Second).LeftClickUntil(googleAccountsButton, ui.Exists(addSchoolAccountButton)),
-		ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, ui.Exists(selectParentOption)),
-	)(ctx); err != nil {
+	if err := ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, ui.Exists(selectParentOption))(ctx); err != nil {
 		return errors.Wrap(err, "failed to open in-session edu coexistence flow")
 	}
 
