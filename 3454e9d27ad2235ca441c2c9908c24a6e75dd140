@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "576d8356_292e8747",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T14:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad981f6_eecea7e0",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "3454e9d27ad2235ca441c2c9908c24a6e75dd140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f89d7b94_9b074572",
