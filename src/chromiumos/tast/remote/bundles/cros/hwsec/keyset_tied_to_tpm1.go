@@ -42,7 +42,7 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 	s.Log("TPM is confirmed to be reset")
 
 	// Login+Logout.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword1, util.Password1Label, true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault when testing without reboot: ", err)
 	}
 	defer func() {
@@ -71,7 +71,7 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 	}
 
 	// Login again.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword1, util.Password1Label, false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to login when testing without reboot: ", err)
 	}
 
