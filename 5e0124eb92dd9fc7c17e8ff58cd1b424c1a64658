@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fdafd7_95541dcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-26T23:02:06Z",
+      "side": 1,
+      "message": "Sorry, I was sick yesterday and offline today. Reassigning...",
+      "revId": "5e0124eb92dd9fc7c17e8ff58cd1b424c1a64658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
