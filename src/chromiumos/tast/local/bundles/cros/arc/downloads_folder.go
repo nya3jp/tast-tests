@@ -14,9 +14,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	downloadURI = "content://org.chromium.arc.file_system.fileprovider/download/storage.txt"
-)
+const downloadURI = "content://org.chromium.arc.volumeprovider/download/storage.txt"
 
 func init() {
 	testing.AddTest(&testing.Test{
