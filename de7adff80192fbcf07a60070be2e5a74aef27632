@@ -51,6 +51,74 @@
       "message": "Extended the mouse application to support right clicks, and added a corresponding test.",
       "revId": "de7adff80192fbcf07a60070be2e5a74aef27632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3508b8_9d72c039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T13:47:44Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "de7adff80192fbcf07a60070be2e5a74aef27632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceac5933_0ca3f304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_mouse_right_click.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T13:47:44Z",
+      "side": 1,
+      "message": "missing . at the end of the comment.",
+      "revId": "de7adff80192fbcf07a60070be2e5a74aef27632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f43292a_fed8ebcb",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T13:47:44Z",
+      "side": 1,
+      "message": "maybe it\u0027s better to add a brief comment to this function.",
+      "revId": "de7adff80192fbcf07a60070be2e5a74aef27632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd67b51_f59ab181",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-26T13:47:44Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "de7adff80192fbcf07a60070be2e5a74aef27632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
