@@ -105,6 +105,24 @@
       "parentUuid": "b6e86c09_0c568ef9",
       "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5779c6d7_3227ba8b",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-26T04:36:11Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t quite get it.\nIf |WaitForState()| succeed, we will reach |windowReady \u003d true| so app won\u0027t be closed in the defer function.",
+      "parentUuid": "d3fe2907_c2033e62",
+      "revId": "c4ac8871bacf5855006a168ba9687f831ed8e4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
