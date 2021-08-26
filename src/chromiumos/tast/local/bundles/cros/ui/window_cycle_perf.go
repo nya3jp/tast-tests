@@ -38,7 +38,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
-			Fixture:           "lacrosStartedByData",
+			Fixture:           "lacros",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {

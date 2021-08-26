@@ -46,7 +46,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
-			Fixture:           "lacrosStartedByDataWith100FakeApps",
+			Fixture:           "lacrosWith100FakeApps",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 		Data: []string{"animation.html", "animation.js"},
