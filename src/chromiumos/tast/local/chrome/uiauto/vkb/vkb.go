@@ -160,7 +160,7 @@ func (vkbCtx *VirtualKeyboardContext) Location(ctx context.Context) (*coords.Rec
 // WaitUntilHidden returns an action waiting for the virtual keyboard to hide.
 // It waits until the node is gone from a11y tree.
 func (vkbCtx *VirtualKeyboardContext) WaitUntilHidden() uiauto.Action {
-	return vkbCtx.ui.EnsureGoneFor(vkRootFinder, 3*time.Second)
+	return vkbCtx.ui.WithTimeout(3 * time.Second).WaitUntilGone(vkRootFinder)
 }
 
 // TapKey returns an action simulating a mouse click event on the middle of the specified key via a touch event.
