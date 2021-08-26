@@ -51,6 +51,23 @@
       "message": "I have one more question. Please take a look. Thanks.",
       "revId": "97043e6e96089f0ab03d276ca477c6a67ad73ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "977cae3f_2118a1d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-26T04:39:08Z",
+      "side": 1,
+      "message": "Sorry, my question was not clear. Let me rephrase it. Please check.",
+      "revId": "97043e6e96089f0ab03d276ca477c6a67ad73ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
