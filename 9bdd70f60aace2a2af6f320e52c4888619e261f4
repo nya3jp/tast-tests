@@ -16,6 +16,29 @@
       "message": "PTAL at these fixture name changes. After this I\u0027ll change PreExist to something else like we discussed as well.",
       "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370b73ae_744f0bff",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-26T08:18:28Z",
+      "side": 1,
+      "message": "launcher.New() looks NOT like a fixture, so we should have some other way.\nOptions I can come up with:\n- Using NewFixt(), so it\u0027d be launcher.NewFixt().\n- Introducing new package for lacros fixture, e.g. chromiumos/tast/local/lacros/lacrosfixt, so that it\u0027ll be lacrosfixt.New.\n\nPersonally, latter sounds easier for readers, since it contains \"lacros\". WDYT?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
