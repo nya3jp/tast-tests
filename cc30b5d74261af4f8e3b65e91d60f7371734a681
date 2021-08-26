@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed10a9c4_a16fca58",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-08-26T09:16:25Z",
+      "side": 1,
+      "message": "Hi Jonathan,\nThere is still some back and forth with this patch, but we would like to ask you high-level direction with this function.\nIs it good to do this kind of polling using the uiauto API (IsNodeFound) for this VerifyNotExists function, or do we have more recommended way other than that?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "cc30b5d74261af4f8e3b65e91d60f7371734a681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
