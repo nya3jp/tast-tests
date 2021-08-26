@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6733a3_c0108254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:27:10Z",
+      "side": 1,
+      "message": "Added the integration with the Tast Nearby library, the test will now actually complete a transfer to the connected Android phone",
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1630fb4_5689d481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:27:10Z",
+      "side": 1,
+      "message": "Specifying this fixture will do the following during test setup:\n* Set up the connected Android device (account/device settings, Nearby settings, Nearby automation controls)\n* GAIA login and starting ARC\n* Skip CrOS Nearby Share onboarding and configure Nearby settings\n* Configuring a bunch of Nearby-related logging\n\nMultiple tests using the same fixture will share setup steps which saves a lot of time.\n\nThis fixture uses \"Offline\" data usage, which means transfers will be over Bluetooth. There\u0027s also an \"Online\" data usage fixture (`nearbyShareDataUsageOnlineNoOneARCEnabled`) that you can use for transferring larger files (it\u0027s like 30x faster).\n\nYou can also specify the fixture within the Params for each subtest.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f6c7df_d74c568d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:27:10Z",
+      "side": 1,
+      "message": "Forgot to take care of this, but we should check the CrOS UI here (or during shareUIClick) to wait for the Nearby Share bubble to appear.",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe14b731_6dbbbe7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:27:10Z",
+      "side": 1,
+      "message": "everything from here on is just controlling the sharing flow, basically copied this from CrosToPhoneHighVis, let me know if you have any questions",
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0acd93f_18307afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:27:10Z",
+      "side": 1,
+      "message": "May want to add this in some test data for each subtest, if we expect different transfer times. For Nearby Share tests, we\u0027ll also take this into account for the global test timeout.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go;l\u003d39",
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86aa89b_20faba9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-26T17:27:10Z",
+      "side": 1,
+      "message": "commented this out since I wasn\u0027t sure where to get this info from",
+      "range": {
+        "startLine": 238,
+        "startChar": 54,
+        "endLine": 238,
+        "endChar": 98
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
