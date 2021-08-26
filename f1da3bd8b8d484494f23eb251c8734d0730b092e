@@ -16,6 +16,75 @@
       "message": "Fixed 2/3, wasn\u0027t sure about the usage of `this` when parameter names match member variable names as noted in the comment.",
       "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84346ada_8c627101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-26T01:58:22Z",
+      "side": 1,
+      "message": "Usually, the failure msg format is: Failed to ...\nPlease also check the other msg.",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa700ce_729c394f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-26T01:58:22Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 93,
+        "startChar": 23,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b263c9b_4884d36c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-26T01:58:22Z",
+      "side": 1,
+      "message": "Usually just : is enough. The same comment for other info.",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 49
+      },
+      "revId": "f1da3bd8b8d484494f23eb251c8734d0730b092e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
