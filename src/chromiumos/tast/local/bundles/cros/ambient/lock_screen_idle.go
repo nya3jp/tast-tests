@@ -258,7 +258,7 @@ func hideAmbientMode(
 		}
 
 		// Ambient mode container should not exist.
-		if err := ui.EnsureGoneFor(container, time.Second)(ctx); err != nil {
+		if err := ui.WaitUntilGone(container)(ctx); err != nil {
 			return errors.Wrap(err, "failed to ensure ambient container dismissed")
 		}
 
