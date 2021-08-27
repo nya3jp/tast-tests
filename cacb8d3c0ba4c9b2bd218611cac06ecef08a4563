@@ -16,6 +16,23 @@
       "message": "PTAL. Sorry for the mistake. This should fix failures on most boards, but for volta (volteer with 8 logical cores), I think I need one more non-Tast fix in platform2/vm_tools/. Looks like Concierge is not handling 8 core devices properly.",
       "revId": "cacb8d3c0ba4c9b2bd218611cac06ecef08a4563",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060a2bc8_de887416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-08-27T02:55:02Z",
+      "side": 1,
+      "message": "Sorry, I lied. tot volta seems to pass the test with this CL. Tot\u0027s Concierge is working just fine with 8 cores.",
+      "revId": "cacb8d3c0ba4c9b2bd218611cac06ecef08a4563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
