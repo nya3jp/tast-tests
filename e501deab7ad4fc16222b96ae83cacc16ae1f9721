@@ -97,6 +97,30 @@
       },
       "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f399ad_cbcfb54f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-27T22:12:16Z",
+      "side": 1,
+      "message": "(resolved)",
+      "parentUuid": "5e1ba205_d1e91b52",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
