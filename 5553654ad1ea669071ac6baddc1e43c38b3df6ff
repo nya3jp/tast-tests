@@ -16,6 +16,24 @@
       "message": "Use lowerCamelCase for local variables.\ngo/go-style/guide#mixed-caps\nPerhaps you wanted to put this to 3114866, but would not be a big problem.",
       "revId": "5553654ad1ea669071ac6baddc1e43c38b3df6ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cf6842_f9c64f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-27T06:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26f5faae_c455120f",
+      "revId": "5553654ad1ea669071ac6baddc1e43c38b3df6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
