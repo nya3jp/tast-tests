@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "5f1971ee042d1b33fef7a9d6ff04690ecf0e4de6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82988266_46a64215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-08-27T21:01:48Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.2-r7431: # chromiumos/tast/local/bundles/cros/typec\ntast-remote-tests-cros-0.0.2-r7431: src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go:124:11: Fatalf call has arguments but no formatting directives\ntast-remote-tests-cros-0.0.2-r7431: src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go:137:11: Fatalf call has arguments but no formatting directives\ntast-remote-tests-cros-0.0.2-r7431:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r7431::chromiumos failed (compile phase):",
+      "revId": "5f1971ee042d1b33fef7a9d6ff04690ecf0e4de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
