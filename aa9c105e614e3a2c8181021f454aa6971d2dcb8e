@@ -34,6 +34,24 @@
       "parentUuid": "ab276558_4186025f",
       "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c857e4f5_7f953b82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-27T06:55:42Z",
+      "side": 1,
+      "message": "The problem seems to be that the certs are not automatically regenerated when we change the device name using the snippet, so this sync call is here to regenerate them after calling AndroidConfigure (which changes the device name).\n\n@Eric might be nice to have it directly inside \"setupDevice\", what do you think? BTW have you been using the sync RPC in your tests, and if so has it helped improve test stability?",
+      "parentUuid": "182be5f9_0c39d9d4",
+      "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
