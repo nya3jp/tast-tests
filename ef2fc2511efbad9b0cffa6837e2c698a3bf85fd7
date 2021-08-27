@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351f9c16_551198ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-08-27T07:04:10Z",
+      "side": 1,
+      "message": "This conflicted with crrev.com/c/3119396. This needed to be cherry-picked after the other change so that it doesn\u0027t break src/chromiumos/tast/local/camera/cca/cca_ui_remote_document.go.",
+      "revId": "ef2fc2511efbad9b0cffa6837e2c698a3bf85fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
