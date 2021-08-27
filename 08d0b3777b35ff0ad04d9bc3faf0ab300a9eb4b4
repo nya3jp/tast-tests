@@ -16,6 +16,29 @@
       "message": "The test passes with this CL 10 times in a row. Thank you for making the fix!",
       "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18bf690_d1fc611d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T05:47:37Z",
+      "side": 1,
+      "message": "Always wait 5s for access point to deal with some special conditions does not make sense.\n\nHow about below logic:\n\nif(drag button) return nil //already floating mode.\ntesting.polling(\n    if err:\u003d clickFlipButtonFinder; err !\u003d nil{\n        // Deal with different situations.\n        if ShowAccessPointsBtn{\n            click it to show panel menu.\n        } else if other potentials like voice panel {\n            throw error ?\n        }\n    }",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 48
+      },
+      "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
