@@ -89,6 +89,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 	const (
 		RRMCategoryCode       = 0x05
 		extraFirstReportBytes = 12
+		beaconReqScanTimeout  = 10 * time.Second
 	)
 	var (
 		bcastAddr   = []byte{0xff, 0xff, 0xff, 0xff, 0xff, 0xff}
@@ -233,7 +234,35 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 	}
 	runOnce := func(ctx context.Context, params hostapd.BeaconReqParams, expected []reportBSS, name string) error {
 		SendBeaconRequest := func(ctx context.Context) error {
-			return ap0.SendBeaconRequest(ctx, clientMAC, params)
+			var wpaMonitor *wificell.WPAMonitor
+			if params.Mode != hostapd.ModeTable {
+				var stop func()
+				wpaMonitor, stop, ctx, err = tf.StartWPAMonitor(ctx)
+				if err != nil {
+					return errors.Wrap(err, "failed to start wpa monitor")
+				}
+				defer stop()
+			}
+			if err := ap0.SendBeaconRequest(ctx, clientMAC, params); err != nil {
+				return errors.Wrap(err, "failed to send beacon request")
+			}
+			if wpaMonitor != nil {
+				timeoutCtx, cancel := context.WithTimeout(ctx, beaconReqScanTimeout)
+				defer cancel()
+				for {
+					event, err := wpaMonitor.WaitForEvent(timeoutCtx)
+					if err != nil {
+						return errors.Wrap(err, "failed to wait for scan event")
+					}
+					if event == nil {
+						return errors.New("Timed out waiting for scan event")
+					}
+					if _, scanSuccess := event.(*wificell.ScanResultsEvent); scanSuccess {
+						break
+					}
+				}
+			}
+			return nil
 		}
 		pcapPath, err := wifiutil.CollectPcapForAction(ctx, legacyRouter, name, int(ap0Chan), freqOpts, SendBeaconRequest)
 		if err != nil {
