@@ -70,6 +70,9 @@ var KeyFinder = NodeFinder.Role(role.Button)
 // MultipasteItemFinder returns a finder of multipaste item on virtual keyboard.
 var MultipasteItemFinder = NodeFinder.ClassName("scrim")
 
+// ShowAccessPointsBtn returns the find of the button to show access points.
+var ShowAccessPointsBtn = KeyFinder.Name("Show access points")
+
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
 	return KeyFinder.NameRegex(regexp.MustCompile(`(?i)^` + regexp.QuoteMeta(keyName) + `$`))
@@ -283,19 +286,30 @@ func (vkbCtx *VirtualKeyboardContext) TapKeysJS(keys []string) uiauto.Action {
 
 // SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
 func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Action {
+	showAccessPoint := vkbCtx.ui.IfSuccessThen(
+		vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(ShowAccessPointsBtn),
+		vkbCtx.ui.LeftClick(ShowAccessPointsBtn),
+	)
+
 	var flipButtonFinder *nodewith.Finder
+	var switchMode uiauto.Action
 	if enabled {
 		flipButtonFinder = KeyFinder.Name("make virtual keyboard movable")
-		return vkbCtx.ui.IfSuccessThen(
+		switchMode = vkbCtx.ui.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
 		)
+	} else {
+		flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
+		switchMode = vkbCtx.ui.IfSuccessThen(
+			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
+			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
+		)
 	}
 
-	flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
-	return vkbCtx.ui.IfSuccessThen(
-		vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
-		vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
+	return uiauto.Combine("switch VK mode",
+		showAccessPoint,
+		switchMode,
 	)
 }
 
