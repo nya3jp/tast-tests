@@ -55,9 +55,10 @@ func DiagFailLANConnectivity(ctx context.Context, s *testing.State) {
 	// After the property change is emitted, Chrome still needs to process it.
 	// Since Chrome does not emit a change, poll to test whether the expected
 	// problem occurs.
+	const problemNoLanConnectivity uint32 = 0
 	expectedResult := &diagcommon.RoutineResult{
 		Verdict:  diagcommon.VerdictProblem,
-		Problems: []uint32{},
+		Problems: []uint32{problemNoLanConnectivity},
 	}
 	if err := mojo.PollRoutine(ctx, diagcommon.RoutineLanConnectivity, expectedResult); err != nil {
 		s.Fatal("Failed to poll routine: ", err)
