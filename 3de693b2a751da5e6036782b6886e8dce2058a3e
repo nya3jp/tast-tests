@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8b12a8_166ce4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T06:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a937d28a_b6f813a6",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "3de693b2a751da5e6036782b6886e8dce2058a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa1fbb4_1c7fbc17",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31662dc3_ee419319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T06:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa1fbb4_1c7fbc17",
+      "revId": "3de693b2a751da5e6036782b6886e8dce2058a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0dee5ec_1e2cc930",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-08-27T06:42:38Z",
       "side": 1,
       "message": "camera_facing_front?",
+      "range": {
+        "startLine": 41,
+        "startChar": 25,
+        "endLine": 41,
+        "endChar": 46
+      },
+      "revId": "3de693b2a751da5e6036782b6886e8dce2058a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "348c0db6_7f767513",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T06:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0dee5ec_1e2cc930",
       "range": {
         "startLine": 41,
         "startChar": 25,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7e7352_781cc244",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T06:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a30bafa_344363be",
+      "range": {
+        "startLine": 42,
+        "startChar": 15,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "3de693b2a751da5e6036782b6886e8dce2058a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd07dba4_00763c8d",
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edda9083_f9bc6390",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T06:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd07dba4_00763c8d",
+      "range": {
+        "startLine": 47,
+        "startChar": 15,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "3de693b2a751da5e6036782b6886e8dce2058a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "479923b2_01ba698b",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-08-27T06:42:38Z",
       "side": 1,
       "message": "nit: Considered:\n```\nfacing :\u003d s.Param().(pb.Facing)\nmanualMode :\u003d facing \u003d\u003d pb.Facing_FACING_UNSET\n\nif manualMode {\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "3de693b2a751da5e6036782b6886e8dce2058a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e04723_45d20c99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T06:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "479923b2_01ba698b",
       "range": {
         "startLine": 55,
         "startChar": 0,
