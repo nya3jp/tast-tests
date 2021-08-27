@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b156a45_6a4cdb71",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-08-27T01:43:28Z",
+      "side": 1,
+      "message": "Thanks, I personally like option 1 better. It is more aligned with this API semantics, in that it does not imply it is watching for initial state transition. With `combine` chaining, I feel that this option provides more granular control without much implementation overhead.",
+      "parentUuid": "2150b377_a4fc875a",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 61
+      },
+      "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50ffdcec_19e3fcc0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 3
