@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c71c08_e61b92b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-27T09:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ea1f83_93c9f75f",
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8360315_99fa0d47",
@@ -82,6 +100,30 @@
       "writtenOn": "2021-08-26T17:44:36Z",
       "side": 1,
       "message": "Looks like the PIN isn\u0027t being used so you can remove it. I think the default username and password are exported now:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/option.go;l\u003d16-20\n\nso you could use those instead of a custom password if you want",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d847642_a966266a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-27T09:38:07Z",
+      "side": 1,
+      "message": "Done. Actually I could just remove FakeLogin altogether. It\u0027s default flow",
+      "parentUuid": "c8360315_99fa0d47",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -139,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2fca8c4_3fc1c797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-27T09:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8a3065_df248b43",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b70a9aa2_c42df900",
@@ -152,6 +218,30 @@
       "writtenOn": "2021-08-25T19:11:04Z",
       "side": 1,
       "message": "Code is pretty self explanatory. No need for that comment",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d197252_69fb7b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-27T09:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70a9aa2_c42df900",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -185,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13985550_24815fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-27T09:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80996e1_ae807fef",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3697100b_ba41d7af",
@@ -198,6 +312,24 @@
       "writtenOn": "2021-08-26T17:44:36Z",
       "side": 1,
       "message": "So after signing out, we expect Chrome to restart and the PID to be the same? Maybe we can add a comment here about what we\u0027re checking",
+      "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0844c2cf_55d30ab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-08-27T09:38:07Z",
+      "side": 1,
+      "message": "Good catch! I should\u0027ve actually added a poll to wait for the pid to change.\nDone",
+      "parentUuid": "3697100b_ba41d7af",
       "revId": "d32050ee99ec29fd60b0df15774d90d280346c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
