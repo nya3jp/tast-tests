@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f27702b_772fb3e8",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-27T09:10:01Z",
+      "side": 1,
+      "message": "Is this function used anywhere in this CL? I can\u0027t find it~",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
