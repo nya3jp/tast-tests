@@ -46,6 +46,30 @@
       },
       "revId": "cc30b5d74261af4f8e3b65e91d60f7371734a681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b103b0_2eb237e6",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-27T06:01:04Z",
+      "side": 1,
+      "message": "Thank you for your review. So for now, I\u0027ll wait for the \u0027EnsureGoneFor\u0027 update.",
+      "parentUuid": "e0ddcf51_e2169ded",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "cc30b5d74261af4f8e3b65e91d60f7371734a681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
