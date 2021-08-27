@@ -16,6 +16,24 @@
       "message": "The last couple comments on the linked bug says that the snippet itself should call \"sync\" when changing device name. Is this sync call after setting up the snippet for a different problem?",
       "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182be5f9_0c39d9d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-08-27T06:44:28Z",
+      "side": 1,
+      "message": "The snippet itself is not calling \"sync\", I only expose it as a RPC method and let test client to decide when to call it. The \"sync\" method is exported from Nearby service by the Dev team and mark it as for testing only. http://b/187867513\n\nWe can call \"sync\" directly inside the \"setupDevice\" RPC if you prefer to do in this way.\nhttp://google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/sharing/SharingClientSnippet.java?l\u003d99\u0026rcl\u003d383759889",
+      "parentUuid": "ab276558_4186025f",
+      "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
