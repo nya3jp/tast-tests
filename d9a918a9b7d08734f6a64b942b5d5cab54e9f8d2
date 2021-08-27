@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b2d35c4_582ce17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-08-27T22:55:09Z",
+      "side": 1,
+      "message": "No sleep in tests, for sure. We have mechanisms for waiting on conditions but those still require a timeout and therefore can still result in the test failing because of races.\n\nI would not conflate finding and fixing those paths with the objective of this CL. We can file a bug and track that separately.",
+      "parentUuid": "54b5ef94_faa5ed07",
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4011d162_fb16bca0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
         "patchSetId": 2
