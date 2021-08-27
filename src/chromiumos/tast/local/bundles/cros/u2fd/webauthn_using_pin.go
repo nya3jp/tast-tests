@@ -35,13 +35,13 @@ func init() {
 			"martinkr@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "gsc"},
 	})
 }
 
 func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	if err := upstart.CheckJob(ctx, "u2fd"); err != nil {
-		s.Fatal("Test failed: ", err)
+		s.Fatal("u2fd isn't started: ", err)
 	}
 
 	// Try to get the system into a consistent state, since it seems like having
