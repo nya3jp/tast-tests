@@ -39,6 +39,30 @@
       },
       "revId": "27833b3b52a358ee1118c93d62d06653f71083d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c452cbc6_02711dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-08-27T17:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5692747_02e06d3e",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 16
+      },
+      "revId": "27833b3b52a358ee1118c93d62d06653f71083d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
