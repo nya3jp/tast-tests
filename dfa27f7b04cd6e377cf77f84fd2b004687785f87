@@ -16,6 +16,24 @@
       "message": "This is along the line with a future update kalin@ wants us to do where we run these tests against actual printers in the printer lab. So it\u0027d be nice to make these tests extensible and receive a printer name as the parameter.  ",
       "revId": "dfa27f7b04cd6e377cf77f84fd2b004687785f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4666ee7_5a7ea047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-08-27T14:48:34Z",
+      "side": 1,
+      "message": "Yeah, that should be a straightforward follow-up CL.  I\u0027ll hold off on that for now until we have a little more detail on how we want to structure the hardware-backed tests.",
+      "parentUuid": "b420c40b_7777184a",
+      "revId": "dfa27f7b04cd6e377cf77f84fd2b004687785f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
