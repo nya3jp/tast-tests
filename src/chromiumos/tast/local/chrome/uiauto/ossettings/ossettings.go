@@ -29,18 +29,6 @@ var defaultPollOpts = &testing.PollOptions{Timeout: 10 * time.Second, Interval: 
 
 const urlPrefix = "chrome://os-settings/"
 
-// WindowFinder is the finder for the Settings window.
-var WindowFinder *nodewith.Finder = nodewith.MultilingualNameStartingWith("Settings", map[string]string{"de": "Einstellungen"}).
-	Role(role.Window).First()
-
-// SearchBoxFinder is the finder for the search box in the settings app.
-var SearchBoxFinder = nodewith.MultilingualName("Search settings", map[string]string{"de": "In Einstellungen suchen"}).
-	Role(role.SearchBox).Ancestor(WindowFinder)
-
-// AboutChromeOS is a subpage link.
-var AboutChromeOS = nodewith.MultilingualName("About Chrome OS", map[string]string{"de": "Über Chrome OS"}).
-	Role(role.Link)
-
 // OSSettings represents an instance of the Settings app.
 type OSSettings struct {
 	ui    *uiauto.Context
@@ -300,4 +288,32 @@ func UninstallApp(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 	return uiauto.Combine("uninstall the app",
 		ui.LeftClick(uninstall),
 		ui.LeftClick(uninstall.Ancestor(uninstallWindow)))(ctx)
+}
+
+// CommonSections returns a map that contains *nodewith.Finder for OS-Settings UI elements of common sections.
+func CommonSections(advanceExpanded bool) map[string]*nodewith.Finder {
+	sections := map[string]*nodewith.Finder{
+		"Network":              Network,
+		"Bluetooth":            Bluetooth,
+		"Connected Devices":    ConnectedDevices,
+		"Accounts":             Accounts,
+		"Device":               Device,
+		"Personalization":      Personalization,
+		"Search And Assistant": SearchAndAssistant,
+		"Security And Privacy": SecurityAndPrivacy,
+		"Apps":                 Apps,
+		"About ChromeOS":       AboutChromeOS,
+	}
+
+	if advanceExpanded {
+		sections["Date And Time"] = DateAndTime
+		sections["Languages And Inputs"] = LanguagesAndInputs
+		sections["Files"] = Files
+		sections["Print And Scan"] = PrintAndScan
+		sections["Developers"] = Developers
+		sections["Accessibility"] = Accessibility
+		sections["Reset Settings"] = ResetSettings
+	}
+
+	return sections
 }
