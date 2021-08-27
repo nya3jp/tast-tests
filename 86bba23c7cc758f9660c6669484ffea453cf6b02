@@ -39,6 +39,30 @@
       },
       "revId": "86bba23c7cc758f9660c6669484ffea453cf6b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4055aa52_1e27adc8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-27T10:11:16Z",
+      "side": 1,
+      "message": "I thought this retry chain was to dismiss the dialog and wait for it to be gone. Can the OS show the dialog again - as per comment when e.g. file is in use?",
+      "parentUuid": "1e7a224d_3908aa51",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 20
+      },
+      "revId": "86bba23c7cc758f9660c6669484ffea453cf6b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
