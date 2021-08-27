@@ -16,6 +16,108 @@
       "message": "Updated as per comments. Testing on trogdor, still observing QMI, Disable failures randomly(not stable,shill or something interfere with MM)",
       "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8123241_6e5e318d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T18:19:21Z",
+      "side": 1,
+      "message": "These comments don\u0027t really add any clarity and can be removed.",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0ee659_ecc61195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T18:19:21Z",
+      "side": 1,
+      "message": "ModemDisable? :-)",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f368fca_cf6769c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T18:19:21Z",
+      "side": 1,
+      "message": "We probably don\u0027t need to log the \u0027ensured\u0027 stages.",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6852ff67_67f76484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T18:19:21Z",
+      "side": 1,
+      "message": "Maybe differentiate these errors, e.g. \"Modem not disabled\"",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d75b1c1_ba4f75fe",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T18:19:21Z",
+      "side": 1,
+      "message": "Also differentiate these, e.g. \"failed to verify modem enabled\"",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9466dc_9acaaaab",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T18:19:21Z",
+      "side": 1,
+      "message": "It looks like these are identical except whether isConnected is expected to be true vs. false. We could combine the methods by adding an extra expectedConnected parameter, e.g. EnsureConnectedState(ctx, modem, simpleModem, expectedConnectedState).",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
