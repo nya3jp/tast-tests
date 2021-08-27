@@ -103,7 +103,9 @@ func init() {
 		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		// Guado, buddy and rikku have a companion video acceleration chip
 		// (called Kepler), skip this test in these models.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("guado", "buddy", "rikku")),
+		// Running h264encode on grunt leads to errors leaving the DUT in a bad state, causing subsequent
+		// tests to fail (http://b/177182744).
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("guado", "buddy", "rikku"), hwdep.SkipOnPlatform("grunt")),
 		Params: []testing.Param{{
 			Name: "vaapi_vp8_180",
 			Val: testParam{
