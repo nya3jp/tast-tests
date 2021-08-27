@@ -33,6 +33,46 @@
       "message": "Dean mentioned he\u0027d be able to review as an owner. Updating reviewers with this in mind.",
       "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499133a7_88d44f5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-27T07:14:19Z",
+      "side": 1,
+      "message": "a nit",
+      "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86647b5a_640aa9a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-27T07:14:19Z",
+      "side": 1,
+      "message": "dutMAC is sufficient as here the DUT is a STA.\n\nAlso refer to Golang\u0027s naming convention: http://go/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
