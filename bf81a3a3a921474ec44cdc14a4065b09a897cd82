@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28dfaa03_5f37ee1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T21:21:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8123241_6e5e318d",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a0ee659_ecc61195",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-27T18:19:21Z",
       "side": 1,
       "message": "ModemDisable? :-)",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436604de_0063b0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T21:21:27Z",
+      "side": 1,
+      "message": "We got only Enable method with bool param to enable or disable.",
+      "parentUuid": "6a0ee659_ecc61195",
       "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cf6419_7815db7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T21:21:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f368fca_cf6769c2",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6852ff67_67f76484",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-08-27T18:19:21Z",
       "side": 1,
       "message": "Maybe differentiate these errors, e.g. \"Modem not disabled\"",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460f0ea0_4c083b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T21:21:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6852ff67_67f76484",
       "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a968d54d_9d0392a9",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T21:21:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d75b1c1_ba4f75fe",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f9466dc_9acaaaab",
@@ -116,6 +206,24 @@
       "writtenOn": "2021-08-27T18:19:21Z",
       "side": 1,
       "message": "It looks like these are identical except whether isConnected is expected to be true vs. false. We could combine the methods by adding an extra expectedConnected parameter, e.g. EnsureConnectedState(ctx, modem, simpleModem, expectedConnectedState).",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880feb70_6e54440d",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T21:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f9466dc_9acaaaab",
       "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
