@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aacbe877_a1d7539f",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-08-27T21:28:24Z",
+      "side": 1,
+      "message": "This is now\n\n  \"chromiumos/tast/local/chrome/lacros/launcher\"\n\nafter CL:3122965.",
+      "revId": "0db6a05b06e597dc84a9ee728bc3fba438f6e1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
