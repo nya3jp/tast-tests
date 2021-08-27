@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe1a400_cbc723d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T07:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe28408e_7ecf9e1b",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c09ef34b_80c29262",
@@ -213,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e32094e_b673ef9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T07:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e878cf_5d218a1d",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c017aa90_7db99469",
@@ -274,6 +322,30 @@
       "side": 1,
       "message": "Not fixed. You do not need the func title. Since uiauto.Combine returns uiauto.Action.\n\nThe whole function body should be:\nfunc SetDropDownOption(...)\n  optionFinder :\u003d nodewith.Name(optionName).Role(role.PopUpButton)\n  settingFinder :\u003d nodewith.Name(expected).Role(role.ListBoxOption)\n  return uiauto.Combine(\"set drop down option\",\n    s.LeftClick(optionFinder),\n    s.LeftClick(settingFinder),\n  )\n)",
       "parentUuid": "fdabe3a4_147a52a0",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 12
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a374dc91_1b62f44f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T07:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8344f603_99bf8191",
       "range": {
         "startLine": 244,
         "startChar": 1,
