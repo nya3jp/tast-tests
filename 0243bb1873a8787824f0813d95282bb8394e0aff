@@ -39,6 +39,30 @@
       },
       "revId": "0243bb1873a8787824f0813d95282bb8394e0aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9325cdec_8c6a666a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-27T00:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56112567_e16a7248",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "0243bb1873a8787824f0813d95282bb8394e0aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
