@@ -7,32 +7,16 @@ package printer
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
-	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/testing"
+	"chromiumos/tast/local/upstart"
 )
 
 // ResetCups removes the privileged directories for cupsd.
 // If cupsd is running, this stops it.
-// It also prevents cups from being reset during session changes.
 func ResetCups(ctx context.Context) error {
-	// The disable file prevents cups-clear-state.conf from running
-	// cups-clear-state.sh on session change.
-	if err := ioutil.WriteFile("/run/cups/disable", nil, 0644); err != nil {
+	if err := upstart.StopJob(ctx, "cupsd"); err != nil {
 		return err
 	}
-	// Wait for the stamp file to prevent race conditions, in case the script
-	// is currently running. The stamp file is removed by cups-clear-state.sh
-	// when it starts running and (re)created when it finishes.
-	testing.ContextLog(ctx, "Waiting for stamp file")
-	if err := testing.Poll(ctx, func(context.Context) error {
-		_, err := os.Stat("/run/cups/stamp")
-		return err
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
-		testing.ContextLog(ctx, "Could not find stamp file: ", err)
-	}
-	return testexec.CommandContext(ctx, "/usr/share/cros/init/cups-clear-state.sh").Run(testexec.DumpLogOnError)
+	return testexec.CommandContext(ctx, "systemd-tmpfiles", "--remove", "/usr/lib/tmpfiles.d/chromeos.conf").Run(testexec.DumpLogOnError)
 }
