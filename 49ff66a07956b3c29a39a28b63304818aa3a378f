@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f213d97_b0d22303",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-27T09:46:23Z",
+      "side": 1,
+      "message": "hidehiko@, could you comment on this kind of thing from the Tast perspective? It seems a bit weird to me to have test specific code in here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f27702b_772fb3e8",
         "filename": "src/chromiumos/tast/local/lacros/policy.go",
         "patchSetId": 6
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "No, it is only used in the follow up CL.",
       "parentUuid": "2f27702b_772fb3e8",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4229879e_142e8470",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-27T09:46:23Z",
+      "side": 1,
+      "message": "What about introducing it in the follow-up CL?",
+      "parentUuid": "2f10157a_b12d6d8d",
       "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
