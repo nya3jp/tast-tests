@@ -63,6 +63,30 @@
       },
       "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592b09a4_1777df09",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T07:03:52Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "9c79c3b7_067abcf1",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 48
+      },
+      "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
