@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9684a8b_def39f3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-27T20:38:32Z",
+      "side": 1,
+      "message": "Please note, apart from sporadic H/W failures (this is using servo after all), the only recent failure is:\n\"\tFailed to check TPM state: failed to get TPM status: failed to get the TPM nonsensitive status info: calling NonsensitiveStatusIgnoreCache failed with message \"\": failed to create session: ssh: rejected: connect failed (open failed), Failed to get DUT uptime: could not run cat /proc/uptime on the DUT: failed to create session: ss\"\n\nwhich is due to known issue: b/196924181",
+      "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
