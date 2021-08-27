@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "333f9b0a_f8889875",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-27T02:03:09Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "8b156a45_6a4cdb71",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 61
+      },
+      "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50ffdcec_19e3fcc0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 3
