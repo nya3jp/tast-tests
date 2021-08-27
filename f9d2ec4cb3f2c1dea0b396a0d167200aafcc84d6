@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5964cd_a06bf69b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T22:24:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd0dc2ba_fee6766d",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604a3b3c_62aa3495",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58241fef_12b27e0b",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T22:24:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "604a3b3c_62aa3495",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a00df6_bd47a0ae",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-08-27T21:53:16Z",
       "side": 1,
       "message": "s/stated/state/, also maybe include the values:\n\nreturn errors.Errorf(\"unexpected connect state, got %t, expected %t\", isConnected, expectedConnected)",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2df8be5_556ecd37",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-27T22:24:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88a00df6_bd47a0ae",
       "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
