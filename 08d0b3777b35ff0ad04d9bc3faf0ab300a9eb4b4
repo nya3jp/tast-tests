@@ -39,6 +39,30 @@
       },
       "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c79c3b7_067abcf1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-27T06:47:39Z",
+      "side": 1,
+      "message": "Revised to check if the access points panel is shown and show it if not in a separate function, to avoid the consistent wait.\n\nI don\u0027t think it is a good idea to handle the situations in the error handling block, as it is order-dependent and it complicates things.",
+      "parentUuid": "b18bf690_d1fc611d",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 48
+      },
+      "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
