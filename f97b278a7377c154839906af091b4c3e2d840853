@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61193c03_8e242cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T09:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e43220_e0b3f171",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 14
+      },
+      "revId": "f97b278a7377c154839906af091b4c3e2d840853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f583233e_81809854",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-27T09:20:19Z",
       "side": 1,
       "message": "Is the default timeout enough for the new test cases?",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "f97b278a7377c154839906af091b4c3e2d840853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d404e9a1_a1a9d5b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-27T09:35:49Z",
+      "side": 1,
+      "message": "For the regression test, a rough estimate that the chrome login on chart side and then chrome login on DUT side takes \u003c1m and followed by checking 3:4 and 16:9 preview \u003c15s per check.\nTotal: 1m + 1m + 15s + 15s \u003c 3m.\n\nUpdated the timeout accordingly.",
+      "parentUuid": "f583233e_81809854",
       "range": {
         "startLine": 39,
         "startChar": 3,
