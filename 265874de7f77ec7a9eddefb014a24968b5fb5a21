@@ -302,6 +302,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2436f1_1a0620a3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-27T15:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877c3ba5_66d40da4",
+      "range": {
+        "startLine": 409,
+        "startChar": 5,
+        "endLine": 409,
+        "endChar": 61
+      },
+      "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50ffdcec_19e3fcc0",
@@ -333,6 +357,24 @@
       "side": 1,
       "message": "Now the poll only returns with ErrNodeNotFound when the ctx times out before the duration ends. But in this case we should also return with an error, and not with nil.",
       "parentUuid": "50ffdcec_19e3fcc0",
+      "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c797eb8_8f240376",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-27T15:39:36Z",
+      "side": 1,
+      "message": "With the current implementation, changed to return the result of polling.",
+      "parentUuid": "a16428ba_cc2f7753",
       "revId": "265874de7f77ec7a9eddefb014a24968b5fb5a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
