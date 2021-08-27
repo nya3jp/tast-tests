@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74dbe055_b4de146f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-08-27T17:38:57Z",
+      "side": 1,
+      "message": "Will change it after the change below is settled.",
+      "parentUuid": "d7c86849_0c55d2a1",
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d71b188e_4de21aa3",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-23T09:09:25Z",
       "side": 1,
       "message": "Did you think about having two functions like:\nMountVault\nCreateVaultAndVault\n\nor something similar (with proper names) to avoid having bool parameters?\n\nTake a look at the call of this fucntion\nutility.MountChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg, true, hwsec.NewVaultConfig())\n\nthe flag that is passed there makes sense now when creating CL. However, if someone is not familiar with the API they would need to check implementation and see how the flag is used.",
+      "range": {
+        "startLine": 233,
+        "startChar": 198,
+        "endLine": 233,
+        "endChar": 210
+      },
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54315946_66b32bcb",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-08-27T17:38:57Z",
+      "side": 1,
+      "message": "The reason why they are one function and not two is because the two are the same operation all in the underlying cryptohome command line and the DBus API below that. This has been the convention in the cryptohome stack.\n\nIf the bool parameter is a problem, then I think it makes sense to either:\n1. Add comment at all call sites.\n2. Make \"create\" part of VaultConfig.",
+      "parentUuid": "d71b188e_4de21aa3",
       "range": {
         "startLine": 233,
         "startChar": 198,
