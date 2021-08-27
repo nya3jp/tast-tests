@@ -63,6 +63,8 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -76,7 +78,10 @@ func WebAPK(ctx context.Context, s *testing.State) {
 
 	// TODO(crbug.com/1226730): Remove the ArcEnableWebAppShare flag once it is enabled by default.
 	// Due to the UI Automator flakiness, we still can't use the arcBooted fixture as it starts UI Automator automatically.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcEnableWebAppShare"))
+	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.ARCEnabled(),
+		chrome.ExtraArgs("--enable-features=ArcEnableWebAppShare"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
