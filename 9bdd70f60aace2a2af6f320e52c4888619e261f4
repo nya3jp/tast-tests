@@ -63,6 +63,30 @@
       },
       "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d946f1d_98ee5f5f",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-27T07:33:00Z",
+      "side": 1,
+      "message": "Renamed it to NewFixture for now. I think making it lacros.New*Fixture is a good idea, maybe we can do it in a follow up CL.\n\nLMK if there are any objections. Thanks!",
+      "parentUuid": "e0ecd936_e654002a",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
