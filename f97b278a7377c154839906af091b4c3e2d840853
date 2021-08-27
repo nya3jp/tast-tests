@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e43220_e0b3f171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-27T08:01:30Z",
+      "side": 1,
+      "message": "nit: \ndefer conn.Close()\ndefer conn.CloseTaget(cleanupCtx)",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 14
+      },
+      "revId": "f97b278a7377c154839906af091b4c3e2d840853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
