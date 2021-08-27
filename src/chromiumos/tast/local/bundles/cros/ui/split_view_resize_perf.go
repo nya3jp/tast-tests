@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
@@ -66,6 +67,11 @@ func init() {
 }
 
 func SplitViewResizePerf(ctx context.Context, s *testing.State) {
+	// Reserve ten seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -82,7 +88,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip")); err != nil {
 			s.Fatal("Failed to init: ", err)
 		}
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
 	} else {
 		cr = s.FixtValue().(*chrome.Chrome)
 	}
@@ -100,7 +106,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to ensure in clamshell mode: ", err)
 		}
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	// Ensures landscape orientation so this test can assume that windows snap on
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
@@ -118,7 +124,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
-		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 	}
 
 	var pc pointer.Context
