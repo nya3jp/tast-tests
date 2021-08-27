@@ -75,6 +75,30 @@
       },
       "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36d97d3_7007f560",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-27T17:54:55Z",
+      "side": 1,
+      "message": "Ahh okay, I forgot that AndroidConfigure is called elsewhere, added to AndroidConfigure instead",
+      "parentUuid": "85472f82_9407008e",
+      "range": {
+        "startLine": 216,
+        "startChar": 11,
+        "endLine": 216,
+        "endChar": 27
+      },
+      "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
