@@ -52,6 +52,29 @@
       "parentUuid": "182be5f9_0c39d9d4",
       "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85472f82_9407008e",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-27T09:02:59Z",
+      "side": 1,
+      "message": "This is only one of the places AndroidConfigure is called. The other is in the fixture.go. The one in fixture.go is the one that calls between testss.\n\nperhaps just add the sync call to the androidconfigure function",
+      "range": {
+        "startLine": 216,
+        "startChar": 11,
+        "endLine": 216,
+        "endChar": 27
+      },
+      "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
