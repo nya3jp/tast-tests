@@ -56,6 +56,30 @@
       },
       "revId": "5b224397c7b4424524bb702de1abd185de1af77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2f56e2_820cc662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-08-27T20:31:51Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "f5780158_995302fe",
+      "range": {
+        "startLine": 62,
+        "startChar": 63,
+        "endLine": 62,
+        "endChar": 96
+      },
+      "revId": "5b224397c7b4424524bb702de1abd185de1af77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
