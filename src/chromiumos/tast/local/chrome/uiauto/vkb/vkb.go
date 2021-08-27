@@ -281,21 +281,37 @@ func (vkbCtx *VirtualKeyboardContext) TapKeysJS(keys []string) uiauto.Action {
 		})
 }
 
+// ShowAccessPoints returns an action showing the access points panel.
+func (vkbCtx *VirtualKeyboardContext) ShowAccessPoints() uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(KeyFinder.Name("Hide access points"))(ctx); err == nil {
+			// "err == nil" means the access points panel is shown.
+			return nil
+		}
+		return vkbCtx.ui.LeftClick(KeyFinder.Name("Show access points"))(ctx)
+	}
+}
+
 // SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
 func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Action {
-	var flipButtonFinder *nodewith.Finder
+	var switchMode uiauto.Action
 	if enabled {
-		flipButtonFinder = KeyFinder.Name("make virtual keyboard movable")
-		return vkbCtx.ui.IfSuccessThen(
+		flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
+		switchMode = vkbCtx.ui.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
 		)
+	} else {
+		flipButtonFinder := KeyFinder.Name("dock virtual keyboard")
+		switchMode = vkbCtx.ui.IfSuccessThen(
+			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
+			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
+		)
 	}
 
-	flipButtonFinder = KeyFinder.Name("dock virtual keyboard")
-	return vkbCtx.ui.IfSuccessThen(
-		vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
-		vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
+	return uiauto.Combine("switch VK mode",
+		vkbCtx.ShowAccessPoints(),
+		switchMode,
 	)
 }
 
