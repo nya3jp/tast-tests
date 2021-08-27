@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab276558_4186025f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-08-27T05:16:14Z",
+      "side": 1,
+      "message": "The last couple comments on the linked bug says that the snippet itself should call \"sync\" when changing device name. Is this sync call after setting up the snippet for a different problem?",
+      "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
