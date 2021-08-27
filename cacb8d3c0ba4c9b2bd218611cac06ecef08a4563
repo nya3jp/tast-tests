@@ -50,6 +50,23 @@
       "message": "Since Shao-Chuan is apparently ooo and the CL is trivial, I\u0027d directly add Tast owners..",
       "revId": "cacb8d3c0ba4c9b2bd218611cac06ecef08a4563",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4353578a_bc2b9aea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-08-27T18:59:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "cacb8d3c0ba4c9b2bd218611cac06ecef08a4563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
