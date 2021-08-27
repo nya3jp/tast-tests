@@ -188,6 +188,30 @@
       },
       "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f192a9_1862fd40",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-27T01:16:56Z",
+      "side": 1,
+      "message": "sounds good, changed to `arc`",
+      "parentUuid": "4d052ff9_9b1080ae",
+      "range": {
+        "startLine": 177,
+        "startChar": 21,
+        "endLine": 177,
+        "endChar": 24
+      },
+      "revId": "4cde57f9e95bcfa7fe992a2853d375c0921e1507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
