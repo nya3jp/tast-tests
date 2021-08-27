@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3096b36b_a66e2006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T21:53:16Z",
+      "side": 1,
+      "message": "lgtm w/ nits!",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0dc2ba_fee6766d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T21:53:16Z",
+      "side": 1,
+      "message": "nit: These comments are also superfluous (we already call out SimpleModem.Connect in line 81)",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604a3b3c_62aa3495",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T21:53:16Z",
+      "side": 1,
+      "message": "if (expectedConnected !\u003d isConnected)",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a00df6_bd47a0ae",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T21:53:16Z",
+      "side": 1,
+      "message": "s/stated/state/, also maybe include the values:\n\nreturn errors.Errorf(\"unexpected connect state, got %t, expected %t\", isConnected, expectedConnected)",
+      "revId": "f9d2ec4cb3f2c1dea0b396a0d167200aafcc84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

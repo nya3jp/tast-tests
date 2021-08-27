@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0163392e_3f04e885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T21:53:16Z",
+      "side": 1,
+      "message": "Ah, sorry, missed that.",
+      "parentUuid": "436604de_0063b0fe",
+      "revId": "bf81a3a3a921474ec44cdc14a4065b09a897cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f368fca_cf6769c2",
