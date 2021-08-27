@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670edc03_baa0c978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-27T23:19:20Z",
+      "side": 1,
+      "message": "I would put this before disabling AutoConnect and add a comment.",
+      "revId": "75c92aa00d24d6646e57663f6ff6ef3fcdbc4346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
