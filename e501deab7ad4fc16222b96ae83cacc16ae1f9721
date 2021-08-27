@@ -73,6 +73,30 @@
       },
       "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1ba205_d1e91b52",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-08-27T22:11:57Z",
+      "side": 1,
+      "message": "Thanks for the link to the naming convention!\n\nDone.",
+      "parentUuid": "86647b5a_640aa9a6",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "e501deab7ad4fc16222b96ae83cacc16ae1f9721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
