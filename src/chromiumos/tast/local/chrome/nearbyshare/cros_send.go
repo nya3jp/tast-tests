@@ -122,3 +122,29 @@ func (s *SendSurface) ConfirmationToken(ctx context.Context) (string, error) {
 	}
 	return token, nil
 }
+
+const onCancelJS = discoveryElementJS + `.shadowRoot.querySelector("nearby-page-template").onCancelClick_()`
+
+// Cancel cancels the share on discovery page.
+func (s *SendSurface) Cancel(ctx context.Context) error {
+	if err := s.conn.WaitForExpr(ctx, onCancelJS); err != nil {
+		return errors.Wrap(err, "failed waiting for valid cancel on discovery page")
+	}
+	if err := s.conn.Eval(ctx, onCancelJS, nil); err != nil {
+		return errors.Wrap(err, "failed to call onCancelClick_ to stop the transfer")
+	}
+	return nil
+}
+
+const confirmationCancelJS = confirmationElementJS + `.shadowRoot.querySelector("nearby-page-template").shadowRoot.querySelector("#cancelButton").click()`
+
+// CancelSelect cancels the share on the confirmation page after selectng the device.
+func (s *SendSurface) CancelSelect(ctx context.Context) error {
+	if err := s.conn.WaitForExpr(ctx, confirmationCancelJS); err != nil {
+		return errors.Wrap(err, "failed waiting for valid cancel on confirmation page ")
+	}
+	if err := s.conn.Eval(ctx, confirmationCancelJS, nil); err != nil {
+		return errors.Wrap(err, "failed to click cancelButton to stop the transfer")
+	}
+	return nil
+}
