@@ -36,6 +36,7 @@ const (
 	GlideTyping             settingOption = "Enable glide typing"
 	AutoCapitalization      settingOption = "Auto-capitalization"
 	ShowInputOptionsInShelf settingOption = "Show input options in the shelf"
+	KoreanKeyboardLayout    settingOption = "Korean keyboard layout"
 )
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
@@ -122,4 +123,9 @@ func (i *IMESettings) ToggleGlideTyping(cr *chrome.Chrome, expected bool) uiauto
 // ToggleAutoCap clicks the 'Auto-capitalization' toggle button to enable/disable the setting.
 func (i *IMESettings) ToggleAutoCap(cr *chrome.Chrome, expected bool) uiauto.Action {
 	return i.SetToggleOption(cr, string(AutoCapitalization), expected)
+}
+
+// ChangeKoreanInputMode sets the Korean IME to a specific value
+func (i *IMESettings) ChangeKoreanInputMode(cr *chrome.Chrome, expected string) uiauto.Action {
+	return i.SetDropDownOption(cr, string(KoreanKeyboardLayout), expected)
 }

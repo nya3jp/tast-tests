@@ -239,6 +239,16 @@ func (s *OSSettings) SetToggleOption(cr *chrome.Chrome, optionName string, expec
 	}
 }
 
+// SetDropDownOption sets dropdown option to a value.
+func (s *OSSettings) SetDropDownOption(cr *chrome.Chrome, optionName, expected string) uiauto.Action {
+	optionFinder := nodewith.Name(optionName).Role(role.PopUpButton)
+	settingFinder := nodewith.Name(expected).Role(role.ListBoxOption)
+	return uiauto.Combine("set drop down option",
+		s.LeftClick(optionFinder),
+		s.LeftClick(settingFinder),
+	)
+}
+
 // IsToggleOptionEnabled checks whether the toggle option is enabled or not.
 func (s *OSSettings) IsToggleOptionEnabled(ctx context.Context, cr *chrome.Chrome, optionName string) (bool, error) {
 	toggleButtonCSSSelector := fmt.Sprintf(`cr-toggle[aria-label=%q]`, optionName)
