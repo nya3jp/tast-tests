@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1de2b2a_e4deceeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-08-27T23:28:31Z",
+      "side": 1,
+      "message": "Nifty!",
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5eb45b3_7e5d8845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-08-27T23:28:31Z",
+      "side": 1,
+      "message": "Nit: maybe reverse it so instead we bail early on !ok? I don\u0027t feel strongly though",
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56be5623_f3232a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-08-27T23:28:31Z",
+      "side": 1,
+      "message": "Do we need this check?",
+      "range": {
+        "startLine": 1228,
+        "startChar": 4,
+        "endLine": 1228,
+        "endChar": 18
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
