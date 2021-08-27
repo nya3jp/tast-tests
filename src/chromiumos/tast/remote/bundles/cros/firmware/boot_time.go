@@ -21,6 +21,7 @@ import (
 // testParameters contains all the data needed to run a single test iteration.
 type testParameters struct {
 	apBootRegexp string
+	apBootMax    time.Duration
 }
 
 func init() {
@@ -28,7 +29,7 @@ func init() {
 		Func:         BootTime,
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_ec"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Data:         pre.Data,
 		ServiceDeps:  pre.ServiceDeps,
 		SoftwareDeps: pre.SoftwareDeps,
@@ -40,14 +41,16 @@ func init() {
 				Name:              "x86",
 				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 				Val: testParameters{
-					`HC 0x|Port 80|ACPI query`,
+					apBootRegexp: `HC 0x|Port 80|ACPI query|Executing host reboot command`,
+					apBootMax:    1500 * time.Millisecond,
 				},
 			},
 			{
 				Name:              "default",
 				ExtraHardwareDeps: hwdep.D(hwdep.NoX86()),
 				Val: testParameters{
-					`power state 3 = S0`,
+					apBootRegexp: `power state 3 = S0`,
+					apBootMax:    1 * time.Second,
 				},
 			},
 		},
@@ -56,11 +59,12 @@ func init() {
 
 const (
 	coldBootMax time.Duration = time.Second
-	apBootMax   time.Duration = time.Second
 	maxWaitTime time.Duration = 60 * time.Second
 )
 
 // BootTime measures the time from EC boot to the first signal that the AP is booting.
+// This test is not a hard rule, what really matters is the platform.BootPerfServerCrosPerf test.
+// See go/chromeos-boottime for a proposal to revisit this.
 func BootTime(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParameters)
 	rebootingStarted := regexp.MustCompile(`Rebooting!`)
@@ -177,8 +181,8 @@ func BootTime(ctx context.Context, s *testing.State) {
 	if coldBootTime > coldBootMax {
 		s.Errorf("EC boot time = %s; want <=%s", coldBootTime, coldBootMax)
 	}
-	if apBootTime > apBootMax {
-		s.Errorf("Boot time = %s; want <=%s", apBootTime, apBootMax)
+	if apBootTime > param.apBootMax {
+		s.Errorf("AP Boot time = %s; want <=%s", apBootTime, param.apBootMax)
 	}
 	if s.HasError() {
 		s.Log("To debug, check the log in $LOGDIR/autoserv_test/servod_*/ec.txt")
