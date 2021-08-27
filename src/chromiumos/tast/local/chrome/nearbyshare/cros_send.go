@@ -82,6 +82,7 @@ func ConnectToSharingUI(ctx context.Context, cr *chrome.Chrome) (*SendSurface, e
 const discoveryElementJS = `document.querySelector("nearby-share-app").shadowRoot.querySelector("nearby-discovery-page")`
 const selectedShareTargetJS = discoveryElementJS + `.selectedShareTarget`
 const onNextJS = discoveryElementJS + `.onNext_()`
+const onCancelJS = discoveryElementJS + `.shadowRoot.querySelector("nearby-page-template").onCancelClick_`
 
 func findShareTargetJS(name string) string {
 	return fmt.Sprintf(discoveryElementJS+`.shareTargets_.find(t => t.name == %q)`, name)
@@ -113,6 +114,7 @@ func (s *SendSurface) SelectShareTarget(ctx context.Context, receiverName string
 // TODO(crbug/1170815): Replace with public test functions when available.
 const confirmationElementJS = `document.querySelector("nearby-share-app").shadowRoot.querySelector("nearby-confirmation-page")`
 const confirmationTokenJS = confirmationElementJS + `.confirmationToken_`
+const confirmationCancelJS = confirmationElementJS + `.shadowRoot.querySelector("nearby-page-template").onCancelClick_`
 
 // ConfirmationToken gets the secure sharing token for the transfer.
 func (s *SendSurface) ConfirmationToken(ctx context.Context) (string, error) {
@@ -124,4 +126,26 @@ func (s *SendSurface) ConfirmationToken(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to get confirmation token")
 	}
 	return token, nil
+}
+
+// Cancel cancels the share on discovery page.
+func (s *SendSurface) Cancel(ctx context.Context) error {
+	if err := s.conn.WaitForExpr(ctx, onCancelJS); err != nil {
+		return errors.Wrap(err, "failed waiting for valid cancel on discovery page")
+	}
+	if err := s.conn.Eval(ctx, onCancelJS+`()`, nil); err != nil {
+		return errors.Wrap(err, "failed to call onCancelClick() to stop the transfer")
+	}
+	return nil
+}
+
+// CancelSelect cancels the share on the confirmation page after selectng the device.
+func (s *SendSurface) CancelSelect(ctx context.Context) error {
+	if err := s.conn.WaitForExpr(ctx, confirmationCancelJS); err != nil {
+		return errors.Wrap(err, "failed waiting for valid cancel on confirmation page ")
+	}
+	if err := s.conn.Eval(ctx, confirmationCancelJS+`()`, nil); err != nil {
+		return errors.Wrap(err, "failed to click onCancelClick() to stop the transfer")
+	}
+	return nil
 }
