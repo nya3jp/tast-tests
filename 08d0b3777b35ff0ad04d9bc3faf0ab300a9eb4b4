@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa6e1fb8_9e925603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-08-27T05:26:27Z",
+      "side": 1,
+      "message": "The test passes with this CL 10 times in a row. Thank you for making the fix!",
+      "revId": "08d0b3777b35ff0ad04d9bc3faf0ab300a9eb4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
