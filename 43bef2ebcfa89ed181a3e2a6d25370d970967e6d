@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7312a3f0_30e79dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-27T21:08:29Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "43bef2ebcfa89ed181a3e2a6d25370d970967e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76088206_22531054",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-08-27T21:08:29Z",
+      "side": 1,
+      "message": "Looks like this is not related to the CL. Please remove. Also new changes almost identical to old changes, but without panic in defer function.",
+      "revId": "43bef2ebcfa89ed181a3e2a6d25370d970967e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
