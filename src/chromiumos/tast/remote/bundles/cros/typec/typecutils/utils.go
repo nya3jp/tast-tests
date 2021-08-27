@@ -79,6 +79,11 @@ func CheckForDPAltMode(ctx context.Context, d *dut.DUT, s *testing.State, pinAss
 			continue
 		}
 
+		// If we aren't interested in the Pin Assignment, return immediately.
+		if pinAssign == "" {
+			return nil
+		}
+
 		// Read the alt mode's VDO to determine the advertised pin assignment.
 		vdoPath := filepath.Join(modePath, "vdo")
 		out, err := linuxssh.ReadFile(ctx, d.Conn(), vdoPath)
