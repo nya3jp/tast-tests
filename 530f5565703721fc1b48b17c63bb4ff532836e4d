@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e59e84_9700b606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T06:07:32Z",
+      "side": 1,
+      "message": "Was just commented because I had nocturne, thanks for spotting",
+      "parentUuid": "c19c7537_cf9aaefa",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "067a0035_abd833e1",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-08-27T05:39:55Z",
       "side": 1,
       "message": "Before set input mode, it is assume the language mode and necessary warming up steps are already done. Does it need to wait another 10s. For example, in Japanese input mode, it does not take time to switch.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e54878b_2c722a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T06:07:32Z",
+      "side": 1,
+      "message": "Seemed needed to me, was getting some flakes otherwise.",
+      "parentUuid": "067a0035_abd833e1",
       "range": {
         "startLine": 50,
         "startChar": 2,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c9e62c_bc34455b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T06:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09ef34b_80c29262",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c017aa90_7db99469",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-08-27T05:39:55Z",
       "side": 1,
       "message": "nit:\n\noptionFinder :\u003d nodewith.Name(optionName).Role(role.PopUpButton)\nsettingFinder :\u003d nodewith.Name(expected).Role(role.ListBoxOption)\nreturn uiauto.Combine(\"set drop down option\",\n    s.LeftClick(optionFinder),\n    s.LeftClick(settingFinder),\n)",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 12
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdabe3a4_147a52a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-08-27T06:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c017aa90_7db99469",
       "range": {
         "startLine": 244,
         "startChar": 1,
