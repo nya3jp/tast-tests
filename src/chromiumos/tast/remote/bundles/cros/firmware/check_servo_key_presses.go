@@ -57,7 +57,8 @@ func CheckServoKeyPresses(ctx context.Context, s *testing.State) {
 		s.Log("Sending ReadServoKeyboard to the DUT")
 		res, err := utils.ReadServoKeyboard(ctx, &fwpb.ReadServoKeyboardRequest{Duration: listenSecs})
 		if err != nil {
-			s.Fatal("Error during ReadServoKeyboard: ", err)
+			s.Error("Error during ReadServoKeyboard: ", err)
+			return
 		}
 		expectedKeys := []string{enterKey, enterKey}
 		if !cmp.Equal(res.Keys, expectedKeys) {
