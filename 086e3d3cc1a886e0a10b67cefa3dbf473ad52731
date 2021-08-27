@@ -137,6 +137,29 @@
       },
       "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0bfeb78_310c3bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-27T00:16:10Z",
+      "side": 1,
+      "message": "Use s.Fatalf() instead of s.Fatal(fmt.Sprintf()).",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 22
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
