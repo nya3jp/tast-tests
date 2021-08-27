@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60921b13_21185588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-27T10:45:43Z",
+      "side": 1,
+      "message": "If I don\u0027t add this sleep, I see the following error:\n\n```\n2021-08-27T09:14:55.380093Z [09:14:53.199] Stack trace:\nCrOS device failed to select Android device as a receiver and start the transfer\n\tat chromiumos/tast/local/bundles/cros/arc.NearbyShareSend (nearby_share_send.go:333)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3.1 (run.go:821)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1374)\nfailed to wait for share target\n\tat chromiumos/tast/local/chrome/nearbyshare.(*SendSurface).SelectShareTarget (cros_send.go:97)\n\tat chromiumos/tast/local/bundles/cros/arc.NearbyShareSend (nearby_share_send.go:332)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3.1 (run.go:821)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1374)\nTypeError: Cannot read properties of null (reading \u0027querySelector\u0027)\n\tat chromiumos/tast/local/chrome/cdputil.(*Conn).Eval (conn.go:124)\n\tat chromiumos/tast/local/chrome/cdputil.(*Conn).WaitForExpr.func1 (conn.go:271)\n\tat chromiumos/tast/internal/testingutil.Poll (poll.go:64)\n\tat chromiumos/tast/testing.Poll (util.go:43)\n\tat chromiumos/tast/local/chrome/cdputil.(*Conn).WaitForExpr (conn.go:269)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Conn).waitForExprImpl (conn.go:241)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Conn).WaitForExprFailOnErrWithTimeout (conn.go:235)\n\tat chromiumos/tast/local/chrome/nearbyshare.(*SendSurface).WaitForShareTarget (cros_send.go:89)\n```",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "c2deb623743687d7d1574fa2ea91418ce7527d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
