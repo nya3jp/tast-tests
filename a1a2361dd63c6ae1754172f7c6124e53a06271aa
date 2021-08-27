@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20762c1a_a56c98f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-27T09:52:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1630fb4_5689d481",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83f6c7df_d74c568d",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255128f9_1bff4cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-27T09:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6e0a179_c248cc47",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe14b731_6dbbbe7c",
@@ -105,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c33a48_6500ec15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-27T09:52:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe14b731_6dbbbe7c",
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0acd93f_18307afc",
@@ -118,6 +184,24 @@
       "writtenOn": "2021-08-26T17:27:10Z",
       "side": 1,
       "message": "May want to add this in some test data for each subtest, if we expect different transfer times. For Nearby Share tests, we\u0027ll also take this into account for the global test timeout.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go;l\u003d39",
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d00cc6_23cc09c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-27T09:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0acd93f_18307afc",
       "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -159,6 +243,30 @@
       "side": 1,
       "message": "JFYI, the file names are here:\n\nhttp://ag/c/platform/vendor/google_arc/+/15628315/4/packages/development/ArcShareTestApp/src/org/chromium/arc/testapp/share/MainActivity.java#b89",
       "parentUuid": "c86aa89b_20faba9c",
+      "range": {
+        "startLine": 238,
+        "startChar": 54,
+        "endLine": 238,
+        "endChar": 98
+      },
+      "revId": "a1a2361dd63c6ae1754172f7c6124e53a06271aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46e87d8_baa8e8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-27T09:52:17Z",
+      "side": 1,
+      "message": "Per discussion, verifying file integrity through Nearby Share medium for ARC specific test is out of scope.  This is already covered by other core nearby share tests.  But we will verify ARC specific file cleanup steps.",
+      "parentUuid": "b59a4451_2efe3de0",
       "range": {
         "startLine": 238,
         "startChar": 54,
