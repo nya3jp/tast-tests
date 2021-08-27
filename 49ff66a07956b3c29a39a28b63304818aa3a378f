@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17e1a192_5b167732",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-27T17:34:17Z",
+      "side": 1,
+      "message": "Hmm... i do not think it makes sense to have fakeDMS dependency from here. It\u0027s better to be isolated. \nCan you define the fakeDMS fixture in policyutil/fixture, instead? It should make more sense, and policyutil/fixture have \"chrome.go\", so it should be in the same layer, I think.\nFixtData can have lacros\u0027s so that GetChrome can be used as is.",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f213d97_b0d22303",
         "filename": "src/chromiumos/tast/local/lacros/policy.go",
         "patchSetId": 6
@@ -14,6 +31,30 @@
       "writtenOn": "2021-08-27T09:46:23Z",
       "side": 1,
       "message": "hidehiko@, could you comment on this kind of thing from the Tast perspective? It seems a bit weird to me to have test specific code in here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffdb6f1_4c4cd0c9",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-27T17:34:17Z",
+      "side": 1,
+      "message": "Nice to avoid. Commented above.",
+      "parentUuid": "7f213d97_b0d22303",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -73,6 +114,24 @@
       "side": 1,
       "message": "What about introducing it in the follow-up CL?",
       "parentUuid": "2f10157a_b12d6d8d",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0eca246_a300a591",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-27T17:34:17Z",
+      "side": 1,
+      "message": "+1 not to have here.\nAlso, this is not lacros related, so I do not think this is a correct place to put this method. Maybe under policyutil/...",
+      "parentUuid": "4229879e_142e8470",
       "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
