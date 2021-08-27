@@ -419,6 +419,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae942690_9c8638c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_nebraska.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-08-27T17:02:39Z",
+      "side": 1,
+      "message": "Looks good, thanks!",
+      "parentUuid": "5b150d18_a41e98da",
+      "revId": "a198deb60d7dab026bccd5a7297d543918b68b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "817114dd_1fa64d09",
