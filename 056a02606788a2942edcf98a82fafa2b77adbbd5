@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf03c74_a5904205",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-08-27T06:19:23Z",
+      "side": 1,
+      "message": "Since we also have control of the 2 tests that use this function, is that possible to remove this function and just keep the one with new signature?",
+      "revId": "056a02606788a2942edcf98a82fafa2b77adbbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
