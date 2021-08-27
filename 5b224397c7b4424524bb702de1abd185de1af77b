@@ -16,6 +16,46 @@
       "message": "LGTM as a Tast owners. How about adding another reviewer who knows more about the diagnostics?",
       "revId": "5b224397c7b4424524bb702de1abd185de1af77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7425dc_43cebe57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2021-08-27T15:38:31Z",
+      "side": 1,
+      "message": "LG w/question",
+      "revId": "5b224397c7b4424524bb702de1abd185de1af77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5780158_995302fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2021-08-27T15:38:31Z",
+      "side": 1,
+      "message": "Does this always exist even if there are not active networks?",
+      "range": {
+        "startLine": 62,
+        "startChar": 63,
+        "endLine": 62,
+        "endChar": 96
+      },
+      "revId": "5b224397c7b4424524bb702de1abd185de1af77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
