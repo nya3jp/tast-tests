@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9efa4a_4b07b201",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-08-27T13:11:43Z",
+      "side": 1,
+      "message": "Given crrev.com/c/3122330 has landed, we should be good to go now and fix that issue :)\n\nRunning the CQ to *possibly* make it faster to land when submitting the CL (if everything passed).",
+      "revId": "152b471fc67ee79bad4a078420bf05e4fc45f946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
