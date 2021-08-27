@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bc39fcf_f95d8a13",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-27T13:37:15Z",
+      "side": 1,
+      "message": "I have rephrased the documented message to reflect the situation that PowerMenuPresent can be used. But, please kindly suggest if there\u0027s any other information that I should include here, and might have left out.",
+      "parentUuid": "6d972d1c_852a4134",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "746e7bef_0012f6b6",
         "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-26T15:19:53Z",
       "side": 1,
       "message": "could you describe more, focusing on the relationship with \"login\" field above?",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9119bba3_ce8932bb",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-27T13:37:15Z",
+      "side": 1,
+      "message": "Details added to describe the relationship between login and key.",
+      "parentUuid": "746e7bef_0012f6b6",
       "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa292a11_25fd7429",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-27T13:37:15Z",
+      "side": 1,
+      "message": "Details added accordingly to address the above bullets.",
+      "parentUuid": "5104a004_297c78cf",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15b68784_190ebe03",
         "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
         "patchSetId": 7
@@ -65,6 +119,24 @@
       "writtenOn": "2021-08-26T15:19:53Z",
       "side": 1,
       "message": "similarly, could you add more document, specifically when this can be used.",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6636726_2de16294",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-08-27T13:37:15Z",
+      "side": 1,
+      "message": "Similar to the above (in check_power_menu_service.proto), I have rephrased the documented message with more details to describe when Lock is used. But, please correct me if I\u0027ve misunderstood anything.",
+      "parentUuid": "15b68784_190ebe03",
       "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
