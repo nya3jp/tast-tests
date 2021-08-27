@@ -93,6 +93,30 @@
       },
       "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fff90bf_0ec16335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-08-27T17:22:28Z",
+      "side": 1,
+      "message": "I am not sure if there is a way to identify if the device is arc-P or arc-R inside  OrientationSize func, ResizeLock func, ClamshellFullscreenAppForARCP func, ClamshellFullscreenAppForARCP func. Could you please suggest if there is any.\n\nResize lock test case is a common test case for all 100 apps. I would like to keep it as a generic test case so that will check any kind of app.\n\n\u003e\u003eI think creating ARCPSpecificTests and VMSpecificTests forces you to change the apps like Roblox which is not affected by this Resize Lock Feature.\n\nSorry I am not sure how it is affecting the Roblox app. The idea of creating ARCPSpecificTests and VMSpecificTests to separate tests that are applicable for ARC-P and arc-R. Also not to disturb already existing tests(resize, fullscreen) of ARC-P since resize and fullscreen test case works\ndifferently with and without resize lock feature.",
+      "parentUuid": "28078335_d6ebffb3",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
