@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef37d3a5_d5f305bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T05:39:55Z",
+      "side": 1,
+      "message": "Thanks for adding this test. subtests are very well designed.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19c7537_cf9aaefa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T05:39:55Z",
+      "side": 1,
+      "message": "nit: uncomment this line to only run test on a few stable boards. Otherwise you can split the test to stable and informational. refer to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067a0035_abd833e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T05:39:55Z",
+      "side": 1,
+      "message": "Before set input mode, it is assume the language mode and necessary warming up steps are already done. Does it need to wait another 10s. For example, in Japanese input mode, it does not take time to switch.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09ef34b_80c29262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T05:39:55Z",
+      "side": 1,
+      "message": "nit: ime.Korean.InstallAndActivate()(ctx)",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c017aa90_7db99469",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-27T05:39:55Z",
+      "side": 1,
+      "message": "nit:\n\noptionFinder :\u003d nodewith.Name(optionName).Role(role.PopUpButton)\nsettingFinder :\u003d nodewith.Name(expected).Role(role.ListBoxOption)\nreturn uiauto.Combine(\"set drop down option\",\n    s.LeftClick(optionFinder),\n    s.LeftClick(settingFinder),\n)",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 12
+      },
+      "revId": "530f5565703721fc1b48b17c63bb4ff532836e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
