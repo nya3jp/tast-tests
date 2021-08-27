@@ -183,7 +183,7 @@ func isCoreSchedulingAvailable() bool {
 			// Old kernels don't support the sysfs interface.
 			continue
 		}
-		if strings.Trim(string(body), " ") != "Not affected" {
+		if strings.Trim(string(body), " \n") != "Not affected" {
 			// Core scheduling available
 			return true
 		}
