@@ -540,7 +540,9 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 		for _, p := range procs {
 			r, err := p.IsRunning()
 			if err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to stat process"))
+				// IsRunning is racey and sometimes produces spurious errors. Fail but
+				// don't end the loop; just try again.
+				return errors.Wrap(err, "failed to stat process")
 			}
 			if r {
 				return errors.New("processes still exist")
