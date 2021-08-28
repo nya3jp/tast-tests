@@ -16,6 +16,24 @@
       "message": "I would put this before disabling AutoConnect and add a comment.",
       "revId": "75c92aa00d24d6646e57663f6ff6ef3fcdbc4346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea689d71_c6241312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-28T04:26:05Z",
+      "side": 1,
+      "message": "After disabling technology not finding service to set autoconnect property, this seems to be the order.",
+      "parentUuid": "670edc03_baa0c978",
+      "revId": "75c92aa00d24d6646e57663f6ff6ef3fcdbc4346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

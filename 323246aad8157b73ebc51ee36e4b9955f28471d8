@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4369acb_82dcf840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-08-28T04:26:05Z",
+      "side": 1,
+      "message": "Updated with IsRegistered function to know registration status before attempting connect and added graceful exits on network timeout error.\n\nPassed on trogdor consistently.",
+      "revId": "323246aad8157b73ebc51ee36e4b9955f28471d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
