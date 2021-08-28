@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e284e3_e2e159fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-28T11:50:38Z",
+      "side": 1,
+      "message": "just `time.Second`",
+      "range": {
+        "startLine": 74,
+        "startChar": 30,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae70fdf_abda0c9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-28T11:50:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e825fc_1c08f706",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-28T11:50:38Z",
+      "side": 1,
+      "message": "the error should not be ignored.",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 8
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de903c80_82c28080",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-28T11:50:38Z",
+      "side": 1,
+      "message": "just `testing.Poll(ctx, d.Connect, \u0026testing.PollOptions...)`\nas d.Connect is a `func(ctx context.Context) error` by definition.",
+      "range": {
+        "startLine": 145,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9937ad93_c97fd2cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-28T11:50:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 198,
+        "startChar": 29,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
