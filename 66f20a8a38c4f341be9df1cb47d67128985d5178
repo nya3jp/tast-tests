@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61bc6f3_3da43108",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/constants.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T00:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6167bf7b_cc472091",
+      "revId": "66f20a8a38c4f341be9df1cb47d67128985d5178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "104ddbfd_f4f6d21b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-08-27T23:22:23Z",
       "side": 1,
       "message": "can you change this to \"noone\"? since we\u0027re using one of the \"*NoOne*\" fixtures. I didn\u0027t realize that our test names are actually inaccurate haha, I need to fix those",
+      "range": {
+        "startLine": 57,
+        "startChar": 36,
+        "endLine": 57,
+        "endChar": 47
+      },
+      "revId": "66f20a8a38c4f341be9df1cb47d67128985d5178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11f2a5d_fff0800c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T00:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "104ddbfd_f4f6d21b",
       "range": {
         "startLine": 57,
         "startChar": 36,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75fd01c_46257f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T00:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5708a249_ad834141",
+      "range": {
+        "startLine": 68,
+        "startChar": 36,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "66f20a8a38c4f341be9df1cb47d67128985d5178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba285e2_46f950f1",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-08-27T23:22:23Z",
       "side": 1,
       "message": "For the large file, you could explicitly add some time for how long it takes for that checkbox to become enabled if it takes a while.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 94
+      },
+      "revId": "66f20a8a38c4f341be9df1cb47d67128985d5178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2b0eff_07244e9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T00:53:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bba285e2_46f950f1",
       "range": {
         "startLine": 131,
         "startChar": 4,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc023c00_8acd1bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T00:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c84d04_9a4e8f17",
+      "range": {
+        "startLine": 281,
+        "startChar": 31,
+        "endLine": 281,
+        "endChar": 44
+      },
+      "revId": "66f20a8a38c4f341be9df1cb47d67128985d5178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9555ea1_818ada60",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-08-27T23:22:23Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 301,
+        "startChar": 26,
+        "endLine": 301,
+        "endChar": 39
+      },
+      "revId": "66f20a8a38c4f341be9df1cb47d67128985d5178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424964b9_994d63fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T00:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9555ea1_818ada60",
       "range": {
         "startLine": 301,
         "startChar": 26,
