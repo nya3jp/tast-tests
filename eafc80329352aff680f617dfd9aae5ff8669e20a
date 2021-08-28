@@ -16,6 +16,29 @@
       "message": "Sample usage in https://paste.googleplex.com/4608729426165760 L159 \u0026 L170",
       "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42428c8a_0ff9f363",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-28T01:26:12Z",
+      "side": 1,
+      "message": "nit: Can we put |confirmationElementJS| at the top with the other const vars.  And move |confirmationTokenJS| and |confirmationCancelJS| into the local function scope?",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
