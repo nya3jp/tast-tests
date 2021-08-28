@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f96d59_b5c27756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/docusign.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-28T06:19:17Z",
+      "side": 1,
+      "message": "Style : go/go-style/decisions#indent-error-flow\n\nTry to follow this style avoiding nested else if for better readability.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "85e04b50d1972119d6976ae2d9feb1efde2671c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a763778b_8f146a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/docusign.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-28T06:19:17Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "85e04b50d1972119d6976ae2d9feb1efde2671c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
