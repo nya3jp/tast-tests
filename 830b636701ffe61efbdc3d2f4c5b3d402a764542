@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3aa313e6_92295edc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-08-29T23:12:05Z",
+      "side": 1,
+      "message": "I haven\u0027t handled cases like this. But if the error is somehow intended/expected, I would make it explicit. something like this:\nout, err:\u003d...\nif err!\u003dnil {\n   // Add comments to explain why no-exit-status error is ignored.\n   if err looks like \"No exit status\" {\n       log(\"expected error:\", err)\n   }else {\n       // handle/log err?\n   }\n}",
+      "parentUuid": "c215524d_45210179",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 8
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de903c80_82c28080",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
         "patchSetId": 2
