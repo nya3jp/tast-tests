@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0645bd2_91715e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4eaa2315_d0441d78",
+      "range": {
+        "startLine": 45,
+        "startChar": 57,
+        "endLine": 45,
+        "endChar": 149
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8483c757_b4b6900e",
@@ -60,6 +84,54 @@
       "writtenOn": "2021-08-20T22:02:38Z",
       "side": 1,
       "message": "Any reason why you shouldn\u0027t use \"strconv.ParseInt(tout[1], 10, 64)\" instead? Then, you don\u0027t need to case to int64 later.\n\nhttps://pkg.go.dev/strconv#ParseInt",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fad909c_5a3bc31a",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8483c757_b4b6900e",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a86f90_23578995",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4db11a6_f22f5b7f",
       "range": {
         "startLine": 32,
         "startChar": 23,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebc7135_33c5308c",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da88cda0_813f0b24",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd57620_3ca30ee3",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d83963_5dda4d78",
+      "range": {
+        "startLine": 54,
+        "startChar": 30,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94cb9f5e_16cbdaf2",
@@ -157,6 +277,54 @@
         "startChar": 29,
         "endLine": 58,
         "endChar": 33
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41029068_7964e92f",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7abed8d1_b8f297cf",
+      "range": {
+        "startLine": 58,
+        "startChar": 29,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "a84f91508771421b8afbd57686f3948b8307810f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d30b3c5_2ec195f4",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-08-29T00:57:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94cb9f5e_16cbdaf2",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 45
       },
       "revId": "a84f91508771421b8afbd57686f3948b8307810f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
