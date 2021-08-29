@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c531aeee_663d7522",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-29T23:16:08Z",
+      "side": 1,
+      "message": "UpdateApp does install APP if it is not installed. It is exactly doing installOrUpdate. The function name does not match the implementation.",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 14
+      },
+      "revId": "0e868d5ee88b3ccbbd8a1b2d6039c1c58085f2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a67e35_e600265e",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-08-29T23:16:08Z",
+      "side": 1,
+      "message": "For a fresh install. I do not think it needs to check update again.",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 49
+      },
+      "revId": "0e868d5ee88b3ccbbd8a1b2d6039c1c58085f2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
