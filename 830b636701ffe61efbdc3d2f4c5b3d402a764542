@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c215524d_45210179",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-29T00:13:49Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused by how to deal with this one: the command returns early in TAST with an \"no exit status error\" since on the DUT it blocks till the DUT resumes from the suspend (that is why we run it asynchronously).\n\nDo you have any pointers about how to handle the return value in this case?\n\"No exit status\" doesn\u0027t really mean it failed, just that the CommandContext() returned without an exit status.",
+      "parentUuid": "54e825fc_1c08f706",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 8
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de903c80_82c28080",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
         "patchSetId": 2
