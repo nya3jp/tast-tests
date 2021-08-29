@@ -87,6 +87,30 @@
       },
       "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1934d512_31f82489",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-29T13:54:56Z",
+      "side": 1,
+      "message": "Renaming package later SGTM.",
+      "parentUuid": "2d946f1d_98ee5f5f",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "9bdd70f60aace2a2af6f320e52c4888619e261f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
