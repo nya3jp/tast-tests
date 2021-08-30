@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a89686c_f7191840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-30T07:08:18Z",
+      "side": 1,
+      "message": "Splitting CL into two as per recommendation. \nGoing with enabling KmsvncConnect first. \nSending ScreenshotCLI afterwards",
+      "revId": "df251417091e775f7992b6cfebca1381862dd8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
