@@ -91,7 +91,7 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	}
 	defer trustedHelpAppConn.Close()
 
-	const searchKeyword = "helpa"
+	const searchKeyword = "help"
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var response findResponse
 		err := trustedHelpAppConn.Eval(ctx, fmt.Sprintf(
@@ -124,7 +124,7 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to initialize local search service: ", err)
 	}
 
-	// Search for "helpa". If local search service is used, it should return
+	// Search for "help". If local search service is used, it should return
 	// results in the "Help" category.
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
