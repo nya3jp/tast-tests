@@ -18,7 +18,7 @@ func init() {
 		Func:         ModemFWManifestVerification,
 		Desc:         "Verifies the validity of the firmware manifest",
 		Contacts:     []string{"andrewlassalle@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular", "cellular_unstable"},
+		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		SoftwareDeps: []string{"modemfwd"},
 	})
 }
