@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e9cac6_7d9f752e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/large_paper_scans.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-08-30T20:13:25Z",
+      "side": 1,
+      "message": "Since this isn\u0027t passing any special flags to Chrome, could this part of setup be covered by the \"chromeLoggedIn\" fixture?",
+      "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc8950b_d4992729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/large_paper_scans.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-08-30T20:13:25Z",
+      "side": 1,
+      "message": "This should probably also have the notification handling that we recently added to scanapp.Scan.",
+      "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792e7a0c_423c74ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/large_paper_scans.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-08-30T20:13:25Z",
+      "side": 1,
+      "message": "Is this whole inner function identical to what we\u0027re doing in scanapp.Scan?  If it is, can these two be refactored into a shared package-level function?",
+      "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
