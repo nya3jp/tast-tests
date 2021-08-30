@@ -131,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c3763d6_88d1799d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-30T18:20:37Z",
+      "side": 1,
+      "message": "or into local function scope, since it\u0027s only used once. either is OK with me for here and below",
+      "parentUuid": "a052f0a9_e5403970",
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fe4fca6_38d7a70a",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
         "patchSetId": 1
@@ -165,6 +183,24 @@
       "writtenOn": "2021-08-30T18:19:34Z",
       "side": 1,
       "message": "similarly here, it would be nice to have this next to confirmationElementJS.",
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b41e2a_8eff5d07",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-30T18:20:37Z",
+      "side": 1,
+      "message": "or in local function scope if you\u0027d prefer, since it\u0027s only used once",
+      "parentUuid": "5e21dcdd_e4159e0c",
       "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
