@@ -22,6 +22,23 @@
       },
       "revId": "c2997ebe65011c310c747ebd963d8553754ca2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fc470f_eb028ba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-30T06:48:02Z",
+      "side": 1,
+      "message": "Ah, sorry I didn\u0027t mention it, but could you make sure to resolve all the comments before sending a CL to CQ?\n",
+      "revId": "c2997ebe65011c310c747ebd963d8553754ca2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
