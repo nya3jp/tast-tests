@@ -16,6 +16,23 @@
       "message": "ScreenshotCLI:\n- 20 successful builds: https://tastboard.corp.google.com/test/graphics.ScreenshotCLI\n- Failures in those above builds due to existing fixture issue\n\nKmsvncConnect:\n- 20 successful builds:\n- there was a flake, but that we have 20 builds succeeding after that:\n  https://tastboard.corp.google.com/test/graphics.KmsvncConnect\n- see some flakes with ([Fixture failure] chromeGraphics:), but that\u0027s also used for an existing critical test (graphics.FPS)\n    ",
       "revId": "2ec086d2c3ef5a5d7e24cdfa23e12d50cd79e0d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecfce4a_9872e4cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-08-30T05:30:20Z",
+      "side": 1,
+      "message": "@uekawa and @nya - can I get your help to review this? Was updated a week back to include both KmsvncConnect and ScreenshotCLI tests\n\nThanks!",
+      "revId": "2ec086d2c3ef5a5d7e24cdfa23e12d50cd79e0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
