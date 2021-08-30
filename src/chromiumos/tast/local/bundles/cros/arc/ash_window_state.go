@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
@@ -31,8 +32,8 @@ func init() {
 
 func AshWindowState(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
-
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -65,6 +66,10 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for Android to be idle")
+	}
+
 	for _, test := range []struct {
 		wmEvent             ash.WMEventType
 		expectedWindowState ash.WindowStateType
@@ -82,6 +87,10 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to set window state to %s for Settings app: %v", test.expectedWindowState, err)
 		} else if state != test.expectedWindowState {
 			s.Errorf("Unexpected window state: got %s; want %s", state, test.expectedWindowState)
+		}
+
+		if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to wait for Android to be idle")
 		}
 	}
 }
