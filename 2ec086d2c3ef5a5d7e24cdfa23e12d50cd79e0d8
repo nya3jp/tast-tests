@@ -33,6 +33,23 @@
       "message": "@uekawa and @nya - can I get your help to review this? Was updated a week back to include both KmsvncConnect and ScreenshotCLI tests\n\nThanks!",
       "revId": "2ec086d2c3ef5a5d7e24cdfa23e12d50cd79e0d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4dac1e1_5872143c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T05:56:12Z",
+      "side": 1,
+      "message": "LGTM, but I recommend creating two separate changes for promoting each test. It is sometimes the case that a promotion CL is reverted for unexpected test failures, and in such cases multiple tests are demoted at once if you promote them in a CL.\n",
+      "revId": "2ec086d2c3ef5a5d7e24cdfa23e12d50cd79e0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
