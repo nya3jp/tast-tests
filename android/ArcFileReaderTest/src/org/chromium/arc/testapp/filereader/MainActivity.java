@@ -33,6 +33,13 @@ public class MainActivity extends Activity {
     private TextView mfileContent;
 
     @Override
+    private BroadcastReceiver mMediaScanListener =
+        new BroadcastReceiver() {
+          @Override
+          public void onReceive(Context context, Intent intent) {
+            Log.e(TAG, "AIUEO: Received " + intent.getAction() + " for " + intent.getData());
+          }
+       };
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -40,10 +47,19 @@ public class MainActivity extends Activity {
         mAction = findViewById(R.id.action);
         mUri = findViewById(R.id.uri);
         mfileContent = findViewById(R.id.file_content);
-
+        final IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_MEDIA_SCANNER_STARTED);
+        filter.addAction(Intent.ACTION_MEDIA_SCANNER_FINISHED);
+        filter.addDataScheme("file");
+        // [EDITED] getContext().registerReceiver(mMediaScanListener, filter);
+        registerReceiver(mMediaScanListener, filter);
         processIntent();
     }
-
+    @Override
+    public void onDestroy() {
+        unregisterReceiver(mMediaScanListener);
+        super.onDestroy();
+    }
     private void processIntent() {
         Log.i(LOG_TAG, "Processing intent");
         Intent intent = getIntent();
