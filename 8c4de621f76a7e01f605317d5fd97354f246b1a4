@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36cdf3d2_1b01c58a",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-30T08:08:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74dbe055_b4de146f",
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71b188e_4de21aa3",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "The reason why they are one function and not two is because the two are the same operation all in the underlying cryptohome command line and the DBus API below that. This has been the convention in the cryptohome stack.\n\nIf the bool parameter is a problem, then I think it makes sense to either:\n1. Add comment at all call sites.\n2. Make \"create\" part of VaultConfig.",
       "parentUuid": "d71b188e_4de21aa3",
+      "range": {
+        "startLine": 233,
+        "startChar": 198,
+        "endLine": 233,
+        "endChar": 210
+      },
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d17379_f9a8e585",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-30T08:08:57Z",
+      "side": 1,
+      "message": "both comments are rather nits. I wanted to bring the attention about that to you as when I checked the other related CL true and false were passes to the call. \nMaybe using named parameters (which is not entirely align with golang guideline) would improve readability:\ncreateVault :\u003d true\nutility.MountChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg, createVault, hwsec.NewVaultConfig())",
+      "parentUuid": "54315946_66b32bcb",
       "range": {
         "startLine": 233,
         "startChar": 198,
