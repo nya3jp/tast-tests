@@ -141,6 +141,30 @@
       },
       "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60eb076_cf2b050c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-08-30T22:57:16Z",
+      "side": 1,
+      "message": "As suggested, tried arc.vm and arc.container for checking if the Device is vm or not. It worked.",
+      "parentUuid": "1ab0bca0_213e82c0",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "319f012932835d355ff14601ea91fd72001a7bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
