@@ -28,9 +28,12 @@ type testParameters struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Ethernet8021X,
-		Desc:         "Verifies we can authenticate Ethernet via 802.1X",
-		Contacts:     []string{"briannorris@chromium.org", "cros-networking@google.com"},
+		Func: Ethernet8021X,
+		Desc: "Verifies we can authenticate Ethernet via 802.1X",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+			"cros-networking@google.com",
+		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wired_8021x"},
 		Fixture:      "ensureNoUI",
