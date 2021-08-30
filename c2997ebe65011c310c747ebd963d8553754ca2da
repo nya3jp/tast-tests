@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27adbb81_266b8643",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-08-30T05:32:21Z",
+      "side": 1,
+      "message": "How about this?\n\nassistant: update WifiQueries to use uiauto\n\nIt\u0027s common to start a commit message with the test category name when you update a test.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "c2997ebe65011c310c747ebd963d8553754ca2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
