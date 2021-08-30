@@ -25,7 +25,7 @@ func init() {
 			"gpopoola@google.com",       // Test Author
 			"chromeos-fwupd@google.com", // CrOS FWUPD
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"}, // Disabling test (b/198158869)
 		SoftwareDeps: []string{"fwupd"},
 	})
 }
