@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RunPreviewDocumentCornersDetection tests that the detected document corners will be shown while under document scanner mode.
+// RunPreviewDocumentCornersDetection tests that the detected document corners will be shown while under document scan mode.
 func RunPreviewDocumentCornersDetection(ctx context.Context, scriptPaths []string, outDir string, facing Facing) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -60,21 +60,26 @@ func RunPreviewDocumentCornersDetection(ctx context.Context, scriptPaths []strin
 		}
 	}
 
-	// Enable scanner mode in expert mode.
-	if err := app.EnableDocumentMode(ctx); err != nil {
-		return errors.Wrap(err, "failed to enable scanner mode")
+	// For the devices with document mode enabled by default, the scan mode button should be visible
+	// upon launching the app.
+	if visible, err := app.Visible(ctx, ScanModeButton); err != nil {
+		return errors.Wrap(err, "failed to check visibility of scan mode button")
+	} else if !visible {
+		if err := app.EnableDocumentMode(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable scan mode")
+		}
 	}
 
-	// Switch to scanner mode.
+	// Switch to scan mode.
 	if err := app.SwitchMode(ctx, Scan); err != nil {
-		return errors.Wrap(err, "failed to switch to scanner mode")
+		return errors.Wrap(err, "failed to switch to scan mode")
 	}
 
 	// Verify that document corners are shown in the preview.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		result, err := app.HasClass(ctx, DocumentCornerOverlay, "show-corner-indicator")
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to check class of the document scanner overlay"))
+			return testing.PollBreak(errors.Wrap(err, "failed to check class of the document scan overlay"))
 		} else if !result {
 			return errors.Wrap(err, "no document is found")
 		}

@@ -169,12 +169,8 @@ func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.V
 	}
 
 	// Enable QR code detection and measure the performance again.
-	enabled, err := app.ToggleQRCodeOption(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to enable QR code detection")
-	}
-	if !enabled {
-		return errors.Wrap(err, "QR code detection is not enabled after toggling")
+	if err := app.EnableQRCodeDetection(ctx); err != nil {
+		return errors.Wrap(err, "failed to ensure QR code detection is enabled")
 	}
 
 	usageQR, err := measureStablizedUsage(ctx)
@@ -182,12 +178,8 @@ func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.V
 		return errors.Wrap(err, "failed to measure CPU and power usage with QR code detection")
 	}
 
-	enabled, err = app.ToggleQRCodeOption(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to disable QR code detection")
-	}
-	if enabled {
-		return errors.Wrap(err, "QR code detection is not disabled after toggling")
+	if err := app.DisableQRCodeDetection(ctx); err != nil {
+		return errors.Wrap(err, "failed to ensure QR code detection is disabled")
 	}
 
 	if cpuUsageQR, exist := usageQR["cpu"]; exist {
