@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6b443c_33c93848",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T05:53:39Z",
+      "side": 1,
+      "message": "out can contain multi-line strings, so it\u0027s not suitable for an error message.\n\nYou can pass testexec.DumpLogOnError to Cmd.Run() instead to print logs when the command fails.",
+      "range": {
+        "startLine": 274,
+        "startChar": 59,
+        "endLine": 274,
+        "endChar": 63
+      },
+      "revId": "8a7de79998966a83d2fc69225e6f9f82650f3540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
