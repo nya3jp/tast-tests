@@ -222,6 +222,8 @@ var (
 		// naming CL on app side fully landed.
 		".mode-item>input[data-mode=\"scanner\"]",
 		".mode-item>input[data-mode=\"scan\"]"}}
+	// ScanBarcodeOption is the option button to switch to QR code detection mode.
+	ScanBarcodeOption = UIComponent{"scan barcode option", []string{"#scan-barcode"}}
 	// ScanDocumentModeOption is the document mode option of scan mode.
 	ScanDocumentModeOption = UIComponent{"document mode button", []string{
 		// TODO(b/196904871): Remove selector for old mode name after
@@ -1240,9 +1242,58 @@ func (a *App) ToggleMirroringOption(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "mirror", "#toggle-mirror")
 }
 
-// ToggleQRCodeOption toggles the barcode scanning option.
-func (a *App) ToggleQRCodeOption(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "enable-scan-barcode", "#toggle-barcode")
+// maybeToggleQRCodeOption toggle QR code option if current state is not |target|.
+func (a *App) maybeToggleQRCodeOption(ctx context.Context, target bool) error {
+	scanBarcodeOption := "enable-scan-barcode"
+	if current, err := a.GetState(ctx, scanBarcodeOption); err != nil {
+		return errors.Wrap(err, "failed to check scan barcode option state")
+	} else if current != target {
+		if after, err := a.toggleOption(ctx, scanBarcodeOption, "#toggle-barcode"); err != nil {
+			return errors.Wrap(err, "failed to toggle scan barcode option")
+		} else if after != target {
+			return errors.New("failed to toggle scan barcode option to target state")
+		}
+	}
+	return nil
+}
+
+// EnableQRCodeDetection enables the QR code detection.
+func (a *App) EnableQRCodeDetection(ctx context.Context) error {
+	if visible, err := a.Visible(ctx, ScanModeButton); err != nil {
+		return errors.Wrap(err, "failed to check visibility of scan mode button")
+	} else if visible {
+		if err := a.SwitchMode(ctx, Scan); err != nil {
+			return errors.Wrap(err, "failed to switch to scan mode")
+		}
+		if err := a.Click(ctx, ScanBarcodeOption); err != nil {
+			return errors.Wrap(err, "failed to click the scan barcode option")
+		}
+	} else {
+		if err := a.SwitchMode(ctx, Photo); err != nil {
+			return errors.Wrap(err, "failed to switch to photo mode")
+		}
+		if err := a.maybeToggleQRCodeOption(ctx, true); err != nil {
+			return errors.Wrap(err, "failed to toggle QR code detection")
+		}
+	}
+	return nil
+}
+
+// DisableQRCodeDetection disables the QR code detection.
+func (a *App) DisableQRCodeDetection(ctx context.Context) error {
+	visible, err := a.Visible(ctx, ScanModeButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to check visibility of scan mode button")
+	}
+	if err := a.SwitchMode(ctx, Photo); err != nil {
+		return errors.Wrap(err, "failed to switch to photo mode")
+	}
+	if visible {
+		if err := a.maybeToggleQRCodeOption(ctx, false); err != nil {
+			return errors.Wrap(err, "failed to toggle QR code detection")
+		}
+	}
+	return nil
 }
 
 // SetTimerOption sets the timer option to on/off.
