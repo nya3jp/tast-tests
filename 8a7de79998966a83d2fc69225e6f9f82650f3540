@@ -22,6 +22,30 @@
       },
       "revId": "8a7de79998966a83d2fc69225e6f9f82650f3540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb68a762_f9b4edfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-08-30T16:08:34Z",
+      "side": 1,
+      "message": "Done thanks",
+      "parentUuid": "7f6b443c_33c93848",
+      "range": {
+        "startLine": 274,
+        "startChar": 59,
+        "endLine": 274,
+        "endChar": 63
+      },
+      "revId": "8a7de79998966a83d2fc69225e6f9f82650f3540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
