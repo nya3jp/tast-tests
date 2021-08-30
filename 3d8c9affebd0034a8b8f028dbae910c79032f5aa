@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "775cb5e4_eae6729e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-30T20:37:14Z",
+      "side": 1,
+      "message": "FpCheckWriteProtect has a dependency on \"tast.cros.baserpc.FileSystem\" as well",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "3d8c9affebd0034a8b8f028dbae910c79032f5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
