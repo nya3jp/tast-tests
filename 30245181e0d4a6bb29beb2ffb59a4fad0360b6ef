@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2284d2b_6df50620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-08-30T23:50:04Z",
+      "side": 0,
+      "message": "instead of ignoring arcvm_dev.conf, I was thinking of overwriting it from the test.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 95
+      },
+      "revId": "30245181e0d4a6bb29beb2ffb59a4fad0360b6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
