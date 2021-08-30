@@ -65,7 +65,7 @@ func CCAUICoexistence(ctx context.Context, s *testing.State) {
 		return &cameraWebPage{pageURL: server.URL + "/cca_ui_coexistence.html"}
 	}
 
-	subTestTimeout := 20 * time.Second
+	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, context.Context, *chrome.Chrome, func() (*cca.App, error), func() *cameraWebPage) error
