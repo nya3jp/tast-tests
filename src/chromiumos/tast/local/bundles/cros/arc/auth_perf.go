@@ -37,6 +37,7 @@ type testParam struct {
 	maxErrorBootCount int
 	chromeArgs        []string
 	dropCaches        bool
+	oDirect           bool
 }
 
 var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
@@ -82,6 +83,14 @@ func init() {
 			Val: testParam{
 				maxErrorBootCount: 3,
 				dropCaches:        true,
+			},
+		}, {
+			Name:              "unmanaged_o_direct_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				dropCaches:        true,
+				maxErrorBootCount: 3,
+				oDirect:           true,
 			},
 		}, {
 			Name:              "unmanaged_rt_vcpu_vm",
@@ -145,7 +154,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParam)
 	maxErrorBootCount := param.maxErrorBootCount
 
-	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf")
+	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
 	if param.chromeArgs != nil {
 		args = append(args, param.chromeArgs...)
 	}
@@ -325,6 +334,18 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	if err := waitForARCStopped(ctx); err != nil {
 		return v, err
 	}
+
+	// Enable O_DIRECT on ARCVM block device
+	if s.Param().(testParam).oDirect {
+		if err := arc.WriteArcvmDevConf(ctx, "O_DIRECT=true"); err != nil {
+			return v, err
+		}
+	} else {
+		if err := arc.WriteArcvmDevConf(ctx, ""); err != nil {
+			return v, err
+		}
+	}
+	defer arc.RestoreArcvmDevConf(ctx)
 
 	// Drop host OS caches if test config requires it for predictable results.
 	if s.Param().(testParam).dropCaches {
