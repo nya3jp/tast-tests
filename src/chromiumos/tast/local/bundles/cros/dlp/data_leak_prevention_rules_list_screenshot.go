@@ -43,12 +43,12 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 			{
 				Name:        "Disable Screenshot in confidential content",
 				Description: "User should not be able to take screen of confidential content",
-				Sources: &policy.DataLeakPreventionRulesListSources{
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
 						"example.com",
 					},
 				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
 					{
 						Class: "SCREENSHOT",
 						Level: "BLOCK",

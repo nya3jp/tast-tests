@@ -58,9 +58,10 @@ func TestMessageEqual(t *testing.T) {
 				Url:  "https://example.com/wallpaper.jpg",
 				Hash: "baddecafbaddecafbaddecafbaddecafbaddecafbaddecafbaddecafbaddecaf"}},
 			false, false}, // Note that the UnmarshalAs command here will succeed.
+		// TODO(crbug.com/1244569): Find a different policy to test the private fields with.
 		// Type: message with private field.
-		{json.RawMessage("\"********\""), &PluginVmLicenseKey{Val: "foo"}, true, false},
-		{json.RawMessage("\"foo\""), &PluginVmLicenseKey{Val: "foo"}, false, false},
+		// {json.RawMessage("\"********\""), &PluginVmLicenseKey{Val: "foo"}, true, false},
+		// {json.RawMessage("\"foo\""), &PluginVmLicenseKey{Val: "foo"}, false, false},
 		{json.RawMessage("[{\"account_id\":\"foo\",\"type\":0}]"), &DeviceLocalAccounts{Val: []DeviceLocalAccountInfo{
 			{
 				AccountID:   &deviceLocalAccountID,

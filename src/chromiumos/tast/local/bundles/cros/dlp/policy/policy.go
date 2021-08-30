@@ -17,17 +17,17 @@ func RestrictiveDLPPolicyForClipboard() []policy.Policy {
 			{
 				Name:        "Disable copy and paste of confidential content in any destination",
 				Description: "User should not be able to copy and paste confidential content in any destination",
-				Sources: &policy.DataLeakPreventionRulesListSources{
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
 						"example.com",
 					},
 				},
-				Destinations: &policy.DataLeakPreventionRulesListDestinations{
+				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
 					Urls: []string{
 						"*",
 					},
 				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
 					{
 						Class: "CLIPBOARD",
 						Level: "BLOCK",
@@ -46,17 +46,17 @@ func StandardDLPPolicyForClipboard() []policy.Policy {
 			{
 				Name:        "Disable copy and paste of confidential content in restricted destination",
 				Description: "User should not be able to copy and paste confidential content in restricted destination",
-				Sources: &policy.DataLeakPreventionRulesListSources{
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
 						"example.com",
 					},
 				},
-				Destinations: &policy.DataLeakPreventionRulesListDestinations{
+				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
 					Urls: []string{
 						"google.com",
 					},
 				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
 					{
 						Class: "CLIPBOARD",
 						Level: "BLOCK",
