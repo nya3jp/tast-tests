@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b2cda2_b9c83aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-30T06:07:18Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca2f949_0448140f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-30T06:07:18Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#runtime-variables \n\nFor variables used in only one test, prefix them with the test name, i.e. \"video.PlatformDecoding.stopOnFailure\". \nFor variables used in only one package, prefix them with the package name, i.e. \"video.stopOnFailure\".\nOnly if neither applies should the variable name not be prefixed.\n\nFrom code search, I can\u0027t find any other uses of this variable, so I assume it is used in only this test.",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5eb45b3_7e5d8845",
@@ -31,6 +71,70 @@
       "writtenOn": "2021-08-27T23:28:31Z",
       "side": 1,
       "message": "Nit: maybe reverse it so instead we bail early on !ok? I don\u0027t feel strongly though",
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf7a4eb_530abe1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-30T06:07:18Z",
+      "side": 1,
+      "message": "I agree with Jao-ke. Error flow should be indented:\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nPlease change this to !ok and adjust accordingly.",
+      "parentUuid": "f5eb45b3_7e5d8845",
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2b1b61_83c95c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-30T06:07:18Z",
+      "side": 1,
+      "message": "If this can be multi-line, we would prefer not to concatenate it into the test failure message as it clutters the test results. In this case, you can write it as a seperate message to the log (e.g. via testing.ContextLog). If it is more than a few lines, it would be even better to write it out to a file instead. Otherwise, it may clutter the test logs.",
+      "range": {
+        "startLine": 1220,
+        "startChar": 82,
+        "endLine": 1220,
+        "endChar": 96
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c948111_58492053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-30T06:07:18Z",
+      "side": 1,
+      "message": "I wonder if \n```\nif stopOnFailure {\n    s.Fatal(errorString)\n} else {\n    s.Error(errorString)\n}\n```\nand dropping the case below does what you want / may be closer to what you are looking for?",
+      "range": {
+        "startLine": 1221,
+        "startChar": 3,
+        "endLine": 1223,
+        "endChar": 4
+      },
       "revId": "033f10780fc452d09c29f14faa6266d142a929af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
