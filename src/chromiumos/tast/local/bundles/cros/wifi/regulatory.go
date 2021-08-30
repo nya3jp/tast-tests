@@ -26,14 +26,13 @@ func init() {
 		// reject them. Note that some WiFi drivers "self manage" their domain detection and so this test can't apply everywhere.
 		Desc: "Ensure the regulatory database is coherent and that we can switch domains using the 'iw' utility",
 		Contacts: []string{
-			"briannorris@chromium.org",        // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		// This test doesn't technically require the wificell fixture, but it's best if non-default regulatory settings are used
 		// only in RF chambers.
-		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:         []string{"group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		// TODO(b/192693354): StP2 + 3.18 doesn't have self-managed regdomain, skip the remaining board before uprev is finished.
+		// TODO(b/192693354, b/155410645): StP2 + 3.18 doesn't have self-managed regdomain, skip the remaining board before uprev is finished.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("asuka", "sentry")),
 	})
 }
