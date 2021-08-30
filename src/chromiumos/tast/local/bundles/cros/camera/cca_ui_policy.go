@@ -60,7 +60,7 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	subTestTimeout := 20 * time.Second
+	subTestTimeout := 40 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, []string, string) error
