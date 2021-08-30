@@ -87,6 +87,86 @@
       },
       "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c337194d_d468451f",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-30T18:19:34Z",
+      "side": 1,
+      "message": "I don\u0027t think you want these parentheses if you\u0027re going to use this inside of `WaitForExpr`, since it will evaluate the function. You want to wait for the function `onCancelClick` to exist, before you try to evaluate it.",
+      "range": {
+        "startLine": 126,
+        "startChar": 105,
+        "endLine": 126,
+        "endChar": 107
+      },
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a052f0a9_e5403970",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-30T18:19:34Z",
+      "side": 1,
+      "message": "re: Alan\u0027s suggestion on scoping, my preference for these constants is that any constants building off of discoveryElementJS/confirmationElementJS should be kept close to those constants.\n\nonCancelJS and confirmationCancelJS are each only used in a single function, so moving them into those functions\u0027 scope also makes sense and is good practice generally. However in this case, I like to keep the JS grouped together so we can see what the full command would be at a glance (and to be able to copy the command easily if running them interactively on a DUT\u0027s devtools console while debugging).\n\nWith that said, can we move this constant to be next to discoveryElementJS?",
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fe4fca6_38d7a70a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-30T18:19:34Z",
+      "side": 1,
+      "message": "why click() here instead of calling the button\u0027s underlying JS method? also same issue as above, this constant shouldn\u0027t have () at the end if you\u0027re going to use it in WaitForExpr",
+      "range": {
+        "startLine": 139,
+        "startChar": 115,
+        "endLine": 139,
+        "endChar": 153
+      },
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e21dcdd_e4159e0c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-30T18:19:34Z",
+      "side": 1,
+      "message": "similarly here, it would be nice to have this next to confirmationElementJS.",
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
