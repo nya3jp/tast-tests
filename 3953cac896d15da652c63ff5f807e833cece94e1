@@ -34,6 +34,24 @@
       "parentUuid": "b913e4ae_457d9e82",
       "revId": "3953cac896d15da652c63ff5f807e833cece94e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea66534e_a5967030",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "Thanks! LGTM to start this library locally from fingerprint tests.",
+      "parentUuid": "0ebd504b_58434259",
+      "revId": "3953cac896d15da652c63ff5f807e833cece94e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

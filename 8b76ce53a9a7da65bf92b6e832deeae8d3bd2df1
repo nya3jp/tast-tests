@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88120447_bedea36c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "style: not\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e168e4a_b87cdcc0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "There\u0027s one more thing to note: Reboot can invalidate *rpc.Client, so callers must recreate RPC stubs (such as dutfs.Client) after calling Reboot.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af43f220_bb03c909",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "We have to call RPCClose for a valid RPCDUT. Since the close method name is not a standard one (Close), I recommend documenting it clear here that RPCClose must be called.\n\nAlternatively, if you choose to avoid embedding DUT, it\u0027s easier to rename RPCClose to Close. See my another comment below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba63265e_05204590",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "nit: It might be a bit misleading to print this message when rd.cl \u003d\u003d nil?\n\n if rd.cl \u003d\u003d nil {\n   return nil\n }\n testing.ContextLog(...)\n err :\u003d rd.cl.Close(ctx)\n rd.cl \u003d nil\n return err",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6bceff_4ce9fd8c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "Let us document that\n- It can return nil after Reboot fails\n- Returned Client can be invalidated by Reboot, in which case we have to recreate RPC stubs",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197e1b02_fec6abe2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-08-30T06:46:22Z",
+      "side": 1,
+      "message": "Given that we have many unimplemented methods, you may want to take allowlist approach instead of denylist approach; that is to explicitly implement proxy methods for DUT methods you want to support, rather than embedding *dut.DUT to expose all methods by default. WDYT?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 70
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
