@@ -39,6 +39,30 @@
       },
       "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34e902f_bd7be85c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-30T05:50:54Z",
+      "side": 1,
+      "message": "I think its following pattern of declaring close to its usage for easy readability. Guess we can leave it.",
+      "parentUuid": "42428c8a_0ff9f363",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
