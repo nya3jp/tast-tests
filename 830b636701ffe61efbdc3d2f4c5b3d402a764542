@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e815067d_be7b05f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-30T09:10:55Z",
+      "side": 1,
+      "message": "Done\n\nSG. I\u0027ve implemented that for now. But I\u0027ll also add a TODO to find a way to parse the stdout.",
+      "parentUuid": "3aa313e6_92295edc",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 8
+      },
+      "revId": "830b636701ffe61efbdc3d2f4c5b3d402a764542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de903c80_82c28080",
