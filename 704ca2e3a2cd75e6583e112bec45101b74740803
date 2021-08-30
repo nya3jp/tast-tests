@@ -22,6 +22,30 @@
       },
       "revId": "704ca2e3a2cd75e6583e112bec45101b74740803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4383cca_f7dba3e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-30T07:41:11Z",
+      "side": 1,
+      "message": "For presence yes.  Absence, no because in all cases, the cache directory should not exist after share.",
+      "parentUuid": "1ad60d01_742c0d19",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 3
+      },
+      "revId": "704ca2e3a2cd75e6583e112bec45101b74740803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
