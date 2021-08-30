@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/testing"
 )
 
 // TestData contains the values for parameterized tests, such as:
@@ -186,7 +187,8 @@ func HashFiles(ctx context.Context, filenames []string, fileDir string) ([]strin
 // individual tests can be extracted if tests are running consecutively on a shared fixture or precondition.
 // Callers should defer calling Save with the returned *syslog.LineReader to save the logs and free associated resources.
 func StartLogging(ctx context.Context, path string) (*syslog.LineReader, error) {
-	reader, err := syslog.NewLineReader(ctx, path, false, nil)
+	// Poll for a couple of secs only so that service code calling into this doesn't hang.
+	reader, err := syslog.NewLineReader(ctx, path, false, &testing.PollOptions{Timeout: 2 * time.Second})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create LineReader")
 	}
