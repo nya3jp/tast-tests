@@ -117,22 +117,24 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 
 // StartLogging starts logging at the start of a test.
 func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
-	if err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed to start Chrome logging")
-	}
-	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
-	if err != nil {
-		return &empty.Empty{}, errors.Wrap(err, "failed io start Message logging")
-	}
-	testing.ContextLog(ctx, "Started logging chrome and message logs")
-	n.chromeReader = chromeReader
-	n.messageReader = messageReader
-
 	n.btsnoopCmd = bluetooth.StartBTSnoopLogging(n.s.ServiceContext(), filepath.Join(os.TempDir(), nearbycommon.BtsnoopLog))
 	if err := n.btsnoopCmd.Start(); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to start btmon")
 	}
+	testing.ContextLog(ctx, "Started BT snoop logging")
+
+	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to start Chrome logging")
+	}
+	testing.ContextLog(ctx, "Started logging chrome logs")
+	n.chromeReader = chromeReader
+	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to start Message logging")
+	}
+	testing.ContextLog(ctx, "Started logging message logs")
+	n.messageReader = messageReader
 	return &empty.Empty{}, err
 }
 
@@ -145,11 +147,15 @@ func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.
 	if err = os.Mkdir(nearbycommon.NearbyLogDir, 0755); err != nil {
 		testing.ContextLog(ctx, "Failed to create tmp dir log: ", err)
 	}
-	if err = nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.ChromeLog)); err != nil {
-		testing.ContextLog(ctx, "Failed to save chrome log: ", err)
+	if n.chromeReader != nil {
+		if err = nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.ChromeLog)); err != nil {
+			testing.ContextLog(ctx, "Failed to save chrome log: ", err)
+		}
 	}
-	if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
-		testing.ContextLog(ctx, "Failed to save message log: ", err)
+	if n.messageReader != nil {
+		if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
+			testing.ContextLog(ctx, "Failed to save message log: ", err)
+		}
 	}
 	if err := n.btsnoopCmd.Kill(); err != nil {
 		testing.ContextLog(ctx, "Failed to kill btmon: ", err)
@@ -333,10 +339,12 @@ func (n *NearbyService) ClearTransferredFiles(ctx context.Context, req *empty.Em
 
 // CrOSAttributes retrieves useful information about the DUT to aid debugging.
 func (n *NearbyService) CrOSAttributes(ctx context.Context, req *empty.Empty) (*nearbyservice.CrOSAttributesResponse, error) {
+	testing.ContextLog(ctx, "Getting attributes about the device")
 	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, n.tconn, n.deviceName, n.username, n.dataUsage, n.visibility)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get CrOS attributes for reporting")
 	}
+	testing.ContextLog(ctx, "Converting attributes to json")
 	var res nearbyservice.CrOSAttributesResponse
 	jsonData, err := json.Marshal(crosAttributes)
 	if err != nil {
