@@ -83,12 +83,8 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 				}
 			}(ctx)
 
-			enabled, err := app.ToggleQRCodeOption(ctx)
-			if err != nil {
+			if err := app.ToggleQRCodeDetection(ctx, true); err != nil {
 				s.Fatal("Failed to enable QR code detection: ", err)
-			}
-			if !enabled {
-				s.Fatal("QR code detection is not enabled after toggling")
 			}
 			s.Log("Start scanning QR Code")
 
