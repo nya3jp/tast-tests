@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42abcf88_27dd6b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-30T17:41:40Z",
+      "side": 1,
+      "message": "👍 Added |video.PlatformDecoding.| prefix.",
+      "parentUuid": "bca2f949_0448140f",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5eb45b3_7e5d8845",
@@ -93,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01efd886_db8a49ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-30T17:41:40Z",
+      "side": 1,
+      "message": "Changed to !ok.",
+      "parentUuid": "6cf7a4eb_530abe1b",
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d2b1b61_83c95c09",
@@ -106,6 +148,30 @@
       "writtenOn": "2021-08-30T06:07:18Z",
       "side": 1,
       "message": "If this can be multi-line, we would prefer not to concatenate it into the test failure message as it clutters the test results. In this case, you can write it as a seperate message to the log (e.g. via testing.ContextLog). If it is more than a few lines, it would be even better to write it out to a file instead. Otherwise, it may clutter the test logs.",
+      "range": {
+        "startLine": 1220,
+        "startChar": 82,
+        "endLine": 1220,
+        "endChar": 96
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba38d47_994249f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-30T17:41:40Z",
+      "side": 1,
+      "message": "Unfortunately, the error message is pretty much guaranteed to be multi-line. The current tast tests that fail will do so with a multi-line string that contains all stderr and stdout from the test binary.\n\nMy intent with this commit would be to add a new debugging mode, but not to change the default behavior. I\u0027d be happy to create a follow up CL to create a shorter error message for |s.Fatal| or |s.Error|.",
+      "parentUuid": "8d2b1b61_83c95c09",
       "range": {
         "startLine": 1220,
         "startChar": 82,
@@ -139,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2087a077_d0b8313d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-30T17:41:40Z",
+      "side": 1,
+      "message": "❤️ this. This is what I was looking for to fail, but not halt. Thanks! Done.",
+      "parentUuid": "3c948111_58492053",
+      "range": {
+        "startLine": 1221,
+        "startChar": 3,
+        "endLine": 1223,
+        "endChar": 4
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56be5623_f3232a40",
@@ -152,6 +242,30 @@
       "writtenOn": "2021-08-27T23:28:31Z",
       "side": 1,
       "message": "Do we need this check?",
+      "range": {
+        "startLine": 1228,
+        "startChar": 4,
+        "endLine": 1228,
+        "endChar": 18
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a94426b_11d6f366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-08-30T17:41:40Z",
+      "side": 1,
+      "message": "Removed thanks to the change above to use |s.Error()| for |stopOnFailure \u003d\u003d true|.",
+      "parentUuid": "56be5623_f3232a40",
       "range": {
         "startLine": 1228,
         "startChar": 4,
