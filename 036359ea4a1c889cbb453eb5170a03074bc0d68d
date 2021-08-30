@@ -16,6 +16,23 @@
       "message": "Hi Alex,\n\nCould you suggest some graphics experts in Google who can review this change? Tast reviewers can offer Tast/Go reviews but obviously we need another reviewer who knows graphics.\n",
       "revId": "036359ea4a1c889cbb453eb5170a03074bc0d68d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c714067a_a0d0bf68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-08-30T16:19:23Z",
+      "side": 1,
+      "message": "@Alex, Can you please advice someone who can review this from Graphics perspective?",
+      "revId": "036359ea4a1c889cbb453eb5170a03074bc0d68d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
