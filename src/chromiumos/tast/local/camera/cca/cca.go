@@ -242,6 +242,8 @@ var (
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
+	// ScanBarcodeOption is the option button to switch to QR code detection mode.
+	ScanBarcodeOption = UIComponent{"scan barcode option", []string{"#scan-barcode"}}
 )
 
 // ResolutionType is different capture resolution type.

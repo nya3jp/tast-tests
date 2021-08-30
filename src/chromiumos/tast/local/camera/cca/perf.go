@@ -29,7 +29,7 @@ const (
 	stabilizationDuration time.Duration = 5 * time.Second
 
 	// Duration of the interval during which CPU usage will be measured for streaming.
-	measureDuration = 20 * time.Second
+	measureDuration = 5 * time.Second
 )
 
 // MeasurementOptions contains the information for performance measurement.
@@ -169,12 +169,8 @@ func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.V
 	}
 
 	// Enable QR code detection and measure the performance again.
-	enabled, err := app.ToggleQRCodeOption(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to enable QR code detection")
-	}
-	if !enabled {
-		return errors.Wrap(err, "QR code detection is not enabled after toggling")
+	if err := toggleQRCodeDetection(ctx, app, true); err != nil {
+		return errors.Wrap(err, "failed to ensure QR code detection is enabled")
 	}
 
 	usageQR, err := measureStablizedUsage(ctx)
@@ -182,12 +178,8 @@ func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.V
 		return errors.Wrap(err, "failed to measure CPU and power usage with QR code detection")
 	}
 
-	enabled, err = app.ToggleQRCodeOption(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to disable QR code detection")
-	}
-	if enabled {
-		return errors.Wrap(err, "QR code detection is not disabled after toggling")
+	if err := toggleQRCodeDetection(ctx, app, false); err != nil {
+		return errors.Wrap(err, "failed to ensure QR code detection is disabled")
 	}
 
 	if cpuUsageQR, exist := usageQR["cpu"]; exist {
@@ -296,6 +288,34 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 		return err
 	}
 
+	return nil
+}
+
+func toggleQRCodeDetection(ctx context.Context, app *App, shouldEnable bool) error {
+	if visible, err := app.Visible(ctx, ScanModeButton); err != nil {
+		return errors.Wrap(err, "failed to check visibility of scan mode button")
+	} else if visible {
+		if shouldEnable {
+			if err := app.SwitchMode(ctx, Scan); err != nil {
+				return errors.Wrap(err, "failed to switch to scan mode")
+			}
+			if err := app.Click(ctx, ScanBarcodeOption); err != nil {
+				return errors.Wrap(err, "failed to click the scan barcode option")
+			}
+		} else {
+			if err := app.SwitchMode(ctx, Photo); err != nil {
+				return errors.Wrap(err, "failed to switch to photo mode")
+			}
+		}
+	} else {
+		enabled, err := app.ToggleQRCodeOption(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to enable QR code detection")
+		}
+		if enabled != shouldEnable {
+			return errors.Wrapf(err, "QR code detection state is not expected after toggling. Expect: %v, Actual: %v", shouldEnable, enabled)
+		}
+	}
 	return nil
 }
 
