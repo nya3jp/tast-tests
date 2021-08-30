@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0881ec9b_8ec32ad0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-30T05:28:41Z",
+      "side": 1,
+      "message": "CCAUIQRCode currently is not affected since the current way we enable document mode (https://crrev.com/c/3118509) only applied on devices with deviceOperator, which means for tests using fake/file cameras, the document mode is not enabled by default.\n\nBut in case if we want to change it on CCA side, I think it will be better that we make CCAUIQRCode pass for either cases. Therefore, I also changed CCAUIQRCode. Thanks for reminding!",
+      "parentUuid": "0777cd36_0bc59c13",
+      "revId": "5a317139955f760fa2d76df4490bb6556458ff48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "036a6181_74bcc917",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-30T05:01:37Z",
       "side": 1,
       "message": "why changing this?",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "5a317139955f760fa2d76df4490bb6556458ff48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8920529f_2fb0b4bb",
+        "filename": "src/chromiumos/tast/local/camera/cca/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-30T05:28:41Z",
+      "side": 1,
+      "message": "Thanks for catching this!! It is for debug and should not be included in the CL.",
+      "parentUuid": "036a6181_74bcc917",
       "range": {
         "startLine": 32,
         "startChar": 19,
