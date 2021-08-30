@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb56cf2b_15166ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-30T20:32:04Z",
+      "side": 1,
+      "message": "Craig, I was assuming you were going to address Greg\u0027s comments, but I think he\u0027s now working on infra, so let me know if you want me to go ahead and review.",
+      "revId": "3d2db4df902abf37e2fee8b23b18eba7280f0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "375c234c_c6e5022d",
