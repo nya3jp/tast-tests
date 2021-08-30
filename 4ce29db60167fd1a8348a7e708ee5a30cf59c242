@@ -22,6 +22,30 @@
       },
       "revId": "4ce29db60167fd1a8348a7e708ee5a30cf59c242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4e8074_dc3439ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-08-30T23:03:47Z",
+      "side": 1,
+      "message": "yes, isPermissionApp is not enough. Since isPermissionApp is false by default, if isPermissionApp check is used alone, then the launch test case will gets failed even if the current package is equal to app package name.",
+      "parentUuid": "e8356795_cdcc497e",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 108
+      },
+      "revId": "4ce29db60167fd1a8348a7e708ee5a30cf59c242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
