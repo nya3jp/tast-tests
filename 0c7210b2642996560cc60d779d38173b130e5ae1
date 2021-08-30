@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2facdd1_bab6759a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516057
+      },
+      "writtenOn": "2021-08-30T15:42:56Z",
+      "side": 1,
+      "message": "Hello Ross Zwisler, we are merging this one into the current LTS branch because platform.PartitionSizes has been failing reliably (for example: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3054090), could you please review it?",
+      "revId": "0c7210b2642996560cc60d779d38173b130e5ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
