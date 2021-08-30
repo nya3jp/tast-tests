@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbef8390_2d5854bc",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-08-30T19:59:58Z",
+      "side": 1,
+      "message": "Done, this is a pretty big change, so please help me review again. Thank you.",
+      "parentUuid": "36cdf3d2_1b01c58a",
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71b188e_4de21aa3",
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "both comments are rather nits. I wanted to bring the attention about that to you as when I checked the other related CL true and false were passes to the call. \nMaybe using named parameters (which is not entirely align with golang guideline) would improve readability:\ncreateVault :\u003d true\nutility.MountChallengeRespVault(ctx, testUser, keyLabel, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg, createVault, hwsec.NewVaultConfig())",
       "parentUuid": "54315946_66b32bcb",
+      "range": {
+        "startLine": 233,
+        "startChar": 198,
+        "endLine": 233,
+        "endChar": 210
+      },
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3924c001_a554d1bf",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-08-30T19:59:58Z",
+      "side": 1,
+      "message": "Will make this change at the call sites in another CL.\n\nWhat do you think if I use a comment instead? i.e.\nutility.MountVault(ctx, ..., true /* create_vault */, ...)",
+      "parentUuid": "32d17379_f9a8e585",
       "range": {
         "startLine": 233,
         "startChar": 198,
