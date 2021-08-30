@@ -16,6 +16,24 @@
       "message": "Check whether to switch to photo mode here?",
       "revId": "f14326bd46d115cb0aec091cb2580e0ce9e8e0b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702c6b29_cc71d0f8",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-30T06:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df43162_6de30b3d",
+      "revId": "f14326bd46d115cb0aec091cb2580e0ce9e8e0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
