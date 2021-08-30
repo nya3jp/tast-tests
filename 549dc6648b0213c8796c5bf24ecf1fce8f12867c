@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ce1999_a822d863",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c17ab4cc_5f5a3bbe",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d7e2f39_71e08f66",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-30T08:31:50Z",
       "side": 1,
       "message": "nit: for?",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e62c23_ea1138c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7e2f39_71e08f66",
       "range": {
         "startLine": 9,
         "startChar": 46,
@@ -94,6 +142,30 @@
       "writtenOn": "2021-08-30T08:26:57Z",
       "side": 1,
       "message": "nit: Setup guide for Wilco devices Tast tests",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 60
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97de0d66_95d3f6f7",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3aa4ea1_d7e2db08",
       "range": {
         "startLine": 1,
         "startChar": 2,
@@ -173,6 +245,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa64db2_98e6ebce",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e69139_2ca1bd10",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4822fc11_1c71bccc",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e12ce4_90454102",
+      "range": {
+        "startLine": 7,
+        "startChar": 248,
+        "endLine": 7,
+        "endChar": 252
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10747143_c265e128",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e1ebf2_0a5f47f3",
+      "range": {
+        "startLine": 7,
+        "startChar": 148,
+        "endLine": 7,
+        "endChar": 153
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff68644a_231e3d6c",
@@ -232,6 +376,78 @@
       "writtenOn": "2021-08-30T08:26:57Z",
       "side": 1,
       "message": "This is pretty much expected, so I don\u0027t think we should add it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 174,
+        "endLine": 9,
+        "endChar": 294
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9783594_1111c0b2",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff68644a_231e3d6c",
+      "range": {
+        "startLine": 9,
+        "startChar": 143,
+        "endLine": 9,
+        "endChar": 172
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0b41d5_ae24067c",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc567f6_ebf80f71",
+      "range": {
+        "startLine": 9,
+        "startChar": 140,
+        "endLine": 9,
+        "endChar": 142
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b5325a_ad3313e2",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "72d62753_76cca756",
       "range": {
         "startLine": 9,
         "startChar": 174,
@@ -403,6 +619,174 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "810291b1_e8593095",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c814f05f_6b49ad43",
+      "range": {
+        "startLine": 13,
+        "startChar": 163,
+        "endLine": 13,
+        "endChar": 166
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5071ad_18a5cae2",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afc2cf10_f8e0c3a4",
+      "range": {
+        "startLine": 13,
+        "startChar": 176,
+        "endLine": 13,
+        "endChar": 208
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79442e5_45400426",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f9ef5d_79426271",
+      "range": {
+        "startLine": 13,
+        "startChar": 141,
+        "endLine": 13,
+        "endChar": 154
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be228268_750a03aa",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a71b8629_cfa3c577",
+      "range": {
+        "startLine": 13,
+        "startChar": 210,
+        "endLine": 13,
+        "endChar": 241
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bba191e_b052e72d",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b50a4e51_b89d24f1",
+      "range": {
+        "startLine": 13,
+        "startChar": 391,
+        "endLine": 13,
+        "endChar": 447
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39402ab8_710a7a33",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d11a496_f131b162",
+      "range": {
+        "startLine": 13,
+        "startChar": 46,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "158f32d0_6bf279d1",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6ae372_af76f115",
+      "range": {
+        "startLine": 13,
+        "startChar": 55,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc39cc0_0d283420",
@@ -564,6 +948,174 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955d01dd_9d103096",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Haha, Removed :)",
+      "parentUuid": "d0fa75f9_4569ed66",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a9ad7b_7529ae9f",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb41c59_fd60f6ba",
+      "range": {
+        "startLine": 15,
+        "startChar": 528,
+        "endLine": 15,
+        "endChar": 530
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d659586_cd53923d",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0948ff73_c1c65e22",
+      "range": {
+        "startLine": 15,
+        "startChar": 225,
+        "endLine": 15,
+        "endChar": 242
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329cc2bd_c167f2ce",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Not true entirely. New Chromebooks has a separate micro controller with Cr50 os which provides CCD, a replacement of uServo. In that scenario, v4 is connected to DUT via another orange cable connected to type-C and doesn\u0027t require opening the back panel.",
+      "parentUuid": "0f63f17e_cc8563a1",
+      "range": {
+        "startLine": 15,
+        "startChar": 517,
+        "endLine": 15,
+        "endChar": 660
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e3d7a3_cfec61b5",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc39cc0_0d283420",
+      "range": {
+        "startLine": 15,
+        "startChar": 95,
+        "endLine": 15,
+        "endChar": 106
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798b7dff_9377d589",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee87703_3240eb77",
+      "range": {
+        "startLine": 15,
+        "startChar": 159,
+        "endLine": 15,
+        "endChar": 165
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf2b3aa_2d521bc0",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26d1d02_19f93320",
+      "range": {
+        "startLine": 15,
+        "startChar": 107,
+        "endLine": 15,
+        "endChar": 126
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ee13516_558f2ab6",
@@ -581,6 +1133,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71de676a_223cd089",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ee13516_558f2ab6",
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b69b572_c3766b78",
@@ -594,6 +1164,30 @@
       "writtenOn": "2021-08-30T08:26:57Z",
       "side": 1,
       "message": "1. There are some repetitive setups\n2. You duplicate test description here\n\nSo instead of describing here each test, I propose to have list of setups and in each Tast test documentation comment refer to specific setup in this document.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "549dc6648b0213c8796c5bf24ecf1fce8f12867c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39dd9c1_1be91aa9",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-08-30T20:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b69b572_c3766b78",
       "range": {
         "startLine": 19,
         "startChar": 0,
