@@ -63,6 +63,30 @@
       },
       "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c2094a_c0675b45",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-30T17:52:33Z",
+      "side": 1,
+      "message": "For chromium cpp guidelines, it asks to scope as locally as possible.\nhttps://google.github.io/styleguide/cppguide.html#Local_Variables\n\nFrom tast specific guidelines I don\u0027t see specific scoping recommendations.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code\nhttps://golang.org/ref/spec#Declarations_and_scope",
+      "parentUuid": "e34e902f_bd7be85c",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "eafc80329352aff680f617dfd9aae5ff8669e20a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
