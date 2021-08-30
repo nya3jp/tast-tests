@@ -271,3 +271,23 @@ func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string,
 		}, &testing.PollOptions{Timeout: 3 * time.Second})
 	}
 }
+
+// UninstallApp uninstalls an app from the Settings app.
+// It first opens the Settings app on the apps page.
+// If it fails to open the page, it thinks the app is not there so no need to uninstall and returns nil.
+// Then it clicks the Uninstall button to uninstall.
+func UninstallApp(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, appName, appID string) error {
+	ui := uiauto.New(tconn)
+	appNode := nodewith.Name(appName).ClassName("cr-title-text")
+	if _, err := LaunchAtPageURL(ctx, tconn, cr, "app-management/detail?id="+appID, ui.WaitUntilExists(appNode)); err != nil {
+		testing.ContextLogf(ctx, "Failed to open Settings app at the app %s, it may not exist: %s", appName, err)
+		return nil
+	}
+
+	uninstall := nodewith.Name("Uninstall").Role(role.Button)
+	uninstallWindow := nodewith.NameStartingWith("Uninstall").Role(role.Window)
+
+	return uiauto.Combine("unintall the app",
+		ui.LeftClick(uninstall),
+		ui.LeftClick(uninstall.Ancestor(uninstallWindow)))(ctx)
+}
