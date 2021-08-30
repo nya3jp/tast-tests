@@ -45,6 +45,29 @@ var pssByProcessPosRE = regexp.MustCompile(`(?m)^Total PSS by process:(\n *[0-9]
 // 2 - the name of the process
 var processPssRE = regexp.MustCompile(` *([0-9][0-9,]*)K: (.*) \(pid ([0-9]+(?: / activities)?)\)`)
 
+// pssByCategoryPosRE matches all lines in `dumpsys meminfo` that contain per-category PSS information.
+var pssByCategoryPosRE = regexp.MustCompile(`(?m)^Total PSS by category:(\n *[0-9][0-9,]*K: [^\n]+)+`)
+
+// usedMemoryTotalsRE is a regex to match dumpinfo's summary line
+// Sample line: " Used RAM:   528,689K (  422,021K used pss +   106,668K kernel)".
+var usedMemoryTotalsRE = regexp.MustCompile(
+	`(?m)` + // Allow parsing multiple lines;
+		`^[ \t]*Used RAM:[ \t]*[0-9][0-9,]*K` + // Match "Used RAM:   9,999K";
+		`[ \t]*\([ \t]*` + // Match space, open parenthesis, space;
+		`[0-9][0-9,]*K[ \t]*used pss` + // Match "9,999K used pss +";
+		`[ \t]*\+[ \t]*` + // Match space, plus sign, space;
+		`[0-9][0-9,]*K[ \t]*kernel`) // Match "9,999K kernel".
+
+// freeRAMRE is a regex to match the Free RAM line of dumpinfo's summary.
+var freeRAMRE = regexp.MustCompile(`(?m)^[ \t]*Free RAM:[ \t]*[0-9][0-9,]*K`)
+
+// lostRAMRE is a regex to match the Lost RAM line of dumpinfo's summary.
+var lostRAMRE = regexp.MustCompile(`(?m)^[ \t]*Lost RAM:[ \t]*[0-9][0-9,]*K`)
+
+// memDetailPercentage defines how much % of PSS consumption will be
+// listed in details in metrics.
+const memDetailPercentage = 80
+
 type appCategory struct {
 	appRE *regexp.Regexp
 	name  string
@@ -69,6 +92,21 @@ var appCategories = []appCategory{
 		appRE: regexp.MustCompile(`.*`),
 		name:  "arc_other",
 	},
+}
+
+func parseNumBetweenMarkers(s, leftMarker, rightMarker string) (uint64, error) {
+	preix := strings.Index(s, leftMarker)
+	if preix < 0 {
+		return 0, errors.New("cannot enclosing left marker")
+	}
+	pastpreix := preix + len(leftMarker)
+	postix := strings.Index(s[pastpreix:], rightMarker)
+	if postix < 0 {
+		return 0, errors.New("cannot enclosing right marker")
+	}
+	numkstr := s[pastpreix : pastpreix+postix]
+	numkstr = strings.ReplaceAll(strings.TrimSpace(numkstr), ",", "")
+	return strconv.ParseUint(numkstr, 10, 64)
 }
 
 // DumpsysMeminfoMetrics write the output of `dumpsys meminfo` to outdir. If p
@@ -119,6 +157,135 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 			}
 		}
 	}
+
+	pos = freeRAMRE.FindIndex(meminfo)
+	if pos == nil {
+		return errors.New("failed to find 'Free RAM' section")
+	}
+	freeRAM, err := parseNumBetweenMarkers(string(meminfo[pos[0]:pos[1]]), ":", "K")
+	if err != nil {
+		return errors.Wrap(err, "unable to parse Free RAM section")
+	}
+
+	pos = lostRAMRE.FindIndex(meminfo)
+	if pos == nil {
+		return errors.New("failed to find 'Lost RAM' section")
+	}
+	lostRAM, err := parseNumBetweenMarkers(string(meminfo[pos[0]:pos[1]]), ":", "K")
+	if err != nil {
+		return errors.Wrap(err, "unable to parse Lost RAM section")
+	}
+
+	pos = usedMemoryTotalsRE.FindIndex(meminfo)
+	if pos == nil {
+		return errors.New("Unable to match regex")
+	}
+
+	usedRAMText := string(meminfo[pos[0]:pos[1]])
+
+	usedPssTotal, err := parseNumBetweenMarkers(usedRAMText, "(", "K")
+	if err != nil {
+		return errors.Wrap(err, "unable to find PSS total")
+	}
+
+	kernelTotal, err := parseNumBetweenMarkers(usedRAMText, "+", "K")
+	if err != nil {
+		return errors.Wrap(err, "unable to find Kernel total")
+	}
+
+	pos = pssByCategoryPosRE.FindIndex(meminfo)
+	if pos == nil {
+		return errors.New("failed to find 'Total PSS by category' section")
+	}
+
+	// Parse all categories of memory consumption.
+	// Categories are listed in descending order in the input,
+	// and the total of all of them is in "used pss", which we
+	// parsed earlier into usedPssTotal.
+	catglines := strings.Split(string(meminfo[pos[0]:pos[1]]), "\n")
+	var detailedPssUsage uint64
+	var detailThreshold = (usedPssTotal * memDetailPercentage) / 100
+	for _, line := range catglines[1:] {
+		kix := strings.Index(line, "K: ")
+		if kix < 0 {
+			return errors.New("unable to parse category line [" + line + "]")
+		}
+		numkstr := strings.ReplaceAll(strings.TrimSpace(line[:kix]), ",", "")
+		numk, err := strconv.ParseUint(numkstr, 10, 64)
+		if err != nil {
+			return errors.New("failed to parse category memory size [" + numkstr + "]")
+		}
+		name := strings.ReplaceAll(line[kix+3:], ".", "dot_")
+		name = strings.ReplaceAll(name, " ", "_")
+
+		if detailedPssUsage < detailThreshold {
+			detailedPssUsage += numk
+			p.Set(
+				perf.Metric{
+					Name:      fmt.Sprintf("arc_category_%s%s_pss", name, suffix),
+					Unit:      "MiB",
+					Direction: perf.SmallerIsBetter,
+				},
+				float64(numk),
+			)
+		}
+	}
+
+	if usedPssTotal > detailedPssUsage { // Should always be so.
+		p.Set(
+			perf.Metric{
+				Name:      fmt.Sprintf("arc_category_others%s_pss", suffix),
+				Unit:      "MiB",
+				Direction: perf.SmallerIsBetter,
+			},
+			float64(usedPssTotal-detailedPssUsage),
+		)
+	}
+
+	p.Set(
+		perf.Metric{
+			Name:      fmt.Sprintf("arc_used%s_pss", suffix),
+			Unit:      "MiB",
+			Direction: perf.SmallerIsBetter,
+		},
+		float64(usedPssTotal),
+	)
+
+	p.Set(
+		perf.Metric{
+			Name:      fmt.Sprintf("arc_kernel%s_pss", suffix),
+			Unit:      "MiB",
+			Direction: perf.SmallerIsBetter,
+		},
+		float64(kernelTotal),
+	)
+
+	p.Set(
+		perf.Metric{
+			Name:      fmt.Sprintf("arc_free_ram%s_pss", suffix),
+			Unit:      "MiB",
+			Direction: perf.SmallerIsBetter,
+		},
+		float64(freeRAM),
+	)
+
+	p.Set(
+		perf.Metric{
+			Name:      fmt.Sprintf("arc_lost_ram%s_pss", suffix),
+			Unit:      "MiB",
+			Direction: perf.SmallerIsBetter,
+		},
+		float64(lostRAM),
+	)
+
+	p.Set(
+		perf.Metric{
+			Name:      fmt.Sprintf("arc_total_used%s_pss", suffix),
+			Unit:      "MiB",
+			Direction: perf.SmallerIsBetter,
+		},
+		float64(usedPssTotal+kernelTotal),
+	)
 
 	for name, value := range metrics {
 		p.Set(

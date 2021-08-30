@@ -46,6 +46,11 @@ func init() {
 	})
 }
 
+const (
+	postLoginCoolDownDuration = 10 * time.Second
+	quietDuration             = 60 * time.Second
+)
+
 func Login(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 
@@ -78,9 +83,23 @@ func Login(ctx context.Context, s *testing.State) {
 	}
 
 	p := perf.NewValues()
-	if err := metrics.LogMemoryStats(ctx, basemem, arc, p, s.OutDir(), ""); err != nil {
+	if err := metrics.LogMemoryStats(ctx, basemem, arc, p, s.OutDir(), "login"); err != nil {
 		s.Error("Failed to collect memory metrics: ", err)
 	}
+
+	// Let the system quiesce after boot and measure its memory consumption.
+	s.Log("No activity for a short while to cool down")
+	testing.Sleep(ctx, postLoginCoolDownDuration)
+
+	s.Log("Measuring system memory and pressure in idle state")
+	basemem.Reset()
+	// Let the system quiesce after boot and measure its memory consumption.
+	testing.Sleep(ctx, quietDuration)
+	s.Log("Will now collect idle perf values")
+	if err := metrics.LogMemoryStats(ctx, basemem, arc, p, s.OutDir(), "quiesce"); err != nil {
+		s.Error("Failed to collect memory metrics: ", err)
+	}
+
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf.Values: ", err)
 	}
