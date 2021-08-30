@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0a90b0b0_80b90c49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-30T06:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b417810c_98f1dc53",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "2653492ea20010f0d1d5eb063d540c5d777209c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f1a9d2db_41b18516",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-30T06:29:30Z",
       "side": 1,
       "message": "nit: typo",
+      "range": {
+        "startLine": 290,
+        "startChar": 24,
+        "endLine": 290,
+        "endChar": 32
+      },
+      "revId": "2653492ea20010f0d1d5eb063d540c5d777209c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44540a27_92efcf06",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-30T06:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed2202d4_360bcc3f",
       "range": {
         "startLine": 290,
         "startChar": 24,
