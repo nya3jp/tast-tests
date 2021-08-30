@@ -265,14 +265,15 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
 	f.receiver = receiver
-	// Get DUT attributes for both DUTs.
+	s.Log("Getting device attributes about the sender")
 	senderAttrsRes, err := f.sender.CrOSAttributes(ctx, &empty.Empty{})
 	if err != nil {
-		s.Error("Failed to save device attributes on the sender: ", err)
+		s.Error("Failed to save device attributes about the sender: ", err)
 	}
+	s.Log("Getting device attributes about the receiver")
 	receiverAttrsRes, err := f.receiver.CrOSAttributes(ctx, &empty.Empty{})
 	if err != nil {
-		s.Error("Failed to save device attributes on the receiver: ", err)
+		s.Error("Failed to save device attributes about the receiver: ", err)
 	}
 	var senderAttributes *nearbysetup.CrosAttributes
 	var receiverAttributes *nearbysetup.CrosAttributes
@@ -308,12 +309,13 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password, senderUsername string, keepState bool) (nearbyservice.NearbyShareServiceClient, error) {
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
+	testing.ContextLog(ctx, "Logging into ChromeOS")
 	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password, KeepState: keepState}
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 
-	// Setup Nearby Share on the DUT.
+	testing.ContextLog(ctx, "Enabling Nearby Share and configuring it's settings")
 	req := &nearbyservice.CrOSSetupRequest{DataUsage: int32(f.dataUsage), Visibility: int32(f.visibility), DeviceName: deviceName, SenderUsername: senderUsername}
 	if _, err := ns.CrOSSetup(ctx, req); err != nil {
 		s.Fatal("Failed to setup Nearby Share: ", err)
@@ -344,12 +346,13 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Fatal("Failed to write CrOS attributes to output file: ", err)
 	}
 
-	// Start logging on each DUT.
+	testing.ContextLog(ctx, "Starting logging on sender")
 	if _, err := f.sender.StartLogging(ctx, &empty.Empty{}); err != nil {
-		s.Error("Failed to save nearby share logs on the sender: ", err)
+		s.Log("Failed to start logging on the sender: ", err)
 	}
+	testing.ContextLog(ctx, "Starting logging on receiver")
 	if _, err := f.receiver.StartLogging(ctx, &empty.Empty{}); err != nil {
-		s.Error("Failed to save nearby share logs on the receiver: ", err)
+		s.Log("Failed to start logging on the receiver: ", err)
 	}
 }
 
