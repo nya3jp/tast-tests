@@ -21,7 +21,8 @@ func init() {
 		Func: SupportedProtocols,
 		Desc: "Checks that required network protocols are supported by the kernel",
 		Contacts: []string{
-			"briannorris@chromium.org", // Connectivity team
+			"cros-networking@google.com",
+			"hugobenichi@google.com",
 			"chromeos-kernel-test@google.com",
 		},
 		Attr: []string{"group:mainline"},
