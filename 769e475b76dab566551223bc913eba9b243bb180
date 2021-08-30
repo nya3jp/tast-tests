@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b77b5d_2d7e053e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "Check",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0586dd_5da910ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "nits:\ns/give a wait of/wait/\ns/60sec/60 seconds/\ns/do scan/scan/\ns/as if/if/\n. at the end of a sentence.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db299885_aff9ab68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "We should avoid a \"graceful exit\" *unless* we know this test will be running on hardware that does not support the test and have no other way to test that. For that scenario we should try to test just for that condition (i.e. not combine it with a test that could fail fatally) and document it clearly.\n\nOtherwise the test will appear to pass and the next test may fail and be assumed to be the culprit since this test \"passed\".",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6984c784_35fdaa23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "Sleep\ns/loaded/load/\ns/try connect/try to connect./",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57fca49d_bdc8f5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "Avoid sleeping, instead wait for the expected properties (doesn\u0027t EnsureRegistered already do that?) and/or wrap the ModemConnect call below in a loop with a timeout.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b95da1_5c0466cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "Same comment here, we definitely should not exit here without an error.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f320f5f_c4e8c74e",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "s/boolean/a boolean/\nComments that are sentences should end in a .",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ee7ce0_6c7f68ec",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "s/simple modem/SimpleModem/",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fdc6fa_8ed40a54",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "IIRC, this pattern can be simplified using an else (the declared varables are valid for the entire if/else statement):\nif isPowered, err :\u003d modem.IsPowered(ctx); err !\u003d nil {\n  return ...\n} else if !isPowered {\n  return ..\n}\nSame below.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -34,6 +34,24 @@
       "parentUuid": "670edc03_baa0c978",
       "revId": "75c92aa00d24d6646e57663f6ff6ef3fcdbc4346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a48b23_c8bca0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-08-30T17:45:18Z",
+      "side": 1,
+      "message": "Oh, right. Since we are disabling Cellular in Shill, setting autoconnect is unnecessary, we should remove that. (Autoconnect is a Shill behavior, it shouldn\u0027t affect MM behavior).",
+      "parentUuid": "ea689d71_c6241312",
+      "revId": "75c92aa00d24d6646e57663f6ff6ef3fcdbc4346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
