@@ -12,9 +12,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 )
 
@@ -32,17 +33,13 @@ const (
 // ENTER key to start printing. This is more reliable than clicking the print
 // button since notifications often block it from view.
 func Print(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Name: "Print",
-		Role: ui.RoleTypeButton,
-	}
-	printButton, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find print button")
-	}
-	defer printButton.Release(ctx)
-	if err := printButton.FocusAndWait(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed focusing print button")
+	printButton := nodewith.Name("Print").Role(role.Button)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find and focus print button",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(printButton),
+		ui.WithTimeout(10*time.Second).FocusAndWait(printButton),
+	)(ctx); err != nil {
+		return err
 	}
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -59,45 +56,31 @@ func Print(ctx context.Context, tconn *chrome.TestConn) error {
 // the given printerName.
 func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName string) error {
 	// Find and expand the destination list.
-	params := ui.FindParams{
-		Name: "Destination Save as PDF",
-		Role: ui.RoleTypePopUpButton,
-	}
-	destList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find destination list")
-	}
-	defer destList.Release(ctx)
-	if err := destList.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click destination list")
+	dataList := nodewith.Name("Destination Save as PDF").Role(role.PopUpButton)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find and click destination list",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(dataList),
+		ui.LeftClick(dataList),
+	)(ctx); err != nil {
+		return err
 	}
 
 	// Find and click the See more... menu item.
-	params = ui.FindParams{
-		Name: "See more destinations",
-		Role: ui.RoleTypeMenuItem,
-	}
-	seeMore, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find See more... menu item")
-	}
-	defer seeMore.Release(ctx)
-	if err := seeMore.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click See more... menu item")
+	seeMore := nodewith.Name("See more destinations").Role(role.MenuItem)
+	if err := uiauto.Combine("find and click See more... menu item",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(seeMore),
+		ui.LeftClick(seeMore),
+	)(ctx); err != nil {
+		return err
 	}
 
 	// Find and select the printer.
-	params = ui.FindParams{
-		Name: printerName,
-		Role: ui.RoleTypeCell,
-	}
-	printer, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find printer")
-	}
-	defer printer.Release(ctx)
-	if err := printer.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click printer")
+	printer := nodewith.Name(printerName).Role(role.Cell)
+	if err := uiauto.Combine("find and click printer",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(printer),
+		ui.LeftClick(printer),
+	)(ctx); err != nil {
+		return err
 	}
 	return nil
 }
@@ -106,29 +89,20 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 // the provided layout.
 func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error {
 	// Find and expand the layout list.
-	params := ui.FindParams{
-		Name: "Layout",
-		Role: ui.RoleTypePopUpButton,
-	}
-	layoutList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find layout list")
-	}
-	defer layoutList.Release(ctx)
-	if err := layoutList.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click layout list")
+	layoutList := nodewith.Name("Layout").Role(role.PopUpButton)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find and click layout list",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(layoutList),
+		ui.LeftClick(layoutList),
+	)(ctx); err != nil {
+		return err
 	}
 
 	// Find the landscape layout option to verify the layout list has expanded.
-	params = ui.FindParams{
-		Name: "Landscape",
-		Role: ui.RoleTypeListBoxOption,
-	}
-	landscapeOption, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
+	landscapeOption := nodewith.Name("Landscape").Role(role.ListBoxOption)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(landscapeOption)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for layout list to expand")
 	}
-	defer landscapeOption.Release(ctx)
 
 	// Select the desired layout.
 	kb, err := input.Keyboard(ctx)
@@ -155,29 +129,20 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 // SetPages interacts with Chrome print preview to set the selected pages.
 func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	// Find and expand the pages list.
-	params := ui.FindParams{
-		Name: "Pages",
-		Role: ui.RoleTypePopUpButton,
-	}
-	pagesList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find pages list")
-	}
-	defer pagesList.Release(ctx)
-	if err := pagesList.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click pages list")
+	pageList := nodewith.Name("Pages").Role(role.PopUpButton)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find and click page list",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(pageList),
+		ui.LeftClick(pageList),
+	)(ctx); err != nil {
+		return err
 	}
 
 	// Find the custom pages option to verify the pages list has expanded.
-	params = ui.FindParams{
-		Name: "Custom",
-		Role: ui.RoleTypeListBoxOption,
-	}
-	customOption, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
+	customOption := nodewith.Name("Custom").Role(role.ListBoxOption)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(customOption)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for pages list to expand")
 	}
-	defer customOption.Release(ctx)
 
 	// Select "Custom" and set the desired page range.
 	kb, err := input.Keyboard(ctx)
@@ -193,12 +158,8 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	}
 	// Wait for the custom pages text field to appear and become focused (this
 	// happens automatically).
-	params = ui.FindParams{
-		Name:  "e.g. 1-5, 8, 11-13",
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+	textField := nodewith.Name("e.g. 1-5, 8, 11-13").Role(role.TextField).State(state.Focused, true)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(textField)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find custom pages text field")
 	}
 	if err := kb.Type(ctx, pages); err != nil {
