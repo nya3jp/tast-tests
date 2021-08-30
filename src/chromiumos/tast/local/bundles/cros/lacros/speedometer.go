@@ -7,6 +7,8 @@ package lacros
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -15,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -47,7 +50,7 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.C
 	var score float64
 	if err := conn.Eval(ctx, `
 		new Promise(resolve => {
-			benchmarkClient.totalScore = 0;
+			benchmadrkClient.totalScore = 0;
 			benchmarkClient.iterCount = 0;
 			benchmarkClient.didRunSuites = function(measuredValues) {
 				benchmarkClient.totalScore += measuredValues['score'];
@@ -59,6 +62,13 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.C
 			var runner = new BenchmarkRunner(Suites, benchmarkClient);
 			runner.runMultipleIterations(benchmarkClient.iterationCount);
 		})`, &score); err != nil {
+		// TODO(crbug.com/1244445): Remove this after debugging failure.
+		dir, ok := testing.ContextOutDir(ctx)
+		if ok {
+			dir = filepath.Join(dir, "speedometer_faillog")
+			os.MkdirAll(dir, 0755)
+			faillog.SaveToDir(ctx, dir)
+		}
 		return 0.0, errors.Wrap(err, "speedometer tests did not run")
 	}
 
