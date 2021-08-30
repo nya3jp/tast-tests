@@ -242,6 +242,8 @@ var (
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
+	// ScanBarcodeOption is the option button to switch to QR code detection mode.
+	ScanBarcodeOption = UIComponent{"scan barcode option", []string{"#scan-barcode"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -1240,9 +1242,37 @@ func (a *App) ToggleMirroringOption(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "mirror", "#toggle-mirror")
 }
 
-// ToggleQRCodeOption toggles the barcode scanning option.
-func (a *App) ToggleQRCodeOption(ctx context.Context) (bool, error) {
+func (a *App) toggleQRCodeOption(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "enable-scan-barcode", "#toggle-barcode")
+}
+
+// ToggleQRCodeDetection toggles the QR code detection.
+func (a *App) ToggleQRCodeDetection(ctx context.Context, shouldEnable bool) error {
+	if visible, err := a.Visible(ctx, ScanModeButton); err != nil {
+		return errors.Wrap(err, "failed to check visibility of scan mode button")
+	} else if visible {
+		if shouldEnable {
+			if err := a.SwitchMode(ctx, Scan); err != nil {
+				return errors.Wrap(err, "failed to switch to scan mode")
+			}
+			if err := a.Click(ctx, ScanBarcodeOption); err != nil {
+				return errors.Wrap(err, "failed to click the scan barcode option")
+			}
+		} else {
+			if err := a.SwitchMode(ctx, Photo); err != nil {
+				return errors.Wrap(err, "failed to switch to photo mode")
+			}
+		}
+	} else {
+		enabled, err := a.toggleQRCodeOption(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to enable QR code detection")
+		}
+		if enabled != shouldEnable {
+			return errors.Wrapf(err, "QR code detection state is not expected after toggling. Expect: %v, Actual: %v", shouldEnable, enabled)
+		}
+	}
+	return nil
 }
 
 // SetTimerOption sets the timer option to on/off.
