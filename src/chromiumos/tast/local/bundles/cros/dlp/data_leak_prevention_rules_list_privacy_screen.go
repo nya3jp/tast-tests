@@ -47,12 +47,12 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 			{
 				Name:        "Enable privacy screen for confidential content in restricted source",
 				Description: "Privacy screen should be enabled when on restricted site",
-				Sources: &policy.DataLeakPreventionRulesListSources{
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
 						"example.com",
 					},
 				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
 					{
 						Class: "PRIVACY_SCREEN",
 						Level: "BLOCK",

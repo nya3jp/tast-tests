@@ -47,12 +47,12 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 			{
 				Name:        "Disable Printing in confidential content",
 				Description: "User should not be able to print confidential content",
-				Sources: &policy.DataLeakPreventionRulesListSources{
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
 						"example.com",
 					},
 				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
 					{
 						Class: "PRINTING",
 						Level: "BLOCK",

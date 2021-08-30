@@ -44,12 +44,12 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 			{
 				Name:        "Disable screenshare of confidential content",
 				Description: "User should not be able to screen share confidential content",
-				Sources: &policy.DataLeakPreventionRulesListSources{
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
 						"example.com",
 					},
 				},
-				Restrictions: []*policy.DataLeakPreventionRulesListRestrictions{
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
 					{
 						Class: "SCREEN_SHARE",
 						Level: "BLOCK",
