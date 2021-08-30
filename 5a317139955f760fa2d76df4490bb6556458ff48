@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d757bb70_c153e660",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-08-30T06:18:53Z",
+      "side": 1,
+      "message": "nit: Move this declaration close to |ScanDocumentModeOption|",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "5a317139955f760fa2d76df4490bb6556458ff48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "036a6181_74bcc917",
         "filename": "src/chromiumos/tast/local/camera/cca/perf.go",
         "patchSetId": 1
