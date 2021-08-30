@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad60d01_742c0d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-08-30T07:25:11Z",
+      "side": 1,
+      "message": "Is sharingFiles needed to check the cache presence and absence below?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 3
+      },
+      "revId": "704ca2e3a2cd75e6583e112bec45101b74740803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
