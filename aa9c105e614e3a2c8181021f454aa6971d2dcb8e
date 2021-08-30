@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03ff5a8_090b14d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-08-30T14:59:55Z",
+      "side": 1,
+      "message": "I am OK to add it to `setupDevice` if works.    \nActually, we have not implement the in-contact sharing tests yet.\nI am trying this recently and let\u0027s bring this discussion back to https://crbug.com/1190280.",
+      "parentUuid": "c857e4f5_7f953b82",
+      "revId": "aa9c105e614e3a2c8181021f454aa6971d2dcb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85472f82_9407008e",
