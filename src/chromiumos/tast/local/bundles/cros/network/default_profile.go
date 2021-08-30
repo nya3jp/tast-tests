@@ -25,8 +25,8 @@ func init() {
 		Func: DefaultProfile,
 		Desc: "Checks shill's default network profile",
 		Contacts: []string{
-			"briannorris@chromium.org", // Connectivity team
-			"chromeos-kernel-wifi@google.com",
+			"stevenjb@chromium.org", // Connectivity team
+			"cros-networking@google.com",
 			"nya@chromium.org", // Tast port author
 		},
 		Attr:         []string{"group:mainline"},

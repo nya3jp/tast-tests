@@ -23,8 +23,8 @@ func init() {
 		Func: ConfigureServiceForUserProfile,
 		Desc: "Checks that we can configure a WiFi network for a user profile (guest or normal)",
 		Contacts: []string{
-			"briannorris@chromium.org",
-			"chromeos-platform-connectivity@google.com",
+			"stevenjb@chromium.org",
+			"cros-networking@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "shill-wifi"},

@@ -22,9 +22,9 @@ func init() {
 		Func: DefaultProfileServices,
 		Desc: "Checks configured services persist across shill reboot",
 		Contacts: []string{
-			"briannorris@chromium.org",
-			"chromeos-kernel-wifi@google.com", // WiFi team
-			"oka@chromium.org",                // Tast port author
+			"stevenjb@chromium.org", // Connectivity team
+			"cros-networking@google.com",
+			"oka@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"shill-wifi"},
 		Attr:         []string{"group:mainline"},
