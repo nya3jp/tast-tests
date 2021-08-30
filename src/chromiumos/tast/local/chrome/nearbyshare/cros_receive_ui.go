@@ -63,7 +63,7 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 	// Since we don't have multi-DUT support in the lab yet, sender and receiver devices are often running different OS versions, and thus have different strings.
 	r := regexp.MustCompile("(ACCEPT|RECEIVE)")
 	ui := uiauto.New(tconn)
-	btn := nodewith.ClassName("NotificationMdTextButton").NameRegex(r)
+	btn := nodewith.ClassName("NotificationTextButton").NameRegex(r)
 	if err := ui.LeftClick(btn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
