@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78173ea1_6e980f48",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-30T06:38:03Z",
+      "side": 1,
+      "message": "Done.\n\nStopAppIfExists and SetDebugParams don\u0027t have typedefs since we currently don\u0027t pass these functions as parameters in tests. We added \"StartAppFunc\" and \"StopAppFunc\" to make the function parameters looks clearer in \"cca_ui_coexistence.go\".",
+      "parentUuid": "af799c26_ca11f9e4",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 50
+      },
+      "revId": "5340c3cdc43d2fcc0552d8eb4a41847650f23257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa495c5d_5867d2bd",
         "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-30T01:51:17Z",
       "side": 1,
       "message": "Delete this if SetUp fails.",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 23
+      },
+      "revId": "5340c3cdc43d2fcc0552d8eb4a41847650f23257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace86924_e3a879a5",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-30T06:38:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa495c5d_5867d2bd",
       "range": {
         "startLine": 221,
         "startChar": 3,
