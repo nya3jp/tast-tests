@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c353c5_375c3461",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-30T17:21:34Z",
+      "side": 1,
+      "message": "LGTM to avoid more iterations, but could you address comments below, before submitting?",
+      "revId": "c4e602ab5b6d92aee20e1771ebc5511b63eca427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e76c31d_1b6a1bcf",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.pb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-30T17:21:34Z",
+      "side": 1,
+      "message": "Could you document NewChrome needs to be called in prior, but not CloseChrome?",
+      "revId": "c4e602ab5b6d92aee20e1771ebc5511b63eca427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afa4b6e_5a156a42",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-30T17:21:34Z",
+      "side": 1,
+      "message": "Could you comment NewChrome needs to be called in prior, but not CloseChrome?",
+      "revId": "c4e602ab5b6d92aee20e1771ebc5511b63eca427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a79c239_bddcdbbb",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-08-30T17:21:34Z",
+      "side": 1,
+      "message": "could you mention that this must be called after \"ReuseChrome or NewChrome\" is called but CloseChrome is not yet?",
+      "revId": "c4e602ab5b6d92aee20e1771ebc5511b63eca427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
