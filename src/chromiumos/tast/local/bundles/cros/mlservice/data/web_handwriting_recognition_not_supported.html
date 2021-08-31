@@ -11,15 +11,26 @@
     // Tast test should wait for this Promise.
     // This method should throw an Error with a description if test fails.
     window.resultPromise = (async function () {
-        if (!navigator.queryHandwritingRecognizerSupport || !navigator.createHandwritingRecognizer) {
+        if (!navigator.queryHandwritingRecognizerSupport && !navigator.createHandwritingRecognizer) {
             throw new Error("Web Handwriting Recognition API is not available");
         }
 
         // Test that calling JS API will return (doesn't crash or hang), so JS
         // knows that handwriting isn't supported.
-        const { languages } = await navigator.queryHandwritingRecognizerSupport({ languages: ['en'] });
-        if (languages !== false) {
-            throw new Error("Feature query shouldn't report as supported");
+        if (navigator.queryHandwritingRecognizerSupport) {
+            // V1 API.
+            const { languages } = await navigator.queryHandwritingRecognizerSupport({ languages: ['en'] });
+            if (languages !== false) {
+                throw new Error("Feature query shouldn't report as supported");
+            }
+        }
+
+        if (navigator.queryHandwritingRecognizer) {
+            // V2 API.
+            const featureSupport = await navigator.queryHandwritingRecognizer({ languages: ['en'] });
+            if (featureSupport !== null) {
+                throw new Error("Feature query should return null");
+            }
         }
 
         // Test that a JS error is thrown (via Promise rejection) when creating a recognizer.

@@ -39,9 +39,21 @@
 
     async function testEnglishModel() {
         const constraints = { languages: ['en'] };
-        const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
-        if (!featureSupport.languages) {
-            throw new Error("Handwriting recognizer doesn't support 'en' language");
+
+        if (navigator.queryHandwritingRecognizerSupport) {
+            // V1 query API.
+            const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
+            if (!featureSupport.languages) {
+                throw new Error("Handwriting recognizer doesn't support 'en' language");
+            }
+        }
+
+        if (navigator.queryHandwritingRecognizer) {
+            // V2 query API.
+            const featureSupport = await navigator.queryHandwritingRecognizer(constraints);
+            if (!featureSupport) {
+                throw new Error("Handwriting recognizer doesn't support 'en' language");
+            }
         }
 
         const recognizer = await navigator.createHandwritingRecognizer(constraints);
@@ -53,9 +65,21 @@
 
     async function testGestureModel() {
         const constraints = { languages: ['zxx-x-Gesture'] };
-        const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
-        if (!featureSupport.languages) {
-            throw new Error("Handwriting recognizer doesn't support gesture model");
+
+        if (navigator.queryHandwritingRecognizerSupport) {
+            // V1 query API.
+            const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
+            if (!featureSupport.languages) {
+                throw new Error("Handwriting recognizer doesn't support gesture model");
+            }
+        }
+
+        if (navigator.queryHandwritingRecognizer) {
+            // V2 query API.
+            const featureSupport = await navigator.queryHandwritingRecognizer(constraints);
+            if (!featureSupport) {
+                throw new Error("Handwriting recognizer doesn't support gesture model");
+            }
         }
 
         const recognizer = await navigator.createHandwritingRecognizer(constraints);
@@ -71,11 +95,19 @@
     // Tast test should wait for this Promise.
     // This method should throw an Error with a description if test fails.
     window.resultPromise = (async function () {
-        if (!navigator.queryHandwritingRecognizerSupport || !navigator.createHandwritingRecognizer) {
+        if (!navigator.queryHandwritingRecognizerSupport && !navigator.createHandwritingRecognizer) {
             throw new Error("Web Handwriting Recognition API is not available");
         }
 
         await testEnglishModel();
         await testGestureModel();
+
+        if (navigator.queryHandwritingRecognizer) {
+            // V2 query, when the constraints can't be met.
+            const featureSupport = await navigator.queryHandwritingRecognizer({ languages: ['invalid_lang'] });
+            if (featureSupport !== null) {
+                throw new Error("queryHandwritingRecognizer didn't return null for unsupported languages");
+            }
+        }
     })();
 </script>
