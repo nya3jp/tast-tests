@@ -33,6 +33,23 @@
       "message": "lgtm",
       "revId": "1b32137cc99ae0aa771f62e604cc3878deb418bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690e65be_f440ee44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-31T04:14:15Z",
+      "side": 1,
+      "message": "clar: are there better ways we can reduce flakiness (can we check somehow the event has been received and processed? is this never an issue when a user uses the app? why not?)\n\nUsing delays like this in tests should be a last resort. See also: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#sleep",
+      "revId": "1b32137cc99ae0aa771f62e604cc3878deb418bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
