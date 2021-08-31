@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4ef352_e557504f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "the router\u0027s model.",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 22
+      },
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0211194_5b0ea569",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "retrieve",
+      "range": {
+        "startLine": 181,
+        "startChar": 21,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a47883e_866d9349",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "We may not output the expected data to log unless it is necessary. In this case, we can dump cfg.RouterConfigParams when it fails to apply the settings.",
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12038e9e_5996da66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "apply the ax settings to the AP:",
+      "range": {
+        "startLine": 218,
+        "startChar": 22,
+        "endLine": 218,
+        "endChar": 37
+      },
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f529f9e_b03dee43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "the router\u0027s IP address:",
+      "range": {
+        "startLine": 224,
+        "startChar": 26,
+        "endLine": 224,
+        "endChar": 28
+      },
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fc9cad_c7dec79a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "The router\u0027s IP:",
+      "range": {
+        "startLine": 227,
+        "startChar": 10,
+        "endLine": 227,
+        "endChar": 15
+      },
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff5995d_1a6f3695",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "testing.Poll failed with s.Fatal prepending the same error message. How about we return the err here without errors.Wrap() the same message?",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 54
+      },
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f0665e_729e895e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:32:47Z",
+      "side": 1,
+      "message": "Same here. Just return err.",
+      "revId": "7c42bb5bc20d4190de88d9fe47b180366307a73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
