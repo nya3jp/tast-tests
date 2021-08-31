@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2380201e_88c31870",
+        "filename": "android/ArcCameraIntentTest/src/org/chromium/arc/testapp/cameraintent/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-31T18:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f480b583_74f82bd1",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "7e4d772e82c205fde1908399ba30fd2ecc403ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6c678cf_758f6a4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-31T11:02:28Z",
       "side": 1,
       "message": "nit: This seems a little bit short to me. Maybe 10s here.",
+      "range": {
+        "startLine": 283,
+        "startChar": 48,
+        "endLine": 283,
+        "endChar": 49
+      },
+      "revId": "7e4d772e82c205fde1908399ba30fd2ecc403ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020fd3ab_dbdda001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-31T18:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c678cf_758f6a4a",
       "range": {
         "startLine": 283,
         "startChar": 48,
