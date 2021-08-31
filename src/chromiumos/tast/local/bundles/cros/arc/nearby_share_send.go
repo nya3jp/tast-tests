@@ -41,7 +41,7 @@ const (
 	// Large file generation additional UI timeout.
 	largeFileCheckboxTimeout = 40 * time.Second
 	// nearbycommon.DetectionTimeout + additional test time needed for ARC setup.
-	baseArcTestTime = nearbycommon.DetectionTimeout + time.Minute
+	baseArcTestTime = nearbycommon.DetectionTimeout + 2*time.Minute
 )
 
 func init() {
@@ -114,7 +114,7 @@ func init() {
 				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
 			{
-				Name:              "dataoffline_noone_medium_file_vm",
+				Name:              "dataonline_noone_medium_file_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
 				Val: nearbytestutils.TestData{
@@ -233,7 +233,12 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 
 	testData := s.Param().(nearbytestutils.TestData)
 
+	sharingFiles := false
 	for _, uiID := range strings.Split(string(testData.Filename), ",") {
+		if !sharingFiles && uiID != checkBoxTextID {
+			// Mark sharing at least one file.
+			sharingFiles = true
+		}
 		if uiID == checkBoxLargeFileID {
 			// Need additional timeout for large file to generate when app starts.
 			if err = shareUIClickWithTimeout(ctx, d, largeFileCheckboxTimeout, ui.ClassName(checkBoxClassName), shareUIID(uiID)); err != nil {
@@ -287,6 +292,18 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	defer sender.Close(ctx)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user hash: ", err)
+	}
+	filePath := filepath.Join("/home/user", ownerID, arcCacheFilesDir)
+	if sharingFiles {
+		// Verify ARC Nearby Share cache files directory is created when sharing files.
+		if _, err := os.Stat(filePath); err != nil {
+			s.Fatalf("Directory path %s does not exist", filePath)
+		}
+	}
+
 	s.Log("Starting high-visibility receiving on the Android device")
 	testTimeout := testData.TestTimeout
 	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, true, testTimeout); err != nil {
@@ -337,12 +354,8 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	}
 	shareCompleted = true
 
-	// Verify ARC Nearby Share cache files directory is cleaned up.
-	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
-	if err != nil {
-		s.Fatal("Failed to get user hash: ", err)
-	}
-	filePath := filepath.Join("/home/user", ownerID, arcCacheFilesDir)
+	// For files, verify ARC Nearby Share cache files directory is cleaned up.
+	// For text only, verify cache files directory does not exist.
 	if stat, err := os.Stat(filePath); err == nil && stat.IsDir() {
 		s.Fatalf("Directory path %s is still present", filePath)
 	} else if !os.IsNotExist(err) {
@@ -385,7 +398,7 @@ func shareUIClickWithTimeout(ctx context.Context, d *ui.Device, t time.Duration,
 func shareUIClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error {
 	const (
 		// Default UI timeout.
-		uiTimeout = 5 * time.Second
+		uiTimeout = 10 * time.Second
 	)
 
 	return shareUIClickWithTimeout(ctx, d, uiTimeout, opts...)
