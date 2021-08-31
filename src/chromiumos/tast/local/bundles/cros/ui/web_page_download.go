@@ -1,0 +1,471 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package ui
+
+import (
+	"context"
+	"os"
+	"path/filepath"
+	"time"
+
+	"chromiumos/tast/common/action"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+)
+
+type webPageDownloadTestResource struct {
+	cr    *chrome.Chrome
+	tconn *chrome.TestConn
+	ui    *uiauto.Context
+	kb    *input.KeyboardEventWriter
+}
+
+const (
+	samplelibPrefix = "https://samplelib.com/sample-"
+	jpgFileURL      = samplelibPrefix + "jpeg.html"
+	pngFileURL      = samplelibPrefix + "png.html"
+	gifFileURL      = samplelibPrefix + "gif.html"
+	mp4FileURL      = samplelibPrefix + "mp4.html"
+	webmFileURL     = samplelibPrefix + "webm.html"
+
+	fileExamplePrefix = "https://file-examples-com.github.io/uploads/2017/11/file_example_"
+	mp3FileURL        = fileExamplePrefix + "MP3_700KB.mp3"
+	wavFileURL        = fileExamplePrefix + "WAV_1MG.wav"
+	oggFileURL        = fileExamplePrefix + "OOG_1MG.ogg"
+
+	bigFileURL        = "https://speed.hetzner.de"
+	maliciousFileURL  = "http://testsafebrowsing.appspot.com/chrome"
+	suspiciousFileURL = "https://crxextractor.com"
+
+	warningLink = "https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb"
+
+	defaultExpectedNotification = "Download complete"
+	notificationTimeout         = time.Minute
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         WebPageDownload,
+		Desc:         "Check if downloading files will show notifications",
+		Contacts:     []string{"vivian.tsai@cienet.com", "cienet-development@googlegroups.com", "chromeos-sw-engprod@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Timeout:      10 * time.Minute,
+	})
+}
+
+// WebPageDownload downloads series of files and checks on each corresponding notification.
+func WebPageDownload(ctx context.Context, s *testing.State) {
+	cleanupCrCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cr, err := chrome.New(ctx,
+		chrome.ExtraArgs("--disable-features=HoldingSpaceInProgressDownloadsIntegration"),
+	)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCrCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create the keyboard: ", err)
+	}
+	defer kb.Close()
+
+	resources := &webPageDownloadTestResource{
+		cr:    cr,
+		tconn: tconn,
+		ui:    uiauto.New(tconn),
+		kb:    kb,
+	}
+
+	for _, test := range []struct {
+		description string
+		samples     []downloadAndVerifyNotification
+	}{
+		{
+			description: "pause, resume and cancel download",
+			samples: []downloadAndVerifyNotification{
+				newBigFile(bigFileURL, "Downloading 10GB.bin"),
+			},
+		}, {
+			description: "notification will autohide after 6 seconds",
+			samples: []downloadAndVerifyNotification{
+				newNormalFile(mp3FileURL),
+			},
+		}, {
+			description: "malicious download will show `Dangerous download blocked` in notification",
+			samples: []downloadAndVerifyNotification{
+				newMaliciousFile(maliciousFileURL, "Dangerous download blocked"),
+			},
+		}, {
+			description: "suspicious download will show `Confirm download` in notification",
+			samples: []downloadAndVerifyNotification{
+				newSuspiciousFile(suspiciousFileURL, "Confirm download"),
+			},
+		}, {
+			description: "downloading image will show a preview in notification",
+			samples: []downloadAndVerifyNotification{
+				newImageFile(jpgFileURL),
+				newImageFile(pngFileURL),
+				newImageFile(gifFileURL),
+			},
+		}, {
+			description: "downloading audio will show a notification",
+			samples: []downloadAndVerifyNotification{
+				newAudioFile(mp3FileURL),
+				newAudioFile(wavFileURL),
+				newAudioFile(oggFileURL),
+			},
+		}, {
+			description: "downloading video will show a notification",
+			samples: []downloadAndVerifyNotification{
+				newVideoFile(mp4FileURL),
+				newVideoFile(webmFileURL),
+			},
+		},
+	} {
+		f := func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			for _, sample := range test.samples {
+				if err := sample.openPage(cr)(ctx); err != nil {
+					s.Fatalf("Failed to open page %q to download sample: %v", sample.getURL(), err)
+				}
+				defer sample.closePage()(cleanupCtx)
+				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "page_ui_dump")
+
+				if err := sample.download(resources)(ctx); err != nil {
+					s.Fatal("Failed to download sample: ", err)
+				}
+				defer sample.remove()
+				defer sample.clearNotification(resources.ui, resources.tconn)(cleanupCtx)
+				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "notification_ui_dump")
+
+				if err := sample.verify(resources)(ctx); err != nil {
+					s.Fatalf("Failed to verify notification on page %q: %v", sample.getURL(), err)
+				}
+			}
+		}
+
+		if !s.Run(ctx, test.description, f) {
+			s.Errorf("Failed to complete test: %s", test.description)
+		}
+	}
+}
+
+type webPageDownloadTestSample struct {
+	expectedNotification string
+	url                  string
+	conn                 *chrome.Conn
+}
+
+type pageControl interface {
+	openPage(cr *chrome.Chrome) action.Action
+	clearNotification(ui *uiauto.Context, tconn *chrome.TestConn) action.Action
+	closePage() action.Action
+	remove() error
+	getURL() string
+}
+
+func (p *webPageDownloadTestSample) remove() error {
+	for _, pattern := range []string{
+		"file_example*",
+		"sample-*",
+	} {
+		files, err := filepath.Glob(filepath.Join(filesapp.DownloadPath, pattern))
+		if err != nil {
+			return errors.Wrapf(err, "the pattern %q is malformed", pattern)
+		}
+		for _, f := range files {
+			if err := os.Remove(f); err != nil {
+				return errors.Wrap(err, "failed to delete file")
+			}
+		}
+	}
+	return nil
+}
+
+func (p *webPageDownloadTestSample) openPage(cr *chrome.Chrome) action.Action {
+	return func(ctx context.Context) (retErr error) {
+		var err error
+		if p.conn, err = cr.NewConn(ctx, p.url); err != nil {
+			return errors.Wrapf(err, "failed to open %s page", p.url)
+		}
+		defer func() {
+			if retErr != nil {
+				p.conn.CloseTarget(ctx)
+				p.conn.Close()
+				p.conn = nil
+			}
+		}()
+
+		if err := webutil.WaitForQuiescence(ctx, p.conn, time.Minute); err != nil {
+			return errors.Wrap(err, "failed to wait for page to achieve quiescence")
+		}
+
+		return nil
+	}
+}
+
+func (p *webPageDownloadTestSample) clearNotification(ui *uiauto.Context, tconn *chrome.TestConn) action.Action {
+	return func(ctx context.Context) error {
+		if err := ash.CloseNotifications(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to close all notifications")
+		}
+		return nil
+	}
+}
+
+func (p *webPageDownloadTestSample) closePage() action.Action {
+	return func(ctx context.Context) error {
+		p.conn.CloseTarget(ctx)
+		p.conn.Close()
+		p.conn = nil
+		return nil
+	}
+}
+
+func (p *webPageDownloadTestSample) getURL() string {
+	return p.url
+}
+
+type downloadAndVerifyNotification interface {
+	download(res *webPageDownloadTestResource) action.Action
+	verify(res *webPageDownloadTestResource) action.Action
+	pageControl
+}
+
+type bigFile struct {
+	*webPageDownloadTestSample
+}
+
+func newBigFile(url, expectedNotification string) *bigFile {
+	return &bigFile{
+		&webPageDownloadTestSample{
+			expectedNotification: expectedNotification,
+			url:                  url,
+		},
+	}
+}
+
+func (bf *bigFile) download(res *webPageDownloadTestResource) action.Action {
+	return res.ui.LeftClick(nodewith.Name("10GB.bin").Role(role.Link))
+}
+
+func (bf *bigFile) verify(res *webPageDownloadTestResource) action.Action {
+	return func(ctx context.Context) error {
+		if _, err := ash.WaitForNotification(ctx, res.tconn, notificationTimeout, ash.WaitTitle(bf.expectedNotification)); err != nil {
+			return errors.Wrapf(err, "failed to wait for notification within %v", notificationTimeout)
+		}
+		if err := res.kb.Accel(ctx, "Ctrl+j"); err != nil {
+			return errors.Wrap(err, "failed to open download page")
+		}
+		return nil
+	}
+}
+
+func (bf *bigFile) clearNotification(ui *uiauto.Context, tconn *chrome.TestConn) action.Action {
+	button := nodewith.Role(role.Button)
+	return uiauto.Combine("resume, pause and cancel downloading",
+		ui.LeftClick(button.Name("Pause")),
+		ui.LeftClick(button.Name("Resume")),
+		ui.LeftClick(button.Name("Cancel")),
+		ui.LeftClick(button.Name("Close").First()),
+	)
+}
+
+type normalFile struct {
+	*webPageDownloadTestSample
+}
+
+func newNormalFile(url string) *normalFile {
+	return &normalFile{
+		&webPageDownloadTestSample{
+			expectedNotification: defaultExpectedNotification,
+			url:                  url,
+		},
+	}
+}
+
+func (f *normalFile) download(res *webPageDownloadTestResource) action.Action {
+	return uiauto.Combine("download file",
+		res.ui.LeftClick(nodewith.Name("show more media controls").Role(role.Button)),
+		res.ui.LeftClick(nodewith.Name("download media").Role(role.Button)),
+	)
+}
+
+func (f *normalFile) verify(res *webPageDownloadTestResource) action.Action {
+	notiString := nodewith.Name("file_example_MP3_700KB.mp3").HasClass("Label")
+	return func(ctx context.Context) error {
+		if _, err := ash.WaitForNotification(ctx, res.tconn, time.Minute, ash.WaitTitle(f.expectedNotification)); err != nil {
+			return errors.Wrap(err, "failed to wait for download completed notification after a minute")
+		}
+		if err := res.ui.WaitUntilGone(notiString)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for notification to disappear")
+		}
+		return nil
+	}
+}
+
+type maliciousFile struct {
+	*webPageDownloadTestSample
+}
+
+func newMaliciousFile(url, expectedNotification string) *maliciousFile {
+	return &maliciousFile{
+		&webPageDownloadTestSample{
+			expectedNotification: expectedNotification,
+			url:                  url,
+		},
+	}
+}
+
+func (mf *maliciousFile) download(res *webPageDownloadTestResource) action.Action {
+	dlButton := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.ListItem).Ancestor(nodewith.Role(role.List)).Nth(2)).Linked()
+	return uiauto.NamedAction("click malicious link", res.ui.LeftClick(dlButton))
+}
+
+func (mf *maliciousFile) verify(res *webPageDownloadTestResource) action.Action {
+	notiString := nodewith.Name("Dangerous download blocked")
+	return uiauto.NamedAction("wait for dangerous download notification", res.ui.WaitUntilExists(notiString))
+}
+
+type suspiciousFile struct {
+	*webPageDownloadTestSample
+}
+
+func newSuspiciousFile(url, expectedNotification string) *suspiciousFile {
+	return &suspiciousFile{
+		&webPageDownloadTestSample{
+			expectedNotification: expectedNotification,
+			url:                  url,
+		},
+	}
+}
+
+func (sf *suspiciousFile) download(res *webPageDownloadTestResource) action.Action {
+	return uiauto.Combine("download chrome extension",
+		res.ui.LeftClick(nodewith.Name("START FOR FREE").Role(role.Button)),
+		res.ui.LeftClick(nodewith.Name("URL from Chrome WebStore").Role(role.TextField)),
+		res.kb.TypeAction(warningLink),
+		res.ui.LeftClick(nodewith.Name("DOWNLOAD").Role(role.InlineTextBox)),
+		res.ui.LeftClick(nodewith.Name("GET .CRX").Role(role.InlineTextBox)),
+	)
+}
+
+func (sf *suspiciousFile) verify(res *webPageDownloadTestResource) action.Action {
+	return func(ctx context.Context) error {
+		_, err := ash.WaitForNotification(ctx, res.tconn, notificationTimeout, ash.WaitTitle(sf.expectedNotification))
+		return err
+	}
+}
+
+type imageFile struct {
+	*webPageDownloadTestSample
+}
+
+func newImageFile(url string) *imageFile {
+	return &imageFile{
+		&webPageDownloadTestSample{
+			expectedNotification: defaultExpectedNotification,
+			url:                  url,
+		},
+	}
+}
+
+func (imf *imageFile) download(res *webPageDownloadTestResource) action.Action {
+	dlButton := nodewith.Name("Download").Role(role.Link).First()
+	return func(ctx context.Context) error {
+		if err := res.ui.LeftClick(dlButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to download image file")
+		}
+		if _, err := ash.WaitForNotification(ctx, res.tconn, notificationTimeout, ash.WaitTitle(imf.expectedNotification)); err != nil {
+			return errors.Wrapf(err, "failed to wait for download completed notification of image file within %v", notificationTimeout)
+		}
+		return nil
+	}
+}
+
+func (imf *imageFile) verify(res *webPageDownloadTestResource) action.Action {
+	notiString := nodewith.HasClass("LargeImageView")
+	return uiauto.NamedAction("quick view on image file from notification", res.ui.WaitUntilExists(notiString))
+}
+
+type audioFile struct {
+	*webPageDownloadTestSample
+}
+
+func newAudioFile(url string) *audioFile {
+	return &audioFile{
+		&webPageDownloadTestSample{
+			expectedNotification: defaultExpectedNotification,
+			url:                  url,
+		},
+	}
+}
+
+func (af *audioFile) download(res *webPageDownloadTestResource) action.Action {
+	return uiauto.Combine("download file",
+		res.ui.LeftClick(nodewith.Name("show more media controls").Role(role.Button)),
+		res.ui.LeftClick(nodewith.Name("download media").Role(role.Button)),
+	)
+}
+
+func (af *audioFile) verify(res *webPageDownloadTestResource) action.Action {
+	return func(ctx context.Context) error {
+		if _, err := ash.WaitForNotification(ctx, res.tconn, notificationTimeout, ash.WaitTitle(af.expectedNotification)); err != nil {
+			return errors.Wrapf(err, "failed to wait for download completed notification of audio file within %v", notificationTimeout)
+		}
+		return nil
+	}
+}
+
+type videoFile struct {
+	*webPageDownloadTestSample
+}
+
+func newVideoFile(url string) *videoFile {
+	return &videoFile{
+		&webPageDownloadTestSample{
+			expectedNotification: defaultExpectedNotification,
+			url:                  url,
+		},
+	}
+}
+func (vf *videoFile) download(res *webPageDownloadTestResource) action.Action {
+	dlButton := nodewith.Name("Download").Role(role.Link).First()
+	return uiauto.NamedAction("download video file", res.ui.LeftClick(dlButton))
+}
+
+func (vf *videoFile) verify(res *webPageDownloadTestResource) action.Action {
+	return func(ctx context.Context) error {
+		// Video file requires more time to finish download.
+		timeout := 5 * time.Minute
+		if _, err := ash.WaitForNotification(ctx, res.tconn, timeout, ash.WaitTitle(vf.expectedNotification)); err != nil {
+			return errors.Wrapf(err, "failed to wait for download completed notification of video file within %v", timeout)
+		}
+		return nil
+	}
+}
