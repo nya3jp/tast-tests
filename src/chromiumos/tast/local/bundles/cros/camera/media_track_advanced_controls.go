@@ -102,8 +102,8 @@ func (c *defaultControl) getTolerance() float64 {
 }
 
 func (c *defaultControl) isEqual(v1, v2 float64) bool {
-	differance := math.Abs(v1 - v2)
-	return differance <= c.getTolerance()
+	difference := math.Abs(v1 - v2)
+	return difference <= c.getTolerance()
 }
 
 func (c *defaultControl) getValidTestValues(r mediaSettingRange) []float64 {
@@ -232,6 +232,15 @@ func (c *exposureCompensationControl) getSettingRange(capabilities *mediaTrackCa
 	return (*capabilities).ExposureCompensation
 }
 
+func (c *exposureCompensationControl) getTolerance() float64 {
+	return 0.1
+}
+
+func (c *exposureCompensationControl) isEqual(v1, v2 float64) bool {
+	difference := math.Abs(v1 - v2)
+	return difference <= c.getTolerance()
+}
+
 func (c *exposureCompensationControl) getValue(settings *mediaTrackSettings) float64 {
 	return *(*settings).ExposureCompensation
 }
@@ -280,8 +289,8 @@ func (c *exposureTimeControl) getTolerance() float64 {
 }
 
 func (c *exposureTimeControl) isEqual(v1, v2 float64) bool {
-	differance := math.Abs(v1 - v2)
-	return differance <= c.getTolerance()
+	difference := math.Abs(v1 - v2)
+	return difference <= c.getTolerance()
 }
 
 func (c *exposureTimeControl) getConstraints(value *float64) mediaTrackConstraints {
@@ -325,8 +334,8 @@ func (c *focusDistanceControl) getTolerance() float64 {
 }
 
 func (c *focusDistanceControl) isEqual(v1, v2 float64) bool {
-	differance := math.Abs(v1 - v2)
-	return differance <= c.getTolerance()
+	difference := math.Abs(v1 - v2)
+	return difference <= c.getTolerance()
 }
 
 func (c *focusDistanceControl) getValidTestValues(r mediaSettingRange) []float64 {
@@ -375,8 +384,8 @@ func (c *isoControl) getTolerance() float64 {
 }
 
 func (c *isoControl) isEqual(v1, v2 float64) bool {
-	differance := math.Abs(v1 - v2)
-	return differance <= c.getTolerance()
+	difference := math.Abs(v1 - v2)
+	return difference <= c.getTolerance()
 }
 
 func (c *isoControl) getConstraints(value *float64) mediaTrackConstraints {
