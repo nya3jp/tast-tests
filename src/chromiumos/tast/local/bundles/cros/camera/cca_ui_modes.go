@@ -80,18 +80,4 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	} else if !isSquare {
 		s.Error("Captured photo is not square")
 	}
-
-	// For portrait mode, currently we only check for the existence of the
-	// reference photo but don't check for the processed output since we cannot
-	// guarantee there is a human face in the frame content.
-	if supported, err := app.PortraitModeSupported(ctx); err != nil {
-		s.Error("Failed to determine whether portrait mode is supported: ", err)
-	} else if supported {
-		if err := app.SwitchMode(ctx, cca.Portrait); err != nil {
-			s.Fatal("Failed to switch to portrait mode: ", err)
-		}
-		if _, err = app.TakeSinglePhoto(ctx, cca.TimerOff); err != nil {
-			s.Error("Failed to take portrait photo: ", err)
-		}
-	}
 }

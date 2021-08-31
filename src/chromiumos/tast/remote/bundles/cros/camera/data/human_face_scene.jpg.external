@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/human_face_scene_20210908.jpg",
+  "size": 25072,
+  "sha256sum": "495b463396df3215ee6fb47950117880d4b0435d68cb15e5144fc9b925489d3c"
+}

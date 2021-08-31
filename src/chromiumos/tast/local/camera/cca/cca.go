@@ -755,9 +755,8 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		return nil, err
 	}
 	if isPortrait {
-		// TODO(b/183366604): Check for |PortraitPattern| once we can ensure there is human face in the
-		// frame content.
 		patterns = append(patterns, PortraitRefPattern)
+		patterns = append(patterns, PortraitPattern)
 	} else {
 		patterns = append(patterns, PhotoPattern)
 	}
