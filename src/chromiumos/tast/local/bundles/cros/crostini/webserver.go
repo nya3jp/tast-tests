@@ -22,7 +22,7 @@ func init() {
 		Func:         Webserver,
 		Desc:         "Runs a webserver in the container, and confirms that the host can connect to it",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
