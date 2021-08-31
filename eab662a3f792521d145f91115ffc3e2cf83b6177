@@ -16,6 +16,24 @@
       "message": "Some nits.",
       "revId": "eab662a3f792521d145f91115ffc3e2cf83b6177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2703f4b_eb3f6670",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-31T06:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4e95dd1_3a009193",
+      "revId": "eab662a3f792521d145f91115ffc3e2cf83b6177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
