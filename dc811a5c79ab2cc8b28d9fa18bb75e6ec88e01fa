@@ -16,6 +16,23 @@
       "message": "Thanks Alvin,\n\nWaihong, Benson, can you kindly review? Thanks!",
       "revId": "dc811a5c79ab2cc8b28d9fa18bb75e6ec88e01fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc0d780_fcc862bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-31T07:03:20Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "dc811a5c79ab2cc8b28d9fa18bb75e6ec88e01fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
