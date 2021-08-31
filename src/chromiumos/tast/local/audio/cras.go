@@ -8,21 +8,26 @@ package audio
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
 
 const (
-	crasPath      = "/usr/bin/cras"
-	dbusName      = "org.chromium.cras"
-	dbusPath      = "/org/chromium/cras"
-	dbusInterface = "org.chromium.cras.Control"
+	audioDeviceStatusCmd = "cat /proc/asound/card%s/pcm%sp/sub0/status"
+	crasPath             = "/usr/bin/cras"
+	dbusName             = "org.chromium.cras"
+	dbusPath             = "/org/chromium/cras"
+	dbusInterface        = "org.chromium.cras.Control"
+	outputDeviceCmd      = "cras_test_client --dump_audio_thread | grep 'Output dev:'"
 )
 
 // StreamType is used to specify the type of node we want to use for tests and
@@ -247,6 +252,64 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 	}
 
 	return cras.WaitForDeviceUntil(ctx, checkActiveNode, 10*time.Second)
+}
+
+// GetSelectedOutputDeviceNameAndType returns the active output device name and type.
+func (c *Cras) GetSelectedOutputDeviceNameAndType(ctx context.Context) (string, string, error) {
+	deviceName := ""
+	deviceType := ""
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return deviceName, deviceType, err
+	}
+	for _, node := range nodes {
+		if node.Active && !node.IsInput {
+			deviceName = node.DeviceName
+			deviceType = node.Type
+			break
+		}
+	}
+	return deviceName, deviceType, nil
+}
+
+// CheckAudioStreamAtSelectedDevice verifies if the audio is routing through the expected node or not.
+func CheckAudioStreamAtSelectedDevice(ctx context.Context, deviceName string, deviceType string) error {
+	if deviceType == "BLUETOOTH" {
+		output, err := testexec.CommandContext(ctx, "sh", "-c", outputDeviceCmd).Output()
+		if err != nil {
+			errors.Errorf("Failed to execute %q: %v", outputDeviceCmd, err)
+		}
+		outputDevname := strings.TrimSpace(strings.Trim(string(output), "Output dev:"))
+		if deviceName != outputDevname {
+			return errors.Errorf("Failed to route the audio through expected node: got %q; want %q", outputDevname, deviceName)
+		}
+		return nil
+	}
+
+	r, _ := regexp.Compile(":(\\d),(\\d)")
+	if !r.MatchString(deviceName) {
+		return errors.Errorf("Failed to follow the pattern %q in %q", r, deviceName)
+	}
+
+	cardNum := r.FindAllStringSubmatch(deviceName, 1)[0][1]
+	devNum := r.FindAllStringSubmatch(deviceName, 1)[0][2]
+	if cardNum == "" || devNum == "" {
+		return errors.Errorf("Failed to find Audio device name")
+	}
+
+	output, err := testexec.CommandContext(ctx, "sh", "-c", fmt.Sprintf(audioDeviceStatusCmd, cardNum, devNum)).Output()
+	if err != nil {
+		return errors.Errorf("Failed to execute %q: %v", outputDeviceCmd, err)
+	}
+	testing.ContextLogf(ctx, "Selected output device status is %s", output)
+	if strings.Contains(string(output), "RUNNING") {
+		testing.ContextLogf(ctx, "Audio is routing through expected node!")
+	} else if strings.Contains(string(output), "closed") {
+		return errors.Errorf("Audio is not routing through expected audio node!")
+	} else {
+		return errors.Errorf("Audio routing error! Device may be preparing")
+	}
+	return nil
 }
 
 // GetCRASPID finds the PID of cras.
