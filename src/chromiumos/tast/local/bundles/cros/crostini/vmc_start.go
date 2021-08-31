@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Starts Crostini via vmc commands",
 		Contacts:     []string{"keiichiw@chromium.org", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Params: []testing.Param{
