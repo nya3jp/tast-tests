@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efe907c_1d8023e7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-31T05:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2670b761_ae2b8543",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "c31064fc153c82e1d92aa047cf69e5c7049bb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32c51731_57ab2fbe",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-08-30T05:26:40Z",
       "side": 1,
       "message": "ditto (same as above). You can use Combine here too. I\u0027d name it \"find destination list and click\"",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "c31064fc153c82e1d92aa047cf69e5c7049bb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48929cdd_98a6a2c3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-31T05:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c51731_57ab2fbe",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f07f1a6b_41baf76e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-31T05:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba631b0e_097c0c31",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "c31064fc153c82e1d92aa047cf69e5c7049bb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cce7c09a_c4766982",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-08-30T05:26:40Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "c31064fc153c82e1d92aa047cf69e5c7049bb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8bbcf0_64f55c83",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-31T05:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cce7c09a_c4766982",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db4ca53_b5d520d9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-31T05:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdcf2666_61479e3c",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "c31064fc153c82e1d92aa047cf69e5c7049bb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "570cfa2a_459c3f00",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-08-30T05:26:40Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "c31064fc153c82e1d92aa047cf69e5c7049bb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3908db_e81a2f0f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-08-31T05:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570cfa2a_459c3f00",
       "range": {
         "startLine": 134,
         "startChar": 0,
