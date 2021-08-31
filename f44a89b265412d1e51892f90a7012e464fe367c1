@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28009966_0e4edb41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-31T17:49:50Z",
+      "side": 1,
+      "message": "LGTM. Just one nit command.",
+      "revId": "f44a89b265412d1e51892f90a7012e464fe367c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c748d4b5_223671f8",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-31T17:49:50Z",
+      "side": 1,
+      "message": "NIT: You need to switch mode for both conditions. Maybe this will be better\n```\n\tvisible, err :\u003d a.Visible(ctx, ScanModeButton)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to check visibility of scan mode button\")\n\t}\n\tif err :\u003d a.SwitchMode(ctx, Photo); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to switch to photo mode\")\n\t}\n\tif visible {\n\t\tif err :\u003d a.maybeToggleQRCodeOption(ctx, false); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to toggle QR code detection\")\n\t\t}\n\t}```",
+      "revId": "f44a89b265412d1e51892f90a7012e464fe367c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
