@@ -148,7 +148,7 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 			if enabled && sameAddr {
 				s.Fatal("Expect randomized MAC but found probe request with hardware MAC")
 			} else if !enabled && !sameAddr {
-				s.Fatal("Expect non-randomized MAC but found probe request with non-hardware MAC")
+				s.Fatal("Expect non-randomized MAC but found probe request with non-hardware MAC. Note that this is expected to fail in open-air environments")
 			}
 		}
 	}
