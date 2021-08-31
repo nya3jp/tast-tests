@@ -86,6 +86,24 @@
       "parentUuid": "764f57b0_39813d1b",
       "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67dba5ec_738f02a3",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-31T02:38:58Z",
+      "side": 1,
+      "message": "Changed to EnableQRCodeDetection()/DisableQRCodeDetection() and make it still pass even if calling EnableQRCodeDetection() or DisableQRCodeDetection() twice.",
+      "parentUuid": "c93b0150_863b353c",
+      "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
