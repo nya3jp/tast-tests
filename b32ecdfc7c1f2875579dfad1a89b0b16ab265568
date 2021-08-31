@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d34a917_d2e2a562",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-31T23:57:38Z",
+      "side": 1,
+      "message": "did Call not work out? I thought it would since onCancelJS is callable",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "b32ecdfc7c1f2875579dfad1a89b0b16ab265568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
