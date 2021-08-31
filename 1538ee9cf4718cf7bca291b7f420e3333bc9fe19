@@ -33,6 +33,23 @@
       "message": "How about testing for ProxyAdd.media_source*? I didn\u0027t see them in the TEST section.",
       "revId": "1538ee9cf4718cf7bca291b7f420e3333bc9fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4479cd2d_bc102f22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-08-31T02:00:17Z",
+      "side": 1,
+      "message": "Thanks for the reminder.  The ProxyAdd currently fails until https://chromium-review.googlesource.com/c/chromium/src/+/3131954 lands.",
+      "revId": "1538ee9cf4718cf7bca291b7f420e3333bc9fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
