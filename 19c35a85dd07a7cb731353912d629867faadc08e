@@ -16,6 +16,23 @@
       "message": "Tast Reviewer LGTM",
       "revId": "19c35a85dd07a7cb731353912d629867faadc08e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aee04c3_d358ea02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-08-31T23:50:41Z",
+      "side": 1,
+      "message": "Here is the error from CQ:\n\n```\ntast-remote-tests-cros-0.0.2-r7463: src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go:81:23: dut.Conn().Command undefined (type *\"chromiumos/tast/ssh\".Conn has no field or method Command)\ntast-remote-tests-cros-0.0.2-r7463: src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go:85:23: dut.Conn().Command undefined (type *\"chromiumos/tast/ssh\".Conn has no field or method Command)\ntast-remote-tests-cros-0.0.2-r7463: src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go:99:23: dut.Conn().Command undefined (type *\"chromiumos/tast/ssh\".Conn has no field or method Command)\ntast-remote-tests-cros-0.0.2-r7463: src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go:132:24: dut.Conn().Command undefined (type *\"chromiumos/tast/ssh\".Conn has no field or method Command)\n```",
+      "revId": "19c35a85dd07a7cb731353912d629867faadc08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
