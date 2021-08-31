@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f3b5db_35c2669b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-08-31T19:45:02Z",
+      "side": 1,
+      "message": "Sounds good, I will just add the paths to ARCExpectedSharedMountsCommon.",
+      "parentUuid": "3b2d35c4_582ce17b",
+      "revId": "d9a918a9b7d08734f6a64b942b5d5cab54e9f8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4011d162_fb16bca0",
