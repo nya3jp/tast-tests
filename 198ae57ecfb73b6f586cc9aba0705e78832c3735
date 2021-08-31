@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "63d3c86b_4fca07a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-31T07:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a7d0c4_eaafa549",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "198ae57ecfb73b6f586cc9aba0705e78832c3735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "af77cf9b_8476f64d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-30T14:17:31Z",
       "side": 1,
       "message": "Could that go with a separate CL?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 81
+      },
+      "revId": "198ae57ecfb73b6f586cc9aba0705e78832c3735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03f5bb64_6a8a5290",
+        "filename": "src/chromiumos/tast/common/policy/defs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-31T07:51:23Z",
+      "side": 1,
+      "message": "If I don\u0027t comment this part out, the build will fail, as there is no longer a PluginVmLicenseKey in the definitions.",
+      "parentUuid": "e1caccdf_9e66c818",
       "range": {
         "startLine": 61,
         "startChar": 0,
