@@ -50,7 +50,7 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 
 	if strings.Contains(servoHostPort, "docker_servod") {
 		hostInfo := strings.Split(servoHostPort, ":")
-		return hostInfo[0], port, 0, nil
+		return hostInfo[0], port, sshPort, nil
 	}
 
 	hostport := servoHostPort
@@ -143,7 +143,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	}
 	pxy.port = port
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
-	if (host != "localhost" && host != "127.0.0.1" && host != "::1" && !isDockerHost(host)) || sshPort != 22 {
+	if !isDockerHost(host) && ((host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22) {
 		// First, create an SSH connection to the remote system running servod.
 		sopt := ssh.Options{
 			KeyFile:        keyFile,
