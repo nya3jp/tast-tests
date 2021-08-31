@@ -36,6 +36,7 @@ type testFunc = func(ctx context.Context, scriptPaths []string, outDir string, f
 
 var getTestFuncMap = map[cameraboxpb.CCATest]testFunc{
 	cameraboxpb.CCATest_DOCUMENT_SCANNING: cca.RunPreviewDocumentCornersDetection,
+	cameraboxpb.CCATest_PORTRAIT_MODE:     cca.RunPortraitModeTesting,
 }
 
 var facingMap = map[cameraboxpb.Facing]cca.Facing{

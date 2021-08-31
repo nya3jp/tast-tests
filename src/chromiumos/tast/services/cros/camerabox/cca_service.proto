@@ -18,6 +18,7 @@ service CCAService {
 
 enum CCATest {
   DOCUMENT_SCANNING = 0;
+  PORTRAIT_MODE = 1;
 }
 
 message CCATestRequest {
