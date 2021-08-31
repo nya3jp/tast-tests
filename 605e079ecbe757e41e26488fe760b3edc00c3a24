@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f26aaf6_6fd44a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-31T20:29:25Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a need to call tconn.Close(). Look at go/tast-codelab-3. They create a tconn, but don\u0027t call close() on it.",
+      "parentUuid": "f4292b25_4cebd098",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "605e079ecbe757e41e26488fe760b3edc00c3a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24572395_79275237",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-08-30T23:14:12Z",
       "side": 1,
       "message": "If the purpose of this loop is checking whether the \"Deep Purple\" get synced, why opening and closing the app is need?",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "605e079ecbe757e41e26488fe760b3edc00c3a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e904ba_c17e3370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-31T20:29:25Z",
+      "side": 1,
+      "message": "The text doesn\u0027t change unless you keep closing and re-opening the wallpaper picker. I added a comment.",
+      "parentUuid": "24572395_79275237",
       "range": {
         "startLine": 39,
         "startChar": 22,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "171bb8e4_52ce35c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-31T20:29:25Z",
+      "side": 1,
+      "message": "This entire test already has a global five minute timeout. Also, how would a timeout in wallpaper.ChangeWallpaper() help? That helper function isn\u0027t called in this loop.",
+      "parentUuid": "06e94538_0bebe494",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "605e079ecbe757e41e26488fe760b3edc00c3a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68ea56fc_2271aa33",
         "filename": "src/chromiumos/tast/local/chrome/wallpaper/wallpaper.go",
         "patchSetId": 2
@@ -117,6 +189,30 @@
       "writtenOn": "2021-08-30T23:14:12Z",
       "side": 1,
       "message": "Maybe also ui.WaitUntilExists the tested wallpaper with `name`?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "605e079ecbe757e41e26488fe760b3edc00c3a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39795ccf_375d35fc",
+        "filename": "src/chromiumos/tast/local/chrome/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-08-31T20:29:25Z",
+      "side": 1,
+      "message": "Good idea, done. We shouldn\u0027t call ui.WaitUntilExists() because that\u0027s duplicating CheckWallpaper().",
+      "parentUuid": "68ea56fc_2271aa33",
       "range": {
         "startLine": 38,
         "startChar": 5,
