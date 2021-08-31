@@ -71,6 +71,17 @@ const (
 	LongTouchscreenTap
 )
 
+// StandardizedTouchscreenSwipeDirection represents the touchscreen swipe direction.
+type StandardizedTouchscreenSwipeDirection int
+
+// Holds all the swipe directions that can be performed on the touchscreen.
+const (
+	DownTouchscreenSwipe StandardizedTouchscreenSwipeDirection = iota
+	UpTouchscreenSwipe
+	LeftTouchscreenSwipe
+	RightTouchscreenSwipe
+)
+
 // GetStandardizedClamshellTests returns the test cases required for clamshell devices.
 func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
 	return []StandardizedTestCase{
@@ -219,6 +230,59 @@ func StandardizedTouchscreenTap(ctx context.Context, testParameters Standardized
 	}
 
 	return nil
+}
+
+// StandardizedTouchscreenSwipe performs a swipe in a given direction, starting from the provided selector.
+// Due to different device settings, the actual swipe distance will be imprecise but aims to be near 50 pixels.
+func StandardizedTouchscreenSwipe(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object, numTouches int, swipeDirection StandardizedTouchscreenSwipeDirection) error {
+	const (
+		distanceBetweenTouches = input.TouchCoord(40)
+		swipeDuration          = 500 * time.Millisecond
+		swipeDistance          = input.TouchCoord(250)
+	)
+
+	touchScreen, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize touchscreen")
+	}
+	defer touchScreen.Close()
+
+	tsw, err := touchScreen.NewMultiTouchWriter(numTouches)
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize touchscreen event writer")
+	}
+	defer tsw.Close()
+
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	if err != nil {
+		return errors.Wrap(err, "unable to get touch screen coords")
+	}
+
+	// Get the destination coordinates based on the direction.
+	endX := input.TouchCoord(0)
+	endY := input.TouchCoord(0)
+
+	switch swipeDirection {
+	case UpTouchscreenSwipe:
+		endX = *x
+		endY = *y - swipeDistance
+		break
+	case DownTouchscreenSwipe:
+		endX = *x
+		endY = *y + swipeDistance
+	case LeftTouchscreenSwipe:
+		endX = *x - swipeDistance
+		endY = *y
+		break
+	case RightTouchscreenSwipe:
+		endX = *x + swipeDistance
+		endY = *y
+	default:
+		return errors.Errorf("invalid direction provided: %v", swipeDirection)
+	}
+
+	// Perform the swipe.
+	return tsw.Swipe(ctx, *x, *y, endX, endY, distanceBetweenTouches, numTouches, swipeDuration)
 }
 
 // getTouchEventCoordinatesForElement converts the points of an element to the corresponding Touchscreen coordinates.
