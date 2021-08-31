@@ -56,6 +56,30 @@
       },
       "revId": "eac08086f160b1188676f790149460cc63800289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad15ddf_95a15286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1295906
+      },
+      "writtenOn": "2021-08-31T04:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a69d56b_da4934ee",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "eac08086f160b1188676f790149460cc63800289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
