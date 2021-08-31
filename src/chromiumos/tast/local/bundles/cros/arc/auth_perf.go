@@ -8,7 +8,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"math"
 	"os"
 	"path/filepath"
@@ -338,15 +337,15 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 
 	// Enable O_DIRECT on ARCVM block device
 	if s.Param().(testParam).oDirect {
-		if err := writeArcvmDevConf(ctx, "O_DIRECT=true"); err != nil {
+		if err := arc.WriteArcvmDevConf(ctx, "O_DIRECT=true"); err != nil {
 			return v, err
 		}
 	} else {
-		if err := writeArcvmDevConf(ctx, ""); err != nil {
+		if err := arc.WriteArcvmDevConf(ctx, ""); err != nil {
 			return v, err
 		}
 	}
-	defer restoreArcvmDevConf(ctx)
+	defer arc.RestoreArcvmDevConf(ctx)
 
 	// Drop host OS caches if test config requires it for predictable results.
 	if s.Param().(testParam).dropCaches {
@@ -508,36 +507,4 @@ func dumpLogcat(ctx context.Context, s *testing.State, filePath string) error {
 	cmd.Stdout = logFile
 	cmd.Stderr = logFile
 	return cmd.Run()
-}
-
-const (
-	arcvmDevConfFile       = "/usr/local/vms/etc/arcvm_dev.conf"
-	arcvmDevConfFileBackup = "/usr/local/vms/etc/arcvm_dev.conf.tast-backup"
-)
-
-func writeArcvmDevConf(ctx context.Context, text string) error {
-	isVMEnabled, err := arc.VMEnabled()
-	if err != nil {
-		return err
-	}
-	if isVMEnabled {
-		if err := os.Rename(arcvmDevConfFile, arcvmDevConfFileBackup); err != nil {
-			testing.ContextLog(ctx, "Backing up arcvm_dev.conf failed, didn't exist? Error: ", err)
-		}
-		return ioutil.WriteFile(arcvmDevConfFile, []byte(text), 0644)
-	}
-	return nil
-}
-
-func restoreArcvmDevConf(ctx context.Context) error {
-	isVMEnabled, err := arc.VMEnabled()
-	if err != nil {
-		return err
-	}
-	if isVMEnabled {
-		if err := os.Rename(arcvmDevConfFileBackup, arcvmDevConfFile); err != nil {
-			testing.ContextLog(ctx, "Restoring arcvm_dev.conf from backup failed, didn't exist? Error: ", err)
-		}
-	}
-	return nil
 }

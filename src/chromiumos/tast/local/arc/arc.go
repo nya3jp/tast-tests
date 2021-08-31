@@ -10,6 +10,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sort"
@@ -668,6 +669,43 @@ func saveARCVMConsole(ctx context.Context, path string) error {
 			testing.ContextLogf(ctx, "vm_pstore_dump command failed because the .pstore file doesn't exist: %#v", errmsg)
 		} else {
 			return errors.Wrapf(err, "vm_pstore_dump command failed with an unexpected reason: %#v", errmsg)
+		}
+	}
+	return nil
+}
+
+const (
+	arcvmDevConfFile       = "/usr/local/vms/etc/arcvm_dev.conf"
+	arcvmDevConfFileBackup = "/usr/local/vms/etc/arcvm_dev.conf.tast-backup"
+)
+
+// WriteArcvmDevConf writes string to arcvm_dev.conf on ARCVM devices. Useful for modifying flags
+// for crosvm start up. Backs up original content to arcvm_dev.conf which can
+// later be restored with RestoreArcvmDevConf.
+func WriteArcvmDevConf(ctx context.Context, text string) error {
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return err
+	}
+	if isVMEnabled {
+		if err := os.Rename(arcvmDevConfFile, arcvmDevConfFileBackup); err != nil {
+			testing.ContextLog(ctx, "Backing up arcvm_dev.conf failed, didn't exist? Error: ", err)
+		}
+		return ioutil.WriteFile(arcvmDevConfFile, []byte(text), 0644)
+	}
+	return nil
+}
+
+// RestoreArcvmDevConf restores the original arcvm_dev.conf from the backup copy set
+// aside by WriteArcvmDevConf.
+func RestoreArcvmDevConf(ctx context.Context) error {
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return err
+	}
+	if isVMEnabled {
+		if err := os.Rename(arcvmDevConfFileBackup, arcvmDevConfFile); err != nil {
+			testing.ContextLog(ctx, "Restoring arcvm_dev.conf from backup failed, didn't exist? Error: ", err)
 		}
 	}
 	return nil
