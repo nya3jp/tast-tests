@@ -16,6 +16,24 @@
       "message": "Use uiauto.RecordScreen? Should be much simpler.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go;l\u003d60;drc\u003dc971567b7fd2bc383fe0d2543acfef22ff6ce33f",
       "revId": "5fd6dc0077a91bb46658517ca8cb62adfbec6566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ec4aae_b186c453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-08-31T05:38:18Z",
+      "side": 1,
+      "message": "Actually I prefer to this one. I thought using uiauto.RecordScreen was just the change of indent, that\u0027s why I missed an improper s.Fatal in this cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3113273/2/src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+      "parentUuid": "a261d093_201eb8bd",
+      "revId": "5fd6dc0077a91bb46658517ca8cb62adfbec6566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
