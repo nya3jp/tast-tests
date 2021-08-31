@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7963f10e_55dbd2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-31T01:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "378a5331_5f2e5d40",
+      "range": {
+        "startLine": 202,
+        "startChar": 15,
+        "endLine": 202,
+        "endChar": 28
+      },
+      "revId": "5276e14a2644c64364945cfe4cd6a53a1fde6990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80191720_2457f3c0",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-08-24T04:22:59Z",
       "side": 1,
       "message": "nit: This should still be inside the if statement like the original code",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 61
+      },
+      "revId": "5276e14a2644c64364945cfe4cd6a53a1fde6990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6556df_1fcc8e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-08-31T01:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80191720_2457f3c0",
       "range": {
         "startLine": 237,
         "startChar": 5,
