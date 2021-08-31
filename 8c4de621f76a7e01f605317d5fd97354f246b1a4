@@ -165,6 +165,30 @@
       },
       "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397a664b_4ee45021",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-08-31T07:06:59Z",
+      "side": 1,
+      "message": "that sounds good too.",
+      "parentUuid": "3924c001_a554d1bf",
+      "range": {
+        "startLine": 233,
+        "startChar": 198,
+        "endLine": 233,
+        "endChar": 210
+      },
+      "revId": "8c4de621f76a7e01f605317d5fd97354f246b1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
