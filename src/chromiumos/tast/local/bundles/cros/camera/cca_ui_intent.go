@@ -55,7 +55,6 @@ const (
 	// The content of test.mkv might be mp4 during the mkv to mp4 migration period.
 	testVideoURI        = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
 	arcCameraFolderPath = "data/media/0/DCIM/Camera"
-	testAppAPK          = "ArcCameraIntentTest.apk"
 	testAppPkg          = "org.chromium.arc.testapp.cameraintent"
 	testAppActivity     = "org.chromium.arc.testapp.cameraintent.MainActivity"
 	testAppTextFieldID  = "org.chromium.arc.testapp.cameraintent:id/text"
@@ -94,7 +93,7 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "proprietary_codecs", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
+		Data:         []string{"cca_ui.js"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -124,8 +123,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	defer uiDevice.Close(ctx)
 
 	s.Log("Installing camera intent testing app")
-	if err := a.Install(ctx, s.DataPath(testAppAPK)); err != nil {
-		s.Fatal("Failed installing app: ", err)
+	if err := a.Install(ctx, arc.APKPath("ArcCameraIntentTest.apk")); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
 	}
 
 	if err := a.WaitIntentHelper(ctx); err != nil {
