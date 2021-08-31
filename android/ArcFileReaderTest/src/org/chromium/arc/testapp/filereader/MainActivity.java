@@ -18,6 +18,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 
 /**
  * Main activity for the ArcFileReaderTest app.
@@ -32,14 +34,14 @@ public class MainActivity extends Activity {
     private TextView mUri;
     private TextView mfileContent;
 
-    @Override
     private BroadcastReceiver mMediaScanListener =
         new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
-            Log.e(TAG, "AIUEO: Received " + intent.getAction() + " for " + intent.getData());
+            Log.e(LOG_TAG, "AIUEO: Received " + intent.getAction() + " for " + intent.getData());
           }
        };
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
