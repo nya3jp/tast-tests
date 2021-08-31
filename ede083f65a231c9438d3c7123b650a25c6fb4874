@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda66470_da44acfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/large_paper_scans.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-08-31T16:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e9cac6_7d9f752e",
+      "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc8950b_d4992729",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f6b8e6_2bce30bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/large_paper_scans.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-08-31T16:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bc8950b_d4992729",
+      "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792e7a0c_423c74ef",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-30T20:13:25Z",
       "side": 1,
       "message": "Is this whole inner function identical to what we\u0027re doing in scanapp.Scan?  If it is, can these two be refactored into a shared package-level function?",
+      "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec18636b_127aabf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/large_paper_scans.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-08-31T16:20:27Z",
+      "side": 1,
+      "message": "Yup! All set :)",
+      "parentUuid": "792e7a0c_423c74ef",
       "revId": "ede083f65a231c9438d3c7123b650a25c6fb4874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
