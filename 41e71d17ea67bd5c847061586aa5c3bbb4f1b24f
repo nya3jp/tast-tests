@@ -34,6 +34,40 @@
       "parentUuid": "87f57ead_b8ba40a3",
       "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496a1f45_b02b4318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-31T01:57:33Z",
+      "side": 1,
+      "message": "Sorry, I forgot to hit the save button.",
+      "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764f57b0_39813d1b",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-08-31T01:57:33Z",
+      "side": 1,
+      "message": "nit: this function has too many if-else if-else.\n\nI think it will be btter to put some of them to a different functions and call them from here. Thanks.",
+      "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
