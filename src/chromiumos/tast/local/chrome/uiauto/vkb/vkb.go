@@ -284,6 +284,9 @@ func (vkbCtx *VirtualKeyboardContext) TapKeysJS(keys []string) uiauto.Action {
 // ShowAccessPoints returns an action showing the access points panel.
 func (vkbCtx *VirtualKeyboardContext) ShowAccessPoints() uiauto.Action {
 	return func(ctx context.Context) error {
+		if err := vkbCtx.ui.WaitForLocation(NodeFinder.HasClass("keyboard"))(ctx); err != nil {
+			return err
+		}
 		if err := vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(KeyFinder.Name("Hide access points"))(ctx); err == nil {
 			// "err == nil" means the access points panel is shown.
 			return nil
