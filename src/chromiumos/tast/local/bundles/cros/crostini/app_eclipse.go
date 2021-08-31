@@ -7,12 +7,14 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
@@ -53,6 +55,17 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
+
 	// Open Terminal app.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
@@ -78,6 +91,8 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	if err := cont.Command(ctx, "touch", fmt.Sprintf("%s/%s", workspace, testFile)).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to create test file in the Container: ", err)
 	}
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Find eclipse window.
 	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.NormalizedUser(), "@")[0], workspace, testFile)
