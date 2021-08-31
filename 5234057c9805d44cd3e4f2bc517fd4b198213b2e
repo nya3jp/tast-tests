@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbe06b5_4a2315de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:56:44Z",
+      "side": 1,
+      "message": "I mean we may remove the test.ContextLog() and dump the params if the following statement fails:\n\nif err \u003d rt.ApplyRouterSettings(...); err !\u003d nil {\n   s.Errorf(\"Could not apply the ax settings %s to the router: %v\", cfg.RouterConfigParams, err)\n\n}\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "revId": "5234057c9805d44cd3e4f2bc517fd4b198213b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
