@@ -57,7 +57,7 @@ var bootedPre = &preImpl{
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
-func NewPrecondition(name string, gaia *GaiaVars, extraArgs ...string) testing.Precondition {
+func NewPrecondition(name string, gaia *GaiaVars, oDirect bool, extraArgs ...string) testing.Precondition {
 	timeout := resetTimeout + chrome.LoginTimeout + BootTimeout
 	if gaia != nil {
 		timeout = resetTimeout + chrome.GAIALoginTimeout + BootTimeout + optin.OptinTimeout
@@ -67,6 +67,7 @@ func NewPrecondition(name string, gaia *GaiaVars, extraArgs ...string) testing.P
 		timeout:   timeout,
 		gaia:      gaia,
 		extraArgs: extraArgs,
+		oDirect:   oDirect,
 	}
 	return pre
 }
@@ -84,9 +85,9 @@ type preImpl struct {
 
 	extraArgs []string  // passed to Chrome on initialization
 	gaia      *GaiaVars // a struct containing GAIA secret variables
-
-	cr  *chrome.Chrome
-	arc *ARC
+	oDirect   bool      // whether crosvm should use O_DIRECT.
+	cr        *chrome.Chrome
+	arc       *ARC
 
 	init *Snapshot
 }
@@ -143,6 +144,17 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		defer cancel()
 		extraArgs := p.extraArgs
 		var err error
+
+		if p.oDirect {
+			if err := WriteArcvmDevConf(ctx, "O_DIRECT=true"); err != nil {
+				s.Fatal("Failed to set arcvm_dev.conf: ", err)
+			}
+		} else {
+			if err := WriteArcvmDevConf(ctx, ""); err != nil {
+				s.Fatal("Failed to set arcvm_dev.conf: ", err)
+			}
+		}
+
 		if p.gaia != nil {
 			username := s.RequiredVar(p.gaia.UserVar)
 			password := s.RequiredVar(p.gaia.PassVar)
@@ -216,4 +228,7 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.PreState) {
 		p.cr = nil
 	}
 	p.init = nil
+	if err := RestoreArcvmDevConf(ctx); err != nil {
+		s.Log("Failed to write arcvm_dev.conf: ", err)
+	}
 }
