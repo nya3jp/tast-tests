@@ -24,28 +24,28 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenZoomTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBooted",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			}, {
 				Name:              "tablet_mode",
-				Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenZoomTest),
+				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBootedInTabletMode",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 			}, {
 				Name:              "vm",
-				Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenZoomTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBooted",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			}, {
 				Name:              "vm_tablet_mode",
-				Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenZoomTest),
+				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBootedInTabletMode",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 			}},
 	})
 }
@@ -57,11 +57,11 @@ func StandardizedTouchscreenZoom(ctx context.Context, s *testing.State) {
 		activityName = ".ZoomTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	txtZoomID := testParameters.AppPkgName + ":id/txtZoom"
 	txtZoomSelector := testParameters.Device.Object(ui.ID(txtZoomID))
 
@@ -91,7 +91,7 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, t
 	}
 
 	// After the zoom in, only the zoom in label should be in the success state.
-	if err := standardizedtestutil.StandardizedTouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.TouchscreenZoomIn); err != nil {
+	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.TouchscreenZoomIn); err != nil {
 		s.Fatal("Unable to perform the zoom, info: ", err)
 	}
 
@@ -104,7 +104,7 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, t
 	}
 
 	// After the zoom out, all zoom labels should be in the success state.
-	if err := standardizedtestutil.StandardizedTouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.TouchscreenZoomOut); err != nil {
+	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.TouchscreenZoomOut); err != nil {
 		s.Fatal("Unable to perform the zoom, info: ", err)
 	}
 

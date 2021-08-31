@@ -23,16 +23,16 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedMouseLeftClickTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseLeftClickTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedMouseLeftClickTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseLeftClickTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}},
 	})
 }
@@ -45,12 +45,12 @@ func StandardizedMouseLeftClick(ctx context.Context, s *testing.State) {
 		activityName = ".MainActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
 // runStandardizedMouseLeftClickTest runs the left click test.
-func runStandardizedMouseLeftClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedMouseLeftClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	btnLeftClickID := testParameters.AppPkgName + ":id/btnLeftClick"
 	btnLeftClickSelector := testParameters.Device.Object(ui.ID(btnLeftClickID))
 
@@ -69,7 +69,7 @@ func runStandardizedMouseLeftClickTest(ctx context.Context, s *testing.State, te
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.StandardizedMouseClickObject(ctx, testParameters, btnLeftClickSelector, mouse, standardizedtestutil.LeftMouseButton); err != nil {
+	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnLeftClickSelector, mouse, standardizedtestutil.LeftMouseButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 

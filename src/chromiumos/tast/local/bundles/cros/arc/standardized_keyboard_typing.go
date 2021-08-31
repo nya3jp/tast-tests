@@ -23,28 +23,28 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}},
 	})
 }
@@ -57,13 +57,13 @@ func StandardizedKeyboardTyping(ctx context.Context, s *testing.State) {
 		activityName = ".MainActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
 // runStandardizedKeyboardTypingTest types into the input field, and ensures the text appears.
 // This does not use the virtual, on screen keyboard.
-func runStandardizedKeyboardTypingTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedKeyboardTypingTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	kbd, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Unable to create virtual keyboard: ", err)
