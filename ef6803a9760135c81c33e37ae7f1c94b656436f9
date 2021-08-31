@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bdbc014_5aa3f729",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/open_config_param.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:41:37Z",
+      "side": 1,
+      "message": "SecConfigParamFac",
+      "range": {
+        "startLine": 18,
+        "startChar": 37,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "ef6803a9760135c81c33e37ae7f1c94b656436f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20634749_d0c380ba",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/wpa_config_param.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:41:37Z",
+      "side": 1,
+      "message": "secWPA provides Gen() to build a new list of ConfigParam.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "ef6803a9760135c81c33e37ae7f1c94b656436f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3179609a_dac02541",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/wpa_config_param.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:41:37Z",
+      "side": 1,
+      "message": "Sorry, I mean secWPAConfigFactory. But secWPA seems fine.",
+      "range": {
+        "startLine": 8,
+        "startChar": 5,
+        "endLine": 8,
+        "endChar": 11
+      },
+      "revId": "ef6803a9760135c81c33e37ae7f1c94b656436f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7215e6ca_329d9ca5",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/wpa_config_param.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-08-31T06:41:37Z",
+      "side": 1,
+      "message": "SecConfigParamFac",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "ef6803a9760135c81c33e37ae7f1c94b656436f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
