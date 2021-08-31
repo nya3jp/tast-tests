@@ -62,7 +62,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "clamshell",
 			Val: windowStateParams{
@@ -71,6 +70,7 @@ func init() {
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Timeout:           4 * time.Minute,
 		}, {
 			Name: "clamshell_vm",
 			Val: windowStateParams{
@@ -79,22 +79,25 @@ func init() {
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           4 * time.Minute,
 		}, {
 			Name: "clamshell_stress",
 			Val: windowStateParams{
 				false, // Clamshell mode.
-				25,    // Num test iterations.
+				20,    // Num test iterations.
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Timeout:           10 * time.Minute,
 		}, {
 			Name: "clamshell_stress_vm",
 			Val: windowStateParams{
 				false, // Clamshell mode.
-				25,    // Num test iterations.
+				20,    // Num test iterations.
 				clamshellWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           10 * time.Minute,
 		}, {
 			Name: "tablet",
 			Val: windowStateParams{
@@ -103,6 +106,7 @@ func init() {
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Timeout:           4 * time.Minute,
 		}, {
 			Name: "tablet_vm",
 			Val: windowStateParams{
@@ -111,22 +115,25 @@ func init() {
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           4 * time.Minute,
 		}, {
 			Name: "tablet_stress",
 			Val: windowStateParams{
 				true, // Tablet Mode.
-				25,   // Num test iterations.
+				20,   // Num test iterations.
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Timeout:           10 * time.Minute,
 		}, {
 			Name: "tablet_stress_vm",
 			Val: windowStateParams{
 				true, // Tablet Mode.
-				25,   // Num test iterations.
+				20,   // Num test iterations.
 				tabletWindowStateTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           10 * time.Minute,
 		}},
 	})
 }
