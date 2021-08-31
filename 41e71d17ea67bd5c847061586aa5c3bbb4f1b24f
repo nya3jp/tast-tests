@@ -16,6 +16,24 @@
       "message": "I only have one nit comment.",
       "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc215b9b_b8a9d5ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-31T01:40:55Z",
+      "side": 1,
+      "message": "Hmm, is the comment uploaded?",
+      "parentUuid": "87f57ead_b8ba40a3",
+      "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
