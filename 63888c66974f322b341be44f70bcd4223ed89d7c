@@ -51,6 +51,24 @@
       "parentUuid": "b18748f1_39b42231",
       "revId": "63888c66974f322b341be44f70bcd4223ed89d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a95bd95_a6f52c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/speedometer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-08-31T02:05:15Z",
+      "side": 1,
+      "message": "We should also add logging here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/faillog/faillog.go;l\u003d36;drc\u003d6b55b5fc5dd20de6efcb4ec12c7b878743c40b0f",
+      "parentUuid": "52c971e9_ae8f9054",
+      "revId": "63888c66974f322b341be44f70bcd4223ed89d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
