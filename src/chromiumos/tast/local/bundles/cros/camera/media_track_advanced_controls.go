@@ -161,15 +161,8 @@ func (c *colorTemperatureControl) getValue(settings *mediaTrackSettings) float64
 }
 
 func (c *colorTemperatureControl) getValidTestValues(r mediaSettingRange) []float64 {
-	// We need to use specified values for color temperatures, because it is translated from white balance mode.
-	availableColorTemperatures := []float64{2700, 3000, 5000, 5500, 6500, 7500, 15000}
-	var validTestValues []float64
-	for _, value := range availableColorTemperatures {
-		if value >= r.Min && value <= r.Max {
-			validTestValues = append(validTestValues, value)
-		}
-	}
-	return validTestValues
+	// For MIPI camera, due to API limitation, only min and max values are guaranteed.
+	return []float64{r.Min, r.Max}
 }
 
 func (c *colorTemperatureControl) getConstraints(value *float64) mediaTrackConstraints {
