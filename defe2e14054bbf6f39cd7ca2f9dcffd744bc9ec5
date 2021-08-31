@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d7e3eb_e77d9bbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-08-31T16:35:23Z",
+      "side": 1,
+      "message": "Side note: I\u0027m pretty sure cq-depend does not work with Chrome CLs.  You\u0027ll have to manually wait for CL:3130500 to land and be included in a Chrome uprev before this can be submitted.",
+      "revId": "defe2e14054bbf6f39cd7ca2f9dcffd744bc9ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
