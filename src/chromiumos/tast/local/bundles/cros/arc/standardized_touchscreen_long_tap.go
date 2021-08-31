@@ -22,28 +22,28 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}},
 	})
 }
@@ -56,11 +56,11 @@ func StandardizedTouchscreenLongTap(ctx context.Context, s *testing.State) {
 		activityName = ".MainActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchscreenLongTapTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedTouchscreenLongTapTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	btnLongTapID := testParameters.AppPkgName + ":id/btnLongTap"
 	btnLongTapSelector := testParameters.Device.Object(ui.ID(btnLongTapID))
 
@@ -75,7 +75,7 @@ func runStandardizedTouchscreenLongTapTest(ctx context.Context, s *testing.State
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.StandardizedTouchscreenTap(ctx, testParameters, btnLongTapSelector, standardizedtestutil.LongTouchscreenTap); err != nil {
+	if err := standardizedtestutil.TouchscreenTap(ctx, testParameters, btnLongTapSelector, standardizedtestutil.LongTouchscreenTap); err != nil {
 		s.Fatal("Unable to long tap the button, info: ", err)
 	}
 

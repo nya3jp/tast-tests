@@ -23,28 +23,28 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}},
 	})
 }
@@ -57,14 +57,14 @@ func StandardizedKeyboardCopyPaste(ctx context.Context, s *testing.State) {
 		activityName = ".MainActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
 // runStandardizedKeyboardCopyPasteTest verifies an input with pre-established source text
 // exists, runs a Ctrl+a/Ctrl+c to copy the text, pastes it into a destination, and
 // verifies it was properly copied. This does not use the virtual, on screen keyboard.
-func runStandardizedKeyboardCopyPasteTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedKeyboardCopyPasteTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	kbd, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Unable to create virtual keyboard: ", err)

@@ -31,18 +31,18 @@ const (
 	ShortUITimeout         = 30 * time.Second
 )
 
-// StandardizedMouseButton abstracts the underlying mouse button implementation into a
+// MouseButton abstracts the underlying mouse button implementation into a
 // standard type that can be used by callers.
-type StandardizedMouseButton int
+type MouseButton int
 
-// Mouse buttons that can be used by standardized tests.
+// Mouse buttons that can be used by tests.
 const (
-	LeftMouseButton StandardizedMouseButton = iota
+	LeftMouseButton MouseButton = iota
 	RightMouseButton
 )
 
-// StandardizedTestFuncParams contains parameters that can be used by the standardized tests.
-type StandardizedTestFuncParams struct {
+// TestFuncParams contains parameters that can be used by the tests.
+type TestFuncParams struct {
 	TestConn        *chrome.TestConn
 	Arc             *arc.ARC
 	Device          *ui.Device
@@ -51,47 +51,58 @@ type StandardizedTestFuncParams struct {
 	Activity        *arc.Activity
 }
 
-// StandardizedTestFunc represents the test function.
-type StandardizedTestFunc func(ctx context.Context, s *testing.State, testParameters StandardizedTestFuncParams)
+// TestFunc represents the test function.
+type TestFunc func(ctx context.Context, s *testing.State, testParameters TestFuncParams)
 
-// StandardizedTestCase holds information about a test to run.
-type StandardizedTestCase struct {
+// TestCase holds information about a test to run.
+type TestCase struct {
 	Name            string
-	Fn              StandardizedTestFunc
+	Fn              TestFunc
 	Timeout         time.Duration
 	WindowStateType ash.WindowStateType
 }
 
-// StandardizedTouchscreenZoomType represents the touchscreen zoom type to perform.
-type StandardizedTouchscreenZoomType int
+// TouchscreenZoomType represents the touchscreen zoom type to perform.
+type TouchscreenZoomType int
 
 // Holds all of the zoom types that can be performed on the touchscreen.
 const (
-	TouchscreenZoomIn StandardizedTouchscreenZoomType = iota
+	TouchscreenZoomIn TouchscreenZoomType = iota
 	TouchscreenZoomOut
 )
 
-// StandardizedTouchscreenTapType represents the touch screen tap type to perform.
-type StandardizedTouchscreenTapType int
+// TouchscreenTapType represents the touch screen tap type to perform.
+type TouchscreenTapType int
 
 // Holds all the tap types that can be performed on the touchscreen.
 const (
-	ShortTouchscreenTap StandardizedTouchscreenTapType = iota
+	ShortTouchscreenTap TouchscreenTapType = iota
 	LongTouchscreenTap
 )
 
-// StandardizedTouchscreenScrollDirection represents the scroll direction.
-type StandardizedTouchscreenScrollDirection int
+// TouchscreenSwipeDirection represents the touchscreen swipe direction.
+type TouchscreenSwipeDirection int
+
+// Holds all the swipe directions that can be performed on the touchscreen.
+const (
+	DownTouchscreenSwipe TouchscreenSwipeDirection = iota
+	UpTouchscreenSwipe
+	LeftTouchscreenSwipe
+	RightTouchscreenSwipe
+)
+
+// TouchscreenScrollDirection represents the scroll direction.
+type TouchscreenScrollDirection int
 
 // Variables used to determine the scroll direction.
 const (
-	DownTouchscreenScroll StandardizedTouchscreenScrollDirection = iota
+	DownTouchscreenScroll TouchscreenScrollDirection = iota
 	UpTouchscreenScroll
 )
 
-// GetStandardizedClamshellTests returns the test cases required for clamshell devices.
-func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCase {
-	return []StandardizedTestCase{
+// GetClamshellTests returns the test cases required for clamshell devices.
+func GetClamshellTests(fn TestFunc) []TestCase {
+	return []TestCase{
 		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
 		{Name: "Normal", Fn: fn, WindowStateType: ash.WindowStateNormal},
 		{Name: "Snapped left", Fn: fn, WindowStateType: ash.WindowStateLeftSnapped},
@@ -99,26 +110,26 @@ func GetStandardizedClamshellTests(fn StandardizedTestFunc) []StandardizedTestCa
 	}
 }
 
-// GetStandardizedClamshellHardwareDeps returns the hardware dependencies all clamshell tests share.
-func GetStandardizedClamshellHardwareDeps() hwdep.Deps {
+// GetClamshellHardwareDeps returns the hardware dependencies all clamshell tests share.
+func GetClamshellHardwareDeps() hwdep.Deps {
 	return hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel(TabletOnlyModels...))
 }
 
-// GetStandardizedTabletTests returns the test cases required for tablet devices.
-func GetStandardizedTabletTests(fn StandardizedTestFunc) []StandardizedTestCase {
-	return []StandardizedTestCase{
+// GetTabletTests returns the test cases required for tablet devices.
+func GetTabletTests(fn TestFunc) []TestCase {
+	return []TestCase{
 		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
 		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized},
 	}
 }
 
-// GetStandardizedTabletHardwareDeps returns the hardware dependencies all tablet tests share.
-func GetStandardizedTabletHardwareDeps() hwdep.Deps {
+// GetTabletHardwareDeps returns the hardware dependencies all tablet tests share.
+func GetTabletHardwareDeps() hwdep.Deps {
 	return hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel(ClamshellOnlyModels...))
 }
 
-// RunStandardizedTestCases runs the provided test cases and handles cleanup between tests.
-func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []StandardizedTestCase) {
+// RunTestCases runs the provided test cases and handles cleanup between tests.
+func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -182,7 +193,7 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 				s.Fatal("Failed to set window state: ", err)
 			}
 
-			test.Fn(ctx, s, StandardizedTestFuncParams{
+			test.Fn(ctx, s, TestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
 				Device:          d,
@@ -195,8 +206,8 @@ func RunStandardizedTestCases(ctx context.Context, s *testing.State, apkName, ap
 	}
 }
 
-// StandardizedTouchscreenTap performs a tap on the touchscreen.
-func StandardizedTouchscreenTap(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object, tapType StandardizedTouchscreenTapType) error {
+// TouchscreenTap performs a tap on the touchscreen.
+func TouchscreenTap(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, tapType TouchscreenTapType) error {
 	touchScreen, err := input.Touchscreen(ctx)
 	if err != nil {
 		return errors.Wrap(err, "Unable to initialize touchscreen")
@@ -239,10 +250,10 @@ func StandardizedTouchscreenTap(ctx context.Context, testParameters Standardized
 	return nil
 }
 
-// StandardizedTouchscreenScroll performs a scroll on the touchscreen. Due to
+// TouchscreenScroll performs a scroll on the touchscreen. Due to
 // different device settings, the actual scroll amount in pixels will be imprecise.
 // Therefore, multiple iterations should be run, with a check for the desired output between each call.
-func StandardizedTouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters StandardizedTestFuncParams, selector *ui.Object, scrollDirection StandardizedTouchscreenScrollDirection) error {
+func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection TouchscreenScrollDirection) error {
 	const (
 		VerticalScrollAmount = 250
 		ScrollDuration       = 500 * time.Millisecond
@@ -286,10 +297,10 @@ func StandardizedTouchscreenScroll(ctx context.Context, touchScreen *input.Touch
 	return nil
 }
 
-// StandardizedTouchscreenZoom performs a zoom on the touchscreen. Zoom in distance
+// TouchscreenZoom performs a zoom on the touchscreen. Zoom in distance
 // varies per device but the function aims to zoom by 2x (i.e. a scale factor of 2.0
 // when zooming in, or .5 when zooming out).
-func StandardizedTouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters StandardizedTestFuncParams, selector *ui.Object, zoomType StandardizedTouchscreenZoomType) error {
+func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType TouchscreenZoomType) error {
 	const (
 		zoomDistancePerFinger = 600
 		zoomDuration          = 500 * time.Millisecond
@@ -334,8 +345,63 @@ func StandardizedTouchscreenZoom(ctx context.Context, touchScreen *input.Touchsc
 	return nil
 }
 
+// TouchscreenSwipe performs a swipe in a given direction, starting from the provided selector.
+// Due to different device settings, the actual swipe distance will be imprecise but aims to be near 50 pixels.
+func TouchscreenSwipe(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, numTouches int, swipeDirection TouchscreenSwipeDirection) error {
+	const (
+		distanceBetweenTouches = input.TouchCoord(40)
+		swipeDuration          = 500 * time.Millisecond
+		swipeDistance          = input.TouchCoord(250)
+	)
+
+	touchScreen, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize touchscreen")
+	}
+	defer touchScreen.Close()
+
+	tsw, err := touchScreen.NewMultiTouchWriter(numTouches)
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize touchscreen event writer")
+	}
+	defer tsw.Close()
+
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	if err != nil {
+		return errors.Wrap(err, "unable to get touch screen coords")
+	}
+
+	// Get the destination coordinates based on the direction.
+	endX := input.TouchCoord(0)
+	endY := input.TouchCoord(0)
+
+	switch swipeDirection {
+	case UpTouchscreenSwipe:
+		endX = *x
+		endY = *y - swipeDistance
+		break
+	case DownTouchscreenSwipe:
+		endX = *x
+		endY = *y + swipeDistance
+		break
+	case LeftTouchscreenSwipe:
+		endX = *x - swipeDistance
+		endY = *y
+		break
+	case RightTouchscreenSwipe:
+		endX = *x + swipeDistance
+		endY = *y
+		break
+	default:
+		return errors.Errorf("invalid direction provided: %v", swipeDirection)
+	}
+
+	// Perform the swipe.
+	return tsw.Swipe(ctx, *x, *y, endX, endY, distanceBetweenTouches, numTouches, swipeDuration)
+}
+
 // getTouchEventCoordinatesForElement converts the points of an element to the corresponding Touchscreen coordinates.
-func getTouchEventCoordinatesForElement(ctx context.Context, testParameters StandardizedTestFuncParams, touchScreen *input.TouchscreenEventWriter, selector *ui.Object) (*input.TouchCoord, *input.TouchCoord, error) {
+func getTouchEventCoordinatesForElement(ctx context.Context, testParameters TestFuncParams, touchScreen *input.TouchscreenEventWriter, selector *ui.Object) (*input.TouchCoord, *input.TouchCoord, error) {
 	// Get the center of the element to make sure the element is actually clicked.
 	uiElementBounds, err := selector.GetBounds(ctx)
 	if err != nil {
@@ -377,8 +443,8 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 	return nil
 }
 
-// StandardizedMouseClickObject implements a standard way to click the mouse button on an object.
-func StandardizedMouseClickObject(ctx context.Context, testParameters StandardizedTestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, standardizedButton StandardizedMouseButton) error {
+// MouseClickObject implements a standard way to click the mouse button on an object.
+func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton MouseButton) error {
 	// The device cannot be in tablet mode.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, testParameters.TestConn)
 	if err != nil {
@@ -395,7 +461,7 @@ func StandardizedMouseClickObject(ctx context.Context, testParameters Standardiz
 	}
 
 	// Perform the correct click
-	switch standardizedButton {
+	switch mouseButton {
 	case LeftMouseButton:
 		if err := mew.Click(); err != nil {
 			return errors.Wrap(err, "unable to perform left mouse click")
@@ -409,14 +475,14 @@ func StandardizedMouseClickObject(ctx context.Context, testParameters Standardiz
 
 		break
 	default:
-		return errors.Errorf("invalid button provided: %v", standardizedButton)
+		return errors.Errorf("invalid button provided: %v", mouseButton)
 	}
 
 	return nil
 }
 
 // centerMouseOnObject is responsible for moving the mouse onto the center of the object.
-func centerMouseOnObject(ctx context.Context, testParameters StandardizedTestFuncParams, mew *input.MouseEventWriter, selector *ui.Object) error {
+func centerMouseOnObject(ctx context.Context, testParameters TestFuncParams, mew *input.MouseEventWriter, selector *ui.Object) error {
 	// Get the center of the element to make sure the element is actually clicked.
 	uiElementBounds, err := selector.GetBounds(ctx)
 	if err != nil {

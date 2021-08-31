@@ -24,31 +24,31 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBooted",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 			{
 				Name:              "tablet_mode",
-				Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBootedInTabletMode",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 			},
 			{
 				Name:              "vm",
-				Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBooted",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 			{
 				Name:              "vm_tablet_mode",
-				Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBootedInTabletMode",
-				ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+				ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 			},
 		},
 	})
@@ -61,11 +61,11 @@ func StandardizedTouchscreenScroll(ctx context.Context, s *testing.State) {
 		activityName = ".ScrollTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchScreenScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedTouchScreenScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	touchScreen, err := input.Touchscreen(ctx)
 	if err != nil {
 		s.Fatal("Unable to initialize the touchscreen, info: ", err)
@@ -82,7 +82,7 @@ func runStandardizedTouchScreenScrollTest(ctx context.Context, s *testing.State,
 	performTest(ctx, s, testParameters, txtScrollUpSuccessSelector, touchScreen, standardizedtestutil.UpTouchscreenScroll)
 }
 
-func performTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams, txtSuccessSelector *ui.Object, touchScreen *input.TouchscreenEventWriter, scrollDirection standardizedtestutil.StandardizedTouchscreenScrollDirection) {
+func performTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, touchScreen *input.TouchscreenEventWriter, scrollDirection standardizedtestutil.TouchscreenScrollDirection) {
 	const (
 		maxNumScrollIterations = 15
 	)
@@ -102,7 +102,7 @@ func performTest(ctx context.Context, s *testing.State, testParameters standardi
 	testPassed := false
 	for i := 0; i < maxNumScrollIterations; i++ {
 		// Perform the scroll.
-		if err := standardizedtestutil.StandardizedTouchscreenScroll(ctx, touchScreen, testParameters, txtScrollableContentSelector, scrollDirection); err != nil {
+		if err := standardizedtestutil.TouchscreenScroll(ctx, touchScreen, testParameters, txtScrollableContentSelector, scrollDirection); err != nil {
 			s.Fatal("Unable to perform a scroll, info: ", err)
 		}
 
