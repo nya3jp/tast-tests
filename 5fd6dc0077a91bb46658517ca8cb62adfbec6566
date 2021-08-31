@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a261d093_201eb8bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-08-31T05:32:14Z",
+      "side": 1,
+      "message": "Use uiauto.RecordScreen? Should be much simpler.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go;l\u003d60;drc\u003dc971567b7fd2bc383fe0d2543acfef22ff6ce33f",
+      "revId": "5fd6dc0077a91bb46658517ca8cb62adfbec6566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
