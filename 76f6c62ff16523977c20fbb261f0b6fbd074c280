@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e079d875_cbec0dbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-31T00:22:30Z",
+      "side": 1,
+      "message": "LGTM, minor nit on code formatting.",
+      "revId": "76f6c62ff16523977c20fbb261f0b6fbd074c280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b4de00_347986d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-08-31T00:22:30Z",
+      "side": 1,
+      "message": "Is it possible to modify this loop to follow the poll loop pattern?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\nWe can use pollbreaks on the parts that should return errors immediately and use the timeout here insteadf of having the cancel timeout.",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 9
+      },
+      "revId": "76f6c62ff16523977c20fbb261f0b6fbd074c280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
