@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b028d5_3106edd9",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-31T03:25:17Z",
+      "side": 1,
+      "message": "Also added implementation for Reset() to reset the test bridge between tests to avoid the test bridge somehow broken during test and affects the other camera tests.",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 345,
+        "endChar": 10
+      },
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       },
       "revId": "ef1b8c3d030ea278ea61d86f23ecbedf94211c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "210565ca_d5841085",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-08-31T03:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daca52b4_8c8966aa",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 1
+      },
+      "revId": "ef1b8c3d030ea278ea61d86f23ecbedf94211c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
