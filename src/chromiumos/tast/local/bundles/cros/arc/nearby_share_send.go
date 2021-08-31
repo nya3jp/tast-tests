@@ -41,7 +41,7 @@ const (
 	// Large file generation additional UI timeout.
 	largeFileCheckboxTimeout = 40 * time.Second
 	// nearbycommon.DetectionTimeout + additional test time needed for ARC setup.
-	baseArcTestTime = nearbycommon.DetectionTimeout + time.Minute
+	baseArcTestTime = nearbycommon.DetectionTimeout + 2*time.Minute
 )
 
 func init() {
@@ -114,7 +114,7 @@ func init() {
 				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
 			{
-				Name:              "dataoffline_noone_medium_file_vm",
+				Name:              "dataonline_noone_medium_file_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
 				Val: nearbytestutils.TestData{
@@ -398,7 +398,7 @@ func shareUIClickWithTimeout(ctx context.Context, d *ui.Device, t time.Duration,
 func shareUIClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error {
 	const (
 		// Default UI timeout.
-		uiTimeout = 5 * time.Second
+		uiTimeout = 10 * time.Second
 	)
 
 	return shareUIClickWithTimeout(ctx, d, uiTimeout, opts...)
