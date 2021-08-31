@@ -35,17 +35,20 @@ var (
 
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags())...)
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf")...)
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
-	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--enable-arcvm-rt-vcpu", "--ignore-arcvm-dev-conf")...)
+	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-arcvm-rt-vcpu")...)
 
 	// arcAppLoadingUseHugePagesVMBooted enable Huge Pages for guest memory mappings.
-	arcAppLoadingUseHugePagesVMBooted = arc.NewPrecondition("arcapploading_use_hugepages_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arcvm-use-hugepages", "--ignore-arcvm-dev-conf")...)
+	arcAppLoadingUseHugePagesVMBooted = arc.NewPrecondition("arcapploading_use_hugepages_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--arcvm-use-hugepages")...)
+
+	// arcAppLoadingODirectVMBooted enables O_DIRECT for crosvm.
+	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", arcAppLoadingGaia, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 )
 
 func init() {
@@ -96,6 +99,15 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingUseHugePagesVMBooted,
+		}, {
+			Name:              "o_direct_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingODirectVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
