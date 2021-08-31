@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c17b89_40505364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-31T10:20:17Z",
+      "side": 1,
+      "message": "LGTM\nFor a Tast review, you can just add tast-owners@google.com",
+      "revId": "07c634247c9194db464848376ba2830e2564a42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
