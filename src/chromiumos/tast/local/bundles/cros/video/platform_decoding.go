@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -1217,12 +1216,12 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 
 		if err != nil {
 			output := append(stdout, stderr...)
-			errorString := fmt.Sprintf("%v failed unexpectedly: %v", exec, errors.Wrap(err, string(output)))
+			testing.ContextLogf(ctx, "%v failed unexpectedly: %s", exec, string(output))
+			errorMessage := fmt.Sprintf("%v failed unexpectedly on %s ", exec, filename)
 			if stopOnFailure {
-				s.Fatal(errorString)
-			} else {
-				s.Error(errorString)
+				s.Fatal(errorMessage, err)
 			}
+			s.Error(errorMessage, err)
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
 	}
