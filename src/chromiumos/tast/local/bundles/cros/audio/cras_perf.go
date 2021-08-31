@@ -205,7 +205,7 @@ func CrasPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for any output or input device: ", err)
 		}
 
-		pid, err := audio.GetCRASPID()
+		pid, err := audio.CRASPID()
 		s.Log("Get PID done: ", pid)
 
 		if err != nil {
