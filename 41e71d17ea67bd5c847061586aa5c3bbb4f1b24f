@@ -68,6 +68,24 @@
       "message": "nit: this function has too many if-else if-else.\n\nI think it will be btter to put some of them to a different functions and call them from here. Thanks.",
       "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93b0150_863b353c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-08-31T02:00:01Z",
+      "side": 1,
+      "message": "I had my comment at the same line: attaching to Seewai\u0027s instead 😊\n\nThis seems like it might be better suited to 2 explicit functions? EnableQRCodeDetection, DisableQRCodeDetection and the naming dictates the value of the boolean. I see ToggleQRCodeDetection as flipping the state to the other state, but if I went ToggleQRCodeDetection(ctx, true) twice it would fail on the second call right?",
+      "parentUuid": "764f57b0_39813d1b",
+      "revId": "41e71d17ea67bd5c847061586aa5c3bbb4f1b24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
