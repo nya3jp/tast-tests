@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cf86016_47c99a4e",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-31T17:53:43Z",
+      "side": 1,
+      "message": "I think this is still needed, otherwise we have to duplicate the whole code, because we need to modify the setup itself to add the fdms. WDYT?",
+      "parentUuid": "17e1a192_5b167732",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f213d97_b0d22303",
         "filename": "src/chromiumos/tast/local/lacros/policy.go",
         "patchSetId": 6
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "Nice to avoid. Commented above.",
       "parentUuid": "7f213d97_b0d22303",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "805fe98e_977255fc",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-31T17:53:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cffdb6f1_4c4cd0c9",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -132,6 +174,24 @@
       "side": 1,
       "message": "+1 not to have here.\nAlso, this is not lacros related, so I do not think this is a correct place to put this method. Maybe under policyutil/...",
       "parentUuid": "4229879e_142e8470",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab65bb6_76a1ada4",
+        "filename": "src/chromiumos/tast/local/lacros/policy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-08-31T17:53:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0eca246_a300a591",
       "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
