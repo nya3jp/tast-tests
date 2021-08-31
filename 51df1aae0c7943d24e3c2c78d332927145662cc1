@@ -16,6 +16,52 @@
       "message": "Thanks for the feedback and style guide pointers.",
       "revId": "51df1aae0c7943d24e3c2c78d332927145662cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "747a7a48_8855183f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-31T01:27:08Z",
+      "side": 1,
+      "message": "This construction is unusual, we would normally do something like (i.e. use errors.Wrap not fmt.Sprintf):\n```\nerr :\u003d errors.Wrap(err, \"%v failed unexpectedly\", exec)\n```\nThis preserves the details of the wrapped error, including stack trace information.\n\nI would also suggest you break out the multi-line output as follows:\n```\ntesting.ContextLogf(\"%v failed unexpectedly: %s\", exec, string(output))\n```\n\nFatal() is smart about the arguments it receives, so if it gets an actual error it\nwill be able to report the stack trace for the error. See: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/cmd/tast/internal/run/resultsjson/resultsjson.go",
+      "range": {
+        "startLine": 1220,
+        "startChar": 18,
+        "endLine": 1220,
+        "endChar": 99
+      },
+      "revId": "51df1aae0c7943d24e3c2c78d332927145662cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ae9dcb_a320c741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-31T01:27:08Z",
+      "side": 1,
+      "message": "My mistake for suggesting this in the first place, but you can probably drop the else case as .Fatal() terminates the test immediately. So:\n```\nif stopOnFailure {\n    s.Fatal(errorString)\n}\ns.Error(errorString)\t\t\t\n```",
+      "range": {
+        "startLine": 1223,
+        "startChar": 5,
+        "endLine": 1225,
+        "endChar": 4
+      },
+      "revId": "51df1aae0c7943d24e3c2c78d332927145662cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e143d1eb_be25be0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-08-31T01:27:08Z",
+      "side": 1,
+      "message": "I\u0027ve made some concrete suggestions as to how you can better report the multi-line error to avoid the effort of creating a follow-up CL. It should be a 1-2 line change.",
+      "parentUuid": "3ba38d47_994249f2",
+      "range": {
+        "startLine": 1220,
+        "startChar": 82,
+        "endLine": 1220,
+        "endChar": 96
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c948111_58492053",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 1
