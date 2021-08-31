@@ -34,6 +34,24 @@
       "parentUuid": "9eb2f795_8da2f19a",
       "revId": "34684072dd3324818b3ca1f156e66a8ead39da81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924b7095_ff01f5d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-08-31T14:59:40Z",
+      "side": 1,
+      "message": "I had thsi failure\u003e\n# chromiumos/tast/local/bundles/cros/typec/typecutils\n../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go:184:3: unknown field \u0027DevicePciPeripheralDataAccessEnabledV2\u0027 in struct literal of type enterprise_management.ChromeDeviceSettingsProto\nBut now, after a new sync, I have even more, so it might a local problem for me.",
+      "parentUuid": "b13ed757_fedd415d",
+      "revId": "34684072dd3324818b3ca1f156e66a8ead39da81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
