@@ -42,28 +42,28 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetStandardizedClamshellTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedClamshellHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetStandardizedTabletTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetStandardizedTabletHardwareDeps(),
+			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}},
 	})
 }
@@ -76,14 +76,14 @@ func StandardizedKeyboardKeys(ctx context.Context, s *testing.State) {
 		activityName = ".KeysTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.StandardizedTestCase)
-	standardizedtestutil.RunStandardizedTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().([]standardizedtestutil.TestCase)
+	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
 // runStandardizedKeyboardKeysTest verifies that all the provided keys are handled by
 // the android application's layout when it is focused. This ensures they can all be
 // handled by android applications.
-func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.StandardizedTestFuncParams) {
+func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	kbd, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create virtual keyboard: ", err)
