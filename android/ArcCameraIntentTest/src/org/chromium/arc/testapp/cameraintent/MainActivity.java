@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /** App to listen for result of camera intent. */
@@ -29,26 +30,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        final String action = getIntent().getStringExtra(KEY_ACTION);
-        if (!isSupportedAction(action)) {
-            throw new IllegalArgumentException("Unsupported action: " + action);
-        }
-
-        final Uri uri = getIntent().getParcelableExtra(KEY_URI);
-        final Intent intent = new Intent(action);
-        if (uri != null) {
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        }
-
-        if ((MediaStore.ACTION_IMAGE_CAPTURE.equals(action)
-                        || MediaStore.ACTION_IMAGE_CAPTURE_SECURE.equals(action))
-                && uri == null) {
-            startActivityForResult(intent, EXPECT_IMAGE_DATA);
-        } else if (MediaStore.ACTION_VIDEO_CAPTURE.equals(action) && uri == null) {
-            startActivityForResult(intent, EXPECT_VIDEO_URI);
-        } else {
-            startActivityForResult(intent, EXPECT_NOTHING);
-        }
+        final Button button = findViewById(R.id.send_intent);
+        button.setOnClickListener(v -> {
+            launchIntent();
+            button.setOnClickListener(null);
+        });
     }
 
     @Override
@@ -83,6 +69,29 @@ public class MainActivity extends Activity {
             }
         }
         setResult(msg);
+    }
+
+    private void launchIntent() {
+        final String action = getIntent().getStringExtra(KEY_ACTION);
+        if (!isSupportedAction(action)) {
+            throw new IllegalArgumentException("Unsupported action: " + action);
+        }
+
+        final Uri uri = getIntent().getParcelableExtra(KEY_URI);
+        final Intent intent = new Intent(action);
+        if (uri != null) {
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+
+        if ((MediaStore.ACTION_IMAGE_CAPTURE.equals(action)
+                        || MediaStore.ACTION_IMAGE_CAPTURE_SECURE.equals(action))
+                && uri == null) {
+            startActivityForResult(intent, EXPECT_IMAGE_DATA);
+        } else if (MediaStore.ACTION_VIDEO_CAPTURE.equals(action) && uri == null) {
+            startActivityForResult(intent, EXPECT_VIDEO_URI);
+        } else {
+            startActivityForResult(intent, EXPECT_NOTHING);
+        }
     }
 
     private void setResult(String text) {
