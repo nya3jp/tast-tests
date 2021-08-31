@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ab673f_4b5d9ee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-08-31T02:43:18Z",
+      "side": 1,
+      "message": "Hi Shuhei, can you review the proposed change to add retry to gaia login? Thanks!",
+      "revId": "aa6d47728ee19d39d888684d3ff75acdae95019f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
