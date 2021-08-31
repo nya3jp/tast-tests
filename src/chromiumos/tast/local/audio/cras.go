@@ -19,10 +19,12 @@ import (
 )
 
 const (
-	crasPath      = "/usr/bin/cras"
-	dbusName      = "org.chromium.cras"
-	dbusPath      = "/org/chromium/cras"
-	dbusInterface = "org.chromium.cras.Control"
+	audioDeviceStatusCmd = "cat /proc/asound/card%s/pcm%sp/sub0/status"
+	crasPath             = "/usr/bin/cras"
+	dbusName             = "org.chromium.cras"
+	dbusPath             = "/org/chromium/cras"
+	dbusInterface        = "org.chromium.cras.Control"
+	outputDeviceCmd      = "cras_test_client --dump_audio_thread | grep 'Output dev:'"
 )
 
 // StreamType is used to specify the type of node we want to use for tests and
@@ -249,8 +251,24 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 	return cras.WaitForDeviceUntil(ctx, checkActiveNode, 10*time.Second)
 }
 
-// GetCRASPID finds the PID of cras.
-func GetCRASPID() (int, error) {
+// SelectedOutputDevice returns the active output device name and type.
+func (c *Cras) SelectedOutputDevice(ctx context.Context) (deviceName, deviceType string, err error) {
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return
+	}
+	for _, node := range nodes {
+		if node.Active && !node.IsInput {
+			deviceName = node.DeviceName
+			deviceType = node.Type
+			break
+		}
+	}
+	return
+}
+
+// CRASPID finds the PID of cras.
+func CRASPID() (int, error) {
 	all, err := process.Pids()
 
 	if err != nil {
