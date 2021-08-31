@@ -249,8 +249,24 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 	return cras.WaitForDeviceUntil(ctx, checkActiveNode, 10*time.Second)
 }
 
-// GetCRASPID finds the PID of cras.
-func GetCRASPID() (int, error) {
+// SelectedOutputDevice returns the active output device name and type.
+func (c *Cras) SelectedOutputDevice(ctx context.Context) (deviceName, deviceType string, err error) {
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return
+	}
+	for _, node := range nodes {
+		if node.Active && !node.IsInput {
+			deviceName = node.DeviceName
+			deviceType = node.Type
+			break
+		}
+	}
+	return
+}
+
+// CRASPID finds the PID of cras.
+func CRASPID() (int, error) {
 	all, err := process.Pids()
 
 	if err != nil {
