@@ -16,6 +16,63 @@
       "message": "Thanks, please give a final glance",
       "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17a7a9e_6bc7e01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-31T17:45:29Z",
+      "side": 1,
+      "message": "Sorry for the delay, didn\u0027t see the update. Just one concern about having Signout in lockscreen.go now, maybe David can weigh in as well.",
+      "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5438d070_c93385e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-31T17:45:29Z",
+      "side": 1,
+      "message": "probably just one of these is fine. also would be best to handle the error returned by cr.NewConn here",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea188bec_28a9c010",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-08-31T17:45:29Z",
+      "side": 1,
+      "message": "Now that I\u0027m seeing how this works as part of lockscreen.go, I think it\u0027s probably better to leave it in the test since it will disrupt the existing tconn and callers will have to call chrome.New again.\n\n@David what do you think?",
+      "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
