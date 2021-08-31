@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f52021_ff9461d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-31T18:37:26Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "c05af12a75b77ee15053a92a658b3805a9b66a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be729da9_1ef643b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-31T18:37:26Z",
+      "side": 1,
+      "message": "nit: it seems that GetScan is no longer called outside this file. If so, make it private. e.g: GetScan -\u003e getScan",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "c05af12a75b77ee15053a92a658b3805a9b66a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d221ad63_4133a09a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-31T18:37:26Z",
+      "side": 1,
+      "message": "ditto, nit: perhaps RemoveScans -\u003e removeScans ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 4
+      },
+      "revId": "c05af12a75b77ee15053a92a658b3805a9b66a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afe4152_0fa41fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-31T18:37:26Z",
+      "side": 1,
+      "message": "huge nit: chrome -\u003e Chrome",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "c05af12a75b77ee15053a92a658b3805a9b66a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a005e753_e23342b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-08-31T18:37:26Z",
+      "side": 1,
+      "message": "huge nit: usb -\u003e USB",
+      "range": {
+        "startLine": 98,
+        "startChar": 58,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "c05af12a75b77ee15053a92a658b3805a9b66a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
