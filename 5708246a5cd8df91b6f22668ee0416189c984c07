@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcbcf052_3c4d8b47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-08-31T02:03:20Z",
+      "side": 1,
+      "message": "@kyleshima, also saw some fixture ARC setup timeout errors. PTAL.\n\n\t[Fixture failure] nearbyShareGAIALoginARCEnabled: Failed to start ARC: Android failed to boot: Android failed to boot in very early stage: failed to open syslog reader: error opening log file: context deadline exceeded; last error follows: open /var/log/messages: no such file or directory\n",
+      "revId": "5708246a5cd8df91b6f22668ee0416189c984c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
