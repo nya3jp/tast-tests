@@ -90,7 +90,6 @@ func AppVscode(ctx context.Context, s *testing.State) {
 				terminalApp.Exit(keyboard)(cleanupCtx)
 			}
 		}()
-		s.Fatal("test failed")
 
 		// Cursor blinking breaks screenshots.
 		cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}`)
