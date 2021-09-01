@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c34e305c_116b2ac1",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-09-01T10:07:52Z",
+      "side": 1,
+      "message": "Is it possible to use fixture instead of precondition?\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/-vC6RR8fYlQ/m/AEd6EIHGBQAJ",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5377ec1b_e6a14158",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-09-01T10:07:52Z",
+      "side": 1,
+      "message": "Since DLC is an initialism, we should use upper cases like terminaDLCID.\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4d693f_305bc400",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-09-01T10:07:52Z",
+      "side": 1,
+      "message": "Use lowercase for the first character to make this constant private?\nSame for TreminaDlcDir.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cf00133_55b644de",
         "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
         "patchSetId": 3
@@ -14,6 +77,29 @@
       "writtenOn": "2021-09-01T08:53:56Z",
       "side": 1,
       "message": "It\u0027s kind of weird that we can\u0027t get this directly from the dlc service.",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e88ad2_e61e1b89",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-09-01T10:07:52Z",
+      "side": 1,
+      "message": "nit: DLC",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 8
+      },
       "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
