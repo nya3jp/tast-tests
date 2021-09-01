@@ -23,10 +23,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) error {
+func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, title string, newWindow bool) error {
 	const (
 		newSlidesURL = "https://slides.new"
-		title        = "CUJ Testing"
 		subtitle     = "For testing only"
 		slideTitle   = "CUJ_slide_title_page %d"
 		slideContent = "This_is_CUJ_testing_slide_page %d"
@@ -65,6 +64,7 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 
 		return uiauto.Combine("edit slide title and subtitle",
 			ui.WithTimeout(time.Minute).WaitUntilExists(filmstripView),
+			renameSlide(tconn, kb, title),
 			ui.WaitUntilExists(titleNode),
 			ui.DoubleClick(titleNode),
 			ui.Sleep(time.Second),
@@ -120,6 +120,26 @@ func newGoogleSlides(ctx context.Context, cr *chrome.Chrome, newWindow bool) err
 	}
 
 	return nil
+}
+
+func renameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title string) action.Action {
+	ui := uiauto.New(tconn)
+	return func(ctx context.Context) error {
+		slideWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
+		documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
+		renameTextbox := nodewith.Name("Rename").ClassName("docs-title-input").Ancestor(slideWebArea).Editable().Focusable()
+
+		testing.ContextLog(ctx, "Start to rename slide")
+		return ui.Retry(3, uiauto.Combine("rename slide",
+			ui.WaitUntilExists(slideWebArea),
+			ui.LeftClickUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
+			kb.AccelAction("Ctrl+A"),
+			kb.TypeAction(title),
+			waitForFieldTextToBe(tconn, renameTextbox, title),
+			kb.AccelAction("Enter"),
+			ui.WaitUntilExists(documentSavedState),
+		))(ctx)
+	}
 }
 
 func presentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter) action.Action {
@@ -182,8 +202,9 @@ func editSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter) action.Act
 
 func deleteSlide(tconn *chrome.TestConn) action.Action {
 	ui := uiauto.New(tconn)
-	application := nodewith.Role(role.Application) // Google Slide appliction node.
-	slideWebArea := nodewith.Name("Google Slides").Role(role.RootWebArea)
+	slideWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
+	slideHomeWebArea := nodewith.Name("Google Slides").Role(role.RootWebArea)
+	application := nodewith.Role(role.Application).Ancestor(slideWebArea) // Google Slide appliction node.
 	fileButton := nodewith.Name("File").Role(role.MenuItem).Ancestor(application)
 	menu := nodewith.Role(role.Menu).Ancestor(application)
 	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
@@ -198,7 +219,7 @@ func deleteSlide(tconn *chrome.TestConn) action.Action {
 			// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
 			// If it appears, click the leave button.
 			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
-			ui.WithTimeout(time.Minute).WaitUntilExists(slideWebArea),
+			ui.WithTimeout(time.Minute).WaitUntilExists(slideHomeWebArea),
 		)(ctx)
 	}
 }
