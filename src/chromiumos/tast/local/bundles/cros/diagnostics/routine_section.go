@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -45,48 +46,46 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
 	}
-	defer dxRootnode.Release(ctx)
 
 	// Find the first routine action button
-	cpuButton, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxCPUTestButton, 20*time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	cpuButton := diagnosticsapp.DxCPUTestButton.Ancestor(dxRootnode).First()
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(cpuButton)(ctx); err != nil {
 		s.Fatal("Failed to find the cpu test routine button: ", err)
 	}
-	defer cpuButton.Release(ctx)
 
 	// If needed, scroll down to make the cpu button visible
-	if err := cpuButton.MakeVisible(ctx); err != nil {
+	if err := ui.MakeVisible(cpuButton)(ctx); err != nil {
 		s.Fatal("Failed to locate cpu button within the screen bounds: ", err)
 	}
 
 	// Test on power routine
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
-	if err := cpuButton.StableLeftClick(ctx, &pollOpts); err != nil {
+	if err := ui.WithPollOpts(pollOpts).LeftClick(cpuButton)(ctx); err != nil {
 		s.Fatal("Could not click the CPU test button: ", err)
 	}
 	s.Log("Starting CPU test routine")
 
 	// TODO(crbug/1174688): Detect this through a routine process instead of relying on the UI.
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxProgressBadge, time.Minute); err != nil {
+	if err := ui.WithTimeout(time.Minute).WaitUntilExists(diagnosticsapp.DxProgressBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Could not verify test routine has started: ", err)
 	}
 
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxPassedBadge, 5*time.Minute); err != nil {
+	if err := ui.WithTimeout(5 * time.Minute).WaitUntilExists(diagnosticsapp.DxPassedBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Could not verify successful run of at least one CPU routine: ", err)
 	}
 
-	cancelBtn, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxCancelTestButton, 20*time.Second)
-	if err != nil {
+	cancelBtn := diagnosticsapp.DxCancelTestButton.Ancestor(dxRootnode)
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(cancelBtn)(ctx); err != nil {
 		s.Fatal("Failed to find a cancel button: ", err)
 	}
-	defer cancelBtn.Release(ctx)
 
 	// Cancel the test after first routine succeeds
-	if err := cancelBtn.LeftClick(ctx); err != nil {
+	if err := ui.LeftClick(cancelBtn)(ctx); err != nil {
 		s.Fatal("Could not click the cancel button: ", err)
 	}
 
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxCancelledBadge, 20*time.Second); err != nil {
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCancelledBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Could not verify cancellation of routine: ", err)
 	}
 }
