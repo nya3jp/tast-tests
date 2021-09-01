@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5853b862_67c37279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T04:02:16Z",
+      "side": 1,
+      "message": "Is it guaranteed that there is more than 1min left at this point?\n\nIs 1min enough?",
+      "range": {
+        "startLine": 138,
+        "startChar": 47,
+        "endLine": 138,
+        "endChar": 58
+      },
+      "revId": "afee1b2d52e75ff665964aae5c2dcfb35d75c0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
