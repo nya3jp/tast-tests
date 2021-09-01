@@ -16,6 +16,24 @@
       "message": "Looks ok from the perspective of the current code here.\n\nShould this waiting be done in the fixture for every ARC test though?\n\nPlease wait for approval from Nicole too.",
       "revId": "2cb8b21467d57bcc0f89c271c8ae7520f59ed418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e9bd1c_1e0e6169",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-09-01T15:58:37Z",
+      "side": 1,
+      "message": "Looks like on normal, logged in tests we use `arcBooted` to determine that arc is up and running, this is a special case where we want to wait for vm_concierge in guest mode where arc won\u0027t actually get up and running completely. Context: https://g3doc.corp.google.com/chrome_platform/arc/g3doc/tast_tests.md?cl\u003dhead",
+      "parentUuid": "635bcf07_0872ae06",
+      "revId": "2cb8b21467d57bcc0f89c271c8ae7520f59ed418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
