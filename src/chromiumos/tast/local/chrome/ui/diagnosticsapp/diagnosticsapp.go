@@ -13,87 +13,55 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
-var diagnosticsRootNodeParams = ui.FindParams{
-	Name: apps.Diagnostics.Name,
-	Role: ui.RoleTypeWindow,
-}
+var diagnosticsRootNodeParams = nodewith.Name(apps.Diagnostics.Name).Role(role.Window)
 
 // DxLogButton export is used to find session log button
-var DxLogButton = ui.FindParams{
-	ClassName: "session-log-button",
-	Role:      ui.RoleTypeButton,
-}
+var DxLogButton = nodewith.ClassName("session-log-button").Role(role.Button)
 
 // DxMemoryTestButton export is used to find routine test button
-var DxMemoryTestButton = ui.FindParams{
-	Name: "Run Memory test",
-	Role: ui.RoleTypeButton,
-}
+var DxMemoryTestButton = nodewith.Name("Run Memory test").Role(role.Button)
 
 // DxCPUTestButton export is used to find routine test button
-var DxCPUTestButton = ui.FindParams{
-	Name: "Run CPU test",
-	Role: ui.RoleTypeButton,
-}
+var DxCPUTestButton = nodewith.Name("Run CPU test").Role(role.Button)
 
 // DxViewReportButton export is used to find the see report button
-var DxViewReportButton = ui.FindParams{
-	Name: "See Report",
-	Role: ui.RoleTypeButton,
-}
+var DxViewReportButton = nodewith.Name("See Report").Role(role.Button)
 
 // DxCancelTestButton export is used to find routine test cancel button
-var DxCancelTestButton = ui.FindParams{
-	Name: "Stop test",
-	Role: ui.RoleTypeButton,
-}
+var DxCancelTestButton = nodewith.Name("Stop test").Role(role.Button)
 
 // DxCPUChart export is used to find the realtime cpu chart
-var DxCPUChart = ui.FindParams{
-	ClassName: "legend-group",
-	Role:      ui.RoleTypeGenericContainer,
-}
+var DxCPUChart = nodewith.ClassName("legend-group").Role(role.GenericContainer)
 
 // DxPassedBadge export is used to find success badge notification
-var DxPassedBadge = ui.FindParams{
-	Name: "PASSED",
-	Role: ui.RoleTypeStaticText,
-}
+var DxPassedBadge = nodewith.Name("PASSED").Role(role.StaticText)
 
 // DxProgressBadge export is used to find successful launch of a routine
-var DxProgressBadge = ui.FindParams{
-	Name: "RUNNING",
-	Role: ui.RoleTypeStaticText,
-}
+var DxProgressBadge = nodewith.Name("RUNNING").Role(role.StaticText)
 
 // DxCancelledBadge export is used to find cancelled badge
-var DxCancelledBadge = ui.FindParams{
-	Name: "STOPPED",
-	Role: ui.RoleTypeStaticText,
-}
+var DxCancelledBadge = nodewith.Name("STOPPED").Role(role.StaticText)
 
 // DxConnectivity export is used to find the Connectivity navigation item.
-var DxConnectivity = ui.FindParams{
-	Name: "Connectivity",
-	Role: ui.RoleTypeGenericContainer,
-}
+var DxConnectivity = nodewith.Name("Connectivity").Role(role.GenericContainer)
 
 // DxNetworkList export is used to find the network list.
-var DxNetworkList = ui.FindParams{
-	ClassName: "diagnostics-cards-container",
-	Role:      ui.RoleTypeGenericContainer,
-}
+var DxNetworkList = nodewith.ClassName("diagnostics-cards-container").Role(role.GenericContainer)
 
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
-func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	return ui.FindWithTimeout(ctx, tconn, diagnosticsRootNodeParams, 20*time.Second)
+func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
+	ui := uiauto.New(tconn)
+	err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsRootNodeParams)(ctx)
+	return diagnosticsRootNodeParams, err
 }
 
-// Launch diagnostics via default method and return root node.
-func Launch(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+// Launch diagnostics via default method and finder and error.
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	err := apps.Launch(ctx, tconn, apps.Diagnostics.ID)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to launch diagnostics app")
