@@ -16,6 +16,24 @@
       "message": "Posted comment to b/172227463.",
       "revId": "cf4f3ea1d5f5de6a820c86a27d62386eb001dc54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2f1732_95315be4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2021-09-01T16:07:53Z",
+      "side": 1,
+      "message": "I agree with the comments in b/1272227463 and we should keep the bug open until we have a serial-based solution. However, this change does improve on what we have today, so CR+2.",
+      "parentUuid": "897351a0_9c8f1d6d",
+      "revId": "cf4f3ea1d5f5de6a820c86a27d62386eb001dc54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
