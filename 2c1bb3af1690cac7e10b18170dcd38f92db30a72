@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850af1d0_c56db8ab",
+        "filename": "src/chromiumos/tast/local/vm/dlc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-09-01T13:16:13Z",
+      "side": 1,
+      "message": "If this fixture is only used by vm.* tests, we probably want to put this file under /tast/local/bundles/cros/vm/*.\nAlso, it seems that we usually name this kind of files \u0027fixture.go\u0027.\nSo, how about moving this to /tast/local/bundles/cros/vm/fixture.go?",
+      "revId": "2c1bb3af1690cac7e10b18170dcd38f92db30a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8707b19_11d54222",
+        "filename": "src/chromiumos/tast/local/vm/dlc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-09-01T13:16:13Z",
+      "side": 1,
+      "message": "PreData is named after \"precondition\u0027s data\", but we use fixture and will remove the precondition eventually.\nSo, how about defining a new struct like \"FixtData\"?",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "2c1bb3af1690cac7e10b18170dcd38f92db30a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
