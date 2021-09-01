@@ -11,9 +11,12 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -42,18 +45,12 @@ func attemptToSaveSessionLog(ctx context.Context, tconn *chrome.TestConn) error 
 }
 
 func clickSaveButton(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Name: "Save",
-		Role: ui.RoleTypeButton,
-	}
-
-	saveButton, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return err
-	}
-	defer saveButton.Release(ctx)
-
-	if err := saveButton.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn)
+	saveButton := nodewith.Name("Save").Role(role.Button)
+	if err := uiauto.Combine("click Save",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(saveButton),
+		ui.LeftClick(saveButton),
+	)(ctx); err != nil {
 		return err
 	}
 
@@ -61,18 +58,14 @@ func clickSaveButton(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 func saveButtonDisabled(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Name: "Save",
-		Role: ui.RoleTypeButton,
+	saveButton := nodewith.Name("Save").Role(role.Button)
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(saveButton)(ctx); err != nil {
+		return errors.Wrap(err, "Unable to get save button")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		saveButton, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "Unable to get save button"))
-		}
-		defer saveButton.Release(ctx)
-		if saveButton.Restriction == ui.RestrictionDisabled {
-			return errors.Errorf("Save button state %s", saveButton.Restriction)
+		if err := ui.CheckRestriction(saveButton, restriction.Disabled)(ctx); err == nil {
+			return errors.Errorf("Save button state %s", restriction.Disabled)
 		}
 
 		return nil
@@ -124,22 +117,15 @@ func SessionLog(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
 	}
-	defer dxRootnode.Release(ctx)
 
-	// Find session log button.
-	sessionLogButton, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxLogButton, 20*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the session log button: ", err)
-	}
-	defer sessionLogButton.Release(ctx)
-
-	// If needed, scroll down to make the session log visible.
-	if err := sessionLogButton.MakeVisible(ctx); err != nil {
-		s.Fatal("Failed to locate session log within the screen bounds: ", err)
-	}
-
-	// Click session log button.
-	if err := sessionLogButton.StableLeftClick(ctx, &testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}); err != nil {
+	// Find session log button. If needed, scroll down to make the session log visible and Click session log button.
+	ui := uiauto.New(tconn)
+	sessionLogButton := diagnosticsapp.DxLogButton.Ancestor(dxRootnode)
+	if err := uiauto.Combine("find and click session log button",
+		ui.WithTimeout(20*time.Second).WaitUntilExists(sessionLogButton),
+		ui.MakeVisible(sessionLogButton),
+		ui.WithPollOpts(testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}).LeftClick(sessionLogButton),
+	)(ctx); err != nil {
 		s.Fatal("Could not click the session log button: ", err)
 	}
 

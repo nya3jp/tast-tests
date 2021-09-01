@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -45,23 +46,21 @@ func Connectivity(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
 	}
-	defer dxRootnode.Release(ctx)
 
 	// Find the Connectivity navigation item.
-	connectivityTab, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxConnectivity, 20*time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	connectivityTab := diagnosticsapp.DxConnectivity.Ancestor(dxRootnode)
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(connectivityTab)(ctx); err != nil {
 		s.Fatal("Failed to find the Connectivity navigation item: ", err)
 	}
-	defer connectivityTab.Release(ctx)
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
-	if err := connectivityTab.StableLeftClick(ctx, &pollOpts); err != nil {
+	if err := ui.WithPollOpts(pollOpts).LeftClick(connectivityTab)(ctx); err != nil {
 		s.Fatal("Could not click the Connectivity tab: ", err)
 	}
 
 	// Find the first routine action button
-	networkListContainer, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxNetworkList, 20*time.Second)
-	if err != nil {
+	networkListContainer := diagnosticsapp.DxNetworkList.Ancestor(dxRootnode)
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(networkListContainer)(ctx); err != nil {
 		s.Fatal("Failed to find the network list: ", err)
 	}
-	defer networkListContainer.Release(ctx)
 }
