@@ -296,6 +296,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "738eb07f_3546c863",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-01T06:37:19Z",
+      "side": 1,
+      "message": "Deprecation is different from replacement, and is a very minor change. Deprecation is a several step process:\n1st cl: Add new function, mark old one as deprecated\nseveral cls: replace usages of old with new\nlast cl: remove the function\n\nThat being said, based on the 5 second delay, it may be a better idea to not deprecate in retrospect.",
+      "parentUuid": "923273a8_875c968f",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1eab09d_dfbd5ac8",
