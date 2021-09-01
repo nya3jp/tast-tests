@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62480e57_51732a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-09-01T09:05:27Z",
+      "side": 1,
+      "message": "Just a furtive attempt to avoid a future CL, removed :)",
+      "parentUuid": "ee19f2c2_ed4884f2",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a48122e_8511597f",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-09-01T08:00:21Z",
       "side": 1,
       "message": "nit: I wonder if this can be extracted out too? This line feels incredibly long.",
+      "range": {
+        "startLine": 229,
+        "startChar": 66,
+        "endLine": 229,
+        "endChar": 140
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba9ab5b_2881ad3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-09-01T09:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a48122e_8511597f",
       "range": {
         "startLine": 229,
         "startChar": 66,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1596ee51_08678358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-09-01T09:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4cfb6f2_2739a318",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 41
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90684ade_83e0621a",
@@ -131,6 +203,30 @@
       "writtenOn": "2021-09-01T08:00:21Z",
       "side": 1,
       "message": "nit: these are repeated, consider making a variable above instead.",
+      "range": {
+        "startLine": 272,
+        "startChar": 18,
+        "endLine": 272,
+        "endChar": 90
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af95338_c160dc1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-09-01T09:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90684ade_83e0621a",
       "range": {
         "startLine": 272,
         "startChar": 18,
