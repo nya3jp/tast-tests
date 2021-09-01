@@ -30,19 +30,19 @@ func init() {
 		Vars:         []string{"chart", "facing", "user", "pass"},
 		Params: []testing.Param{
 			// Manual test for interactively guiding lab eng to align the camerabox setup.
-			testing.Param{
+			{
 				Timeout: 20 * time.Minute,
 				// Facing is specified from -var=facing=.
 				Val: pb.Facing_FACING_UNSET,
 			},
 			// Checks alignment for every regression test run.
-			testing.Param{
+			{
 				Name:      "regression_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Timeout:   3 * time.Minute,
 				Val:       pb.Facing_FACING_FRONT,
 			},
-			testing.Param{
+			{
 				Name:      "regression_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Timeout:   3 * time.Minute,

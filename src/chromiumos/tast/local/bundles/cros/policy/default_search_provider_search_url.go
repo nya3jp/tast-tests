@@ -119,7 +119,7 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Could not get new info for the address bar: ", err)
 			}
-			location := nodeInfo.Value;
+			location := nodeInfo.Value
 			location = strings.TrimPrefix(location, "https://")
 			location = strings.TrimPrefix(location, "www.")
 			if !strings.HasPrefix(location, param.wantURL) {

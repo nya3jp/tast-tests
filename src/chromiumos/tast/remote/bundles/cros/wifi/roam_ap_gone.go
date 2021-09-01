@@ -150,7 +150,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	ap2BSSID := mac.String()
 
 	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
+		{
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{ap2BSSID},
 			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,

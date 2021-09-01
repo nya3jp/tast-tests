@@ -133,10 +133,10 @@ func makeImagesJSON(metadataPath, rootfsPath string) ([]byte, error) {
 		ContentID: "images",
 		Datatype:  "image-downloads",
 		Products: map[string]imagesJSONProduct{
-			product("buster", arch): imagesJSONProduct{
+			product("buster", arch): {
 				Arch: arch,
 				Versions: map[string]imagesJSONVersion{
-					fakeVersionName: imagesJSONVersion{
+					fakeVersionName: {
 						Items: items,
 					},
 				},

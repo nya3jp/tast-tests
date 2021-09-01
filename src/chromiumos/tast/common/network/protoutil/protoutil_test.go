@@ -104,11 +104,11 @@ func TestShillPropertyChangedSignalListConvert(t *testing.T) {
 	}{
 		{
 			normalShillPropertyHolderList: []ShillPropertyHolder{
-				ShillPropertyHolder{
+				{
 					Name:  shillconst.ServicePropertyIsConnected,
 					Value: true,
 				},
-				ShillPropertyHolder{
+				{
 					Name:  shillconst.ServicePropertyState,
 					Value: "online",
 				},

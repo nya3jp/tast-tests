@@ -105,10 +105,10 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 	}
 
 	TestCombinations := []combinations{
-		combinations{util.FirstPassword, util.PasswordLabel, util.SecondPassword, util.PasswordLabel},
-		combinations{util.FirstPin, util.PinLabel, util.SecondPassword, util.PasswordLabel},
-		combinations{util.FirstPassword, util.PasswordLabel, util.SecondPin, util.PinLabel},
-		combinations{util.FirstPin, util.PinLabel, util.SecondPin, util.PinLabel},
+		{util.FirstPassword, util.PasswordLabel, util.SecondPassword, util.PasswordLabel},
+		{util.FirstPin, util.PinLabel, util.SecondPassword, util.PasswordLabel},
+		{util.FirstPassword, util.PasswordLabel, util.SecondPin, util.PinLabel},
+		{util.FirstPin, util.PinLabel, util.SecondPin, util.PinLabel},
 	}
 
 	for _, c := range TestCombinations {

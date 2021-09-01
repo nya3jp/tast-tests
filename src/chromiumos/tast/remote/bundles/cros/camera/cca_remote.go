@@ -27,12 +27,12 @@ func init() {
 		Vars:         []string{"chart"},
 		Pre:          pre.DocumentScene(),
 		Params: []testing.Param{
-			testing.Param{
+			{
 				Name:      "document_scanning_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.CCATestRequest{Test: pb.CCATest_DOCUMENT_SCANNING, Facing: pb.Facing_FACING_BACK},
 			},
-			testing.Param{
+			{
 				Name:      "document_scanning_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.CCATestRequest{Test: pb.CCATest_DOCUMENT_SCANNING, Facing: pb.Facing_FACING_FRONT},

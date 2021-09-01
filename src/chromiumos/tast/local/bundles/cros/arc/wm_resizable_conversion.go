@@ -35,22 +35,22 @@ func init() {
 
 func WMResizableConversion(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
-		wm.TestCase{
+		{
 			// resizable/conversion: landscape
 			Name: "RV_conversion_landscape",
 			Func: wmRV19,
 		},
-		wm.TestCase{
+		{
 			// resizable/conversion: portrait
 			Name: "RV_conversion_portrait",
 			Func: wmRV20,
 		},
-		wm.TestCase{
+		{
 			// resizable/conversion: undefined orientation
 			Name: "RV_undefined_orientation",
 			Func: wmRV21,
 		},
-		wm.TestCase{
+		{
 			// resizable/conversion: split screen
 			Name: "RV_split_screen",
 			Func: wmRV22,
