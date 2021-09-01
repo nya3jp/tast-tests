@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a871e086_59ee99a7",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-01T04:10:26Z",
+      "side": 1,
+      "message": "Ah thanks for the clarification!\n\nHmm that would indeed be a lot of test variants... maybe we can expose a RestartApp() function on Fixture to make resetting state between subtests easier (?)\n\nLet\u0027s keep it as is for now in this CL. Not meant to block fixture migration.",
+      "parentUuid": "407760a1_96e6165e",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51b028d5_3106edd9",
@@ -154,6 +178,24 @@
       "side": 1,
       "message": "I asked this question when reviewing the original CL before, Inker\u0027s opinion was that it is clearer for reader to understand the content of the file.\n\n@inker, could you confirm?",
       "parentUuid": "1e8e2beb_75004ed5",
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdcbb24_8d7186ba",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-01T04:10:26Z",
+      "side": 1,
+      "message": "btw I am ok to land this CL with genFileForPTZ() given it\u0027s already there. We can remove it in another CL if needed.",
+      "parentUuid": "4cca794a_fc8e79c8",
       "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
