@@ -16,6 +16,52 @@
       "message": "Is this something that belongs in the general clean-up after tests?",
       "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd8282b_f15bbba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-01T16:55:26Z",
+      "side": 1,
+      "message": "we could put this in modem.go , but not as a member function of the Modem struct.",
+      "range": {
+        "startLine": 270,
+        "startChar": 17,
+        "endLine": 270,
+        "endChar": 36
+      },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202b4d04_b4b64a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_inhibit_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-01T16:55:26Z",
+      "side": 1,
+      "message": "We would need to defer this call at the beginning of the test. In most cases, the error is in L64 and we don\u0027t reach here.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
