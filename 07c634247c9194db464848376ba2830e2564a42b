@@ -16,6 +16,29 @@
       "message": "LGTM\nFor a Tast review, you can just add tast-owners@google.com",
       "revId": "07c634247c9194db464848376ba2830e2564a42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2203d1a_e227eaad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-01T00:28:11Z",
+      "side": 1,
+      "message": "Should we filter out unavailable values from VCD[1] or camera service instead of fix this on test side? Not sure what limitation you refer to here though.\n\n[1]\nhttps://source.chromium.org/chromium/chromium/src/+/main:media/capture/video/chromeos/camera_device_delegate.cc;drc\u003dcbd69e4c164d09535a9a65d145b2083555d8fd87;l\u003d1451",
+      "range": {
+        "startLine": 164,
+        "startChar": 82,
+        "endLine": 164,
+        "endChar": 83
+      },
+      "revId": "07c634247c9194db464848376ba2830e2564a42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
