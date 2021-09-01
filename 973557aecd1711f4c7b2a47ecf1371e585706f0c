@@ -62,6 +62,30 @@
       },
       "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976be147_8a1cc922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_inhibit_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-01T17:40:29Z",
+      "side": 1,
+      "message": "+1 (which is why I was wondering if we should just be doing this at the end of every test to try and get back into a good state, or maybe at the beginning of every test?)",
+      "parentUuid": "202b4d04_b4b64a30",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
