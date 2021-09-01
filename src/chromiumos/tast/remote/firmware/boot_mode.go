@@ -129,6 +129,13 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	}
 	h.CloseRPCConnection(ctx)
 
+	// Booting from rec to anything else will cause EC to restart, potentally breaking the servo watchdog.
+	if fromMode == fwCommon.BootModeRecovery {
+		if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+			return errors.Wrap(err, "failed to remove watchdog for ccd")
+		}
+	}
+
 	switch toMode {
 	case fwCommon.BootModeNormal:
 		if err := ms.powerOff(ctx); err != nil {
