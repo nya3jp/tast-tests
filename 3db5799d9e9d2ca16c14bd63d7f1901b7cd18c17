@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4119f13_05e41184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-09-01T04:16:16Z",
+      "side": 1,
+      "message": "This feature is not implemented yet. We will likely want to disable the flag here when we start working on it, until the feature is ready.",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
