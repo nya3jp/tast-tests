@@ -209,10 +209,6 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 		return nil, errors.Wrap(err, "failed to set up the snippet server")
 	}
 
-	if err := androidNearby.Initialize(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to initialize snippet server")
-	}
-
 	if err := AndroidConfigure(ctx, androidNearby, dataUsage, visibility, name); err != nil {
 		return nil, errors.Wrap(err, "failed to configure Android Nearby Share settings")
 	}

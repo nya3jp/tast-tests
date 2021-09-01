@@ -59,10 +59,6 @@ func SmokeSnippetLibrary(ctx context.Context, s *testing.State) {
 	}
 	defer androidNearby.Cleanup(ctx)
 
-	if err := androidNearby.Initialize(ctx); err != nil {
-		s.Fatal("Failed to initialize snippet server: ", err)
-	}
-
 	version, err := androidNearby.GetNearbySharingVersion(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Android's Nearby Share version: ", err)
