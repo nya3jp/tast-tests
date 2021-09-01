@@ -398,7 +398,7 @@ func ReadProcMountinfo(pid int32) ([]ProcMountinfo, error) {
 		mi.MountOptions = fields[5]
 
 		var optFields []string
-		for _, field := range fields[firstOptField:len(fields)] {
+		for _, field := range fields[firstOptField:] {
 			if field == "-" {
 				// This is the separator, there are no more optional fields.
 				mi.OptFields = optFields

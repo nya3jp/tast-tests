@@ -105,11 +105,11 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 
 	// By default, DNS query should work.
 	var defaultTC = []dns.ProxyTestCase{
-		dns.ProxyTestCase{Client: dns.System},
-		dns.ProxyTestCase{Client: dns.User},
-		dns.ProxyTestCase{Client: dns.Chrome},
-		dns.ProxyTestCase{Client: dns.Crostini},
-		dns.ProxyTestCase{Client: dns.ARC},
+		{Client: dns.System},
+		{Client: dns.User},
+		{Client: dns.Chrome},
+		{Client: dns.Crostini},
+		{Client: dns.ARC},
 	}
 	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, domainDefault); len(errs) != 0 {
 		for _, err := range errs {
@@ -136,11 +136,11 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to block DNS: ", errs)
 		}
 		dnsBlockedTC = []dns.ProxyTestCase{
-			dns.ProxyTestCase{Client: dns.System, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.User, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.Chrome, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.Crostini, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.ARC}}
+			{Client: dns.System, ExpectErr: true},
+			{Client: dns.User, ExpectErr: true},
+			{Client: dns.Chrome, ExpectErr: true},
+			{Client: dns.Crostini, ExpectErr: true},
+			{Client: dns.ARC}}
 	case dns.DoHAutomatic:
 		return
 	case dns.DoHAlwaysOn:
@@ -149,10 +149,10 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to block DNS: ", errs)
 		}
 		dnsBlockedTC = []dns.ProxyTestCase{
-			dns.ProxyTestCase{Client: dns.System, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.User, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.Crostini, ExpectErr: true},
-			dns.ProxyTestCase{Client: dns.ARC}}
+			{Client: dns.System, ExpectErr: true},
+			{Client: dns.User, ExpectErr: true},
+			{Client: dns.Crostini, ExpectErr: true},
+			{Client: dns.ARC}}
 	}
 
 	// DNS queries should fail if corresponding DNS packets (plain-text or secure) are dropped.

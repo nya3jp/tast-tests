@@ -135,7 +135,7 @@ func (c *brightnessControl) getValue(settings *mediaTrackSettings) float64 {
 func (c *brightnessControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Brightness: value},
+			{Brightness: value},
 		},
 	}
 }
@@ -169,7 +169,7 @@ func (c *colorTemperatureControl) getConstraints(value *float64) mediaTrackConst
 	manual := "manual"
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{WhiteBalanceMode: &manual, ColorTemperature: value},
+			{WhiteBalanceMode: &manual, ColorTemperature: value},
 		},
 	}
 }
@@ -178,7 +178,7 @@ func (c *colorTemperatureControl) getConstraintsBySettings(s *mediaTrackSettings
 	if *s.WhiteBalanceMode == "continuous" {
 		return mediaTrackConstraints{
 			Advanced: [1]mediaTrackSettings{
-				mediaTrackSettings{WhiteBalanceMode: s.WhiteBalanceMode},
+				{WhiteBalanceMode: s.WhiteBalanceMode},
 			},
 		}
 	}
@@ -204,7 +204,7 @@ func (c *contrastControl) getValue(settings *mediaTrackSettings) float64 {
 func (c *contrastControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Contrast: value},
+			{Contrast: value},
 		},
 	}
 }
@@ -242,7 +242,7 @@ func (c *exposureCompensationControl) getConstraints(value *float64) mediaTrackC
 	continuous := "continuous"
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{ExposureMode: &continuous, ExposureCompensation: value},
+			{ExposureMode: &continuous, ExposureCompensation: value},
 		},
 	}
 }
@@ -250,7 +250,7 @@ func (c *exposureCompensationControl) getConstraints(value *float64) mediaTrackC
 func (c *exposureCompensationControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{ExposureMode: s.ExposureMode, ExposureCompensation: s.ExposureCompensation},
+			{ExposureMode: s.ExposureMode, ExposureCompensation: s.ExposureCompensation},
 		},
 	}
 }
@@ -290,7 +290,7 @@ func (c *exposureTimeControl) getConstraints(value *float64) mediaTrackConstrain
 	manual := "manual"
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{ExposureMode: &manual, ExposureTime: value},
+			{ExposureMode: &manual, ExposureTime: value},
 		},
 	}
 }
@@ -299,7 +299,7 @@ func (c *exposureTimeControl) getConstraintsBySettings(s *mediaTrackSettings) me
 	if *s.ExposureMode == "continuous" {
 		return mediaTrackConstraints{
 			Advanced: [1]mediaTrackSettings{
-				mediaTrackSettings{ExposureMode: s.ExposureMode},
+				{ExposureMode: s.ExposureMode},
 			},
 		}
 	}
@@ -340,7 +340,7 @@ func (c *focusDistanceControl) getConstraints(value *float64) mediaTrackConstrai
 	manual := "manual"
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{FocusMode: &manual, FocusDistance: value},
+			{FocusMode: &manual, FocusDistance: value},
 		},
 	}
 }
@@ -349,7 +349,7 @@ func (c *focusDistanceControl) getConstraintsBySettings(s *mediaTrackSettings) m
 	if *s.FocusMode == "continuous" {
 		return mediaTrackConstraints{
 			Advanced: [1]mediaTrackSettings{
-				mediaTrackSettings{FocusMode: s.FocusMode},
+				{FocusMode: s.FocusMode},
 			},
 		}
 	}
@@ -386,7 +386,7 @@ func (c *isoControl) getConstraints(value *float64) mediaTrackConstraints {
 	exposureTime333 := 333.0
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{ExposureMode: &manual, ExposureTime: &exposureTime333, Iso: value},
+			{ExposureMode: &manual, ExposureTime: &exposureTime333, Iso: value},
 		},
 	}
 }
@@ -395,14 +395,14 @@ func (c *isoControl) getConstraintsBySettings(s *mediaTrackSettings) mediaTrackC
 	if *s.ExposureMode == "continuous" {
 		return mediaTrackConstraints{
 			Advanced: [1]mediaTrackSettings{
-				mediaTrackSettings{ExposureMode: s.ExposureMode},
+				{ExposureMode: s.ExposureMode},
 			},
 		}
 	}
 	manual := "manual"
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{ExposureMode: &manual, ExposureTime: s.ExposureTime, Iso: s.Iso},
+			{ExposureMode: &manual, ExposureTime: s.ExposureTime, Iso: s.Iso},
 		},
 	}
 }
@@ -422,7 +422,7 @@ func (c *panControl) getSettingRange(capabilities *mediaTrackCapabilities) *medi
 func (c *panControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Pan: value},
+			{Pan: value},
 		},
 	}
 }
@@ -450,7 +450,7 @@ func (c *saturationControl) getValue(settings *mediaTrackSettings) float64 {
 func (c *saturationControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Saturation: value},
+			{Saturation: value},
 		},
 	}
 }
@@ -478,7 +478,7 @@ func (c *sharpnessControl) getValue(settings *mediaTrackSettings) float64 {
 func (c *sharpnessControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Sharpness: value},
+			{Sharpness: value},
 		},
 	}
 }
@@ -506,7 +506,7 @@ func (c *tiltControl) getValue(settings *mediaTrackSettings) float64 {
 func (c *tiltControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Tilt: value},
+			{Tilt: value},
 		},
 	}
 }
@@ -534,7 +534,7 @@ func (c *zoomControl) getValue(settings *mediaTrackSettings) float64 {
 func (c *zoomControl) getConstraints(value *float64) mediaTrackConstraints {
 	return mediaTrackConstraints{
 		Advanced: [1]mediaTrackSettings{
-			mediaTrackSettings{Zoom: value},
+			{Zoom: value},
 		},
 	}
 }

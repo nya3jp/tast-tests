@@ -35,16 +35,16 @@ The rules for valid users are:
 */
 
 var validUsersMap = map[string][]string{
-	"users_start_with_letter":     []string{"a", "tester00", "whoisthis", "myuser"},
-	"users_start_with_underscore": []string{"_", "_tast", "_9", "__"},
-	"users_contain_reserved_user": []string{"daemonvsdaemon", "binbin", "ssys", "synccnys",
+	"users_start_with_letter":     {"a", "tester00", "whoisthis", "myuser"},
+	"users_start_with_underscore": {"_", "_tast", "_9", "__"},
+	"users_contain_reserved_user": {"daemonvsdaemon", "binbin", "ssys", "synccnys",
 		"gamesmoregames", "manmanmen", "lplplp", "mailmail9", "newss", "uucpcp",
 		"proxyfail", "www-datawww-", "backupbackup", "listli", "ircir",
 		"gnatsss", "nobodynobodybutyou", "_aptapt", "systemd-timesyncsystemd-timesync",
 		"_systemd-network", "systemd5-resolve",
 		"systemd-bus-proxyx", "messagebus-", "sshdfas", "rtkit99",
 		"pul--se", "android-rootroot", "chronos-access_", "android-everybodybody", "rootroot"},
-	"long_users": []string{"________________________________",
+	"long_users": {"________________________________",
 		"rootrootrootrootrootrootrootroot",
 		"_-------------------------------",
 		"_123456789012345678901234567890-",

@@ -35,32 +35,32 @@ func init() {
 
 func WMResizableTablet(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, true, []wm.TestCase{
-		wm.TestCase{
+		{
 			// resizable/tablet: default launch behavior
 			Name: "RT_default_launch_behavior",
 			Func: wmRT01,
 		},
-		wm.TestCase{
+		{
 			// resizable/tablet: immerse via API from maximized
 			Name: "RT_immerse_via_API_from_maximized",
 			Func: wmRT07,
 		},
-		wm.TestCase{
+		{
 			// resizable/tablet: hide Shelf behavior
 			Name: "RT_hide_Shelf_behavior",
 			Func: wmRT12,
 		},
-		wm.TestCase{
+		{
 			// resizable/tablet: display size change
 			Name: "RT_display_size_change",
 			Func: wmRT15,
 		},
-		wm.TestCase{
+		{
 			// resizable/tablet: font size change
 			Name: "RT_font_size_change",
 			Func: wmRT17,
 		},
-		wm.TestCase{
+		{
 			// resizable/tablet: split screen
 			Name: "RT_split_screen",
 			Func: wmRT22,
@@ -72,11 +72,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 // Expected behavior is defined in: go/arc-wm-r RT01: resizable/tablet: default launch behavior.
 func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	ntActivities := []wm.TabletLaunchActivityInfo{
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableLandscapeActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizablePortraitActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
@@ -89,19 +89,19 @@ func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RT07: resizable/tablet: immerse via API from maximized.
 func wmRT07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	acts := []wm.TabletLaunchActivityInfo{
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableLandscapeActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizablePortraitActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
@@ -115,11 +115,11 @@ func wmRT07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 func wmRT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// landscape | undefined activities.
 	luActivities := []wm.TabletLaunchActivityInfo{
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableLandscapeActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
@@ -131,11 +131,11 @@ func wmRT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	// portrait | undefined activities.
 	puActivities := []wm.TabletLaunchActivityInfo{
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizablePortraitActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
@@ -148,19 +148,19 @@ func wmRT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RT15: resizable/tablet: display size change.
 func wmRT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	ntActivities := []wm.TabletLaunchActivityInfo{
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableLandscapeActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizablePortraitActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
@@ -173,19 +173,19 @@ func wmRT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RT17: resizable/tablet: font size change.
 func wmRT17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	acts := []wm.TabletLaunchActivityInfo{
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableLandscapeActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationLandscapePrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizablePortraitActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},
-		wm.TabletLaunchActivityInfo{
+		{
 			ActivityName: wm.ResizableUnspecifiedActivity,
 			DesiredDO:    display.OrientationPortraitPrimary,
 		},

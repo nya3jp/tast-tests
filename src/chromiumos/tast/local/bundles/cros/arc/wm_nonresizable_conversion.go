@@ -34,17 +34,17 @@ func init() {
 
 func WMNonresizableConversion(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
-		wm.TestCase{
+		{
 			// non-resizable/conversion: landscape
 			Name: "NV_conversion_landscape",
 			Func: wmNV19,
 		},
-		wm.TestCase{
+		{
 			// non-resizable/conversion: portrait
 			Name: "NV_conversion_portrait",
 			Func: wmNV20,
 		},
-		wm.TestCase{
+		{
 			// non-resizable/conversion: undefined orientation
 			Name: "NV_conversion_undefined_orientation",
 			Func: wmNV21,

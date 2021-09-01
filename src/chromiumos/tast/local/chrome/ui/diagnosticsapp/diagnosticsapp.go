@@ -84,7 +84,7 @@ var DxConnectivity = ui.FindParams{
 // DxNetworkList export is used to find the network list.
 var DxNetworkList = ui.FindParams{
 	ClassName: "diagnostics-cards-container",
-	Role: ui.RoleTypeGenericContainer,
+	Role:      ui.RoleTypeGenericContainer,
 }
 
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.

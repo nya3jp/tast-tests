@@ -48,7 +48,7 @@ func init() {
 // This test is part of the specification of WM R.
 func WindowDefaultBoundsAllowlist(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
-		wm.TestCase{
+		{
 			Name: "wmAllowlistResizableUnspecified",
 			Func: wmAllowlistResizableUnspecified,
 		},

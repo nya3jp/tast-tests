@@ -27,12 +27,12 @@ func init() {
 		Data:         []string{"its_scene2_c_20210708.png"},
 		Vars:         []string{"chart"},
 		Params: []testing.Param{
-			testing.Param{
+			{
 				Name:      "back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       pb.Facing_FACING_BACK,
 			},
-			testing.Param{
+			{
 				Name:      "front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       pb.Facing_FACING_FRONT,

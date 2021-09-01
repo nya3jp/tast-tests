@@ -89,12 +89,12 @@ func GTK(ctx context.Context, s *testing.State) {
 	// padded to ensure that we have enough time to process stream events
 	// after the pings finish.
 	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
+		{
 			Property:       shillconst.ServicePropertyIsConnected,
 			Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 			ExpectedValues: []interface{}{true},
 		},
-		&wificell.ShillProperty{
+		{
 			Property:       shillconst.ServicePropertyIsConnected,
 			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
 			ExpectedValues: []interface{}{false},

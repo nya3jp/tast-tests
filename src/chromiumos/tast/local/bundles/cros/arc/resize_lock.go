@@ -158,31 +158,31 @@ type resizeLockTestCase struct {
 // The order of the test cases matters since some persistent chrome-side properties are tested.
 // - "Splash" must come first as any launch of the apps affect the test case.
 var testCases = []resizeLockTestCase{
-	resizeLockTestCase{
+	{
 		name: "Splash",
 		fn:   testSplash,
 	},
-	resizeLockTestCase{
+	{
 		name: "Resize Locked App - CUJ",
 		fn:   testResizeLockedAppCUJ,
 	},
-	resizeLockTestCase{
+	{
 		name: "Resize Locked App - Fully Locked",
 		fn:   testFullyLockedApp,
 	},
-	resizeLockTestCase{
+	{
 		name: "O4C App",
 		fn:   testO4CApp,
 	},
-	resizeLockTestCase{
+	{
 		name: "Unresizable Maximized App",
 		fn:   testUnresizableMaximizedApp,
 	},
-	resizeLockTestCase{
+	{
 		name: "Resizable Maximized App",
 		fn:   testResizableMaximizedApp,
 	},
-	resizeLockTestCase{
+	{
 		name: "Install from outside of PlayStore",
 		fn:   testAppFromOutsideOfPlayStore,
 	},
