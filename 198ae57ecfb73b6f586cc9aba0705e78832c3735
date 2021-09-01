@@ -110,6 +110,30 @@
       },
       "revId": "198ae57ecfb73b6f586cc9aba0705e78832c3735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b7ee82_6d4e6e15",
+        "filename": "src/chromiumos/tast/common/policy/defs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-01T07:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03f5bb64_6a8a5290",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 81
+      },
+      "revId": "198ae57ecfb73b6f586cc9aba0705e78832c3735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
