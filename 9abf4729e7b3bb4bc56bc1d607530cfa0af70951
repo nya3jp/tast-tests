@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5248fbb_60adff63",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-01T03:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86968fad_632ae84b",
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4ae7e10_353acc43",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-01T03:31:39Z",
       "side": 1,
       "message": "Hmm I feel a little bit unintuitive and inconsistent for having both \"Launched\" and \"TestBridgeReady\" variants of CCA textures. \n\nI checked the real usage of these fixtures on https://crrev.com/c/3121690, it looks like many tests are using the TBReady variant simply because it has some subtests, and want to restart CCA for each sub test.\n\nThis sounds like a leaky abstraction if we might need to tweak our fixtures (add a new corresponding TBReady version) when a test is changed to have subtests.\n\nTBReady also introduce an inconsistency when CCA failed to launch. Sometimes it\u0027s a fixture failures, sometimes it\u0027s an in-test failure. Ideally they should be fixture errors except for some meta cases such as policy test.\n\nIt\u0027s open for discussion, and not necessary to change in this CL. We can talk to this in next CL if you want to land this sooner.",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407760a1_96e6165e",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-01T03:59:27Z",
+      "side": 1,
+      "message": "To clarify a bit, for \"ccaTestBridgeReady\" and \"ccaLaunched\", currently the failures when launching CCA are considered test failures on both fixtures since we launch/tear-down CCA in PreTest()/PostTest(), which will treat the error happened there as test failures [1].\n\nBut I agree that it will be great if we can use the same flow to launch/tear-down \nCCA for sub tests. From my understanding, Fixture does not support sub tests very well so the current implementation is like a workaround.\n\nAlternatively, we can change all the sub tests to variants of the test itself. For example, for camera.CCAUIDocumentScanning, we make it: camera.CCAUIDocumentScanning.{PDF,Photo,Retake}.\nI am not sure if it is ideal since some tests have a lot of sub tests. But I would think it is a cleaner way for dealing subtests. WDYT?\n\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;rcl\u003d69e52d92770ac2349bccc872f0fd0084629463da;l\u003d246",
+      "parentUuid": "c4ae7e10_353acc43",
       "range": {
         "startLine": 124,
         "startChar": 20,
