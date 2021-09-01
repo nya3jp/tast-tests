@@ -7,6 +7,7 @@ package dlc
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"path/filepath"
 
@@ -28,8 +29,9 @@ const (
 
 // Info holds the fields related to a DLC.
 type Info struct {
-	ID      string
-	Package string
+	ID        string `json:"id"`
+	Package   string `json:"package"`
+	RootMount string `json:"root_mount"`
 }
 
 // Install calls the DBus method to install a DLC.
@@ -78,4 +80,19 @@ func Cleanup(ctx context.Context, infos ...Info) error {
 		return errors.Wrap(err, "failed to restart dlcservice")
 	}
 	return nil
+}
+
+// List returns all the installed DLC(s).
+func List(ctx context.Context) (map[string][]Info, error) {
+	buf, err := testexec.CommandContext(ctx, "dlcservice_util", "--list").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list installed DLCs")
+	}
+
+	info := make(map[string][]Info)
+	if err := json.Unmarshal(buf, &info); err != nil {
+		return nil, err
+	}
+
+	return info, nil
 }
