@@ -104,18 +104,19 @@ func detectArch() string {
 }
 
 // product returns the product name that Crostini lxd will ask for.
-func product(arch string) string {
-	return fmt.Sprintf("debian:buster:%s:default", arch)
+func product(debrel, arch string) string {
+	return fmt.Sprintf("debian:%s:%s:default", debrel, arch)
 }
 
 func makeIndexJSON() ([]byte, error) {
+	arch := detectArch()
 	return json.Marshal(
-		indexJSON{
+		&indexJSON{
 			Index: indexJSONIndex{
 				Images: indexJSONImages{
 					Path:     "streams/v1/images.json",
 					Datatype: "image-downloads",
-					Products: []string{product(detectArch())},
+					Products: []string{product("buster", arch), product("bullseye", arch)},
 				},
 			},
 			Format: "index:1.0",
@@ -124,7 +125,7 @@ func makeIndexJSON() ([]byte, error) {
 
 func makeImagesJSON(metadataPath, rootfsPath string) ([]byte, error) {
 	arch := detectArch()
-	items, err := makeImagesJSONItems(metadataPath, rootfsPath, product(arch))
+	items, err := makeImagesJSONItems(metadataPath, rootfsPath, product("buster", arch))
 	if err != nil {
 		return nil, err
 	}
@@ -132,7 +133,7 @@ func makeImagesJSON(metadataPath, rootfsPath string) ([]byte, error) {
 		ContentID: "images",
 		Datatype:  "image-downloads",
 		Products: map[string]imagesJSONProduct{
-			product(arch): imagesJSONProduct{
+			product("buster", arch): imagesJSONProduct{
 				Arch: arch,
 				Versions: map[string]imagesJSONVersion{
 					fakeVersionName: imagesJSONVersion{
@@ -142,7 +143,7 @@ func makeImagesJSON(metadataPath, rootfsPath string) ([]byte, error) {
 				Release:      "buster",
 				Os:           "Debian",
 				ReleaseTitle: "buster",
-				Aliases:      "debian/buster",
+				Aliases:      "debian/buster,debian/bullseye",
 			},
 		},
 		Format: "products:1.0",
