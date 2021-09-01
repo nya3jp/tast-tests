@@ -27,8 +27,8 @@ func init() {
 		Func: APISendMessageToUI,
 		Desc: "Test sending a message from the Wilco DTC VM to the Chromium extension",
 		Contacts: []string{
-			"vsavu@chromium.org",  // Test author
-			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
+			"vsavu@chromium.org", // Test author
+			"lamzin@google.com",  // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
 		Attr:         []string{"group:enrollment"},
