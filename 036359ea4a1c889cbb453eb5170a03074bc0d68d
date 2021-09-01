@@ -67,6 +67,23 @@
       "message": "Amba, please add Ilja to graphics test reviews as well.\n\nIlja, Stephane, can you please review/route?",
       "revId": "036359ea4a1c889cbb453eb5170a03074bc0d68d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4dd604b_ed49d160",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-01T00:03:36Z",
+      "side": 1,
+      "message": "It looks like this is a very loosely inspired port from autotest of graphics_VTSwitch, which currently is waiting for autotest python3 conversion to run again (Unhandled ImportError: No module named PIL).\n\nMy main worries are\n1) Flakes.\nThere is a reason graphics_VTSwitch does what it does, namely to get rid of flakes.\n2) We need 2 test. One that only runs once and is fast so it can be on the CQ. The other one that runs 100 times as before and does a thorough stress (and is not suitable for CQ).\n\nAny chance to stick closer to\nsrc/third_party/autotest/files/client/site_tests/graphics_VTSwitch",
+      "revId": "036359ea4a1c889cbb453eb5170a03074bc0d68d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
