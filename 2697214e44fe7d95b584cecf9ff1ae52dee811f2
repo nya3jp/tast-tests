@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e9b190_3448fc95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:49:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924f798a_ae4d2038",
+      "revId": "2697214e44fe7d95b584cecf9ff1ae52dee811f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af4b3775_03a5241b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-01T06:37:19Z",
       "side": 1,
       "message": "Is the username always chronos? Can we replace this with something like ~/Downloads?",
+      "revId": "2697214e44fe7d95b584cecf9ff1ae52dee811f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52dc59ed_be1c797d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:49:14Z",
+      "side": 1,
+      "message": "It is always chronos. This has been used all the time: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d28",
+      "parentUuid": "af4b3775_03a5241b",
       "revId": "2697214e44fe7d95b584cecf9ff1ae52dee811f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
