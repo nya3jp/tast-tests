@@ -26,9 +26,6 @@ import (
 const (
 	syzkallerRunDuration = 30 * time.Minute
 
-	// When running this tast test locally, useHub can be set to true to communicate with a local syz-hub instance.
-	useHub = false
-
 	// GCS bucket for syzkaller artifacts.
 	gsURL = "gs://syzkaller-ctp-corpus"
 )
@@ -99,7 +96,7 @@ func init() {
 		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.json", "corpus.db"},
+		Data:    []string{"testing_rsa", "enabled_syscalls.json"},
 		VarDeps: []string{"syzkaller.Wrapper.botoCredSection"},
 	})
 }
@@ -135,11 +132,13 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatal("Unable to create temp workdir: ", err)
 	}
-	if !useHub {
-		cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
-		if err := cmd.Run(); err != nil {
-			s.Fatal("Failed to copy seed corpus to workdir: ", err)
-		}
+	if err := loadCorpus(
+		ctx,
+		s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+		board,
+		syzkallerWorkdir,
+	); err != nil {
+		s.Fatal("Unable to load corpus: ", err)
 	}
 
 	// Chmod the keyfile so that ssh connections do not fail due to
@@ -192,12 +191,6 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		EnableSyscalls: enabledSyscalls,
 	}
 
-	if useHub {
-		config.HubClient = board
-		config.HubAddr = "localhost:56500"
-		config.HubKey = "6sCFsJVfyFQVhWVKJpKhHcHxpCH0gAxL"
-	}
-
 	configFile, err := os.Create(filepath.Join(syzkallerTastDir, "config"))
 	if err != nil {
 		s.Fatal("Unable to create syzkaller configfile: ", err)
@@ -224,9 +217,6 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Starting syzkaller with logfile at ", logFile.Name())
 	syzManager := filepath.Join(artifactsDir, "syz-manager")
 	cmdArgs := []string{"-config", configFile.Name(), "-vv", "10"}
-	if useHub {
-		cmdArgs = append(cmdArgs, "-hub")
-	}
 	managerCmd := testexec.CommandContext(ctx, syzManager, cmdArgs...)
 	managerCmd.Stdout = logFile
 	managerCmd.Stderr = logFile
@@ -272,13 +262,41 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Done fuzzing, exiting")
 }
 
+func gsutilCmd(ctx context.Context, cred string, args ...string) *testexec.Cmd {
+	cmd := testexec.CommandContext(ctx, "gsutil", "-o", cred, args...)
+	cmd.Env = append(os.Environ(), "BOTO_CONFIG= ")
+	return cmd
+}
+
+func loadCorpus(ctx context.Context, cred, board, syzkallerWorkdir string) error {
+	out, err := gsutilCmd(ctx, cred, "ls", gsURL).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to list corpus bucket")
+	}
+	objects := strings.Split(string(out), "\n")
+	var url string
+	for _, object := range objects {
+		if strings.Contains(object, board) {
+			url = object
+		}
+	}
+	if url == "" {
+		testing.ContextLog(ctx, "No pre-existing corpus found for board: ", board)
+		return nil
+	}
+	testing.ContextLog(ctx, "Fetching ", url)
+	if err = gsutilCmd(ctx, cred, "cp", url, filepath.Join(syzkallerWorkdir, "corpus.db")).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to fetch: %v", url)
+	}
+	testing.ContextLog(ctx, "Fetched ", url)
+	return nil
+}
+
 func saveCorpus(ctx context.Context, cred, board, corpusPath string) error {
 	timestamp := time.Now().Format("2006-01-02-15:04:05")
 	url := fmt.Sprintf("%s/corpus-%v-%v.db", gsURL, board, timestamp)
 	testing.ContextLog(ctx, "Uploading ", url)
-	cmd := testexec.CommandContext(ctx, "gsutil", "-o", cred, "copy", corpusPath, url)
-	cmd.Env = append(os.Environ(), "BOTO_CONFIG= ")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+	if err := gsutilCmd(ctx, cred, "copy", corpusPath, url).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to save corpus.db")
 	}
 	testing.ContextLog(ctx, "Uploaded ", url)
