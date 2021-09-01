@@ -3,6 +3,116 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75ede5b3_dea72366",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "\u003e \"triger\" is a possible misspelling of \"trigger\" or \"tiger\".\n\nPlease fix.",
+      "parentUuid": "4ac67aa7_2570c51d",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55263462_fc770c9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "typo: invalid. Also, CrOS likes commit messages wrapped at 72 characters.",
+      "range": {
+        "startLine": 10,
+        "startChar": 78,
+        "endLine": 10,
+        "endChar": 83
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a330d0f6_6f1afbf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "This sounds like a bigger problem than just screen recording if our API gets randomly invalidated and we have to try and control the UI via key events. How are other things handling this? Can we e.g. detect and recreate our objects upon invalidation?",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9140e8db_947680fc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "Typo: an",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469f06bb_de6fbf44",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "Nit: Indentation of example",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6db91e4e_664112b8",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
         "patchSetId": 2
@@ -50,6 +160,63 @@
       "side": 1,
       "message": "That\u0027s not what I\u0027m arguing for. I\u0027m arguing that if we\u0027re writing uiauto.ScreenRecordFromKB, then we should ever be deprecating uiauto.NewScreenRecorder() and recorder.start().",
       "parentUuid": "3cef550c_d1d205ee",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1eab09d_dfbd5ac8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "There\u0027s no way to do this faster? A useful and easy-to-call function adding a 5 second slowdown every time it\u0027s called seems like it could cause a lot of slowness in tests. If it\u0027s not avoidable, how do we make sure it\u0027s really obvious how slow it is?",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8255404d_d920f4b0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "Instead of copy + delete would os.Rename work to directly move the files? I assume the target directory is on the DUT?",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc24d2e_a6ba554c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-01T04:21:29Z",
+      "side": 1,
+      "message": "MoveFiles sounds like it belongs somewhere other than crash if it\u0027s being used in multiple modules.",
+      "range": {
+        "startLine": 309,
+        "startChar": 13,
+        "endLine": 309,
+        "endChar": 33
+      },
       "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
