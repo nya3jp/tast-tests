@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/cpuset"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -226,6 +227,21 @@ func CPUSet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to determine guest type: ", err)
 	}
 	if isVMEnabled {
+		// Don't run the test on rammus-arc-r. Although ARCVM doesn't officially support host kernel
+		// 4.4, rammus-arc-r which exists for development purposes is the exception. Unfortunately,
+		// 4.4 kernel doesn't support core scheduling, and the isCoreSchedulingAvailable() call below
+		// always fails on rammus-arc-r. For now, we want to skip the test on rammus-arc-r. Once its
+		// host kernel is updated to a recent version in M69, the test will start passing on
+		// rammus-arc-r.
+		// TODO(yusukes): Remove this workaround once rammus-arc-r's host kernel is updated.
+		u, err := sysutil.Uname()
+		if err != nil {
+			s.Fatal("Failed to get uname: ", err)
+		}
+		if strings.HasPrefix(u.Release, "4.4.") {
+			return
+		}
+
 		if isCoreSchedulingAvailable() {
 			// When core scheduling is used, ARCVM cannot use all the CPU cores.
 			numExpectedGuestCpus, err = numberOfProcessorsForCoreScheduling()
