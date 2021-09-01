@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb5ee0f_912d04cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-01T23:18:19Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "fb501711fd0ea6aa4239fefd117ec6879d9f312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1397db_c2aac8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-01T23:18:19Z",
+      "side": 1,
+      "message": "nit: Remember these names are now visible across the whole filemanager package but can\u0027t actually be used (e.g. filemanager.Smoke can\u0027t have a const called completeLabel but also can\u0027t use this one here). Consider scoping the variable name to zipPerf...",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "fb501711fd0ea6aa4239fefd117ec6879d9f312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
