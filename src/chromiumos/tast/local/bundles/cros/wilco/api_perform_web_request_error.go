@@ -18,8 +18,8 @@ func init() {
 		Func: APIPerformWebRequestError,
 		Desc: "Test sending PerformWebRequest gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon when not enrolled",
 		Contacts: []string{
-			"vsavu@chromium.org",  // Test author
-			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
+			"vsavu@chromium.org", // Test author
+			"lamzin@google.com",  // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
 		Attr:         []string{"group:mainline"},

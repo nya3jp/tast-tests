@@ -26,9 +26,9 @@ func init() {
 		Func: DeviceWilcoDtcAllowed,
 		Desc: "Test setting the DeviceWilcoDtcAllowed policy by checking if the Wilco DTC Support Daemon is running",
 		Contacts: []string{
-			"vsavu@chromium.org",  // Test author
-			"pmoy@chromium.org",   // wilco_dtc_supportd author
-			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
+			"vsavu@chromium.org", // Test author
+			"pmoy@chromium.org",  // wilco_dtc_supportd author
+			"lamzin@google.com",  // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
 		Attr:         []string{"group:enrollment"},
