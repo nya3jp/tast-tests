@@ -16,6 +16,24 @@
       "message": "I don\u0027t really like the idea of having two separate functions to start screen recording. Can we just make them all use the keyboard to start \u0026 stop screen recording?",
       "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cef550c_d1d205ee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T03:59:29Z",
+      "side": 1,
+      "message": "As I said in another cl, making the structure like this:\n1. Start record\n2. Run test func\n3. Stop the record\n\nmakes the review error prone. With two separate funcs, a cl of adding screenshot will be only of 3 lines, which is a XS cl. With one func, the cl could be M, L, or even XL if the test cases is long. Even though we could claim that most of the lines just change the indent, but we can not guarantee.",
+      "parentUuid": "6db91e4e_664112b8",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
