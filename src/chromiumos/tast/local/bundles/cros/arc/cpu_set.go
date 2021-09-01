@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/cpuset"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -177,6 +178,11 @@ func readCPUSetInfo(ctx context.Context, t string) (string, []byte, error) {
 // run on CPUs that are not vulnerable. This is a Go port of chromeos::system::IsCoreSchedulingAvailable
 // function in src/chromeos/system/core_scheduling.cc.
 func isCoreSchedulingAvailable() bool {
+	// The original C++ function calls some prctl(2) syscalls here to see if the kernel is compiled
+	// with core scheduling enabled. This port doesn't do that because ARCVM's host kernel always has
+	// the support (except for rammus-arc-r which we special-case in CPUSet()).
+	// TODO(yusukes): Remove the comment on rammus-arc-r once its host kernel is updated.
+
 	filenames := []string{"l1tf", "mds"}
 	for _, filename := range filenames {
 		path := fmt.Sprintf("/sys/devices/system/cpu/vulnerabilities/%s", filename)
@@ -226,6 +232,19 @@ func CPUSet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to determine guest type: ", err)
 	}
 	if isVMEnabled {
+		// Don't run the test on rammus-arc-r. Although ARCVM doesn't officially support host kernel
+		// 4.4, rammus-arc-r which exists for development purposes is the exception. Unfortunately,
+		// 4.4 kernel doesn't support core scheduling, and the isCoreSchedulingAvailable() call below
+		// always fails on rammus-arc-r. For now, we want to skip the test on rammus-arc-r. Once its
+		// host kernel is updated to a recent version in M96, the test will start passing on
+		// rammus-arc-r.
+		// TODO(yusukes): Remove this workaround once rammus-arc-r's host kernel is updated.
+		if ver, _, err := sysutil.KernelVersionAndArch(); err != nil {
+			s.Fatal("Failed to get kernel version: ", err)
+		} else if ver.Is(4, 4) {
+			return
+		}
+
 		if isCoreSchedulingAvailable() {
 			// When core scheduling is used, ARCVM cannot use all the CPU cores.
 			numExpectedGuestCpus, err = numberOfProcessorsForCoreScheduling()
