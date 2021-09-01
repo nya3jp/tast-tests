@@ -27,9 +27,9 @@ func init() {
 		Func: DevicePowerPeakShift,
 		Desc: "Tests for DevicePowerPeakShift policies that minimize alternating current (AC) usage during peak hours",
 		Contacts: []string{
-			"bisakhmondal00@gmail.com", // test author
-			"lamzin@google.com",        // wilco_dtc_supportd maintainer
+			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",
+			"bisakhmondal00@gmail.com", // test author
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      25 * time.Minute,

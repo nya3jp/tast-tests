@@ -26,9 +26,9 @@ func init() {
 		Func: DeviceUSBPowershare,
 		Desc: "Tests the DeviceUsbPowerShareEnabled policy that shares power through USB when the device is off",
 		Contacts: []string{
-			"bisakhmondal00@gmail.com", // Test author
-			"lamzin@google.com",        // wilco_dtc_supportd maintainer
+			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",
+			"bisakhmondal00@gmail.com", // test author
 		},
 		Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"chrome", "wilco"},
