@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07865dee_f0269ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-01T23:32:52Z",
+      "side": 1,
+      "message": "FYI WM folks, we are promoting this test to cq ",
+      "revId": "b907e7df48fbda7c5de4e9b292bef164b8d37b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
