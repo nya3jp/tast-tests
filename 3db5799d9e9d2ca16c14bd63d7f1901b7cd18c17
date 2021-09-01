@@ -46,6 +46,99 @@
       },
       "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee19f2c2_ed4884f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-01T08:00:21Z",
+      "side": 1,
+      "message": "Seems the CL doesn\u0027t unpack, only zips? Why do you disable this feature? If there\u0027s a reason (e.g. intertwined code maybe?) Leave a comment in the code to explain.",
+      "parentUuid": "2fa90465_2c32f676",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a48122e_8511597f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-01T08:00:21Z",
+      "side": 1,
+      "message": "nit: I wonder if this can be extracted out too? This line feels incredibly long.",
+      "range": {
+        "startLine": 229,
+        "startChar": 66,
+        "endLine": 229,
+        "endChar": 140
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cfb6f2_2739a318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-01T08:00:21Z",
+      "side": 1,
+      "message": "nit: Can you pull some of these out into consts at the start?",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 41
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90684ade_83e0621a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-01T08:00:21Z",
+      "side": 1,
+      "message": "nit: these are repeated, consider making a variable above instead.",
+      "range": {
+        "startLine": 272,
+        "startChar": 18,
+        "endLine": 272,
+        "endChar": 90
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
