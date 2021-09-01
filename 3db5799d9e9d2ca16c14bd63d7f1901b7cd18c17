@@ -22,6 +22,30 @@
       },
       "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa90465_2c32f676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2021-09-01T06:09:52Z",
+      "side": 1,
+      "message": "I would leave that out for the moment. We\u0027ll add it when it is really needed (and it might not be needed for a while).",
+      "parentUuid": "c4119f13_05e41184",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "3db5799d9e9d2ca16c14bd63d7f1901b7cd18c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
