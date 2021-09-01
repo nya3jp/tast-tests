@@ -46,6 +46,30 @@
       },
       "revId": "4ce29db60167fd1a8348a7e708ee5a30cf59c242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c7ec14_6f4892e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-01T06:39:39Z",
+      "side": 1,
+      "message": "As discussed offline.Waiting for the updated change.",
+      "parentUuid": "be4e8074_dc3439ba",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 108
+      },
+      "revId": "4ce29db60167fd1a8348a7e708ee5a30cf59c242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
