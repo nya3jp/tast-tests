@@ -109,45 +109,45 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		Name: "Main Activity",
 		Role: ui.RoleTypeApplication,
 		Children: []*axTreeNode{
-			&axTreeNode{
+			{
 				Role: ui.RoleTypeGenericContainer,
 				Children: []*axTreeNode{
-					&axTreeNode{
+					{
 						Name: "Main Activity",
 						Role: ui.RoleTypeStaticText,
 					},
-					&axTreeNode{
+					{
 						Name:       "OFF",
 						Role:       ui.RoleTypeToggleButton,
 						Attributes: map[string]interface{}{"tooltip": "button tooltip"},
 					},
-					&axTreeNode{
+					{
 						Name:       "CheckBox",
 						Role:       ui.RoleTypeCheckBox,
 						Attributes: map[string]interface{}{"tooltip": "checkbox tooltip"},
 					},
-					&axTreeNode{
+					{
 						Name:       "CheckBoxWithStateDescription",
 						Role:       ui.RoleTypeCheckBox,
 						Attributes: s.Param().(expectedNode).CheckBoxAttributes,
 					},
-					&axTreeNode{
+					{
 						Name:       "seekBar",
 						Role:       ui.RoleTypeSlider,
 						Attributes: s.Param().(expectedNode).SeekBarAttributes,
 					},
-					&axTreeNode{
+					{
 						Role: ui.RoleTypeSlider,
 					},
-					&axTreeNode{
+					{
 						Name: "ANNOUNCE",
 						Role: ui.RoleTypeButton,
 					},
-					&axTreeNode{
+					{
 						Name: "CLICK TO SHOW TOAST",
 						Role: ui.RoleTypeButton,
 					},
-					&axTreeNode{
+					{
 						Role: ui.RoleTypeGenericContainer,
 					},
 				},
@@ -158,22 +158,22 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		Name: "Edit Text Activity",
 		Role: ui.RoleTypeApplication,
 		Children: []*axTreeNode{
-			&axTreeNode{
+			{
 				Role: ui.RoleTypeGenericContainer,
 				Children: []*axTreeNode{
-					&axTreeNode{
+					{
 						Name: "Edit Text Activity",
 						Role: ui.RoleTypeStaticText,
 					},
-					&axTreeNode{
+					{
 						Name: "contentDescription",
 						Role: ui.RoleTypeTextField,
 					},
-					&axTreeNode{
+					{
 						Name: "hint",
 						Role: ui.RoleTypeTextField,
 					},
-					&axTreeNode{
+					{
 						Role:       ui.RoleTypeTextField,
 						Attributes: map[string]interface{}{"value": "text"},
 					},

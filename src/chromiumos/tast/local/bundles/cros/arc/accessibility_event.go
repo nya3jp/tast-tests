@@ -77,7 +77,7 @@ func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	MainActivityTestSteps := []axEventTestStep{
-		axEventTestStep{
+		{
 			"Tab",
 			ui.FindParams{
 				ClassName: arca11y.ToggleButton,
@@ -89,7 +89,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeFocus,
 		},
-		axEventTestStep{
+		{
 			"Search+Space",
 			ui.FindParams{
 				ClassName: arca11y.ToggleButton,
@@ -101,7 +101,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeCheckedStateChanged,
 		},
-		axEventTestStep{
+		{
 			"Tab",
 			ui.FindParams{
 				ClassName: arca11y.CheckBox,
@@ -113,7 +113,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeFocus,
 		},
-		axEventTestStep{
+		{
 			"Search+Space",
 			ui.FindParams{
 				ClassName: arca11y.CheckBox,
@@ -125,7 +125,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeCheckedStateChanged,
 		},
-		axEventTestStep{
+		{
 			"Tab",
 			ui.FindParams{
 				ClassName: arca11y.CheckBox,
@@ -137,7 +137,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeFocus,
 		},
-		axEventTestStep{
+		{
 			"Tab",
 			ui.FindParams{
 				ClassName: arca11y.SeekBar,
@@ -149,7 +149,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeFocus,
 		},
-		axEventTestStep{
+		{
 			"=",
 			ui.FindParams{
 				ClassName: arca11y.SeekBar,
@@ -161,7 +161,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeRangeValueChanged,
 		},
-		axEventTestStep{
+		{
 			"Tab",
 			ui.FindParams{
 				ClassName: arca11y.SeekBar,
@@ -172,7 +172,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeFocus,
 		},
-		axEventTestStep{
+		{
 			"-",
 			ui.FindParams{
 				ClassName: arca11y.SeekBar,
@@ -185,7 +185,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		},
 	}
 	EditTextActivityTestSteps := []axEventTestStep{
-		axEventTestStep{
+		{
 			"Tab",
 			ui.FindParams{
 				ClassName: arca11y.EditText,
@@ -194,7 +194,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			ui.EventTypeFocus,
 		},
-		axEventTestStep{
+		{
 			"a",
 			ui.FindParams{
 				ClassName: arca11y.EditText,

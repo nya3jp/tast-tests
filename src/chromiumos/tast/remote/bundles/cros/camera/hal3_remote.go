@@ -30,59 +30,59 @@ func init() {
 		// For extra params, reference corresponding tests in:
 		// src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3_*.go
 		Params: []testing.Param{
-			testing.Param{
+			{
 				Name:      "frame_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_FRAME, Facing: pb.Facing_FACING_BACK},
 				Timeout:   15 * time.Minute,
 			},
-			testing.Param{
+			{
 				Name:      "frame_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_FRAME, Facing: pb.Facing_FACING_FRONT},
 				Timeout:   15 * time.Minute,
 			},
 
-			testing.Param{
+			{
 				Name:      "perf_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_PERF, Facing: pb.Facing_FACING_BACK},
 			},
-			testing.Param{
+			{
 				Name:      "perf_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_PERF, Facing: pb.Facing_FACING_FRONT},
 			},
 
-			testing.Param{
+			{
 				Name:      "preview_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_PREVIEW, Facing: pb.Facing_FACING_BACK},
 			},
-			testing.Param{
+			{
 				Name:      "preview_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_PREVIEW, Facing: pb.Facing_FACING_FRONT},
 			},
 
-			testing.Param{
+			{
 				Name:      "recording_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_RECORDING, Facing: pb.Facing_FACING_BACK},
 			},
-			testing.Param{
+			{
 				Name:      "recording_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_RECORDING, Facing: pb.Facing_FACING_FRONT},
 			},
 
-			testing.Param{
+			{
 				Name:      "still_capture_back",
 				ExtraAttr: []string{"camerabox_facing_back"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_STILL_CAPTURE, Facing: pb.Facing_FACING_BACK},
 				Timeout:   6 * time.Minute,
 			},
-			testing.Param{
+			{
 				Name:      "still_capture_front",
 				ExtraAttr: []string{"camerabox_facing_front"},
 				Val:       &pb.RunTestRequest{Test: pb.HAL3CameraTest_STILL_CAPTURE, Facing: pb.Facing_FACING_FRONT},

@@ -246,9 +246,9 @@ var waitForCrashFilesTests = []struct {
 	fileContents: []byte("foo=bar\ndone=1"),
 	regexes:      []string{metaRegex, dmpRegex, logRegex},
 	expectedResults: map[string][]string{
-		metaRegex: []string{"a.15.meta", "b.7.meta"},
-		dmpRegex:  []string{"a.15.dmp", "b.7.dmp"},
-		logRegex:  []string{"a.15.log", "b.7.log"},
+		metaRegex: {"a.15.meta", "b.7.meta"},
+		dmpRegex:  {"a.15.dmp", "b.7.dmp"},
+		logRegex:  {"a.15.log", "b.7.log"},
 	},
 }, {
 	name: "MissOneRegex",
@@ -260,8 +260,8 @@ var waitForCrashFilesTests = []struct {
 		Missing: []string{logRegex},
 		Files:   []string{"a.15.meta", "a.15.dmp", "b.7.meta", "b.7.dmp", "notreturned.6.kcrash"},
 		PartialMatches: map[string][]string{
-			metaRegex: []string{"a.15.meta", "b.7.meta"},
-			dmpRegex:  []string{"a.15.dmp", "b.7.dmp"},
+			metaRegex: {"a.15.meta", "b.7.meta"},
+			dmpRegex:  {"a.15.dmp", "b.7.dmp"},
 		},
 	},
 	timeout: time.Second,
@@ -284,7 +284,7 @@ var waitForCrashFilesTests = []struct {
 	fileContents: []byte("foo=bar\ndone=1"),
 	regexes:      []string{`c\.\d{1,8}\.meta`},
 	expectedResults: map[string][]string{
-		`c\.\d{1,8}\.meta`: []string{"c.15.meta"},
+		`c\.\d{1,8}\.meta`: {"c.15.meta"},
 	},
 }, {
 	name: "DirectoryNamesNotPartOfMatch",
@@ -295,7 +295,7 @@ var waitForCrashFilesTests = []struct {
 	dirs:         []string{"dir"},
 	regexes:      []string{`d.*\.\d{1,8}\.log`},
 	expectedResults: map[string][]string{
-		`d.*\.\d{1,8}\.log`: []string{"dir/dir.15.log"},
+		`d.*\.\d{1,8}\.log`: {"dir/dir.15.log"},
 	},
 }, {
 	// Ensure WaitForCrashFiles actually waits for the files to show up and doesn't
@@ -306,10 +306,10 @@ var waitForCrashFilesTests = []struct {
 	fileContents: []byte("foo=bar\ndone=1"),
 	regexes:      []string{metaRegex, dmpRegex, logRegex, kcrashRegex},
 	expectedResults: map[string][]string{
-		metaRegex:   []string{"a.15.meta"},
-		dmpRegex:    []string{"a.15.dmp", "b.7.dmp"},
-		logRegex:    []string{"a.15.log", "b.7.log"},
-		kcrashRegex: []string{"b.7.kcrash"},
+		metaRegex:   {"a.15.meta"},
+		dmpRegex:    {"a.15.dmp", "b.7.dmp"},
+		logRegex:    {"a.15.log", "b.7.log"},
+		kcrashRegex: {"b.7.kcrash"},
 	},
 }, {
 	name:         "MetasNeedDone",
@@ -320,8 +320,8 @@ var waitForCrashFilesTests = []struct {
 		Missing: []string{metaRegex},
 		Files:   []string{"a.15.meta", "a.15.dmp", "a.15.log", "b.7.meta", "b.7.dmp", "b.7.log"},
 		PartialMatches: map[string][]string{
-			logRegex: []string{"a.15.log", "b.7.log"},
-			dmpRegex: []string{"a.15.dmp", "b.7.dmp"},
+			logRegex: {"a.15.log", "b.7.log"},
+			dmpRegex: {"a.15.dmp", "b.7.dmp"},
 		},
 	},
 	timeout: time.Second,
@@ -331,8 +331,8 @@ var waitForCrashFilesTests = []struct {
 	fileContents: []byte("foo=bar"),
 	regexes:      []string{dmpRegex, logRegex},
 	expectedResults: map[string][]string{
-		dmpRegex: []string{"a.15.dmp", "b.7.dmp"},
-		logRegex: []string{"a.15.log", "b.7.log"},
+		dmpRegex: {"a.15.dmp", "b.7.dmp"},
+		logRegex: {"a.15.log", "b.7.log"},
 	},
 }, {
 	name:                 "OnlyOneMetaNeedsDone_FirstMetaHasDone",
@@ -341,9 +341,9 @@ var waitForCrashFilesTests = []struct {
 	overrideFileContents: map[string][]byte{"a.15.meta": []byte("done=1")},
 	regexes:              []string{metaRegex, dmpRegex, logRegex},
 	expectedResults: map[string][]string{
-		dmpRegex:  []string{"a.15.dmp", "b.7.dmp"},
-		logRegex:  []string{"a.15.log", "b.7.log"},
-		metaRegex: []string{"a.15.meta"}, // Note no b.7.meta
+		dmpRegex:  {"a.15.dmp", "b.7.dmp"},
+		logRegex:  {"a.15.log", "b.7.log"},
+		metaRegex: {"a.15.meta"}, // Note no b.7.meta
 	},
 }, {
 	name:                 "OnlyOneMetaNeedsDone_SecondMetaHasDone",
@@ -352,9 +352,9 @@ var waitForCrashFilesTests = []struct {
 	overrideFileContents: map[string][]byte{"b.7.meta": []byte("done=1")},
 	regexes:              []string{metaRegex, dmpRegex, logRegex},
 	expectedResults: map[string][]string{
-		dmpRegex:  []string{"a.15.dmp", "b.7.dmp"},
-		logRegex:  []string{"a.15.log", "b.7.log"},
-		metaRegex: []string{"b.7.meta"}, // Note no a.15.meta
+		dmpRegex:  {"a.15.dmp", "b.7.dmp"},
+		logRegex:  {"a.15.log", "b.7.log"},
+		metaRegex: {"b.7.meta"}, // Note no a.15.meta
 	},
 }, {
 	name: "MultipleDirectories",
@@ -364,9 +364,9 @@ var waitForCrashFilesTests = []struct {
 	dirs:         []string{"dir1", "dir2", "dir3"},
 	regexes:      []string{metaRegex, dmpRegex, logRegex},
 	expectedResults: map[string][]string{
-		dmpRegex:  []string{"dir2/a.15.dmp", "dir3/b.7.dmp"},
-		logRegex:  []string{"dir2/a.15.log", "dir3/b.7.log"},
-		metaRegex: []string{"dir2/a.15.meta", "dir3/b.7.meta"},
+		dmpRegex:  {"dir2/a.15.dmp", "dir3/b.7.dmp"},
+		logRegex:  {"dir2/a.15.log", "dir3/b.7.log"},
+		metaRegex: {"dir2/a.15.meta", "dir3/b.7.meta"},
 	},
 }, {
 	name:         "NonCrashFilesAlwaysIgnored",
@@ -374,7 +374,7 @@ var waitForCrashFilesTests = []struct {
 	fileContents: []byte("foo=bar"),
 	regexes:      []string{".*"},
 	expectedResults: map[string][]string{
-		".*": []string{"a.dmp", "a.kcrash"},
+		".*": {"a.dmp", "a.kcrash"},
 	},
 }, {
 	name:         "NonCrashFilesAlwaysIgnoredNoMatches",
@@ -394,10 +394,10 @@ var waitForCrashFilesTests = []struct {
 	regexes:         []string{metaRegex, dmpRegex},
 	optionalRegexes: []string{logRegex, kcrashRegex},
 	expectedResults: map[string][]string{
-		metaRegex:   []string{"a.15.meta", "b.7.meta"},
-		dmpRegex:    []string{"a.15.dmp", "b.7.dmp"},
-		logRegex:    []string{"a.15.log", "b.7.log"},
-		kcrashRegex: []string{"a.15.kcrash"},
+		metaRegex:   {"a.15.meta", "b.7.meta"},
+		dmpRegex:    {"a.15.dmp", "b.7.dmp"},
+		logRegex:    {"a.15.log", "b.7.log"},
+		kcrashRegex: {"a.15.kcrash"},
 	},
 }, {
 	name:            "OptionalRegexesDontCauseErrors",
@@ -407,9 +407,9 @@ var waitForCrashFilesTests = []struct {
 	optionalRegexes: []string{logRegex, kcrashRegex},
 	// kcrashRegex not matched
 	expectedResults: map[string][]string{
-		metaRegex: []string{"a.15.meta", "b.7.meta"},
-		dmpRegex:  []string{"a.15.dmp", "b.7.dmp"},
-		logRegex:  []string{"a.15.log", "b.7.log"},
+		metaRegex: {"a.15.meta", "b.7.meta"},
+		dmpRegex:  {"a.15.dmp", "b.7.dmp"},
+		logRegex:  {"a.15.log", "b.7.log"},
 	},
 }, {
 	name:            "OnlyOptionalRegexesAlwaysSucceeds",

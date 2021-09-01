@@ -104,38 +104,38 @@ var keyIDMap = map[string]keyType{
 //   2) Used to verify that files that end up in the build (and therefore
 //      what we release) is exactly what we expect.
 var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
-	FPBoardNameBloonchipper: map[string]firmwareMetadata{
-		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.7314-3dfc5ff6-RW.bin": firmwareMetadata{
+	FPBoardNameBloonchipper: {
+		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.7314-3dfc5ff6-RW.bin": {
 			sha256sum: "2bac89c16ad71986fe37ed651fe7dd6d5a3d039678d4a5f1d03c5a65a9f3bc3c",
 			roVersion: "bloonchipper_v2.0.4277-9f652bb3",
 			rwVersion: "bloonchipper_v2.0.7314-3dfc5ff6",
 			keyID:     "1c590ef36399f6a2b2ef87079c135b69ef89eb60",
 		},
-		"bloonchipper_v2.0.5938-197506c1-RO_v2.0.7314-3dfc5ff6-RW.bin": firmwareMetadata{
+		"bloonchipper_v2.0.5938-197506c1-RO_v2.0.7314-3dfc5ff6-RW.bin": {
 			sha256sum: "50ddcad558e1ded476a209946cabcddd6d9c1033890f1661d7ba8c183aa625ab",
 			roVersion: "bloonchipper_v2.0.5938-197506c1",
 			rwVersion: "bloonchipper_v2.0.7314-3dfc5ff6",
 			keyID:     "1c590ef36399f6a2b2ef87079c135b69ef89eb60",
 		},
 	},
-	FPBoardNameNocturne: map[string]firmwareMetadata{
-		"nocturne_fp_v2.2.64-58cf5974e-RO_v2.0.7304-441100b93-RW.bin": firmwareMetadata{
+	FPBoardNameNocturne: {
+		"nocturne_fp_v2.2.64-58cf5974e-RO_v2.0.7304-441100b93-RW.bin": {
 			sha256sum: "569a191bd2ed25ce89b296f0ab8cd2ed567dbf6a8df3f6b3f82ad58c786d79a9",
 			roVersion: "nocturne_fp_v2.2.64-58cf5974e",
 			rwVersion: "nocturne_fp_v2.0.7304-441100b93",
 			keyID:     "6f38c866182bd9bf7a4462c06ac04fa6a0074351",
 		},
 	},
-	FPBoardNameNami: map[string]firmwareMetadata{
-		"nami_fp_v2.2.144-7a08e07eb-RO_v2.0.7304-441100b93-RW.bin": firmwareMetadata{
+	FPBoardNameNami: {
+		"nami_fp_v2.2.144-7a08e07eb-RO_v2.0.7304-441100b93-RW.bin": {
 			sha256sum: "e7b23f5e585c47d24fe3696139b48c0bac8c43b025669f74aafbff4aa9cbbebd",
 			roVersion: "nami_fp_v2.2.144-7a08e07eb",
 			rwVersion: "nami_fp_v2.0.7304-441100b93",
 			keyID:     "35486c0090ca390408f1fbbf2a182966084fe2f8",
 		},
 	},
-	FPBoardNameDartmonkey: map[string]firmwareMetadata{
-		"dartmonkey_v2.0.2887-311310808-RO_v2.0.7304-441100b93-RW.bin": firmwareMetadata{
+	FPBoardNameDartmonkey: {
+		"dartmonkey_v2.0.2887-311310808-RO_v2.0.7304-441100b93-RW.bin": {
 			sha256sum: "5127137655b4b13d7a86ba897b08a9957d36b74afb97558496c6fba98e808b7b",
 			roVersion: "dartmonkey_v2.0.2887-311310808",
 			rwVersion: "dartmonkey_v2.0.7304-441100b93",

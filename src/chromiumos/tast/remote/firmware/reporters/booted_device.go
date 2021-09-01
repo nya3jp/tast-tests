@@ -35,12 +35,12 @@ type BootedDeviceInfo struct {
 
 // knownBootedDeviceInfos contains all the valid BootedDeviceInfos, if a tuple is not here, then it is not recognized
 var knownBootedDeviceInfos = map[BootedDeviceInfo]BootedDeviceType{
-	BootedDeviceInfo{"normal", false, "sig"}:    BootedDeviceNormalInternalSig,
-	BootedDeviceInfo{"developer", false, "sig"}: BootedDeviceDeveloperInternalSig,
-	BootedDeviceInfo{"developer", true, "sig"}:  BootedDeviceDeveloperRemovableSig,
-	BootedDeviceInfo{"developer", true, "hash"}: BootedDeviceDeveloperRemovableHash,
-	BootedDeviceInfo{"recovery", true, "sig"}:   BootedDeviceRecoveryRemovableSig,
-	BootedDeviceInfo{"recovery", true, "hash"}:  BootedDeviceRecoveryRemovableHash,
+	{"normal", false, "sig"}:    BootedDeviceNormalInternalSig,
+	{"developer", false, "sig"}: BootedDeviceDeveloperInternalSig,
+	{"developer", true, "sig"}:  BootedDeviceDeveloperRemovableSig,
+	{"developer", true, "hash"}: BootedDeviceDeveloperRemovableHash,
+	{"recovery", true, "sig"}:   BootedDeviceRecoveryRemovableSig,
+	{"recovery", true, "hash"}:  BootedDeviceRecoveryRemovableHash,
 }
 
 var (

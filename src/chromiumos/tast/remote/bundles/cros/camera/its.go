@@ -64,7 +64,7 @@ func init() {
 		Timeout:      15 * time.Minute,
 		Params: []testing.Param{
 			// X86
-			testing.Param{
+			{
 				Name:              "scene0_back_x86",
 				ExtraAttr:         []string{"camerabox_facing_back"},
 				ExtraData:         append([]string{pre.CTSVerifierX86.Zip}, pre.CTSVerifierX86.Py3Patches...),

@@ -801,8 +801,8 @@ func TestConfigFormat(t *testing.T) {
 				Channel:        1,
 				SecurityConfig: &base.Config{},
 				AdditionalBSSs: []AdditionalBSS{
-					AdditionalBSS{"iface1", "ssid1", "00:11:22:33:44:55"},
-					AdditionalBSS{"iface2", "ssid2", "55:44:33:22:11:00"},
+					{"iface1", "ssid1", "00:11:22:33:44:55"},
+					{"iface2", "ssid2", "55:44:33:22:11:00"},
 				},
 			},
 			bsss: []map[string]string{

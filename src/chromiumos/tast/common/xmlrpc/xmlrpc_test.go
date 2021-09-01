@@ -195,10 +195,10 @@ func TestValueString(t *testing.T) {
 	s3 := "2.1"
 	s4 := "2.1"
 	a := xmlArray{Values: []value{
-		value{Int: &s1},
-		value{Boolean: &s2},
-		value{Double: &s3},
-		value{Str: &s4},
+		{Int: &s1},
+		{Boolean: &s2},
+		{Double: &s3},
+		{Str: &s4},
 	}}
 	v = value{Array: &a}
 	sOut = fmt.Sprintf("%v", v)
@@ -208,10 +208,10 @@ func TestValueString(t *testing.T) {
 	}
 
 	b := xmlStruct{Members: []member{
-		member{Name: "key1", Value: value{Int: &s1}},
-		member{Name: "key2", Value: value{Boolean: &s2}},
-		member{Name: "key3", Value: value{Double: &s3}},
-		member{Name: "key4", Value: value{Str: &s4}},
+		{Name: "key1", Value: value{Int: &s1}},
+		{Name: "key2", Value: value{Boolean: &s2}},
+		{Name: "key3", Value: value{Double: &s3}},
+		{Name: "key4", Value: value{Str: &s4}},
 	}}
 	v = value{Struct: &b}
 	sOut = fmt.Sprintf("%v", v)
@@ -576,10 +576,10 @@ func TestCheckFault(t *testing.T) {
 		expectedFaultString string
 	}
 	for i, tc := range []testCase{
-		testCase{hasFault, true, true, 1, "Bad XML request!"},
-		testCase{noFault, false, false, 0, ""},
-		testCase{faultWithCode0, true, false, 0, ""},
-		testCase{faultWithUnexpectedMember, true, false, 0, ""},
+		{hasFault, true, true, 1, "Bad XML request!"},
+		{noFault, false, false, 0, ""},
+		{faultWithCode0, true, false, 0, ""},
+		{faultWithUnexpectedMember, true, false, 0, ""},
 	} {
 		// Check the XML bytes for fault.
 		r := methodResponse{}

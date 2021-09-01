@@ -114,7 +114,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 	}
 
 	var testCases = []testCase{
-		testCase{
+		{
 			addMethod: "RequestTcpPortAccess",
 			addArgs:   []interface{}{uint16(accessPort), "", dbus.UnixFD(tcpAccessR.Fd())},
 			delMethod: "ReleaseTcpPort",
@@ -122,7 +122,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			rule:      []string{"INPUT", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
-		testCase{
+		{
 			addMethod: "RequestTcpPortAccess",
 			addArgs:   []interface{}{uint16(accessPort), iface, dbus.UnixFD(tcpIfaceAccessR.Fd())},
 			delMethod: "ReleaseTcpPort",
@@ -130,7 +130,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			rule:      []string{"INPUT", "-i", iface, "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
-		testCase{
+		{
 			addMethod: "RequestTcpPortForward",
 			addArgs:   []interface{}{uint16(forwardPort), iface, ip, uint16(forwardPort), dbus.UnixFD(tcpForwardR.Fd())},
 			delMethod: "ReleaseTcpPortForward",
@@ -138,7 +138,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			rule:      []string{"FORWARD", "-d", ip, "-i", iface, "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(forwardPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd},
 		},
-		testCase{
+		{
 			addMethod: "RequestUdpPortAccess",
 			addArgs:   []interface{}{uint16(accessPort), "", dbus.UnixFD(udpAccessR.Fd())},
 			delMethod: "ReleaseUdpPort",
@@ -146,7 +146,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			rule:      []string{"INPUT", "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
-		testCase{
+		{
 			addMethod: "RequestUdpPortAccess",
 			addArgs:   []interface{}{uint16(accessPort), iface, dbus.UnixFD(udpIfaceAccessR.Fd())},
 			delMethod: "ReleaseUdpPort",
@@ -154,7 +154,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			rule:      []string{"INPUT", "-i", iface, "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
-		testCase{
+		{
 			addMethod: "RequestUdpPortForward",
 			addArgs:   []interface{}{uint16(forwardPort), iface, ip, uint16(forwardPort), dbus.UnixFD(udpForwardR.Fd())},
 			delMethod: "ReleaseUdpPortForward",

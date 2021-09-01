@@ -79,7 +79,7 @@ func CSAReconnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get server frequency: ", err)
 	}
 	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
+		{
 			Property:       shillconst.ServicePropertyWiFiFrequency,
 			ExpectedValues: []interface{}{uint32(alterFreq)},
 			Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,

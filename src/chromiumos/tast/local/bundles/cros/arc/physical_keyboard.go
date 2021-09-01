@@ -228,16 +228,16 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 	}()
 	skipKeys := map[input.EventCode]struct{}{
 		// Skip KEY_CAPSLOCK to avoid affecting the following tests by Capslock.
-		0x3a: struct{}{},
+		0x3a: {},
 		// Skip KEY_SYSRQ to avoid launching the screenshot tool. The
 		// screenshot tool can cause subsequent tests to fail by intercepting
 		// mouse clicks.
-		0x63: struct{}{},
+		0x63: {},
 		// Skip KEY_POWER which shuts down the machine.
-		0x74: struct{}{},
+		0x74: {},
 		// Skip KEY_LEFTMETA (0x7d) and KEY_RIGHTMETA (0x7e) which are the search keys to avoid confusing the test.
-		0x7d: struct{}{},
-		0x7e: struct{}{},
+		0x7d: {},
+		0x7e: {},
 	}
 	for scancode := input.EventCode(0x01); scancode < 0x220; scancode++ {
 		if _, exist := skipKeys[scancode]; exist || (scancode >= 0x80 && scancode < 0x160) {

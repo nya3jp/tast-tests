@@ -24,19 +24,19 @@ func TestNewStrokeGroup(t *testing.T) {
 						x: 10.0,
 						y: 10.0,
 					},
-					point{
+					{
 						x: 15.0,
 						y: 15.0,
 					},
-					point{
+					{
 						x: 20.0,
 						y: 20.0,
 					},
-					point{
+					{
 						x: 25.0,
 						y: 25.0,
 					},
-					point{
+					{
 						x: 30.0,
 						y: 30.0,
 					},
