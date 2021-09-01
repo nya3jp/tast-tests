@@ -23,7 +23,6 @@ func init() {
 		Desc: "Tests that the Wilco DTC VM receives Bluetooth events using the DPSL",
 		Contacts: []string{
 			"lamzin@google.com", // Test author and wilco_dtc_supportd maintainer
-			"pmoy@chromium.org", // wilco_dtc_supportd author
 			"chromeos-wilco@google.com",
 		},
 		Attr:         []string{"group:mainline"},
