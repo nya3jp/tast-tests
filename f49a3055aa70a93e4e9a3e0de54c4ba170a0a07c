@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912abd3a_11f96af4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-01T10:50:17Z",
+      "side": 1,
+      "message": "Resolved comment regarding enum class.",
+      "revId": "f49a3055aa70a93e4e9a3e0de54c4ba170a0a07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
