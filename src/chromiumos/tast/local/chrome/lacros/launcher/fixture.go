@@ -36,7 +36,7 @@ func init() {
 		Name:     "lacros",
 		Desc:     "Lacros Chrome from a pre-built image",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -52,7 +52,7 @@ func init() {
 		Name:     "lacrosBypassPermissions",
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream")}, nil
 		}),
@@ -69,7 +69,7 @@ func init() {
 		Name:     "lacrosWith100FakeApps",
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		Parent:          "install100Apps",
@@ -86,7 +86,7 @@ func init() {
 		Name:     "lacrosForceComposition",
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -103,7 +103,7 @@ func init() {
 		Name:     "lacrosUI",
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(PreExist, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosSupport")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -197,9 +197,9 @@ type fixtureImpl struct {
 type SetupMode int
 
 const (
-	// PreExist denotes that Lacros-chrome already exists during the fixture. It can be already downloaded per the
-	// external data dependency or pre-deployed by the caller site that invokes the tests.
-	PreExist SetupMode = iota
+	// External denotes a lacros-chrome downloaded per the external data dependency.
+	// This may be overriden by a pre-deployed binary by specifying the lacrosDeployedBinary Var.
+	External SetupMode = iota
 	// Omaha is used to get the lacros binary.
 	Omaha
 	// Rootfs is used to force the rootfs version of lacros-chrome. No external data dependency is needed.
@@ -247,7 +247,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	opts = append(opts, chrome.LacrosExtraArgs(extensionArgs(chrome.TestExtensionID, extList)...))
 
 	deployed := false
-	if f.mode == PreExist {
+	if f.mode == External {
 		// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
 		// lacros-chrome instead of always downloading from a gcs location.
 		// This workaround is to be removed soon once lab provisioning is supported for Lacros.
@@ -274,7 +274,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	}
 
 	switch f.mode {
-	case PreExist:
+	case External:
 		if !deployed {
 			if err := prepareLacrosChromeBinary(ctx, s); err != nil {
 				s.Fatal("Failed to prepare lacros-chrome, err")
