@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc22040a_00f903f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-09-01T00:59:21Z",
+      "side": 1,
+      "message": "LGTM, but some recommendations for naming that you can ignore if you feel strongly about it.",
+      "revId": "920b3ff61623f839e82ee4a9464d9e338f351865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041c1751_0ea7bf75",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-09-01T00:59:21Z",
+      "side": 1,
+      "message": "Maybe just dropping \u0027.\u0027 is OK? I think \"arc_category_apk_mmap_pss\", \"arc_category_arc_mmap_pss\", etc. are good names for metrics.\n\nBut up to you, not a strongly held opinion :)",
+      "revId": "920b3ff61623f839e82ee4a9464d9e338f351865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efe7728_e8446e9e",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-09-01T00:59:21Z",
+      "side": 1,
+      "message": "I don\u0027t think kernel should have PSS in the name, since those pages don\u0027t have their values divided by the ref-count.",
+      "revId": "920b3ff61623f839e82ee4a9464d9e338f351865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e18d9c_b4b2b0dc",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-09-01T00:59:21Z",
+      "side": 1,
+      "message": "same for free, free pages aren\u0027t shared, so pss doesn\u0027t make sense.",
+      "revId": "920b3ff61623f839e82ee4a9464d9e338f351865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308c7a0e_a9392f99",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-09-01T00:59:21Z",
+      "side": 1,
+      "message": "same for lost ram. (I think it has to be Kernel, since we added up all user memory by summing all processes\u0027 PSS)",
+      "revId": "920b3ff61623f839e82ee4a9464d9e338f351865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
