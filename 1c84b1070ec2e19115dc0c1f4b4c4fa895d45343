@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a41cd82_46efdaa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ede5b3_dea72366",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55263462_fc770c9a",
@@ -71,6 +95,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8ffc84_7d0fbbdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "Very few of the test cases use this ResetAutomation. And this is almost inevitable. I think it makes sense, objects should become invalid when the base object is recreated. Actually, the root problem is crbug.com/1232877 which should be addressed in the product.",
+      "parentUuid": "a330d0f6_6f1afbf7",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c80e2bf_564ccc27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55263462_fc770c9a",
+      "range": {
+        "startLine": 10,
+        "startChar": 78,
+        "endLine": 10,
+        "endChar": 83
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9140e8db_947680fc",
@@ -94,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53eedc4c_94bcfae7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9140e8db_947680fc",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "469f06bb_de6fbf44",
@@ -107,6 +203,24 @@
       "writtenOn": "2021-09-01T04:21:29Z",
       "side": 1,
       "message": "Nit: Indentation of example",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ed7005_aa26b202",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "This is the problem of the Gerrit. The indentation in my local file is correct.",
+      "parentUuid": "469f06bb_de6fbf44",
       "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +280,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "923273a8_875c968f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "I do not suggest do that now, or at least in this cl. I\u0027m not sure about the how the new recording would work. Btw, deprecating the old one would make this cl huge.",
+      "parentUuid": "a4a94c47_514a3a4a",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1eab09d_dfbd5ac8",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
         "patchSetId": 2
@@ -177,6 +309,24 @@
       "writtenOn": "2021-09-01T04:21:29Z",
       "side": 1,
       "message": "There\u0027s no way to do this faster? A useful and easy-to-call function adding a 5 second slowdown every time it\u0027s called seems like it could cause a lot of slowness in tests. If it\u0027s not avoidable, how do we make sure it\u0027s really obvious how slow it is?",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c595b6b_425ae945",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any. If you start the record manually, you will see the recorder first counts 3, 2, 1 and then starts.",
+      "parentUuid": "e1eab09d_dfbd5ac8",
       "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -198,6 +348,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a8c647_9c9435d5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "I tried os.Rename(path, dir+\"record.webm\"), it did not copy the file to the target s.OutDir() or delete the file from downloads.",
+      "parentUuid": "8255404d_d920f4b0",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc24d2e_a6ba554c",
@@ -211,6 +379,30 @@
       "writtenOn": "2021-09-01T04:21:29Z",
       "side": 1,
       "message": "MoveFiles sounds like it belongs somewhere other than crash if it\u0027s being used in multiple modules.",
+      "range": {
+        "startLine": 309,
+        "startChar": 13,
+        "endLine": 309,
+        "endChar": 33
+      },
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e1b316_7cf9a27e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T06:07:11Z",
+      "side": 1,
+      "message": "It just moves to s.OutDir.",
+      "parentUuid": "bcc24d2e_a6ba554c",
       "range": {
         "startLine": 309,
         "startChar": 13,
