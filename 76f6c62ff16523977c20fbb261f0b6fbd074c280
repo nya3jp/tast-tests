@@ -39,6 +39,30 @@
       },
       "revId": "76f6c62ff16523977c20fbb261f0b6fbd074c280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559877cb_00186be9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/rrm_beacon_report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-01T02:04:22Z",
+      "side": 1,
+      "message": "Good suggestion, done.",
+      "parentUuid": "b6b4de00_347986d7",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 9
+      },
+      "revId": "76f6c62ff16523977c20fbb261f0b6fbd074c280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
