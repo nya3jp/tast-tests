@@ -28,10 +28,8 @@ type Conference interface {
 	VideoAudioControl(ctx context.Context) error
 	SwitchTabs(ctx context.Context) error
 	ChangeLayout(ctx context.Context) error
-	BackgroundBlurring(ctx context.Context) error
-	ExtendedDisplayPresenting(ctx context.Context) error
-	PresentSlide(ctx context.Context) error
-	StopPresenting(ctx context.Context) error
+	BackgroundChange(ctx context.Context) error
+	Presenting(ctx context.Context, application googleApplication, extendedDisplay bool) error
 	End(ctx context.Context) error
 }
 
