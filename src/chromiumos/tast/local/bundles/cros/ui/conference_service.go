@@ -243,9 +243,20 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 			return roomURL, cleanup, nil
 		}
 
+		var tsAction cuj.UIActionHandler
+		if tabletMode {
+			if tsAction, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to create tablet action handler")
+			}
+		} else {
+			if tsAction, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to create clamshell action handler")
+			}
+		}
+
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword, outDir)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, tsAction, tabletMode, int(req.RoomSize), meetAccount, meetPassword, outDir)
 		defer gmcli.End(ctx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
