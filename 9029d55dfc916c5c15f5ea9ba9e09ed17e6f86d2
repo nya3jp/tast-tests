@@ -83,6 +83,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e165b0e_7870ee80",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-01T06:09:57Z",
+      "side": 1,
+      "message": "I think you can check FirstRunningDevice in cras_test_client.go first to see whether it meets your requirement. If not, please add the new function there. Thanks.",
+      "range": {
+        "startLine": 276,
+        "startChar": 5,
+        "endLine": 276,
+        "endChar": 37
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5e7895d_71aa8f74",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 2
