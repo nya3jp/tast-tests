@@ -16,6 +16,86 @@
       "message": "Rebased with latest changes.",
       "revId": "dcc28edcc7fb8cb468378f254c9a89e12f14f324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f8dbb7_d1ff6693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-09-01T13:08:59Z",
+      "side": 1,
+      "message": "android/ lgtm with nits.",
+      "revId": "dcc28edcc7fb8cb468378f254c9a89e12f14f324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f6a69c_b1df2780",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/ZoomTestActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-09-01T13:08:59Z",
+      "side": 1,
+      "message": "Could you put this class to a separate file? One file should have only one class definition.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "dcc28edcc7fb8cb468378f254c9a89e12f14f324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18647e1f_766121af",
+        "filename": "android/ArcStandardizedTouchscreenTest/src/org/chromium/arc/testapp/arcstandardizedtouchscreentest/ZoomTestActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-09-01T13:08:59Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "dcc28edcc7fb8cb468378f254c9a89e12f14f324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8acd16_ed148c8f",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-09-01T13:08:59Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "revId": "dcc28edcc7fb8cb468378f254c9a89e12f14f324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
