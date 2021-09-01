@@ -22,6 +22,30 @@
       },
       "revId": "b32ecdfc7c1f2875579dfad1a89b0b16ab265568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94913c65_75780bf3",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_send.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-01T01:53:21Z",
+      "side": 1,
+      "message": "Yes. Tried with Call and didn\u0027t work out.",
+      "parentUuid": "0d34a917_d2e2a562",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "b32ecdfc7c1f2875579dfad1a89b0b16ab265568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
