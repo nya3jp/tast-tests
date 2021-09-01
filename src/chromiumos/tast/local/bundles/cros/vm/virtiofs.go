@@ -26,10 +26,10 @@ func init() {
 		Desc:         "Tests that the crosvm virtio-fs device works correctly",
 		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{vm.ArtifactData(), runPjdfstest},
+		Data:         []string{runPjdfstest},
 		Timeout:      20 * time.Minute,
-		SoftwareDeps: []string{"vm_host"},
-		Pre:          vm.Artifact(),
+		SoftwareDeps: []string{"vm_host", "dlc"},
+		Pre:          vm.Dlc(),
 	})
 }
 
