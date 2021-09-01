@@ -480,10 +480,7 @@ func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*c
 
 func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, targets *[]*chromeWindow, tsAction cuj.UIActionHandler, caseLevel Level) error {
 	windows := (*targets)
-	scrollActions, err := tsAction.ScrollChromePage(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get scroll page actions")
-	}
+	scrollActions := tsAction.ScrollChromePage(ctx)
 	plTimeout := pageLoadingTimeout(caseLevel)
 
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
