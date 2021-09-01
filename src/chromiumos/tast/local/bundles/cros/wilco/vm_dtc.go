@@ -22,7 +22,7 @@ func init() {
 		Desc: "Starts an instance of the Wilco DTC VM and tests the DTC (Diagnostics and Telemetry Controller) binaries using partner provided utilities",
 		Contacts: []string{
 			"tbegin@chromium.org", // Test author, wilco_dtc author
-			"lamzin@chromium.org", // wilco_dtc_supportd author
+			"lamzin@google.com",   // wilco_dtc_supportd author
 			"chromeos-wilco@google.com",
 		},
 		Attr:         []string{"group:mainline"},
