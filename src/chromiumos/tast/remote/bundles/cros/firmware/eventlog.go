@@ -216,12 +216,6 @@ func Eventlog(ctx context.Context, s *testing.State) {
 			s.Fatal("Error resetting DUT: ", err)
 		}
 	} else if param.bootToMode != "" {
-		// If coming from recovery mode, remove the CCD watchdog.
-		if v.BootMode == fwCommon.BootModeRecovery {
-			if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
-				s.Error("Failed to remove watchdog for ccd: ", err)
-			}
-		}
 		// If booting into recovery, check the USB Key
 		if param.bootToMode == fwCommon.BootModeRecovery {
 			if err := h.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
