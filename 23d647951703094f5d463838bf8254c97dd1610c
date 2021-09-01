@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b229cf24_48608b77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "Thanks for the port! LGTM",
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b860c474_289b8848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "Can you use fixture: \"chromeGraphics\" instead? It also checks for graphics related hang and crashes at PostTest stage.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40574788_660751ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "nice.",
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcfcf806_42e2ab98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "We don\u0027t really need this. Fixture should make sure it is running.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a881ed6_fe431b38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "Can you include the file name too?",
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cab7e04_78be3416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "Use \u003c directly.",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 6
+      },
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b364d502_e2460c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-01T20:57:57Z",
+      "side": 1,
+      "message": "You might want to use perf package to report the perf.\n\nCheck https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/common/perf",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 46
+      },
+      "revId": "23d647951703094f5d463838bf8254c97dd1610c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
