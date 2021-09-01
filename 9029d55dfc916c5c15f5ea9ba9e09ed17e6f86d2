@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "685ba44a_46a2400e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "In Tast we are not sure if we can generate the audio file on the fly. Can you please suggest the if we can upload the audio files to \"chromiumos-test-assets-public\" Cloud instead of generating the file? If so, can you please share the steps/link for uploading the audio file to Google Cloud.",
+      "parentUuid": "cbb8a861_a2e71416",
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a9ea23_df7d2b11",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "Please name these return values, it will make it clear which one is deviceName and which is deviceType without reading the body.",
+      "range": {
+        "startLine": 258,
+        "startChar": 72,
+        "endLine": 258,
+        "endChar": 86
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46835d7d_fd69dade",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a9ea23_df7d2b11",
       "range": {
         "startLine": 258,
         "startChar": 72,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e285917_e24c7ee6",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e77980e1_05f298e4",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 17
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e165b0e_7870ee80",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-09-01T06:09:57Z",
       "side": 1,
       "message": "I think you can check FirstRunningDevice in cras_test_client.go first to see whether it meets your requirement. If not, please add the new function there. Thanks.",
+      "range": {
+        "startLine": 276,
+        "startChar": 5,
+        "endLine": 276,
+        "endChar": 37
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2976ee_f2781221",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Have used FirstRunningDevice instead of this new function.",
+      "parentUuid": "8e165b0e_7870ee80",
       "range": {
         "startLine": 276,
         "startChar": 5,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e002a618_a9f9a713",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e7895d_71aa8f74",
+      "range": {
+        "startLine": 282,
+        "startChar": 37,
+        "endLine": 282,
+        "endChar": 80
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77859382_a022620f",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "regexp.Compile(...) inside a method is not very useful as it will cause the regexp to be recompiled every time.\n\nPrefer to move to the top of the file as:\n```\nvar myRegex \u003d regexp.MustCompile(\":(\\\\d),(\\\\d)\")\n```",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213f792e_7fa26a1d",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77859382_a022620f",
       "range": {
         "startLine": 289,
         "startChar": 1,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9b79b4_e2b7993e",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89d21e6_94eda6ea",
+      "range": {
+        "startLine": 290,
+        "startChar": 4,
+        "endLine": 290,
+        "endChar": 30
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908e594b_f0a877dd",
@@ -186,6 +348,30 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "prefer to run the regexp only once, store its results, and then access the matched subexpressions one by one.",
+      "range": {
+        "startLine": 294,
+        "startChar": 12,
+        "endLine": 294,
+        "endChar": 50
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0adfa65_195291ad",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908e594b_f0a877dd",
       "range": {
         "startLine": 294,
         "startChar": 12,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdb4b40_e0831cb8",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6272644b_a2f50343",
+      "range": {
+        "startLine": 295,
+        "startChar": 49,
+        "endLine": 295,
+        "endChar": 52
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72bd6e40_1253f58b",
@@ -232,6 +442,30 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "nit: this line is a little long, consider assigning this to a variable and then using it\n\ni.e. \ncmd :\u003d fmt.Sprintf(....)\noutput, err :\u003d testexec.CommandContext(..., cmd).Output()",
+      "range": {
+        "startLine": 300,
+        "startChar": 57,
+        "endLine": 300,
+        "endChar": 107
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b91fa08_dee8e9b2",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bd6e40_1253f58b",
       "range": {
         "startLine": 300,
         "startChar": 57,
@@ -259,6 +493,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d365e30c_3bcfca3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/data/audio_file.mp3",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0e5e45_72d52cb4",
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "803c80a9_70152fb9",
@@ -272,6 +524,30 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "Prefer to promote this method to the top level, rather than leaving it nested inside your test method.\n\nNested methods often make it harder to understand the methods they are nested inside as they can use and modify variables in the parent method. This means the reader must read the nested method in conjunction with the parent method rather than separately.\n\nThis method appears to be a straightforward copy method, so there should be no difficulty moving it.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96a8ea0_2919d0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Since we are generating the audio file on the go, we have removed this function.",
+      "parentUuid": "803c80a9_70152fb9",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -305,6 +581,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64f94de_0f8c22b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Removed this line itself",
+      "parentUuid": "6a4f2faf_3ed4bcff",
+      "range": {
+        "startLine": 79,
+        "startChar": 71,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "689c93c3_a151d74a",
@@ -318,6 +618,24 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "This may return an error (e.g. due to context timeout), prefer to check for it rather than ignore it.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba8d1d8_ffe4fcbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "689c93c3_a151d74a",
       "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -339,6 +657,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8902ac_0cc7fe51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1c016f_193e290b",
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fc4123e_90cfab12",
@@ -352,6 +688,30 @@
       "writtenOn": "2021-09-01T05:04:22Z",
       "side": 1,
       "message": "uber nit: The punctuation in this log message seems a bit unusual (lack of space after \":\", no clear delineation of the end of the Audio device name).\n\nI wonder if printing it out over two lines might look nicer:\ns.Logf(\"Audio device name: %s\", audioDeviceName)\ns.Logf(\"Audio device type: %s\", audioDeviceType)",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 50
+      },
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92564bcf_47cba1a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-01T09:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc4123e_90cfab12",
       "range": {
         "startLine": 130,
         "startChar": 9,
