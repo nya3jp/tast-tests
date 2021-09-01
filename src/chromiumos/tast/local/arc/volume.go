@@ -5,9 +5,9 @@
 package arc
 
 import (
-	"bytes"
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -28,48 +28,107 @@ const (
 	// VolumeProviderContentURIPrefix is the prefix of the URIs of files served by
 	// ArcVolumeProvider.
 	VolumeProviderContentURIPrefix = "content://org.chromium.arc.volumeprovider/"
+
+	// stubVolumeIDRegex is regex for volume IDs of StubVolumes (MyFiles,
+	// removable media) in ARC.
+	stubVolumeIDRegex = `(stub:)?[0-9]+`
+
+	// sdcardVolumeIDRegex is regex for the volume ID of the sdcard volume in ARC.
+	sdcardVolumeIDRegex = `emulated(;0)?`
 )
+
+// waitForARCVolumeStatusAndGetVolumeID returns the volume id and waits for a volume of the given ID,
+// state, and UUID appears inside ARC. Volume's ID, state, UUID should be expressed in regex.
+// It looks up the output of "adb sm list-volumes", and returns the first line
+// that matches the specified regex.
+func waitForARCVolumeStatusAndGetVolumeID(ctx context.Context, a *ARC, id, state, uuid string) (string, error) {
+	// Regular expression that matches the output line for the mounted
+	// volume. Each output line of the sm command is of the form:
+	// <volume id><space(s)><mount status><space(s)><volume UUID>.
+	// Examples:
+	//   emulated;0 mounted null
+	//   1821167369 ejecting 00000000000000000000000000000000DEADBEEF
+	//   stub:18446744073709551614 unmounted 0000000000000000000000000000CAFEF00D2019
+	re := regexp.MustCompile(id + `\s+` + state + `\s+` + uuid)
+	var volumeID string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "sm command failed"))
+		}
+		matchedLine := re.FindAll(out, 1)
+		if len(matchedLine) == 1 {
+			volumeID = strings.Split(string(matchedLine[0]), " ")[0]
+			return nil
+		}
+		return errors.New("the volume is not yet mounted")
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return "", err
+	}
+	return volumeID, nil
+}
 
 // waitForARCVolumeMount waits for a volume to be mounted in ARC using the sm
 // command. Just checking mountinfo is not sufficient here since it takes some
 // time for the FUSE layer in Android R+ to be ready after /storage/<UUID> has
 // become a mountpoint.
-func waitForARCVolumeMount(ctx context.Context, a *ARC, uuid string) error {
-	// Regular expression that matches the output line for the mounted
-	// volume. Each output line of the sm command is of the form:
-	// <volume id><space(s)><mount status><space(s)><volume UUID>.
-	// Examples:
-	//   1821167369 mounted 00000000000000000000000000000000DEADBEEF
-	//   stub:18446744073709551614 mounted 0000000000000000000000000000CAFEF00D2019
-	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+mounted\s+` + uuid + `$`)
-
-	testing.ContextLogf(ctx, "Waiting for the volume %s to be mounted in ARC", uuid)
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "sm command failed"))
-		}
-		lines := bytes.Split(out, []byte("\n"))
-		for _, line := range lines {
-			if re.Find(bytes.TrimSpace(line)) != nil {
-				return nil
-			}
-		}
-		return errors.New("the volume is not yet mounted")
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+func waitForARCVolumeMount(ctx context.Context, a *ARC, id, uuid string) error {
+	_, err := waitForARCVolumeStatusAndGetVolumeID(ctx, a, id, "mounted", uuid)
+	return err
 }
 
 // WaitForARCRemovableMediaVolumeMount waits for the removable media volume for
 // testing to be mounted inside ARC.
 func WaitForARCRemovableMediaVolumeMount(ctx context.Context, a *ARC) error {
-	return waitForARCVolumeMount(ctx, a, RemovableMediaUUID)
+	testing.ContextLog(ctx, "Waiting for the removable volume to be mounted in ARC")
+
+	return waitForARCVolumeMount(ctx, a, stubVolumeIDRegex, RemovableMediaUUID)
 }
 
 // WaitForARCMyFilesVolumeMount waits for the MyFiles volume to be mounted
 // inside ARC.
 func WaitForARCMyFilesVolumeMount(ctx context.Context, a *ARC) error {
-	return waitForARCVolumeMount(ctx, a, MyFilesUUID)
+	testing.ContextLog(ctx, "Waiting for the MyFiles volume to be mounted in ARC")
+
+	return waitForARCVolumeMount(ctx, a, stubVolumeIDRegex, MyFilesUUID)
+}
+
+// WaitForARCSdcardVolumeMount waits for the sdcard volume to be mounted
+// inside ARC.
+func WaitForARCSdcardVolumeMount(ctx context.Context, a *ARC) error {
+	testing.ContextLog(ctx, "Waiting for the sdcard volume to be mounted in ARC")
+
+	return waitForARCVolumeMount(ctx, a, sdcardVolumeIDRegex, "null")
+}
+
+// waitForARCVolumeUnmount waits for a volume to be unmounted inside ARC.
+func waitForARCVolumeUnmount(ctx context.Context, a *ARC, id, uuid string) error {
+	_, err := waitForARCVolumeStatusAndGetVolumeID(ctx, a, id, "unmounted", uuid)
+	return err
+}
+
+// WaitForARCRemovableMediaVolumeUnmount waits for the removable media volume for
+// testing to be unmounted inside ARC.
+func WaitForARCRemovableMediaVolumeUnmount(ctx context.Context, a *ARC) error {
+	testing.ContextLog(ctx, "Waiting for the removable volume to be unmounted in ARC")
+
+	return waitForARCVolumeUnmount(ctx, a, stubVolumeIDRegex, RemovableMediaUUID)
+}
+
+// WaitForARCMyFilesVolumeUnmount waits for the MyFiles volume to be unmounted
+// inside ARC.
+func WaitForARCMyFilesVolumeUnmount(ctx context.Context, a *ARC) error {
+	testing.ContextLog(ctx, "Waiting for the MyFiles volume to be unmounted in ARC")
+
+	return waitForARCVolumeUnmount(ctx, a, stubVolumeIDRegex, MyFilesUUID)
+}
+
+// WaitForARCSdcardVolumeUnmount waits for the sdcard volume to be unmounted
+// inside ARC.
+func WaitForARCSdcardVolumeUnmount(ctx context.Context, a *ARC) error {
+	testing.ContextLog(ctx, "Waiting for the sdcard volume to be mounted in ARC")
+
+	return waitForARCVolumeUnmount(ctx, a, sdcardVolumeIDRegex, "null")
 }
 
 // WaitForARCMyFilesVolumeMountIfARCVMEnabled waits for the MyFiles volume to be
@@ -84,5 +143,27 @@ func WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx context.Context, a *ARC) err
 	if !isARCVMEnabled {
 		return nil
 	}
-	return waitForARCVolumeMount(ctx, a, MyFilesUUID)
+	return WaitForARCMyFilesVolumeMount(ctx, a)
+}
+
+// MyFilesVolumeID returns the volume ID of the MyFiles volume. It waits for
+// the volume to be mounted if it is not mounted yet.
+func MyFilesVolumeID(ctx context.Context, a *ARC) (string, error) {
+	volumeID, err := waitForARCVolumeStatusAndGetVolumeID(ctx, a, stubVolumeIDRegex, "mounted", MyFilesUUID)
+	if err != nil {
+		return "", err
+	}
+	return volumeID, nil
+}
+
+// SdcardVolumeID returns the volume ID of the sdcard volume
+// (/storage/emulated/0). Although the volume ID itself is a constant, the
+// function waits for the volume to be mounted if it is not mounted yet,
+// so that the ID is guaranteed to be valid and usable inside ARC.
+func SdcardVolumeID(ctx context.Context, a *ARC) (string, error) {
+	volumeID, err := waitForARCVolumeStatusAndGetVolumeID(ctx, a, sdcardVolumeIDRegex, "mounted", "null")
+	if err != nil {
+		return "", err
+	}
+	return volumeID, nil
 }
