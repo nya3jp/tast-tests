@@ -24,7 +24,7 @@ func init() {
 		Func: Enrollment,
 		Desc: "Enroll a device without checking policies",
 		Contacts: []string{
-			"vsavu@chromium.org", // Test author
+			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:enrollment"},
