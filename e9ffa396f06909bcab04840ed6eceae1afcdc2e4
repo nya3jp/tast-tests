@@ -16,6 +16,29 @@
       "message": "ptal",
       "revId": "e9ffa396f06909bcab04840ed6eceae1afcdc2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba5a3e8_c23315b0",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-09-01T15:25:15Z",
+      "side": 1,
+      "message": "duplicating my concern here. Any other option that is not persistent could be better.",
+      "range": {
+        "startLine": 231,
+        "startChar": 45,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "e9ffa396f06909bcab04840ed6eceae1afcdc2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
