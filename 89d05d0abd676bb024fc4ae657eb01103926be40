@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7058a9ec_4f6b94cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-01T23:12:09Z",
+      "side": 1,
+      "message": "Implemented on both soon to be deleted precondition and the new fixture.",
+      "revId": "89d05d0abd676bb024fc4ae657eb01103926be40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
