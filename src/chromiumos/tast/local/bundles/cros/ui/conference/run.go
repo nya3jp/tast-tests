@@ -104,17 +104,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 		// Plus and premium tier.
 		if tier == "plus" || tier == "premium" {
-			if extendedDisplay {
-				if err := conf.ExtendedDisplayPresenting(ctx); err != nil {
-					return err
-				}
-			} else {
-				if err := conf.PresentSlide(ctx); err != nil {
-					return err
-				}
-				if err := conf.StopPresenting(ctx); err != nil {
-					return err
-				}
+			application := googleSlides
+			if tier == "premium" {
+				application = googleDocs
+			}
+			if err := conf.Presenting(ctx, application, extendedDisplay); err != nil {
+				return err
 			}
 		}
 

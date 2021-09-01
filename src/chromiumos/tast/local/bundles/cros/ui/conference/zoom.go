@@ -6,20 +6,17 @@ package conference
 
 import (
 	"context"
-	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -32,7 +29,7 @@ import (
 type ZoomConference struct {
 	cr         *chrome.Chrome
 	tconn      *chrome.TestConn
-	tsAction   cuj.UIActionHandler
+	uiHandler  cuj.UIActionHandler
 	tabletMode bool
 	roomSize   int
 	account    string
@@ -147,16 +144,18 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
 		startVideoButton := nodewith.Name("start sending my video").Role(role.Button)
 		stopVideoButton := nodewith.Name("stop sending my video").Role(role.Button)
-		// Some DUTs start playing video for the first time.
-		// If there is a stop video button, do nothing.
-		return uiauto.Combine("start video",
+		// Start video requires camera permission.
+		// Allow permission doesn't succeed every time. So add retry here.
+		return ui.Retry(3, uiauto.Combine("start video",
 			allowPerm,
 			conf.showInterface,
 			uiauto.NamedAction("to detect camera button within 15 seconds", ui.WaitUntilExists(cameraButton)),
+			// Some DUTs start playing video for the first time.
+			// If there is a stop video button, do nothing.
 			ui.IfSuccessThen(ui.Exists(startVideoButton),
 				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(time.Second).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),
-		)(ctx)
+		))(ctx)
 	}
 
 	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
@@ -192,9 +191,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		ui.WithTimeout(30*time.Second).LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton)),
 		// Launch Meeting page is useless so close it.
 		closeLaunchMeetingTab,
-		// Start video requires camera permission.
-		// Allow permission doesn't succeed every time. So add retry here.
-		ui.Retry(3, startVideo),
+		startVideo,
 	)(ctx)
 }
 
@@ -375,15 +372,9 @@ func (conf *ZoomConference) BackgroundBlurring(ctx context.Context) error {
 	return nil
 }
 
-// ExtendedDisplayPresenting presents the screen on dextended display.
-func (conf *ZoomConference) ExtendedDisplayPresenting(_ context.Context) error {
-	// Not required by test case yet.
-	return errors.New("extended display presenting for zoom is not implemented")
-}
-
-// PresentSlide presents the slides to the conference.
-func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
-	const slideTitle = "Untitled presentation - Google Slides"
+// Presenting creates Google Slides and Google Docs, shares screen and presents
+// the specified application to the conference.
+func (conf *ZoomConference) Presenting(ctx context.Context, application googleApplication, extendedDisplay bool) (err error) {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
@@ -393,75 +384,41 @@ func (conf *ZoomConference) PresentSlide(ctx context.Context) error {
 	}
 	defer kb.Close()
 
+	var appTabName string
+	switch application {
+	case googleSlides:
+		appTabName = slideTabName
+	case googleDocs:
+		appTabName = docTabName
+	}
+	// shareScreen shares screen by "Chrome Tab" and selects the tab which is going to present.
 	shareScreen := func(ctx context.Context) error {
 		shareScreenButton := nodewith.Name("Share Screen").Role(role.Button)
-		presentWindow := nodewith.ClassName("DesktopMediaSourceView").First()
+		presenMode := nodewith.Name("Chrome Tab").Role(role.Tab).ClassName("Tab")
+		presentTab := nodewith.ClassName("AXVirtualView").Role(role.Cell).Name(appTabName)
 		shareButton := nodewith.Name("Share").Role(role.Button)
-		stopShareButton := nodewith.Name("Stop Share").Role(role.Button)
-		testing.ContextLog(ctx, "Start to share screen")
+		stopSharing := nodewith.Name("Stop sharing").Role(role.Button).First()
+		testing.ContextLog(ctx, "Share screen")
 		return uiauto.Combine("share Screen",
+			conf.uiHandler.SwitchToChromeTabByName("Zoom"),
 			conf.showInterface,
-			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(time.Second).WaitUntilExists(presentWindow)),
-			ui.LeftClick(presentWindow),
+			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(time.Second).WaitUntilExists(presenMode)),
+			ui.LeftClick(presenMode),
+			ui.LeftClick(presentTab),
 			ui.LeftClick(shareButton),
-			ui.WaitUntilExists(stopShareButton),
+			ui.WaitUntilExists(stopSharing),
 		)(ctx)
 	}
 
-	deletePerformed := false
-	// slideCleanup switches to the slide page and deletes it.
-	slideCleanup := func(ctx context.Context) error {
-		if deletePerformed {
-			return nil
-		}
-		deletePerformed = true // Set it to true because we only try to delete once.
-		testing.ContextLog(ctx, "Switch to the slide page and delete it")
-		return uiauto.Combine("switch to the slide page and delete it",
-			conf.switchToChromeTab(slideTitle),
-			deleteSlide(conf.tconn),
-		)(ctx)
+	stopPresenting := func(ctx context.Context) error {
+		stopSharing := nodewith.Name("Stop sharing").Role(role.Button).First()
+		return ui.LeftClickUntil(stopSharing, ui.WithTimeout(3*time.Second).WaitUntilGone(stopSharing))(ctx)
 	}
-
-	// Shorten the context to cleanup slide.
-	cleanUpSlideCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	testing.ContextLog(ctx, "Create a new Google Slides")
-	if err := newGoogleSlides(ctx, conf.cr, false); err != nil {
-		return err
+	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, shareScreen, stopPresenting,
+		application, conf.outDir, extendedDisplay); err != nil {
+		return errors.Wrapf(err, "failed to present %s", string(application))
 	}
-	defer func() {
-		// If presenting slide fails, dump the last screen before deleting the slide.
-		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(conf.outDir, "service"), func() bool { return err != nil }, conf.cr, "ui_dump_last")
-		if err := slideCleanup(cleanUpSlideCtx); err != nil {
-			// Only log the error.
-			testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
-		}
-	}()
-
-	return uiauto.Combine("present slide",
-		conf.switchToChromeTab("Zoom"),
-		shareScreen,
-		conf.switchToChromeTab(slideTitle),
-		presentSlide(tconn, kb),
-		editSlide(tconn, kb),
-		func(ctx context.Context) error {
-			if err := slideCleanup(ctx); err != nil {
-				// Only log the error.
-				testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
-			}
-			return nil
-		},
-		conf.switchToChromeTab("Zoom"),
-	)(ctx)
-}
-
-// StopPresenting stops the presentation mode.
-func (conf *ZoomConference) StopPresenting(ctx context.Context) error {
-	ui := uiauto.New(conf.tconn)
-	stopShareButton := nodewith.Name("Stop Share").Role(role.Button)
-	testing.ContextLog(ctx, "Stop share")
-	return ui.LeftClickUntil(stopShareButton, ui.Gone(stopShareButton))(ctx)
+	return nil
 }
 
 // End ends the conference.
@@ -484,7 +441,7 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 
 		if conf.tabletMode {
 			testing.ContextLog(ctx, "Tap web area to show interface")
-			if err := conf.tsAction.Click(webArea)(ctx); err != nil {
+			if err := conf.uiHandler.Click(webArea)(ctx); err != nil {
 				return errors.Wrap(err, "failed to click the web area")
 			}
 		} else {
@@ -508,34 +465,13 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 	}, &testing.PollOptions{Timeout: 30 * time.Second})
 }
 
-// switchToChromeTab switch to the given chrome tab.
-//
-// TODO: Merge to cuj.UIActionHandler and introduce UIActionHandler in this test. See
-// https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2779315/
-func (conf *ZoomConference) switchToChromeTab(tabName string) action.Action {
-	ui := uiauto.New(conf.tconn)
-	return func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Switch tab to %q", tabName)
-		if conf.tabletMode {
-			// If in tablet mode, it should toggle tab strip to show tab list.
-			if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
-				return err
-			}
-		}
-		if err := ui.LeftClick(nodewith.NameContaining(tabName).Role(role.Tab))(ctx); err != nil {
-			return errors.Wrapf(err, "failed to switch tab to %q", tabName)
-		}
-		return nil
-	}
-}
-
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
-func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, tsAction cuj.UIActionHandler, tabletMode bool,
+func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, tabletMode bool,
 	roomSize int, account, outDir string) *ZoomConference {
 	return &ZoomConference{
 		cr:         cr,
 		tconn:      tconn,
-		tsAction:   tsAction,
+		uiHandler:  uiHandler,
 		tabletMode: tabletMode,
 		roomSize:   roomSize,
 		account:    account,
