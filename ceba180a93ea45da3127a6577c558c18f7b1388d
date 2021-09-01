@@ -16,6 +16,52 @@
       "message": "Thanks for reviewing.",
       "revId": "ceba180a93ea45da3127a6577c558c18f7b1388d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1297ef96_41e974c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-01T20:40:48Z",
+      "side": 1,
+      "message": "This will just run until the context deadline is exceeded? \n\nIf that happens the error message won\u0027t be very useful. Should probably wait for some specific amount of time before giving up and then cleanup properly",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "ceba180a93ea45da3127a6577c558c18f7b1388d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50bf41c_5bebd6c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-01T20:40:48Z",
+      "side": 1,
+      "message": "SHould probably put this and other strings in variables",
+      "range": {
+        "startLine": 44,
+        "startChar": 49,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "ceba180a93ea45da3127a6577c558c18f7b1388d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
