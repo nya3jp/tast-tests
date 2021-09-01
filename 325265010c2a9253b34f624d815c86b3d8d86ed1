@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce8bc42_4c26e4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-01T22:13:17Z",
+      "side": 1,
+      "message": "Removed the log.",
+      "parentUuid": "94c63b30_eda07eaf",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "325265010c2a9253b34f624d815c86b3d8d86ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60b341ee_813d4b1f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-01T03:52:05Z",
       "side": 1,
       "message": "Should failure of maximize fail the whole test case?",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "325265010c2a9253b34f624d815c86b3d8d86ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "057a8bf0_22343c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-01T22:13:17Z",
+      "side": 1,
+      "message": "I think you are right - we can try to continue the test even maximizing window fails.",
+      "parentUuid": "60b341ee_813d4b1f",
       "range": {
         "startLine": 67,
         "startChar": 11,
