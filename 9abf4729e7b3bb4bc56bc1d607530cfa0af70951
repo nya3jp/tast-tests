@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "86968fad_632ae84b",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-01T03:31:39Z",
+      "side": 1,
+      "message": "nit: Move this into gen ptz function if we still want to keep it.",
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ae7e10_353acc43",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-01T03:31:39Z",
+      "side": 1,
+      "message": "Hmm I feel a little bit unintuitive and inconsistent for having both \"Launched\" and \"TestBridgeReady\" variants of CCA textures. \n\nI checked the real usage of these fixtures on https://crrev.com/c/3121690, it looks like many tests are using the TBReady variant simply because it has some subtests, and want to restart CCA for each sub test.\n\nThis sounds like a leaky abstraction if we might need to tweak our fixtures (add a new corresponding TBReady version) when a test is changed to have subtests.\n\nTBReady also introduce an inconsistency when CCA failed to launch. Sometimes it\u0027s a fixture failures, sometimes it\u0027s an in-test failure. Ideally they should be fixture errors except for some meta cases such as policy test.\n\nIt\u0027s open for discussion, and not necessary to change in this CL. We can talk to this in next CL if you want to land this sooner.",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "9abf4729e7b3bb4bc56bc1d607530cfa0af70951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51b028d5_3106edd9",
