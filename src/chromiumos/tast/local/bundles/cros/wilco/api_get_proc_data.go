@@ -21,7 +21,6 @@ func init() {
 		Desc: "Test sending GetProcData gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
-			"pmoy@chromium.org",   // wilco_dtc_supportd author
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
