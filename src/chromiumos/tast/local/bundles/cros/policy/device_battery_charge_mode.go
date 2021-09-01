@@ -25,9 +25,9 @@ func init() {
 		Func: DeviceBatteryChargeMode,
 		Desc: "Tests the DeviceBatteryCharge policies that extend battery life",
 		Contacts: []string{
-			"bisakhmondal00@gmail.com", // test author
-			"lamzin@google.com",        // wilco_dtc_supportd maintainer
+			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",
+			"bisakhmondal00@gmail.com", // test author
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      25 * time.Minute,

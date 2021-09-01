@@ -27,9 +27,9 @@ func init() {
 		Func: DeviceBootOnAC,
 		Desc: "Tests the DeviceBootOnAcEnabled policy that boots up the DUT from shutdown by plugging in a power supply",
 		Contacts: []string{
-			"bisakhmondal00@gmail.com", // test author
-			"lamzin@google.com",        // wilco_dtc_supportd maintainer
+			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",
+			"bisakhmondal00@gmail.com", // test author
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      30 * time.Minute,
