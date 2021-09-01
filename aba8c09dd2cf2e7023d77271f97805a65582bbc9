@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf00133_55b644de",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-09-01T08:53:56Z",
+      "side": 1,
+      "message": "It\u0027s kind of weird that we can\u0027t get this directly from the dlc service.",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5183de_5aa0c163",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-09-01T08:53:56Z",
+      "side": 1,
+      "message": "What\u0027s the difference between purge and uninstall?",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
