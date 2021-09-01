@@ -1,5 +1,0 @@
-{
-  "url": "gs://chromiumos-test-assets-public/tast/cros/syzkaller/corpus_20210614.db",
-  "size": 3066974,
-  "sha256sum": "8f9435315dfac02f1b4c77e7f5b46fea02554fa5299ef614453060dc657f2576"
-}
