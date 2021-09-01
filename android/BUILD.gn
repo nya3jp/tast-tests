@@ -38,6 +38,7 @@ group("all") {
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
     "ArcLifecycleTest:ArcLifecycleTest",
     "ArcMidiClientTest:ArcMidiClientTest",
+    "ArcMediaScanTimeTest:ArcMediaScanTimeTest",
     "ArcMotionInputTest:ArcMotionInputTest",
     "ArcMulticastForwarderTest:ArcMulticastForwarderTest",
     "ArcMultiDisplayTest:ArcMultiDisplayTest",
