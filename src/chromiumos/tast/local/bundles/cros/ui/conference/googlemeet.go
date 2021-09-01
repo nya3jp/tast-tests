@@ -6,6 +6,7 @@ package conference
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -404,45 +405,47 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	return nil
 }
 
-// BackgroundBlurring blurs the background.
-func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error {
+// BackgroundChange will sequentially change the background to blur, sky picture and turn off background effects.
+func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 	const (
 		blurBackground    = "Blur your background"
 		skyBackground     = "Blurry sky with purple horizon background"
 		turnOffBackground = "Turn off background effects"
 	)
 	ui := uiauto.New(conf.tconn)
-	changeBackground := func(background string) error {
-		moreOptions := nodewith.Name("More options").First()
+	pinToMainScreen := func(ctx context.Context) error {
+		pinBtn := nodewith.Name("Pin yourself to your main screen.")
+		if err := ui.WaitUntilExists(pinBtn)(ctx); err != nil {
+			// If there are no participants in the room, the pin button will not be displayed.
+			return ParticipantError(errors.Wrap(err, "failed to find the button to pin to main screen; other participants might have left"))
+		}
+		return uiauto.NamedAction("to pin to main screen", ui.LeftClick(pinBtn))(ctx)
+	}
+	changeBackground := func(background string) action.Action {
+		moreOptions := nodewith.Name("More options").Role(role.PopUpButton)
 		menu := nodewith.Name("Call options").Role(role.Menu)
 		changeBackground := nodewith.Name("Change background").Role(role.MenuItem)
 		backgroundButton := nodewith.Name(background).First()
 		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
-		testing.ContextLog(ctx, "Change background to ", background)
-		return uiauto.Combine("change background",
-			cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433),
-			ui.LeftClick(changeBackground), // Open "Background" panel.
-			ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
-			ui.LeftClick(closeButton), // Close "Background" panel.
-			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
-		)(ctx)
+		return uiauto.NamedAction(fmt.Sprintf("change background to %s and enter full screen", background),
+			uiauto.Combine("change background and enter full screen",
+				ui.Retry(3, cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
+				ui.LeftClick(changeBackground), // Open "Background" panel.
+				ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
+				ui.LeftClick(closeButton),                                              // Close "Background" panel.
+				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", true),  // Double click to enter full screen.
+				ui.Sleep(5*time.Second),                                                // After applying new background, give it 5 seconds for viewing before applying next one.
+				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", false), // Double click to exit full screen.
+			))
 	}
-	pinBtn := nodewith.Name("Pin yourself to your main screen.")
-	if err := ui.Exists(pinBtn)(ctx); err != nil {
-		// If there are no participants in the room, the pin button will not be displayed.
-		return ParticipantError(errors.Wrap(err, "failed to find the button to pin to main screen; other participants might have left"))
-	}
-	if err := ui.LeftClick(pinBtn)(ctx); err != nil {
-		return errors.Wrap(err, "failed to pin to main screen")
-	}
-
-	for _, background := range []string{blurBackground, skyBackground, turnOffBackground} {
-		if err := changeBackground(background); err != nil {
-			return err
-		}
-	}
-	return nil
+	return uiauto.Combine("pin to main screen and change background",
+		conf.uiHandler.SwitchToChromeTabByName("Meet"),
+		pinToMainScreen,
+		changeBackground(blurBackground),
+		changeBackground(skyBackground),
+		changeBackground(turnOffBackground),
+	)(ctx)
 }
 
 // Presenting creates Google Slides and Google Docs, shares screen and presents
