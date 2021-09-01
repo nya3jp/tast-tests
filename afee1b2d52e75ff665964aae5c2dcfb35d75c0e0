@@ -22,6 +22,30 @@
       },
       "revId": "afee1b2d52e75ff665964aae5c2dcfb35d75c0e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b9ab4e_c78b206d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-01T04:41:12Z",
+      "side": 1,
+      "message": "Thanks for your review, Judy. \n\n\u003e Is 1min enough?\nThis function in normal case returns very fast - there is no test logic inside but just stop the test metrics collection. So one minute is enough unless there is bug as reported.\n\n\u003e Is it guaranteed that there is more than 1min left at this point?\nThe main test logic has been assigned enough time to finish the whole tests including this Record() logic. So it\u0027s very unlikely that other test logic has finished but leaves no time to do Record(). And even this situation happens, the function will fail and we should tune the whole test timeout value. I guess this is not much a concern.",
+      "parentUuid": "5853b862_67c37279",
+      "range": {
+        "startLine": 138,
+        "startChar": 47,
+        "endLine": 138,
+        "endChar": 58
+      },
+      "revId": "afee1b2d52e75ff665964aae5c2dcfb35d75c0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
