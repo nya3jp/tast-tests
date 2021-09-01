@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -45,25 +46,24 @@ func RenderApp(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
 	}
-	defer dxRootnode.Release(ctx)
 
 	// Verify cpu chart is drawn
-	if err := dxRootnode.WaitUntilDescendantExists(
-		ctx, diagnosticsapp.DxCPUChart, 20*time.Second); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCPUChart.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Failed to find CPU chart: ", err)
 	}
 
 	// Verify session log button is rendered
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxLogButton, 20*time.Second); err != nil {
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxLogButton.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Failed to render log button: ", err)
 	}
 
 	// Verify test routine button is rendered
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxCPUTestButton, 20*time.Second); err != nil {
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCPUTestButton.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Failed to find cpu routine button: ", err)
 	}
 
-	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxMemoryTestButton, 20*time.Second); err != nil {
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxMemoryTestButton.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Failed to find memory routine buttons: ", err)
 	}
 }
