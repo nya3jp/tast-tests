@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -262,4 +263,20 @@ func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value inter
 		return errors.Wrapf(err, "%s not set", prop)
 	}
 	return nil
+}
+
+// RestartModemManager  - restart modemmanager with debug logs enabled/disabled.
+// Return nil if restart succeeds, else return error.
+func (h *Helper) RestartModemManager(ctx context.Context, enableDebugLogs bool) error {
+	logLevel := "INFO"
+	if enableDebugLogs {
+		logLevel = "DEBUG"
+	}
+
+	if err := upstart.RestartJob(ctx, "modemmanager", upstart.WithArg("MM_LOGLEVEL", logLevel)); err != nil {
+		return errors.Wrap(err, "failed to restart modemmanager")
+	}
+
+	return nil
+
 }

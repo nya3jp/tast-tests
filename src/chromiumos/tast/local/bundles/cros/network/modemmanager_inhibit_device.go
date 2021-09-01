@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mmconst"
+	"chromiumos/tast/local/bundles/cros/network/cellular"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
@@ -28,6 +29,11 @@ func init() {
 }
 
 func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
+	helper, err := cellular.NewHelper(ctx)
+	if err != nil {
+		s.Fatal("Failed to create cellular.Helper: ", err)
+	}
+
 	modem, err := modemmanager.NewModem(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Modem: ", err)
@@ -61,5 +67,10 @@ func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
 			s.Fatalf("Modem path expected to change but did not: %v, err: %s", modem.ObjectPath(), err)
 		}
 		modem = modem2
+	}
+
+	// Restart ModemManager after Inhibit test
+	if err := helper.RestartModemManager(ctx, true); err != nil {
+		s.Fatal("Failed to restart ModemManager: ", err)
 	}
 }
