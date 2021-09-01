@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -85,4 +86,56 @@ func WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx context.Context, a *ARC) err
 		return nil
 	}
 	return waitForARCVolumeMount(ctx, a, MyFilesUUID)
+}
+
+// SdcardVolumeID returns the volume ID of the sdcard volume
+// (/storage/emulated/0). Although the volume ID itself is a constant, the
+// function waits for the volume to be mounted if it is not mounted yet,
+// so that the ID is guaranteed to be valid and usable inside ARC.
+func SdcardVolumeID(ctx context.Context, a *ARC) (string, error) {
+	re := regexp.MustCompile(`emulated;0\s+mounted`)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		}
+		lines := bytes.Split(out, []byte("\n"))
+		for _, line := range lines {
+			if sdcardVolumeLine := re.Find(bytes.TrimSpace(line)); sdcardVolumeLine != nil {
+				return nil
+			}
+		}
+		return errors.New("sdcard volume is not yet mounted")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return "", errors.Wrap(err, "failed to find sdcard volume id")
+	}
+	return "emulated;0", nil
+}
+
+// MyFilesVolumeID returns the volume ID of the MyFiles volume. It waits for
+// the volume to be mounted if it is not mounted yet.
+func MyFilesVolumeID(ctx context.Context, a *ARC) (string, error) {
+	// Regular expression that matches the output line for the mounted
+	// MyFiles volume. Each output line of the sm command is of the form:
+	// <volume id><space(s)><mount status><space(s)><volume UUID>.
+	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+mounted\s+` + MyFilesUUID + `$`)
+	var volumeID string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		}
+		lines := bytes.Split(out, []byte("\n"))
+		for _, line := range lines {
+			if volumeIDLine := re.Find(bytes.TrimSpace(line)); volumeIDLine != nil {
+				splitVolumeIDLine := strings.Split(string(volumeIDLine), " ")
+				volumeID = splitVolumeIDLine[0]
+				return nil
+			}
+		}
+		return errors.New("MyFiles volume is not yet mounted")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return "", errors.Wrap(err, "failed to find myfiles volume id")
+	}
+	return volumeID, nil
 }

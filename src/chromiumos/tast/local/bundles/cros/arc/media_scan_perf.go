@@ -1,0 +1,295 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"bytes"
+	"context"
+	"io"
+	"os"
+	"path/filepath"
+	"regexp"
+	"strconv"
+	"strings"
+	"time"
+
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/testing"
+)
+
+const (
+	mediaScanTimePkg = "org.chromium.arc.testapp.mediascanperf"
+	capybaraFileName = "capybara.jpg"
+	// To clarify the difference in elapsed time due to performance,
+	// we need to populate files under the target directory.
+	numberOfCopies = 10000
+)
+
+type arcMediaScanPerfParams struct {
+	getTargetDir    func(ctx context.Context, user string) (string, error)
+	getVolumeID     func(ctx context.Context, a *arc.ARC) (string, error)
+	volumeURISuffix string
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         MediaScanPerf,
+		Desc:         "Checks elapsed time during full-volume media scan",
+		Contacts:     []string{"risan@chromium.org", "youkichihosoi@chromium.org", "arc-storage@google.com"},
+		Attr:         []string{"group:crosbolt"},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcBooted",
+		Data:         []string{capybaraFileName},
+		Timeout:      20 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "sdcard_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: arcMediaScanPerfParams{
+				getTargetDir:    getSdcardTargetDir,
+				getVolumeID:     arc.SdcardVolumeID,
+				volumeURISuffix: "emulated/0",
+			},
+		}, {
+			Name:              "myfiles_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: arcMediaScanPerfParams{
+				getTargetDir:    getMyFilesTargetDir,
+				getVolumeID:     arc.MyFilesVolumeID,
+				volumeURISuffix: arc.MyFilesUUID,
+			},
+		}},
+	})
+}
+
+func getSdcardTargetDir(ctx context.Context, user string) (string, error) {
+	androidDataDir, err := arc.AndroidDataDir(user)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get android-data path for user %s", user)
+	}
+	return filepath.Join(androidDataDir, "data", "media", "0", "Pictures", "capybaras"), nil
+}
+
+func getMyFilesTargetDir(ctx context.Context, user string) (string, error) {
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, user)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get cryptohome user path for user %s", user)
+	}
+	return filepath.Join(cryptohomeUserPath, "MyFiles", "capybaras"), nil
+}
+
+// populateFilesUnderTargetPath populates files under the target directory.
+// In order to avoid the measurement data being affected by subtle differences
+// in the status of test device, we should get a larger number as data of elapsed time.
+func populateFilesUnderTargetPath(s *testing.State, targetDir string) {
+	capybaraSrc, err := os.Open(s.DataPath(capybaraFileName))
+	defer capybaraSrc.Close()
+	if err != nil {
+		s.Fatalf("Failed to read the test file %s: %v", capybaraFileName, err)
+	}
+	if err := os.MkdirAll(targetDir, 0755); err != nil {
+		s.Fatalf("Failed to create the target dir %s: %v", targetDir, err)
+	}
+	for i := 0; i < numberOfCopies; i++ {
+		dstPath := filepath.Join(targetDir, "capybara_"+strconv.Itoa(i)+".jpg")
+		dst, err := os.Create(dstPath)
+		if err != nil {
+			s.Fatalf("Failed to create %s, file for copying capybara image: %v", dstPath, err)
+		}
+		if _, err := io.Copy(dst, capybaraSrc); err != nil {
+			dst.Close()
+			s.Fatalf("Failed to copy the test file to %s: %v", dstPath, err)
+		}
+		dst.Close()
+	}
+}
+
+// waitForPopulatedFilesAddedToMediaStore waits for the newly created files to be scanned
+// and added to MediaStore database.
+func waitForPopulatedFilesAddedToMediaStore(ctx context.Context, a *arc.ARC) error {
+	re := regexp.MustCompile(`Row:\s+[0-9]+\s+_data=/storage/` + arc.MyFilesUUID + `/capybaras/capybara_[0-9]+.jpg$`)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "content", "query", "--uri", "content://media/external/file", "--projection", "_data").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		}
+		lines := bytes.Split(out, []byte("\n"))
+		var numberOfScannedFiles int
+		for _, line := range lines {
+			if mediaStoreQueryLine := re.Find(bytes.TrimSpace(line)); mediaStoreQueryLine != nil {
+				numberOfScannedFiles++
+			}
+		}
+		testing.ContextLogf(ctx, "numberOfScannedFiles = %d", numberOfScannedFiles)
+		if numberOfScannedFiles < numberOfCopies {
+			return errors.Errorf("Not enough capybara copies: want %d; got %d", numberOfCopies, numberOfScannedFiles)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 3000 * time.Second, Interval: 3 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to scan and index all copied files by Android's MediaProvider")
+	}
+	return nil
+}
+
+// clearMediaStore deletes the file from MediaStore database and restore them to non-indexed state.
+// If the newly populated files are kept indexed, full-volume media scan excludes them and the elapsed time
+// will be shorter than as expected.
+func clearMediaStore(ctx context.Context, a *arc.ARC) error {
+	testing.ContextLog(ctx, "Starting to clear MediaStore")
+	if err := a.Command(ctx, "content", "delete", "--uri", "content://media/external/file?deletedata=false").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to delete all copied files from Android's MediaStore database")
+	}
+	return nil
+}
+
+// remountDirectory remounts the target directory for triggering media scan arbitrarily.
+func remountDirectory(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, volumeID, targetDir string) error {
+	testing.ContextLogf(ctx, "Starting to unmount %s", volumeID)
+	if err := a.Command(ctx, "sm", "unmount", volumeID).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to unmount %s: ", volumeID)
+	}
+	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+unmounted\s+` + arc.MyFilesUUID + `$`)
+	testing.ContextLogf(ctx, "Waiting for %s to be unmounted", volumeID)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		}
+		lines := bytes.Split(out, []byte("\n"))
+		for _, line := range lines {
+			if volumeIDLine := re.Find(bytes.TrimSpace(line)); volumeIDLine != nil {
+				splitVolumeIDLine := strings.Split(string(volumeIDLine), " ")
+				volumeID = splitVolumeIDLine[0]
+				return nil
+			}
+		}
+		return errors.New("MyFiles volume not found")
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 3 * time.Second}); err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "Starting to mount %s", volumeID)
+	if err := a.Command(ctx, "sm", "mount", volumeID).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to mount %s: ", volumeID)
+	}
+	return nil
+}
+
+func getElapsedTimeData(ctx context.Context, d *ui.Device) (float64, error) {
+	view := d.Object(ui.ID(mediaScanTimePkg + ":id/media_scan_perf"))
+	var elapsedTime float64
+	testing.ContextLogf(ctx, "Waiting for a view %s matching the selector to apper", mediaScanTimePkg)
+	if err := view.WaitForExists(ctx, 1500*time.Second); err != nil {
+		return elapsedTime, errors.Wrapf(err, "failed to wait for a view %s matching the selector to appear", mediaScanTimePkg)
+	}
+	testing.ContextLog(ctx, "Waiting for getting the text content in app ui")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		text, err := view.GetText(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the text content in app ui")
+		}
+		elapsedTime, err = strconv.ParseFloat(text, 64)
+		if err != nil {
+			return errors.Wrap(err, "failed to parse the text content in app ui to float64")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 300 * time.Second}); err != nil {
+		return elapsedTime, errors.Wrap(err, "failed to get data from app ui")
+	}
+	return elapsedTime, nil
+}
+
+func startMeasureMediaScanPerfWithApp(ctx context.Context, s *testing.State, a *arc.ARC, tconn *chrome.TestConn, volumeURI string) (func(), error) {
+	const (
+		apk = "ArcMediaScanPerfTest.apk"
+		cls = "org.chromium.arc.testapp.mediascanperf.MainActivity"
+	)
+
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+		return nil, err
+	}
+
+	act, err := arc.NewActivity(a, mediaScanTimePkg, cls)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := act.StartWithArgs(ctx, tconn, []string{"-S", "-W", "-n"}, []string{"-d", volumeURI}); err != nil {
+		act.Close()
+		return nil, err
+	}
+	return act.Close, nil
+}
+
+func MediaScanPerf(ctx context.Context, s *testing.State) {
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	param := s.Param().(arcMediaScanPerfParams)
+	volumeURI := "file:///storage/" + param.volumeURISuffix
+
+	closeApp, err := startMeasureMediaScanPerfWithApp(ctx, s, a, tconn, volumeURI)
+	if err != nil {
+		s.Fatal("Failed to start app: ", err)
+	}
+	defer closeApp()
+
+	targetDir, err := param.getTargetDir(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get the path to target: ", err)
+	}
+	defer func() {
+		if err := os.RemoveAll(targetDir); err != nil {
+			s.Fatal("Failed to remove the directory created in the test: ", err)
+		}
+	}()
+
+	populateFilesUnderTargetPath(s, targetDir)
+
+	volumeID, err := param.getVolumeID(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to get volume ID: ", err)
+	}
+
+	// ArcFSWatcher is not attached to sdcard directory by bug (b:189416284),
+	// therefore these steps can be skipped if the target directory is sdcard.
+	if param.volumeURISuffix == arc.MyFilesUUID {
+		if err := waitForPopulatedFilesAddedToMediaStore(ctx, a); err != nil {
+			s.Fatal("Failed to wait for poplated files to be added to MediaStore database: ", err)
+		}
+		if err := clearMediaStore(ctx, a); err != nil {
+			s.Fatal("Failed to clean MediaStore database: ", err)
+		}
+	}
+
+	if err := remountDirectory(ctx, a, cr, volumeID, targetDir); err != nil {
+		s.Fatalf("Failed to remount %s: %v", volumeID, err)
+	}
+
+	time, err := getElapsedTimeData(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get data from app UI: ", err)
+	}
+
+	perfValues := perf.NewValues()
+	perfValues.Set(perf.Metric{
+		Name:      "mediaScanTime",
+		Unit:      "msec",
+		Direction: perf.SmallerIsBetter,
+	}, time)
+
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed saving perf data: ", err)
+	}
+}
