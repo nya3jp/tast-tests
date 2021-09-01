@@ -73,6 +73,24 @@
       "message": "Now that I\u0027m seeing how this works as part of lockscreen.go, I think it\u0027s probably better to leave it in the test since it will disrupt the existing tconn and callers will have to call chrome.New again.\n\n@David what do you think?",
       "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4575d179_ea3abe58",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-01T01:13:56Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "ea188bec_28a9c010",
+      "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
