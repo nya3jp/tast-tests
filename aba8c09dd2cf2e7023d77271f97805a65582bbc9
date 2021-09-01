@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a7c0af_6b7eacd3",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "Thanks! I did not know about this. Done",
+      "parentUuid": "c34e305c_116b2ac1",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5377ec1b_e6a14158",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "687db191_277afd99",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5377ec1b_e6a14158",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304d8a8b_5d9c1cd9",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef4d693f_305bc400",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cf00133_55b644de",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-09-01T08:53:56Z",
       "side": 1,
       "message": "It\u0027s kind of weird that we can\u0027t get this directly from the dlc service.",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa71508_c38a4f92",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7cf00133_55b644de",
       "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4e491e_c24a0296",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87e88ad2_e61e1b89",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 8
+      },
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a5183de_5aa0c163",
@@ -117,6 +225,24 @@
       "writtenOn": "2021-09-01T08:53:56Z",
       "side": 1,
       "message": "What\u0027s the difference between purge and uninstall?",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31da5ca8_7e0e2054",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "IIUC, the only difference is purge will clear the dir even if the DLC is not installed. Purge seems safer.\n\nhttps://source.corp.google.com/chromeos_public/src/platform2/dlcservice/dlc.cc?q\u003dShouldPurge()%20f:src%2Fplatform2%2Fdlcservice%2Fdlc.cc\n\nHere it purges after installing as well\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go;l\u003d79?q\u003ddlc.Purge%20lang:go",
+      "parentUuid": "2a5183de_5aa0c163",
       "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

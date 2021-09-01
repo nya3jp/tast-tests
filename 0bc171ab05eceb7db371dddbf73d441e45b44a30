@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fec83d0_9d686fda",
+        "filename": "src/chromiumos/tast/local/vm/dlc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T12:32:32Z",
+      "side": 1,
+      "message": "I am going to add a List function to chromiumos/tast/local/dlc in another CL to avoid this lint error\n\n------------------------------------------\n\n[FAILED] chromiumos/platform/tast-tests: tast_lint                        \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/vm/dlc.go:12:2: import of chromiumos/tast/local/bundles/cros/platform/dlc is only allowed from chromiumos/tast/local/bundles/*/platform or its descendant\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "0bc171ab05eceb7db371dddbf73d441e45b44a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
