@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d09fc1a1_59f8354f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-01T15:12:27Z",
+      "side": 1,
+      "message": "One other thing: if we put a TODO here, and there is no way to track work on it, it will get lost easily. We should file a bug (even if it\u0027s e.g. a P2 feature request) and then put the b/ link here so that it isn\u0027t forgotten.",
+      "parentUuid": "0a0586dd_5da910ab",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db299885_aff9ab68",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
         "patchSetId": 10
@@ -99,6 +117,40 @@
       "writtenOn": "2021-08-30T17:45:18Z",
       "side": 1,
       "message": "Same comment here, we definitely should not exit here without an error.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1a01ee_37fada95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-01T15:12:27Z",
+      "side": 1,
+      "message": "We don\u0027t need this log line; the test framework will make note of the end of the test.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0785324b_6a6c8541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-01T15:12:27Z",
+      "side": 1,
+      "message": "We\u0027re guaranteed to fall into this case here, as lastGoodApn is defined as \"\" in the line just above.\n\nIs there any reason we need this function at all? Or are we planning to initialize lastGoodApn with something else in a future revision of the CL?",
       "revId": "769e475b76dab566551223bc913eba9b243bb180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
