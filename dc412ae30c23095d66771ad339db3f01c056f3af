@@ -469,6 +469,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b287d5c6_f79d7b26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screenlock_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-09-01T06:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a145f90_f2146eb2",
+      "revId": "dc412ae30c23095d66771ad339db3f01c056f3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a021c64_fdcb4b45",

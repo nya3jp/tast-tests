@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d46bc7_2948d756",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-09-01T06:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc39fcf_f95d8a13",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "746e7bef_0012f6b6",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Details added to describe the relationship between login and key.",
       "parentUuid": "746e7bef_0012f6b6",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ee3b25_24c5a393",
+        "filename": "src/chromiumos/tast/services/cros/ui/check_power_menu_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-09-01T06:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9119bba3_ce8932bb",
       "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18eb99a6_a80d4842",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-09-01T06:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa292a11_25fd7429",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15b68784_190ebe03",
@@ -137,6 +191,24 @@
       "side": 1,
       "message": "Similar to the above (in check_power_menu_service.proto), I have rephrased the documented message with more details to describe when Lock is used. But, please correct me if I\u0027ve misunderstood anything.",
       "parentUuid": "15b68784_190ebe03",
+      "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b347a5e8_3bb39b66",
+        "filename": "src/chromiumos/tast/services/cros/ui/screenlock_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1494105
+      },
+      "writtenOn": "2021-09-01T06:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6636726_2de16294",
       "revId": "758e57c59ffe56180c577bece3ad5a63080348ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
