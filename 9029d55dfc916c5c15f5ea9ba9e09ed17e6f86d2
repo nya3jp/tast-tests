@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb8a861_a2e71416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2021-09-01T04:16:53Z",
+      "side": 1,
+      "message": "We can not run test in the lab that would generate noise.\nYou will need to either play the silent file, or silencing the output in the beginning.\nAlso, it is better to generate the file on the fly and remove it to avoid 1MB overhead to all the people who sync the code. ",
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
