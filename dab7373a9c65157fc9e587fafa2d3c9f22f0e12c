@@ -69,6 +69,24 @@
       "parentUuid": "4543363c_c37b15d6",
       "revId": "dab7373a9c65157fc9e587fafa2d3c9f22f0e12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90987aff_eca36e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-01T00:14:07Z",
+      "side": 1,
+      "message": "Hmm, risk of reverting is a good point.\nSo, I changed the approach by decoupling the refactoring, and changing the test behavior to minimize the impact of my main goal.\nAnyways, I think this is a way to go, and I already have it, so I\u0027ll send a follow-up CL.",
+      "parentUuid": "7c8517e1_1fd31e34",
+      "revId": "dab7373a9c65157fc9e587fafa2d3c9f22f0e12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
