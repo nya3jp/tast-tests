@@ -351,6 +351,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a52b8034_0e18ac49",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-01T07:04:06Z",
+      "side": 1,
+      "message": "Could you try waiting for the webm file to exist? Don\u0027t know if it\u0027ll work, but I suspect it will, since I believe it\u0027s written to incrementally rather than dumped at the end.",
+      "parentUuid": "6c595b6b_425ae945",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8255404d_d920f4b0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
         "patchSetId": 2
