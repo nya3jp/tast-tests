@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf942da0_300456c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T13:05:03Z",
+      "side": 1,
+      "message": "PTAL. I will add tast-owners once I get a +2 from you. Thanks!",
+      "revId": "b267a00c4068e01ad8209982b2fe08776b47b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
