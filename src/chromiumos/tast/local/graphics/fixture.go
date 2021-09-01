@@ -30,8 +30,8 @@ func init() {
 		Desc:            "Check if there any gpu related hangs during a test",
 		Contacts:        []string{"ddmail@google.com", "chromeos-gfx@google.com"},
 		Impl:            &gpuWatchHangsFixture{},
-		PreTestTimeout:  5 * time.Second,
-		PostTestTimeout: 5 * time.Second,
+		PreTestTimeout:  30 * time.Second,
+		PostTestTimeout: 30 * time.Second,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -161,14 +161,13 @@ func (f *gpuWatchHangsFixture) PreTest(ctx context.Context, s *testing.FixtTestS
 	// Attempt flushing system logs every second instead of every 10 minutes.
 	dirtyWritebackDuration, err := GetDirtyWritebackDuration()
 	if err != nil {
-		s.Log("Failed to set get dirty writeback duration: ", err)
+		s.Log("Failed to get initial dirty writeback duration: ", err)
 	} else {
-		if err := SetDirtyWritebackDuration(ctx, 1*time.Second); err != nil {
-			f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-				s.Log("set back dirty writeback")
-				return SetDirtyWritebackDuration(ctx, dirtyWritebackDuration)
-			})
-		}
+		SetDirtyWritebackDuration(ctx, 1*time.Second)
+		// Set dirty writeback duration to initial value even if we fails to set to 1 second. Note this implicitly calls sync.
+		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+			return SetDirtyWritebackDuration(ctx, dirtyWritebackDuration)
+		})
 	}
 	// syslog.NewReader reports syslog message written after it is started for GPU hang detection.
 	sysLogReader, err := syslog.NewReader(ctx)
