@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/base64"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -17,6 +18,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -202,7 +205,7 @@ func (r *ScreenRecorder) SaveInString(ctx context.Context, filepath string) erro
 func (r *ScreenRecorder) FrameStatus(ctx context.Context) (string, error) {
 	var result string
 	if err := r.videoRecorder.Call(ctx, &result, `function() {return this.frameStatus();}`); err != nil {
-		return "", errors.Wrap(err, "failed to get frame status: ")
+		return "", errors.Wrap(err, "failed to get frame status")
 	}
 	return result, nil
 }
@@ -258,4 +261,58 @@ func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f
 		}()
 	}
 	f()
+}
+
+// StartRecordFromKB starts screen record from keyboard.
+// It clicks Ctrl+Shift+F5 then select to record the whole desktop.
+// The caller should also call StopRecordFromKB to stop the screen recorder,
+// and save the record file.
+// Here is an example to call this method:
+//     if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
+//		   s.Log("Failed to start recording: ", err)
+//	   }
+//
+//	   defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
+func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error {
+	screenRecordBtn := nodewith.Name("Screen record").Role(role.ToggleButton)
+	fullScreenBtn := nodewith.Name("Record full screen").Role(role.ToggleButton)
+	desktop := nodewith.Role(role.Window).First()
+	ui := New(tconn)
+	return Combine("start screen record",
+		kb.AccelAction("Ctrl+Shift+F5"),
+		ui.LeftClick(screenRecordBtn),
+		ui.LeftClick(fullScreenBtn),
+		ui.LeftClick(desktop),   // It needs to click any button to start, so clicking on the middle of the desktop.
+		ui.Sleep(5*time.Second), // It takes the record 3~4 seconds to start, so wait 5s to capture all the actions.
+	)(ctx)
+}
+
+// StopRecordFromKBAndSaveOnError stops the record started by StartRecordFromKB.
+// If there is error, it copies the record file to the target dir .
+// It also removes the record file from Downloads for cleanup.
+func StopRecordFromKBAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir string) error {
+	stopBtn := nodewith.Name("Stop screen recording").Role(role.Button)
+	ui := New(tconn)
+	if err := ui.LeftClick(stopBtn)(ctx); err != nil {
+		return errors.Wrap(err, "failed to stop recording")
+	}
+
+	const downloads = "/home/chronos/user/Downloads/"
+	files, err := ioutil.ReadDir(downloads)
+	if err != nil {
+		return errors.Wrap(err, "failed to read files from Downloads")
+	}
+	for _, f := range files {
+		path := filepath.Join(downloads, f.Name())
+		if strings.HasSuffix(f.Name(), ".webm") {
+			defer os.RemoveAll(path)
+			if hasError() {
+				if err := crash.MoveFilesToOut(ctx, dir, path); err != nil {
+					return errors.Wrapf(err, "failed to copy records to %s", dir)
+				}
+				testing.ContextLogf(ctx, "Successfully copied the record file %s to %s", f.Name(), dir)
+			}
+		}
+	}
+	return nil
 }
