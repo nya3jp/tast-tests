@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -99,16 +98,11 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 	}
 	defer st.Close(cleanupCtx)
 
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Log("Failed to create ScreenRecorder: ", err)
+	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
+		s.Log("Failed to start recording: ", err)
 	}
 
-	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
-
-	if screenRecorder != nil {
-		screenRecorder.Start(ctx, tconn)
-	}
+	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
