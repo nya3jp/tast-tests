@@ -56,6 +56,30 @@
       },
       "revId": "f49a3055aa70a93e4e9a3e0de54c4ba170a0a07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8753546b_cf48b34e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_touchscreen_scroll.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-01T11:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54acecf6_68d709a1",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "f49a3055aa70a93e4e9a3e0de54c4ba170a0a07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
