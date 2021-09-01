@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e23c5c2_bb185d6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-01T16:56:17Z",
+      "side": 1,
+      "message": "micro-nit: I personally prefix the branch in back merges, e.g.\n  [M94] Skip PlatformEncoding tests on grunt",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "7b70198d1c0e59949718147f04175011e3ea97ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f75544f_5ee3722c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-01T16:56:17Z",
+      "side": 1,
+      "message": "pwang@ can you please RS? (It\u0027s a merge back).",
+      "revId": "7b70198d1c0e59949718147f04175011e3ea97ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
