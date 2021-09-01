@@ -6,11 +6,9 @@ package nearbysnippet
 
 // Constants used in the adb commands for installing and launching the Nearby Snippet.
 const (
-	ZipName                    = "nearby_snippet.zip"
-	ApkName                    = "nearby_snippet.apk"
-	protocolVersion            = "1"
-	moblyPackage               = "com.google.android.gmscore.integ.modules.nearby.mobly.snippets"
-	instrumentationRunnerClass = "com.google.android.mobly.snippet.SnippetRunner"
+	ZipName      = "nearby_snippet.zip"
+	ApkName      = "nearby_snippet.apk"
+	moblyPackage = "com.google.android.gmscore.integ.modules.nearby.mobly.snippets"
 )
 
 // AccountUtilZip is the filename for the .zip containing the GoogleAccountUtil APK.

@@ -122,7 +122,7 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 }
 func (f *nearbyShareAndroidFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if f.androidDevice != nil {
-		f.androidDevice.StopSnippet(ctx)
+		f.androidDevice.Cleanup(ctx)
 	}
 }
 func (f *nearbyShareAndroidFixture) Reset(ctx context.Context) error                        { return nil }
