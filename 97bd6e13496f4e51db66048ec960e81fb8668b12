@@ -16,6 +16,24 @@
       "message": "\"ui-independent\" might be difficult to understand to people outside the team.\nHow about \nprintpreview: use uiauto/ instead of ui/\nor \nprintpreview: replace ui with uiauto\n\nI suggest mimicing some patterns from the past changes in:\nhttps://b.corp.google.com/issues/190614781",
       "revId": "97bd6e13496f4e51db66048ec960e81fb8668b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b0fc27_ed1bc877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-01T03:48:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ddf0ad6_155cba26",
+      "revId": "97bd6e13496f4e51db66048ec960e81fb8668b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
