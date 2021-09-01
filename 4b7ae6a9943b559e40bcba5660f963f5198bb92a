@@ -34,6 +34,24 @@
       "parentUuid": "98b9de0e_89563f89",
       "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb021b53_172e0617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-01T23:21:23Z",
+      "side": 1,
+      "message": "\u003e\u003e For ARC-P how is it handled?.\nIt\u0027s is not handled in ARC-P. It is handled in ARC-VM only. Observed that multiple apps are failing due to black bars on both sides of the app, b/195794074 (Instagram, Audible, Tiktok, Turbotax, Bitlife). \nSince the fix is in the higher version ARC-VM, Clamshell: Large screen test case will always fails for the above apps in ARC-P and also Stainless results are showing red for the above apps. So commenting this test case will help in making Stainless green.\n\u003e\u003eWhat\u0027s difference between Largescreenlayout and ClamshellFullscreenApp ?                             \nLargeScreenLayout will check if app utilizes the full screen or not.\nClamshellFullScreenApp will check if app can be maximized without any crash.",
+      "parentUuid": "0bd825ef_86b5e209",
+      "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
