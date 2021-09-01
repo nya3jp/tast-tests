@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e9845c_21cda317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-01T05:10:24Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e From chrome_platform/tast/gerrit.gwsq:\n\u003e Note: A shadow reviewer was assigned to this CL.\n\u003e Shadowed: jbettis\n\u003e \n\u003e Reviewer source(s):\n\u003e jbettis, meiring is from context\n\nApologies @jbettis, did not realise there was a shadow reviewer on this CL. Should have waited...",
+      "revId": "9029d55dfc916c5c15f5ea9ba9e09ed17e6f86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a9ea23_df7d2b11",
