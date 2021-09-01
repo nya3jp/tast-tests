@@ -28,7 +28,6 @@ func init() {
 		Desc: "Test sending a message from the Wilco DTC VM to the Chromium extension",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
-			"pmoy@chromium.org",   // wilco_dtc_supportd author
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
