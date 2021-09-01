@@ -117,6 +117,11 @@ type ZoneInfoLimit struct {
 // PageReclaimLimit conforms to Limit interface.
 var _ Limit = (*ZoneInfoLimit)(nil)
 
+// IgnoreZone checks if a zone is not used. It checks if the pages free, min, low are all 0.
+func IgnoreZone(info ZoneInfo) bool {
+	return info.Free == 0 && info.Min == 0 && info.Low == 0
+}
+
 // Distance computes how far away from OOMing we are. For each zone, compute
 // zoneDistance := (min+low)/2. If any zoneDistance in l.lowZones is negative,
 // return the lowest zoneDistance to keep any lowZone away from its min
@@ -132,6 +137,9 @@ func (l *ZoneInfoLimit) Distance(ctx context.Context) (int64, error) {
 	var minDistance int64 = math.MaxInt64
 	var sumDistance int64
 	for _, info := range infos {
+		if IgnoreZone(info) {
+			continue
+		}
 		zoneDistance := int64(info.Free) - int64((info.Low+info.Min)/2)
 		sumDistance += zoneDistance
 		if _, ok := l.lowZones[info.Name]; ok && zoneDistance < minDistance {
@@ -157,6 +165,9 @@ func (l *ZoneInfoLimit) AssertNotReached(ctx context.Context) error {
 	for _, info := range infos {
 		if _, ok := l.lowZones[info.Name]; !ok {
 			// We don't care about this zone.
+			continue
+		}
+		if IgnoreZone(info) {
 			continue
 		}
 		distance := int64(info.Free) - int64((info.Low+info.Min)/2)
