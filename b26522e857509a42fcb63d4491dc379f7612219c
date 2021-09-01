@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56455af6_8f6bc2ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-01T14:35:34Z",
+      "side": 1,
+      "message": "Removed the extra space and moved the class/interface to separate files.",
+      "revId": "b26522e857509a42fcb63d4491dc379f7612219c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
