@@ -63,6 +63,30 @@
       },
       "revId": "07c634247c9194db464848376ba2830e2564a42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8eccac0_e0a222cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-01T08:52:48Z",
+      "side": 1,
+      "message": "As offline discussion, the current VCD\u0027s behavior follows the VCD implementation in Android (When not every value in MediaSettingsRange can be set successfully with the |applyConstraints()| call). So that the test need to decide the legal testable value here.",
+      "parentUuid": "bcd2838d_5c3dc33d",
+      "range": {
+        "startLine": 164,
+        "startChar": 82,
+        "endLine": 164,
+        "endChar": 83
+      },
+      "revId": "07c634247c9194db464848376ba2830e2564a42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
