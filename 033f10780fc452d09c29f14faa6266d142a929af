@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf8f951_65f958b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-09-01T16:21:56Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. See follow-up CL crrev.com/c/3135096.",
+      "parentUuid": "e143d1eb_be25be0a",
+      "range": {
+        "startLine": 1220,
+        "startChar": 82,
+        "endLine": 1220,
+        "endChar": 96
+      },
+      "revId": "033f10780fc452d09c29f14faa6266d142a929af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c948111_58492053",
