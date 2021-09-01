@@ -213,6 +213,16 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 			}
 		}
 		testing.ContextLog(ctx, "Running test with tablet mode: ", tabletMode)
+		var uiHandler cuj.UIActionHandler
+		if tabletMode {
+			if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to create tablet action handler")
+			}
+		} else {
+			if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to create clamshell action handler")
+			}
+		}
 
 		if req.ExtendedDisplay {
 			// Unset mirrored display so two displays can show different information.
@@ -245,7 +255,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, tabletMode, int(req.RoomSize), meetAccount, meetPassword, outDir)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, uiHandler, tabletMode, int(req.RoomSize), meetAccount, meetPassword, outDir)
 		defer gmcli.End(ctx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
@@ -406,19 +416,19 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 		}
 	}
 
-	var tsAction cuj.UIActionHandler
+	var uiHandler cuj.UIActionHandler
 	if tabletMode {
-		if tsAction, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
+		if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
 			return nil, errors.Wrap(err, "failed to create tablet action handler")
 		}
 	} else {
-		if tsAction, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+		if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
 			return nil, errors.Wrap(err, "failed to create clamshell action handler")
 		}
 	}
 	// Creates a Zoom conference instance which implements conference.Conference methods.
 	// which provides conference operations.
-	zmcli := conference.NewZoomConference(cr, tconn, tsAction, tabletMode, int(req.RoomSize), account, outDir)
+	zmcli := conference.NewZoomConference(cr, tconn, uiHandler, tabletMode, int(req.RoomSize), account, outDir)
 	defer zmcli.End(ctx)
 	// Sends a http request that ask for creating a Zoom conferece with
 	// specified participants and also return clean up method for closing
