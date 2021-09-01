@@ -16,6 +16,24 @@
       "message": "The issue here is that chrome always asks for \"debian/buster\" (\"debian/bullseye\" with my change to the default container) regardless of what we\u0027re testing.\n\nProbably we need to set the relevant flag when starting chrome and have the http server adjust accordingly, then we can safely change the default.",
       "revId": "b885357076cb94418316f762219b07c976d957a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6046f0_d7d860af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-09-01T23:50:21Z",
+      "side": 1,
+      "message": "This CL is the backward-forward compatible thing we need in the transition period.",
+      "parentUuid": "7da0e19e_f1ef797b",
+      "revId": "b885357076cb94418316f762219b07c976d957a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
