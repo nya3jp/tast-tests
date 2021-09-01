@@ -21,8 +21,8 @@ func init() {
 		Func: APIRequestBluetoothDataNotification,
 		Desc: "Test sending RequestBluetoothDataNotification gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon and expect a response",
 		Contacts: []string{
-			"vsavu@chromium.org", // Test author
-			"lamzin@google.com",  // wilco_dtc_supportd maintainer
+			"vsavu@google.com",  // Test author
+			"lamzin@google.com", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
 		Attr:         []string{"group:mainline"},
