@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96fd6096_cef02651",
+        "filename": "src/chromiumos/tast/local/vm/dlc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T13:43:54Z",
+      "side": 1,
+      "message": "Makes sense. The file needs to be in a new package to avoid the below error though\n\n  Tast forbids inter-file references in entry files",
+      "parentUuid": "850af1d0_c56db8ab",
+      "revId": "2c1bb3af1690cac7e10b18170dcd38f92db30a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8707b19_11d54222",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-01T13:16:13Z",
       "side": 1,
       "message": "PreData is named after \"precondition\u0027s data\", but we use fixture and will remove the precondition eventually.\nSo, how about defining a new struct like \"FixtData\"?",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "2c1bb3af1690cac7e10b18170dcd38f92db30a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d8fceb1_beaa1b5d",
+        "filename": "src/chromiumos/tast/local/vm/dlc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-01T13:43:54Z",
+      "side": 1,
+      "message": "I was hesitant to create a copy of the struct with another struct name. That makes sense though.",
+      "parentUuid": "d8707b19_11d54222",
       "range": {
         "startLine": 67,
         "startChar": 8,
