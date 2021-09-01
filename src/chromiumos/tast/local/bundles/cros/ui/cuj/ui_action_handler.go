@@ -105,7 +105,13 @@ type UIActionHandler interface {
 	SwitchToChromeTabByName(tabNameDest string) action.Action
 
 	// ScrollChromePage generate the scroll actions.
-	ScrollChromePage(ctx context.Context) ([]action.Action, error)
+	ScrollChromePage(ctx context.Context) []action.Action
+
+	// SwipeDown returns a function which swipes down the page.
+	SwipeDown() action.Action
+
+	// SwipeUp returns a function which swipes up the page.
+	SwipeUp() action.Action
 
 	// MinimizeAllWindow returns a function which minimizes all window.
 	MinimizeAllWindow() action.Action
@@ -447,7 +453,7 @@ func (t *TabletActionHandler) SwitchToChromeTabByName(tabNameDest string) action
 		}
 		tabIdxDest := -1
 		for i, tab := range tabs {
-			if tab.Name == tabNameDest {
+			if strings.Contains(tab.Name, tabNameDest) {
 				tabIdxDest = i
 				break
 			}
@@ -550,40 +556,59 @@ func (t *TabletActionHandler) switchToChromeTabByIndex(ctx context.Context, tabI
 }
 
 // ScrollChromePage generate the scroll action.
-func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]action.Action, error) {
+func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) []action.Action {
+	return []action.Action{
+		t.SwipeDown(),
+		t.SwipeUp(),
+		t.SwipeUp(),
+	}
+}
+
+// getSwipePoint returns upper point and lower point for swipe up and down.
+func (t *TabletActionHandler) getSwipePoint(ctx context.Context) (coords.Point, coords.Point, error) {
 	info, err := display.GetInternalInfo(ctx, t.tconn)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get display info")
+		return coords.Point{}, coords.Point{}, errors.Wrap(err, "failed to get display info")
 	}
 	var (
-		x      = info.Bounds.Width / 2
-		ystart = info.Bounds.Height / 4 * 3           // 75% of screen height.
-		yend   = info.Bounds.Height / 4               // 25% of screen height.
-		start  = coords.NewPoint(int(x), int(ystart)) // start point of swipe.
-		end    = coords.NewPoint(int(x), int(yend))   // end point of swipe.
+		middleX    = info.Bounds.Width / 2
+		upperY     = info.Bounds.Height / 4 * 3                 // 75% of screen height.
+		lowerY     = info.Bounds.Height / 4                     // 25% of screen height.
+		upperPoint = coords.NewPoint(int(middleX), int(upperY)) // upper point of screen.
+		lowerPoint = coords.NewPoint(int(middleX), int(lowerY)) // lower point of screen.
 	)
+	return upperPoint, lowerPoint, nil
+}
 
+// SwipeDown returns a function which swipes down the page.
+func (t *TabletActionHandler) SwipeDown() action.Action {
 	// Swipe the page down.
-	swipeDown := func(ctx context.Context) error {
-		if err := t.tc.Swipe(start, t.tc.SwipeTo(end, pageScrollingInterval))(ctx); err != nil {
-			return errors.Wrap(err, "failed to Swipe down")
+	return func(ctx context.Context) error {
+		upperPoint, lowerPoint, err := t.getSwipePoint(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get upper and lower point")
+		}
+		if err := t.tc.Swipe(upperPoint, t.tc.SwipeTo(lowerPoint, pageScrollingInterval))(ctx); err != nil {
+			return errors.Wrap(err, "failed to swipe down")
 		}
 		return nil
 	}
+}
 
+// SwipeUp returns a function which swipes up the page.
+func (t *TabletActionHandler) SwipeUp() action.Action {
 	// Swipe the page up.
-	swipeUp := func(ctx context.Context) error {
-		if err := t.tc.Swipe(end, t.tc.SwipeTo(start, pageScrollingInterval))(ctx); err != nil {
-			return errors.Wrap(err, "failed to Swipe down")
+	return func(ctx context.Context) error {
+		upperPoint, lowerPoint, err := t.getSwipePoint(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get upper and lower point")
+		}
+
+		if err := t.tc.Swipe(lowerPoint, t.tc.SwipeTo(upperPoint, pageScrollingInterval))(ctx); err != nil {
+			return errors.Wrap(err, "failed to swipe up")
 		}
 		return nil
 	}
-
-	return []func(ctx context.Context) error{
-		swipeDown,
-		swipeUp,
-		swipeUp,
-	}, nil
 }
 
 // MinimizeAllWindow returns a function which minimizes all window.
@@ -760,7 +785,7 @@ func (cl *ClamshellActionHandler) SwitchToAppWindowByIndex(appName string, targe
 func (cl *ClamshellActionHandler) SwitchToAppWindowByName(appName, targetName string) action.Action {
 	return func(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Switching to app %s window, by name (%s)", appName, targetName)
-		menuItem := nodewith.ClassName("MenuItemView").NameContaining(appName)
+		menuItem := nodewith.ClassName("MenuItemView").NameContaining(targetName)
 		return cl.switchToWindowThroughShelf(ctx, appName, menuItem)
 	}
 }
@@ -881,7 +906,7 @@ func (cl *ClamshellActionHandler) SwitchToChromeTabByIndex(tabIdxDest int) actio
 func (cl *ClamshellActionHandler) SwitchToChromeTabByName(tabNameDest string) action.Action {
 	return func(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Switching Chrome tab, by name (%s)", tabNameDest)
-		tabFinder := nodewith.Name(tabNameDest).Role(role.Tab).First()
+		tabFinder := nodewith.NameContaining(tabNameDest).Role(role.Tab).First()
 		if err := cl.switchChromeTab(ctx, tabFinder); err != nil {
 			return errors.Wrapf(err, "failed to switch to tab with name %q", tabNameDest)
 		}
@@ -951,26 +976,31 @@ func (cl *ClamshellActionHandler) switchChromeTab(ctx context.Context, tabFinder
 }
 
 // ScrollChromePage generate the scroll action.
-func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]action.Action, error) {
-	var (
-		x      = cl.pad.Width() / 2
-		ystart = cl.pad.Height() / 4
-		yend   = cl.pad.Height() / 4 * 3
-		d      = cl.pad.Width() / 8 // x-axis distance between two fingers.
-	)
+func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) []action.Action {
+	return []action.Action{
+		cl.SwipeDown(),
+		cl.SwipeUp(),
+		cl.SwipeUp(),
+	}
+}
 
-	// Move the mouse cursor to center of the page so the scrolling (by swipe) will be effected on the web page.
-	// If Chrome (the browser) has been resized, then the center of screen is not guarantee to be center of window,
-	// especially when there are multiple windows opened.
-	prepare := func(ctx context.Context) error {
+// SwipeDown returns a function which swipes down the page.
+func (cl *ClamshellActionHandler) SwipeDown() action.Action {
+	// Swipe the page down.
+	return func(ctx context.Context) error {
+		var (
+			x      = cl.pad.Width() / 2
+			ystart = cl.pad.Height() / 4
+			yend   = cl.pad.Height() / 4 * 3
+			d      = cl.pad.Width() / 8 // x-axis distance between two fingers.
+		)
+
+		// Move the mouse cursor to center of the page so the scrolling (by swipe) will be effected on the web page.
+		// If Chrome (the browser) has been resized, then the center of screen is not guarantee to be center of window,
+		// especially when there are multiple windows opened.
 		if err := cl.mouseMoveToCenterOfActiveWindow(ctx); err != nil {
 			return errors.Wrap(err, "failed to prepare DoubleSwipe")
 		}
-		return nil
-	}
-
-	// Swipe the page down.
-	doubleSwipeDown := func(ctx context.Context) error {
 		if err := cl.touchPad.DoubleSwipe(ctx, x, ystart, x, yend, d, pageScrollingInterval); err != nil {
 			return errors.Wrap(err, "failed to DoubleSwipe down")
 		}
@@ -979,9 +1009,25 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]actio
 		}
 		return nil
 	}
+}
 
+// SwipeUp returns a function which swipes up the page.
+func (cl *ClamshellActionHandler) SwipeUp() action.Action {
 	// Swipe the page up.
-	doubleSwipeUp := func(ctx context.Context) error {
+	return func(ctx context.Context) error {
+		var (
+			x      = cl.pad.Width() / 2
+			ystart = cl.pad.Height() / 4
+			yend   = cl.pad.Height() / 4 * 3
+			d      = cl.pad.Width() / 8 // x-axis distance between two fingers.
+		)
+
+		// Move the mouse cursor to center of the page so the scrolling (by swipe) will be effected on the web page.
+		// If Chrome (the browser) has been resized, then the center of screen is not guarantee to be center of window,
+		// especially when there are multiple windows opened.
+		if err := cl.mouseMoveToCenterOfActiveWindow(ctx); err != nil {
+			return errors.Wrap(err, "failed to prepare DoubleSwipe")
+		}
 		if err := cl.touchPad.DoubleSwipe(ctx, x, yend, x, ystart, d, pageScrollingInterval); err != nil {
 			return errors.Wrap(err, "failed to DoubleSwipe up")
 		}
@@ -990,13 +1036,6 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]actio
 		}
 		return nil
 	}
-
-	return []func(ctx context.Context) error{
-		prepare,
-		doubleSwipeDown,
-		doubleSwipeUp,
-		doubleSwipeUp,
-	}, nil
 }
 
 // MinimizeAllWindow returns a function which minimizes all window.

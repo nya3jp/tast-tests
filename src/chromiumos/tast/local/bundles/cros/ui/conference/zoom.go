@@ -158,8 +158,9 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		))(ctx)
 	}
 
-	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
 	joinButton := nodewith.Name("Join").Role(role.Button)
+	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
+	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
 	joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
 
 	// It seems zoom has different UI versions. One of the zoom version will open a new tab.
@@ -178,12 +179,15 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		}
 		return nil
 	}
+
 	testing.ContextLog(ctx, "Join conference")
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
-		ui.LeftClickUntil(joinButton, ui.WithTimeout(1*time.Second).WaitUntilGone(joinButton)),
+		ui.WaitForLocation(joinButton),
+		ui.MakeVisible(joinButton),
+		ui.LeftClickUntil(joinButton, ui.WithTimeout(time.Second).WaitUntilGone(joinButton)),
 		// Use 1 minute timeout value because it may take longer to wait for page loading,
 		// especially for some low end DUTs.
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinAudioButton),

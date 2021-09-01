@@ -272,10 +272,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			return errors.Wrap(err, "failed to check installed chrome browser")
 		}
 
-		scrollActions, err := uiActionHandler.ScrollChromePage(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to generate scroll actions")
-		}
+		scrollActions := uiActionHandler.ScrollChromePage(ctx)
 
 		// Switch windows/tabs and scroll the web page to measure the responsiveness.
 		for idxWindow, tabs := range tabsInfo {
