@@ -70,6 +70,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/policy"
 	_ "chromiumos/tast/local/bundles/cros/power"
 	_ "chromiumos/tast/local/bundles/cros/printer"
+	_ "chromiumos/tast/local/bundles/cros/printscan"
 	_ "chromiumos/tast/local/bundles/cros/qemu"
 	_ "chromiumos/tast/local/bundles/cros/quicksettings"
 	_ "chromiumos/tast/local/bundles/cros/scanapp"

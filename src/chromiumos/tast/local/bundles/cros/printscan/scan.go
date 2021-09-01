@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package scanapp
+package printscan
 
 import (
 	"context"
@@ -10,15 +10,11 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/scanapp/vup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
-	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/document"
-	"chromiumos/tast/local/printing/ippusbbridge"
-	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/scanning"
 	"chromiumos/tast/testing"
 )
@@ -26,31 +22,24 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Scan,
-		Desc: "Tests that the Scan app can be used to perform scans",
+		Desc: "Tests that the Scan app can perform scans on real hardware",
 		Contacts: []string{
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",
 		},
 		Attr: []string{
-			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_scanning",
 		},
-		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
+		SoftwareDeps: []string{"chrome"}, // TODO: HWDeps needed for printscan?
 		Data: []string{
-			vup.SourceImage,
 			pngGoldenFile,
-			jpgGoldenFile,
-			pdfGoldenFile,
 		},
 	})
 }
 
 const (
 	pngGoldenFile = "flatbed_png_color_letter_300_dpi.png"
-	jpgGoldenFile = "adf_simplex_jpg_grayscale_a4_150_dpi.jpg"
-	pdfGoldenFile = "adf_duplex_pdf_grayscale_max_300_dpi.pdf"
 )
 
 var tests = []struct {
@@ -60,7 +49,7 @@ var tests = []struct {
 }{{
 	name: "flatbed_png_color_letter_300_dpi",
 	settings: scanapp.ScanSettings{
-		Scanner:    vup.ScannerName,
+		Scanner:    "EPSON XP-7100 Series",
 		Source:     scanapp.SourceFlatbed,
 		FileType:   scanapp.FileTypePNG,
 		ColorMode:  scanapp.ColorModeColor,
@@ -68,37 +57,13 @@ var tests = []struct {
 		Resolution: scanapp.Resolution300DPI,
 	},
 	goldenFile: pngGoldenFile,
-}, {
-	name: "adf_simplex_jpg_grayscale_a4_150_dpi",
-	settings: scanapp.ScanSettings{
-		Scanner:  vup.ScannerName,
-		Source:   scanapp.SourceADFOneSided,
-		FileType: scanapp.FileTypeJPG,
-		// TODO(b/181773386): Change this to black and white when the virtual
-		// USB printer correctly reports the color mode.
-		ColorMode:  scanapp.ColorModeGrayscale,
-		PageSize:   scanapp.PageSizeA4,
-		Resolution: scanapp.Resolution150DPI,
-	},
-	goldenFile: jpgGoldenFile,
-}, {
-	name: "adf_duplex_pdf_grayscale_max_300_dpi",
-	settings: scanapp.ScanSettings{
-		Scanner:    vup.ScannerName,
-		Source:     scanapp.SourceADFTwoSided,
-		FileType:   scanapp.FileTypePDF,
-		ColorMode:  scanapp.ColorModeGrayscale,
-		PageSize:   scanapp.PageSizeFitToScanArea,
-		Resolution: scanapp.Resolution300DPI,
-	},
-	goldenFile: pdfGoldenFile,
 }}
 
 func Scan(ctx context.Context, s *testing.State) {
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
 	// cancellations on the shortened context.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	cr, err := chrome.New(ctx)
@@ -113,30 +78,6 @@ func Scan(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// Set up the virtual USB printer.
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := usbprinter.RemoveModules(ctx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}(cleanupCtx)
-
-	devInfo, err := usbprinter.LoadPrinterIDs(vup.Descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", vup.Descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, vup.Descriptors, vup.Attributes, vup.EsclCapabilities, s.DataPath(vup.SourceImage), "")
-	if err != nil {
-		s.Fatal("Failed to attach virtual printer: ", err)
-	}
-	defer func() {
-		if printer != nil {
-			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-		}
-	}()
 	if err = ippusbbridge.WaitForSocket(ctx, devInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
 	}
@@ -185,10 +126,4 @@ func Scan(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
-
-	// Intentionally stop the printer early to trigger shutdown in
-	// ippusb_bridge. Without this, cleanup may have to wait for other processes
-	// to finish using the printer (e.g. CUPS background probing).
-	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-	printer = nil
 }

@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
+	"chromiumos/tast/local/bundles/cros/scanapp/vup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
+	"chromiumos/tast/local/scanning"
 	"chromiumos/tast/testing"
 )
 
@@ -37,12 +38,12 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
-		Data:         []string{scanning.SourceImage},
+		Data:         []string{vup.SourceImage},
 	})
 }
 
 var settings = scanapp.ScanSettings{
-	Scanner:    scanning.ScannerName,
+	Scanner:    vup.ScannerName,
 	Source:     scanapp.SourceFlatbed,
 	FileType:   scanapp.FileTypePNG,
 	ColorMode:  scanapp.ColorModeColor,
@@ -79,12 +80,12 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	devInfo, err := usbprinter.LoadPrinterIDs(scanning.Descriptors)
+	devInfo, err := usbprinter.LoadPrinterIDs(vup.Descriptors)
 	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", scanning.Descriptors, err)
+		s.Fatalf("Failed to load printer IDs from %v: %v", vup.Descriptors, err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, scanning.Descriptors, scanning.Attributes, scanning.EsclCapabilities, s.DataPath(scanning.SourceImage), "")
+	printer, err := usbprinter.StartScanner(ctx, devInfo, vup.Descriptors, vup.Attributes, vup.EsclCapabilities, s.DataPath(vup.SourceImage), "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
