@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f9277c_39788af9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-01T07:49:35Z",
+      "side": 1,
+      "message": "PTAL~\n\nThis is per our discussion in meeting IIRC",
+      "revId": "ecf54b12f281ce6b27d42b10d737c8f2bc950094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
