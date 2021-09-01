@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c42b29_6923279b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-01T21:49:07Z",
+      "side": 1,
+      "message": "It isn\u0027t clear what this is supposed to achieve.\n\nCan you increase the timeout?\nOne could also call an fflush(0) first.\nBut I am not really sure what happens with VMs.",
+      "revId": "e953447d847b66da2e1d6078bd513eee28a5a3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7e9dc9_87b70554",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-01T21:49:07Z",
+      "side": 1,
+      "message": "initial",
+      "range": {
+        "startLine": 167,
+        "startChar": 54,
+        "endLine": 167,
+        "endChar": 60
+      },
+      "revId": "e953447d847b66da2e1d6078bd513eee28a5a3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
