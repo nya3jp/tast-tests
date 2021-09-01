@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mmconst"
+	"chromiumos/tast/local/bundles/cros/network/cellular"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
@@ -28,6 +29,11 @@ func init() {
 }
 
 func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
+	helper, err := cellular.NewHelper(ctx)
+	if err != nil {
+		s.Fatal("Failed to create cellular.Helper: ", err)
+	}
+
 	modem, err := modemmanager.NewModem(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Modem: ", err)
@@ -40,6 +46,12 @@ func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Missing Device property: ", err)
 	}
+	defer func() {
+		// Restart ModemManager after Inhibit test
+		if err := helper.RestartModemManager(ctx, true); err != nil {
+			s.Fatal("Failed to restart ModemManager: ", err)
+		}
+	}()
 
 	for i := 0; i < 3; i++ {
 		obj, err := dbusutil.NewDBusObject(ctx, modemmanager.DBusModemmanagerService, modemmanager.DBusModemmanagerInterface, modemmanager.DBusModemmanagerPath)
@@ -62,4 +74,5 @@ func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
 		}
 		modem = modem2
 	}
+
 }
