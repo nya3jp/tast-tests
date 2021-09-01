@@ -369,6 +369,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbf7e453_b00d8298",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-01T07:35:26Z",
+      "side": 1,
+      "message": "Yes, it is incremental. I tested it, it shows immediatly after it finishes counting 1. \nHowever, it is not accurate because it might be some other webm files left from other tests.",
+      "parentUuid": "a52b8034_0e18ac49",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8255404d_d920f4b0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
         "patchSetId": 2
