@@ -39,6 +39,30 @@
       },
       "revId": "07c634247c9194db464848376ba2830e2564a42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd2838d_5c3dc33d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-09-01T01:08:17Z",
+      "side": 1,
+      "message": "I think we can\u0027t filter out unavailable from JS side.\nThe limitation of the interface is it only has Range structure of color temperature. We only knows min, max and step values. We can\u0027t know the unavailable value between min and max.\nhttps://www.w3.org/TR/image-capture/#color-temperature",
+      "parentUuid": "a2203d1a_e227eaad",
+      "range": {
+        "startLine": 164,
+        "startChar": 82,
+        "endLine": 164,
+        "endChar": 83
+      },
+      "revId": "07c634247c9194db464848376ba2830e2564a42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
