@@ -161,11 +161,12 @@ func (f *gpuWatchHangsFixture) PreTest(ctx context.Context, s *testing.FixtTestS
 	// Attempt flushing system logs every second instead of every 10 minutes.
 	dirtyWritebackDuration, err := GetDirtyWritebackDuration()
 	if err != nil {
-		s.Log("Failed to set get dirty writeback duration: ", err)
+		s.Log("Failed to get initial dirty writeback duration: ", err)
 	} else {
 		if err := SetDirtyWritebackDuration(ctx, 1*time.Second); err != nil {
+			s.Log("Failed to set dirty writeback duration: ", err)
+		} else {
 			f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-				s.Log("set back dirty writeback")
 				return SetDirtyWritebackDuration(ctx, dirtyWritebackDuration)
 			})
 		}
