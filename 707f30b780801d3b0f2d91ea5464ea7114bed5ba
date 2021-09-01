@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef556c8c_c5bf373d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-01T20:42:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c8452ff_2e38724a",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "707f30b780801d3b0f2d91ea5464ea7114bed5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84cfd0c5_2bc67d01",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-31T17:33:33Z",
       "side": 1,
       "message": "Same as above.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 53
+      },
+      "revId": "707f30b780801d3b0f2d91ea5464ea7114bed5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ad973e_8e158cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-01T20:42:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84cfd0c5_2bc67d01",
       "range": {
         "startLine": 75,
         "startChar": 0,

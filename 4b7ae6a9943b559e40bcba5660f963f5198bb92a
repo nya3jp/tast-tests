@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b9de0e_89563f89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-01T20:42:40Z",
+      "side": 1,
+      "message": "Hi Renuga, Commented Clamshell: Largescreen Layout testcase since it is handled by Resize lock feature in ARC-VM. Please let me know your thoughts. Thanks.",
+      "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
