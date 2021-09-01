@@ -9,15 +9,12 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -52,7 +49,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.DisableFeatures("FilesZipPack"))
+	cr, err := chrome.New(ctx, chrome.DisableFeatures("FilesZipUnpack"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -63,6 +60,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 		zipBaseName    string
 		selectionLabel string
 		copyLabel      string
+		zipLabel       string
 	}
 
 	subTests := []subTestData{
@@ -73,11 +71,13 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 			zipBaseName:    "500_small_files",
 			selectionLabel: "500 files selected",
 			copyLabel:      "Copying 500 items to 500_small_files",
+			zipLabel:       "Zipping 500 items",
 		},
 		{
 			zipBaseName:    "various_documents",
 			selectionLabel: "102 items selected",
 			copyLabel:      "Copying 102 items to various_documents",
+			zipLabel:       "Zipping 102 items",
 		},
 	}
 
@@ -152,7 +152,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 				Direction: perf.SmallerIsBetter,
 			}, duration)
 
-			duration = testZippingFiles(ctx, tconn, s, files, ew, data.zipBaseName)
+			duration = testZippingFiles(ctx, tconn, s, files, ew, data.zipBaseName, data.zipLabel)
 
 			pv.Set(perf.Metric{
 				Name:      fmt.Sprintf("tast_zip_%s", data.zipBaseName),
@@ -225,18 +225,28 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 	startTime := time.Now()
 
 	// Find "Complete" within the copy notification panel, to wait for the copy operation to finish.
-	if err := files.WithTimeout(zipOperationTimeout).WaitUntilExists(nodewith.Name("Complete").Role(role.StaticText).Ancestor(nodewith.Name(copyLabel).Role(role.GenericContainer)))(ctx); err != nil {
+	copyNotification := nodewith.Name(copyLabel).Role(role.GenericContainer)
+	if err := files.WithTimeout(zipOperationTimeout).WaitUntilExists(nodewith.Name("Complete").Role(role.StaticText).Ancestor(copyNotification))(ctx); err != nil {
 		s.Fatal("Failed to wait for end of copy operation: ", err)
 	}
 
+	duration := float64(time.Since(startTime).Milliseconds())
+
+	if err := uiauto.Combine("Dismiss copy notification",
+		files.LeftClick(nodewith.Name("Dismiss").Role(role.Button).Ancestor(copyNotification)),
+		files.WaitUntilGone(nodewith.Name("Dismiss").Role(role.Button).Ancestor(copyNotification)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to dismiss copy notification: ", err)
+	}
+
 	// Return duration.
-	return float64(time.Since(startTime).Milliseconds())
+	return duration
 }
 
-func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
+func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName, zipLabel string) float64 {
 	if err := uiauto.Combine("select Zip selection on all files",
-		// The Files app listBox, which should be in a focused state.
-		files.WaitUntilExists(nodewith.Role(role.ListBox).Focused()),
+		// Move the focus to the Files app listBox.
+		files.FocusAndWait(nodewith.Role(role.ListBox)),
 		// Select all extracted files.
 		ew.AccelAction("ctrl+A"),
 		// Right click on the Files app listBox.
@@ -247,45 +257,24 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 		s.Fatal("Failed to start zipping files: ", err)
 	}
 
-	zipArchiverExtensionID := "dmboannefpncccogfdikhmhpmdnddgoe"
-
-	// Wait until the Zip Archiver notification exists.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ns, err := ash.Notifications(ctx, tconn)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		for _, n := range ns {
-			// Check if our notification exists.
-			if strings.Contains(n.ID, zipArchiverExtensionID) {
-				return nil
-			}
-		}
-		return errors.New("notification does not exist")
-	}, &testing.PollOptions{Timeout: zipPerfUITimeout}); err != nil {
-		s.Fatal("Failed to find Zip archiver zipping notification: ", err)
-	}
-
 	// Start timer for zipping operation.
 	startTime := time.Now()
 
-	// Wait until the Zip Archiver notification disappears.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ns, err := ash.Notifications(ctx, tconn)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		for _, n := range ns {
-			// Check if our notification exists.
-			if strings.Contains(n.ID, zipArchiverExtensionID) {
-				return errors.New("notification still exists")
-			}
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: zipOperationTimeout}); err != nil {
-		s.Fatal("Failed to wait for the Zip archiver zipping notification to disappear: ", err)
+	// Find "Complete" within the zipping notification panel, to wait for the zipping operation to finish.
+	zippingNotification := nodewith.NameStartingWith(zipLabel).Role(role.GenericContainer)
+	if err := files.WithTimeout(zipPerfUITimeout).WaitUntilExists(nodewith.Name("Complete").Role(role.StaticText).Ancestor(zippingNotification))(ctx); err != nil {
+		s.Fatal("Failed to wait for end of copy operation: ", err)
+	}
+
+	duration := float64(time.Since(startTime).Milliseconds())
+
+	if err := uiauto.Combine("Dismiss zipping notification",
+		files.LeftClick(nodewith.Name("Dismiss").Role(role.Button).Ancestor(zippingNotification)),
+		files.WaitUntilGone(nodewith.Name("Dismiss").Role(role.Button).Ancestor(zippingNotification)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to dismiss zipping notification: ", err)
 	}
 
 	// Return duration.
-	return float64(time.Since(startTime).Milliseconds())
+	return duration
 }
