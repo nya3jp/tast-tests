@@ -27,7 +27,6 @@ func init() {
 		Desc: "Test sending GetStatefulPartitionAvailableCapacity gRPC requests from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"rbock@google.com",    // Test author
-			"pmoy@chromium.org",   // wilco_dtc_supportd author
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
