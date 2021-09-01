@@ -115,7 +115,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 		// Premium tier.
 		if tier == "premium" {
-			if err := conf.BackgroundBlurring(ctx); err != nil {
+			if err := conf.BackgroundChange(ctx); err != nil {
 				return err
 			}
 		}

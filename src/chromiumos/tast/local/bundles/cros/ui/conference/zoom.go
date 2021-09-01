@@ -310,36 +310,35 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 	return nil
 }
 
-// BackgroundBlurring changes the background to patterned background and reset to none.
+// BackgroundChange changes the background to patterned background and reset to none.
 //
 // Zoom doesn't have background blur option for web version so changing background is used to fullfil
 // the requirement.
-func (conf *ZoomConference) BackgroundBlurring(ctx context.Context) error {
+func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 	ui := uiauto.New(conf.tconn)
+	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	changeBackground := func(backgroundNumber int) error {
-		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(webArea)
 		settingsWindow := nodewith.Name("settings dialog window").Role(role.Application).Ancestor(webArea)
 		backgroundTab := nodewith.Name("Background").Role(role.Tab).Ancestor(settingsWindow)
 		backgroundItem := nodewith.Role(role.ListItem).Ancestor(settingsWindow)
-		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(settingsWindow)
+		closeButton := nodewith.Role(role.Button).HasClass("settings-dialog__close").Ancestor(settingsWindow)
 		openBackgroundPanel := func(ctx context.Context) error {
 			var actions []action.Action
 			if err := conf.showInterface(ctx); err != nil {
 				return err
 			}
 			if err := ui.Exists(settingsButton)(ctx); err == nil {
-				testing.ContextLog(ctx, "Click settings button")
 				actions = append(actions,
-					ui.LeftClickUntil(settingsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(backgroundTab)))
+					uiauto.NamedAction("click settings button",
+						ui.LeftClickUntil(settingsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(backgroundTab))))
 			} else {
 				// If the screen width is not enough, the settings button will be moved to more options.
-				testing.ContextLog(ctx, "Click more option and settings menu item")
 				moreOptions := nodewith.Name("More meeting control").Ancestor(webArea)
 				moreSettingsButton := nodewith.Name("Settings").Role(role.MenuItem).Ancestor(webArea)
 				actions = append(actions,
-					ui.LeftClick(moreOptions),
-					ui.LeftClick(moreSettingsButton),
+					uiauto.NamedAction("click more option", ui.LeftClick(moreOptions)),
+					uiauto.NamedAction("click settings menu item", ui.LeftClick(moreSettingsButton)),
 				)
 			}
 			actions = append(actions, ui.LeftClick(backgroundTab))
@@ -348,15 +347,19 @@ func (conf *ZoomConference) BackgroundBlurring(ctx context.Context) error {
 			}
 			return nil
 		}
-		testing.ContextLog(ctx, "Change background to listitem ", backgroundNumber)
+		testing.ContextLogf(ctx, "Change background to listitem %d and enter full screen", backgroundNumber)
 		return uiauto.Combine("change background",
 			ui.Retry(3, openBackgroundPanel), // Open "Background" panel.
 			ui.LeftClick(backgroundItem.Nth(backgroundNumber)),
-			ui.LeftClick(closeButton), // Close "Background" panel.
-			ui.Sleep(5*time.Second),   // After applying new background, give it 5 seconds for viewing before applying next one.
+			ui.LeftClick(closeButton),                                              // Close "Background" panel.
+			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),  // Double click to enter full screen.
+			ui.Sleep(5*time.Second),                                                // After applying new background, give it 5 seconds for viewing before applying next one.
+			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", false), // Double click to exit full screen.
 		)(ctx)
 	}
-
+	if err := conf.uiHandler.SwitchToChromeTabByName("Zoom")(ctx); err != nil {
+		return errors.Wrap(err, "failed to switch to zoom page")
+	}
 	// Background item doesn't have a specific node name but a role name.
 	// We could get the background item from the listitem.
 	// The first background item is none, others are patterned background.
