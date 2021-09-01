@@ -118,6 +118,22 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
+	joinButton := nodewith.Name("Join").Role(role.Button)
+	joinButtonGone := func(ctx context.Context) (err error) {
+		// The join button may be hidden in tablet mode. Scroll the page to display the join button.
+		defer func() {
+			if err != nil && conf.tabletMode {
+				if err := conf.uiHandler.SwipeDown()(ctx); err != nil {
+					testing.ContextLog(ctx, "Failed to scroll page")
+				}
+			}
+		}()
+		if err := ui.WithTimeout(time.Second).WaitUntilGone(joinButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for join button gone")
+		}
+		return nil
+	}
+
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size
 	checkParticipantsNum := func(ctx context.Context) error {
@@ -159,7 +175,6 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	}
 
 	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
-	joinButton := nodewith.Name("Join").Role(role.Button)
 	joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
 
 	// It seems zoom has different UI versions. One of the zoom version will open a new tab.
@@ -178,12 +193,13 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		}
 		return nil
 	}
+
 	testing.ContextLog(ctx, "Join conference")
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
-		ui.LeftClickUntil(joinButton, ui.WithTimeout(1*time.Second).WaitUntilGone(joinButton)),
+		ui.LeftClickUntil(joinButton, joinButtonGone),
 		// Use 1 minute timeout value because it may take longer to wait for page loading,
 		// especially for some low end DUTs.
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinAudioButton),
