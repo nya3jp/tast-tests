@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4e2fd2_94ee4a34",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-02T14:45:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6cef2305_40b8d5eb",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "41879a7f659705b7a5d3a066fb0fd7954e2002b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd998b1f_e973273f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-02T08:38:02Z",
       "side": 1,
       "message": "Could you include in these two error messages that they happened on retrying?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 48
+      },
+      "revId": "41879a7f659705b7a5d3a066fb0fd7954e2002b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a95117_88de3e82",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-02T14:45:15Z",
+      "side": 1,
+      "message": "Sure. Error messages fixed.",
+      "parentUuid": "fd998b1f_e973273f",
       "range": {
         "startLine": 118,
         "startChar": 0,

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cbebe00_45a18dd9",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-02T14:45:15Z",
+      "side": 1,
+      "message": "To align with the JavaScript style of line 180, removed the \"!\u003dnull\" and just check the returned value is not a falsy one.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "910abfa65bb59def2644ddfaa42c045b359ab2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
