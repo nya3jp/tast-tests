@@ -265,7 +265,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 	// has seen the second AP. In that case, the DUT will typically re-use
 	// the result of the scan when receiving the request instead of probing
 	// the second AP.
-	if !s.Run(ctx, "waitForScan=true", func(ctx context.Context, s *testing.State) {
+	if !s.Run(ctx, "waitForScan is true", func(ctx context.Context, s *testing.State) {
 		runTest(ctx, s, true)
 	}) {
 		return
@@ -276,7 +276,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 	// majority of test runs). Instead of relying on the result of a previous
 	// scan, the DUT will probe for the second AP when receiving the
 	// transition request.
-	if !s.Run(ctx, "waitForScan=false", func(ctx context.Context, s *testing.State) {
+	if !s.Run(ctx, "waitForScan is false", func(ctx context.Context, s *testing.State) {
 		runTest(ctx, s, false)
 	}) {
 		return
