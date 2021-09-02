@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc5d3458_314a625c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:52:48Z",
+      "side": 1,
+      "message": "Is this change intentional? It seems ui dependency is introduced again.",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 112,
+        "endChar": 45
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "101d6e00_2d8db727",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 3
@@ -19,6 +42,29 @@
         "startChar": 5,
         "endLine": 19,
         "endChar": 23
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c7a4b1_8625c204",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:52:48Z",
+      "side": 1,
+      "message": "I think this change is not intentional.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 137
       },
       "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
