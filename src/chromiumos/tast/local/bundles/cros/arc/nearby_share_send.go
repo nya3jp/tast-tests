@@ -44,6 +44,12 @@ const (
 	baseArcTestTime = nearbycommon.DetectionTimeout + 2*time.Minute
 )
 
+type arcNearbyShareParams struct {
+	Cancel       bool // Cancel the Share before Selecting Target (Discovery Page).
+	CancelSelect bool // Cancel the Share after Selecting Target (Confirmation Page).
+	TestData     nearbytestutils.TestData
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: NearbyShareSend,
@@ -62,10 +68,12 @@ func init() {
 				Name:              "dataoffline_noone_text",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "nearbyShareDataUsageOfflineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxTextID,
-					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.SmallFileTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxTextID,
+						TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.SmallFileTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -73,10 +81,12 @@ func init() {
 				Name:              "dataoffline_noone_text_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOfflineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxTextID,
-					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.SmallFileTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxTextID,
+						TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.SmallFileTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -84,10 +94,12 @@ func init() {
 				Name:              "dataonline_noone_small_file",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxSmallFileID,
-					TransferTimeout: nearbycommon.MediumFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.MediumFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxSmallFileID,
+						TransferTimeout: nearbycommon.MediumFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.MediumFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.MediumFileOnlineTransferTimeout,
 			},
@@ -95,10 +107,12 @@ func init() {
 				Name:              "dataonline_noone_small_file_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxSmallFileID,
-					TransferTimeout: nearbycommon.MediumFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.MediumFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxSmallFileID,
+						TransferTimeout: nearbycommon.MediumFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.MediumFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.MediumFileOnlineTransferTimeout,
 			},
@@ -106,10 +120,12 @@ func init() {
 				Name:              "dataonline_noone_medium_file",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxMediumFileID,
-					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
@@ -117,10 +133,12 @@ func init() {
 				Name:              "dataonline_noone_medium_file_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxMediumFileID,
-					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
@@ -128,10 +146,12 @@ func init() {
 				Name:              "dataonline_noone_large_file",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxLargeFileID,
-					TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxLargeFileID,
+						TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout,
 			},
@@ -139,10 +159,12 @@ func init() {
 				Name:              "dataonline_noone_large_file_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxLargeFileID,
-					TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxLargeFileID,
+						TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout,
 			},
@@ -150,10 +172,12 @@ func init() {
 				Name:              "dataonline_noone_multiple_files",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxSmallFileID + "," + checkBoxMediumFileID,
-					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxSmallFileID + "," + checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
@@ -161,10 +185,68 @@ func init() {
 				Name:              "dataonline_noone_multiple_files_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
-				Val: nearbytestutils.TestData{
-					Filename:        checkBoxSmallFileID + "," + checkBoxMediumFileID,
-					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
-					TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+				Val: arcNearbyShareParams{
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxSmallFileID + "," + checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
+				},
+				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			{
+				Name:              "dataonline_noone_medium_file_cancel",
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
+				Val: arcNearbyShareParams{
+					Cancel: true,
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
+				},
+				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			{
+				Name:              "dataonline_noone_medium_file_cancel_vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
+				Val: arcNearbyShareParams{
+					Cancel: true,
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
+				},
+				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			{
+				Name:              "dataonline_noone_medium_file_cancel_select",
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
+				Val: arcNearbyShareParams{
+					CancelSelect: true,
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
+				},
+				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			{
+				Name:              "dataonline_noone_medium_file_cancel_select_vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "nearbyShareDataUsageOnlineNoOneARCEnabled",
+				Val: arcNearbyShareParams{
+					CancelSelect: true,
+					TestData: nearbytestutils.TestData{
+						Filename:        checkBoxMediumFileID,
+						TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+						TestTimeout:     baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
+					},
 				},
 				Timeout: baseArcTestTime + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
@@ -231,7 +313,7 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	testData := s.Param().(nearbytestutils.TestData)
+	testData := s.Param().(arcNearbyShareParams).TestData
 
 	sharingFiles := false
 	for _, uiID := range strings.Split(string(testData.Filename), ",") {
@@ -327,9 +409,39 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	if s.Param().(arcNearbyShareParams).Cancel {
+		s.Log("Cancel before Selecting Target")
+		if err := sender.Cancel(ctx); err != nil {
+			s.Fatal("Cancel failed: ", err)
+		}
+		shareButton := d.Object(ui.ClassName(buttonClassName), ui.TextMatches("(?i)"+"SHARE"), ui.Enabled(true))
+		if err := shareButton.WaitForExists(ctx, 10*time.Second); err != nil {
+			s.Fatal("SHARE button doesn't exist: ", err)
+		}
+		if err := verifyCacheCleared(ctx, filePath); err != nil {
+			s.Fatalf("Verifying %s failed: ", filePath)
+		}
+		return
+	}
+
 	s.Log("Waiting for CrOS sender to detect Android receiver")
 	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbycommon.DetectShareTargetTimeout); err != nil {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
+	}
+
+	if s.Param().(arcNearbyShareParams).CancelSelect {
+		s.Log("Cancel after selecting Target")
+		if err := sender.CancelSelect(ctx); err != nil {
+			s.Fatal("Cancel failed: ", err)
+		}
+		shareButton := d.Object(ui.ClassName(buttonClassName), ui.TextMatches("(?i)"+"SHARE"), ui.Enabled(true))
+		if err := shareButton.WaitForExists(ctx, 10*time.Second); err != nil {
+			s.Fatal("SHARE button doesn't exist: ", err)
+		}
+		if err := verifyCacheCleared(ctx, filePath); err != nil {
+			s.Fatal("Verifying Cache Dir failed: ", err)
+		}
+		return
 	}
 
 	s.Log("Waiting for Android receiver to detect the incoming share from CrOS sender")
@@ -354,13 +466,10 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	}
 	shareCompleted = true
 
-	// For files, verify ARC Nearby Share cache files directory is cleaned up.
-	// For text only, verify cache files directory does not exist.
-	if stat, err := os.Stat(filePath); err == nil && stat.IsDir() {
-		s.Fatalf("Directory path %s is still present", filePath)
-	} else if !os.IsNotExist(err) {
-		s.Fatalf("Failed to check if directory path %s exists: %v", filePath, err)
+	if err := verifyCacheCleared(ctx, filePath); err != nil {
+		s.Fatalf("Verifying %s failed", filePath)
 	}
+
 }
 
 // shareUIID selects the UI element based on ID string.
@@ -402,4 +511,15 @@ func shareUIClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) 
 	)
 
 	return shareUIClickWithTimeout(ctx, d, uiTimeout, opts...)
+}
+
+// verifyCacheCleared checks that cache files directory is cleaned up for files.
+// For text only, verify cache files directory does not exist.
+func verifyCacheCleared(ctx context.Context, filePath string) error {
+	if stat, err := os.Stat(filePath); err == nil && stat.IsDir() {
+		errors.Wrapf(err, "directory path %s is still present", filePath)
+	} else if !os.IsNotExist(err) {
+		errors.Wrapf(err, "failed to check if directory path %s exists", filePath)
+	}
+	return nil
 }
