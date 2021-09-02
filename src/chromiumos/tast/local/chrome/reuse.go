@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
@@ -35,7 +36,7 @@ func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retEr
 			agg.Close()
 		}
 	}()
-	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort, agg)
+	sess, err := driver.NewSession(ctx, ashproc.ExecPath, cdputil.DebuggingPortPath, cdputil.NoWaitPort, agg)
 	if err != nil {
 		return nil, err
 	}

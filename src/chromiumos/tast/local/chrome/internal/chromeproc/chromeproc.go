@@ -67,7 +67,10 @@ func Root(execPath string) (*process.Process, error) {
 			return false
 		}
 
-		// A browser process should have session_manager as its parent process.
+		// A browser process should be spawned from some other executable process.
+		// If it is ash-chrome, we expect it is forked from /sbin/session_manager.
+		// If it is lacros-chrome, we expect it is forked from ash-chrome on production
+		// or tast test executable for testing.
 		// This check alone is not enough to determine that proc is a browser process;
 		// due to the use of prctl(PR_SET_CHILD_SUBREAPER) in session_manager,
 		// when the browser process exits, non-browser processes can temporarily
@@ -80,7 +83,7 @@ func Root(execPath string) (*process.Process, error) {
 		if err != nil {
 			return false
 		}
-		if exe, err := pproc.Exe(); err != nil || exe != "/sbin/session_manager" {
+		if exe, err := pproc.Exe(); err != nil || exe == execPath {
 			return false
 		}
 
