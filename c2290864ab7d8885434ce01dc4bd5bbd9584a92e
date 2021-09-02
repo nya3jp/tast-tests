@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44264bbf_dcda2b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "Can we combine WaitUnitilExists and LeftClick, instead of using Poll ?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f9aec1d_f1900919",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 1
@@ -49,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e988837b_e25cfcb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "I think we can remove this part, because if listBox doesn\u0027t exsits, L153\u0027s function call will return an error anyway.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21b950db_2f08c3e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 1
@@ -60,6 +106,98 @@
       "writtenOn": "2021-09-02T09:26:44Z",
       "side": 1,
       "message": "How about searching the both dialog and the text at once?\nI think this was not doable in the legacy library because DescendantExists is a method of ui.Node.\n\nui.WithTimeout(...).WaitUntilExists(nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog))(ctx)",
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ca0889_f18b3186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "I guess the entire function can be replace with just \n\n```\npasswordDialog :\u003d nodewith.Role(role.Dialog)\nnode :\u003d nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog)\nreturn files.WaitUntilExists(node)(ctx)\n```\n\nWe don\u0027t directly interested in if passwordDialog exists or not. uiauto fill wait for the node we are looking for in one go.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 52
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c323e68_1047694e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "Combine, and name it according to the comment. \"find and open the mounted ZIP file\". Then you can remove the comment.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf735444_35cd8442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 226,
+        "startChar": 14,
+        "endLine": 226,
+        "endChar": 15
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46001a63_d95d5885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 231,
+        "startChar": 10,
+        "endLine": 231,
+        "endChar": 21
+      },
       "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +242,29 @@
         "startLine": 252,
         "startChar": 0,
         "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b588f181_0110607c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T23:45:48Z",
+      "side": 1,
+      "message": "Combine.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 315,
         "endChar": 2
       },
       "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
