@@ -16,6 +16,24 @@
       "message": "Can you pull these few lines out of checkRecordFile? Although it shouldn\u0027t trigger, you technically have a race condition here, because counting number of files should happen before starting the screen recording.",
       "revId": "d3af46d0c496e653e0f289b590de4de576fda403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb35e26_22594331",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-02T03:41:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc03cd1_5779382b",
+      "revId": "d3af46d0c496e653e0f289b590de4de576fda403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
