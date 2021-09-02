@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b2aeb3e_91fc4a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T07:15:43Z",
+      "side": 1,
+      "message": "https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto#Context.RetryUntil\n\nThe code by Keigo is almost same but slightly different from the original.\nRetryUntil in this case does like:\n\nWaitUntilExists()\nwait for 2 seconds (\u003dInterval)\npolling loop {\n  CheckRestriction(), exit if satisfied\n  WaitUntilExists() (continue even when not exist)\n  wait for 2 seconds (\u003dInterval)\n}\n\n\"waiting for 2 seconds\" looks not necessary for this specific case. Maybe \nRetryUntil would fit better when the first arg is an action causing a side effect, like a click.\n\nSo I think the code in PatchSet 1 is suffice in this case, after putting the |ui| variable outside the loop.",
+      "parentUuid": "2bad17e9_14b03703",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc71a83f_fdc05caf",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
         "patchSetId": 1
