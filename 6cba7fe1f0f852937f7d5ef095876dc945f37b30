@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb694b66_33dcf047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_plugin_startup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-02T08:29:02Z",
+      "side": 1,
+      "message": "This is still inefficient since we have to unmarshal and search output for N times where N is the number of plugins to search, which leads to O(N^2) overall time complexity.\n\nYou can instead define a function that returns a map of plugin states. In this way the code runs in O(N). For example:\n\n type pluginState int\n const (\n   stateMissing pluginState \u003d iota\n   stateEnabled\n   stateDisabled\n )\n\n func parsePluginStates(output []byte) (map[string]pluginState, error) {\n   ...\n }\n\n ...\n\n states, err :\u003d parsePluginStates(output)\n if err !\u003d nil { ... }\n\n for _, plugin :\u003d range []string{...} {\n   state :\u003d states[plugin]\n   switch state {\n   case stateMissing:\n     t.Errorf(\"%s is missing\", plugin)\n   case stateDisabled:\n     t.Errorf(\"%s is disabled\", plugin)\n   }\n }",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "6cba7fe1f0f852937f7d5ef095876dc945f37b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
