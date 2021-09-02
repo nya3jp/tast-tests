@@ -40,6 +40,10 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.C
 		return 0.0, err
 	}
 
+	if err := f.TestAPIConn.ResetAutomation(ctx); err != nil {
+		return 0.0, errors.Wrap(err, "failed to reset the automation feature")
+	}
+
 	if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn, w.ID, ash.WindowStateMaximized); err != nil {
 		return 0.0, errors.Wrap(err, "failed to maximize window")
 	}
