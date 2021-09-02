@@ -16,6 +16,46 @@
       "message": "Thanks for doing this!",
       "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7545720b_dd9815cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-02T01:48:23Z",
+      "side": 1,
+      "message": "In fact, this only works now because we \"happen\" to use XKB \"us\" layout as the basis. User-facing layout is 2-set where there\u0027s jamos all over the place, not Latin letters, and we just \"happen\" to implement it by a remap on top of XKB \"us\" layout. Definitely not the only (e.g. can use XKB \"fr\" French layout instead), and most ideal choice (which I think is 2-set directly in XKB). So this Tast works now just by chance and pure luck, IMHO. Good to have something, but we probably need a huge lengthy essay to talk about this caveat here.",
+      "range": {
+        "startLine": 92,
+        "startChar": 25,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5584d7c7_101b7abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-02T01:48:23Z",
+      "side": 1,
+      "message": "All layouts except 2-set are deemed low-pri and all bugs are P3 for now. Not sure if we really need to maintain these tests for them though. On 2nd thought, I think we should just remove all except 2-set tests. Don\u0027t even have specs for any of them, so any assessment as to whether these are really the correct results is just personal speculation based on random sources on the Internet, or based on the current impl.",
+      "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
