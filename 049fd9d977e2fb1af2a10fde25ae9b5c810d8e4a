@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4f9b25b2_3c485ba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-09-02T16:50:07Z",
+      "side": 1,
+      "message": "Thank you for creating this CL.",
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "badcd46e_800b2766",
         "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
         "patchSetId": 1
