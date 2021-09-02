@@ -825,7 +825,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 	if err != nil {
 		return err
 	}
-	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		return err
 	}
