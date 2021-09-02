@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3784ebe_79e7c6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-02T10:58:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean here",
+      "parentUuid": "263230c3_a324723f",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4c47e42_d795ccbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
         "patchSetId": 3
@@ -201,6 +225,30 @@
       "writtenOn": "2021-06-22T03:06:30Z",
       "side": 1,
       "message": "Please also install Crostini and check the display name.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "6f0ef3dcf110a63cc08782a40a5c41c4c74954d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5911fcb_994ae88d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/check_default_username.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-02T10:58:40Z",
+      "side": 1,
+      "message": "That\u0027s going to make this test *much* slower. Do we have that much spare time in our test suite?",
+      "parentUuid": "3c890559_61ddf389",
       "range": {
         "startLine": 154,
         "startChar": 1,
