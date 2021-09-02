@@ -14,7 +14,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/platform/perfetto"
+	"chromiumos/tast/local/bundles/cros/platform/tracing"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Tests Chrome DevTools protocol for collecting a system-wide trace via the system tracing service",
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{perfetto.TraceConfigFile},
+		Data:         []string{tracing.TraceConfigFile},
 		Attr:         []string{"group:mainline", "informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
@@ -82,7 +82,7 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 	}
 
 	// Create the binary protobuf TraceConfig: unmarshal from pbtxt and then marshal to binary protobuf.
-	traceConfigPath := s.DataPath(perfetto.TraceConfigFile)
+	traceConfigPath := s.DataPath(tracing.TraceConfigFile)
 	configTxt, err := ioutil.ReadFile(traceConfigPath)
 	if err != nil {
 		s.Fatal("Failed to read the trace config: ", err)
