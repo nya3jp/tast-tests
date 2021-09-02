@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee67502_783a4452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-02T23:47:13Z",
+      "side": 1,
+      "message": "Usually, it is like this:\ns.Fatalf(\"Failed to stop %s d: %s\", d, err)",
+      "range": {
+        "startLine": 399,
+        "startChar": 3,
+        "endLine": 399,
+        "endChar": 43
+      },
+      "revId": "343a4900ec76caeeb1e860de0c3b1bd6b35fff7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be95477_d48ed70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-02T23:47:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 403,
+        "startChar": 4,
+        "endLine": 403,
+        "endChar": 45
+      },
+      "revId": "343a4900ec76caeeb1e860de0c3b1bd6b35fff7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
