@@ -33,6 +33,24 @@
       "message": "Tastboard link: https://tastboard.corp.google.com/test/typec.Basic",
       "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7460c4_173701a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-02T23:12:28Z",
+      "side": 1,
+      "message": "For the record, one snapshot of pre-Aug-27 results show lots of grey (\"known issue\", unique to your test) and red:\n\nhttps://screenshot.googleplex.com/3EmmhfW7cQEZfVE\n\nThe soft rules say you need to pass 20 builds:\nhttps://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
+      "parentUuid": "904ceafc_3dcf960e",
+      "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
