@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d519018_299767fb",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-02T06:12:38Z",
+      "side": 1,
+      "message": "I think you should remove it",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8eb570_f0652dbc",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-02T06:12:38Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e9bd71_eba3851a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-02T06:12:38Z",
+      "side": 1,
+      "message": "For the internal speaker test, since is not allowed to play audio in the lab, I recommend you to play zeros only.",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02cbd123_247b621b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-02T06:12:38Z",
+      "side": 1,
+      "message": "I think the headphone test will fail since there is no headphone plugged in the lab.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
