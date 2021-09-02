@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "badcd46e_800b2766",
+        "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-02T01:42:16Z",
+      "side": 1,
+      "message": "Everything in this CL is basically the same as the current snippet.go (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go).\n\nThis function is the only thing that\u0027s really different, I combined the request/receive functions into a single RPC function since there was no need to have them separate.",
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
