@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "645f0822_dc7523f7",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-02T04:45:11Z",
+      "side": 1,
+      "message": "why you need to duplicate the code?\nI think you can just start FDMS server, then set up a lacros fixture on top of it?",
+      "parentUuid": "3cf86016_47c99a4e",
+      "revId": "49ff66a07956b3c29a39a28b63304818aa3a378f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f213d97_b0d22303",
         "filename": "src/chromiumos/tast/local/lacros/policy.go",
         "patchSetId": 6
