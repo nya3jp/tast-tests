@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FloatingAccessibilityMenuEnabled,
-		Desc: "Start Kiosk application with FloatingAccessibilityMenuEnabled applied to the account",
+		Func:         FloatingAccessibilityMenuEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Start Kiosk application with FloatingAccessibilityMenuEnabled applied to the account",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"alt-modalities-stability@google.com",

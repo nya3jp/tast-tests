@@ -73,13 +73,14 @@ var roamDiagnosticsAP36Opts = []hostapd.Option{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        RoamDiagnostics,
-		Desc:        "Bring up two APs and attenuate them around several values to observe and assess roam stickiness",
-		Contacts:    []string{"jakobczyk@google.com"},
-		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
-		ServiceDeps: []string{wificell.TFServiceName},
-		Fixture:     "wificellFixtRoaming",
-		Timeout:     time.Minute * 90,
+		Func:         RoamDiagnostics,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Bring up two APs and attenuate them around several values to observe and assess roam stickiness",
+		Contacts:     []string{"jakobczyk@google.com"},
+		Attr:         []string{"group:wificell_roam", "wificell_roam_perf"},
+		ServiceDeps:  []string{wificell.TFServiceName},
+		Fixture:      "wificellFixtRoaming",
+		Timeout:      time.Minute * 90,
 		Params: []testing.Param{
 			{
 				Val: []roamDiagnosticsTestcase{

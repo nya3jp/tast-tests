@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CaptureFromElement,
-		Desc: "Verifies that WebRTC captureStream() (canvas, video) works",
+		Func:         CaptureFromElement,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that WebRTC captureStream() (canvas, video) works",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
 			"chromeos-gfx-video@google.com",

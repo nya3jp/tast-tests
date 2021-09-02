@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StandardizedMouseScroll,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test that installs an app and tests that a standard mouse scroll up, an down works",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

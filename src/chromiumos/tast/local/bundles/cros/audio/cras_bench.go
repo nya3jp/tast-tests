@@ -23,11 +23,12 @@ type crasBenchParameters struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CrasBench,
-		Desc:     "Micro-benchmarks for the ChromeOS audio server",
-		Contacts: []string{"paulhsia@chromium.org", "cychiang@chromium.org"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		Timeout:  2 * time.Minute,
+		Func:         CrasBench,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Micro-benchmarks for the ChromeOS audio server",
+		Contacts:     []string{"paulhsia@chromium.org", "cychiang@chromium.org"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Timeout:      2 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "apm",

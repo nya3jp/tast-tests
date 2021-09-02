@@ -30,6 +30,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Blogbench,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests crosvm storage device small file performance",
 		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},

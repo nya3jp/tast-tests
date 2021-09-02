@@ -23,8 +23,9 @@ type fscryptVersionParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FscryptEncryptionPolicy,
-		Desc: "Check fscrypt encryption policy version of a newly created user cryptohome",
+		Func:         FscryptEncryptionPolicy,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check fscrypt encryption policy version of a newly created user cryptohome",
 		Contacts: []string{
 			"sarthakkukreti@google.com",
 			"chromeos-storage@google.com",

@@ -15,9 +15,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:    NNAPIDriver,
-		Desc:    "Validates that the HAL driver conforms to the NNAPI specification",
-		Timeout: 10 * time.Minute,
+		Func:         NNAPIDriver,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Validates that the HAL driver conforms to the NNAPI specification",
+		Timeout:      10 * time.Minute,
 		Contacts: []string{
 			"jmpollock@google.com",
 			"slangley@google.com",

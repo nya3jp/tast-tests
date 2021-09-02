@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Chrome,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that Chrome supports login",
 		Contacts:     []string{"cros-oac@google.com", "rsorokin@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},

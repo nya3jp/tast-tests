@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIGetVPDField,
-		Desc: "Test sending GetVpdField gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
+		Func:         APIGetVPDField,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test sending GetVpdField gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@google.com",  // Test author
 			"lamzin@google.com", // wilco_dtc_supportd maintainer

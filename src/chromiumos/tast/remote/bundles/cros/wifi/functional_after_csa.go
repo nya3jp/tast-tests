@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FunctionalAfterCSA,
-		Desc: "Verifies that the DUT can still connect to the AP when it is disconnected right after receiving a CSA message. This is to make sure the MAC 80211 queues are not stuck after receiving CSA and disconnect events consecutively. Refer to crbug.com/408370 for more information to the test description",
+		Func:         FunctionalAfterCSA,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that the DUT can still connect to the AP when it is disconnected right after receiving a CSA message. This is to make sure the MAC 80211 queues are not stuck after receiving CSA and disconnect events consecutively. Refer to crbug.com/408370 for more information to the test description",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

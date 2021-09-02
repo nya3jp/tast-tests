@@ -33,8 +33,9 @@ type blockDeviceResult struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeBlockDevices,
-		Desc: "Check that we can probe cros_healthd for various probe data points",
+		Func:         ProbeBlockDevices,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that we can probe cros_healthd for various probe data points",
 		Contacts: []string{
 			"khegde@google.com",
 			"pmoy@google.com",

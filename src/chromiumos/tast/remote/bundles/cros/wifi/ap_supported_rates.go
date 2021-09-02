@@ -25,8 +25,9 @@ type supportedRatesCase struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APSupportedRates,
-		Desc: "Verifies that we avoid legacy bitrates on APs that disable them",
+		Func:         APSupportedRates,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that we avoid legacy bitrates on APs that disable them",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

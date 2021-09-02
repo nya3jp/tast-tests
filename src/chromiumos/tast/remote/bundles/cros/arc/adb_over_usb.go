@@ -20,9 +20,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ADBOverUSB,
-		Desc:     "Checks that arc(vm)-adbd job is up and running when adb-over-usb feature available",
-		Contacts: []string{"shuanghu@chromium.org", "arc-eng@google.com"},
+		Func:         ADBOverUSB,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that arc(vm)-adbd job is up and running when adb-over-usb feature available",
+		Contacts:     []string{"shuanghu@chromium.org", "arc-eng@google.com"},
 		HardwareDeps: hwdep.D(
 			// Available boards info, please refer to doc https://www.chromium.org/chromium-os/chrome-os-systems-supporting-adb-debugging-over-usb
 			hwdep.Model("eve", "atlas", "nocturne", "soraka"),

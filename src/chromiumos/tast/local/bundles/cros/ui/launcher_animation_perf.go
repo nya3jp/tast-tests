@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherAnimationPerf,
-		Desc: "Measures animation smoothness of lancher animations",
+		Func:         LauncherAnimationPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures animation smoothness of lancher animations",
 		Contacts: []string{
 			"newcomer@chromium.org", "tbarzic@chromium.org", "cros-launcher-prod-notifications@google.com",
 			"mukai@chromium.org", // original test author

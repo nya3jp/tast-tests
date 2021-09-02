@@ -54,8 +54,9 @@ var dpPlusModels = []string{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Connector,
-		Desc: "Checks the validity of display connector configurations",
+		Func:         Connector,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the validity of display connector configurations",
 		Contacts: []string{
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",

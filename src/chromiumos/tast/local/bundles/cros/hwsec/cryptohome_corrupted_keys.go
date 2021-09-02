@@ -21,8 +21,9 @@ type testParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CryptohomeCorruptedKeys,
-		Desc: "Checks that the mount and keys works when part of the vaultkeys corrupted",
+		Func:         CryptohomeCorruptedKeys,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that the mount and keys works when part of the vaultkeys corrupted",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"yich@google.com",

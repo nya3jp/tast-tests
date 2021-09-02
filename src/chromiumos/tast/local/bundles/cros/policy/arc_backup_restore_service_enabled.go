@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ArcBackupRestoreServiceEnabled,
-		Desc: "Test the behavior of ArcBackupRestoreServiceEnabled policy: check the Backup Manager state after setting the policy",
+		Func:         ArcBackupRestoreServiceEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test the behavior of ArcBackupRestoreServiceEnabled policy: check the Backup Manager state after setting the policy",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

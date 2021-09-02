@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxToggleOnShortcut,
-		Desc: "A test that verifies Ctrl+Alt+Z toggles on Chromevox",
+		Func:         ChromevoxToggleOnShortcut,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A test that verifies Ctrl+Alt+Z toggles on Chromevox",
 		Contacts: []string{
 			"dtseng@chromium.org",          // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

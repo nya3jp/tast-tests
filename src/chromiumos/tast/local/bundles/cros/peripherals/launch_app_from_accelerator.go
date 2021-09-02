@@ -26,8 +26,9 @@ type accelTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchAppFromAccelerator,
-		Desc: "Peripherals app can be found and launched with an accelerator",
+		Func:         LaunchAppFromAccelerator,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Peripherals app can be found and launched with an accelerator",
 		Contacts: []string{
 			"joonbug@chromium.org",
 			"cros-peripherals@google.com",

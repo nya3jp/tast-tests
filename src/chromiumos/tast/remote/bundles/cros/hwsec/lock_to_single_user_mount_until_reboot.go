@@ -27,8 +27,9 @@ type keyInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LockToSingleUserMountUntilReboot,
-		Desc: "Checks that LockToSingleUserMountUntilReboot method works",
+		Func:         LockToSingleUserMountUntilReboot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that LockToSingleUserMountUntilReboot method works",
 		Contacts: []string{
 			"zuan@chromium.org", // Test author
 			"cros-hwsec@google.com",

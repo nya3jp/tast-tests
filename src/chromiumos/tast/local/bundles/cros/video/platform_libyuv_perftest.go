@@ -23,8 +23,9 @@ const libyuvUnitTestBin = "libyuv_perftest"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PlatformLibYUVPerftest,
-		Desc: "Runs libyuv unit tests as perf tests",
+		Func:         PlatformLibYUVPerftest,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Runs libyuv unit tests as perf tests",
 		Contacts: []string{
 			"pmolinalopez@google.com",
 			"chromeos-gfx-video@google.com",

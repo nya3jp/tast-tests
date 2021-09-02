@@ -37,6 +37,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromePIPRoundedCornersUnderlay,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that Chrome PIP rounded corners are implemented with a hardware underlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

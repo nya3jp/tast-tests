@@ -23,8 +23,9 @@ type params struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FlashromPerf,
-		Desc: "Flashrom SPI flash E2E tests",
+		Func:         FlashromPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Flashrom SPI flash E2E tests",
 		Contacts: []string{
 			"quasisec@chromium.org",        // Test Author
 			"quasisec@chromium.org",        // CrOS Flashrom Maintainer

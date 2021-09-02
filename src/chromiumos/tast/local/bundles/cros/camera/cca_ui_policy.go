@@ -29,6 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIPolicy,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies if CCA is unusable when the camera app is disabled by the Adenterprise policy",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},

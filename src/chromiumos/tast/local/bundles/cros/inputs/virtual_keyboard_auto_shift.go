@@ -27,6 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardAutoShift,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that auto shift feature of virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},

@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Availability,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that ARC is available in different scenarios",
 		Contacts:     []string{"timkovich@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},

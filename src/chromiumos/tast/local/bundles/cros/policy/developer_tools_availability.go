@@ -24,9 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeveloperToolsAvailability,
+		Func: DeveloperToolsAvailability, LacrosStatus:
 		// TODO(crbug/1125548): add functionality to verify policy with force installed extension.
-		Desc: "Behavior of the DeveloperToolsAvailability policy, check whether developer tools can be opened on chrome://user-actions page",
+		testing.LacrosVariantUnknown, Desc: "Behavior of the DeveloperToolsAvailability policy, check whether developer tools can be opened on chrome://user-actions page",
 		Contacts: []string{
 			"lamzin@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

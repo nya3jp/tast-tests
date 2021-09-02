@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AxSimpleConnect,
-		Desc: "Verifies that DUT can connect to an AX host via AP in different WiFi configuration",
+		Func:         AxSimpleConnect,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that DUT can connect to an AX host via AP in different WiFi configuration",
 		Contacts: []string{
 			"billyzhao@google.com",
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

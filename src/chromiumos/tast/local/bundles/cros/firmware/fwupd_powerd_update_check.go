@@ -28,8 +28,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FwupdPowerdUpdateCheck,
-		Desc: "Checks that the powerd plugin is enabled",
+		Func:         FwupdPowerdUpdateCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that the powerd plugin is enabled",
 		Contacts: []string{
 			"gpopoola@google.com",       // Test Author
 			"chromeos-fwupd@google.com", // CrOS FWUPD

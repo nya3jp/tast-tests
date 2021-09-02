@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TouchInput,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies touch input in various window states on Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

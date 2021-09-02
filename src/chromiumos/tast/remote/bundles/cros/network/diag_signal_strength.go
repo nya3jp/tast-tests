@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagSignalStrength,
-		Desc: "Tests that the WiFi signal strength network diagnostic routine reports the correct verdict if the signal strength is both attenuated and unattenuated",
+		Func:         DiagSignalStrength,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the WiFi signal strength network diagnostic routine reports the correct verdict if the signal strength is both attenuated and unattenuated",
 		Contacts: []string{
 			"khegde@chromium.org",            // test maintainer
 			"cros-network-health@google.com", // network-health team

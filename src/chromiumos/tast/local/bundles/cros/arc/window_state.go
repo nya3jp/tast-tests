@@ -57,6 +57,7 @@ var tabletWindowStateTests = []windowStateTest{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowState,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that ARC applications correctly change the window state",
 		Contacts:     []string{"phshah@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

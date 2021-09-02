@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PowerCameraRecordingPerf,
-		Desc: "Measures the battery drain during camera recording at 30 FPS",
+		Func:         PowerCameraRecordingPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures the battery drain during camera recording at 30 FPS",
 		Contacts: []string{
 			"mojahsu@chromium.org",
 			"chromeos-camera-eng@google.com",

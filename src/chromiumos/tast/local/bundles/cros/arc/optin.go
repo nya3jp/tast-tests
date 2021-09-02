@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Optin,
-		Desc: "A functional test that verifies OptIn flow",
+		Func:         Optin,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A functional test that verifies OptIn flow",
 		Contacts: []string{
 			"arc-core@google.com",
 			"mhasank@chromium.org",

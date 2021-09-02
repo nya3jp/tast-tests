@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MissingBeacons,
-		Desc: "Test how a DUT behaves when an AP disappears suddenly",
+		Func:         MissingBeacons,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test how a DUT behaves when an AP disappears suddenly",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

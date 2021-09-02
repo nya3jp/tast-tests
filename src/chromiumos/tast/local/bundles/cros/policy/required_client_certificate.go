@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RequiredClientCertificate,
-		Desc: "Behavior of RequiredClientCertificateForDevice/User policies, check if a certificate is issued when the respective policy is set",
+		Func:         RequiredClientCertificate,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of RequiredClientCertificateForDevice/User policies, check if a certificate is issued when the respective policy is set",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"pmarko@google.com",         // Feature owner

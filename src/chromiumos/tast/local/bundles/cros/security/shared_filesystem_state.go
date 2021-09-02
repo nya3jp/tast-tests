@@ -29,8 +29,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SharedFilesystemState,
-		Desc: "Reports on the state of the Chrome OS shared filesystem and fails if an unexpected mount is found when not logged in",
+		Func:         SharedFilesystemState,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Reports on the state of the Chrome OS shared filesystem and fails if an unexpected mount is found when not logged in",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
 			"nvaa@google.com",      // Security team

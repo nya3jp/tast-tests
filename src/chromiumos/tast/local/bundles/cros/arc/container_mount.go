@@ -14,8 +14,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ContainerMount,
-		Desc: "Verifies mount points' shared flags for ARC",
+		Func:         ContainerMount,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies mount points' shared flags for ARC",
 		Contacts: []string{
 			"ereth@chromium.org",
 			"arc-core@google.com",

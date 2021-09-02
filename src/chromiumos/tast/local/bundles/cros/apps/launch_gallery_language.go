@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchGalleryLanguage,
-		Desc: "Launch Gallery APP in different system languages",
+		Func:         LaunchGalleryLanguage,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Launch Gallery APP in different system languages",
 		Contacts: []string{
 			"backlight-swe@google.com",
 			"shengjun@chromium.org",

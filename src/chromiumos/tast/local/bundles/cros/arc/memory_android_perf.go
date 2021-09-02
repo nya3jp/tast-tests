@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MemoryAndroidPerf,
-		Desc: "How much memory can be allocated in Android before available in android is critical",
+		Func:         MemoryAndroidPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "How much memory can be allocated in Android before available in android is critical",
 		Contacts: []string{
 			"cwd@chromium.org",
 			"arcvm-eng@google.com",

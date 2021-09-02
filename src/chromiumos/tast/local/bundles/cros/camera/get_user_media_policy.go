@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GetUserMediaPolicy,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that admin policy can successfully ban getUserMedia",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera", "informational"},

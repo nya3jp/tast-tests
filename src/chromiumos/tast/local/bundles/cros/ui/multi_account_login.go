@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MultiAccountLogin,
-		Desc: "Sequentially log in with a list of accounts to keep them active",
+		Func:         MultiAccountLogin,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Sequentially log in with a list of accounts to keep them active",
 		Contacts: []string{
 			"abergman@google.com",
 			"chromeos-perf-reliability-eng@google.com",

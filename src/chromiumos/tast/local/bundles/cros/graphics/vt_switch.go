@@ -24,6 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VTSwitch,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Switch between VT-2 shell and GUI multiple times",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},

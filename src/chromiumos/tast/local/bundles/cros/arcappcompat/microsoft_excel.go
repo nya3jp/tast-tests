@@ -32,6 +32,7 @@ var touchviewLaunchForMicrosoftExcel = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MicrosoftExcel,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for MicrosoftExcel that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftExcel correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

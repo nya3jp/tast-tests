@@ -13,8 +13,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CheckSkuPurchase,
-		Desc: "Verify the ARC Payments overlay appears and can be navigated",
+		Func:         CheckSkuPurchase,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify the ARC Payments overlay appears and can be navigated",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"jshikaram@chromium.org",

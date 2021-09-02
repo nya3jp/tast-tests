@@ -26,8 +26,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrashReporter,
-		Desc: "Check that crashes inside the VM produce crash reports",
+		Func:         CrashReporter,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that crashes inside the VM produce crash reports",
 		Contacts: []string{
 			// Crostini
 			"sidereal@google.com",

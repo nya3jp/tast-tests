@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceGuestModeEnabled,
-		Desc: "Test the DeviceGuestModeEnabled policy",
+		Func:         DeviceGuestModeEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test the DeviceGuestModeEnabled policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

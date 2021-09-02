@@ -25,6 +25,7 @@ type testParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnterpriseLogin,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that ARC is launched when policy is set",
 		Contacts:     []string{"pbond@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

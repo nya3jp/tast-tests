@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DataLeakPreventionRulesListClipboard,
-		Desc: "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction by copy and paste",
+		Func:         DataLeakPreventionRulesListClipboard,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction by copy and paste",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",

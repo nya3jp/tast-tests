@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SystemProxySettings,
-		Desc: "Test setting the SystemProxySettings policy by checking if the System-proxy daemon and worker processes are running",
+		Func:         SystemProxySettings,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test setting the SystemProxySettings policy by checking if the System-proxy daemon and worker processes are running",
 		Contacts: []string{
 			"acostinas@google.com",
 			"hugobenichi@chromium.org",

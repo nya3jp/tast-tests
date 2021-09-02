@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebAppInstallForceList,
-		Desc: "Behavior of WebAppInstallForceList policy",
+		Func:         WebAppInstallForceList,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of WebAppInstallForceList policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

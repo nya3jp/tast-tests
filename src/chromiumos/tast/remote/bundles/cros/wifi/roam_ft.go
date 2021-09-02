@@ -40,8 +40,9 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RoamFT,
-		Desc: "Verifies that DUT can roam with FT auth suites",
+		Func:         RoamFT,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that DUT can roam with FT auth suites",
 		Contacts: []string{
 			"chharry@google.com",              // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

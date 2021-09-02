@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FaceDetection,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies face detection",
 		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},

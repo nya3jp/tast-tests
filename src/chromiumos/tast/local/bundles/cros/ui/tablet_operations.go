@@ -34,8 +34,9 @@ type testParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: TabletOperations,
-		Desc: "Check if the performance around user operations for tablet mode is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
+		Func:         TabletOperations,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check if the performance around user operations for tablet mode is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"xdai@chromium.org",
 			"sammiequon@chromium.org",

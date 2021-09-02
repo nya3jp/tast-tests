@@ -37,8 +37,9 @@ func init() {
 	// https://www.webmproject.org/vp9/levels/.
 	// TODO(b/180615056): need Dynamic Resolution Change support to use resolution_change_500frames.vp9.ivf like vaapi
 	testing.AddTest(&testing.Test{
-		Func: PlatformDecoding,
-		Desc: "Smoke tests for vaapi libva decoding by running the media/gpu/vaapi/test:decode_test binary, for v4l2 decoding by running the drm-tests/v4l2_decode binary",
+		Func:         PlatformDecoding,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Smoke tests for vaapi libva decoding by running the media/gpu/vaapi/test:decode_test binary, for v4l2 decoding by running the drm-tests/v4l2_decode binary",
 		Contacts: []string{
 			"jchinlee@chromium.org",
 			"stevecho@chromium.org",

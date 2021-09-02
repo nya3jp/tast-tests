@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AppInfoFiles,
-		Desc: "Test Files app info from the context menu on shelf and app list",
+		Func:         AppInfoFiles,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test Files app info from the context menu on shelf and app list",
 		Contacts: []string{
 			"jinrongwu@google.com",
 			"chromeos-apps-foundation-team@google.com",

@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PolicyRefreshRate,
-		Desc: "Behavior of PolicyRefreshRate policy",
+		Func:         PolicyRefreshRate,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of PolicyRefreshRate policy",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

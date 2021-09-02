@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PINUnlock,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that PIN unlock and PIN autosubmit works for Chrome OS",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},

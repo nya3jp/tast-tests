@@ -20,8 +20,9 @@ type vkConfig struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: VKBench,
-		Desc: "Run vkbench (a benchmark that times graphics intensive activities for vulkan), check results and report its performance",
+		Func:         VKBench,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Run vkbench (a benchmark that times graphics intensive activities for vulkan), check results and report its performance",
 		Contacts: []string{
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",

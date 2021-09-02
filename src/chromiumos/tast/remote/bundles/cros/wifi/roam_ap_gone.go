@@ -33,8 +33,9 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RoamAPGone,
-		Desc: "Tests roaming to an AP that disappears while the client is awake",
+		Func:         RoamAPGone,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests roaming to an AP that disappears while the client is awake",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

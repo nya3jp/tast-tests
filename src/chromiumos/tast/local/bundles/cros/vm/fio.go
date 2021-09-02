@@ -30,6 +30,7 @@ type param struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Fio,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests crosvm storage device bandwidth",
 		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},

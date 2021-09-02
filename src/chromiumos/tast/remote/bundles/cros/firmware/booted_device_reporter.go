@@ -14,10 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     BootedDeviceReporter,
-		Desc:     "Verifies that the BootedDevice reporter identifies which device mode the DUT was booted from",
-		Contacts: []string{"cros-fw-engprod@google.com"},
-		Attr:     []string{"group:firmware", "firmware_smoke"},
+		Func:         BootedDeviceReporter,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that the BootedDevice reporter identifies which device mode the DUT was booted from",
+		Contacts:     []string{"cros-fw-engprod@google.com"},
+		Attr:         []string{"group:firmware", "firmware_smoke"},
 		Params: []testing.Param{{
 			Fixture: fixture.NormalMode,
 		}, {

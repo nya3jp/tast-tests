@@ -23,8 +23,9 @@ var v4l2SummaryRegExp = regexp.MustCompile(`Total.*: \d+, Succeeded: \d+, Failed
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PlatformV4L2,
-		Desc: "Runs v4l2 compliance tests",
+		Func:         PlatformV4L2,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Runs v4l2 compliance tests",
 		Contacts: []string{
 			"stevecho@chromium.org",
 			"chromeos-gfx-video@google.com",

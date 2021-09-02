@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: NullPlatformFormat,
-		Desc: "Checks that the null_platform_test passes for at least one format with a given color depth",
+		Func:         NullPlatformFormat,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that the null_platform_test passes for at least one format with a given color depth",
 		Contacts: []string{
 			"clarissagarvey@chromium.org",
 			"chromeos-gfx-video@google.com",

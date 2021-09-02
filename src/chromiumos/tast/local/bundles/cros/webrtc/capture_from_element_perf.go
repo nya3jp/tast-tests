@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CaptureFromElementPerf,
-		Desc: "Collects performance values for WebRTC captureStream() (canvas, video)",
+		Func:         CaptureFromElementPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Collects performance values for WebRTC captureStream() (canvas, video)",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
 			"chromeos-gfx-video@google.com",

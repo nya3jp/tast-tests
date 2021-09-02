@@ -22,8 +22,9 @@ type failFirewallParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagFailFirewall,
-		Desc: "Tests that the http/s firewall network diagnostic test fails when traffic is not allowed on certain ports",
+		Func:         DiagFailFirewall,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the http/s firewall network diagnostic test fails when traffic is not allowed on certain ports",
 		Contacts: []string{
 			"khegde@chromium.org",            // test maintainer
 			"cros-network-health@google.com", // network-health team

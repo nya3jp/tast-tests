@@ -30,8 +30,9 @@ type pingParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RoamContPing,
-		Desc: "Send ping every 10ms and check how many packets are lost on average during roaming",
+		Func:         RoamContPing,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Send ping every 10ms and check how many packets are lost on average during roaming",
 		Contacts: []string{
 			"jck@semihalf.com",                // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

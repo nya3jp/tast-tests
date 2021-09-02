@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SystemProxyForSystemServices,
-		Desc: "Test that tlsdated can successfully connect to a web endpoint through the system-proxy daemon",
+		Func:         SystemProxyForSystemServices,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test that tlsdated can successfully connect to a web endpoint through the system-proxy daemon",
 		Contacts: []string{
 			"acostinas@google.com", // Test author
 			"chromeos-commercial-networking@google.com",

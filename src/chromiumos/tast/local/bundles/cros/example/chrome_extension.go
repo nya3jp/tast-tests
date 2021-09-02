@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeExtension,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Demonstrates loading a custom Chrome extension",
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		Data:         []string{"chrome_extension_manifest.json"},

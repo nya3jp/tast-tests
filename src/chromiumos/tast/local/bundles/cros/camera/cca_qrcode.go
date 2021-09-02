@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAQRCode,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies the BarcodeDetector API used in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},

@@ -24,8 +24,9 @@ var drmErrorRegex = regexp.MustCompile(`ERROR:`)
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DRM,
-		Desc: "Verifies DRM-related test binaries run successfully",
+		Func:         DRM,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies DRM-related test binaries run successfully",
 		Contacts: []string{
 			"andrescj@chromium.org",
 			"chromeos-gfx@google.com",

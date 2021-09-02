@@ -24,6 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AndroidIMEInBrowser,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks Android IME in a browser window",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

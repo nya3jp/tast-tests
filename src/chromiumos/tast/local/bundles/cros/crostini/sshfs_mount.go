@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SSHFSMount,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks crostini SSHFS mount",
 		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},

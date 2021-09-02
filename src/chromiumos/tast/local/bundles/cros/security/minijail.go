@@ -29,8 +29,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Minijail,
-		Desc: "Verifies minijail0's basic functionality",
+		Func:         Minijail,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies minijail0's basic functionality",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",

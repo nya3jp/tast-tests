@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SensorActivity,
-		Desc: "Tests that activity sensors can be read and give proximity event",
+		Func:         SensorActivity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that activity sensors can be read and give proximity event",
 		Contacts: []string{
 			"gwendal@chromium.com",   // Chrome OS sensors point of contact
 			"chingkang@chromium.org", // Test author

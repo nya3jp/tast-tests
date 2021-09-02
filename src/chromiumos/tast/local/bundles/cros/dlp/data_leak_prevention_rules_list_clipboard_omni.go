@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DataLeakPreventionRulesListClipboardOmni,
-		Desc: "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction with omni box",
+		Func:         DataLeakPreventionRulesListClipboardOmni,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction with omni box",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",

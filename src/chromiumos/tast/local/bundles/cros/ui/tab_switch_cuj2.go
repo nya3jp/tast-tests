@@ -26,6 +26,7 @@ type tabSwitchParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabSwitchCUJ2,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the performance of tab-switching CUJ, scrolling content with trackpad",
 		Contacts:     []string{"abergman@google.com", "tclaiborne@chromium.org", "xliu@cienet.com", "alfredyu@cienet.com"},
 		SoftwareDeps: []string{"chrome"},

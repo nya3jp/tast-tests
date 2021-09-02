@@ -14,8 +14,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RemovableMedia,
-		Desc: "Verifies ARC removable media integration is working",
+		Func:         RemovableMedia,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies ARC removable media integration is working",
 		Contacts: []string{
 			"hashimoto@chromium.org", // original author
 			"hidehiko@chromium.org",  // Tast port author

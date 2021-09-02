@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AudioAEC,
-		Desc: "Audio AEC test for arc",
+		Func:         AudioAEC,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Audio AEC test for arc",
 		Contacts: []string{
 			"chromeos-audio-bugs@google.com", // Media team
 			"cychiang@chromium.org",          // Media team

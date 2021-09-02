@@ -27,6 +27,7 @@ type testParameters struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BootTime,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
 		Attr:         []string{"group:firmware", "firmware_ec", "firmware_smoke"},

@@ -18,9 +18,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MempressureUser,
-		Desc:     "Tests video loading times after creating memory pressure",
-		Contacts: []string{"asavery@chromium.org", "chromeos-storage@google.com"},
+		Func:         MempressureUser,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests video loading times after creating memory pressure",
+		Contacts:     []string{"asavery@chromium.org", "chromeos-storage@google.com"},
 		// TODO(http://b/172074282): Test is disabled until it can be fixed
 		// Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		Timeout: 180 * time.Minute,

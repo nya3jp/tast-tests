@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CDMOEMCrypto,
-		Desc: "Verifies that Widevine CE CDM and OEMCrypto tests run successfully",
+		Func:         CDMOEMCrypto,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that Widevine CE CDM and OEMCrypto tests run successfully",
 		Contacts: []string{
 			"jkardatzke@google.com",
 			"chromeos-gfx-video@google.com",

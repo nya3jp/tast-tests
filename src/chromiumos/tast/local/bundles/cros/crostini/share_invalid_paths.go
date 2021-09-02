@@ -21,6 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShareInvalidPaths,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests that seneschal rejects paths that contain symlinks or point to non-regular files/directories",
 		Contacts:     []string{"chirantan@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

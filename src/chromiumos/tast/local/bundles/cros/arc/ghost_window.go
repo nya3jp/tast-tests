@@ -29,6 +29,7 @@ const appID = "cnbgggchhmkkdmeppjobngjoejnihlei"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GhostWindow,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test ghost window for ARC Apps",
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

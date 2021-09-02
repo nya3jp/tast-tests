@@ -64,10 +64,11 @@ var testParams = []failureParams{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ServiceFailure,
-		Desc:     "Verify service failures are logged as expected",
-		Contacts: []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline"},
+		Func:         ServiceFailure,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify service failures are logged as expected",
+		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},

@@ -17,8 +17,9 @@ import (
 func init() {
 	// TODO(acostinas, b/191845062) Re-enable the test when OTA credentials are available in tast tests.
 	testing.AddTest(&testing.Test{
-		Func: ArcConnectivity,
-		Desc: "Test that the PlayStore works behind a firewall configured according to our support page",
+		Func:         ArcConnectivity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test that the PlayStore works behind a firewall configured according to our support page",
 		Contacts: []string{
 			"acostinas@google.com", // Test author
 			"chromeos-commercial-networking@google.com",

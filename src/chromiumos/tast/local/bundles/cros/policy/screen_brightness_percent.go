@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ScreenBrightnessPercent,
-		Desc: "Test behavior of ScreenBrightnessPercent policy: check if the screen brightness matches the value of the policy",
+		Func:         ScreenBrightnessPercent,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test behavior of ScreenBrightnessPercent policy: check if the screen brightness matches the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

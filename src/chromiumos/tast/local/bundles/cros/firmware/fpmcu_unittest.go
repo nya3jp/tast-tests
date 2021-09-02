@@ -51,8 +51,9 @@ type testMetadata struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FpmcuUnittest,
-		Desc: "Flashes a unittest binary to the FPMCU and verifies it passes",
+		Func:         FpmcuUnittest,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Flashes a unittest binary to the FPMCU and verifies it passes",
 		Contacts: []string{
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",

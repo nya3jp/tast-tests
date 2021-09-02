@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardCapsLock,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that user can lock Caps on physical keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},

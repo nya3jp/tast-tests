@@ -21,6 +21,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickStress,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Performs a short version of storage qualification test",
 		Contacts:     []string{"chromeos-engprod-platform-syd@google.com"},
 		Attr:         []string{"group:storage-qual"},

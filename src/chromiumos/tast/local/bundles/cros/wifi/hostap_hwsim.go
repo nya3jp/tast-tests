@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: HostapHwsim,
-		Desc: "Run selected hostap tests using a set of simulated WiFi clients/APs",
+		Func:         HostapHwsim,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Run selected hostap tests using a set of simulated WiFi clients/APs",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 			"briannorris@chromium.org",        // Test author

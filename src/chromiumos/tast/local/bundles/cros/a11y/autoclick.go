@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Autoclick,
-		Desc: "Tests that the automatic clicks feature can be turned on and used to click buttons without physically pressing the mouse",
+		Func:         Autoclick,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the automatic clicks feature can be turned on and used to click buttons without physically pressing the mouse",
 		Contacts: []string{
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

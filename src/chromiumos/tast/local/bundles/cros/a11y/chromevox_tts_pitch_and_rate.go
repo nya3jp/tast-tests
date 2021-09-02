@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxTTSPitchAndRate,
-		Desc: "A test that verifies the way ChromeVox sets Text-to-Speech pitch and rate",
+		Func:         ChromevoxTTSPitchAndRate,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A test that verifies the way ChromeVox sets Text-to-Speech pitch and rate",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

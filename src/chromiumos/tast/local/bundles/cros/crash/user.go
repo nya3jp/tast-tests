@@ -42,8 +42,9 @@ type userCrashParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: User,
-		Desc: "Verifies crash reporting for user processes",
+		Func:         User,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies crash reporting for user processes",
 		Contacts: []string{
 			"domlaskowski@chromium.org", // Original autotest author
 			"yamaguchi@chromium.org",    // Tast port author

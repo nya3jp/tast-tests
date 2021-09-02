@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WindowControl,
-		Desc: "Check if the performance around window controlling is good enough; go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
+		Func:         WindowControl,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check if the performance around window controlling is good enough; go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"oshima@chromium.org",
 			"afakhry@chromium.org",

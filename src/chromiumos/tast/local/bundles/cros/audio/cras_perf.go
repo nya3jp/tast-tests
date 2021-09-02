@@ -28,11 +28,12 @@ type testParameters struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CrasPerf,
-		Desc:     "Performance measurement of CRAS",
-		Contacts: []string{"yuhsuan@chromium.org", "cychiang@chromium.org", "paulhsia@chromium.org"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		Timeout:  5 * time.Minute,
+		Func:         CrasPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Performance measurement of CRAS",
+		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org", "paulhsia@chromium.org"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "playback",

@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MultiNetworking,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies guest network setup upon physical interface change",
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

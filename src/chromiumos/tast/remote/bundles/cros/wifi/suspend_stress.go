@@ -27,8 +27,9 @@ type suspendStressParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SuspendStress,
-		Desc: "Asserts WiFi connectivity after suspend-resume cycle using powerd_dbus_suspend command",
+		Func:         SuspendStress,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Asserts WiFi connectivity after suspend-resume cycle using powerd_dbus_suspend command",
 		Contacts: []string{
 			"chharry@google.com",              // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

@@ -24,8 +24,9 @@ type authSessionMountParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AuthSessionMount,
-		Desc: "Ensures creates, authenticate and mount with an AuthSession",
+		Func:         AuthSessionMount,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Ensures creates, authenticate and mount with an AuthSession",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
 			"chromeos-security@google.com",

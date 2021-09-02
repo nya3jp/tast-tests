@@ -43,8 +43,9 @@ type eventLogParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Eventlog,
-		Desc: "Ensure that eventlog is written on boot and suspend/resume",
+		Func:         Eventlog,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Ensure that eventlog is written on boot and suspend/resume",
 		Contacts: []string{
 			"gredelston@google.com", // Test author.
 			"cros-fw-engprod@google.com",

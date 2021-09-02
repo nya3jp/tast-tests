@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SMB,
-		Desc: "Mount and check a file on Samba SMB share",
+		Func:         SMB,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Mount and check a file on Samba SMB share",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",

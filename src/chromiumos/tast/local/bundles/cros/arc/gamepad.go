@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Gamepad,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks gamepad support works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},

@@ -15,6 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AshWindowState,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that sending Ash WM event will change ARC app window state correctly",
 		Contacts:     []string{"xdai@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

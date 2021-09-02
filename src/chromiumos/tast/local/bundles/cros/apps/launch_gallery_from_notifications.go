@@ -28,8 +28,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchGalleryFromNotifications,
-		Desc: "Verify Gallery launches correctly when opening image from notifications",
+		Func:         LaunchGalleryFromNotifications,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify Gallery launches correctly when opening image from notifications",
 		Contacts: []string{
 			"backlight-swe@google.com",
 			"benreich@chromium.org",

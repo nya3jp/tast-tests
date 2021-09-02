@@ -22,8 +22,9 @@ type mediaRecorderPerfTest struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MediaRecorderPerf,
-		Desc: "Captures performance data about MediaRecorder for both SW and HW",
+		Func:         MediaRecorderPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Captures performance data about MediaRecorder for both SW and HW",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
 			"chromeos-gfx-video@google.com",

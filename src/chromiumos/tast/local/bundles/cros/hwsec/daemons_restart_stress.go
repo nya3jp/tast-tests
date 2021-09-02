@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DaemonsRestartStress,
-		Desc: "Verifies that restarting hwsec daemons wouldn't cause problems",
+		Func:         DaemonsRestartStress,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that restarting hwsec daemons wouldn't cause problems",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"yich@chromium.org",

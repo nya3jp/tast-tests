@@ -45,8 +45,9 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SimpleConnect,
-		Desc: "Verifies that DUT can connect to the host via AP in different WiFi configuration",
+		Func:         SimpleConnect,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that DUT can connect to the host via AP in different WiFi configuration",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

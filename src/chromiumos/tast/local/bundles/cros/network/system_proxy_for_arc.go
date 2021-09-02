@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SystemProxyForArc,
-		Desc: "Test that ARC++ apps can successfully connect to the remote host through the system-proxy daemon",
+		Func:         SystemProxyForArc,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test that ARC++ apps can successfully connect to the remote host through the system-proxy daemon",
 		Contacts: []string{
 			"acostinas@google.com", // Test author
 			"hugobenichi@google.com",

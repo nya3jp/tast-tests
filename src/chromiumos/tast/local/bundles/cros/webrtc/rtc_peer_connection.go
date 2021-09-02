@@ -32,8 +32,9 @@ type rtcTest struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RTCPeerConnection,
-		Desc: "Verifies that WebRTC RTCPeerConnection works, maybe verifying use of a hardware accelerator",
+		Func:         RTCPeerConnection,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that WebRTC RTCPeerConnection works, maybe verifying use of a hardware accelerator",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
 			"chromeos-gfx-video@google.com",

@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CPUVulnerabilitiesCrostini,
-		Desc: "Confirm CPU vulnerabilities are mitigated in the guest kernel",
+		Func:         CPUVulnerabilitiesCrostini,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Confirm CPU vulnerabilities are mitigated in the guest kernel",
 		Contacts: []string{
 			"swboyd@chromium.org", // Tast port author
 			"cros-containers-dev@google.com",

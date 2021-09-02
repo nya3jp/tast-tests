@@ -31,9 +31,10 @@ var touchviewLaunchForHouseparty = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Houseparty,
-		Desc:     "Functional test for Houseparty that installs the app also verifies it is logged in and that the main page is open, checks Houseparty correctly changes the window state in both clamshell and touchview mode",
-		Contacts: []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		Func:         Houseparty,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Functional test for Houseparty that installs the app also verifies it is logged in and that the main page is open, checks Houseparty correctly changes the window state in both clamshell and touchview mode",
+		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// Disabled this test as Houseparty android app is not available anymore and it is migrated to PWA app.
 		//Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

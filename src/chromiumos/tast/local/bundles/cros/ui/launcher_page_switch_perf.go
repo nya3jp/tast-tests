@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherPageSwitchPerf,
-		Desc: "Measures smoothness of switching pages within the launcher",
+		Func:         LauncherPageSwitchPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures smoothness of switching pages within the launcher",
 		Contacts: []string{
 			"newcomer@chromium.org", "tbarzic@chromium.org", "cros-launcher-prod-notifications@google.com",
 			"mukai@chromium.org", // original test author

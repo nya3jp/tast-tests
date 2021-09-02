@@ -14,11 +14,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DMVerity,
-		Desc:     "Verify dm-verity reports IO errors on bad data",
-		Contacts: []string{"hidehiko@chromium.org"},
-		Attr:     []string{"group:mainline"},
-		Timeout:  4 * time.Minute,
+		Func:         DMVerity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify dm-verity reports IO errors on bad data",
+		Contacts:     []string{"hidehiko@chromium.org"},
+		Attr:         []string{"group:mainline"},
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"dmverity_stable"},

@@ -27,8 +27,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: BSSTMRequest,
-		Desc: "Tests the DUTs response to a BSS Transition Management Request",
+		Func:         BSSTMRequest,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests the DUTs response to a BSS Transition Management Request",
 		Contacts: []string{
 			"wgd@google.com",                  // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

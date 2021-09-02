@@ -27,8 +27,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AppRearrangement,
-		Desc: "Tests the rearrangement of shelf app icons",
+		Func:         AppRearrangement,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests the rearrangement of shelf app icons",
 		Contacts: []string{
 			"andrewxu@chromium.org",
 			"tbarzic@chromium.org",

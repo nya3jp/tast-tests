@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Serializer,
-		Desc: "Basic test to check that minidump crashes are serialized",
+		Func:         Serializer,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Basic test to check that minidump crashes are serialized",
 		Contacts: []string{
 			"mutexlox@chromium.org",
 			"cros-telemetry@google.com",

@@ -29,6 +29,7 @@ const runAlsaConformanceTest string = "run-alsa-conformance-test.sh"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioAlsaConformance,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests different audio devices in crosvm with alsa conformance test",
 		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

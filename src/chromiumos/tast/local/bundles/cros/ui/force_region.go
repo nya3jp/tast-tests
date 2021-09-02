@@ -14,6 +14,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ForceRegion,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that region is forced in Chrome tests",
 		Contacts:     []string{"nya@chromium.org", "chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},

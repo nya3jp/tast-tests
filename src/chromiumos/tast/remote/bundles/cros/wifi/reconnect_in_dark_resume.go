@@ -26,8 +26,9 @@ type reconnectInDarkResumeParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ReconnectInDarkResume,
-		Desc: "Verifies that the DUT can reconnect to an autoconnectable AP during dark resume",
+		Func:         ReconnectInDarkResume,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that the DUT can reconnect to an autoconnectable AP during dark resume",
 		Contacts: []string{
 			"yenlinlai@google.com",            // Test author.
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

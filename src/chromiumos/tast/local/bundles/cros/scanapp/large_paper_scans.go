@@ -15,9 +15,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LargePaperScans,
-		Desc:     "Tests that the Scan app supports large paper size selection when available from printer",
-		Contacts: []string{"kmoed@google.com", "project-bolton@google.com"},
+		Func:         LargePaperScans,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the Scan app supports large paper size selection when available from printer",
+		Contacts:     []string{"kmoed@google.com", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"informational",

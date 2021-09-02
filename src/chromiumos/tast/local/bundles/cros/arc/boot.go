@@ -25,8 +25,9 @@ type bootConfig struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Boot,
-		Desc: "Checks that Android boots",
+		Func:         Boot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Android boots",
 		Contacts: []string{
 			"ereth@chromium.org",
 			"arc-core@google.com",

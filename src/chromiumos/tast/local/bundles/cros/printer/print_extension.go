@@ -20,9 +20,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PrintExtension,
-		Desc:     "Tests that printing via the chrome.printing extension API works properly",
-		Contacts: []string{"batrapranav@google.com", "cros-printing-dev@chromium.org"},
+		Func:         PrintExtension,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that printing via the chrome.printing extension API works properly",
+		Contacts:     []string{"batrapranav@google.com", "cros-printing-dev@chromium.org"},
 		Attr: []string{
 			"group:mainline",
 			"informational",

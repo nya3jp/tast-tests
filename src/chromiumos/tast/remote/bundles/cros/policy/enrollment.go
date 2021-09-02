@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Enrollment,
-		Desc: "Enroll a device without checking policies",
+		Func:         Enrollment,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Enroll a device without checking policies",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

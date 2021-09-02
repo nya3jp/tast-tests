@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LogoutCleanup,
-		Desc: "Verifies all processes owned by chronos are destroyed on logout",
+		Func:         LogoutCleanup,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies all processes owned by chronos are destroyed on logout",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
 			"hidehiko@chromium.org", // Tast port author

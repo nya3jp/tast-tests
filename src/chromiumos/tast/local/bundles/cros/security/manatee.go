@@ -41,8 +41,9 @@ type manateeTestCase struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Manatee,
-		Desc: "Checks basic functionality of core ManaTEE features",
+		Func:         Manatee,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks basic functionality of core ManaTEE features",
 		Contacts: []string{
 			"allenwebb@chromium.org",
 			"cros-manatee@google.com",

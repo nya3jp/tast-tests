@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KernelCrash,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test handling of a guest kernel crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

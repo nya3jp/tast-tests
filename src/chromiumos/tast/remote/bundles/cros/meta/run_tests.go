@@ -38,9 +38,10 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     RunTests,
-		Desc:     "Verifies that Tast can run tests",
-		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
+		Func:         RunTests,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that Tast can run tests",
+		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		Params: []testing.Param{{
 			Name: "faillog",
 			Val: runTestsParam{

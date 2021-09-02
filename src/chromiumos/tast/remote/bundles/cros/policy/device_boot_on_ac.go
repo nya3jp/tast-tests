@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceBootOnAC,
-		Desc: "Tests the DeviceBootOnAcEnabled policy that boots up the DUT from shutdown by plugging in a power supply",
+		Func:         DeviceBootOnAC,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests the DeviceBootOnAcEnabled policy that boots up the DUT from shutdown by plugging in a power supply",
 		Contacts: []string{
 			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",

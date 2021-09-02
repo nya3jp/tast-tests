@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ToolchainOptions,
-		Desc: "Verifies that system ELF executables were compiled with a hardened toolchain",
+		Func:         ToolchainOptions,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that system ELF executables were compiled with a hardened toolchain",
 		Contacts: []string{
 			"jorgelo@chromium.org",     // Security team
 			"kathrelkeld@chromium.org", // Tast port author

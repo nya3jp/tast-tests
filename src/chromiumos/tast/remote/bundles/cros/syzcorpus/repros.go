@@ -36,8 +36,9 @@ type testParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Repros,
-		Desc: "Test that runs syzkaller repros",
+		Func:         Repros,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test that runs syzkaller repros",
 		Contacts: []string{
 			"zsm@chromium.org", // Test author
 			"chromeos-kernel@google.com",

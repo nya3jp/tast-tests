@@ -26,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AutomaticCleanupManyUsers,
-		Desc: "Test automatic disk cleanup",
+		Func:         AutomaticCleanupManyUsers,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test automatic disk cleanup",
 		Contacts: []string{
 			"vsavu@google.com",     // Test author
 			"gwendal@chromium.com", // Lead for Chrome OS Storage

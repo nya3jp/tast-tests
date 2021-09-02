@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Connector,
-		Desc: "Verifies the camera service connector library works",
+		Func:         Connector,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies the camera service connector library works",
 		Contacts: []string{
 			"lnishan@chromium.org",
 			"shik@chromium.org",

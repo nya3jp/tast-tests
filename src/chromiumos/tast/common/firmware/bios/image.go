@@ -30,7 +30,7 @@ type FlashromProgrammer string
 const (
 	// HostProgrammer is the flashrom programmer type used to operate with AP firmware chip.
 	HostProgrammer FlashromProgrammer = "host"
-	
+
 	// ECProgrammer is the flashrom programmer type used to operate with EC chip.
 	ECProgrammer FlashromProgrammer = "ec"
 

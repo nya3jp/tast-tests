@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Change,
-		Desc: "Follows the user flow to change the wallpaper",
+		Func:         Change,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Follows the user flow to change the wallpaper",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"assistive-eng@google.com",

@@ -13,10 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HWDeps,
-		Desc:     "Validity check and demonstration of hardware deps feature",
-		Contacts: []string{"hidehiko@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline"},
+		Func:         HWDeps,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Validity check and demonstration of hardware deps feature",
+		Contacts:     []string{"hidehiko@chromium.org", "tast-owners@google.com"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
 		}, {

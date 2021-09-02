@@ -27,8 +27,9 @@ type bluetoothInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeBluetoothInfo,
-		Desc: "Checks that cros_healthd can fetch Bluetooth info",
+		Func:         ProbeBluetoothInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that cros_healthd can fetch Bluetooth info",
 		Contacts: []string{
 			"pmoy@google.com",
 			"cros-tdm@google.com",

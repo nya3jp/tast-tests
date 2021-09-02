@@ -27,8 +27,9 @@ type params struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Download,
-		Desc: "Verifies download behavior in holding space",
+		Func:         Download,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies download behavior in holding space",
 		Contacts: []string{
 			"dmblack@google.com",
 			"tote-eng@google.com",

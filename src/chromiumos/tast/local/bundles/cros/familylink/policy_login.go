@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PolicyLogin,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks if Unicorn login with policy setup is working",
 		Contacts:     []string{"xiqiruan@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
