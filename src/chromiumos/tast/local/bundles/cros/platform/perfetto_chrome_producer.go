@@ -11,7 +11,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/perfetto"
+	"chromiumos/tast/local/bundles/cros/platform/tracing"
 	"chromiumos/tast/testing"
 )
 
@@ -61,7 +61,7 @@ func waitForChromeProducer(ctx context.Context) error {
 // PerfettoChromeProducer tests Chrome as a perfetto trace producer.
 // The test enables the "EnablePerfettoSystemTracing" feature flag for Chrome and then checks if traced sees multiple Chrome producers connected.
 func PerfettoChromeProducer(ctx context.Context, s *testing.State) {
-	_, _, err := perfetto.CheckTracingServices(ctx)
+	_, _, err := tracing.CheckTracingServices(ctx)
 	if err != nil {
 		s.Fatal("Tracing services not running: ", err)
 	}
