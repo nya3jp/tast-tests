@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b79f4af9_79eae245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-02T23:30:35Z",
+      "side": 1,
+      "message": "Added comment",
+      "parentUuid": "7545720b_dd9815cd",
+      "range": {
+        "startLine": 92,
+        "startChar": 25,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5584d7c7_101b7abd",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
         "patchSetId": 4
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-02T01:48:23Z",
       "side": 1,
       "message": "All layouts except 2-set are deemed low-pri and all bugs are P3 for now. Not sure if we really need to maintain these tests for them though. On 2nd thought, I think we should just remove all except 2-set tests. Don\u0027t even have specs for any of them, so any assessment as to whether these are really the correct results is just personal speculation based on random sources on the Internet, or based on the current impl.",
+      "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75048097_e8fb027a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-02T23:30:35Z",
+      "side": 1,
+      "message": "I feel like maybe it is worth keeping them - maybe with a comment that they might be incorrect?\n\nAt least that way we know if things change",
+      "parentUuid": "5584d7c7_101b7abd",
       "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
