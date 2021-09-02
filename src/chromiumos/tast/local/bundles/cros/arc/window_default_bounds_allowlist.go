@@ -219,16 +219,20 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			if err := ash.WaitForVisible(ctx, tconn, pkgName); err != nil {
 				return err
 			}
-			window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
-			if err != nil {
+
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+				if err != nil {
+					return testing.PollBreak(err)
+				}
+				if err := verifyFunc(act, window); err != nil {
+					return err
+				}
+				launchBoundsThreshold = window.BoundsInRoot
+				return nil
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 				return err
 			}
-
-			if err := verifyFunc(act, window); err != nil {
-				return err
-			}
-
-			launchBoundsThreshold = window.BoundsInRoot
 			return nil
 		}(); err != nil {
 			return err
