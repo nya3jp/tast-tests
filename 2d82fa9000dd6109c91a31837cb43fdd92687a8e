@@ -16,6 +16,23 @@
       "message": "Thank you for reivew, PTAL, again?",
       "revId": "2d82fa9000dd6109c91a31837cb43fdd92687a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0912d2_f18352c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-02T08:34:03Z",
+      "side": 1,
+      "message": "Still LGTM. Sorry for delay.\n",
+      "revId": "2d82fa9000dd6109c91a31837cb43fdd92687a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
