@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -120,10 +121,15 @@ func PIP(ctx context.Context, s *testing.State) {
 	dev := s.FixtValue().(*arc.PreData).UIDevice
 
 	const apkName = "ArcPipTest.apk"
-	s.Log("Installing ", apkName)
 	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
-		s.Fatal("Failed installing app: ", err)
+		s.Fatal("Failed installing PIP app: ", err)
 	}
+	defer a.Uninstall(ctx, pipTestPkgName)
+
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
+		s.Fatal("Failed installing WM24 app: ", err)
+	}
+	defer a.Uninstall(ctx, wm.Pkg24)
 
 	pipAct, err := arc.NewActivity(a, pipTestPkgName, ".PipActivity")
 	if err != nil {
@@ -558,33 +564,28 @@ func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *ch
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
 func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	const (
-		settingPkgName = "com.android.settings"
-		settingActName = ".Settings"
-	)
-
-	settingAct, err := arc.NewActivity(a, settingPkgName, settingActName)
+	maximizedActivity, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
-		return errors.Wrap(err, "could not create Settings Activity")
+		return errors.Wrap(err, "could not create maximized activity")
 	}
-	defer settingAct.Close()
+	defer maximizedActivity.Close()
 
-	if err := settingAct.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not start Settings Activity")
+	if err := maximizedActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "could not start maximized activity")
 	}
-	defer settingAct.Stop(ctx, tconn)
+	defer maximizedActivity.Stop(ctx, tconn)
 
 	// Make sure the window will have an initial maximized state.
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, settingPkgName, ash.WMEventMaximize); err != nil {
-		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventMaximize); err != nil {
+		return errors.Wrap(err, "failed to set window state of maximized activity to maximized")
 	}
 
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, settingPkgName, ash.WindowStateMaximized); err != nil {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
 		return errors.Wrap(err, "did not maximize")
 	}
 
-	if err := settingAct.Stop(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not stop Settings Activity while setting initial window state")
+	if err := maximizedActivity.Stop(ctx, tconn); err != nil {
+		return errors.Wrap(err, "could not stop maximized activity while setting initial window state")
 	}
 
 	// Start the main activity that should enter PIP.
@@ -592,9 +593,9 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tcon
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 
-	// Start Settings Activity again, this time with the guaranteed correct window state.
-	if err := settingAct.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not start Settings Activity")
+	// Start maximized activity again, this time with the guaranteed correct window state.
+	if err := maximizedActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "could not start maximized Activity")
 	}
 
 	// Wait for MainActivity to enter PIP.
