@@ -9,6 +9,9 @@ const (
 	// TraceConfigFile is the data path of the trace config file in text proto format.
 	TraceConfigFile = "perfetto/system_trace_cfg.pbtxt"
 
+	// TBMTracedProbesConfigFile is the data path of the TBM traced probes config file in text proto format.
+	TBMTracedProbesConfigFile = "perfetto/perfetto_tbm_traced_probes.pbtxt"
+
 	// TracedJobName is the upstart job names of the Perfetto system tracing service daemon (traced).
 	TracedJobName = "traced"
 
