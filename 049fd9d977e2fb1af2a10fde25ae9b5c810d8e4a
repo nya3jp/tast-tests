@@ -18,6 +18,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b50ddaa_b1969677",
+        "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-02T22:00:13Z",
+      "side": 1,
+      "message": "I\u0027m interested in why you added these methods to the snippetclient itself instead of making a separate struct/type just for the rpc stuff. Then adding a \"json_rpc\" type to the struct of SnippetClient\n\nThe line seems clean to me so let me know if I missed something or it was just simpler.\n\nAlso is having methods of a struct across multiple files normal in golang?",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "badcd46e_800b2766",
@@ -31,6 +54,29 @@
       "writtenOn": "2021-09-02T01:42:16Z",
       "side": 1,
       "message": "Everything in this CL is basically the same as the current snippet.go (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go).\n\nThis function is the only thing that\u0027s really different, I combined the request/receive functions into a single RPC function since there was no need to have them separate.",
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7772d26_fbf918e7",
+        "filename": "src/chromiumos/tast/common/android/mobly/snippet_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-02T22:00:13Z",
+      "side": 1,
+      "message": "Should this be a more generic error since the permission could be anything?",
+      "range": {
+        "startLine": 62,
+        "startChar": 48,
+        "endLine": 62,
+        "endChar": 76
+      },
       "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
