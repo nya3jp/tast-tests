@@ -16,6 +16,63 @@
       "message": "PTAL",
       "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737eebbc_18e0b884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-09-02T00:26:31Z",
+      "side": 1,
+      "message": "Can we add a comment about why we skip the prctl() check compared to chromeos::system::IsCoreSchedulingAvailable() ?",
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e5d79b_c12789a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-09-02T00:26:31Z",
+      "side": 1,
+      "message": "Use sysutil.KernelVersionAndArch() instead?",
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e771f6c_009c2509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-09-02T00:26:31Z",
+      "side": 1,
+      "message": "Would this snippet better be inside isCoreSchedulingAvailable()?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 0
+      },
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
