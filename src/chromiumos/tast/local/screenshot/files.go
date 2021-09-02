@@ -10,7 +10,7 @@ import (
 	"regexp"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 )
 
 // screenshotPaths returns list of screenshot paths in Download folder.
