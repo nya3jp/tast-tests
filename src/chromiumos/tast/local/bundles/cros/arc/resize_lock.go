@@ -253,6 +253,9 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
 	}
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to set device to clamshell mode: ", err)
+	}
 	// Be nice and restore tablet mode to its original state on exit.
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeStatus)
 
