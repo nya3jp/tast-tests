@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86d5264_e1375cd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-02T16:59:30Z",
+      "side": 1,
+      "message": "nit: please fix typo",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 73,
+        "endChar": 53
+      },
+      "revId": "b239ea5d896ac31eaa0250117d4938600f58ec75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415c801f_e0b9d522",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-02T16:59:30Z",
+      "side": 1,
+      "message": "Does this need to skip on leona?",
+      "revId": "b239ea5d896ac31eaa0250117d4938600f58ec75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1e95ca_92fedeaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-02T16:59:30Z",
+      "side": 1,
+      "message": "nit: please fix typo",
+      "range": {
+        "startLine": 133,
+        "startChar": 48,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "b239ea5d896ac31eaa0250117d4938600f58ec75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
