@@ -16,6 +16,23 @@
       "message": "LGTM now, but please John take a look.",
       "revId": "75882f22511100f2f587160360330f25abad33df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e576e57b_c7989fea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-09-02T19:14:39Z",
+      "side": 1,
+      "message": "nit: It may not be obvious what FirstPassword2 refers to, particularly what \"2\" refers to. Thus, it would be recommended to add a brief comment on what \"Password2\" is used for.",
+      "revId": "75882f22511100f2f587160360330f25abad33df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
