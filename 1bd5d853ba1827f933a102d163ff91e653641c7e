@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41087c5_b48b97b1",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T05:00:56Z",
+      "side": 1,
+      "message": "I don\u0027t see this regexp used anywhere... am I missing something?",
+      "revId": "1bd5d853ba1827f933a102d163ff91e653641c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d918da9_8b840384",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T05:00:56Z",
+      "side": 1,
+      "message": "nit: Function and method names should not use a Get prefix unless the underlying concept involves the word \"get\" (i.e. HTTP GET) as it is not idiomatic go. \nPrefer starting with the noun directly, in this case SelectedOutputDevice. (I would probably also omit \"NameAndType\" as Go errs towards shorter names.)\n\nSee also: https://golang.org/doc/effective_go#Getters",
+      "revId": "1bd5d853ba1827f933a102d163ff91e653641c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44530250_22711b29",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T05:00:56Z",
+      "side": 1,
+      "message": "if possible, consider fixing this up as well to eliminate \u0027Get\u0027, i.e. CRASPID().",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 15
+      },
+      "revId": "1bd5d853ba1827f933a102d163ff91e653641c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ebd59f_3d29b622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T05:00:56Z",
+      "side": 1,
+      "message": "nit: plays",
+      "range": {
+        "startLine": 44,
+        "startChar": 56,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "1bd5d853ba1827f933a102d163ff91e653641c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd35ba2_564ed17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T05:00:56Z",
+      "side": 1,
+      "message": "out of date as you are now generating the audio file?\n\n(nit: even if up-to-date, this should be \u0027copies\u0027)",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "1bd5d853ba1827f933a102d163ff91e653641c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22cfcfdf_d46244c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T05:00:56Z",
+      "side": 1,
+      "message": "nit: insert \u0027that\u0027",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "1bd5d853ba1827f933a102d163ff91e653641c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
