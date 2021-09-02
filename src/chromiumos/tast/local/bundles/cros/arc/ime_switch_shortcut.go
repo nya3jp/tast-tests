@@ -100,7 +100,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	}
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
 	defer func(ctx context.Context) {
@@ -122,12 +122,6 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to activate US keyboard: ", err)
 	}
 
-	if imeID, err := ime.CurrentInputMethod(ctx, tconn); err != nil {
-		s.Fatal("Failed to get current ime: ", err)
-	} else if imeID != usIMEID {
-		s.Fatalf("Failed to activate US keyboard: got %q; want %q", imeID, usIMEID)
-	}
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -139,9 +133,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Ctrl-Space: ", err)
 	}
 
-	if imeID, err := ime.CurrentInputMethod(ctx, tconn); err != nil {
-		s.Fatal("Failed to get current ime: ", err)
-	} else if imeID != intlIMEID {
-		s.Fatalf("Failed to switch international keyboard: got %q; want %q", imeID, intlIMEID)
+	if ime.WaitForInputMethodMatches(ctx, tconn, intlIMEID, 10*time.Second); err != nil {
+		s.Fatal("Failed to switch keyboard: ", err)
 	}
 }
