@@ -70,6 +70,24 @@
       "parentUuid": "bb021b53_172e0617",
       "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69cf628_8eaf5d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-02T23:29:30Z",
+      "side": 1,
+      "message": "\u003e\u003eIIUC the ClamshellFullScreenApp has the steps which are required to verify app utilizes full screen. In such cases we should have had one integrated test instead of 2.Anyways we are removing LargeScreenLayout now.\nJust checked again in go/arc-testcase for Clamshell:Full screen if I missed any. As per description, it checks if the app content is scaled properly or not. It doesn\u0027t mention if app utilizes full screen or not.\n \u003e\u003e Is there any intention to use LargeScreenLayout method in near future,If not then can that be removed as well?  i.e L730.\n yes, LargeScreenLayout method is still used by Touchview: Largescreen Layout since resize lock feature isn\u0027t available for tablet mode.",
+      "parentUuid": "7d227af9_fe2a5454",
+      "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
