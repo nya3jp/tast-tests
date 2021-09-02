@@ -33,6 +33,23 @@
       "message": "tast-owners@: PTAL for OWNERS. Thank you.",
       "revId": "71cccd36f919228bd994a7a2c08430b1b9b3e093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794ab8af_ae63f6af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-02T08:32:51Z",
+      "side": 1,
+      "message": "Thank you Niwa-san!\n",
+      "revId": "71cccd36f919228bd994a7a2c08430b1b9b3e093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
