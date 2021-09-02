@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b302193_c35c030b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-02T08:38:02Z",
+      "side": 1,
+      "message": "Thanks, the new matcher looks nice. :)",
+      "parentUuid": "c6134a62_32fd41c1",
+      "range": {
+        "startLine": 183,
+        "startChar": 47,
+        "endLine": 183,
+        "endChar": 53
+      },
+      "revId": "aa6d47728ee19d39d888684d3ff75acdae95019f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89cf648f_199f9254",
