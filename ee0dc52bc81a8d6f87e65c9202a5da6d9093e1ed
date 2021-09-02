@@ -247,6 +247,30 @@
       },
       "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3caa65d_9b064060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T23:32:31Z",
+      "side": 1,
+      "message": "\u003e If you don\u0027t want to run it in Google\u0027s lab, it seems that you should remove the Attr field above.\n\u003e Hi Patrick, is it correct?\n\nCorrect. You will want to delete the existing Attr tag and specify {\"group:mainline\", \"informational\"} only on the test param(s) you want to have run by default. In this case, I believe that would only be the internal_speaker param. You can do this using the ExtraAttr: tag on testing.Param. I.E.\n{\n   Name:      \"internal_speaker\",\n   ExtraAttr: []string{\"group:mainline\", \"informational\"},\n   Val:       \"INTERNAL_SPEAKER\",\n},",
+      "parentUuid": "48919acf_c8553160",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
