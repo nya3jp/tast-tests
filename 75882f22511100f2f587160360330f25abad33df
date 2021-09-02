@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003bdb1e_a4230d6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-09-02T07:27:08Z",
+      "side": 1,
+      "message": "LGTM now, but please John take a look.",
+      "revId": "75882f22511100f2f587160360330f25abad33df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
