@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3707d72e_54e714a1",
+        "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-02T22:40:57Z",
+      "side": 1,
+      "message": "The adb package defines methods for the Device struct across multiple files, so I guess it\u0027s fine. I haven\u0027t seen any specific guidelines about it, but it\u0027s all within the same package which I think is the important part.\n\nI don\u0027t quite get your point regarding a separate json_rpc type. The main purpose of SnippetClient is to make RPCs, so I think it makes sense for it to be the receiver for the RPC methods. Users will interact with it like:\n```\n// initialize\nsc :\u003d mobly.NewSnippetClient(...)\ndefer sc.Cleanup(...)\n// make an RPC\nres, err :\u003d sc.RPC(ctx, timeout, methodName, args...)\n```\nAlso these RPC methods need access to SnippetClient\u0027s fields (mainly the TCP conn, additionally the current request ID), I think this is the cleanest way to do it.\n\nMaybe I\u0027m missing something? Let me know what you think",
+      "parentUuid": "6b50ddaa_b1969677",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "badcd46e_800b2766",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-02T22:00:13Z",
       "side": 1,
       "message": "Should this be a more generic error since the permission could be anything?",
+      "range": {
+        "startLine": 62,
+        "startChar": 48,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9817d1_a4e424ab",
+        "filename": "src/chromiumos/tast/common/android/mobly/snippet_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-02T22:40:57Z",
+      "side": 1,
+      "message": "ah yeah it should, missed it when copying over from snippet.go",
+      "parentUuid": "f7772d26_fbf918e7",
       "range": {
         "startLine": 62,
         "startChar": 48,
