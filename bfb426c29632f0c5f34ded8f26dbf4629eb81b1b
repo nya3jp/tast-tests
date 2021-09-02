@@ -16,6 +16,24 @@
       "message": "We still call s.DataPath(\"cca_ui.js\") at the bottom, can we really drop this?",
       "revId": "bfb426c29632f0c5f34ded8f26dbf4629eb81b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c85862_62f2e8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-02T08:49:45Z",
+      "side": 0,
+      "message": "I don\u0027t mean to change this file. It is accidentally removed.\nThanks for catching this!",
+      "parentUuid": "e0faba1f_d4eedb7c",
+      "revId": "bfb426c29632f0c5f34ded8f26dbf4629eb81b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
