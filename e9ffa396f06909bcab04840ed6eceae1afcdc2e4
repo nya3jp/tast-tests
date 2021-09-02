@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4150e70f_e3ea5759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-02T16:33:57Z",
+      "side": 1,
+      "message": "I am not familiar with /usr/local/vms/etc/arcvm_dev.conf. I did find this file in my DUTs and its content is not empty. Should we restore it after the test is done? ",
+      "revId": "e9ffa396f06909bcab04840ed6eceae1afcdc2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba5a3e8_c23315b0",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-09-01T15:25:15Z",
       "side": 1,
       "message": "duplicating my concern here. Any other option that is not persistent could be better.",
+      "range": {
+        "startLine": 231,
+        "startChar": 45,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "e9ffa396f06909bcab04840ed6eceae1afcdc2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32798a88_e2dc08b6",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-02T16:33:57Z",
+      "side": 1,
+      "message": "What if there is an exising /usr/local/vms/etc/arcvm_dev.conf? Should you restore it to the original content somewhere?",
+      "parentUuid": "8ba5a3e8_c23315b0",
       "range": {
         "startLine": 231,
         "startChar": 45,
