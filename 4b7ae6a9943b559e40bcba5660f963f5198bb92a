@@ -52,6 +52,24 @@
       "parentUuid": "0bd825ef_86b5e209",
       "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d227af9_fe2a5454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-02T23:12:55Z",
+      "side": 1,
+      "message": "IIUC the ClamshellFullScreenApp has the steps which are required to verify app utilizes full screen. In such cases we should have had one integrated test instead of 2.Anyways we are removing LargeScreenLayout now.\n\nIs there any intention to use LargeScreenLayout method in near future,If not then can that be removed as well?  i.e L730.",
+      "parentUuid": "bb021b53_172e0617",
+      "revId": "4b7ae6a9943b559e40bcba5660f963f5198bb92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
