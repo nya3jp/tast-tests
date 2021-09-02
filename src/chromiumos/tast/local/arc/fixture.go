@@ -26,6 +26,10 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBooted",
 		Desc: "ARC is booted",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
@@ -39,6 +43,10 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithoutUIAutomator",
 		Desc: "ARC is booted without UI Automator",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
 		Impl: NewArcBootedWithoutUIAutomatorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
@@ -52,6 +60,10 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithDisableSyncFlags",
 		Desc: "ARC is booted with disabling sync flags",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
@@ -71,7 +83,8 @@ func init() {
 		Vars: []string{"ui.gaiaPoolDefault"},
 		Contacts: []string{
 			"rnanjappan@chromium.org",
-			"arc-eng@google.com",
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
 		},
 		Impl: NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
@@ -89,6 +102,10 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedInTabletMode",
 		Desc: "ARC is booted in tablet mode",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
@@ -105,6 +122,10 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedInClamshellMode",
 		Desc: "ARC is booted in clamshell mode",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
@@ -121,6 +142,10 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithVideoLogging",
 		Desc: "ARC is booted with additional Chrome video logging",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
 				"--vmodule=" + strings.Join([]string{
