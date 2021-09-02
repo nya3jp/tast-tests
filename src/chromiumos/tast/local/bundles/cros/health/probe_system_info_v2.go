@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"os"
 	"path"
 	"strconv"
 	"strings"
@@ -172,9 +173,13 @@ func expectedSkuNumber(ctx context.Context, fpath string) (*string, error) {
 
 func expectedVpdInfo(ctx context.Context) (*vpdInfo, error) {
 	const (
-		ro = "/sys/firmware/vpd/ro/"
-		rw = "/sys/firmware/vpd/rw/"
+		vpd = "/sys/firmware/vpd"
+		ro  = "/sys/firmware/vpd/ro/"
+		rw  = "/sys/firmware/vpd/rw/"
 	)
+	if _, err := os.Stat(vpd); os.IsNotExist(err) {
+		return nil, nil
+	}
 	var r vpdInfo
 	var err error
 	if r.ActivateDate, err = utils.ReadOptionalStringFile(path.Join(rw, "ActivateDate")); err != nil {
@@ -215,6 +220,9 @@ func expectedDmiInfo(ctx context.Context) (*dmiInfo, error) {
 	const (
 		dmi = "/sys/class/dmi/id"
 	)
+	if _, err := os.Stat(dmi); os.IsNotExist(err) {
+		return nil, nil
+	}
 	var r dmiInfo
 	var err error
 	if r.BiosVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "bios_vendor")); err != nil {
