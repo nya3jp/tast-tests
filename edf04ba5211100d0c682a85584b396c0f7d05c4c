@@ -16,6 +16,46 @@
       "message": "This is a follow-up to crrev.com/c/3123718, which merged before all feedback had been resolved.\n\nCC-ing Clarissa, who is video guard since the change to the error message will change the failure reason in Testmon (go/videoalerts).",
       "revId": "edf04ba5211100d0c682a85584b396c0f7d05c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4d8d54_27fc008d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T04:51:33Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit",
+      "revId": "edf04ba5211100d0c682a85584b396c0f7d05c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b62357_5379ff15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-02T04:51:33Z",
+      "side": 1,
+      "message": "nit: \"%v failed unexpectedly on %s: \"?",
+      "range": {
+        "startLine": 1220,
+        "startChar": 60,
+        "endLine": 1220,
+        "endChar": 61
+      },
+      "revId": "edf04ba5211100d0c682a85584b396c0f7d05c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
