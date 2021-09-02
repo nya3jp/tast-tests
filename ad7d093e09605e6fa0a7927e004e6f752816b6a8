@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d35a6f_5619721b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-02T07:42:32Z",
+      "side": 1,
+      "message": "Grace, this CL itself looks good to me, but a the same time the bot failure are related to libchrome.\nCould you double check them, if it is independent from this CL? Maybe re-running tryjob, too?",
+      "revId": "ad7d093e09605e6fa0a7927e004e6f752816b6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
