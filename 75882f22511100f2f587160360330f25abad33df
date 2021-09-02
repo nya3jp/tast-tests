@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1b1036_00de53c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-02T23:05:53Z",
+      "side": 1,
+      "message": "I have a suggeston on simplifying the code. Not sure if it will work. Please take a look. I think current code should work. Thanks.",
+      "revId": "75882f22511100f2f587160360330f25abad33df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c194f6_d1dd01ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-02T23:05:53Z",
+      "side": 1,
+      "message": "I am not familar with the MountVault. I just want to know if it is ok to take a array of user information. \n\ntype userInfo struct {\n    name string\n    password string\n    label string\n}\n\nfunc checkVaultWorks(ctx context.Context, utility *hwsec.CryptohomeClient, usrInfos []userInfo, pinSupported bool) error {\n   for i, info :\u003d range usert\n\tif err :\u003d utility.MountVault(ctx, info.name, info.password, info.label, false, hwsec.NewVaultConfig()); err !\u003d nil {\n\t\treturn errors.Wrapf(err, \"failed to mount with password %d\", i)\n\t}\n\tif err :\u003d utility.UnmountAll(ctx); err !\u003d nil {\n\t\treturn errors.Wrapf(err, \"failed to unmount vault %d\", i)\n\t}\n\n\tif result, _ :\u003d utility.CheckVault(ctx, info.name, info.password, info.label); !result {\n\t\treturn errors.New(\"failed to check key with password %d\", i)\n\t}\n   }\n}\n\nIf pin is supported, we simply add one more entry to the slice before we call this function.\n\nI just see a log of code repeated here and see if we can simplified a little bit.\n\nSimilar command to other function.\n\nThanks.",
+      "revId": "75882f22511100f2f587160360330f25abad33df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e576e57b_c7989fea",
@@ -31,6 +65,24 @@
       "writtenOn": "2021-09-02T19:14:39Z",
       "side": 1,
       "message": "nit: It may not be obvious what FirstPassword2 refers to, particularly what \"2\" refers to. Thus, it would be recommended to add a brief comment on what \"Password2\" is used for.",
+      "revId": "75882f22511100f2f587160360330f25abad33df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a029ab73_bfed1b33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-02T23:05:53Z",
+      "side": 1,
+      "message": "nit: Also, I think it is better to make the name consistent: FirstPassword1 and FirstPassword2.",
+      "parentUuid": "e576e57b_c7989fea",
       "revId": "75882f22511100f2f587160360330f25abad33df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
