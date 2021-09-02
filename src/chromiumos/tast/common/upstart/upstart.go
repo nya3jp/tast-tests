@@ -24,6 +24,8 @@ const (
 	StartingState State = "starting"
 	// SecurityState indicates that a job is having its AppArmor security policy loaded.
 	SecurityState State = "security"
+	// TmpfilesState indicates that a job is having its temporary files set up.
+	TmpfilesState State = "tmpfiles"
 	// PreStartState indicates that a job's pre-start section is running.
 	PreStartState State = "pre-start"
 	// SpawnedState indicates that a job's script or exec section is about to run.
