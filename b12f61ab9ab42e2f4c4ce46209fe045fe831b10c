@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf8f1b7_ec6d0c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/dlc/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-02T10:36:09Z",
+      "side": 1,
+      "message": "Maybe check that the mount point is still there? Or just reinstall, dlcservice should return instantly if the DLC is already installed and mounted.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "b12f61ab9ab42e2f4c4ce46209fe045fe831b10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

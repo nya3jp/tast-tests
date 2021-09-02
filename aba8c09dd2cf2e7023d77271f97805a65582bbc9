@@ -245,6 +245,24 @@
       "parentUuid": "2a5183de_5aa0c163",
       "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e922b93_50a32a86",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-02T10:36:09Z",
+      "side": 1,
+      "message": "Uninstall reduces a refcount, but won\u0027t actually remove the installed copy within the scope of the test (I believe it waits another 7 days). Purge removes it immediately, which is normally what we want.",
+      "parentUuid": "31da5ca8_7e0e2054",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
