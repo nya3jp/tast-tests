@@ -52,6 +52,24 @@
       "parentUuid": "0eaffeb5_053a1dfe",
       "revId": "58c07cd60ca0c43d318bb49b411d677123cf774e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4406cead_8076cee2",
+        "filename": "src/chromiumos/tast/remote/firmware/rpm/rpm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-02T21:26:44Z",
+      "side": 1,
+      "message": "I\u0027ll try rpm-service, and fall back to the other hostname if it doesn\u0027t resolve.",
+      "parentUuid": "196695bc_04c27659",
+      "revId": "58c07cd60ca0c43d318bb49b411d677123cf774e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
