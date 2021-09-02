@@ -15,7 +15,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -108,10 +108,10 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 			}
 			defer files.Close(ctx)
 
-			if err := files.OpenDownloads(ctx); err != nil {
+			if err := files.OpenDownloads()(ctx); err != nil {
 				s.Fatal("Opening Downloads folder failed: ", err)
 			}
-			if err := files.WaitForFile(ctx, "download_restrictions.zip", 5*time.Second); err != nil {
+			if err := files.WithTimeout(5 * time.Second).WaitForFile("download_restrictions.zip")(ctx); err != nil {
 				if !param.blocked {
 					if errors.Is(err, context.DeadlineExceeded) {
 						s.Error("Download was blocked: ", err)
