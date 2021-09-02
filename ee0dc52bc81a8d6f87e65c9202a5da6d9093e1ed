@@ -223,6 +223,30 @@
       },
       "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48919acf_c8553160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-02T07:40:01Z",
+      "side": 1,
+      "message": "Also, can you please let us know if we can connect to USB/BT speakers in Google lab?",
+      "parentUuid": "bf6eac47_8fce41e0",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
