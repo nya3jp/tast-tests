@@ -87,6 +87,24 @@
       "parentUuid": "f8b15da8_1febb710",
       "revId": "baf058d08546c656eccffbb30346d79b88d64eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22831ac_5ca50b7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2021-09-02T19:57:38Z",
+      "side": 1,
+      "message": "I\u0027ve also looked at Joel\u0027s failing jobs, and they\u0027ve been running on a version which didn\u0027t have the fix for b/198218620 yet (fix is in 14192.0.0).",
+      "parentUuid": "b002bbbe_ef85d739",
+      "revId": "baf058d08546c656eccffbb30346d79b88d64eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
