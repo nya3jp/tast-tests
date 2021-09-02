@@ -48,9 +48,19 @@ func (f *FilesApp) Info(ctx context.Context, finder *nodewith.Finder) (*uiauto.N
 	return f.ui.Info(ctx, finder.FinalAncestor(WindowFinder))
 }
 
+// NodesInfo calls ui.NodesInfo scoping the finder to the Files App.
+func (f *FilesApp) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]uiauto.NodeInfo, error) {
+	return f.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder))
+}
+
 // Exists calls ui.Exists scoping the finder to the Files App.
 func (f *FilesApp) Exists(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.Exists(finder.FinalAncestor(WindowFinder))
+}
+
+// IsNodeFound calls ui.IsNodeFound scoping the finder to the Files App.
+func (f *FilesApp) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
+	return f.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder))
 }
 
 // WaitUntilExists calls ui.WaitUntilExists scoping the finder to the Files App.
