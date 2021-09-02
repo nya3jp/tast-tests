@@ -1,0 +1,6 @@
+{
+  "url": "gs://chromiumos-test-assets-public/perfetto/trace_processor_shell/arm/trace_processor_shell-20210927145704",
+  "size": 20468692,
+  "sha256sum": "c45676b035606be138e750b0d7e953fc3283e2fc8f0cb5a9a350fbf236ef5005",
+  "executable": true
+}
