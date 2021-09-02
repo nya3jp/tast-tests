@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug.com/1238027): Close dialog before the next test.
 		// Attr:         []string{"group:mainline", "informational"},
-		Fixture: "chromePolicyLoggedIn",
+		Fixture: fixtures.ChromePolicyLoggedIn,
 	})
 }
 

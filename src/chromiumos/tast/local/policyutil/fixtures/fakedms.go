@@ -17,9 +17,20 @@ import (
 	"chromiumos/tast/timing"
 )
 
+const (
+	// FakeDMS is a fixture name.
+	FakeDMS = "fakeDMS"
+	// FakeDMSEnrolled is a fixture name.
+	FakeDMSEnrolled = "fakeDMSEnrolled"
+	// FakeDMSFamilyLink is a fixture name.
+	FakeDMSFamilyLink = "fakeDMSFamilyLink"
+	// FakeDMSFamilyLinkArc is a fixture name.
+	FakeDMSFamilyLinkArc = "fakeDMSFamilyLinkArc"
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "fakeDMS",
+		Name:            FakeDMS,
 		Desc:            "Fixture for a running FakeDMS",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &fakeDMSFixture{},
@@ -30,7 +41,7 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "fakeDMSEnrolled",
+		Name:     FakeDMSEnrolled,
 		Desc:     "Fixture for a running FakeDMS",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &fakeDMSFixture{
@@ -44,7 +55,7 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "fakeDMSFamilyLink",
+		Name:     FakeDMSFamilyLink,
 		Desc:     "Fixture for a running FakeDMS of Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{
@@ -60,7 +71,7 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "fakeDMSFamilyLinkArc",
+		Name:     FakeDMSFamilyLinkArc,
 		Desc:     "Fixture for a running FakeDMS of Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{

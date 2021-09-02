@@ -19,9 +19,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// ChromePolicyLoggedIn is a fixture name.
+	ChromePolicyLoggedIn = "chromePolicyLoggedIn"
+	// ChromeEnrolledLoggedIn is a fixture name.
+	ChromeEnrolledLoggedIn = "chromeEnrolledLoggedIn"
+	// ChromeEnrolledLoggedInARC is a fixture name.
+	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "chromePolicyLoggedIn",
+		Name:            ChromePolicyLoggedIn,
 		Desc:            "Logged into a user session",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &policyChromeFixture{},
@@ -29,11 +38,11 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
-		Parent:          "fakeDMS",
+		Parent:          FakeDMS,
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeEnrolledLoggedIn",
+		Name:     ChromeEnrolledLoggedIn,
 		Desc:     "Logged into a user session with enrollment",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
@@ -43,11 +52,11 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
-		Parent:          "fakeDMSEnrolled",
+		Parent:          FakeDMSEnrolled,
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeEnrolledLoggedInARC",
+		Name:     ChromeEnrolledLoggedInARC,
 		Desc:     "Logged into a user session with enrollment with ARC support",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
@@ -59,7 +68,7 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
-		Parent:          "fakeDMSEnrolled",
+		Parent:          FakeDMSEnrolled,
 	})
 }
 
