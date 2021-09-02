@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63c9618_b953b424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:45:36Z",
+      "side": 1,
+      "message": "nit: insert space.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca5ef27_1675bf00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:45:36Z",
+      "side": 1,
+      "message": "Is this First() necessary (i.e. are there multiple nodes match with the criteria)? How about removing First() it it works?\nSame for others.",
+      "range": {
+        "startLine": 52,
+        "startChar": 107,
+        "endLine": 52,
+        "endChar": 112
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc7962b_bd227dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:45:36Z",
+      "side": 1,
+      "message": "Can we use LeftClick for robustness?\nSame for others.",
+      "range": {
+        "startLine": 84,
+        "startChar": 14,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff87aa50_deb24f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:45:36Z",
+      "side": 1,
+      "message": "Can we use Combine here? Maybe name it \"click Save\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bad17e9_14b03703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:45:36Z",
+      "side": 1,
+      "message": "I think we can move this outside Poll.\nPreviously we get saveButton object by calling the corresponding function, but now we don\u0027t get any object.\n\nAnd since we can move this outside poll, I think we can rewrite the entire Poll function with ui.RetryUntil(). Could you try it?\n\nui.WithPollOpts(\u0026testing.PollOptions{\n  Timeout: 15 * time.Second, Interval: 2 * time.Second\n}).RetryUntil(\n  ui.WithTimeout(10 * time.Second).WaitUntilExists(saveButton),\n  ui.CheckRestriction(saveButton, restriction.Disabled)\n)",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc71a83f_fdc05caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-02T00:45:36Z",
+      "side": 1,
+      "message": "Could you Combine them?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
