@@ -39,6 +39,30 @@
       },
       "revId": "fb501711fd0ea6aa4239fefd117ec6879d9f312c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ce1098_a1bfd14d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-09-02T02:52:31Z",
+      "side": 1,
+      "message": "Yes true, I renamed the variables.",
+      "parentUuid": "cf1397db_c2aac8c1",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "fb501711fd0ea6aa4239fefd117ec6879d9f312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
