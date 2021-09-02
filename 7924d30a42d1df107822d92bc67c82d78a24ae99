@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47bdbd7_8bac573c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-02T22:24:59Z",
+      "side": 1,
+      "message": "Just a question:\n\nIf \"\u003d\" may cause the issue, will \"\u003c\u003d 20%\" cause the issue, too?\n\nThis CL didn\u0027t change the \"\u003c\u003d 20%\" part of the string.",
+      "revId": "7924d30a42d1df107822d92bc67c82d78a24ae99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
