@@ -16,6 +16,24 @@
       "message": "LGTM",
       "revId": "baf058d08546c656eccffbb30346d79b88d64eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f3ea5c_b1b0ee8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2021-09-02T16:38:15Z",
+      "side": 1,
+      "message": "Hi Seewai, If the original patch being reverted solves the issue, any idea why the CQ still fails:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/3114890\n\n?",
+      "parentUuid": "41dfe42d_47b95ed4",
+      "revId": "baf058d08546c656eccffbb30346d79b88d64eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
