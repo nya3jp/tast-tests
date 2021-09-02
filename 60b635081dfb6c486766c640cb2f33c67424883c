@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8f1e67cd_ab3427a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-02T07:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aade05f_dc19c5c4",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 53
+      },
+      "revId": "60b635081dfb6c486766c640cb2f33c67424883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c0165fad_cf7a1a14",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6553c28_57479cb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-02T07:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c5cd13_266cecdd",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "60b635081dfb6c486766c640cb2f33c67424883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9cf3c27_7fb63c48",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-01T04:12:41Z",
       "side": 1,
       "message": "doesn\u0027t look like a number to me ... :P",
+      "range": {
+        "startLine": 11,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 81
+      },
+      "revId": "60b635081dfb6c486766c640cb2f33c67424883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a14df24_9e2eaa9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-02T07:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9cf3c27_7fb63c48",
       "range": {
         "startLine": 11,
         "startChar": 61,
