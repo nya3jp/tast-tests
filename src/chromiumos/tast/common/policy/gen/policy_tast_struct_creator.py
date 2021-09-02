@@ -343,6 +343,12 @@ class Policy(object):
         if elt.startswith('chrome_os') and elt.endswith('-'):
           self.cros_supported = True
 
+    # cros_future: Whether the policy is planned to be supported on Chrome OS.
+    self.cros_future = False
+    if 'future_on' in p:
+      if 'chrome_os' in p['future_on']:
+       self.cros_future = True
+
     # additional_info: Documentation to add as a comment to the generated code.
     self.additional_info = self.get_additional_info(p)
 
@@ -400,6 +406,9 @@ class Policy(object):
       additional_info += (
           '\n// See {} for full schema.'.format(p['url_schema'])
       )
+    if 'chrome_os' in p.get('future_on', []):
+      additional_info += (
+          '\n// This is a future policy, it is not present in stable builds.')
     return additional_info
 
   def generate_code(self, refs):
@@ -650,7 +659,7 @@ def main():
   # Generate code for all valid Chrome OS policies, recording any errors.
   supported_policies_by_id = {}
   for p in policies:
-    if not p.cros_supported:
+    if not (p.cros_supported or p.cros_future):
       continue
     if p.one_to_many:
       continue
