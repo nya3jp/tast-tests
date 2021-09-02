@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e75a33_de7b3b7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-09-02T22:24:23Z",
+      "side": 1,
+      "message": "Judy, this is the cherry pick of the same CL you already reviewed to R94. Thanks!",
+      "revId": "8afb55be1b06c81e9853d1b2fdfbe0591ba7b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
