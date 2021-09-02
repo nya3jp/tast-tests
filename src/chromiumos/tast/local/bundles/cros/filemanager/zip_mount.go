@@ -13,9 +13,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -116,28 +118,21 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Cannot launch the Files App: ", err)
 	}
-	defer files.Release(ctx)
 
 	// Open the Downloads folder.
-	if err := files.OpenDownloads(ctx); err != nil {
+	if err := files.OpenDownloads()(ctx); err != nil {
 		s.Fatal("Cannot open Downloads folder: ", err)
 	}
 
 	// Find and click the 'Name' button to order the file entries alphabetically.
 	// Polling is used since the 'Name' button is not always clickable at the time the corresponding node is found.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		params := ui.FindParams{
-			Name: "Name",
-			Role: ui.RoleTypeButton,
-		}
-
-		orderByNameButton, err := files.Root.Descendant(ctx, params)
-		if err != nil {
+		orderByNameButton := nodewith.Name("Name").Role(role.Button)
+		if err := files.Exists(orderByNameButton)(ctx); err != nil {
 			return errors.New("name button still not found")
 		}
-		defer orderByNameButton.Release(ctx)
 
-		if err := orderByNameButton.LeftClick(ctx); err != nil {
+		if err := files.ImmediateLeftClick(orderByNameButton)(ctx); err != nil {
 			return errors.New("still unable to click name button to sort files alphabetically")
 		}
 
@@ -148,22 +143,17 @@ func ZipMount(ctx context.Context, s *testing.State) {
 
 	// Wait until the ZIP files are correctly ordered in the list box.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		params := ui.FindParams{
-			Role:  ui.RoleTypeListBox,
-			State: map[ui.StateType]bool{ui.StateTypeFocusable: true, ui.StateTypeMultiselectable: true, ui.StateTypeVertical: true},
+		listBox := nodewith.Role(role.ListBox).State(state.Focusable, true).State(state.Multiselectable, true).State(state.Vertical, true)
+
+		if err := files.Exists(listBox)(ctx); err != nil {
+			return testing.PollBreak(err)
 		}
 
-		listBox, err := files.Root.Descendant(ctx, params)
+		listBoxOption := nodewith.Role(role.ListBoxOption).Ancestor(listBox)
+		nodes, err := files.NodesInfo(ctx, listBoxOption)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		defer listBox.Release(ctx)
-
-		nodes, err := listBox.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeListBoxOption})
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		defer nodes.Release(ctx)
 
 		// The names of the descendant nodes should be ordered alphabetically.
 		for i, node := range nodes {
@@ -184,22 +174,15 @@ func ZipMount(ctx context.Context, s *testing.State) {
 func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp, fileName string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		// Get reference to the current password dialog.
-		params := ui.FindParams{
-			Role: ui.RoleTypeDialog,
-		}
-
-		passwordDialog, err := files.Root.Descendant(ctx, params)
-		if err != nil {
+		passwordDialog := nodewith.Role(role.Dialog)
+		if err := files.Exists(passwordDialog)(ctx); err != nil {
 			return errors.New("password dialog still not found")
 		}
-		defer passwordDialog.Release(ctx)
+		// defer passwordDialog.Release(ctx)
 
 		// Look for expected file name label within the current dialog.
-		params = ui.FindParams{
-			Name: fileName,
-			Role: ui.RoleTypeStaticText,
-		}
-		exists, err := passwordDialog.DescendantExists(ctx, params)
+		node := nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog)
+		exists, err := files.IsNodeFound(ctx, node)
 		if err != nil {
 			return errors.Wrap(err, "failed to look for file name label")
 		}
@@ -214,28 +197,19 @@ func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp
 // checkAndUnmountZipFile checks that a given ZIP file is correctly mounted and click the 'eject' button to unmount it.
 func checkAndUnmountZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFile string) {
 	// Find and open the mounted ZIP file.
-	params := ui.FindParams{
-		Name: zipFile,
-		Role: ui.RoleTypeTreeItem,
-	}
-
-	treeItem, err := files.Root.DescendantWithTimeout(ctx, params, 5*time.Second)
-	if err != nil {
+	treeItem := nodewith.Name(zipFile).Role(role.TreeItem)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(treeItem)(ctx); err != nil {
 		s.Fatalf("Cannot find tree item for %s: %v", zipFile, err)
 	}
-	defer treeItem.Release(ctx)
+	// defer treeItem.Release(ctx)
 
-	if err := treeItem.LeftClick(ctx); err != nil {
+	if err := files.ImmediateLeftClick(treeItem)(ctx); err != nil {
 		s.Fatal("Cannot open mounted ZIP file: ", err)
 	}
 
 	// Ensure that the Files App is displaying the content of the mounted ZIP file.
-	params = ui.FindParams{
-		Name: "Files - " + zipFile,
-		Role: ui.RoleTypeRootWebArea,
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 5*time.Second); err != nil {
+	rootWebArea := nodewith.Name("Files - " + zipFile).Role(role.RootWebArea)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(rootWebArea)(ctx); err != nil {
 		s.Fatal("Cannot see content of mounted ZIP file: ", err)
 	}
 
@@ -243,39 +217,27 @@ func checkAndUnmountZipFile(ctx context.Context, s *testing.State, files *filesa
 	var zipContentDirectoryLabel = "Texts"
 
 	// Check content of mounted ZIP file.
-	params = ui.FindParams{
-		Name: zipContentDirectoryLabel,
-		Role: ui.RoleTypeListBoxOption,
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 5*time.Second); err != nil {
+	label := nodewith.Name(zipContentDirectoryLabel).Role(role.ListBoxOption)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(label)(ctx); err != nil {
 		s.Fatalf("Cannot see directory %s in mounted ZIP file: %v", zipContentDirectoryLabel, err)
 	}
 
 	// Find the eject button within the appropriate tree item.
-	params = ui.FindParams{
-		Name: "Eject device",
-		Role: ui.RoleTypeButton,
-	}
-
-	ejectButton, err := treeItem.DescendantWithTimeout(ctx, params, 5*time.Second)
-	if err != nil {
+	// ui:=uiauto.New(tconn)
+	ejectButton := nodewith.Name("Eject device").Role(role.Button).Ancestor(treeItem)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(ejectButton)(ctx); err != nil {
 		s.Fatal("Cannot find eject button: ", err)
 	}
-	defer ejectButton.Release(ctx)
+	// defer ejectButton.Release(ctx)
 
 	// Click eject button to unmount the ZIP file.
-	if err := ejectButton.LeftClick(ctx); err != nil {
+	if err := files.ImmediateLeftClick(ejectButton)(ctx); err != nil {
 		s.Fatal("Cannot click eject button: ", err)
 	}
 
 	// Check that the tree item corresponding to the previously mounted ZIP file was removed.
-	params = ui.FindParams{
-		Name: zipFile,
-		Role: ui.RoleTypeTreeItem,
-	}
-
-	if err = files.Root.WaitUntilDescendantGone(ctx, params, 5*time.Second); err != nil {
+	node := nodewith.Name(zipFile).Role(role.TreeItem)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilGone(node)(ctx); err != nil {
 		s.Fatalf("%s is still mounted: %v", zipFile, err)
 	}
 }
@@ -287,28 +249,22 @@ func testMountingSingleZipFile(ctx context.Context, s *testing.State, files *fil
 	zipFile := zipFiles[0]
 
 	// Select ZIP file.
-	if err := files.WaitForFile(ctx, zipFile, 5*time.Second); err != nil {
+	if err := files.WithTimeout(5 * time.Second).WaitForFile(zipFile)(ctx); err != nil {
 		s.Fatal("Cannot wait for test ZIP file: ", err)
 	}
 
-	if err := files.SelectFile(ctx, zipFile); err != nil {
+	if err := files.SelectFile(zipFile)(ctx); err != nil {
 		s.Fatal("Cannot select ZIP file: ", err)
 	}
 
 	// Wait for Open button in the top bar.
-	params := ui.FindParams{
-		Name: "Open",
-		Role: ui.RoleTypeButton,
-	}
-
-	open, err := files.Root.DescendantWithTimeout(ctx, params, 5*time.Second)
-	if err != nil {
+	open := nodewith.Name("Open").Role(role.Button)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(open)(ctx); err != nil {
 		s.Fatal("Cannot find Open menu item: ", err)
 	}
-	defer open.Release(ctx)
 
 	// Mount ZIP file.
-	if err := open.LeftClick(ctx); err != nil {
+	if err := files.ImmediateLeftClick(open)(ctx); err != nil {
 		s.Fatal("Cannot mount ZIP file: ", err)
 	}
 
@@ -324,7 +280,7 @@ func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State,
 	defer ew.Close()
 
 	// Select the 2 encrypted ZIP files.
-	if err := files.SelectMultipleFiles(ctx, zipFiles); err != nil {
+	if err := files.SelectMultipleFiles(ew, zipFiles...)(ctx); err != nil {
 		s.Fatal("Cannot perform multi-selection on the encrypted files: ", err)
 	}
 
@@ -349,28 +305,18 @@ func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State,
 	}
 
 	// Click the 'Cancel' button.
-	params := ui.FindParams{
-		Name: "Cancel",
-		Role: ui.RoleTypeButton,
-	}
-
-	cancel, err := files.Root.DescendantWithTimeout(ctx, params, 5*time.Second)
-	if err != nil {
+	cancel := nodewith.Name("Cancel").Role(role.Button)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(cancel)(ctx); err != nil {
 		s.Fatal("Cannot find password dialog cancel button: ", err)
 	}
-	defer cancel.Release(ctx)
 
-	if err := cancel.LeftClick(ctx); err != nil {
+	if err := files.ImmediateLeftClick(cancel)(ctx); err != nil {
 		s.Fatal("Cannot cancel password dialog: ", err)
 	}
 
 	// Checks that the password dialog is not displayed anymore.
-	params = ui.FindParams{
-		Name: "Password",
-		Role: ui.RoleTypeDialog,
-	}
-
-	if err = files.Root.WaitUntilDescendantGone(ctx, params, 5*time.Second); err != nil {
+	passwordDialog := nodewith.Name("Password").Role(role.Dialog)
+	if err = files.WithTimeout(5 * time.Second).WaitUntilGone(passwordDialog)(ctx); err != nil {
 		s.Fatal("The password dialog is still displayed: ", err)
 	}
 }
@@ -384,7 +330,7 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 	defer ew.Close()
 
 	// Select the 3 encrypted ZIP files.
-	if err := files.SelectMultipleFiles(ctx, zipFiles); err != nil {
+	if err := files.SelectMultipleFiles(ew, zipFiles...)(ctx); err != nil {
 		s.Fatal("Cannot perform multi-selection on the encrypted files: ", err)
 	}
 
@@ -399,12 +345,8 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 	}
 
 	// Enter wrong password.
-	params := ui.FindParams{
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeProtected: true, ui.StateTypeFocused: true},
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
+	node := nodewith.Role(role.TextField).State(state.Editable, true).State(state.Focusable, true).State(state.Protected, true).State(state.Focused, true)
+	if err := files.WithTimeout(15 * time.Second).WaitUntilExists(node)(ctx); err != nil {
 		s.Fatal("Cannot find password input field: ", err)
 	}
 
@@ -423,12 +365,8 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 	}
 
 	// Check that "Invalid password" displays on the UI.
-	params = ui.FindParams{
-		Name: "Invalid password",
-		Role: ui.RoleTypeStaticText,
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
+	invalidPassword := nodewith.Name("Invalid password").Role(role.StaticText)
+	if err := files.WithTimeout(15 * time.Second).WaitUntilExists(invalidPassword)(ctx); err != nil {
 		s.Fatal("Cannot find 'Invalid password': ", err)
 	}
 
@@ -453,28 +391,17 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 	}
 
 	// Click Unlock.
-	params = ui.FindParams{
-		Name: "Unlock",
-		Role: ui.RoleTypeButton,
-	}
-
-	unlock, err := files.Root.DescendantWithTimeout(ctx, params, 5*time.Second)
-	if err != nil {
+	unlock := nodewith.Name("Unlock").Role(role.Button)
+	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(unlock)(ctx); err != nil {
 		s.Fatal("Cannot find password dialog cancel button: ", err)
 	}
-	defer unlock.Release(ctx)
-
-	if err := unlock.LeftClick(ctx); err != nil {
+	if err := files.ImmediateLeftClick(unlock)(ctx); err != nil {
 		s.Fatal("Cannot validate password with the Unlock button: ", err)
 	}
 
 	// Checks that the password dialog is not displayed anymore.
-	params = ui.FindParams{
-		Name: "Password",
-		Role: ui.RoleTypeDialog,
-	}
-
-	if err = files.Root.WaitUntilDescendantGone(ctx, params, 5*time.Second); err != nil {
+	password := nodewith.Name("Password").Role(role.Dialog)
+	if err = files.WithTimeout(5 * time.Second).WaitUntilGone(password)(ctx); err != nil {
 		s.Fatal("The password dialog is still displayed: ", err)
 	}
 

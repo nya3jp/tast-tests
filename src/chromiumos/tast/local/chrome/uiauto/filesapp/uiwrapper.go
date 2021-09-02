@@ -48,9 +48,19 @@ func (f *FilesApp) Info(ctx context.Context, finder *nodewith.Finder) (*uiauto.N
 	return f.ui.Info(ctx, finder.FinalAncestor(WindowFinder))
 }
 
+// NodesInfo calls ui.NodesInfo scoping the finder to the Files App.
+func (f *FilesApp) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]uiauto.NodeInfo, error) {
+	return f.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder))
+}
+
 // Exists calls ui.Exists scoping the finder to the Files App.
 func (f *FilesApp) Exists(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.Exists(finder.FinalAncestor(WindowFinder))
+}
+
+// IsNodeFound calls ui.IsNodeFound scoping the finder to the Files App.
+func (f *FilesApp) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
+	return f.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder))
 }
 
 // WaitUntilExists calls ui.WaitUntilExists scoping the finder to the Files App.
@@ -71,6 +81,11 @@ func (f *FilesApp) WaitUntilGone(finder *nodewith.Finder) uiauto.Action {
 // LeftClick calls ui.LeftClick scoping the finder to the Files App.
 func (f *FilesApp) LeftClick(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.LeftClick(finder.FinalAncestor(WindowFinder))
+}
+
+// ImmediateLeftClick calls ui.ImmediateLeftClick scoping the finder to the Files App.
+func (f *FilesApp) ImmediateLeftClick(finder *nodewith.Finder) uiauto.Action {
+	return f.ui.ImmediateLeftClick(finder.FinalAncestor(WindowFinder))
 }
 
 // RightClick calls ui.RightClick scoping the finder to the Files App.
