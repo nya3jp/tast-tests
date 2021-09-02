@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff907319_6167e61a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-02T23:38:32Z",
+      "side": 1,
+      "message": "Yes, I have a convertible running arc-r that I run locally and then run a non arc-r version using crosfleet before uploading a CL.",
+      "parentUuid": "57a075fb_f1b74b51",
+      "revId": "b26522e857509a42fcb63d4491dc379f7612219c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8616029b_1d36d888",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-02T11:58:35Z",
       "side": 1,
       "message": "nit: add new line before the second {",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "b26522e857509a42fcb63d4491dc379f7612219c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc431bd_48f5371e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_touchscreen_zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-02T23:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8616029b_1d36d888",
       "range": {
         "startLine": 25,
         "startChar": 26,
