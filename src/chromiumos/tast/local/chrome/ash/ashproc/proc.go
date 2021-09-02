@@ -18,3 +18,8 @@ const ExecPath = "/opt/google/chrome/chrome"
 func Processes() ([]*process.Process, error) {
 	return chromeproc.Processes(ExecPath)
 }
+
+// Root returns the Process instance of the root ash-chrome process.
+func Root() (*process.Process, error) {
+	return chromeproc.Root(ExecPath)
+}

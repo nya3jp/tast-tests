@@ -19,8 +19,8 @@ import (
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
@@ -252,7 +252,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		}
 	}()
 
-	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
+	sess, err := driver.NewSession(ctx, ashproc.ExecPath, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to establish connection to Chrome Debugging Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
@@ -280,7 +280,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	} else {
 		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession {
 			// Restart session.
-			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
+			newSess, err := driver.NewSession(ctx, ashproc.ExecPath, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to reconnect to restarted session")
 			}
@@ -494,7 +494,7 @@ func (c *Chrome) Reconnect(ctx context.Context) error {
 	defer cancel()
 
 	// Create a new session.
-	newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
+	newSess, err := driver.NewSession(ctx, ashproc.ExecPath, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
 	if err != nil {
 		return err
 	}
@@ -720,8 +720,8 @@ func saveMinidumpsWithoutCrash(ctx context.Context) error {
 		// Login timeout is often caused by TPM slowness.
 		minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"),
 	}
-	if pid, err := chromeproc.GetRootPID(); err == nil {
-		matchers = append(matchers, minidump.MatchByPID(int32(pid)))
+	if proc, err := ashproc.Root(); err == nil {
+		matchers = append(matchers, minidump.MatchByPID(int32(proc.Pid)))
 	}
 
 	minidump.SaveWithoutCrash(ctx, dir, matchers...)
