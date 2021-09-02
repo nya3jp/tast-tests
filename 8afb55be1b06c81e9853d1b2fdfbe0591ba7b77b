@@ -33,6 +33,24 @@
       "message": "Is this the same as this cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3133546?",
       "revId": "8afb55be1b06c81e9853d1b2fdfbe0591ba7b77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52525e1b_0a7b4650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-02T23:37:15Z",
+      "side": 1,
+      "message": "Oh, sorry, did not see this comment before replied.",
+      "parentUuid": "95e75a33_de7b3b7f",
+      "revId": "8afb55be1b06c81e9853d1b2fdfbe0591ba7b77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
