@@ -16,6 +16,397 @@
       "message": "Hi, thanks for the review. Updated accordingly.",
       "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f1cdee_7fb0d8be",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: can you please add that we need to connect servos to the servo host and run servod daemon? This might not be obvious",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34df9476_fee26b3f",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: please use \"Servo v4\" everywhere for consistency with other documentation.\n\nServo-Micro --\u003e Servo micro\nServoV4.1   --\u003e Servo v4.1",
+      "range": {
+        "startLine": 17,
+        "startChar": 78,
+        "endLine": 17,
+        "endChar": 85
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22879ede_767bf73e",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "I think in this section you should cover what servos we should use and what and how cables should be connected to the DUT, not their functionality.\n\nPrevious section might cover functionality of each servo.\n\n-----\nImagine this section as an instruction for people who first see servos in real life.",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99bf02e_17c36621",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: and",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3410a3ff_7a651708",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: Servo v4",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7adaac3_6b337ed2",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6f0475_63c65dbe",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: just \"Servo micro\"",
+      "range": {
+        "startLine": 25,
+        "startChar": 321,
+        "endLine": 25,
+        "endChar": 343
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dc07b5_555d8e68",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: Servo v4 Type-A",
+      "range": {
+        "startLine": 25,
+        "startChar": 117,
+        "endLine": 25,
+        "endChar": 123
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b8558d_11511da6",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: servos",
+      "range": {
+        "startLine": 25,
+        "startChar": 82,
+        "endLine": 25,
+        "endChar": 88
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12310057_e96a1e9a",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: same: Servo v4 Type-A",
+      "range": {
+        "startLine": 25,
+        "startChar": 228,
+        "endLine": 25,
+        "endChar": 234
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad7826c_168483f6",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "same: Servo v4",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae235e2_de5b9792",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "same: and",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50719654_f89994ea",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ce8485_af870777",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: Can you please mention that we need to connect a separate USB-C charger to the servo to be able to control PD",
+      "range": {
+        "startLine": 33,
+        "startChar": 120,
+        "endLine": 33,
+        "endChar": 126
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c391d554_a3434639",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 33,
+        "startChar": 85,
+        "endLine": 33,
+        "endChar": 91
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10b5406_65687133",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: maybe we should put this section before \"Servo v4 Type-C and Servo micro\" and refer to this section in the setup, e.g.\n\nSame setup as \"Servo v4 Type-C\" and ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6969935f_7f219c98",
+        "filename": "src/chromiumos/tast/local/wilco/docs/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-02T14:12:12Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use just \"Servo v4\"\n\nPeople might think that \"Plain\" is part of servo name",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "2fd84c9c5653adf8a17baf1158eb836acb85bbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
