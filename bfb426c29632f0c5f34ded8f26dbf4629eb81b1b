@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0faba1f_d4eedb7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-02T08:43:38Z",
+      "side": 0,
+      "message": "We still call s.DataPath(\"cca_ui.js\") at the bottom, can we really drop this?",
+      "revId": "bfb426c29632f0c5f34ded8f26dbf4629eb81b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
