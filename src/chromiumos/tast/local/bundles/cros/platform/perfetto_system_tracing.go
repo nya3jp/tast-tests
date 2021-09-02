@@ -6,19 +6,11 @@ package platform
 
 import (
 	"context"
-	"os"
-	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/perfetto"
 	"chromiumos/tast/testing"
-)
-
-const (
-	// Trace data output in binary proto format.
-	traceOutputFile = "perfetto_trace.pb"
 )
 
 func init() {
@@ -39,23 +31,23 @@ func collectTraceData(ctx context.Context, s *testing.State) error {
 	defer wcancel()
 
 	// Start a trace session using the perfetto command line tool.
-	traceOutputPath := filepath.Join(s.OutDir(), traceOutputFile)
 	traceConfigPath := s.DataPath(perfetto.TraceConfigFile)
-	// This runs a perfetto trace session with the options:
-	//   -c traceConfigPath --txt: configure the trace session as defined in the text proto |traceConfigPath|
-	//   -o traceOutputPath      : save the trace data (binary proto) to |traceOutputPath|
-	cmd := testexec.CommandContext(wctx, "/usr/bin/perfetto", "-c", traceConfigPath, "--txt", "-o", traceOutputPath)
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to run the tracing session")
+	sess, err := perfetto.CollectTracing(wctx, traceConfigPath)
+	if err != nil {
+		return err
 	}
 
 	// Validate the trace data.
-	stat, err := os.Stat(traceOutputPath)
+	stat, err := sess.TraceResultFile.Stat()
 	if err != nil {
-		return errors.Wrapf(err, "unexpected error stating %s", traceOutputPath)
+		return errors.Wrapf(err, "unexpected error stating %s", sess.TraceResultFile.Name())
 	}
 	s.Logf("Collected %d bytes of trace data", stat.Size())
 	// TODO(chinglinyu): really validate the trace data content.
+
+	// The temporary file of trace data is no longer needed.
+	sess.RemoveTraceResultFile()
+
 	return nil
 }
 
