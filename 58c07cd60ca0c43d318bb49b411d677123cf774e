@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206aaeff_edf2dc5f",
+        "filename": "src/chromiumos/tast/remote/firmware/rpm/rpm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1307525
+      },
+      "writtenOn": "2021-09-02T19:51:03Z",
+      "side": 1,
+      "message": "Hi Jeremy,\n\nWe recently made rpm service as a cluster internal service in drone k8s cluster, so the frontend server endpoint changed from \"chromeos-rpm-server.mtv.corp.google.com\" to \"rpm-service\".\n\nSee https://chromium.googlesource.com/chromiumos/third_party/labpack/+/HEAD/global_config.ini#362",
+      "revId": "58c07cd60ca0c43d318bb49b411d677123cf774e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
