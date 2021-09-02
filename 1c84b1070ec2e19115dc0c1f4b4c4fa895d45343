@@ -387,6 +387,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdf6f582_55f334e9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-02T01:41:18Z",
+      "side": 1,
+      "message": "If there\u0027s a webm file left from another test, surely we can just remove it before hitting the keyboard shortcut, given that we\u0027re going to overwrite it anyway?",
+      "parentUuid": "bbf7e453_b00d8298",
+      "revId": "1c84b1070ec2e19115dc0c1f4b4c4fa895d45343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8255404d_d920f4b0",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
         "patchSetId": 2
