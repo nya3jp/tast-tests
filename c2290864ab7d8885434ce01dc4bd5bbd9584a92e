@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61011bbb_62988633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "[Optional] I am not 100% sure, but will you check if this kind of pollings in this file can be removed by this migration, like\n\nWaitUntilExists() --- if we expect several seconds until button appear\nLeftClick()\n\nbecause now LeftClick() itself waits until the target is stabilized?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9aec1d_f1900919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "There are helper functions like Focusable(). This line can be simplified by using those.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d665;drc\u003dcab490c85ae553ab3dec64597161346eab583d08",
+      "range": {
+        "startLine": 146,
+        "startChar": 54,
+        "endLine": 146,
+        "endChar": 55
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b950db_2f08c3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "How about searching the both dialog and the text at once?\nI think this was not doable in the legacy library because DescendantExists is a method of ui.Node.\n\nui.WithTimeout(...).WaitUntilExists(nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog))(ctx)",
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e778f3e_4b06f225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "I think this sequence of (actions and err check) can be combined by uiauto Combine.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c42f3ef_89d96152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68c14bf_473d35fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "There are helper functions like Editable(). This like would be simplified by using those.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d645;drc\u003dcab490c85ae553ab3dec64597161346eab583d08",
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8119ca7d_0e98324b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-02T09:26:44Z",
+      "side": 1,
+      "message": "I guess these can also be combined by uiauto Combine.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 0
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
