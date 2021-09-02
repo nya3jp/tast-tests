@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0245c0a6_187585b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-02T07:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c643f1_d68a7b6f",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02cbd123_247b621b",
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Can we still upstream this test, so that it can be run on the partner/ODM labs?",
       "parentUuid": "02cbd123_247b621b",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "ee0dc52bc81a8d6f87e65c9202a5da6d9093e1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6eac47_8fce41e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-02T07:07:17Z",
+      "side": 1,
+      "message": "If you don\u0027t want to run it in Google\u0027s lab, it seems that you should remove the Attr field above.\n\nHi Patrick, is it correct?",
+      "parentUuid": "49757f81_216f86ea",
       "range": {
         "startLine": 38,
         "startChar": 10,
