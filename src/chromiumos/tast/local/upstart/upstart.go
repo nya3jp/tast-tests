@@ -40,7 +40,7 @@ func init() {
 	// Matches a leading line of e.g. "ui start/running, process 3182" or "boot-splash stop/waiting".
 	// Also supports job instance, e.g. "ml-service (mojo_service) start/running, process 712".
 
-	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ (?:\([^ ]+\) )?([-a-z]+)/([-a-z]+)(?:, process (\d+))?$`)
+	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ (?:\([^ ]+\) )?([-a-z]+)/([-a-z]+)(?:, (?:\(tmpfiles\) )?process (\d+))?$`)
 
 	allGoals = map[upstart.Goal]struct{}{upstart.StartGoal: {}, upstart.StopGoal: {}}
 
@@ -49,6 +49,7 @@ func init() {
 		upstart.WaitingState,
 		upstart.StartingState,
 		upstart.SecurityState,
+		upstart.TmpfilesState,
 		upstart.PreStartState,
 		upstart.SpawnedState,
 		upstart.PostStartState,
