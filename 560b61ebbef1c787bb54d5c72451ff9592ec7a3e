@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb19210b_cf257fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-09-02T21:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "737eebbc_18e0b884",
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7e5d79b_c12789a8",
@@ -52,6 +70,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb8cac1_8e940af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-09-02T21:25:37Z",
+      "side": 1,
+      "message": "Done. That\u0027s better, thanks.",
+      "parentUuid": "c7e5d79b_c12789a8",
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3806d37e_9bc1fdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-09-02T21:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7e5d79b_c12789a8",
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e771f6c_009c2509",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-09-02T00:26:31Z",
       "side": 1,
       "message": "Would this snippet better be inside isCoreSchedulingAvailable()?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 0
+      },
+      "revId": "560b61ebbef1c787bb54d5c72451ff9592ec7a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231a6905_41048efd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-09-02T21:25:37Z",
+      "side": 1,
+      "message": "I\u0027d do this here because what we want to do is to early-return here. Checking rammus-arc-r\u0027s CPU setting (with the old kernel) is not worth doing.",
+      "parentUuid": "3e771f6c_009c2509",
       "range": {
         "startLine": 230,
         "startChar": 0,
