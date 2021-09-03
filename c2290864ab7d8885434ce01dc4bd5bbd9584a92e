@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6963b3f_d190f5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61011bbb_62988633",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44264bbf_dcda2b07",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-02T23:45:48Z",
       "side": 1,
       "message": "Can we combine WaitUnitilExists and LeftClick, instead of using Poll ?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523e5b85_b2ca6a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44264bbf_dcda2b07",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cf0212_f60579aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9aec1d_f1900919",
+      "range": {
+        "startLine": 146,
+        "startChar": 54,
+        "endLine": 146,
+        "endChar": 55
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e988837b_e25cfcb5",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-02T23:45:48Z",
       "side": 1,
       "message": "I think we can remove this part, because if listBox doesn\u0027t exsits, L153\u0027s function call will return an error anyway.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8b2ca9_871247f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e988837b_e25cfcb5",
       "range": {
         "startLine": 148,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1685fb22_b0cacb95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b950db_2f08c3e7",
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02ca0889_f18b3186",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-09-02T23:45:48Z",
       "side": 1,
       "message": "I guess the entire function can be replace with just \n\n```\npasswordDialog :\u003d nodewith.Role(role.Dialog)\nnode :\u003d nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog)\nreturn files.WaitUntilExists(node)(ctx)\n```\n\nWe don\u0027t directly interested in if passwordDialog exists or not. uiauto fill wait for the node we are looking for in one go.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 52
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7468f060_5d369171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02ca0889_f18b3186",
       "range": {
         "startLine": 175,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97a4dfd_83db6c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c323e68_1047694e",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf735444_35cd8442",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-09-02T23:45:48Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 226,
+        "startChar": 14,
+        "endLine": 226,
+        "endChar": 15
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6deee6_464fd860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf735444_35cd8442",
       "range": {
         "startLine": 226,
         "startChar": 14,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded0b587_2309dadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46001a63_d95d5885",
+      "range": {
+        "startLine": 231,
+        "startChar": 10,
+        "endLine": 231,
+        "endChar": 21
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e778f3e_4b06f225",
@@ -215,6 +425,30 @@
       "writtenOn": "2021-09-02T09:26:44Z",
       "side": 1,
       "message": "I think this sequence of (actions and err check) can be combined by uiauto Combine.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e49b5d_05031df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e778f3e_4b06f225",
       "range": {
         "startLine": 200,
         "startChar": 0,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df8ff574_4f41de26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c42f3ef_89d96152",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b588f181_0110607c",
@@ -261,6 +519,30 @@
       "writtenOn": "2021-09-02T23:45:48Z",
       "side": 1,
       "message": "Combine.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 2
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d059f2_220292e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b588f181_0110607c",
       "range": {
         "startLine": 308,
         "startChar": 0,
@@ -288,6 +570,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8419150a_62be4c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68c14bf_473d35fd",
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8119ca7d_0e98324b",
@@ -301,6 +601,30 @@
       "writtenOn": "2021-09-02T09:26:44Z",
       "side": 1,
       "message": "I guess these can also be combined by uiauto Combine.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 0
+      },
+      "revId": "c2290864ab7d8885434ce01dc4bd5bbd9584a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfef3adb_3fdda835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8119ca7d_0e98324b",
       "range": {
         "startLine": 394,
         "startChar": 0,
