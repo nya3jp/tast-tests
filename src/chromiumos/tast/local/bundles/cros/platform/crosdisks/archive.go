@@ -7,9 +7,11 @@
 package crosdisks
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -48,6 +50,10 @@ var PreparedArchives = []string{
 	"crosdisks/Unicode.zip",
 	"crosdisks/MacOS UTF-8 Bug 903664.zip",
 	"crosdisks/SJIS Bug 846195.zip",
+	"crosdisks/archive.rar",
+	"crosdisks/archive.tar",
+	"crosdisks/archive.tar.gz",
+	"crosdisks/archive.zip",
 }
 
 func withMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath, password string, f func(ctx context.Context, mountPath string) error) error {
@@ -77,6 +83,30 @@ func verifyEncryptedArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks,
 	}
 
 	return verifyArchiveContent(ctx, cd, archivePath, password, expectedContent)
+}
+
+func testValidArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
+	// Each archive.* file has a different file format but they all contain a
+	// 942 byte "romeo.txt" file that starts with the line "Romeo and Juliet".
+	romeoAndJuliet := []byte("Romeo and Juliet")
+	for _, f := range []string{
+		"archive.rar",
+		"archive.tar",
+		"archive.tar.gz",
+		"archive.zip",
+	} {
+		if err := withMountedArchiveDo(ctx, cd, filepath.Join(dataDir, f), "", func(ctx context.Context, mountPath string) error {
+			data, err := ioutil.ReadFile(filepath.Join(mountPath, "romeo.txt"))
+			if err != nil {
+				return errors.Wrap(err, `could not read "romeo.txt" within archive`)
+			} else if (len(data) != 942) || !bytes.HasPrefix(data, romeoAndJuliet) {
+				return errors.New(`unexpected contents for "romeo.txt" within archive`)
+			}
+			return nil
+		}); err != nil {
+			s.Errorf("Test failed for %q: %v", f, err)
+		}
+	}
 }
 
 func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
@@ -335,6 +365,9 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 				}
 			}
 
+			s.Run(ctx, "ValidArchives", func(ctx context.Context, state *testing.State) {
+				testValidArchives(ctx, state, cd, mountPath)
+			})
 			s.Run(ctx, "InvalidArchives", func(ctx context.Context, state *testing.State) {
 				testInvalidArchives(ctx, state, cd, mountPath)
 			})
