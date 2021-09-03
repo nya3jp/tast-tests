@@ -120,11 +120,12 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	defer l.Close(ctx)
 
 	s.Log("Opening a new tab")
-	tab, err := l.Devsess.CreateTarget(ctx, "about:blank")
+	conn, err := l.NewConn(ctx, "about:blank")
 	if err != nil {
 		s.Fatal("Failed to open new tab: ", err)
 	}
-	defer l.Devsess.CloseTarget(ctx, tab)
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
 		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
 	}
