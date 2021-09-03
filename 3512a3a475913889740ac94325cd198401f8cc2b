@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7641d5_41ca5b0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-03T15:03:15Z",
+      "side": 1,
+      "message": "You mean from the managed0 interface?\n\nI\u0027m not sure about the cost vs benefit ratio - it\u0027s going to be quite a big bunch of data, especially with the netperf test.\n\nOn the other hand, recent failures investigaton proved that it might be worthwhile to keep pcaps from both sides (including DUT), to be sure which packets reached the destinaton...",
+      "parentUuid": "4f56f833_e1e81d11",
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76ed6160_9fd18f56",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b59f838_8bb4c20c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-03T15:03:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ed6160_9fd18f56",
+      "range": {
+        "startLine": 263,
+        "startChar": 37,
+        "endLine": 263,
+        "endChar": 40
+      },
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0885ea_fb9dd77f",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-08-14T02:10:13Z",
       "side": 1,
       "message": "packet?",
+      "range": {
+        "startLine": 331,
+        "startChar": 37,
+        "endLine": 331,
+        "endChar": 40
+      },
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6f4251_6802430f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-03T15:03:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0885ea_fb9dd77f",
       "range": {
         "startLine": 331,
         "startChar": 37,
