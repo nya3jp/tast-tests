@@ -46,6 +46,30 @@
       },
       "revId": "827a478e0c82d8935b099a13126970a60a9eb968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7e3f32_ea158d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-03T18:12:50Z",
+      "side": 1,
+      "message": "Log from the local run for your reference. As they are on defer, I see them called.\n\n2021-09-02T23:02:10.267748Z Started test arc.NearbyShareSend.dataonline_noone_medium_file_cancel\n2021-09-02T23:02:10.388145Z [23:02:10.165] Installing APK\n2021-09-02T23:02:12.806155Z [23:02:12.576] Launching share test app\n2021-09-02T23:02:12.984894Z [23:02:12.749] Starting UI Automator server\n2021-09-02T23:02:20.108730Z [23:02:19.889] Starting payload send using Nearby Share on the CrOS device\n2021-09-02T23:02:20.272205Z [23:02:20.048] Connecting to Chrome target E8BED9AFD6B8B125D09EE73812581A97\n2021-09-02T23:02:20.904343Z [23:02:20.673] Starting high-visibility receiving on the Android device\n2021-09-02T23:02:20.904523Z [23:02:20.674] \tRPC request: {\"method\":\"receiveFile\",\"id\":17,\"params\":[\"cros_test513181\",\"android_test653345\",true,330]}\n2021-09-02T23:02:20.925343Z [23:02:20.681] \tRPC response: {\"id\":17,\"result\":null,\"callback\":\"2-17\",\"error\":null}\n\n2021-09-02T23:02:20.925408Z [23:02:20.681] Cancel before Selecting Target\n2021-09-02T23:02:22.031101Z [23:02:21.805] Cancelling receiving\n2021-09-02T23:02:22.321274Z [23:02:22.096] \tRPC request: {\"method\":\"cancelReceivingFile\",\"id\":18,\"params\":[]}\n2021-09-02T23:02:22.326005Z [23:02:22.102] \tRPC response: {\"id\":18,\"result\":null,\"callback\":null,\"error\":null}\n\n2021-09-02T23:02:22.326055Z [23:02:22.102] \tRPC request: {\"method\":\"eventWaitAndGet\",\"id\":19,\"params\":[\"2-17\",\"onStop\",330000]}\n2021-09-02T23:02:22.353993Z [23:02:22.116] \tRPC response: {\"id\":19,\"result\":{\"callbackId\":\"2-17\",\"name\":\"onStop\",\"time\":1630623741791,\"data\":{}},\"callback\":null,\"error\":null}\n\n2021-09-02T23:02:22.597981Z [23:02:22.373] Stateful partition usage: 100 MiB (16937 MiB free -\u003e 16837 MiB free)\n2021-09-02T23:02:22.598099Z Completed test arc.NearbyShareSend.dataonline_noone_medium_file_cancel in 12.339s with 0 error(s)",
+      "parentUuid": "0a56494b_6cb82c14",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 4
+      },
+      "revId": "827a478e0c82d8935b099a13126970a60a9eb968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
