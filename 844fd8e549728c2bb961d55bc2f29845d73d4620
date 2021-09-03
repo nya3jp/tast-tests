@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44273cc_c6ec07f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e63c9618_b953b424",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ca5ef27_1675bf00",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-02T00:45:36Z",
       "side": 1,
       "message": "Is this First() necessary (i.e. are there multiple nodes match with the criteria)? How about removing First() it it works?\nSame for others.",
+      "range": {
+        "startLine": 52,
+        "startChar": 107,
+        "endLine": 52,
+        "endChar": 112
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909cf0cc_bb92eb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:10:14Z",
+      "side": 1,
+      "message": "it could be matched with multiple nodes without First(), and cause errors.",
+      "parentUuid": "2ca5ef27_1675bf00",
       "range": {
         "startLine": 52,
         "startChar": 107,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08198f76_d93ab25e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc7962b_bd227dca",
+      "range": {
+        "startLine": 84,
+        "startChar": 14,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff87aa50_deb24f3a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-02T00:45:36Z",
       "side": 1,
       "message": "Can we use Combine here? Maybe name it \"click Save\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "387da39f_c542ff18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff87aa50_deb24f3a",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c00102_49115693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b2aeb3e_91fc4a8e",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc71a83f_fdc05caf",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-09-02T00:45:36Z",
       "side": 1,
       "message": "Could you Combine them?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "844fd8e549728c2bb961d55bc2f29845d73d4620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59f2bb1_04727659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc71a83f_fdc05caf",
       "range": {
         "startLine": 125,
         "startChar": 0,
