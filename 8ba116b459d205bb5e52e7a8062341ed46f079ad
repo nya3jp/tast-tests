@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1590ed_3e12ce6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-03T08:03:50Z",
+      "side": 1,
+      "message": "Could you please run this on the actual test to verify it still works?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "8ba116b459d205bb5e52e7a8062341ed46f079ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "27063032_be952df3",
@@ -14,6 +37,69 @@
       "writtenOn": "2021-09-03T07:36:47Z",
       "side": 1,
       "message": "PTAL.",
+      "revId": "8ba116b459d205bb5e52e7a8062341ed46f079ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43b7d57_6cb157a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-03T08:03:50Z",
+      "side": 1,
+      "message": "lgtm modulo comments",
+      "revId": "8ba116b459d205bb5e52e7a8062341ed46f079ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0e3247_9d872850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-03T08:03:50Z",
+      "side": 1,
+      "message": "nit: an",
+      "range": {
+        "startLine": 234,
+        "startChar": 42,
+        "endLine": 234,
+        "endChar": 43
+      },
+      "revId": "8ba116b459d205bb5e52e7a8062341ed46f079ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69c4046_202e2e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-03T08:03:50Z",
+      "side": 1,
+      "message": "nit: delete",
+      "range": {
+        "startLine": 238,
+        "startChar": 49,
+        "endLine": 238,
+        "endChar": 51
+      },
       "revId": "8ba116b459d205bb5e52e7a8062341ed46f079ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
