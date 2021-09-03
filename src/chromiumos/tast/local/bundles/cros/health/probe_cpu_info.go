@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type temperatureChannelInfo struct {
@@ -37,12 +38,15 @@ type physicalCPUInfo struct {
 	ModelName   *string          `json:"model_name"`
 	LogicalCPUs []logicalCPUInfo `json:"logical_cpus"`
 }
-
+type keylockerinfo struct {
+	KeylockerConfigured bool `json:"keylocker_configured"`
+}
 type cpuInfo struct {
 	Architecture        string                   `json:"architecture"`
 	NumTotalThreads     jsontypes.Uint32         `json:"num_total_threads"`
 	TemperatureChannels []temperatureChannelInfo `json:"temperature_channels"`
 	PhysicalCPUs        []physicalCPUInfo        `json:"physical_cpus"`
+	KeylockerInfo       keylockerinfo            `json:"keylocker_info"`
 }
 
 func init() {
@@ -53,10 +57,19 @@ func init() {
 			"khegde@google.com",
 			"pmoy@google.com",
 			"cros-tdm@google.com",
+			"pathan.jilani@intel.com",
+			"intel-chrome-system-automation-team@intel.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:              "keylocker",
+			Val:               true,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+		}},
 	})
 }
 
@@ -114,6 +127,13 @@ func validateCPUData(info cpuInfo) error {
 	return nil
 }
 
+func validateKeyLocker(keylocker keylockerinfo) error {
+	if !keylocker.KeylockerConfigured {
+		return errors.Errorf("failed to configure keylocker: %t", keylocker)
+	}
+	return nil
+}
+
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
 	var info cpuInfo
@@ -123,5 +143,11 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 
 	if err := validateCPUData(info); err != nil {
 		s.Fatalf("Failed to validate cpu data, err [%v]", err)
+	}
+
+	if s.Param().(bool) {
+		if err := validateKeyLocker(info.KeylockerInfo); err != nil {
+			s.Fatal("Failed to validate KeyLocker: ", err)
+		}
 	}
 }
