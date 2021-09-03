@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4faea5f_33ff5d93",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e21900_3dcd8758",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1357a210_2887c259",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-03T16:43:47Z",
       "side": 1,
       "message": "if !p.Proxied():",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ed1199_4f409c2d",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1357a210_2887c259",
       "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0178d8ca_9968968f",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "But RPM is getting created lazily, so we get to bloat things here anyway.",
+      "parentUuid": "6ae423d6_67ddf107",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2ab10b9_c6467e8f",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-09-03T16:43:47Z",
       "side": 1,
       "message": "List of options is getting pretty long, also not all call sites need rpm.  Consider adding a NewHelperWithRPM constructor that provides these additional options.  The constructor can directly take an rpm instance, nil for no rpm.",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25568e9a_06543297",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "I actually plan to remove all callers of NewHelper that are not the fixture, so then it won\u0027t matter. This would be cleaner if the testingState was passed in, but that is against the TAST style guide.",
+      "parentUuid": "a2ab10b9_c6467e8f",
       "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d545f98e_1b5e9557",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "f732fb8e_583d4235",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f589131d_5571b1ba",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-09-03T16:43:47Z",
       "side": 1,
       "message": "All this logic for figuring out the host and what to do when proxying should go into rpm.go, something like:\n\n// ... set fwd to nil if not proxied.\nNewLabRPM(ctx context.Context, fwd *ssh.Forwarder) {\n...\n}",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce576ef_bbbe7df5",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f589131d_5571b1ba",
       "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "459217ef_884bbf98",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "If servod fails, I think I\u0027d rather error out than mysteriously fall back to RPM.",
+      "parentUuid": "4a853edb_e6c2e5b5",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f5d9ccb_19b58c1f",
@@ -133,6 +259,24 @@
       "writtenOn": "2021-09-03T16:43:47Z",
       "side": 1,
       "message": "If the intention is to always restore power to on, should track the rpm power state in rpm and rpm.Close should restore the power.",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5325d64_dba33da6",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5d9ccb_19b58c1f",
       "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b98bc0_5e963006",
+        "filename": "src/chromiumos/tast/remote/firmware/rpm/rpm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0672bb8a_dcbf1692",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "560e729c_42303662",
@@ -167,6 +329,24 @@
       "writtenOn": "2021-09-03T16:43:47Z",
       "side": 1,
       "message": "comment on on what the return value means, does it mean successful, or is it true for on, false for off?  Ditto for SetPowerViaRPM.",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b91353_085c4913",
+        "filename": "src/chromiumos/tast/remote/firmware/rpm/rpm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "560e729c_42303662",
       "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
