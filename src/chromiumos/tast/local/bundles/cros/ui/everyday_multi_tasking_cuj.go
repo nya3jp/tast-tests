@@ -35,7 +35,7 @@ func init() {
 		Vars: []string{
 			"ui.cuj_mute",      // Optional. Mute the DUT during the test.
 			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
-			"ui.cuj_username",  // Used to select the account to do login to spotify.
+			"cuj_username",     // Used to select the account to do login to spotify.
 			"ui.bt_devicename", // Required for Bluetooth subtests.
 		},
 		Fixture: "loggedInAndKeepState",
@@ -170,7 +170,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	// Spotify login account.
 	var account string
 	if app == et.SpotifyAppName {
-		account = s.RequiredVar("ui.cuj_username")
+		account = s.RequiredVar("cuj_username")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

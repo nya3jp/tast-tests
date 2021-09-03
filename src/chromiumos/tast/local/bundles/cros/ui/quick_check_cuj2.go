@@ -31,8 +31,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"ui.cuj_mode",     // Optional. Expecting "tablet" or "clamshell".
-			"ui.cuj_password", // Required to unlock screen.
+			"ui.cuj_mode",  // Optional. Expecting "tablet" or "clamshell".
+			"cuj_password", // Required to unlock screen.
 			"ui.QuickCheckCUJ2_wifissid",
 			"ui.QuickCheckCUJ2_wifipassword",
 		},
