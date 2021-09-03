@@ -22,6 +22,30 @@
       },
       "revId": "135ba129513e466ec6086df9db31edd684c4f816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857ae704_d463f0fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-03T07:51:16Z",
+      "side": 1,
+      "message": "IssueTracker bug link added. But, please let me know if there\u0027s any information that I\u0027ve left out from the initial comment created, and I\u0027ll provide more inputs.",
+      "parentUuid": "2685a1f9_1dd02262",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "135ba129513e466ec6086df9db31edd684c4f816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
