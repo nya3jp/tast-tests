@@ -87,6 +87,10 @@ var VKEnabledTabletWithAssistAutocorrectReset = inputsPreCondition("virtual_keyb
 // VKEnabledTabletInGuest creates a new precondition the same as VKEnabledTablet in Guest mode.
 var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, true, false, chrome.GuestLogin())
 
+// VKEnabledTabletWithMultipasteSuggestion is similar to VKEnabledTablet, but also with multipaste-suggestion flag enabled.
+// It restarts Chrome session and logs in as new user for each test.
+var VKEnabledTabletWithMultipasteSuggestion = inputsPreCondition("virtual_keyboard_enabled_tablet_multipaste_suggestion_pre", tabletMode, true, true, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion"))
+
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
 var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode, true, false)
