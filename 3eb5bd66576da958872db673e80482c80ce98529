@@ -16,6 +16,23 @@
       "message": "Can you please give CQ+2?",
       "revId": "3eb5bd66576da958872db673e80482c80ce98529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd1f29d_77b2b18e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-03T07:27:47Z",
+      "side": 1,
+      "message": "@Alex Can you please give CQ+2 for this patch?",
+      "revId": "3eb5bd66576da958872db673e80482c80ce98529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
