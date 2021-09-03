@@ -27,6 +27,12 @@ func init() {
 		Timeout:      1 * time.Minute,
 		Params: []testing.Param{
 			{
+				Name: "exit_success",
+				Val: soundcardinit.TestParameters{
+					Func: exitSuccess,
+				},
+			},
+			{
 				Name: "boot_time_calibration",
 				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
@@ -74,6 +80,36 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 	testFunc(ctx, s, soundCardID)
 }
 
+// exitSuccess verifies sound_card_init completes running without any error.
+func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
+	// Run sound_card_init.
+	runTimeFile := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
+	startTime := time.Now()
+	// Run sound_card_init.
+	runCtx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	if err := testexec.CommandContext(
+		runCtx, "/sbin/initctl",
+		"start", "sound_card_init",
+		"SOUND_CARD_ID="+soundCardID,
+	).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to run sound_card_init: ", err)
+	}
+
+	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := os.Stat(runTimeFile)
+		if err != nil {
+			return errors.Wrapf(err, "failed to stat %s:", runTimeFile)
+		}
+		if info.ModTime().After(startTime) {
+			return nil
+		}
+		return errors.New(runTimeFile + " is not updated")
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		s.Fatal("Failed to wait for sound_card_init completion: ", err)
+	}
+}
 
 // bootTimeCalibration verifies sound_card_init boot time calibration works correctly.
 func bootTimeCalibration(ctx context.Context, s *testing.State, soundCardID string) {
