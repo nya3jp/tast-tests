@@ -70,6 +70,9 @@ var KeyFinder = NodeFinder.Role(role.Button)
 // MultipasteItemFinder returns a finder of multipaste item on virtual keyboard.
 var MultipasteItemFinder = NodeFinder.ClassName("scrim")
 
+// MultipasteSuggestionFinder returns a finder of multipaste suggestion on virtual keyboard header bar.
+var MultipasteSuggestionFinder = NodeFinder.ClassName("chip")
+
 // KeyByNameIgnoringCase returns a virtual keyboard Key button finder with the name ignoring case.
 func KeyByNameIgnoringCase(keyName string) *nodewith.Finder {
 	return KeyFinder.NameRegex(regexp.MustCompile(`(?i)^` + regexp.QuoteMeta(keyName) + `$`))
@@ -483,6 +486,11 @@ func (vkbCtx *VirtualKeyboardContext) DeleteMultipasteItem(touchCtx *touch.Conte
 		touchCtx.LongPress(itemFinder),
 		touchCtx.Tap(KeyFinder.ClassName("trash-button")),
 		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilGone(itemFinder))
+}
+
+// TapMultipasteSuggestion returns an action tapping the item corresponding to itemName in multipaste suggestion bar.
+func (vkbCtx *VirtualKeyboardContext) TapMultipasteSuggestion(itemName string) uiauto.Action {
+	return vkbCtx.ui.LeftClick(MultipasteSuggestionFinder.Name(itemName))
 }
 
 // EnableA11yVirtualKeyboard returns an action enabling or disabling
