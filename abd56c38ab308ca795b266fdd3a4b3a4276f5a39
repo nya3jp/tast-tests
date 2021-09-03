@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66628d34_7c085487",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-03T20:11:38Z",
+      "side": 1,
+      "message": "nit, the lazy creation can be done in rpm itself, upon first use or add a Require method to it.",
+      "parentUuid": "0178d8ca_9968968f",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2ab10b9_c6467e8f",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 6
