@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 )
 
@@ -116,4 +117,25 @@ func GetSoundCardID(ctx context.Context) (string, error) {
 		return "", err
 	}
 	return soundCardID, nil
+}
+
+// BootTimeCalibrationEnabled returns whether the boot time calibration is
+// enabled by parsing the sound_card_init config.
+func BootTimeCalibrationEnabled(ctx context.Context) (bool, error) {
+	model, err := crosconfig.Get(ctx, "/", "name")
+	if err != nil {
+		return false, err
+	}
+	b, err := ioutil.ReadFile("/etc/sound_card_init/" + model + ".yaml")
+	re := regexp.MustCompile("boot_time_calibration_enabled: (true|false)")
+	match := re.Find([]byte(b))
+	if match == nil {
+		return false, errors.New("invalid sound_card_init config")
+	}
+	const N = len("boot_time_calibration_enabled: ")
+	enabled := string(match[N:])
+	if enabled == "true" {
+		return true, nil
+	}
+	return false, nil
 }
