@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2f40ba_b6a7a598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-03T02:53:00Z",
+      "side": 1,
+      "message": "Is it still necessary as it is empty now?\n\nSame comment for all the rest.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "cde1c46a001d250f12038aa47e0661ce77ed1000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
