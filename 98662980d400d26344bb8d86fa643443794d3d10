@@ -16,6 +16,63 @@
       "message": "Kyle and Xiyuan, the changes made by crrev.com/c/3111461 will impact the CUJs currently running with moblab. Can you review this change fixing the issue?",
       "revId": "98662980d400d26344bb8d86fa643443794d3d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd63e37_3927295d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-03T17:19:20Z",
+      "side": 1,
+      "message": "I have some concerns about this CL, mainly that it will prevent the test from using the account pool in our lab environment.\n\nWhy is moblab able to use ui.cuj_username/password, but not ui.cujAccountPool? Does it override these variables on the command line or have its own secret-variable implementation?",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf8ad86_7573fec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-03T17:19:20Z",
+      "side": 1,
+      "message": "This looks really similar to the code above at a glance. Can you add a comment distinguishing the case for \"cuj_username/password\" and \"ui.cuj_username/password\"?",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d3828c_d99b2252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-03T17:19:20Z",
+      "side": 1,
+      "message": "I think your change causes this to never be reached, and we won\u0027t be able to correctly use the account pool in the lab.",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
