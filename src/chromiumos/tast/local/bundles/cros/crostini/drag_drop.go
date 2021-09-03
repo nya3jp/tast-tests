@@ -244,7 +244,7 @@ func dragFromCrostini(ctx context.Context, pre crostini.PreData, files *filesapp
 	defer cmd.Wait(testexec.DumpLogOnError)
 	dragAppletWindow, err := setWindowState(ctx, tconn, dragAppletTitle, ash.WindowStateRightSnapped)
 	if err != nil {
-		return errors.Wrap(err, "set drag app right-snapped: ")
+		return errors.Wrap(err, "set drag app right-snapped")
 	}
 
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
