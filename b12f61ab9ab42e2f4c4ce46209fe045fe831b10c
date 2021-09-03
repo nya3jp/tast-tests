@@ -56,6 +56,30 @@
       },
       "revId": "b12f61ab9ab42e2f4c4ce46209fe045fe831b10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496ee548_55500a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/dlc/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-03T00:26:16Z",
+      "side": 1,
+      "message": "Let\u0027s reinstall then. Thanks!",
+      "parentUuid": "3cf8f1b7_ec6d0c82",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "b12f61ab9ab42e2f4c4ce46209fe045fe831b10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

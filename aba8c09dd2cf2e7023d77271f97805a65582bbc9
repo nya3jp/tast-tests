@@ -263,6 +263,24 @@
       "parentUuid": "31da5ca8_7e0e2054",
       "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dff05c_f532c874",
+        "filename": "src/chromiumos/tast/local/vm/dlc_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-03T00:26:16Z",
+      "side": 1,
+      "message": "I see. Let\u0027s purge then. Thanks!",
+      "parentUuid": "7e922b93_50a32a86",
+      "revId": "aba8c09dd2cf2e7023d77271f97805a65582bbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
