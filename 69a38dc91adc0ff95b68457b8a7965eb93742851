@@ -22,6 +22,30 @@
       },
       "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2024cad7_1c191933",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-03T01:57:12Z",
+      "side": 1,
+      "message": "yes, this is formatted by [`gofmt`](https://github.com/golang/go/wiki/CodeReviewComments#gofmt)",
+      "parentUuid": "7db0f564_9f308f94",
+      "range": {
+        "startLine": 41,
+        "startChar": 36,
+        "endLine": 41,
+        "endChar": 69
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
