@@ -592,6 +592,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tcon
 	if err := pipAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start MainActivity")
 	}
+	defer pipAct.Stop(ctx, tconn)
 
 	// Start maximized activity again, this time with the guaranteed correct window state.
 	if err := maximizedActivity.Start(ctx, tconn); err != nil {
