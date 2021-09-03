@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "562f9612_fe666078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-03T16:51:31Z",
+      "side": 1,
+      "message": "Yeah, just one page is probably fine. Up to you though",
+      "parentUuid": "e4c1e6d9_99534083",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "6d4b9a0cbfd331bec1b9076995f21efbcdf9d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea188bec_28a9c010",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 3
