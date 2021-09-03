@@ -156,3 +156,36 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 	}
 	return nil, errors.New("failed to create modem: modemmanager D-Bus object has no valid SIM's")
 }
+
+// InhibitModem inhibits the first available modem on DBus. Use the returned callback to uninhibit.
+func InhibitModem(ctx context.Context) (func(ctx context.Context) error, error) {
+	modem, err := NewModem(ctx)
+	emptyUninhibit := func(ctx context.Context) error { return nil }
+	if err != nil {
+		return emptyUninhibit, errors.Wrap(err, "failed to create Modem")
+	}
+	props, err := modem.GetProperties(ctx)
+	if err != nil {
+		return emptyUninhibit, errors.Wrap(err, "failed to call GetProperties on Modem")
+	}
+	device, err := props.GetString(mmconst.ModemPropertyDevice)
+	if err != nil {
+		return emptyUninhibit, errors.Wrap(err, "missing Device property")
+	}
+
+	obj, err := dbusutil.NewDBusObject(ctx, DBusModemmanagerService, DBusModemmanagerInterface, DBusModemmanagerPath)
+	if err != nil {
+		return emptyUninhibit, errors.Wrap(err, "unable to connect to ModemManager1")
+	}
+	if err := obj.Call(ctx, "InhibitDevice", device, true).Err; err != nil {
+		return emptyUninhibit, errors.Wrap(err, "inhibitDevice(true) failed")
+	}
+
+	uninhibit := func(ctx context.Context) error {
+		if err := obj.Call(ctx, "InhibitDevice", device, false).Err; err != nil {
+			return errors.Wrap(err, "inhibitDevice(false) failed")
+		}
+		return nil
+	}
+	return uninhibit, nil
+}
