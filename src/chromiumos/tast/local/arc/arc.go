@@ -651,13 +651,6 @@ func saveARCVMConsole(ctx context.Context, path string) error {
 		return nil
 	}
 
-	// TODO(b/153934386): Remove this check when pstore is enabled on ARM.
-	// The pstore feature is enabled only on x86_64. It's not enabled on some architectures, and this `vm_pstore_dump` command doesn't exist on such architectures.
-	if _, err := os.Stat(pstoreCommandPath); os.IsNotExist(err) {
-		testing.ContextLog(ctx, "Saving messages-arcvm file is skipped because vm_pstore_dump command is not found")
-		return nil
-	}
-
 	file, err := os.Create(path)
 	if err != nil {
 		return err
