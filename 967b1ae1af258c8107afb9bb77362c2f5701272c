@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47614474_2e8bf935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-03T05:28:15Z",
+      "side": 1,
+      "message": "Let\u0027s add them to CC. (I added this time)",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "967b1ae1af258c8107afb9bb77362c2f5701272c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df4be78_66ea5bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-03T05:28:15Z",
+      "side": 1,
+      "message": "Could you move this outside Poll? I think we only need to confirm existence of saveButton once. Then you don\u0027t need to wrap the error with testing.PollBreak.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "967b1ae1af258c8107afb9bb77362c2f5701272c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb29be0c_f3677388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-03T05:28:15Z",
+      "side": 1,
+      "message": "nit: I\u0027d inline the pollOpt. It\u0027s only used once, and I feel directly putting the literal in WithPollOpts is slightly slightly improves readability.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "967b1ae1af258c8107afb9bb77362c2f5701272c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
