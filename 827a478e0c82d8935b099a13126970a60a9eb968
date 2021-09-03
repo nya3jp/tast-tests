@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f2616d_25ed1c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-03T17:50:35Z",
+      "side": 1,
+      "message": "I\u0027m worried about these RPCs not succeeding after you cancel the transfer from the UI, since we haven\u0027t tested this interaction before. It could possibly leave the Android device in a bad state for the next tests that run. Are other tests able to run successfully afterwards (as part of the same fixture/test run)? Or do you see any logs indicating RPC errors during the cleanup?",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 4
+      },
+      "revId": "827a478e0c82d8935b099a13126970a60a9eb968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
