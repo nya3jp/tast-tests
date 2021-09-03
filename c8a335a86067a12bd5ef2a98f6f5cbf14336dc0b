@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8837f15d_a8598067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2021-09-03T02:38:12Z",
+      "side": 1,
+      "message": "Hi Jun, would you be able to review this CL? If everything goes well, we can remove the informational status again afterward.",
+      "revId": "c8a335a86067a12bd5ef2a98f6f5cbf14336dc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
