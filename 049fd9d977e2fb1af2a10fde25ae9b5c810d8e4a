@@ -91,6 +91,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9e298568_40a0dcb3",
+        "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-03T18:16:05Z",
+      "side": 1,
+      "message": "I could move clientSend and clientReceive to a separate struct (they could just accept the TCP conn as a parameter), but I think it\u0027s ok for now since this JSON RPC protocol is mobly-specific and we don\u0027t have any other clients.",
+      "parentUuid": "4de4509c_455f7d5a",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "badcd46e_800b2766",
         "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
         "patchSetId": 1
