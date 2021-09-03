@@ -38,6 +38,8 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
+			"ui.cuj_username",
+			"ui.cuj_password",
 			"cuj_username",
 			"cuj_password",
 		},
@@ -55,6 +57,8 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
+			"ui.cuj_username",
+			"ui.cuj_password",
 			"cuj_username",
 			"cuj_password",
 		},
@@ -80,6 +84,8 @@ func init() {
 		Data:            []string{launcher.DataArtifact},
 		Vars: []string{
 			"ui.cujAccountPool",
+			"ui.cuj_username",
+			"ui.cuj_password",
 			"cuj_username",
 			"cuj_password",
 			launcher.LacrosDeployedBinary,
@@ -106,6 +112,13 @@ func getLoginOption(s *testing.FixtState) chrome.Option {
 
 	cujUser, userOk := s.Var("cuj_username")
 	cujPass, passOk := s.Var("cuj_password")
+	if userOk && passOk {
+		username = cujUser
+		password = cujPass
+		return chrome.GAIALogin(chrome.Creds{User: username, Pass: password})
+	}
+	cujUser, userOk = s.Var("ui.cuj_username")
+	cujPass, passOk = s.Var("ui.cuj_password")
 	if userOk && passOk {
 		username = cujUser
 		password = cujPass
