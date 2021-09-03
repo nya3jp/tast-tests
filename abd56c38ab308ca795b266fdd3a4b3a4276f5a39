@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0a3fd7_ebdf433f",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T21:47:01Z",
+      "side": 1,
+      "message": "Yes, but then I need to handle the proxy getting closed, so I think I\u0027ll leave this for now.",
+      "parentUuid": "66628d34_7c085487",
+      "revId": "abd56c38ab308ca795b266fdd3a4b3a4276f5a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2ab10b9_c6467e8f",

@@ -16,6 +16,24 @@
       "message": "nit, no need for allErrors now since only have 1.",
       "revId": "dafdce7d2b7f17c42e76962b46107e1bb5201f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629a1dce_a6e639ba",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T21:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f989b1e_21167d18",
+      "revId": "dafdce7d2b7f17c42e76962b46107e1bb5201f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
