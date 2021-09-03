@@ -43,25 +43,57 @@ type IGuestOS interface {
 }
 
 const (
-	outDirName          = "trace"
+	outDirName          = "guest"
 	glxInfoFile         = "glxinfo.txt"
 	replayAppName       = "trace_replay"
 	replayAppPathAtHost = "/usr/local/graphics"
 	fileServerPort      = 8085
 )
 
-func logGuestInfo(ctx context.Context, guest IGuestOS, file string) error {
-	f, err := os.Create(file)
+type guestLogEntry struct {
+	entryName   string
+	logFileName string
+	command     []string
+}
+
+var preRunGuestLogEntryList = []guestLogEntry{
+	guestLogEntry{
+		entryName:   "glxinfo output",
+		logFileName: "glxinfo.txt",
+		command:     []string{"glxinfo", "-display", ":0"},
+	},
+	guestLogEntry{
+		entryName:   "dpkg output",
+		logFileName: "dpkg.txt",
+		command:     []string{"dpkg", "-l"},
+	},
+	guestLogEntry{
+		entryName:   "lsb-release",
+		logFileName: "lsb-release.txt",
+		command:     []string{"cat", "/etc/lsb-release"},
+	},
+}
+
+var postRunGuestLogEntryList = []guestLogEntry{
+	guestLogEntry{
+		entryName:   "dmesg output",
+		logFileName: "dmesg.log",
+		command:     []string{"dmesg"},
+	},
+}
+
+func logGuestCommand(ctx context.Context, guest IGuestOS, commandArgs []string, logFile string) error {
+	f, err := os.Create(logFile)
 	if err != nil {
-		return errors.Wrapf(err, "unable to create %s", file)
+		return errors.Wrapf(err, "unable to create %s", logFile)
 	}
 	defer f.Close()
 
-	cmd := guest.Command(ctx, "glxinfo", "-display", ":0")
+	cmd := guest.Command(ctx, commandArgs...)
 	cmd.Stdout, cmd.Stderr = f, f
 	err = cmd.Run()
 	if err != nil {
-		return errors.Wrapf(err, "unable to run glxinfo (check %s for stderr output)", file)
+		return errors.Wrapf(err, "unable to run glxinfo (check %s for stderr output)", logFile)
 	}
 	return nil
 }
@@ -499,10 +531,12 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 		return errors.Wrapf(err, "failed to create output dir <%v>", outDir)
 	}
 
-	file := filepath.Join(outDir, glxInfoFile)
-	testing.ContextLog(ctx, "Logging guest OS graphics environment to ", glxInfoFile)
-	if err := logGuestInfo(ctx, guest, file); err != nil {
-		return errors.Wrap(err, "failed to log guest OS graphics environment information")
+	// Dump pre-run info from the guest
+	for _, entry := range preRunGuestLogEntryList {
+		testing.ContextLogf(ctx, "Saving %s to %s", entry.entryName, entry.logFileName)
+		if err := logGuestCommand(ctx, guest, entry.command, filepath.Join(outDir, entry.logFileName)); err != nil {
+			testing.ContextLog(ctx, "WARNING: Unable to get ", entry.entryName)
+		}
 	}
 
 	if err := getSystemInfo(&group.Host); err != nil {
@@ -519,7 +553,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	server := startFileServer(ctx, serverAddr, outDir, cloudStorage, &group.Repository, gpi)
 	defer func() {
 		if err := server.Shutdown(ctx); err != nil {
-			testing.ContextLog(ctx, "Unable to shutdown file server: ", err)
+			testing.ContextLog(ctx, "WARNING: Unable to shutdown file server: ", err)
 		}
 	}()
 
@@ -559,6 +593,15 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 		return runTraceReplayExtendedInVM(shortCtx, resultDir, guest, group)
 	}
 	err = runTraceReplayInVM(shortCtx, resultDir, guest, group)
+
+	// Dump logs from the guest
+	for _, entry := range postRunGuestLogEntryList {
+		testing.ContextLogf(ctx, "Saving %s to %s", entry.entryName, entry.logFileName)
+		if err := logGuestCommand(ctx, guest, entry.command, filepath.Join(outDir, entry.logFileName)); err != nil {
+			testing.ContextLog(ctx, "WARNING: Unable to get ", entry.entryName)
+		}
+	}
+
 	// If shortContext is timed out then it means the guest application probably hangs
 	if errors.Is(err, context.DeadlineExceeded) {
 		testing.ContextLogf(ctx, "WARNING: guest side %s execution context timed out", replayAppName)
