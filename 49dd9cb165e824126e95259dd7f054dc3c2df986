@@ -69,6 +69,24 @@
       "parentUuid": "7a7460c4_173701a5",
       "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff66f4b_aad62d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-03T00:27:52Z",
+      "side": 1,
+      "message": "It wasn\u0027t even meeting the Green Stainless goals of 90%: http://shortn/_mUFpV1EOUD (88%)\n\nI really doubt that rejecting 1 in 10 (or 1 in 100, if CQ is doing 1 retry) CLs is worth the added coverage.",
+      "parentUuid": "0afb815d_a849e9e4",
+      "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
