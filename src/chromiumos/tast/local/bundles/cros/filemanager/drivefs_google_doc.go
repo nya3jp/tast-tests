@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/filemanager/pre"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
 )
@@ -68,16 +68,15 @@ func DrivefsGoogleDoc(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not launch the Files App: ", err)
 	}
-	defer filesApp.Release(ctx)
 
 	// Navigate to Google Drive via the Files App ui.
-	if err := filesApp.OpenDrive(ctx); err != nil {
+	if err := filesApp.OpenDrive()(ctx); err != nil {
 		s.Fatal("Could not open Google Drive folder: ", err)
 	}
 
 	// Check for the test file created earlier.
 	testFileNameWithExt := fmt.Sprintf("%s.gdoc", testDocFileName)
-	if err := filesApp.WaitForFile(ctx, testFileNameWithExt, filesAppUITimeout); err != nil {
+	if err := filesApp.WithTimeout(filesAppUITimeout).WaitForFile(testFileNameWithExt)(ctx); err != nil {
 		s.Fatalf("Could not find the test file %q in Drive: %v", testFileNameWithExt, err)
 	}
 }
