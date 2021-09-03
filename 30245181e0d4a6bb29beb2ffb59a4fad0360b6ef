@@ -46,6 +46,30 @@
       },
       "revId": "30245181e0d4a6bb29beb2ffb59a4fad0360b6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f51e16_809af463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-03T00:53:41Z",
+      "side": 0,
+      "message": "Interesting idea. bind mount survives across tests and won\u0027t quite give all we need, but it will be cleared on reboot, so it\u0027s better than what we do now but not bulletproof, with a bit more complexity.\n\nI see vm_concierge namespace has /dev_image/vms mounted as /usr/local/vms, what is this?\n\n1022 1021 179:1 /dev_image/vms /usr/local/vms rw,nodev,noatime - ext4 /dev/mmcblk0p1 rw,seclabel,resgid\u003d20119,commit\u003d600,data\u003dordered",
+      "parentUuid": "9b19e252_f9a1ed61",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 95
+      },
+      "revId": "30245181e0d4a6bb29beb2ffb59a4fad0360b6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
