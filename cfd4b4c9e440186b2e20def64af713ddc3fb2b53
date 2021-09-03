@@ -16,6 +16,24 @@
       "message": "You\u0027re dependency chain is incorrect. This CL is still dependent on an older version of the \"firmware: add PowerModes\" change which contains the bug.\n\nEither :\n- Update the chain to include the latest version of the PowerModes CL, or\n- remove the PowerModes CL from the dependency chain. It is unrelated so we shouldn\u0027t need to include it in this chain.",
       "revId": "cfd4b4c9e440186b2e20def64af713ddc3fb2b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7cfb4e_4188abad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-03T10:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d72cfe_b7fab9a8",
+      "revId": "cfd4b4c9e440186b2e20def64af713ddc3fb2b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
