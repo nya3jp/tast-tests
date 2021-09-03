@@ -11,13 +11,22 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+type tmeInfo struct {
+	ActiveAlgrithm  string           `json:"active_algorithm"`
+	EncryptionState string           `json:"encryption_state"`
+	KeyLength       jsontypes.Uint32 `json:"key_length"`
+	MaxKeyNumber    jsontypes.Uint32 `json:"max_key_number"`
+}
 
 type memoryInfo struct {
 	AvailableMemoryKib      jsontypes.Uint32 `json:"available_memory_kib"`
 	FreeMemoryKib           jsontypes.Uint32 `json:"free_memory_kib"`
 	PageFaultsSinceLastBoot jsontypes.Uint64 `json:"page_faults_since_last_boot"`
 	TotalMemoryKib          jsontypes.Uint32 `json:"total_memory_kib"`
+	MemoryEncryptionInfo    tmeInfo          `json:"memory_encryption_info"`
 }
 
 func init() {
@@ -27,10 +36,20 @@ func init() {
 		Contacts: []string{
 			"pmoy@google.com",
 			"cros-tdm@google.com",
+			"pathan.jilani@intel.com",
+			"intel-chrome-system-automation-team@intel.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:              "tme",
+			Val:               true,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
@@ -58,6 +77,22 @@ func validateMemoryData(memory memoryInfo) error {
 	return nil
 }
 
+func validateTMEData(tme tmeInfo) error {
+	if tme.EncryptionState == "" {
+		return errors.New("failed to verify EncryptionState")
+	}
+	if tme.KeyLength <= 0 {
+		return errors.Errorf("failed to verify KeyLength : %d", tme.KeyLength)
+	}
+	if tme.MaxKeyNumber <= 0 {
+		return errors.Errorf("failed to verify MaxKeyNumber: %d", tme.MaxKeyNumber)
+	}
+	if tme.ActiveAlgrithm == "" {
+		return errors.New("failed to verify  ActiveAlgrithm")
+	}
+	return nil
+}
+
 func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryMemory}
 	var memory memoryInfo
@@ -67,5 +102,11 @@ func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 
 	if err := validateMemoryData(memory); err != nil {
 		s.Fatalf("Failed to validate memory data, err [%v]", err)
+	}
+
+	if s.Param().(bool) {
+		if err := validateTMEData(memory.MemoryEncryptionInfo); err != nil {
+			s.Fatal("Failed to validate TME data: ", err)
+		}
 	}
 }
