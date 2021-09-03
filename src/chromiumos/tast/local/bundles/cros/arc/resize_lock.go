@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package arc contains functionality shared by arc++ tast tests
 package arc
 
 import (
@@ -28,21 +29,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+//  Variables used by other tast tests.
 const (
-	resizeLockTestPkgName                               = "org.chromium.arc.testapp.resizelock"
-	resizeLockApkName                                   = "ArcResizeLockTest.apk"
-	resizeLockMainActivityName                          = "org.chromium.arc.testapp.resizelock.MainActivity"
-	resizeLockUnresizableUnspecifiedActivityName        = "org.chromium.arc.testapp.resizelock.UnresizableUnspecifiedActivity"
-	resizeLockUnresizablePortraitActivityName           = "org.chromium.arc.testapp.resizelock.UnresizablePortraitActivity"
-	resizeLockResizableUnspecifiedMaximizedActivityName = "org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity"
-
-	// Verifying splash visbility requires 3 different resize-locked apps.
-	resizeLock2PkgName = "org.chromium.arc.testapp.resizelock2"
-	resizeLock3PkgName = "org.chromium.arc.testapp.resizelock3"
-	resizeLock2ApkName = "ArcResizeLockTest2.apk"
-	resizeLock3ApkName = "ArcResizeLockTest3.apk"
-
-	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
+	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button.
 	phoneButtonName     = "Phone"
 	tabletButtonName    = "Tablet"
 	resizableButtonName = "Resizable"
@@ -55,13 +44,26 @@ const (
 	shelfIconClassName     = "ash/ShelfAppButton"
 	menuItemViewClassName  = "MenuItemView"
 
-	// A11y names are available for some UI elements
+	// A11y names are available for some UI elements.
 	splashCloseButtonName          = "Got it"
 	confirmButtonName              = "Allow"
 	cancelButtonName               = "Cancel"
 	appManagementSettingToggleName = "Preset window sizes"
 	appInfoMenuItemViewName        = "App info"
 	closeMenuItemViewName          = "Close"
+
+	resizeLockTestPkgName                               = "org.chromium.arc.testapp.resizelock"
+	resizeLockApkName                                   = "ArcResizeLockTest.apk"
+	resizeLockMainActivityName                          = "org.chromium.arc.testapp.resizelock.MainActivity"
+	resizeLockUnresizableUnspecifiedActivityName        = "org.chromium.arc.testapp.resizelock.UnresizableUnspecifiedActivity"
+	resizeLockUnresizablePortraitActivityName           = "org.chromium.arc.testapp.resizelock.UnresizablePortraitActivity"
+	resizeLockResizableUnspecifiedMaximizedActivityName = "org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity"
+
+	// Verifying splash visbility requires 3 different resize-locked apps.
+	resizeLock2PkgName = "org.chromium.arc.testapp.resizelock2"
+	resizeLock3PkgName = "org.chromium.arc.testapp.resizelock3"
+	resizeLock2ApkName = "ArcResizeLockTest2.apk"
+	resizeLock3ApkName = "ArcResizeLockTest3.apk"
 
 	// Used to identify the shelf icon of interest.
 	resizeLockAppName = "ArcResizeLockTest"
