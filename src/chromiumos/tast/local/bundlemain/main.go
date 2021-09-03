@@ -142,7 +142,7 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		}
 	}
 
-	if err := crash.MarkTestInProgress(s.TestName()); err != nil {
+	if err := crash.MarkTestInProgress(ctx, s.TestName()); err != nil {
 		s.Log("Failed to mark crash test in progress: ", err)
 	}
 
@@ -183,7 +183,7 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 			}
 		}
 
-		if err := crash.MarkTestDone(); err != nil {
+		if err := crash.MarkTestDone(ctx); err != nil {
 			s.Log("Failed to unmark crash test in progress file: ", err)
 		}
 
