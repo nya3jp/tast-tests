@@ -22,6 +22,30 @@
       },
       "revId": "3873302e5414ddece96fb63d1ff99207da66dcf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04d357a_366a2461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-03T00:10:46Z",
+      "side": 1,
+      "message": "Gerrit points reverts at the original bug by default, which IMO makes sense. But I\u0027ve removed it.",
+      "parentUuid": "ad1a136c_4f435569",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "3873302e5414ddece96fb63d1ff99207da66dcf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
