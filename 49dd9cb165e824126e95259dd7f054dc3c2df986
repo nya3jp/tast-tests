@@ -51,6 +51,24 @@
       "parentUuid": "904ceafc_3dcf960e",
       "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afb815d_a849e9e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-03T00:05:12Z",
+      "side": 1,
+      "message": "\u003e The soft rules say you need to pass 20 builds:\n\nSome context here:\n\nRight, it\u0027s a soft rule though. There are limitations on servo reliability, which will prevent 100% pass rates from being feasible (at least with current servo firmware). We deemed the failures (from pre-Aug-27) to be low enough that the coverage provided by the test outweighed sporadic servo failures.\n\nIn anycase, it\u0027ll be informational now, so let\u0027s see if get more stable before flipping the switch back on.",
+      "parentUuid": "7a7460c4_173701a5",
+      "revId": "49dd9cb165e824126e95259dd7f054dc3c2df986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
