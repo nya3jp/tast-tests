@@ -41,8 +41,8 @@ func init() {
 			// mode is optional. Expecting "tablet" or "clamshell".
 			"ui.cuj_mode",
 			// CrOS login credentials.
-			"ui.cuj_username",
-			"ui.cuj_password",
+			"cuj_username",
+			"cuj_password",
 			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
 			"ui.meet_account",
 			"ui.meet_password",
@@ -88,15 +88,15 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if !ok {
 		return nil, errors.New("failed to get outdir from context")
 	}
-	account, ok := s.s.Var("ui.cuj_username")
+	account, ok := s.s.Var("cuj_username")
 	if !ok {
-		return nil, errors.New("failed to get variable ui.cuj_username")
+		return nil, errors.New("failed to get variable cuj_username")
 	}
 	// Convert to lower case because user account is case-insensitive and shown as lower case in CrOS.
 	account = strings.ToLower(account)
-	password, ok := s.s.Var("ui.cuj_password")
+	password, ok := s.s.Var("cuj_password")
 	if !ok {
-		return nil, errors.New("failed to get variable ui.cuj_password")
+		return nil, errors.New("failed to get variable cuj_password")
 	}
 	meetAccount, ok := s.s.Var("ui.meet_account")
 	if !ok {
@@ -354,15 +354,15 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	if !ok {
 		return nil, errors.New("failed to get outdir from context")
 	}
-	account, ok := s.s.Var("ui.cuj_username")
+	account, ok := s.s.Var("cuj_username")
 	if !ok {
-		return nil, errors.New("failed to get variable ui.cuj_username")
+		return nil, errors.New("failed to get variable cuj_username")
 	}
 	// user account is case-insensitive and shown as lower case in CrOS.
 	account = strings.ToLower(account)
-	password, ok := s.s.Var("ui.cuj_password")
+	password, ok := s.s.Var("cuj_password")
 	if !ok {
-		return nil, errors.New("failed to get variable ui.cuj_password")
+		return nil, errors.New("failed to get variable cuj_password")
 	}
 	host, ok := s.s.Var("ui.zoom_bot_server")
 	if !ok {
