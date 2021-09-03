@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b9290f_12362af8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-03T02:41:40Z",
+      "side": 1,
+      "message": "[00:44:27.445] Ignored: failed to wait for vm_concierge job to stabilize: unexpected format in \"vm_concierge start/tmpfiles, (tmpfiles) process 13058\\n\"\n\nfrom the build linked in the bug",
+      "parentUuid": "a8dc3c20_ff32c42f",
+      "revId": "564134b5a2c9c3caf213f7071285b6c99cdcb947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d516dd8_c0292579",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-09-02T12:23:04Z",
       "side": 1,
       "message": "You might want to include an example for the tmpfiles case:\n```\nui start/tmpfiles, (tmpfiles) process 19419\n```",
+      "revId": "564134b5a2c9c3caf213f7071285b6c99cdcb947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0114b139_9fa39782",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-03T02:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d516dd8_c0292579",
       "revId": "564134b5a2c9c3caf213f7071285b6c99cdcb947",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
