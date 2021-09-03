@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de4509c_455f7d5a",
+        "filename": "src/chromiumos/tast/common/android/mobly/json_rpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-03T00:03:16Z",
+      "side": 1,
+      "message": "I was thinking that:\nsnippetclient would do install \u0026 launching the apk, port forwarding, etc\njson_rpc would do the rest \n\n(basically the split you have now but with two distinct structs)\n\nthen have json_rpc as a var in the snippetclient struct. Calls like\nsnippetclient.json_rpc.RPC(...)\n\nBut if there isn\u0027t a clean line and they share data then it\u0027s fine.",
+      "parentUuid": "3707d72e_54e714a1",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "049fd9d977e2fb1af2a10fde25ae9b5c810d8e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "badcd46e_800b2766",
