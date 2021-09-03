@@ -8,8 +8,11 @@ import (
 	"context"
 	"os"
 
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -44,4 +47,25 @@ func prepareLacrosChromeBinary(ctx context.Context, s *testing.FixtState) error 
 	}
 
 	return nil
+}
+
+// ServePolicyAndRefresh updates the policy of FakeDMS and refreshes the policies in Lacros Chrome.
+func ServePolicyAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, lacros *LacrosChrome, ps []policy.Policy) error {
+	// Make sure FakeDMS is still running.
+	if err := fdms.Ping(ctx); err != nil {
+		return errors.Wrap(err, "failed to ping FakeDMS")
+	}
+
+	pb := fakedms.NewPolicyBlob()
+	pb.AddPolicies(ps)
+	if err := fdms.WritePolicyBlob(pb); err != nil {
+		return errors.Wrap(err, "failed to write policies to FakeDMS")
+	}
+
+	tconn, err := lacros.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+
+	return policyutil.Refresh(ctx, tconn)
 }
