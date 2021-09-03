@@ -11,13 +11,21 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
+type mktmeInfo struct {
+	MktmeAlgrithmUsed string           `json:"mktme_active_algorithm"`
+	MktmeEnabled      bool             `json:"mktme_enabled"`
+	MktmeKeyLength    jsontypes.Uint32 `json:"mktme_key_length"`
+	MktmeMaxKeyNumber jsontypes.Uint32 `json:"mktme_max_key_number"`
+}
 type memoryInfo struct {
 	AvailableMemoryKib      jsontypes.Uint32 `json:"available_memory_kib"`
 	FreeMemoryKib           jsontypes.Uint32 `json:"free_memory_kib"`
 	PageFaultsSinceLastBoot jsontypes.Uint64 `json:"page_faults_since_last_boot"`
 	TotalMemoryKib          jsontypes.Uint32 `json:"total_memory_kib"`
+	MkTme                   mktmeInfo        `json:"mktme_info"`
 }
 
 func init() {
@@ -27,10 +35,19 @@ func init() {
 		Contacts: []string{
 			"pmoy@google.com",
 			"cros-tdm@google.com",
+			"pathan.jilani@intel.com",
+			"intel-chrome-system-automation-team@intel.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:              "mktme",
+			Val:               true,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+		}},
 	})
 }
 
@@ -58,6 +75,22 @@ func validateMemoryData(memory memoryInfo) error {
 	return nil
 }
 
+func validateMKTMEData(mktme mktmeInfo) error {
+	if !mktme.MktmeEnabled {
+		return errors.Errorf("failed to verify MktmeEnabled : %t", mktme.MktmeEnabled)
+	}
+	if mktme.MktmeKeyLength <= 0 {
+		return errors.Errorf("failed to verify MktmeKeyLength : %d", mktme.MktmeKeyLength)
+	}
+	if mktme.MktmeMaxKeyNumber <= 0 {
+		return errors.Errorf("failed to verify MktmeMaxKeyNumber: %d", mktme.MktmeMaxKeyNumber)
+	}
+	if mktme.MktmeAlgrithmUsed == "" {
+		return errors.New("empty MktmeAlgrithmUsed")
+	}
+	return nil
+}
+
 func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryMemory}
 	var memory memoryInfo
@@ -67,5 +100,11 @@ func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 
 	if err := validateMemoryData(memory); err != nil {
 		s.Fatalf("Failed to validate memory data, err [%v]", err)
+	}
+
+	if s.Param().(bool) {
+		if err := validateMKTMEData(memory.MkTme); err != nil {
+			s.Fatal("Failed to validate MKTME data: ", err)
+		}
 	}
 }
