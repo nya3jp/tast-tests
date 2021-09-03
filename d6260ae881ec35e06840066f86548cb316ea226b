@@ -16,6 +16,29 @@
       "message": "Hi tast owners, can you take a look at this.\n\nThe chromium CL is: https://crrev.com/c/3131674 . This needs to land before that",
       "revId": "d6260ae881ec35e06840066f86548cb316ea226b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a392b406_aa0ea44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/web_handwriting_recognition_not_supported.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-03T17:38:42Z",
+      "side": 1,
+      "message": "Based on line 37, looks like it tries to createHandWritingRecognizer if \nqueryHandwritingRecognizerSupport\u003dtrue, createHandwritingRecognizer\u003dfalse were given.\n\nIs it expected?",
+      "range": {
+        "startLine": 14,
+        "startChar": 57,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "d6260ae881ec35e06840066f86548cb316ea226b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
