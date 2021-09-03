@@ -64,6 +64,26 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to wait for video element")
 	}
 
+	// If prompted to open in YouTube app, instruct device to stay in Chrome.
+	stayInChrome := nodewith.Name("Stay in Chrome").Role(role.Button)
+	if err := y.ui.IfSuccessThen(
+		y.ui.WithTimeout(5*time.Second).WaitUntilExists(stayInChrome),
+		func(ctx context.Context) error {
+			testing.ContextLog(ctx, "dialog popped up and asked whether to switch to YouTube app")
+			rememberMyChoice := nodewith.Name("Remember my choice").Role(role.CheckBox)
+			if err := y.uiHdl.Click(rememberMyChoice)(ctx); err != nil {
+				return err
+			}
+			if err := y.uiHdl.Click(stayInChrome)(ctx); err != nil {
+				return err
+			}
+			testing.ContextLog(ctx, "instructed device to stay on YouTube web")
+			return nil
+		},
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to instruct device to stay on YouTube web")
+	}
+
 	// Root window on built-in display.
 	targetWin := nodewith.ClassName("RootWindow-0").Role(role.Window)
 	if y.extendedDisplay {
