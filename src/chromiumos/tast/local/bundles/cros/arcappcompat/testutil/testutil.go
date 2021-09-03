@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
+	"chromiumos/tast/local/bundles/cros/arc/resizelockhelper"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -359,20 +360,28 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 
 // ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR on ARC-P devices.
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Error("Failed to get window info: ", err)
+	}
+	goalState := ash.WindowStateMaximized
+	if info.State == ash.WindowStateFullscreen {
+		goalState = ash.WindowStateFullscreen
+	}
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
 	t, ok := arc.Type()
 	if !ok {
 		s.Fatal("Unable to determine arc type")
 	}
 	// If ARC-P.
 	if t == arc.Container {
-		tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get tablet mode: ", err)
-		}
-		if tabletModeEnabled {
-			s.Log("Device is in tablet mode. Skipping test")
-			return
-		}
 		info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 		if err != nil {
 			s.Error("Failed to get window info: ", err)
@@ -381,10 +390,6 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		if !info.CanResize {
 			s.Log("This app is not resizable. Skipping test")
 			return
-		}
-		goalState := ash.WindowStateMaximized
-		if info.State == ash.WindowStateFullscreen {
-			goalState = ash.WindowStateFullscreen
 		}
 
 		if isNApp(ctx, d) {
@@ -412,18 +417,83 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 				s.Fatal("Failed to restart app: ", err)
 			}
 		}
-
-		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
-}
+	// If ARC-VM.
+	// Handle resize lock feature.
+	if t == arc.VM {
+		// If app is launched in maximized or in fullscreen state.
+		if info.State == ash.WindowStateMaximized || info.State == ash.WindowStateFullscreen {
+			// Check if app is resizable or not.
+			s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
+			if !info.CanResize {
+				s.Log("This app is not resizable. Skipping test")
+				return
+			}
+			s.Log("Reseting window to normal size")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Failed to reset window to normal size: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+		}
 
-const (
-	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
-	phoneButtonName       = "Phone"
-	tabletButtonName      = "Tablet"
-	resizableButtonName   = "Resizable"
-	centerButtonClassName = "FrameCenterButton"
-)
+		// If app doesn't have resize lock feature in normal window mode then maximize the app.
+		button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CenterButtonClassName}, 10*time.Second)
+		if err != nil {
+			s.Log("It can be an O4C app. App window is normal. Maximize the window")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventTypeForState(goalState)); err != nil {
+				s.Error("Failed to maximize the window: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, goalState); err != nil {
+				s.Error("The window is not maximized: ", err)
+			}
+			return
+		}
+		// If app has resize lock feature and it is in phone or tablet size.
+		button, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CenterButtonClassName}, 10*time.Second)
+		if err == nil {
+			if button.Name == resizelockhelper.PhoneButtonName || button.Name == resizelockhelper.TabletButtonName {
+				s.Log("App is in: ", button.Name)
+				// CloseSplash to handle got it button.
+				if err := closeSplash(ctx, tconn); err != nil {
+					s.Log("CloseSplash doesn't exist: ", err)
+				}
+				defer button.Release(ctx)
+
+				// Check if the compat-mode button of a fully-locked app is disabled
+				if err := button.LeftClick(ctx); err != nil {
+					s.Fatal(err, "failed to click on the compat-mode button: ", err)
+				}
+				// Need some sleep here as we verify that nothing changes.
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					s.Fatal("Failed to sleep after clicking on the compat-mode button: ", err)
+				}
+				// Check if compat-mode button is disabled or enabled.
+				if err := resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, false); err == nil {
+					// If compat-mode button is disabled.
+					s.Log("The app is non-resizable. Skipping test")
+					return
+				}
+			}
+			// If compat-mode button is enabled.
+			if err := selectResizeLockMode(ctx, tconn, appPkgName); err != nil {
+				s.Fatal("Failed to click on the compat-mode dialog: ", err)
+			}
+			if handleConfirmDialog(ctx, tconn); err != nil {
+				s.Log("confirmDialog doesn't exist: ", err)
+			}
+			s.Log("Maximizing the window")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventTypeForState(goalState)); err != nil {
+				s.Error("Failed to maximize the window: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, goalState); err != nil {
+				s.Error("The window is not maximized: ", err)
+			}
+		}
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
 
 // Represents the high-level state of the app from the resize-lock feature's perspective.
 type resizeLockMode int
@@ -437,11 +507,11 @@ const (
 func (mode resizeLockMode) String() string {
 	switch mode {
 	case phoneResizeLockMode:
-		return phoneButtonName
+		return resizelockhelper.PhoneButtonName
 	case tabletResizeLockMode:
-		return tabletButtonName
+		return resizelockhelper.TabletButtonName
 	case resizableResizeLockMode:
-		return resizableButtonName
+		return resizelockhelper.ResizableButtonName
 	default:
 		return ""
 	}
@@ -487,16 +557,66 @@ func checkCompatModeButton(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 	}
 	// Check for compat-mode button.
-	button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CenterButtonClassName}, 10*time.Second)
 	if err != nil {
 		s.Log("App isn't resize locked app. It can be an O4C app")
-	} else if button.Name == phoneButtonName || button.Name == tabletButtonName || button.Name == resizableButtonName {
+	} else if button.Name == resizelockhelper.PhoneButtonName || button.Name == resizelockhelper.TabletButtonName || button.Name == resizelockhelper.ResizableButtonName {
 		s.Log("It is resize locked app")
 		s.Logf("button.Name:%s", button.Name)
 	} else {
 		return errors.Wrap(err, "failed to find the compat mode options")
 	}
 	return nil
+}
+
+// selectResizeLockMode clicks on the resizable lock mode button and clicks on the confirm button.
+func selectResizeLockMode(ctx context.Context, tconn *chrome.TestConn, appPkgName string) error {
+	compatModeMenuDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.BubbleDialogClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the compat-mode menu dialog of %s", appPkgName)
+	}
+	defer compatModeMenuDialog.Release(ctx)
+	resizeLockModeButton, err := compatModeMenuDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: resizelockhelper.ResizableButtonName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the %s button on the compat mode menu", resizelockhelper.ResizableButtonName)
+	}
+	defer resizeLockModeButton.Release(ctx)
+
+	return resizeLockModeButton.LeftClick(ctx)
+}
+
+// handleConfirmDialog clicks on allow button for the confirmation dialog.
+func handleConfirmDialog(ctx context.Context, tconn *chrome.TestConn) error {
+	confirmationDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.OverlayDialogClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the resizability confirmation dialog")
+	}
+	defer confirmationDialog.Release(ctx)
+	confirmButton, err := confirmationDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: resizelockhelper.ConfirmButtonName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the confirm button on the compat mode menu")
+	}
+	return confirmButton.LeftClick(ctx)
+}
+
+// closeSplash clicks on the close button and closes the splash screen.
+func closeSplash(ctx context.Context, tconn *chrome.TestConn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		splash, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.BubbleDialogClassName})
+		if err != nil {
+			return errors.Wrap(err, "failed to find the splash dialog")
+		}
+		button, err := splash.Descendant(ctx, chromeui.FindParams{Name: resizelockhelper.SplashCloseButtonName})
+		if err != nil {
+			return errors.Wrap(err, "failed to find the close button of the splash dialog")
+		}
+		defer button.Release(ctx)
+		if err := button.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click on the close button of the splash dialog")
+		}
+
+		return resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, false /* visible */)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // TouchAndTextInputs func verify touch and text inputs in the app are working properly without crash or ANR.

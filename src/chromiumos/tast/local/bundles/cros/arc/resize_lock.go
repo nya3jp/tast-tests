@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/resizelockhelper"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -41,27 +42,6 @@ const (
 	resizeLock3PkgName = "org.chromium.arc.testapp.resizelock3"
 	resizeLock2ApkName = "ArcResizeLockTest2.apk"
 	resizeLock3ApkName = "ArcResizeLockTest3.apk"
-
-	// Used to (i) find the resize lock mode buttons on the compat-mode menu and (ii) check the state of the compat-mode button
-	phoneButtonName     = "Phone"
-	tabletButtonName    = "Tablet"
-	resizableButtonName = "Resizable"
-
-	// Currently the automation API doesn't support unique ID, so use the classnames to find the elements of interest.
-	centerButtonClassName  = "FrameCenterButton"
-	checkBoxClassName      = "Checkbox"
-	bubbleDialogClassName  = "BubbleDialogDelegateView"
-	overlayDialogClassName = "OverlayDialog"
-	shelfIconClassName     = "ash/ShelfAppButton"
-	menuItemViewClassName  = "MenuItemView"
-
-	// A11y names are available for some UI elements
-	splashCloseButtonName          = "Got it"
-	confirmButtonName              = "Allow"
-	cancelButtonName               = "Cancel"
-	appManagementSettingToggleName = "Preset window sizes"
-	appInfoMenuItemViewName        = "App info"
-	closeMenuItemViewName          = "Close"
 
 	// Used to identify the shelf icon of interest.
 	resizeLockAppName = "ArcResizeLockTest"
@@ -109,11 +89,11 @@ const (
 func (mode resizeLockMode) String() string {
 	switch mode {
 	case phoneResizeLockMode:
-		return phoneButtonName
+		return resizelockhelper.PhoneButtonName
 	case tabletResizeLockMode:
-		return tabletButtonName
+		return resizelockhelper.TabletButtonName
 	case resizableResizeLockMode:
-		return resizableButtonName
+		return resizelockhelper.ResizableButtonName
 	default:
 		return ""
 	}
@@ -395,7 +375,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	}
 
 	// The compat-mode button of a fully-locked app is disabled.
-	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CenterButtonClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the compat-mode button")
 	}
@@ -410,7 +390,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 		return errors.Wrap(err, "failed to sleep after clicking on the compat-mode button")
 	}
 
-	if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false); err != nil {
+	if err := resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, false); err != nil {
 		return errors.Wrapf(err, "failed to verify the visibility of the compat-mode menu of %s", activity.ActivityName())
 	}
 
@@ -419,7 +399,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 		return errors.Wrapf(err, "failed to open the app management page of %s", resizeLockAppName)
 	}
 	defer closeAppManagementSetting(ctx, tconn)
-	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 10*time.Second)
+	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{Name: resizelockhelper.AppManagementSettingToggleName}, 10*time.Second)
 }
 
 // testSplash installs 3 different resize-locked app, launches an activity twice, and verifies that the splash screen works as expected.
@@ -595,7 +575,7 @@ func checkResizeLockState(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return errors.Wrapf(err, "failed to verify the resizability of %s", activity.ActivityName())
 	}
 
-	if err := checkVisibility(ctx, tconn, bubbleDialogClassName, isSplashVisible); err != nil {
+	if err := resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, isSplashVisible); err != nil {
 		return errors.Wrapf(err, "failed to verify the visibility of the splash screen on %s", activity.ActivityName())
 	}
 
@@ -684,11 +664,11 @@ func activityOrientation(ctx context.Context, tconn *chrome.TestConn, activity *
 // checkCompatModeButton verifies the state of the compat-mode button of the given app.
 func checkCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, mode resizeLockMode) error {
 	if mode == nonEligibleResizeLockMode {
-		return checkVisibility(ctx, tconn, centerButtonClassName, false /* visible */)
+		return resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.CenterButtonClassName, false /* visible */)
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName})
+		button, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CenterButtonClassName})
 		if err != nil {
 			return errors.Wrap(err, "failed to find the compat-mode button")
 		}
@@ -776,14 +756,6 @@ func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// checkVisibility checks whether the node specified by the given class name exists or not.
-func checkVisibility(ctx context.Context, tconn *chrome.TestConn, className string, visible bool) error {
-	if visible {
-		return chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
-	}
-	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
-}
-
 // checkResizability verifies the given app's resizability.
 func checkResizability(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activity *arc.Activity, mode resizeLockMode) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
@@ -839,7 +811,7 @@ func showCompatModeMenu(ctx context.Context, tconn *chrome.TestConn, method inpu
 
 // showCompatModeMenuViaButtonClick clicks on the compat-mode button and shows the compat-mode menu.
 func showCompatModeMenuViaButtonClick(ctx context.Context, tconn *chrome.TestConn) error {
-	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CenterButtonClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the compat-mode button")
 	}
@@ -849,7 +821,7 @@ func showCompatModeMenuViaButtonClick(ctx context.Context, tconn *chrome.TestCon
 		return errors.Wrap(err, "failed to click on the compat-mode button")
 	}
 
-	return checkVisibility(ctx, tconn, bubbleDialogClassName, true /* visible */)
+	return resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, true /* visible */)
 }
 
 // showCompatModeMenuViaKeyboard injects the keyboard shortcut and shows the compat-mode menu.
@@ -859,7 +831,7 @@ func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, 
 			return errors.Wrap(err, "failed to inject Search+Alt+C")
 		}
 
-		if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: bubbleDialogClassName}, 2*time.Second); err != nil {
+		if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.BubbleDialogClassName}, 2*time.Second); err != nil {
 			return errors.Wrap(err, "failed to find the compat-mode dialog")
 		}
 		return nil
@@ -871,11 +843,11 @@ func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, 
 // Can't use chromeui.WaitUntilGone() for this purpose because this function also checks whether the dialog has the "Phone" button or not to ensure that we are checking the correct dialog.
 func waitForCompatModeMenuToDisappear(ctx context.Context, tconn *chrome.TestConn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		dialog, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: bubbleDialogClassName})
+		dialog, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.BubbleDialogClassName})
 		if err == nil && dialog != nil {
 			defer dialog.Release(ctx)
 
-			phoneButton, err := dialog.Descendant(ctx, chromeui.FindParams{Name: phoneButtonName})
+			phoneButton, err := dialog.Descendant(ctx, chromeui.FindParams{Name: resizelockhelper.PhoneButtonName})
 			if err == nil && phoneButton != nil {
 				phoneButton.Release(ctx)
 				return errors.Wrap(err, "compat mode menu is sitll visible")
@@ -887,7 +859,7 @@ func waitForCompatModeMenuToDisappear(ctx context.Context, tconn *chrome.TestCon
 
 // closeSplash closes the splash screen via the given method.
 func closeSplash(ctx context.Context, tconn *chrome.TestConn, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
-	splash, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: bubbleDialogClassName})
+	splash, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.BubbleDialogClassName})
 	if err != nil {
 		return errors.Wrap(err, "failed to find the splash dialog")
 	}
@@ -908,14 +880,14 @@ func closeSplashViaKeyboard(ctx context.Context, tconn *chrome.TestConn, splash 
 		if err := keyboard.Accel(ctx, "Enter"); err != nil {
 			return errors.Wrap(err, "failed to press the Enter key")
 		}
-		return checkVisibility(ctx, tconn, bubbleDialogClassName, false /* visible */)
+		return resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, false /* visible */)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // closeSplashViaClick clicks on the close button and closes the splash screen.
 func closeSplashViaClick(ctx context.Context, tconn *chrome.TestConn, splash *chromeui.Node) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := splash.Descendant(ctx, chromeui.FindParams{Name: splashCloseButtonName})
+		button, err := splash.Descendant(ctx, chromeui.FindParams{Name: resizelockhelper.SplashCloseButtonName})
 		if err != nil {
 			return errors.Wrap(err, "failed to find the close button of the splash dialog")
 		}
@@ -925,7 +897,7 @@ func closeSplashViaClick(ctx context.Context, tconn *chrome.TestConn, splash *ch
 			return errors.Wrap(err, "failed to click on the close button of the splash dialog")
 		}
 
-		return checkVisibility(ctx, tconn, bubbleDialogClassName, false /* visible */)
+		return resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, false /* visible */)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
@@ -939,7 +911,7 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return errors.Wrapf(err, "failed to show the compat-mode dialog of %s via %s", activity.ActivityName(), method)
 	}
 
-	compatModeMenuDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: bubbleDialogClassName}, 10*time.Second)
+	compatModeMenuDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.BubbleDialogClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find the compat-mode menu dialog of %s", activity.ActivityName())
 	}
@@ -965,7 +937,7 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 			return errors.Wrapf(err, "failed to wait for the compat-mode menu of %s to disappear", activity.ActivityName())
 		}
 
-		confirmationDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: overlayDialogClassName}, 10*time.Second)
+		confirmationDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.OverlayDialogClassName}, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the resizability confirmation dialog")
 		}
@@ -990,7 +962,7 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 			return errors.Wrap(err, "failed to press the Esc key")
 		}
 
-		return checkVisibility(ctx, tconn, bubbleDialogClassName, false /* visible */)
+		return resizelockhelper.CheckVisibility(ctx, tconn, resizelockhelper.BubbleDialogClassName, false /* visible */)
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to verify that the resizability confirmation dialog is invisible")
 	}
@@ -1012,14 +984,14 @@ func toggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 // handleConfirmationDialogViaKeyboard does the given action for the confirmation dialog via keyboard.
 func handleConfirmationDialogViaKeyboard(ctx context.Context, tconn *chrome.TestConn, mode resizeLockMode, confirmationDialog *chromeui.Node, action confirmationDialogAction, keyboard *input.KeyboardEventWriter) error {
 	if action == dialogActionCancel {
-		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: cancelButtonName}, keyboard)
+		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: resizelockhelper.CancelButtonName}, keyboard)
 	} else if action == dialogActionConfirm || action == dialogActionConfirmWithDoNotAskMeAgainChecked {
 		if action == dialogActionConfirmWithDoNotAskMeAgainChecked {
-			if err := shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{ClassName: checkBoxClassName}, keyboard); err != nil {
+			if err := shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{ClassName: resizelockhelper.CheckBoxClassName}, keyboard); err != nil {
 				return errors.Wrap(err, "failed to select the checkbox of the resizability confirmation dialog via keyboard")
 			}
 		}
-		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: confirmButtonName}, keyboard)
+		return shiftViaTabAndEnter(ctx, tconn, confirmationDialog, chromeui.FindParams{Name: resizelockhelper.ConfirmButtonName}, keyboard)
 	}
 	return nil
 }
@@ -1027,14 +999,14 @@ func handleConfirmationDialogViaKeyboard(ctx context.Context, tconn *chrome.Test
 // handleConfirmationDialogViaClick does the given action for the confirmation dialog via click.
 func handleConfirmationDialogViaClick(ctx context.Context, tconn *chrome.TestConn, mode resizeLockMode, confirmationDialog *chromeui.Node, action confirmationDialogAction) error {
 	if action == dialogActionCancel {
-		cancelButton, err := confirmationDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: cancelButtonName}, 10*time.Second)
+		cancelButton, err := confirmationDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: resizelockhelper.CancelButtonName}, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the cancel button on the compat mode menu")
 		}
 		return cancelButton.LeftClick(ctx)
 	} else if action == dialogActionConfirm || action == dialogActionConfirmWithDoNotAskMeAgainChecked {
 		if action == dialogActionConfirmWithDoNotAskMeAgainChecked {
-			checkbox, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: checkBoxClassName}, 10*time.Second)
+			checkbox, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: resizelockhelper.CheckBoxClassName}, 10*time.Second)
 			if err != nil {
 				return errors.Wrap(err, "failed to find the checkbox of the resizability confirmation dialog")
 			}
@@ -1045,7 +1017,7 @@ func handleConfirmationDialogViaClick(ctx context.Context, tconn *chrome.TestCon
 			}
 		}
 
-		confirmButton, err := confirmationDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: confirmButtonName}, 10*time.Second)
+		confirmButton, err := confirmationDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: resizelockhelper.ConfirmButtonName}, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the confirm button on the compat mode menu")
 		}
@@ -1116,7 +1088,7 @@ func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the Chrome OS settings via click")
 		}
 	case inputMethodKeyEvent:
-		if err := shiftViaTabAndEnter(ctx, tconn, nil, chromeui.FindParams{Name: appManagementSettingToggleName}, keyboard); err != nil {
+		if err := shiftViaTabAndEnter(ctx, tconn, nil, chromeui.FindParams{Name: resizelockhelper.AppManagementSettingToggleName}, keyboard); err != nil {
 			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the Chrome OS settings via keyboard")
 		}
 	}
@@ -1139,7 +1111,7 @@ func toggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 
 // toggleAppManagementSettingToggleViaClick toggles the resize-lock setting toggle via click.
 func toggleAppManagementSettingToggleViaClick(ctx context.Context, tconn *chrome.TestConn) error {
-	settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 10*time.Second)
+	settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: resizelockhelper.AppManagementSettingToggleName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the setting toggle")
 	}
@@ -1150,7 +1122,7 @@ func toggleAppManagementSettingToggleViaClick(ctx context.Context, tconn *chrome
 
 // openAppManagementSetting opens the app management page if the given app.
 func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appName string) error {
-	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: shelfIconClassName}, 10*time.Second)
+	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: resizelockhelper.ShelfIconClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find the shelf icon of %s", appName)
 	}
@@ -1160,7 +1132,7 @@ func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appNa
 		return errors.Wrapf(err, "failed to click on the shelf icon of %s", appName)
 	}
 
-	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: resizelockhelper.AppInfoMenuItemViewName, ClassName: resizelockhelper.MenuItemViewClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the menu item for the app-management page")
 	}
@@ -1171,7 +1143,7 @@ func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appNa
 
 // closeAppManagementSetting closes any open app management page.
 func closeAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) error {
-	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: shelfIconClassName}, 10*time.Second)
+	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: resizelockhelper.ShelfIconClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the shelf icon of the settings app")
 	}
@@ -1181,7 +1153,7 @@ func closeAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) erro
 		return errors.Wrap(err, "failed to click on the shelf icon of the settings app")
 	}
 
-	closeMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: closeMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	closeMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: resizelockhelper.CloseMenuItemViewName, ClassName: resizelockhelper.MenuItemViewClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the menu item for closing the settings app")
 	}
@@ -1194,7 +1166,7 @@ func closeAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) erro
 // The app management page must be open when this function is called.
 func checkAppManagementSettingToggleState(ctx context.Context, tconn *chrome.TestConn, mode resizeLockMode) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appManagementSettingToggleName}, 2*time.Second)
+		settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: resizelockhelper.AppManagementSettingToggleName}, 2*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the resize lock setting toggle on the app-management page")
 		}
