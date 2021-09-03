@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f291c597_538268ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-03T10:21:19Z",
+      "side": 1,
+      "message": "We used this pattern in denied_sites_blocked.go [1] for Chrome sync. I added a more descriptive error message in a deferred function in case of timeout failure.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go?q\u003df:src%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Ffamilylink%2Fdenied_sites_blocked.go",
+      "parentUuid": "1297ef96_41e974c1",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "ceba180a93ea45da3127a6577c558c18f7b1388d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a50bf41c_5bebd6c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-01T20:40:48Z",
       "side": 1,
       "message": "SHould probably put this and other strings in variables",
+      "range": {
+        "startLine": 44,
+        "startChar": 49,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "ceba180a93ea45da3127a6577c558c18f7b1388d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5caa7d5f_da8cfd47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-03T10:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50bf41c_5bebd6c7",
       "range": {
         "startLine": 44,
         "startChar": 49,
