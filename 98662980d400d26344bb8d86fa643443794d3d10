@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bde18e35_010104f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-03T22:21:11Z",
+      "side": 1,
+      "message": "Hi Kype, thanks for you quick response! If in your env ui.cuj_username/password are not configured, it won\u0027t prevent the ui.cujAccountPool being used, I think.\n\nMoblab solution is being used by OEM partners and they use the ui.cuj_username/password configuration. Upgrade to the latest tast release will fail their test cases. ui.cujAccountPool is a good feature if CUJs are being tested in a very high frequent. But we shouldn\u0027t fail their existing configuration if current configuration works well.",
+      "parentUuid": "efd63e37_3927295d",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdf8ad86_7573fec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "922e42e1_b908e819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-03T22:21:11Z",
+      "side": 1,
+      "message": "I would like to check if you are using cuj_username/password in your lab. They don\u0027t follow the var naming convention. If they are not used, we should remove them. \n\nIn stead, ui.cuj_username/password are currently being used in some environments including moblab. If they don\u0027t need the account pool, they can keep this configuration.",
+      "parentUuid": "bdf8ad86_7573fec2",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05d3828c_d99b2252",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -71,6 +113,24 @@
       "writtenOn": "2021-09-03T17:19:20Z",
       "side": 1,
       "message": "I think your change causes this to never be reached, and we won\u0027t be able to correctly use the account pool in the lab.",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1559e51_08dac634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-03T22:21:11Z",
+      "side": 1,
+      "message": "I think if neither cuj_username/password nor ui.cuj_username/password are specified, this code logic can still be reached. So if the tests decide to use cujAccountPool, they should remove the other vars and just configure ui.cujAccountPool.",
+      "parentUuid": "05d3828c_d99b2252",
       "revId": "98662980d400d26344bb8d86fa643443794d3d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
