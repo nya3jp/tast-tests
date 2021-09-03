@@ -50,6 +50,24 @@
       "message": "Move this after line 341 because for oDirect \u003d False case, arcvm_dev.conf is already cleared.",
       "revId": "23b89bd5c12679ed8431f2e17000fc58e53495cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ce2b90_d6bdb1d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-03T01:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0f57a52_34945384",
+      "revId": "23b89bd5c12679ed8431f2e17000fc58e53495cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
