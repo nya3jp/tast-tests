@@ -169,7 +169,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 
 			if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-				if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
+				if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
 					s.Fatal("Failed to close about:blank: ", err)
 				}
 			}

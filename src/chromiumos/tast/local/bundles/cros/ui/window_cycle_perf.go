@@ -91,7 +91,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
+			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}
 		}

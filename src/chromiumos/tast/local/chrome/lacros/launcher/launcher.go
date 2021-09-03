@@ -327,3 +327,53 @@ func (l *LacrosChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error
 	testing.ContextLog(ctx, "Test API extension is ready")
 	return &chrome.TestConn{Conn: l.testExtConn}, nil
 }
+
+// CloseAboutBlank finds all targets that are about:blank, closes them, then waits until they are gone.
+// windowsExpectedClosed indicates how many windows that we expect to be closed from doing this operation.
+// This takes *ash-chrome*'s TestConn as tconn, not the one provided by LacrosChrome.TestAPIConn.
+func (l *LacrosChrome) CloseAboutBlank(ctx context.Context, tconn *chrome.TestConn, windowsExpectedClosed int) error {
+	prevWindows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	targets, err := l.Devsess.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
+	if err != nil {
+		return errors.Wrap(err, "failed to query for about:blank pages")
+	}
+	allPages, err := l.Devsess.FindTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
+	if err != nil {
+		return errors.Wrap(err, "failed to query for all pages")
+	}
+
+	for _, info := range targets {
+		if err := l.Devsess.CloseTarget(ctx, info.TargetID); err != nil {
+			return err
+		}
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// If we are closing all lacros targets, then lacros Chrome will exit. In that case, we won't be able to
+		// communicate with it, so skip checking the targets. Since closing all lacros targets will close all
+		// lacros windows, the window check below is necessary and sufficient.
+		if len(targets) != len(allPages) {
+			targets, err := l.Devsess.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if len(targets) != 0 {
+				return errors.New("not all about:blank targets were closed")
+			}
+		}
+
+		windows, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(prevWindows)-len(windows) != windowsExpectedClosed {
+			return errors.Errorf("expected %d windows to be closed, got %d closed",
+				windowsExpectedClosed, len(prevWindows)-len(windows))
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
+}
