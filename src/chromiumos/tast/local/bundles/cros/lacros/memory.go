@@ -12,8 +12,6 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros/launcher"
@@ -227,27 +225,17 @@ func Memory(ctx context.Context, s *testing.State) {
 }
 
 // navigateSingleTabToURLLacros assumes that there's a freshly launched instance
-// of lacros-chrome, with a single tab open to about:blank. This function
-// creates a new tab, navigates it to the url, and closes the original tab.
+// of lacros-chrome, with a single tab open to about:blank, then, navigates the
+// blank tab to the given url.
 func navigateSingleTabToURLLacros(ctx context.Context, url string, l *launcher.LacrosChrome) error {
 	// Open a new tab and navigate to url.
-	newTab, err := l.Devsess.CreateTarget(ctx, url)
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("about:blank"))
 	if err != nil {
-		return errors.Wrap(err, "failed to open new tab")
+		return errors.Wrap(err, "failed to find an about:blank tab")
 	}
-
-	// Close the initial "about:blank" tab present at startup.
-	targetFilter := func(t *target.Info) bool {
-		return t.URL == "about:blank"
-	}
-	targets, err := l.Devsess.FindTargets(ctx, targetFilter)
-	if err != nil {
-		return errors.Wrap(err, "failed to query for about:blank pages")
-	}
-	for _, info := range targets {
-		if target := info.TargetID; target != newTab {
-			l.Devsess.CloseTarget(ctx, target)
-		}
+	defer conn.Close()
+	if err := conn.Navigate(ctx, url); err != nil {
+		return errors.Wrapf(err, "failed to navigate to %q", url)
 	}
 	return nil
 }
@@ -257,7 +245,11 @@ func navigateSingleTabToURLLacros(ctx context.Context, url string, l *launcher.L
 func openTabsLacros(ctx context.Context, l *launcher.LacrosChrome, numTabs int) error {
 	for i := 0; i < numTabs-1; i++ {
 		// Open a new tab and navigate to about blank
-		if _, err := l.Devsess.CreateTarget(ctx, "about:blank"); err != nil {
+		conn, err := l.NewConn(ctx, "about:blank")
+		if err != nil {
+			return err
+		}
+		if err := conn.Close(); err != nil {
 			return err
 		}
 
