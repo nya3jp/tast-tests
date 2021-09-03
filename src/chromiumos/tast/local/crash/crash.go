@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -109,6 +110,20 @@ const (
 	// FilterInIgnoreAllCrashes is a value to put in the filter-in file if
 	// you wish to ignore all crashes that happen during a test.
 	FilterInIgnoreAllCrashes = "none"
+)
+
+var (
+	testInProgFileVar = testing.RegisterVarString(
+		"crash.testInProgFile", // The variable controls if the test-in-prog file will be created.
+		// Default value is true, create file test-in-prog by default.
+		// When set the var to "false", test-in-prog file will not be created for the running test.
+		"true",
+		"The variable that controls if test-in-prog file need to be created for the running test")
+
+	crashPrefixVar = testing.RegisterVarString(
+		"crash.prefix", // The variable prefixed to the test case name in test-in-prog file.
+		"",             // By default no prefix will be added.
+		"the string that will be prefixed to the test case name in test-in-prog file.")
 )
 
 // DefaultDirs returns all standard directories to which crashes are written.
@@ -485,17 +500,38 @@ func processRunning(procName string) (bool, error) {
 	return false, nil
 }
 
+// parseTestInProgFileStr Parses testInProgStrVar to a boolean value.
+// If the value of testInProgStrVar is unsupported by strconv.ParseBool(), it will return true.
+func parseTestInProgFileStr(ctx context.Context) bool {
+	testInProgFile, err := strconv.ParseBool(testInProgFileVar.Value())
+
+	//If any parse error happens, set the value to true.
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to parse %q, using default value true", testInProgFileVar.Value())
+		testInProgFile = true
+	}
+	return testInProgFile
+}
+
 // MarkTestInProgress writes |name| to |testInProgressPath|, indicating to crash_reporter
 // that the given test is in progress.
-func MarkTestInProgress(name string) error {
-	if err := ioutil.WriteFile(testInProgressPath, []byte(name), 0644); err != nil {
+func MarkTestInProgress(ctx context.Context, name string) error {
+	if !parseTestInProgFileStr(ctx) {
+		return nil
+	}
+	if err := ioutil.WriteFile(testInProgressPath, []byte(crashPrefixVar.Value()+name), 0644); err != nil {
 		return errors.Wrap(err, "failed to write in-progress test name")
 	}
 	return nil
 }
 
 // MarkTestDone removes the file indicating which test is running.
-func MarkTestDone() error {
+func MarkTestDone(ctx context.Context) error {
+	// If test-in-prog exists(created by other script) and  tast run with parameter '--var=testInProgFileStr=false'
+	// It should not remove the file.
+	if !parseTestInProgFileStr(ctx) {
+		return nil
+	}
 	if err := os.Remove(testInProgressPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove in-progress test name")
 	}
