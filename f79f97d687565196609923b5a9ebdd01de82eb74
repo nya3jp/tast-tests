@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9f452d_9e8f1a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06621ab5_8f40ca59",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 15
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbd7e751_9812c056",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-03T04:34:37Z",
       "side": 1,
       "message": "nit: zipFileNode ?",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e25f5ee_72a70eeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd7e751_9812c056",
       "range": {
         "startLine": 174,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c5dba84_d4b71777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cc60b3_993b7761",
+      "range": {
+        "startLine": 175,
+        "startChar": 47,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b81a93_3d41a97a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-03T04:34:37Z",
       "side": 1,
       "message": "I\u0027m not 100% sure, but for test robustness, I\u0027d use LeftClick instead of ImmediateLeftClick, if there\u0027s no particular reason.",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "908d1aa3_59611b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b81a93_3d41a97a",
       "range": {
         "startLine": 177,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1c54f1_432f95b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1aaa0f_8305bdbb",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 26
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d92870b_6cd5dd8f",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-03T04:34:37Z",
       "side": 1,
       "message": "Can we reuse the node defined on L174 ?",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5241365f_137364d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d92870b_6cd5dd8f",
       "range": {
         "startLine": 207,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b3f903_1a9ebf05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b22bd1e_1f8d04bd",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80aa66fd_c61109ef",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-09-03T04:34:37Z",
       "side": 1,
       "message": "nit: \"find and click password dialog cancel button\" ?",
+      "range": {
+        "startLine": 274,
+        "startChar": 27,
+        "endLine": 274,
+        "endChar": 71
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4adfb016_83c4faaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80aa66fd_c61109ef",
       "range": {
         "startLine": 274,
         "startChar": 27,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9068ca_406a1de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb4ecbf_643b9c87",
+      "range": {
+        "startLine": 276,
+        "startChar": 8,
+        "endLine": 276,
+        "endChar": 26
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef31de8e_3a133e11",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-09-03T04:34:37Z",
       "side": 1,
       "message": "LeftClick ?",
+      "range": {
+        "startLine": 361,
+        "startChar": 8,
+        "endLine": 361,
+        "endChar": 26
+      },
+      "revId": "f79f97d687565196609923b5a9ebdd01de82eb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f6c561_9c850571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-03T05:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef31de8e_3a133e11",
       "range": {
         "startLine": 361,
         "startChar": 8,
