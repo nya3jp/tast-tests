@@ -73,7 +73,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 
 	if testParam.ChromeType == lacros.ChromeTypeLacros {
 		closeAboutBlank = func(ctx context.Context) error {
-			return lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 0)
+			return l.CloseAboutBlank(ctx, tconn, 0)
 		}
 	}
 	return cr, cs, tconn, cleanup, closeAboutBlank, nil
