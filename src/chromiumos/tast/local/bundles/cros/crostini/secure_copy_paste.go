@@ -41,8 +41,8 @@ func init() {
 		Desc:         "Verifies that background crostini apps can not access the clipboard",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{"keepState"},
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
+		VarDeps:      []string{},
 		Data:         []string{blockerTitle},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

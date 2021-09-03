@@ -23,8 +23,8 @@ func init() {
 		Desc:         "Crostini performance test which compiles vim",
 		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Vars:         []string{"keepState"},
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
+		VarDeps:      []string{},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		HardwareDeps: crostini.CrostiniMinDiskSize,
 		Params: []testing.Param{
