@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb0b882_dd6df00f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-03T20:53:22Z",
+      "side": 1,
+      "message": "Sure, no problem. Also not sure how much data it\u0027ll end up collecting, but it\u0027ll be good to at least have this around until we resolve the bugs. Still lgtm",
+      "parentUuid": "ce7641d5_41ca5b0b",
+      "revId": "3512a3a475913889740ac94325cd198401f8cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76ed6160_9fd18f56",
