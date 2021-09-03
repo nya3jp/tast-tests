@@ -465,15 +465,20 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return err
 	}
 	releaseBuilderPath := lsb[lsbrelease.BuilderPath]
+	dutBuilderPath, err := h.Reporter.BuilderPath(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get DUT builder path")
+	}
+	if strings.Contains(dutBuilderPath, "-postsubmit") {
+		testing.ContextLogf(ctx, "Current build on DUT (%s) is not a release image, using %s from USB stick", dutBuilderPath, releaseBuilderPath)
+		return nil
+	}
+
 	if !strings.Contains(lsb[lsbrelease.ReleaseTrack], "test") {
 		testing.ContextLog(ctx, "The image on usbkey is not a test image")
 		releaseBuilderPath = ""
 	}
 
-	dutBuilderPath, err := h.Reporter.BuilderPath(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get DUT builder path")
-	}
 	if releaseBuilderPath == dutBuilderPath {
 		return nil
 	}
