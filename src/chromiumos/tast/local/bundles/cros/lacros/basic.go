@@ -77,7 +77,12 @@ func Basic(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if _, err = l.Devsess.CreateTarget(ctx, "about:blank"); err != nil {
+	// Test that a new blank tab can be opened.
+	conn, err := l.NewConn(ctx, "about:blank")
+	if err != nil {
 		s.Fatal("Failed to open new tab: ", err)
+	}
+	if err := conn.Close(); err != nil {
+		s.Error("Failed to close connection: ", err)
 	}
 }
