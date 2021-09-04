@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d78a9d2_77fda507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-04T00:31:52Z",
+      "side": 1,
+      "message": "Not sure why downloading this CL is taking hours (11GB+ and counting). Since you verified already, should be fine.\n```\nalanding:tast-tests [fix_typo %\u003e]$ git fetch https://chromium.googlesource.com/chromium/src refs/changes/50/3142250/6 \u0026\u0026 git checkout -b change-3142250 FETCH_HEAD\nReceiving objects:  66% (10413169/15682846), 11.72 GiB | 9.98 MiB/s \n```",
+      "parentUuid": "ee7e3f32_ea158d03",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 4
+      },
+      "revId": "827a478e0c82d8935b099a13126970a60a9eb968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc426952_3add917a",
