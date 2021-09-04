@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7f8d3f_020a27dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-04T00:27:21Z",
+      "side": 1,
+      "message": "Thanks! two comment.",
+      "revId": "20d266901050b32d426c74863c8d41b277ee3969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163aa449_5fd98537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-04T00:27:21Z",
+      "side": 1,
+      "message": "TODO(b:198837833): Replace with testing.Poll to query the current vts node.\n\nThanks!",
+      "revId": "20d266901050b32d426c74863c8d41b277ee3969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93029dfe_578c0641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-04T00:27:21Z",
+      "side": 1,
+      "message": "TODO(b:198837833): Replace with testing.Poll to query the current vts node.\n\nThanks!",
+      "revId": "20d266901050b32d426c74863c8d41b277ee3969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c33d833_b0d20b7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-04T00:27:21Z",
+      "side": 1,
+      "message": "Add a comment\n\nTODO(b:198837833): Replace with testing.Poll to query the current vts node.\n\nThanks!",
+      "revId": "20d266901050b32d426c74863c8d41b277ee3969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c7663c_d70b4111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-04T00:27:21Z",
+      "side": 1,
+      "message": "Do you mind add \n\nTODO(b:198837833): Replace with testing.Poll to query the current vts node.\n\nThanks!",
+      "revId": "20d266901050b32d426c74863c8d41b277ee3969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
