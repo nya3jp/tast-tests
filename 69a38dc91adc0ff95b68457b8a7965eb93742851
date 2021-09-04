@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fba62098_91b9842d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-04T08:08:02Z",
+      "side": 1,
+      "message": "\"Browser test\" has another meaning in Chrome. Could we use the other word?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0000d72b_91eb5127",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-04T08:08:02Z",
+      "side": 1,
+      "message": "Is it JSON output? Could we use JSON library to handle the output?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952ba399_bad5146c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-04T08:08:02Z",
+      "side": 1,
+      "message": "Not sure what \"pre\" means here? Is that convention that common used in Tast?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b398ec1d_2efe4ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-04T08:08:02Z",
+      "side": 1,
+      "message": "How ppl in golang world naming this? Does they prefer toolkitPrecondition?",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7db0f564_9f308f94",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
         "patchSetId": 1
@@ -42,6 +134,52 @@
         "startLine": 41,
         "startChar": 36,
         "endLine": 41,
+        "endChar": 69
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21854209_1a26ac33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-04T08:08:02Z",
+      "side": 1,
+      "message": "I guess we need some cleanup work to avoid our toolkit change the device status and that may break all other Tast tests. We need to recover the device status (recover stopped service, remove bootflow hijacking), maybe uninstall toolkit and reboot is the easiest way.",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c877092_4796835c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-04T08:08:02Z",
+      "side": 1,
+      "message": "it seem factory tool will enable by default. Do we break other Tast test if we don\u0027t disable and uninstall it?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
         "endChar": 69
       },
       "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
