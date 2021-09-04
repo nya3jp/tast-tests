@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81da1d7e_234363cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-04T06:21:17Z",
+      "side": 1,
+      "message": "This defer function will not be executed if the test reaches the timeout of `ctx`. You may need to create a cleanup ctx for the defer functions that use a context. Sample template:\ncleanupCtx :\u003d ctx \nctx, cancel :\u003d ctxutil.Shorten(ctx, X*time.Second)\ndefer cancel()\n...// use ctx\ndefer lacros.Close(cleanupCtx)",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "4035388a0d2441aea291faea136fa73d299969e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74465d05_d6bb286e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-04T06:21:17Z",
+      "side": 1,
+      "message": "nit: don\u0027t you want to log the `err` as well? (same to many other s.Fatal\u0027s)",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "4035388a0d2441aea291faea136fa73d299969e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77750e00_b28c793d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-04T06:21:17Z",
+      "side": 1,
+      "message": "It is worth commenting to call attention to the `err \u003d\u003d nil` check.\nsee https://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#concision",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "4035388a0d2441aea291faea136fa73d299969e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
