@@ -99,7 +99,7 @@ func randFileName() string {
 // constructDriveFSURI constructs a Drive FS URI.
 func constructDriveFSURI(vmEnabled bool, drivefsRoot, file string) string {
 	if vmEnabled {
-		return "content://org.chromium.arc.volumeprovider/MyDrive/root/" + file
+		return arc.VolumeProviderContentURIPrefix + path.Join("MyDrive", "root", file)
 	}
 	subPath := strings.ReplaceAll(drivefsRoot, "/media/fuse/", "") + "/"
 	return "content://org.chromium.arc.chromecontentprovider/externalfile%3A" + url.PathEscape(subPath) + file

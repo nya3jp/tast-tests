@@ -52,5 +52,10 @@ func DownloadsFolder(ctx context.Context, s *testing.State) {
 	config := storage.TestConfig{DirPath: filesapp.DownloadPath, DirName: "Downloads",
 		DirTitle: "Files - Downloads", CreateTestFile: true, FileName: "storage.txt"}
 
+	// In ARCVM, Downloads integration depends on MyFiles mount.
+	if err := arc.WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx, a); err != nil {
+		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
+	}
+
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
 }
