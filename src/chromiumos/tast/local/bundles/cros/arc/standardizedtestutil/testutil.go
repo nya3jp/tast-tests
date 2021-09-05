@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -91,13 +92,13 @@ const (
 	RightTouchscreenSwipe
 )
 
-// TouchscreenScrollDirection represents the scroll direction.
-type TouchscreenScrollDirection int
+// ScrollDirection represents the scroll direction.
+type ScrollDirection int
 
 // Variables used to determine the scroll direction.
 const (
-	DownTouchscreenScroll TouchscreenScrollDirection = iota
-	UpTouchscreenScroll
+	DownScroll ScrollDirection = iota
+	UpScroll
 )
 
 // GetClamshellTests returns the test cases required for clamshell devices.
@@ -253,7 +254,7 @@ func TouchscreenTap(ctx context.Context, testParameters TestFuncParams, selector
 // TouchscreenScroll performs a scroll on the touchscreen. Due to
 // different device settings, the actual scroll amount in pixels will be imprecise.
 // Therefore, multiple iterations should be run, with a check for the desired output between each call.
-func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection TouchscreenScrollDirection) error {
+func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection ScrollDirection) error {
 	const (
 		VerticalScrollAmount = 250
 		ScrollDuration       = 500 * time.Millisecond
@@ -275,10 +276,10 @@ func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventW
 	scrollToX := *x
 	scrollToY := *y
 	switch scrollDirection {
-	case DownTouchscreenScroll:
+	case DownScroll:
 		scrollToY = *y - VerticalScrollAmount
 		break
-	case UpTouchscreenScroll:
+	case UpScroll:
 		scrollToY = *y + VerticalScrollAmount
 		break
 	default:
@@ -445,14 +446,8 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 
 // MouseClickObject implements a standard way to click the mouse button on an object.
 func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton MouseButton) error {
-	// The device cannot be in tablet mode.
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, testParameters.TestConn)
-	if err != nil {
-		return errors.Wrap(err, "unable to determine tablet mode")
-	}
-
-	if tabletModeEnabled {
-		return errors.New("Device is in tablet mode, cannot click with a mouse")
+	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "mouse cannot be used")
 	}
 
 	// Move the mouse into position
@@ -481,6 +476,61 @@ func MouseClickObject(ctx context.Context, testParameters TestFuncParams, select
 	return nil
 }
 
+// MouseMoveOntoObject moves the mouse onto the center of an object.
+func MouseMoveOntoObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter) error {
+	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "mouse cannot be used")
+	}
+
+	if err := centerMouseOnObject(ctx, testParameters, mew, selector); err != nil {
+		return errors.Wrap(err, "failed to move the mouse into position")
+	}
+
+	return nil
+}
+
+// MouseScroll performs a scroll on the mouse. Due to different device
+// settings, the actual scroll amount in pixels will be imprecise. Therefore,
+// multiple iterations should be run, with a check for the desired output
+// between each call.
+func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirection ScrollDirection, mew *input.MouseEventWriter) error {
+	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "mouse cannot be used")
+	}
+
+	switch scrollDirection {
+	case UpScroll:
+		if err := mew.ScrollUp(); err != nil {
+			return errors.Wrap(err, "unable to scroll up")
+		}
+		break
+	case DownScroll:
+		if err := mew.ScrollDown(); err != nil {
+			return errors.Wrap(err, "unable to scroll down")
+		}
+		break
+	default:
+		return errors.Errorf("invalid scroll direction: %v", scrollDirection)
+	}
+
+	return nil
+}
+
+// validateMouseCanBeUsed makes sure the mouse can be used in tests.
+func validateMouseCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
+	// The device cannot be in tablet mode.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, testParameters.TestConn)
+	if err != nil {
+		return errors.Wrap(err, "unable to determine tablet mode")
+	}
+
+	if tabletModeEnabled {
+		return errors.New("Device is in tablet mode, cannot click with a mouse")
+	}
+
+	return nil
+}
+
 // centerMouseOnObject is responsible for moving the mouse onto the center of the object.
 func centerMouseOnObject(ctx context.Context, testParameters TestFuncParams, mew *input.MouseEventWriter, selector *ui.Object) error {
 	// Get the center of the element to make sure the element is actually clicked.
@@ -491,73 +541,20 @@ func centerMouseOnObject(ctx context.Context, testParameters TestFuncParams, mew
 
 	uiElementBoundsCenter := uiElementBounds.CenterPoint()
 
-	// The coordinates returned by the selector are scaled up by the physical density
-	// of the screen the activity is on. In order to determine the correct mouse coordinates,
-	// that adjustment must be removed.
-	physicalDensity, err := testParameters.Activity.DisplayDensity(ctx)
+	// The coordinates returned by the selector need to be scaled back by the
+	// device's scale factor in order to get the proper position.
+	dispMode, err := ash.PrimaryDisplayMode(ctx, testParameters.TestConn)
 	if err != nil {
-		return errors.Wrap(err, "unable to determine physical density of the activity")
+		return errors.Wrap(err, "failed to get display mode")
 	}
+	dsf := dispMode.DeviceScaleFactor
 
-	moveToCoordinates := coords.NewPoint(int(float64(uiElementBoundsCenter.X)/physicalDensity), int(float64(uiElementBoundsCenter.Y)/physicalDensity))
+	moveToCoordinates := coords.NewPoint(int(float64(uiElementBoundsCenter.X)/dsf), int(float64(uiElementBoundsCenter.Y)/dsf))
 
-	// Move and return the results
-	return moveMouseToAbsoluteCoordinates(ctx, mew, moveToCoordinates)
-}
-
-// moveMouseToAbsoluteCoordinates moves the mouse to a set of absolute coordinates.
-func moveMouseToAbsoluteCoordinates(ctx context.Context, mew *input.MouseEventWriter, absoluteCoordinates coords.Point) error {
-	const (
-		MouseRelMovePerIteration     = 1
-		MouseResetPositionIterations = 10
-		MouseResetPositionRelX       = -1000
-		MouseResetPositionRelY       = -1000
-		MouseTimeBetweenMoveCommands = 5 * time.Millisecond
-	)
-
-	// It's not obvious where the mouse is when the test starts because mice rely on
-	// relative movements. The rest of this method assumes the mouse is starting at 0,0
-	// so perform a few iterations of moving the mouse up to the top left corner of the screen.
-	// TODO(davidwelling): adding a reset to the event writer may be beneficial as -1000,-1000 is being used in multiple places to reset the mouse.
-	for i := 0; i < MouseResetPositionIterations; i++ {
-		if err := mew.Move(MouseResetPositionRelX, MouseResetPositionRelY); err != nil {
-			return errors.Wrap(err, "unable to reset the mouse position")
-		}
-
-		// Add a small sleep between move commands so the OS can sync.
-		if err := testing.Sleep(ctx, MouseTimeBetweenMoveCommands); err != nil {
-			return errors.Wrap(err, "unable to delay after mouse movement")
-		}
-	}
-
-	// Move the mouse into position by performing a series of relative movements
-	// along the necessary axis. Small iterations are preferred to make sure the mouse
-	// doesn't move further than the specified amount (as noted in the mouse.Move method).
-	curX := 0
-	curY := 0
-
-	for curX < absoluteCoordinates.X || curY < absoluteCoordinates.Y {
-		dx := 0
-		if curX < absoluteCoordinates.X {
-			dx = MouseRelMovePerIteration
-		}
-
-		dy := 0
-		if curY < absoluteCoordinates.Y {
-			dy = MouseRelMovePerIteration
-		}
-
-		if err := mew.Move(int32(dx), int32(dy)); err != nil {
-			return errors.Wrap(err, "unable to move the mouse into position")
-		}
-
-		// Add a small sleep between move commands so the OS can sync.
-		if err := testing.Sleep(ctx, MouseTimeBetweenMoveCommands); err != nil {
-			return errors.Wrap(err, "unable to delay after mouse movement")
-		}
-
-		curX += dx
-		curY += dy
+	// Move and return the results using the internal method. To ARC, this is the same
+	// as moving a physical mouse.
+	if err := mouse.Move(testParameters.TestConn, moveToCoordinates, 0)(ctx); err != nil {
+		return errors.Wrap(err, "unable to move the mouse into position")
 	}
 
 	return nil
