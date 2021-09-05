@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HoverTestActivity">
+
+  <TextView
+      android:id="@+id/txtHoverEnterState"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="HOVER ENTER: PENDING"/>
+
+  <TextView
+      android:id="@+id/txtHoverExitState"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="HOVER EXIT: PENDING"/>
+
+  <Button
+      android:id="@+id/btnStartHoverTest"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Start Hover Test" />
+
+  <TextView
+      android:id="@+id/txtToHover"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="HOVER THIS ELEMENT"/>
+
+  <TextView
+      android:id="@+id/txtToEndOn"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="END ON THIS ELEMENT"/>
+</LinearLayout>

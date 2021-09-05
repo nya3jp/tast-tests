@@ -37,7 +37,7 @@ func Mouse(ctx context.Context) (*MouseEventWriter, error) {
 	if mw.dev, mw.virt, err = createVirtual(name, devID{usbBus, 0, 0, 0}, 0, evTypes,
 		map[EventType]*big.Int{
 			EV_KEY: makeBigIntFromEventCodes([]EventCode{BTN_LEFT, BTN_RIGHT}),
-			EV_REL: makeBigIntFromEventCodes([]EventCode{REL_X, REL_Y}),
+			EV_REL: makeBigIntFromEventCodes([]EventCode{REL_X, REL_Y, REL_WHEEL_HI_RES, REL_WHEEL}),
 		}, nil); err != nil {
 		return nil, err
 	}
@@ -99,6 +99,30 @@ func (mw *MouseEventWriter) Click() error {
 		return err
 	}
 	return mw.Release()
+}
+
+// ScrollDown performs a 1 detent scroll in the down direction.
+func (mw *MouseEventWriter) ScrollDown() error {
+	return mw.scroll(-1)
+}
+
+// ScrollUp performs a 1 detent scroll in the up direction.
+func (mw *MouseEventWriter) ScrollUp() error {
+	return mw.scroll(1)
+}
+
+// scroll performs a scroll given the provided number of ticks.
+func (mw *MouseEventWriter) scroll(ticks int) error {
+	// 120 corresponds to 1 detent, according to event-codes.rst.
+	if err := mw.rw.Event(EV_REL, REL_WHEEL_HI_RES, int32(ticks*120)); err != nil {
+		return err
+	}
+
+	if err := mw.rw.Event(EV_REL, REL_WHEEL, int32(ticks)); err != nil {
+		return err
+	}
+
+	return mw.rw.Sync()
 }
 
 // RightClick presses and releases the mouse right button.
