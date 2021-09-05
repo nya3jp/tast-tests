@@ -8,10 +8,9 @@ import (
 	"bytes"
 	"context"
 	"io/ioutil"
-	"regexp"
+	"path"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
@@ -21,10 +20,6 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
-
-// myFilesUUID is the UUID of the MyFiles volume inside ARC. It is defined in
-// Chromium's components/arc/volume_mounter/arc_volume_mounter_bridge.cc.
-const myFilesUUID = "0000000000000000000000000000CAFEF00D2019"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -52,7 +47,7 @@ func MyFiles(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	d := s.FixtValue().(*arc.PreData).UIDevice
 
-	if err := waitForARCMyFilesMount(ctx, a); err != nil {
+	if err := arc.WaitForARCMyFilesVolumeMount(ctx, a); err != nil {
 		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
 	}
 
@@ -67,39 +62,12 @@ func MyFiles(ctx context.Context, s *testing.State) {
 	testCrosToARC(ctx, s, a, cr, d, myFilesPath)
 }
 
-// waitForARCMyFilesMount waits for the MyFiles volume to be mounted in ARC
-// using the sm command. Just checking mountinfo here is not sufficient since
-// it takes some time for the FUSE layer in Android R to be ready after
-// /storage/<UUID> has become a mountpoint.
-func waitForARCMyFilesMount(ctx context.Context, a *arc.ARC) error {
-	// Regular expression that matches the output line for the mounted
-	// MyFiles volume. Each output line of the sm command is of the form:
-	// <volume id><space(s)><mount status><space(s)><volume UUID>.
-	re := regexp.MustCompile(`^(stub:)?[0-9]+\s+mounted\s+` + myFilesUUID + `$`)
-
-	testing.ContextLog(ctx, "Waiting for MyFiles to be mounted in ARC")
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := a.Command(ctx, "sm", "list-volumes").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return errors.Wrap(err, "sm command failed")
-		}
-		lines := bytes.Split(out, []byte("\n"))
-		for _, line := range lines {
-			if re.Find(bytes.TrimSpace(line)) != nil {
-				return nil
-			}
-		}
-		return errors.New("MyFiles is not yet mounted in ARC")
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
-}
-
 // testARCToCros checks whether a file put in the Android MyFiles directory
 // appears in the Chrome OS MyFiles directory.
 func testARCToCros(ctx context.Context, s *testing.State, a *arc.ARC, myFilesPath string) {
 	const (
 		filename    = "capybara.jpg"
-		androidPath = "/storage/" + myFilesUUID + "/" + filename
+		androidPath = "/storage/" + arc.MyFilesUUID + "/" + filename
 	)
 	crosPath := myFilesPath + "/" + filename
 
@@ -153,7 +121,7 @@ func testPushToARCAndReadFromCros(ctx context.Context, a *arc.ARC, sourcePath, a
 func testCrosToARC(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, myFilesPath string) {
 	config := storage.TestConfig{DirPath: myFilesPath, DirName: "My files", DirTitle: "Files - My files",
 		CreateTestFile: true, FileName: "storage.txt"}
-	testFileURI := "content://org.chromium.arc.volumeprovider/" + myFilesUUID + "/" + config.FileName
+	testFileURI := arc.VolumeProviderContentURIPrefix + path.Join(arc.MyFilesUUID, config.FileName)
 
 	testing.ContextLog(ctx, "Testing CrOS -> Android")
 

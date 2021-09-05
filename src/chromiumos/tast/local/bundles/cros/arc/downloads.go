@@ -48,6 +48,11 @@ func Downloads(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not read the test file: ", err)
 	}
 
+	// In ARCVM, Downloads integration depends on MyFiles mount.
+	if err := arc.WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx, a); err != nil {
+		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
+	}
+
 	// CrOS -> Android
 	if err = ioutil.WriteFile(crosPath, expected, 0666); err != nil {
 		s.Fatalf("Could not write to %s: %v", crosPath, err)
