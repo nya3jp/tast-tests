@@ -75,6 +75,11 @@ func DownloadManager(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the server to start: ", err)
 	}
 
+	// In ARCVM, Downloads integration depends on MyFiles mount.
+	if err := arc.WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx, a); err != nil {
+		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
+	}
+
 	// Download the test file with an Android app from the local server.
 	const targetPath = "/storage/emulated/0/Download/" + filename
 	if err := downloadFileWithApp(ctx, cr, a, d, localServerPort, sourcePath, targetPath); err != nil {

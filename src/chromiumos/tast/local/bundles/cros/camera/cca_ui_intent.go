@@ -111,6 +111,12 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
+
+	// In ARCVM, Downloads integration depends on MyFiles mount.
+	if err := arc.WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx, a); err != nil {
+		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
+	}
+
 	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)

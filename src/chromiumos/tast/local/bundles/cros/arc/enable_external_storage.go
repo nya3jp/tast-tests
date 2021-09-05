@@ -111,7 +111,7 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := removablemedia.WaitForARCVolumeMount(ctx, a); err != nil {
+	if err := arc.WaitForARCRemovableMediaVolumeMount(ctx, a); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
 	}
 
@@ -165,7 +165,7 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Open Storage Settings : ", err)
 	}
 
-	if err := removablemedia.WaitForARCVolumeMount(ctx, a); err != nil {
+	if err := arc.WaitForARCRemovableMediaVolumeMount(ctx, a); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
 	}
 
