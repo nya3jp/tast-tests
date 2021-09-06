@@ -10,12 +10,13 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/filemanager/pre"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/drivefs"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -68,59 +69,38 @@ func DrivefsSearch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not launch the Files App: ", err)
 	}
-	defer filesApp.Release(ctx)
 
 	// Navigate to Google Drive via the Files App ui.
-	if err := filesApp.OpenDrive(ctx); err != nil {
+	if err := filesApp.OpenDrive()(ctx); err != nil {
 		s.Fatal("Could not open Google Drive folder: ", err)
 	}
 
 	// Searches files app for the search term passed in.
 	// Do not have to wait for the file to sync as search happens on remote, not locally.
-	if err := filesApp.Search(ctx, fileName); err != nil {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Could not create keyboard: ", err)
+	}
+	if err := filesApp.Search(ew, fileName)(ctx); err != nil {
 		s.Fatalf("Failed search for %q: %v", fileName, err)
 	}
 
 	// Get all the containers that contain the file names.
-	params := ui.FindParams{
-		ClassName: "filename-label",
-		Role:      ui.RoleTypeGenericContainer,
-	}
+	result := nodewith.ClassName("filename-label").Role(role.GenericContainer)
 
-	// Poll for for 1 result to appear in the search results or 15 seconds elapses.
-	var resultsTextContainer ui.NodeSlice
-	defer func() {
-		resultsTextContainer.Release(ctx)
-	}()
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		rtc, err := filesApp.Root.Descendants(ctx, params)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		defer func() {
-			rtc.Release(ctx)
-		}()
-
-		// We expect 1 file to be returned given the filename length of the seed file.
-		if len(rtc) != 1 {
-			return errors.Wrapf(err, "unexpected number of search results: got %d, want 1", len(rtc))
-		}
-
-		resultsTextContainer = rtc
-		rtc = nil
-		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}); err != nil {
+	// We expect 1 file to be returned given the filename length of the seed file.
+	if err := filesApp.WithPollOpts(testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}).WaitUntilExists(result)(ctx); err != nil {
 		s.Fatal("Failed waiting for search results: ", err)
 	}
 
 	// Get the actual text from the container.
-	text, err := resultsTextContainer[0].Descendant(ctx, ui.FindParams{Role: ui.RoleTypeStaticText})
-	if err != nil {
-		s.Fatal("Failed finding descendant text box: ", err)
-	}
-	defer text.Release(ctx)
+	text := nodewith.Role(role.StaticText).Ancestor(result)
 
-	if text.Name != fileName {
-		s.Fatalf("Failed as search result is incorrect: got %q, want %q", text.Name, fileName)
+	info, err := filesApp.Info(ctx, text)
+	if err != nil {
+		s.Fatal("Failed getting info: ", err)
+	}
+	if info.Name != fileName {
+		s.Fatalf("Failed as search result is incorrect: got %q, want %q: ", info.Name, fileName)
 	}
 }
