@@ -65,20 +65,7 @@ func wmNV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 }
 
 func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	// Test steps:
-	// 1- Start an unspecified activity.
-	// 2- Enable tablet mode.
-	// 2-1- Display should be landscape (default).
-	// 3- Disable tablet mode.
-	// 3-1- Activity bounds should be equal to the original bounds.
-	// 4- Enable tablet mode.
-	// 5- Rotate the screen 270 degrees.
-	// 5-1- Display should be portrait.
-	// 6- Disable tablet mode.
-	// 6-1- Display should be landscape.
-	// 6-2- Activity bounds should be equal to the original bounds.
-
-	// 1- Start an unspecified activity.
+	// Start an unspecified activity.
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
 		return err
@@ -100,7 +87,7 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	windowID := originalWindowInfo.ID
 
-	// 2- Enable tablet mode.
+	// Enable tablet mode.
 	cleanupRoundOne, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
 		return errors.Wrap(err, "failed to ensure if tablet mode is enabled")
@@ -122,12 +109,7 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// 2-1- Display should be landscape (default).
-	if tabletModeDO.Type != display.OrientationLandscapePrimary {
-		return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: landscape-primary", tabletModeDO.Type)
-	}
-
-	// 3- Disable tablet mode.
+	// Disable tablet mode.
 	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to disable tablet mode")
 	}
@@ -138,14 +120,14 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Get activity's window info after switching back from tablet mode.
-		windowInfoAfterLandscapeTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		currentWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
 
-		// 3-1- Activity bounds should be equal to the original bounds.
-		if originalWindowInfo.BoundsInRoot != windowInfoAfterLandscapeTabletMode.BoundsInRoot {
-			return errors.Errorf("invalid window bounds after switching back from landscape tablet mode: got %q; want %q", windowInfoAfterLandscapeTabletMode.BoundsInRoot, originalWindowInfo.BoundsInRoot)
+		// Activity bounds should be equal to the original bounds.
+		if originalWindowInfo.BoundsInRoot != currentWindowInfo.BoundsInRoot {
+			return errors.Errorf("invalid window bounds after switching back from tablet mode in original orientation: got %q; want %q", currentWindowInfo.BoundsInRoot, originalWindowInfo.BoundsInRoot)
 		}
 		return nil
 
@@ -153,7 +135,7 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// 4- Enable tablet mode.
+	// Enable tablet mode.
 	cleanupRoundTwo, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
 		return errors.Wrap(err, "failed to ensure if tablet mode is enabled")
@@ -164,16 +146,20 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// 5- Rotate the screen 270 degree.
+	// Rotate the screen 270 degree.
 	cleanupRotation, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
 	if err != nil {
 		return err
 	}
 	defer cleanupRotation()
 
-	// 5-1- Display should be portrait.
+	// Display should be portrait.
 	// Wait until display rotates to portrait-primary orientation.
-	if err := wm.WaitForDisplayOrientation(ctx, tconn, display.OrientationPortraitPrimary); err != nil {
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the display info")
+	}
+	if err := display.WaitForDisplayRotation(ctx, tconn, info.ID, display.Rotate270); err != nil {
 		return err
 	}
 
@@ -182,7 +168,7 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// 6- Disable tablet mode.
+	// Disable tablet mode.
 	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to disable tablet mode")
 	}
@@ -191,9 +177,9 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// 6-1- Display should be landscape.
-	// Wait until display rotates to landscape-primary orientation.
-	if err := wm.WaitForDisplayOrientation(ctx, tconn, display.OrientationLandscapePrimary); err != nil {
+	// Display should be in original orientation.
+	// Wait until display rotates to original orientation.
+	if err := wm.WaitForDisplayOrientation(ctx, tconn, tabletModeDO.Type); err != nil {
 		return err
 	}
 	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
@@ -204,14 +190,14 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		// Get activity's window info after switching back from tablet mode.
-		windowInfoAfterPortraitTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		currentWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
 
-		// 6-2- Activity bounds should be equal to the original bounds.
-		if originalWindowInfo.BoundsInRoot != windowInfoAfterPortraitTabletMode.BoundsInRoot {
-			return errors.Errorf("invalid window bounds after switching back from portrait tablet mode: got %q; want %q", windowInfoAfterPortraitTabletMode.BoundsInRoot, originalWindowInfo.BoundsInRoot)
+		// Activity bounds should be equal to the original bounds.
+		if originalWindowInfo.BoundsInRoot != currentWindowInfo.BoundsInRoot {
+			return errors.Errorf("invalid window bounds after switching back from portrait tablet mode: got %q; want %q", currentWindowInfo.BoundsInRoot, originalWindowInfo.BoundsInRoot)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
