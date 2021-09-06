@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0093187_c6899797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-06T02:54:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2406620e_23db2560",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "11b6a7589b0c603ac3c0f41967b4d9f7404538b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9ca4bb8_200fa245",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "ditto.\navailableMemoryKib test is failing with below error\njson: unknown field \"available_memory_kib\"",
       "parentUuid": "b9ca4bb8_200fa245",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "11b6a7589b0c603ac3c0f41967b4d9f7404538b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b232a975_61304cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-06T02:54:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39e6ec85_f963bdf9",
       "range": {
         "startLine": 23,
         "startChar": 5,
