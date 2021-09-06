@@ -1362,9 +1362,14 @@ func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "custom-video-parameters", "#custom-video-parameters")
 }
 
-// ToggleEnableDocumentMode toggles enable document mode on all cameras and returns whether it's enabled after toggling.
-func (a *App) ToggleEnableDocumentMode(ctx context.Context) (bool, error) {
+// toggleEnableDocumentMode toggles enable document mode on all cameras and returns whether it's enabled after toggling.
+func (a *App) toggleEnableDocumentMode(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras")
+}
+
+// toggleMultiStreamRecording toggles multi-stream video recording and returns whether it's enabled after toggling.
+func (a *App) toggleMultiStreamRecording(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "enable-multistream-recording", "#expert-enable-multistream-recording")
 }
 
 // ClickShutter clicks the shutter button.
@@ -1811,7 +1816,7 @@ func (a *App) EnableDocumentMode(ctx context.Context) error {
 	}
 	defer ExpertMenu.Close(ctx, a)
 
-	if enabled, err := a.ToggleEnableDocumentMode(ctx); err != nil {
+	if enabled, err := a.toggleEnableDocumentMode(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable document mode")
 	} else if !enabled {
 		return errors.Wrap(err, "unexpected state after enabling document mode")
@@ -1819,6 +1824,37 @@ func (a *App) EnableDocumentMode(ctx context.Context) error {
 
 	if err := a.WaitForVisibleState(ctx, ScanModeButton, true); err != nil {
 		return errors.Wrap(err, "failed to wait for scan mode button shows up")
+	}
+
+	return nil
+}
+
+// EnableMultiStreamRecording enables recording videos with multiple streams.
+func (a *App) EnableMultiStreamRecording(ctx context.Context) error {
+	if enabled, err := a.ToggleExpertMode(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable expert mode")
+	} else if !enabled {
+		return errors.New("unexpected state after enabling expert mode")
+	}
+
+	if err := MainMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open main menu")
+	}
+	defer MainMenu.Close(ctx, a)
+
+	if err := ExpertMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open expert menu")
+	}
+	defer ExpertMenu.Close(ctx, a)
+
+	if enabled, err := a.toggleMultiStreamRecording(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable multi-stream recording")
+	} else if !enabled {
+		return errors.Wrap(err, "unexpected state after enabling multi-stream recording")
+	}
+
+	if err := a.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for video active")
 	}
 
 	return nil
