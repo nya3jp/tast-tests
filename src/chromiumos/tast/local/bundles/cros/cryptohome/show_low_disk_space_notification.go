@@ -48,10 +48,10 @@ func ShowLowDiskSpaceNotification(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	const notificationWaitTime = 80 * time.Second // Checks for low disk space run once per minute.
-	const notificationID = "low_disk"             // Hardcoded in Chrome.
+	const notificationWaitTime = 150 * time.Second // Timeout for checking for low disk space notification.
+	const notificationID = "low_disk"              // Hardcoded in Chrome.
 
-	s.Log("Waiting for notification")
+	s.Logf("Waiting %d seconds for %v notification", notificationWaitTime/time.Second, notificationID)
 	if _, err := ash.WaitForNotification(ctx, tconn, notificationWaitTime, ash.WaitIDContains(notificationID)); err != nil {
 		// Check if too much space was made available.
 		freeSpace, fErr := disk.FreeSpace(cleanup.UserHome)
