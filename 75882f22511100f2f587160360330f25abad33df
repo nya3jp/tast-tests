@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00246816_727d60e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-09-06T17:20:18Z",
+      "side": 1,
+      "message": "There\u0027s another change recently that\u0027s going to refactor MountVault() to take a struct of name, password, and label, due to the same comments from another tast owner. See https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3096655",
+      "parentUuid": "6161abe6_72f6c6bb",
+      "revId": "75882f22511100f2f587160360330f25abad33df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e576e57b_c7989fea",
