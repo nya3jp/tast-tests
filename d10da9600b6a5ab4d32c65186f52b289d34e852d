@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3497c176_d21ffaa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-06T08:41:39Z",
+      "side": 1,
+      "message": "nit: Call it \"us\" XKB layout, with parentheses \"(US-Qwerty)\", because that\u0027s what the XKB ID is and what it\u0027s actually is. Also, I think this essay should repeat verbosely for each test case, after every opening brace.\n\nAlso, link to an EngProd bug re: \"Tast does not support PK layouts, and always assumes US-Qwerty\". I\u0027m asking to locate it, but to no avail yet. Can ask EngProd to file one officially.",
+      "parentUuid": "b79f4af9_79eae245",
+      "range": {
+        "startLine": 92,
+        "startChar": 25,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5584d7c7_101b7abd",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
         "patchSetId": 4
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "I feel like maybe it is worth keeping them - maybe with a comment that they might be incorrect?\n\nAt least that way we know if things change",
       "parentUuid": "5584d7c7_101b7abd",
+      "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800a0dfc_d32fe07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-06T08:41:39Z",
+      "side": 1,
+      "message": "SGTM. Let\u0027s put a comment, but for each of them. Prefer after each opening brace for clarity.",
+      "parentUuid": "75048097_e8fb027a",
       "revId": "d10da9600b6a5ab4d32c65186f52b289d34e852d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
