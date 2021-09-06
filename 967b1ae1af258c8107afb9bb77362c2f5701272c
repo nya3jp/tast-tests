@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5be34c1_843553fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T03:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df4be78_66ea5bea",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "967b1ae1af258c8107afb9bb77362c2f5701272c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb29be0c_f3677388",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-09-03T05:28:15Z",
       "side": 1,
       "message": "nit: I\u0027d inline the pollOpt. It\u0027s only used once, and I feel directly putting the literal in WithPollOpts is slightly slightly improves readability.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "967b1ae1af258c8107afb9bb77362c2f5701272c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4927075c_334b1126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T03:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb29be0c_f3677388",
       "range": {
         "startLine": 124,
         "startChar": 1,
