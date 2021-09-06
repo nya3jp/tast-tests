@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a73e00b9_71d3699b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-06T07:26:45Z",
+      "side": 1,
+      "message": "Well, I think you already updated this part in the previous CL (https://crrev.com/c/3114866).\nSo the base CL already doesn\u0027t depend on ui. I think you can just keep the change in this CL, so that the diff between the base CL and this CL in this part is zero.",
+      "parentUuid": "4d65a2de_0c6ad69e",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 112,
+        "endChar": 45
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "101d6e00_2d8db727",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 3
