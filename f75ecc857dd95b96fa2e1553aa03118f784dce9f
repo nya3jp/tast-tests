@@ -16,6 +16,24 @@
       "message": "This removal of the empty line not seems to be intentional. ditto for others",
       "revId": "f75ecc857dd95b96fa2e1553aa03118f784dce9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a538a544_cc46a650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T06:33:46Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "baf6d5a8_a1e0042c",
+      "revId": "f75ecc857dd95b96fa2e1553aa03118f784dce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
