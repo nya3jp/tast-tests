@@ -17,18 +17,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     GuestPlayStore,
-		Desc:     "Check PlayStore is Off in Guest mode",
-		Contacts: []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Func:         GuestPlayStore,
+		Desc:         "Check PlayStore is Off in Guest mode",
+		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedInGuest",
+		Timeout:      chrome.LoginTimeout + arc.BootTimeout + 30*time.Second,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p", "chrome"},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: chrome.LoginTimeout + arc.BootTimeout + 30*time.Second,
-		Attr:    []string{"group:mainline", "informational", "group:arc-functional"},
-		Fixture: "chromeLoggedInGuest",
 	})
 }
 
