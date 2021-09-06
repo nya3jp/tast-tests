@@ -760,38 +760,33 @@ func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		if rightWInfo.State != ash.WindowStateRightSnapped {
 			return errors.Errorf("invalid window state: got %q; want RightSnapped", rightWInfo.State)
 		}
+
+		pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return err
+		}
+
+		leftWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc app window info for left activity")
+		}
+
+		lWant := coords.NewRect(0, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+
+		if leftWInfo.BoundsInRoot != lWant {
+			return errors.Errorf("invalid snapped to the left activity bounds: got %+v; want %+v",
+				leftWInfo.BoundsInRoot, lWant)
+		}
+
+		rWant := coords.NewRect(pdInfo.WorkArea.Width/2, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+
+		if !coords.CompareBoundsWithMargin(rightWInfo.BoundsInRoot, rWant, 1 /* margin */) {
+			return errors.Errorf("invalid snapped to the right activity bounds: got %+v; want %+v",
+				rightWInfo.BoundsInRoot, rWant)
+		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return err
-	}
-
-	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return err
-	}
-
-	leftWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for left activity")
-	}
-
-	rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for right activity")
-	}
-
-	lWant := coords.NewRect(0, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
-
-	if leftWInfo.BoundsInRoot != lWant {
-		return errors.Errorf("invalid snapped to the left activity bounds: got %+v; want %+v",
-			leftWInfo.BoundsInRoot, lWant)
-	}
-
-	rWant := coords.NewRect(pdInfo.WorkArea.Width/2, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
-
-	if rightWInfo.BoundsInRoot != rWant {
-		return errors.Errorf("invalid snapped to the right activity bounds: got %+v; want %+v",
-			rightWInfo.BoundsInRoot, rWant)
 	}
 
 	return nil
