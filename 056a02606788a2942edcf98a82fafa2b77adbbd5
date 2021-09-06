@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10a3e443_070e77d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T02:44:15Z",
+      "side": 1,
+      "message": "Change for EnsureGoneFor has been merged. I think now we can rewrite this patch to use it.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3122648",
+      "revId": "056a02606788a2942edcf98a82fafa2b77adbbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cf03c74_a5904205",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 6
