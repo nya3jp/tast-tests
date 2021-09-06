@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -96,14 +97,22 @@ func FullscreenAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to type fullscreen hotkey: ", err)
 			}
 
-			// Check whether the browser is currently in full screen mode.
-			if err := conn.Eval(ctx, `window.innerHeight == screen.availHeight`, &isFullScreen); err != nil {
-				s.Fatal("Failed to execute JS expression: ", err)
+			// Wait for full screen to happen
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				// Check whether the browser is currently in full screen mode.
+				if err := conn.Eval(ctx, `window.innerHeight == screen.availHeight`, &isFullScreen); err != nil {
+					s.Fatal("Failed to execute JS expression: ", err)
+				}
+				if isFullScreen != param.wantFullscreenEnabled {
+					s.Errorf("Unexpected full screen state: got %v, want %v", isFullScreen, param.wantFullscreenEnabled)
+				}
+				return nil
+			}, &testing.PollOptions{
+				Timeout:  5 * time.Second,
+				Interval: 1 * time.Second,
+			}); err != nil {
+				s.Error("Polling for having full screen failed")
 			}
-			if isFullScreen != param.wantFullscreenEnabled {
-				s.Errorf("Unexpected full screen state: got %v, want %v", isFullScreen, param.wantFullscreenEnabled)
-			}
-
 		})
 	}
 }
