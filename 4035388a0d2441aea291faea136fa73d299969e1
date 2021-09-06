@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0491f709_1746d587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-06T03:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81da1d7e_234363cf",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "4035388a0d2441aea291faea136fa73d299969e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74465d05_d6bb286e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaff9cc3_910bcde7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-06T03:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74465d05_d6bb286e",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "4035388a0d2441aea291faea136fa73d299969e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77750e00_b28c793d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-04T06:21:17Z",
       "side": 1,
       "message": "It is worth commenting to call attention to the `err \u003d\u003d nil` check.\nsee https://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#concision",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "4035388a0d2441aea291faea136fa73d299969e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c760cd_e3634c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-06T03:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77750e00_b28c793d",
       "range": {
         "startLine": 82,
         "startChar": 6,
