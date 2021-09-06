@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ca93088_267da5ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-06T05:48:32Z",
+      "side": 1,
+      "message": "How about \u0027CrOSFactory\u0027 or just \u0027Factory\u0027 (as the page title is \"CrOS Factory\")?",
+      "parentUuid": "fba62098_91b9842d",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0000d72b_91eb5127",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/browser.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-04T08:08:02Z",
       "side": 1,
       "message": "Is it JSON output? Could we use JSON library to handle the output?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0298de80_21d8a281",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-06T05:48:32Z",
+      "side": 1,
+      "message": "Sure, will do it.",
+      "parentUuid": "0000d72b_91eb5127",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c811f73_c5f1a1ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-06T05:48:32Z",
+      "side": 1,
+      "message": "I found other \"pre\" packages in camera and firmware remote test packages, so I think this is the convention in Tast-test.",
+      "parentUuid": "952ba399_bad5146c",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b398ec1d_2efe4ee8",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-04T08:08:02Z",
       "side": 1,
       "message": "How ppl in golang world naming this? Does they prefer toolkitPrecondition?",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291bd4d1_43423d8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-06T05:48:32Z",
+      "side": 1,
+      "message": "There is no list for the abbreviation using \"Pre\" on most of the go community (I only found it in some Tast files). However, consider it is under the Tast and under the \"per\" package, I think using toolKitPre would be better.",
+      "parentUuid": "b398ec1d_2efe4ee8",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -165,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dce1201_472eac74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-06T05:48:32Z",
+      "side": 1,
+      "message": "That sounds reasonable, I will do the uninstallation in Close. The Close function is only called once during the whole test with this Precondition.",
+      "parentUuid": "21854209_1a26ac33",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c877092_4796835c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
         "patchSetId": 1
@@ -176,6 +296,30 @@
       "writtenOn": "2021-09-04T08:08:02Z",
       "side": 1,
       "message": "it seem factory tool will enable by default. Do we break other Tast test if we don\u0027t disable and uninstall it?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fa08aa_6924dc39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-06T05:48:32Z",
+      "side": 1,
+      "message": "Could be, but as we are going to uninstall the toolkit at the \"Close\" call, which is called at the end of the last test which requires this test, I think the DUT state is restored and should not affect other tests.",
+      "parentUuid": "2c877092_4796835c",
       "range": {
         "startLine": 73,
         "startChar": 1,
