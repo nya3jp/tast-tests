@@ -66,13 +66,18 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithInterval(time.Second)
 	//TODO(crbug/1146196) Remove retry after Downloads mounting issue fixed.
 	// Setup the test image.
-	testFileLocation := filepath.Join(filesapp.DownloadPath, testFile)
+
+	// Use the test name to unique name the local test image file.
+	// Otherwise the following tests sharing the same Chrome session might have name conflicts.
+	// e.g. http://b/198381192.
+	localFile := "launch_gallery" + testFile
+	localFileLocation := filepath.Join(filesapp.DownloadPath, localFile)
 	if err := ui.Retry(10, func(context.Context) error {
-		return fsutil.CopyFile(s.DataPath(testFile), testFileLocation)
+		return fsutil.CopyFile(s.DataPath(testFile), localFileLocation)
 	})(ctx); err != nil {
-		s.Fatalf("Failed to copy the test image to %s: %s", testFileLocation, err)
+		s.Fatalf("Failed to copy the test image to %s: %s", localFileLocation, err)
 	}
-	defer os.Remove(testFileLocation)
+	defer os.Remove(localFileLocation)
 
 	// SWA installation is not guaranteed during startup.
 	// Using this wait to check installation finished before starting test.
@@ -89,8 +94,8 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("open Downloads folder and double click file to launch Gallery",
 		files.OpenDownloads(),
-		files.WithTimeout(30*time.Second).WaitForFile(testFile),
-		files.OpenFile(testFile),
+		files.WithTimeout(30*time.Second).WaitForFile(localFile),
+		files.OpenFile(localFile),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open file in Downloads: ", err)
 	}
@@ -103,7 +108,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
 	ui = uiauto.New(tconn).WithTimeout(time.Minute)
-	imageElementFinder := nodewith.Role(role.Image).Name(testFile).Ancestor(galleryapp.RootFinder)
+	imageElementFinder := nodewith.Role(role.Image).Name(localFile).Ancestor(galleryapp.RootFinder)
 	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
 		s.Fatal("Failed to render Gallery: ", err)
 	}
