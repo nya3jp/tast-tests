@@ -18,12 +18,13 @@ func init() {
 		Func:         AppValidity,
 		Desc:         "Validity check of starting a simple app",
 		Contacts:     []string{"oka@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
