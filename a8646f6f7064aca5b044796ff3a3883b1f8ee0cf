@@ -22,6 +22,30 @@
       },
       "revId": "a8646f6f7064aca5b044796ff3a3883b1f8ee0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8e2f82_77c42c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T07:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd137b7c_4b269180",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "a8646f6f7064aca5b044796ff3a3883b1f8ee0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
