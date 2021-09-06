@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74df1c21_d173ea6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-06T06:01:52Z",
+      "side": 1,
+      "message": "Please update the summary to be more specific.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "3f68cde1dc943383c8342c668b55f5a899fa7c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff18d2fe_9aa52d8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
         "patchSetId": 7
