@@ -273,8 +273,22 @@ func (c *exposureTimeControl) getSettingRange(capabilities *mediaTrackCapabiliti
 
 func (c *exposureTimeControl) getValidTestValues(r mediaSettingRange) []float64 {
 	// Chrome treat the track as invalid if frame duration is too large.
-	// Only tests reasonable exposure time. for 15, 24 and 30 fps.
-	return []float64{333.0, 416.0, 666.0}
+	// Only tests reasonable exposure time for 15, 24, 30 and 60 fps and minimum value.
+	// If max value is less than the exposure time of 15 FPS(666.0), we also test it.
+	// Theoretical exposure time for 60, 30, 24, 15 fps:
+	// The unit is 100 us.
+	testValues := []float64{166.0, 333.0, 416.0, 666.0}
+	validTestValues := []float64{r.Min}
+	if r.Max < 666.0 {
+		validTestValues = append(validTestValues, r.Max)
+	}
+	for _, v := range testValues {
+		if v >= r.Min && v <= r.Max {
+			// Get valid value from step and min.
+			validTestValues = append(validTestValues, r.Min+r.Step*math.Round((v-r.Min)/r.Step))
+		}
+	}
+	return validTestValues
 }
 
 func (c *exposureTimeControl) getTolerance() float64 {
@@ -683,8 +697,10 @@ func verifyControl(ctx context.Context, s *testing.State, conn *chrome.Conn, con
 	var testValues []float64
 	if isValid {
 		testValues = control.getValidTestValues(r)
+		s.Logf("Test valid values %v ", testValues)
 	} else {
 		testValues = control.getInvalidTestValues(r)
+		s.Logf("Test invalid values %v ", testValues)
 	}
 	for _, value := range testValues {
 		settings, err := getMediaTrackSettings(ctx, conn)
