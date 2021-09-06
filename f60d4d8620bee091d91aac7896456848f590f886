@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0ce62d_ca48662e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T06:45:25Z",
+      "side": 1,
+      "message": "\"ui-independent\" may be difficult to understand who did not handle this migration. So I suggest \"a new version of the function in ui.go using the functions in uiauto package\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 99,
+        "endLine": 9,
+        "endChar": 134
+      },
+      "revId": "f60d4d8620bee091d91aac7896456848f590f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7e2c1a_04034f5a",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T06:45:25Z",
+      "side": 1,
+      "message": "[optional]\n\"ui dependency\" may look ambiguous. I suggest \"using functions in uiauto/ package\" as an alternative option.\n(but I think this is no big problem as this comment will be rewritten again by the renaming change later)",
+      "range": {
+        "startLine": 51,
+        "startChar": 44,
+        "endLine": 51,
+        "endChar": 74
+      },
+      "revId": "f60d4d8620bee091d91aac7896456848f590f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
