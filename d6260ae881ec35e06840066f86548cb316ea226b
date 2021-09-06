@@ -39,6 +39,30 @@
       },
       "revId": "d6260ae881ec35e06840066f86548cb316ea226b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be827080_dbb050cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/web_handwriting_recognition_not_supported.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-09-06T02:02:31Z",
+      "side": 1,
+      "message": "Thanks for catching this :)\n\nI made a mistake when first changing this. The correct logic should be:\nif (both query methods) or (the create method) isn\u0027t defined, throw an error.\n\nUpdated both files.",
+      "parentUuid": "a392b406_aa0ea44c",
+      "range": {
+        "startLine": 14,
+        "startChar": 57,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "d6260ae881ec35e06840066f86548cb316ea226b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
