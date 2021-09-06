@@ -16,6 +16,24 @@
       "message": "lgtm from a tast owner side, but please get a team member +2 first.",
       "revId": "8c6e518f10ef13cfc2ea10cb45f0703f6d20140c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a20a02_cec6be81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-06T00:23:56Z",
+      "side": 1,
+      "message": "Hi Judy,\n\nWe dont have +2 code review permissions.\n\nThanks,\nJilani",
+      "parentUuid": "7a3d39a1_3987ba8c",
+      "revId": "8c6e518f10ef13cfc2ea10cb45f0703f6d20140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
