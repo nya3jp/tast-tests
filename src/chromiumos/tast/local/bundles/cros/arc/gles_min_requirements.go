@@ -31,11 +31,12 @@ func init() {
 		Func:         GLESMinRequirements,
 		Desc:         "Checks whether the OpenGL ES minimun requirements are satisfied",
 		Contacts:     []string{"ricardo@chromium.org", "arc-gaming+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
