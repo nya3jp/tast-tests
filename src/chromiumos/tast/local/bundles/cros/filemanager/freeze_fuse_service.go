@@ -21,8 +21,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	fmpb "chromiumos/tast/services/cros/filemanager"
 	"chromiumos/tast/testing"
 )
@@ -106,25 +107,21 @@ func (f *FreezeFUSEService) TestMountZipAndSuspend(ctx context.Context, request 
 	}
 	defer files.Close(cleanupCtx)
 
-	if err := files.OpenDownloads(ctx); err != nil {
+	if err := files.OpenDownloads()(ctx); err != nil {
 		return nil, errors.Wrap(err, "could not open Downloads folder")
 	}
 
 	// Wait for the zip file to show up in the UI.
-	if err := files.WaitForFile(ctx, zipFile, 3*time.Minute); err != nil {
+	if err := files.WithTimeout(3 * time.Minute).WaitForFile(zipFile)(ctx); err != nil {
 		return nil, errors.Wrap(err, "Waiting for test ZIP file failed")
 	}
 
-	if err := files.OpenFile(ctx, zipFile); err != nil {
+	if err := files.OpenFile(zipFile)(ctx); err != nil {
 		return nil, errors.Wrap(err, "Opening ZIP file failed")
 	}
 
-	params := ui.FindParams{
-		Name: "Files - " + zipFile,
-		Role: ui.RoleTypeRootWebArea,
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, time.Minute); err != nil {
+	node := nodewith.Name("Files - " + zipFile).Role(role.RootWebArea)
+	if err := files.WithTimeout(time.Minute).WaitUntilExists(node)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "Mounting ZIP file %q failed", zipFile)
 	}
 
