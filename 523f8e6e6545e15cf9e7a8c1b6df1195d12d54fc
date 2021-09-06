@@ -63,6 +63,30 @@
       },
       "revId": "523f8e6e6545e15cf9e7a8c1b6df1195d12d54fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69bda12_75b2d607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T03:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3d48e02_9f174ff8",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "523f8e6e6545e15cf9e7a8c1b6df1195d12d54fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
