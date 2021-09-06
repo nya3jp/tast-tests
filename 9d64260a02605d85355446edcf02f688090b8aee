@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a07e6e_e19d83a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-06T23:27:02Z",
+      "side": 1,
+      "message": "Could you try WaitUntilExists to replace polling, because I think WaitUntilExists waits until exactly one element matches the query?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "9d64260a02605d85355446edcf02f688090b8aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
