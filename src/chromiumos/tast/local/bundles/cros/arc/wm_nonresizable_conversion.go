@@ -283,13 +283,18 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 		return err
 	}
 
-	// Get display orientation in tablet mode.
-	tabletModeDO, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get display orientation in tablet mode.
+		tabletModeDO, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if tabletModeDO.Type != desiredOrientationInTabletMode {
+			return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tabletModeDO.Type, desiredOrientationInTabletMode)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return err
-	}
-	if tabletModeDO.Type != desiredOrientationInTabletMode {
-		return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tabletModeDO.Type, desiredOrientationInTabletMode)
 	}
 
 	// Disable tablet mode.
@@ -308,13 +313,18 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 		return err
 	}
 
-	// Get display orientaiton after switching to clamshell mode.
-	clamshellDO, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get display orientaiton after switching to clamshell mode.
+		clamshellDO, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if clamshellDO.Type != originalDO.Type {
+			return errors.Errorf("invalid display orientation after switching back to clamshell, got: %q, want: %q", clamshellDO.Type, originalDO.Type)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return err
-	}
-	if clamshellDO.Type != originalDO.Type {
-		return errors.Errorf("invalid display orientation after switching back to clamshell, got: %q, want: %q", clamshellDO.Type, originalDO.Type)
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
