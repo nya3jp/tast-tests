@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26bd555_dcfd70ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T05:25:11Z",
+      "side": 1,
+      "message": "jboulic@, will you see if this addresses the issue that you once handled, like in the patch base?\n\nThe LeftClick() in uiauto/ library first waits until the location of the clicked object stabilizes. It also tolerates when the item not exist for a sort time at the beginning. So I thought the polling in the existing code may not be needed.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d206;drc\u003d28110f1aee355048d02689ddeb0cb5cb7a0f1c37",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "502d7b5b001cf9e804ead44c28088bd4e2bdca81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
