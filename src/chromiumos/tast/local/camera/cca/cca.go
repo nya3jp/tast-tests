@@ -1274,6 +1274,11 @@ func (a *App) CheckMetadataVisibility(ctx context.Context, enabled bool) error {
 	return nil
 }
 
+// ToggleGifRecording
+func (a *App) ToggleGifRecording(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "enable-gif-recording", "#expert-enable-gif-recording")
+}
+
 // ToggleShowMetadata toggles show metadata and returns whether it's enabled after toggling.
 func (a *App) ToggleShowMetadata(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "show-metadata", "#expert-show-metadata")

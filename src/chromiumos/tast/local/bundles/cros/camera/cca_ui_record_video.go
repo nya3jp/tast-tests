@@ -174,6 +174,8 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		run   func(context.Context, *cca.App) error
 		timer cca.TimerState
 	}{
+		{"testGifRecordingWithTimer", testGifRecording, cca.TimerOn},
+		{"testGifRecording", testGifRecording, cca.TimerOff},
 		{"testRecordVideoWithWindowChanged", testRecordVideoWithWindowChanged, cca.TimerOff},
 		{"testVideoProfile", testVideoProfile, cca.TimerOff},
 		{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
@@ -182,6 +184,9 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		{"testStopInPause", testStopInPause, cca.TimerOff},
 		{"testPauseResume", testPauseResume, cca.TimerOff},
 	} {
+		if tc.name != "testGifRecordingWithTimer" && tc.name != "testGifRecording" {
+			continue
+		}
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.name, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
@@ -225,9 +230,73 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		cancel()
 	}
 
-	if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb); err != nil {
-		s.Fatal("Failed for confirm dialog test: ", err)
+	if false {
+		if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb); err != nil {
+			s.Fatal("Failed for confirm dialog test: ", err)
+		}
 	}
+}
+
+func testGifRecording(ctx context.Context, app *cca.App) error {
+	if err := toggleExpertMode(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to toggle expert mode")
+	}
+	defer toggleExpertMode(ctx, app)
+	if err := toggleExpertModeOptions2(ctx, app); err != nil {
+		return errors.Wrap(err, "failed to turn on gif recording")
+	}
+	defer toggleExpertModeOptions2(ctx, app)
+
+	if err := app.TriggerConfiguration(ctx, func() error {
+		testing.ContextLog(ctx, "Switch to video mode")
+		if err := app.SwitchMode(ctx, cca.Video); err != nil {
+			return err
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Test early cancel")
+	testing.ContextLog(ctx, "Click on start shutter")
+	if err := app.ClickShutter(ctx); err != nil {
+		return err
+	}
+
+	testing.Sleep(ctx, 3*time.Second)
+
+	testing.ContextLog(ctx, "Click on stop shutter")
+	if err := app.ClickShutter(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Test cancel with 5 sec timeout")
+	testing.ContextLog(ctx, "Click on start shutter")
+	if err := app.ClickShutter(ctx); err != nil {
+		return err
+	}
+
+	if err := app.WaitForState(ctx, "taking", false); err != nil {
+		return errors.Wrap(err, "shutter is not ended")
+	}
+	return nil
+}
+
+func toggleExpertModeOptions2(ctx context.Context, app *cca.App) error {
+	if err := cca.MainMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.MainMenu.Close(ctx, app)
+
+	if err := cca.ExpertMenu.Open(ctx, app); err != nil {
+		return err
+	}
+	defer cca.ExpertMenu.Close(ctx, app)
+
+	if _, err := app.ToggleGifRecording(ctx); err != nil {
+		return err
+	}
+	return nil
 }
 
 func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
