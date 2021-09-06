@@ -9,13 +9,14 @@ import (
 	"context"
 	"io"
 	"io/ioutil"
+	"net"
 	"os"
+	"sync"
 	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/policyutil"
@@ -58,6 +59,11 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 		// options to run packet capture with.
 		options       map[string]dbus.Variant
 		expectSuccess bool
+		// The size in MiBs of the network operation the packets will be captured from.
+		captureSize int
+		// Output file size limit in MiBs. Zero if there's no size limit.
+		// Use MiBs to be compatible with packet capture DBus inputs and make tests more readable.
+		maxFileSize int64
 	}{
 		{
 			name:      "unallowed_by_policy",
@@ -65,6 +71,8 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			options: map[string]dbus.Variant{
 				"device": (dbus.MakeVariant("lo"))},
 			expectSuccess: false,
+			captureSize:   5,
+			maxFileSize:   0,
 		},
 		{
 			name:      "successful_device_based_capture",
@@ -72,12 +80,16 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			options: map[string]dbus.Variant{
 				"device": (dbus.MakeVariant("lo"))},
 			expectSuccess: true,
+			captureSize:   5,
+			maxFileSize:   0,
 		},
 		{
 			name:          "empty_arguments",
 			policyVal:     &policy.DeviceDebugPacketCaptureAllowed{Val: true},
 			options:       map[string]dbus.Variant{},
 			expectSuccess: false,
+			captureSize:   5,
+			maxFileSize:   0,
 		},
 		{
 			name:      "wrong_device",
@@ -85,6 +97,27 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			options: map[string]dbus.Variant{
 				"device": (dbus.MakeVariant("fake_device"))},
 			expectSuccess: false,
+			captureSize:   5,
+			maxFileSize:   0,
+		},
+		{
+			name:      "high_volume_capture",
+			policyVal: &policy.DeviceDebugPacketCaptureAllowed{Val: true},
+			options: map[string]dbus.Variant{
+				"device": (dbus.MakeVariant("lo"))},
+			expectSuccess: true,
+			captureSize:   500,
+			maxFileSize:   0,
+		},
+		{
+			name:      "max_size_option",
+			policyVal: &policy.DeviceDebugPacketCaptureAllowed{Val: true},
+			options: map[string]dbus.Variant{
+				"device":   (dbus.MakeVariant("lo")),
+				"max_size": (dbus.MakeVariant(5))},
+			expectSuccess: true,
+			captureSize:   15,
+			maxFileSize:   5,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -119,7 +152,6 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create status pipe: ", err)
 			}
 
-			testing.ContextLog(ctx, "Making packet capture D-Bus call")
 			handle, err := dbg.PacketCaptureStart(ctx, of, writePipe, param.options)
 
 			if err == nil && !param.expectSuccess {
@@ -142,31 +174,32 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 				s.Fatal("PacketCaptureStart DBus call failed to start packet capture process: ", err)
 			}
 
-			testing.ContextLog(ctx, "Performing simple network operation. This will take a few seconds")
-			// Perform a network operation to capture the packets.
-			err = testexec.CommandContext(ctx, "ping", "-c", "15", "www.google.com").Run()
-			if err != nil {
-				s.Error("Ping command failed: ", err)
-			}
-
 			// Notification ID of the packet capture notification. It is hard-coded in Chrome as
 			// DebugdNotificationHandler::kPacketCaptureNotificationId.
 			notificationID := "debugd-packetcapture"
 
 			// A notification must be shown after packet capture starts successfully.
-			testing.ContextLog(ctx, "Checking if packet capture notification is visible")
+			s.Log("Checking if packet capture notification is visible")
 			if _, err = ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(notificationID)); err != nil {
 				s.Error("Packet capture notification is not visible")
 			}
 
-			testing.ContextLog(ctx, "Stopping packet capture")
+			// Perform network operation to capture packets.
+			s.Log("Performing simple network operation. This will take a few seconds")
+			var wg sync.WaitGroup
+			wg.Add(2)
+			port := "localhost:12121"
+			go listener(port, &wg, s)
+			go dialer(port, param.captureSize, &wg, s)
+			wg.Wait()
+
 			// Stop packet capture.
-			if err := dbg.PacketCaptureStop(ctx, handle); err != nil {
+			if err = dbg.PacketCaptureStop(ctx, handle); err != nil {
 				s.Error("PacketCaptureStop DBus call failed: ", err)
 			}
 
 			// Notification must be gone after the packet capture is stopped.
-			testing.ContextLog(ctx, "Checking if packet capture notification is gone")
+			s.Log("Checking if packet capture notification is gone")
 			if ash.WaitUntilNotificationGone(ctx, tconn, 5*time.Second, ash.WaitIDContains(notificationID)) != nil {
 				s.Error("Notification isn't gone after stopping packet capture")
 			}
@@ -176,9 +209,58 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Can't get output file status information: ", err)
 			}
-			if fi.Size() == 0 {
+			fs := fi.Size()
+			if fs == 0 {
 				s.Error("Output file is empty. Couldn't capture any packets")
+				return
+			}
+			// Convert the file size into MiBs.
+			fs = fs / (1024 * 1024)
+			if param.maxFileSize != 0 && fs > param.maxFileSize {
+				s.Error("Output file exceeded size limit")
 			}
 		})
+	}
+}
+
+// listener listens to the tcp connection on given port.
+func listener(port string, wg *sync.WaitGroup, s *testing.State) {
+	defer wg.Done()
+
+	lstnr, err := net.Listen("tcp", port)
+	if err != nil {
+		s.Error("Can't listen to tcp port: ", err)
+	}
+	defer lstnr.Close()
+
+	conn, err := lstnr.Accept()
+	if err != nil {
+		s.Error("Can't create connection to listen localhost port: ", err)
+	}
+	defer conn.Close()
+
+	// Read the data in the socket.
+	var buf bytes.Buffer
+	_, err = io.Copy(&buf, conn)
+	if err != nil {
+		s.Error("Can't read data from localhost tcp port: ", err)
+	}
+}
+
+// dialer sends <size> MiBs of data to given tcp port to imitate network operation on device.
+func dialer(port string, size int, wg *sync.WaitGroup, s *testing.State) {
+	defer wg.Done()
+	var dlr net.Dialer
+	conn, err := dlr.Dial("tcp", port)
+	if err != nil {
+		s.Fatal("Can't dial localhost tcp port: ", err)
+		return
+	}
+	defer conn.Close()
+	mb := 1024 * size
+	for i := 0; i < mb; i++ {
+		if _, err := conn.Write(make([]byte, 1024)); err != nil {
+			s.Error("Can't write to localhost tcp port: ", err)
+		}
 	}
 }
