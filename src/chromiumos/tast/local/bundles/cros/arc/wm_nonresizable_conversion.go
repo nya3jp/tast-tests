@@ -274,8 +274,13 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 	if err != nil {
 		return err
 	}
-	if tabletModeDO.Type != desiredOrientationInTabletMode {
-		return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tabletModeDO.Type, desiredOrientationInTabletMode)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if tabletModeDO.Type != desiredOrientationInTabletMode {
+			return errors.Errorf("invalid display orientation in tablet mode, got: %q, want: %q", tabletModeDO.Type, desiredOrientationInTabletMode)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return nil
 	}
 
 	// Disable tablet mode.
@@ -299,8 +304,13 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 	if err != nil {
 		return err
 	}
-	if clamshellDO.Type != originalDO.Type {
-		return errors.Errorf("invalid display orientation after switching back to clamshell, got: %q, want: %q", clamshellDO.Type, originalDO.Type)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if clamshellDO.Type != originalDO.Type {
+			return errors.Errorf("invalid display orientation after switching back to clamshell, got: %q, want: %q", clamshellDO.Type, originalDO.Type)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return nil
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
