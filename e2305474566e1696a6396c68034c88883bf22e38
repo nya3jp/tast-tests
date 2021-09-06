@@ -81,6 +81,30 @@
       },
       "revId": "e2305474566e1696a6396c68034c88883bf22e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287b6002_c589e073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-09-06T10:32:25Z",
+      "side": 1,
+      "message": "ah, that makes sense. This seems like a reasonable fix then. But can you mention LaunchGalleryNotification and the explanation here in the CL description? I think that\u0027s key to why this fix works.\n\nI read up on how `defer` works though - I don\u0027t think it can be \"skipped\" or delayed - so long as the `defer` line runs and the function returns a value. (but I still don\u0027t have a better explanation 😊",
+      "parentUuid": "7a96a987_22d8359d",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "e2305474566e1696a6396c68034c88883bf22e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
