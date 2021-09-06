@@ -28,10 +28,11 @@ func init() {
 		Contacts: []string{"khmel@google.com",
 			"alanding@google.com",
 			"arc-performance@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
