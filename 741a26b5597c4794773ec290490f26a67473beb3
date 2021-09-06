@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304dfc8b_777e98ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-06T04:46:52Z",
+      "side": 1,
+      "message": "Is the ending period redundant?",
+      "range": {
+        "startLine": 276,
+        "startChar": 39,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "741a26b5597c4794773ec290490f26a67473beb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718f8588_8b6371ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-06T04:46:52Z",
+      "side": 1,
+      "message": "Add a comment\n\n// Theoretical exposure time for 60, 30, 24, 15 fps:\n\nAlso, what\u0027s the unit of the exposure time? For 1/15 fps video, the exposure time shall be 1/30 second for best motion behavior (according to consumer grade\u0027s camcorder guideline).\n\nIf we choose the exposure time 1/15 second then it should be 0.01666 seconds \u003d 66.6 millisecond. Curious how the current value of 666.0 here?",
+      "revId": "741a26b5597c4794773ec290490f26a67473beb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
