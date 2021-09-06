@@ -886,7 +886,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		dispInfo, err := display.GetInternalInfo(ctx, tconn)
+		dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
 			return err
 		}
