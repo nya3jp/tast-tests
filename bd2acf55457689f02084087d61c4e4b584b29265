@@ -33,6 +33,24 @@
       "message": "end comment with .",
       "revId": "bd2acf55457689f02084087d61c4e4b584b29265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28a557f_4e171909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-06T13:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68168a4_0d0fe811",
+      "revId": "bd2acf55457689f02084087d61c4e4b584b29265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
