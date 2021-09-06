@@ -21,7 +21,7 @@ func init() {
 		Func:         FontSharing,
 		Desc:         "Test that font-sharing from Chrome OS to ARC works",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
 		Timeout:      10 * time.Minute,
