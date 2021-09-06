@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -99,12 +99,12 @@ func ChromeCrash(ctx context.Context, s *testing.State) {
 	// Chrome crash should result in Android reboot.
 	s.Log("Inducing chrome crash")
 
-	chromePID, err := chromeproc.GetRootPID()
+	proc, err := ashproc.Root()
 	if err != nil {
-		s.Fatal("Failed to get chrome PID: ", err)
+		s.Fatal("Failed to get chrome proc: ", err)
 	}
-	if err := syscall.Kill(chromePID, syscall.SIGSEGV); err != nil {
-		s.Fatal("Failed to kill chrome: ", err)
+	if err := proc.SendSignalWithContext(ctx, syscall.SIGSEGV); err != nil {
+		s.Fatal("Failed to crash chrome: ", err)
 	}
 
 	s.Log("Waiting for a new Android init process")

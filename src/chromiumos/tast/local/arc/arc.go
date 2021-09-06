@@ -16,15 +16,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/caller"
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -380,7 +378,7 @@ func VMEnabled() (bool, error) {
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
 func ensureARCEnabled() error {
-	args, err := getChromeArgs()
+	args, err := chromeArgs()
 	if err != nil {
 		return errors.Wrap(err, "failed getting Chrome args")
 	}
@@ -395,7 +393,7 @@ func ensureARCEnabled() error {
 
 // isPlayStoreEnabled returns true when Play Store is enabled i.e. chrome.ARCSupported is passed.
 func isPlayStoreEnabled() (bool, error) {
-	args, err := getChromeArgs()
+	args, err := chromeArgs()
 	if err != nil {
 		return false, errors.Wrap(err, "failed getting Chrome args")
 	}
@@ -408,13 +406,9 @@ func isPlayStoreEnabled() (bool, error) {
 	return true, nil
 }
 
-// getChromeArgs returns command line arguments of the Chrome browser process.
-func getChromeArgs() ([]string, error) {
-	pid, err := chromeproc.GetRootPID()
-	if err != nil {
-		return nil, err
-	}
-	proc, err := process.NewProcess(int32(pid))
+// chromeArgs returns command line arguments of the Chrome browser process.
+func chromeArgs() ([]string, error) {
+	proc, err := ashproc.Root()
 	if err != nil {
 		return nil, err
 	}
