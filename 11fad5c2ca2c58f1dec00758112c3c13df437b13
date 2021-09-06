@@ -39,6 +39,30 @@
       },
       "revId": "11fad5c2ca2c58f1dec00758112c3c13df437b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1e3cac_6565abc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-09-06T06:49:32Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t consider that cases. I updated the code with handing them.",
+      "parentUuid": "6575b5d0_cea907b3",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "11fad5c2ca2c58f1dec00758112c3c13df437b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
