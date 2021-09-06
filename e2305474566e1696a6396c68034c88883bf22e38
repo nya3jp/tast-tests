@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f08f8cd2_0e674174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-06T07:21:40Z",
+      "side": 1,
+      "message": "Good suggestion. I will do it in a later cl.",
+      "parentUuid": "8705515d_e22af7ff",
+      "revId": "e2305474566e1696a6396c68034c88883bf22e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "21fd9441_3d493133",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-06T06:44:47Z",
       "side": 1,
       "message": "I\u0027m not sure I draw the same conclusions regarding how the extra file comes about. But I don\u0027t have a better conclusion 😊.\n\n (i.e. the `\n\t\tfiles.OpenFile(testFile),\n\t\t\nline is opening a constant string - I don\u0027t get how it\u0027s possible for a different string to appear in the a11y tree).\n\nIt made me think that maybe there\u0027s something weird happening with the `ui.Retry` here -- i.e. maybe the \"retry\" here is disguising the real failure.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "e2305474566e1696a6396c68034c88883bf22e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a96a987_22d8359d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-06T07:21:40Z",
+      "side": 1,
+      "message": "In reality, this test is not flaky. It is pretty stable. However, the image is removed in the defer function os.Remove(localFileLocation).\n\nIn LaunchGalleryNotification, it downloads the image from notification and name it automatically. For unknown reason (I guess it is because this test has not removed the file from disk), the download names the file with suffix (1). \n\nThe retry used here is to copy the test file from linux user to CrOS user home. It should overwrite the destination even if a file exists.",
+      "parentUuid": "21fd9441_3d493133",
       "range": {
         "startLine": 75,
         "startChar": 11,
