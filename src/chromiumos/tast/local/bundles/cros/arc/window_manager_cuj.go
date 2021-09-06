@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/settings"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -867,12 +866,6 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 // wmSnapping verifies that a window can be snapped as defined in:
 // go/arc-wm-p "Clamshell: Snapping to half screen" (slide #27).
 func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return err
-	}
-	defer kb.Close()
-
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
@@ -887,9 +880,9 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		return err
 	}
 
-	// Snap to left edge.
-	if err := kb.Accel(ctx, "Alt+["); err != nil {
-		return err
+	// Snap the activity to the left.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventSnapLeft); err != nil {
+		return errors.Wrapf(err, "failed to left snap %s", wm.Pkg24)
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
