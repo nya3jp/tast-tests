@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6690a5cf_0a96bed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-09-06T06:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b66674d_335b516d",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 23
+      },
+      "revId": "9bab7eb4fb3276dad881b21df404b91445fc25cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bbbedcd7_fc9e21b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
         "patchSetId": 6
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-06T05:48:49Z",
       "side": 1,
       "message": "So the exposure time here is 1/fps, right? I remembered the rule of thumb is 1/fps * 2 (see https://kevinlisota.photography/2020/04/understanding-video-frame-rate-and-shutter-speed/). Just point it out for reference.",
+      "revId": "9bab7eb4fb3276dad881b21df404b91445fc25cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64e313b_da22d1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-09-06T06:40:53Z",
+      "side": 1,
+      "message": "It is exposure time. The duration of exposure. It may limit the max FPS. e.g. It can output 30FPS with 16 ms exposure time.",
+      "parentUuid": "bbbedcd7_fc9e21b7",
       "revId": "9bab7eb4fb3276dad881b21df404b91445fc25cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
