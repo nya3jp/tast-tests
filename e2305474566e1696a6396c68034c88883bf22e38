@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8705515d_e22af7ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-09-06T06:44:47Z",
+      "side": 1,
+      "message": "non-blocking: but perhaps encoding this at a lower image quality would help (in general). \"Large file\" behaviour isn\u0027t interesting for these tests, and we don\u0027t need a file that\u0027s 1.36MB to get the same coverage. Reducing the size with a lower-quality JPEG encode could help us stay on top of filesystem flakes better, or just make the test faster in general which is nice too.",
+      "revId": "e2305474566e1696a6396c68034c88883bf22e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21fd9441_3d493133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002092
+      },
+      "writtenOn": "2021-09-06T06:44:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure I draw the same conclusions regarding how the extra file comes about. But I don\u0027t have a better conclusion 😊.\n\n (i.e. the `\n\t\tfiles.OpenFile(testFile),\n\t\t\nline is opening a constant string - I don\u0027t get how it\u0027s possible for a different string to appear in the a11y tree).\n\nIt made me think that maybe there\u0027s something weird happening with the `ui.Retry` here -- i.e. maybe the \"retry\" here is disguising the real failure.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "e2305474566e1696a6396c68034c88883bf22e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
