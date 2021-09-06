@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d65a2de_0c6ad69e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T06:37:31Z",
+      "side": 1,
+      "message": "this change requires one additional file considered. To make commit size smaller, I have decided to keep the ui-dependency for now.",
+      "parentUuid": "fc5d3458_314a625c",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 112,
+        "endChar": 45
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "101d6e00_2d8db727",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-02T00:47:23Z",
       "side": 1,
       "message": "Can we now remove it?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7f4498_b2d107f8",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T06:37:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "101d6e00_2d8db727",
       "range": {
         "startLine": 19,
         "startChar": 5,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-02T00:52:48Z",
       "side": 1,
       "message": "I think this change is not intentional.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 137
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "248f2fb6_6e040a32",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T06:37:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54c7a4b1_8625c204",
       "range": {
         "startLine": 88,
         "startChar": 0,
