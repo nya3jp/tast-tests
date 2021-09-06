@@ -105,6 +105,30 @@
       },
       "revId": "e2305474566e1696a6396c68034c88883bf22e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc19f09e_d3034bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-06T12:21:00Z",
+      "side": 1,
+      "message": "Added clarification in the commit message.\n\nMy \"guess\" of the root cause can be the file system. Once calls os.Remove(), it works like a promise but async. Even it is gone from UI, The file handle might not be fully removed. Anyway, let\u0027s see if this can fix it.",
+      "parentUuid": "287b6002_c589e073",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "e2305474566e1696a6396c68034c88883bf22e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
