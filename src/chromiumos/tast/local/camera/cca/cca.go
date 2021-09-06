@@ -1233,6 +1233,20 @@ func (a *App) toggleOption(ctx context.Context, option, toggleSelector string) (
 	return a.GetState(ctx, option)
 }
 
+func (a *App) enableOption(ctx context.Context, option, toggleSelector string) error {
+	prev, err := a.GetState(ctx, option)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get option state %v", option)
+	} else if !prev {
+		if cur, err := a.toggleOption(ctx, option, toggleSelector); err != nil {
+			return errors.Wrapf(err, "failed to toggle option %v: %v", option, toggleSelector)
+		} else if !cur {
+			return errors.Errorf("unexpected state after toggled option: %v: %v", option, toggleSelector)
+		}
+	}
+	return nil
+}
+
 // ToggleGridOption toggles the grid option and returns whether it's enabled after toggling.
 func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "grid", "#toggle-grid")
@@ -1333,6 +1347,21 @@ func (a *App) ToggleExpertMode(ctx context.Context) (bool, error) {
 	return a.GetState(ctx, Expert)
 }
 
+// EnableExpertMode enables expert mode.
+func (a *App) EnableExpertMode(ctx context.Context) error {
+	prevEnabled, err := a.GetState(ctx, Expert)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expert mode state")
+	} else if !prevEnabled {
+		if enabled, err := a.ToggleExpertMode(ctx); err != nil {
+			return errors.Wrap(err, "failed to toggle expert mode")
+		} else if !enabled {
+			return errors.New("unexpected state after toggling expert mode")
+		}
+	}
+	return nil
+}
+
 // CheckMetadataVisibility checks if metadata is shown/hidden on screen given enabled.
 func (a *App) CheckMetadataVisibility(ctx context.Context, enabled bool) error {
 	code := fmt.Sprintf("Tast.isVisible('#preview-exposure-time') === %t", enabled)
@@ -1362,9 +1391,14 @@ func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "custom-video-parameters", "#custom-video-parameters")
 }
 
-// ToggleEnableDocumentMode toggles enable document mode on all cameras and returns whether it's enabled after toggling.
-func (a *App) ToggleEnableDocumentMode(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras")
+// enableDocumentMode enables document mode via the expert mode options.
+func (a *App) enableDocumentMode(ctx context.Context) error {
+	return a.enableOption(ctx, "enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras")
+}
+
+// enableMultiStreamRecording enables multi-stream video recording via the expert mode options.
+func (a *App) enableMultiStreamRecording(ctx context.Context) error {
+	return a.enableOption(ctx, "enable-multistream-recording", "#expert-enable-multistream-recording")
 }
 
 // ClickShutter clicks the shutter button.
@@ -1795,10 +1829,8 @@ func (a *App) SaveScreenshot(ctx context.Context) error {
 
 // EnableDocumentMode enables the document mode via expert mode.
 func (a *App) EnableDocumentMode(ctx context.Context) error {
-	if enabled, err := a.ToggleExpertMode(ctx); err != nil {
+	if err := a.EnableExpertMode(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable expert mode")
-	} else if !enabled {
-		return errors.New("unexpected state after enabling expert mode")
 	}
 
 	if err := MainMenu.Open(ctx, a); err != nil {
@@ -1811,14 +1843,39 @@ func (a *App) EnableDocumentMode(ctx context.Context) error {
 	}
 	defer ExpertMenu.Close(ctx, a)
 
-	if enabled, err := a.ToggleEnableDocumentMode(ctx); err != nil {
+	if err := a.enableDocumentMode(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable document mode")
-	} else if !enabled {
-		return errors.Wrap(err, "unexpected state after enabling document mode")
 	}
 
 	if err := a.WaitForVisibleState(ctx, ScanModeButton, true); err != nil {
 		return errors.Wrap(err, "failed to wait for scan mode button shows up")
+	}
+
+	return nil
+}
+
+// EnableMultiStreamRecording enables recording videos with multiple streams.
+func (a *App) EnableMultiStreamRecording(ctx context.Context) error {
+	if err := a.EnableExpertMode(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable expert mode")
+	}
+
+	if err := MainMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open main menu")
+	}
+	defer MainMenu.Close(ctx, a)
+
+	if err := ExpertMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open expert menu")
+	}
+	defer ExpertMenu.Close(ctx, a)
+
+	if err := a.enableMultiStreamRecording(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable multi-stream recording")
+	}
+
+	if err := a.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for video active")
 	}
 
 	return nil

@@ -31,6 +31,12 @@ func init() {
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name: "multi_stream",
+			Val:  true,
+		}},
 	})
 }
 
@@ -168,6 +174,8 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	}
 	defer tb.TearDown(ctx)
 
+	enableMultiStream := s.Param().(bool)
+
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		name  string
@@ -201,6 +209,12 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 					s.Error("Failed to close app: ", err)
 				}
 			})(cleanupCtx)
+
+			if enableMultiStream {
+				if err := app.EnableMultiStreamRecording(ctx); err != nil {
+					s.Fatal("Failed to enable multi-stream recording: ", err)
+				}
+			}
 
 			testing.ContextLog(ctx, "Switch to video mode")
 			if err := app.SwitchMode(ctx, cca.Video); err != nil {
