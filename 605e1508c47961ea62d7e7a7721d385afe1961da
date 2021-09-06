@@ -56,6 +56,30 @@
       },
       "revId": "605e1508c47961ea62d7e7a7721d385afe1961da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9635985a_e0be6611",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-06T06:37:13Z",
+      "side": 1,
+      "message": "Ah, that\u0027s true. Thanks for pointing it out!",
+      "parentUuid": "b04951d8_dae39a02",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "605e1508c47961ea62d7e7a7721d385afe1961da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
