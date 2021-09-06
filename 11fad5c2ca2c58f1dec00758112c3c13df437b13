@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c691c3_fb746e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-09-06T05:18:24Z",
+      "side": 1,
+      "message": "Yamaguchi-san, could you take a look? Thanks.",
+      "revId": "11fad5c2ca2c58f1dec00758112c3c13df437b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
