@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c2fdda_b13699cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T05:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a3e443_070e77d7",
+      "revId": "056a02606788a2942edcf98a82fafa2b77adbbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf03c74_a5904205",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-27T06:19:23Z",
       "side": 1,
       "message": "Since we also have control of the 2 tests that use this function, is that possible to remove this function and just keep the one with new signature?",
+      "revId": "056a02606788a2942edcf98a82fafa2b77adbbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dbb21eb_b3d23759",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T05:42:39Z",
+      "side": 1,
+      "message": "resolved in the next commit after this (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3122969/4)",
+      "parentUuid": "9cf03c74_a5904205",
       "revId": "056a02606788a2942edcf98a82fafa2b77adbbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
