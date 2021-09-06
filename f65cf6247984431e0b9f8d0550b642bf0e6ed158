@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c830e034_76fccc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-06T05:21:21Z",
+      "side": 1,
+      "message": "General LGTM ",
+      "revId": "f65cf6247984431e0b9f8d0550b642bf0e6ed158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ede93e_f9dec2eb",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-06T05:21:21Z",
+      "side": 1,
+      "message": "\"Saving %s to %s\", entry.entryName, entry.logFileName",
+      "range": {
+        "startLine": 536,
+        "startChar": 33,
+        "endLine": 536,
+        "endChar": 80
+      },
+      "revId": "f65cf6247984431e0b9f8d0550b642bf0e6ed158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a79e04_a4d32a52",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-06T05:21:21Z",
+      "side": 1,
+      "message": "\"Saving %s to %s\"",
+      "range": {
+        "startLine": 599,
+        "startChar": 26,
+        "endLine": 599,
+        "endChar": 80
+      },
+      "revId": "f65cf6247984431e0b9f8d0550b642bf0e6ed158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
