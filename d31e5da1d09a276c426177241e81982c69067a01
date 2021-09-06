@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eac647b_95aaf528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-06T23:14:37Z",
+      "side": 1,
+      "message": "CL:3102503 has finally landed in ToT ChromeOS, can finally get a review for this CL. This now relies on an autotestPrivate API to check whether the Files app *should* be pinned before waiting to see the icon appear. Should be much more resilient to any future changes to the Files app being pinned or not.",
+      "revId": "d31e5da1d09a276c426177241e81982c69067a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
