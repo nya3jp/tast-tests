@@ -52,10 +52,8 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
 		s.Fatal("Failed to switch to video mode: ", err)
 	}
-	if toggled, err := app.ToggleExpertMode(ctx); err != nil {
+	if err := app.EnableExpertMode(ctx); err != nil {
 		s.Fatal("Failed to toggle expert mode: ", err)
-	} else if !toggled {
-		s.Fatal("Expert mode is not toggled")
 	}
 
 	if err := cca.MainMenu.Open(ctx, app); err != nil {
