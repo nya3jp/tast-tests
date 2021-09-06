@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f87a7f_72bbd85b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-06T09:00:46Z",
+      "side": 1,
+      "message": "Thanks! I guess +2 did not stick, please approve again :)",
+      "revId": "64b7b3d3194216edaf11abbf2b7e1272f6d4a28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
