@@ -20,7 +20,7 @@ func init() {
 		Func:         KillProcess,
 		Desc:         "Verifies that the kernel process is gone after killing an activity",
 		Contacts:     []string{"ricardoq@chromium.org", "arc-gaming+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
