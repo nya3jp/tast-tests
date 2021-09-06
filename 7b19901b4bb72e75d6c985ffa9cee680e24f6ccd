@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "514bb610_aa20bf29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-06T08:07:46Z",
+      "side": 1,
+      "message": "Thanks for porting this to uiauto.",
+      "revId": "7b19901b4bb72e75d6c985ffa9cee680e24f6ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c7e0797_1a230e79",
