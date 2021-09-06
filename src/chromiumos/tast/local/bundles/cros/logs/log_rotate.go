@@ -67,10 +67,19 @@ func LogRotate(ctx context.Context, s *testing.State) {
 		s.Errorf("Executing log_rotator failed with output %q: %v", out, err)
 	}
 
-	// Ensures the base log file is gone by the rotation.
 	basePath := getLogFilePathWithIndex(0)
-	if _, err := os.Stat(basePath); !os.IsNotExist(err) {
-		s.Errorf("The log file should not exist %q: %v", basePath, err)
+
+	// Ensures the base log file is newly created by the rotation.
+	fileinfo, err := os.Stat(basePath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			s.Errorf("A new log file doesn't exit %q", basePath)
+		} else {
+			s.Errorf("Stat of the new base file failed %q: %v", basePath, err)
+		}
+	}
+	if fileinfo.Size() != 0 {
+		s.Errorf("A new log file should be empty just after the rotation %q", basePath)
 	}
 
 	// Compares the hashes to check if the rotation is done correctly.
