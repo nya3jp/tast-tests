@@ -16,6 +16,29 @@
       "message": "Yamaguchi-san, could you take a look? Thanks.",
       "revId": "11fad5c2ca2c58f1dec00758112c3c13df437b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6575b5d0_cea907b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T06:10:20Z",
+      "side": 1,
+      "message": "How about handling erros by Stat() other than NotExist? (theoretically, it could happen when basePath were an invalid path)\nSome existing code in our repository handle such cases.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "11fad5c2ca2c58f1dec00758112c3c13df437b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
