@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87711037_83fc7364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T07:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b0ce62d_ca48662e",
+      "range": {
+        "startLine": 9,
+        "startChar": 99,
+        "endLine": 9,
+        "endChar": 134
+      },
+      "revId": "f60d4d8620bee091d91aac7896456848f590f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d7e2c1a_04034f5a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-06T06:45:25Z",
       "side": 1,
       "message": "[optional]\n\"ui dependency\" may look ambiguous. I suggest \"using functions in uiauto/ package\" as an alternative option.\n(but I think this is no big problem as this comment will be rewritten again by the renaming change later)",
+      "range": {
+        "startLine": 51,
+        "startChar": 44,
+        "endLine": 51,
+        "endChar": 74
+      },
+      "revId": "f60d4d8620bee091d91aac7896456848f590f886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9983f4_95f0be6c",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T07:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7e2c1a_04034f5a",
       "range": {
         "startLine": 51,
         "startChar": 44,
