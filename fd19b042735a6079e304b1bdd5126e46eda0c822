@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0deade0e_bab4305b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T02:30:20Z",
+      "side": 1,
+      "message": "Did you mean files.WaitUntilExists with a timeout value, or just do LeftClick() alone? Exists will return error right away when the target is not found.",
+      "revId": "fd19b042735a6079e304b1bdd5126e46eda0c822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e124d0d_b85f1192",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go",
         "patchSetId": 3
