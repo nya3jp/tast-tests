@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d37ca0_07ee2bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-06T13:15:56Z",
+      "side": 1,
+      "message": "I\u0027m curious what \"the test creates some device nodes\" means and if there is any way to run in sandbox mode.\n\nMy concern is that `--disable-sandbox` runs in only single thread mode and can\u0027t simulate the true device running scenario.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 64
+      },
+      "revId": "3445c9dc65216e89cc657b12817433e1c3460426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
