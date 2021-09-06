@@ -16,6 +16,23 @@
       "message": "Yamaguchi-san, PTAL again? Thanks.",
       "revId": "4c9c9750cac17161e7f67e67691dab3ef5cf66af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acaf5254_48e22a29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-09-06T09:50:36Z",
+      "side": 1,
+      "message": "Thank you very much!",
+      "revId": "4c9c9750cac17161e7f67e67691dab3ef5cf66af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
