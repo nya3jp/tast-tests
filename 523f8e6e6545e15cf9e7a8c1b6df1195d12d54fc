@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf70a874_5094d636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-06T02:32:14Z",
+      "side": 1,
+      "message": "LGTM. Please add test authors to CC before submit, just like oka@ noted.",
+      "revId": "523f8e6e6545e15cf9e7a8c1b6df1195d12d54fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d96f0e9_c120b900",
