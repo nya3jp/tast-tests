@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf6d5a8_a1e0042c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-06T06:00:06Z",
+      "side": 0,
+      "message": "This removal of the empty line not seems to be intentional. ditto for others",
+      "revId": "f75ecc857dd95b96fa2e1553aa03118f784dce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
