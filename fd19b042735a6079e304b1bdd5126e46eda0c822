@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a03e34d_d074fa35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T03:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0deade0e_bab4305b",
+      "revId": "fd19b042735a6079e304b1bdd5126e46eda0c822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e124d0d_b85f1192",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-03T05:44:38Z",
       "side": 1,
       "message": "You can remove this method now.",
+      "range": {
+        "startLine": 87,
+        "startChar": 19,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "fd19b042735a6079e304b1bdd5126e46eda0c822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03951c46_0e3940d5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-06T03:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e124d0d_b85f1192",
       "range": {
         "startLine": 87,
         "startChar": 19,
