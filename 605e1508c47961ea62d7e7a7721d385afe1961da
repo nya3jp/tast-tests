@@ -16,6 +16,46 @@
       "message": "PTAL. Thanks!",
       "revId": "605e1508c47961ea62d7e7a7721d385afe1961da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bced4d7_7434308c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-06T06:33:05Z",
+      "side": 1,
+      "message": "Thanks for this (and for the const cleanup!)",
+      "revId": "605e1508c47961ea62d7e7a7721d385afe1961da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04951d8_dae39a02",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-06T06:33:05Z",
+      "side": 1,
+      "message": "Looks like this function is only accessed in this file. Should this just be a local function?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "605e1508c47961ea62d7e7a7721d385afe1961da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
