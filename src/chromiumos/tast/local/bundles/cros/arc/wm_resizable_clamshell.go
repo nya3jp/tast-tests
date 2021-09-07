@@ -29,7 +29,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WMResizableClamshell,
 		Desc:         "Verifies that Window Manager resizable clamshell use-cases behave as described in go/arc-wm-r",
-		Contacts:     []string{"xutan@google.com", "arc-framework+tast@google.com"},
+		Contacts:     []string{"xutan@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Fixture:      "arcBooted",
