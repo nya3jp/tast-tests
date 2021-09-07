@@ -16,6 +16,46 @@
       "message": "PTAL!",
       "revId": "b5ccdf554f00c1f5297ac42e006658cb81d329e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfd6c71_d48f872c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T04:47:03Z",
+      "side": 1,
+      "message": "LGTM with recommendation.",
+      "revId": "b5ccdf554f00c1f5297ac42e006658cb81d329e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530b3884_ca5fa165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T04:47:03Z",
+      "side": 1,
+      "message": "style/optional: in go, in general, we often use shorter name.\nMaybe \"wi\" is enough as the scope seems short enough.\n\nditto for below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "b5ccdf554f00c1f5297ac42e006658cb81d329e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
