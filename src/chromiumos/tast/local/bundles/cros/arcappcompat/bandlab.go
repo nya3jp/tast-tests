@@ -91,7 +91,7 @@ func init() {
 func Bandlab(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.bandlab.bandlab"
-		appActivity = ".core.activity.navigation.NavigationActivity"
+		appActivity = "com.bandlab.navigation.entry.NavigationActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
