@@ -33,6 +33,24 @@
       "message": "do you need to check whether the state is maximized?\n\nAlso, maximizedActivity is stopped immediately, so looks redundant operation.\nCould you add comment what it is trying to do?",
       "revId": "ea4073c9d6d53c71b031843227a68fe0ce6285df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4e3268_ca68f90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-07T07:57:58Z",
+      "side": 1,
+      "message": "\u003e do you need to check whether the state is maximized?\n\nGood catch! Left the wait function in the latest patch.\n\n\n\u003e maximizedActivity is stopped immediately, so looks redundant operation.\n\nAnother good catch. It turns out we don\u0027t have to launch-\u003emaximize-\u003eclose-\u003erelaunch anymore as using NonResizableUnspecifiedActivity guarantees it\u0027s launched in maximized by default, so removed the first launch in the latest patch.",
+      "parentUuid": "89df7d75_ea1f90b4",
+      "revId": "ea4073c9d6d53c71b031843227a68fe0ce6285df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
