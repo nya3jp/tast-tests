@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "cefd4ebeb30c1883f5502f5318461519e2ff02fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7f4bd5_420b1dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T14:45:49Z",
+      "side": 1,
+      "message": "this may introduce flakiness, because the tests that runs earlier may keep some stale state.\n1) If this is not expected, could you add a check into a test that runs before this?\n2) Instead of checking and let test fail, how about setting up the proper testing environment, instead?",
+      "revId": "cefd4ebeb30c1883f5502f5318461519e2ff02fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
