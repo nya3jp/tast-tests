@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "9435b7d0429d5d54ba25c1af2f7fd7638e6bc4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89986ac9_9c601ee1",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-07T10:01:50Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s safe to use PollBreak when IsRunning returns an error. In general I expect a lot of race conditions on accessing /proc and I\u0027m hesitant to treat those errors as fatal.",
+      "range": {
+        "startLine": 138,
+        "startChar": 10,
+        "endLine": 138,
+        "endChar": 27
+      },
+      "revId": "9435b7d0429d5d54ba25c1af2f7fd7638e6bc4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
