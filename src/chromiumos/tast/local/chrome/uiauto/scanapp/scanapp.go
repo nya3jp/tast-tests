@@ -7,6 +7,7 @@ package scanapp
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/apps"
@@ -188,4 +189,28 @@ func (s *ScanApp) ClickMyFilesLink() uiauto.Action {
 // first page of the app.
 func (s *ScanApp) ClickDone() uiauto.Action {
 	return s.LeftClick(doneButtonFinder)
+}
+
+// ClickMultiPageScanCheckbox returns a function that clicks the multi-page scan
+// checkbox.
+func (s *ScanApp) ClickMultiPageScanCheckbox() uiauto.Action {
+	return s.LeftClick(nodewith.Role(role.CheckBox))
+}
+
+// MultiPageScan returns a function that performs a multi-page scan by clicking
+// the scan button.
+func (s *ScanApp) MultiPageScan(PageNumber int) uiauto.Action {
+	return uiauto.Combine("multi-page scan",
+		s.LeftClick(nodewith.Name("Scan page "+fmt.Sprintf("%d", PageNumber)).Role(role.Button)),
+
+		// Wait until the 'Scan next page' button is displayed to verify the scan
+		// completed successfully.
+		s.WithTimeout(120*time.Second).WaitUntilExists(nodewith.Name("Scan page "+fmt.Sprintf("%d", PageNumber+1)).Role(role.Button)),
+	)
+}
+
+// ClickSave returns a function that clicks the Save button to end a multi-page
+// scan session.
+func (s *ScanApp) ClickSave() uiauto.Action {
+	return s.LeftClick(nodewith.Name("End & save").Role(role.Button))
 }
