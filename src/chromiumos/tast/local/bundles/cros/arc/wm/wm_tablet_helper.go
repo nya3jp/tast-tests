@@ -301,15 +301,13 @@ func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 		return err
 	}
 
-	// Get window info after the immersive button is clicked.
-	winImrs, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
 	if err != nil {
 		return err
 	}
 	if err := ash.WaitWindowFinishAnimating(ctx, tconn, winBefore.ID); err != nil {
 		return err
 	}
-	if err := CheckMaximizeToFullscreenToggle(ctx, tconn, winBefore.TargetBounds, *winImrs); err != nil {
+	if err := CheckMaximizeToFullscreenToggle(ctx, tconn, winBefore.TargetBounds, Pkg24); err != nil {
 		return err
 	}
 

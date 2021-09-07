@@ -1032,17 +1032,9 @@ func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		return err
 	}
 
-	testing.Poll(ctx, func(ctx context.Context) error {
-		// Get window info after the immersive button is clicked.
-		windowInfoUIImmersive, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, *windowInfoUIImmersive); err != nil {
-			return testing.PollBreak(err)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
+	if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, wm.Pkg24); err != nil {
+		return err
+	}
 
 	// Click on the normal button.
 	if err := wm.UIClickNormal(ctx, act, d); err != nil {
