@@ -16,6 +16,24 @@
       "message": "OK, I\u0027ve added collecting pcaps directly from the interfaces as well. It\u0027s not much of a burden space-wise, as these pcaps lacks radio portion, thus they end up being ~50% smaller than the one collected primarily.",
       "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3678b76e_9fd7b52b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-07T15:27:23Z",
+      "side": 1,
+      "message": "Same question as before - are you adding all these different captures because you\u0027ve found that it has helped you debug the issues?",
+      "parentUuid": "83422eae_482ff593",
+      "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
