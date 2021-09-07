@@ -91,8 +91,17 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 			if err := kb.Accel(ctx, "Search+L"); err != nil {
 				s.Fatal("Failed to write events: ", err)
 			}
-			// Locking the screen can take a few seconds.
-			testing.Sleep(ctx, 5*time.Second)
+			ui := uiauto.New(tconn)
+			lockScreenSubmitNode := nodewith.Name("Submit").ClassName("ArrowButtonView")
+			if param.wantLocked {
+				if err := ui.WaitUntilExists(lockScreenSubmitNode)(ctx); err != nil {
+					s.Error("Failed to find the lock screen submit button: ", err)
+				}
+			} else {
+				if err := ui.EnsureGoneFor(lockScreenSubmitNode, 15*time.Second)(ctx); err != nil {
+					s.Error("Lock screen appeared but it shouldn't: ", err)
+				}
+			}
 
 			// Check if the logout button is shown.
 			// If the lock screen is disabled, the button is not there.
@@ -102,7 +111,7 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 			if err := quicksettings.Show(ctx, tconn); err != nil {
 				s.Fatal("Failed to open the system tray: ", err)
 			}
-			ui := uiauto.New(tconn)
+
 			if err := uiauto.Combine("Check lock screen from system tray",
 				ui.WaitUntilExists(nodewith.Name("Shut down").ClassName("TopShortcutButton")),
 				ui.WaitUntilGone(nodewith.Name("Lock").ClassName("TopShortcutButton")),
