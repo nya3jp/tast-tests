@@ -16,6 +16,24 @@
       "message": "Is it possible for toMode to also be recovery?  And if so, do we still need to remove the watchdog?",
       "revId": "63a9def4584ce47584b75b316c234c1d9ee73af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fe765c_6ec2327d",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-07T20:34:20Z",
+      "side": 1,
+      "message": "Yes, but that was handled already in crrev/c/3060884, I just didn\u0027t catch the case of rebooting from recovery in that change.",
+      "parentUuid": "ab31f3ad_513d23ca",
+      "revId": "63a9def4584ce47584b75b316c234c1d9ee73af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
