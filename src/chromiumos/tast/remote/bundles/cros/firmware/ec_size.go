@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Compare ec flash size to expected ec size from a chip-to-size map",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
 		Data:         []string{firmware.ConfigFile},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		Pre:          pre.NormalMode(),
 		Vars:         []string{"servo"},
@@ -32,6 +32,7 @@ func init() {
 var chipSizeMap = map[string]int{
 	"npcx_uut": 512, // (512 * 1024) bytes
 	"it83xx":   512,
+	"stm32":    256,
 }
 
 func ECSize(ctx context.Context, s *testing.State) {
