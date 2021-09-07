@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea9f227_1bba0144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T09:13:44Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "828ecbb4c034ed1c6647886697a6b33c6594d40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d4b823b_c8fc74c9",
@@ -19,6 +36,52 @@
         "startChar": 42,
         "endLine": 23,
         "endChar": 50
+      },
+      "revId": "828ecbb4c034ed1c6647886697a6b33c6594d40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a93b45_92017053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T09:13:44Z",
+      "side": 1,
+      "message": "nit: delete extra spaces",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "828ecbb4c034ed1c6647886697a6b33c6594d40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9afe90_058b1531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T09:13:44Z",
+      "side": 1,
+      "message": "nit: delete extra spaces",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 23
       },
       "revId": "828ecbb4c034ed1c6647886697a6b33c6594d40d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
