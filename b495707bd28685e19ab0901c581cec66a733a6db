@@ -16,6 +16,52 @@
       "message": "ptal?",
       "revId": "b495707bd28685e19ab0901c581cec66a733a6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a24d9d1_4078e780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste_suggestion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-07T01:01:47Z",
+      "side": 1,
+      "message": "nit: This line is redundant since it is already in common \u0027Attr\u0027",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "b495707bd28685e19ab0901c581cec66a733a6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292c8577_bdf22129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste_suggestion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-07T01:01:47Z",
+      "side": 1,
+      "message": "Out of curiosity, do the items show immediately in suggestion bar after setting clipboard? I have not seen anything related to the description in launch bug https://crbug.com/1234047 \u0027Shortcut the paste journey by having copied items in the suggestion row if a user opens VK 2 minutes after copy action.\u0027 Do I miss anything here?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "b495707bd28685e19ab0901c581cec66a733a6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
