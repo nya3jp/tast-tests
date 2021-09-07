@@ -33,7 +33,7 @@ func FAFTGBBFlags() []pb.GBBFlag {
 
 // RebootRequiredGBBFlags returns flags that require a DUT reboot after they are changed.
 func RebootRequiredGBBFlags() []pb.GBBFlag {
-	return []pb.GBBFlag{pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC}
+	return []pb.GBBFlag{pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC, pb.GBBFlag_FORCE_DEV_BOOT_USB}
 }
 
 // GBBFlagsStatesEqual determines if 2 GBBFlagsState are the same.
