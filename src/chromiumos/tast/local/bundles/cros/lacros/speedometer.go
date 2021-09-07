@@ -50,7 +50,7 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.C
 	var score float64
 	if err := conn.Eval(ctx, `
 		new Promise(resolve => {
-			benchmadrkClient.totalScore = 0;
+			benchmarkClient.totalScore = 0;
 			benchmarkClient.iterCount = 0;
 			benchmarkClient.didRunSuites = function(measuredValues) {
 				benchmarkClient.totalScore += measuredValues['score'];
