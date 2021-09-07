@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -72,56 +71,6 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 	}
 	defer ash.SetTabletModeEnabled(cleanupCtx, tconn, tabletModeEnabled)
 
-	// launchBoundsThreshold stores the launch bounds of the last activity launch. This test is
-	// written in the order from small launch bounds to big launch bounds so this variable
-	// serves as the lower bound of launch bounds.
-	launchBoundsThreshold, err := func() (coords.Rect, error) {
-		// Launch a resizable portrait app first to use the bounds as the lower bound of phone size.
-		act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
-		if err != nil {
-			return coords.Rect{}, errors.Wrap(err, "failed to create the non-allowlisted activity")
-		}
-		defer act.Close()
-
-		if err := act.Start(ctx, tconn); err != nil {
-			return coords.Rect{}, errors.Wrap(err, "failed to start the non-allowlisted activity")
-		}
-		defer act.Stop(ctx, tconn)
-
-		if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
-			return coords.Rect{}, errors.Wrap(err, "failed to wait for the non-allowlisted activity to be ready")
-		}
-
-		// The default window state in ARC P is maximized, so ensure that the app is restored first to calculate the default freeform bounds.
-		window, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return coords.Rect{}, errors.Wrap(err, "failed to get the window info of the non-allowlisted activity")
-		}
-		if window.State != ash.WindowStateNormal {
-			winInfoBeforeRestore, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-			if err != nil {
-				return coords.Rect{}, err
-			}
-			if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventNormal); err != nil {
-				return coords.Rect{}, errors.Wrap(err, "failed to restore the window")
-			}
-			if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
-				return coords.Rect{}, errors.Wrap(err, "failed to wait for the non-allowlisted activity to be restored")
-			}
-			if err := ash.WaitWindowFinishAnimating(ctx, tconn, winInfoBeforeRestore.ID); err != nil {
-				return coords.Rect{}, errors.Wrap(err, "failed to wait for the animation of the non-allowlisted activity to be finished")
-			}
-			window, err = ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-			if err != nil {
-				return coords.Rect{}, errors.Wrap(err, "failed to get the window info of the non-allowlisted activity")
-			}
-		}
-		return window.BoundsInRoot, nil
-	}()
-	if err != nil {
-		return err
-	}
-
 	// Then we verify the launch logic for whitelisted apps is correct.
 	apkPath := map[string]string{
 		pkgMaximized:  "ArcWMTestApp_24_InMaximizedList.apk",
@@ -144,15 +93,6 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			orientationFromBounds := wm.OrientationFromBounds(window.BoundsInRoot)
 			if orientationFromBounds != wm.Portrait {
 				return errors.Errorf("invalid bounds orientation: got %v; want portrait", orientationFromBounds)
-			}
-
-			if launchBoundsThreshold.Width > window.BoundsInRoot.Width {
-				return errors.Errorf("phone size width shouldn't be smaller than %v, but it's %v",
-					launchBoundsThreshold.Width, window.BoundsInRoot.Width)
-			}
-			if launchBoundsThreshold.Height > window.BoundsInRoot.Height {
-				return errors.Errorf("phone size height shouldn't be smaller than %v, but it's %v",
-					launchBoundsThreshold.Height, window.BoundsInRoot.Height)
 			}
 			return nil
 		},
@@ -179,12 +119,6 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			orientationFromBounds := wm.OrientationFromBounds(window.BoundsInRoot)
 			if orientationFromBounds != wm.Landscape {
 				return errors.Errorf("invalid bounds orientation: got %v; want landscape", orientationFromBounds)
-			}
-
-			// Only checks the width as the default tablet height is shorter than that of phone.
-			if launchBoundsThreshold.Width > window.BoundsInRoot.Width {
-				return errors.Errorf("tablet size width shouldn't be smaller than %v, but it's %v",
-					launchBoundsThreshold.Width, window.BoundsInRoot.Width)
 			}
 			return nil
 		},
@@ -228,7 +162,6 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 				if err := verifyFunc(act, window); err != nil {
 					return err
 				}
-				launchBoundsThreshold = window.BoundsInRoot
 				return nil
 			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 				return err
