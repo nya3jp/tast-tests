@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a227cbfc_f569ca56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "You don\u0027t need the else here, and deferring uninhibit can just go after the if statement. s.Fatal will immediately stop the test if you hit it.",
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75cc6cee_a6726f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "nit: get rid of this extra space before the colon",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266f8284_7ce2323d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "ditto re: extra space",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3572886_c8ea7e9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "ditto re: extra space",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ca4c14_83b76e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "Is there a bug filed for this? Or is it something we can\u0027t do anything about?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40dcc50_d01cf33b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "ditto re: extra space",
+      "range": {
+        "startLine": 88,
+        "startChar": 32,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7e1fea_61176ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:42:31Z",
+      "side": 1,
+      "message": "nit:\n\n got: %d, want: %d\n\nfor consistency",
+      "range": {
+        "startLine": 105,
+        "startChar": 38,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
