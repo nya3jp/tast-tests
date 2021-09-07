@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "dd446536a710026bff051905d43478e1c0e2c5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc81bba_390ffd42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-07T06:04:13Z",
+      "side": 1,
+      "message": "err is not assigned here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 6
+      },
+      "revId": "dd446536a710026bff051905d43478e1c0e2c5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
