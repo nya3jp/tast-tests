@@ -56,16 +56,41 @@ func init() {
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{
+			Name:              "managed",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: testParam{
+				username:          "arc.AuthPerf.managed_username",
+				password:          "arc.AuthPerf.managed_password",
+				maxErrorBootCount: 1,
+			},
+		}, {
+			Name:              "managed_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				username:          "arc.AuthPerf.managed_username",
+				password:          "arc.AuthPerf.managed_password",
+				maxErrorBootCount: 3,
+			},
+		}, {
 			Name:              "unmanaged",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				maxErrorBootCount: 1,
 			},
 		}, {
-			Name:              "unmanaged_vm",
+			Name:              "unmanaged_guest_readahead_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
+			Val: testParam{
+				maxErrorBootCount: 3,
+				dropCaches:        true,
+			},
+		}, {
+			Name:              "unmanaged_huge_pages_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				maxErrorBootCount: 3,
+				chromeArgs:        []string{"--arcvm-use-hugepages"},
 			},
 		}, {
 			Name:              "unmanaged_no_guest_readahead_vm",
@@ -74,14 +99,6 @@ func init() {
 			Val: testParam{
 				maxErrorBootCount: 3,
 				chromeArgs:        []string{"--arcvm-ureadahead-mode=disabled"},
-				dropCaches:        true,
-			},
-		}, {
-			Name:              "unmanaged_guest_readahead_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
-			Val: testParam{
-				maxErrorBootCount: 3,
 				dropCaches:        true,
 			},
 		}, {
@@ -100,26 +117,9 @@ func init() {
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
-			Name:              "unmanaged_huge_pages_vm",
+			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--arcvm-use-hugepages"},
-			},
-		}, {
-			Name:              "managed",
-			ExtraSoftwareDeps: []string{"android_p"},
-			Val: testParam{
-				username:          "arc.AuthPerf.managed_username",
-				password:          "arc.AuthPerf.managed_password",
-				maxErrorBootCount: 1,
-			},
-		}, {
-			Name:              "managed_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParam{
-				username:          "arc.AuthPerf.managed_username",
-				password:          "arc.AuthPerf.managed_password",
 				maxErrorBootCount: 3,
 			},
 		}},
