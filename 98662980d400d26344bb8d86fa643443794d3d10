@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54954d21_bd6211cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-07T18:02:10Z",
+      "side": 1,
+      "message": "Alex and the team have developed the performance_cuj test suite in moblab so partners can just select the suite and trigger some CUJ tests with moblab.",
+      "parentUuid": "00438b1f_efce3ed7",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdf8ad86_7573fec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -185,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0319199f_e133a11e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-07T18:02:10Z",
+      "side": 1,
+      "message": "Alex knows more details but basically each partner gets a configuration file (perf_cuj.config) placed in their GS bucket under config/perf_cuj folder\n\nThis is a simple JSON file with content similar to this:\n{\n  \"mode\": \"basic\",\n  \"ui.cuj_username\": \"user1@gmail.com\",\n  \"ui.cuj_password\": \"pwd1\",\n  \"ui.meet_url\": \"abc-defg-dfc\"\n}\n\nWhen partners choose to run the perf_cuj suite, moblab will download the file and use these variables to run the tast.\n\nAlex, do you think we can ask existing partners to change the configuration?",
+      "parentUuid": "90d26ec5_f07b25d3",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05d3828c_d99b2252",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -232,6 +274,24 @@
       "side": 1,
       "message": "ui.cuj_username/password designate private variables kept in the internal tast-tests-private repo. In our lab environment we are not specifying runtime variables on the command line, they are being loaded from these yaml files.\n\nui.cuj_username/password are still declared in our private repository, so they will always be loaded and available to tests in the ui package.",
       "parentUuid": "d1559e51_08dac634",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc20cea_a62d7b39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-07T18:02:10Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I guess we should remove these definitions from internal repo, regardless how do we want to proceed with this CL. How do you think?",
+      "parentUuid": "ad09b439_66841757",
       "revId": "98662980d400d26344bb8d86fa643443794d3d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
