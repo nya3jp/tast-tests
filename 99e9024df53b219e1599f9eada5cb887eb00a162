@@ -39,6 +39,30 @@
       },
       "revId": "99e9024df53b219e1599f9eada5cb887eb00a162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a8420b_a940f25c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1302660
+      },
+      "writtenOn": "2021-09-07T05:47:41Z",
+      "side": 1,
+      "message": "I\u0027m currently planning to disable automation in quicksettings.ToggleSetting() and other functions which are enabling automation as far as I can find.\n1. What do you think about this plan?\n2. If we go with this plan, we still want to ensure that perftest is not enabling automation.",
+      "parentUuid": "45540e94_d27a8917",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "99e9024df53b219e1599f9eada5cb887eb00a162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
