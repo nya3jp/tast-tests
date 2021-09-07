@@ -564,40 +564,30 @@ func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *ch
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
 func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	maximizedActivity, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
-	if err != nil {
-		return errors.Wrap(err, "could not create maximized activity")
-	}
-	defer maximizedActivity.Close()
-
-	if err := maximizedActivity.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not start maximized activity")
-	}
-	defer maximizedActivity.Stop(ctx, tconn)
-
-	// Make sure the window will have an initial maximized state.
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventMaximize); err != nil {
-		return errors.Wrap(err, "failed to set window state of maximized activity to maximized")
-	}
-
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
-		return errors.Wrap(err, "did not maximize")
-	}
-
-	if err := maximizedActivity.Stop(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not stop maximized activity while setting initial window state")
-	}
-
 	// Start the main activity that should enter PIP.
 	if err := pipAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 	defer pipAct.Stop(ctx, tconn)
 
+	if err := ash.WaitForVisible(ctx, tconn, pipAct.PackageName()); err != nil {
+		return errors.Wrap(err, "could not wait for PIP to be visible")
+	}
+	if err := dev.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for event thread to be idle")
+	}
+
+	maximizedActivity, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "could not create maximized activity")
+	}
+	defer maximizedActivity.Close()
+
 	// Start maximized activity again, this time with the guaranteed correct window state.
 	if err := maximizedActivity.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start maximized Activity")
 	}
+	defer maximizedActivity.Stop(ctx, tconn)
 
 	// Wait for MainActivity to enter PIP.
 	// TODO(edcourtney): Until we can identify multiple Android windows from the same package, just wait for
