@@ -103,6 +103,16 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental"},
 			Timeout:   15 * time.Minute,
 		}, {
+			Name: "dev_usb",
+			Pre:  pre.NormalMode(),
+			Val: bootModeTestParams{
+				bootToMode:     fwCommon.BootModeUSBDev,
+				resetAfterBoot: true,
+				resetType:      firmware.ColdReset,
+			},
+			ExtraAttr: []string{"firmware_usb", "firmware_experimental"},
+			Timeout:   60 * time.Minute,
+		}, {
 			Name: "dev_warm",
 			Pre:  pre.NormalMode(),
 			Val: bootModeTestParams{
