@@ -85,6 +85,92 @@
       "message": "Friendly ping!",
       "revId": "413b2f8bd444c005568213d02bc925dc52017924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8152feaa_f5a26d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-09-07T07:02:33Z",
+      "side": 1,
+      "message": "Sorry for the late reply.\n\nI have a few questions regarding the scope of how many potential suffixes we want to test.\n",
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36e57fc_2dde864d",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-09-07T07:02:33Z",
+      "side": 1,
+      "message": "It looks like in wpaeap/config.go, we expect to potentially test against \u003e1 potential suffixes. I think we should generate a cert that matches potentially multiple valid domain suffixes and return a []string here.",
+      "range": {
+        "startLine": 507,
+        "startChar": 5,
+        "endLine": 507,
+        "endChar": 42
+      },
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df60671d_881c75cb",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-09-07T07:02:33Z",
+      "side": 1,
+      "message": "Following my comment above, if we are to test multiple valid suffixes, this logic should be changed to check against all potential suffixes.",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 67
+      },
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba93db5_bb1f12d7",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpaeap/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-09-07T07:02:33Z",
+      "side": 1,
+      "message": "Are we expected to test matching against multiple domain suffixes (\u003e1)?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
