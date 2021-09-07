@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5044d710_272f2020",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T09:18:43Z",
+      "side": 1,
+      "message": "style: you return from just above line, so you do not need else here.\n\nAlso, you can reverse the condition\n\nif prev {\n  return nil\n}\n\nto unindent one more level.",
+      "range": {
+        "startLine": 1240,
+        "startChar": 2,
+        "endLine": 1240,
+        "endChar": 8
+      },
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56dfe4b8_bda9285a",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T09:18:43Z",
+      "side": 1,
+      "message": "could you avoid using \":\" because it is used to connect error message with \"cause\" (here it is err)\u0027s message.\nMaybe\n\nfailed to toggle option %s with selector %s or something?\n\nDitto for below.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 55,
+        "endLine": 1242,
+        "endChar": 56
+      },
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d472c9b_5d68baba",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T09:18:43Z",
+      "side": 1,
+      "message": "ditto for style.",
+      "range": {
+        "startLine": 1355,
+        "startChar": 3,
+        "endLine": 1355,
+        "endChar": 24
+      },
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b611c6_792956e8",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T09:18:43Z",
+      "side": 1,
+      "message": "As you have two similar but different functions, could you elaborate when to be used for each in the document?",
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1edc95da_18c11875",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T09:18:43Z",
+      "side": 1,
+      "message": "nit: could you put this closer to enableMultiStreamRecording?",
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
