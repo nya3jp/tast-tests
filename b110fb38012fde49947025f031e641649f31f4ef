@@ -16,6 +16,108 @@
       "message": "wtlee@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "b110fb38012fde49947025f031e641649f31f4ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85447a1_da3a3aea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:02:59Z",
+      "side": 1,
+      "message": "I have a suggestion simply move DataFiles to camera. Please take a look and see if it is ok. Thanks.",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a011ad5_e64c0d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:02:59Z",
+      "side": 1,
+      "message": "I looked at the b/199174461. \n\nWill it be simplier that you simply DataFiles() to  webRtcDataFiles() under camera? Then, you don\u0027t need to import anything.",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6b7bee_f9140666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:02:59Z",
+      "side": 1,
+      "message": "Will be it better to move it to camera? Since no other package will use it.",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c9d250_9c9d082c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:02:59Z",
+      "side": 1,
+      "message": "According to b/199174461, this function should be removed, right?",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b021ce5_fa522564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:02:59Z",
+      "side": 1,
+      "message": "According to b/199174461, this function should be removed, right?",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c367cb_2615f47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:02:59Z",
+      "side": 1,
+      "message": "Please see my other comments.",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
