@@ -11,8 +11,8 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/action"
 	"chromiumos/tast/testing"
 )
 

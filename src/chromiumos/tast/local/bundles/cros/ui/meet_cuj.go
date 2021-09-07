@@ -13,12 +13,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"

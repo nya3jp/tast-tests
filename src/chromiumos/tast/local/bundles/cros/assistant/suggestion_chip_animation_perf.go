@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/bundles/cros/assistant/assistantutils"
 	"chromiumos/tast/local/chrome"
