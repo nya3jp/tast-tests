@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WMNonresizableTablet,
 		Desc:         "Verifies that Window Manager non-resizable tablet use-cases behave as described in go/arc-wm-r",
-		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
+		Contacts:     []string{"armenk@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
