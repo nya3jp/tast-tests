@@ -12,13 +12,17 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
-// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
-// This should be used by any lacros fixtures defined outside this file.
-const LacrosDeployedBinary = "lacrosDeployedBinary"
+const (
+	// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
+	// This should be used by any lacros fixtures defined outside this file.
+	LacrosDeployedBinary        = "lacrosDeployedBinary"
+	lacrosWPRArchiveDefaultName = "lacros.wprgo"
+)
 
 // NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
@@ -26,6 +30,16 @@ func NewFixture(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl
 	return &fixtureImpl{
 		mode: mode,
 		fOpt: fOpt,
+	}
+}
+
+// NewWPRFixture creates a new fixture that can launch Lacros chrome with the given setup mode,
+// Chrome options, and WPR archive.
+func NewWPRFixture(mode SetupMode, wprAchiveName string, fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return &fixtureImpl{
+		mode:           mode,
+		fOpt:           fOpt,
+		wprArchiveName: wprAchiveName,
 	}
 }
 
@@ -43,6 +57,22 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Data:            []string{DataArtifact},
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
+	// lacrosWPR is the same as lacros but
+	// camera/microphone permissions are enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosWPR",
+		Desc:     "Lacros Chrome from a pre-built image using WPR",
+		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
+		Impl: NewWPRFixture(External, lacrosWPRArchiveDefaultName, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{DataArtifact}, //, lacrosWPRArchiveDefaultName},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -185,12 +215,14 @@ type FixtData struct {
 
 // fixtureImpl is a fixture that allows Lacros chrome to be launched.
 type fixtureImpl struct {
-	mode       SetupMode              // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                 // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	cr         *chrome.Chrome         // Connection to CrOS-chrome.
-	tconn      *chrome.TestConn       // Test-connection for CrOS-chrome.
-	prepared   bool                   // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	fOpt       chrome.OptionsCallback // Function to generate Chrome Options
+	mode           SetupMode              // How (pre exist/to be downloaded/) the container image is obtained.
+	lacrosPath     string                 // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	cr             *chrome.Chrome         // Connection to CrOS-chrome.
+	tconn          *chrome.TestConn       // Test-connection for CrOS-chrome.
+	prepared       bool                   // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	fOpt           chrome.OptionsCallback // Function to generate Chrome Options
+	wprArchiveName string                 // Specifies archive name for WPR. If it is empty, WPR is not used.
+	wpr            *wpr.WPR               // WPR instance. nil if WPR is not used.
 }
 
 // SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
@@ -259,6 +291,14 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 			f.lacrosPath = lacrosRootPath
 		}
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
+	}
+
+	if f.wprArchiveName != "" {
+		f.wpr, err = wpr.New(ctx, wpr.Record, f.wprArchiveName)
+		if err != nil {
+			s.Fatal("Cannot start WPR")
+		}
+		opts = append(opts, f.wpr.ChromeOptions...)
 	}
 
 	// If there's a parent fixture and the fixture supplies extra options, use them.
@@ -342,6 +382,11 @@ func (f *fixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 func (f *fixtureImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
 	// Nothing special needs to be done to close the test API connection.
 	f.tconn = nil
+
+	if f.wpr != nil {
+		f.wpr.Close(ctx)
+		f.wpr = nil
+	}
 
 	if f.cr != nil {
 		if err := f.cr.Close(ctx); err != nil {

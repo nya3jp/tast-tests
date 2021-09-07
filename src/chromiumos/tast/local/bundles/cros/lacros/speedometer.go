@@ -21,6 +21,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	speedometerURL = "https://browserbench.org/Speedometer2.0/"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Speedometer,
@@ -29,13 +33,9 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Fixture:      "lacros",
+		Fixture:      "lacrosWPR",
 	})
 }
-
-const (
-	speedometerURL = "https://browserbench.org/Speedometer2.0/"
-)
 
 func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.Conn) (float64, error) {
 	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn)
@@ -50,7 +50,7 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtData, conn *chrome.C
 	var score float64
 	if err := conn.Eval(ctx, `
 		new Promise(resolve => {
-			benchmadrkClient.totalScore = 0;
+			benchmarkClient.totalScore = 0;
 			benchmarkClient.iterCount = 0;
 			benchmarkClient.didRunSuites = function(measuredValues) {
 				benchmarkClient.totalScore += measuredValues['score'];
@@ -114,17 +114,16 @@ func Speedometer(ctx context.Context, s *testing.State) {
 	}()
 
 	pv := perf.NewValues()
-
-	lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(launcher.FixtData))
-	if err != nil {
-		s.Fatal("Failed to run lacros Speedometer test: ", err)
-	}
-	testing.ContextLog(ctx, "Lacros Speedometer score: ", lscore)
-	pv.Set(perf.Metric{
-		Name:      "speedometer.lacros",
-		Unit:      "count",
-		Direction: perf.BiggerIsBetter,
-	}, lscore)
+	// lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(launcher.FixtData))
+	// if err != nil {
+	// 	s.Fatal("Failed to run lacros Speedometer test: ", err)
+	// }
+	// testing.ContextLog(ctx, "Lacros Speedometer score: ", lscore)
+	// pv.Set(perf.Metric{
+	// 	Name:      "speedometer.lacros",
+	// 	Unit:      "count",
+	// 	Direction: perf.BiggerIsBetter,
+	// }, lscore)
 
 	cscore, err := runCrosSpeedometerTest(ctx, s.FixtValue().(launcher.FixtData))
 	if err != nil {
