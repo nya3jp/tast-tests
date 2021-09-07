@@ -68,6 +68,23 @@
       "message": "Let gwsq to assign cros-wifi-reviewer, as I\u0027m no longer in cros-wifi-reviewer.",
       "revId": "413b2f8bd444c005568213d02bc925dc52017924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b625c4fd_9b90e257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-09-07T06:30:59Z",
+      "side": 1,
+      "message": "Friendly ping!",
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
