@@ -16,6 +16,46 @@
       "message": "Added a test to remove a user from singin screen, when there are 3 users. PTAL! ",
       "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39ad33a_64a6717c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-07T21:51:57Z",
+      "side": 1,
+      "message": "should we also include a UI check to verify user3\u0027s pod is gone?",
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5411ff_c5393bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-07T21:51:57Z",
+      "side": 1,
+      "message": "I\u0027ve seen a more explicit pattern for this sort of check that uses os.IsNotExist to handle any unexpected errors as well\n```\nif _, err :\u003d os.Stat(path); err \u003d\u003d nil {\n  s.Fatal(...)\n} else if !os.IsNotExist(err) {\n  s.Fatal(\"Unexpected error: \", err)\n}\n```\nprobably not strictly necessary, but might be nice to include",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
