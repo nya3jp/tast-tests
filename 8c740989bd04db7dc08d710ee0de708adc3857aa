@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492afffe_9e4f133f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-07T09:55:07Z",
+      "side": 1,
+      "message": "Commit header should be limited to 50 characters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 91
+      },
+      "revId": "8c740989bd04db7dc08d710ee0de708adc3857aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4247f903_6c1ac544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-07T09:55:07Z",
+      "side": 1,
+      "message": "*informational",
+      "range": {
+        "startLine": 7,
+        "startChar": 83,
+        "endLine": 7,
+        "endChar": 91
+      },
+      "revId": "8c740989bd04db7dc08d710ee0de708adc3857aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
