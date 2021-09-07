@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e76b6a9_32cb32ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-07T19:41:29Z",
+      "side": 1,
+      "message": "Update all CUJs included in moblab perf_cuj suite to use cuj_username/password.",
+      "revId": "22cd6a5b58120a5b5a4f5d35babcfa7bb49b1789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
