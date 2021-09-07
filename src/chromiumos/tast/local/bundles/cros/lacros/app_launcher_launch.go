@@ -34,7 +34,7 @@ func init() {
 }
 
 func AppLauncherLaunch(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(launcher.FixtData)
+	f := s.FixtValue().(launcher.FixtValueImpl)
 	tconn, err := f.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)

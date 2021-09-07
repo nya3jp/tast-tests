@@ -50,8 +50,8 @@ func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var fdms *fakedms.FakeDMS
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		cr = s.FixtValue().(launcher.FixtData).Chrome
-		fdms = s.FixtValue().(launcher.FixtData).FakeDMS
+		cr = s.FixtValue().(launcher.FixtValueImpl).Chrome
+		fdms = s.FixtValue().(launcher.FixtValueImpl).FakeDMS
 	} else {
 		cr = s.FixtValue().(*fixtures.FixtData).Chrome
 		fdms = s.FixtValue().(*fixtures.FixtData).FakeDMS
@@ -68,7 +68,7 @@ func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
 		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 		defer cancel()
 
-		lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
+		lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValueImpl))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}

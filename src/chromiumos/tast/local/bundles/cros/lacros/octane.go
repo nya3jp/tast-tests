@@ -34,7 +34,7 @@ const (
 	octaneURL = "https://chromium.github.io/octane/"
 )
 
-func runOctaneTest(ctx context.Context, f launcher.FixtData, conn *chrome.Conn) (float64, error) {
+func runOctaneTest(ctx context.Context, f launcher.FixtValueImpl, conn *chrome.Conn) (float64, error) {
 	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn)
 	if err != nil {
 		return 0.0, err
@@ -60,7 +60,7 @@ func runOctaneTest(ctx context.Context, f launcher.FixtData, conn *chrome.Conn) 
 	return score, nil
 }
 
-func runLacrosOctaneTest(ctx context.Context, f launcher.FixtData) (float64, error) {
+func runLacrosOctaneTest(ctx context.Context, f launcher.FixtValueImpl) (float64, error) {
 	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, octaneURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
@@ -70,7 +70,7 @@ func runLacrosOctaneTest(ctx context.Context, f launcher.FixtData) (float64, err
 	return runOctaneTest(ctx, f, conn)
 }
 
-func runCrosOctaneTest(ctx context.Context, f launcher.FixtData) (float64, error) {
+func runCrosOctaneTest(ctx context.Context, f launcher.FixtValueImpl) (float64, error) {
 	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, octaneURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup cros-chrome test page")
@@ -81,7 +81,7 @@ func runCrosOctaneTest(ctx context.Context, f launcher.FixtData) (float64, error
 }
 
 func Octane(ctx context.Context, s *testing.State) {
-	tconn, err := s.FixtValue().(launcher.FixtData).Chrome.TestAPIConn(ctx)
+	tconn, err := s.FixtValue().(launcher.FixtValueImpl).Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -98,7 +98,7 @@ func Octane(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	lscore, err := runLacrosOctaneTest(ctx, s.FixtValue().(launcher.FixtData))
+	lscore, err := runLacrosOctaneTest(ctx, s.FixtValue().(launcher.FixtValueImpl))
 	if err != nil {
 		s.Fatal("Failed to run lacros Octane test: ", err)
 	}
@@ -109,7 +109,7 @@ func Octane(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, lscore)
 
-	cscore, err := runCrosOctaneTest(ctx, s.FixtValue().(launcher.FixtData))
+	cscore, err := runCrosOctaneTest(ctx, s.FixtValue().(launcher.FixtValueImpl))
 	if err != nil {
 		s.Fatal("Failed to run cros Octane test: ", err)
 	}
