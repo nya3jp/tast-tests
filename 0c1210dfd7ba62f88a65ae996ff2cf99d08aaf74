@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83422eae_482ff593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-07T07:30:48Z",
+      "side": 1,
+      "message": "OK, I\u0027ve added collecting pcaps directly from the interfaces as well. It\u0027s not much of a burden space-wise, as these pcaps lacks radio portion, thus they end up being ~50% smaller than the one collected primarily.",
+      "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
