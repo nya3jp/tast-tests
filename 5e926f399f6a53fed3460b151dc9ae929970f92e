@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "309ff5c9_f190ab77",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T07:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17990a8a_8b4531bb",
+      "revId": "5e926f399f6a53fed3460b151dc9ae929970f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a37db9b_7dd386be",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-07T03:06:40Z",
       "side": 1,
       "message": "ditto",
+      "revId": "5e926f399f6a53fed3460b151dc9ae929970f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355dbb6f_2aa89033",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T07:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a37db9b_7dd386be",
       "revId": "5e926f399f6a53fed3460b151dc9ae929970f92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
