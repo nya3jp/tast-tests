@@ -54,6 +54,16 @@ func DevModeGBB() testing.Precondition {
 	return devModeGBB
 }
 
+// USBDevMode boots to Developer mode from USB via keypress worklow and GBB flags.
+func USBDevMode() testing.Precondition {
+	return usbDevMode
+}
+
+// USBDevMode boots to Developer mode from USB via keypress worklow and GBB flags.
+func USBDevModeGBB() testing.Precondition {
+	return usbDevModeGBB
+}
+
 // RecMode boots to Recover Mode. Tests which use RecMode() need to use the Attr `firmware_usb` also.
 func RecMode() testing.Precondition {
 	return recMode
@@ -97,6 +107,20 @@ var (
 		},
 		timeout: 60 * time.Minute,
 	}
+	usbDevMode = &impl{
+		v: &Value{
+			BootMode:      common.BootModeUSBDev,
+			ForcesDevMode: false,
+		},
+		timeout: 60 * time.Minute,
+	}
+	usbDevModeGBB = &impl{
+		v: &Value{
+			BootMode:      common.BootModeUSBDev,
+			ForcesDevMode: true,
+		},
+		timeout: 60 * time.Minute,
+	}
 )
 
 func (i *impl) noECSync(s *testing.PreState) (bool, error) {
@@ -116,7 +140,11 @@ func (i *impl) noECSync(s *testing.PreState) (bool, error) {
 func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
 	if i.v.ForcesDevMode {
-		common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON)
+		if i.v.BootMode == common.BootModeUSBDev {
+			common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY, pb.GBBFlag_FORCE_DEV_BOOT_USB)
+		} else {
+			common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
+		}
 	}
 	noECSync, err := i.noECSync(s)
 	if err != nil {
