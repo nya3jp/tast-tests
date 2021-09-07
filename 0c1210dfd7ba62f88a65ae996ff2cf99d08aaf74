@@ -52,6 +52,24 @@
       "parentUuid": "3678b76e_9fd7b52b",
       "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af62e54_53595302",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-07T18:54:34Z",
+      "side": 1,
+      "message": "Ah sorry, I misphrased my question - I meant to ask if it was useful to have pcaps from both the 2.4GHz and 5GHz radios, not from both devices. It was meant as a \"for my understanding\" question, not a \"suggestion\" question. Anyway, let\u0027s try to do only what we think is necessary to debug the issues.\n\nWhat about just having one pcap on the 2.4GHz radio and one on the 5GHz radio (both on the router device)?",
+      "parentUuid": "5152c6c5_0360b2bc",
+      "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
