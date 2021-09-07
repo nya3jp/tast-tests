@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00438b1f_efce3ed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-07T17:29:32Z",
+      "side": 1,
+      "message": "Do you know how OEM partners using ui.cuj_username/password? I left some details about how these are used in our environment in some other comments. These are explicitly defined as secret variables in the Tast documentation:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#secret-variables\n\nSo I\u0027m curious what the relation is to OEM test runs and moblab.",
+      "parentUuid": "bde18e35_010104f6",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdf8ad86_7573fec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -143,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90d26ec5_f07b25d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-07T17:29:32Z",
+      "side": 1,
+      "message": "To Xibin\u0027s comment, ui.cuj_username/password are still present in tast-tests-private\u0027s ui.yaml file, so tests running in our lab will have these variables loaded, hence my concern. Do you know if partners are overriding ui.cuj_username/password when they run these tests in their environment? i.e. `tast run -var\u003dui.cuj_username\u003d\u003cuser\u003e -var\u003dui.cuj_password\u003d\u003cpass\u003e`? Or is this something moblab is doing?",
+      "parentUuid": "66e80e6e_3d976086",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05d3828c_d99b2252",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -172,6 +214,24 @@
       "side": 1,
       "message": "I think if neither cuj_username/password nor ui.cuj_username/password are specified, this code logic can still be reached. So if the tests decide to use cujAccountPool, they should remove the other vars and just configure ui.cujAccountPool.",
       "parentUuid": "05d3828c_d99b2252",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad09b439_66841757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-07T17:29:32Z",
+      "side": 1,
+      "message": "ui.cuj_username/password designate private variables kept in the internal tast-tests-private repo. In our lab environment we are not specifying runtime variables on the command line, they are being loaded from these yaml files.\n\nui.cuj_username/password are still declared in our private repository, so they will always be loaded and available to tests in the ui package.",
+      "parentUuid": "d1559e51_08dac634",
       "revId": "98662980d400d26344bb8d86fa643443794d3d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
