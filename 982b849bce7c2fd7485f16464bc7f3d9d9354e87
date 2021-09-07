@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c08939c_9d820665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-07T23:44:18Z",
+      "side": 1,
+      "message": "nit: transitioning",
+      "range": {
+        "startLine": 184,
+        "startChar": 58,
+        "endLine": 184,
+        "endChar": 72
+      },
+      "revId": "982b849bce7c2fd7485f16464bc7f3d9d9354e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfde9cb_32f7f73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-07T23:44:18Z",
+      "side": 1,
+      "message": "Please check the error before continuing. Consider using a testing.PollBreak as it will probably be a Fatal error.",
+      "range": {
+        "startLine": 187,
+        "startChar": 20,
+        "endLine": 187,
+        "endChar": 23
+      },
+      "revId": "982b849bce7c2fd7485f16464bc7f3d9d9354e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "781a793a_3ed0aec5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 1
