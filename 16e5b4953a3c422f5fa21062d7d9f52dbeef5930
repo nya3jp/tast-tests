@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63196a8c_c31a76d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-07T03:23:04Z",
+      "side": 1,
+      "message": "Thank you for pointing this out!\nI made a change to this function in the previous CL and it was wrong, so I fixed it. I think the difference is zero now.",
+      "parentUuid": "a73e00b9_71d3699b",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 112,
+        "endChar": 45
+      },
+      "revId": "16e5b4953a3c422f5fa21062d7d9f52dbeef5930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "101d6e00_2d8db727",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 3
