@@ -88,6 +88,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if err := h.RequireBiosServiceClient(ctx); err != nil {
 			return errors.Wrap(err, "requiring BIOS service client")
 		}
+
 		if toMode != fwCommon.BootModeDev {
 			flags := fwpb.GBBFlagsState{
 				Clear: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_SWITCH_ON},
@@ -102,6 +103,24 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
 				return errors.Wrap(err, "setting GBB flag to forcing dev-mode")
+			}
+		}
+
+		// If booting into anything into dev-usb mode, ensure that we're not forcing dev-usb mode.
+		if toMode != fwCommon.BootModeUSBDev {
+			flags := fwpb.GBBFlagsState{
+				Clear: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_BOOT_USB},
+			}
+			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
+				return errors.Wrap(err, "clearing GBB flag to stop forcing usb-dev-mode")
+			}
+		} else if toMode == fwCommon.BootModeUSBDev && msOptsContain(opts, AllowGBBForce) {
+			// Set the usb_dev-force GBB flag prior to closing the RPC server
+			flags := fwpb.GBBFlagsState{
+				Set: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_BOOT_USB},
+			}
+			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
+				return errors.Wrap(err, "setting GBB flag to forcing usb-dev-mode")
 			}
 		}
 	}
@@ -191,6 +210,16 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.fwScreenToDevMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
+		}
+	case fwCommon.BootModeUSBDev:
+		if err := ms.powerOff(ctx); err != nil {
+			return errors.Wrap(err, "powering off DUT")
+		}
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
+			return err
+		}
+		if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
+			return errors.Wrap(err, "moving from firmware screen to usb dev mode")
 		}
 	default:
 		return errors.Errorf("unsupported firmware boot mode: %s", toMode)
@@ -487,6 +516,52 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 		}
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to transition to dev mode", h.Config.FirmwareScreen)
+		}
+	default:
+		return errors.Errorf("booting to dev mode: unsupported ModeSwitcherType: %s", h.Config.ModeSwitcherType)
+	}
+	return nil
+}
+
+// fwScreenToUSBDevMode moves the DUT from the firmware bootup screen to USB Dev mode.
+// This should be called immediately after powering on.
+// The actual behavior depends on the ModeSwitcherType.
+func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
+	h := ms.Helper
+	if err := h.RequireServo(ctx); err != nil {
+		return errors.Wrap(err, "requiring servo")
+	}
+
+	switch h.Config.ModeSwitcherType {
+	case MenuSwitcher:
+		// Same as KeyboardDevSwitcher.
+		fallthrough
+	case KeyboardDevSwitcher:
+		// 1. Wait until the firmware screen appears.
+		// 2. Press Ctrl-U to move to the confirm screen.
+		// 3. Wait until the confirm screen appears.
+		// 4. Push some button depending on the DUT's config: toggle the rec button, press power, or press enter.
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return err
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlU, servo.DurTab); err != nil {
+			return err
+		}
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return err
+		}
+		if h.Config.RecButtonDevSwitch {
+			if err := h.Servo.ToggleOnOff(ctx, servo.RecMode); err != nil {
+				return err
+			}
+		} else if h.Config.PowerButtonDevSwitch {
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+				return err
+			}
+		} else {
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+				return err
+			}
 		}
 	default:
 		return errors.Errorf("booting to dev mode: unsupported ModeSwitcherType: %s", h.Config.ModeSwitcherType)

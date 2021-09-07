@@ -54,6 +54,16 @@ func DevModeGBB() testing.Precondition {
 	return devModeGBB
 }
 
+// USBDevMode boots to Developer mode from USB via keypress worklow and GBB flags.
+func USBDevMode() testing.Precondition {
+	return usbDevMode
+}
+
+// USBDevMode boots to Developer mode from USB via keypress worklow and GBB flags.
+func USBDevModeGBB() testing.Precondition {
+	return usbDevModeGBB
+}
+
 // RecMode boots to Recover Mode. Tests which use RecMode() need to use the Attr `firmware_usb` also.
 func RecMode() testing.Precondition {
 	return recMode
@@ -94,6 +104,23 @@ var (
 		v: &Value{
 			BootMode:      common.BootModeRecovery,
 			ForcesDevMode: false,
+		},
+		timeout: 60 * time.Minute,
+	}
+	usbDevMode = &impl{
+		v: &Value{
+			BootMode: common.BootModeUSBDev,
+			GBBFlags: pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()},
+		},
+		timeout: 60 * time.Minute,
+	}
+	usbDevModeGBB = &impl{
+		v: &Value{
+			BootMode: common.BootModeUSBDev,
+			GBBFlags: pb.GBBFlagsState{
+				Clear: common.AllGBBFlags(),
+				Set:   append(common.FAFTGBBFlags(), pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_FORCE_DEV_BOOT_USB),
+			},
 		},
 		timeout: 60 * time.Minute,
 	}
