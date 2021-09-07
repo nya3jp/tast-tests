@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55125fe1_8081e72b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-07T21:08:46Z",
+      "side": 1,
+      "message": "I forgot to mention one thing. Another reason of my suggestion is that there is no reason to export the function if it is not used by any other package.",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a011ad5_e64c0d3a",
