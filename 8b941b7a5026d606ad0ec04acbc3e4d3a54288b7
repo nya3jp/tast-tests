@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225b0ab3_ec8b3b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-09-07T17:56:00Z",
+      "side": 1,
+      "message": "Added a test to remove a user from singin screen, when there are 3 users. PTAL! ",
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
