@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -177,37 +176,18 @@ func wmRC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmRC02 covers resizable/clamshell: maximize portrait app (pillarbox).
 // Expected behavior is defined in: go/arc-wm-r RC02: resizable/clamshell: maximize portrait app (pillarbox).
 func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	for _, eTC := range []struct {
-		Name string
-		Func func(context.Context, *chrome.TestConn, string) error
-	}{
-		{"touchCaptionButton", touchCaptionButton},
-		{"leftClickCaptionButton", leftClickCaptionButton},
-	} {
-		if err := rcMaxRestoreTestHelper(ctx, tconn, a, d, wm.ResizablePortraitActivity, eTC.Func); err != nil {
-			return errors.Wrapf(err, "%q event type test case for wm.ResizablePortraitActivity failed", eTC.Name)
-		}
-	}
-	return nil
+	return rcMaxRestoreTestHelper(ctx, tconn, a, d, wm.ResizablePortraitActivity)
 }
 
 // wmRC03 covers resizable/clamshell: maximize non-portrait app.
 // Expected behavior is defined in: go/arc-wm-r RC02: resizable/clamshell: maximize non-portrait app.
 func wmRC03(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	for _, eTC := range []struct {
-		Name string
-		Func func(context.Context, *chrome.TestConn, string) error
-	}{
-		{"touchCaptionButton", touchCaptionButton},
-		{"leftClickCaptionButton", leftClickCaptionButton},
+	for _, actName := range []string{
+		wm.ResizableLandscapeActivity,
+		wm.ResizableUnspecifiedActivity,
 	} {
-		for _, actName := range []string{
-			wm.ResizableLandscapeActivity,
-			wm.ResizableUnspecifiedActivity,
-		} {
-			if err := rcMaxRestoreTestHelper(ctx, tconn, a, d, actName, eTC.Func); err != nil {
-				return errors.Wrapf(err, "%q event type test case for %q failed", eTC.Name, actName)
-			}
+		if err := rcMaxRestoreTestHelper(ctx, tconn, a, d, actName); err != nil {
+			return errors.Wrapf(err, "wmRC03 test for %q failed", actName)
 		}
 	}
 	return nil
@@ -987,7 +967,7 @@ func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		return err
 	}
 
-	if err := leftClickCaptionButton(ctx, tconn, "Maximize"); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventMaximize); err != nil {
 		return err
 	}
 	defer func() {
@@ -1120,60 +1100,6 @@ func checkRestoreActivityToFullscreen(ctx context.Context, tconn *chrome.TestCon
 	return nil
 }
 
-// touchCaptionButton function will simulate touch event on a caption button by button's name.
-func touchCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string) error {
-	ui := uiauto.New(tconn)
-	finder := nodewith.Name(btnName).ClassName("FrameCaptionButton")
-	captionBtn, err := ui.Info(ctx, finder)
-
-	if err != nil {
-		return errors.Errorf("failed to find \"%q\" caption button", btnName)
-	}
-
-	tsw, err := input.Touchscreen(ctx)
-	if err != nil {
-		return errors.New("failed to get TouchscreenEventWriter")
-	}
-	defer tsw.Close()
-
-	stw, err := tsw.NewSingleTouchWriter()
-	if err != nil {
-		return errors.New("failed to get SingleTouchEventWriter")
-	}
-	defer stw.Close()
-
-	// Get display info for touch coords calculation.
-	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.New("failed to get display info")
-	}
-	if primaryDisplayInfo == nil {
-		return errors.New("no primary display info found")
-	}
-
-	cBCX, cBCY := tsw.NewTouchCoordConverter(primaryDisplayInfo.Bounds.Size()).ConvertLocation(captionBtn.Location.CenterPoint())
-
-	// Touch caption button center.
-	if err := stw.Move(cBCX, cBCY); err != nil {
-		return errors.Errorf("failed to move touch event writer on \"%q\" button", btnName)
-	}
-	if err := stw.End(); err != nil {
-		return errors.Errorf("failed to end touch event writer on \"%q\" button", btnName)
-	}
-
-	return nil
-}
-
-// leftClickCaptionButton function will simulate left click event on a caption button by button's name.
-func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string) error {
-	finder := nodewith.Name(btnName).ClassName("FrameCaptionButton")
-	if err := uiauto.New(tconn).LeftClick(finder)(ctx); err != nil {
-		return errors.Errorf("failed to perform left click on \"%q\" button", btnName)
-	}
-
-	return nil
-}
-
 // leftClickDragCaptionButton function will simulate left click long press event on a caption button by button's name.
 func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string, toLeft bool) error {
 	ui := uiauto.New(tconn)
@@ -1206,8 +1132,8 @@ func leftClickDragSource(ctx context.Context, tconn *chrome.TestConn, source coo
 	return mouse.Drag(tconn, source, dest, 750*time.Millisecond)(ctx)
 }
 
-// rcMaxRestoreTestHelper performs RC02 test either by left clicking or touching the caption button.
-func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string, etFunc func(context.Context, *chrome.TestConn, string) error) error {
+// rcMaxRestoreTestHelper performs RC02 test.
+func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) error {
 	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
 		return err
@@ -1236,8 +1162,7 @@ func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.
 	// Store windowID to wait for animating finishes.
 	windowID := winInfoBeforeMax.ID
 
-	// Touch/Click maximize button on caption bar.
-	if err := etFunc(ctx, tconn, "Maximize"); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventMaximize); err != nil {
 		return err
 	}
 
@@ -1252,8 +1177,7 @@ func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		return err
 	}
 
-	// Touch/Click restore button on caption bar.
-	if err := etFunc(ctx, tconn, "Restore"); err != nil {
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventNormal); err != nil {
 		return err
 	}
 
