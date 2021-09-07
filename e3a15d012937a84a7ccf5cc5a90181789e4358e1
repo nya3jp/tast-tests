@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08af641_f63a36e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-07T04:19:42Z",
+      "side": 1,
+      "message": "I do not think it is ready to be in cq with the high fail rate on kukui-arc-r (krane).",
+      "revId": "e3a15d012937a84a7ccf5cc5a90181789e4358e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
