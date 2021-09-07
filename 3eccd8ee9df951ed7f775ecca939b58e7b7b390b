@@ -16,6 +16,166 @@
       "message": "Hi Alexander! Can you review my CL please?",
       "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041873e6_d4be1da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "LGTM % nits\nYou should also get a review from a team member as I cannot really review the functionality of the code.",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9e3405_d5c13bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: formating is a bit off. Either keep one space after the colon or try to have the values at the same \"height\" as in the \"empty_arguments\" test case.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e86178_4fd00b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: when testing.State (s) is available it is preffered to use s.Log(), testing.ContextLog() is for parts of the code where it is not available.\nPlease also replace the other occurrences.\n\nAlso please make sure that logging only occurs in places where operations take a while like here as we do not want the logfiles getting too cluttered.",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 95
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbf382a_db3342aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc7592b_afa2687e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: we want to move to more descriptive variable names for improved readability, maybe lstnr instead of just l",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b326c90_46094789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1baa3f45_17c5e356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51816f56_a48baacc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-07T12:33:16Z",
+      "side": 1,
+      "message": "nit: as above, maybe dlr.",
+      "range": {
+        "startLine": 255,
+        "startChar": 5,
+        "endLine": 255,
+        "endChar": 6
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
