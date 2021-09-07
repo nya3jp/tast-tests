@@ -178,12 +178,17 @@ func wmRC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RC02: resizable/clamshell: maximize portrait app (pillarbox).
 func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, eTC := range []struct {
-		Name string
-		Func func(context.Context, *chrome.TestConn, string) error
+		Name    string
+		Func    func(context.Context, *chrome.TestConn, string) error
+		IsTouch bool
 	}{
-		{"touchCaptionButton", touchCaptionButton},
-		{"leftClickCaptionButton", leftClickCaptionButton},
+		{"touchCaptionButton", touchCaptionButton, true},
+		{"leftClickCaptionButton", leftClickCaptionButton, false},
 	} {
+		_, err := display.GetInternalInfo(ctx, tconn)
+		if err != nil && eTC.IsTouch {
+			continue
+		}
 		if err := rcMaxRestoreTestHelper(ctx, tconn, a, d, wm.ResizablePortraitActivity, eTC.Func); err != nil {
 			return errors.Wrapf(err, "%q event type test case for wm.ResizablePortraitActivity failed", eTC.Name)
 		}
@@ -195,12 +200,17 @@ func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RC02: resizable/clamshell: maximize non-portrait app.
 func wmRC03(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, eTC := range []struct {
-		Name string
-		Func func(context.Context, *chrome.TestConn, string) error
+		Name    string
+		Func    func(context.Context, *chrome.TestConn, string) error
+		IsTouch bool
 	}{
-		{"touchCaptionButton", touchCaptionButton},
-		{"leftClickCaptionButton", leftClickCaptionButton},
+		{"touchCaptionButton", touchCaptionButton, true},
+		{"leftClickCaptionButton", leftClickCaptionButton, false},
 	} {
+		_, err := display.GetInternalInfo(ctx, tconn)
+		if err != nil && eTC.IsTouch {
+			continue
+		}
 		for _, actName := range []string{
 			wm.ResizableLandscapeActivity,
 			wm.ResizableUnspecifiedActivity,
