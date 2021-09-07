@@ -15,12 +15,12 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/camera/webrtc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 

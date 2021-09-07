@@ -2,11 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package webrtc provides utility variables and functions for WebRTC related tests.
 package webrtc
 
 import "chromiumos/tast/local/media/logging"
-
-// This file provides utility variables and functions for WebRTC related tests.
 
 // ChromeArgsWithFakeCameraInput returns Chrome extra args as string slice for
 // video test with a Fake WebCam (a.k.a. "rolling pacman") s live camera input.

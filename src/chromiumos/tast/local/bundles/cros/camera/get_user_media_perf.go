@@ -11,11 +11,11 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
+	"chromiumos/tast/local/bundles/cros/camera/webrtc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
