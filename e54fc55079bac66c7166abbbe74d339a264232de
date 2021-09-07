@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e775c1d_5094389b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "Ack. My intention was to limit the scope of the uninhibit callback to the if..else",
+      "parentUuid": "a227cbfc_f569ca56",
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75cc6cee_a6726f0a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-07T13:42:31Z",
       "side": 1,
       "message": "nit: get rid of this extra space before the colon",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca55024_fec7e1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75cc6cee_a6726f0a",
       "range": {
         "startLine": 54,
         "startChar": 33,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced96642_dc2cf8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266f8284_7ce2323d",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3572886_c8ea7e9d",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-07T13:42:31Z",
       "side": 1,
       "message": "ditto re: extra space",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b59b6a_9b4f6386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3572886_c8ea7e9d",
       "range": {
         "startLine": 70,
         "startChar": 33,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2545a3_77e39aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "We can\u0027t do much about it right now. The issue is likely in the eSIM OS. Test profiles aren\u0027t visible to the user, so this is likely a P4 that requires significant debug effort from our side.",
+      "parentUuid": "69ca4c14_83b76e53",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c40dcc50_d01cf33b",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "604bad0e_2c15089a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c40dcc50_d01cf33b",
+      "range": {
+        "startLine": 88,
+        "startChar": 32,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab7e1fea_61176ab3",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-09-07T13:42:31Z",
       "side": 1,
       "message": "nit:\n\n got: %d, want: %d\n\nfor consistency",
+      "range": {
+        "startLine": 105,
+        "startChar": 38,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661e3376_e23b4e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-07T20:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab7e1fea_61176ab3",
       "range": {
         "startLine": 105,
         "startChar": 38,
