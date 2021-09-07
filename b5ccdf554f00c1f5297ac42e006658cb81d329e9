@@ -56,6 +56,30 @@
       },
       "revId": "b5ccdf554f00c1f5297ac42e006658cb81d329e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd46571c_6262fb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-07T08:21:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "530b3884_ca5fa165",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "b5ccdf554f00c1f5297ac42e006658cb81d329e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
