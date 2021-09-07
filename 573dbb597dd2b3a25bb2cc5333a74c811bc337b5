@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fd5e2c_5c7bfce0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-07T09:01:43Z",
+      "side": 1,
+      "message": "As recently merged commit pointed out that new tests should not use Preconditions, changing this CL to use Fixture.",
+      "revId": "573dbb597dd2b3a25bb2cc5333a74c811bc337b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
